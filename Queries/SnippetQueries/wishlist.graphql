@@ -1,0 +1,48 @@
+query Wishlist($customerAccessToken: String!, $productsIds: [Long]){
+  customer(customerAccessToken: $customerAccessToken){
+    wishlist(productsIds: $productsIds){
+      products{
+       	id
+        productId
+        productName
+        productVariantId
+        alias
+        images {
+          url
+          print
+          fileName
+        }
+        available
+        prices {
+          listPrice
+          price
+          installmentPlans{
+              displayName
+              name
+              installments{
+                discount
+                fees
+                number
+                value
+              }
+          }
+          bestInstallment {
+            name
+            displayName
+            discount
+            fees
+            number
+            value
+          }
+        }
+        promotions{
+          content
+          id
+          stamp
+          title
+        }
+        addToCartFromSpot
+      }
+    }
+  }
+}

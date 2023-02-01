@@ -1,0 +1,21 @@
+{{ ##
+    Description: Renders the product shipping quotes, the list of available shipping options with informations
+                regarding prices and deadlines.
+    Params:
+        - Uses shipping_quotes.graphql
+    Usage:
+        await client.snippet.render("product_shipping_quotes_snippet.html", ...);
+## }}
+{{ quotes = data.shipping_quotes }}
+{{~ if quotes ~}}
+    {{~ for quote in quotes ~}}
+        <div class="product-shipping-quote container-fluid" 
+        style="border: 1px solid; width: 55%; text-align: center; border-radius: 10px; margin-bottom: 8px;">
+            <strong>{{ quote.name }}</strong>
+            <br>
+            <span style="font-size: 20px;">{{ quote.value | math.format "c" "pt-BR" }}</span>
+            <br>
+            <span style="font-size: 12px;">Em até {{ quote.deadline }} dias úteis</span>
+        </div>
+    {{~ end ~}}
+{{~ end ~}}

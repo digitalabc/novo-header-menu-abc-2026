@@ -1,0 +1,25 @@
+{{ ##
+    Description: Renders the product prices and installments 
+    Params:
+        - prices: product prices
+        - displayed_installment: [optional] filter installment options to display from the specified plan.  
+                                 Check the display name of the installment plans on Admin. (e.g., "Boleto Yapay")
+                                 If not set, the best installment among the available options will be displayed instead
+    Usage:
+        product_price prices: product.prices displayed_installment: "Boleto Yapay"
+## }}
+<div class="row">
+    {{ if prices.list_price }}
+        {{~ if prices.discount_percentage > 0 ~}}
+            <p><s>{{ prices.list_price | math.format "c" "pt-BR" }}</s></p>
+        {{~ end ~}}
+        <h2 style="margin-top: -0.5rem;"><b>{{ prices.price | math.format "c" "pt-BR" }}</b></h2>
+    {{ else }}
+    <p>{{ prices.price | math.format "c" "pt-BR" }}</p>
+    {{ end }}
+</div>
+{{~ if displayed_installment ~}}
+    {{ product_filtered_installment installment_plans: prices.installment_plans displayed_installment: displayed_installment }}
+{{~ else ~}}
+    {{ product_best_installment best_installment: prices.best_installment }}
+{{~ end ~}}

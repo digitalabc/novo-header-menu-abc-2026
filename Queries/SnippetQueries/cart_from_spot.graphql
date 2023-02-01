@@ -1,0 +1,107 @@
+query AddToCartFromSpot($productId: Long!
+	  $partnerAccessToken: String,
+    $selections: [AttributeFilterInput]) {
+  product(productId: $productId, partnerAccessToken: $partnerAccessToken) {
+    id
+    productId
+    productName
+    productVariantId
+    alias
+    sku
+    stock
+    ean
+    averageRating
+    productBrand {
+      name
+    }
+    images {
+        url
+    }
+    available
+    prices {
+      listPrice
+      price
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    informations{
+        id
+        title
+        type
+        value
+    }
+    promotions{
+      content
+      id
+      stamp
+      title
+    }
+    addToCartFromSpot
+    attributeSelections (selected: $selections) {
+      selectedVariant{
+        id
+        alias
+        available
+        images {
+          fileName
+          url
+        }
+        prices {
+          listPrice
+          price
+          installmentPlans{
+            displayName
+            name
+            installments{
+              discount
+              fees
+              number
+              value
+            }
+          }
+        }
+        productId
+        productVariantId
+        stock
+      }
+      selections{
+        attributeId
+        displayType
+        name
+        varyByParent
+        values{
+          alias
+          available
+          printUrl
+          selected
+          value
+        }
+      }
+    }
+    subscriptionGroups{
+      recurringTypes{
+        name
+        days
+        recurringTypeId
+      }
+      subscriptionGroupId
+      subscriptionOnly
+    }
+  }
+}

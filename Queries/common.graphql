@@ -1,0 +1,20 @@
+query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
+  menuGroups(url:$url) {
+    menuGroupId
+    position
+    menus {
+      menuId
+      parentMenuId
+      name
+      cssClass
+      link
+    }  
+  }
+  scripts(url:$url, pageType:$scriptPageTypes) {
+  	name
+    pageType
+    position
+    priority
+    content
+  }
+}

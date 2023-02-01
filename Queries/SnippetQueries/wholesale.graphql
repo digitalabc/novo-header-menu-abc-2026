@@ -1,0 +1,12 @@
+query CalcPrices($prodVar: Long!, $quantity: Int!) {
+  original: calculatePrices(products:[{productVariantId:$prodVar, quantity: 1}]) {
+    ...priceFields
+  }
+  wholesale: calculatePrices(products:[{productVariantId:$prodVar, quantity: $quantity}]) {
+    ...priceFields
+  }
+}
+
+fragment priceFields on Prices {
+  price
+}

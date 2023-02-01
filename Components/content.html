@@ -1,0 +1,8 @@
+{{~ grouped_contents = contents | group.by @(do; ret $0.position;end) ~}}
+{{~ filtered_contents = grouped_contents | group.get position ~}}
+{{ for content in filtered_contents }}
+    <p>
+        <h1>{{content.title}}</h1>
+        {{content.content}}
+    </p>
+{{ end }}

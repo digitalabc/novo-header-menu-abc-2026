@@ -1,0 +1,25 @@
+{{ ##
+    Description: Adds SEO meta tags to the page
+    Params:
+        - seo: SEO list (available for hotsites and products on Admin)
+               Make sure to fill the MetaTags fields
+    Usage:
+        meta_tags seo: data...seo
+## }}
+{{~ #filters SEO list by "meta" type
+    func is_meta(x) 
+        case_insensitive_type = x.type | string.downcase
+        ret case_insensitive_type == "meta"
+    end 
+~}}
+{{~ if seo ~}}
+    {{ for item in seo | array.filter @is_meta }}
+        {{
+            name_tag = item.name != null ? (" name=" + "\"" + item.name + "\"") : ""
+            content_tag = item.content != null ? (" content=" + "\"" + item.content + "\"") : ""
+            http_equiv_tag = item.http_equiv != null ? (" http-equiv=" + "\"" + item.http_equiv + "\"") : ""
+            meta_tag = "<meta " | string.append name_tag | string.append content_tag | string.append http_equiv_tag | string.append "/>"
+        }}
+        {{ meta_tag }}
+    {{ end }}
+{{~ end ~}}

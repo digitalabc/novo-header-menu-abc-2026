@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lojacss.fbits.store/sitemap.xml

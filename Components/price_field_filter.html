@@ -1,0 +1,31 @@
+{{ ##
+    Description: Render number fields to filter product price by min and max
+    Params:
+        - minimum_price: minimum price of a product in the search
+        - maximum_price: maximum price of a product in the search
+    Usage:
+        price_field_filter minimum_price: data_search.aggregations.minimum_price maximum_price: data_search.aggregations.maximum_price
+## }}
+
+<div class="row">
+    <div class="col-5">
+        <label>Preço mínimo</label>
+    </div>
+    <div class="col-5">
+        <label>Preço máximo</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-5">
+        <input type="number" class="form-control" id="minimum-price-filter" 
+            min="{{ minimum_price }}" max="{{ maximum_price }}" placeholder="{{ minimum_price }}">
+    </div>
+    <div class="col-5">
+        <input type="number" class="form-control" id="maximum-price-filter" 
+            min="{{ minimum_price }}" max="{{ maximum_price }}" placeholder="{{ maximum_price }}">
+    </div>
+    <div class="col-2">
+        <button type="button" id="apply-price-filter" class="btn btn-outline-success" 
+            onclick="setFieldPriceFilter();">Aplicar</button>
+    </div>
+</div>

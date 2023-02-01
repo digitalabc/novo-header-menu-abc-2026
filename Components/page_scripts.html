@@ -1,0 +1,7 @@
+{{~ if !store.no_script ~}}
+    {{~ grouped_scripts = scripts | group.by @(do; ret $0.position;end) ~}}
+    {{~ scripts = grouped_scripts | group.get position ~}}
+    {{for script in scripts}}
+        {{script.content}}
+    {{end}}
+{{~ end ~}}

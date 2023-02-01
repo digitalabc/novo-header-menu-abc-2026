@@ -1,0 +1,25 @@
+query($calculatePricesProductsInput: [CalculatePricesProductsInput]!) {
+  calculatePrices(products: $calculatePricesProductsInput){
+    listPrice
+    price
+    discounted
+    discountPercentage
+    installmentPlans {
+      installments{
+        discount
+        fees
+        number
+        value
+      }
+      displayName
+    }
+    bestInstallment {
+      name
+      displayName
+      discount
+      fees
+      number
+      value
+    }
+  }
+}

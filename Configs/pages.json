@@ -1,0 +1,75 @@
+[
+    {
+        "type": "search",
+        "path": "search.html",
+        "query": "search_with_cursor.graphql"
+    },
+    {
+        "type": "hotsite",
+        "path": "hotsite.html",
+        "query": "hotsite.graphql",
+        "customs": [
+            {
+                "urlMatch": "",
+                "path": "home.html",
+                "query": "home.graphql"
+            },
+            {
+                "urlMatch": "listadedesejos",
+                "path": "Custom/wishlist.html"
+            },
+            {
+                "urlMatch": "*",
+                "subtype": "brand",
+                "path": "Custom/brands.html",
+                "priority": 10
+            },
+            {
+                "urlMatch": "*vans*",
+                "path": "Custom/vans.html",
+                "priority": 20
+            },
+            {
+                "urlMatch": "outlet*|black-friday",
+                "path": "Custom/promo.html"
+            },
+            {
+                "urlMatch": "mycategory",
+                "subtype": "category",
+                "path": "category.html"
+            }
+        ]
+    },
+    {
+        "type": "product",
+        "path": "product.html",
+        "query": "product.graphql",
+        "customs": [
+            {
+                "urlMatch": "kit-pratico*",
+                "path": "Custom/custom_product.html",
+                "priority": 1
+            },
+            {
+                "productIds": [9],
+                "path": "Custom/custom_product.html",
+                "priority": 2
+            },
+            {
+                "categoryIds": [],
+                "path": "Custom/custom_product.html",
+                "priority": 10
+            }
+        ]
+    },
+    {
+        "type": "buy_list",
+        "path": "buy_list.html",
+        "query": "buy_list.graphql"
+    },
+    {
+        "type": "not_found",
+        "path": "not_found.html",
+        "query": "not_found.graphql"
+    }
+]

@@ -1,0 +1,19 @@
+<h4>PedidoCancelado - Loja {{ configuracao.url_carrinho }}</h4>
+<h4>E-mail gerado pelo storefront</h4>
+
+<p>Olá!</p>
+<p>Seu pedido {{pedido.id}} feito em {{pedido.data}} às {{pedido.hora}} foi cancelado.</p>
+<p>Segue link para efertuar a recompra: <a href={{recompra.link_externo}}>Recompra</a></p>
+
+<h5>Resumo Pedido</h5>
+<p>Valor : {{pedido.valor_total}}</p>
+
+<h5>Produtos</h5>
+{{for p in pedido.produtos}}
+<p>{{p.nome}}</p>
+<p>{{p.quantidade}}</p>
+{{end}}
+
+{{ if pedido.valor_total > 100 }}
+    <h1> Parabéns! Você ganhou um desconto de 5%, utilize o cupom AAZ123 </h1>
+{{ end }}

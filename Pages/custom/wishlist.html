@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{ header title: data.hotsite.name store: store }}
+        {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "spot", "product"]}}
+        {{ meta_tags seo: data.hotsite.seo }}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+<style>
+    .wishlist-body{
+        text-align: center;
+        margin-top: 2rem;
+    }
+</style>
+    <body>
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        </header>
+        <input type="hidden" id="login-url" value="{{ store.urls.checkout }}Login/Authenticate?returnUrl=">
+        <div id="wishlist-body" class="wishlist-body container">
+            <h3>Carregando...</h3>
+        </div>
+        {{ footer is_preview: is_preview store: store }}
+        {{ sdk_client }}
+        {{ asset type: "js" paths: ["components", "navbar", "product", "mini_cart", "cart_from_spot", "user_login", "wishlist"]}}
+    </body>
+</html>

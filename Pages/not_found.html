@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{ header title:"Erro 404" store: store }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login"]}}
+    </head>
+    <body>
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        </header>
+        
+        <h1>
+            Erro 404
+        </h1>
+
+        <h2>
+            Sem resultados para {{ url }}
+        </h2>
+        {{ sdk_client }}
+        {{ asset type: "js" paths: ["components", "mini_cart", "navbar", "user_login"]}}
+    </body>
+</html>

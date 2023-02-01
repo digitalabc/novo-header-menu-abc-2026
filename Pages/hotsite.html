@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{ header title: data.hotsite.name store: store }}
+        {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "spot", "product" ]}}
+        {{ meta_tags seo: data.hotsite.seo }}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        </header>
+        <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-12">
+                {{ banners_carousel banners: data.hotsite.banners position: "Topo" }}
+            </div>
+        </div>
+        <div>
+            {{content position: "Centro" contents: data.hotsite.contents}}
+        </div>
+        <div class="row">
+            {{ filter aggregations: data.hotsite.aggregations }}
+            <div class="col-10 col-md-9" id="spots-list">
+            {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
+            <br>
+            {{ products_per_page }}
+            {{ sort page_type: "hotsite" }}            
+            {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
+            {{ page_size = data.hotsite.products_by_offset?.page_size ?? data.hotsite.products?.page_info?.total_count }}
+            <input type="hidden" id="def_page_size" name="def_page_size" value="{{ page_size }}">
+            {{ spot_list products: products }}
+            {{ pagination products: products page_size: page_size current_page: current_page }}
+            </div>
+        </div>
+        {{ footer is_preview: is_preview store: store }}
+        {{ sdk_client }}
+        {{ asset type: "js" paths: ["components", "sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product"]}}
+    </body>
+</html>

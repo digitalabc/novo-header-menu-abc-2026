@@ -1,0 +1,43 @@
+{{ ##
+    Description: Renders navbar with links from menuGroup query
+    Params:
+        - menu_groups: menu groups list
+        - position: the menu group position to use
+    Usage:
+        navbar menu_groups: data...menu_group position: "Topo Header"
+## }}
+{{~ menu_group = menu_groups | group.by @(do; ret $0.position;end) | group.get position | array.first ~}}
+{{~ menus = menu_group.menus | group.by @(do; ret $0.parent_menu_id;end) ~}}
+{{~ if menu_group ~}}
+    {{~ top_level = menus | group.get null ~}}
+{{~ end ~}}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div id="navbar-logo">
+            <a class="navbar-brand" href="/">{{ store.store_name }}</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {{~ if top_level ~}}
+                    {{~ for top_menu in top_level ~}}
+                        {{ nav_item menus:menus current_menu: top_menu }}
+                    {{~ end ~}}
+                {{~ end ~}}
+            </ul>
+            <form class="d-flex" onsubmit="search(event, null)" style="margin: auto;">
+                <div class="autocomplete">
+                    <input id="search-bar" class="form-control me-2" type="search" placeholder='{{ "Busque aqui" | lang }}...' autocomplete="off">
+                    <div id="autocomplete-list" class="autocomplete-items"></div>
+                </div>
+                <button class="btn btn-outline-light" type="submit">{{ "Busca" | lang }}</button>
+            </form>
+        </div>
+        {{ user_login checkout_url: store.urls.checkout }}
+        <div id="mini-cart-div">
+            <div class="cart-href-div">
+                <span class='badge badge-warning' id='label-cart-count' style="visibility: hidden;">0</span>
+                <img id="cart-icon" src="{{- store.urls.static_img -}}cart.png?v={{store.last_modified}}" width="40px" height="40px" alt="cart">
+            </div>
+        </div>
+    </div>
+</nav>

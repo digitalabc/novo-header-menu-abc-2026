@@ -1,0 +1,9 @@
+<div class="container">
+    {{ for information in informations }}
+        {{ if information.type == "Descrição" }}
+            <div class="row">
+                {{ information.value }}
+            </div>
+        {{ end }}
+    {{ end }}
+</div>

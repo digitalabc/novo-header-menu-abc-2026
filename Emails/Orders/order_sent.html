@@ -1,0 +1,10 @@
+<h5>PedidoEnviado - email criado pelo storefront </h5>
+
+<p>{{pedido.usuario.nome}}</p>
+<br>
+<p>valor do pedido: {{pedido.valor_total}}</p>
+<p>Enviado para endereço: {{pedido.frete.endereco.logradouro}}</p>
+<p>Produtos comprados:</p>
+{{for p in pedido.produtos}}
+<p>- {{p.nome}}</p>
+{{end}}

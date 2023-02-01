@@ -1,0 +1,22 @@
+{{ ##
+    Description: Renders a dropdown list to select the sorting
+                 type of the products on the spot list
+    Params:
+      - page_type: type of page the component will be rendered (can be "search" or "hotsite")
+    Usage:
+      sort page_type: type
+## }}
+
+{{ "Ordenação" | lang }}:
+{{ sort_options = {} }}
+{{~ if page_type == "search" ~}}
+    {{~ sort_options = settings.sort.search.options ~}}
+{{~ else if page_type == "hotsite" ~}}
+    {{~ sort_options = settings.sort.hotsite.options ~}}
+{{~ end ~}}
+<select name="sort_options" id="sort_options" onChange="sortResult(this.value);">
+    <option value="" selected disabled hidden>{{ "Selecione" | lang }}</option>
+    {{~ for option in sort_options ~}}
+        <option value="{{option.setting.key}}:{{option.setting.direction}}">{{option.name}}</option>
+    {{~ end ~}}
+</select>

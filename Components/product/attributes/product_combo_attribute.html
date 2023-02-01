@@ -1,0 +1,51 @@
+{{ ##
+    Description: Renders attributes of type "Combo"
+    Params:
+        - attribute_selections: product attribute selections data
+        - product_id: page product ID
+        - is_secondary_product : if this is an attribute of a subproduct, like in a buy list, or in a buytogether component
+        - on_click : the name of the function call for the component onClick
+    Usage:
+        product_combo_attribute attribute_selections: attribute_selections product_id: product_id on_click:'buttonOnClick'
+## }}
+{{~ if attribute_selections.size > 0 ~}}
+    <div class="row">
+        <div>
+            {{~ for attr in attribute_selections ~}}
+                <p>{{ attr.name | string.upcase }}</p>
+                {{~ grouped_selected = attr.values | group.by @(do; ret $0.selected;end) ~}}
+                {{~ value_selected = grouped_selected | group.get true | array.first ~}}
+                {{~ if value_selected ~}}
+                    {{~ hidden_id = "hidden-selected-attribute-" + product_id + "-" + attr.attribute_id ~}}
+                    <input type="hidden" id="{{ hidden_id }}"
+                        name="{{ hidden_id }}" value="{{ value_selected.value }}">
+                {{~ end ~}}
+                {{~ if attr.vary_by_parent && is_secondary_product && value_selected }}
+                    <p>{{ value_selected.value }}</p>
+                {{~ else ~}}
+                    <select class="form-select"
+                        {{~ if attr.vary_by_parent ~}}
+                            onchange="location = this.value;"
+                        {{~ else ~}}
+                            onchange="{{ on_click }}(this.options[this.options.selectedIndex]);"
+                        {{~ end ~}}>
+                        <option value='' selected disabled> Selecione uma opção </option>
+                        {{~ for value in attr.values ~}}
+                            {{~ option_id = attr.attribute_id | string.append "__" | string.append value.value ~}}
+                            <option 
+                                value='{{ if attr.vary_by_parent ; "/" | string.append value.alias ; else ; value.value ; end }}' 
+                                id="{{ option_id }}__{{ product_id }}"
+                                attribute-id = "{{ attr.attribute_id }}"
+                                product-id = "{{ product_id }}"
+                                {{ if value.selected }} selected {{ end }} 
+                                {{ if !value.available && !attr.vary_by_parent }} disabled {{ end }}>
+                                {{ value.value }}
+                            </option>
+                        {{~ end ~}}
+                    </select>
+                {{~ end ~}}
+                <br>
+            {{~ end ~}}
+        </div>
+    </div>
+{{~ end ~}}

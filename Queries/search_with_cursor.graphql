@@ -1,0 +1,109 @@
+query ($searchQuery: String, 
+  $partnerAccessToken: String, 
+  $sortKey: ProductSearchSortKeys!, 
+  $sortDirection: SortDirection!, 
+  $filters: [ProductFilterInput],
+  $minimumPrice: Decimal,
+  $maximumPrice: Decimal,
+	$after: String,
+	$before: String,
+  $resultSize: Int,
+  $last: Int,
+	$onlyMainVariant: Boolean) {
+  search(query: $searchQuery, partnerAccessToken: $partnerAccessToken) {
+    redirectUrl
+    searchTime
+    contents {
+      content
+      height
+      title
+      width 
+      position
+    }
+    breadcrumbs{
+      link
+      text
+    }
+    products(after: $after, before: $before, filters: $filters, first: $resultSize, last: $last, minimumPrice: $minimumPrice, 
+      			 maximumPrice: $maximumPrice, onlyMainVariant: $onlyMainVariant, sortDirection: $sortDirection, sortKey: $sortKey) {
+      totalCount
+      pageInfo{
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+      edges{
+        cursor
+        node{
+          id
+          productId
+          productName
+          productVariantId
+          alias
+          images(width:275, height:275) {
+            url
+            print
+          }
+          available
+          prices {
+            listPrice
+            price
+            discountPercentage
+            bestInstallment {
+              name
+              displayName
+              discount
+              fees
+              number
+              value
+            }
+          }
+          promotions{
+            content
+            id
+            stamp
+            title
+          }
+          addToCartFromSpot
+        }
+      }
+    }
+    aggregations {
+      filters {
+        field
+        values {
+          name
+          quantity
+        }
+      }
+      priceRanges{
+        range
+        quantity
+      }
+      maximumPrice
+      minimumPrice
+    }
+    banners {
+      bannerUrl
+      openNewTab
+      width
+      height
+      order
+      position
+      title
+      urlOnClick
+    }
+  }
+  menuGroups(url: "") {
+    position
+    menus {
+      menuId
+      parentMenuId
+      name
+      level
+      order
+      link
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{{ ##
+    Description: Renders the list of suggested products in a dropdown list
+    Params:
+        - Uses autocomplete.graphql
+    Usage:
+        await client.snippet.render("autocomplete_snippet.html", ...);
+## }}
+{{~ for suggestion in data.autocomplete.suggestions ~}}
+    <div onclick="search(event, '{{ suggestion }}')">
+        {{ suggestion }}
+    </div>
+{{~ end ~}}
+{{~ for product in data.autocomplete.products ~}}
+    <a href="/{{ product.alias }}" style="text-decoration: none; color: black;">
+        <div class="product-suggestion" id="{{ product.alias }}">
+            <section style="display: flex; justify-content: left;">
+                {{~ imageUrl = "https://" + store.store_name + ".fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg?w=100" ~}}
+                {{~ if product.images.size > 0 ~}}
+                    {{~ firstImage = product.images | array.first ~}}
+                    {{~ imageUrl = firstImage.url ~}}
+                {{~ end ~}}
+                <img src="{{ imageUrl }}" width="50px">
+                {{ product.product_name }}
+            </section>
+            <section>
+                {{ product.prices.price | math.format "c" "pt-BR" }}
+            </section>
+        </div>
+    </a>
+{{~ end ~}}

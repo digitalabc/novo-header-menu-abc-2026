@@ -1,0 +1,16 @@
+{{ ##
+    Description: Creates the SDK client using information injected in the page
+    Usage:
+        sdk_client
+## }}
+
+<script src="https://static.fbits.net/storefront-sdk/latest/storefront-sdk.min.js"></script>
+<script>
+const clientConfig = {
+        storefrontAccessToken: '{{settings.access_token}}',
+        checkoutUrl: '{{store.urls.checkout}}',
+        storeUrl: '{{store.urls.base}}'
+    };
+    
+const client = StorefrontClient.createClient(clientConfig);
+</script>

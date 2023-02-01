@@ -1,0 +1,83 @@
+{{ ##
+    Description: Renders the product view
+    Params:
+        - product: product data
+    Usage:
+        product_view product: product
+## }}
+{{~ selected_variant = product.attribute_selections?.selected_variant ~}}
+<div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
+<div class="d-flex justify-content-center row">
+    <div class="col-6">
+        {{~ 
+            if selected_variant && selected_variant.images && selected_variant.images.size > 0
+                product_image images: product.attribute_selections.selected_variant.images
+            else
+                product_image images: product.images
+            end 
+        ~}}
+    </div>
+    <div class="col-6" style="background-color: #dcedd2;">
+        <div class="row">
+            {{~ if product.product_brand ~}}
+                {{~ product_brand brand: product.product_brand ~}}
+            {{~ end ~}}
+            <div>
+                {{~ if product.product_id ~}}
+                    {{~ wishlist_button product_id: product.product_id ~}}               
+                {{~ end ~}}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <h5> {{ product.product_name }} </h5>
+        </div>
+        {{~ stamps promotions: product.promotions ~}}
+        {{~ installment_plans = product.prices.installment_plans ~}}
+        <div class="row">
+            {{~ discount_percentage = 0 ~}}
+            <div id= "product-prices-div" class="col-7">
+                {{~ 
+                    if selected_variant
+                        installment_plans = selected_variant.prices.installment_plans
+                        product_price prices: selected_variant.prices
+                        discount_percentage = selected_variant.prices.discount_percentage
+                        product_wholesale_price prices : selected_variant.prices
+                    else
+                        product_price prices: product.prices
+                        discount_percentage = product.prices.discount_percentage
+                    end
+                    product_installments installments: installment_plans 
+                ~}}
+            </div>
+            <div class="col-5" style="margin-top: 2rem;">
+                {{ product_discount discount_percentage: discount_percentage }}
+            </div>
+            <br>
+        </div>
+        <br>
+        <div>
+            {{ product_attribute product: product }}
+            <div class="row">
+                <span>COMPRA <b>100% SEGURA</b></span>
+            </div>
+            <br>
+            {{~ if product.customizations ~}}
+                {{~ product_customizations customizations: product.customizations ~}}
+            {{~ end ~}}
+        </div>
+        <br>
+        <div class="row">
+            {{~ if selected_variant ~}}
+                {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
+            {{~ end ~}}
+            {{~ if product.buy_list_id ~}}
+                <h4 style="text-align: end;">Produtos da lista de compra</h4>
+                {{ for product in product.buy_list_products}}
+                    <div id="buy-list-product-div-{{ product.product_id }}" 
+                    class="row" product-id="{{ product.product_id }}"></div>
+                {{ end }}
+            {{~ end ~}}
+        </div>
+    </div>
+</div>

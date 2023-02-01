@@ -1,0 +1,27 @@
+{{~ if customizations && customizations.size > 0 ~}}
+    <div class='row'>
+        <h4>Personalize seu produto:</h4>
+        {{ for customization in customizations }}
+            <div>
+                <p>{{customization.name}} - ({{ customization.cost | math.format "c" "pt-BR" }})</p>
+                {{~ case customization.type ~}}
+                    {{~ when "Valores Predefinidos" ~}}
+                        <select id="customization-{{ customization.customization_id }}" class="form-select" 
+                        customization-id="{{~ customization.customization_id ~}}">
+                            <option selected value=''>Selecione uma opção</option>
+                            {{~ for value in customization.values ~}}
+                                <option value="{{value}}">{{value}}</option>
+                            {{~ end ~}}
+                        </select>
+                    {{~ when "Texto Livre" ~}}
+                        <input id="customization-{{~ customization.customization_id ~}}" class="form-control me-2"
+                        placeholder="Insira uma customização." customization-id="{{~ customization.customization_id ~}}"
+                        maxlength="{{ customization.max_length }}">
+                    {{~ when "Número" ~}}
+                        <input id="customization-{{~ customization.customization_id ~}}" class="form-control me-2" 
+                        placeholder="Insira uma customização." type="number" customization-id="{{~ customization.customization_id ~}}">
+                {{~ end ~}}
+            </div>
+        {{ end }}
+    </div>
+{{~ end ~}}

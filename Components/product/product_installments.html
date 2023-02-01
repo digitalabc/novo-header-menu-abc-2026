@@ -1,0 +1,67 @@
+{{##
+    Description: Renders a modal with all the installment options
+    Params:
+        - installments: product installment plans (available on Admin).
+            If needed, the config option payment_groups.display on settings.json
+            can be used to define which plans to display on modal.
+            (e.g., display: ["Boleto Yapay", "Cartão Sem Desconto", "Pix"])
+    Usage:
+        product_installments installments: product.prices.installment_plans
+##}}
+{{~ #Function used to filter the installment plans available if any display option is set on settings.json
+    func select_display(plans)
+        contains = false
+        if settings.payment_groups.display && (settings.payment_groups.display | array.contains plans.display_name)
+            contains = true
+        end
+        ret contains
+    end
+    
+    installment_plans = installments | array.filter @select_display
+    if installment_plans == empty
+        installment_plans = installments
+    end
+~}}
+<div>
+    <a data-bs-toggle="modal" data-bs-target="#installments-modal" 
+        style="text-decoration: underline; cursor: pointer;">Ver opções de pagamento</a>
+</div>
+<div class="modal fade" id="installments-modal" tabindex="-1" aria-labelledby="installments-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="installments-modal-label">Formas de pagamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                {{~ for plan in installment_plans ~}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {{if for.first}}active{{end}}" id='{{plan.name|string.remove " "}}-tab' 
+                            data-bs-toggle="tab" data-bs-target='#{{plan.name|string.remove " "}}' type="button" role="tab" 
+                            aria-controls='{{plan.name|string.remove " "}}' aria-selected="{{if for.first}}true{{else}}false{{end}}">
+                            {{plan.display_name}}
+                        </button>
+                    </li>
+                {{~ end ~}}
+                </ul>
+                <div class="tab-content" id="installments-tab-content">
+                {{~ for plan in installment_plans ~}}
+                    <div class="tab-pane fade show {{if for.first}}active{{end}}" 
+                        id='{{plan.name|string.remove " "}}' role="tabpanel" 
+                        aria-labelledby='{{plan.name|string.remove " "}}-tab'>
+                        <table>
+                            {{~ for installment in plan.installments~}}
+                            <tr>
+                                <td>{{installment.number}}x de {{installment.value | math.format "c" "pt-BR"}} {{if installment.fees}}com juros{{else}}sem juros{{end}}</td>
+                                <td>{{installment.number | math.times installment.value | math.format "c" "pt-BR"}}</td>
+                            </tr>
+                            {{~ end ~}}
+                        </table>
+                    </div>
+                {{~ end ~}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

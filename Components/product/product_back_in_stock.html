@@ -1,0 +1,16 @@
+<div class="bis-div">
+    Preencha os campos para ser avisado assim que o produto voltar ao estoque!
+    <form id="form-avise-me" onsubmit="backInStockOnClick(event)">
+        <ul class="reset">
+            <li>
+                <input id="bis-name" class="form-control me-2" type="text" placeholder='{{ "Nome" | lang }}' required>
+            </li>
+            <li>
+                <input id="bis-email" class="form-control me-2" type="email" placeholder='{{ "E-mail" | lang }}' required>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-success btn-avise-me">AVISE-ME ></button>
+            </li>
+        </ul>
+    </form>
+</div>

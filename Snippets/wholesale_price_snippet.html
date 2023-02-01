@@ -1,0 +1,19 @@
+{{ ##
+    Description: Shows the wholesale component, contains divs to be populated with info by script
+                as well as hidden inputs to store data.
+    Params:
+        - Uses wholesale.graphql
+    Usage:
+        await client.snippet.render("wholesale_price_snippet.html", ...);
+## }}
+<div id="wholesale-snippet">
+    <label class="btn wholesale-div">
+        <div class="hidden" style="display:none;" id="wholesale-price-value">{{~ data.wholesale.price ~}}</div>
+        <div class="hidden" style="display:none;" id="original-price-value">{{~ data.original.price ~}}</div>
+            Você economizou R$ {price}.
+        <br/>
+        <span style='font-size:14px'>
+            {percent} de desconto.
+        </span>
+    </label>
+</div>

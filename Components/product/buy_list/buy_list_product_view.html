@@ -1,0 +1,59 @@
+{{ ##
+    Description: Renders the buy list view
+    Params:
+        - product: buy list single product data
+    Usage:
+        buy_list_product_view product: product
+## }}
+{{~ 
+    product_id = product.product_id
+    product_available = false
+    product_variant_id = ""
+    product_stock = 0
+    product_prices = 0 
+    if product.attribute_selections.selected_variant
+        product_available = product.attribute_selections.selected_variant.available
+        product_variant_id = product.attribute_selections.selected_variant.product_variant_id
+        product_prices = product.attribute_selections.selected_variant.prices
+        product_stock = product.attribute_selections.selected_variant.stock
+    else if product.attribute_selections.selections.size == 0
+        product_variant_id = product.product_variant_id
+        product_available = product.available
+        product_prices = product.prices
+        product_stock = product.stock
+    else
+        product_variant_id = product.product_variant_id
+        product_prices = product.prices
+    end 
+~}}
+
+<input type="hidden" id="buy-list-product-variant-{{ product_id }}" 
+    name="buy-list-product-variant-{{ product_id }}" value="{{ product_variant_id }}">
+<div class="col-2 text-center">
+    <br>
+    {{ spot_image product: product }}
+    <br>
+    <input id="buy-list-product-checked-{{ product_id }}" type="checkbox"
+    {{ if product_available || product.attribute_selections.can_be_matrix}} 
+        onchange="buyListCalculatePrices('{{ product_id }}');" checked
+    {{ else }}
+        disabled
+    {{ end }}>
+</div>
+<div class="col-4" style="background-color: #dcedd2;">
+    <br>
+    <a href="/{{product.alias}}" style="color: black;">
+        <h5> {{ product.product_name }} </h5>
+    </a>
+    <br>
+    <div id="buy-list-product-price-{{ product_id }}">
+        {{~ if product_available ~}}
+            {{ product_price prices: product_prices }}
+        {{~ else ~}}
+            Selecione uma das opções.
+        {{~ end ~}}
+    </div>
+</div>
+<div  class="col-6" style="background-color: #dcedd2;">
+    {{ buy_list_product_attribute product: product }}
+</div>

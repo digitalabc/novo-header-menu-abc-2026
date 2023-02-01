@@ -1,0 +1,13 @@
+{{~ if product.buy_together ~}}
+    {{~ if product.buy_together.size > 0 ~}}
+        <h3>Compre junto</h3>
+        {{~ for bt_product in product.buy_together ~}}
+            <div id="buy-together-row-{{ product.product_id }}-{{ bt_product.product_id }}"
+                class="row buy-together-row-div" 
+                style="background-color: lightgray; display: flex; align-items: center; margin-top: 1rem;"
+                buy-together-product-id = "{{ bt_product.product_id }}"       
+                page-product-id = "{{ product.product_id }}">
+            </div>
+        {{~ end ~}}
+    {{~ end ~}}
+{{~ end ~}}

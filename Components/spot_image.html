@@ -1,0 +1,28 @@
+{{ ##
+    Description: Renders the spot image
+    Params:
+        - product: single product data
+    Usage:
+        spot_image product: product
+## }}
+{{~ if product.images.size > 0 ~}}
+    {{~ image_url = product.images[0].url ~}}
+    {{~ for image in product.images offset:1 ~}}
+        {{~ if !image.print ~}}
+            {{~ second_image = image.url ~}}
+            {{~ break ~}}
+        {{~ end ~}}
+    {{~ end ~}}
+{{~ else ~}}
+    {{~ image_url = "https://" + store.store_name + ".fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg?w=250&h=250&v=20220125251131&qs=ignore" ~}}
+{{~ end ~}}
+<div class="spot_container">
+    <a href="/{{product.alias}}">
+        <img class="spot-image w-100" src="{{ image_url }}" />
+        {{~ if second_image ~}}
+        <div class="spot_overlay">
+            <img src="{{ second_image }}" alt="Product image" class="spot-image w-100">
+        </div>
+        {{~ end ~}}
+    </a>
+</div>

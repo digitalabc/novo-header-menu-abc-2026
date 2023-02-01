@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" dir="ltl" lang="pt-br">
+  <head>
+    <title>Confirmação de Pedido</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+      table,
+      thead,
+      tbody,
+      tfoot,
+      th,
+      tr,
+      td,
+      h1,
+      p,
+      a,
+      img {
+        border: 0 none;
+        color: #666666;
+        font: 12px 'Lucida Sans Unicode', Tahoma, Sans-serif;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <table style="color: rgb(102, 102, 102); font-family: 'Lucida Sans Unicode',Tahoma,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-size-adjust: none; font-stretch: normal;" cellpadding="0" cellspacing="0" width="600">
+      <thead>
+        <tr>
+          <th style="border-bottom: 1px solid rgb(255, 255, 255); height: 88px; width: 600px;">
+            <a style="color: rgb(255, 255, 255); display: block; font-size: 18px; height: 88px; text-decoration: none;" href="{{configuracao.url_ecommerce}}">
+              <img style="border: 0px solid; width: 600px; height: 88px;" src="{{configuracao.url_recursos}}i/email/emailtransacional_topo.png" alt="Padrao" />
+            </a>
+          </th>
+        </tr>
+        <tr>
+          <td style="border-top: 1px dotted rgb(204, 204, 204); background: transparent url({{configuracao.url_recursos}}i/email/fundo_cabecalho.gif) repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; height: 45px;">
+            <p style="border-bottom: 2px solid rgb(0, 0, 0); text-align: center; color: rgb(0, 0, 0); text-transform: uppercase; padding-bottom: 5px; font-size: 14px;"> Pedido Confirmado (Template do Novo Storefront)</p> Este &eacute; um e-mail autom&aacute;tico, por favor n&atilde;o responda, para mais informa&ccedil;&otilde;es acesse: <a style="color: rgb(0, 0, 0); text-decoration: none ! important;" href="{{configuracao.url_ecommerce}}">{{configuracao.url_ecommerce}}</a>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0pt 0px 20px; color: rgb(0, 0, 0); font-size: 18px;">
+            <br /> Ol&aacute; <span style="font-weight: bold;">{{ pedido.usuario.primeiro_nome }}</span>,
+          </td>
+        </tr>
+        TESTE 31/10/2022
+        <tr>
+          <td style="padding: 0pt 0px;">
+            <p style="color: rgb(102, 102, 102);"> Confirmamos o recebimento do seu pedido <span style="color: rgb(0, 0, 0);">{{ pedido.pedidoid }}</span> atrav&eacute;s do site em {{ pedido.data }} {{ pedido.hora }}. </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 30px 0px;">
+            <p style="border-bottom: 2px solid rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 14px; padding-bottom: 5px;"> Pagamento </p>
+            <br /><p style="color: rgb(0, 0, 0);"> Forma de pagamento: {{ pedido.formapagamento.nome }} </p>
+            <p style="color: rgb(102, 102, 102);"> Parcelamento: <span style="color: rgb(0, 0, 0);">{{ pedido.formapagamento.numero_parcelas }}</span>
+            </p>
+            <p style="color: rgb(102, 102, 102);"> Valor da parcela: <span style="color: rgb(0, 0, 0);">{{ pedido.formapagamento.valor_parcelas }}</span>
+            </p>
+            <br />[TAG:boleto.inicio] <a href="[boleto.url]">
+              <img src="{{configuracao.url_recursos}}i/email/imprimir_boleto.gif" alt="Imprimir Boleto" height="30" width="200" />
+            </a>[TAG:boleto.fim]
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0pt 0px 30px;">
+            <p style="border-bottom: 2px solid rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 14px; padding-bottom: 5px;"> Endere&ccedil;o de Entrega </p>
+            <br />
+            <p style="font-size: 13px;"> Nome do Destinat&aacute;rio: <span style="color: rgb(0, 0, 0);">{{ pedido.frete.endereco.destinatario }}</span>
+            </p>
+            <p style="font-size: 13px;"> Endere&ccedil;o: <span>
+                <b>{{ pedido.frete.endereco.logradouro }}{{ pedido.frete.endereco.numero }}{{ pedido.frete.endereco.complemento }} | {{ pedido.frete.endereco.bairro }} - {{ pedido.frete.endereco.cidade }} - {{ pedido.frete.endereco.estado }} - CEP: {{ pedido.frete.endereco.cep }}</b>
+              </span>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0pt 0px 30px;">
+            <p style="color: rgb(102, 102, 102);"> Para a sua seguran&ccedil;a realizamos an&aacute;lise interna das informa&ccedil;&otilde;es de seu pedido atrav&eacute;s da valida&ccedil;&atilde;o de dados cadastrais. </p>
+            <p style="color: rgb(102, 102, 102);"> &Eacute; importante que voc&ecirc; mantenha seus dados sempre atualizados e completos, pois poderemos entrar em contato para confirm&aacute;-los. </p>
+            <p style="color: rgb(102, 102, 102);"> Importante: a partir desse momento n&atilde;o &eacute; permitido incluir novos produtos em seu pedido ou alterar o endere&ccedil;o de entrega. </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table style="border: 1px solid rgb(187, 187, 187); margin: 0pt 0px;" cellpadding="0" cellspacing="0" width="600">
+              <tbody>
+                <tr>
+                  <td style="border-bottom: 1px dotted rgb(187, 187, 187); padding: 10px; color: rgb(0, 0, 0); text-transform: uppercase;">Informa&ccedil;&otilde;es do Produto </td>
+                </tr>
+                <tr>
+                  <td style="padding: 15px 10px 10px;">
+                    <table cellpadding="0" cellspacing="0" width="578">
+                      <tbody>
+                        <tr>
+                          <td style="border: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;" colspan="2">Produto </td>
+                          <td style="border-top: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;">Qtde </td>
+                          <td style="border-top: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;">Unit&aacute;rio </td>
+                          <td style="border-top: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;">Subtotal </td>
+                        </tr> [TAG:produtos.inicio] <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; height: 70px; width: 70px;">
+                            <img src="[produto.imagem]" alt="[produto.nome]" height="70" width="70" />
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; width: 300px;">
+                            <p style="color: rgb(0, 0, 0);"> {{pedido.produtos[0].nome}} </p>
+                            <p style="color: rgb(0, 0, 0);"> {{pedido.produtos[0].atributo}} </p>
+                            <p style="color: rgb(0, 0, 0);"> {{pedido.produtos[0].embalagens}} </p>
+                            <p style="color: rgb(0, 0, 0);"> {{pedido.produtos[0].personalizacoes}} </p>
+                            <p> [produto.primeiroPrazo] </p>
+                            <p> [produto.segundoPrazo] </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; color: rgb(0, 0, 0); text-align: center;">[produto.quantidade] </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; color: rgb(0, 0, 0); text-align: center;">[produto.precoUnitario] </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; color: rgb(0, 0, 0); text-align: center;">[produto.precoTotal] </td>
+                        </tr> [TAG:produtos.fim] <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Subtotal <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.valorSubTotal] </td>
+                        </tr> [TAG:pedido.aliquotas.inicio] <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> [pedido.textoAliquotas] <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3"> [pedido.valorAliquotas] </td>
+                        </tr> [TAG:pedido.aliquotas.fim] [TAG:pedido.valorEmbalagens.inicio] <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Embalagens <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3"> [pedido.valorEmbalagens] </td>
+                        </tr> [TAG:pedido.valorEmbalagens.fim] [TAG:pedido.valorPersonalizacoes.inicio] <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Personalizações <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3"> [pedido.valorPersonalizacoes] </td>
+                        </tr> [TAG:pedido.valorPersonalizacoes.fim] [TAG:pedido.desconto.inicio] <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{ pedido.valor_desconto }} </td>
+                        </tr> [TAG:pedido.desconto.fim] <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Frete <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{ pedido.frete.valor_frete }} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Valor de Frete <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.novocalculo.frete] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Valor de Personalização <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.novocalculo.personalizacao] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Valor de Embalagem <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.novocalculo.embalagem] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto do Frete <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.novocalculo.promocaofrete] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto de Conta Corrente <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.novocalculo.contacorrente] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto da Forma de Pagamento <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.novocalculo.formapagamento] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="5"> [TAG:promocoes.novocalculo.inicio] <br> Nome da Promoção - [promocao.novocalculo.observacao] <br> Valor de desconto da Promção SUMARIZADO (SUBTOTAL/TOTAL DO PEDIDO) - [promocao.novocalculo.valor] <br> [TAG:promocoes.novocalculo.fim] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> [pedido.entrega.textoIndicativo] <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">[pedido.entrega.textoEstimativa] </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Total <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);" colspan="3">{{pedido.valor_total}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td style="padding: 30px 0px 0pt; color: rgb(204, 204, 204); font-family: Helvetica,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 24px; line-height: normal; font-size-adjust: none; font-stretch: normal;">
+            <img src="{{configuracao.url_recursos}}i/email/emailtransacional_rodape.png" alt="" />
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+query Generic ($url: String!) {
+  uri(url: $url){
+    kind
+  }
+}

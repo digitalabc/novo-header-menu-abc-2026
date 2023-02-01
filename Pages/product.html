@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{ header title: data.product.product_name store: store }}
+        {{ product_structured_data product: data.product current_url: store.urls.current }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "product", "user_login", "spot" ]}}
+        {{ meta_tags seo: data.product.seo }} 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        </header>    
+        {{~ product = data.product ~}}
+        <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
+        <input type="hidden" id="product-variant-id" name="product-variant-id" value="{{ data.product.product_variant_id }}">
+        <div class="container">
+            {{~ breadcrumb breadcrumbs: product.breadcrumbs ~}}
+            <br>
+            <div class="row product-view-row">
+                <div id="product-view-div-{{ product.product_id }}" class="product-view-div">
+                    {{ product_view product: product }}
+                </div>
+            </div>
+            <br>
+            {{ buy_together product: product }}
+        </div>
+        <br>
+        {{ product_information informations: product.informations }}
+        {{ spot_carousel products: data.product_recommendations }}
+        {{ product_reviews reviews: product.reviews }}
+        {{ footer is_preview: is_preview store: store }}
+        {{ sdk_client }}
+        {{ asset type: "js" paths: ["product", "mini_cart", "components", "navbar", "cart_from_spot", "user_login", "product_review", "wishlist", "buy_together", "shipping_quotes"]}}
+    </body>
+</html>

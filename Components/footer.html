@@ -1,0 +1,41 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+{{~ if is_preview ~}}
+    <div>
+        <button id="close-preview-button">Close Preview</button>
+    </div>
+    <script>
+        const fbitsPreviewButton = document.getElementById("close-preview-button");
+        fbitsPreviewButton.addEventListener("click", () => {
+            setCookie('preview-theme', '', -12);
+            refreshPage();
+        });
+    </script>
+{{~ end ~}}
+{{~ if store.default_template ~}}
+    <div>
+        <button id="close-default-template-button" onclick="closeDefaultTemplate()">Close default template</button>
+    </div>
+    <script>
+        function closeDefaultTemplate(){
+            setCookie('default-template', '', -12);
+            refreshPage();
+        }
+    </script>
+{{~ end ~}}
+<script>
+    function setCookie(cname, cvalue, ex_horas) {
+        const d = new Date();
+        d.setTime(d.getTime() + (ex_horas * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function refreshPage(){
+        const newUrl = 
+            window.location.protocol + "//" +
+            window.location.host +
+            window.location.pathname;
+
+        document.location.replace(newUrl);
+    }
+</script>

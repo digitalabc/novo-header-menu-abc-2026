@@ -1,0 +1,9 @@
+query NotFound{
+  contents(first:50, contentIds:[68,70]) {
+    nodes {
+      contentId
+      title
+      content
+    }
+  }
+}

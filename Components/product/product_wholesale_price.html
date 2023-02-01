@@ -1,0 +1,19 @@
+{{ ##
+    Description: Renders the product prices and quantities for wholesale 
+    Params:
+        - prices: product prices
+    Usage:
+        wholesale_prices prices: product.prices
+## }}
+
+<div class="row d-flex justify-content" id="wholesale-div">
+    {{ if prices.wholesale_prices }}
+        {{ for wholesale_p in prices.wholesale_prices}}
+            <div class="col-sm-6">
+                <label class="btn btn-outline-success radio-label" onclick="applyWholesalePrice('{{wholesale_p.quantity}}')">
+                    Economize {{ (prices.price - wholesale_p.price) * wholesale_p.quantity | math.format "c" "pt-BR" }} na compra de {{ wholesale_p.quantity }} unidades.
+                </label>
+            </div>
+        {{ end }}
+    {{ end }}
+</div>

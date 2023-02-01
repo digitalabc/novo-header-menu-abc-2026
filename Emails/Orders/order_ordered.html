@@ -1,0 +1,11 @@
+<h5>Encomendado - email criado pelo storefront </h5>
+
+<p>{{pedido.usuario.nome}}</p>
+<br>
+
+<p>Data Integracao: {{pedido.data_integracao}}</p>
+
+<p>Produtos comprados:</p>
+{{for p in pedido.produtos}}
+<p>- {{p.nome}}</p>
+{{end}}

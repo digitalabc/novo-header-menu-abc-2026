@@ -1,0 +1,43 @@
+{{~ ##
+    Description: Renders nav item with links
+    Params:
+        - menus: all the menus from a group
+        - current_menu: the currnt menu being rendered
+    Usage:
+        nav_item menus: menus current_menu: menu
+## ~}}
+{{~ 
+    is_submenu = is_submenu ?? false
+    children = menus | group.get current_menu.menu_id
+    link = current_menu.link 
+~}}
+{{~ if !(link | string.starts_with "/") && !(link | string.starts_with "http") ~}}
+    {{~ link = link | string.prepend "/" ~}}
+{{~ end ~}}
+{{~ if children.size == 0 && !is_submenu ~}}
+    <li class="nav-item">
+        <a class="nav-link" href="{{link}}">{{current_menu.name}}</a>
+    </li>
+{{~ else if children.size == 0 && is_submenu ~}}
+    <li>
+        <a class="dropdown-item" href="{{link}}">{{current_menu.name}}</a>
+    </li>
+{{~ else if !is_submenu ~}}
+    <li class="nav-item dropdown">
+        <a href="{{link}}" id="menu" data-bs-toggle="dropdown" class="nav-link dropdown-toggle" data-bs-display="static">{{current_menu.name}}</a>
+        <ul class="dropdown-menu">
+            {{~ for child in children ~}}
+                {{ nav_item menus: menus current_menu: child is_submenu: true }}
+            {{~ end ~}}
+        </ul>
+    </li>
+{{~ else ~}}
+    <li class="dropdown-submenu">
+        <a href="{{link}}" data-bs-toggle="dropdown" class="dropdown-item dropdown-toggle">{{current_menu.name}}</a>
+        <ul class="dropdown-menu">
+            {{~ for child in children ~}}
+                {{ nav_item menus: menus current_menu: child is_submenu: true }}
+            {{~ end ~}}
+        </ul>
+    </li>
+{{~ end ~}}

@@ -1,0 +1,54 @@
+{{ ##
+    Description: Renders the 'buy' and 'add to cart' buttons and calls attribute components.
+    Params:
+        - product: product data
+    Usage:
+        product_attribute product: product
+## }}
+<div class='attribute-selections'>
+    {{~ attribute_selections = product.attribute_selections ~}}
+    {{~ if attribute_selections.can_be_matrix ~}}
+        {{~ on_change = "buyListCalculatePrices('" + product.product_id +"');" ~}}
+        {{~ product_matrix_attribute attribute_selections: attribute_selections on_change: on_change is_secondary_product: true ~}}
+    {{~ else ~}}
+        {{~
+            grouped_attribute_selections = attribute_selections.selections | group.by @(do; ret $0.display_type;end)
+            combo_attr = grouped_attribute_selections | group.get "Combo"
+            div_attr = grouped_attribute_selections | group.get "DIV"
+            div_img_attr = grouped_attribute_selections | group.get "DIV com foto do produto variante"
+            div_color_attr = grouped_attribute_selections | group.get "DIV com cor"
+            product_combo_attribute attribute_selections: combo_attr product_id: product.product_id on_click: "buyListSelectAttribute" is_secondary_product: true
+            product_div_attribute attribute_selections: div_attr product_id: product.product_id on_click: "buyListSelectAttribute" is_secondary_product: true
+            product_div_with_image_attribute attribute_selections: div_img_attr product_id: product.product_id on_click: "buyListSelectAttribute" is_secondary_product: true
+            product_div_with_color_attribute attribute_selections: div_color_attr product_id: product.product_id on_click: "buyListSelectAttribute" is_secondary_product: true
+            available = true
+            variantId = ""
+            stock = 0
+            if attribute_selections.selected_variant
+                variantId = attribute_selections.selected_variant.product_variant_id
+                available = attribute_selections.selected_variant.available
+                stock = attribute_selections.selected_variant.stock
+            else if attribute_selections.selections.size == 0
+                variantId = product.product_variant_id
+                available = product.available
+                stock = product.stock
+            end
+        ~}}
+        <div class="row">
+            {{~ if available ~}}
+                <div class="col-4">
+                    <p>Quantidade</p>
+                    {{~ quantity_id = "buy-list-product-selected-quantity-" + product.product_id ~}}
+                    <input type="number" class="form-control" 
+                        id="{{ quantity_id }}" name="selected-quantity" 
+                        value="1" min="1" max="{{ stock }}" 
+                        product-variant-id="{{ variantId }}"
+                        onchange="buyListCalculatePrices('{{ product.product_id }}');">
+                </div>
+            {{~ else ~}}
+                <h3>Produto indisponível</h3>
+            {{~ end ~}}
+        </div>
+    {{~ end ~}}
+</div>
+<br>

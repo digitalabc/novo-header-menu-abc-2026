@@ -1,0 +1,22 @@
+{{ ##
+    Description: Renders the window to view a product when clicking a buy button in the spot
+    Params:
+        - Uses cart_from_spot.graphql
+    Usage:
+        await client.snippet.render("modal_cart_from_spot.html", ...);
+## }}
+{{~ product = data.product ~}}
+<div class="modal-content">
+	<div class="modal-header">
+		<h6 class="modal-title" id="addToCartFromSpot">{{ product.product_name }}</h6>
+    	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  	</div>
+  	<div class="modal-body">
+		<input type="hidden" id="product-id" name="product-id" value="{{ product.product_id }}">
+		<div class="container-fluid">
+			<div class="col-12 justify-content-center" id="product-view-div-{{product.product_id}}">
+				{{ product_view product: product }}
+			</div>
+		</div>
+  	</div>
+</div>

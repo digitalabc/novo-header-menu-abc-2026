@@ -1,0 +1,10 @@
+<h5>PedidoFaturadoRetiradoLoja - email criado pelo storefront </h5>
+
+<p>Olá, {{pedido.usuario.nome}}</p>
+<p>Loja: {{loja.nome}}</p>
+<p>Endereço: {{loja.endereco}}</p>
+
+<p>Produtos comprados:</p>
+{{for p in pedido.produtos}}
+<p>- {{p.nome}}</p>
+{{end}}

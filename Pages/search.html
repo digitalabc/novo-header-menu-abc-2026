@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{ header title: "Search" store: store }}
+    {{ search_structured_data search: data.search base_url: store.urls.base current_url: store.urls.current }}
+    {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "spot", "product" ]}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Tray Corp">
+    <meta name="title" content="Loja CSS - Busca">
+    <meta name="description" content="Os melhores preços você encontra é na Loja Css!">
+    <meta name="robots" content="all">
+</head>
+
+<body>
+    <header>
+        {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+    </header>
+    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            {{ banners_carousel banners: data.search.banners position: "Topo" }}
+        </div>
+    </div>
+    <div>
+        {{content position: "Centro" contents: data.search.contents}}
+    </div>
+    <div class="row">
+        <input type="hidden" id="def_page_size" name="def_page_size" value="{{ page_size }}">
+        {{ filter aggregations: data.search.aggregations }}
+        <div class="col-10 col-md-9" id="spots-list">
+        {{~ breadcrumb breadcrumbs: data.search.breadcrumbs ~}}
+        {{ products_per_page }}
+        {{ sort page_type: "search" }}
+        {{ products = data.search.products ?? data.search.products_by_offset }}
+        {{ spot_list products: products }}
+        {{ pagination products: products page_size: page_size current_page: current_page }}
+        <div class="spots d-flex row" id="infinity-scroll-content-div"></div>
+        </div>
+    </div>
+    {{ footer is_preview: is_preview store: store }}
+    {{ sdk_client }}
+    {{ asset type: "js" paths: ["components", "sort", "filter", "search", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product"]}}
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{ page_scripts position: "HEADER_START" scripts: common.scripts }}
+        {{ header title: "Home" store: store }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "spot", "product" ]}}
+        {{ page_scripts position: "HEADER_END" scripts: common.scripts }}
+        {{ meta_tags seo: data.hotsite.seo }}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        {{ page_scripts position: "BODY_START" scripts: common.scripts }}
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        </header>
+        <div class="row justify-content-center mb-3">
+            <div class="col-12">
+                {{ banners_carousel banners: data.hotsite.banners position: "Topo" }}
+            </div>
+        </div>
+        <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+        <div class="container pb-3">
+            {{content position: "Centro" contents: data.hotsite.contents}}
+        </div>
+        <div class="container pb-3">
+            <h2>{{ "Lançamentos" | lang }}</h2>
+            {{ spot_carousel products: data.lancamentos.products.nodes }}
+        </div>
+        <div class="container">
+            <h2>{{ "Mais vendidos" | lang }}</h2>
+            {{ spot_carousel products: data.mais_vendidos.products.nodes }}
+        </div>
+        <div class="container pb-3">
+            {{ newsletter }}
+        </div>
+        {{ page_scripts position: "BODY_END" scripts: common.scripts }}
+
+        {{ page_scripts position: "FOOTER_START" scripts: common.scripts }}
+        {{ footer is_preview: is_preview store: store }}
+        {{ sdk_client }}
+        {{ page_scripts position: "FOOTER_END" scripts: common.scripts }}
+        {{ asset type: "js" paths: ["components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes" ]}}
+    </body>
+</html>

@@ -1,0 +1,97 @@
+query Home{
+  hotsite(url: "") {
+    banners {
+      altText
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+    }
+    contents {
+      content
+      height
+      title
+      width
+      position
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+  }
+  lancamentos: search(query: "") {
+    ...lancamentos
+  }
+  maisVendidos: search(query: "") {
+    ...maisVendidos
+  }
+}
+
+fragment lancamentos on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment maisVendidos on Search {
+  products(first: 9, sortKey: SALES, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment productsCon on ProductsConnection {
+  nodes {
+    id
+    productId
+    productName
+    productVariantId
+    alias
+    similarProducts{
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images(width:275, height:275) {
+      url
+      print
+    }
+    available
+    prices {
+      listPrice
+      price
+      discountPercentage
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    promotions{
+      content
+      id
+      stamp
+      title
+    }
+    addToCartFromSpot
+  }
+}

@@ -1,0 +1,20 @@
+{{ ##
+    Description: Renders promotion stamps available for the product. 
+    Params:
+      - product: the product
+    Usage:
+      stamps promotions: product.promotions
+## }}
+
+{{~ if promotions ~}}
+    <div class="stamps d-flex row">
+        {{~ for promotion in promotions ~}}
+            {{~ if promotion.stamp ~}}        
+                {{~ if !promotion.stamp.empty ~}}
+                    {{ stamp_url = "{{store.urls.static_img}}" + promotion.stamp }}
+                    <img class="stamp-image" src="{{stamp_url}}" style="max-width: 80px" />
+                {{~ end ~}}
+            {{~ end ~}}
+        {{~ end ~}}
+    </div>
+{{~ end ~}}

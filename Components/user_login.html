@@ -1,0 +1,24 @@
+{{ ##
+    Description: Renders user component
+    Params:
+        - checkout_url: store checkout URL
+    Usage:
+        user_login checkout_url: url
+## }}
+<div class="dropdown" id="user-login" onmouseenter="userMouseEnter()" onmouseleave="userMouseLeave()">
+    <div>
+        <img id="user-icon" src="{{- store.urls.static_img}}user.png?theme={{store.theme -}}&v={{store.last_modified}}" width="40px" height="40px" alt="user">
+        <span class="user-text">Olá,</span> 
+        <span class="user-text" id="user-name">visitante!</span>
+        {{~ login_url = checkout_url + "Login/Authenticate?returnUrl=" ~}}
+        <input type="hidden" id="login-url" value="{{ login_url }}">
+        <a class="user-href" id="user-href" href="{{ login_url }}">
+            <span class="user-text" id="user-action">Login</span>
+        </a>
+    </div>
+    <div class="dropdown-content" id="user-options">
+        <a class="dropdown-option" href="{{checkout_url}}MinhaConta/Dados">Minha conta</a>
+        <a class="dropdown-option" href="{{checkout_url}}MinhaConta/Pedido">Meus pedidos</a>
+        <a class="dropdown-option" href="/listadedesejos">Lista de desejos</a>
+    </div>
+</div>

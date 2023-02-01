@@ -1,0 +1,27 @@
+query Checkout($checkoutId: String!, $hasCheckout: Boolean!) {
+  shop {
+    checkoutUrl
+  }  
+  checkout(checkoutId:$checkoutId) @include(if: $hasCheckout) {
+    checkoutId
+    url
+    products {
+      listPrice
+      price
+      ajustedPrice
+      productId
+      productVariantId
+      imageUrl
+      quantity
+      name
+      productAttributes{
+        name
+        type
+        value
+      }
+    }
+    shippingFee
+    subtotal
+    total
+  }
+}

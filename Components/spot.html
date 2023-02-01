@@ -1,0 +1,67 @@
+{{ ##
+    Description: Renders a product spot containing the main image, the product name,
+                 list price, price and the button "comprar".
+    Params:
+      - product: the product that will be displayed
+    Usage:
+      spot product: product
+## }}
+<div class="p-4 spot col-12 col-md-6 col-lg-4 col-xl-3">
+    <div class="zoom">
+        <div class="spot-image d-flex justify-content-center" style="height: 275px;">
+            {{ spot_image product: product }}
+        </div>
+        {{~ if product.similar_products ~}}
+            <div class="spot-similar-products">
+                {{~ for sim_prod in product.similar_products | array.limit 4 ~}}
+                    <div class="spot-similar-product-div">
+                        <a href="/{{ sim_prod.alias }}">
+                            <img src="{{ sim_prod.image_url }}" alt="{{ sim_prod.name }}" title="{{ sim_prod.name }}" />
+                        </a>
+                    </div>
+                {{~ end ~}}
+            </div>
+        {{~ end ~}}
+        <div class="spot-content text-center d-flex flex-column justify-content-between" style="height: 275px;">
+            <div class="spot-content-title">
+                <a href="/{{product.alias}}" class="text-decoration-none">
+                    <h4 class="fs-6 text-uppercase text-black">{{ product.product_name }}</h4>
+                </a>
+            </div>
+            {{ stamps promotions: product.promotions }}
+            {{ if product.prices }}
+                <div class="spot-content-price mt-4">
+                    {{ product_price prices: product.prices }}
+                </div>
+                <div class="d-flex" style="align-items: center; justify-content: center; margin-bottom: -1.5rem; margin-top: -1rem;">
+                    {{ product_discount discount_percentage: product.prices.discount_percentage }}
+                </div>
+            {{ end }}
+            {{~ if product.available ~}}
+                <div class="spot-content-buy-button mt-4">
+                    {{~ if product.add_to_cart_from_spot # Add product directly to cart~}}
+                        {{~ spot_buy_click = "spotBuyButtonClick(" + product.product_variant_id + ");" ~}}
+                        {{~ spot_add_to_cart_click = "spotAddToCartButtonClick(" + product.product_variant_id + ");" ~}}
+                        {{ product_buy_button add_to_cart_click: spot_add_to_cart_click buy_click: spot_buy_click }}
+                        {{ wishlist_button product_id: product.product_id in_wishlist: wishlist }}
+                    {{~ else # Opens up a modal for choosing the variant to be added to the cart~}}
+                        <button class="btn btn-outline-success" id="modal-spot-to-cart-button" data-bs-toggle="modal"
+                            data-bs-target="#add-to-cart-modal-{{ product.product_id }}" onclick="showModal('{{product.product_id}}')"
+                            style="margin-right: 0.3rem;">+ carrinho</a>
+                        <button class="btn btn-success btn-lg" id="modal-spot-to-cart-button" data-bs-toggle="modal"
+                            data-bs-target="#add-to-cart-modal-{{ product.product_id }}" onclick="showModal('{{product.product_id}}')"
+                            style="margin-right: 0.3rem;">COMPRAR</a>
+                        {{ wishlist_button product_id: product.product_id in_wishlist: wishlist }}
+                    {{~ end ~}}
+                </div>
+            {{~ else ~}}
+                <p>Produto indisponível</p>
+            {{~ end ~}}
+        </div>
+    </div>
+    <div class="modal" id="add-to-cart-modal-{{ product.product_id }}" aria-labelledby="addToCartFromSpot" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered" >
+            <div id="add-to-cart-modal-content-{{ product.product_id }}"></div>
+        </div>
+    </div>
+</div>

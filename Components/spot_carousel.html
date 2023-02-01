@@ -1,0 +1,34 @@
+{{ ##
+    Description: Renders a spot carousel from a list of products
+    Params:
+      - products: list of products
+    Usage:
+      spot_carousel products: data...products
+## }}
+{{~ if products && products.size > 0 ~}}
+    {{ carousel_id = math.uuid }}
+    <div id="spotCarouselIndicators{{ carousel_id }}" class="carousel slide">
+        <div class="carousel-indicators">
+            {{~ indicators_qty = products.size | math.divided_by 3.0 | math.ceil | string.to_int }}            
+            {{~ for i in 1..indicators_qty ~}}
+                <button type="button" data-bs-target="#spotCarouselIndicators{{ carousel_id }}" data-bs-slide-to="{{for.index}}" 
+                {{ if for.first ~}}class="active" aria-current="true"{{~ end ~}} aria-label="Slide {{for.index}}"></button>
+            {{~ end ~}}
+        </div>
+        <div class="carousel-inner">
+            {{~ aux = 0 ~}}
+            {{~ for i in 0..2 ~}}
+                <div class="carousel-item {{ if for.first ~}} active {{~ end ~}}">
+                    <div class="d-flex justify-content-between">
+                    {{~ prod1 = products[i + aux++] ~}}
+                    {{~ if prod1 != null ~}} {{ spot product: prod1 }} {{~ end ~}}
+                    {{~ prod2 = products[i + aux++] ~}}
+                    {{~ if prod2 != null ~}} {{ spot product: prod2 }} {{~ end ~}}
+                    {{~ prod3 = products[i + aux] ~}} 
+                    {{~ if prod3 != null ~}} {{ spot product: prod3 }} {{~ end ~}}
+                    </div>
+                </div>
+            {{~ end ~}}
+        </div>
+    </div>
+{{~ end ~}}

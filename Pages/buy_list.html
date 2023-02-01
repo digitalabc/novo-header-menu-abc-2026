@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{~ buy_list = data.buy_list ~}}
+        {{ header title: data.buy_list.product_name store: store }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "product", "user_login", "spot" ]}}
+        {{~ if  buy_list.seo ~}}
+            {{ meta_tags seo: buy_list.seo }} 
+        {{~ end ~}}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        <header> {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }} </header>
+        <div class="container">
+            <br>
+            <div class="product-view-div">
+                {{ product_view product: buy_list }}
+            </div>
+        </div>
+        <br>
+        {{~ product_information informations: buy_list.informations ~}}
+        <br>        
+        {{~ if  buy_list.product_recommendations ~}}
+            {{ spot_carousel products: buy_list.product_recommendations }}
+        {{~ end ~}}
+        {{~ if  buy_list.reviews ~}}
+            {{ product_review products: buy_list.reviews }}
+        {{~ end ~}}
+        {{ footer is_preview: is_preview store: store }}
+        {{ sdk_client }}
+        {{ asset type: "js" paths: ["product", "buy_list", "mini_cart", "components", "navbar", "cart_from_spot", "user_login", "product_review", "wishlist"]}}
+    </body>
+</html>

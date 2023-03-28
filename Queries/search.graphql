@@ -1,9 +1,9 @@
 query Search($searchQuery: String, 
   $partnerAccessToken: String, 
-  $resultSize: Int, 
+  $resultSize: Int = 12,
   $offset: Int, 
-  $sortKey: ProductSearchSortKeys!, 
-  $sortDirection: SortDirection!, 
+  $sortKey: ProductSearchSortKeys, 
+  $sortDirection: SortDirection, 
   $filters: [ProductFilterInput],
   $minimumPrice: Decimal,
   $maximumPrice: Decimal) {

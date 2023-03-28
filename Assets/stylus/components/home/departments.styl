@@ -1,0 +1,27 @@
+.departments
+  &__item
+    &:hover 
+      .departments__icon
+        border 1px solid $primary
+        svg
+          fill $primary
+      .departments__title
+        color $primary
+
+  &__icon
+    display grid
+    place-items center
+    background #F7F7F7
+    border 1px solid #F7F7F7
+    margin-bottom 15px
+    position relative
+    aspect-ratio 1
+    transition $transition
+    svg
+      fill #5D5D5D
+      transition $transition
+
+  &__title
+    font-weight 500
+    color #5D5D5D
+    transition $transition

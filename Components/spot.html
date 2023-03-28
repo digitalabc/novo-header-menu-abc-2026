@@ -1,67 +1,53 @@
 {{ ##
     Description: Renders a product spot containing the main image, the product name,
-                 list price, price and the button "comprar".
+        list price, price and the button "comprar". 
     Params:
-      - product: the product that will be displayed
+        - product: the product that will be displayed
     Usage:
-      spot product: product
+        spot product: product
 ## }}
-<div class="p-4 spot col-12 col-md-6 col-lg-4 col-xl-3">
-    <div class="zoom">
-        <div class="spot-image d-flex justify-content-center" style="height: 275px;">
-            {{ spot_image product: product }}
-        </div>
-        {{~ if product.similar_products ~}}
-            <div class="spot-similar-products">
-                {{~ for sim_prod in product.similar_products | array.limit 4 ~}}
-                    <div class="spot-similar-product-div">
-                        <a href="/{{ sim_prod.alias }}">
-                            <img src="{{ sim_prod.image_url }}" alt="{{ sim_prod.name }}" title="{{ sim_prod.name }}" />
-                        </a>
-                    </div>
-                {{~ end ~}}
+{{~ for attribute in product.attributes ~}}
+{{ case_insensitive_name = attribute.name | string.downcase }}
+{{ case_insensitive_value = attribute.value | string.downcase }}
+{{~ if case_insensitive_name == "unidade" && case_insensitive_value == "m2"~}}
+  {{ product_is_box = true }}
+{{~ end ~}}
+{{~ end ~}}
+<div class="spot">
+    <div class="spot__image">
+        {{ stamps promotions: product.promotions }}
+        {{ product_discount discount_percentage: product.prices.discount_percentage }}
+        {{ spot_image product: product }}
+        {{~ if product.available ~}}
+          {{~ if product.add_to_cart_from_spot # Add product directly to cart~}}
+            {{~ spot_add_to_cart_click = "spotAddToCartButtonClick(" + product.product_variant_id + ");" ~}}
+            <div class="spot__buttons">
+            {{ product_buy_button add_to_cart_text: "Comprar" buy_text: "Comprar" add_to_cart_click: spot_add_to_cart_click}}
             </div>
+          {{~ else # Redirect to product page ~}}
+            <a class="add-to-cart-button" href="/{{product.alias}}"">
+              <svg id="Group_3468" data-name="Group 3468" xmlns="http://www.w3.org/2000/svg" width="20.48" height="18" viewBox="0 0 20.48 18">
+                <path id="Path_23033" data-name="Path 23033" d="M9.322,18h-.56c-.069-.022-.137-.046-.207-.067a1.8,1.8,0,0,1-.746-3.046,2.017,2.017,0,0,1,.883-.474C8.242,14.4,7.8,14.4,7.35,14.4A1.775,1.775,0,0,1,5.6,12.375a5.98,5.98,0,0,1,.31-.875.579.579,0,0,0,.033-.317Q4.557,6.289,3.158,1.4c-.04-.141-.1-.2-.255-.2-.713.011-1.427-.009-2.139.01A.717.717,0,0,1,0,.766V.446A.718.718,0,0,1,.763,0c.893.017,1.787.006,2.68.006a.62.62,0,0,1,.72.537L4.7,2.406h.268q7.411,0,14.822-.008a.644.644,0,0,1,.654.861C19.653,6,18.874,8.736,18.089,11.474a.612.612,0,0,1-.708.528h-10c-.393,0-.445.039-.564.42a.584.584,0,0,0,.395.743,1.253,1.253,0,0,0,.335.036q4.941,0,9.881,0a.6.6,0,1,1,.008,1.2h-1.84c-.027,0-.053,0-.08,0s-.051.007-.114.015A1.79,1.79,0,0,1,16.83,15.77a1.672,1.672,0,0,1-.6,1.807,4.318,4.318,0,0,1-.866.424H14.8c-.069-.022-.138-.046-.207-.067a1.8,1.8,0,0,1-.746-3.046,2.1,2.1,0,0,1,.879-.48H9.393c0,.013.006.023.01.024.025.006.052.009.077.016a1.757,1.757,0,0,1,1.313,1.342,1.672,1.672,0,0,1-.606,1.787A4.331,4.331,0,0,1,9.322,18" transform="translate(0 0)" fill="#fff"/>
+              </svg>
+              Comprar
+            </a>
+          {{~ end ~}}
         {{~ end ~}}
-        <div class="spot-content text-center d-flex flex-column justify-content-between" style="height: 275px;">
-            <div class="spot-content-title">
-                <a href="/{{product.alias}}" class="text-decoration-none">
-                    <h4 class="fs-6 text-uppercase text-black">{{ product.product_name }}</h4>
-                </a>
-            </div>
-            {{ stamps promotions: product.promotions }}
-            {{ if product.prices }}
-                <div class="spot-content-price mt-4">
-                    {{ product_price prices: product.prices }}
-                </div>
-                <div class="d-flex" style="align-items: center; justify-content: center; margin-bottom: -1.5rem; margin-top: -1rem;">
-                    {{ product_discount discount_percentage: product.prices.discount_percentage }}
-                </div>
-            {{ end }}
-            {{~ if product.available ~}}
-                <div class="spot-content-buy-button mt-4">
-                    {{~ if product.add_to_cart_from_spot # Add product directly to cart~}}
-                        {{~ spot_buy_click = "spotBuyButtonClick(" + product.product_variant_id + ");" ~}}
-                        {{~ spot_add_to_cart_click = "spotAddToCartButtonClick(" + product.product_variant_id + ");" ~}}
-                        {{ product_buy_button add_to_cart_click: spot_add_to_cart_click buy_click: spot_buy_click }}
-                        {{ wishlist_button product_id: product.product_id in_wishlist: wishlist }}
-                    {{~ else # Opens up a modal for choosing the variant to be added to the cart~}}
-                        <button class="btn btn-outline-success" id="modal-spot-to-cart-button" data-bs-toggle="modal"
-                            data-bs-target="#add-to-cart-modal-{{ product.product_id }}" onclick="showModal('{{product.product_id}}')"
-                            style="margin-right: 0.3rem;">+ carrinho</a>
-                        <button class="btn btn-success btn-lg" id="modal-spot-to-cart-button" data-bs-toggle="modal"
-                            data-bs-target="#add-to-cart-modal-{{ product.product_id }}" onclick="showModal('{{product.product_id}}')"
-                            style="margin-right: 0.3rem;">COMPRAR</a>
-                        {{ wishlist_button product_id: product.product_id in_wishlist: wishlist }}
-                    {{~ end ~}}
-                </div>
-            {{~ else ~}}
-                <p>Produto indisponível</p>
-            {{~ end ~}}
-        </div>
     </div>
-    <div class="modal" id="add-to-cart-modal-{{ product.product_id }}" aria-labelledby="addToCartFromSpot" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered" >
-            <div id="add-to-cart-modal-content-{{ product.product_id }}"></div>
+    <div class="spot__content">
+        <div class="spot__content-title">
+            <a href="/{{product.alias}}" class="spot__title">
+                <h4>{{ product.product_name }}</h4>
+            </a>
         </div>
+        {{~ if product.available ~}}
+          {{ if product.prices }}
+          <div class="spot__content-price">
+              {{ product_price prices: product.prices product_is_box: product_is_box }}
+          </div>
+          {{ end }}
+        {{~ else ~}}
+          <p>Produto indisponível</p>
+        {{~ end ~}}
     </div>
 </div>

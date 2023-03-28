@@ -6,6 +6,7 @@ query Checkout($checkoutId: String!, $hasCheckout: Boolean!) {
     checkoutId
     url
     products {
+      url
       listPrice
       price
       ajustedPrice

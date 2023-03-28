@@ -1,19 +1,20 @@
-window.addEventListener("load", newsletterSetup, false);
-let newsletterAlert = "";
+// window.addEventListener("load", newsletterSetup, false);
 
 /**
  * Saves the alert element in the scope of the js
  */
-function newsletterSetup() {
-    newsletterAlert = document.getElementById("alert-newsletter");
-}
+// function newsletterSetup() {
+//     newsletterAlert = document.getElementById("alert-newsletter");
+// }
 
 /**
  * Sends the configured newsletter from the provided informtation on page
  */
-async function newsletterSubmit() {
-    const nameElement = document.getElementById("newsletter-form-name");
-    const emailElement = document.getElementById("newsletter-form-email");
+async function newsletterSubmit(form) {
+    console.log(typeof(form))
+    let newsletterAlert = form.querySelector(".newsletter__alert");
+    const nameElement = form.querySelector(".newsletter-name");
+    const emailElement = form.querySelector(".newsletter-email");
 
     const input = {
         name: nameElement.value,
@@ -22,7 +23,7 @@ async function newsletterSubmit() {
 
     await client.newsletter.create(input);
 
-    showNewsletterAlert();
+    showNewsletterAlert(newsletterAlert);
     nameElement.value = "";
     emailElement.value = "";
 }
@@ -30,15 +31,16 @@ async function newsletterSubmit() {
 /**
  * Removes the div content
  */
-function hideNewsletterAlert() {
-    newsletterAlert.innerHTML = "";
+function hideNewsletterAlert(newsletterAlert) {
+  newsletterAlert.innerHTML = "";
 }
 
 /**
  * Show an alert message with 2s duration
  */
-function showNewsletterAlert() {
-    newsletterAlert.innerHTML =
-        '<div class="alert alert-success col-6" role="alert" style="visibility: visible; position: relative; text-align: center; margin-bottom: auto; z-index: 1;">Cadastro realizado com sucesso!</div>';
-    setTimeout(hideNewsletterAlert, 2000);
+function showNewsletterAlert(newsletterAlert) {
+  newsletterAlert.innerHTML = 'Cadastro realizado com sucesso!';
+  setTimeout(function() {
+    hideNewsletterAlert(newsletterAlert);
+  }, 2000);
 }

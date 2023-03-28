@@ -1,13 +1,6 @@
-<style>
-    .breadcrumb_link:link, .breadcrumb_link:visited {
-        text-decoration: none;
-        display: inline-block;
-        color: darkslategrey;
-    }
-</style>
-<div class="col-12">
+<div class="breadcrumb">
     {{~ if settings.breadcrumb?.home_text ~}}
-        <a href="/" class="breadcrumb_link">{{ settings.breadcrumb.home_text }}</a>
+        <a href="/" class="breadcrumb__link">{{ settings.breadcrumb.home_text }}</a>
         {{~ if breadcrumbs.size > 0 ~}}
             >
         {{~ end ~}}
@@ -19,7 +12,7 @@
         {{~ else ~}}
             {{~ breadcrumbLink = "/" | string.append breadcrumb.link ~}}
         {{~ end ~}}
-        <a href="{{ breadcrumbLink }}" class="breadcrumb_link">{{ breadcrumb.text }}</a>
+        <a href="{{ breadcrumbLink }}" class="breadcrumb__link {{ if for.last }}last{{ end }}" >{{ breadcrumb.text }}</a>
         {{~ if !for.last ~}} > {{ end }}
     {{~ end ~}}
 </div>

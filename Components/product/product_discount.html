@@ -1,5 +1,5 @@
 {{~ if discount_percentage ~}}
     {{~ if discount_percentage > 0 ~}}
-        <div class="bg-danger text-white" style="width: 5rem; text-align: center;">{{ discount_percentage | math.format "p0" "pt-BR" }} OFF</div>
+        <div class="stamps-discount">-{{ discount_percentage | math.format "p0" "pt-BR" }}</div>
     {{~ end ~}}
 {{~ end ~}}

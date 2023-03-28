@@ -1,0 +1,20 @@
+.environments
+  &__item
+    &:hover 
+      .environments__img
+        &:after
+          opacity 0.2
+  &__img
+    margin-bottom 15px
+    position relative
+    &:after
+      pointer-events none
+      content ''
+      display block
+      position absolute
+      inset 0
+      background #FFFFFF
+      opacity 0
+      transition $transition  
+  &__title
+    font-weight 500

@@ -114,3 +114,55 @@ function applyPriceFilterUrl(filter) {
     queryStringParams.set("precoPor", filter);
     window.location.search = queryStringParams.toString();
 }
+
+/**
+ * Draggable filter
+ */
+
+var output = document.getElementById("max-value-text");
+const filterInput = document.getElementById("maximum-price-filter")
+
+function filterChange(filterVar) {
+    var value = (filterVar.value - filterVar.min) / (filterVar.max - filterVar.min) * 100;
+    filterVar.style.background = "linear-gradient(to right, #E30613 0%, #E30613 " + value + "%, #F7F7F7 " + value + "%, #F7F7F7 100%";
+    output.innerHTML = `R$${filterVar.value},00`
+}
+
+if (filterInput) {
+
+    window.addEventListener("load", e => {
+        filterChange(filterInput);
+    })
+
+    var slider = document.getElementById("maximum-price-filter").oninput = function () {
+        filterChange(this);
+    };
+
+    filterInput.addEventListener("change", () => {
+        setFieldPriceFilter();
+    });
+};
+
+// Mobile media
+if (window.innerWidth < 991) {
+  const body = document.querySelector("body")
+  const openButton = document.querySelector(".filter__button");
+  const closeButton = document.querySelector(".close");
+  const filterTitles = document.querySelectorAll(".filter__item h5");
+
+  openButton.addEventListener("click", function (e) {
+    body.classList.add("on-filter")
+  })
+
+  closeButton.addEventListener("click", function (e) {
+    body.classList.remove("on-filter")
+  })
+
+  filterTitles.forEach(function (title) {
+    title.addEventListener("click", function (e) {
+      title.parentElement.classList.toggle("open")
+    });
+  });
+
+}
+

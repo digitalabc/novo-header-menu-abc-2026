@@ -1,0 +1,176 @@
+.navbar
+  @media desktop
+    box-shadow $bs
+  &__container
+    @extends $container
+    padding-block 15px
+    @media mobile
+      flex-wrap wrap
+
+  &__collapse
+    display flex
+    justify-content: flex-start;
+    @extends $container
+  
+  &__wrapper
+    width 100%
+    display: flex;
+    justify-content space-between
+    margin: 0;
+    padding: 0;
+
+    @media desktop
+      justify-content: space-between;
+      align-items: center;
+
+    @media mobile
+      flex-direction: column;
+      padding: 0 16px;
+      width: 335px;
+      height: 100%;
+      background: #ffffff;
+      gap: 0;
+
+    .nav-item
+      &--nv1
+        display: flex;
+        align-items: center;
+        height: 40px;
+        cursor: pointer;
+        position relative
+
+        @media mobile
+          flex-wrap: wrap;
+          height: auto;
+
+          &:not(.dropdown)
+            height: 50px;
+
+          &.dropdown
+            justify-content: space-between;
+
+            > a
+              pointer-events: none;
+
+            &:before
+              width: 50px;
+              height: 50px;
+              background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAYAAAA7KqwyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABaSURBVHgBlc7RDYAwCIThg0nY0BEcyREcpaPo8WCipi3XJk144PsD3H0zsxNAQH9Bc9Du4NA4XPxNjETupkn71NTIH8f7pCoyxEqkxLOIjLuRVdyLLONPpMI3IVYs0S5/gHQAAAAASUVORK5CYII=");
+              background-position: right center;
+              background-repeat: no-repeat;
+              content: "";
+              transition: $transition;
+
+            &.open
+              &:before
+                background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAYAAAA7KqwyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABfSURBVHgBlYzdCYAwDAaTOIEb1LEc04nqo49uEL9ALRT6kwSONoQ7ovEkEcmG/Sk4v6yFUKTKzJyNSKSRi5C8kZ5cb6vITF5GPPI4EpC7kQ3LoaoPOHG8HYEXXPB2ez91DTTXlWYARAAAAABJRU5ErkJggg==");
+
+              > .dropdown-menu
+                display: flex;
+
+        &:nth-child(n + 5)
+          > .dropdown-menu
+            right: -60px;
+            left: unset;
+            
+        > .dropdown-menu
+          position: absolute;
+          top: 100%;
+          left: -60px;
+          display: flex;
+          gap 35px
+          visibility: hidden;
+          justify-content: space-between;
+          background: #ffffff;
+          opacity: 0;
+          transition: $transition;
+          padding: 30px 15px;
+          width: max-content;
+          box-shadow 0 1px 4px rgba(#000, 0.16)
+
+          @media mobile
+            position: static;
+            top: auto;
+            left: auto;
+            display: none;
+            visibility: visible;
+            flex-direction: column;
+            padding: 0;
+            height: auto;
+            opacity: 1;
+            padding-inline: 12px;
+          
+          >ul
+            display grid
+            grid-template-columns repeat(3, 1fr)
+            grid-gap 30px
+          > .nav-item--sub
+            > ul
+              display none
+
+            > .nav-link
+              margin-bottom: 10px;
+              color: #000000;
+              text-transform: uppercase;
+              font-weight: 700;
+
+        > .nav-link
+          color: #5D5D5D
+          font-weight: 300;
+          font-size: 14px;
+
+          @media mobile
+            order: -1;
+            font-weight: 700;
+
+        @media desktop
+          &:hover
+            > .dropdown-menu
+              visibility: visible;
+              opacity: 1;
+
+            > .nav-link
+              color #000
+
+      &--sub
+        display: flex;
+        flex-direction: column;
+        > .dropdown-menu
+          display none
+        > a.nav-link
+          color: #000000
+          font-size: 14px;
+          font-weight 500
+          transition $transition
+          &:hover
+            color $primary
+
+  &__right, &__search
+    @media desktop
+      flex: 1;
+
+  &__right
+    justify-content: flex-end;
+    gap 30px
+    @media mobile
+      gap 20px
+
+  &__search
+    @media mobile
+      width 100%
+      order 10
+
+  &__lojas
+    font-weight 500
+    display flex
+    align-items center
+    gap 5px
+    color $black
+    transition $transition
+    @media mobile
+      display none
+    svg
+      fill $primary
+    &:hover
+      color $primary
+

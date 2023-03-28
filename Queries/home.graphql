@@ -9,6 +9,7 @@ query Home{
       height
       title
       width
+      urlOnClick
     }
     contents {
       content
@@ -25,11 +26,35 @@ query Home{
       scheme
     }
   }
+  brands(first: 50) {
+    nodes {
+      active
+      urlLogo
+      urlCarrossel
+      urlLink
+      alias
+      brandId
+      createdAt
+      fullUrlLogo
+      id
+      name
+    }
+  }
+  vitrine1: search(query: "") {
+    ...vitrine1
+  }
   lancamentos: search(query: "") {
     ...lancamentos
   }
   maisVendidos: search(query: "") {
     ...maisVendidos
+  }
+  
+}
+
+fragment vitrine1 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
   }
 }
 
@@ -51,6 +76,10 @@ fragment productsCon on ProductsConnection {
     productId
     productName
     productVariantId
+    productBrand{
+      fullUrlLogo
+      logoUrl
+    }
     alias
     similarProducts{
       alias
@@ -58,7 +87,7 @@ fragment productsCon on ProductsConnection {
       name
       imageUrl(w: 50, h: 50)
     }
-    images(width:275, height:275) {
+    images(width:245, height:245) {
       url
       print
     }
@@ -67,6 +96,7 @@ fragment productsCon on ProductsConnection {
       listPrice
       price
       discountPercentage
+      multiplicationFactor
       installmentPlans{
         displayName
         name
@@ -85,6 +115,10 @@ fragment productsCon on ProductsConnection {
         number
         value
       }
+    }
+    attributes {
+      name
+      value
     }
     promotions{
       content

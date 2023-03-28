@@ -1,0 +1,21 @@
+.seo-text
+  h2
+    font-size: 20px;
+    line-height: 26px;
+
+  p
+    margin: 0 auto;
+    max-width: 1400px;
+    color: $primary;
+    font-size: 14px;
+    line-height: 17px;
+    transition: $transition;
+
+    &:not(.show)
+      span
+        height: 0;
+
+    span
+      display: block;
+      overflow: hidden;
+      transition: $transition;

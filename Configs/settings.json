@@ -1,6 +1,11 @@
 ﻿{
   "access_token": "tcs_abcda_7312cdfec71e4c14a3fab15b5bcfcba8",
-  "favicon_path": "favicon-corp.png",
+  "logo_path": "logo.svg" ,
+  "favicon_path": "favicon-abc.ico",
+  "phone_number": "(31) 9 9249-0299",
+  "whatsapp_number": "(31) 9 9249-0299",
+  "whatsapp_link": "https://wa.me/553192490299",
+  "email": "ajuda@abcdaconstrucao.com.br",
   "page_size": {
     "default": 24,
     "options": [
@@ -11,7 +16,7 @@
     ]
   },
   "pagination_by_offset": {
-    "window": 3
+    "window": 2
   },
   "payment_groups": {
     "display": [
@@ -19,10 +24,10 @@
     ]
   },
   "filter": {
-    "price_type": "price_range_filter"
+    "price_type": "price_field_filter"
   },
   "breadcrumb": {
-    "home_text": "Página inicial"
+    "home_text": "Home"
   },
   "sort": {
     "hotsite": {
@@ -118,5 +123,42 @@
         }
       ]
     }
-  }
+  },
+  "pick_up_states": [
+    {
+      "name": "São Paulo",
+      "stores": [
+        {
+          "name": "Artur Nogueira, São Bento",
+          "adress": "Rod. SP 107, 1884 - São Paulo",
+          "opening_hours" : "Seg a Sex 7h às 17h e Sáb. 8h às 11h30"
+        },
+        {
+          "name": "Loja 2",
+          "adress": "Endereço 2",
+          "opening_hours" : "Seg a Sex 7h às 17h"
+        },
+        {
+          "name": "Loja 3",
+          "adress": "Endereço 3",
+          "opening_hours" : "Seg a Sáb 8h às 18h"
+        }
+      ]
+    },
+    {
+      "name": "Rio de Janeiro",
+      "stores": [
+        {
+          "name": "Loja Rio 1",
+          "adress": "Endereço Rio 1",
+          "opening_hours" : "Seg a Sex 7h às 17h e Sáb. 8h às 11h30"
+        },
+        {
+          "name": "Loja Rio 2",
+          "adress": "Endereço Rio 2",
+          "opening_hours" : "Seg a Sex 7h às 17h"
+        }
+      ]
+    }
+  ]
 }

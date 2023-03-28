@@ -1,12 +1,13 @@
-<span style="font-size: 18px;">Simule o frete e o prazo de entrega:</span>
 <div class="product-shipping-quotes">
     <form onsubmit='ShippingQuoteSubmit(event, "{{ product_variant_id }}")'>
-        <div class="quotes-form-group">
-            <input type="text" id="shipping-quote-cep" name="shipping-quote-cep" 
-                placeholder="Digite seu CEP aqui" maxlength="9" onkeypress="cepMask(this)">
-            <input type="submit" value="OK">
+        <div class="product-shipping">
+            <h4>Consulte seu Frete</h4>
+            <div class="product-shipping__input">
+                <input type="text" id="shipping-quote-cep" name="shipping-quote-cep" placeholder="CEP"
+                    maxlength="9" onkeypress="cepMask(this)">
+                <input type="submit" value="OK" class="product-shipping__submit">
+            </div>
         </div>
-        <br>
     </form>
-    <div id="shipping-quotes-snippet-div-{{ product_variant_id }}"></div>
+    <div class="product-shipping__modal" id="shipping-quotes-snippet-div-{{ product_variant_id }}"></div>
 </div>

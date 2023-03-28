@@ -1,0 +1,117 @@
+// Home - Banner Oportunidades
+.banner-oportunidades
+  ul
+    display flex
+    gap 20px
+    li
+      overflow: hidden;
+      position relative
+      &:after
+        content ''
+        display block
+        position absolute
+        inset 0
+        background #FFFFFF
+        opacity 0
+        pointer-events none
+        transition $transition
+
+      &:nth-child(n + 5)
+        display none
+
+      &:hover
+        &:after
+          opacity 0.2
+
+      img
+        transition: $transition;
+        display block
+
+// Home - Grid de banners
+.banner-grid
+  > div
+    &:first-child
+      margin-bottom 20px
+  ul
+    li
+      overflow: hidden;
+      position relative
+      &:after
+        content ''
+        display block
+        position absolute
+        inset 0
+        background #FFFFFF
+        opacity 0
+        pointer-events none
+        transition $transition
+
+      &:nth-child(n + 5)
+        display none
+
+      &:hover
+        &:after
+          opacity 0.2
+
+      img
+        display block
+
+// Home - Banners lateral
+.banner-centro
+  ul
+    li
+      overflow: hidden;
+      position relative
+      &:after
+        content ''
+        display block
+        position absolute
+        inset 0
+        background #FFFFFF
+        opacity 0
+        pointer-events none
+        transition $transition
+
+      &:nth-child(n + 4)
+        display none
+
+      &:hover
+        &:after
+          opacity 0.2
+
+      img
+        transition: $transition;
+        display block
+
+// Home - Banner Instagram
+.banner-instagram
+  ul
+    display flex
+    gap 20px
+    li
+      overflow: hidden;
+      &:nth-child(n + 6)
+        display none
+        
+      a
+        position relative
+        display block
+        &:after
+          content ''
+          display block
+          background-color rgba(#392F2D, 0.45)
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAAVFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////8wXzyWAAAAG3RSTlMAECAwP0BPUF9gcH+Aj5CfoK+wv8DP0N/g7/B2lF5RAAABNUlEQVR42p2T4c6jIBBF72yrFovorlSU+/7vuZEJDbHT7OY7fzkZ8QBQ+ml9kS2vderR8Eg0OR7VkJlfWUWdU9lD16Hl1rklnxJOHEkPC1nqUjIVZSEPAToyw2BIh4dkcgA8GWCwkRQEcgFiMSvDc12fvQD4U+YPZARe5K0a48HC8QS6bR/LThJAEor8/uiiy9XR6cxhHMN+SoajnRYpAwNJbzm5/IIStMvVGcgsqOyk+3S8jlG0S+vUHY+oaJcfONczsb81kMe/9oxMzs2YLIYzkpylKvRfzyJNj35KJDeYjkS+2QQFKcuxuRs+s5A9FL2lp9OhIi7EGJxcOll39drpRibBFyRpp127mMzUR+O0i4HM705L6dLff6FB7topNk/WRDspbqdJ7aQMIV68HBcn+G/+AsOiMenOJHrIAAAAAElFTkSuQmCC");
+          background-position: center;
+          background-repeat: no-repeat;
+          position absolute
+          inset 0
+          opacity 0
+          transition $transition
+
+        &:hover 
+          &:after
+            opacity 1
+
+      img
+        transition: $transition;
+        display block

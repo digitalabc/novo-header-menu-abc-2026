@@ -1,0 +1,88 @@
+<FBITS:Cabecalho />
+
+<div class="container tyc_container">
+  <div class="row">
+    <div class="full-container">
+        <FBITS:CarrinhoVazio />
+        <section class="fbits-responsive-carrinho">
+          <!-- PRODUTOS -->
+          <div class="fbits-responsive-carrinho-items col-lg-9 col-md-9 col-sm-12 col-xs-12">
+              <!-- COMPONENTE HEADER TABELA PRODUTOS-->
+              <ul class="fbits-responsive-carrinho-header hidden-sm hidden-xs">
+                <li class="fbits-responsive-carrinho-header-coluna-title">Carrinho</li>
+                <li class="fbits-responsive-carrinho-header-coluna-share">
+                    <div class="share-minicart" data-share-whatsapp="Ei, olha só. Produtos já separados. Aproveita!">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18.106" viewBox="0 0 18 18.106">
+                        <g id="Camada_1" data-name="Camada 1" transform="translate(0 0.002)">
+                          <path id="Path_23294" data-name="Path 23294" d="M0,18.1.707,15.52c.175-.64.348-1.281.528-1.92a.323.323,0,0,0-.034-.266A8.489,8.489,0,0,1,.1,8.375,8.69,8.69,0,0,1,5.34.835,8.831,8.831,0,0,1,15.986,3.323a8.7,8.7,0,0,1,1.971,6.525,8.945,8.945,0,0,1-6.308,7.713,8.82,8.82,0,0,1-6.77-.634.343.343,0,0,0-.267-.028Q2.4,17.483.195,18.058c-.054.014-.108.025-.195.046Zm2.15-2.123c.877-.231,1.724-.45,2.569-.681a.556.556,0,0,1,.473.065,7.287,7.287,0,0,0,5.3.928,7.454,7.454,0,0,0-2.6-14.676A7.306,7.306,0,0,0,4.078,3.434,7.3,7.3,0,0,0,1.6,8.585a7.308,7.308,0,0,0,1.213,4.5.348.348,0,0,1,.048.312c-.237.85-.469,1.7-.712,2.586Z" transform="translate(0 0)" fill="#fff"/>
+                          <path id="Path_23295" data-name="Path 23295" d="M158.4,173.055a2.474,2.474,0,0,1,.817-1.85.792.792,0,0,1,.593-.24,2.6,2.6,0,0,0,.358,0,.47.47,0,0,1,.519.341q.369.883.736,1.767a.4.4,0,0,1-.04.393,6.642,6.642,0,0,1-.564.751.35.35,0,0,0-.033.46,6.162,6.162,0,0,0,3.081,2.646.35.35,0,0,0,.45-.111c.223-.279.457-.551.671-.837a.348.348,0,0,1,.454-.146c.656.267,1.283.593,1.914.912a.259.259,0,0,1,.139.265,1.747,1.747,0,0,1-1.325,1.853,2.641,2.641,0,0,1-1.771.016,9.108,9.108,0,0,1-5.02-3.747,5.224,5.224,0,0,1-.91-1.818,2.615,2.615,0,0,1-.069-.658Z" transform="translate(-153.907 -166.122)" fill="#fff"/>
+                        </g>
+                      </svg>
+                      Compartilhar carrinho
+                    </div>
+                </li>
+              </ul>
+              
+              <!-- COMPONENTE LISTA DE PRODUTOS -->
+              <FBITS:Produtos />
+              <FBITS:CarrinhoMensagens />
+              
+          </div>
+          <!-- DETALHES COMPLEMENTARES -->
+          <div class="fbits-responsive-carrinho-detalhes col-lg-3 col-md-3 col-sm-12 col-xs-12">
+              <!-- COMPONENTE SUBTOTAL -->
+              <div class="fbits-responsive-carrinho-subtotal">
+                <span class="text-left col-lg-6 col-md-6 col-sm-6 col-xs-6 fbits-responsive-carrinho-subtotal-header">Subtotal</span>
+                <span class="text-right col-lg-6 col-md-6 col-sm-6 col-xs-6 fbits-responsive-carrinho-subtotal-valor">
+                    <span class="currency"><FBITS:Subtotal /></span>
+                </span>
+              </div>
+              <!-- COMPONENTE FRETE COM OS CAMPOS -->
+              <FBITS:Frete />
+              <!-- COMPONENTE DESCONTO COM OS CAMPOS -->
+              <FBITS:Cupom />
+              <!-- COMPONENTE TOTAL -->
+              <div class="fbits-responsive-carrinho-total">
+                <div class="text-left col-lg-6 col-md-6 col-sm-6 col-xs-6 fbits-responsive-carrinho-total-header">
+                    Total
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right fbits-responsive-carrinho-total-valor">
+                    <span class="currency"><FBITS:Total /></span>
+                </div>
+              </div>
+              <!-- BOTOES BOTTOM -->
+              <div class="botoes-bottom">
+                <!-- COMPONENTE FINALIZAR -->
+                <div class="container-finalizar">
+                    <FBITS:Finalizar />
+                </div>
+                <!-- COMPONENTE CONTINUAR -->
+                <div class="container-continuar">
+                    <a href="#" class="block-a">
+                    </a>
+                    <FBITS:Continuar />
+                </div>
+              </div>
+          </div>
+        </section>
+    </div>
+  </div>
+</div>
+
+<script>
+
+   /* $(window).scroll(function () {
+        if($(window).width()>=768) {
+    		  if ($(this).scrollTop() > 130) {
+    			  $(".fbits-responsive-carrinho-detalhes").addClass("fixed");
+    		  } else {
+    			  $(".fbits-responsive-carrinho-detalhes").removeClass("fixed");
+    		  }
+        } else {
+            
+        }
+	  }); */
+    
+</script>
+
+<FBITS:Rodape />

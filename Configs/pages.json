@@ -25,18 +25,10 @@
                 "priority": 10
             },
             {
-                "urlMatch": "*vans*",
-                "path": "Custom/vans.html",
-                "priority": 20
-            },
-            {
-                "urlMatch": "outlet*|black-friday",
-                "path": "Custom/promo.html"
-            },
-            {
-                "urlMatch": "mycategory",
+                "urlMatch": "pisos-e-revestimentos",
                 "subtype": "category",
-                "path": "category.html"
+                "path": "category.html",
+                "query": "category.graphql"
             }
         ]
     },

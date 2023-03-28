@@ -1,34 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {{~ buy_list = data.buy_list ~}}
-        {{ header title: data.buy_list.product_name store: store }}
-        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "product", "user_login", "spot" ]}}
-        {{~ if  buy_list.seo ~}}
-            {{ meta_tags seo: buy_list.seo }} 
-        {{~ end ~}}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    
-    <body>
-        <header> {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }} </header>
-        <div class="container">
-            <br>
-            <div class="product-view-div">
-                {{ product_view product: buy_list }}
-            </div>
+  
+<head>
+    {{~ buy_list = data.buy_list ~}}
+    {{ header title: data.buy_list.product_name store: store }}
+    {{~ if  buy_list.seo ~}}
+        {{ meta_tags seo: buy_list.seo }} 
+    {{~ end ~}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="product">
+    <header>
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" }}
+    </header>
+    <div class="container">
+        <div class="breadcrumb">
+            {{~ if settings.breadcrumb?.home_text ~}}
+                <a href="/" class="breadcrumb__link">{{ settings.breadcrumb.home_text }}</a>
+                >
+            {{~ end ~}}
+            <a href="{{ breadcrumbLink }}" class="breadcrumb__link last" >{{ buy_list.product_name }}</a>
         </div>
-        <br>
-        {{~ product_information informations: buy_list.informations ~}}
-        <br>        
+
+        <div id="product-view-div" class="product__view">
+            {{ product_view product: buy_list }}
+        </div>
+        
+        <!-- Description -->
+        {{~ if buy_list.informations ~}}
+        <section class="product__information">
+          {{ for information in buy_list.informations }}
+            {{ information.value }}
+          {{ end }}
+        </section>
+
+        {{~ end ~}}
+
+        <div class="product__reviews">
+          <h2>### Avaliaçoes Opniões Verificadas ###</h2>
+        </div>
+
         {{~ if  buy_list.product_recommendations ~}}
-            {{ spot_carousel products: buy_list.product_recommendations }}
+          <section class="product__recommendation showcase">
+            <h2>{{ "Quem viu, viu também" | lang }}</h2>
+            {{ spot_carousel class: "related-products" products: buy_list.product_recommendations }}
+          </section>
         {{~ end ~}}
-        {{~ if  buy_list.reviews ~}}
-            {{ product_review products: buy_list.reviews }}
-        {{~ end ~}}
-        {{ footer is_preview: is_preview store: store }}
-        {{ sdk_client }}
-        {{ asset type: "js" paths: ["product", "buy_list", "mini_cart", "components", "navbar", "cart_from_spot", "user_login", "product_review", "wishlist"]}}
-    </body>
+    </div>
+
+    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
+    
+    {{ footer }}
+    {{ sdk_client }}
+    {{ asset type: "js" paths: ["uikit", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product"]}}
+</body>
 </html>

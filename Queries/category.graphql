@@ -1,0 +1,111 @@
+query Hotsite($url: String!) {
+  hotsite (url:$url) {
+    name
+    pageSize
+    banners {
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+    }
+    contents {
+      content
+      height
+      title
+      width 
+      position
+    }
+    breadcrumbs{
+      link
+      text
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+  }
+  brands(first: 50) {
+    nodes {
+      active
+      urlLogo
+      urlCarrossel
+      urlLink
+      alias
+      brandId
+      createdAt
+      fullUrlLogo
+      id
+      name
+    }
+  }
+  lancamentos: search(query: "") {
+    ...lancamentos
+  }
+}
+
+fragment lancamentos on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment productsCon on ProductsConnection {
+  nodes {
+    id
+    productId
+    productName
+    productVariantId
+    productBrand{
+      fullUrlLogo
+      logoUrl
+    }
+    alias
+    similarProducts{
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images(width:245, height:245) {
+      url
+      print
+    }
+    available
+    prices {
+      listPrice
+      price
+      discountPercentage
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    promotions{
+      content
+      id
+      stamp
+      title
+    }
+    addToCartFromSpot
+  }
+}

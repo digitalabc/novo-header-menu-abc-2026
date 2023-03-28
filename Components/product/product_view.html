@@ -6,78 +6,57 @@
         product_view product: product
 ## }}
 {{~ selected_variant = product.attribute_selections?.selected_variant ~}}
-<div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
-<div class="d-flex justify-content-center row">
-    <div class="col-6">
-        {{~ 
-            if selected_variant && selected_variant.images && selected_variant.images.size > 0
-                product_image images: product.attribute_selections.selected_variant.images
-            else
-                product_image images: product.images
-            end 
-        ~}}
+<section class="product__image">
+    {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
+        {{ product_gallery product: product images: product.attribute_selections.selected_variant.images }}
+    {{~ else ~}}
+        {{ product_gallery product: product images: product.images }}
+    {{~ end ~}}
+    <div class="obs">
+      Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas <br>
+      exclusivamente pelo site. O frete não está incluso. Fotos meramente <br>
+      ilustrativas.
     </div>
-    <div class="col-6" style="background-color: #dcedd2;">
-        <div class="row">
-            {{~ if product.product_brand ~}}
-                {{~ product_brand brand: product.product_brand ~}}
-            {{~ end ~}}
-            <div>
-                {{~ if product.product_id ~}}
-                    {{~ wishlist_button product_id: product.product_id ~}}               
-                {{~ end ~}}
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <h5> {{ product.product_name }} </h5>
-        </div>
-        {{~ stamps promotions: product.promotions ~}}
-        {{~ installment_plans = product.prices.installment_plans ~}}
-        <div class="row">
-            {{~ discount_percentage = 0 ~}}
-            <div id= "product-prices-div" class="col-7">
-                {{~ 
-                    if selected_variant
-                        installment_plans = selected_variant.prices.installment_plans
-                        product_price prices: selected_variant.prices
-                        discount_percentage = selected_variant.prices.discount_percentage
-                        product_wholesale_price prices : selected_variant.prices
-                    else
-                        product_price prices: product.prices
-                        discount_percentage = product.prices.discount_percentage
-                    end
-                    product_installments installments: installment_plans 
-                ~}}
-            </div>
-            <div class="col-5" style="margin-top: 2rem;">
-                {{ product_discount discount_percentage: discount_percentage }}
-            </div>
-            <br>
-        </div>
-        <br>
-        <div>
-            {{ product_attribute product: product }}
-            <div class="row">
-                <span>COMPRA <b>100% SEGURA</b></span>
-            </div>
-            <br>
-            {{~ if product.customizations ~}}
-                {{~ product_customizations customizations: product.customizations ~}}
-            {{~ end ~}}
-        </div>
-        <br>
-        <div class="row">
-            {{~ if selected_variant ~}}
-                {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
-            {{~ end ~}}
-            {{~ if product.buy_list_id ~}}
-                <h4 style="text-align: end;">Produtos da lista de compra</h4>
-                {{ for product in product.buy_list_products}}
-                    <div id="buy-list-product-div-{{ product.product_id }}" 
-                    class="row" product-id="{{ product.product_id }}"></div>
-                {{ end }}
-            {{~ end ~}}
-        </div>
+</section>
+<div class="product__details">
+    <h1 class="product__title">{{ product.product_name }}</h1>
+    <span class="product__info">
+        <span class="product__sku">SKU:{{ product.sku }}</span>{{ if product.product_brand }}<span class="pipe">|</span>{{ product_brand brand: product.product_brand }}{{ end }}<span class="pipe">|</span><span>### Estrelas Opniões Verificadas ###</span>
+    </span>
+    {{~ installment_plans = product.prices.installment_plans ~}}
+    {{~ discount_percentage = 0 ~}}
+    <div class="product__prices">
+        {{~ if selected_variant ~}}
+        {{~ installment_plans = selected_variant.prices.installment_plans ~}}
+        {{~ product_price prices: selected_variant.prices page_product: true product_is_box: product_is_box ~}}
+        {{~ discount_percentage = selected_variant.prices.discount_percentage ~}}
+        {{~ else ~}}
+        {{~ product_price prices: product.prices product_is_box: product_is_box ~}}
+        {{~ discount_percentage = product.prices.discount_percentage ~}}
+        {{~ end ~}}
+        {{~ product_installments installments: installment_plans ~}}
+    </div>
+    <!-- Buy list -->
+    {{~ if product.buy_list_id ~}}
+        <section class="buy_list__content">
+            {{ for product in product.buy_list_products}}
+                <div id="buy-list-product-div-{{ product.product_id }}" class="buy_list__product"  product-id="{{ product.product_id }}"></div>
+            {{ end }}
+        </section>
+    {{~ end ~}}
+
+    <!-- Attributes -->
+    {{ product_attribute product: product product_is_box: product_is_box product_is_pick_up: product_is_pick_up }}
+
+    <!-- Shippng -->
+    <div class="product__shipping" id="product-shipping">
+        {{~ if selected_variant ~}}
+            {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
+        {{~ end ~}}
+    </div>
+
+    <!-- Pick up -->
+    <div class="product__pick-up" id="product-pick-up">
+      {{~ product_pick_up ~}}product__buy-together
     </div>
 </div>

@@ -26,7 +26,7 @@ async function validateWishlist(){
     const isIn = await isInTheWishlist(productId, user.customerAccessToken);
     if (!isIn) return;
 
-    wishlistButton.className = "btn btn-sm btn-danger";
+    c.className = "btn btn-sm btn-danger";
     wishlistButton.setAttribute('onclick', `wishlistRemoveClick(this, ${productId});`);
 }
 
@@ -37,7 +37,7 @@ async function validateWishlist(){
 async function selectAttribute(element){
     const attrId = element.getAttribute("attribute-id");
     const productId = element.getAttribute("product-id");
-	const attributeDiv = element.closest('.attribute-selections');
+	  const attributeDiv = element.closest('.attribute-selections');
     let attributeList = getSelectedAttributes(attributeDiv, attrId, element.value.trim());
     await renderAttributes(attributeList, productId);
 }
@@ -85,6 +85,25 @@ async function renderAttributes(attributeList, productId){
     const elementId = `product-view-div-${productId}`;
     const response = await client.snippet.render("product_view_snippet.html", "product.graphql", variables);
     replaceInnerHtml(response, elementId);
+    
+    var thumbs = new Swiper ('.gallery-thumbs', {
+      spaceBetween: 30,
+      slidesPerView: 4,
+      slidesPerGroup: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+      navigation: {
+          nextEl: '.gallery .swiper-button-next',
+          prevEl: '.gallery .swiper-button-prev',
+      },
+    });
+
+    var slider = new Swiper ('.gallery-slider', {
+      thumbs: {
+        swiper: thumbs,
+      },
+    });
+
 }
 
 /**
@@ -93,7 +112,7 @@ async function renderAttributes(attributeList, productId){
  * @param {bool} error - If it is an error message, displays different color
 */
 function showAlert(content, error = false){
-    alertDiv.innerHTML = `<div class="alert alert-${error ? "danger" : "success"} col-2" role="alert" style="position: fixed; text-align: center; margin-bottom: auto; z-index: 1;">${content}</div>`;
+    alertDiv.innerHTML = `<div class="alert alert-${error ? "danger" : "success"} col-2" role="alert" style="position: fixed; bottom:0; text-align: center; margin-bottom: auto; z-index: 1;">${content}</div>`;
     alertDiv.style.visibility = "visible";
     setTimeout(hideAlert, 2000);
 }
@@ -115,8 +134,9 @@ async function addToCartClick(productVariantId){
         const input = getAttributeProductAndQuantity(productVariantId);
         const success = await addOrCreateCheckout(input);
         if (success){
-            showAlert('Produto adicionado ao carrinho!');
+            // showAlert('Produto adicionado ao carrinho!');
             await loadMiniCart();
+            UIkit.offcanvas("#minicart-canvas").show();
         }
     }
 }
@@ -412,3 +432,223 @@ async function backInStockOnClick(e){
     const success = await client.product.createRestockAlert(bisInput);
     if(success) showAlert('Email cadastrado com sucesso!');
 }
+
+function toggleOptions(title) {
+  const modal = title.nextElementSibling;
+  modal.style.maxHeight == "0px" ? modal.style.maxHeight = "600px" : modal.style.maxHeight = "0px"
+}
+
+function toggleModal(button) {
+    const parent = button.parentElement;
+    const modal = button.nextElementSibling;
+
+    modal.style.maxHeight == "0px" ? modal.style.maxHeight = "400px" : modal.style.maxHeight = "0px"
+    parent.classList.contains("active") ? parent.classList.remove("active") : parent.classList.add("active")
+}
+
+function createWarning(div) {
+  let warning = document.createElement("div")
+  warning.innerHTML = "Quantidade indisponível."
+  warning.classList.add("warning")
+
+  if (!(document.querySelector(".warning"))) {
+      document.querySelector(div).append(warning)
+      setTimeout(() => { document.querySelector(".warning").remove() }, 2000);
+  }
+}
+
+function quantityChange(inputId, action, warningQuery) {
+  const input = document.querySelector(inputId),
+      val = Number(input.value),
+      min = Number(input.getAttribute("min")),
+      max = Number(input.getAttribute("max"))
+
+  if (action == "decrease" && val > min) {
+      input.value--;
+      input.onchange();
+  } else if (action == "increase" && val < max) {
+      input.value++;
+      input.onchange();
+  } else if (val < min || val > max) {
+      createWarning(warningQuery)
+  }
+}
+
+function verifyQuantity(input, warningQuery) {
+  const val = Number(input.value),
+      min = Number(input.getAttribute("min")),
+      max = Number(input.getAttribute("max"))
+
+  val < min ? input.value = min : null
+  val > max ? input.value = max : null
+
+  if (val < min || val > max) {
+      createWarning(warningQuery)
+  }
+}
+
+function updateFakeQuantity(input, fakeQuantityId) {
+  const quant = Number(input.value),
+        fakeQuantityInput = document.getElementById(fakeQuantityId)
+        boxPrice = fakeQuantityInput.dataset.boxprice
+  fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant).toFixed(2).replace(',', '.')} m²`;
+}
+
+let getSiblings = function (e, tagName) {
+  // for collecting siblings
+  let siblings = []; 
+  // if no parent, return no sibling
+  if(!e.parentNode) {
+      return siblings;
+  }
+  // first child of the parent node
+  let sibling  = e.parentNode.firstChild;
+  
+  // collecting siblings
+  while (sibling) {
+      if (sibling.nodeType === 1 && sibling.tagName == tagName && sibling !== e) {
+          siblings.push(sibling);
+      }
+      sibling = sibling.nextSibling;
+  }
+  return siblings;
+};
+
+function toggleInformation(title) {
+  const modal = title.nextElementSibling
+
+  if(DESKTOP.matches) {
+    othertitles = getSiblings(title, "H2");
+    othermodals = getSiblings(modal, "DIV");
+    for (const othertitle of othertitles) {
+      othertitle.classList.remove("active")
+    }
+    for (const othermodal of othermodals) {
+      othermodal.classList.remove("show")
+    }
+  }
+
+  title.classList.toggle("active")
+  modal.classList.toggle("show")
+}
+
+var swiper = new Swiper(".related-products .swiper", {
+  navigation: {
+    nextEl: '.related-products .swiper-button-next',
+    prevEl: '.related-products .swiper-button-prev'
+  },
+  spaceBetween: 5,
+  slidesPerView: 2.1,
+  breakpoints: {
+    768: {
+      slidesPerView: 3.1
+    },
+    991: {
+      spaceBetween: 20,
+      slidesPerView: 4
+    },
+    1300: {
+      spaceBetween: 20,
+      slidesPerView: 5
+    }
+  }
+});
+
+window.visible_id = 'product-shipping'; 
+
+function togglePickUp(button) {
+  var buyButton = button.previousElementSibling
+  var shippingEl = document.getElementById('product-shipping'); 
+  var pickUpEl = document.getElementById('product-pick-up'); 
+
+  if (top.visible_id == 'product-shipping') {
+    buyButton.classList.add("hollow")
+    button.classList.add("full")
+    shippingEl.style.display = 'none'; 
+    pickUpEl.style.display = 'block'; 
+    top.visible_id = 'product-pick-up';
+  } else {
+    buyButton.classList.remove("hollow")
+    button.classList.remove("full")
+    shippingEl.style.display = 'block'; 
+    pickUpEl.style.display = 'none'; 
+    top.visible_id = 'product-shipping';
+  }
+}
+
+function choosePickUpState(button) {
+  var select = button.previousElementSibling
+  var pickUpState = select.value; 
+  var storesDiv = document.querySelector('.stores');
+  var storesLists = document.querySelectorAll('.stores__list');
+  var selectedStoresList = document.querySelector(`.stores__list[data-state="${pickUpState}"]`);
+
+  console.log(selectedStoresList)
+
+  storesLists.forEach(element => {
+    element.style.display = 'none';
+  });
+
+  storesDiv.style.display = 'block';
+  selectedStoresList.style.display = 'block';
+}
+
+(function calculatorFromOldLayout(){
+  function mascara(o, f) {
+    v_obj = o;
+    v_fun = f;
+    setTimeout("execmascara()", 2);
+    setTimeout("fMetro2()", 2);
+  }
+  function execmascara() {
+      v_obj.value = v_fun(v_obj.value);
+  }
+  function mascara_metros(v) {
+      v = v.replace(/\D/g, "");
+      v = v.replace(/(\d*)(\d[0-9]{1})/, "$1.$2");
+      v = parseFloat(v);
+      v = (v).toFixed(2);
+      return v;
+  }
+
+  function fMetro2() {
+      var largura = document.getElementById("calculator-width").value;
+      var comprimento = document.getElementById("calculator-length").value;
+      var metro2 = largura * comprimento;
+      metro2 = metro2.toFixed(2);
+      m2ParseBox(metro2);
+      document.getElementById("squareMeters").innerHTML = metro2 + 'm²';
+
+  }
+  function m2ParseBox(m2) {
+      var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
+      
+      var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
+      var m2PorCaixa = precoM2 / precoProduto;
+
+      m2PorCaixa = m2PorCaixa.toFixed(2);
+      calcAmountBoxes = m2 / m2PorCaixa;
+      var aux = m2 % m2PorCaixa;
+      if (aux = !0) {
+          calcAmountBoxes = Math.trunc(calcAmountBoxes) + 1;
+      }
+      document.getElementById("amountBoxes").innerHTML = calcAmountBoxes > 1 ? calcAmountBoxes + ' caixas' : calcAmountBoxes + ' caixa';
+  }
+
+  function calcAtualizar() {
+    var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
+    
+    var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
+    var m2PorCaixa = precoM2 / precoProduto;
+    var quant = parseInt(document.querySelector('#amountBoxes').textContent.split(' ')[0]);
+    var m2total = (m2PorCaixa * quant).toFixed(2).replace('.', ',');
+
+    document.querySelector('.fake-quantity').value = `${(quant == 1 ? '1 caixa' : quant + 'caixas')} = ${m2total} m²`;
+
+    document.getElementById('selected-quantity').value = quant
+    
+    document.getElementById('selected-quantity').onchange();
+
+    document.querySelector(".calculator .uk-close").click()
+  }
+})()

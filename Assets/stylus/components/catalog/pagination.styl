@@ -1,0 +1,40 @@
+.pagination
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 120px;
+
+  &__list
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    .page-item
+      &-desktop
+        @media mobile
+          display none
+
+      > a
+      > span
+        width 45px
+        height 45px
+        display: flex;
+        align-items: center;
+        justify-content center
+        background #EAEAEA
+        color: #000000
+        font-weight: 600;
+        font-size: 16px;
+        @media mobile
+          width 40px
+          height 40px
+      > a
+        &:hover
+          color: #fff
+          background #0FA848
+
+      &.active
+        > a
+          color: #fff
+          background #0FA848

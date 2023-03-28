@@ -6,29 +6,25 @@
       spot_carousel products: data...products
 ## }}
 {{~ if products && products.size > 0 ~}}
-    {{ carousel_id = math.uuid }}
-    <div id="spotCarouselIndicators{{ carousel_id }}" class="carousel slide">
-        <div class="carousel-indicators">
-            {{~ indicators_qty = products.size | math.divided_by 3.0 | math.ceil | string.to_int }}            
-            {{~ for i in 1..indicators_qty ~}}
-                <button type="button" data-bs-target="#spotCarouselIndicators{{ carousel_id }}" data-bs-slide-to="{{for.index}}" 
-                {{ if for.first ~}}class="active" aria-current="true"{{~ end ~}} aria-label="Slide {{for.index}}"></button>
-            {{~ end ~}}
-        </div>
-        <div class="carousel-inner">
-            {{~ aux = 0 ~}}
-            {{~ for i in 0..2 ~}}
-                <div class="carousel-item {{ if for.first ~}} active {{~ end ~}}">
-                    <div class="d-flex justify-content-between">
-                    {{~ prod1 = products[i + aux++] ~}}
-                    {{~ if prod1 != null ~}} {{ spot product: prod1 }} {{~ end ~}}
-                    {{~ prod2 = products[i + aux++] ~}}
-                    {{~ if prod2 != null ~}} {{ spot product: prod2 }} {{~ end ~}}
-                    {{~ prod3 = products[i + aux] ~}} 
-                    {{~ if prod3 != null ~}} {{ spot product: prod3 }} {{~ end ~}}
-                    </div>
-                </div>
-            {{~ end ~}}
-        </div>
-    </div>
+<div class="swiper-container {{class}}">
+  <div class="swiper">
+    <ul class="swiper-wrapper">
+      {{~ for product in products ~}}
+      <li class="swiper-slide">
+        {{ spot product: product }}
+      </li>
+      {{~ end ~}}
+    </ul>
+  </div>
+  <div class="swiper-button-prev">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+      <path id="Path_151" data-name="Path 151" d="M15,0A15,15,0,1,1,0,15,15.017,15.017,0,0,1,15,0ZM10.366,15.884l6.25,6.25a1.25,1.25,0,1,0,1.768-1.767L13.017,15l5.366-5.366a1.25,1.25,0,1,0-1.767-1.767l-6.25,6.25A1.249,1.249,0,0,0,10.366,15.884Z"/>
+    </svg>
+  </div>
+  <div class="swiper-button-next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+      <path id="Path_151" data-name="Path 151" d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z"/>
+    </svg>
+  </div>
+</div>
 {{~ end ~}}

@@ -1,11 +1,11 @@
 query Hotsite($url: String!,
-       $resultSize: Int, 
-       $offset: Int, 
-       $sortKey: ProductSortKeys!, 
-       $sortDirection: SortDirection!, 
-       $filters: [ProductFilterInput],
-       $maximumPrice: Decimal,
-       $minimumPrice: Decimal) {
+      $resultSize: Int, 
+      $offset: Int, 
+      $sortKey: ProductSortKeys, 
+      $sortDirection: SortDirection, 
+      $filters: [ProductFilterInput],
+      $maximumPrice: Decimal,
+      $minimumPrice: Decimal) {
   hotsite (url:$url) {
     name
     pageSize
@@ -59,7 +59,7 @@ query Hotsite($url: String!,
           name
           imageUrl(w: 50, h: 50)
         }
-        images(width:275, height:275) {
+        images(width:245, height:245) {
           url
           print
         }

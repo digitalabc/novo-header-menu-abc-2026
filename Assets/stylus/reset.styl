@@ -1,0 +1,66 @@
+html
+  background: #FFF;
+  font-family: "Montserrat", sans-serif
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size 14px
+  line-height: 1.3
+  color $black
+
+*
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  list-style: none;
+
+button
+  font-family: "Montserrat", sans-serif
+
+//reset ui-kit styling
+.uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6
+  font-family: "Montserrat", sans-serif
+  color $black
+  font-size 14px
+  line-height: 1.3
+
+.uk-offcanvas-container
+  overflow unset
+
+a
+  text-decoration: none;
+  cursor: pointer;
+  color $black
+  transition $transition
+  &:hover
+    color $primary
+    text-decoration: none;
+
+svg
+  fill: currentColor;
+
+.svg-sprites
+  display: none;
+
+ul, ol, address, dl, fieldset, figure, p, pre, h1, h2, h3, h4, h5, h6
+  margin: 0;
+  padding: 0;
+
+a, input
+  &:focus, &:active
+    outline: none !important;
+    box-shadow: none !important;
+
+img
+  max-width: 100%;
+  height: auto;
+
+input[type="text"], input[type="password"], input[type="email"]
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration
+  display: none;

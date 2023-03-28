@@ -1,0 +1,87 @@
+<footer class="fechamento-checkout">
+    <div class="copyright-footer">
+        <div class="fechamento-payment">
+            <div class="fechamento-payment__title">Pagamento</div>
+            <div class="fechamento-payment__image">
+                <img class="img-payment" src="https://recursos.auahams.com.br/i/payment-fechamento.png" alt="payment-img">
+                <img class="img-payment-mobile" src="https://recursos.auahams.com.br/i/payment-fechamento-m.png" alt="payment-img">
+            </div>
+        </div>
+            
+        <div class="fechamento-copyright">					
+            <p>
+                Copyright © 2019. Todos os direitos reservados. <br>
+                Todas as marcas e suas imagens são de propriedade de seus respectivos donos. <br>
+                É vedada a reprodução, total ou parcial, de qualquer conteúdo sem expressa autorização.
+            </p>
+        </div> 
+	</div>   
+</footer>
+
+<script>
+    
+Fbits.Carrinho.Pedido.Valido = function () {
+    var resultado = true;    
+    // var tamanhoTela = 1280;
+    // $('.tyc-mensagem').html('');
+
+    if ($("ul[class='fbits-info-pessoal'] li[class='fbits-info-item']").length == 0) {
+        marcarAtivo("USUARIO");
+    
+        // if(tamanhoTela <= 1024) {
+        //     alert('Por favor, preencha seus dados de usuário');
+        // } else {
+            $('.checkout-active').append('<div class="tyc-mensagem"><div class="tyc-border-progress"></div><p class="tyc-mensagem-error">Por favor, preencha seus dados de usuário</p></div>').show("slow");
+        //}
+
+        resultado = false;
+    }
+    else if ($('#div-endereco-body div[data-selecionado="true"]').length == 0) {
+    
+        marcarAtivo("ENDERECO");
+        
+        // if(tamanhoTela <= 1024) {
+        //  alert('Por favor, selecione um endereço');
+        // } else {
+            $('.checkout-active').append('<div class="tyc-mensagem"><div class="tyc-border-progress"></div><p class="tyc-mensagem-error">Por favor, selecione um endereço</p></div>').show("slow");
+        // }
+        
+        resultado = false;   
+    }
+    else if ($('#fbits-frete-body div[class="item-frete-option selected"]').length == 0) {
+        marcarAtivo("ENVIO");
+        
+        // if(tamanhoTela <= 1024) {
+        //     alert('Por favor, selecione uma forma de envio');
+        // } else {
+            $('.checkout-active').append('<div class="tyc-mensagem"><div class="tyc-border-progress"></div><p class="tyc-mensagem-error">Por favor, selecione uma forma de envio</p></div>').show("slow");
+        // }
+
+        resultado = false;
+    }
+    else if ($('.formas-pagamento li[class="nav-item active"]').length == 0) {
+        
+        marcarAtivo("PAGAMENTO");
+        
+        // if(tamanhoTela <= 1024) {
+        //     alert('Por favor, selecione uma forma de pagamento');
+            
+        // } else {
+            $('.checkout-active').append('<div class="tyc-mensagem"><div class="tyc-border-progress"></div><p class="tyc-mensagem-error">Por favor, selecione uma forma de pagamento</p></div>').show("slow");
+        // }
+        
+        resultado = false;
+    }
+
+    return resultado;
+};
+
+$('.btfinalizar').click(function(){ 
+    $('html, body').animate({ 
+        scrollTop: $('.checkout-active').offset().top 
+    }, 1000); 
+    
+    setTimeout(function(){ $('.tyc-mensagem').hide("slow").fadeOut() }, 3500);
+});
+
+</script>

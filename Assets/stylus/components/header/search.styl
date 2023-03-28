@@ -1,0 +1,38 @@
+.search
+  &__form
+    position: relative;
+    width: 420px;
+    @media mobile
+      width 100%
+
+    input
+      width: 100%;
+      height: 40px;
+      border: none;
+      background: none;
+      color $black
+      border-bottom 1px solid #5D5D5D
+      &::placeholder
+        color #5D5D5D
+
+      &:focus
+        outline: none;
+
+  &__submit
+    height 40px
+    display grid
+    place-items center
+    cursor pointer
+    position: absolute;
+    top: 50%;
+    right: 0;
+    border: none;
+    background: none;
+    transform: translateY(-50%);
+    color $primary
+    transition $transition
+    &:hover
+      color $black
+
+
+@import "./autocomplete.styl";

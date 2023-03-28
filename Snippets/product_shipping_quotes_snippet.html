@@ -8,14 +8,15 @@
 ## }}
 {{ quotes = data.shipping_quotes }}
 {{~ if quotes ~}}
-    {{~ for quote in quotes ~}}
-        <div class="product-shipping-quote container-fluid" 
-        style="border: 1px solid; width: 55%; text-align: center; border-radius: 10px; margin-bottom: 8px;">
+    <div class="product-shipping__list">
+        {{~ for quote in quotes ~}}
+        <div class="product-shipping__quote">
             <strong>{{ quote.name }}</strong>
             <br>
-            <span style="font-size: 20px;">{{ quote.value | math.format "c" "pt-BR" }}</span>
+            <span>{{ quote.value | math.format "c" "pt-BR" }}</span>
             <br>
-            <span style="font-size: 12px;">Em até {{ quote.deadline }} dias úteis</span>
+            <small>Em até {{ quote.deadline }} dias úteis</small>
         </div>
-    {{~ end ~}}
+        {{~ end ~}}
+    </div>
 {{~ end ~}}

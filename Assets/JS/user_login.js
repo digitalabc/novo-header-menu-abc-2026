@@ -11,16 +11,28 @@ async function checkUserLogin() {
         if(user != null) {
             pageUser = user;
             const name = parseUserName(user.name);
-            document.getElementById("user-name").innerHTML = name + "!";
+            document.getElementById("user-name").innerHTML = name;
 
             const logoutUrl = client.user.logoutUrl();
-            document.getElementById("user-href").href = logoutUrl + "?returnUrl=" + window.location.href;
+            document.getElementById("logout-href").href = logoutUrl + "?returnUrl=" + window.location.href;
 
-            document.getElementById("user-action").innerHTML = "Logout";
+            document.getElementById("user-name").innerHTML = name;
+            
+            document.querySelectorAll(".not-authenticated").forEach(div => {
+              div.style.display = 'none';
+            });
+            document.querySelectorAll(".authenticated").forEach(div => {
+              div.style.display = 'block';
+            });
         }
         else{
-            const loginElement = document.getElementById("user-href");
-            loginElement.href += window.location.href;
+            document.querySelectorAll(".user-href").forEach(div => {
+              div.href += window.location.href;
+            });
+            
+            document.querySelectorAll(".not-authenticated").forEach(div => {
+              div.style.display = 'block';
+            });
         }
     } catch(error) {
         console.log(error);

@@ -117,7 +117,7 @@
     "type": "ConsumoProduto",
     "path": "Products/product_consumption.html",
     "production": false,
-    "active": true
+    "active": true 
   },
   {
     "type": "Contraproposta",

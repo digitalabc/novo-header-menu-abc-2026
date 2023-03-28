@@ -18,27 +18,53 @@ async function loadMiniCart() {
         }
 
         const response = await client.snippet.render(
-            "mini_cart_snippet.html",
+            "mini_cart_core.html",
             "SnippetQueries/mini_cart.graphql",
             variables
         );
-        document.getElementById("mini-cart-div").innerHTML = response;
-    } catch (error) {
-        console.log(error);
-    }
-}
+        
+        const response_count = await client.snippet.render(
+            "mini_cart_count.html",
+            "SnippetQueries/mini_cart_count.graphql",
+            variables
+        );
 
-/**
- * Shows or hides the cart when the mouse moves over or out
- */
-function setCartDivVisibility(visibility) {
-    document.getElementById("checkout-list-div").style.visibility = visibility;
+        document.getElementById("mini-cart-core").innerHTML = response;
+
+        document.querySelectorAll(".label-cart-count").forEach(div => {
+          div.innerHTML = response_count;
+        });
+
+        let response_count_formatted
+
+        if (response_count == 0 ) {
+          response_count_formatted = "00 itens"
+        }
+        else if (response_count == 1 ) {
+          response_count_formatted = "01 item"
+        }
+        else if (response_count < 10) {
+          response_count_formatted = "0" + response_count.trim() + " itens"
+        }
+        else{
+          response_count_formatted = response_count.trim() + " itens" 
+        }
+
+        document.querySelectorAll(".label-cart-count-formatted").forEach(div => {
+          div.innerHTML = response_count_formatted;
+        });
+        
+
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 /**
  * Associates the current checkout with a partner access
  * @param {string} checkoutUrl - The checkout url the will be broken down to get the checkoutId
  */
+
 async function miniCartPartnerAssociate(checkoutUrl) {
     if (!checkoutUrl) return;
     var checkoutId = checkoutUrl.split("/").at(-1);

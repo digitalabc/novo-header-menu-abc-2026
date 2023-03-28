@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {{ header title: data.product.product_name store: store }}
-        {{ product_structured_data product: data.product current_url: store.urls.current }}
-        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "product", "user_login", "spot" ]}}
-        {{ meta_tags seo: data.product.seo }} 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    
-    <body>
-        <header>
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
-        </header>    
-        {{~ product = data.product ~}}
-        <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
-        <input type="hidden" id="product-variant-id" name="product-variant-id" value="{{ data.product.product_variant_id }}">
-        <div class="container">
-            {{~ breadcrumb breadcrumbs: product.breadcrumbs ~}}
-            <br>
-            <div class="row product-view-row">
-                <div id="product-view-div-{{ product.product_id }}" class="product-view-div">
-                    {{ product_view product: product }}
-                </div>
-            </div>
-            <br>
+
+<head>
+    {{ header title: data.product.product_name }}
+    {{ product_structured_data product: data.product current_url: store.urls.current }}
+    {{ meta_tags seo: data.product.seo }}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="product">
+    <header>
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" }}
+    </header>
+
+    {{~ 
+      product = data.product
+      shop = data.shop
+      product_is_box = false
+      product_is_pick_up = false
+    ~}}
+
+    {{~ for attribute in product.attributes ~}}
+      {{ case_insensitive_name = attribute.name | string.downcase }}
+      {{ case_insensitive_value = attribute.value | string.downcase }}
+      {{~ if case_insensitive_name == "unidade" && case_insensitive_value == "m2" ~}}
+        {{ product_is_box = true }}
+      {{~ end ~}}
+    {{~ end ~}}
+
+    {{~ for category in product.product_categories ~}}
+      {{ case_insensitive_category_name = category.name | string.downcase }}
+      {{~ if case_insensitive_category_name == "argamassas" ~}}
+        {{ category | debug.log }} 
+        {{ product_is_pick_up = true }}
+      {{~ end ~}}
+    {{~ end ~}}
+
+    <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
+    <input type="hidden" id="product-variant-id" name="product-variant-id"
+        value="{{ data.product.product_variant_id }}">
+
+    <div class="container">
+        {{~ breadcrumb breadcrumbs: product.breadcrumbs ~}}
+        
+        <div id="product-view-div-{{ product.product_id }}" class="product__view">
+            {{ product_view product: product breadcrumbs: product.breadcrumbs product_is_box: product_is_box }}
+        </div>
+
+        <div class="product__buy-together">
             {{ buy_together product: product }}
         </div>
-        <br>
-        {{ product_information informations: product.informations }}
-        {{ spot_carousel products: data.product_recommendations }}
-        {{ product_reviews reviews: product.reviews }}
-        {{ footer is_preview: is_preview store: store }}
-        {{ sdk_client }}
-        {{ asset type: "js" paths: ["product", "mini_cart", "components", "navbar", "cart_from_spot", "user_login", "product_review", "wishlist", "buy_together", "shipping_quotes"]}}
-    </body>
+        
+        <!-- Description -->
+        {{~ if product.informations ~}}
+          {{ product_information informations: product.informations }}
+        {{~ end ~}}
+        
+        <div class="product__reviews">
+          <h2>### Avaliaçoes Opniões Verificadas ###</h2>
+        </div>
+
+        <section class="product__recommendation showcase">
+            <h2>{{ "Quem viu, viu também" | lang }}</h2>
+            {{ spot_carousel class: "related-products" products: data.product_recommendations }}
+        </section>
+    </div>
+
+    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
+
+    {{ footer }}
+    {{ sdk_client }}
+    {{ asset type: "js" paths: ["uikit", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product"]}}
+</body>
+
 </html>

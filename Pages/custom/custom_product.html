@@ -24,7 +24,7 @@
         <h3> Página Custom do {{ product.product_name }} </h3>
         <br>
         {{ product_information informations: product.informations }}
-        {{ spot_carousel products: data.product_recommendations }}
+        {{ spot_carousel class: "showcase-3" products: data.product_recommendations }}
         {{ product_reviews reviews: product.reviews }}
         {{ footer is_preview: is_preview store: store }}
         {{ sdk_client }}

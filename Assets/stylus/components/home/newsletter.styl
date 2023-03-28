@@ -1,0 +1,55 @@
+section.newsletter--home
+  background-color $primary
+  background-position center left
+  padding 30px 40px
+  margin-bottom 65px
+  .newsletter
+    &__container
+      @media desktop
+        display flex
+        align-items center
+        gap 35px
+    &__header
+      color #fff
+      white-space nowrap
+      h2
+        margin-bottom 0
+        font-size 20px
+        font-weight 600
+        color #fff
+    &__form
+      position relative
+      flex 1
+      display flex
+      gap 35px
+    
+    &__input
+      flex 1
+      height 45px
+      border-radius 0
+      color $black
+      font-size 12px
+      border none
+      padding 0 20px
+      &::placeholder
+        color #5D5D5D
+    &__button
+      cursor pointer
+      display flex
+      align-items center
+      justify-content center
+      font-weight 600
+      background-color #fff
+      color $black
+      transition $transition
+      width 150px
+      height 45px
+      &:hover
+        background-color $black
+        color #fff
+    &__alert
+      font-size 16px
+      font-weight 500
+      color #fff
+      position absolute
+      bottom -25px

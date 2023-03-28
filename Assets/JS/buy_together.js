@@ -77,8 +77,9 @@ async function buyTogetherRenderAttributes(productId, selections, spotDiv){
 async function buyTogetherAddToCartClick(element){
     const success = await checkoutOperations(element, 'buy-together-row-div');
     if (success){
-        showAlert("Produtos adicionado ao carrinho!");
-        await loadMiniCart();
+        // showAlert("Produtos adicionado ao carrinho!");
+        await loadMiniCart();        
+        UIkit.offcanvas("#minicart-canvas").show();
     }
 }
 

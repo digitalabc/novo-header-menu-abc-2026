@@ -1,0 +1,202 @@
+.filter
+  @media mobile
+    position: fixed;
+    top: 0;
+    left 0
+    width: 100%;
+    height: 100%;
+    z-index 999
+    background #fff
+    transform translateX(-100%)
+    transition $transition
+    &:before
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      display: block;
+      visibility: hidden;
+      background: rgba(#000000, 16%);
+      content: "";
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      transition: $transition;
+
+    .on-filter &
+      transform translateX(0)
+      &:before
+        opacity 1
+
+  &__button
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px;
+    font-size 16px
+    font-weight 500
+    color #5D5D5D
+    background none
+
+    @media mobile
+      cursor: pointer;
+      margin-right: 10px;
+      background: $black;
+      color #fff
+      height 40px
+      width 170px
+
+    svg
+      fill: $primary;
+
+      @media mobile
+        fill: #ffffff;
+
+  &__top
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background #392F2D
+    color #fff
+
+    @media desktop
+      display: none;
+
+    .close
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 55px;
+      height: 55px;
+      background: $primary
+      cursor: pointer;
+
+      svg
+        pointer-events: none;
+
+  &__list
+    margin-bottom: 80px;
+
+  &__item
+    @media mobile
+      &.open
+        h5
+          &:after
+            transform: rotate(180deg);
+
+        ul
+          max-height: 400px;
+
+    &.price-range
+      display none
+
+    ul
+      @media mobile
+        overflow: hidden;
+        max-height: 0;
+        transition: $transition;
+
+      li
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        gap: 10px;
+
+        @media mobile
+          margin-bottom: 20px;
+
+    .color-filter
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+
+      @media mobile
+        gap: 8px;
+
+      &.selected
+        img
+          border: 1px solid $primary;
+
+      img
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        pointer-events: none;
+
+      input
+        border: none;
+
+      label
+        color: #000;
+        letter-spacing: 0.05em;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+
+    h5
+      margin-bottom: 14px;
+      color: $black
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media mobile
+        margin: 0;
+
+    input
+      width: 12px;
+      height: 12px;
+      border: 0.5px solid $primary;
+      cursor: pointer;
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+
+      @media mobile
+        width: 20px;
+        height: 20px;
+
+      &:checked
+        background: $primary;
+
+    label
+      color: #000000;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      cursor: pointer;
+
+  #maximum-price-filter
+    position: relative;
+    width: 220px;
+    height: 7px;
+    border: none;
+    background: $primary;
+    transition: background ease-in 0.45s;
+    -webkit-appearance: none;
+    &::-webkit-slider-thumb
+      border-radius 50%
+      width: 14px;
+      height: 14px;
+      background: $primary
+      appearance: none;
+      -webkit-appearance: none;
+
+  .range-values
+    > div
+      left: 0;
+      color: #000000;
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+
+    #max-value-text
+      left: 100%;
+      transform: translateX(-100%);

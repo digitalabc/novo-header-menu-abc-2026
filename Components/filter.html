@@ -1,70 +1,71 @@
 {{ ##
-    Description: Renders filter fields to filter the products
+    Description: Renders filter fields to filter the search
     Params:
         - aggregations: products aggregations data
     Usage:
         filter aggregations: data...aggregations
 ## }}
 
-<div class="col-2 col-md-3" style="border-right: 3px solid black;">
-    <div class="text-center" style="border-bottom: 3px dashed black; margin-left: 1px;">
-        <h3>FILTROS</h3>
-    </div>
+<aside class="filter">
     {{ if aggregations?.filters }}
-        <div>
-            <a href="#" onclick="clearFilters();">Limpar filtros</a>
-            <input type="hidden" id="hidden-min-price-value" name="hidden-min-price-value" 
-                value="{{ aggregations.minimum_price }}">
-            <input type="hidden" id="hidden-max-price-value" name="hidden-max-price-value" 
-                value="{{ aggregations.maximum_price }}">
-        </div>
-        <div>
-            <br>
-            <div class="row">
-                {{ if settings.filter.price_type == "price_field_filter" }}
-                    {{ price_field_filter minimum_price: aggregations.minimum_price maximum_price: aggregations.maximum_price }}
-                {{ else if settings.filter.price_type == "price_range_filter" && aggregations?.price_ranges}}
-                    {{ price_range_filter price_ranges: aggregations.price_ranges }}
-                {{ end }}
-            </div>
-            <br>
-            {{ for filter in aggregations.filters }}
-                <div>
-                    <h5>{{ filter.field }}</h5>
-                    {{~ if filter.field == "Cor" || filter.field == "cor" ~}}
-                        {{ for value in filter.values }}
-                            <label style="cursor: pointer; margin-left: 1rem;">
-                                <div id="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}" 
-                                    style="border-color: black; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center;">
-                                    <input type="radio" class="btn btn-check" style="margin-top: 10px; margin-bottom: 10px;"
-                                        id="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}"
-                                        value="{{ filter.field }}__{{ value.name }}"
-                                        onclick="setFilter(this.value)">
-                                    <img src="/colorhandler?cor={{ value.name }}" alt="{{ value.name }}" title="{{ value.name }}" height="30" width="30">
-                                </div>
-                            </label>
-                            <br>
-                        {{ end }}
-                    {{~ else ~}}
-                        <ul>
-                            {{ for value in filter.values }}
-                                <li>
-                                    <!--Double quote in html workaround-->
-                                    {{ value_name_escaped = value.name | string.replace "\"" "&quot;" }}
-
-                                    <input type="checkbox"
-                                        id="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}"
-                                        class="filter"
-                                        value="{{ filter.field }}__{{ value_name_escaped }}"
-                                        onchange="setFilter(this.value)">
-                                    <label for="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}">
-                                        {{ value.name }} ({{ value.quantity }})</label>
-                                </li>
-                            {{ end }}
-                        </ul>
-                    {{~ end ~}}
-                </div>
+    <div class="filter__top">
+        <h4>{{ "FILTRAR" | lang }}</h4>
+        <button class="close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19.023" height="19.023" viewBox="0 0 19.023 19.023">
+            <path id="Path_165" data-name="Path 165" d="M10.562,9.512,18.8,1.269A.743.743,0,0,0,17.754.218L9.511,8.461,1.268.218A.743.743,0,0,0,.217,1.269L8.46,9.512.217,17.755a.743.743,0,0,0,1.051,1.051l8.243-8.243,8.243,8.243A.743.743,0,0,0,18.8,17.755Z" transform="translate(0 -0.001)" fill="#fff"/>
+          </svg>
+        </button>
+    </div>
+    <div class="filter__list">
+        {{ for filter in aggregations.filters }}
+        <div class="filter__item {{ if filter.field == "Cor" || filter.field == "cor" }}first{{ end }}">
+            <h5>
+              {{ filter.field }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="7.75" height="5" viewBox="0 0 7.75 5">
+                <g id="Camada_1" data-name="Camada 1" transform="translate(-57 0) rotate(90)">
+                  <path id="Path_23323" data-name="Path 23323" d="M.623,0A.534.534,0,0,1,.941.139Q2.864,1.784,4.784,3.432a.546.546,0,0,1,0,.873Q2.849,5.96.915,7.611a.55.55,0,1,1-.7-.851Q1.86,5.354,3.5,3.949c.078-.067.084-.1,0-.165Q1.931,2.439.358,1.09A.772.772,0,0,1,.04.667.561.561,0,0,1,.623,0Z" transform="translate(0 -64.75)" fill="#020202"/>
+                </g>
+              </svg>
+            </h5>
+            {{~ if filter.field == "Cor" || filter.field == "cor" ~}}
+                <ul class="color-list">
+                    {{ for value in filter.values }}
+                        <li class="color-filter" id="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}">
+                            <input type="radio" class="btn btn-check"
+                                id="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}"
+                                value="{{ filter.field }}__{{ value.name }}" onclick="setFilter(this.value)">
+                            <label for="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}">{{ value.name }}</label>
+                            <img src="/colorhandler?cor={{ value.name }}" alt="{{ value.name }}"
+                                title="{{ value.name }}" height="12" width="12">
+                        </li>
+                    {{ end }}
+                </ul>
+            {{~ else ~}}
+              <ul {{ if filter.values.length >= 5 }}class="closed"{{ end }}>
+                  {{ for value in filter.values }}
+                  <li>
+                      <input type="checkbox"
+                          id="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}"
+                          value="{{ filter.field }}__{{ value.name }}" onclick="setFilter(this.value)">
+                      <label
+                          for="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}">{{ value.name }}</label>
+                  </li>
+                  {{ end }}
+              </ul>
             {{ end }}
         </div>
+        {{ end }}
+        {{~ if aggregations.minimum_price != aggregations.maximum_price ~}}
+        <div class="filter__item price-range">
+            {{ if settings.filter.price_type == "price_field_filter" }}
+            {{ price_field_filter minimum_price: aggregations.minimum_price maximum_price: aggregations.maximum_price }}
+            {{ else if settings.filter.price_type == "price_range_filter" }}
+            {{ if aggregations?.price_ranges }}
+            {{ price_range_filter price_ranges: aggregations.price_ranges }}
+            {{ end }}
+            {{ end }}
+        </div>
+        {{~ end ~}}
+    </div>
     {{ end }}
-</div>
+</aside>

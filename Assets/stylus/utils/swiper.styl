@@ -1,0 +1,27 @@
+.swiper
+  &-container
+    position relative
+  &-wrapper
+    margin: 0;
+    padding: 0;
+
+  &-button
+    &-prev, &-next
+      margin 0
+      transform translateY(-50%)
+      width 30px
+      height 30px
+      color #5D5D5D
+      transition $transition
+      &:hover
+        color $primary
+      &:after
+        content: none;
+
+    &-prev
+      @media desktop
+        left: -50px;
+
+    &-next
+      @media desktop
+        right: -50px;

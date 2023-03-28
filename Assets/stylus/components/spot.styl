@@ -1,0 +1,137 @@
+.showcase
+  .swiper
+    margin -10px
+    padding 10px
+    @media mobile
+      margin -10px -15px
+      padding 10px 15px
+    &-container
+      position relative
+    &-button-prev
+    &-button-next
+      @media mobile
+        display none
+
+.spot
+  border 1px solid #EAEAEA
+  transition $transition
+  &:hover
+    box-shadow $bs
+    .add-to-cart-button
+      transform none
+    .spot__overlay
+      visibility: visible;
+      opacity: 1;
+
+  &__image
+    position: relative;
+    overflow hidden
+
+    img
+      width: 100%;
+
+    &-wrapper
+      max-width: 245px;
+      margin 0 auto
+      position: relative;
+      border-bottom 1px solid #EAEAEA
+
+    .stamps
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1;
+
+      &-discount
+        z-index 1
+        position absolute
+        top: 10px;
+        right 10px
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+        background: #392F2D
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 12px;
+        border-radius 50%
+
+  &__buttons
+    >*:not(.add-to-cart-button)
+      display none
+
+    .add-to-cart-button
+      transform translateY(100%)
+      background $buy-btn
+      position absolute
+      bottom 0
+      left 0
+      right 0
+      display flex
+      align-items center
+      justify-content center
+      height 40px
+      gap 6px
+      cursor pointer
+      font-weight 500
+      color #fff
+      transition $transition
+      &:hover
+        background $black
+
+  &__overlay
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    opacity: 0;
+    transition: $transition;
+
+  &__content
+    padding 20px 10px
+
+  &__title
+    h4
+      display -webkit-box
+      overflow hidden
+      text-overflow ellipsis
+      -webkit-line-clamp 3
+      -webkit-box-orient vertical
+      color: $black
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      height 60px
+      margin-bottom 20px
+      transition $transition
+      &:hover
+        color $primary
+
+  &-price
+    margin-bottom 5px
+    s
+      display block
+      color: #B4B4B4
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom 5px
+
+    h3
+      span
+        color: $primary;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+
+      small
+        font-weight: 400;
+        font-size: 12px;
+        color #000000
+
+    .best-installment
+      font-size: 12px;
+      line-height: 15px;

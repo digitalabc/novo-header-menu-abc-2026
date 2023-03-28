@@ -155,7 +155,8 @@ async function buyListAddToCartClick() {
     const input = buyListGetProductsAndQuantities();
     const success = await addOrCreateCheckout(input);
     if (success) {
-        showAlert("Produto(s) adicionado(s) ao carrinho!");
+        // showAlert("Produto(s) adicionado(s) ao carrinho!");
         await loadMiniCart();
+        UIkit.offcanvas("#minicart-canvas").show();
     }
 }

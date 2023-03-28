@@ -90,7 +90,7 @@ fragment SingleProductData on SingleProduct {
   alias
   stock
   available
-  images {
+  images (width:245, height:245){
     url
     print
     fileName

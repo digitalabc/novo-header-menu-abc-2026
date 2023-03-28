@@ -1,0 +1,20 @@
+.subcategories
+  margin-bottom 55px
+  &__item
+    text-align center
+    &:hover 
+      .subcategories
+        &__img
+          img
+            outline 3px solid $primary
+        &__title
+          color $primary
+  &__title
+    font-size 13px
+    transition $transition
+  &__img
+    margin-bottom 12px
+    img
+      outline 3px solid transparent
+      outline-offset -3px
+      transition $transition

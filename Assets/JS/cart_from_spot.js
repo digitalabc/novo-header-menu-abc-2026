@@ -9,8 +9,8 @@ function startCarousel(){
     const elementList = document.getElementsByClassName('carousel');
     if(elementList) {
         [].forEach.call(elementList, function (element) {
-            var carousel = bootstrap.Carousel.getOrCreateInstance(element);
-            carousel.cycle();
+            // var carousel = bootstrap.Carousel.getOrCreateInstance(element);
+            // carousel.cycle();
         });
     }
 }
@@ -22,8 +22,8 @@ function pauseCarousel(){
     const elementList = document.getElementsByClassName('carousel');
 
     [].forEach.call(elementList, function (element) {
-        var carousel = bootstrap.Carousel.getOrCreateInstance(element);
-        carousel.pause();
+        // var carousel = bootstrap.Carousel.getOrCreateInstance(element);
+        // carousel.pause();
     });
 }
 

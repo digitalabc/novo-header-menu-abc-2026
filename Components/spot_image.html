@@ -14,14 +14,14 @@
         {{~ end ~}}
     {{~ end ~}}
 {{~ else ~}}
-    {{~ image_url = "https://" + store.store_name + ".fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg?w=250&h=250&v=20220125251131&qs=ignore" ~}}
+    {{~ image_url = "https://" + store.store_name + ".fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg?w=245&h=245&v=20220125251131&qs=ignore" ~}}
 {{~ end ~}}
-<div class="spot_container">
+<div class="spot__image-wrapper">
     <a href="/{{product.alias}}">
-        <img class="spot-image w-100" src="{{ image_url }}" />
+        <img class="spot-image" src="{{ image_url }}" />
         {{~ if second_image ~}}
-        <div class="spot_overlay">
-            <img src="{{ second_image }}" alt="Product image" class="spot-image w-100">
+        <div class="spot__overlay">
+            <img src="{{ second_image }}" alt="Product image" class="spot-image">
         </div>
         {{~ end ~}}
     </a>

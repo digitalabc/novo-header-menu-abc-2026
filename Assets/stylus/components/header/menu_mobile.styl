@@ -1,0 +1,36 @@
+.menu__button
+  background: none;
+
+#menu-canvas
+
+  &.uk-open
+    > .uk-offcanvas-bar
+      left: 0;
+
+  &.uk-offcanvas-overlay
+    &:before
+      background: rgba(#000000, 70%);
+
+  .uk-offcanvas-bar
+    padding: 0;
+
+  .uk-offcanvas-close
+    top: 0;
+    left: 100%;
+    width: 45px;
+    height: 45px;
+    background: $primary;
+
+    svg
+      &:last-of-type
+        display: none;
+
+  .uk-offcanvas-bar
+    left: -380px;
+    overflow: visible;
+    width: 335px;
+    background: #ffffff;
+
+  .navbar
+    &-collapse
+      height: 100%;

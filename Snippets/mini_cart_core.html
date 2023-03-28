@@ -1,0 +1,95 @@
+{{ ##
+    Description: Renders mini cart contents
+    Params:
+        - Uses SnippetQueries/mini_cart.graphql
+    Usage:
+        await client.snippet.render("mini_cart_snippet.html", ...);
+## }}
+{{~ 
+    checkoutUrl = ""
+    productsCount = 0 
+    products = null 
+
+    if data.checkout 
+    if store.is_local
+        checkoutUrl = data.checkout.url
+    else 
+        index = data.checkout.url | string.index_of "/" startIndex: 8           #ignores the first 8 characters 'https://'
+        checkoutUrl = data.checkout.url | string.slice 0 lenght: (index + 1)    #removes the cart Id from the URL
+    end
+
+    productsCount = data.checkout.products.size
+    products = data.checkout.products
+    else 
+    checkoutUrl = data.shop.checkout_url
+    end 
+~}}
+
+<div class="minicart__dropdown-top uk-flex uk-flex-center uk-flex-middle">
+    <span>
+      Meu carrinho
+    </span>
+</div>
+
+<div class="shipping">
+  {{~ free_shipping = 1000 ~}}
+
+  {{~ if free_shipping > 0 ~}}
+
+    {{~ if data.checkout.subtotal < free_shipping  ~}}
+      {{ shipping_width = data.checkout.subtotal/free_shipping * 100 + "%" }}
+
+      <div class="shipping__title">
+        Faltam {{ (free_shipping - data.checkout.subtotal) | math.format "c" "pt-BR" }} para ganhar o <strong>Frete Grátis</strong>
+      </div>
+
+      <div class="shipping__bar">
+          <div style="width: {{ shipping_width }};"></div>
+      </div>
+
+    {{~ else ~}}
+      <div class="shipping__title">
+        Você obteve o <strong>Frete Grátis</strong>!
+      </div>
+      <div class="shipping__bar">
+          <div style="width: 100%;"></div>
+      </div>
+    {{~ end ~}}
+
+  {{~ end ~}}
+</div>
+
+<div class="minicart__dropdown-body">
+    {{~ if productsCount > -1 ~}} 
+      <ul class="item__list">
+          {{~ for product in products ~}}
+          {{ product | debug.log }} 
+          <li class="item__item">
+              <img src={{product.image_url | string.replace "w=70&h=70" "w=90&h=90"}} alt="">
+              <div class="item__info">
+                <h2>{{ product.name }}</h2>
+                <div class="item__details">
+                  <div class="quantity">
+                      Qtd - {{ product.quantity }}
+                  </div>
+                  <div class="price">
+                      {{ product.price * product.quantity | math.format "c" "pt-BR" }}
+                  </div>
+                </div>
+              </div>
+          </li>
+
+          {{~ end ~}}
+      </ul>
+      <h5 class="fullprice ">
+        Subtotal <strong>{{ data.checkout.subtotal | math.format "c" "pt-BR" }}</strong>
+      </h5>
+      <a href={{checkoutUrl}} class="gotocheckout">
+        Finalizar compra
+      </a>
+    {{~ else ~}}
+      <div class="empty-mini-cart-message">
+          <h5>Sua sacola está vazia!</h5>
+      </div>
+    {{~ end ~}}
+</div>

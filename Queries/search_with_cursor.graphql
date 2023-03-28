@@ -1,17 +1,18 @@
 query ($searchQuery: String, 
   $partnerAccessToken: String, 
-  $sortKey: ProductSearchSortKeys!, 
-  $sortDirection: SortDirection!, 
+  $sortKey: ProductSearchSortKeys, 
+  $sortDirection: SortDirection, 
   $filters: [ProductFilterInput],
   $minimumPrice: Decimal,
   $maximumPrice: Decimal,
 	$after: String,
 	$before: String,
-  $resultSize: Int,
+  $resultSize: Int = 12,
   $last: Int,
 	$onlyMainVariant: Boolean) {
   search(query: $searchQuery, partnerAccessToken: $partnerAccessToken) {
     redirectUrl
+    pageSize
     searchTime
     contents {
       content
@@ -93,17 +94,6 @@ query ($searchQuery: String,
       position
       title
       urlOnClick
-    }
-  }
-  menuGroups(url: "") {
-    position
-    menus {
-      menuId
-      parentMenuId
-      name
-      level
-      order
-      link
     }
   }
 }

@@ -3,21 +3,46 @@
     Params:
         - prices: product prices
         - displayed_installment: [optional] filter installment options to display from the specified plan.  
-                                 Check the display name of the installment plans on Admin. (e.g., "Boleto Yapay")
-                                 If not set, the best installment among the available options will be displayed instead
+            Check the display name of the installment plans on Admin. (e.g., "Boleto Yapay")
+            If not set, the best installment among the available options will be displayed instead
     Usage:
         product_price prices: product.prices displayed_installment: "Boleto Yapay"
 ## }}
-<div class="row">
+<div class="spot-price">
     {{ if prices.list_price }}
         {{~ if prices.discount_percentage > 0 ~}}
             <p><s>{{ prices.list_price | math.format "c" "pt-BR" }}</s></p>
         {{~ end ~}}
-        <h2 style="margin-top: -0.5rem;"><b>{{ prices.price | math.format "c" "pt-BR" }}</b></h2>
+        <h3>
+          <span>{{ prices.price | math.format "c" "pt-BR" }}</span>
+          {{~ if product_is_box ~}}
+            <small>caixa</small>
+          {{~ else ~}}
+            <small>cada</small>
+          {{~ end ~}}
+        </h3>
     {{ else }}
-    <p>{{ prices.price | math.format "c" "pt-BR" }}</p>
+        <h3>
+          <span>{{ prices.price | math.format "c" "pt-BR" }}</span>
+          {{~ if product_is_box ~}}
+            <small>caixa</small>
+          {{~ else ~}}2
+            <small>cada</small>
+          {{~ end ~}}
+        </h3>
     {{ end }}
+    {{~ if product_is_box && page_product ~}}
+      <div class="box-price">
+        Neste produto a m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" }}</span>
+      </div>
+    {{~ end ~}}
+    {{~ if page_product ~}}
+    <div class="pix">
+      Compre com <strong>Pix</strong> e tenha <strong>5%</strong> de desconto
+    </div>
+    {{~ end ~}}
 </div>
+
 {{~ if displayed_installment ~}}
     {{ product_filtered_installment installment_plans: prices.installment_plans displayed_installment: displayed_installment }}
 {{~ else ~}}

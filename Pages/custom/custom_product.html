@@ -3,7 +3,6 @@
     <head>
         {{ header title: data.product.product_name store: store }}
         {{ product_structured_data product: data.product current_url: store.urls.current }}
-        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login"]}}
         {{ meta_tags seo: data.product.seo }} 
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>

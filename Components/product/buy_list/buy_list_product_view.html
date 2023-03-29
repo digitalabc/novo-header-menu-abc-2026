@@ -24,36 +24,74 @@
 {{~ product_variant_id = product.product_variant_id ~}}
 {{~ product_prices = product.prices ~}}
 {{~ end ~}}
-<input type="hidden" id="buy-list-product-variant-{{ product_id }}" name="buy-list-product-variant-{{ product_id }}"
-    value="{{ product_variant_id }}">
 
-<div class="buy_list__image swiper">
-    {{ spot_image product: product }}
-</div>
+{{ product | debug.log }}
 
-<div class="buy_list__block">
-    <div class="buy_list__name">
-        <input id="buy-list-product-checked-{{ product_id }}" type="checkbox"
-            {{ if product_available || product.attribute_selections.can_be_matrix}}
-            onchange="buyListCalculatePrices('{{ product_id }}');" checked {{ else }} disabled {{ end }}>
-        <label class="fake-input"  for="buy-list-product-checked-{{ product_id }}"></label>
-        <a href="/{{product.alias}}">
-            <h5>{{ product.product_name }}</h5>
-        </a>
-    </div>
+<div class="buy_list__product-wrap">
+  <input type="hidden" id="buy-list-product-variant-{{ product_id }}" name="buy-list-product-variant-{{ product_id }}"
+      value="{{ product_variant_id }}">
+  
+  <div class="buy_list__image swiper">
+      {{ spot_image product: product }}
+  </div>
+  
+  <div class="buy_list__block">
+      <div class="buy_list__name">
+          <input id="buy-list-product-checked-{{ product_id }}" type="checkbox"
+              {{ if product_available || product.attribute_selections.can_be_matrix}}
+              onchange="buyListCalculatePrices('{{ product_id }}');" checked {{ else }} disabled {{ end }}>
+          <label class="fake-input"  for="buy-list-product-checked-{{ product_id }}"></label>
+          <a href="/{{product.alias}}">
+              <h5>{{ product.product_name }}</h5>
+          </a>
+      </div>
+  
+      <div class="buy_list__attributes">
+          {{ buy_list_product_attribute product: product }}
+      </div>
 
-    <div class="buy_list__wrapper">
-        <div class="buy_list__attributes">
-            {{ buy_list_product_attribute product: product }}
-        </div>
-
-        <div class="buy_list__price" id="buy-list-product-price-{{ product_id }}">
-            {{~ if product_available ~}}
-                {{ product_price prices: product_prices }}
-            {{~ else ~}}
-                <span>Selecione uma variação.</span>
-            {{~ end ~}}
-        </div>
-    </div>
-
+      <div class="buy_list__wrapper">
+          <div class="buy_list__quantity">
+              {{~ 
+                attribute_selections = product.attribute_selections
+                available = true
+                variantId = ""
+                stock = 0
+                if attribute_selections.selected_variant
+                    variantId = attribute_selections.selected_variant.product_variant_id
+                    available = attribute_selections.selected_variant.available
+                    stock = attribute_selections.selected_variant.stock
+                else if attribute_selections.selections.size == 0
+                    variantId = product.product_variant_id
+                    available = product.available
+                    stock = product.stock
+                end
+                quantity_id = "buy-list-product-selected-quantity-" + product.product_id 
+              ~}}
+              {{~ if available ~}}
+                  <div class="quantity">
+                      <button class="quantity-less"
+                          onclick="quantityChange('#{{ quantity_id }}', 'decrease', '.buy_list__quantity'), buyListCalculatePrices('{{ product.product_id }}');">-</button>
+                      <input type="number" class="form-control"
+                          id="{{ quantity_id }}" name="selected-quantity"
+                          value="1" min="1" max="{{ stock }}"
+                          product-variant-id="{{ variantId }}"
+                          onchange="verifyQuantity(this, '.buy_list__quantity')">
+                      <button class="quantity-more"
+                          onclick="quantityChange('#{{ quantity_id }}', 'increase', '.buy_list__quantity'), buyListCalculatePrices('{{ product.product_id }}');">+</button>
+                  </div>
+              {{~ else ~}}
+                  <h3>Produto indisponível</h3>
+              {{~ end ~}}
+          </div>
+          <div class="buy_list__price" id="buy-list-product-price-{{ product_id }}">
+              {{~ if product_available ~}}
+                  {{ product_price prices: product_prices }}
+              {{~ else ~}}
+                  <span>Selecione uma variação.</span>
+              {{~ end ~}}
+          </div>
+      </div>
+  
+  </div>
 </div>

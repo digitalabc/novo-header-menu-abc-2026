@@ -447,17 +447,19 @@ function toggleModal(button) {
 }
 
 function createWarning(div) {
+  console.log("warning")
   let warning = document.createElement("div")
   warning.innerHTML = "Quantidade indisponível."
   warning.classList.add("warning")
 
   if (!(document.querySelector(".warning"))) {
       document.querySelector(div).append(warning)
-      setTimeout(() => { document.querySelector(".warning").remove() }, 2000);
+      setTimeout(() => { 
+        console.log("remove");document.querySelector(".warning").remove() }, 2000);
   }
 }
 
-function quantityChange(inputId, action, warningQuery) {
+function quantityChange(inputId, action) {
   const input = document.querySelector(inputId),
       val = Number(input.value),
       min = Number(input.getAttribute("min")),
@@ -469,8 +471,6 @@ function quantityChange(inputId, action, warningQuery) {
   } else if (action == "increase" && val < max) {
       input.value++;
       input.onchange();
-  } else if (val < min || val > max) {
-      createWarning(warningQuery)
   }
 }
 
@@ -482,16 +482,22 @@ function verifyQuantity(input, warningQuery) {
   val < min ? input.value = min : null
   val > max ? input.value = max : null
 
+  console.log(val < min)
+  console.log(val > max)
+
   if (val < min || val > max) {
-      createWarning(warningQuery)
+    console.log("teste")
+    createWarning(warningQuery)
   }
 }
 
 function updateFakeQuantity(input, fakeQuantityId) {
   const quant = Number(input.value),
         fakeQuantityInput = document.getElementById(fakeQuantityId)
-        boxPrice = fakeQuantityInput.dataset.boxprice
-  fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant).toFixed(2).replace(',', '.')} m²`;
+  if (fakeQuantityInput) {
+    const boxPrice = fakeQuantityInput.dataset.boxprice
+    fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant).toFixed(2).replace(',', '.')} m²`;
+  }
 }
 
 let getSiblings = function (e, tagName) {

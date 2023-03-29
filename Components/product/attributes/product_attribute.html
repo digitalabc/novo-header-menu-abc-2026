@@ -68,7 +68,7 @@
                 <div class="product__quantity--wrapper">
                     <label for="selected-quantity">Qtd.</label>
                     <div class="quantity {{ if product_is_box }}fake-quantity{{ end }}">
-                        <div class="quantity-less" onclick="quantityChange('#selected-quantity', 'decrease', '.product__quantity--wrapper')">-</div>
+                        <button class="quantity-less" onclick="quantityChange('#selected-quantity', 'decrease', '.product__quantity--wrapper')">-</button>
 
                         <input type="number" class="selected-quantity" id="selected-quantity" 
                         name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity');">
@@ -78,7 +78,7 @@
                         name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }}m²" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
                         {{~ end ~}}
 
-                        <div class="quantity-more" onclick="quantityChange('#selected-quantity', 'increase', '.product__quantity--wrapper')">+</div>
+                        <button class="quantity-more" onclick="quantityChange('#selected-quantity', 'increase', '.product__quantity--wrapper')">+</button>
                     </div>
 
                     {{~ if product_is_box ~}}

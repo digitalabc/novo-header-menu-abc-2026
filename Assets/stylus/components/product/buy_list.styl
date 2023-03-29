@@ -1,7 +1,9 @@
 .buy_list
   &__product
     display: flex;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
+    padding-bottom 25px
+    border-bottom 1px solid #D5D5D5
 
     br
       display: none;
@@ -34,19 +36,29 @@
       margin-bottom: 20px;
 
     input
-      width: 20px;
-      height: 20px;
-      outline: 1px solid #ffffff;
-      outline-offset: -2px;
+      display none
+      &:checked
+        +.fake-input
+          &:before
+            opacity 1
+
+    .fake-input
+      flex-shrink 0
+      width: 16px;
+      height: 16px;
       border: 1px solid $primary;
       cursor: pointer;
+      position relative
       transition: $transition;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-
-      &:checked, &:hover
-        background: $primary;
+      &:before
+        content ''
+        position absolute
+        inset 0
+        background-position center
+        background-repeat no-repeat
+        background-image url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAADkBRPiBRLiBRLjBhMFDkERAAAABHRSTlMAYO/wnx+whQAAAB9JREFUeNpjYGZkYGBkYmBkYQQiBiANJKEUVBCihBkABPIAPKjQyb8AAAAASUVORK5CYII=")
+        opacity 0
+        transition: $transition;
 
     a
       h5
@@ -54,6 +66,9 @@
         font-weight: 700;
         font-size: 18px;
         line-height: 24px;
+        transition: $transition;
+        &:hover
+          color $primary
 
         @media mobile
           font-size: 14px;
@@ -62,56 +77,19 @@
     margin: 0 20px 0 0;
 
     img
-      max-width: 120px;
-      aspect-ratio: 120 / 210;
+      max-width: 90px;
       object-fit: cover;
 
   &__attributes
     max-width: 275px;
     width: 100%;
 
-  .attribute-selections
-    h3
-      margin-bottom: 12px;
-      color: #000000;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 19px;
+    .attribute-selections
+      margin-bottom 0
+      padding-bottom 0
+      border-bottom none
+      
 
-    > div
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      &:not(:last-child)
-        margin-bottom: 30px;
-
-  .attribute
-    position: relative;
-    input
-      width: 40px;
-      height: 40px;
-      border: 1px solid #000000;
-      cursor: pointer;
-      transition: $transition;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-
-      &:checked
-        border-color: $secondary;
-        background: $secondary;
-
-    label
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      color: #000000;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 16px;
-      cursor: pointer;
-      transform: translate(-50%, -50%);
 
   div.buy_list__quantity
     gap: 30px;
@@ -193,29 +171,37 @@
       small
         display: none;
 
-  button.buy-button
+  .buy-button
+    display none
+
+  .add-to-cart-button
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 50px;
-    background: $primary;
+    height: 40px;
+    background: #0FA848
     cursor: pointer;
     transition: $transition;
-
-    span
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 21px;
-      transition: $transition;
+    color: #fff
+    font-weight: 700;
+    font-size: 14px;
+    width 100%
+    @media (max-width 449px)
+      margin-bottom 10px
+    @media (min-width 450px)
+      width: 245px;
 
     &[disabled]
-      background: #656565;
+      background: #B4B4B4;
       cursor: not-allowed;
 
     &:not([disabled]):hover
-      background: $secondary;
+      background: $primary;
 
-      span
-        color: #000000;
+    &:not([disabled]).hollow
+      background #fff
+      border 1px solid #0FA848
+      color #0FA848
+      &:hover
+        background: #0FA848
+        color #fff

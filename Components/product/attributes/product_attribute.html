@@ -103,10 +103,6 @@
     {{~ end ~}}
 {{~ else ~}}
     {{~ if product.buy_list_id ~}}
-        <div class="row">
-            <div class="col-6">
-                {{ product_buy_button add_to_cart_text: "FINALIZAR COMPRA" buy_text: "FINALIZAR COMPRA" add_to_cart_click: "buyListAddToCartClick()" buy_click: "buyListBuyClick()" }}
-            </div>
-        </div>
+        {{ product_buy_button add_to_cart_text: "Comprar selecionados" buy_text: "Comprar selecionados" add_to_cart_click: "buyListAddToCartClick()" buy_click: "buyListBuyClick()" }}
     {{~ end ~}}
 {{~ end ~}}

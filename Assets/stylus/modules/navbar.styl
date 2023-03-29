@@ -6,12 +6,46 @@
     padding-block 15px
     @media mobile
       flex-wrap wrap
+      padding-block 25px
 
   &__collapse
     display flex
     justify-content: flex-start;
     @extends $container
-  
+  &__logo
+    @media mobile
+      max-width 80px
+  &__right, &__search
+    @media desktop
+      flex: 1;
+
+  &__right
+    justify-content: flex-end;
+    gap 30px
+    @media mobile
+      gap 20px
+
+  &__search
+    @media mobile
+      width 100%
+      order 10
+      margin-top 20px
+
+  &__lojas
+    font-weight 500
+    display flex
+    align-items center
+    gap 5px
+    color $black
+    transition $transition
+    @media mobile
+      display none
+    svg
+      fill $primary
+    &:hover
+      color $primary
+
+
   &__wrapper
     width 100%
     display: flex;
@@ -144,33 +178,3 @@
           transition $transition
           &:hover
             color $primary
-
-  &__right, &__search
-    @media desktop
-      flex: 1;
-
-  &__right
-    justify-content: flex-end;
-    gap 30px
-    @media mobile
-      gap 20px
-
-  &__search
-    @media mobile
-      width 100%
-      order 10
-
-  &__lojas
-    font-weight 500
-    display flex
-    align-items center
-    gap 5px
-    color $black
-    transition $transition
-    @media mobile
-      display none
-    svg
-      fill $primary
-    &:hover
-      color $primary
-

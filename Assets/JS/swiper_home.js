@@ -1,5 +1,7 @@
 var swiper = new Swiper(".fullbanner .swiper", {
-  slidesPerView: 1
+  autoplay: {
+    delay: 3000,
+  },
 });
 
 if(MOBILE.matches) {

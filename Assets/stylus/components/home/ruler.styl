@@ -1,13 +1,20 @@
 .ruler
-  overflow hidden
   margin 0 auto
 
   &__list
     display flex
     justify-content space-between
     align-items center
-    overflow hidden
-
+    overflow auto
+    white-space nowrap
+    gap 35px
+    @media mobile
+      margin 0 -15px
+      padding 0 15px
+      &::-webkit-scrollbar
+        height 0
+  &__item
+    flex-shrink 0
   &__text
     display block
     color #5D5D5D
@@ -27,3 +34,4 @@
 
       svg
         display block
+        flex-shrink 0

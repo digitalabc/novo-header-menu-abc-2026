@@ -83,7 +83,12 @@
             <!-- Banners Oportunidades -->
             <section class="banner-oportunidades">
                 <h2>{{ "Seleção de oportunidades" | lang }}</h2>
-                {{ banner carousel: false banners: data.hotsite.banners position: "Centro" }}
+                <div class="desktop">
+                  {{ banner carousel: false banners: data.hotsite.banners position: "Centro" }}
+                </div>
+                <div class="mobile">
+                  {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                </div>
             </section>
 
             <!-- Vitrine 1 -->
@@ -655,10 +660,10 @@
               </section>  
 
               <!-- Nosso Blog -->
-              <section class="blog">
+              <section class="blog swiper">
                 <h2 class="blog__title">Nosso Blog</h2>
-                <div class="blog__list">
-                    <div class="blog__item">
+                <div class="blog__list swiper-wrapper">
+                    <div class="blog__item swiper-slide">
                         <a href="#">
                             <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
                             <div class="blog__content">
@@ -670,7 +675,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="blog__item">
+                    <div class="blog__item swiper-slide">
                         <a href="#">
                             <img src="https://via.placeholder.com/310x245" alt="Dia dos Pais Campeão com a ABC da Construção"/> 
                             <div class="blog__content">
@@ -682,7 +687,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="blog__item">
+                    <div class="blog__item swiper-slide">
                         <a href="#">
                             <img src="https://via.placeholder.com/310x245" alt="O que não pode faltar no banheiro moderno"/> 
                             <div class="blog__content">
@@ -694,7 +699,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="blog__item">
+                    <div class="blog__item swiper-slide">
                         <a href="#">
                             <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
                             <div class="blog__content">

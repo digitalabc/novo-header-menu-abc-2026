@@ -1,8 +1,20 @@
+// Home - Fullbanner
+.fullbanner
+  @media mobile
+    padding-bottom 30px !important
+
 // Home - Banner Oportunidades
 .banner-oportunidades
+  .swiper:not(.swiper-initialized)
+    @media mobile
+      ul
+        gap 10px
+        li
+          flex 0 0 calc((100%/2.6) - 5px)
   ul
     display flex
-    gap 20px
+    @media desktop
+      gap 20px
     li
       overflow: hidden;
       position relative

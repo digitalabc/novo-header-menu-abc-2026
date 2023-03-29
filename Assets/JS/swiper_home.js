@@ -2,6 +2,17 @@ var swiper = new Swiper(".fullbanner .swiper", {
   slidesPerView: 1
 });
 
+if(MOBILE.matches) {
+  var swiper = new Swiper(".blog", {
+    slidesPerView: 1.15
+  });
+}
+
+var swiper = new Swiper(".banner-oportunidades .mobile .swiper:first-child", {
+  spaceBetween: 10,
+  slidesPerView: 2.6
+});
+
 var swiper = new Swiper(".banner-grid .swiper:first-child", {
   spaceBetween: 20,
   slidesPerView: 1,
@@ -68,11 +79,12 @@ var swiper = new Swiper(".showcase-1 .swiper", {
     nextEl: '.showcase-1 .swiper-button-next',
     prevEl: '.showcase-1 .swiper-button-prev'
   },
-  spaceBetween: 5,
   slidesPerView: 2.1,
+  spaceBetween: 5,
   breakpoints: {
     768: {
-      slidesPerView: 3.1
+      slidesPerView: 3.1,
+      spaceBetween: 5,
     },
     991: {
       slidesPerView: 4,

@@ -40,7 +40,7 @@ end~}}
             <ul>
               {{~ for installment in plan.installments~}}
               <li>
-                <strong>{{installment.number}}x</strong> de <strong>{{installment.value | math.format "c" "pt-BR"}}</strong>  {{if installment.fees}}com
+                <strong>{{installment.number}}x</strong> de <strong>{{installment.value | math.format "c" "pt-BR"  |  string.replace "R$" "R$ " }}</strong>  {{if installment.fees}}com
                 juros{{else}}sem juros{{end}}
               </li>
               {{~ end ~}}

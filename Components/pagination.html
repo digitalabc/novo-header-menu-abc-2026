@@ -11,8 +11,6 @@
         pagination products: data..products page_size: page_size current_page: current_page
 ## }}
 
-{{ products | debug.log }} 
-
 {{~ if products?.page_info # Pagination by cursor ~}}
 {{~ if (products.page_info.has_next_page) ~}}
 <input type="hidden" class="end-cursor" value='{{ products.page_info.end_cursor }}'>

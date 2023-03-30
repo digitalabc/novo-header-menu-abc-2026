@@ -13,7 +13,7 @@
         <div class="product-shipping__quote">
             <strong>{{ quote.name }}</strong>
             <br>
-            <span>{{ quote.value | math.format "c" "pt-BR" }}</span>
+            <span>{{ quote.value | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</span>
             <br>
             <small>Em até {{ quote.deadline }} dias úteis</small>
         </div>

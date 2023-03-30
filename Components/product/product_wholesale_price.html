@@ -11,7 +11,7 @@
         {{ for wholesale_p in prices.wholesale_prices}}
             <div class="col-sm-6">
                 <label class="btn btn-outline-success radio-label" onclick="applyWholesalePrice('{{wholesale_p.quantity}}')">
-                    Economize {{ (prices.price - wholesale_p.price) * wholesale_p.quantity | math.format "c" "pt-BR" }} na compra de {{ wholesale_p.quantity }} unidades.
+                    Economize {{ (prices.price - wholesale_p.price) * wholesale_p.quantity | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }} na compra de {{ wholesale_p.quantity }} unidades.
                 </label>
             </div>
         {{ end }}

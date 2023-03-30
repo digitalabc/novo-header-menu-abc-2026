@@ -10,11 +10,11 @@
 ## }}
 <div class="spot-price">
     {{ if prices.list_price }}
-        {{~ if prices.discount_percentage > 0 ~}}
-            <p><s>{{ prices.list_price | math.format "c" "pt-BR" }}</s></p>
+        {{~ if prices.price != prices.list_price ~}}
+            <p><s>{{ prices.list_price | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</s></p>
         {{~ end ~}}
         <h3>
-          <span>{{ prices.price | math.format "c" "pt-BR" }}</span>
+          <span>{{ prices.price | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
           {{~ else ~}}
@@ -23,7 +23,7 @@
         </h3>
     {{ else }}
         <h3>
-          <span>{{ prices.price | math.format "c" "pt-BR" }}</span>
+          <span>{{ prices.price | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
           {{~ else ~}}2
@@ -33,7 +33,7 @@
     {{ end }}
     {{~ if product_is_box && page_product ~}}
       <div class="box-price">
-        Neste produto a m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" }}</span>
+        Neste produto a m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</span>
       </div>
     {{~ end ~}}
     {{~ if page_product ~}}

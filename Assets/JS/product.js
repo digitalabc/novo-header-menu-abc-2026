@@ -599,62 +599,61 @@ function choosePickUpState(button) {
   selectedStoresList.style.display = 'block';
 }
 
-(function calculatorFromOldLayout(){
-  function mascara(o, f) {
-    v_obj = o;
-    v_fun = f;
-    setTimeout("execmascara()", 2);
-    setTimeout("fMetro2()", 2);
-  }
-  function execmascara() {
-      v_obj.value = v_fun(v_obj.value);
-  }
-  function mascara_metros(v) {
-      v = v.replace(/\D/g, "");
-      v = v.replace(/(\d*)(\d[0-9]{1})/, "$1.$2");
-      v = parseFloat(v);
-      v = (v).toFixed(2);
-      return v;
-  }
+// Funções da calculadora do layout antigo
+function mascara(o, f) {
+  v_obj = o;
+  v_fun = f;
+  setTimeout("execmascara()", 2);
+  setTimeout("fMetro2()", 2);
+}
+function execmascara() {
+    v_obj.value = v_fun(v_obj.value);
+}
+function mascara_metros(v) {
+    v = v.replace(/\D/g, "");
+    v = v.replace(/(\d*)(\d[0-9]{1})/, "$1.$2");
+    v = parseFloat(v);
+    v = (v).toFixed(2);
+    return v;
+}
 
-  function fMetro2() {
-      var largura = document.getElementById("calculator-width").value;
-      var comprimento = document.getElementById("calculator-length").value;
-      var metro2 = largura * comprimento;
-      metro2 = metro2.toFixed(2);
-      m2ParseBox(metro2);
-      document.getElementById("squareMeters").innerHTML = metro2 + 'm²';
+function fMetro2() {
+    var largura = document.getElementById("calculator-width").value;
+    var comprimento = document.getElementById("calculator-length").value;
+    var metro2 = largura * comprimento;
+    metro2 = metro2.toFixed(2);
+    m2ParseBox(metro2);
+    document.getElementById("squareMeters").innerHTML = metro2 + 'm²';
 
-  }
-  function m2ParseBox(m2) {
-      var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
-      
-      var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
-      var m2PorCaixa = precoM2 / precoProduto;
-
-      m2PorCaixa = m2PorCaixa.toFixed(2);
-      calcAmountBoxes = m2 / m2PorCaixa;
-      var aux = m2 % m2PorCaixa;
-      if (aux = !0) {
-          calcAmountBoxes = Math.trunc(calcAmountBoxes) + 1;
-      }
-      document.getElementById("amountBoxes").innerHTML = calcAmountBoxes > 1 ? calcAmountBoxes + ' caixas' : calcAmountBoxes + ' caixa';
-  }
-
-  function calcAtualizar() {
+}
+function m2ParseBox(m2) {
     var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
     
     var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
     var m2PorCaixa = precoM2 / precoProduto;
-    var quant = parseInt(document.querySelector('#amountBoxes').textContent.split(' ')[0]);
-    var m2total = (m2PorCaixa * quant).toFixed(2).replace('.', ',');
 
-    document.querySelector('.fake-quantity').value = `${(quant == 1 ? '1 caixa' : quant + 'caixas')} = ${m2total} m²`;
+    m2PorCaixa = m2PorCaixa.toFixed(2);
+    calcAmountBoxes = m2 / m2PorCaixa;
+    var aux = m2 % m2PorCaixa;
+    if (aux = !0) {
+        calcAmountBoxes = Math.trunc(calcAmountBoxes) + 1;
+    }
+    document.getElementById("amountBoxes").innerHTML = calcAmountBoxes > 1 ? calcAmountBoxes + ' caixas' : calcAmountBoxes + ' caixa';
+}
 
-    document.getElementById('selected-quantity').value = quant
-    
-    document.getElementById('selected-quantity').onchange();
+function calcAtualizar() {
+  var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
+  
+  var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
+  var m2PorCaixa = precoM2 / precoProduto;
+  var quant = parseInt(document.querySelector('#amountBoxes').textContent.split(' ')[0]);
+  var m2total = (m2PorCaixa * quant).toFixed(2).replace('.', ',');
 
-    document.querySelector(".calculator .uk-close").click()
-  }
-})()
+  document.querySelector('.fake-quantity').value = `${(quant == 1 ? '1 caixa' : quant + 'caixas')} = ${m2total} m²`;
+
+  document.getElementById('selected-quantity').value = quant
+  
+  document.getElementById('selected-quantity').onchange();
+
+  document.querySelector(".calculator .uk-close").click()
+}

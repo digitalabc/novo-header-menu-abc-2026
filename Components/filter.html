@@ -56,7 +56,7 @@
         </div>
         {{ end }}
         {{~ if aggregations.minimum_price != aggregations.maximum_price ~}}
-        <div class="filter__item price-range">
+        <div class="filter__item" id="price-range">
             {{ if settings.filter.price_type == "price_field_filter" }}
             {{ price_field_filter minimum_price: aggregations.minimum_price maximum_price: aggregations.maximum_price }}
             {{ else if settings.filter.price_type == "price_range_filter" }}

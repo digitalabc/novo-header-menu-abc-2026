@@ -40,7 +40,7 @@
       {{ shipping_width = data.checkout.subtotal/free_shipping * 100 + "%" }}
 
       <div class="shipping__title">
-        Faltam {{ (free_shipping - data.checkout.subtotal) | math.format "c" "pt-BR" }} para ganhar o <strong>Frete Grátis</strong>
+        Faltam {{ (free_shipping - data.checkout.subtotal) | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }} para ganhar o <strong>Frete Grátis</strong>
       </div>
 
       <div class="shipping__bar">
@@ -63,7 +63,6 @@
     {{~ if productsCount > -1 ~}} 
       <ul class="item__list">
           {{~ for product in products ~}}
-          {{ product | debug.log }} 
           <li class="item__item">
               <img src={{product.image_url | string.replace "w=70&h=70" "w=90&h=90"}} alt="">
               <div class="item__info">
@@ -73,7 +72,7 @@
                       Qtd - {{ product.quantity }}
                   </div>
                   <div class="price">
-                      {{ product.price * product.quantity | math.format "c" "pt-BR" }}
+                      {{ product.price * product.quantity | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}
                   </div>
                 </div>
               </div>
@@ -82,7 +81,7 @@
           {{~ end ~}}
       </ul>
       <h5 class="fullprice ">
-        Subtotal <strong>{{ data.checkout.subtotal | math.format "c" "pt-BR" }}</strong>
+        Subtotal <strong>{{ data.checkout.subtotal | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</strong>
       </h5>
       <a href={{checkoutUrl}} class="gotocheckout">
         Finalizar compra

@@ -9,7 +9,7 @@
 </head>
 
 <body class="product">
-    <header>
+    <header id="header">
         {{ navbar menu_groups: common.menu_groups position: "Topo Header" }}
     </header>
 
@@ -31,7 +31,6 @@
     {{~ for category in product.product_categories ~}}
       {{ case_insensitive_category_name = category.name | string.downcase }}
       {{~ if case_insensitive_category_name == "argamassas" ~}}
-        {{ category | debug.log }} 
         {{ product_is_pick_up = true }}
       {{~ end ~}}
     {{~ end ~}}

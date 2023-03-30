@@ -27,11 +27,8 @@
   &__name
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
-    gap: 5px;
-
-    @media mobile
-      margin-bottom: 20px;
+    margin-bottom: 15px;
+    gap: 3px;
 
     input
       display none
@@ -60,16 +57,11 @@
 
     a
       h5
-        color: #010101;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 13px;
+        line-height: 16px;
         transition: $transition;
         &:hover
           color $primary
-
-        @media mobile
-          font-size: 14px;
 
   &__image
     margin: 0 20px 0 0;
@@ -79,15 +71,16 @@
       object-fit: cover;
 
   &__attributes
-    margin-bottom 15px
-
     .attribute-selections
       margin-bottom 0
       padding-bottom 0
       border-bottom none
+      .attribute
+        margin-bottom 15px !important
+      h3
+        font-size 12px
+        margin-bottom 7px
       
-
-
   &__quantity
     
     .warning

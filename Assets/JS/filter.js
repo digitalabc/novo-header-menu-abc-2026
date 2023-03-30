@@ -121,11 +121,13 @@ function applyPriceFilterUrl(filter) {
 
 var output = document.getElementById("max-value-text");
 const filterInput = document.getElementById("maximum-price-filter")
+const filterPriceDiv = document.getElementById("price-range")
 
 function filterChange(filterVar) {
     var value = (filterVar.value - filterVar.min) / (filterVar.max - filterVar.min) * 100;
     filterVar.style.background = "linear-gradient(to right, #E30613 0%, #E30613 " + value + "%, #F7F7F7 " + value + "%, #F7F7F7 100%";
     output.innerHTML = `R$${filterVar.value},00`
+    filterPriceDiv.style.display = "block"
 }
 
 if (filterInput) {

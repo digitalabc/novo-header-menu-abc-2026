@@ -15,7 +15,7 @@
 {{ page_size = data.search.products_by_offset?.page_size ?? data.search.products?.total_count }}
 <body class="search {{ if page_size == 0 }}empty{{ end }}">
   
-    <header>
+    <header id="header">
       {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
     </header>
 

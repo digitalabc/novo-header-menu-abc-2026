@@ -1189,10 +1189,14 @@ header {
   z-index: 999;
   width: 100%;
   background: #fff;
+  transition: all 0.2s ease-in-out;
 }
 @media screen and (min-width: 992px) {
   header {
     position: sticky;
+  }
+  header.scroll-down {
+    top: -30px;
   }
 }
 @media screen and (min-width: 992px) {
@@ -1370,6 +1374,10 @@ header {
   color: #5d5d5d;
   font-weight: 300;
   font-size: 14px;
+}
+.navbar__wrapper .nav-item--nv1 > .nav-link.highlight {
+  color: #392f2d;
+  font-weight: 400;
 }
 @media screen and (max-width: 991px) {
   .navbar__wrapper .nav-item--nv1 > .nav-link {
@@ -2715,6 +2723,9 @@ header {
   transition: all 0.2s ease-in-out;
 }
 @media screen and (min-width: 992px) {
+  .blog__item {
+    flex-shrink: 1;
+  }
   .blog__item:hover {
     border: 1px solid #e30613;
   }
@@ -2926,7 +2937,7 @@ section.newsletter--home .newsletter__alert {
     max-height: 400px;
   }
 }
-.filter__item.price-range {
+.filter__item#price-range {
   display: none;
 }
 @media screen and (max-width: 991px) {
@@ -3283,13 +3294,8 @@ section.newsletter--home .newsletter__alert {
 .buy_list__name {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
-  gap: 5px;
-}
-@media screen and (max-width: 991px) {
-  .buy_list__name {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 15px;
+  gap: 3px;
 }
 .buy_list__name input {
   display: none;
@@ -3317,19 +3323,12 @@ section.newsletter--home .newsletter__alert {
   transition: all 0.2s ease-in-out;
 }
 .buy_list__name a h5 {
-  color: #010101;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 13px;
+  line-height: 16px;
   transition: all 0.2s ease-in-out;
 }
 .buy_list__name a h5:hover {
   color: #e30613;
-}
-@media screen and (max-width: 991px) {
-  .buy_list__name a h5 {
-    font-size: 14px;
-  }
 }
 .buy_list__image {
   margin: 0 20px 0 0;
@@ -3338,13 +3337,17 @@ section.newsletter--home .newsletter__alert {
   max-width: 90px;
   object-fit: cover;
 }
-.buy_list__attributes {
-  margin-bottom: 15px;
-}
 .buy_list__attributes .attribute-selections {
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
+}
+.buy_list__attributes .attribute-selections .attribute {
+  margin-bottom: 15px !important;
+}
+.buy_list__attributes .attribute-selections h3 {
+  font-size: 12px;
+  margin-bottom: 7px;
 }
 .buy_list__quantity .warning {
   position: absolute;

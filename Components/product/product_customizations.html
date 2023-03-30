@@ -3,7 +3,7 @@
         <h4>Personalize seu produto:</h4>
         {{ for customization in customizations }}
             <div>
-                <p>{{customization.name}} - ({{ customization.cost | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }})</p>
+                <p>{{customization.name}} - ({{ customization.cost | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }})</p>
                 {{~ case customization.type ~}}
                     {{~ when "Valores Predefinidos" ~}}
                         <select id="customization-{{ customization.customization_id }}" class="form-select" 

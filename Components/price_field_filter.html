@@ -9,8 +9,8 @@
 
 <h5>Preço</h5>
 <div class="range-values">
-    <div id="min-value-text">{{ minimum_price | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</div>
-    <div id="max-value-text">{{ maximum_price | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</div>
+    <div id="min-value-text">{{ minimum_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</div>
+    <div id="max-value-text">{{ maximum_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</div>
 </div>
 <div class="range-slider">
     <input type="hidden" class="form-control" id="minimum-price-filter" min="{{ minimum_price }}"

@@ -52,7 +52,7 @@
                 {{~ end ~}}
             </table>
             <br>
-            <h5>Total: {{ data.checkout.subtotal | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}</h5>
+            <h5>Total: {{ data.checkout.subtotal | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</h5>
         {{~ else ~}}
         <div class="empty-mini-cart-message"><h5>O carrinho está vazio!</h5></div>            
         {{~ end ~}}

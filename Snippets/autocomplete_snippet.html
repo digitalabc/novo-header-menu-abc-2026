@@ -24,7 +24,7 @@
                 {{ product.product_name }}
             </p>
             <div class="autocomplete-price">
-                {{ product.prices.price | math.format "c" "pt-BR"  |  string.replace "R$" "R$ "  }}
+                {{ product.prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
             </div>
         </div>
     </div>

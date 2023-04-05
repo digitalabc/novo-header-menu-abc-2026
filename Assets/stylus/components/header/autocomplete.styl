@@ -1,10 +1,5 @@
 .autocomplete
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-
-  @media desktop
-    position: relative;
+  position: relative;
 
   &-item
     overflow: hidden;
@@ -41,9 +36,11 @@
 
   #autocomplete-list
     position: absolute;
+    top: 100%;
     z-index: 9;
     background: #ffffff;
-    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    @media desktop
+      box-shadow: 0 3px 6px rgba(0,0,0,.16);
 
     > *
       display block

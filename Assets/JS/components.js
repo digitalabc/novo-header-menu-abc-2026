@@ -55,20 +55,30 @@ function setProductFloating(scrollTop, offsetToShowProduct, offsetToHideProduct)
   
 }
 
+function setFloatingNavMobile(scrollTop, offsetToShowMobileNav, offsetToHideMobileNav) {
+  body.classList.remove('show-mobile-nav');
+  console.log(scrollTop, offsetToShowMobileNav, offsetToHideMobileNav)
+  if (scrollTop > offsetToShowMobileNav && scrollTop < offsetToHideMobileNav) {
+    body.classList.add('show-mobile-nav');
+  }
+}
+
 window.addEventListener("load", () => {
   var lastScrollTop =  -1,
       scrollTop = window.pageYOffset
 
   const offsetToShowProduct = productButtons ? productButtons.getBoundingClientRect().top + scrollTop : null
-  const offsetToHideProduct = productButtons ? footer.getBoundingClientRect().top + scrollTop - window.innerHeight : null
+  const offsetToShowMobileNav = 200
+  const footerHeight = footer.getBoundingClientRect().top + scrollTop - window.innerHeight
 
   window.addEventListener('scroll', function () {
     const newSt = window.pageYOffset;
 
     setScroll(newSt, lastScrollTop);
+    setFloatingNavMobile(newSt, offsetToShowMobileNav, footerHeight);
 
     if (productButtons) {
-      setProductFloating(newSt, offsetToShowProduct, offsetToHideProduct);
+      setProductFloating(newSt, offsetToShowProduct, footerHeight);
     }
     
     lastScrollTop = newSt;

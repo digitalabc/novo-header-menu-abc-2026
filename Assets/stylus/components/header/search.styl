@@ -24,15 +24,44 @@
     place-items center
     cursor pointer
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 0;
     border: none;
     background: none;
-    transform: translateY(-50%);
     color $primary
-    transition $transition
+    transition color .2s ease-in-out
     &:hover
       color $black
 
+  &__close
+    @media desktop
+      display none
+
+.show-mobile-nav
+  .search
+    &__form
+      padding 20px 15px
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      background: #fff;
+      top -100vh
+      height: 500px;
+      transition transform 0.2s ease-in-out
+      .show-search&
+        transform translateY(100vh)
+
+    &__submit
+      top: 20px;
+      right: 15px;
+
+    &__close
+      background rgba(0,0,0,0.3)
+      content ''
+      position absolute
+      top 100%
+      left 0
+      width 100%
+      height calc(100vh - 500px)
 
 @import "./autocomplete.styl";

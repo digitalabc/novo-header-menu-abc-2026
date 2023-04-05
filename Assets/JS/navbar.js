@@ -195,3 +195,15 @@ function handleBackButtonClick(event) {
 
   dropdown.classList.remove("open")
 }
+
+function showMobileSearch(){
+  const body = document.body
+  body.classList.add("show-search")
+}
+
+function hideMobileSearch(event){
+  console.log(event.target)
+  console.log(event.currentTarget)
+  const body = document.body
+  body.classList.remove("show-search")
+}

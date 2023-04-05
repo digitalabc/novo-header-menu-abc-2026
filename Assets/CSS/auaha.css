@@ -3643,14 +3643,9 @@ section.newsletter--home .newsletter__alert {
   border: 2px solid #eaeaea;
   margin-bottom: 10px;
 }
-.gallery-slider .swiper-slide {
-  width: auto;
-}
 .gallery-slider .swiper-slide img {
   display: block;
   margin: 0 auto;
-  width: auto;
-  height: 100%;
 }
 .gallery-thumbs {
   padding: 0;

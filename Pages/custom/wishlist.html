@@ -14,8 +14,8 @@
     }
 </style>
     <body>
-        <header id="header">
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
         <input type="hidden" id="login-url" value="{{ store.urls.checkout }}Login/Authenticate?returnUrl=">
         <div id="wishlist-body" class="wishlist-body container">

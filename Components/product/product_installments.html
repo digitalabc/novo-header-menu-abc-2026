@@ -27,28 +27,32 @@ end~}}
 
 <section class="product__installments" id="installments-modal" tabindex="-1" aria-labelledby="installments-modal-label">
   <div class="payment">
-    <h4 class="payment__title" id="installments-modal-label" onclick="toggleOptions(this)">ver mais formas de pagamento
-    </h4>
-    <div class="payment__body" style="max-height: 0; overflow: hidden;">
-      <ul class="payment__list" id="myTab" role="tablist">
-        {{~ for plan in installment_plans ~}}
-        <li class="payment__options" role="presentation">
-          <button class="nav-link" id='{{plan.name|string.remove " "}}-tab'
-            onclick="toggleModal(this)">{{plan.display_name}}</button>
-          <div style="max-height: 0; overflow: hidden;" class="tab-pane fade" id='{{plan.name|string.remove " "}}'
-            role="tabpanel" aria-labelledby='{{plan.name|string.remove " "}}-tab'>
-            <ul>
-              {{~ for installment in plan.installments~}}
-              <li>
-                <strong>{{installment.number}}x</strong> de <strong>{{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }}</strong>  {{if installment.fees}}com
-                juros{{else}}sem juros{{end}}
-              </li>
-              {{~ end ~}}
-            </ul>
-          </div>
-        </li>
-        {{~ end ~}}
-      </ul>
-    </div>
+    <button class="payment__button" id="installments-modal-label" onclick="togglePayment(this)">
+      Ver formas de pagamento
+      <svg xmlns="http://www.w3.org/2000/svg" width="7.75" height="5" viewBox="0 0 7.75 5">
+        <path id="Path_23324" data-name="Path 23324" d="M.623,0A.534.534,0,0,1,.941.139Q2.864,1.784,4.784,3.432a.546.546,0,0,1,0,.873Q2.849,5.96.915,7.611a.55.55,0,1,1-.7-.851Q1.86,5.354,3.5,3.949c.078-.067.084-.1,0-.165Q1.931,2.439.358,1.09A.772.772,0,0,1,.04.667.561.561,0,0,1,.623,0Z" transform="translate(7.75 0) rotate(90)"/>
+      </svg>
+    </button>
+    <ul class="payment__list">
+      {{~ for plan in installment_plans ~}}
+      <li class="option">
+        <button class="option__button" onclick="toggleOption(this)">
+          {{plan.display_name}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="7.75" height="5" viewBox="0 0 7.75 5">
+            <path id="Path_23324" data-name="Path 23324" d="M.623,0A.534.534,0,0,1,.941.139Q2.864,1.784,4.784,3.432a.546.546,0,0,1,0,.873Q2.849,5.96.915,7.611a.55.55,0,1,1-.7-.851Q1.86,5.354,3.5,3.949c.078-.067.084-.1,0-.165Q1.931,2.439.358,1.09A.772.772,0,0,1,.04.667.561.561,0,0,1,.623,0Z" transform="translate(7.75 0) rotate(90)"/>
+          </svg>
+        </button>
+        <div class="option__list">
+          <ul>
+            {{~ for installment in plan.installments~}}
+            <li>
+              {{installment.number}}x de {{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} {{if installment.fees}}com juros{{else}}sem juros{{end}}
+            </li>
+            {{~ end ~}}
+          </ul>
+        </div>
+      </li>
+      {{~ end ~}}
+    </ul>
   </div>
 </section>

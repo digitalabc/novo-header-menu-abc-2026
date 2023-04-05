@@ -14,6 +14,13 @@
 {{~ if menu_group ~}}
 {{~ top_level = menus | group.get null ~}}
 {{~ end ~}}
+{{ categories | debug.log }} 
+{{~ grouped_categories = categories | group.by @(do; ret $0.parent_category_id;end) ~}}
+{{~ if grouped_categories ~}}
+  {{~ main_categories = grouped_categories | group.get 0 | array.sort "name" ~}}
+{{~ end ~}}
+{{ main_categories | debug.log }} 
+
 {{ topbar }}
 <nav class="navbar">
     <div class="navbar__container uk-width-1-1 uk-flex uk-flex-middle uk-flex-between">
@@ -68,11 +75,28 @@
     {{ ## Menu desktop ## }}
     <div class="navbar__collapse desktop" id="navbarSupportedContent">
         <ul class="navbar__wrapper">
+            <li class="nav-all__item nav-all__item--root">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10">
+                <g id="Group_3451" data-name="Group 3451" transform="translate(-2349 -177)">
+                  <rect id="Rectangle_820" data-name="Rectangle 820" width="12" height="2" transform="translate(2349 177)" fill="#e30613"/>
+                  <rect id="Rectangle_821" data-name="Rectangle 821" width="12" height="2" transform="translate(2349 181)" fill="#e30613"/>
+                  <rect id="Rectangle_822" data-name="Rectangle 822" width="12" height="2" transform="translate(2349 185)" fill="#e30613"/>
+                </g>
+              </svg>
+              Todas as categorias
+              <div class="nav-all__dropdown nav-all__dropdown--root">
+                <ul class="nav-all__list nav-all__list--root">
+                  {{~ for category in main_categories ~}}
+                    {{ nav_item_all category: category level: 1 max_level: 2}}
+                  {{~ end ~}}
+                </ul>
+              </div>
+            </li>
             {{~ if top_level ~}}
-            {{~ for top_menu in top_level ~}}
-            {{ nav_item menus: menu_group.menus current_menu: top_menu }}
+            {{~ for top_menu in top_level limit:5 ~}}
+              {{ nav_item menus: menu_group.menus current_menu: top_menu }}
             {{~ end ~}}
-            <li class="nav-item nav-item--nv1 uk-flex uk-flex-middle highlight">
+            <li class="nav-item nav-item--nv1 highlight">
               <a class="nav-link highlight" href="/ofertas">Promoções</a>
             </li>
             {{~ end ~}}

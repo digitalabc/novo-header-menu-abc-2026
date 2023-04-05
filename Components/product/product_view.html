@@ -6,6 +6,7 @@
         product_view product: product
 ## }}
 {{~ selected_variant = product.attribute_selections?.selected_variant ~}}
+{{~ product_is_kit = product.buy_list_id ?? true ~}}
 <section class="product__image">
     {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
         {{ product_gallery product: product images: product.attribute_selections.selected_variant.images }}
@@ -27,7 +28,7 @@
     </span>
     {{~ installment_plans = product.prices.installment_plans ~}}
     {{~ discount_percentage = 0 ~}}
-    <div class="product__prices">
+    <div class="product__prices" id="product-prices-div">
         {{~ if selected_variant ~}}
         {{~ installment_plans = selected_variant.prices.installment_plans ~}}
         {{~ product_price prices: selected_variant.prices page_product: true product_is_box: product_is_box ~}}
@@ -39,7 +40,7 @@
         {{~ product_installments installments: installment_plans ~}}
     </div>
     <!-- Buy list -->
-    {{~ if product.buy_list_id ~}}
+    {{~ if product_is_kit ~}}
         <section class="buy_list__content">
             {{ for product in product.buy_list_products}}
                 <div id="buy-list-product-div-{{ product.product_id }}" class="buy_list__product"  product-id="{{ product.product_id }}"></div>
@@ -51,13 +52,12 @@
     {{ product_attribute product: product product_is_box: product_is_box product_is_pick_up: product_is_pick_up }}
 
     <!-- Shippng -->
-    <div class="product__shipping" id="product-shipping">
-        {{~ if selected_variant ~}}
-            {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
-        {{~ else ~}}
-            {{ product_shipping_quotes product_variant_id: product.product_variant_id }}
-        {{~ end ~}}
-    </div>
+    {{~ if selected_variant ~}}
+        {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
+    {{~ else if product_is_kit ~}}
+    {{ else }}
+        {{ product_shipping_quotes product_variant_id: product.product_variant_id }}
+    {{~ end ~}}
 
     <!-- Pick up -->
     <div class="product__pick-up" id="product-pick-up">

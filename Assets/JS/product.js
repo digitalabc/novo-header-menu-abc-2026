@@ -433,21 +433,26 @@ async function backInStockOnClick(e){
     if(success) showAlert('Email cadastrado com sucesso!');
 }
 
-function toggleOptions(title) {
-  const modal = title.nextElementSibling;
-  modal.style.maxHeight == "0px" ? modal.style.maxHeight = "600px" : modal.style.maxHeight = "0px"
+function toggleSlide(elem){
+  if (!elem.style.height) {
+    elem.style.height = `${elem.scrollHeight}px`
+  }
+  else{
+    elem.style.height = ``
+  }
 }
 
-function toggleModal(button) {
-    const parent = button.parentElement;
-    const modal = button.nextElementSibling;
-
-    modal.style.maxHeight == "0px" ? modal.style.maxHeight = "400px" : modal.style.maxHeight = "0px"
-    parent.classList.contains("active") ? parent.classList.remove("active") : parent.classList.add("active")
+function togglePayment(button) {
+  button.parentElement.classList.toggle("open")
 }
+function toggleOption(button) {
+  var optionListEl = button.nextElementSibling
+  toggleSlide(optionListEl)
+  button.classList.toggle("open")
+}
+
 
 function createWarning(div) {
-  console.log("warning")
   let warning = document.createElement("div")
   warning.innerHTML = "Quantidade indisponível."
   warning.classList.add("warning")
@@ -455,7 +460,7 @@ function createWarning(div) {
   if (!(document.querySelector(".warning"))) {
       document.querySelector(div).append(warning)
       setTimeout(() => { 
-        console.log("remove");document.querySelector(".warning").remove() }, 2000);
+        document.querySelector(".warning").remove() }, 2000);
   }
 }
 
@@ -482,11 +487,7 @@ function verifyQuantity(input, warningQuery) {
   val < min ? input.value = min : null
   val > max ? input.value = max : null
 
-  console.log(val < min)
-  console.log(val > max)
-
   if (val < min || val > max) {
-    console.log("teste")
     createWarning(warningQuery)
   }
 }
@@ -589,8 +590,6 @@ function choosePickUpState(button) {
   var storesLists = document.querySelectorAll('.stores__list');
   var selectedStoresList = document.querySelector(`.stores__list[data-state="${pickUpState}"]`);
 
-  console.log(selectedStoresList)
-
   storesLists.forEach(element => {
     element.style.display = 'none';
   });
@@ -629,7 +628,8 @@ function fMetro2() {
 function m2ParseBox(m2) {
     var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
     
-    var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
+    var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ').slice(-1)[0].replaceAll('.', '').replace(',', '.'));
+
     var m2PorCaixa = precoM2 / precoProduto;
 
     m2PorCaixa = m2PorCaixa.toFixed(2);

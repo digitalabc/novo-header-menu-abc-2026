@@ -11,24 +11,43 @@
 <aside id="menu-canvas" class="menu__dropdown mobile uk-offcanvas" uk-offcanvas="flip: false; overlay: true">
   <div class="uk-offcanvas-bar">
     <button class="uk-offcanvas-close" type="button" uk-close>
-      <svg id="close-svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M18.9977 0.1622L0.161837 18.998C-0.0548275 19.2147 -0.0548274 19.566 0.161837 19.7826L0.217775 19.8386C0.434439 20.0552 0.785722 20.0552 1.00239 19.8386L19.8382 1.00275C20.0549 0.786085 20.0549 0.434801 19.8382 0.218136L19.7823 0.162198C19.5656 -0.054466 19.2143 -0.0544649 18.9977 0.1622Z"
-          fill="white" />
-        <path
-          d="M19.8377 18.9977L1.00192 0.161837C0.78526 -0.0548275 0.433978 -0.0548274 0.217313 0.161837L0.161375 0.217775C-0.055289 0.434439 -0.055289 0.785722 0.161375 1.00239L18.9972 19.8382C19.2139 20.0549 19.5651 20.0549 19.7818 19.8382L19.8377 19.7823C20.0544 19.5656 20.0544 19.2143 19.8377 18.9977Z"
-          fill="white" />
+      <svg id="close-svg" xmlns="http://www.w3.org/2000/svg" width="19.023" height="19.023" viewBox="0 0 19.023 19.023">
+        <path id="Path_165" data-name="Path 165" d="M10.562,9.512,18.8,1.269A.743.743,0,0,0,17.754.218L9.511,8.461,1.268.218A.743.743,0,0,0,.217,1.269L8.46,9.512.217,17.755a.743.743,0,0,0,1.051,1.051l8.243-8.243,8.243,8.243A.743.743,0,0,0,18.8,17.755Z" transform="translate(0 -0.001)" fill="white"/>
       </svg>
     </button>
-    <div class="navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar__wrapper">
-        {{~ if top_level ~}}
-        {{~ for top_menu in top_level ~}}
-        {{ nav_item menus: menu_group.menus current_menu: top_menu }}
-        {{~ end ~}}
-        {{~ end ~}}
+    <div class="nav-mobile__header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30.026" viewBox="0 0 30 30.026">
+        <path id="Path_23358" data-name="Path 23358" d="M20.117,15.973l-.35-.141.3-.222A8.643,8.643,0,0,0,15.413.009,8.547,8.547,0,0,0,8.988,2.458a8.315,8.315,0,0,0-2.6,5.9,8.543,8.543,0,0,0,3.59,7.3l.315.224-.476.187a14.514,14.514,0,0,0-4.605,2.716A14.909,14.909,0,0,0,.166,27.855c-.017.1-.029.218-.04.361A2.612,2.612,0,0,1,0,28.924v1.1H2.087a14.9,14.9,0,0,1,.226-2.2A12.7,12.7,0,0,1,7.887,19.41a12.458,12.458,0,0,1,9.437-1.933A12.951,12.951,0,0,1,27.9,30.023H30a15.449,15.449,0,0,0-2.739-8.579,16.873,16.873,0,0,0-7.142-5.473Zm-5.123-.826h-.008a6.529,6.529,0,0,1-6.513-6.53,6.606,6.606,0,0,1,6.513-6.509h.021a6.589,6.589,0,0,1,6.507,6.524h0a6.53,6.53,0,0,1-6.522,6.515Z" transform="translate(0 0.002)" fill="#e30613"/>
+      </svg>
+      <div class="info">
+        <p>Minha Conta</p>
+        <div class="info__bottom">
+          <span class="info__links authenticated">
+            Olá, <span class="user-name"></span>!
+          </span>
+          <span class="info__links not-authenticated">
+            <a class="user-href" href="{{ login_url }}">Entrar</a>/<a class="user-href user-register" href="{{ register_url }}" >Cadastrar</a>
+          </span>
+          <a class="info__links" href="{{checkout_url}}MinhaConta/Pedido">Meus pedidos</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-mobile__others">
+      <ul>
+        <li><a href="/ofertas-de-pisos">Ofertas de piso</a></li>
+        <li><a href="/cupons-de-desconto">Cupons de descontos</a></li>
+        <li><a href="{{ settings.whatsapp_link }}" target="_blank">Compre pelo whatsapp</a></li>
+        <li><a href="/nossas-lojas">Nossas Lojas</a></li>
+        <li><a href="/clube-abc">Clube ABC</a></li>
+        <li><a href="/download-de-ofertas">Download de ofertas</a></li>
       </ul>
-
+    </div>
+    <div class="nav-mobile__dropdown nav-mobile__dropdown--root">
+      <div class="nav-mobile__list nav-mobile__list--root">
+        {{~ for category in main_categories ~}}
+          {{ nav_item_mobile category: category level: 1}}
+        {{~ end ~}}
+      </div>
     </div>
   </div>
 </aside>

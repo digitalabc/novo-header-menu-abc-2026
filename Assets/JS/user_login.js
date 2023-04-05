@@ -11,13 +11,14 @@ async function checkUserLogin() {
         if(user != null) {
             pageUser = user;
             const name = parseUserName(user.name);
-            document.getElementById("user-name").innerHTML = name;
 
+            document.querySelectorAll(".user-name").forEach(el => {
+              el.innerHTML = name;
+            });
+            
             const logoutUrl = client.user.logoutUrl();
             document.getElementById("logout-href").href = logoutUrl + "?returnUrl=" + window.location.href;
 
-            document.getElementById("user-name").innerHTML = name;
-            
             document.querySelectorAll(".not-authenticated").forEach(div => {
               div.style.display = 'none';
             });

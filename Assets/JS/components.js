@@ -22,33 +22,57 @@ const DESKTOP = window.matchMedia('(min-width: 992px)');
 /**
  * Change header class on scroll
 */
-var lastScrollTop =  -1,
-    scrollTop = window.pageYOffset
+const body = document.body
+const footer = document.querySelector('footer')
 
-const header = document.querySelector('#header')
+const productButtons = document.querySelector('.product__buttons')
 
 function setScroll(scrollTop, lastScrollTop) {
   if (scrollTop <= 0) {
-    header.classList.add('scroll-up');
-    header.classList.remove('scroll-down');
-    header.classList.add('on-top');
+    body.classList.add('scroll-up');
+    body.classList.remove('scroll-down');
+    body.classList.add('on-top');
   } else {
-    if (header.classList.contains('on-top')) {
-      header.classList.remove('on-top');
+    if (body.classList.contains('on-top')) {
+      body.classList.remove('on-top');
     }
     if (scrollTop > lastScrollTop) {
-      header.classList.add('scroll-down');
-      header.classList.remove('scroll-up');
+      body.classList.add('scroll-down');
+      body.classList.remove('scroll-up');
     } else {
-      header.classList.add('scroll-up');
-      header.classList.remove('scroll-down');
+      body.classList.add('scroll-up');
+      body.classList.remove('scroll-down');
     }
   }
 }
 
-window.addEventListener('scroll', function () {
-  const newSt = window.pageYOffset;
+function setProductFloating(scrollTop, offsetToShowProduct, offsetToHideProduct) {
+  body.classList.remove('show-floating');
 
-  setScroll(newSt, lastScrollTop);
-  lastScrollTop = newSt;
+  if (scrollTop > offsetToShowProduct && scrollTop < offsetToHideProduct) {
+    body.classList.add('show-floating');
+  }
+  
+}
+
+window.addEventListener("load", () => {
+  var lastScrollTop =  -1,
+      scrollTop = window.pageYOffset
+
+  const offsetToShowProduct = productButtons ? productButtons.getBoundingClientRect().top + scrollTop : null
+  const offsetToHideProduct = productButtons ? footer.getBoundingClientRect().top + scrollTop - window.innerHeight : null
+
+  window.addEventListener('scroll', function () {
+    const newSt = window.pageYOffset;
+
+    setScroll(newSt, lastScrollTop);
+
+    if (productButtons) {
+      setProductFloating(newSt, offsetToShowProduct, offsetToHideProduct);
+    }
+    
+    lastScrollTop = newSt;
+  });
+
 });
+

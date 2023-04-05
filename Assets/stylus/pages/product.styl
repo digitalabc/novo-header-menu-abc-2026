@@ -15,7 +15,6 @@
     position: relative;
     grid-area: 1 / 1 / 2 / 2;
     .obs
-      margin-bottom 20px
       font-size 11px
       color #5D5D5D
       @media mobile
@@ -26,10 +25,9 @@
     max-width 640px
 
   &__title
-    margin-bottom: 4px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight 500
 
   &__info
     margin-bottom: 10px;
@@ -55,40 +53,119 @@
     margin-bottom: 20px;
     padding-bottom 20px
     border-bottom 1px solid #D5D5D5
+    .spot-price
+      display flex
+      align-items center
+      gap 10px 20px
+      margin-bottom 10px
+      s
+        margin-bottom 0
+      h3  
+        &:first-child
+          padding-top 0
+      .stamps-discount
+        display flex
+        align-items center
+        justify-content center
+        gap 5px
+        height 25px
+        width 90px
+        background #0FA848
+        font-size 12px
+        font-weight 600
+        color #fff
+    .box-price
+      margin-bottom 15px
+      width 380px
+      height 40px
+      display flex
+      align-items center
+      justify-content center
+      background #D5D5D5
+    .pix
+    .best-installment
+      font-size 12px
+      margin-bottom 10px
 
   &__installments
     .payment
-      &__title
-        color #b8b8b8
-        text-decoration: underline;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 18px;
+      &.open
+        .payment
+          &__list
+            max-height 1000px
+            margin-top 5px
+          &__button
+            font-size 0
+            gap 3.5px
+            &:before
+              content 'Ocultar formas de pagamento'
+              font-size: 12px;
+            svg
+              padding-top 0
+              padding-bottom 2px
+              transform rotateX(180deg)
+
+      &__button
+        color $black
+        font-weight: 500;
+        font-size: 12px;
         cursor: pointer;
+        background none
+        transition color 0.2s ease-in-out
+        display flex
+        align-items center
+        gap 7px
+        text-decoration: underline;
+        svg
+          padding-top 2px
+          transition transform .2s ease-in-out
 
         &:hover
-          text-decoration: none;
+          color $primary
 
-      &__options
-        button
+      &__list
+        max-height 0
+        overflow hidden
+        transition: $transition;
+
+      .option
+        &:not(:last-child)
+          margin-bottom 5px
+        &__button
           height: 20px;
           background: none;
           line-height: 20px;
           cursor: pointer;
+          background none
+          display flex
+          align-items center
+          gap 5px
+          transition $transition
 
-        > div
+          &:hover
+            color $primary
+
+          svg
+            transition transform .2s ease-in-out
+
+          &.open
+            svg
+              transform rotateX(180deg)
+
+        &__list
+          height 0
+          overflow hidden
           transition: $transition;
+          max-width 200px
 
           li
-            padding: 5px 0;
-            color: $primary;
             font-weight: 400;
-            font-size: 14px;
-            line-height: 18px;
+            font-size: 12px;
+            line-height: 20px;
             cursor: pointer;
+            &:nth-child(even)
+              background #f5f5f5
 
-      &__body
-        transition: $transition;
 
   .attribute-selections
     margin-bottom: 20px;
@@ -418,72 +495,84 @@
       aspect-ratio 16 / 9
       height: auto;
 
-  &__shipping
-    margin-bottom: 20px;
-
-    form
-      margin-bottom: 20px;
-
-    .product-shipping
-      display: flex;
+  .product-shipping
+      display: grid;
       align-items: center;
-      gap: 30px;
+      gap: 5px 7px;
+      margin-bottom 15px
+      grid-template-columns auto 1fr
+      align-contents center
+      &__help { grid-area: 2 / 2 / 3 / 3; }
+      &__response { grid-area: 3 / 2 / 4 / 3; }
 
-      &-quotes
-        position: relative;
+      &__title
+        font-weight: 700;
+        font-size: 12px;
 
-      h4
-        color: #000000;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
+      &__form
+        display flex
 
       &__input
-        position: relative;
-
-        input[type="text"]
-          border: 1px solid #D5D5D5
-          border-radius: 0;
-          color: #000000;
-          font-weight: 500;
-          font-size: 16px;
-          &::placeholder
-            color #D5D5D5
+        width 100%
+        max-width 225px
+        height 35px
+        border: 1px solid #D5D5D5
+        border-radius: 0;
+        color: $black
+        font-weight: 500;
+        font-size: 12px;
+        &::placeholder
+          color #B4B4B4
 
       &__submit
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 45px;
-        height: 100%;
+        height 35px
+        width 110px
         background: #D5D5D5
         color #5D5D5D
+        font-size 12px
+        font-weight bold
         cursor: pointer;
-        transform: translateY(-50%);
+        transition $transition
+        &:hover
+          background $primary
+          color #fff
 
+      &__help
+        flex 0 0 100%
+        display flex
+        a
+          font-size 9px
+          line-height 12px
+          text-decoration underline
+          transition $transition
+          color #5D5D5D
+          &:hover
+            color $primary
+          
       &__list
-        display: grid;
-        padding: 0 15px;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 5px;
-
-      &__close
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: none;
+        margin-top 5px
+        border: 1px solid #d5d5d5
+        width 335px
+        padding 3px
 
       &__quote
-        padding: 10px;
-        width: 100%;
-        border: 1px solid #000000;
-        color: #000000;
-        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        padding: 5px;
+        font-size 13px
+        span
+          font-weight 500
+          color $primary
+          &:nth-child(2)
+            text-align right
+        small
+          font-size 12px
+          color: #5d5d5d
 
-      &__invalid
-        color: #f00;
+      &__error
+        color: $primary
         font-weight: 500;
-        font-size: 14px;
+        font-size: 12px;
 
   &__pick-up
     display none
@@ -622,50 +711,49 @@
       font-weight 500
       margin-bottom 20px
 
-  &__wholesale
-    margin-bottom: 30px;
+.product-floating
+  position fixed
+  z-index 1
+  bottom 0
+  width 100%
+  padding 7.5px 0
+  background #F7F7F7
+  transform translateY(100%)
+  transition $transition
+  .show-floating &
+    transform translateY(0)
 
-    span
-      margin-bottom: 12px;
-      color: #000000;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 19px;
+  &__container
+    @extends $container
+    display flex
+    align-items center
+    gap 10px
+    padding 0 35px
+  &__title
+    flex 1
+    font-size 20px
+    font-weight 500
+  .buy-button
+    display none
 
-    .wholesale
-      &__list
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
+  .add-to-cart-button
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background: #0FA848
+    cursor: pointer;
+    transition: $transition;
+    color: #fff
+    font-weight: 500;
+    font-size: 14px;
+    width 100%
+    @media (min-width 450px)
+      width: 245px;
 
-      &__option
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    &[disabled]
+      background: #B4B4B4;
+      cursor: not-allowed;
 
-        label
-          margin-bottom: 12px;
-          color: #000000;
-          text-transform: uppercase;
-          font-weight: 500;
-          font-size: 16px;
-          line-height: 19px;
-
-        div
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          height: 50px;
-          background: $secondary;
-          color: #010101;
-          font-size: 14px;
-          line-height: 18px;
-          cursor: pointer;
-          gap: 20px;
-
-          strong
-            font-size: 18px;
-            line-height: 24px;
+    &:not([disabled]):hover
+      background: $primary;

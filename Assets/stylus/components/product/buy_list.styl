@@ -33,15 +33,16 @@
     input
       display none
       &:checked
-        +.fake-input
+        +.fake-checkbox
+          border: 1px solid $primary;
           &:before
             opacity 1
 
-    .fake-input
+    .fake-checkbox
       flex-shrink 0
       width: 16px;
       height: 16px;
-      border: 1px solid $primary;
+      border: 1px solid #5D5D5D;
       cursor: pointer;
       position relative
       transition: $transition;
@@ -150,8 +151,15 @@
       font-size: 14px;
 
     .spot-price
-      h3, s
-        white-space: nowrap;
+      margin-bottom 0
+      s
+        font-size 12px
+        line-height 15px
+        margin-bottom 0
+      h3 
+        span
+          font-size 14px
+          line-height: 18px;
 
       small
         display: none;
@@ -182,11 +190,3 @@
 
     &:not([disabled]):hover
       background: $primary;
-
-    &:not([disabled]).hollow
-      background #fff
-      border 1px solid #0FA848
-      color #0FA848
-      &:hover
-        background: #0FA848
-        color #fff

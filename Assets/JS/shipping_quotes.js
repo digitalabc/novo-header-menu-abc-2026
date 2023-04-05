@@ -15,7 +15,7 @@ async function ShippingQuoteSubmit(e, productVariantId) {
         
         let snippetResponse = await client.snippet.render("product_shipping_quotes_snippet.html", "SnippetQueries/shipping_quotes.graphql", variables);
 
-        snippetResponse ??= '<span style="font-size:15px">CEP inválido!</span>';
+        snippetResponse ??= '<span class="product-shipping__error">CEP inválido!</span>';
 
         document.getElementById("shipping-quotes-snippet-div-" + productVariantId).innerHTML = snippetResponse;
     }

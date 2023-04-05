@@ -11,8 +11,8 @@
     <body class="home">
         {{ ## page_scripts position: "BODY_START" scripts: common.scripts  }}
 
-        <header id="header">
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
         
         <!-- Fullbanner -->
@@ -470,7 +470,11 @@
             </section>
         </div>
 
-        <div class="gray-bg">
+        
+        {{~ capture gray_bg_img_source ~}}
+          {{- store.urls.static_img}}gray_bg_img.png?theme={{store.theme -}}&v={{store.last_modified-}}
+        {{~ end ~}}
+        <div class="gray-bg" style="background-image: url({{ gray_bg_img_source }});">
           <div class="container">
               <!-- Navegue pelos environments -->
               {{ # content position: "Centro" contents: data.hotsite.contents}}
@@ -730,7 +734,7 @@
 
         {{ ## page_scripts position: "FOOTER_START" scripts: common.scripts ## }}
 
-        {{ footer }}
+        {{ footer products:common.lighbox_products.products.nodes }}
 
         {{ sdk_client }}
 

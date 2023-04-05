@@ -46,7 +46,7 @@ async function buyListSetup() {
 async function buyListCalculatePrices(productId = null) {
     let input = buyListGetProductsAndQuantities();
     if(input == null) return;
-    await buyListRenderAndReplacePrice(input, "product-prices-div");
+    await buyListRenderAndReplaceTotalPrice(input, "product-prices-div");
 
     if (productId) {
         input = [];
@@ -87,13 +87,30 @@ function buyListPushProductInput(productId, input) {
  * @param {number} input[].quantity - How many units of this item is the selection
  * @param {string} priceDivId - The div's id that should be replaced
  */
-async function buyListRenderAndReplacePrice(input, priceDivId) {
+async function buyListRenderAndReplaceTotalPrice(input, priceDivId) {
     const response = await client.snippet.render(
-        "price_snippet.html",
+        "price_snippet_list.html",
         "SnippetQueries/calculate_prices.graphql",
         { calculatePricesProductsInput: input }
     );
     replaceInnerHtml(response, priceDivId);
+}
+
+/**
+ * Renders the price snippet using an array of product ids and quantities for the query,
+ * and replaces the content of the div with the result
+ * @param {object[]} input - The query input object, a list of objects containing productVariantId and quantity
+ * @param {number} input[].productVariantId - The variant id of the product
+ * @param {number} input[].quantity - How many units of this item is the selection
+ * @param {string} priceDivId - The div's id that should be replaced
+ */
+async function buyListRenderAndReplacePrice(input, priceDivId) {
+  const response = await client.snippet.render(
+      "price_snippet.html",
+      "SnippetQueries/calculate_prices.graphql",
+      { calculatePricesProductsInput: input }
+  );
+  replaceInnerHtml(response, priceDivId);
 }
 
 /**

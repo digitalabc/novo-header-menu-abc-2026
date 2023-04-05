@@ -38,7 +38,7 @@
           <input id="buy-list-product-checked-{{ product_id }}" type="checkbox"
               {{ if product_available || product.attribute_selections.can_be_matrix}}
               onchange="buyListCalculatePrices('{{ product_id }}');" checked {{ else }} disabled {{ end }}>
-          <label class="fake-input"  for="buy-list-product-checked-{{ product_id }}"></label>
+          <label class="fake-checkbox"  for="buy-list-product-checked-{{ product_id }}"></label>
           <a href="/{{product.alias}}">
               <h5>{{ product.product_name }}</h5>
           </a>

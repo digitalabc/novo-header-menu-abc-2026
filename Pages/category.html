@@ -8,8 +8,8 @@
     </head>
 
     <body class="category">
-        <header id="header">
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
 
         <div class="container">
@@ -155,6 +155,7 @@
           <div class="container">
             <!-- Carrossel de marcas -->
             <section class="brands">
+                <h2>Navegar por marca</h2>
                 {{ brands_list brands: data.brands.nodes }}
             </section>
           </div>
@@ -169,10 +170,10 @@
         
         <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
 
-        {{ footer }}
+        {{ footer products:common.lighbox_products.products.nodes }}
  
         {{ sdk_client }}
 
-        {{ asset type: "js" paths: ["uikit", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category"]}}
+        {{ asset type: "js" paths: ["uikit", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox"]}}
     </body>
 </html>

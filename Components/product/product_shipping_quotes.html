@@ -1,13 +1,11 @@
-<div class="product-shipping-quotes">
-    <form onsubmit='ShippingQuoteSubmit(event, "{{ product_variant_id }}")'>
-        <div class="product-shipping">
-            <h4>Consulte seu Frete</h4>
-            <div class="product-shipping__input">
-                <input type="text" id="shipping-quote-cep" name="shipping-quote-cep" placeholder="CEP"
-                    maxlength="9" onkeypress="cepMask(this)">
-                <input type="submit" value="OK" class="product-shipping__submit">
-            </div>
-        </div>
+<div class="product-shipping">
+    <h4 class="product-shipping__title">Consulte seu Frete</h4>
+    <form class="product-shipping__form" onsubmit='ShippingQuoteSubmit(event, "{{ product_variant_id }}")'>
+        <input class="product-shipping__input" type="text" id="shipping-quote-cep" name="shipping-quote-cep" placeholder="CEP" maxlength="9" onkeypress="cepMask(this)">
+        <input class="product-shipping__submit" type="submit" value="OK">
     </form>
-    <div class="product-shipping__modal" id="shipping-quotes-snippet-div-{{ product_variant_id }}"></div>
+    <div class="product-shipping__help">
+      <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">Não sei meu CEP</a>
+    </div>
+    <div class="product-shipping__response" id="shipping-quotes-snippet-div-{{ product_variant_id }}"></div>
 </div>

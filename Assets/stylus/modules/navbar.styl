@@ -57,51 +57,17 @@
       justify-content: space-between;
       align-items: center;
 
-    @media mobile
-      flex-direction: column;
-      padding: 0 16px;
-      width: 335px;
-      height: 100%;
-      background: #ffffff;
-      gap: 0;
-
     .nav-item
       &--nv1
         display: flex;
         align-items: center;
         height: 40px;
-        cursor: pointer;
         position relative
 
-        @media mobile
-          flex-wrap: wrap;
-          height: auto;
-
-          &:not(.dropdown)
-            height: 50px;
-
-          &.dropdown
-            justify-content: space-between;
-
-            > a
-              pointer-events: none;
-
-            &:before
-              width: 50px;
-              height: 50px;
-              background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAYAAAA7KqwyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABaSURBVHgBlc7RDYAwCIThg0nY0BEcyREcpaPo8WCipi3XJk144PsD3H0zsxNAQH9Bc9Du4NA4XPxNjETupkn71NTIH8f7pCoyxEqkxLOIjLuRVdyLLONPpMI3IVYs0S5/gHQAAAAASUVORK5CYII=");
-              background-position: right center;
-              background-repeat: no-repeat;
-              content: "";
-              transition: $transition;
-
-            &.open
-              &:before
-                background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAYAAAA7KqwyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABfSURBVHgBlYzdCYAwDAaTOIEb1LEc04nqo49uEL9ALRT6kwSONoQ7ovEkEcmG/Sk4v6yFUKTKzJyNSKSRi5C8kZ5cb6vITF5GPPI4EpC7kQ3LoaoPOHG8HYEXXPB2ez91DTTXlWYARAAAAABJRU5ErkJggg==");
-
-              > .dropdown-menu
-                display: flex;
-
+        &:nth-child(4)
+          > .dropdown-menu
+            left: 50%;
+            transform translateX(-50%)
         &:nth-child(n + 5)
           > .dropdown-menu
             right: -60px;
@@ -121,18 +87,6 @@
           padding: 30px 15px;
           width: max-content;
           box-shadow 0 1px 4px rgba(#000, 0.16)
-
-          @media mobile
-            position: static;
-            top: auto;
-            left: auto;
-            display: none;
-            visibility: visible;
-            flex-direction: column;
-            padding: 0;
-            height: auto;
-            opacity: 1;
-            padding-inline: 12px;
           
           >ul
             display grid
@@ -156,10 +110,6 @@
             color #392F2D
             font-weight 400
 
-          @media mobile
-            order: -1;
-            font-weight: 700;
-
         @media desktop
           &:hover
             > .dropdown-menu
@@ -181,3 +131,4 @@
           transition $transition
           &:hover
             color $primary
+

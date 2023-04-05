@@ -1,202 +1,251 @@
 .filter
+  @media desktop
+    flex 0 0 220px
+
   @media mobile
-    position: fixed;
-    top: 0;
+    position fixed
+    top 0
     left 0
-    width: 100%;
-    height: 100%;
     z-index 999
+    width 100%
+    height 100%
     background #fff
-    transform translateX(-100%)
     transition $transition
+    transform translateX(-100%)
+
     &:before
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 9;
-      display: block;
-      visibility: hidden;
-      background: rgba(#000000, 16%);
-      content: "";
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      transition: $transition;
+      position absolute
+      top 0
+      left 0
+      z-index 9
+      display block
+      visibility hidden
+      width 100%
+      height 100%
+      background rgba(#000000, 16%)
+      content ''
+      opacity 0
+      transition $transition
 
     .on-filter &
       transform translateX(0)
+
       &:before
         opacity 1
 
   &__button
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    gap: 10px;
-    font-size 16px
-    font-weight 500
-    color #5D5D5D
+    display flex
+    justify-content center
+    align-items center
     background none
+    color #5D5D5D
+    font-weight 500
+    font-size 16px
+    gap 10px
 
     @media mobile
-      cursor: pointer;
-      margin-right: 10px;
-      background: $black;
-      color #fff
-      height 40px
+      margin-right 10px
       width 170px
+      height 40px
+      background $black
+      color #fff
+      cursor pointer
 
     svg
-      fill: $primary;
+      fill $primary
 
       @media mobile
-        fill: #ffffff;
+        fill #ffffff
 
   &__top
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display flex
+    justify-content space-between
+    align-items center
     background #392F2D
     color #fff
 
     @media desktop
-      display: none;
-
-    .close
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      width: 55px;
-      height: 55px;
-      background: $primary
-      cursor: pointer;
-
-      svg
-        pointer-events: none;
-
-  &__list
-    margin-bottom: 80px;
-
-  &__item
-    @media mobile
-      &.open
-        h5
-          &:after
-            transform: rotate(180deg);
-
-        ul
-          max-height: 400px;
-
-    &#price-range
       display none
 
-    ul
-      @media mobile
-        overflow: hidden;
-        max-height: 0;
-        transition: $transition;
+  &__close
+    display flex
+    justify-content flex-end
+    align-items center
+    width 55px
+    height 55px
+    background $primary
+    cursor pointer
 
-      li
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        gap: 10px;
+    svg
+      pointer-events none
 
-        @media mobile
-          margin-bottom: 20px;
+  &__item
+    &:not(:last-child)
+      margin-bottom 20px
+      padding-bottom 20px
+      border-bottom 1px solid #D5D5D5
 
-    .color-filter
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 3px;
+    &.open
+      .filter
+        &__options
+          margin-top 15px
 
-      @media mobile
-        gap: 8px;
+        &__title
+          svg
+            transform rotateX(180deg)
 
-      &.selected
-        img
-          border: 1px solid $primary;
+      .show-more
+        margin-top 15px
+        max-height 16px
 
+  &__title
+    display flex
+    justify-content space-between
+    align-items center
+    color $black
+    font-weight 500
+    cursor pointer
+
+    svg
+      transition $transition
+
+    @media mobile
+      margin 0
+
+  &__options
+    overflow hidden
+    height 0
+    transition $transition
+
+    &.collapsed
+      overflow hidden
+      max-height 140px
+      transition $transition
+
+    .option
+      display flex
+      align-items center
+      gap 3px
+
+      &:not(:last-child)
+        margin-bottom 15px
+
+      &__checkbox
+        display none
+
+        &:checked,
+        &:hover
+          +.fake-checkbox
+            border 1px solid $primary
+
+            &:before
+              opacity 1
+
+      .fake-checkbox
+        position relative
+        width 16px
+        height 16px
+        border 1px solid #5D5D5D
+        cursor pointer
+        transition $transition
+
+        &:before
+          position absolute
+          background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAADkBRPiBRLiBRLjBhMFDkERAAAABHRSTlMAYO/wnx+whQAAAB9JREFUeNpjYGZkYGBkYmBkYQQiBiANJKEUVBCihBkABPIAPKjQyb8AAAAASUVORK5CYII=')
+          background-position center
+          background-repeat no-repeat
+          content ''
+          opacity 0
+          transition $transition
+          inset 0
+
+      &__label
+        color #000000
+        text-transform uppercase
+        letter-spacing 0.05em
+        font-weight 400
+        font-size 12px
+        line-height 16px
+        cursor pointer
+        cursor pointer
+
+  .color-filter
+    position relative
+    display flex
+    align-items center
+    gap 3px
+
+    @media mobile
+      gap 8px
+
+    &.selected
       img
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        pointer-events: none;
+        border 1px solid $primary
 
-      input
-        border: none;
-
-      label
-        color: #000;
-        letter-spacing: 0.05em;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 16px;
-
-    h5
-      margin-bottom: 14px;
-      color: $black
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      @media mobile
-        margin: 0;
+    img
+      position absolute
+      top 50%
+      left 0
+      transform translateY(-50%)
+      pointer-events none
 
     input
-      width: 12px;
-      height: 12px;
-      border: 0.5px solid $primary;
-      cursor: pointer;
-      appearance: none;
-      -moz-appearance: none;
-      -webkit-appearance: none;
-
-      @media mobile
-        width: 20px;
-        height: 20px;
-
-      &:checked
-        background: $primary;
+      border none
 
     label
-      color: #000000;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 16px;
-      cursor: pointer;
+      color #000
+      letter-spacing 0.05em
+      font-weight 400
+      font-size 12px
+      line-height 16px
 
-  #maximum-price-filter
-    position: relative;
-    width: 220px;
-    height: 7px;
-    border: none;
-    background: $primary;
-    transition: background ease-in 0.45s;
-    -webkit-appearance: none;
-    &::-webkit-slider-thumb
-      border-radius 50%
-      width: 14px;
-      height: 14px;
-      background: $primary
-      appearance: none;
-      -webkit-appearance: none;
+  .show-more
+    display block
+    overflow hidden
+    max-height 0
+    background none
+    color $primary
+    text-decoration underline
+    font-size 13px
+    cursor pointer
+    transition color 0.2s ease-in-out, max-height 0.2s ease-in-out, margin 0.2s ease-in-out
 
-  .range-values
-    > div
-      left: 0;
-      color: #000000;
-      white-space: nowrap;
-      letter-spacing: 0.05em;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 18px;
+    &.ver-menos
+      font-size 0
 
-    #max-value-text
-      left: 100%;
-      transform: translateX(-100%);
+      &:after
+        content 'Ver menos'
+        font-size 13px
+
+  #price-range
+    display none
+    .filter__title
+      margin-bottom 15px
+
+    .range-values
+      margin-bottom 10px
+      display flex
+      align-items center
+      justify-content space-between
+      font-weight 500
+      
+    .range-slider
+      display flex
+      #maximum-price-filter
+        position relative
+        width 220px
+        height 7px
+        border none
+        -webkit-appearance none
+        &::-webkit-slider-thumb
+          width 14px
+          height 14px
+          border-radius 50%
+          background $primary
+          -webkit-appearance none
+        &::-moz-range-thumb
+          border none
+          width 14px
+          height 14px
+          border-radius 50%
+          background $primary

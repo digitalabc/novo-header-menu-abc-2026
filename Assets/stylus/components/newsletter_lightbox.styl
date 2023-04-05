@@ -4,12 +4,14 @@
   top: 0;
   left: 0;
   z-index: 999;
-  padding 0
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  opacity 0
+  visibility hidden
+  transition $transition
   &:before
     content ''
     position absolute
@@ -18,8 +20,17 @@
     width: 100%;
     height: 100%;
     background: rgba(#000000, 30%);
+    
+  .show-newsletter-lightbox &
+    opacity 1
+    visibility visible
+    .newsletter
+      transform translateX(0)
 
   .newsletter
+    transform translateY(100vh)
+    transform translateY(100dvh)
+    transition $transition
     &__wrapper
       position: relative;
       cursor default
@@ -76,7 +87,7 @@
         &.newsletter-name
           margin-bottom 25px
         &.newsletter-email
-          margin-bottom 35px
+          margin-bottom 12px
 
     &__button
         display flex
@@ -91,12 +102,53 @@
         color: #ffffff;
         font-weight: 600;
         transition: $transition;
-
-        &:hover
-          background: $primary;
+        &[disabled]
+          opacity 0.5
+          cursor not-allowed
+        &:not([disabled])
+          &:hover
+            background: $primary;
 
     &__alert
       position absolute
       left 50%
       transform translateX(-50%)
       bottom 20px
+
+  .checkbox
+    &__row
+      display flex
+      align-items center
+      gap 6px
+      max-width 550px
+      margin 0 auto 35px
+    &__input
+      display none
+      &:checked,
+      &:hover
+        +.fake-checkbox
+          border 1px solid $primary
+          &:before
+            opacity 1
+    &__label
+      font-size 12px
+      cursor pointer
+
+  .fake-checkbox
+    background #FFFFFF
+    flex-shrink 0
+    width: 25px;
+    height: 25px;
+    border: 1px solid #5D5D5D;
+    cursor: pointer;
+    position relative
+    transition: $transition;
+    &:before
+      content ''
+      position absolute
+      inset 0
+      background-position center
+      background-repeat no-repeat
+      background-image url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAIVBMVEUAAADkBRPjBhLiBRLjBRLiBRLiBRLiBhLjBhLiBRLjBhPs7C79AAAACnRSTlMAYICPkJ+g3+DwZOtKdwAAAExJREFUeNpNz4EKwCAIRdG3ptXe/3/wAL1gAHFuQKrlV5zwku1sbtuKDsWoK5ubnpBwIGFQurYP4D0nbwW4+RaKEE3mKxI+LcfY7/kB32oD/mJTvfAAAAAASUVORK5CYII=")
+      opacity 0
+      transition: $transition;

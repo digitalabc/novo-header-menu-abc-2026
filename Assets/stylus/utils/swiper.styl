@@ -1,4 +1,9 @@
 .swiper
+  &:not(.swiper-initialized)
+    .swiper-button
+    ~.swiper-button
+      &-prev, &-next
+        display none
   &-container
     position relative
   &-wrapper

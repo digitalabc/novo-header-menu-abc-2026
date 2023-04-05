@@ -12,7 +12,10 @@
         {{~ else ~}}
             {{~ breadcrumbLink = "/" | string.append breadcrumb.link ~}}
         {{~ end ~}}
-        <a href="{{ breadcrumbLink }}" class="breadcrumb__link {{ if for.last }}last{{ end }}" >{{ breadcrumb.text }}</a>
+        <a href="{{ breadcrumbLink }}" class="breadcrumb__link" >{{ breadcrumb.text }}</a>
         {{~ if !for.last ~}} > {{ end }}
+    {{~ end ~}}
+    {{~ if product ~}}
+      > <a href="#" class="breadcrumb__link" >{{ product.product_name }}</a>
     {{~ end ~}}
 </div>

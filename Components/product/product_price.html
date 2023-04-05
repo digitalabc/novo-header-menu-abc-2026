@@ -17,31 +17,47 @@
           <span>{{ prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
+          {{~ else if product_is_kit ~}}
+            <small>total</small>
           {{~ else ~}}
             <small>cada</small>
           {{~ end ~}}
         </h3>
+        {{~ if page_product ~}}
+          {{ product_discount discount_percentage: prices.discount_percentage }}
+        {{~ end ~}}
     {{ else }}
         <h3>
           <span>{{ prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
-          {{~ else ~}}2
+          {{~ else if product_is_kit ~}}
+            <small>total</small>
+          {{~ else ~}}
             <small>cada</small>
           {{~ end ~}}
         </h3>
     {{ end }}
-    {{~ if product_is_box && page_product ~}}
-      <div class="box-price">
-        Neste produto a m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
-      </div>
-    {{~ end ~}}
-    {{~ if page_product ~}}
-    <div class="pix">
-      Compre com <strong>Pix</strong> e tenha <strong>5%</strong> de desconto
-    </div>
-    {{~ end ~}}
 </div>
+
+{{~ if product_is_box && page_product ~}}
+  <div class="box-price">
+    <span>Neste produto a m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
+  </div>
+{{~ end ~}}
+
+{{~ if page_product ~}}
+<div class="pix">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14.001" viewBox="0 0 14 14.001">
+    <g id="Group_4354" data-name="Group 4354" transform="translate(-617.999 -160)">
+      <path id="Path_23335" data-name="Path 23335" d="M14,199.8c-.013.09-.024.18-.041.27a2.013,2.013,0,0,1-.539,1.047c-.538.547-1.083,1.087-1.625,1.631a.06.06,0,0,1-.068.018.419.419,0,0,0-.107-.012c-.238,0-.476,0-.714,0a1.427,1.427,0,0,1-1.023-.438q-1.032-1.032-2.064-2.063a1.032,1.032,0,0,0-1.355-.1,1.2,1.2,0,0,0-.115.1q-1.027,1.026-2.052,2.053a1.465,1.465,0,0,1-.833.433,1.677,1.677,0,0,1-.242.017c-.281,0-.562,0-.843,0a.159.159,0,0,0-.062,0c-.064.029-.1,0-.144-.047-.524-.527-1.054-1.048-1.574-1.58A2.046,2.046,0,0,1,0,199.56a2.069,2.069,0,0,1,.625-1.412q.789-.792,1.58-1.581a.061.061,0,0,1,.071-.021.316.316,0,0,0,.1.011c.278,0,.555,0,.833,0A1.461,1.461,0,0,1,4.294,197q1.034,1.037,2.071,2.071a1.006,1.006,0,0,0,1.342.091,1.418,1.418,0,0,0,.126-.115q1.019-1.018,2.038-2.038a1.461,1.461,0,0,1,1.086-.45c.221,0,.442,0,.662,0a.234.234,0,0,0,.082-.007c.053-.021.083,0,.12.038.533.536,1.071,1.065,1.6,1.606a2.033,2.033,0,0,1,.572,1.276.3.3,0,0,0,.009.04Z" transform="translate(618 -32.656)" fill="#392f2d"/>
+      <path id="Path_23336" data-name="Path 23336" d="M147.722,406.041c-.1-.016-.2-.028-.305-.049a2.08,2.08,0,0,1-1.065-.58L143.74,402.8l-.038-.041h.071c.2-.006.394,0,.589-.02a1.963,1.963,0,0,0,1.174-.555c.1-.1.2-.194.294-.292.6-.6,1.213-1.207,1.813-1.816a.423.423,0,0,1,.614,0c.678.686,1.362,1.364,2.043,2.047a2.053,2.053,0,0,0,1.163.6,3.37,3.37,0,0,0,.35.025c.068,0,.137,0,.214,0a.306.306,0,0,1-.021.028q-1.328,1.328-2.657,2.655a2.057,2.057,0,0,1-1.312.6.235.235,0,0,0-.034.008Z" transform="translate(477.137 -232.041)" fill="#392f2d"/>
+      <path id="Path_23337" data-name="Path 23337" d="M143.666,3.281l.047-.05L146.307.638a2.075,2.075,0,0,1,1.2-.613,2.055,2.055,0,0,1,1.763.548c.334.312.649.643.973.966l1.7,1.7a.454.454,0,0,0,.049.038l-.008.017h-.069a2.482,2.482,0,0,0-.7.068,2.08,2.08,0,0,0-.948.553q-1.029,1.031-2.059,2.06a.383.383,0,0,1-.428.11.476.476,0,0,1-.165-.111q-1.038-1.033-2.071-2.07a2.059,2.059,0,0,0-.994-.563,2.187,2.187,0,0,0-.507-.057h-.38" transform="translate(477.172 160)" fill="#392f2d"/>
+    </g>
+  </svg>
+  <span>Compre com <strong>Pix</strong> e tenha <strong>5%</strong> de desconto</span>
+</div>
+{{~ end ~}}
 
 {{~ if displayed_installment ~}}
     {{ product_filtered_installment installment_plans: prices.installment_plans displayed_installment: displayed_installment }}

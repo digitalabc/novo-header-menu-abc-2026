@@ -9,8 +9,8 @@
 </head>
 
 <body class="product">
-    <header id="header">
-        {{ navbar menu_groups: common.menu_groups position: "Topo Header" }}
+    <header>
+        {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
     </header>
 
     {{~ 
@@ -40,10 +40,10 @@
         value="{{ data.product.product_variant_id }}">
 
     <div class="container">
-        {{~ breadcrumb breadcrumbs: product.breadcrumbs ~}}
+        {{~ breadcrumb breadcrumbs: product.breadcrumbs product: product ~}}
         
         <div id="product-view-div-{{ product.product_id }}" class="product__view">
-            {{ product_view product: product breadcrumbs: product.breadcrumbs product_is_box: product_is_box }}
+            {{ product_view product: product product_is_box: product_is_box }}
         </div>
 
         <div class="product__buy-together">
@@ -65,11 +65,13 @@
         </section>
     </div>
 
+    {{ product_floating product: product }}
+
     <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
 
-    {{ footer }}
+    {{ footer products:common.lighbox_products.products.nodes }}
     {{ sdk_client }}
-    {{ asset type: "js" paths: ["uikit", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product"]}}
+    {{ asset type: "js" paths: ["uikit", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox"]}}
 </body>
 
 </html>

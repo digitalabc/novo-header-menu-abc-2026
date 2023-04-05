@@ -11,8 +11,8 @@
 </head>
 
 <body class="product buy_list">
-    <header id="header">
-        {{ navbar menu_groups: common.menu_groups position: "Topo Header" }}
+    <header>
+        {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
     </header>
     <div class="container">
         <div class="breadcrumb">
@@ -51,8 +51,8 @@
 
     <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
     
-    {{ footer }}
+    {{ footer products:common.lighbox_products.products.nodes }}
     {{ sdk_client }}
-    {{ asset type: "js" paths: ["uikit", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product"]}}
+    {{ asset type: "js" paths: ["uikit", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox"]}}
 </body>
 </html>

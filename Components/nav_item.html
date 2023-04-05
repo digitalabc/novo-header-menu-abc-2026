@@ -14,7 +14,7 @@
     {{~ link = link | string.prepend "/" ~}}
 {{~ end ~}}
 {{~ if children.size == 0 && !is_submenu ~}}
-    <li class="nav-item nav-item--nv1 uk-flex uk-flex-middle">
+    <li class="nav-item nav-item--nv1">
         <a class="nav-link" href="{{link}}">{{current_menu.name}}</a>
     </li>
 {{~ else if children.size == 0 && is_submenu ~}}
@@ -22,7 +22,7 @@
         <a class="nav-link" href="{{link}}">{{current_menu.name}}</a>
     </li>
 {{~ else if !is_submenu ~}}
-    <li class="nav-item nav-item--nv1 uk-flex uk-flex-middle">
+    <li class="nav-item nav-item--nv1">
         <a href="{{link}}" id="menu" class="nav-link dropdown-toggle" >{{current_menu.name}}</a>
         <div class="dropdown-menu">
           <ul>

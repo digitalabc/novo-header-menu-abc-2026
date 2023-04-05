@@ -556,6 +556,18 @@
         "availableInAllComponents": true
     },
     {
+        "name": "product_floating",
+        "path": "product/product_floating.html",
+        "params": [
+            {
+                "name": "product",
+                "required": true
+            }
+        ],
+        "availableInAllPages": true,
+        "availableInAllComponents": true
+    },
+    {
         "name": "product_reviews",
         "path": "product/product_reviews.html",
         "params": [
@@ -854,6 +866,19 @@
         "availableInAllComponents": true
     },
     {
+        "name": "product_discount_spot",
+        "path": "product/product_discount_spot.html",
+        "params": [
+            {
+                "name": "discount_percentage",
+                "required": false
+            }
+        ],
+        "inheritVariables": false,
+        "availableInAllPages": true,
+        "availableInAllComponents": true
+    },
+    {
         "name": "product_discount",
         "path": "product/product_discount.html",
         "params": [
@@ -975,6 +1000,39 @@
     {
         "name": "exit_intent_lightbox",
         "path": "exit_intent_lightbox.html",
+        "inheritVariables": false,
+        "availableInAllComponents": true,
+        "availableInAllPages": true
+    },
+    {
+        "name": "nav_item_all",
+        "path": "nav_item_all.html",
+        "params": [
+            {
+                "name": "category",
+                "required": true
+            }
+        ],
+        "inheritVariables": false,
+        "availableInAllComponents": true,
+        "availableInAllPages": true
+    },
+    {
+        "name": "nav_item_mobile",
+        "path": "nav_item_mobile.html",
+        "params": [
+            {
+                "name": "category",
+                "required": true
+            }
+        ],
+        "inheritVariables": false,
+        "availableInAllComponents": true,
+        "availableInAllPages": true
+    },
+    {
+        "name": "floating_navbar",
+        "path": "floating_navbar.html",
         "inheritVariables": false,
         "availableInAllComponents": true,
         "availableInAllPages": true

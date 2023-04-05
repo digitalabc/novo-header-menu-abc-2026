@@ -1,15 +1,12 @@
 query ($searchQuery: String, 
   $partnerAccessToken: String, 
+  $resultSize: Int = 12,
+  $offset: Int, 
   $sortKey: ProductSearchSortKeys, 
   $sortDirection: SortDirection, 
   $filters: [ProductFilterInput],
   $minimumPrice: Decimal,
-  $maximumPrice: Decimal,
-	$after: String,
-	$before: String,
-  $resultSize: Int = 12,
-  $last: Int,
-	$onlyMainVariant: Boolean) {
+  $maximumPrice: Decimal) {
   search(query: $searchQuery, partnerAccessToken: $partnerAccessToken) {
     redirectUrl
     pageSize
@@ -25,49 +22,64 @@ query ($searchQuery: String,
       link
       text
     }
-    products(after: $after, before: $before, filters: $filters, first: $resultSize, last: $last, minimumPrice: $minimumPrice, 
-      			 maximumPrice: $maximumPrice, onlyMainVariant: $onlyMainVariant, sortDirection: $sortDirection, sortKey: $sortKey) {
+    productsByOffset(
+      limit: $resultSize,
+      offset: $offset,
+      sortKey: $sortKey,
+      sortDirection: $sortDirection,
+      filters: $filters,
+      minimumPrice: $minimumPrice,
+      maximumPrice: $maximumPrice) {
       totalCount
-      pageInfo{
-        endCursor
-        hasNextPage
-        hasPreviousPage
-        startCursor
-      }
-      edges{
-        cursor
-        node{
-          id
-          productId
-          productName
-          productVariantId
+      page
+      pageSize
+      items {
+        id
+        productId
+        productName
+        productVariantId
+        alias
+        similarProducts{
           alias
-          images(width:275, height:275) {
-            url
-            print
-          }
-          available
-          prices {
-            listPrice
-            price
-            discountPercentage
-            bestInstallment {
-              name
-              displayName
+          image
+          name
+          imageUrl(w: 50, h: 50)
+        }
+        images(width:245, height:245) {
+          url
+          print
+        }
+        available
+        prices {
+          listPrice
+          price
+          discountPercentage
+          installmentPlans{
+            displayName
+            name
+            installments{
               discount
               fees
               number
               value
             }
           }
-          promotions{
-            content
-            id
-            stamp
-            title
+          bestInstallment {
+            name
+            displayName
+            discount
+            fees
+            number
+            value
           }
-          addToCartFromSpot
         }
+        promotions{
+          content
+          id
+          stamp
+          title
+        }
+        addToCartFromSpot
       }
     }
     aggregations {

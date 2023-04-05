@@ -11,7 +11,6 @@
  * Sends the configured newsletter from the provided informtation on page
  */
 async function newsletterSubmit(form) {
-    console.log(typeof(form))
     let newsletterAlert = form.querySelector(".newsletter__alert");
     const nameElement = form.querySelector(".newsletter-name");
     const emailElement = form.querySelector(".newsletter-email");
@@ -44,3 +43,13 @@ function showNewsletterAlert(newsletterAlert) {
     hideNewsletterAlert(newsletterAlert);
   }, 2000);
 }
+
+/**
+ * Newsletter checkbox toggle
+ */
+const newsletterCheckbox = document.querySelector("#newsletter-lightbox .checkbox__input");
+const newsletterButton = document.querySelector("#newsletter-lightbox .newsletter__button");
+
+newsletterCheckbox.addEventListener('change', function(e) {
+  newsletterButton.disabled = newsletterButton.disabled ? false : true;
+})

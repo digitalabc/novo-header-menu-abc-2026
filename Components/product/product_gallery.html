@@ -9,11 +9,11 @@
 
     <div class="swiper-container">
       <div class="gallery-thumbs swiper">
-          <div class="swiper-wrapper">
+          <ul class="swiper-wrapper">
               {{ for image in images }}
-                <div class="swiper-slide"><img src="{{ image.url }}" alt="image_{{ math.uuid }}"></div>
+                <li class="swiper-slide"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="image_{{ math.uuid }}"></li>
               {{ end }}
-          </div>
+          </ul>
       </div>
       <div class="swiper-button-prev">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">

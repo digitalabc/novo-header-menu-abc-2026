@@ -7,13 +7,11 @@
         price_field_filter minimum_price: data_search.aggregations.minimum_price maximum_price: data_search.aggregations.maximum_price
 ## }}
 
-<h5>Preço</h5>
 <div class="range-values">
     <div id="min-value-text">{{ minimum_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</div>
-    <div id="max-value-text">{{ maximum_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</div>
+    <div id="max-value-text">+{{ maximum_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</div>
 </div>
 <div class="range-slider">
-    <input type="hidden" class="form-control" id="minimum-price-filter" min="{{ minimum_price }}"
-        max="{{ maximum_price }}">
-    <input type="range" class="form-control" id="maximum-price-filter" min="0" max="{{ maximum_price }}">
+    <input type="hidden" class="form-control" id="minimum-price-filter">
+    <input type="range" class="form-control" id="maximum-price-filter" min="{{ minimum_price }}" max="{{ maximum_price }}">
 </div>

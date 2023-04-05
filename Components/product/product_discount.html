@@ -1,5 +1,10 @@
 {{~ if discount_percentage ~}}
     {{~ if discount_percentage > 0 ~}}
-        <div class="stamps-discount">-{{ discount_percentage | math.format "p0" "pt-BR" }}</div>
+        <div class="stamps-discount">
+          <svg xmlns="http://www.w3.org/2000/svg" width="3.889" height="7.139" viewBox="0 0 3.889 7.139">
+            <path id="Path_23341" data-name="Path 23341" d="M-.01,5.106a.473.473,0,0,1,.133-.187.341.341,0,0,1,.408.035c.3.306.6.607.906.909.049.049.1.093.156.142A.079.079,0,0,0,1.6,5.945q0-2.8,0-5.6a.3.3,0,0,1,.156-.3.332.332,0,0,1,.5.283c0,.035,0,.071,0,.106q0,2.744,0,5.488v.1c.025-.023.04-.037.055-.051q.5-.505,1.008-1.011a.312.312,0,0,1,.335-.077.335.335,0,0,1,.224.31.346.346,0,0,1-.1.239q-.8.8-1.6,1.607a.557.557,0,0,1-.195.111H1.872a.571.571,0,0,1-.236-.167Q.9,6.238.163,5.5A.683.683,0,0,1-.01,5.274V5.106Z" transform="translate(0.01 -0.006)" fill="#fff"/>
+          </svg>
+          <span>{{ discount_percentage | math.format "p0" "pt-BR" }} OFF</span>
+        </div>
     {{~ end ~}}
 {{~ end ~}}

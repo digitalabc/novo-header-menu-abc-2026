@@ -1,5 +1,6 @@
 autocomplete(document.getElementById("search-bar"));
 window.addEventListener("load", loadPartnerLogo());
+window.addEventListener("load", menuMobileLoad, false);
 
 /**
  * Redirects to the search page with the given term, or searching for 
@@ -13,6 +14,8 @@ function search(e, term) {
 
     let query = term;
     if (!term) query = document.getElementById("search-bar").value;
+
+    if (!query) return false;
 
     let searchPage =
         document.location.protocol + "//" +
@@ -153,4 +156,42 @@ async function loadPartnerLogo() {
         { partnerAccessToken: partnerAccessToken }
     );
     if (partnerLogo) replaceInnerHtml(partnerLogo, "navbar-logo");
+}
+
+/**
+ * Setups the mobile menu navigation from click event
+ */
+async function menuMobileLoad(){
+  const menuMobileLinks = document.querySelectorAll(".nav-mobile__link");
+  const menuMobileBackButtons = document.querySelectorAll(".nav-mobile__back");
+  if (menuMobileLinks){
+    menuMobileLinks.forEach(button => {
+      button.addEventListener('click', (event) => { handleMenuLinkClick(event); }) 
+    });
+  }
+  if (menuMobileBackButtons){
+    menuMobileBackButtons.forEach(button => {
+      button.addEventListener('click', (event) => { handleBackButtonClick(event); }) 
+    });
+  }
+}
+
+/**
+ * Mobile menu navigation
+ */
+function handleMenuLinkClick(event) {
+  if (event.target.tagName == "BUTTON") {
+    event.preventDefault()
+    var button = event.target
+    var anchor = button.parentElement
+    var dropdown = anchor.nextElementSibling
+
+    dropdown.classList.add("open")
+  }
+}
+function handleBackButtonClick(event) {
+  var button = event.target
+  var dropdown = button.parentElement
+
+  dropdown.classList.remove("open")
 }

@@ -61,11 +61,11 @@
       overflow: visible;
       padding: 0;
       width: 475px;
-      left: -475px;
+      right: calc(-475px - 55px);
       background: #ffffff;
 
       @media mobile
-        left: -320px;
+        right: calc(-320px - 55px);
         width: 320px;
 
       .uk-close
@@ -103,6 +103,7 @@
           padding-right 10px
           overflow auto
           max-height: calc(100vh - 320px);
+          max-height: calc(100dvh - 320px);
           &::-webkit-scrollbar
             width 10px
           &::-webkit-scrollbar-thumb
@@ -110,6 +111,7 @@
             border 2px solid #F5F5F5
           @media mobile
             max-height: calc(100vh - 300px);
+            max-height: calc(100dvh - 300px);
 
         &__item
           display flex

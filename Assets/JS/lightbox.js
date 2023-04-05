@@ -7,22 +7,24 @@ function lightboxLoad() {
   var newsletterLightboxId = "newsletter-lightbox"
   var exitIntentLightboxId = "exit-intent-lightbox"
 
-  if (!getLocalStorageWithExpiration(`${STORE_TOKEN}-${newsletterLightboxId}`)) {
-    showLightbox(newsletterLightboxId)
-  }
-  
+  setTimeout(() => {
+    if (!getLocalStorageWithExpiration(`${STORE_TOKEN}-${newsletterLightboxId}`)) {
+      showLightbox(newsletterLightboxId)
+    }
+  }, 500);
+
   const exitEvent = e => {
     if (!e.toElement && !e.relatedTarget && e.clientY < 5) {
       document.removeEventListener("mouseout", exitEvent);
       showLightbox(exitIntentLightboxId)
     } 
   };
-
   setTimeout(() => {
     if (!getLocalStorageWithExpiration(`${STORE_TOKEN}-${exitIntentLightboxId}`)) {
       document.addEventListener("mouseout", exitEvent);
     }
-  }, 5000);
+  }, 3000);
+  
 
 }
 
@@ -52,13 +54,22 @@ function getLocalStorageWithExpiration(key) {
 
 function closeLightbox(lightboxId) {
   if (event.target == event.currentTarget) {
-    const lightbox = document.getElementById(lightboxId)
+    const body = document.body
     setLocalStorageWithExpiration(`${STORE_TOKEN}-${lightboxId}`, LIGHTBOX_EXPIRATION_DAYS)
-    lightbox.style.display = "none"
+    body.classList.remove(`show-${lightboxId}`)
   }
 }
 
 function showLightbox(lightboxId) {
-  const lightbox = document.getElementById(lightboxId)
-  lightbox.style.display = "flex"
+  const body = document.body
+  body.classList.add(`show-${lightboxId}`)
 }
+
+var swiper = new Swiper(".showcase-lightbox .swiper", {
+  navigation: {
+    nextEl: '.showcase-lightbox .swiper-button-next',
+    prevEl: '.showcase-lightbox .swiper-button-prev'
+  },
+  slidesPerView: 3,
+  spaceBetween: 20,
+});

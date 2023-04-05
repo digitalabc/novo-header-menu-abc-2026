@@ -8,8 +8,8 @@
     </head>
 
     <body class="hotsite">
-        <header id="header">
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
 
         <div class="container">
@@ -182,7 +182,14 @@
           </section>
           
           <section class="banner">
-            {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+            {{ # banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+            <ul>
+              <li>
+                <a target="_blank" href="#">
+                  <img srcset="https://via.placeholder.com/1300x300 w" sizes="px" src="https://via.placeholder.com/1300x300" alt="Banner Pisos e Revestimentos" class="">
+                </a>
+              </li>
+            </ul>
           </section>
 
           <div class="category__toolbar">
@@ -216,10 +223,10 @@
         
         <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
 
-        {{ footer }}
+        {{ footer products:common.lighbox_products.products.nodes }}
 
         {{ sdk_client }}
 
-        {{ asset type: "js" paths: ["uikit", "components", "seo", "sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_hotsite"]}}
+        {{ asset type: "js" paths: ["uikit", "components", "seo", "sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_hotsite", "newsletter", "lightbox"]}}
     </body>
 </html>

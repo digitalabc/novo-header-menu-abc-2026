@@ -8,8 +8,8 @@
     </head>
 
     <body class="hotsite">
-        <header id="header">
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
 
         <div class="container">
@@ -216,7 +216,7 @@
         
         <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
 
-        {{ footer }}
+        {{ footer products:common.lighbox_products.products.nodes }}
 
         {{ sdk_client }}
 

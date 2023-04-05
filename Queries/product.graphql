@@ -189,7 +189,7 @@ fragment SingleProductData on SingleProduct {
       id
       alias
       available
-      images {
+      images (height: 530, width: 530){
         fileName
         url
       }

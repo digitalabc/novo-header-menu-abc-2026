@@ -565,7 +565,7 @@ window.visible_id = 'product-shipping';
 
 function togglePickUp(button) {
   var buyButton = button.previousElementSibling
-  var shippingEl = document.getElementById('product-shipping'); 
+  var shippingEl = document.querySelector('.product-shipping'); 
   var pickUpEl = document.getElementById('product-pick-up'); 
 
   if (top.visible_id == 'product-shipping') {
@@ -577,7 +577,7 @@ function togglePickUp(button) {
   } else {
     buyButton.classList.remove("hollow")
     button.classList.remove("full")
-    shippingEl.style.display = 'block'; 
+    shippingEl.style.display = 'grid'; 
     pickUpEl.style.display = 'none'; 
     top.visible_id = 'product-shipping';
   }

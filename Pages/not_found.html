@@ -3,20 +3,26 @@
     <head>
         {{ header title:"Erro 404" store: store }}
         {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login"]}}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <header>
             {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
         
-        <h1>
-            Erro 404
-        </h1>
+        <section class="error">
+          <h1>
+              Erro 404
+          </h1>
+          <h2>
+              Sem resultados para {{ url }}
+          </h2>
+        </section>
+        
+        {{ footer products:common.lighbox_products.products.nodes }}
 
-        <h2>
-            Sem resultados para {{ url }}
-        </h2>
         {{ sdk_client }}
-        {{ asset type: "js" paths: ["components", "mini_cart", "navbar", "user_login"]}}
+        
+        {{ asset type: "js" paths: ["uikit", "components", "mini_cart", "navbar", "newsletter", "user_login", "topbar", "lightbox"]}}
     </body>
 </html>

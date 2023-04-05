@@ -6,7 +6,8 @@
         product_view product: product
 ## }}
 {{~ selected_variant = product.attribute_selections?.selected_variant ~}}
-{{~ product_is_kit = product.buy_list_id ?? true ~}}
+{{ product | debug.log }} 
+{{~ product_is_kit = product.buy_list_id ?! true ~}}
 <section class="product__image">
     {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
         {{ product_gallery product: product images: product.attribute_selections.selected_variant.images }}

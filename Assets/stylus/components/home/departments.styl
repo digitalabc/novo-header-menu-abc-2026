@@ -1,12 +1,16 @@
 .departments
+
   &__item
-    &:hover 
-      .departments__icon
-        border 1px solid $primary
-        svg
-          fill $primary
-      .departments__title
-        color $primary
+    @media mobile
+      width 120px
+    @media desktop
+      &:hover 
+        .departments__icon
+          border 1px solid $primary
+          svg
+            fill $primary
+        .departments__title
+          color $primary
 
   &__icon
     display grid
@@ -25,3 +29,14 @@
     font-weight 500
     color #5D5D5D
     transition $transition
+    @media mobile
+      text-align center
+
+  @media mobile
+    .swiper
+      margin 0 -15px
+      padding 0 15px
+      &-button
+        &-next
+        &-prev
+          display none

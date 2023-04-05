@@ -28,15 +28,17 @@
         display none
 
 .spot
+  background #fff
   border 1px solid #EAEAEA
   transition $transition
-  &:hover
-    box-shadow $bs
-    .add-to-cart-button
-      transform none
-    .spot__overlay
-      visibility: visible;
-      opacity: 1;
+  @media desktop
+    &:hover
+      box-shadow $bs
+      .add-to-cart-button
+        transform none
+      .spot__overlay
+        visibility: visible;
+        opacity: 1;
 
   &__image
     position: relative;
@@ -78,12 +80,7 @@
       display none
 
     .add-to-cart-button
-      transform translateY(100%)
       background $buy-btn
-      position absolute
-      bottom 0
-      left 0
-      right 0
       display flex
       align-items center
       justify-content center
@@ -92,9 +89,16 @@
       cursor pointer
       font-weight 500
       color #fff
-      transition $transition
-      &:hover
-        background $black
+      width: 100%;
+      margin-top: 15px;
+      @media desktop
+        transform translateY(100%)
+        position absolute
+        bottom 0
+        left 0
+        transition $transition
+        &:hover
+          background $black
 
   &__overlay
     position: absolute;
@@ -122,11 +126,19 @@
       height 60px
       margin-bottom 20px
       transition $transition
+      @media mobile
+        font-size: 12px;
+        line-height: 19px;
+        height 57px
+        margin-bottom 15px
+
       &:hover
         color $primary
 
   &-price
     margin-bottom 5px
+    @media mobile
+      margin-bottom 2px
     s
       display block
       color: #B4B4B4
@@ -134,15 +146,24 @@
       font-size: 14px;
       line-height: 18px;
       margin-bottom 5px
+      @media mobile
+        margin-bottom 3px
+        font-size: 12px;
+        line-height: 15px;
 
     h3
       &:first-child
         padding-top 23px
+        @media mobile
+          padding-top 18px
       span
         color: $primary;
         font-weight: 700;
         font-size: 20px;
         line-height: 24px;
+        @media mobile
+          font-size: 16px;
+          line-height: 19px;
 
       small
         font-weight: 400;
@@ -156,3 +177,6 @@
       min-height 30px
     strong
       font-weight 400
+    span
+      @media mobile
+        display block

@@ -2,9 +2,12 @@
   display flex
   align-items center
   gap 10px
-  font-size 12px
-  font-weight 500
+  @media mobile
+    flex 1
+    max-width 200px
   &__text
+    font-size 12px
+    font-weight 500
     @media mobile
       display none
   select
@@ -20,3 +23,5 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAABHNCSVQICAgIfAhkiAAAAG9JREFUCFtjjImJecDAwJCwZMmSA0AaDmJjYxOAnABGEOP///8T/v3757Bs2bILIBXIYowgAaApDUDKn4WFxfHXr18KzMzM+4GaAkGmghVAFS0A0vqMjIwKQLpw8eLFID4DXAFUEciKC0CdIPvBAAB98DALc2GrVAAAAABJRU5ErkJggg==')
     background-repeat no-repeat
     background-position right 10px center
+    @media mobile
+      width 100%

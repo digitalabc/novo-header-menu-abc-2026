@@ -86,6 +86,10 @@
 
       &:nth-child(n + 4)
         display none
+        
+      @media mobile
+        &:not(:last-child)
+          margin-bottom 35px
 
       &:hover
         &:after
@@ -98,12 +102,13 @@
 // Home - Banner Instagram
 .banner-instagram
   ul
-    display flex
-    gap 20px
+    @media desktop
+      display flex
+      gap 20px
     li
       overflow: hidden;
-      &:nth-child(n + 6)
-        display none
+      @media mobile
+        width 240px
         
       a
         position relative
@@ -127,3 +132,8 @@
       img
         transition: $transition;
         display block
+
+  @media mobile
+    .swiper
+      margin 0 -15px
+      padding 0 15px

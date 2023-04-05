@@ -3,10 +3,11 @@ var swiper = new Swiper(".subcategories .swiper", {
     nextEl: '.subcategories .swiper-button-next',
     prevEl: '.subcategories .swiper-button-prev'
   },
-  spaceBetween: 20,
-  slidesPerView: 2.5,
+  spaceBetween: 15,
+  slidesPerView: 'auto',
   breakpoints: {
     991: {
+      spaceBetween: 20,
       slidesPerView: 11
     }
   }

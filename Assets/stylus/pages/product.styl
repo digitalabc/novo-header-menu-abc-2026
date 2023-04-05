@@ -58,6 +58,8 @@
       align-items center
       gap 10px 20px
       margin-bottom 10px
+      flex-wrap wrap
+      white-space nowrap
       s
         margin-bottom 0
       h3  
@@ -77,6 +79,7 @@
     .box-price
       margin-bottom 15px
       width 380px
+      max-width 100%
       height 40px
       display flex
       align-items center
@@ -595,31 +598,19 @@
         gap: 8px;
 
   &__buy-together
-    margin: 0 auto 120px;
-    max-width: 1400px;
     h2
       font-size 20px
       font-weight 500
       margin-bottom 20px
 
-    .attribute-selections
-      margin-bottom 0
-      padding-bottom 0
-      border-bottom none
-      h3
-        margin-bottom: 9px;
-        color: #1F1F1F
-        font-weight: 600;
-      .attribute
-        &:not(:last-child)
-          margin-bottom 15px
-
     .buy-together-row-div
       display: flex;
       justify-content: space-between;
       max-width 935px
+      margin-bottom 60px
 
       @media mobile
+        margin-bottom 40px
         flex-direction: column;
         gap: 40px;
 
@@ -641,6 +632,18 @@
         text-transform: uppercase;
         font-weight: 700;
         font-size: 40px;
+
+    .attribute-selections
+      margin-bottom 0
+      padding-bottom 0
+      border-bottom none
+      h3
+        margin-bottom: 9px;
+        color: #1F1F1F
+        font-weight: 600;
+      .attribute
+        &:not(:last-child)
+          margin-bottom 15px
 
     .buy-together
       &__image
@@ -716,23 +719,37 @@
   z-index 1
   bottom 0
   width 100%
-  padding 7.5px 0
   background #F7F7F7
   transform translateY(100%)
   transition $transition
+  @media mobile
+    padding 0
   .show-floating &
     transform translateY(0)
+    @media mobile
+      transform translateY(-75px)
 
   &__container
     @extends $container
     display flex
     align-items center
     gap 10px
-    padding 0 35px
+    padding 7.5px 35px
+    @media mobile
+      flex-direction column
+      padding 20px 20px 0
+      gap 20px
+
+  &__image
+    @media mobile
+      display none
+
   &__title
     flex 1
     font-size 20px
     font-weight 500
+    @media mobile
+      font-size 14px
   .buy-button
     display none
 

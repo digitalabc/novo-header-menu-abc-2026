@@ -3,12 +3,66 @@
     &__container
       @extends $container
       
+    &__block
+      @media mobile
+        width 100%
+      @media desktop
+        &--newsletter
+          flex 400
+          padding-bottom 20px
+        &--institucional
+          flex 255
+        &--ajuda
+          flex 360
+        &--atendimento
+          flex 290
+        &--institucional
+        &--ajuda
+        &--atendimento
+          border-bottom 1px solid #EAEAEA
+      &--atendimento
+        .footer
+          &__list 
+            li
+              &:not(:last-child)
+                margin-bottom 13px
+              a
+                display flex
+                align-items center
+                gap 8px
+                font-size 16px
+                font-weight 500
+                color #5D5D5D
+                &:hover
+                  color $primary
+              span
+                color #004A68
+                font-size 13px
     &__title
-      margin-bottom: 15px;
       color: #004A68
       font-weight: 600;
       font-size: 14px;
-    
+      margin 0
+      @media desktop
+        margin-bottom 15px
+        svg
+          display none
+      @media mobile
+        display flex
+        align-items center
+        justify-content space-between
+        svg
+          transform rotateX(180deg)
+        + *:not(.social)
+          height 0
+          overflow hidden
+          transition $transition
+        &.open
+          svg
+            transform rotateX(0)
+          + *
+            margin-top 15px
+  
     &__list
       li
         &:not(:last-child)
@@ -25,79 +79,65 @@
       padding: 45px 0 25px;
       @media mobile
         flex-wrap: wrap;
-        padding: 40px 12px;
-        gap: 60px;
-
-      .footer
-        &__block
-          &--newsletter
-            flex 400
-            padding-bottom 20px
-          &--institucional
-            flex 255
-          &--ajuda
-            flex 360
-          &--atendimento
-            flex 290
-          &--institucional
-          &--ajuda
-          &--atendimento
-            border-bottom 1px solid #EAEAEA
-          &--atendimento
-            .footer
-              &__list 
-                li
-                  &:not(:last-child)
-                    margin-bottom 13px
-                  a
-                    display flex
-                    align-items center
-                    gap 8px
-                    font-size 16px
-                    font-weight 500
-                    color #5D5D5D
-                    &:hover
-                      color $primary
-                  span
-                    color #004A68
-                    font-size 13px
+        padding: 20px 0 40px;
+        gap: 40px;
             
     &-middle
       display flex
       justify-content space-between
       padding-bottom 80px
+      @media mobile
+        flex-wrap: wrap;
+        gap: 40px;
+        padding-bottom 40px
+              
       .social
         display: flex;
         align-items: center;
         gap: 10px;
+        @media mobile
+          margin-top 15px
 
       .security
-        display: flex;
-        align-items: center;
-        gap: 20px;
+        li
+          display inline
+          font-size 0
+          &:not(:last-child)
+            margin-right 20px
 
       .payment
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        li
+          display inline
+          font-size 0
+          &:not(:last-child)
+            margin-right 10px
 
+          
     &-bottom
       background #F0F3F5
-
       .footer
         &__container
-          height 50px
-          display flex
-          align-items center
-          justify-content space-between
-          
+          @media mobile
+            padding-top 35px
+            padding-bottom 30px
+          @media desktop
+            height 50px
+            display flex
+            align-items center
+            justify-content space-between
+            
         &__copyright
           font-size 10px
           color #4D4D4D
+          @media mobile
+            margin-bottom 30px
+            text-align center
         &__signature
           display: flex;
           align-items: center;
           gap: 5px;
+          @media mobile
+            justify-content center
 
   .newsletter
     @media desktop
@@ -106,6 +146,8 @@
       font-size 14px
       font-weight 600
       margin-bottom 10px
+      @media mobile
+        text-align center
 
     &__form
       position relative

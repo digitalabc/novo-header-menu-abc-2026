@@ -4,7 +4,7 @@ var swiper = new Swiper(".subcategories .swiper", {
     prevEl: '.subcategories .swiper-button-prev'
   },
   spaceBetween: 20,
-  slidesPerView: 1.5,
+  slidesPerView: 'auto',
   breakpoints: {
     991: {
       slidesPerView: 6
@@ -27,7 +27,7 @@ var swiper = new Swiper(".showcase-1 .swiper", {
       spaceBetween: 40,
       slidesPerView: 1
     },
-    1300: {
+    1090: {
       spaceBetween: 40,
       slidesPerView: 2
     }
@@ -49,7 +49,7 @@ var swiper = new Swiper(".showcase-2 .swiper", {
       spaceBetween: 20,
       slidesPerView: 4
     },
-    1300: {
+    1090: {
       spaceBetween: 20,
       slidesPerView: 5
     }
@@ -72,7 +72,7 @@ var swiper = new Swiper(".showcase-3 .swiper", {
       spaceBetween: 20,
       slidesPerView: 4
     },
-    1300: {
+    1090: {
       spaceBetween: 20,
       slidesPerView: 5
     }

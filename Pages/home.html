@@ -109,7 +109,7 @@
               <h2 class="departments__title">Compre por departamento</h2>
               <div class="swiper-container">
                 <div class="swiper">
-                  <ul class="swiper-wrapper">
+                  <ul class="swiper-wrapper departments__list">
                     <li class="swiper-slide departments__item">
                         <a href="#">
                             <div class="departments__icon">
@@ -585,7 +585,7 @@
 
               <!-- Banners centro -->
               <section class="banner-centro mobile">
-                  {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                  {{ banner carousel: false banners: data.hotsite.banners position: "Centro" }}
               </section>
 
               <!-- Carrossel de marcas -->
@@ -664,57 +664,61 @@
               </section>  
 
               <!-- Nosso Blog -->
-              <section class="blog swiper">
+              <section class="blog ">
                 <h2 class="blog__title">Nosso Blog</h2>
-                <div class="blog__list swiper-wrapper">
-                    <div class="blog__item swiper-slide">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
-                            <div class="blog__content">
-                              <h3>
-                                10 Dicas de presentes diferentes para o Dia dos Pais
-                              </h3>
-                              <span class="text">Veja 10 dicas de como surpreender o seu pai com presentes diferentes   Todo ano, quando aproxima o Dia dos Pais, surge a famosa dúvida: o que dar de presente para o pai este ano? […]</span>
-                              <span class="link">Leia agora</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="blog__item swiper-slide">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/310x245" alt="Dia dos Pais Campeão com a ABC da Construção"/> 
-                            <div class="blog__content">
-                              <h3>
-                                Dia dos Pais Campeão com a ABC da Construção
-                              </h3>
-                              <span class="text">Dia dos Pais está chegando, e presente bom é presente em dobro! A ABC da Construção não deixa ninguém de fora, e nessa data tão importante, pai e filho concorrem ao presente! Veja só como participar […]</span>
-                              <span class="link">Leia agora</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="blog__item swiper-slide">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/310x245" alt="O que não pode faltar no banheiro moderno"/> 
-                            <div class="blog__content">
-                              <h3>
-                                O que não pode faltar no banheiro moderno
-                              </h3>
-                              <span class="text">O banheiro moderno é lindo e funcional. Veja aqui algumas dicas para reformar o seu e ter um ambiente maravilhoso!   O que não pode faltar em um banheiro moderno? Confira dicas para ter um projeto impecável  […]</span>
-                              <span class="link">Leia agora</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="blog__item swiper-slide">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
-                            <div class="blog__content">
-                              <h3>
-                                10 Dicas de presentes diferentes para o Dia dos Pais
-                              </h3>
-                              <span class="text">Veja 10 dicas de como surpreender o seu pai com presentes diferentes   Todo ano, quando aproxima o Dia dos Pais, surge a famosa dúvida: o que dar de presente para o pai este ano? […]</span>
-                              <span class="link">Leia agora</span>
-                            </div>
-                        </a>
-                    </div>
+                <div class="swiper-container">
+                  <div class="swiper">
+                    <ul class="blog__list swiper-wrapper">
+                        <li class="blog__item swiper-slide">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
+                                <div class="blog__content">
+                                  <h3>
+                                    10 Dicas de presentes diferentes para o Dia dos Pais
+                                  </h3>
+                                  <span class="text">Veja 10 dicas de como surpreender o seu pai com presentes diferentes   Todo ano, quando aproxima o Dia dos Pais, surge a famosa dúvida: o que dar de presente para o pai este ano? […]</span>
+                                  <span class="link">Leia agora</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="blog__item swiper-slide">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/310x245" alt="Dia dos Pais Campeão com a ABC da Construção"/> 
+                                <div class="blog__content">
+                                  <h3>
+                                    Dia dos Pais Campeão com a ABC da Construção
+                                  </h3>
+                                  <span class="text">Dia dos Pais está chegando, e presente bom é presente em dobro! A ABC da Construção não deixa ninguém de fora, e nessa data tão importante, pai e filho concorrem ao presente! Veja só como participar […]</span>
+                                  <span class="link">Leia agora</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="blog__item swiper-slide">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/310x245" alt="O que não pode faltar no banheiro moderno"/> 
+                                <div class="blog__content">
+                                  <h3>
+                                    O que não pode faltar no banheiro moderno
+                                  </h3>
+                                  <span class="text">O banheiro moderno é lindo e funcional. Veja aqui algumas dicas para reformar o seu e ter um ambiente maravilhoso!   O que não pode faltar em um banheiro moderno? Confira dicas para ter um projeto impecável  […]</span>
+                                  <span class="link">Leia agora</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="blog__item swiper-slide">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
+                                <div class="blog__content">
+                                  <h3>
+                                    10 Dicas de presentes diferentes para o Dia dos Pais
+                                  </h3>
+                                  <span class="text">Veja 10 dicas de como surpreender o seu pai com presentes diferentes   Todo ano, quando aproxima o Dia dos Pais, surge a famosa dúvida: o que dar de presente para o pai este ano? […]</span>
+                                  <span class="link">Leia agora</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                  </div>
                 </div>
               </section>  
           </div>
@@ -724,7 +728,7 @@
             <!-- Banners instagram -->
             <section class="banner-instagram">
                 <h2>{{ "Siga-nos no Instagram" | lang }}</h2>
-                {{ banner carousel: false banners: data.hotsite.banners position: "Rodape" }}
+                {{ banner carousel: true banners: data.hotsite.banners position: "Rodape" }}
             </section>
         </div>
         

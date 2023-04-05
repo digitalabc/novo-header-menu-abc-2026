@@ -5,21 +5,26 @@
     font-size 20px
     font-weight bold
     margin-bottom 25px
+    @media mobile
+      margin-bottom 10px
 
   h2
     font-size 20px
     font-weight 500
     margin-bottom 25px
+    @media mobile
+      text-align center
 
   .banner
     margin-bottom: 55px;
+    @media mobile
+      margin-bottom 40px
 
   .showcase
     margin-bottom: 55px;
+    @medai mobile
+      margin-bottom 40px
     &__banner
-      @media mobile
-        ul
-          margin-bottom 20px
       @media desktop
         display flex
         gap 20px
@@ -31,21 +36,31 @@
           margin-left auto
         .swiper-button-prev
           left 0
+      @media mobile
+        .showcase-1
+          margin-top 40px
 
   .gray-bg
     padding-top 35px
     padding-bottom 35px
     background #F5F5F5
     margin-bottom 55px
+    @medai mobile
+      padding-top 30px
+      padding-bottom 30px
+      margin-bottom 40px
 
   .category
     &__toolbar
       display flex
       justify-content space-between
       align-items center
-      padding-bottom 10px
-      margin-bottom 30px
-      border-bottom 1px solid #D5D5D5
+      gap 10px
+      margin-bottom 40px
+      @media desktop
+        padding-bottom 10px
+        margin-bottom 30px
+        border-bottom 1px solid #D5D5D5
 
     &__main
       padding-bottom 55px
@@ -55,37 +70,6 @@
       #spots-list
         flex 1
     
-  .seo
-    border 1px solid #D5D5D5
-    margin-bottom 55px
-    padding 20px 25px
-    &.expand
-      .seo
-        &__text
-          max-height unset
-        &__button
-          font-size 0
-          gap 3.5px
-          &:before
-            content 'Ver menos'
-            font-size 20px
-          svg
-            transform rotate(180deg)
-    &__text
-      overflow hidden
-      max-height 54px
-      p
-        margin-bottom 10px
-    &__button
-      cursor pointer
-      display flex
-      align-items center
-      gap 7px
-      color #0FA848
-      font-size 20px
-      font-weight bold
-      background none
-      margin-top 25px
 
   .spots
     display: grid;
@@ -95,11 +79,37 @@
     justify-items: center;
     .spot
       width 100%
+      @media mobile
+        border none
+        &__content
+          padding 10px 0 0 0 
+        &__image
+          border 1px solid #EAEAEA
+        &-price
+          margin-bottom 5px
+          s
+            font-size: 14px;
+            line-height: 18px;
+            margin-bottom 5px
+          h3
+            &:first-child
+              padding-top 23px
+            span
+              font-size: 20px;
+              line-height: 24px;
+        
+        .best-installment
+          min-height unset
+          span
+            display inline
 
     @media (max-width: 1300px)
       grid-template-columns: repeat(3, calc((100%/3) - (2*20px)/3));
 
     @media mobile
+      gap: 60px 20px;
+      
+    @media (max-width: 600px)
       grid-template-columns: repeat(2, calc(50% - 5px));
       gap: 60px 10px;
 

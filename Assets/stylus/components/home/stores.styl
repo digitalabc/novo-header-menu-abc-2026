@@ -1,5 +1,8 @@
 .stores
   li
+    @media mobile
+      width 193px
+
     a
       position relative
       &:after
@@ -14,3 +17,11 @@
       &:hover
         &:after
           opacity 0.2
+  @media mobile
+    .swiper
+      margin 0 -15px
+      padding 0 15px
+      &-button
+        &-next
+        &-prev
+          display none

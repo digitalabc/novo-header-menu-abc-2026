@@ -433,22 +433,8 @@ async function backInStockOnClick(e){
     if(success) showAlert('Email cadastrado com sucesso!');
 }
 
-function toggleSlide(elem){
-  if (!elem.style.height) {
-    elem.style.height = `${elem.scrollHeight}px`
-  }
-  else{
-    elem.style.height = ``
-  }
-}
-
 function togglePayment(button) {
   button.parentElement.classList.toggle("open")
-}
-function toggleOption(button) {
-  var optionListEl = button.nextElementSibling
-  toggleSlide(optionListEl)
-  button.classList.toggle("open")
 }
 
 
@@ -554,7 +540,7 @@ var swiper = new Swiper(".related-products .swiper", {
       spaceBetween: 20,
       slidesPerView: 4
     },
-    1300: {
+    1090: {
       spaceBetween: 20,
       slidesPerView: 5
     }

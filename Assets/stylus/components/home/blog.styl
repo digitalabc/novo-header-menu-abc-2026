@@ -1,14 +1,17 @@
 
 .blog
   &__list
-    display flex
-    gap 20px
+    @media desktop
+      display flex
+      gap 20px
 
   &__item
     width 100%
     border 1px solid #EAEAEA
     background #fff
     transition $transition
+    @media mobile
+      width 310px
 
     @media desktop
       flex-shrink 1
@@ -49,3 +52,8 @@
       transition $transition
       &:hover
         color $primary
+
+  @media mobile
+    .swiper
+      margin 0 -15px
+      padding 0 15px

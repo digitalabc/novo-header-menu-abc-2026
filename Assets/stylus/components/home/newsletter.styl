@@ -6,6 +6,7 @@ section.newsletter--home
   @media mobile
     margin 0 -15px
     padding 15px
+    background-position right 700px top -100px
   .newsletter
     &__container
       @media desktop
@@ -21,10 +22,12 @@ section.newsletter--home
         font-size 20px
         font-weight 600
         color #fff
+      @media mobile
+        margin-bottom 25px
     &__form
       position relative
-      flex 1
       @media desktop
+        flex 1
         display flex
         gap 35px
     
@@ -38,6 +41,12 @@ section.newsletter--home
       padding 0 20px
       &::placeholder
         color #5D5D5D
+      @media mobile
+        width 100%
+        &.newsletter-name
+          margin-bottom 6px
+        &.newsletter-email
+          margin-bottom 18px
     &__button
       cursor pointer
       display flex
@@ -49,6 +58,8 @@ section.newsletter--home
       transition $transition
       width 150px
       height 45px
+      @media mobile
+        width 100%
       &:hover
         background-color $black
         color #fff

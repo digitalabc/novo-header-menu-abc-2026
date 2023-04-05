@@ -24,16 +24,20 @@
   .show-newsletter-lightbox &
     opacity 1
     visibility visible
-    .newsletter
+    .newsletter__wrapper
       transform translateX(0)
 
   .newsletter
-    transform translateY(100vh)
-    transform translateY(100dvh)
-    transition $transition
     &__wrapper
       position: relative;
       cursor default
+      width 750px
+      transform translateY(100vh)
+      transform translateY(100dvh)
+      transition $transition
+      @media mobile
+        width: 90%;
+        max-width: 450px;
 
     &__close
       position: absolute;
@@ -45,6 +49,10 @@
       background: none;
       cursor: pointer;
       transition $transition
+      @media mobile
+        top: 5px;
+        right: 10px;
+        z-index: 1;
       &:hover
         color $primary
 
@@ -55,39 +63,49 @@
       justify-content center
       background-color $primary
       text-align: center;
-      font-size: 24px;
-      line-height: 32px;
+      @media mobile
+        padding: 30px 15px 15px;
+        height: auto; 
 
       h2
         font-size 29px
         font-weight 600
         color: #fff;
         margin-bottom 0
+        @media mobile
+          font-size 18px
         
       p
         font-size 20px
         color: #fff;
+        @media mobile
+          font-size 14px
 
     &__form
       padding 45px 0 
-      width 750px
       background #F7F7F7
+      @media mobile
+        padding 20px 15px
 
     &__input
-        width 550px
-        height: 45px;
-        border 1px solid #5D5D5D
-        display block
-        margin 0 auto
-        border-radius: 0;
-        font-size 12px
-        color #392F2D
-        &::placeholder
-          color #5D5D5D
-        &.newsletter-name
-          margin-bottom 25px
-        &.newsletter-email
+      width 550px
+      height: 45px;
+      border 1px solid #5D5D5D
+      display block
+      margin 0 auto
+      border-radius: 0;
+      font-size 12px
+      color #392F2D
+      @media mobile
+        width 100%
+      &::placeholder
+        color #5D5D5D
+      &.newsletter-name
+        margin-bottom 25px
+        @media mobile
           margin-bottom 12px
+      &.newsletter-email
+        margin-bottom 12px
 
     &__button
         display flex
@@ -122,10 +140,11 @@
       gap 6px
       max-width 550px
       margin 0 auto 35px
+      @media mobile
+        margin-bottom 20px
     &__input
       display none
-      &:checked,
-      &:hover
+      &:checked
         +.fake-checkbox
           border 1px solid $primary
           &:before

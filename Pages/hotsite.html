@@ -49,7 +49,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Fachada"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Fachada"/>
                           </div>
                           <h3 class="subcategories__title">
                             Fachada
@@ -59,7 +59,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Pastilha Piso ou Parede"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Pastilha Piso ou Parede"/>
                           </div>
                           <h3 class="subcategories__title">
                             Pastilha Piso ou Parede
@@ -69,7 +69,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Piscina"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Piscina"/>
                           </div>
                           <h3 class="subcategories__title">
                             Piscina
@@ -79,7 +79,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="ÁPiso Cerâmica"/>
+                            <img src="https://via.placeholder.com/130x130" alt="ÁPiso Cerâmica"/>
                           </div>
                           <h3 class="subcategories__title">
                             Piso Cerâmica
@@ -89,7 +89,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Piso Laminado de Madeira"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Piso Laminado de Madeira"/>
                           </div>
                           <h3 class="subcategories__title">
                             Piso Laminado de Madeira
@@ -99,7 +99,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Piso Vinílico"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Piso Vinílico"/>
                           </div>
                           <h3 class="subcategories__title">
                             Piso Vinílico
@@ -109,7 +109,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Porcelanato"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Porcelanato"/>
                           </div>
                           <h3 class="subcategories__title">
                             Porcelanato
@@ -119,7 +119,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Porcelanato Esmaltado"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Porcelanato Esmaltado"/>
                           </div>
                           <h3 class="subcategories__title">
                             Porcelanato Esmaltado
@@ -129,7 +129,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Porcelanato Madeira"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Porcelanato Madeira"/>
                           </div>
                           <h3 class="subcategories__title">
                             Porcelanato Madeira
@@ -139,7 +139,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Porcelanato Técnico"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Porcelanato Técnico"/>
                           </div>
                           <h3 class="subcategories__title">
                             Porcelanato Técnico
@@ -149,7 +149,7 @@
                   <li class="swiper-slide subcategories__item">
                       <a href="#">
                           <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/100x100" alt="Azulejos"/>
+                            <img src="https://via.placeholder.com/130x130" alt="Azulejos"/>
                           </div>
                           <h3 class="subcategories__title">
                             Azulejos
@@ -159,7 +159,7 @@
                   <li class="swiper-slide subcategories__item">
                     <a href="#">
                         <div class="subcategories__img">
-                          <img src="https://via.placeholder.com/100x100" alt="Fachada"/>
+                          <img src="https://via.placeholder.com/130x130" alt="Fachada"/>
                         </div>
                         <h3 class="subcategories__title">
                           Fachada
@@ -182,14 +182,26 @@
           </section>
           
           <section class="banner">
-            {{ # banner carousel: false banners: data.hotsite.banners position: "Topo" }}
-            <ul>
-              <li>
-                <a target="_blank" href="#">
-                  <img srcset="https://via.placeholder.com/1300x300 w" sizes="px" src="https://via.placeholder.com/1300x300" alt="Banner Pisos e Revestimentos" class="">
-                </a>
-              </li>
-            </ul>
+            <div class="desktop">
+              {{ # banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+              <ul>
+                <li>
+                  <a target="_blank" href="#">
+                    <img srcset="https://via.placeholder.com/1300x300 w" sizes="px" src="https://via.placeholder.com/1300x300" alt="Banner Pisos e Revestimentos" class="">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="mobile">
+              {{ # banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+              <ul>
+                <li>
+                  <a target="_blank" href="#">
+                    <img srcset="https://via.placeholder.com/1300x300 w" sizes="px" src="https://via.placeholder.com/991x680" alt="Banner Pisos e Revestimentos" class="">
+                  </a>
+                </li>
+              </ul>
+            </div>
           </section>
 
           <div class="category__toolbar">

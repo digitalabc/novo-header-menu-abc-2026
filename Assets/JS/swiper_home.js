@@ -1,14 +1,9 @@
 var swiper = new Swiper(".fullbanner .swiper", {
+  loop: true,
   autoplay: {
     delay: 3000,
   },
 });
-
-if(MOBILE.matches) {
-  var swiper = new Swiper(".blog", {
-    slidesPerView: 1.15
-  });
-}
 
 var swiper = new Swiper(".banner-oportunidades .mobile .swiper:first-child", {
   spaceBetween: 10,
@@ -35,18 +30,19 @@ var swiper = new Swiper(".banner-grid div:nth-child(2)", {
   }
 });
 
-var swiper = new Swiper(".banner-centro.desktop .swiper", {
-  spaceBetween: 20,
-  slidesPerView: 3
-});
-
 var swiper = new Swiper(".departments .swiper", {
   navigation: {
     nextEl: '.departments .swiper-button-next',
     prevEl: '.departments .swiper-button-prev'
   },
-  spaceBetween: 20,
-  slidesPerView: 8
+  spaceBetween: 10,
+  slidesPerView: 'auto',
+  breakpoints: {
+    991: {
+      spaceBetween: 20,
+      slidesPerView: 8
+    }
+  }
 });
 
 var swiper = new Swiper(".environments .swiper", {
@@ -54,8 +50,19 @@ var swiper = new Swiper(".environments .swiper", {
     nextEl: '.environments .swiper-button-next',
     prevEl: '.environments .swiper-button-prev'
   },
+  spaceBetween: 10,
+  slidesPerView: 'auto',
+  breakpoints: {
+    991: {
+      spaceBetween: 20,
+      slidesPerView: 4
+    }
+  }
+});
+
+var swiper = new Swiper(".banner-centro.desktop .swiper", {
   spaceBetween: 20,
-  slidesPerView: 4
+  slidesPerView: 3
 });
 
 var swiper = new Swiper(".brands .swiper", {
@@ -63,8 +70,17 @@ var swiper = new Swiper(".brands .swiper", {
     nextEl: '.brands .swiper-button-next',
     prevEl: '.brands .swiper-button-prev'
   },
-  spaceBetween: 20,
-  slidesPerView: 7,
+  autoplay: {
+    delay: 3000,
+  },
+  slidesPerView: 2,
+  breakpoints: {
+    991: {
+      autoplay: false,
+      spaceBetween: 20,
+      slidesPerView: 7
+    }
+  }
 });
 
 var swiper = new Swiper(".stores .swiper", {
@@ -72,8 +88,32 @@ var swiper = new Swiper(".stores .swiper", {
     nextEl: '.stores .swiper-button-next',
     prevEl: '.stores .swiper-button-prev'
   },
-  spaceBetween: 20,
-  slidesPerView: 6.2,
+  spaceBetween: 10,
+  slidesPerView: 'auto',
+  breakpoints: {
+    991: {
+      spaceBetween: 20,
+      slidesPerView: 6.2
+    }
+  }
+});
+
+if(MOBILE.matches) {
+  var swiper = new Swiper(".blog .swiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+  });
+}
+
+var swiper = new Swiper(".banner-instagram .swiper", {
+  spaceBetween: 10,
+  slidesPerView: 'auto',
+  breakpoints: {
+    991: {
+      spaceBetween: 20,
+      slidesPerView: 4
+    }
+  }
 });
 
 var swiper = new Swiper(".showcase-1 .swiper", {
@@ -88,11 +128,11 @@ var swiper = new Swiper(".showcase-1 .swiper", {
       slidesPerView: 3.1,
       spaceBetween: 5,
     },
-    991: {
+    1090: {
       slidesPerView: 4,
       spaceBetween: 20
     },
-    1300: {
+    1090: {
       slidesPerView: 5,
       spaceBetween: 20
     }
@@ -114,7 +154,7 @@ var swiper = new Swiper(".showcase-2 .swiper", {
       slidesPerView: 4,
       spaceBetween: 20
     },
-    1300: {
+    1090: {
       slidesPerView: 5,
       spaceBetween: 20
     }

@@ -202,8 +202,6 @@ function showMobileSearch(){
 }
 
 function hideMobileSearch(event){
-  console.log(event.target)
-  console.log(event.currentTarget)
   const body = document.body
   body.classList.remove("show-search")
 }

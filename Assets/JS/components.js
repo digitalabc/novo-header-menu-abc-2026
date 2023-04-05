@@ -57,7 +57,6 @@ function setProductFloating(scrollTop, offsetToShowProduct, offsetToHideProduct)
 
 function setFloatingNavMobile(scrollTop, offsetToShowMobileNav, offsetToHideMobileNav) {
   body.classList.remove('show-mobile-nav');
-  console.log(scrollTop, offsetToShowMobileNav, offsetToHideMobileNav)
   if (scrollTop > offsetToShowMobileNav && scrollTop < offsetToHideMobileNav) {
     body.classList.add('show-mobile-nav');
   }
@@ -67,7 +66,10 @@ window.addEventListener("load", () => {
   var lastScrollTop =  -1,
       scrollTop = window.pageYOffset
 
-  const offsetToShowProduct = productButtons ? productButtons.getBoundingClientRect().top + scrollTop : null
+  var offsetToShowProduct = productButtons ? productButtons.getBoundingClientRect().top + scrollTop : null
+  if(MOBILE.matches){
+    offsetToShowProduct += 100
+  }
   const offsetToShowMobileNav = 200
   const footerHeight = footer.getBoundingClientRect().top + scrollTop - window.innerHeight
 
@@ -75,7 +77,10 @@ window.addEventListener("load", () => {
     const newSt = window.pageYOffset;
 
     setScroll(newSt, lastScrollTop);
-    setFloatingNavMobile(newSt, offsetToShowMobileNav, footerHeight);
+
+    if(MOBILE.matches) {
+      setFloatingNavMobile(newSt, offsetToShowMobileNav, footerHeight);
+    }
 
     if (productButtons) {
       setProductFloating(newSt, offsetToShowProduct, footerHeight);
@@ -83,6 +88,19 @@ window.addEventListener("load", () => {
     
     lastScrollTop = newSt;
   });
-
 });
 
+function toggleSlide(elem){
+  if (!elem.style.height) {
+    elem.style.height = `${elem.scrollHeight}px`
+  }
+  else{
+    elem.style.height = ``
+  }
+}
+
+function toggleNextSibling(button) {
+  var optionListEl = button.nextElementSibling
+  toggleSlide(optionListEl)
+  button.classList.toggle("open")
+}

@@ -29,11 +29,16 @@ async function ShippingQuoteSubmit(e, productVariantId) {
  * @param {string} t - CEP input value.
 */
 function cepMask(t){
+
     const mask = "#####-###"
-    let i = t.value.length;
+    let value = t.value;
+    let i = value.length;
     let out = mask.substring(1,0);
     let text = mask.substring(i)
     
+    if (isNaN(event.key))
+      event.preventDefault()
+
     if (text.substring(0,1) != out)
-       t.value += text.substring(0,1);
+      t.value += text.substring(0,1);
 }

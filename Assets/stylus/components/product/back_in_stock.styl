@@ -1,0 +1,38 @@
+.bis
+  @media mobile
+    margin-bottom 60px
+  &__text
+    margin-bottom 15px
+  &__alert
+    font-weight 500
+    margin-top 10px
+  form
+    display flex
+    flex-wrap wrap
+    gap 10px
+
+  input
+    width 200px
+    height 35px
+    border: 1px solid #D5D5D5
+    border-radius: 0;
+    color: $black
+    font-weight: 500;
+    font-size: 12px;
+    @media mobile
+      flex 0 0 calc(50% - 5px)
+      width: 100%;
+    &::placeholder
+      color #B4B4B4
+  button
+    height 35px
+    width 110px
+    background: #D5D5D5
+    color #5D5D5D
+    font-size 12px
+    font-weight bold
+    cursor: pointer;
+    transition $transition
+    &:hover
+      background $primary
+      color #fff

@@ -11,7 +11,7 @@
     <ul class="swiper-wrapper">
       {{~ for product in products ~}}
       <li class="swiper-slide">
-        {{ spot product: product }}
+        {{ spot product: product show_buy_mobile: show_buy_mobile }}
       </li>
       {{~ end ~}}
     </ul>

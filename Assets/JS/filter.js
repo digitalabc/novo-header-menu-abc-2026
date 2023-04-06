@@ -193,9 +193,15 @@ function expandFilterList(button) {
 
 if(MOBILE.matches) {
   const body = document.querySelector("body")
+  const filter = document.querySelector(".filter");
   const openButton = document.querySelector(".filter__button");
   const closeButton = document.querySelector(".filter__close");
 
+  filter.addEventListener("click", function (e) {
+    if (e.target == e.currentTarget) {
+      body.classList.remove("on-filter")
+    }
+  })
   openButton.addEventListener("click", function (e) {
     body.classList.add("on-filter")
   })

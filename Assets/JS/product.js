@@ -423,6 +423,7 @@ async function backInStockOnClick(e){
     const productVariantId = Number(document.getElementById("product-variant-id").value);
     const name = document.getElementById("bis-name").value;
     const email = document.getElementById("bis-email").value;
+    const alert = document.getElementById("bis-alert");
     const bisInput = {
         email: email,
         name: name,
@@ -430,7 +431,12 @@ async function backInStockOnClick(e){
         productVariantId: productVariantId,
     }
     const success = await client.product.createRestockAlert(bisInput);
-    if(success) showAlert('Email cadastrado com sucesso!');
+    if(success){
+      alert.innerHTML = 'Email cadastrado com sucesso!';
+      setTimeout(function() {
+        alert.innerHTML = '';
+      }, 2000);
+    }
 }
 
 function togglePayment(button) {

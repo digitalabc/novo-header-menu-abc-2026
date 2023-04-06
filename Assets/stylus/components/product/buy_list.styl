@@ -12,8 +12,6 @@
     gap: 20px;
 
     @media mobile
-      flex-direction: column;
-      align-items: flex-start;
       gap: 10px;
 
     .best-installment
@@ -26,7 +24,6 @@
 
   &__name
     display: flex;
-    align-items: center;
     margin-bottom: 15px;
     gap: 3px;
 
@@ -66,6 +63,7 @@
 
   &__image
     margin: 0 20px 0 0;
+    flex-shrink 0
 
     img
       max-width: 90px;

@@ -142,12 +142,20 @@
                 </a>
               </li>
             </ul>
-            {{ spot_carousel class: "showcase-1" products: data.lancamentos.products.nodes }}
+            
+            <h2 class="mobile">Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
+
+            <div class="desktop">
+              {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
+            </div>
+            <div class="mobile">
+              {{ spot_carousel class: "showcase-1" products: data.vitrine_mobile.products.nodes }}
+            </div>
           </section>
           
           <!-- Vitrine 2 -->
-          <section class="showcase">
-            {{ spot_carousel class: "showcase-2" products: data.lancamentos.products.nodes }}
+          <section class="showcase desktop">
+            {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
           </section>
         </div>
 
@@ -163,8 +171,8 @@
 
         <div class="container">
           <!-- Vitrine 3 -->
-          <section class="showcase">
-            {{ spot_carousel class: "showcase-3" products: data.lancamentos.products.nodes }}
+          <section class="showcase desktop">
+            {{ spot_carousel class: "showcase-3" products: data.vitrine3.products.nodes }}
           </section>
         </div>
         

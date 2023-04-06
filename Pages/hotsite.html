@@ -7,7 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
-    <body class="hotsite">
+    {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
+    {{ page_size = data.hotsite.page_size }}
+
+    <body class="hotsite{{ if products.total_count == 0 }} empty{{ end }}">
         <header>
             {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
@@ -224,8 +227,7 @@
           <div class="category__main">
             {{ filter aggregations: data.hotsite.aggregations }}
             <div id="spots-list">
-              {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
-              {{ page_size = data.hotsite.products_by_offset?.page_size ?? data.hotsite.products?.page_info?.total_count }}
+              
               <input type="hidden" id="def_page_size" name="def_page_size" value="{{ page_size }}">
               {{ spot_list products: products }}
               {{ pagination products: products page_size: page_size current_page: current_page }}

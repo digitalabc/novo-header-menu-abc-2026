@@ -47,18 +47,22 @@ function setScroll(scrollTop, lastScrollTop) {
 }
 
 function setProductFloating(scrollTop, offsetToShowProduct, offsetToHideProduct) {
-  body.classList.remove('show-floating');
 
-  if (scrollTop > offsetToShowProduct && scrollTop < offsetToHideProduct) {
+  if (scrollTop > offsetToShowProduct && (window.innerHeight + scrollTop) + offsetToHideProduct <= document.body.offsetHeight) {
     body.classList.add('show-floating');
+  }
+  else{
+    body.classList.remove('show-floating');
   }
   
 }
 
 function setFloatingNavMobile(scrollTop, offsetToShowMobileNav, offsetToHideMobileNav) {
-  body.classList.remove('show-mobile-nav');
-  if (scrollTop > offsetToShowMobileNav && scrollTop < offsetToHideMobileNav) {
+  if (scrollTop > offsetToShowMobileNav && (window.innerHeight + scrollTop) + offsetToHideMobileNav <= document.body.offsetHeight) {
     body.classList.add('show-mobile-nav');
+  }
+  else{
+    body.classList.remove('show-mobile-nav');
   }
 }
 
@@ -71,7 +75,7 @@ window.addEventListener("load", () => {
     offsetToShowProduct += 100
   }
   const offsetToShowMobileNav = 200
-  const footerHeight = footer.getBoundingClientRect().top + scrollTop - window.innerHeight
+  const offsetBottom = 200
 
   window.addEventListener('scroll', function () {
     const newSt = window.pageYOffset;
@@ -79,11 +83,11 @@ window.addEventListener("load", () => {
     setScroll(newSt, lastScrollTop);
 
     if(MOBILE.matches) {
-      setFloatingNavMobile(newSt, offsetToShowMobileNav, footerHeight);
+      setFloatingNavMobile(newSt, offsetToShowMobileNav, offsetBottom);
     }
 
     if (productButtons) {
-      setProductFloating(newSt, offsetToShowProduct, footerHeight);
+      setProductFloating(newSt, offsetToShowProduct, offsetBottom);
     }
     
     lastScrollTop = newSt;

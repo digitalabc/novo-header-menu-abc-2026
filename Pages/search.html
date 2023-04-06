@@ -12,8 +12,11 @@
     <meta name="description" content="Os melhores preços você encontra é na ABC da Construção!">
     <meta name="robots" content="all">
 </head>
-{{ page_size = data.search.page_size ?? data.search.products?.total_count }}
-<body class="search{{ if page_size == 0 }} empty{{ end }}">
+
+{{ page_size = data.search.page_size }}
+{{ products = data.search.products ?? data.search.products_by_offset }}
+
+<body class="search{{ if products.total_count == 0 }} empty{{ end }}">
     <header>
       {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
     </header>
@@ -21,7 +24,7 @@
     <div class="container">
       {{~ breadcrumb breadcrumbs: data.search.breadcrumbs ~}}
 
-      {{ if page_size != 0 }}
+      {{ if products.total_count != 0 }}
       <div class="category__toolbar">
         <button type="button" class="filter__button">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18.177" viewBox="0 0 20 18.177">
@@ -40,9 +43,8 @@
       </div>
       {{~ end ~}}
 
-
       <div class="category__main">
-        {{ if page_size == 0 }}
+        {{ if products.total_count == 0 }}
           <section class="empty-search">
             <strong>OPS! NÃO ENCONTROU O QUE ESTAVA PROCURANDO?</strong>
             <p>Tente navegando em nossas principais categorias ou entre em contato com a gente através do <a href="{{ settings.whatsapp_link }}" target="_blank">WhatsApp</a>, faremos o possível para te ajudar a encontrar o que procura</p>
@@ -50,7 +52,6 @@
         {{~ else ~}}
           {{ filter aggregations: data.search.aggregations }}
           <div id="spots-list">
-            {{ products = data.search.products ?? data.search.products_by_offset }}
             <input type="hidden" id="def_page_size" name="def_page_size" value="{{ page_size }}">
             {{ spot_list products: products }}
             {{ pagination products: products page_size: page_size current_page: current_page }}

@@ -44,16 +44,44 @@ query Hotsite($url: String!) {
       name
     }
   }
-  lancamentos: search(query: "") {
-    ...lancamentos
+  vitrineBanner: search(query: "") {
+    ...vitrineBanner
+  }
+  vitrineMobile: search(query: "") {
+    ...vitrineMobile
+  }
+  vitrine2: search(query: "") {
+    ...vitrine2
+  }
+  vitrine3: search(query: "") {
+    ...vitrine3
   }
 }
 
-fragment lancamentos on Search {
+fragment vitrineBanner on Search {
   products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
     ...productsCon
   }
 }
+
+fragment vitrineMobile on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrine2 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrine3 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
 
 fragment productsCon on ProductsConnection {
   nodes {

@@ -12,12 +12,19 @@ function replaceInnerHtml(html, id) {
 	const div = document.getElementById(id);
 	if (div && html !== undefined) div.innerHTML = html;
 }
+
 /**
  * Global variable for media matches
 */
 const MOBILE = window.matchMedia('(min-width: 0px) and (max-width: 991px)');
 const DESKTOP = window.matchMedia('(min-width: 992px)');
 
+/**
+ * Defer background images
+*/
+window.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('no-bg-img').remove();
+})
 
 /**
  * Change header class on scroll

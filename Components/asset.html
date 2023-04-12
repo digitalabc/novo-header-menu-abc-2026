@@ -10,7 +10,7 @@
 ## }}
 {{~ joined_paths = paths | array.join "," ~}}
 {{~ capture source ~}}
-	{{- store.urls.static_bundle}}?type={{type}}&paths={{joined_paths}}&theme={{store.theme -}}&v={{store.last_modified}}
+	{{- store.urls.static_bundle}}?type={{type}}&paths={{joined_paths}}&theme={{store.theme -}}&v={{~store.last_modified~}}
 {{~ end ~}}
 {{~ if type == "js" -}}
 	<script src="{{- source -}}"></script>

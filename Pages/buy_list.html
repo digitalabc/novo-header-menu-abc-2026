@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   
 <head>
     {{~ buy_list = data.buy_list ~}}
@@ -53,6 +53,7 @@
     
     {{ footer products:common.lighbox_products.products.nodes }}
     {{ sdk_client }}
-    {{ asset type: "js" paths: ["uikit", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox"]}}
+    
+    {{ asset type: "js" paths: ["swiper-bundle.min", "uikit", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox"]}}
 </body>
 </html>

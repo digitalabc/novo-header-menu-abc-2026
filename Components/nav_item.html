@@ -23,7 +23,7 @@
     </li>
 {{~ else if !is_submenu ~}}
     <li class="nav-item nav-item--nv1">
-        <a href="{{link}}" id="menu" class="nav-link dropdown-toggle" >{{current_menu.name}}</a>
+        <a href="{{link}}" class="nav-link dropdown-toggle" >{{current_menu.name}}</a>
         <div class="dropdown-menu">
           <ul>
             {{~ for child in children ~}}

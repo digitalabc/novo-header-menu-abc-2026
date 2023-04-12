@@ -8,7 +8,6 @@
 
 {{~ selected_variant = product.attribute_selections?.selected_variant ~}}
 {{~ product_is_kit = product.buy_list_id ?! true ~}}
-{{ product | debug.log }} 
 {{~ if product.attribute_selections?.selected_variant ~}}
   {{~ available = product.attribute_selections.selected_variant.available ~}}
 {{~ else ~}}

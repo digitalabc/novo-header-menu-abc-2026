@@ -27,7 +27,7 @@
 <div class="cart-href-div" onmouseover="setCartDivVisibility('visible')" onmouseout="setCartDivVisibility('hidden')">
     <a class="cart-href" id="cart-href" href="{{ checkoutUrl }}" onclick='miniCartPartnerAssociate("{{ checkoutUrl }}");'>
         <span class='badge badge-warning' id='label-cart-count'>{{ productsCount }}</span>
-        <img id="cart-icon" src="{{- store.urls.static_img-}}cart.png?v={{store.last_modified}}" width="40px" height="40px" alt="cart">
+        <img id="cart-icon" src="{{- store.urls.static_img-}}cart.png?v={{store.last_modified -}}" width="40px" height="40px" alt="cart">
     </a>
 </div>
 <div class="flex-div">

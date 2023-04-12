@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
         {{ ## page_scripts position: "HEADER_START" scripts: common.scripts }}
         {{ header title: "Home" store: store }}
@@ -17,12 +17,40 @@
         
         <!-- Fullbanner -->
         <section class="fullbanner desktop">
-          {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Centro" }}
+          {{ # banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Centro" }}
+          <div class="swiper">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                  <a href="#">
+                    <img src="https://via.placeholder.com/1920x380" alt="Banner">
+                  </a>
+                </li>
+                <li class="swiper-slide">
+                  <a href="#">
+                    <img src="https://via.placeholder.com/1920x380" alt="Banner">
+                  </a>
+                </li>
+            </ul>
+          </div>
         </section>
 
         <!-- Fullbanner mobile -->
         <section class="fullbanner mobile">
-          {{ banner carousel: true type: "fullbanner"  banners: data.hotsite.banners position: "Mobile Centro" }}
+          {{ # banner carousel: true type: "fullbanner"  banners: data.hotsite.banners position: "Mobile Centro" }}
+          <div class="swiper">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                  <a href="#">
+                    <img src="https://via.placeholder.com/991x530" alt="Banner">
+                  </a>
+                </li>
+                <li class="swiper-slide">
+                  <a href="#">
+                    <img src="https://via.placeholder.com/991x530" alt="Banner">
+                  </a>
+                </li>
+            </ul>
+          </div>
         </section>
 
         <div class="container">
@@ -84,10 +112,56 @@
             <section class="banner-oportunidades">
                 <h2>{{ "Seleção de oportunidades" | lang }}</h2>
                 <div class="desktop">
-                  {{ banner carousel: false banners: data.hotsite.banners position: "Centro" }}
+                  {{ # banner carousel: false banners: data.hotsite.banners position: "Centro" }}
+                  <ul>
+                    <li>
+                      <a target="_blank" href="#">
+                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="#">
+                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="#">
+                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="#">
+                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
+                      </a>
+                    </li>
+                  </ul>
                 </div>
                 <div class="mobile">
-                  {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                  {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                  <div class="swiper">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                          <a href="#">
+                            <img src="https://via.placeholder.com/125x125" alt="Banner">
+                          </a>
+                        </li>
+                        <li class="swiper-slide">
+                          <a href="#">
+                            <img src="https://via.placeholder.com/125x125" alt="Banner">
+                          </a>
+                        </li>
+                        <li class="swiper-slide">
+                          <a href="#">
+                            <img src="https://via.placeholder.com/125x125" alt="Banner">
+                          </a>
+                        </li>
+                        <li class="swiper-slide">
+                          <a href="#">
+                            <img src="https://via.placeholder.com/125x125" alt="Banner">
+                          </a>
+                        </li>
+                    </ul>
+                  </div>
                 </div>
             </section>
 
@@ -99,8 +173,41 @@
         
             <!-- Grid de banners -->
             <section class="banner-grid">
-                {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
-                {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                <div class="swiper">
+                  <ul class="swiper-wrapper">
+                      <li class="swiper-slide">
+                        <a href="#">
+                          <img src="https://via.placeholder.com/420x300" alt="Banner">
+                        </a>
+                      </li>
+                      <li class="swiper-slide">
+                        <a href="#">
+                          <img src="https://via.placeholder.com/420x300" alt="Banner">
+                        </a>
+                      </li>
+                      <li class="swiper-slide">
+                        <a href="#">
+                          <img src="https://via.placeholder.com/420x300" alt="Banner">
+                        </a>
+                      </li>
+                  </ul>
+                </div>
+                {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                <div class="swiper">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                          <a href="#">
+                            <img src="https://via.placeholder.com/640x300" alt="Banner">
+                          </a>
+                        </li>
+                        <li class="swiper-slide">
+                          <a href="#">
+                            <img src="https://via.placeholder.com/640x300" alt="Banner">
+                          </a>
+                        </li>
+                    </ul>
+                  </div>
             </section>
             
             <!-- Compre por departamento -->
@@ -580,12 +687,49 @@
 
               <!-- Banners centro -->
               <section class="banner-centro desktop">
-                  {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+                  
+                <div class="swiper">
+                  <ul class="swiper-wrapper">
+                      <li class="swiper-slide">
+                        <a href="#">
+                          <img src="https://via.placeholder.com/420x580" alt="Banner">
+                        </a>
+                      </li>
+                      <li class="swiper-slide">
+                        <a href="#">
+                          <img src="https://via.placeholder.com/420x580" alt="Banner">
+                        </a>
+                      </li>
+                      <li class="swiper-slide">
+                        <a href="#">
+                          <img src="https://via.placeholder.com/420x580" alt="Banner">
+                        </a>
+                      </li>
+                  </ul>
+                </div>
               </section>
 
               <!-- Banners centro -->
               <section class="banner-centro mobile">
-                  {{ banner carousel: false banners: data.hotsite.banners position: "Centro" }}
+                {{ # banner carousel: false banners: data.hotsite.banners position: "Centro" }}
+                <ul>
+                  <li>
+                    <a target="_blank" href="#">
+                      <img src="https://via.placeholder.com/350x300" alt="Banner" class="">
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">
+                      <img src="https://via.placeholder.com/350x300" alt="Banner" class="">
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">
+                      <img src="https://via.placeholder.com/350x300" alt="Banner" class="">
+                    </a>
+                  </li>
+                </ul>
               </section>
 
               <!-- Carrossel de marcas -->
@@ -729,7 +873,36 @@
             <!-- Banners instagram -->
             <section class="banner-instagram">
                 <h2>{{ "Siga-nos no Instagram" | lang }}</h2>
-                {{ banner carousel: true banners: data.hotsite.banners position: "Rodape" }}
+                {{ # banner carousel: true banners: data.hotsite.banners position: "Rodape" }}
+                <div class="swiper">
+                  <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <img src="https://via.placeholder.com/240x240" alt="Banner">
+                      </a>
+                    </li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <img src="https://via.placeholder.com/240x240" alt="Banner">
+                      </a>
+                    </li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <img src="https://via.placeholder.com/240x240" alt="Banner">
+                      </a>
+                    </li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <img src="https://via.placeholder.com/240x240" alt="Banner">
+                      </a>
+                    </li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <img src="https://via.placeholder.com/240x240" alt="Banner">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
             </section>
         </div>
         
@@ -745,6 +918,7 @@
 
         {{ ## page_scripts position: "FOOTER_END" scripts: common.scripts ## }}
 
-        {{ asset type: "js" paths: ["uikit", "components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home", "lightbox"]}}
+        {{# Swipper #}}
+        {{ asset type: "js" paths: ["swiper-bundle.min", "uikit", "components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home", "lightbox"]}}
     </body>
 </html>

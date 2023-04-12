@@ -1,18 +1,26 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{title}}</title>
 
 {{~ capture favicon_source ~}}
-    {{- store.urls.static_img}}{{settings.favicon_path}}?theme={{store.theme -}}&v={{store.last_modified}}
+    {{- store.urls.static_img}}{{settings.favicon_path}}?theme={{store.theme -}}&v={{store.last_modified -}}
 {{~ end ~}}
 <link rel="icon" type="image/x-icon" href="{{ favicon_source }}">
 
-{{# Swipper #}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
 {{# CSS Customizado #}}
-{{ asset type: "css" paths: ["uikit", "auaha"] }}
+{{ asset type: "css" paths: ["swiper-bundle.min", "uikit", "auaha"] }}
 
 {{# Google Fonts #}}
+{{ font_url = "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="{{ font_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript>
+  <link href="{{ font_url }}" rel="stylesheet" type="text/css" />
+</noscript>
+
+{{# Defer background images #}}
+<style id="no-bg-img">
+  *{background-image:none!important}
+</style>

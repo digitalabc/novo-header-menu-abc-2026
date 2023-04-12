@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
         {{ header title: data.hotsite.name store: store }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
@@ -240,7 +240,7 @@
         {{ footer products:common.lighbox_products.products.nodes }}
 
         {{ sdk_client }}
-
-        {{ asset type: "js" paths: ["uikit", "components", "seo", "sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_hotsite", "newsletter", "lightbox"]}}
+        
+        {{ asset type: "js" paths: ["swiper-bundle.min", "uikit", "components", "seo", "sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_hotsite", "newsletter", "lightbox"]}}
     </body>
 </html>

@@ -19,7 +19,6 @@
   }
 }
 html {
-  background: #fff;
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2001,12 +2000,6 @@ header {
   transition: all 0.2s ease-in-out;
   display: block;
 }
-@media screen and (min-width: 992px) {
-  .banner-instagram ul {
-    display: flex;
-    gap: 20px;
-  }
-}
 .banner-instagram ul li {
   overflow: hidden;
 }
@@ -2090,7 +2083,6 @@ header {
   }
 }
 .spot {
-  background: #fff;
   border: 1px solid #eaeaea;
   transition: all 0.2s ease-in-out;
 }
@@ -2159,7 +2151,6 @@ header {
 }
 @media screen and (min-width: 992px) {
   .spot__buttons .add-to-cart-button {
-    transform: translateY(100%);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -2589,6 +2580,9 @@ header {
 #exit-intent-lightbox .exit-intent-lightbox__showcase .swiper {
   margin: -10px;
   padding: 10px;
+}
+#exit-intent-lightbox .exit-intent-lightbox__showcase .spot {
+  background: #fff;
 }
 .floating-navbar {
   position: fixed;
@@ -3032,7 +3026,6 @@ header {
 }
 .user__links {
   transition: all 0.2s ease-in-out;
-  line-height: 18px;
 }
 @media screen and (max-width: 991px) {
   .user__links {
@@ -3160,12 +3153,8 @@ header {
   font-weight: 500;
 }
 .minicart__button {
+  cursor: pointer;
   background: none;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border: none;
-  line-height: normal;
   display: flex;
   align-items: center;
   gap: 5px;

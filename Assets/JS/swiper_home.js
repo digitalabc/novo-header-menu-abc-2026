@@ -109,8 +109,8 @@ var swiper = new Swiper(".banner-instagram .swiper", {
   slidesPerView: 'auto',
   breakpoints: {
     991: {
-      spaceBetween: 20,
-      slidesPerView: 4
+      spaceBetween: 25,
+      slidesPerView: 5
     }
   }
 });

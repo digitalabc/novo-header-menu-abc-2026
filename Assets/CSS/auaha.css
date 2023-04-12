@@ -2181,7 +2181,7 @@ header {
 .spot__content {
   padding: 20px 10px;
 }
-.spot__title h4 {
+.spot__title h3 {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2196,14 +2196,14 @@ header {
   transition: all 0.2s ease-in-out;
 }
 @media screen and (max-width: 991px) {
-  .spot__title h4 {
+  .spot__title h3 {
     font-size: 12px;
     line-height: 19px;
     height: 57px;
     margin-bottom: 15px;
   }
 }
-.spot__title h4:hover {
+.spot__title h3:hover {
   color: #e30613;
 }
 .spot-price {

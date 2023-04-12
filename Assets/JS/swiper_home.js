@@ -7,7 +7,7 @@ var swiper = new Swiper(".fullbanner .swiper", {
 
 var swiper = new Swiper(".banner-oportunidades .mobile .swiper:first-child", {
   spaceBetween: 10,
-  slidesPerView: 2.6
+  slidesPerView: 'auto'
 });
 
 var swiper = new Swiper(".banner-grid .swiper:first-child", {

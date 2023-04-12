@@ -9,8 +9,6 @@
     @media mobile
       ul
         gap 10px
-        li
-          flex 0 0 calc((100%/2.6) - 5px)
   ul
     display flex
     @media desktop
@@ -18,6 +16,8 @@
     li
       overflow: hidden;
       position relative
+      @media mobile
+        width 125px
       &:after
         content ''
         display block
@@ -38,6 +38,11 @@
       img
         transition: $transition;
         display block
+
+  @media mobile
+    .swiper
+      margin 0 -15px
+      padding 0 15px
 
 // Home - Grid de banners
 .banner-grid

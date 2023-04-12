@@ -2306,6 +2306,11 @@ header {
   visibility: hidden;
   transition: all 0.2s ease-in-out;
 }
+@media screen and (max-width: 991px) {
+  #newsletter-lightbox {
+    display: none !important;
+  }
+}
 #newsletter-lightbox:before {
   content: '';
   position: absolute;

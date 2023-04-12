@@ -36,7 +36,9 @@ html {
   list-style: none;
 }
 input,
-button {
+textarea,
+button,
+select {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
 }
@@ -669,7 +671,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .product .attribute-selections {
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #d5d5d5;
 }
 .product .attribute-selections h3 {
   margin-bottom: 12px;
@@ -1212,11 +1214,13 @@ input[type="search"]::-webkit-search-results-decoration {
 .product__buy-together .buy-together-row-div img {
   max-width: 245px;
   width: 100%;
+  border: 1px solid #eaeaea;
 }
 .product__buy-together .separator {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 245px;
 }
 @media screen and (max-width: 991px) {
   .product__buy-together .separator.equal {
@@ -1257,6 +1261,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-height: 245px;
 }
 @media screen and (max-width: 991px) {
   .product__buy-together .buy-together__price {
@@ -1331,6 +1336,11 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 20px;
+}
+@media screen and (max-width: 991px) {
+  .product__recommendation h2 {
+    text-align: center;
+  }
 }
 .product__unavailable {
   font-weight: bold;
@@ -2282,6 +2292,7 @@ header {
 }
 #newsletter-lightbox {
   cursor: pointer;
+  padding: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -2464,7 +2475,7 @@ header {
 #newsletter-lightbox .checkbox__input:checked +.fake-checkbox {
   border: 1px solid #e30613;
 }
-#newsletter-lightbox .checkbox__input:checked +.fake-checkbox:before {
+#newsletter-lightbox .checkbox__input:checked +.fake-checkbox svg {
   opacity: 1;
 }
 #newsletter-lightbox .checkbox__label {
@@ -2479,20 +2490,18 @@ header {
   border: 1px solid #5d5d5d;
   cursor: pointer;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease-in-out;
 }
-#newsletter-lightbox .fake-checkbox:before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAIVBMVEUAAADkBRPjBhLiBRLjBRLiBRLiBRLiBhLjBhLiBRLjBhPs7C79AAAACnRSTlMAYICPkJ+g3+DwZOtKdwAAAExJREFUeNpNz4EKwCAIRdG3ptXe/3/wAL1gAHFuQKrlV5zwku1sbtuKDsWoK5ubnpBwIGFQurYP4D0nbwW4+RaKEE3mKxI+LcfY7/kB32oD/mJTvfAAAAAASUVORK5CYII=");
+#newsletter-lightbox .fake-checkbox svg {
   opacity: 0;
   transition: all 0.2s ease-in-out;
 }
 #exit-intent-lightbox {
   cursor: pointer;
+  padding: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -2606,10 +2615,13 @@ header {
 }
 .floating-navbar > button {
   background: none;
+  color: #392f2d;
+  font-weight: 500;
 }
 .floating-navbar > button svg {
   display: block;
   margin: 0 auto 3px;
+  min-height: 20px;
 }
 .nav-all__item--root {
   font-weight: 500;
@@ -2847,6 +2859,9 @@ header {
   max-height: calc(100dvh - 55px - 240px);
   overflow: auto;
 }
+#menu-canvas .nav-mobile__list--root::-webkit-scrollbar {
+  width: 5px;
+}
 #menu-canvas .nav-mobile__list--nv1 {
   overflow: auto;
   max-height: calc(100vh - 55px - 40px);
@@ -2940,8 +2955,8 @@ header {
 .autocomplete-item >div p {
   display: -webkit-box;
   overflow: hidden;
-  margin: auto;
-  height: 40px;
+  margin: auto auto auto 0;
+  max-height: 40px;
   line-height: 20px;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -3912,12 +3927,10 @@ section.newsletter--home .newsletter__alert {
 .filter__options .option__checkbox {
   display: none;
 }
-.filter__options .option__checkbox:checked +.fake-checkbox,
-.filter__options .option__checkbox:hover +.fake-checkbox {
+.filter__options .option__checkbox:checked +.fake-checkbox {
   border: 1px solid #e30613;
 }
-.filter__options .option__checkbox:checked +.fake-checkbox:before,
-.filter__options .option__checkbox:hover +.fake-checkbox:before {
+.filter__options .option__checkbox:checked +.fake-checkbox svg {
   opacity: 1;
 }
 .filter__options .option .fake-checkbox {
@@ -3926,17 +3939,14 @@ section.newsletter--home .newsletter__alert {
   height: 16px;
   border: 1px solid #5d5d5d;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease-in-out;
 }
-.filter__options .option .fake-checkbox:before {
-  position: absolute;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAADkBRPiBRLiBRLjBhMFDkERAAAABHRSTlMAYO/wnx+whQAAAB9JREFUeNpjYGZkYGBkYmBkYQQiBiANJKEUVBCihBkABPIAPKjQyb8AAAAASUVORK5CYII=");
-  background-position: center;
-  background-repeat: no-repeat;
-  content: '';
+.filter__options .option .fake-checkbox svg {
   opacity: 0;
   transition: all 0.2s ease-in-out;
-  inset: 0;
 }
 .filter__options .option__label {
   color: #000;
@@ -4064,7 +4074,7 @@ section.newsletter--home .newsletter__alert {
   font-size: 12px;
   font-weight: 500;
   color: #5d5d5d;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAABHNCSVQICAgIfAhkiAAAAG9JREFUCFtjjImJecDAwJCwZMmSA0AaDmJjYxOAnABGEOP///8T/v3757Bs2bILIBXIYowgAaApDUDKn4WFxfHXr18KzMzM+4GaAkGmghVAFS0A0vqMjIwKQLpw8eLFID4DXAFUEciKC0CdIPvBAAB98DALc2GrVAAAAABJRU5ErkJggg==");
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAMAAABPT11nAAAAJ1BMVEUAAABgYGBaWlpcXFxdXV1cXFxcXFxdXV1cXFxcXFxcXFxdXV1cXFzaGNODAAAADXRSTlMAEDBAYICgsM/Q4O/whREWYQAAACZJREFUCNclxLcBACAMACA0sfv/vQ4yYAfkkLf6tVnqCejzJLA6HgzkAIeunpnQAAAAAElFTkSuQmCC");
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
@@ -4356,7 +4366,7 @@ section.newsletter--home .newsletter__alert {
 .buy_list__name input:checked +.fake-checkbox {
   border: 1px solid #e30613;
 }
-.buy_list__name input:checked +.fake-checkbox:before {
+.buy_list__name input:checked +.fake-checkbox svg {
   opacity: 1;
 }
 .buy_list__name .fake-checkbox {
@@ -4367,14 +4377,11 @@ section.newsletter--home .newsletter__alert {
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.buy_list__name .fake-checkbox:before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAADkBRPiBRLiBRLjBhMFDkERAAAABHRSTlMAYO/wnx+whQAAAB9JREFUeNpjYGZkYGBkYmBkYQQiBiANJKEUVBCihBkABPIAPKjQyb8AAAAASUVORK5CYII=");
+.buy_list__name .fake-checkbox svg {
   opacity: 0;
   transition: all 0.2s ease-in-out;
 }

@@ -9,7 +9,7 @@
 <aside class="filter">
     {{ if aggregations?.filters }}
     <div class="filter__top">
-        <h4>{{ "FILTRAR" | lang }}</h4>
+        <h4>{{ "Filtrar" | lang }}</h4>
         <button class="filter__close">
           <svg xmlns="http://www.w3.org/2000/svg" width="19.023" height="19.023" viewBox="0 0 19.023 19.023">
             <path id="Path_165" data-name="Path 165" d="M10.562,9.512,18.8,1.269A.743.743,0,0,0,17.754.218L9.511,8.461,1.268.218A.743.743,0,0,0,.217,1.269L8.46,9.512.217,17.755a.743.743,0,0,0,1.051,1.051l8.243-8.243,8.243,8.243A.743.743,0,0,0,18.8,17.755Z" transform="translate(0 -0.001)" fill="#fff"/>
@@ -47,7 +47,11 @@
                       <input class="option__checkbox" type="checkbox"
                           id="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}"
                           value="{{ filter.field }}__{{ value.name }}" onclick="setFilter(this.value)">
-                      <label class="fake-checkbox" for="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}"></label>
+                      <label class="fake-checkbox" for="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="5.995" viewBox="0 0 6 5.995">
+                          <path id="Path_23322" data-name="Path 23322" d="M5.386,5.982a.619.619,0,0,1-.46-.208C4.319,5.165,3.708,4.558,3.1,3.947c-.08-.081-.12-.089-.2,0q-.916.928-1.843,1.846a.6.6,0,0,1-.874.025A.6.6,0,0,1,.2,4.95q.89-.895,1.785-1.786a.206.206,0,0,0,0-.329q-.9-.9-1.794-1.795a.6.6,0,0,1,.022-.9A.594.594,0,0,1,1.04.194Q1.8.95,2.558,1.71c.119.119.242.234.355.358.066.073.1.07.174,0C3.705,1.445,4.328.825,4.949.2a.6.6,0,0,1,.937.742,1.318,1.318,0,0,1-.141.156c-.6.6-1.2,1.205-1.807,1.8-.08.079-.073.119,0,.194q.927.918,1.845,1.844a.6.6,0,0,1-.073.945.566.566,0,0,1-.329.1Z" transform="translate(0.002 0.002)" fill="#e30613"/>
+                        </svg>
+                      </label>
                       <label class="option__label" for="filter_{{ filter.field | html.url_encode }}_{{ value.name | html.url_encode }}">{{ value.name }}</label>
                   </li>
                   {{ end }}

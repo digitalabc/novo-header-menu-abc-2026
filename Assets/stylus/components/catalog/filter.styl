@@ -154,12 +154,11 @@
       &__checkbox
         display none
 
-        &:checked,
-        &:hover
+        &:checked
           +.fake-checkbox
             border 1px solid $primary
 
-            &:before
+            svg
               opacity 1
 
       .fake-checkbox
@@ -168,17 +167,14 @@
         height 16px
         border 1px solid #5D5D5D
         cursor pointer
+        display flex
+        align-items center
+        justify-content center
         transition $transition
-
-        &:before
-          position absolute
-          background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAADkBRPiBRLiBRLjBhMFDkERAAAABHRSTlMAYO/wnx+whQAAAB9JREFUeNpjYGZkYGBkYmBkYQQiBiANJKEUVBCihBkABPIAPKjQyb8AAAAASUVORK5CYII=')
-          background-position center
-          background-repeat no-repeat
-          content ''
+        
+        svg
           opacity 0
-          transition $transition
-          inset 0
+          transition: $transition;
 
       &__label
         color #000000

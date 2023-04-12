@@ -1,3 +1,6 @@
+{{~ login_url = checkout_url + "Login/Authenticate?returnUrl=" ~}}
+{{~ register_url = checkout_url + "Login/Cadastro?returnUrl=" ~}}
+
 <button class="menu__button mobile" type="button" uk-toggle="target: #menu-canvas">
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="18.649" viewBox="0 0 30 18.649">
     <g id="menu" transform="translate(0.01 -0.007)">
@@ -28,7 +31,7 @@
           <span class="info__links not-authenticated">
             <a class="user-href" href="{{ login_url }}">Entrar</a>/<a class="user-href user-register" href="{{ register_url }}" >Cadastrar</a>
           </span>
-          <a class="info__links" href="{{checkout_url}}MinhaConta/Pedido">Meus pedidos</a>
+          <a class="info__links" href="{{ checkout_url }}MinhaConta/Pedido">Meus pedidos</a>
         </div>
       </div>
     </div>

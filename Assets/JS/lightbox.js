@@ -1,7 +1,9 @@
 const STORE_TOKEN = "abc"
 const LIGHTBOX_EXPIRATION_DAYS = 3
 
-window.addEventListener("load", lightboxLoad, false)
+if(DESKTOP.matches){
+  window.addEventListener("load", lightboxLoad, false)
+}
 
 function lightboxLoad() {
   var newsletterLightboxId = "newsletter-lightbox"

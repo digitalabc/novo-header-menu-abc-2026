@@ -32,17 +32,7 @@
 {{~ else ~}}
     <input type="hidden" class="product-available" name="product-available-{{ product_id }}" value="{{ product_available }}">
     <div class='attribute-selections'>
-      {{
-          grouped_attribute_selections = attribute_selections.selections | group.by @(do; ret $0.display_type;end)
-          combo_attr = grouped_attribute_selections | group.get "Combo"
-          div_attr = grouped_attribute_selections | group.get "DIV"
-          div_img_attr = grouped_attribute_selections | group.get "DIV com foto do produto variante"
-          div_color_attr = grouped_attribute_selections | group.get "DIV com cor"
-          product_combo_attribute attribute_selections: combo_attr product_id: product_id on_click: "buyTogetherSelectAttribute" is_secondary_product: true
-          product_div_attribute attribute_selections: div_attr product_id: product_id on_click: "buyTogetherSelectAttribute" is_secondary_product: true
-          product_div_with_image_attribute attribute_selections: div_img_attr product_id: product_id on_click: "buyTogetherSelectAttribute" is_secondary_product: true
-          product_div_with_color_attribute attribute_selections: div_color_attr product_id: product_id on_click: "buyTogetherSelectAttribute" is_secondary_product: true
-      }}
+      {{ product_combo_attribute attribute_selections: attribute_selections.selections product_id: product_id on_click: "buyTogetherSelectAttribute" is_secondary_product: true }}
     </div>
         <input type="number" class="buy-together__quantity" id="buy-together-product-quantity-{{ product_id }}" product-variant-id="{{ product_variant_id }}"
             name="selected-quantity" value="1" min="1" max="{{ product_stock }}" onchange="buyTogetherQuantityOnChange(this)">

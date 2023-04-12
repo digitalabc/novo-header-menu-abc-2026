@@ -85,6 +85,9 @@ var swiper = new Swiper(".brands .swiper", {
     nextEl: '.brands .swiper-button-next',
     prevEl: '.brands .swiper-button-prev'
   },
+  autoplay: {
+    delay: 3000,
+  },
   spaceBetween: 20,
   slidesPerView: 2,
   breakpoints: {

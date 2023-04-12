@@ -1,5 +1,6 @@
 #newsletter-lightbox
   cursor pointer
+  padding 0
   position: fixed;
   top: 0;
   left: 0;
@@ -148,7 +149,7 @@
       &:checked
         +.fake-checkbox
           border 1px solid $primary
-          &:before
+          svg
             opacity 1
     &__label
       font-size 12px
@@ -162,13 +163,10 @@
     border: 1px solid #5D5D5D;
     cursor: pointer;
     position relative
+    display flex
+    align-items center
+    justify-content center
     transition: $transition;
-    &:before
-      content ''
-      position absolute
-      inset 0
-      background-position center
-      background-repeat no-repeat
-      background-image url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAIVBMVEUAAADkBRPjBhLiBRLjBRLiBRLiBRLiBhLjBhLiBRLjBhPs7C79AAAACnRSTlMAYICPkJ+g3+DwZOtKdwAAAExJREFUeNpNz4EKwCAIRdG3ptXe/3/wAL1gAHFuQKrlV5zwku1sbtuKDsWoK5ubnpBwIGFQurYP4D0nbwW4+RaKEE3mKxI+LcfY7/kB32oD/mJTvfAAAAAASUVORK5CYII=")
+    svg
       opacity 0
       transition: $transition;

@@ -32,7 +32,7 @@
       &:checked
         +.fake-checkbox
           border: 1px solid $primary;
-          &:before
+          svg
             opacity 1
 
     .fake-checkbox
@@ -43,13 +43,10 @@
       cursor: pointer;
       position relative
       transition: $transition;
-      &:before
-        content ''
-        position absolute
-        inset 0
-        background-position center
-        background-repeat no-repeat
-        background-image url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAADkBRPiBRLiBRLjBhMFDkERAAAABHRSTlMAYO/wnx+whQAAAB9JREFUeNpjYGZkYGBkYmBkYQQiBiANJKEUVBCihBkABPIAPKjQyb8AAAAASUVORK5CYII=")
+      display flex
+      align-items center
+      justify-content center
+      svg
         opacity 0
         transition: $transition;
 

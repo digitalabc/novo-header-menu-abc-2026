@@ -66,6 +66,7 @@ var swiper = new Swiper(".banner-centro.desktop .swiper", {
 });
 
 var swiper = new Swiper(".brands .swiper", {
+  slidesPerView: 2,
   navigation: {
     nextEl: '.brands .swiper-button-next',
     prevEl: '.brands .swiper-button-prev'
@@ -73,10 +74,8 @@ var swiper = new Swiper(".brands .swiper", {
   autoplay: {
     delay: 3000,
   },
-  slidesPerView: 2,
   breakpoints: {
     991: {
-      autoplay: false,
       spaceBetween: 20,
       slidesPerView: 7
     }

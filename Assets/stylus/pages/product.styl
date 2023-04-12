@@ -177,7 +177,7 @@
   .attribute-selections
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #EEEEEE;
+    border-bottom: 1px solid #d5d5d5;
 
     h3
       margin-bottom: 12px;
@@ -633,11 +633,13 @@
       img
         max-width: 245px;
         width: 100%;
+        border 1px solid #EAEAEA
 
     .separator
       display: flex;
       justify-content: center;
       align-items: center;
+      max-height 245px
 
       &.equal
         @media mobile
@@ -676,6 +678,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        max-height 245px
         @media mobile
           align-items center
         .spot-price
@@ -738,6 +741,8 @@
       font-size 20px
       font-weight 500
       margin-bottom 20px
+      @media mobile
+        text-align center
   &__unavailable
     font-weight bold
     margin-bottom 15px

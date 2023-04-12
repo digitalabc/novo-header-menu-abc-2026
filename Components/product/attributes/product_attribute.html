@@ -35,17 +35,7 @@
     {{~ else ~}}
         {{ if attribute_selections.selections.size > 0 }}
             <div class='attribute-selections'>
-              {{
-                  grouped_attribute_selections = attribute_selections.selections | group.by @(do; ret $0.display_type;end)
-                  combo_attr = grouped_attribute_selections | group.get "Combo"
-                  div_attr = grouped_attribute_selections | group.get "DIV"
-                  div_img_attr = grouped_attribute_selections | group.get "DIV com foto do produto variante"
-                  div_color_attr = grouped_attribute_selections | group.get "DIV com cor"
-                  product_combo_attribute attribute_selections: combo_attr product_id: product_id on_click: "selectAttribute" 
-                  product_div_attribute attribute_selections: div_attr product_id: product_id on_click: "selectAttribute" 
-                  product_div_with_image_attribute attribute_selections: div_img_attr product_id: product_id on_click: "selectAttribute" 
-                  product_div_with_color_attribute attribute_selections: div_color_attr product_id: product_id on_click: "selectAttribute" 
-              }}
+              {{ product_combo_attribute attribute_selections: attribute_selections.selections product_id: product_id on_click: "selectAttribute" }}
             </div>
         {{ end }}
 

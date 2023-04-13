@@ -1,29 +1,4 @@
 .calculator
-  &.uk-offcanvas-overlay::before
-    background rgba(0, 0, 0, 0.3)
-
-  .uk-offcanvas-bar
-    overflow visible
-    padding 0
-    width 475px
-    left: -475px;
-    background #ffffff
-
-    @media mobile
-      width 320px
-      left: -320px;
-
-    .uk-close
-      top 0
-      right 100%
-      width 55px
-      height 55px
-      background $primary
-
-      svg
-        &:not(#close-svg)
-          display none
-
   &__button
     cursor pointer
     padding 0
@@ -115,3 +90,10 @@
     font-size: 20px;
     color $black
     margin-bottom 20px
+  
+  &__multiply
+    display: block;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;

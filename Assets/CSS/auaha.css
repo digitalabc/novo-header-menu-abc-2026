@@ -41,9 +41,6 @@ select {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
 }
-.uk-offcanvas-container {
-  overflow: unset;
-}
 a {
   text-decoration: none;
   cursor: pointer;
@@ -4553,32 +4550,6 @@ section.newsletter--home .newsletter__alert {
 .buy_list .add-to-cart-button:not([disabled]):hover {
   background: #e30613;
 }
-.calculator.uk-offcanvas-overlay::before {
-  background: rgba(0,0,0,0.3);
-}
-.calculator .uk-offcanvas-bar {
-  overflow: visible;
-  padding: 0;
-  width: 475px;
-  left: -475px;
-  background: #fff;
-}
-@media screen and (max-width: 991px) {
-  .calculator .uk-offcanvas-bar {
-    width: 320px;
-    left: -320px;
-  }
-}
-.calculator .uk-offcanvas-bar .uk-close {
-  top: 0;
-  right: 100%;
-  width: 55px;
-  height: 55px;
-  background: #e30613;
-}
-.calculator .uk-offcanvas-bar .uk-close svg:not(#close-svg) {
-  display: none;
-}
 .calculator__button {
   cursor: pointer;
   padding: 0;
@@ -4678,6 +4649,13 @@ section.newsletter--home .newsletter__alert {
   font-size: 20px;
   color: #392f2d;
   margin-bottom: 20px;
+}
+.calculator__multiply {
+  display: block;
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 .pick-up .state {
   display: flex;

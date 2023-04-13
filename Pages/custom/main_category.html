@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
+        
         {{ header title: data.hotsite.name seo: data.hotsite.seo }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
     </head>
@@ -180,6 +181,6 @@
  
         {{ sdk_client }}
         
-        {{ asset type: "js" paths: ["swiper-bundle.min", "uikit", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox"]}}
+        {{ asset type: "js" paths: ["swiper-bundle.min", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox", "offcanvas"]}}
     </body>
 </html>

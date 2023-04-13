@@ -2,6 +2,7 @@
 <html lang="pt-BR">
   
 <head>
+    
     {{~ buy_list = data.buy_list ~}}
     {{ header title: data.buy_list.product_name seo: buy_list.seo }}
 </head>
@@ -51,6 +52,6 @@
     {{ footer products:common.lighbox_products.products.nodes }}
     {{ sdk_client }}
     
-    {{ asset type: "js" paths: ["swiper-bundle.min", "uikit", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox"]}}
+    {{ asset type: "js" paths: ["swiper-bundle.min", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox", "offcanvas"]}}
 </body>
 </html>

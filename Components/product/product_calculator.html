@@ -1,5 +1,5 @@
 
-<button class="calculator__button" type="button" onclick="{{ calculator_click }}" uk-toggle="target: #calculator-canvas">
+<button class="calculator__button" type="button" ah-toggle="#calculator-canvas">
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25.287" viewBox="0 0 20 25.287">
     <g id="Camada_1" data-name="Camada 1" transform="translate(0 0.01)">
       <g id="Group_4380" data-name="Group 4380" transform="translate(0 -0.01)">
@@ -19,9 +19,9 @@
   Calculadora de pisos
 </button>
 
-<div class="calculator uk-offcanvas" id="calculator-canvas" uk-offcanvas="flip: true; overlay: true">
-  <div class="uk-offcanvas-bar">
-      <button class="uk-offcanvas-close" type="button" uk-close>
+<div class="calculator ah-offcanvas ah-right" id="calculator-canvas">
+  <div class="ah-offcanvas-bar">
+      <button class="ah-close" type="button">
         <svg id="close-svg" xmlns="http://www.w3.org/2000/svg" width="19.023" height="19.023" viewBox="0 0 19.023 19.023">
           <path id="Path_165" data-name="Path 165" d="M10.562,9.512,18.8,1.269A.743.743,0,0,0,17.754.218L9.511,8.461,1.268.218A.743.743,0,0,0,.217,1.269L8.46,9.512.217,17.755a.743.743,0,0,0,1.051,1.051l8.243-8.243,8.243,8.243A.743.743,0,0,0,18.8,17.755Z" transform="translate(0 -0.001)" fill="white"/>
         </svg>
@@ -36,7 +36,7 @@
                   <label for="largura">Largura (m)</label>
                   <input type="text" name="largura" id="calculator-width" placeholder="0,00" value="0.00" maxlength="10" onkeyup="mascara(this, mascara_metros)">
               </div>
-              <span> X </span>
+              <span class="calculator__multiply"> X </span>
               <div class="form-group">
                   <label for="largura">
                       Comprimento (m)</label>

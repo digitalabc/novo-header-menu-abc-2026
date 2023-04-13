@@ -4,7 +4,6 @@
         {{ header title: data.hotsite.name }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
         {{ meta_tags seo: data.hotsite.seo }}
-        
     </head>
 
     <body class="hotsite">
@@ -220,6 +219,6 @@
 
         {{ sdk_client }}
 
-        {{ asset type: "js" paths: ["uikit", "components", "seo", "sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_hotsite"]}}
+        {{ asset type: "js" paths: ["swiper-bundle.min", "components", "seo", "sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_hotsite", "lightbox", "newsletter", "offcanvas"]}}
     </body>
 </html>

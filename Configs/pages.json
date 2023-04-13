@@ -27,7 +27,7 @@
             {
                 "urlMatch": "pisos-e-revestimentos",
                 "subtype": "category",
-                "path": "category.html",
+                "path": "Custom/main_category.html",
                 "query": "category.graphql"
             }
         ]
@@ -35,24 +35,7 @@
     {
         "type": "product",
         "path": "product.html",
-        "query": "product.graphql",
-        "customs": [
-            {
-                "urlMatch": "kit-pratico*",
-                "path": "Custom/custom_product.html",
-                "priority": 1
-            },
-            {
-                "productIds": [9],
-                "path": "Custom/custom_product.html",
-                "priority": 2
-            },
-            {
-                "categoryIds": [],
-                "path": "Custom/custom_product.html",
-                "priority": 10
-            }
-        ]
+        "query": "product.graphql"
     },
     {
         "type": "buy_list",

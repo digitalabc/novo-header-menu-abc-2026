@@ -3,16 +3,13 @@
   
 <head>
     {{~ buy_list = data.buy_list ~}}
-    {{ header title: data.buy_list.product_name store: store }}
-    {{~ if  buy_list.seo ~}}
-        {{ meta_tags seo: buy_list.seo }} 
-    {{~ end ~}}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ header title: data.buy_list.product_name seo: buy_list.seo }}
 </head>
 
 <body class="product buy_list">
+    {{ store | debug.log }} 
     <header>
-        {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
     </header>
     <div class="container">
         <div class="breadcrumb">

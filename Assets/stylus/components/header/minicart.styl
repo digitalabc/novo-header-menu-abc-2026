@@ -1,7 +1,7 @@
 #mini-cart-core
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100% - 55px);
 
 .minicart
   &__icon
@@ -50,33 +50,11 @@
       @media mobile
         top -5px
 
-  &__dropdown
-    &.uk-offcanvas-overlay::before
-      background: rgba(0, 0, 0, 0.3);
-
-    .uk-offcanvas-bar
-      overflow: visible;
-      padding: 0;
-      width: 475px;
-      right: calc(-475px - 55px);
-      background: #ffffff;
-
-      @media mobile
-        right: calc(-320px - 55px);
-        width: 320px;
-
-      .uk-close
-        top: 0;
-        right: 100%;
-        width: 55px;
-        height: 55px;
-        background: $primary;
-
-        svg
-          &:not(#close-svg)
-            display: none;
-
+  &__offcanvas
     &-top
+      display flex
+      align-items center
+      justify-content center
       height: 55px;
       flex-shrink 0
       background: #392F2D

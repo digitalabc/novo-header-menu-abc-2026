@@ -1,7 +1,7 @@
 {{~ login_url = checkout_url + "Login/Authenticate?returnUrl=" ~}}
 {{~ register_url = checkout_url + "Login/Cadastro?returnUrl=" ~}}
 
-<button class="menu__button mobile" type="button" uk-toggle="target: #menu-canvas" aria-label="Abrir menu">
+<button class="menu__button mobile" type="button" ah-toggle="#menu-offcanvas" aria-label="Abrir menu">
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="18.649" viewBox="0 0 30 18.649">
     <g id="menu" transform="translate(0.01 -0.007)">
       <path id="Path_23359" data-name="Path 23359" d="M28.123.027,2.161.021h-.02A1.919,1.919,0,0,0,.047,1.482L.01,1.6c0,.008-.007.017-.01.027v.515a1.405,1.405,0,0,1,.057.226A1.9,1.9,0,0,0,1.983,3.8H27.965A1.928,1.928,0,0,0,29.83,2.687,3.032,3.032,0,0,1,30,2.207v-.5a1.387,1.387,0,0,1-.078-.327,1.9,1.9,0,0,0-1.8-1.353Z" transform="translate(-0.008 0)" fill="#e30613"/>
@@ -11,9 +11,9 @@
   </svg>
 </button>
 
-<aside id="menu-canvas" class="menu__dropdown mobile uk-offcanvas" uk-offcanvas="flip: false; overlay: true">
-  <div class="uk-offcanvas-bar">
-    <button class="uk-offcanvas-close" type="button" uk-close>
+<aside id="menu-offcanvas" class="menu__offcanvas mobile ah-offcanvas">
+  <div class="ah-offcanvas-bar">
+    <button class="ah-close" type="button">
       <svg id="close-svg" xmlns="http://www.w3.org/2000/svg" width="19.023" height="19.023" viewBox="0 0 19.023 19.023">
         <path id="Path_165" data-name="Path 165" d="M10.562,9.512,18.8,1.269A.743.743,0,0,0,17.754.218L9.511,8.461,1.268.218A.743.743,0,0,0,.217,1.269L8.46,9.512.217,17.755a.743.743,0,0,0,1.051,1.051l8.243-8.243,8.243,8.243A.743.743,0,0,0,18.8,17.755Z" transform="translate(0 -0.001)" fill="white"/>
       </svg>

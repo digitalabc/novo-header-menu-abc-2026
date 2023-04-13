@@ -1,5 +1,5 @@
 {{~ capture exit_intent_lightbox_header_bg_source ~}}
-  {{- store.urls.static_img}}exit_intent_lightbox_header_bg.png?theme={{store.theme -}}&v={{store.last_modified-}}
+  {{- store.urls.static_img}}exit_intent_lightbox_header_bg.webp?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 {{~ capture white_logo_source ~}}
   {{- store.urls.static_img}}white_logo.svg?theme={{store.theme -}}&v={{store.last_modified-}}
@@ -10,7 +10,7 @@
         <div class="exit-intent-lightbox__main">
           <div class="exit-intent-lightbox__header" style="background-image: url({{ exit_intent_lightbox_header_bg_source }});">
             <div class="exit-intent-lightbox__logo">
-              <img src="{{ white_logo_source }}" alt="{{ store.store_name }}">
+              <img src="{{ white_logo_source }}" alt="{{ store.store_name }}" width="70" height="61">
               </div>
               <h2>Ei não vá ainda, veja o que separamos para você</h2>
               <button aria-label="close lightbox" onclick="closeLightbox('exit-intent-lightbox')" class="exit-intent-lightbox__close">

@@ -32,8 +32,6 @@ window.addEventListener('DOMContentLoaded',function(){
 const body = document.body
 const footer = document.querySelector('footer')
 
-const productButtons = document.querySelector('.product__buttons')
-
 function setScroll(scrollTop, lastScrollTop) {
   if (scrollTop <= 0) {
     body.classList.add('scroll-up');
@@ -53,17 +51,6 @@ function setScroll(scrollTop, lastScrollTop) {
   }
 }
 
-function setProductFloating(scrollTop, offsetToShowProduct, offsetToHideProduct) {
-
-  if (scrollTop > offsetToShowProduct && (window.innerHeight + scrollTop) + offsetToHideProduct <= document.body.offsetHeight) {
-    body.classList.add('show-floating');
-  }
-  else{
-    body.classList.remove('show-floating');
-  }
-  
-}
-
 function setFloatingNavMobile(scrollTop, offsetToShowMobileNav, offsetToHideMobileNav) {
   if (scrollTop > offsetToShowMobileNav && (window.innerHeight + scrollTop) + offsetToHideMobileNav <= document.body.offsetHeight) {
     body.classList.add('show-mobile-nav');
@@ -74,13 +61,8 @@ function setFloatingNavMobile(scrollTop, offsetToShowMobileNav, offsetToHideMobi
 }
 
 window.addEventListener("load", () => {
-  var lastScrollTop =  -1,
-      scrollTop = window.pageYOffset
-
-  var offsetToShowProduct = productButtons ? productButtons.getBoundingClientRect().top + scrollTop : null
-  if(MOBILE.matches){
-    offsetToShowProduct += 100
-  }
+  var lastScrollTop =  -1
+  
   const offsetToShowMobileNav = 200
   const offsetBottom = 200
 
@@ -91,10 +73,6 @@ window.addEventListener("load", () => {
 
     if(MOBILE.matches) {
       setFloatingNavMobile(newSt, offsetToShowMobileNav, offsetBottom);
-    }
-
-    if (productButtons) {
-      setProductFloating(newSt, offsetToShowProduct, offsetBottom);
     }
     
     lastScrollTop = newSt;

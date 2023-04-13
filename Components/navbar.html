@@ -21,7 +21,7 @@
 
 {{ topbar }}
 <nav class="navbar">
-    <div class="navbar__container uk-width-1-1 uk-flex uk-flex-middle uk-flex-between">
+    <div class="navbar__container ">
         {{ ## Search ## }}
         <div class="navbar__search">
           <form class="search__form" onsubmit="search(event, null)">
@@ -45,11 +45,11 @@
         {{ ## Logo ## }}
         <div class="navbar__logo">
             <a class="navbar-brand" href="/">
-                <img src="{{ logo_source }}" alt="{{ store.store_name }}">
+                <img src="{{ logo_source }}" alt="{{ store.store_name }}" width="104" height="70">
             </a>
         </div>
 
-        <div class="navbar__right uk-flex uk-flex-middle">
+        <div class="navbar__right">
             {{ ## Nossas Lojas ## }}
             <a class="navbar__lojas" href="/nossas-lojas">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22.665" viewBox="0 0 22 22.665">
@@ -68,6 +68,7 @@
 
             {{ ## Minicart ## }}
             {{ mini_cart }}
+            {{ mini_cart_ah }}
         </div>
     </div>
     

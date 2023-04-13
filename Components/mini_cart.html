@@ -12,7 +12,7 @@
 ~}}
 
 <div id="mini-cart-div" class="minicart">
-  <button class="minicart__button" type="button" uk-toggle="target: #minicart-canvas">
+  <button class="minicart__button" type="button" ah-toggle="#minicart-offcanvas">
       <div class="minicart__icon">
         <span class='label-cart-count'>0</span>
         <svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" width="40" height="23.639" viewBox="0 0 40 23.639">
@@ -23,17 +23,20 @@
         <p class="minicart__title">Meu carrinho</p>
         <p class="minicart__count label-cart-count-formatted">00 itens</p>
       </div>
-
   </button>
 
-  <div class="minicart__dropdown uk-offcanvas" id="minicart-canvas" uk-offcanvas="flip: true; overlay: true">
-      <div class="uk-offcanvas-bar">
-          <button class="uk-offcanvas-close" type="button" uk-close>
+  <div class="minicart__offcanvas ah-offcanvas ah-right" id="minicart-offcanvas">
+      <div class="ah-offcanvas-bar">
+          <button class="ah-close" type="button">
             <svg id="close-svg" xmlns="http://www.w3.org/2000/svg" width="19.023" height="19.023" viewBox="0 0 19.023 19.023">
               <path id="Path_165" data-name="Path 165" d="M10.562,9.512,18.8,1.269A.743.743,0,0,0,17.754.218L9.511,8.461,1.268.218A.743.743,0,0,0,.217,1.269L8.46,9.512.217,17.755a.743.743,0,0,0,1.051,1.051l8.243-8.243,8.243,8.243A.743.743,0,0,0,18.8,17.755Z" transform="translate(0 -0.001)" fill="white"/>
             </svg>
           </button>
-
+          <div class="minicart__offcanvas-top">
+              <span>
+                Meu carrinho
+              </span>
+          </div>
           <div id="mini-cart-core">
           </div>
       </div>

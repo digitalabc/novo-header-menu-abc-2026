@@ -25,11 +25,6 @@
     end 
 ~}}
 
-<div class="minicart__dropdown-top uk-flex uk-flex-center uk-flex-middle">
-    <span>
-      Meu carrinho
-    </span>
-</div>
 
 <div class="shipping">
   {{~ free_shipping = 1000 ~}}
@@ -59,7 +54,7 @@
   {{~ end ~}}
 </div>
 
-<div class="minicart__dropdown-body">
+<div class="minicart__offcanvas-body">
     {{~ if productsCount > -1 ~}} 
       <ul class="item__list">
           {{~ for product in products ~}}

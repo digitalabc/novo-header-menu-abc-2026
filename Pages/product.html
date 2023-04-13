@@ -2,15 +2,14 @@
 <html lang="pt-BR">
 
 <head>
-    {{ header title: data.product.product_name }}
+    {{ header title: data.product.product_name seo: data.product.seo}}
     {{ product_structured_data product: data.product current_url: store.urls.current }}
-    {{ meta_tags seo: data.product.seo }}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body class="product">
+    {{ data.product.seo | debug.log }} 
     <header>
-        {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
     </header>
 
     {{~ 

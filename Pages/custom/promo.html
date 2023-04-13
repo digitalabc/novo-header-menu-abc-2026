@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        {{ header title: data.hotsite.name store: store }}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{ header title: data.hotsite.name }}
+        
     </head>
 
     <body>
         <header>
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+            {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
         <div class="row justify-content-center mb-3">
             <div class="col-12">
@@ -29,7 +29,7 @@
             {{ pagination products: products page_size: page_size current_page: current_page }}
             </div>
         </div>
-        {{ footer is_preview: is_preview store: store }}
+        {{ footer is_preview: is_preview }}
         {{ sdk_client }}
         {{ asset type: "js" paths: ["components", "sort", "filter", "pagination", "products_per_page", "navbar", "cart_from_spot", "user_login"]}}
     </body>

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        {{ header title: data.hotsite.name store: store }}
+        {{ header title: data.hotsite.name seo: data.hotsite.seo }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
-        {{ meta_tags seo: data.hotsite.seo }}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
     <body class="category">
         <header>
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+            {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
 
         <div class="container">

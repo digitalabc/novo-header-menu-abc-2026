@@ -79,7 +79,7 @@ async function buyTogetherAddToCartClick(element){
     if (success){
         // showAlert("Produtos adicionado ao carrinho!");
         await loadMiniCart();        
-        UIkit.offcanvas("#minicart-canvas").show();
+        openOffcanvas("#minicart-offcanvas")
     }
 }
 

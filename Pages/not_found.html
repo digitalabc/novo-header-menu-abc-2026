@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        {{ header title:"Erro 404" store: store }}
+        {{ header title:"Erro 404" }}
         {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login"]}}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <header>
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+            {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
         
         <section class="error">

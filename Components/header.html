@@ -1,7 +1,13 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Agência Auaha">
+
 <title>{{title}}</title>
+
+{{~ if seo && seo.size > 0 ~}}
+  {{ meta_tags seo: seo}}
+{{~ end ~}}
 
 {{~ capture favicon_source ~}}
     {{- store.urls.static_img}}{{settings.favicon_path}}?theme={{store.theme -}}&v={{store.last_modified -}}
@@ -9,7 +15,8 @@
 <link rel="icon" type="image/x-icon" href="{{ favicon_source }}">
 
 {{# CSS Customizado #}}
-{{ asset type: "css" paths: ["swiper-bundle.min", "uikit", "auaha"] }}
+{{ asset type: "css" paths: ["swiper-bundle.min" ] }}
+{{ asset type: "css" paths: ["auaha" ] }}
 
 {{# Google Fonts #}}
 {{ font_url = "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" }}

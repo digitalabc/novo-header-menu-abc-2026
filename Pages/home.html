@@ -2,55 +2,27 @@
 <html lang="pt-BR">
     <head>
         {{ ## page_scripts position: "HEADER_START" scripts: common.scripts }}
-        {{ header title: "Home" store: store }}
+        {{ header title: "ABC da Construção" seo: data.hotsite.seo}}
         {{ ## page_scripts position: "HEADER_END" scripts: common.scripts }}
-        {{ meta_tags seo: data.hotsite.seo }}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     
     <body class="home">
         {{ ## page_scripts position: "BODY_START" scripts: common.scripts  }}
 
         <header>
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+            {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
         
         <!-- Fullbanner -->
         <section class="fullbanner desktop">
           {{ # banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Centro" }}
-          <div class="swiper">
-            <ul class="swiper-wrapper">
-                <li class="swiper-slide">
-                  <a href="#">
-                    <img src="https://via.placeholder.com/1920x380" alt="Banner" width="1920" height="380">
-                  </a>
-                </li>
-                <li class="swiper-slide">
-                  <a href="#">
-                    <img src="https://via.placeholder.com/1920x380" alt="Banner" width="1920" height="380">
-                  </a>
-                </li>
-            </ul>
-          </div>
+          {{ placeholder_banner quantity: 2 carousel: true width:1920 height:380  }}
         </section>
 
         <!-- Fullbanner mobile -->
         <section class="fullbanner mobile">
           {{ # banner carousel: true type: "fullbanner"  banners: data.hotsite.banners position: "Mobile Centro" }}
-          <div class="swiper">
-            <ul class="swiper-wrapper">
-                <li class="swiper-slide">
-                  <a href="#">
-                    <img src="https://via.placeholder.com/991x530" alt="Banner" width="991" height="530">
-                  </a>
-                </li>
-                <li class="swiper-slide">
-                  <a href="#">
-                    <img src="https://via.placeholder.com/991x530" alt="Banner" width="991" height="530">
-                  </a>
-                </li>
-            </ul>
-          </div>
+          {{ placeholder_banner quantity: 2 carousel: true width:991 height:530 }}
         </section>
 
         <div class="container">
@@ -113,55 +85,11 @@
                 <h2>{{ "Seleção de oportunidades" | lang }}</h2>
                 <div class="desktop">
                   {{ # banner carousel: false banners: data.hotsite.banners position: "Centro" }}
-                  <ul>
-                    <li>
-                      <a target="_blank" href="#">
-                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
-                      </a>
-                    </li>
-                    <li>
-                      <a target="_blank" href="#">
-                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
-                      </a>
-                    </li>
-                    <li>
-                      <a target="_blank" href="#">
-                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
-                      </a>
-                    </li>
-                    <li>
-                      <a target="_blank" href="#">
-                        <img src="https://via.placeholder.com/310x200" alt="Banner" class="">
-                      </a>
-                    </li>
-                  </ul>
+                  {{ placeholder_banner quantity: 4 carousel: false width:310 height:200  }}
                 </div>
                 <div class="mobile">
                   {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
-                  <div class="swiper">
-                    <ul class="swiper-wrapper">
-                        <li class="swiper-slide">
-                          <a href="#">
-                            <img src="https://via.placeholder.com/250x250" alt="Banner">
-                          </a>
-                        </li>
-                        <li class="swiper-slide">
-                          <a href="#">
-                            <img src="https://via.placeholder.com/250x250" alt="Banner">
-                          </a>
-                        </li>
-                        <li class="swiper-slide">
-                          <a href="#">
-                            <img src="https://via.placeholder.com/250x250" alt="Banner">
-                          </a>
-                        </li>
-                        <li class="swiper-slide">
-                          <a href="#">
-                            <img src="https://via.placeholder.com/250x250" alt="Banner">
-                          </a>
-                        </li>
-                    </ul>
-                  </div>
+                  {{ placeholder_banner quantity: 4 carousel: true width:250 height:250  }}
                 </div>
             </section>
 
@@ -174,40 +102,9 @@
             <!-- Grid de banners -->
             <section class="banner-grid">
                 {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
-                <div class="swiper">
-                  <ul class="swiper-wrapper">
-                      <li class="swiper-slide">
-                        <a href="#">
-                          <img src="https://via.placeholder.com/420x300" alt="Banner">
-                        </a>
-                      </li>
-                      <li class="swiper-slide">
-                        <a href="#">
-                          <img src="https://via.placeholder.com/420x300" alt="Banner">
-                        </a>
-                      </li>
-                      <li class="swiper-slide">
-                        <a href="#">
-                          <img src="https://via.placeholder.com/420x300" alt="Banner">
-                        </a>
-                      </li>
-                  </ul>
-                </div>
+                {{ placeholder_banner quantity: 3 carousel: true width:420 height:300  }}
                 {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
-                <div class="swiper">
-                    <ul class="swiper-wrapper">
-                        <li class="swiper-slide">
-                          <a href="#">
-                            <img src="https://via.placeholder.com/640x300" alt="Banner">
-                          </a>
-                        </li>
-                        <li class="swiper-slide">
-                          <a href="#">
-                            <img src="https://via.placeholder.com/640x300" alt="Banner">
-                          </a>
-                        </li>
-                    </ul>
-                  </div>
+                {{ placeholder_banner quantity: 2 carousel: true width:640 height:300  }}
             </section>
             
             <!-- Compre por departamento -->
@@ -569,7 +466,7 @@
             </section>
 
             {{~ capture newsletter_home_bg_source ~}}
-              {{- store.urls.static_img}}newsletter_home_bg.png?theme={{store.theme -}}&v={{store.last_modified-}}
+              {{- store.urls.static_img}}newsletter_home_bg.webp?theme={{store.theme -}}&v={{store.last_modified-}}
             {{~ end ~}}
             
             <section class="newsletter--home" style="background-image: url({{ newsletter_home_bg_source }});">
@@ -579,7 +476,7 @@
 
         
         {{~ capture gray_bg_img_source ~}}
-          {{- store.urls.static_img}}gray_bg_img.png?theme={{store.theme -}}&v={{store.last_modified-}}
+          {{- store.urls.static_img}}gray_bg_img.webp?theme={{store.theme -}}&v={{store.last_modified-}}
         {{~ end ~}}
         <div class="gray-bg" style="background-image: url({{ gray_bg_img_source }});">
           <div class="container">
@@ -593,7 +490,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Banheiro"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Banheiro"/>
                               </div>
                               <h3 class="environments__title">
                                 Banheiro
@@ -603,7 +500,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Sala de estar"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Sala de estar"/>
                               </div>
                               <h3 class="environments__title">
                                 Sala de estar
@@ -613,7 +510,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Quarto"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Quarto"/>
                               </div>
                               <h3 class="environments__title">
                                 Quarto
@@ -623,7 +520,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Área externa"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Área externa"/>
                               </div>
                               <h3 class="environments__title">
                                 Área externa
@@ -633,7 +530,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Banheiro"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Banheiro"/>
                               </div>
                               <h3 class="environments__title">
                                 Banheiro
@@ -643,7 +540,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Sala de estar"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Sala de estar"/>
                               </div>
                               <h3 class="environments__title">
                                 Sala de estar
@@ -653,7 +550,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Quarto"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Quarto"/>
                               </div>
                               <h3 class="environments__title">
                                 Quarto
@@ -663,7 +560,7 @@
                       <li class="swiper-slide environments__item">
                           <a href="#">
                               <div class="environments__img">
-                                <img src="https://via.placeholder.com/310x200" alt="Área externa"/>
+                                <img src="https://via.placeholder.com/310x200" width="310" height="200" alt="Área externa"/>
                               </div>
                               <h3 class="environments__title">
                                 Área externa
@@ -688,48 +585,13 @@
               <!-- Banners centro -->
               <section class="banner-centro desktop">
                 {{ # banner carousel: true banners: data.hotsite.banners position: "Centro" }}
-                  
-                <div class="swiper">
-                  <ul class="swiper-wrapper">
-                      <li class="swiper-slide">
-                        <a href="#">
-                          <img src="https://via.placeholder.com/420x580" alt="Banner">
-                        </a>
-                      </li>
-                      <li class="swiper-slide">
-                        <a href="#">
-                          <img src="https://via.placeholder.com/420x580" alt="Banner">
-                        </a>
-                      </li>
-                      <li class="swiper-slide">
-                        <a href="#">
-                          <img src="https://via.placeholder.com/420x580" alt="Banner">
-                        </a>
-                      </li>
-                  </ul>
-                </div>
+                {{ placeholder_banner quantity: 3 carousel: true width:420 height:580  }}
               </section>
 
               <!-- Banners centro -->
               <section class="banner-centro mobile">
                 {{ # banner carousel: false banners: data.hotsite.banners position: "Centro" }}
-                <ul>
-                  <li>
-                    <a target="_blank" href="#">
-                      <img src="https://via.placeholder.com/350x300" alt="Banner" class="">
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#">
-                      <img src="https://via.placeholder.com/350x300" alt="Banner" class="">
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#">
-                      <img src="https://via.placeholder.com/350x300" alt="Banner" class="">
-                    </a>
-                  </li>
-                </ul>
+                {{ placeholder_banner quantity: 3 carousel: false width:350 height:300  }}
               </section>
 
               <!-- Carrossel de marcas -->
@@ -747,49 +609,49 @@
                       <li class="swiper-slide stores__item">
                           <a href="#">
                               <div class="stores__img">
-                                <img src="https://via.placeholder.com/193x193" alt="Loja 1"/>
+                                <img src="https://via.placeholder.com/193x193" width="193" height="193" alt="Loja 1"/>
                               </div>
                           </a>
                       </li>
                       <li class="swiper-slide stores__item">
                           <a href="#">
                               <div class="stores__img">
-                                <img src="https://via.placeholder.com/193x193" alt="Loja 2"/>
+                                <img src="https://via.placeholder.com/193x193" width="193" height="193" alt="Loja 2"/>
                               </div>
                           </a>
                       </li>
                       <li class="swiper-slide stores__item">
                           <a href="#">
                               <div class="stores__img">
-                                <img src="https://via.placeholder.com/193x193" alt="Loja 3"/>
+                                <img src="https://via.placeholder.com/193x193" width="193" height="193" alt="Loja 3"/>
                               </div>
                           </a>
                       </li>
                       <li class="swiper-slide stores__item">
                           <a href="#">
                               <div class="stores__img">
-                                <img src="https://via.placeholder.com/193x193" alt="Loja 4"/>
+                                <img src="https://via.placeholder.com/193x193" width="193" height="193" alt="Loja 4"/>
                               </div>
                           </a>
                       </li>
                       <li class="swiper-slide stores__item">
                           <a href="#">
                               <div class="stores__img">
-                                <img src="https://via.placeholder.com/193x193" alt="Loja 5"/>
+                                <img src="https://via.placeholder.com/193x193" width="193" height="193" alt="Loja 5"/>
                               </div>
                           </a>
                       </li>
                       <li class="swiper-slide stores__item">
                           <a href="#">
                               <div class="stores__img">
-                                <img src="https://via.placeholder.com/193x193" alt="Loja 6"/>
+                                <img src="https://via.placeholder.com/193x193" width="193" height="193" alt="Loja 6"/>
                               </div>
                           </a>
                       </li>
                       <li class="swiper-slide stores__item">
                           <a href="#">
                               <div class="stores__img">
-                                <img src="https://via.placeholder.com/193x193" alt="Loja 7"/>
+                                <img src="https://via.placeholder.com/193x193" width="193" height="193" alt="Loja 7"/>
                               </div>
                           </a>
                       </li>
@@ -816,7 +678,7 @@
                     <ul class="blog__list swiper-wrapper">
                         <li class="blog__item swiper-slide">
                             <a href="#">
-                                <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
+                                <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais" width="310" height="245"/> 
                                 <div class="blog__content">
                                   <h3>
                                     10 Dicas de presentes diferentes para o Dia dos Pais
@@ -828,7 +690,7 @@
                         </li>
                         <li class="blog__item swiper-slide">
                             <a href="#">
-                                <img src="https://via.placeholder.com/310x245" alt="Dia dos Pais Campeão com a ABC da Construção"/> 
+                                <img src="https://via.placeholder.com/310x245" alt="Dia dos Pais Campeão com a ABC da Construção" width="310" height="245"/> 
                                 <div class="blog__content">
                                   <h3>
                                     Dia dos Pais Campeão com a ABC da Construção
@@ -840,7 +702,7 @@
                         </li>
                         <li class="blog__item swiper-slide">
                             <a href="#">
-                                <img src="https://via.placeholder.com/310x245" alt="O que não pode faltar no banheiro moderno"/> 
+                                <img src="https://via.placeholder.com/310x245" alt="O que não pode faltar no banheiro moderno" width="310" height="245"/> 
                                 <div class="blog__content">
                                   <h3>
                                     O que não pode faltar no banheiro moderno
@@ -852,7 +714,7 @@
                         </li>
                         <li class="blog__item swiper-slide">
                             <a href="#">
-                                <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais"/> 
+                                <img src="https://via.placeholder.com/310x245" alt="10 Dicas de presentes diferentes para o Dia dos Pais" width="310" height="245"/> 
                                 <div class="blog__content">
                                   <h3>
                                     10 Dicas de presentes diferentes para o Dia dos Pais
@@ -874,35 +736,7 @@
             <section class="banner-instagram">
                 <h2>{{ "Siga-nos no Instagram" | lang }}</h2>
                 {{ # banner carousel: true banners: data.hotsite.banners position: "Rodape" }}
-                <div class="swiper">
-                  <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
-                      <a href="#">
-                        <img src="https://via.placeholder.com/240x240" alt="Banner">
-                      </a>
-                    </li>
-                    <li class="swiper-slide">
-                      <a href="#">
-                        <img src="https://via.placeholder.com/240x240" alt="Banner">
-                      </a>
-                    </li>
-                    <li class="swiper-slide">
-                      <a href="#">
-                        <img src="https://via.placeholder.com/240x240" alt="Banner">
-                      </a>
-                    </li>
-                    <li class="swiper-slide">
-                      <a href="#">
-                        <img src="https://via.placeholder.com/240x240" alt="Banner">
-                      </a>
-                    </li>
-                    <li class="swiper-slide">
-                      <a href="#">
-                        <img src="https://via.placeholder.com/240x240" alt="Banner">
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                {{ placeholder_banner quantity: 5 carousel: true width:240 height:240  }}
             </section>
         </div>
         
@@ -919,6 +753,6 @@
         {{ ## page_scripts position: "FOOTER_END" scripts: common.scripts ## }}
 
         {{# Swipper #}}
-        {{ asset type: "js" paths: ["swiper-bundle.min", "uikit", "components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home", "lightbox"]}}
+        {{ asset type: "js" paths: ["swiper-bundle.min", "components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home", "lightbox", "offcanvas"]}}
     </body>
 </html>

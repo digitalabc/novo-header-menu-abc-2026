@@ -1,31 +1,14 @@
 .menu__button
   background: none;
 
-#menu-canvas
-  &.uk-offcanvas-overlay::before
-    background: rgba(0, 0, 0, 0.3);
-
-  &.uk-open
-    > .uk-offcanvas-bar
+#menu-offcanvas
+  &.ah-offcanvas-open
+    > .ah-offcanvas-bar
       left: 0;
 
-  .uk-offcanvas-bar
-    overflow: visible;
-    padding: 0;
+  .ah-offcanvas-bar
     width: 270px;
     left: calc(-270px - 55px);
-    background: #ffffff;
-
-  .uk-offcanvas-close
-    top: 0;
-    left: 100%;
-    width: 55px;
-    height: 55px;
-    background: $primary;
-
-    svg
-      &:not(#close-svg)
-        display: none;
         
   .nav-mobile
     &__header

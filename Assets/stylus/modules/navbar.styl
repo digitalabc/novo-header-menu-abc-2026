@@ -4,6 +4,9 @@
   &__container
     @extends $container
     padding-block 15px
+    display flex
+    align-items center
+    justify-content space-between
     @media mobile
       flex-wrap wrap
       padding-block 25px
@@ -20,6 +23,8 @@
       flex: 1;
 
   &__right
+    display flex
+    align-items center
     justify-content: flex-end;
     gap 30px
     @media mobile

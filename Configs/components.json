@@ -227,6 +227,30 @@
         "availableInAllPages": true
     },
     {
+        "name": "placeholder_banner",
+        "path": "placeholder_banner.html",
+        "params": [
+            {
+                "name": "quantity",
+                "required": false
+            },
+            {
+                "name": "carousel",
+                "required": true
+            },
+            {
+                "name": "width",
+                "required": true
+            },
+            {
+                "name": "height",
+                "required": true
+            }
+        ],
+        "availableInAllPages": true,
+        "availableInAllComponents": true
+    },
+    {
         "name": "price_range_filter",
         "path": "price_range_filter.html",
         "params": [

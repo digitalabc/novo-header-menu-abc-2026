@@ -4813,3 +4813,6 @@ section.newsletter--home .newsletter__alert {
   background: #e30613;
   color: #fff;
 }
+html {
+  display: block;
+}

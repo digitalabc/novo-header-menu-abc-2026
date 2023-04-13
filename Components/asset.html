@@ -15,5 +15,6 @@
 {{~ if type == "js" -}}
 	<script src="{{- source -}}"></script>
 {{~ else if type == "css" -}}
+  <link rel="preload" href="{{- source -}}" as="style">
 	<link href="{{- source -}}" rel="stylesheet">
 {{~ end ~}}

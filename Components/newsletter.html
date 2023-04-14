@@ -13,7 +13,7 @@
 <div class="newsletter">
     <div class="newsletter__container">
         {{~ if title || text ~}}
-          <div class="newsletter__header" style="background-image: url({{ newsletter_lightbox_header_bg_source }});">
+          <div class="newsletter__header" {{~ if newsletter_lightbox_header_bg_source ~}}style="background-image: url({{ newsletter_lightbox_header_bg_source }});"{{~ end ~}} >
             {{~ if title ~}}
               <h2 class="newsletter__title">
                 {{ title }}

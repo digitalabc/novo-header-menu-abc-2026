@@ -463,7 +463,7 @@
         </section>
 
         {{~ capture newsletter_home_bg_source ~}}
-          {{- store.urls.static_img}}newsletter_home_bg.webp?theme={{store.theme -}}&v={{store.last_modified-}}
+          {{- store.urls.static_img}}newsletter_home_bg.svg?theme={{store.theme -}}&v={{store.last_modified-}}
         {{~ end ~}}
         
         <section class="newsletter--home" style="background-image: url({{ newsletter_home_bg_source }});">
@@ -473,7 +473,7 @@
 
     
     {{~ capture gray_bg_img_source ~}}
-      {{- store.urls.static_img}}gray_bg_img.webp?theme={{store.theme -}}&v={{store.last_modified-}}
+      {{- store.urls.static_img}}gray_bg_img.svg?theme={{store.theme -}}&v={{store.last_modified-}}
     {{~ end ~}}
     <div class="gray-bg" style="background-image: url({{ gray_bg_img_source }});">
       <div class="container">

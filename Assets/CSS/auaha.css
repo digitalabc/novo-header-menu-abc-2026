@@ -648,7 +648,7 @@ input[type="search"]::-webkit-search-results-decoration {
   border-bottom: 1px solid #d5d5d5;
 }
 .product .attribute-selections h3 {
-  attribute-selectionsfont-size: 14px;
+  font-size: 14px;
   margin-bottom: 12px;
   color: #5d5d5d;
   font-weight: 700;

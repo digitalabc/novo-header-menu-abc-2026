@@ -648,6 +648,7 @@ input[type="search"]::-webkit-search-results-decoration {
   border-bottom: 1px solid #d5d5d5;
 }
 .product .attribute-selections h3 {
+  attribute-selectionsfont-size: 14px;
   margin-bottom: 12px;
   color: #5d5d5d;
   font-weight: 700;
@@ -1227,6 +1228,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 .product__buy-together .buy-together__image {
   margin-bottom: 12px;
+}
+.product__buy-together .buy-together__image .spot__image-wrapper {
+  border: none;
 }
 .product__buy-together .buy-together__quantity {
   display: none;
@@ -2037,6 +2041,7 @@ header {
 }
 .banner-grid ul li img {
   display: block;
+  margin: 0 auto;
 }
 .banner-centro ul li {
   overflow: hidden;
@@ -2066,6 +2071,7 @@ header {
 .banner-centro ul li img {
   transition: all 0.2s ease-in-out;
   display: block;
+  margin: 0 auto;
 }
 .banner-instagram ul li {
   overflow: hidden;
@@ -4239,7 +4245,8 @@ section.newsletter--home .newsletter__alert {
   color: #e30613;
 }
 .subcategories__title {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
   transition: all 0.2s ease-in-out;
 }
 .subcategories__img {

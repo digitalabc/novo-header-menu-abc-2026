@@ -608,6 +608,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-bottom: 5px;
 }
 .product__installments .payment .option__button {
+  color: #392f2d;
   height: 20px;
   background: none;
   line-height: 20px;
@@ -1091,6 +1092,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .product .product-shipping__submit {
   height: 35px;
   width: 110px;
+  border-radius: 0;
   background: #d5d5d5;
   color: #5d5d5d;
   font-size: 12px;
@@ -3304,6 +3306,7 @@ header {
 }
 .minicart__offcanvas-body .item__item img {
   border: 1px solid #eaeaea;
+  width: 90px;
 }
 @media screen and (max-width: 991px) {
   .minicart__offcanvas-body .item__item img {

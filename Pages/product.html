@@ -2,13 +2,11 @@
 <html lang="pt-BR">
 
 <head>
-    
     {{ header title: data.product.product_name seo: data.product.seo}}
     {{ product_structured_data product: data.product current_url: store.urls.current }}
 </head>
 
 <body class="product">
-    {{ data.product.seo | debug.log }} 
     <header>
         {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
     </header>
@@ -16,23 +14,42 @@
     {{~ 
       product = data.product
       shop = data.shop
-      product_is_box = false
-      product_is_pick_up = false
+      product_has_specialist_popup = false
+      product_hide_pix = false
+      product_show_coupon = false
     ~}}
 
-    {{~ for attribute in product.attributes ~}}
-      {{ case_insensitive_name = attribute.name | string.downcase }}
-      {{ case_insensitive_value = attribute.value | string.downcase }}
-      {{~ if case_insensitive_name == "unidade" && case_insensitive_value == "m2" ~}}
-        {{ product_is_box = true }}
+    {{~ for category in product.product_categories ~}}
+      {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
+        {{ product_has_specialist_popup = true }}
       {{~ end ~}}
     {{~ end ~}}
 
-    {{~ for category in product.product_categories ~}}
-      {{ case_insensitive_category_name = category.name | string.downcase }}
-      {{~ if case_insensitive_category_name == "argamassas" ~}}
-        {{ product_is_pick_up = true }}
+    {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936"] }}
+    {{~ if (product.product_brand.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
+      {{ product_hide_pix = true }}
+    {{~ end ~}}
+
+    {{ 
+      _marcasCupom = { docol: "DOCOL"}
+      _skusParaCupom = {
+        docol: [
+          "27739", "27733", "26414", "38343", "27473", "28822", "18554", "06775", "37723", "31808", "06612", "38344", "40875", "40905", "27737", "29607", "28605", "26350", "28817", "36522", "40910", "40892", "21762", "40163", "29937", "18822", "40542", "28818", "31612", "31455", "21763", "40289", "28821", "28815", "25040", "28606", "28166", "27732", "40917", "40916", "40914", "40913", "40912", "40911", "40909", "40906", "40904", "40872", "40866", "40863", "40862", "40856", "40855", "40849", "40215", "40211", "38384", "37458", "28545", "20474", "09390", "08438", "37459", "38345", "38410", "38413", "40283", "40284", "40848", "40850", "40857", "40864", "40883", "40884", "40893", "40894", "40895", "40898", "40899", "40900", "40907", "43953", "44146", "44437", "45601", "45602", "45616", "45638", "45675", "45678", "45679", "45680", "45713", "45715", "45716", "45717", "45873", "45926", "45927", "45928", "45972", "45973", "45974", "45975", "45978", "46017", "46018", "46019", "46020", "46021", "46022", "46024", "46034", "46035", "46036", "46037", "46038", "46039", "45841", "38421", "40865", "40867", "40868", "52794", "52798", "49977", "56141", "56146", "56147", "56148",
+        ],
+        deca: [
+          "19834", "10760", "23756", "11089", "13049", "052694", "15353", "19612", "28223", "15457", "07418", "28735", "15354", "17378", "29862", "09887", "25521", "28865", "052064", "24323", "21158", "34243", "052980", "29034", "21247", "11800", "053557", "18777", "25522", "30160", "43750", "43917", "212823", "57001", "57044",
+        ],
+      } 
+    }}
+    {{~ for marca in _marcasCupom | object.keys ~}}
+      {{~ if (product.product_brand | string.contains marca) && (_skusParaCupom[marca] | array.contains product.sku) ~}}
+        {{ product_show_coupon = true }}
+        <input type="hidden" id="product-coupon" name="product-coupon" value="{{ _marcasCupom[marca] }}">
       {{~ end ~}}
+    {{~ end ~}}
+
+    {{~ if (product.product_brand | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
+      {{ product_hide_pix = true }}
     {{~ end ~}}
 
     <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
@@ -43,7 +60,7 @@
         {{~ breadcrumb breadcrumbs: product.breadcrumbs product: product ~}}
         
         <div id="product-view-div-{{ product.product_id }}" class="product__view">
-            {{ product_view product: product product_is_box: product_is_box }}
+            {{ product_view product: product product_hide_pix: product_hide_pix }}
         </div>
 
         <div class="product__buy-together">
@@ -66,13 +83,21 @@
     </div>
 
     {{ product_floating product: product }}
+    
+    {{~ if product_has_specialist_popup ~}}
+      {{ product_popup }}
+    {{~ end ~}}
 
     <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
 
     {{ footer products:common.lighbox_products.products.nodes }}
     {{ sdk_client }}
     
-    {{ asset type: "js" paths: ["swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas"]}}
+    {{ asset type: "js" paths: ["swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "sharpspring"]}}
+
+    {{~ if product_show_coupon ~}}
+      {{ asset type: "js" paths: ["product_cupom"]}}
+    {{~ end ~}}
 </body>
 
 </html>

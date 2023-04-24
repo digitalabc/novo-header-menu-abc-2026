@@ -8,7 +8,6 @@
 </head>
 
 <body class="product buy_list">
-    {{ store | debug.log }} 
     <header>
         {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
     </header>
@@ -52,6 +51,6 @@
     {{ footer products:common.lighbox_products.products.nodes }}
     {{ sdk_client }}
     
-    {{ asset type: "js" paths: ["swiper-bundle.min", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox", "offcanvas"]}}
+    {{ asset type: "js" paths: ["swiper-bundle.min", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox", "offcanvas", "sharpspring"]}}
 </body>
 </html>

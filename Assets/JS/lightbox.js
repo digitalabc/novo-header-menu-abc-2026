@@ -9,12 +9,14 @@ function lightboxLoad() {
   var newsletterLightboxId = "newsletter-lightbox"
   var exitIntentLightboxId = "exit-intent-lightbox"
 
-  setTimeout(() => {
-    if (!getLocalStorageWithExpiration(`${STORE_TOKEN}-${newsletterLightboxId}`)) {
-      showLightbox(newsletterLightboxId)
-    }
-  }, 500);
+  // Show Newsletter lightbox
+  // setTimeout(() => {
+  //   if (!getLocalStorageWithExpiration(`${STORE_TOKEN}-${newsletterLightboxId}`)) {
+  //     showLightbox(newsletterLightboxId)
+  //   }
+  // }, 500);
 
+  // Show Exit Intent Lightbox
   const exitEvent = e => {
     if (!e.toElement && !e.relatedTarget && e.clientY < 5) {
       document.removeEventListener("mouseout", exitEvent);
@@ -63,8 +65,10 @@ function closeLightbox(lightboxId) {
 }
 
 function showLightbox(lightboxId) {
-  const body = document.body
-  body.classList.add(`show-${lightboxId}`)
+  if (document.getElementById(lightboxId)) {
+    const body = document.body
+    body.classList.add(`show-${lightboxId}`)
+  }
 }
 
 var swiper = new Swiper(".showcase-lightbox .swiper", {

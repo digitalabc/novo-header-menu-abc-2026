@@ -1060,5 +1060,18 @@
         "inheritVariables": false,
         "availableInAllComponents": true,
         "availableInAllPages": true
+    },
+    {
+        "name": "product_popup",
+        "path": "product/product_popup.html",
+        "inheritVariables": false,
+        "availableInAllComponents": true,
+        "availableInAllPages": true
+    },
+    {
+        "name": "old_newsletter_popup",
+        "path": "old_newsletter_popup.html",
+        "inheritVariables": false,
+        "availableInAllPages": true
     }
 ]

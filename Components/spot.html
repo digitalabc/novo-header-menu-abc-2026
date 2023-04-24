@@ -6,13 +6,10 @@
     Usage:
         spot product: product
 ## }}
-{{~ for attribute in product.attributes ~}}
-{{ case_insensitive_name = attribute.name | string.downcase }}
-{{ case_insensitive_value = attribute.value | string.downcase }}
-{{~ if case_insensitive_name == "unidade" && case_insensitive_value == "m2"~}}
+{{~ if product.prices.multiplication_factor > 1 ~}}
   {{ product_is_box = true }}
 {{~ end ~}}
-{{~ end ~}}
+
 <div class="spot">
     <div class="spot__image">
         {{ stamps promotions: product.promotions }}
@@ -62,7 +59,10 @@
             </div>
           {{~ end ~}}
         {{~ else ~}}
-          <p>Produto indisponível</p>
+          <div class="spot__unavailable">
+            <p>Produto indisponível</p>
+            {{ product_back_in_stock product: product form_submit: "spotBackInStockOnClick(event);" spot: true }}
+          </div>
         {{~ end ~}}
     </div>
 </div>

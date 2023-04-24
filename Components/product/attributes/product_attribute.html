@@ -87,7 +87,7 @@
                 </div>
             {{~ else ~}}
                 <h3 class="product__unavailable">Produto Indisponível</h3>
-                {{ product_back_in_stock }}
+                {{ product_back_in_stock form_submit: "backInStockOnClick(event);" spot: false}}
             {{~ end ~}}
         </div>
     {{~ end ~}}

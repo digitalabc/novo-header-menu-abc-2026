@@ -35,9 +35,13 @@
       box-shadow $bs
       .add-to-cart-button
         opacity 1
-      .spot__overlay
-        visibility: visible;
-        opacity: 1;
+      .spot
+        &__overlay
+          visibility: visible;
+          opacity: 1;
+        &__unavailable
+          visibility: visible;
+          opacity: 1;
 
   &__image
     position: relative;
@@ -103,9 +107,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    visibility: hidden;
     width: 100%;
     opacity: 0;
+    visibility: hidden;
     transition: $transition;
 
   &__content
@@ -134,6 +138,30 @@
       &:hover
         color $primary
 
+  &__unavailable
+    @media desktop
+      opacity 0
+      visibility hidden
+      transition $transition
+      &:focus-within
+        opacity 1
+        visibility visible
+
+    p
+      margin-bottom 10px
+      font-size 12px
+    .bis
+      @media mobile
+        margin-bottom 0
+      &__alert
+        position: absolute;
+        margin-top: 0;
+        font-weight: 400;
+      input
+        flex 1
+        width: 100%;
+
+      
   &-price
     margin-bottom 5px
     @media mobile

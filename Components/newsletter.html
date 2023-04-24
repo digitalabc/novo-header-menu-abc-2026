@@ -27,9 +27,9 @@
           </div>
         {{~ end ~}}
         <form class="newsletter__form" id="newsletter-form" onsubmit="newsletterSubmit(this);return false;">
-            <input type="text" class="newsletter__input newsletter-name" placeholder="{{name_placeholder_text}}"
+            <input type="text" class="newsletter__input newsletter-name" name="name" placeholder="{{name_placeholder_text}}"
                 required>
-            <input type="email" class="newsletter__input newsletter-email" placeholder="{{email_placeholder_text}}"
+            <input type="email" class="newsletter__input newsletter-email" name="email" placeholder="{{email_placeholder_text}}"
                 required>
             {{~ if has_confirmation_checkbox ~}}
             <div class="checkbox__row">

@@ -1,11 +1,3 @@
-// window.addEventListener("load", newsletterSetup, false);
-
-/**
- * Saves the alert element in the scope of the js
- */
-// function newsletterSetup() {
-//     newsletterAlert = document.getElementById("alert-newsletter");
-// }
 
 /**
  * Sends the configured newsletter from the provided informtation on page
@@ -14,15 +6,24 @@ async function newsletterSubmit(form) {
     let newsletterAlert = form.querySelector(".newsletter__alert");
     const nameElement = form.querySelector(".newsletter-name");
     const emailElement = form.querySelector(".newsletter-email");
+    const nameValue = nameElement.value
+    const emailValue = emailElement.value
 
     const input = {
         name: nameElement.value,
         email: emailElement.value,
     };
 
-    await client.newsletter.create(input);
+    let response = await client.newsletter.create(input);
 
-    showNewsletterAlert(newsletterAlert);
+    if (response) {
+      showNewsletterAlert(newsletterAlert);
+      sendSharpSpring({ nameValue , emailValue }, "newsletter");
+    }
+    else{
+      showNewsletterError(newsletterAlert);
+    }
+
     nameElement.value = "";
     emailElement.value = "";
 }
@@ -32,6 +33,16 @@ async function newsletterSubmit(form) {
  */
 function hideNewsletterAlert(newsletterAlert) {
   newsletterAlert.innerHTML = "";
+}
+
+/**
+ * Show an alert message with 2s duration
+ */
+function showNewsletterError(newsletterAlert) {
+  newsletterAlert.innerHTML = 'Falha ao realizar cadastro';
+  setTimeout(function() {
+    hideNewsletterAlert(newsletterAlert);
+  }, 2000);
 }
 
 /**

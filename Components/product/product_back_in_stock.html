@@ -1,9 +1,13 @@
 <div class="bis">
-    <p class="bis__text">Preencha os campos para ser avisado assim que o produto voltar ao estoque!</p>
-    <form id="form-avise-me" onsubmit="backInStockOnClick(event)">
-      <input id="bis-name" class="form-control me-2" type="text" placeholder='{{ "Nome" | lang }}' required>
-      <input id="bis-email" class="form-control me-2" type="email" placeholder='{{ "E-mail" | lang }}' required>
-      <button type="submit" class="btn btn-success btn-avise-me">AVISE-ME ></button>
+    {{~ if !spot ~}}
+      <p class="bis__text">Preencha o formulário para ser avisado assim que o produto voltar ao estoque!</p>
+    {{~ end ~}}
+    <form id="form-avise-me" onsubmit="{{form_submit}}">
+      {{~ if spot ~}}
+      <input class="product-variant-id" type="hidden" name="product-variant-id" value="{{ product.product_variant_id }}" >
+      {{~ end ~}}
+      <input class="form-control bis-email" type="email" name="email" placeholder='{{ "E-mail" | lang }}' required>
+      <button type="submit" class="btn btn-success btn-avise-me">AVISE-ME</button>
     </form>
-    <div class="bis__alert" id="bis-alert"></div>
+    <div class="bis__alert bis-alert"></div>
 </div>

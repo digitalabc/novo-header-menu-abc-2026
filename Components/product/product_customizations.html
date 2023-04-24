@@ -14,11 +14,11 @@
                             {{~ end ~}}
                         </select>
                     {{~ when "Texto Livre" ~}}
-                        <input id="customization-{{~ customization.customization_id ~}}" class="form-control me-2"
+                        <input id="customization-{{~ customization.customization_id ~}}" class="form-control"
                         placeholder="Insira uma customização." customization-id="{{~ customization.customization_id ~}}"
                         maxlength="{{ customization.max_length }}">
                     {{~ when "Número" ~}}
-                        <input id="customization-{{~ customization.customization_id ~}}" class="form-control me-2" 
+                        <input id="customization-{{~ customization.customization_id ~}}" class="form-control" 
                         placeholder="Insira uma customização." type="number" customization-id="{{~ customization.customization_id ~}}">
                 {{~ end ~}}
             </div>

@@ -50,6 +50,7 @@
 
     strong
       font-weight 600
+  
 
   &__prices
     margin-bottom: 20px;
@@ -294,6 +295,11 @@
       margin-bottom 25px
       gap 10px
 
+    .pick-up-button
+    .secondary-button
+    .buy-whatsapp-button
+      display none //Toggled with js
+
     .buy-button
       display: flex;
       justify-content: center;
@@ -327,7 +333,7 @@
           color #fff
 
     .pick-up-button
-      display: flex;
+      // display: flex; //applied with js
       justify-content: center;
       align-items: center;
       height: 40px;
@@ -352,9 +358,13 @@
       &.full
         background: #0FA848
         color #fff
+      &.full
+        &:hover
+          background: #fff
+          color #0FA848
 
     .add-to-cart-button
-      display: flex;
+      // display: flex; //applied with js
       justify-content: center;
       align-items: center;
       height: 40px;
@@ -381,7 +391,7 @@
         color #fff
       
     .buy-whatsapp-button
-      display: flex;
+      // display: flex; //applied with js
       justify-content: center;
       align-items: center;
       gap 10px
@@ -412,6 +422,7 @@
         color #fff
         svg
           fill #fff
+
 
   &__information
     display flex
@@ -749,7 +760,8 @@
         text-align center
   &__unavailable
     font-weight bold
-    margin-bottom 15px
+    margin-bottom 10px
+    margin-top 20px
 .product-floating
   position fixed
   z-index 1

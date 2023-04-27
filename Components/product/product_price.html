@@ -11,9 +11,9 @@
 <div class="spot-price">
     {{ if prices.list_price }}
         {{~ if prices.price != prices.list_price ~}}
-            <p><s>{{ prices.list_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</s></p>
+            <p class="precoDe"><s>{{ prices.list_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</s></p>
         {{~ end ~}}
-        <h3>
+        <h3 class="precoPor">
           <span>{{ prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
@@ -23,11 +23,17 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
+        {{~ if product_is_box && !page_product ~}}
+          <p class="precoCalculado">
+            <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
+            <small>/m²</small>
+          </p>
+        {{~ end ~}}
         {{~ if page_product ~}}
           {{ product_discount discount_percentage: prices.discount_percentage }}
         {{~ end ~}}
     {{ else }}
-        <h3>
+        <h3 class="precoPor">
           <span>{{ prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
@@ -37,6 +43,12 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
+        {{~ if product_is_box && !page_product ~}}
+          <p class="precoCalculado">
+            <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
+            <small>/m²</small>
+          </p>
+        {{~ end ~}}
     {{ end }}
 </div>
 

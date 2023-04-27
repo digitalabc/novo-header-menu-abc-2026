@@ -6,6 +6,8 @@
     Usage:
         spot product: product
 ## }}
+{{ product | debug.log }}
+
 {{~ if product.prices.multiplication_factor > 1 ~}}
   {{ product_is_box = true }}
 {{~ end ~}}

@@ -526,10 +526,10 @@ input[type="search"]::-webkit-search-results-decoration {
   flex-wrap: wrap;
   white-space: nowrap;
 }
-.product__prices .spot-price s {
+.product__prices .spot-price .precoDe {
   margin-bottom: 0;
 }
-.product__prices .spot-price h3:first-child {
+.product__prices .spot-price .precoPor:first-child {
   padding-top: 0;
 }
 .product__prices .spot-price .stamps-discount {
@@ -1260,7 +1260,7 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-bottom: 15px;
   }
 }
-.product__buy-together .buy-together__price .spot-price s {
+.product__buy-together .buy-together__price .spot-price .precoDe {
   display: block;
   font-size: 14px;
   text-decoration: none;
@@ -1268,10 +1268,10 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-bottom: 8px;
   font-weight: 500;
 }
-.product__buy-together .buy-together__price .spot-price h3 {
+.product__buy-together .buy-together__price .spot-price .precoPor {
   font-size: 18px;
 }
-.product__buy-together .buy-together__price .spot-price h3 small {
+.product__buy-together .buy-together__price .spot-price .precoPor small {
   display: none;
 }
 .product__buy-together .buy-together__price .best-installment {
@@ -2321,7 +2321,7 @@ header {
     margin-bottom: 2px;
   }
 }
-.spot-price s {
+.spot-price .precoDe {
   display: block;
   color: #b4b4b4;
   font-weight: 500;
@@ -2330,36 +2330,55 @@ header {
   margin-bottom: 5px;
 }
 @media screen and (max-width: 991px) {
-  .spot-price s {
+  .spot-price .precoDe {
     margin-bottom: 3px;
     font-size: 12px;
     line-height: 15px;
   }
 }
-.spot-price h3:first-child {
+.spot-price .precoPor:first-child {
   padding-top: 23px;
 }
 @media screen and (max-width: 991px) {
-  .spot-price h3:first-child {
+  .spot-price .precoPor:first-child {
     padding-top: 18px;
   }
 }
-.spot-price h3 span {
+.spot-price .precoPor span {
   color: #e30613;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
 }
 @media screen and (max-width: 991px) {
-  .spot-price h3 span {
+  .spot-price .precoPor span {
     font-size: 16px;
     line-height: 19px;
   }
 }
-.spot-price h3 small {
+.spot-price .precoPor small {
   font-weight: 400;
   font-size: 12px;
   color: #000;
+}
+.spot-price .precoCalculado {
+  margin-top: 5px;
+  color: #000;
+}
+.spot-price .precoCalculado span {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+@media screen and (max-width: 991px) {
+  .spot-price .precoCalculado span {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+.spot-price .precoCalculado small {
+  font-weight: 400;
+  font-size: 12px;
 }
 .spot .best-installment {
   font-size: 12px;

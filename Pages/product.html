@@ -26,7 +26,7 @@
     {{~ end ~}}
 
     {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936"] }}
-    {{~ if (product.product_brand.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
+    {{~ if (product.product_brand?.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
       {{ product_hide_pix = true }}
     {{~ end ~}}
 

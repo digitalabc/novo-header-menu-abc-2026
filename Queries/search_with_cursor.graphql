@@ -54,6 +54,7 @@ query ($searchQuery: String,
           listPrice
           price
           discountPercentage
+          multiplicationFactor
           installmentPlans{
             displayName
             name

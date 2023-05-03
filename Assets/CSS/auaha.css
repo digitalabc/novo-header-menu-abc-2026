@@ -4586,7 +4586,8 @@ section.newsletter--home .newsletter__alert {
 .buy_list__price .spot-price small {
   display: none;
 }
-.buy_list .buy-button {
+.buy_list .buy-button,
+.buy_list .pick-up-button {
   display: none;
 }
 .buy_list .add-to-cart-button {

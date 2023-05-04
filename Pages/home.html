@@ -741,6 +741,9 @@
 
     {{ footer products:common.lighbox_products.products.nodes }}
 
+    {{ gtm_config gtm_id: common.gtm_id }}
+    {{ gtm_hotsite_view product_lists: [data.lancamentos.products.nodes, data.mais_vendidos.products.nodes]}}
+
     {{ sdk_client }}
 
     {{ old_newsletter_popup }}

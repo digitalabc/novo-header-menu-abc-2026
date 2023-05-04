@@ -167,6 +167,9 @@
         <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
 
         {{ footer products:common.lighbox_products.products.nodes }}
+        
+        {{ gtm_config gtm_id: common.gtm_id }}
+        {{ gtm_hotsite_view product_lists: [data.vitrine_banner.products.nodes, products: data.vitrine_mobile.products.nodes, data.vitrine2.products.nodes, data.vitrine3.products.nodes]}}
 
         {{ sdk_client }}
         

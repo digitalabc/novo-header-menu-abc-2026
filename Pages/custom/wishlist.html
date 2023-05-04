@@ -22,7 +22,11 @@
             <h3>Carregando...</h3>
         </div>
         {{ footer is_preview: is_preview }}
+        
+        {{ gtm_config gtm_id: common.gtm_id }}
+
         {{ sdk_client }}
+        
         {{ asset type: "js" paths: ["components", "navbar", "product", "mini_cart", "cart_from_spot", "user_login", "wishlist"]}}
     </body>
 </html>

@@ -58,6 +58,9 @@
 
     {{ footer products:common.lighbox_products.products.nodes }}
 
+    {{ gtm_config gtm_id: common.gtm_id }}
+    {{ gtm_search_view products: products.items }}
+
     {{ sdk_client }}
     
     {{ asset type: "js" paths: ["swiper-bundle.min", "components", "sort", "filter", "search", "pagination", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "newsletter", "lightbox", "offcanvas", "sharpspring"]}}

@@ -41,6 +41,10 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
       }
     }
   }
+  gtm_id: shopSettings(settingNames: "Fbits-GoogleAnalyticsId") {
+    name
+    value
+  }
 }
 
 fragment lighboxProducts on Search {

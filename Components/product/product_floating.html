@@ -29,7 +29,7 @@
           {{ images = product.images }}
       {{~ end ~}}
       {{ for image in images limit: 1 }}
-        <div class="product-floating__image"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="image_{{ math.uuid }}"></div>
+        <div class="product-floating__image"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="{{ product.product_name }} - {{ math.uuid }}"></div>
       {{ end }}
 
       <p class="product-floating__title">{{ product.product_name }}</p>

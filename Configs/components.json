@@ -797,6 +797,69 @@
         "availableInAllPages": true
     },
     {
+        "name": "gtm_config",
+        "path": "gtm/gtm_config.html",
+        "availableInAllPages": true,
+        "params": [
+            {
+                "name": "gtm_id",
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "gtm_product_view",
+        "path": "gtm/gtm_product_view.html",
+        "params": [
+            {
+                "name": "product",
+                "required": true
+            }
+        ],
+        "availableInAllPages": true
+    },
+    {
+        "name": "gtm_hotsite_view",
+        "path": "gtm/gtm_hotsite_view.html",
+        "params": [
+            {
+                "name": "product_lists",
+                "required": true
+            }
+        ],
+        "availableInAllPages": true
+    },
+    {
+        "name": "gtm_search_view",
+        "path": "gtm/gtm_search_view.html",
+        "params": [
+            {
+                "name": "products",
+                "required": true
+            },
+            {
+                "name": "page_size",
+                "required": false
+            },
+            {
+                "name": "current_page",
+                "required": false
+            }
+        ],
+        "availableInAllPages": true
+    },
+    {
+        "name": "gtm_cart_view",
+        "path": "gtm/gtm_cart_view.html",
+        "params": [
+            {
+                "name": "checkout",
+                "required": true
+            }
+        ],
+        "availableInAllPages": true
+    },
+    {
         "name": "payment_list",
         "path": "payment_list.html",
         "params": [

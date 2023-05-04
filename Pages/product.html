@@ -76,11 +76,13 @@
         <div class="product__reviews">
           <h2>### Avaliaçoes Opniões Verificadas ###</h2>
         </div>
-
+        {{ data.product_recommendations | debug.log }} 
+        {{~ if data.product_recommendations | array.size > 0 ~}}
         <section class="product__recommendation showcase">
-            <h2>{{ "Quem viu, viu também" | lang }}</h2>
-            {{ spot_carousel class: "related-products" products: data.product_recommendations show_buy_mobile: true }}
+          <h2>{{ "Quem viu, viu também" | lang }}</h2>
+          {{ spot_carousel class: "related-products" products: data.product_recommendations show_buy_mobile: true }}
         </section>
+        {{~ end ~}}
     </div>
 
     {{ product_floating product: product }}
@@ -92,6 +94,10 @@
     <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
 
     {{ footer products:common.lighbox_products.products.nodes }}
+
+    {{ gtm_config gtm_id: common.gtm_id }}
+    {{ gtm_product_view product: data.product  }}
+
     {{ sdk_client }}
     
     {{ asset type: "js" paths: ["swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "sharpspring"]}}

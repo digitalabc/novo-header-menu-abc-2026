@@ -2,7 +2,7 @@
     <div class="gallery-slider swiper">
         <div class="swiper-wrapper">
           {{ for image in images }}
-            <div class="swiper-slide"><img src="{{ image.url }}" alt="image_{{ math.uuid }}"></div>
+            <div class="swiper-slide"><img src="{{ image.url }}" alt="{{product.product_name}} - Imagem principal - {{ math.uuid }}"></div>
           {{ end }}
         </div>
     </div>
@@ -11,7 +11,7 @@
       <div class="gallery-thumbs swiper">
           <ul class="swiper-wrapper">
               {{ for image in images }}
-                <li class="swiper-slide"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="image_{{ math.uuid }}"></li>
+                <li class="swiper-slide"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="{{product.product_name}} - {{ math.uuid }}"></li>
               {{ end }}
           </ul>
       </div>

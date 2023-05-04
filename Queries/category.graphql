@@ -34,13 +34,8 @@ query Hotsite($url: String!) {
     nodes {
       active
       urlLogo
-      urlCarrossel
-      urlLink
       alias
-      brandId
-      createdAt
       fullUrlLogo
-      id
       name
     }
   }

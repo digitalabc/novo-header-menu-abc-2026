@@ -2,44 +2,60 @@
 .seo
   border 1px solid #D5D5D5
   margin-bottom 55px
-  padding 20px 25px
+  padding 20px 25px 60px
+  position relative
   @media mobile
     margin-bottom 40px
   &.expand
-    .seo
-      &__text
-        max-height unset
-      &__button
-        font-size 0
-        gap 3.5px
+    > *
+      display block
+    .seo__button
+      font-size 0
+      gap 3.5px
+      @media mobile
+        gap 5px
+      &:before
+        content 'Ver menos'
+        font-size 20px
         @media mobile
-          gap 5px
-        &:before
-          content 'Ver menos'
-          font-size 20px
-          @media mobile
-            font-size 16px
-        svg
-          transform rotate(180deg)
-  &__text
-    overflow hidden
-    max-height 54px
-    p
+          font-size 16px
+      svg
+        transform rotate(180deg)
+  > h1
+    display block
+    font-size 20px
+    font-weight bold
+    margin-bottom 25px
+    @media mobile
       margin-bottom 10px
+
+  > p
+    margin-bottom 10px
+    &:first-of-type
+      display block
+    + h2
+    + h3
+    + h4
+    + h5
+      margin-top 20px
+
+  > *
+    display none
+
   &__button
+    position absolute
+    bottom 20px
     cursor pointer
-    display flex
+    display flex !important
     align-items center
     gap 7px
     color #0FA848
     font-size 20px
     font-weight bold
     background none
-    margin-top 25px
     @media mobile
       font-size 16px
       font-weight 500
-      margin-top 20px
       gap 10px
       svg
         width 15px

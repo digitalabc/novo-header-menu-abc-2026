@@ -2,12 +2,12 @@
 <html lang="pt-BR">
   
 <head>
-    {{ header title: "ABC da Construção" seo: data.hotsite.seo}}
+    {{ header default_title: "ABC da Construção" seo: data.hotsite.seo}}
 </head>
 
 <body class="home">
     <header>
-        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
     </header>
     
     <!-- Fullbanner -->

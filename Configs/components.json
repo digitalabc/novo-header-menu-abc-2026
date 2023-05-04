@@ -735,6 +735,23 @@
         "availableInAllComponents": true
     },
     {
+        "name": "title",
+        "path": "title.html",
+        "params": [
+            {
+                "name": "default_title",
+                "required": true
+            },
+            {
+                "name": "seo",
+                "required": false
+            }
+        ],
+        "inheritVariables": false,
+        "availableInAllPages": true,
+        "availableInAllComponents": true
+    },
+    {
         "name": "product_installments",
         "path": "product/product_installments.html",
         "params": [

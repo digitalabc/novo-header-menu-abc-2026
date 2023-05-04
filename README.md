@@ -40,6 +40,7 @@ fbits.storefront --t tcs_abcda_7312cdfec71e4c14a3fab15b5bcfcba8
 #Stylus:
 ```
 stylus -w Assets/stylus/core.styl -o Assets/CSS/auaha.css 
+stylus -c Assets/stylus/core.styl Assets/CSS/auaha.css 
 ```
 
 > Para estilização do checkout

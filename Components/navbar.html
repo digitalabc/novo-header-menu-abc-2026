@@ -43,13 +43,16 @@
         {{ menu_mobile checkout_url: store.urls.checkout}}
 
         {{ ## Logo ## }}
-        {{ store | debug.log }} 
         <div class="navbar__logo">
+          {{~ if home ~}}
           <h1>
+          {{~ end ~}}
             <a class="navbar-brand" href="/">
-              <img src="{{ logo_source }}" alt="{{ store.store_name }}" width="104" height="70">
+              <img src="{{ logo_source }}" alt="ABC da Construção" title="ABC da Construção" width="104" height="70">
             </a>
+          {{~ if home ~}}
           </h1>
+          {{~ end ~}}
         </div>
 
         <div class="navbar__right">

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        
-        {{ header title: data.hotsite.name seo: data.hotsite.seo }}
+        {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+        {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
     </head>
+
+    {{ data.hotsite | debug.log }} 
 
     {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
     {{ page_size = data.hotsite.page_size }}
@@ -18,18 +20,7 @@
           {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
 
           <section class="seo">
-            {{ # content position: "Centro" contents: data.hotsite.contents show_title: false}}
-            <h1>
-              Nome da categoria
-            </h1>
-            <div class="seo__text">
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum.
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum.
-              </p>
-            </div>
+            {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false}}
             <button type="button" class="seo__button" onclick="toggleSeo()">
               Ver mais
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">

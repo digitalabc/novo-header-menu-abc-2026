@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        
-        {{ header title:"Página não encontrada - Erro 404" }}
+        {{ default_title_not_found = "Página não encontrada - Erro 404" | string.append " | ABC da Construção" }}
+        {{ header default_title: default_title_not_found }}
     </head>
     <body>
         <header>

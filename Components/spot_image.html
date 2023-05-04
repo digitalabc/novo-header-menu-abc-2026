@@ -19,10 +19,10 @@
 {{~ end ~}}
 <div class="spot__image-wrapper">
     <a href="/{{product.alias}}">
-        <img class="spot-image" src="{{ image_url }}" alt="{{ product.product_name }}" width="245" height="245"/>
+        <img class="spot-image" src="{{ image_url }}" alt="{{ product.product_name }}" title="{{ product.product_name }}" width="245" height="245"/>
         {{~ if second_image ~}}
         <div class="spot__overlay">
-            <img class="spot-image" src="{{ second_image }}" alt="{{ product.product_name }}" width="245" height="245">
+            <img class="spot-image" src="{{ second_image }}" alt="{{ product.product_name }}" title="{{ product.product_name }}" width="245" height="245">
         </div>
         {{~ end ~}}
     </a>

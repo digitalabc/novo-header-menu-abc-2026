@@ -197,20 +197,6 @@ input[type="search"]::-webkit-search-results-decoration {
     background-image: none !important;
   }
 }
-.hotsite h1,
-.category h1,
-.search h1 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-@media screen and (max-width: 991px) {
-  .hotsite h1,
-  .category h1,
-  .search h1 {
-    margin-bottom: 10px;
-  }
-}
 .hotsite h2,
 .category h2,
 .search h2 {
@@ -4220,15 +4206,16 @@ section.newsletter--home .newsletter__alert {
 .seo {
   border: 1px solid #d5d5d5;
   margin-bottom: 55px;
-  padding: 20px 25px;
+  padding: 20px 25px 60px;
+  position: relative;
 }
 @media screen and (max-width: 991px) {
   .seo {
     margin-bottom: 40px;
   }
 }
-.seo.expand .seo__text {
-  max-height: unset;
+.seo.expand > * {
+  display: block;
 }
 .seo.expand .seo__button {
   font-size: 0;
@@ -4251,29 +4238,48 @@ section.newsletter--home .newsletter__alert {
 .seo.expand .seo__button svg {
   transform: rotate(180deg);
 }
-.seo__text {
-  overflow: hidden;
-  max-height: 54px;
+.seo > h1 {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
 }
-.seo__text p {
+@media screen and (max-width: 991px) {
+  .seo > h1 {
+    margin-bottom: 10px;
+  }
+}
+.seo > p {
   margin-bottom: 10px;
 }
+.seo > p:first-of-type {
+  display: block;
+}
+.seo > p + h2,
+.seo > p + h3,
+.seo > p + h4,
+.seo > p + h5 {
+  margin-top: 20px;
+}
+.seo > * {
+  display: none;
+}
 .seo__button {
+  position: absolute;
+  bottom: 20px;
   cursor: pointer;
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 7px;
   color: #0fa848;
   font-size: 20px;
   font-weight: bold;
   background: none;
-  margin-top: 25px;
 }
 @media screen and (max-width: 991px) {
   .seo__button {
     font-size: 16px;
     font-weight: 500;
-    margin-top: 20px;
     gap: 10px;
   }
   .seo__button svg {

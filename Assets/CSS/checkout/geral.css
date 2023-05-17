@@ -663,7 +663,7 @@ h2.title-confirmacao {
 .fbits-login .cadastroUsuario input[type="tel"],
 .fbits-login .cadastroUsuario input[type="Date"] {
   background: #fff;
-  border: none !important;
+  border: 1px solid !important;
   color: #000;
 }
 .fbits-login .cadastroUsuario input[type="text"]::placeholder,

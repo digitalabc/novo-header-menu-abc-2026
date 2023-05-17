@@ -12,7 +12,7 @@ var swiper = new Swiper(".banner-oportunidades .mobile .swiper:first-child", {
 
 var swiper = new Swiper(".banner-grid .swiper:first-child", {
   spaceBetween: 20,
-  slidesPerView: 1,
+  slidesPerView: 1.2,
   breakpoints: {
     991: {
       slidesPerView: 3

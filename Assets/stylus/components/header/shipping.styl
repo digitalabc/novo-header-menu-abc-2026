@@ -2,15 +2,19 @@
   margin-bottom: 20px;
 
   &__title
-    background #FAFAFA
-    color: #5D5D5D
+    background: #FAFAFA;
+    color: #5D5D5D;
+    text-align: center;
     white-space: nowrap;
     font-weight: 400;
     font-size: 13px;
-    line-height 30px
-    text-align center
+    line-height: 30px;
+
+    > strong
+      color: #0fa848;
+
     @media mobile
-      font-size 10px
+      font-size: 10px;
 
   &__bar
     position: relative;
@@ -22,4 +26,4 @@
       top: 0;
       left: 0;
       height: 100%;
-      background: #392F2D
+      background: #0fa848;

@@ -8,13 +8,16 @@
 ## }}
 {{ quotes = data.shipping_quotes }}
 {{~ if quotes ~}}
-    <div class="product-shipping__list">
-        {{~ for quote in quotes ~}}
-        <div class="product-shipping__quote">
-            <span>{{ quote.name }}</span>
-            <span>{{~ if quote.value > 0 ~}}{{ quote.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}{{~ else ~}}Frete grátis{{~ end ~}}</span>
-            <small>Em até {{ quote.deadline }} dias úteis</small>
-        </div>
-        {{~ end ~}}
+<div class="product-shipping__list">
+    {{~ for quote in quotes ~}}
+    <div class="product-shipping__quote">
+        <span>{{ quote.name }}</span>
+        <span {{ if quote.value <= 0}}class="free-shipping" {{~ end ~}}>
+            {{~ if quote.value > 0 ~}}{{ quote.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
+            {{~ else ~}}Frete grátis{{~ end ~}}
+        </span>
+        <small>Em até {{ quote.deadline }} dias úteis</small>
     </div>
+    {{~ end ~}}
+</div>
 {{~ end ~}}

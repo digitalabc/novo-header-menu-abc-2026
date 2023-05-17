@@ -10,7 +10,7 @@
 {{~ nextLevel = level + 1 ~}}
 
 <li class="nav-all__item nav-all__item--nv{{level}}">
-  <a href="/{{ category.hotsite_url }}" class="nav-all__link nav-all__link--nv{{ level }}" >{{ category.name }}</a>
+  <a href="/{{ category.hotsite_url }}" class="nav-all__link nav-all__link--nv{{ level }}" >{{ category.name | string.downcase | string.capitalize }}</a>
   {{~ if category.children ~}}
     {{~ if level < max_level ~}}
     <svg xmlns="http://www.w3.org/2000/svg" width="4.943" height="8" viewBox="0 0 4.943 8">
@@ -20,7 +20,7 @@
     <div class="nav-all__dropdown nav-all__dropdown--nv{{level}}">
       {{~ if level == 1 ~}}
         <div class="nav-all__title">
-          {{ category.name }}
+          {{ category.name | string.downcase | string.capitalize }}
         </div>
       {{~ end ~}}
       {{~ if level < max_level ~}}

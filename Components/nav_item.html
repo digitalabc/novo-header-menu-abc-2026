@@ -15,15 +15,15 @@
 {{~ end ~}}
 {{~ if children.size == 0 && !is_submenu ~}}
     <li class="nav-item nav-item--nv1">
-        <a class="nav-link" href="{{link}}">{{current_menu.name}}</a>
+        <a class="nav-link" href="{{link}}">{{current_menu.name | string.downcase | string.capitalize}}</a>
     </li>
 {{~ else if children.size == 0 && is_submenu ~}}
     <li class="nav-item nav-item--sub">
-        <a class="nav-link" href="{{link}}">{{current_menu.name}}</a>
+        <a class="nav-link" href="{{link}}">{{current_menu.name | string.downcase | string.capitalize}}</a>
     </li>
 {{~ else if !is_submenu ~}}
     <li class="nav-item nav-item--nv1">
-        <a href="{{link}}" class="nav-link dropdown-toggle" >{{current_menu.name}}</a>
+        <a href="{{link}}" class="nav-link dropdown-toggle" >{{current_menu.name | string.downcase | string.capitalize}}</a>
         <div class="dropdown-menu">
           <ul>
             {{~ for child in children ~}}
@@ -32,16 +32,16 @@
           </ul>
           <figure class="nav-banner">
             {{~ if current_menu.image_url ~}}
-              <img src={{current_menu.image_url}} alt="{{current_menu.name}}" width="320" height="200">
+              <img src={{current_menu.image_url}} alt="{{current_menu.name | string.downcase | string.capitalize}}" width="320" height="200">
             {{~ else ~}}
-              <img src="https://via.placeholder.com/320x200" alt="{{current_menu.name}}" width="320" height="200">
+              <img src="https://via.placeholder.com/320x200" alt="{{current_menu.name | string.downcase | string.capitalize}}" width="320" height="200">
             {{~ end ~}}
           </figure>
         </div>
     </li>
 {{~ else ~}}
     <li class="nav-item nav-item--sub dropdown-submenu">
-        <a href="{{link}}" class="nav-link dropdown-item dropdown-toggle">{{current_menu.name}}</a>
+        <a href="{{link}}" class="nav-link dropdown-item dropdown-toggle">{{current_menu.name | string.downcase | string.capitalize}}</a>
         <ul class="dropdown-menu">
             {{~ for child in children ~}}
                 {{ nav_item menus: menus current_menu: child is_submenu: true }}

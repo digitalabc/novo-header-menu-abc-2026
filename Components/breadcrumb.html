@@ -12,7 +12,7 @@
         {{~ else ~}}
             {{~ breadcrumbLink = "/" | string.append breadcrumb.link ~}}
         {{~ end ~}}
-    <a href="{{ breadcrumbLink }}" class="breadcrumb__link" >{{ breadcrumb.text | string.downcase | string.capitalize}}</a>
+    <a href="{{ breadcrumbLink }}" class="breadcrumb__link" >{{ breadcrumb.text | string.downcase | string.capitalize }}</a>
         {{~ if !for.last ~}} > {{ end }}
     {{~ end ~}}
     {{~ if product ~}}

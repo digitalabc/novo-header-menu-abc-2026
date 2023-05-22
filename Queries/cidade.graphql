@@ -1,0 +1,24 @@
+query Home{
+  hotsite(url: "") {
+    banners {
+      altText
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+      urlOnClick
+    }
+  }
+  brands(first: 50) {
+    nodes {
+      active
+      urlLogo
+      alias
+      fullUrlLogo
+      name
+    }
+  }
+}

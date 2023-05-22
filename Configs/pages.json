@@ -29,6 +29,11 @@
                 "subtype": "category",
                 "path": "Custom/main_category.html",
                 "query": "category.graphql"
+            },
+            {
+                "urlMatch": "diretorio-de-lojas",
+                "path": "custom/cidade.html",
+                "query": "cidade.graphql"
             }
         ]
     },

@@ -168,11 +168,11 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 }
 .home section {
-  padding-bottom: 65px;
+  padding-bottom: 30px;
 }
 @media screen and (max-width: 991px) {
   .home section {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
 }
 .home h2 {
@@ -460,7 +460,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 @media screen and (max-width: 991px) {
   .product__image .obs {
-    display: none;
+    margin-bottom: 5px;
   }
 }
 .product__details {
@@ -972,7 +972,6 @@ input[type="search"]::-webkit-search-results-decoration {
   .product__information h2.active {
     color: #333;
     font-weight: 500;
-    text-transform: uppercase;
   }
   .product__information h2.active:after {
     opacity: 1;
@@ -1126,6 +1125,9 @@ input[type="search"]::-webkit-search-results-decoration {
 .product .product-shipping__quote span {
   font-weight: 500;
   color: #e30613;
+}
+.product .product-shipping__quote span.free-shipping {
+  color: #0fa848;
 }
 .product .product-shipping__quote span:nth-child(2) {
   text-align: right;
@@ -2185,6 +2187,9 @@ header {
   position: relative;
   border-bottom: 1px solid #eaeaea;
 }
+.spot__image-wrapper a {
+  display: flex;
+}
 .spot__image .stamps {
   position: absolute;
   top: 10px;
@@ -2303,6 +2308,10 @@ header {
 }
 .spot-price {
   margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 80px;
 }
 @media screen and (max-width: 991px) {
   .spot-price {
@@ -2895,7 +2904,7 @@ header {
 }
 #menu-offcanvas .nav-mobile__others ul li a {
   color: #392f2d;
-  font-weight: 500;
+  font-weight: 600;
 }
 #menu-offcanvas .nav-mobile__link {
   color: #392f2d;
@@ -3426,11 +3435,14 @@ header {
 .shipping__title {
   background: #fafafa;
   color: #5d5d5d;
+  text-align: center;
   white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
   line-height: 30px;
-  text-align: center;
+}
+.shipping__title > strong {
+  color: #0fa848;
 }
 @media screen and (max-width: 991px) {
   .shipping__title {
@@ -3447,7 +3459,7 @@ header {
   top: 0;
   left: 0;
   height: 100%;
-  background: #392f2d;
+  background: #0fa848;
 }
 @media screen and (max-width: 991px) {
   .environments__item {

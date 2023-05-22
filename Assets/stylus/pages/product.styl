@@ -18,7 +18,7 @@
       font-size 11px
       color #5D5D5D
       @media mobile
-        display none
+        margin-bottom 5px
 
   &__details
     grid-area: 1 / 2 / 2 / 3;
@@ -477,7 +477,6 @@
         &.active
           color: #333333
           font-weight: 500;
-          text-transform uppercase
           &:after
             opacity 1
         &:not(last-of-type)
@@ -595,6 +594,10 @@
         span
           font-weight 500
           color $primary
+
+          &.free-shipping
+            color: #0FA848
+
           &:nth-child(2)
             text-align right
         small

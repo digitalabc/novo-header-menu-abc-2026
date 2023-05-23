@@ -76,7 +76,6 @@
         <div class="product__reviews">
           <h2>### Avaliaçoes Opniões Verificadas ###</h2>
         </div>
-        {{ data.product_recommendations | debug.log }} 
         {{~ if data.product_recommendations | array.size > 0 ~}}
         <section class="product__recommendation showcase">
           <h2>{{ "Quem viu, viu também" | lang }}</h2>

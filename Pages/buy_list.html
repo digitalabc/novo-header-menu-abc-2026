@@ -3,7 +3,6 @@
   
 <head>
     {{~ buy_list = data.buy_list ~}}
-    {{ buy_list | debug.log }} 
     {{ default_title_buy_list = data.buy_list.product_name | string.append " | ABC da Construção" }}
     {{ header default_title: default_title_buy_list seo: buy_list.seo }}
 </head>

@@ -32,7 +32,6 @@
             },
             {
                 "urlMatch": "diretorio-de-lojas",
-                "subtype": "category",
                 "path": "Custom/diretorio_de_lojas/diretorio_de_lojas.html",
                 "query": "generic.graphql"
             },

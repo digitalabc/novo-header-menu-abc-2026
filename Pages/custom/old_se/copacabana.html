@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body>
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+
+  <div class="container" id="copacabana">
+    <div id="copacabana-img">
+        <div id="copacabana-all">
+            <div id="copacabana-text">
+                <span class="copacabana-text-big">
+                    A ABC da Construção <br>
+                    chegou à <br>
+                    <strong>Copacabana!</strong><br><br>
+                    <span class="copacabana-text-word">Cadastre-se</span><br>
+                    E receba nossas<br>
+                    <strong>Novidades!</strong><br>
+                </span>
+                <span class="copacabana-text-small">
+                    <strong>Rua Barata Ribeiro - 70</strong>
+                    <br>
+                    Copacabana - RJ
+                </span>
+            </div>
+            <div id="copacabana-form">
+                <div class="fbits-conteudo-item">
+                  <div class="fbits-conteudo-item">
+                    {{ content position: "Centro" contents: data.hotsite.contents show_title: false}}
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="copacabana-modal" class="copacabana-modal-overlay">
+      <div class="copacabana-modal-content">
+          <div class="copacabana-modal-header">
+              <span class="copacabana-modal-close">&times;</span>
+          </div>
+          <div class="copacabana-modal-body">
+              <span class="copacabana-modal-text"></span>
+          </div>
+          <div class="copacabana-modal-footer">
+              <div class="copacabana-modal-btn">Fechar</div>
+          </div>
+      </div>
+  </div>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ old_newsletter_popup }}
+
+  <script src="https://blog.abcdaconstrucao.com.br/atendimento/js/mask.js"></script>
+  <script src="https://blog.abcdaconstrucao.com.br/atendimento/js/functions.js"></script> 
+
+  {{ asset type: "js" paths: ["swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter",  "topbar", "lightbox", "offcanvas", "sharpspring", "copacabana"] }}
+</body>
+
+</html>

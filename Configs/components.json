@@ -284,7 +284,11 @@
         "params": [
             {
                 "name": "position",
-                "required": true
+                "required": false
+            },
+            {
+                "name": "id",
+                "required": false
             },
             {
                 "name": "contents",

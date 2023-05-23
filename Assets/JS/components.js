@@ -93,3 +93,13 @@ function toggleNextSibling(button) {
   toggleSlide(optionListEl)
   button.classList.toggle("open")
 }
+
+var toggle = function (elem) {
+	// If the element is visible, hide it
+	if (window.getComputedStyle(elem).display === 'block') {
+    elem.style.display = 'none';
+		return;
+	}
+	// Otherwise, show it
+	elem.style.display = 'block';
+};

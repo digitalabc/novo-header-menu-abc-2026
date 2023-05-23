@@ -4,10 +4,12 @@
         {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
         {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
-        {{ meta_tags seo: data.hotsite.seo }}
     </head>
 
-    <body class="hotsite">
+    {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
+    {{ page_size = data.hotsite.page_size }}
+
+    <body class="hotsite{{ if products.total_count == 0 }} empty{{ end }}">
         <header>
             {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>
@@ -28,7 +30,7 @@
               </svg>
             </button>
           </section>
-
+          
           {{ # content position: "Centro" contents: data.hotsite.contents show_title: false}}
           <section class="subcategories">
             <h2 class="subcategories__title">O que você procura hoje?</h2>

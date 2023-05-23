@@ -6,8 +6,6 @@
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
     </head>
 
-    {{ data.hotsite | debug.log }} 
-
     {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
     {{ page_size = data.hotsite.page_size }}
 

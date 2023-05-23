@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body>
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+  <div class="tpl-quem-somos">
+      <div class="tpl-breadcrumb fbits-breadcrumb-topo-categoria">
+          <div class="bread">
+              <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+                  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                      <a itemprop="item" href="http://abcdaconstrucao.com.br/">
+                          <span itemprop="name">Home</span>
+                      </a>
+                      <span class="separador"></span>
+                      <meta itemprop="position" content="1" />
+                  </li>
+                  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                      <a itemprop="item" href="http://abcdaconstrucao.com.br/quemsomos">
+                          <span itemprop="name">Quem somos</span>
+                      </a>
+                      <meta itemprop="position" content="2" />
+                  </li>
+              </ol>
+          </div>
+      </div>
+      <section class="introducao">
+        <div class="fbits-conteudo-item">
+          {{ content content_id: 68 contents: data.hotsite.contents show_title: false}}
+        </div>
+      </section>
+      <div class="div-section-video">
+          <section class="video">
+              <iframe src="https://player.vimeo.com/video/493710120" width="1300" height="600" frameborder="0"
+                  allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </section>
+      </div>
+      <section class="mais-lojas">
+          <div class="div-h2">
+              <h2 class="section-titulo">Mais de 250 Lojas</h2>
+          </div>
+          <div class="mais-lojas-imagens">
+              <div class="mais-lojas-selos">
+                  <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/ABC-lojas-cidades.png" 
+                      alt="Ponto ABC" />
+                  <img src="https://recursos.abcdaconstrucao.com.br/i/ABC-anos.png" alt="Ponto ABC" />
+              </div>
+              <div class="mais-lojas-mapa">
+                  <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/ABC-Mapa.png" alt="Mapa" />
+              </div>
+          </div>
+          <div class="navegue-lojas">
+              <a href="https://www.abcdaconstrucao.com.br/lojas/busca">navegue pelas lojas</a>
+          </div>
+      </section>
+      <section class="times">
+          <div class="div-h2">
+              <h2 class="section-titulo">Patrocinadora oficial dos campeões estaduais de 2021</h2>
+          </div>
+          <div class="times-logo">
+              <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/times.png" alt="Times" />
+          </div>
+      </section>
+      <div class="div-sections">
+          <section class="historia">
+              <div class="div-h2">
+                  <h2>Nossa história</h2>
+              </div>
+              <div class="cards">
+                  <div class="card">
+                      <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/1958.png" alt="1958" />
+                      <div>
+                          <div class="div-h3">
+                              <h3 class="section-titulo">1958</h3>
+                          </div>
+                          <p>
+                              Fundadores da ABC fundam a primeira empresa em MG.
+                          </p>
+                      </div>
+                  </div>
+                  <div class="card">
+                      <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/1990.png" alt="1990" />
+                      <div>
+                          <div class="div-h3">
+                              <h3 class="section-titulo">1990</h3>
+                          </div>
+                          <p>
+                              Tem início a história da ABC da Construção. No ano seguinte, tem início a 1 fase de expansão,
+                              inaugurando a primeira
+                              loja fora de Juiz de Fora.
+                          </p>
+                      </div>
+                  </div>
+                  <div class="card">
+                      <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/2010.png" alt="2010" />
+                      <div>
+                          <div class="div-h3">
+                              <h3 class="section-titulo">2010</h3>
+                          </div>
+                          <p>
+                              A ABC é aprovada pela Endeavor, sendo reconhecida como uma das empresas mais empreendedoras do
+                              Brasil.
+                          </p>
+                      </div>
+                  </div>
+                  <div class="card">
+                      <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/2015.png" alt="2015" />
+                      <div>
+                          <div class="div-h3">
+                              <h3 class="section-titulo">2015</h3>
+                          </div>
+                          <p>
+                              Com 47 lojas em 30 cidades, a ABC inaugura o CD com 22mil m² de área e dá início ao modelo de
+                              franquias e expansão em MG, RJ e SP.
+                          </p>
+                      </div>
+                  </div>
+                  <div class="card">
+                      <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/2018.png" alt="2018" />
+                      <div>
+                          <div class="div-h3">
+                              <h3 class="section-titulo">2018</h3>
+                          </div>
+                          <p>
+                              Com mais de 70 lojas, ABC se consolida como uma das maiores redes do Brasil atendendo mais de
+                              240 mil clientes por ano.
+                          </p>
+                      </div>
+                  </div>
+                  <div class="card">
+                      <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/2020.png" alt="2020" />
+                      <div>
+                          <div class="div-h3">
+                              <h3 class="section-titulo">2020</h3>
+                          </div>
+                          <p>
+                              ABC se consolida como uma solução completa omnichannel para os clientes com lojas físicas,
+                              e-commerce, vendas remotas, serviços e muito mais.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <section class="solucoes">
+              <div class="div-h2">
+                  <h2>Pra você que quer comprar</h2>
+              </div>
+              <div class="texto">
+                  Precisa de ajuda, quer um atendimento de especialista e ver os produtos de perto?
+                  <br>
+                  Conte com nossas lojas.
+              </div>
+              <div class="solucoes-slider">
+                  <div class="solucoes-slide">
+                      <a href="https://www.abcdaconstrucao.com.br/baixar-encarte-de-ofertas" target="_blank">
+                          <div class="img"><img src="https://recursos.abcdaconstrucao.com.br/i/tpl-home/img_catalogo.png" >
+                          </div>
+                          <div class="hld">
+                              <h3>Catálogo de ofertas</h3>
+                              <p>Descontos exclusivos,<br> ta na ABC.</p>
+                              <div class="botao-slide">Ver ofertas</div>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="solucoes-slide">
+                      <a href="https://www.abcdaconstrucao.com.br/especificacao-de-ambientes-3d" target="_blank">
+                          <div class="img"><img src="https://recursos.abcdaconstrucao.com.br/i/tpl-home/img_ambientacao_3D.png",
+                                  false))"></div>
+                          <div class="hld">
+                              <h3>Ambientação 3D</h3>
+                              <p>Veja como o seu ambiente irá <br> ficar em 3D.</p>
+                              <div class="botao-slide">Fale com nossa central</div>
+                          </div>
+                      </a>
+                  </div>
+  
+                  <div class="solucoes-slide">
+                      <a href="https://www.abcdaconstrucao.com.br/visitamos-sua-obra" target="_blank">
+                          <div class="img"><img src="https://recursos.abcdaconstrucao.com.br/i/tpl-home/img_visitamos.png" >
+                          </div>
+                          <div class="hld">
+                              <h3>Visitamos sua obra</h3>
+                              <p>Nossos especialistas, vão até sua <br> obra para lhe ajudar.</p>
+                              <div class="botao-slide">Agende uma visita</div>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="solucoes-slide">
+                      <a href="https://obranaboa.com.br" target="_blank">
+                          <div class="img"><img src="https://recursos.abcdaconstrucao.com.br/i/tpl-home/img_obra.png" >
+                          </div>
+                          <div class="hld">
+                              <h3>Obra na boa</h3>
+                              <p>Parcelamento de até 10x de <br> todos os custos de sua obra.</p>
+                              <div class="botao-slide">Faça uma cotação</div>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="solucoes-slide">
+                      <a href="https://www.abcdaconstrucao.com.br/venda-corporativa" target="_blank">
+                          <div class="img"><img src="https://recursos.abcdaconstrucao.com.br/i/tpl-home/img_corporativa.png",
+                                  false))">
+                          </div>
+                          <div class="hld">
+                              <h3>Corporativo</h3>
+                              <p>Atendimento Especial para a sua empresa.</p>
+                              <div class="botao-slide">Saiba mais</div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </section>
+          <section class="empreender">
+              <div class="div-h2">
+                  <h2>Pra você que quer empreender</h2>
+              </div>
+              <p class="texto">
+                  Um canal e uma equipe de especialistas exclusivo que simplifica o processo de compras de sua empresa.
+                  Investimos
+                  pesado em tecnologia e logística para dar agilidade, qualidade e reduzir custos na sua obra.
+              </p>
+          </section>
+      </div>
+      <div class="blocos">
+          <div class="bloco">
+              <div class="imagem">
+                  <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/seja-franqueado.png" >
+              </div>
+              <div class="textos">
+                  <div class="div-h2">
+                      <h2>Seja um franqueado</h2>
+                  </div>
+                  <p class="texto">
+                      Faça parte de um modelo inovador onde a loja é o centro do ecossistema de relacionamento com
+                      clientes da região e
+                      permite a rápida e fácil implantação e digitalização de negócios locais e tradicionais sem perder o
+                      relacionamento e
+                      proximidade construído.
+                  </p>
+              </div>
+          </div>
+          <div class="bloco">
+              <div class="imagem">
+                  <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/ponto-abc.png" >
+              </div>
+              <div class="textos">
+                  <div class="div-h2">
+                      <h2>Ponto ABC</h2>
+                  </div>
+                  <p class="texto">
+                      Uma parceria entre ABC da Construção e lojas de materiais de construção em pequenas cidades ou de
+                      bairro, que já
+                      trabalham e desejam reforçar o seu mix de acabamento, buscam ter uma liderança dentro do seu nicho
+                      geográfico e
+                      procuram ter um posicionamento mais inovador no mercado.
+                  </p>
+              </div>
+          </div>
+          <div class="bloco">
+              <div class="imagem">
+                  <img src="https://recursos.abcdaconstrucao.com.br/i/tpl-quem-somos/sua-empresa.png" >
+              </div>
+              <div class="textos">
+                  <div class="div-h2">
+                      <h2>Para sua empresa</h2>
+                  </div>
+                  <p class="texto">
+                      Um canal e uma equipe de especialistas exclusivo que simplifica o processo de compras de sua
+                      empresa. Investimos
+                      pesado em tecnologia e logística para dar agilidade, qualidade e reduzir custos na sua obra.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+      $(document).ready(() => {
+          $('.solucoes .solucoes-slider').slick({
+              speed: '600',
+              autoplay: true,
+              infinite: true,
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              arrows: false,
+              dots: false,
+              lazyLoad: 'ondemand',
+              responsive: [
+                  {
+                      breakpoint: 1200,
+                      settings: {
+                          centerMode: true,
+                          slidesToShow: 3,
+                          initialSlide: 2,
+                          slidesToScroll: 1,
+                          lazyLoad: 'ondemand'
+                      }
+                  },
+                  {
+                      breakpoint: 992,
+                      settings: {
+                          centerMode: true,
+                          slidesToShow: 2,
+                          initialSlide: 1,
+                          slidesToScroll: 1,
+                          lazyLoad: 'ondemand'
+                      }
+                  },
+                  {
+                      breakpoint: 768,
+                      settings: {
+                          centerMode: true,
+                          slidesToShow: 1,
+                          initialSlide: 0,
+                          slidesToScroll: 1,
+                          lazyLoad: 'ondemand'
+                      }
+                  }
+              ]
+          });
+      });
+  </script>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ old_newsletter_popup }}
+
+  {{ asset type: "js" paths: ["swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter",
+  "topbar", "lightbox", "offcanvas", "sharpspring"] }}
+</body>
+
+</html>

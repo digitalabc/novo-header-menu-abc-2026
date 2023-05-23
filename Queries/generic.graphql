@@ -1,5 +1,21 @@
-query Home{
-  hotsite(url: "") {
+query Hotsite($url: String!){
+  hotsite(url:$url) {
+    name
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    contents {
+      content
+      contentId
+      height
+      title
+      width
+      position
+    }
     banners {
       altText
       bannerName

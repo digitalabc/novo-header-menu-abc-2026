@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body>
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+  
+  <style>
+      header,
+      #whatsapp {
+          display: none !important;
+      }
+
+      .duvida span p a {
+          color: #94834f;
+          text-decoration: underline;
+      }
+
+      .cc-revoke,
+      .cc-window {
+          z-index: 214748364799 !important;
+      }
+
+      #pcw-app {
+          z-index: 214748364 !important;
+      }
+
+      .msg-formulario {
+          padding-bottom: 25px;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr;
+      }
+
+      .msg-formulario>p {
+          opacity: 1;
+          color: #fff;
+          font-size: 2rem;
+          border-bottom: 2px solid #9b120c;
+          transition: all .3s;
+      }
+
+      .abc-times .section-hero-wrap {
+          background-color: #000;
+      }
+
+      .abc-times .section-hero .texto .logo-links>a:not(:nth-child(1)):hover {
+          border-bottom: 2px solid #9b120c;
+      }
+
+      .abc-times .section-hero .texto .formulario>input[type=text] {
+          border: 1px solid #fff;
+          color: #fff;
+      }
+
+      .abc-times .section-duvidas>h2,
+      .abc-times .section-duvidas .duvida label[for^=mostrar],
+      .abc-times .section-hero .texto .logo-links>a:nth-child(2) {
+          color: #9b120c;
+      }
+
+      .abc-times .section-hero .texto .formulario>button {
+          background-color: #9b120c;
+      }
+
+      .abc-times .section-duvidas .duvida {
+          border: 1px solid #9b120c;
+      }
+
+      .abc-times .section-icones-wrap {
+          background-image: url(https://recursos.abcdaconstrucao.com.br/i/lps/novas/flamengo/box-flamengo.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+  </style>
+
+  <link rel="stylesheet" href="https://recursos.abcdaconstrucao.com.br/c/lps/lp-abc-times.min.css">
+
+  <div class="abc-times">
+      <div class="section-hero-wrap">
+          <section class="section-hero">
+              <div class="texto">
+                  <div class="logo-links">
+                      <a href="#"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/logo-topo-200x54.png"
+                              alt="ABC da Construção" title="ABC da Construção"></a>
+                      <a href="#">Home</a>
+                      <a href="#duvidas-frequentes">Tire suas dúvidas</a>
+                  </div>
+                  <p>
+                      <strong>Uma só paixão!</strong>
+                      <br>
+                      Você não vai ficar fora
+                      <br>
+                      dessa parceria!
+                  </p>
+                  <div class="formulario">
+                      <input type="text" placeholder="Nome">
+                      <input type="text" placeholder="E-mail">
+                      <input type="text" id="inp-telefone" name="telefone" placeholder="Celular">
+                      <button>Cadastre-se e descubra as vantagens!</button>
+                  </div>
+              </div>
+              <div class="imagem">
+                  <img src="https://recursos.abcdaconstrucao.com.br/i/lps/flamengo/SITE_ABC_FLA-MAES-2023.jpg" alt="Flamengo">
+              </div>
+          </section>
+      </div>
+      <div class="section-icones-wrap">
+          <section class="section-icones">
+              <div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo1.png"
+                      alt="Mais de 160 lojas"></div>
+              <div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo2.png"
+                      alt="Mais de 60 anos"></div>
+              <div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo3.png"
+                      alt="As Melhores Marcas"></div>
+              <div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo4.png"
+                      alt="Entrega em 48 Horas"></div>
+          </section>
+      </div>
+      <section class="section-duvidas" id="duvidas-frequentes">
+          <h2>Dúvidas Frequentes</h2>
+          <div class="duvida">
+              <input type="checkbox" id="mostrar-0">
+              <label for="mostrar-0"><i class="fa fa-plus" aria-hidden="true"></i>Como participar da ação #DeMãeParaFilho para ganhar as camisas oficiais?</label>
+              <span>
+                  <p>
+                    Serão válidos os cadastros realizados de 2 de maio até 14 de maio de 2023, a partir do número de atendimento via WhatsApp exclusivo da ABC da Construção para torcedores do Flamengo, (21) 2018-5126. Para participar, será necessário informar nome e sobrenome, e-mail e realizar o envio de uma foto representando um momento icônico de você como torcedor com sua mãe, filho ou filha. Uma foto será selecionada para ganhar duas camisas oficiais do time, conforme disponibilidade de modelo e tamanho. A foto enviada precisar ser um arquivo no formato de imagem com a extensão JPEG, JPG, PNG, IMG e não serão aceitos arquivos em outros formatos ou extensões, tais como PDF, DOC, XLS e outros.
+                  </p>
+                  <br>
+                  <p>
+                O resultado será publicado nas redes oficiais da ABC da Construção até o dia 17 de maio e a entrega do prêmio será informada a partir do contato realizado via e-mail ou telefone por um representante da ABC da Construção. O prêmio não poderá ser trocado por algum outro tipo de benefício e/ou entrega realizada pela ABC da Construção. Informamos que os dados compartilhados no ato do cadastro serão utilizados para registro na base da ABC da Construção e envio de informações pelos nossos canais oficiais.  
+                  </p>
+                  <br>
+                  <p>
+                  Ao realizar o cadastro e o envio da foto você autoriza o uso da imagem em peças de divulgação nas redes sociais em peças exclusivamente relacionadas a campanha “De Mãe pra Filho”. As imagens não serão utilizadas para fins comerciais. 
+                  </p>
+                  <br>
+                  <p>
+                Para mais informações sobre tratamento de dados pessoais pela ABC da Construção, consulte: <a href="https://www.abcdaconstrucao.com.br/Privacidade">https://www.abcdaconstrucao.com.br/Privacidade</a>     
+                </p>
+                  <br>
+              </span>
+          </div>
+          <div class="duvida">
+              <input type="checkbox" id="mostrar-0">
+              <label for="mostrar-0"><i class="fa fa-plus" aria-hidden="true"></i>Quando foi o início da parceria?</label>
+              <span>
+                  <p>
+                      O início da parceira com o Clube de Regatas do Flamengo foi em Maio de 2021. Data em que a ABC da
+                      Construção se tornou
+                      patrocinadora oficialdo Clube.
+                  </p>
+              </span>
+          </div>
+          <div class="duvida">
+              <input type="checkbox" id="mostrar-1">
+              <label for="mostrar-1"><i class="fa fa-plus" aria-hidden="true"></i>Quero saber mais sobre a ABC da
+                  Construção.</label>
+              <span>
+                  <p>
+                      Com mais de 60 anos de história, a ABC da Construção é uma das maiores redes de
+                      acabamentos do Brasil. Pelo seu modelo inovador, a ABC está fazendo uma revolução no
+                      varejo de acabamentos e já é considerada uma das principais construtechs do país.
+                      Traduzindo em números, vendemos por ano, aproximadamente 5 milhões de metros
+                      quadrados de revestimentos. Por ano, são 240 mil clientes atendidos em nossas mais de
+                      160 lojas em 80 cidades.</p>
+                  <p>
+                      O segredo? A gente entende de obra e vai te ajudar a comprar o acabamento certo, na
+                      quantidade certa pra sua obra. Nem mais, nem menos. Conte conosco pra finalizar sua obra de
+                      forma rápida, econômica e segura. Conte conosco pra deixar sua casa como sempre sonhou.
+                  </p>
+              </span>
+          </div>
+          <div class="duvida">
+              <input type="checkbox" id="mostrar-2">
+              <label for="mostrar-2"><i class="fa fa-plus" aria-hidden="true"></i>Quais são as vantagens de se
+                  cadastrar?</label>
+              <span>
+                  <p>
+                      Ao se cadastrar você irá receber em primeira mão todas as ofertas, cupons, dicas, condições,
+                      ações e ativações especiais e imperdíveis relacionadas à diversidade e melhores marcas de
+                      acabamento para sua obra ou reforma. Nossa
+                      intenção é proporcionar experiências incríveis nas lojas ou no site da ABC junto ao seu time do
+                      coração.
+                  </p>
+
+              </span>
+          </div>
+          <div class="duvida">
+              <input type="checkbox" id="mostrar-3">
+              <label for="mostrar-3"><i class="fa fa-plus" aria-hidden="true"></i>Encontre a ABC mais perto de
+                  você!</label>
+              <span></span>
+          </div>
+
+      </section>
+  </div>
+  <div id="times-modal" class="times-modal-overlay">
+      <div class="times-modal-content">
+          <div class="times-modal-header">
+              <span class="times-modal-close">&times;</span>
+          </div>
+          <div class="times-modal-body">
+              <span class="times-modal-text"></span>
+          </div>
+          <div class="times-modal-footer">
+              <div class="times-modal-btn">Fechar</div>
+          </div>
+      </div>
+  </div>
+  <script>
+   
+  </script>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ old_newsletter_popup }}
+
+  {{ asset type: "js" paths: ["swiper-bundle.min", "mask", "components", "navbar", "mini_cart", "user_login", "newsletter",  "topbar", "lightbox", "offcanvas", "sharpspring", "times"] }}
+</body>
+
+</html>

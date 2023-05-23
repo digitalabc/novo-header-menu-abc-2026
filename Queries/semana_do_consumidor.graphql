@@ -1,0 +1,139 @@
+query Hotsite($url: String!) {
+  hotsite(url:$url) {
+    name
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    banners {
+      altText
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+      urlOnClick
+    }
+  }
+  vitrineCronometro: search(query: "") {
+    ...vitrineCronometro
+  }
+  vitrine1: search(query: "") {
+    ...vitrine1
+  }
+  vitrine2: search(query: "") {
+    ...vitrine2
+  }
+  vitrine3: search(query: "") {
+    ...vitrine3
+  }
+  vitrine4: search(query: "") {
+    ...vitrine4
+  }
+  vitrine5: search(query: "") {
+    ...vitrine5
+  }
+  vitrine6: search(query: "") {
+    ...vitrine6
+  }
+}
+fragment vitrineCronometro on Search {
+  products(first: 9, sortKey: SALES, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrine1 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrine2 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrine3 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+fragment vitrine4 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+fragment vitrine5 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+fragment vitrine6 on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+
+fragment productsCon on ProductsConnection {
+  nodes {
+    id
+    productId
+    productName
+    productVariantId
+    productBrand{
+      fullUrlLogo
+      logoUrl
+    }
+    alias
+    similarProducts{
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images(width:245, height:245) {
+      url
+      print
+    }
+    available
+    prices {
+      listPrice
+      price
+      discountPercentage
+      multiplicationFactor
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    promotions{
+      content
+      id
+      stamp
+      title
+    }
+    addToCartFromSpot
+  }
+}

@@ -17,10 +17,10 @@
     <div class="swiper">
       <ul class="swiper-wrapper">
         {{~ for banner in banners ~}}
-          {{~ title = banner.alt_text ?? "banner" ~}}
+          {{~ banner_title = banner.alt_text ?? "banner" ~}}
           <li class="swiper-slide">
             <a {{ if blank }} target="_blank" {{ end }} href="{{banner.url_on_click}}" >
-              {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: title ~}}
+              {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title ~}}
             </a>
           </li>
         {{~ end ~}}
@@ -29,10 +29,10 @@
   {{~ else ~}}
     <ul>
       {{~ for banner in banners ~}}
-        {{~ title = banner.alt_text ?? "banner" ~}}
+        {{~ banner_title = banner.alt_text ?? "banner" ~}}
         <li>
           <a {{ if blank }} target="_blank" {{ end }} href="{{banner.url_on_click}}">
-            {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: title ~}}
+            {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title ~}}
           </a>
         </li>
       {{~ end ~}}

@@ -32,8 +32,78 @@
             },
             {
                 "urlMatch": "diretorio-de-lojas",
-                "path": "custom/cidade.html",
-                "query": "cidade.graphql"
+                "path": "custom/diretorio_de_lojas/diretorio_de_lojas.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "diretorio-de-lojas/minas-gerais/belo-horizonte",
+                "path": "custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "auaha-loja-por-cidade",
+                "path": "custom/diretorio_de_lojas/franquia.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "barra-da-tijuca-rj",
+                "path": "custom/old_se/barra_tijuca.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "copacabana",
+                "path": "custom/old_se/copacabana.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "livelo",
+                "path": "custom/old_se/livelo.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "localizacao",
+                "path": "custom/old_se/localizacao.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "flamengo",
+                "path": "custom/old_se/flamengo.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "atletico",
+                "path": "custom/old_se/atletico.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "saopaulofc",
+                "path": "custom/old_se/saopaulofc.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "auaha-template-lojas",
+                "path": "custom/old_se/lojas.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "novaslojas",
+                "path": "custom/old_se/novaslojas.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "ponto-abc",
+                "path": "custom/old_se/ponto_abc.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "quemsomos",
+                "path": "custom/old_se/quemsomos.html",
+                "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "semana-do-consumidor",
+                "path": "custom/old_se/semana_do_consumidor.html",
+                "query": "semana_do_consumidor.graphql"
             }
         ]
     },

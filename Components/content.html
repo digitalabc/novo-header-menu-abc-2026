@@ -1,5 +1,12 @@
-{{~ grouped_contents = contents | group.by @(do; ret $0.position;end) ~}}
-{{~ filtered_contents = grouped_contents | group.get position ~}}
+{{~ if position ~}}
+  {{~ grouped_contents = contents | group.by @(do; ret $0.position;end) ~}}
+  {{~ filtered_contents = grouped_contents | group.get position ~}}
+{{~ end ~}}
+
+{{~ if content_id ~}}
+{{~ grouped_contents = contents | group.by @(do; ret $0.content_id;end) ~}}
+{{~ filtered_contents = grouped_contents | group.get content_id ~}}
+{{~ end ~}}
 
 {{ for content in filtered_contents }}
   {{~ if show_title ~}}

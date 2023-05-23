@@ -32,7 +32,7 @@
             },
             {
                 "urlMatch": "diretorio-de-lojas",
-                "path": "Custom/diretorio_de_lojas/diretorio_de_lojas.html",
+                "path": "Custom/diretorio_de_lojas/diretorio.html",
                 "query": "generic.graphql"
             },
             {

@@ -17,7 +17,7 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
     priority
     content
   }
-  lighboxProducts: search(query: "") {
+  lighboxProducts: hotsite(hotsiteId: 98669) {
     ...lighboxProducts
   }
   categories(first: 50) {
@@ -47,8 +47,8 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
   }
 }
 
-fragment lighboxProducts on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+fragment lighboxProducts on SingleHotsite {
+  products(first: 20, sortKey: SALES, sortDirection: DESC) {
     ...productsCon
   }
 }

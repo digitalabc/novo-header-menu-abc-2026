@@ -35,32 +35,16 @@ query Home{
       name
     }
   }
-  vitrine1: search(query: "") {
-    ...vitrine1
+  vitrine1: hotsite(hotsiteId: 98667) {
+    ...produtos
   }
-  lancamentos: search(query: "") {
-    ...lancamentos
-  }
-  maisVendidos: search(query: "") {
-    ...maisVendidos
-  }
-  
-}
-
-fragment vitrine1 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
+  vitrine2: hotsite(hotsiteId: 98668) {
+    ...produtos
   }
 }
 
-fragment lancamentos on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-
-fragment maisVendidos on Search {
-  products(first: 9, sortKey: SALES, sortDirection: DESC) {
+fragment produtos on SingleHotsite {
+  products(first: 20, sortKey: SALES, sortDirection: DESC) {
     ...productsCon
   }
 }

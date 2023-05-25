@@ -94,7 +94,7 @@
         <!-- Vitrine 1 -->
         <section class="showcase">
           <h2>{{ "Ofertas para você economizar" | lang }}</h2>
-          {{ spot_carousel class: "showcase-1" products: data.lancamentos.products.nodes show_buy_mobile: true }}
+          {{ spot_carousel class: "showcase-1" products: data.vitrine1.products.nodes show_buy_mobile: true }}
         </section>
     
         <!-- Grid de banners -->
@@ -460,7 +460,7 @@
         <!-- Vitrine 2 -->
         <section class="showcase">
           <h2>{{ "Ofertas exclusivas para você" | lang }}</h2>
-          {{ spot_carousel class: "showcase-2" products: data.mais_vendidos.products.nodes }}
+          {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
         </section>
 
         {{~ capture newsletter_home_bg_source ~}}
@@ -742,7 +742,7 @@
 
     {{ footer products:common.lighbox_products.products.nodes }}
 
-    {{ gtm_hotsite_view product_lists: [data.lancamentos.products.nodes, data.mais_vendidos.products.nodes]}}
+    {{ gtm_hotsite_view product_lists: [data.vitrine1.products.nodes, data.vitrine2.products.nodes]}}
 
     {{ sdk_client }}
 

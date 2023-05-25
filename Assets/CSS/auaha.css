@@ -6596,10 +6596,6 @@ header {
 }
 .spot-price {
   margin-bottom: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 80px;
 }
 @media screen and (max-width: 991px) {
   .spot-price {
@@ -6681,6 +6677,12 @@ header {
   .spot .best-installment span {
     display: block;
   }
+}
+.spot .spot-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 80px;
 }
 .breadcrumb {
   margin: 20px 0;

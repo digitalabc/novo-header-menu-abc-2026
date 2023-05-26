@@ -22,7 +22,7 @@
                         price: {{ product.prices.list_price }},
                         {{~ end ~}}
                         index: 0,
-                        {{ if product.product_brand.name}}
+                        {{ if product.product_brand?.name}}
                         item_brand: `{{product.product_brand.name}}`,
                         {{ end }}
                         {{ i = 1 }}

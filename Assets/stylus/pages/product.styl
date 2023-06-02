@@ -14,11 +14,6 @@
   &__image
     position: relative;
     grid-area: 1 / 1 / 2 / 2;
-    .obs
-      font-size 11px
-      color #5D5D5D
-      @media mobile
-        margin-bottom 5px
 
   &__details
     grid-area: 1 / 2 / 2 / 3;
@@ -68,6 +63,11 @@
       .precoPor
         &:first-child
           padding-top 0
+        span
+          @media mobile
+            font-size: 20px;
+            line-height: 24px;
+
       .stamps-discount
         display flex
         align-items center
@@ -767,6 +767,11 @@
     font-weight bold
     margin-bottom 10px
     margin-top 20px
+  .obs
+    font-size 11px
+    color #5D5D5D
+    @media mobile
+      margin-bottom 70px
 .product-floating
   position fixed
   z-index 1

@@ -67,6 +67,10 @@
         <div class="product__buy-together">
             {{ buy_together product: product }}
         </div>
+
+        <div class="obs mobile">
+          Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas exclusivamente pelo site. O frete não está incluso. Fotos meramente ilustrativas.
+        </div>
         
         <!-- Description -->
         {{~ if product.informations ~}}

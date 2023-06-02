@@ -10,13 +10,16 @@
   {{- store.urls.static_img}}{{settings.logo_path}}?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 {{~ menu_group = menu_groups | group.by @(do; ret $0.position;end) | group.get position | array.first ~}}
+{{ menu_groups | debug.log }} 
 {{~ menus = menu_group.menus | group.by @(do; ret $0.parent_menu_id;end) ~}}
+{{ menus | debug.log }} 
 {{~ if menu_group ~}}
-{{~ top_level = menus | group.get null ~}}
+{{~ top_level = menus | group.get null | array.sort "order" ~}}
+{{ top_level | debug.log }} 
 {{~ end ~}}
 {{~ grouped_categories = categories | group.by @(do; ret $0.parent_category_id;end) ~}}
 {{~ if grouped_categories ~}}
-  {{~ main_categories = grouped_categories | group.get 0 | array.sort "name" ~}}
+  {{~ all_categories = grouped_categories | group.get 0 | array.sort "name" ~}}
 {{~ end ~}}
 
 {{ topbar }}
@@ -92,19 +95,16 @@
               Todas as categorias
               <div class="nav-all__dropdown nav-all__dropdown--root">
                 <ul class="nav-all__list nav-all__list--root">
-                  {{~ for category in main_categories ~}}
+                  {{~ for category in all_categories ~}}
                     {{ nav_item_all category: category level: 1 max_level: 2}}
                   {{~ end ~}}
                 </ul>
               </div>
             </li>
             {{~ if top_level ~}}
-            {{~ for top_menu in top_level limit:5 ~}}
-              {{ nav_item menus: menu_group.menus current_menu: top_menu }}
-            {{~ end ~}}
-            <li class="nav-item nav-item--nv1 highlight">
-              <a class="nav-link highlight" href="/ofertas">Promoções</a>
-            </li>
+              {{~ for top_menu in top_level ~}}
+                {{ nav_item menus: menu_group.menus current_menu: top_menu }}
+              {{~ end ~}}
             {{~ end ~}}
         </ul>
     </div>

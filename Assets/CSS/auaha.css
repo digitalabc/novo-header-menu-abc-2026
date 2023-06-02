@@ -458,15 +458,6 @@ input[type='search']::-webkit-search-results-decoration {
   position: relative;
   grid-area: 1/1/2/2;
 }
-.product__image .obs {
-  font-size: 11px;
-  color: #5d5d5d;
-}
-@media screen and (max-width: 991px) {
-  .product__image .obs {
-    margin-bottom: 5px;
-  }
-}
 .product__details {
   grid-area: 1/2/2/3;
   max-width: 640px;
@@ -521,6 +512,12 @@ input[type='search']::-webkit-search-results-decoration {
 }
 .product__prices .spot-price .precoPor:first-child {
   padding-top: 0;
+}
+@media screen and (max-width: 991px) {
+  .product__prices .spot-price .precoPor span {
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
 .product__prices .spot-price .stamps-discount {
   display: flex;
@@ -1326,6 +1323,15 @@ input[type='search']::-webkit-search-results-decoration {
   font-weight: bold;
   margin-bottom: 10px;
   margin-top: 20px;
+}
+.product .obs {
+  font-size: 11px;
+  color: #5d5d5d;
+}
+@media screen and (max-width: 991px) {
+  .product .obs {
+    margin-bottom: 70px;
+  }
 }
 .product-floating {
   position: fixed;
@@ -5871,11 +5877,15 @@ header {
   height: 40px;
   position: relative;
 }
-.navbar__wrapper .nav-item--nv1:nth-child(4) > .dropdown-menu {
+.navbar__wrapper .nav-item--nv1:last-child > .nav-link {
+  color: #392f2d;
+  font-weight: 500;
+}
+.navbar__wrapper .nav-item--nv1:nth-child(5) > .dropdown-menu {
   left: 50%;
   transform: translateX(-50%);
 }
-.navbar__wrapper .nav-item--nv1:nth-child(n + 5) > .dropdown-menu {
+.navbar__wrapper .nav-item--nv1:nth-child(n + 6) > .dropdown-menu {
   right: -60px;
   left: unset;
 }
@@ -5912,10 +5922,6 @@ header {
   color: #5d5d5d;
   font-weight: 300;
   font-size: 14px;
-}
-.navbar__wrapper .nav-item--nv1 > .nav-link.highlight {
-  color: #392f2d;
-  font-weight: 500;
 }
 @media screen and (min-width: 992px) {
   .navbar__wrapper .nav-item--nv1:hover > .dropdown-menu {
@@ -8553,11 +8559,19 @@ section.newsletter--home .newsletter__alert {
     margin-bottom: 10px;
   }
 }
+.seo > h1 + * {
+  display: -webkit-box !important;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.seo > h2 {
+  font-weight: bold;
+  margin-bottom: 0;
+  font-size: 1.5em;
+}
 .seo > p {
   margin-bottom: 10px;
-}
-.seo > p:first-of-type {
-  display: block;
 }
 .seo > p + h2,
 .seo > p + h3,

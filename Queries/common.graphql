@@ -8,6 +8,7 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
       name
       cssClass
       link
+      order
     }  
   }
   scripts(url:$url, pageType:$scriptPageTypes) {

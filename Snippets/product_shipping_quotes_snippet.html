@@ -9,12 +9,11 @@
 {{ quotes = data.shipping_quotes }}
 
 {{~ retirada_com_maior_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" | array.last ~}}
-{{ retirada | debug.log }} 
 
 {{~ custom_quotes = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" ~}}
 
-{{~ entrega_com_menor_preco = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" | array.sort "value" | array.first ~}}
-{{~ entrega_com_menor_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" | array.sort "deadline" | array.first ~}}
+{{~ entrega_com_menor_preco = custom_quotes | array.sort "value" | array.first ~}}
+{{~ entrega_com_menor_prazo = custom_quotes | array.sort "deadline" | array.first ~}}
 
 {{~ if quotes ~}}
 <div class="product-shipping__list">

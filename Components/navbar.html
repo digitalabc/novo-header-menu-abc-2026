@@ -10,12 +10,9 @@
   {{- store.urls.static_img}}{{settings.logo_path}}?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 {{~ menu_group = menu_groups | group.by @(do; ret $0.position;end) | group.get position | array.first ~}}
-{{ menu_groups | debug.log }} 
 {{~ menus = menu_group.menus | group.by @(do; ret $0.parent_menu_id;end) ~}}
-{{ menus | debug.log }} 
 {{~ if menu_group ~}}
 {{~ top_level = menus | group.get null | array.sort "order" ~}}
-{{ top_level | debug.log }} 
 {{~ end ~}}
 {{~ grouped_categories = categories | group.by @(do; ret $0.parent_category_id;end) ~}}
 {{~ if grouped_categories ~}}

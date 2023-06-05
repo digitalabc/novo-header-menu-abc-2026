@@ -446,6 +446,12 @@ input[type='search']::-webkit-search-results-decoration {
   margin-bottom: 20px;
   background: none;
 }
+@media screen and (max-width: 991px) {
+  .product .breadcrumb {
+    margin-top: 0;
+    font-size: 12px;
+  }
+}
 @media screen and (min-width: 992px) {
   .product__view {
     display: grid;

@@ -16,8 +16,6 @@
 {{~ entrega_com_menor_preco = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" | array.sort "value" | array.first ~}}
 {{~ entrega_com_menor_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" | array.sort "deadline" | array.first ~}}
 
-{{ custom_quotes | debug.log }} 
-
 {{~ if quotes ~}}
 <div class="product-shipping__list">
     {{~ if retirada_com_maior_prazo ~}}

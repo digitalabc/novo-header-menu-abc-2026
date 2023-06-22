@@ -46,36 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const d = new Date().getTime();
 
   if(count > d){
-      const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
-
       var data = promodate;
       var falta = (new Date(data).getTime() - new Date().getTime()) / 1000;
       var segundos = Math.round(falta % 60);
       var minutos = Math.round(falta / 60 % 60);
       var horas = Math.round(falta / 60 / 60 % 24);
       var dias = Math.round(falta / 60 / 60 / 24);
-      if (segundos == 0) {
-          segundos = 60;
-          minutos--;
-      }
-      if (minutos == 0) {
-          minutos = 60;
-          horas--;
-      }
-      if (horas == 0) {
-          horas = 24;
-          dias--;
-      }
-      segundos--;
       let $days = document.querySelector('.cron .days')
       let $hours = document.querySelector('.cron .hours')
       let $minutes = document.querySelector('.cron .minutes')
       let $seconds = document.querySelector('.cron .seconds')
-      $days.innerHTML = dias + 'D';
-      $hours.innerHTML = horas < 10 ? '0' + horas : horas ;
-      $minutes.innerHTML = minutos < 10 ? '0' + minutos: minutos;
-      $seconds.innerHTML = segundos< 10 ? '0' + segundos : segundos;
-
       document.querySelector('#cronometro .cron').style.opacity = 1
 
       setInterval(function () {
@@ -96,6 +76,10 @@ document.addEventListener('DOMContentLoaded', function () {
           $hours.innerHTML = horas < 10 ? '0' + horas : horas ;
           $minutes.innerHTML = minutos < 10 ? '0' + minutos: minutos;
           $seconds.innerHTML = segundos< 10 ? '0' + segundos : segundos;
+          hh.style.strokeDashoffset = 154 - (154 * totalhoras) / 24;
+          mm.style.strokeDashoffset = 154 - (154 * minutos) / 60;
+          ss.style.strokeDashoffset = 154 - (154 * segundos) / 60;
+
 
       }, 1000);
   }

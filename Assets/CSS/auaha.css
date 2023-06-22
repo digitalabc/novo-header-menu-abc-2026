@@ -1634,6 +1634,16 @@ input[type='search']::-webkit-search-results-decoration {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.lojas__bottom--container .col {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+@media (max-width: 500px) {
+  .lojas__bottom--container .col {
+    gap: 30px;
+  }
+}
 .lojas__bottom--container ul h3 {
   margin-bottom: 20px;
   color: #0d3547;

@@ -121,6 +121,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 .swiper-button-prev,
 .swiper-button-next {
+  background-color: unset;
   margin: 0;
   transform: translateY(-50%);
   width: 30px;
@@ -1116,6 +1117,9 @@ input[type='search']::-webkit-search-results-decoration {
 }
 .product .product-shipping__help a:hover {
   color: #e30613;
+}
+.product .product-shipping__response.hide-pickup .free-shipping {
+  display: none !important;
 }
 .product .product-shipping__list {
   margin-top: 5px;

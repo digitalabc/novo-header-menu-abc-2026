@@ -3,30 +3,30 @@
  * Sends the configured newsletter from the provided informtation on page
  */
 async function newsletterSubmit(form) {
-    let newsletterAlert = form.querySelector(".newsletter__alert");
-    const nameElement = form.querySelector(".newsletter-name");
-    const emailElement = form.querySelector(".newsletter-email");
-    const nameValue = nameElement.value
-    const emailValue = emailElement.value
-    
-    __ss_noform.push(['submit', null, 'c799f48e-eebe-4c61-8862-d489d4aeddc9']);
+  let newsletterAlert = form.querySelector(".newsletter__alert");
+  const nameElement = form.querySelector(".newsletter-name");
+  const emailElement = form.querySelector(".newsletter-email");
+  const nameValue = nameElement.value
+  const emailValue = emailElement.value
 
-    const input = {
-        name: nameElement.value,
-        email: emailElement.value,
-    };
+  __ss_noform.push(['submit', null, 'c799f48e-eebe-4c61-8862-d489d4aeddc9']);
 
-    let response = await client.newsletter.create(input);
+  const input = {
+    name: nameElement.value,
+    email: emailElement.value,
+  };
 
-    if (response) {
-      showNewsletterAlert(newsletterAlert);
-    }
-    else{
-      showNewsletterError(newsletterAlert);
-    }
+  let response = await client.newsletter.create(input);
 
-    nameElement.value = "";
-    emailElement.value = "";
+  if (response) {
+    showNewsletterAlert(newsletterAlert);
+  }
+  else {
+    showNewsletterError(newsletterAlert);
+  }
+
+  nameElement.value = "";
+  emailElement.value = "";
 }
 
 /**
@@ -37,23 +37,23 @@ function hideNewsletterAlert(newsletterAlert) {
 }
 
 /**
- * Show an alert message with 2s duration
+ * Show an alert message with 5s duration
  */
 function showNewsletterError(newsletterAlert) {
   newsletterAlert.innerHTML = 'Falha ao realizar cadastro';
-  setTimeout(function() {
+  setTimeout(function () {
     hideNewsletterAlert(newsletterAlert);
-  }, 2000);
+  }, 5000);
 }
 
 /**
- * Show an alert message with 2s duration
+ * Show an alert message with 5s duration
  */
 function showNewsletterAlert(newsletterAlert) {
   newsletterAlert.innerHTML = 'Cadastro realizado com sucesso!';
-  setTimeout(function() {
+  setTimeout(function () {
     hideNewsletterAlert(newsletterAlert);
-  }, 2000);
+  }, 5000);
 }
 
 /**
@@ -62,6 +62,6 @@ function showNewsletterAlert(newsletterAlert) {
 const newsletterCheckbox = document.querySelector("#newsletter-lightbox .checkbox__input");
 const newsletterButton = document.querySelector("#newsletter-lightbox .newsletter__button");
 
-newsletterCheckbox.addEventListener('change', function(e) {
+newsletterCheckbox.addEventListener('change', function (e) {
   newsletterButton.disabled = newsletterButton.disabled ? false : true;
 })

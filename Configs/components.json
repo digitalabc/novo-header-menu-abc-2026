@@ -1157,5 +1157,11 @@
         "path": "old_newsletter_popup.html",
         "inheritVariables": false,
         "availableInAllPages": true
+    },
+    {
+        "name": "whatsapp",
+        "path": "floating-whats.html",
+        "inheritVariables": false,
+        "availableInAllPages": true
     }
 ]

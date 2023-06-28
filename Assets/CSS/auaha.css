@@ -121,7 +121,6 @@ input[type='search']::-webkit-search-results-decoration {
 }
 .swiper-button-prev,
 .swiper-button-next {
-  background-color: unset;
   margin: 0;
   transform: translateY(-50%);
   width: 30px;
@@ -6195,6 +6194,13 @@ header {
   position: absolute;
   bottom: -20px;
   font-weight: 500;
+}
+#whatsapp {
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  z-index: 999999;
+  filter: drop-shadow(2px 4px 6px #999);
 }
 .ah-offcanvas-container {
   overflow: hidden;

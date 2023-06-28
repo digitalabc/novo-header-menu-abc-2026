@@ -54,12 +54,30 @@
     {{~ end ~}}
 
     <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
-    <input type="hidden" id="product-variant-id" name="product-variant-id"
+    <input type="hidde\\
+    n" id="product-variant-id" name="product-variant-id"
         value="{{ data.product.product_variant_id }}">
 
     <div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
         {{~ breadcrumb breadcrumbs: product.breadcrumbs product: product ~}}
-        
+        \\\\\\\\
         <div id="product-view-div-{{ product.product_id }}" class="product__view">
             {{ product_view product: product product_hide_pix: product_hide_pix }}
         </div>
@@ -103,7 +121,7 @@
 
     {{ sdk_client }}
     
-    {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "sharpspring"]}}
+    {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring"]}}
 
     {{~ if product_show_coupon ~}}
       {{ asset type: "js" paths: ["product_cupom"]}}

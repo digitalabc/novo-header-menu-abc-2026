@@ -35,6 +35,7 @@ async function checkUserLogin() {
               div.style.display = 'block';
             });
         }
+        window.dispatchEvent(new CustomEvent("userChecked", { email: user?.email} ));
     } catch(error) {
         console.log(error);
     }

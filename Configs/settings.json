@@ -150,37 +150,38 @@
       "stores": [
         {
           "name": "Atelier ABC - Lourdes",
-          "adress": "Av. Olegário Maciel, 1.699 - Lourdes Belo Horizonte - MG, 30180-117",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 13h00"
+          "adress": "Av. Olegário Maciel, 1.699 - Lourdes <br />Belo Horizonte - MG, 30180-117",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 13h00",
+          "tel": "(31) 98857-0132"
         },
         {
           "name": "ABC da Construção Castelo",
-          "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,Belo Horizonte - MG, 31330-472",
+          "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,<br />Belo Horizonte - MG, 31330-472",
           "opening_hours": "Seg a Sex 8h às 19h e Sáb. 8h às 14h00"
         },
         {
           "name": "ABC da Construção Catalão",
-          "adress": "Av. Presidente Carlos Luz, 1205 - Caiçaras Belo Horizonte - MG, 31250-970",
+          "adress": "Av. Presidente Carlos Luz, 1205 - Caiçaras <br />Belo Horizonte - MG, 31250-970",
           "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 16h00"
         },
         {
           "name": "ABC da Construção Cidade Nova",
-          "adress": "Av. Cristiano Machado, 673 - Graça Belo Horizonte - MG, 31140-003",
+          "adress": "Av. Cristiano Machado, 673 - Graça <br />Belo Horizonte - MG, 31140-003",
           "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00"
         },
         {
           "name": "ABC da Construção Nossa Senhora do Carmo",
-          "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, Belo Horizonte - MG, 30320-000",
+          "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, <br />Belo Horizonte - MG, 30320-000",
           "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00"
         },
         {
           "name": "ABC da Construção Pedro II",
-          "adress": "Av. Dom Pedro II, 1275, Carlos PratesBelo Horizonte, MG, 30130-010",
+          "adress": "Av. Dom Pedro II, 1275, Carlos Prates <br />Belo Horizonte, MG, 30130-010",
           "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 12h30"
         },
         {
           "name": "ABC da Construção Venda Nova",
-          "adress": "Rua Dr. Álvaro Camargos, 489 - São João Batista Belo Horizonte - MG, 31515-200",
+          "adress": "Rua Dr. Álvaro Camargos, 489 - São João Batista <br />Belo Horizonte - MG, 31515-200",
           "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 12h30"
         }
       ]
@@ -1841,7 +1842,14 @@
         {
           "name": "ABC da Construção Japuíba",
           "adress": "RJ-116, Km 28 - Loja 01 - Japuíba Cachoeiras de Macacu - RJ, 28685-000",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
+          "seg": "09:00 às 19:00",
+          "ter": "09:00 às 19:00",
+          "qua": "09:00 às 19:00",
+          "qui": "09:00 às 19:00",
+          "sex": "09:00 às 19:00",
+          "sab": "09:00 às 13:00",
+          "dom": "Fechado"
         },
         {
           "name": "ABC da Construção Pupucaia",
@@ -1851,7 +1859,7 @@
       ]
     },
     {
-      "name": "Itaguaí",
+      "name": "Itaguai",
       "stores": [
         {
           "name": "Brisamar",
@@ -1881,7 +1889,7 @@
       ]
     },
     {
-      "name": "Macaé",
+      "name": "Macae",
       "stores": [
         {
           "name": "Riviera Fluminense",
@@ -1891,7 +1899,7 @@
       ]
     },
     {
-      "name": "Magé",
+      "name": "Mage",
       "stores": [
         {
           "name": "Centro",
@@ -1901,7 +1909,7 @@
       ]
     },
     {
-      "name": "Maricá",
+      "name": "Marica",
       "stores": [
         {
           "name": "São José de Imbassai",
@@ -1911,7 +1919,7 @@
       ]
     },
     {
-      "name": "Niterói",
+      "name": "Niteroi",
       "stores": [
         {
           "name": "São Francisco",
@@ -1931,7 +1939,7 @@
       ]
     },
     {
-      "name": "Paraíba do Sul",
+      "name": "Paraiba do Sul",
       "stores": [
         {
           "name": "Jatoba",

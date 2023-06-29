@@ -129,6 +129,7 @@ input[type='search']::-webkit-search-results-decoration {
   color: #5d5d5d;
   transition: all 0.2s ease-in-out;
   transform: translateY(-50%);
+  user-select: none;
 }
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
@@ -141,6 +142,7 @@ input[type='search']::-webkit-search-results-decoration {
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
   pointer-events: all;
+  user-select: none;
 }
 .swiper-button-prev.swiper-button-disabled:hover,
 .swiper-button-next.swiper-button-disabled:hover {

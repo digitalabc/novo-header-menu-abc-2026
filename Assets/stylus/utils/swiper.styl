@@ -21,6 +21,7 @@
       color: #5D5D5D;
       transition: $transition;
       transform: translateY(-50%);
+      user-select: none;
 
       &:hover
         color: $primary;
@@ -30,6 +31,7 @@
 
       &.swiper-button-disabled
         pointer-events: all;
+        user-select: none;
 
         &:hover
           color: inherit;

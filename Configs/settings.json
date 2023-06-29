@@ -1,6 +1,6 @@
 ﻿{
   "access_token": "tcs_abcda_7312cdfec71e4c14a3fab15b5bcfcba8",
-  "logo_path": "logo.svg" ,
+  "logo_path": "logo.svg",
   "favicon_path": "favicon-abc.ico",
   "phone_number": "(31) 9 9249-0299",
   "whatsapp_number": "(31) 9 9249-0299",
@@ -126,22 +126,1852 @@
   },
   "pick_up_states": [
     {
-      "name": "São Paulo",
+      "name": "Além Paraíba",
       "stores": [
         {
-          "name": "Artur Nogueira, São Bento",
-          "adress": "Rod. SP 107, 1884 - São Paulo",
-          "opening_hours" : "Seg a Sex 7h às 17h e Sáb. 8h às 11h30"
+          "name": "Centro - Além Paraíba",
+          "adress": "Av.Dr.Ricardo Grimaldo Estides,215- Centro, Além Paraíba - MG, 36660-000",
+          "opening_hours": "Seg a Sex 8h às 19h e Sáb. 8h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Barbacena",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Mal. Floriano Peixoto, 229 - Centro, Barbacena - MG, 36202-344",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Belo Horizonte",
+      "stores": [
+        {
+          "name": "Atelier ABC - Lourdes",
+          "adress": "Av. Olegário Maciel, 1.699 - Lourdes Belo Horizonte - MG, 30180-117",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 13h00"
         },
         {
-          "name": "Loja 2",
-          "adress": "Endereço 2",
-          "opening_hours" : "Seg a Sex 7h às 17h"
+          "name": "ABC da Construção Castelo",
+          "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,Belo Horizonte - MG, 31330-472",
+          "opening_hours": "Seg a Sex 8h às 19h e Sáb. 8h às 14h00"
         },
         {
-          "name": "Loja 3",
-          "adress": "Endereço 3",
-          "opening_hours" : "Seg a Sáb 8h às 18h"
+          "name": "ABC da Construção Catalão",
+          "adress": "Av. Presidente Carlos Luz, 1205 - Caiçaras Belo Horizonte - MG, 31250-970",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 16h00"
+        },
+        {
+          "name": "ABC da Construção Cidade Nova",
+          "adress": "Av. Cristiano Machado, 673 - Graça Belo Horizonte - MG, 31140-003",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00"
+        },
+        {
+          "name": "ABC da Construção Nossa Senhora do Carmo",
+          "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, Belo Horizonte - MG, 30320-000",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00"
+        },
+        {
+          "name": "ABC da Construção Pedro II",
+          "adress": "Av. Dom Pedro II, 1275, Carlos PratesBelo Horizonte, MG, 30130-010",
+          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 12h30"
+        },
+        {
+          "name": "ABC da Construção Venda Nova",
+          "adress": "Rua Dr. Álvaro Camargos, 489 - São João Batista Belo Horizonte - MG, 31515-200",
+          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "Belo Vale",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Basilicio de Faria, 35, CentroBelo Vale, MG, 35473-000",
+          "opening_hours": "Seg a Sex 8h às 17h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Betim",
+      "stores": [
+        {
+          "name": "ABC da Construção Angola",
+          "adress": "Av. Edmeia Matos Lazzarotti, nº 3289 - Angola,Betim - MG, 32604-155",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00"
+        },
+        {
+          "name": "ABC da Construção Parque das Acácias",
+          "adress": "Av. Tapajós, 1200 - Loja 01, 02 e 03 - Parque das Acácias, Betim - MG, 32675-700",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00"
+        }
+      ]
+    },
+    {
+      "name": "Bicas",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Barão de Catas Altas, 480 - CentroBicas - MG, 36600-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Boa Esperança",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Delduque Barbosa, 798 - Centro,Boa Esperança - MG, 37170-000",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Brasília de Minas",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Prof. Durval Passos, 70 - CentroBrasília de Minas - MG, 39330-000",
+          "opening_hours": "Seg a Sex 7h às 19h e Sáb. 7h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Brumadinho",
+      "stores": [
+        {
+          "name": "Santo Antônio",
+          "adress": "R. República da Bolívia, Rua Padre Eustáquio, 158 - Santo Antônio, Brumadinho - MG, 35460-000",
+          "opening_hours": "Seg a Sex 7:30h às 17:30h e Sáb. 7:30h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Campo Belo",
+      "stores": [
+        {
+          "name": "Jardim Europa",
+          "adress": "R. Padre Alberto Fuger, 13 - Jardim Europa,Campo Belo - MG, 37270-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Capelinha",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Rio Branco, 645 - Centro,Capelinha - MG, 39680000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Carangola",
+      "stores": [
+        {
+          "name": "Triângulo",
+          "adress": "R. Antônio Marquês, 260 - Triângulo, Carangola - MG, 36800-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Caratinga",
+      "stores": [
+        {
+          "name": "Dário Grossi",
+          "adress": "Av. Dário da Anunciação Grossi, 585 - Loja 1 - Dário Grossi,Caratinga - MG, 35304-210",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Caratinga",
+      "stores": [
+        {
+          "name": "Dário Grossi",
+          "adress": "Av. Dário da Anunciação Grossi, 585 - Loja 1 - Dário Grossi,Caratinga - MG, 35304-210",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Caxambu",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Gabriel Alves Fernandes, 329 - Centro, Caxambu - MG, 37440-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Conselheiro Lafaiete",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Telésforo Cândido Rezende E, 530 - Centro,Conselheiro Lafaiete - MG, 36400-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Contagem",
+      "stores": [
+        {
+          "name": "Novo Eldorado",
+          "adress": "Av. João César de Oliveira, 6185 - Novo Eldorado, Contagem - MG, 32341-000",
+          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 18h30"
+        }
+      ]
+    },
+    {
+      "name": "Coronel Fabriciano",
+      "stores": [
+        {
+          "name": "Giovanini",
+          "adress": "Av. Gov. José de Magalhães Pinto, nº85 - Loja 02 - Giovanini,Coronel Fabriciano - MG, 35170-096",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Curvelo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Pacífico Mascarenhas, 222 - Centro,Curvelo - MG, 35790-132",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Diamantina",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. João Antunes de Oliveira, 376 - Centro, Diamantina - MG, 39100-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Divino",
+      "stores": [
+        {
+          "name": "Barra do Taquaracu",
+          "adress": "R. Pedro Alves de Abreu, 11 - Barra do Taquaracu,Divino - MG, 36820-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Divinópolis",
+      "stores": [
+        {
+          "name": "ABC da Construção 21 de abril",
+          "adress": "Av. 21 de Abril, 290 - Centro,Divinópolis - MG, 35500-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        },
+        {
+          "name": "ABC da Construção R. Goiás",
+          "adress": "R. Goiás, 1596 - Centro,Divinópolis - MG, 35500-617",
+          "opening_hours": "Seg a Sex 8:30h às 17:30h e Sáb. 8:30h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Ervália",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Gov. Valadares, 127 - Centro,Ervália - MG, 36555-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Espera Feliz",
+      "stores": [
+        {
+          "name": "Vale do Sol ll",
+          "adress": "BR-482, 4091, Vale do Sol ll,Espera Feliz - MG, 36830-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Extrema",
+      "stores": [
+        {
+          "name": "Ponte Nova",
+          "adress": "Av. Delegado Waldemar Gomes Pinto, 615 - Pte. Nova,Extrema - MG, 37640-000",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Formiga",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Artimenio Piva Toneli, 50 - Loja 03 - Centro, Formiga - MG, 35570-056",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Governador Valadares",
+      "stores": [
+        {
+          "name": "Nossa Senhora das Graças",
+          "adress": "Av. Minas Gerais, 1287 - Nossa Sra. das Gracas,Governador Valadares - MG, 35060-360",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Guanhães",
+      "stores": [
+        {
+          "name": "Novo Retiro",
+          "adress": "Av. Milton Campos, 1286 - Novo Retiro,Guanhães - MG, 39740-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Guaxupé",
+      "stores": [
+        {
+          "name": "Novo Retiro",
+          "adress": "Av. Ver. Nelson Elias, 1355 - Japy,Guaxupé - MG, 37800-000",
+          "opening_hours": "Seg a Sex 8:00h às 17:30h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Igarapé",
+      "stores": [
+        {
+          "name": "União",
+          "adress": "Av. Prof. Clóvis Salgado, 1769 - União,Igarapé - MG, 32900-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Ipanema",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua João Tremensaque, n° 17 - Centro,Ipanema - MG, 36950-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Ipatinga",
+      "stores": [
+        {
+          "name": "Cidade Nobre",
+          "adress": "Av. Carlos Chagas, nº 1096 - Cidade Nobre, Ipatinga - MG, 35162-359",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Ipuiúna",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rod. Juscelino Kubitschek de Oliveira, 55 - Centro,Ipuiúna - MG, 37588-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Itabira",
+      "stores": [
+        {
+          "name": "Alto Pereira",
+          "adress": "R. Israel Pinheiro, 66 - Alto Pereira,Itabira - MG, 35900-246",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Itabirito",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Waldir Salvador de Oliveira, 20 - Centro,Itabirito - MG, 35450-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Itajubá",
+      "stores": [
+        {
+          "name": "São Judas Tadeu",
+          "adress": "Av Presidente Tancredo de Almeida Neves, São Judas Tadeu, 542,Itajubá - MG, 37504-066",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Itamonte",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Pres. Vargas, 378 - Centro,Itamonte - MG, 37466-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "Itaúna",
+      "stores": [
+        {
+          "name": "Graças",
+          "adress": "Av. Jove Soares, 1549 - Graças,Itaúna - MG, 35680-346",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Janaúba",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Américo Soares, 764 - Centro,Janaúba - MG, 39442-002",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Januária",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Cel. Serrão, 409 - LOJA 8 - Centro,Januária - MG, 39480-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "João Monlevade",
+      "stores": [
+        {
+          "name": "Carneirinhos",
+          "adress": "Av. Gentil Bicalho, 493 - Carneirinhos,João Monlevade - MG, 35930-478",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "João Pinheiro",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Cap. Speridião, 722 - Loja 103 - Centro,João Pinheiro - MG, 38770-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Juatuba",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Antônio Sugasai, 114 - Centro,Juatuba - MG, 35675-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Juiz de Fora",
+      "stores": [
+        {
+          "name": "ABTAH",
+          "adress": "Av. Dr. Paulo Japiassú Coelho, 729 - Cascatinha,Juiz de Fora - MG, 36033-310",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+        },
+        {
+          "name": "ABC da Construção Bom Clima",
+          "adress": "R. Paracatu, 705 - Santa Terezinha,Juiz de Fora - MG, 36046-040",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        },
+        {
+          "name": "ABC da Construção Costa Carvalho",
+          "adress": "Av. Brasil, 1.100 - Costa Carvalho,Juiz de Fora - MG, 36070-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        },
+        {
+          "name": "ABC da Construção Jóquei Clube",
+          "adress": "Av. Doardino Longo, 669 - Jóquei Clube, Juiz de Fora - MG, 36085-050",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        },
+        {
+          "name": "ABC da Construção Matriz",
+          "adress": "Av. Francisco Bernardino, 115 - Centro, Juiz de Fora - MG, 36013-100",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        },
+        {
+          "name": "ABC da Construção Nova Era",
+          "adress": "Av. Presidente Juscelino Kubitschek, 5301/5321 - Nova Era,Juiz de Fora - MG, 36087-000",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 12h00"
+        },
+        {
+          "name": "ABC da Construção São Pedro",
+          "adress": "Rua José Lourenço, 710 - São Pedro,Juiz de Fora - MG, 36036-230",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        },
+        {
+          "name": "ABC da Construção Spazio",
+          "adress": "Ladeira Alexandre Leonel, 111 - Cascatinha,Juiz de Fora - MG, 36033-240",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Lagoa da Prata",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Prof. Jacinto Ribeiro, 470 - Centro,Lagoa da Prata - MG, 35590-054",
+          "opening_hours": "Seg a Sex 9:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Lavras",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Chagas Dória, 245 - Centro,Lavras - MG, 37200-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Leopoldina",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Getúlio Vargas, 82 - Centro,Leopoldina - MG, 36700-000",
+          "opening_hours": "Seg a Sex 7:00h às 18:00h e Sáb. 7:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Lima Duarte",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Raul Fonseca, 04 - Centro,Lima Duarte - MG, 36140-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Machado",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Artur Bernardes, 569 - Centro,Machado - MG, 37750-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Manhuaçu",
+      "stores": [
+        {
+          "name": "Engenho da Serra",
+          "adress": "R. Abalem Chibel Nacif, 60 - Engenho da Serra, Manhuaçu - MG, 36900-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Mariana",
+      "stores": [
+        {
+          "name": "Vila do Carmo",
+          "adress": "Av. Nossa Sra. do Carmo, 925 - Vila do Carmo, Mariana - MG, 35420-000",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Mateus Leme",
+      "stores": [
+        {
+          "name": "Estancia Champagnat",
+          "adress": "Av. Prefeito José Surdo, 1735 - Loja 103 - Estancia Champagnat,Mateus Leme - MG, 35670-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Matias Barbosa",
+      "stores": [
+        {
+          "name": "Parque dos Sabias",
+          "adress": "R. Solano Braga, 272 - Parque dos Sabias,Matias Barbosa - MG, 36120-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Mercês",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. São José, 70 - Centro,Mercês - MG, 36190-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "Miraí",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Avenida Presidente Medice, 150 - Centro, Miraí - MG, 36790-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Montalvânia",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Confúcio, 1568 - Centro,Montalvânia - MG, 39495-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Montes Claros",
+      "stores": [
+        {
+          "name": "Todos Os Santos",
+          "adress": "Av. Dep. Esteves Rodrigues, 1001 - Todos Os Santos, Montes Claros - MG, 39400-634",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 9:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Muriaé",
+      "stores": [
+        {
+          "name": "Barra",
+          "adress": "Av. Dr. Passos, 444 - Barra,Muriaé - MG, 36884-002",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Mutum",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Praça Benedito Valadares, 34 - Centro,Mutum - MG, 36955-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Nepomuceno",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. João Inácio Dias, 684 - Centro,Nepomuceno - MG, 37250-000",
+          "opening_hours": "Seg a Sex 7:00h às 17:00h e Sáb. 7:00h às 11h00"
+        }
+      ]
+    },
+    {
+      "name": "Nova Lima",
+      "stores": [
+        {
+          "name": "ABC da Construção Chácara Bom Retiro",
+          "adress": "Rod. José Francisco da Silva, 490 - Chácara Bom Retiro, Nova Lima - MG, 34002-000",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 14h00"
+        },
+        {
+          "name": "ABC da Construção Jardim Canada",
+          "adress": "Av. Toronto, 1.308 - Jardim Canada,Nova Lima - MG, 34000-975",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 14h00"
+        }
+      ]
+    },
+    {
+      "name": "Nova Lima",
+      "stores": [
+        {
+          "name": "ABC da Construção Chácara Bom Retiro",
+          "adress": "Rod. José Francisco da Silva, 490 - Chácara Bom Retiro, Nova Lima - MG, 34002-000",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 14h00"
+        }
+      ]
+    },
+    {
+      "name": "Nova Resende",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. João Silva, 716 - Centro,Nova Resende - MG, 37860-000",
+          "opening_hours": "Seg a Sex 8:00h às 16:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Nova Serrana",
+      "stores": [
+        {
+          "name": "Jardim do Lago",
+          "adress": "Av. Dom Cabral, 250 - Jardim do Lago, Nova Serrana - MG, 35522-008",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Ouro Branco",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Santo Antônio, 1140, CentroOuro Branco - MG, 36420-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Ouro Preto",
+      "stores": [
+        {
+          "name": "Cachoeira do Campo Centro",
+          "adress": "Br, 356 Rodovia dos Inconfidentes, 04 Cachoeira do Campo Centro,Ouro Preto - MG, 35410-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 14h00"
+        }
+      ]
+    },
+    {
+      "name": "Pará de Minas",
+      "stores": [
+        {
+          "name": "Vila Sinho",
+          "adress": "Av. Prof. Mello Cançado, 981 - Vila Sinho,Pará de Minas - MG, 35660-084",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Passa Quatro",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Cel. Ribeiro Pereira, 1171 - Centro,Passa Quatro - MG, 37460-000",
+          "opening_hours": "Seg a Sex 8:30h às 18:00h e Sáb. 8:30h às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "Patos de Minas",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Maj. Gote, 1401 - Centro,Patos de Minas - MG, 38700-001",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 14h00"
+        }
+      ]
+    },
+    {
+      "name": "Patrocínio",
+      "stores": [
+        {
+          "name": "São Vicente",
+          "adress": "Av. José Amando Queirós, 928 - São Vicente,Patrocínio - MG, 38740-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Pedro Leopoldo",
+      "stores": [
+        {
+          "name": "Cachoeira Grande",
+          "adress": "R. José Píres de Araújo, 363 - Cachoeira Grande,Pedro Leopoldo - MG, 33600-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Perdões",
+      "stores": [
+        {
+          "name": "Nome da Franquia",
+          "adress": "Vila Marginal Jaime Teixeira, 2275 - São Francisco,Perdões - MG, 37260-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Pirapora",
+      "stores": [
+        {
+          "name": "Santos Dumont",
+          "adress": "Av. Pio XII, 48 - Santos Dumont,Pirapora - MG, 39274-158",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Piumhi",
+      "stores": [
+        {
+          "name": "Nome da Franquia",
+          "adress": "Av. Pio XII, 48 - Santos Dumont,Pirapora - MG, 39274-158",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Poços de Caldas",
+      "stores": [
+        {
+          "name": "Jardim Elizabete",
+          "adress": "Avenida Mansur Frayra, 535 - Jardim Elizabete,Poços de Caldas - MG, 37704-355",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Ponte Nova",
+      "stores": [
+        {
+          "name": "Guarapiranga",
+          "adress": "Av. Dr. José Grossi, 158 - LJ 1 - Guarapiranga,Ponte Nova - MG, 35430-213",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Porteirinha",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Gov. Valadares, 357 - Centro,Porteirinha - MG, 39520-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Pouso Alegre",
+      "stores": [
+        {
+          "name": "Fatima",
+          "adress": "Av. Porfírio Ribeiro de Andrade, 375 - Fatima,Pouso Alegre - MG, 37550-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Ribeirão das Neves",
+      "stores": [
+        {
+          "name": "Veneza",
+          "adress": "R. Helena Sapori Faluba, nº581 - Veneza,Ribeirão das Neves - MG, 33820-170",
+          "opening_hours": "Seg a Sex 9:00h às 19:00h e Sáb. 9:00h às 14h00"
+        }
+      ]
+    },
+    {
+      "name": "Rio Pomba",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Felemon Tôrres, 34 - Centro,Rio Pomba - MG, 36180-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 14h30"
+        }
+      ]
+    },
+    {
+      "name": "Sabará",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Princesa Isabel, 21 - Centro,Sabará - MG, 34505-310",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Sabará",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Princesa Isabel, 21 - Centro,Sabará - MG, 34505-310",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Santa Luzia",
+      "stores": [
+        {
+          "name": "Duquesa I",
+          "adress": "Av. Brasília, N° 1351 - Duquesa I,Santa Luzia - MG, 33170-000",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Santos Dumont",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Afonso Pena, 194 - Centro,Santos Dumont - MG, 36240-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "São Gonçalo do Sapucaí",
+      "stores": [
+        {
+          "name": "Praião",
+          "adress": "R. do Ouro, 291 - Praião,São Gonçalo do Sapucaí - MG, 37490-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "São Gotardo",
+      "stores": [
+        {
+          "name": "Nossa Senhora Aparecida",
+          "adress": "Av. Pref. Erotides Batista, 792 - Nossa Senhora Aparecida, São Gotardo - MG, 38800-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:30h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "São João Del-Rei",
+      "stores": [
+        {
+          "name": "Fábricas",
+          "adress": "Av. Leite de Castro, 1400 - Fábricas,São João del Rei - MG, 36301-182",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "São João Nepomuceno",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Praça Dr. Augusto Glória, 327 - Lojas 123/124, Centro São João Nepomuceno, MG, 36680-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "São Lourenço",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Dr. Ribeiro da Luz, 173 - Centro,São Lourenço - MG, 37470-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Sete Lagoas",
+      "stores": [
+        {
+          "name": "Canaã",
+          "adress": "Av. Dr. Renato Azeredo, 569 - Canaã,Sete Lagoas - MG, 35700-312",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Tarumirim",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. São Geraldo, 307, Centro Tarumirim, MG, 35140-000",
+          "opening_hours": "Seg a Sex 7:00h às 18:00h e Sáb. 7:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Teófilo Otoni",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Dr. Luís Boali Pôrto Salman, 934 - Loja A - Centro, Teófilo Otoni - MG, 39802-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Tocantins",
+      "stores": [
+        {
+          "name": "Bela Vista",
+          "adress": "Av. Doutor João Cataldo Pinto 715 Bela Vista, BR-265, 715, Tocantins - MG, 36512-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "Três Corações",
+      "stores": [
+        {
+          "name": "Jardim das hortências",
+          "adress": "Av. Dep. Renato Azeredo, 1190 - Jardim das hortências, Três Corações - MG, 37410-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Três Marias",
+      "stores": [
+        {
+          "name": "Parque Diadorim",
+          "adress": "Av. Campos Gerais, 71 - Parque Diadorim, Três Marias - MG, 39205-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Três Pontas",
+      "stores": [
+        {
+          "name": "Aeroporto",
+          "adress": "Av. Ipiranga, 1320 - Aeroporto,Três Pontas - MG, 37190-000",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Ubá",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Padre Arnaldo Jansem, 06 - Centro, Ubá - MG, 36500-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Varginha",
+      "stores": [
+        {
+          "name": "ABC da Construção Conj. Hab. Centenario",
+          "adress": "Av. Celina Ferreira Ottoni, 2569 - Conj. Hab. Centenario,Varginha - MG, 37048-580",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        },
+        {
+          "name": "ABC da Construção Rezende",
+          "adress": "Av. Princesa do Sul, 1650 - Rezende,Varginha - MG, 37062-442",
+          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+        }
+      ]
+    },
+    {
+      "name": "Vespasiano",
+      "stores": [
+        {
+          "name": "Názia",
+          "adress": "Av. Thales Chagas, 675 - Názia,Vespasiano - MG, 33200-442",
+          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Viçosa",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Mal. Humberto Castelo Branco, 1.190 - Centro, Viçosa - MG, 36570-000",
+          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Visconde do Rio Branco",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Gen. Osório, 137 - Centro,Visc. do Rio Branco - MG, 36520-000",
+          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+        }
+      ]
+    },
+    {
+      "name": "Amparo",
+      "stores": [
+        {
+          "name": "Silvestre",
+          "adress": "Av. da Saudade, 490 - Silvestre, Amparo - SP, 13901-014",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Andradina",
+      "stores": [
+        {
+          "name": "Piscina",
+          "adress": "Av. Bandeirantes, 1961 - Piscina, Andradina - SP, 16901-445",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Aparecida",
+      "stores": [
+        {
+          "name": "Jardim Paraíba",
+          "adress": "Av. Sólon Pereira, 193 - Jardim Paraíba, Aparecida - SP, 12570-000",
+          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 8h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Araraquara",
+      "stores": [
+        {
+          "name": "Vila Sedenho",
+          "adress": "Av. Luís Alberto, 643 - Vila Sedenho, Araraquara - SP, 14806-005",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Artur Nogueira",
+      "stores": [
+        {
+          "name": "São Bento",
+          "adress": "Rod. Prefeito Aziz Lian, SP-107, Km 45 - São Bento, Artur Nogueira - SP, 13169-899",
+          "opening_hours": "Seg a Sex 7h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Arujá",
+      "stores": [
+        {
+          "name": "Jardim Limoeiro",
+          "adress": "Rod. Alberto Hinoto, 965 - Jardim Limoeiro, Arujá - SP, 07434-100",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Assis",
+      "stores": [
+        {
+          "name": "Vila Claudia",
+          "adress": "Av. Valter Antônio Fontana, 1155 - Vila Claudia, Assis - SP, 19815-340",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Atibaia",
+      "stores": [
+        {
+          "name": "ABC da Construção Jardim Paulista",
+          "adress": "Alameda Prof. Lucas Nogueira Garcez, 3027 - Jardim Paulista, Atibaia - SP, 12947-000",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h"
+        },
+        {
+          "name": "ABC da Construção Ponte",
+          "adress": "Av. São João, 1673 - Ponte, Atibaia - SP, 12940-260",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 15h"
+        }
+      ]
+    },
+    {
+      "name": "Avaré",
+      "stores": [
+        {
+          "name": "Jardim Paineiras",
+          "adress": "Av. Dr. Miguel Coutinho, 241 - Jardim Paineiras, Avaré - SP, 18705-640",
+          "opening_hours": "Seg a Sex 7h30 às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Bariri",
+      "stores": [
+        {
+          "name": "Vila São José",
+          "adress": "Av. Amazonas, 480 - Vila São José, Bariri - SP, 17257-062",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Barretos",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Vinte e Quatro, 290 - Centro, Barretos - SP, 14780-090",
+          "opening_hours": "Seg a Sex 9h às 18h30 e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Botucatu",
+      "stores": [
+        {
+          "name": "Vila Padovan",
+          "adress": "R. Visc. do Rio Branco, 1267 - Vila Padovan, Botucatu - SP, 18607-740",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Bragança Paulista",
+      "stores": [
+        {
+          "name": "Taboão",
+          "adress": "R. Tupi, 175 - Box 1 - Taboão, Bragança Paulista - SP, 12900-290",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h"
+        }
+      ]
+    },
+    {
+      "name": "Caçapava",
+      "stores": [
+        {
+          "name": "Residencial Esperanca",
+          "adress": "R. Romeu Cherquer, 48 - Res. Esperanca, Caçapava - SP, 12285-505",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Campinas",
+      "stores": [
+        {
+          "name": "Cambuí",
+          "adress": "Av. Cel. Silva Telles, 675 - Cambuí, Campinas - SP, 13024-001",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 14h"
+        }
+      ]
+    },
+    {
+      "name": "Cruzeiro",
+      "stores": [
+        {
+          "name": "Retiro da Mantiqueira",
+          "adress": "Av. Dr. Teodoro Quartim Barbosa, 780 - Retiro da Mantiqueira, Cruzeiro - SP, 12712-000",
+          "opening_hours": "Seg a Sex 7h30h às 18h e Sáb. 7h30h às 14h"
+        }
+      ]
+    },
+    {
+      "name": "Guaratinguetá",
+      "stores": [
+        {
+          "name": "ABC da Construção Campo do Galvão",
+          "adress": "Av. Juscelino Kubitscheck de Oliveira, 777 - Campo do Galvão, Guaratinguetá - SP, 12505-300",
+          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 9h30 às 13h"
+        },
+        {
+          "name": "ABC da Construção Jardim Bela Vista",
+          "adress": "R. Profa. Maria Aparecida Antunes Cavalca, 34 - Jardim Bela Vista, Guaratinguetá - SP, 12514-430",
+          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Indaiatuba",
+      "stores": [
+        {
+          "name": "Jardim Esplanada",
+          "adress": "Av Fábio Ferraz Bicudo - 1209, Jardim Esplanada, Indaiatuba - SP, 13331-742",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Itapira",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Rio Branco, 409 - Centro, Itapira - SP, 13970-070",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Itu",
+      "stores": [
+        {
+          "name": "Parque das Indústrias",
+          "adress": "Av. Caetano Ruggieri, 4540 - Parque das Industrias, Itu - SP, 13309-710",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Jacareí",
+      "stores": [
+        {
+          "name": "ABC da Construção Jardim California 1",
+          "adress": "Av. Getúlio Dorneles Vargas, 1600 - Jardim California, Jacareí - SP, 12305-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 18h"
+        },
+        {
+          "name": "ABC da Construção Jardim Califórnia 2",
+          "adress": "Av. Getúlio Dorneles Vargas, 2451 - Jardim California, Jacareí - SP, 12305-010",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        },
+        {
+          "name": "ABC da Construção São João",
+          "adress": "Av. Maria Augusta Fagundes Gomes, 65 - São João, Jacareí - SP, 12322-300",
+          "opening_hours": "Seg a Sex 9h às 18h30 e Sáb. 8h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Jaguariúna",
+      "stores": [
+        {
+          "name": "Jardim Europa",
+          "adress": "Av. Antônio Pinto Catão, 1954 - Jardim Europa, Jaguariúna - SP, 13914-002",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Lins",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Luiz Gama, 567 - Centro, Lins - SP, 16400-080",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Lorena",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. São José, 120 - Centro, Lorena - SP, 12600-560",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        },
+        {
+          "name": "Parque das Rodovias",
+          "adress": "Alameda Armênio Gomes, 15 - Parque das Rodovias, Lorena - SP, 12605-470",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Louveira",
+      "stores": [
+        {
+          "name": "Jardim Niero II",
+          "adress": "R. Euríco Dutra, 54 fundos - Jardim Niero II, Louveira - SP, 13290-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Matão",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Oreste Bozeli, 95 - Centro, Matão - SP, 15990-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Mogi das Cruzes",
+      "stores": [
+        {
+          "name": "Vila Suissa",
+          "adress": "Av. Francisco Rodrigues Filho, 580 - Vila Suissa, Mogi das Cruzes - SP, 08810-000",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Mogi Guaçu",
+      "stores": [
+        {
+          "name": "Parque Cidade Nova",
+          "adress": "Av. Júlio Xavier da Silva, 53 - Parque Cidade Nova, Mogi Guaçu - SP, 13845-414",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Mogi Mirim",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Professor Ferreira Lima, 100 - Centro, Mogi Mirim - SP, 13800-199",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Pindamonhangaba",
+      "stores": [
+        {
+          "name": "São Benedito",
+          "adress": "Av. Albuquerque Lins, 653 - São Benedito, Pindamonhangaba - SP, 12410-030",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Piracaia",
+      "stores": [
+        {
+          "name": "Guaxinduva",
+          "adress": "SP-036, 78 – Guaxinduva, Mairiporã - SP, 12970-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Piracicaba",
+      "stores": [
+        {
+          "name": "Piracicamirim",
+          "adress": "Av. Dois Córregos, 153 - Piracicamirim, Piracicaba - SP, 13420-610",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Pirituba",
+      "stores": [
+        {
+          "name": "Vila Pirituba",
+          "adress": "Av. Mutinga, 682 - Vila Pirituba, Pirituba - SP, 05154-000",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Praia Grande",
+      "stores": [
+        {
+          "name": "Guilhermina",
+          "adress": "Av. Dr. Roberto de Almeida Vinhas, 348 - Guilhermina, Praia Grande - SP, 11707-520",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "Ribeirão Preto",
+      "stores": [
+        {
+          "name": "Maurílio Biagi",
+          "adress": "Av. Maurílio Biagi, 510 - Santa Cruz do Jose Jacques, Ribeirão Preto - SP, 14020-750",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 18h"
+        }
+      ]
+    },
+    {
+      "name": "Santa Isabel",
+      "stores": [
+        {
+          "name": "Vila Nova",
+          "adress": "R. Vereador, R. Sebastião Claudiano, 296 - Vila Nova, Santa Isabel - SP, 07500-000",
+          "opening_hours": "Seg a Sex 7h30 às 18h e Sáb. 7h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Santo Antônio de Posse",
+      "stores": [
+        {
+          "name": "Vila Bianchi",
+          "adress": "Av. da Saudade, 584 - Vila Bianchi, Santo Antônio de Posse - SP, 13830-030",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "São Bernardo do Campo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Santa Filomena, 289 - Centro, São Bernardo do Campo - SP, 09710-060",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "São José do Rio Preto",
+      "stores": [
+        {
+          "name": "Jardim Moyses Miguel Haddad",
+          "adress": "Av. Pres. Juscelino K. de Oliveira, 3653 - Jardim Moyses Miguel Haddad, São José do Rio Preto - SP, 15093-215",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "São José dos Campos",
+      "stores": [
+        {
+          "name": "Vila Ema",
+          "adress": "R. Me. Paula de São José, 162 - Vila Ema, São José dos Campos - SP, 12243-010",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "São Roque",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Brasil, 145 - Centro, São Roque - SP, 18130-485",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h"
+        }
+      ]
+    },
+    {
+      "name": "Sertãozinho",
+      "stores": [
+        {
+          "name": "Jardim Diamante",
+          "adress": "Av. Egisto Sichieri, 1203 - Jardim Diamante, Sertãozinho - SP, 14177-131",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Sorocaba",
+      "stores": [
+        {
+          "name": "Parque Campolim",
+          "adress": "R. Raphael Dias da Silva, 205 - Parque Campolim, Sorocaba - SP, 18048-120",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h"
+        }
+      ]
+    },
+    {
+      "name": "Taguaí",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. José Inácio Ribeiro, 297 - Centro, Taguaí - SP, 18890-075",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Taubaté",
+      "stores": [
+        {
+          "name": "Jardim Julieta",
+          "adress": "Rod. Oswaldo Cruz, 1620 - KM 2 - Jardim Julieta, Taubaté - SP, 12090-700",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 9h às 14h"
+        }
+      ]
+    },
+    {
+      "name": "Ubatuba",
+      "stores": [
+        {
+          "name": "Jardim Carolina",
+          "adress": "Rod. Oswaldo Cruz, 2221 - Sala 2219 - Jardim Carolina, Ubatuba - SP, 11691-032",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 18h"
+        }
+      ]
+    },
+    {
+      "name": "Afonso Cláudio",
+      "stores": [
+        {
+          "name": "Grama",
+          "adress": "Av. Inácio Lamas, 129 - Grama, Afonso Cláudio - ES, 29600-000",
+          "opening_hours": "Seg a Sex 8h às 17h30 e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Baixo Guandu",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Antônio Sampaio, 675 - Centro Baixo Guandu - ES, 29730-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Colatina",
+      "stores": [
+        {
+          "name": "Lacê",
+          "adress": "Av. Silvio Avidos, 351 - Lacê Colatina - ES, 29703-070",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Guaçuí",
+      "stores": [
+        {
+          "name": "Loteamento Santa Cecilia",
+          "adress": "Rodovia Br 482, S/N° - Lote 120, Quadra - Loteamento Santa Cecilia Guaçuí - ES, 29560-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Guarapari",
+      "stores": [
+        {
+          "name": "Aeroporto",
+          "adress": "Av. Padre José Anchieta, 3116 - Loja 03 - Aeroporto, Guarapari - ES, 29216-705",
+          "opening_hours": "Seg a Sex 8h às 17h30 e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Iconha",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. José Donatelli, 42 - Centro Iconha - ES, 29280-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Iúna",
+      "stores": [
+        {
+          "name": "Iuna",
+          "adress": "R. Cap. João Inácio de Almeida, 96 - Centro Iúna - ES, 29390-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Linhares",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Vitória, 1803 - Centro, Linhares - ES, 29900-084",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 12h30"
+        }
+      ]
+    },
+    {
+      "name": "Mimoso do Sul",
+      "stores": [
+        {
+          "name": "Pratinha",
+          "adress": "R. Dr. José Monteiro da Silva, 639 - Pratinha, Mimoso do Sul - ES, 29400-000",
+          "opening_hours": "Seg a Dom 8h às 18h"
+        }
+      ]
+    },
+    {
+      "name": "Serra",
+      "stores": [
+        {
+          "name": "Jardim Limoeiro",
+          "adress": "Av. Des. Mário da Silva Nunes, 1411 - Jardim Limoeiro, Serra - ES, 29164-044",
+          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 8h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Vitória",
+      "stores": [
+        {
+          "name": "Santa Lucia",
+          "adress": "Av. Leitão da Silva, 1506 - Santa Lucia, Vitória - ES, 29056-186",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Araruama",
+      "stores": [
+        {
+          "name": "Pontinha",
+          "adress": "R. Narciso Lovato, s/n - Pontinha Araruama - RJ, 28981-745",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Bom Jesus do Itabapoana",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Gov. Roberto Silveira, 25 - Centro, Bom Jesus do Itabapoana - RJ, 28360-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Cachoeiras de Macacu",
+      "stores": [
+        {
+          "name": "ABC da Construção Japuíba",
+          "adress": "RJ-116, Km 28 - Loja 01 - Japuíba Cachoeiras de Macacu - RJ, 28685-000",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        },
+        {
+          "name": "ABC da Construção Pupucaia",
+          "adress": "RJ-116, Km 20 - Loja 01 - Papucaia, Cachoeiras de Macacu - RJ, 28695-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 14h"
+        }
+      ]
+    },
+    {
+      "name": "Itaguaí",
+      "stores": [
+        {
+          "name": "Brisamar",
+          "adress": "Rod. Rio-Santos, 7 - Brisamar Itaguaí - RJ, 23825-205",
+          "opening_hours": "Seg a Sex 8h às 17h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Itaperuna",
+      "stores": [
+        {
+          "name": "Cidade Nova",
+          "adress": "Av. Dep. Carlos Pinto Filho, 175 - Cidade Nova Itaperuna - RJ, 28300-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Itatiaia",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. dos Expedicionários, 580 - loja 03 - Centro Itatiaia - RJ, 27580-000",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Macaé",
+      "stores": [
+        {
+          "name": "Riviera Fluminense",
+          "adress": "Av. Carlos Augusto Tinoco Garcia, 1450 - Riviera Fluminense Macaé - RJ, 27937-590",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Magé",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. João Valerio, 40 - Centro Magé - RJ, 25900-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Maricá",
+      "stores": [
+        {
+          "name": "São José de Imbassai",
+          "adress": "RJ-106, s/n - km 23 - São José de Imbassai Maricá - RJ, 24900-065",
+          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 14h"
+        }
+      ]
+    },
+    {
+      "name": "Niterói",
+      "stores": [
+        {
+          "name": "São Francisco",
+          "adress": "Av. Pres. Roosevelt, 175 - São Francisco, Niterói - RJ, 24360-066",
+          "opening_hours": "Seg a Sáb 9h às 18h"
+        }
+      ]
+    },
+    {
+      "name": "Nova Friburgo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Padre Roberto Sabóia de Medeiros, 03 - Centro Nova Friburgo - RJ, 28625-080",
+          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Paraíba do Sul",
+      "stores": [
+        {
+          "name": "Jatoba",
+          "adress": "Av. Dr. Randolfo Pena, N° 1021 - Jatoba Paraíba do Sul - RJ, 25850-000",
+          "opening_hours": "Seg a Sex 7h30 às 18h e Sáb. 7h30 às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Petrópolis",
+      "stores": [
+        {
+          "name": "ABC da Construção Itaipava",
+          "adress": "Estr. União e Indústria, 9785 - Itaipava Petrópolis - RJ, 25730-736",
+          "opening_hours": "Seg a Sáb 9h às 18h"
+        },
+        {
+          "name": "ABC da Construção Quitandinha",
+          "adress": "R. Gen. Rondon, 1317 - Quitandinha Petrópolis - RJ, 25650-027",
+          "opening_hours": "Seg a Sab 9h às 18h e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Resende",
+      "stores": [
+        {
+          "name": "Santa Isabel",
+          "adress": "Av. Tenente-Coronel Adalberto Mendes, 1560 - Santa Isabel Resende - RJ, 27522-240",
+          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Rio das Ostras",
+      "stores": [
+        {
+          "name": "Jardim Mariléa",
+          "adress": "Av. Jane Maria Martins Figueira, 519 - Jardim Mariléa Rio das Ostras - RJ, 28896-013",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
         }
       ]
     },
@@ -149,14 +1979,94 @@
       "name": "Rio de Janeiro",
       "stores": [
         {
-          "name": "Loja Rio 1",
-          "adress": "Endereço Rio 1",
-          "opening_hours" : "Seg a Sex 7h às 17h e Sáb. 8h às 11h30"
+          "name": "ABC da Construção Barra da Tijuca",
+          "adress": "Condomínio Barra Express - Av. Ayrton Senna, 3383 - Loja 102 - Barra da Tijuca Rio de Janeiro - RJ, 22775-004",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 13h"
         },
         {
-          "name": "Loja Rio 2",
-          "adress": "Endereço Rio 2",
-          "opening_hours" : "Seg a Sex 7h às 17h"
+          "name": "ABC da Construção Centro",
+          "adress": "R. Frei Caneca, 77 - Centro Rio de Janeiro - RJ, 20211-030",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        },
+        {
+          "name": "ABC da Construção Copacabana",
+          "adress": "R. Barata Ribeiro, 70 - Copacabana Rio de Janeiro - RJ, 22011-002",
+          "opening_hours": "Seg. 10h às 18h, Ter a Sex 9h às 18h e Sáb. 9h às 14h"
+        },
+        {
+          "name": "ABC da Construção Ilha do Governador",
+          "adress": "Ilha do Governador, Estrada do Galeão, 1290 - Jardim Carioca Rio de Janeiro - RJ, 21931-522",
+          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 18h"
+        },
+        {
+          "name": "ABC da Construção Ipanema",
+          "adress": "R. Farme de Amoedo, 122 - Ipanema Rio de Janeiro - RJ, 22420-020",
+          "opening_hours": "Seg a Quinta 9h às 18h, Sex 9h às 14h e Sáb. 9h às 18h"
+        },
+        {
+          "name": "ABC da Construção Recreio dos Bandeirantes",
+          "adress": "Av. das Américas, 16701 - Recreio dos Bandeirantes Rio de Janeiro - RJ, 22790703",
+          "opening_hours": "Seg a Sáb. 9h às 19h"
+        }
+      ]
+    },
+    {
+      "name": "Santo Antônio de Pádua",
+      "stores": [
+        {
+          "name": "ABC da Construção Santo Antônio de Pádua",
+          "adress": "Rod. 186 Santa Afra, 186 Santo Antônio de Pádua - RJ, 28470-000",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h"
+        }
+      ]
+    },
+    {
+      "name": "Teresópolis",
+      "stores": [
+        {
+          "name": "Várzea",
+          "adress": "Av. Feliciano Sodré, 66 - Várzea Teresópolis - RJ, 25963-081",
+          "opening_hours": "Seg a Sáb. 9h às 18h"
+        }
+      ]
+    },
+    {
+      "name": "Três Rios",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Barão do Rio Branco, 466 - Centro Três Rios - RJ, 25804-010",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 14h"
+        }
+      ]
+    },
+    {
+      "name": "Volta Redonda",
+      "stores": [
+        {
+          "name": "Vila Santa Cecília",
+          "adress": "R. Trinta e Três, 187 - Vila Santa Cecília Volta Redonda - RJ, 27261-310",
+          "opening_hours": "Seg a Sex 9h às 18h30 e Sáb. 9h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Londrina",
+      "stores": [
+        {
+          "name": "Jardim Shangri-Lá",
+          "adress": "Av. Tiradentes, 540 - Jardim Shangri-Lá, Londrina - PR, 86070-545",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
+        }
+      ]
+    },
+    {
+      "name": "Brasília",
+      "stores": [
+        {
+          "name": "Asa Sul",
+          "adress": "W3 Sul, 511, Bloco A, Loja 03, Asa Sul, Brasília - DF, 70361-510",
+          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h"
         }
       ]
     }

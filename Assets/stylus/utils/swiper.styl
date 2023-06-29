@@ -1,28 +1,38 @@
 .swiper
   &:not(.swiper-initialized)
-    .swiper-button
-    ~.swiper-button
+    .swiper-button, ~.swiper-button
       &-prev, &-next
-        display none
+        display: none;
+
   &-container
-    position relative
+    position: relative;
+
   &-wrapper
     margin: 0;
     padding: 0;
 
   &-button
     &-prev, &-next
-      margin 0
-      transform translateY(-50%)
-      width 30px
-      height 30px
-      color #5D5D5D
-      z-index 1
-      transition $transition
+      z-index: 1;
+      margin: 0;
+      width: 30px;
+      height: 30px;
+      background: none;
+      color: #5D5D5D;
+      transition: $transition;
+      transform: translateY(-50%);
+
       &:hover
-        color $primary
+        color: $primary;
+
       &:after
         content: none;
+
+      &.swiper-button-disabled
+        pointer-events: all;
+
+        &:hover
+          color: inherit;
 
     &-prev
       @media desktop

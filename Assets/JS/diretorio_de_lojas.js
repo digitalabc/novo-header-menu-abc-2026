@@ -143,7 +143,7 @@ $(".lojas__form--select").on("change", function(){
     $(`.lojas__bottom--container ul[data-estado*="${$(this).val()}"]`).show()
   }
   else{
-    $(".lojas__bottom--container .col").css("display", "block")
+    $(".lojas__bottom--container .col").css("display", "flex")
     $(".lojas__bottom--container ul").show()
   }
 })

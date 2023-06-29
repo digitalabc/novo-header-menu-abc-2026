@@ -15,8 +15,9 @@
 {{~ top_level = menus | group.get null | array.sort "order" ~}}
 {{~ end ~}}
 {{~ grouped_categories = categories | group.by @(do; ret $0.parent_category_id;end) ~}}
+
 {{~ if grouped_categories ~}}
-  {{~ all_categories = grouped_categories | group.get 0 | array.sort "name" ~}}
+  {{~ all_categories = grouped_categories | group.get 0  ~}}
 {{~ end ~}}
 
 {{ topbar }}
@@ -40,7 +41,7 @@
         </div>
 
         {{##  Menu mobile ##}}
-        {{ menu_mobile checkout_url: store.urls.checkout}}
+        {{ menu_mobile main_categories: all_categories checkout_url: store.urls.checkout }}
 
         {{ ## Logo ## }}
         <div class="navbar__logo">

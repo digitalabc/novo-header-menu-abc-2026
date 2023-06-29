@@ -428,97 +428,109 @@
 
 
   &__information
-    display flex
-    flex-wrap wrap
+    display: flex;
+    flex-wrap: wrap;
+
     @media desktop
-      margin-bottom 60px
+      margin-bottom: 60px;
+
       &::before
-        content ''
-        width 100%
-        height 3px
-        background #E6E6E6
-        display block
-        order -1
-        margin-bottom 25px
+        display: block;
+        order: -1;
+        margin-bottom: 25px;
+        width: 100%;
+        height: 3px;
+        background: #E6E6E6;
+        content: "";
+
     h2
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 0;
+      font-weight: 400;
       font-size: 20px;
       line-height: 19px;
       cursor: pointer;
-      font-weight 400
+
       @media mobile
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        color: #333333;
         font-weight: 500;
-        color: #333333
-        width 100%
-        display flex
-        align-items center
-        justify-content space-between
+
         &.active
           svg
             transform: rotate(0);
 
       @media desktop
-        color #6E6D6D
-        order -2
-        padding 0 25px 10px
-        position relative
+        position: relative;
+        order: -2;
+        padding: 0 25px 10px;
+        color: #6E6D6D;
+
         &:after
-          content ''
-          display block
-          position absolute
-          left 0
-          top 100%
-          width 100%
-          height 3px
-          background $primary
-          z-index 1
-          opacity 0
-          transition $transition
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 1;
+          display: block;
+          width: 100%;
+          height: 3px;
+          background: $primary;
+          content: "";
+          opacity: 0;
+          transition: $transition;
+
         &.active
-          color: #333333
+          color: #333333;
           font-weight: 500;
+
           &:after
-            opacity 1
+            opacity: 1;
+
         &:not(last-of-type)
-          margin-right 100px
+          margin-right: 100px;
 
         &:first-of-type
-          padding-left 0
+          padding-left: 0;
 
       svg
-        transition $transition
+        transition: $transition;
         transform: rotate(180deg);
-        @media desktop
-          display none
 
+        @media desktop
+          display: none;
 
     > div
-      color: #333333
+      width: 100%;
+      color: #333333;
       font-size: 14px;
       line-height: 25px;
-      transition $transition
-      width 100%
-      @media desktop
-        display none
+      transition: $transition;
+
+      // @media desktop
+      //   display: none;
+
       @media mobile
         overflow: hidden;
+        margin-bottom: 60px;
         max-height: 0;
-        margin-bottom 60px
-      
+
       &.show
-        @media desktop
-          display block
+        // @media desktop
+        //   display: block;
+
         @media mobile
+          padding-top: 20px;
           max-height: 1500px;
-          padding-top 20px
-    
+
     iframe
-      max-width 100%
-      aspect-ratio 16 / 9
+      max-width: 100%;
       height: auto;
+      aspect-ratio: 16 / 9;
 
   .product-shipping
       margin-bottom 15px
@@ -814,7 +826,7 @@
     font-weight 500
     @media mobile
       font-size 14px
-  .buy-button
+  .buy-button, .pick-up-button
     display none
 
   .add-to-cart-button
@@ -838,3 +850,29 @@
 
     &:not([disabled]):hover
       background: $primary;
+      
+  .pick-up-button
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #0FA848;
+    background: #fff;
+    color: #0FA848;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: $transition;
+
+    @media (min-width: 450px)
+      width: 215px;
+
+    &[disabled]
+      border: 1px solid #B4B4B4;
+      background: #B4B4B4;
+      color: #fff;
+      cursor: not-allowed;
+
+    &:not([disabled]):hover
+      background: #0FA848;
+      color: #fff;

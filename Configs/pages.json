@@ -36,9 +36,16 @@
                 "query": "generic.graphql"
             },
             {
-                "urlMatch": "diretorio-de-lojas/minas-gerais/belo-horizonte",
+                "urlMatch": "diretorio-de-lojas/minas-gerais/*",
                 "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql"
+                "query": "generic.graphql",
+                "priority": 1
+            },
+            {
+                "urlMatch": "diretorio-de-lojas/rio-de-janeiro/*",
+                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql",
+                "priority": 1
             },
             {
                 "urlMatch": "auaha-loja-por-cidade",

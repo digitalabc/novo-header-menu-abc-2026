@@ -108,20 +108,32 @@ var toggle = function (elem) {
  * Floating Whatsapp
  */
 
-if (window.location.href.indexOf('checkout') != -1) {
-  document.getElementById('whatsapp').hide();
-} else {
-  document.getElementById('whatsapp').addEventListener("click", function () {
-    setTimeout(function () {
-      dataLayer.push({
-        'event': 'whatsapp'
-      });
-      // fbq('track', 'Contact');
+document.getElementById('whatsapp')?.addEventListener("click", function () {
+  setTimeout(function () {
+    dataLayer.push({
+      'event': 'whatsapp'
+    });
+    // fbq('track', 'Contact');
 
-      const url = "https://api.whatsapp.com/send?phone=553192490299&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es";
+    const url = "https://api.whatsapp.com/send?phone=553192490299&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es";
 
-      window.location.href = url
+    window.location.href = url
 
-    }, 500);
-  });
+  }, 500);
+});
+
+
+function scrollElement(target, button) {
+  window.scrollTo(0, Position(target));
+  togglePickUp(button)
+}
+
+function Position(obj) {
+  var currenttop = 0;
+  if (obj.offsetParent) {
+    do {
+      currenttop += obj.offsetTop - 144;
+    } while ((obj = obj.offsetParent));
+    return [currenttop];
+  }
 }

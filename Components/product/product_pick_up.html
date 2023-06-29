@@ -1,6 +1,6 @@
 <div class="pick-up">
   <div class="state">
-    <p class="state__header">Escolha o Estado</p>
+    <p class="state__header">Escolha a cidade</p>
     <select class="state__select" name="pick-up-state" id="pick-up-state" >
       {{~ for state in settings.pick_up_states ~}}
         <option value="{{ state.name | string.handleize }}">{{ state.name }}</option>

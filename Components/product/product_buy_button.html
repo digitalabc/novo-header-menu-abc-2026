@@ -1,9 +1,15 @@
 <button type="button" class="buy-button" value="{{ btn_value }}" onclick="{{ buy_click }}" {{~ if disabled ~}} disabled {{~ end ~}}>
   {{ buy_text }}
 </button>
-<button type="button" class="pick-up-button" onclick="togglePickUp(this)">
-  Retire em loja
-</button>
+{{ if floating }}
+  <button type="button" class="pick-up-button" onclick= "scrollElement(document.querySelector('.product__title'), document.getElementById('pickup-button'))">
+    Retire em loja
+  </button>
+{{ else }}
+  <button type="button" class="pick-up-button" id="pickup-button" onclick="togglePickUp(this)">
+    Retire em loja
+  </button>
+{{ end }}
 {{~ if product_is_box && page_product ~}}
   <a class="buy-whatsapp-button secondary-button" href="{{ settings.whatsapp_link }}?text=Olá! Gostaria de comprar este produto: {{ shop.main_url }}produto/{{ product.alias }}" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18.106" viewBox="0 0 18 18.106">

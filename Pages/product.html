@@ -2,17 +2,17 @@
 <html lang="pt-BR">
 
 <head>
-    {{ default_title_product = data.product.product_name | string.append " | ABC da Construção" }}
-    {{ header default_title: default_title_product seo: data.product.seo}}
-    {{ product_structured_data product: data.product current_url: store.urls.current }}
+  {{ default_title_product = data.product.product_name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_product seo: data.product.seo}}
+  {{ product_structured_data product: data.product current_url: store.urls.current }}
 </head>
 
 <body class="product">
-    <header>
-        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
-    </header>
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+  </header>
 
-    {{~ 
+  {{~ 
       product = data.product
       shop = data.shop
       product_has_specialist_popup = false
@@ -20,18 +20,18 @@
       product_show_coupon = false
     ~}}
 
-    {{~ for category in product.product_categories ~}}
-      {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
-        {{ product_has_specialist_popup = true }}
-      {{~ end ~}}
-    {{~ end ~}}
+  {{~ for category in product.product_categories ~}}
+  {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
+  {{ product_has_specialist_popup = true }}
+  {{~ end ~}}
+  {{~ end ~}}
 
-    {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936"] }}
-    {{~ if (product.product_brand?.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
-      {{ product_hide_pix = true }}
-    {{~ end ~}}
+  {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936"] }}
+  {{~ if (product.product_brand?.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
+  {{ product_hide_pix = true }}
+  {{~ end ~}}
 
-    {{ 
+  {{ 
       _marcasCupom = { docol: "DOCOL"}
       _skusParaCupom = {
         docol: [
@@ -42,90 +42,71 @@
         ],
       } 
     }}
-    {{~ for marca in _marcasCupom | object.keys ~}}
-      {{~ if (product.product_brand | string.contains marca) && (_skusParaCupom[marca] | array.contains product.sku) ~}}
-        {{ product_show_coupon = true }}
-        <input type="hidden" id="product-coupon" name="product-coupon" value="{{ _marcasCupom[marca] }}">
-      {{~ end ~}}
-    {{~ end ~}}
+  {{~ for marca in _marcasCupom | object.keys ~}}
+  {{~ if (product.product_brand | string.contains marca) && (_skusParaCupom[marca] | array.contains product.sku) ~}}
+  {{ product_show_coupon = true }}
+  <input type="hidden" id="product-coupon" name="product-coupon" value="{{ _marcasCupom[marca] }}">
+  {{~ end ~}}
+  {{~ end ~}}
 
-    {{~ if (product.product_brand | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
-      {{ product_hide_pix = true }}
-    {{~ end ~}}
+  {{~ if (product.product_brand | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
+  {{ product_hide_pix = true }}
+  {{~ end ~}}
 
-    <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
-    <input type="hidde\\
-    n" id="product-variant-id" name="product-variant-id"
-        value="{{ data.product.product_variant_id }}">
+  <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
+  <input type="hidden" id="product-variant-id" name="product-variant-id" value="{{ data.product.product_variant_id }}">
 
-    <div class="container">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-        {{~ breadcrumb breadcrumbs: product.breadcrumbs product: product ~}}
-        \\\\\\\\
-        <div id="product-view-div-{{ product.product_id }}" class="product__view">
-            {{ product_view product: product product_hide_pix: product_hide_pix }}
-        </div>
-
-        <div class="product__buy-together">
-            {{ buy_together product: product }}
-        </div>
-
-        <div class="obs mobile">
-          Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas exclusivamente pelo site. O frete não está incluso. Fotos meramente ilustrativas.
-        </div>
-        
-        <!-- Description -->
-        {{~ if product.informations ~}}
-          {{ product_information informations: product.informations }}
-        {{~ end ~}}
-        
-        <div class="product__reviews">
-          <h2>### Avaliaçoes Opniões Verificadas ###</h2>
-        </div>
-        {{~ if data.product_recommendations | array.size > 0 ~}}
-        <section class="product__recommendation showcase">
-          <h2>{{ "Quem viu, viu também" | lang }}</h2>
-          {{ spot_carousel class: "related-products" products: data.product_recommendations show_buy_mobile: true }}
-        </section>
-        {{~ end ~}}
+  <div class="container">
+    {{~ breadcrumb breadcrumbs: product.breadcrumbs product: product ~}}
+    <div id="product-view-div-{{ product.product_id }}" class="product__view">
+      {{ product_view product: product product_hide_pix: product_hide_pix }}
     </div>
 
-    {{ product_floating product: product }}
-    
-    {{~ if product_has_specialist_popup ~}}
-      {{ product_popup }}
+    <div class="product__buy-together">
+      {{ buy_together product: product }}
+    </div>
+
+    <div class="obs mobile">
+      Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas exclusivamente pelo
+      site. O frete não está incluso. Fotos meramente ilustrativas.
+    </div>
+
+    <!-- Description -->
+    {{~ if product.informations ~}}
+    {{ product_information informations: product.informations }}
     {{~ end ~}}
 
-    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
-
-    {{ footer products:common.lighbox_products.products.nodes }}
-
-    {{ gtm_config gtm_id: common.gtm_id }}
-    {{ gtm_product_view product: data.product  }}
-
-    {{ sdk_client }}
-    
-    {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring"]}}
-
-    {{~ if product_show_coupon ~}}
-      {{ asset type: "js" paths: ["product_cupom"]}}
+    <div style="display: none;" class="product__reviews">
+      <h2>### Avaliaçoes Opniões Verificadas ###</h2>
+    </div>
+    {{~ if data.product_recommendations | array.size > 0 ~}}
+    <section class="product__recommendation showcase">
+      <h2>{{ "Quem viu, viu também" | lang }}</h2>
+      {{ spot_carousel class: "related-products" products: data.product_recommendations show_buy_mobile: true }}
+    </section>
     {{~ end ~}}
+  </div>
+
+  {{ product_floating product: product }}
+
+  {{~ if product_has_specialist_popup ~}}
+  {{ product_popup }}
+  {{~ end ~}}
+
+  <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ gtm_config gtm_id: common.gtm_id }}
+  {{ gtm_product_view product: data.product  }}
+
+  {{ sdk_client }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "elevate-zoom"]}}
+
+  {{~ if product_show_coupon ~}}
+  {{ asset type: "js" paths: ["product_cupom"]}}
+  {{~ end ~}}
 </body>
 
 </html>

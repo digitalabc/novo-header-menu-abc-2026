@@ -7,11 +7,56 @@
         price_field_filter minimum_price: data_search.aggregations.minimum_price maximum_price: data_search.aggregations.maximum_price
 ## }}
 
-<div class="range-values">
-    <div id="min-value-text">{{ minimum_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</div>
-    <div id="max-value-text">+{{ maximum_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</div>
-</div>
-<div class="range-slider">
-    <input type="hidden" class="form-control" id="minimum-price-filter">
-    <input type="range" class="form-control" id="maximum-price-filter" min="{{ minimum_price }}" max="{{ maximum_price }}">
+<div class="w-48">
+    {{~ first = aggregations.minimum_price ~}}
+    {{~ last = aggregations.maximum_price ~}}
+    {{~ if last && last > 0 ~}}
+    <!--Slider-->
+    <div>
+        <input id="price-range-min-value" hidden value="{{ first }}" />
+        <input id="price-range-max-value" hidden value="{{ last }}" />
+        <input id="price-min-selected" hidden value="{{ first }}" />
+        <input id="price-max-selected" hidden value="{{ last }}" />
+
+        <div id="price-range-slider" class="relative h-3 mt-4">
+            <div class="absolute left-3 right-3">
+
+                <div id="unselected-left" style="width:0%;" class="absolute left-0 h-10px bg-secondary-300"></div>
+
+                <div id="unselected-right" style="width:0%;" class="absolute right-0 h-10px bg-secondary-300"></div>
+
+                <div id="selected-range-slider" style="left:0%;right:0%;" class="absolute left-0 h-10px bg-primary-500">
+                </div>
+
+                <span thumb id="slider-thumb-left" class="absolute bg-primary-600" style="left:0%;"></span>
+                <span thumb id="slider-thumb-right" class="absolute bg-primary-600" style="left:100%;"></span>
+            </div>
+            <input id="price-slider-min" type="range" tabindex="0" value="0" max="100" min="0" step="0.1"
+                oninput="refreshMin(this)" aria-label="Preço mínimo" />
+            <input id="price-slider-max" type="range" tabindex="0" value="100" max="100" min="0" step="0.1"
+                oninput="refreshMax(this)" aria-label="Preço máximo" />
+        </div>
+    </div>
+    <!--Fields-->
+    <div id="price-selection-fields" class="flex items-center justify-between pt-3 text-sm">
+        <input type="number" id="minimum-price-filter" class="p-1 text-xs text-center border border-secondary-200 rounded-lg bg-secondary-50 
+                focus:border-primary-400 focus:ring-transparent min-w-[75px]"
+            oninput="refreshMin(document.getElementById('price-slider-min'), this.value)" min="{{ minimum_price }}"
+            max="{{ maximum_price }}" placeholder="{{ minimum_price | math.format "F2" "pt-BR"}}">
+        <input type="number" id="maximum-price-filter" class="p-1 text-xs text-center border border-secondary-200 rounded-lg bg-secondary-50
+                focus:border-primary-400 focus:ring-transparent min-w-[75px]"
+            oninput="refreshMax(document.getElementById('price-slider-max'), this.value)" min="{{ minimum_price }}"
+            max="{{ maximum_price }}" placeholder="{{ maximum_price | math.format "F2" "pt-BR"}}">
+
+        <button type="button" title="filtrar preços" id="apply-price-filter" onclick="setFieldPriceFilter();" class="p-2 text-white bg-primary-600 rounded-lg border border-primary-600 
+                hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300">
+            <svg aria-hidden="true" fill="none" stroke="#e30613" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z ">
+                </path>
+            </svg>
+        </button>
+    </div>
+    {{~ end ~}}
 </div>

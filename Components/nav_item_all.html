@@ -9,7 +9,7 @@
 
 {{~ nextLevel = level + 1 ~}}
 
-<li class="nav-all__item nav-all__item--nv{{level}}">
+<li class="nav-all__item nav-all__item--nv{{level}}" {{if category.position > 0}}style="order: {{category.position}}"{{else}}style="order: 99"{{end}}>
   <a href="/{{ category.hotsite_url }}" class="nav-all__link nav-all__link--nv{{ level }}" >{{ category.name | string.downcase | string.capitalize }}</a>
   {{~ if category.children ~}}
     {{~ if level < max_level ~}}

@@ -1,4 +1,5 @@
 window.addEventListener("load", filterSetup, false);
+let refreshTimeout = null;
 
 /**
  * Setups the filter functionality
@@ -8,16 +9,16 @@ function filterSetup() {
     if (filterQueryStringValue.length > 0) {
         filterQueryStringValue.forEach((element) => {
             //Double quote in js workaround
-            const escapedString = element.replace("\"","\\\""); 
+            const escapedString = element.replace("\"", "\\\"");
 
             const container = document.querySelector(
                 'input[value="' + escapedString + '"]'
             );
             if (!container) return;
-            
+
             if (container.type == "radio") {
                 const div = document.getElementById(container.id);
-                if (div) div.style.borderStyle = "solid";
+                if (div) div.classList.add("ring-2");
             } else container.checked = true;
         });
     }
@@ -25,26 +26,31 @@ function filterSetup() {
     const priceFilterQueryStringValue = queryStringParams.getAll("precoPor");
     if (priceFilterQueryStringValue.length <= 0) return;
     priceFilterQueryStringValue.forEach((price) => {
-        const minPriceFilter = document.getElementById(
-            "minimum-price-filter"
-        );
-        const maxPriceFilter = document.getElementById(
-            "maximum-price-filter"
-        );
+        const minPriceFilter = document.getElementById("minimum-price-filter");
+        const maxPriceFilter = document.getElementById("maximum-price-filter");
+        const minPriceSlider = document.getElementById("price-slider-min");
+        const maxPriceSlider = document.getElementById("price-slider-max");
 
-        if (minPriceFilter !== null && maxPriceFilter !== null) {
-            const splitedPrice = price.split(";");
-            minPriceFilter.value = splitedPrice[0];
-            maxPriceFilter.value = splitedPrice[1];
+        const splitedPrice = price.split(";");
+        const min = Number(splitedPrice[0]);
+        const max = Number(splitedPrice[1])
+
+        if (minPriceFilter != null && maxPriceFilter != null) {
+            minPriceFilter.value = min.toFixed(2);
+            maxPriceFilter.value = max.toFixed(2);
+
         } else {
             const elementId = price.replace(";", "-");
             const elementFilter = document.getElementById(elementId);
-            if (elementFilter !== null) {
-                elementFilter.checked = true;
-            }
+            if (elementFilter != null) elementFilter.checked = true;
+        }
+        if (minPriceSlider != null && maxPriceSlider != null && min != max) {
+            refreshMin(minPriceSlider, min);
+            refreshMax(maxPriceSlider, max);
         }
     });
 }
+
 
 /**
  * Defines the selected filter
@@ -116,100 +122,186 @@ function applyPriceFilterUrl(filter) {
 }
 
 /**
- * Draggable filter
- */
-
-const filterInput = document.getElementById("maximum-price-filter")
-const filterPriceDiv = document.getElementById("price-range")
-
-function filterChange(filterVar) {
-    var value = (filterVar.value) / (filterVar.max) * 100;
-    filterVar.style.background = "linear-gradient(to right, #E30613 0%, #E30613 " + value + "%, #F7F7F7 " + value + "%, #F7F7F7 100%";
-    filterPriceDiv.style.display = "block"
-}
-
-if (filterInput) {
-
-    window.addEventListener("load", e => {
-        filterChange(filterInput);
-    })
-
-    var slider = document.getElementById("maximum-price-filter").oninput = function () {
-        filterChange(this);
-    };
-
-    filterInput.addEventListener("change", () => {
-        setFieldPriceFilter();
-    });
-};
-
-
-/**
  * Collapse filters
  */
 
-function toggleSlide(elem){
-  if (!elem.style.height) {
-    elem.style.height = `${elem.scrollHeight}px`
-  }
-  else{
-    elem.style.height = ``
-  }
+function toggleSlide(elem) {
+    if (!elem.style.height) {
+        elem.style.height = `${elem.scrollHeight}px`
+    }
+    else {
+        elem.style.height = ``
+    }
 }
 
 const filterTitles = document.querySelectorAll(".filter__title");
 
 filterTitles.forEach(function (title) {
-  title.addEventListener("click", function () {
-    const filterItem = title.parentElement,
-          filterList = title.nextElementSibling
-    filterItem.classList.toggle("open")
-    toggleSlide(filterList);
-  });
+    title.addEventListener("click", function () {
+        const filterItem = title.parentElement,
+            filterList = title.nextElementSibling
+        filterItem.classList.toggle("open")
+        toggleSlide(filterList);
+    });
 });
 
 /**
  * Expand filter list
  */
 
-function toggleSlideMaxHeight(elem, maxHeight){
-  if (!elem.style.maxHeight || elem.style.maxHeight == `${maxHeight}px`) {
-    elem.style.maxHeight = `${elem.scrollHeight}px`
-  }
-  else{
-    elem.style.maxHeight = `${maxHeight}px`
-  }
+function toggleSlideMaxHeight(elem, maxHeight) {
+    if (!elem.style.maxHeight || elem.style.maxHeight == `${maxHeight}px`) {
+        elem.style.maxHeight = `${elem.scrollHeight}px`
+    }
+    else {
+        elem.style.maxHeight = `${maxHeight}px`
+    }
 }
 
 function expandFilterList(button) {
-  var filterList = button.previousElementSibling
-  toggleSlideMaxHeight(filterList, 140);
-  button.classList.toggle("ver-menos")
+    var filterList = button.previousElementSibling
+    toggleSlideMaxHeight(filterList, 140);
+    button.classList.toggle("ver-menos")
 }
 
 /**
  * Mobile filter
  */
 
-if(MOBILE.matches) {
-  const body = document.querySelector("body")
-  const filter = document.querySelector(".filter");
-  const openButton = document.querySelector(".filter__button");
-  const closeButton = document.querySelector(".filter__close");
+if (MOBILE.matches) {
+    const body = document.querySelector("body")
+    const filter = document.querySelector(".filter");
+    const openButton = document.querySelector(".filter__button");
+    const closeButton = document.querySelector(".filter__close");
 
-  filter.addEventListener("click", function (e) {
-    if (e.target == e.currentTarget) {
-      body.classList.remove("on-filter")
-    }
-  })
-  openButton.addEventListener("click", function (e) {
-    body.classList.add("on-filter")
-  })
+    filter.addEventListener("click", function (e) {
+        if (e.target == e.currentTarget) {
+            body.classList.remove("on-filter")
+        }
+    })
+    openButton.addEventListener("click", function (e) {
+        body.classList.add("on-filter")
+    })
 
-  closeButton.addEventListener("click", function (e) {
-    body.classList.remove("on-filter")
-  })
+    closeButton.addEventListener("click", function (e) {
+        body.classList.remove("on-filter")
+    })
 
 
 }
 
+function refreshMin(elem, inputValue = null) {
+    const range = getPriceRange();
+    const minValue = Number(document.getElementById('price-range-min-value').value);
+    if (inputValue) elem.value = (inputValue - minValue) / range * 100;
+
+    //so it won't go past the max slider
+    const maxValueInput = document.getElementById('price-slider-max');
+    elem.value = Math.min(elem.value, maxValueInput.value - 1);
+
+    const value = Number(elem.value);
+    const priceValue = Math.floor(minValue + (range * elem.value / 100)).toFixed(2);
+    document.getElementById('unselected-left').style.width = value + '%';
+    document.getElementById('selected-range-slider').style.left = value + '%';
+    document.getElementById('slider-thumb-left').style.left = value + '%';
+    document.getElementById('price-min-selected').value = priceValue;
+
+    if (inputValue) return;
+
+    updateFieldPrice('minimum-price-filter', priceValue);
+    waitAndRefresh();
+}
+
+function refreshMax(elem, inputValue = null) {
+    const range = getPriceRange();
+    const minValue = Number(document.getElementById('price-range-min-value').value);
+    if (inputValue) elem.value = (inputValue - minValue) / range * 100;
+
+    //so it won't go past the min slider
+    const minValueInput = document.getElementById('price-slider-min');
+    elem.value = Math.max(elem.value, minValueInput.value - (-1));
+
+    const value = Number(elem.value);
+    const priceValue = Math.ceil(minValue + (range * elem.value / 100)).toFixed(2);
+    document.getElementById('unselected-right').style.width = (100 - value) + '%';
+    document.getElementById('selected-range-slider').style.right = (100 - value) + '%';
+    document.getElementById('slider-thumb-right').style.left = value + '%';
+    document.getElementById('price-max-selected').value = priceValue;
+
+    if (inputValue) return;
+
+    updateFieldPrice('maximum-price-filter', priceValue);
+    waitAndRefresh();
+}
+
+function getPriceRange() {
+    const minValue = document.getElementById('price-range-min-value').value;
+    const maxValue = document.getElementById('price-range-max-value').value;
+    return maxValue - minValue;
+}
+
+function waitAndRefresh() {
+    if (refreshTimeout) clearTimeout(refreshTimeout);
+    refreshTimeout = setTimeout(setSliderPriceFilter, 2000);
+}
+
+function setSliderPriceFilter() {
+    const min = document.getElementById('price-min-selected').value
+    const max = document.getElementById('price-max-selected').value
+    const filter = min + ";" + max;
+    applyPriceFilterUrl(filter);
+}
+
+function updateFieldPrice(inputId, value) {
+    const input = document.getElementById(inputId);
+    if (input) input.value = value;
+}
+
+/**
+ * Gets price filter values.
+*/
+function getPriceFilter() {
+    const priceFilter = queryStringParams.get("precoPor");
+    let minPrice = null;
+    let maxPrice = null;
+
+    if (priceFilter) {
+        var splitedPrice = priceFilter.replace().split(";");
+
+        minPrice = parseFloat(splitedPrice[0]);
+        maxPrice = parseFloat(splitedPrice[1]);
+    }
+
+    return { minPrice, maxPrice };
+}
+
+/**
+ * Gets filters values.
+*/
+function getFilters() {
+    const filters = queryStringParams.getAll("filtro");
+
+    if (filters) {
+        let filtersList = [];
+
+        for (let i = 0; i < filters.length; i++) {
+            const item = filters[i];
+            let itemSplited = item.split("__");
+
+            if (itemSplited.length < 2) {
+                itemSplited = item.split(":");
+            }
+
+            let obj = new Object();
+            obj.field = itemSplited[0];
+            let values = [];
+            values.push(itemSplited[1]);
+            obj.values = values;
+            filtersList.push(obj);
+        }
+
+        return filtersList;
+    }
+
+    return null;
+}

@@ -13,16 +13,14 @@
 
   &-button
     &-prev, &-next
-      z-index: 1;
-      margin: 0;
-      width: 30px;
-      height: 30px;
-      background: none;
-      color: #5D5D5D;
-      transition: $transition;
-      transform: translateY(-50%);
-      user-select: none;
-
+      background-color unset
+      margin 0
+      transform translateY(-50%)
+      width 30px
+      height 30px
+      color #5D5D5D
+      z-index 1
+      transition $transition
       &:hover
         color: $primary;
 
@@ -31,7 +29,6 @@
 
       &.swiper-button-disabled
         pointer-events: all;
-        user-select: none;
 
         &:hover
           color: inherit;

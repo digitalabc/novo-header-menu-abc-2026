@@ -18,8 +18,13 @@
   &__logo
     @media mobile
       max-width 80px
-  &__right, &__search
+  &__right
+    flex: 1;
+  &__search
     @media desktop
+      flex: 1;
+  &__menu-mobile
+    @media mobile
       flex: 1;
 
   &__right

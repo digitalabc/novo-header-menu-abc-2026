@@ -26,7 +26,7 @@ query Home{
       scheme
     }
   }
-  brands(first: 50) {
+  brands(first: 50, brandInput: {groupIds: [19]}) {
     nodes {
       active
       urlLogo

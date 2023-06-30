@@ -41,7 +41,9 @@
         </div>
 
         {{##  Menu mobile ##}}
-        {{ menu_mobile main_categories: all_categories checkout_url: store.urls.checkout }}
+        <div class="navbar__menu-mobile mobile">
+          {{ menu_mobile main_categories: all_categories checkout_url: store.urls.checkout }}
+        </div>
 
         {{ ## Logo ## }}
         <div class="navbar__logo">

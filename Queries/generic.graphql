@@ -28,7 +28,7 @@ query Hotsite($url: String!){
       urlOnClick
     }
   }
-  brands(first: 50) {
+  brands(first: 50, brandInput: {groupIds: [19]}) {
     nodes {
       active
       urlLogo

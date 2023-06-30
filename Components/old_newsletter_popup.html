@@ -290,7 +290,7 @@
       if (response) {
         abcPopupMsg.innerHTML = "Cadastro realizado com sucesso!";
         abcPopupMsg.setAttribute('style', "color:green;");
-        sendSharpSpring({ nameValue, emailValue }, "newsletter");
+        sendSharpSpring(input, "newsletter");
         setTimeout(() => { document.getElementById('abc-newsletter-popup').classList.remove("abc-newsletter-popup-open"); }, 3000);
       }
       else{

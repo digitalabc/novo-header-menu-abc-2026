@@ -2436,7 +2436,7 @@ input[type='search']::-webkit-search-results-decoration {
   appearance: none;
 }
 .cidade__fale-conosco form input[type='checkbox']:checked {
-  background-image: svg-inline(check-mark);
+  background: #e30613;
 }
 .cidade__fale-conosco form label {
   color: #777;

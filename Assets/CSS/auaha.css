@@ -7324,18 +7324,20 @@ header {
 }
 #menu-offcanvas .nav-mobile__dropdown--nv1,
 #menu-offcanvas .nav-mobile__dropdown--nv2 {
-  position: fixed;
+  position: absolute;
   top: 55px;
   left: -100%;
   z-index: 99;
   width: 270px;
   height: calc(100vh - 55px);
   height: calc(100dvh - 55px);
-  height: 100%;
   background: #fff;
   transition: all 0.2s ease-in-out;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+}
+#menu-offcanvas .nav-mobile__dropdown--nv2 {
+  top: 0;
 }
 #menu-offcanvas .nav-mobile__list--root {
   overflow: auto;

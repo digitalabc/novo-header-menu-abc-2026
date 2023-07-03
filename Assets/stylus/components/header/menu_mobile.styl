@@ -110,18 +110,20 @@
 
       &--nv1, &--nv2
         // Usando position fixed e width fixo pois absolute quebra o top para nivel 2+
-        position: fixed;
+        position: absolute;
         top: 55px;
         left: -100%;
         z-index: 99;
         width: 270px;
         height: calc(100vh - 55px);
         height: calc(100dvh - 55px);
-        height: 100%;
         background: #fff;
         transition: $transition;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
+
+      &--nv2
+        top: 0;
 
     &__list
       &--root

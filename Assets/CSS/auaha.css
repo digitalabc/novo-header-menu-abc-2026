@@ -7325,6 +7325,7 @@ header {
 }
 #menu-offcanvas .nav-mobile__dropdown.open {
   opacity: 1;
+  visibility: visible;
 }
 #menu-offcanvas .nav-mobile__dropdown--nv1,
 #menu-offcanvas .nav-mobile__dropdown--nv2 {
@@ -7334,6 +7335,7 @@ header {
   height: calc(100vh - 55px);
   height: calc(100dvh - 55px);
   opacity: 0;
+  visibility: hidden;
   top: 55px;
   transition: all 0.2s ease-in-out;
   z-index: 99;

@@ -7263,6 +7263,7 @@ header {
 #menu-offcanvas .nav-mobile__others {
   z-index: -1;
   position: relative;
+  background: #f00;
 }
 #menu-offcanvas .nav-mobile__others ul li {
   display: flex;

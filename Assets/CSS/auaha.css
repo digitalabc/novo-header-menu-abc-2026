@@ -6274,7 +6274,6 @@ header {
   width: 475px;
   background: #fff;
   transition: left 0.3s ease-out;
-  -webkit-overflow-scrolling: touch;
 }
 @media screen and (max-width: 991px) {
   .ah-offcanvas-bar {

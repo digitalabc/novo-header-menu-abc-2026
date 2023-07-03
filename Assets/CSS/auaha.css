@@ -7225,34 +7225,33 @@ header {
   left: 0;
 }
 #menu-offcanvas .ah-offcanvas-bar {
-  left: calc(-270px - 55px);
   width: 270px;
-  isolation: isolate;
+  left: calc(-270px - 55px);
 }
 #menu-offcanvas .nav-mobile__header {
   display: flex;
   align-items: flex-end;
   padding: 0 15px 10px;
   height: 55px;
-  background: #f7f7f7;
   gap: 6px;
+  background: #f7f7f7;
 }
 #menu-offcanvas .nav-mobile__header .info {
   flex: 1;
 }
 #menu-offcanvas .nav-mobile__header .info >p {
-  margin-bottom: 2px;
   color: #e30613;
   font-weight: 500;
+  margin-bottom: 2px;
 }
 #menu-offcanvas .nav-mobile__header .info__bottom {
   display: flex;
   justify-content: space-between;
 }
 #menu-offcanvas .nav-mobile__header .info__links {
-  color: #5d5d5d;
   font-size: 12px;
   line-height: 15px;
+  color: #5d5d5d;
 }
 #menu-offcanvas .nav-mobile__header .info__links a {
   color: #5d5d5d;
@@ -7261,30 +7260,28 @@ header {
   display: none;
 }
 #menu-offcanvas .nav-mobile__others {
-  z-index: -1;
-  position: relative;
-  background: #00f;
+  background: #ffc0cb;
 }
 #menu-offcanvas .nav-mobile__others ul li {
   display: flex;
   align-items: center;
-  margin-bottom: -1px;
-  padding-left: 15px;
   height: 41px;
   border: 1px solid #f7f7f7;
+  padding-left: 15px;
+  margin-bottom: -1px;
 }
 #menu-offcanvas .nav-mobile__others ul li a {
   color: #392f2d;
   font-weight: 600;
 }
 #menu-offcanvas .nav-mobile__link {
+  color: #392f2d;
+  font-weight: 500;
   position: relative;
   display: flex;
   align-items: center;
-  padding-left: 15px;
   height: 40px;
-  color: #392f2d;
-  font-weight: 500;
+  padding-left: 15px;
 }
 #menu-offcanvas .nav-mobile__item {
   padding-right: 40px;
@@ -7299,15 +7296,15 @@ header {
   margin-bottom: -1px;
 }
 #menu-offcanvas .nav-mobile__open {
+  background: none;
   position: absolute;
   right: -40px;
-  z-index: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  background: none;
+  z-index: 1;
 }
 #menu-offcanvas .nav-mobile__open svg {
   pointer-events: none;
@@ -7315,19 +7312,15 @@ header {
 #menu-offcanvas .nav-mobile__back {
   display: flex;
   align-items: center;
-  margin-bottom: -1px;
-  padding-left: 15px;
+  gap: 15px;
   width: 100%;
   height: 41px;
-  border: 1px solid #f7f7f7;
-  background: none;
   color: #e30613;
   font-weight: 700;
-  gap: 15px;
-}
-#menu-offcanvas .nav-mobile__dropdown {
-  z-index: 1;
-  position: relative;
+  padding-left: 15px;
+  margin-bottom: -1px;
+  border: 1px solid #f7f7f7;
+  background: none;
 }
 #menu-offcanvas .nav-mobile__dropdown.open {
   left: 0;
@@ -7335,18 +7328,17 @@ header {
 #menu-offcanvas .nav-mobile__dropdown--nv1,
 #menu-offcanvas .nav-mobile__dropdown--nv2 {
   position: fixed;
-  top: 55px;
-  left: -30%;
-  z-index: 99;
   width: 270px;
-  height: calc(100vh - 55px);
   background: #fff;
+  height: calc(100vh - 55px);
+  left: -100%;
+  top: 55px;
   transition: all 0.2s ease-in-out;
+  z-index: 99;
 }
 #menu-offcanvas .nav-mobile__list--root {
-  overflow: auto;
   max-height: calc(100vh - 55px - 240px);
-  max-height: calc(100dvh - 55px - 240px);
+  overflow: auto;
 }
 #menu-offcanvas .nav-mobile__list--root::-webkit-scrollbar {
   width: 5px;
@@ -7354,7 +7346,6 @@ header {
 #menu-offcanvas .nav-mobile__list--nv1 {
   overflow: auto;
   max-height: calc(100vh - 55px - 40px);
-  max-height: calc(100dvh - 55px - 40px);
 }
 .search__form {
   position: relative;

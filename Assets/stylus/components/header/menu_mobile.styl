@@ -7,134 +7,116 @@
       left: 0;
 
   .ah-offcanvas-bar
-    left: calc(-270px - 55px);
     width: 270px;
-    isolation: isolate;
-
+    left: calc(-270px - 55px);
+        
   .nav-mobile
     &__header
-      display: flex;
-      align-items: flex-end;
-      padding: 0 15px 10px;
-      height: 55px;
-      background: #F7F7F7;
-      gap: 6px;
-
+      display flex
+      align-items flex-end
+      padding 0 15px 10px
+      height 55px
+      gap 6px
+      background #F7F7F7
       .info
-        flex: 1;
-
+        flex 1
         >p
-          margin-bottom: 2px;
-          color: $primary;
-          font-weight: 500;
-
+          color $primary
+          font-weight 500
+          margin-bottom 2px
         &__bottom
-          display: flex;
-          justify-content: space-between;
-
+          display flex
+          justify-content space-between
         &__links
-          color: #5D5D5D;
-          font-size: 12px;
-          line-height: 15px;
-
+          font-size 12px
+          line-height 15px
+          color #5D5D5D
           a
-            color: #5D5D5D;
+            color #5D5D5D
 
           &.authenticated
-            display: none;
+            display none
 
     &__others
-      z-index: -1;
-      position: relative;
-      background blue
+      background pink
       ul
         li
-          display: flex;
-          align-items: center;
+          display flex
+          align-items center
+          height 41px
+          border 1px solid #F7F7F7
+          padding-left 15px
           margin-bottom: -1px;
-          padding-left: 15px;
-          height: 41px;
-          border: 1px solid #F7F7F7;
-
           a
-            color: $black;
-            font-weight: 600;
+            color $black
+            font-weight 600
 
     &__link
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding-left: 15px;
-      height: 40px;
-      color: $black;
-      font-weight: 500;
+      color $black
+      font-weight 500
+      position relative
+      display flex
+      align-items center
+      height 40px
+      padding-left 15px
 
     &__item
-      padding-right: 40px;
-
+      padding-right 40px
       &--nv1
-        background: #F7F7F7;
-
+        background #F7F7F7
       &--nv2
-        border: 1px solid #F7F7F7;
-
+        border 1px solid #F7F7F7
         &:not(:last-child)
           margin-bottom: -1px;
 
     &__open
-      position: absolute;
-      right: -40px;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      background: none;
-
+      background none
+      position absolute
+      right -40px
+      display flex
+      align-items center
+      justify-content center
+      width 40px
+      height 40px
+      z-index 1
       svg
-        pointer-events: none;
+        pointer-events none
 
     &__back
-      display: flex;
-      align-items: center;
+      display flex
+      align-items center
+      gap 15px
+      width 100%
+      height 41px
+      color $primary
+      font-weight 700
+      padding-left 15px
       margin-bottom: -1px;
-      padding-left: 15px;
-      width: 100%;
-      height: 41px;
-      border: 1px solid #F7F7F7;
-      background: none;
-      color: $primary;
-      font-weight: 700;
-      gap: 15px;
+      border 1px solid #F7F7F7
+      background none
 
     &__dropdown
-      z-index: 1;
-      position: relative;
       &.open
-        left: 0;
-
-      &--nv1, &--nv2
+        left 0
+        
+      &--nv1
+      &--nv2
         // Usando position fixed e width fixo pois absolute quebra o top para nivel 2+
-        position: fixed;
-        top: 55px;
-        left: -30%;
-        z-index: 99;
-        width: 270px;
-        height: calc(100vh - 55px);
-        background: #fff;
-        transition: $transition;
+        position fixed
+        width 270px
+        background #fff
+        height calc(100vh - 55px)
+        left -100%
+        top 55px
+        transition $transition
+        z-index 99
 
     &__list
       &--root
-        overflow: auto;
-        max-height: calc(100vh - 55px - 240px);
-        max-height: calc(100dvh - 55px - 240px);
-
+        max-height calc(100vh - 55px - 240px)
+        overflow auto
         &::-webkit-scrollbar
-          width: 5px;
-
+          width 5px
       &--nv1
-        overflow: auto;
+        overflow auto
         max-height: calc(100vh - 55px - 40px);
-        max-height: calc(100dvh - 55px - 40px);

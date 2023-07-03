@@ -95,11 +95,8 @@
       background none
 
     &__dropdown
-      position relative
-      z-index 1
       &.open
-        opacity 1
-        visibility visible
+        left 0
         
       &--nv1
       &--nv2
@@ -109,12 +106,10 @@
         background #fff
         height calc(100vh - 55px)
         height calc(100dvh - 55px)
-        opacity 0
-        visibility hidden
+        left -100%
         top 55px
         transition $transition
         z-index 99
-        -webkit-transform: translateZ(0); 
 
     &__list
       &--root

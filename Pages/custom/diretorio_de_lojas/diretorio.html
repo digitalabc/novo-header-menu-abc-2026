@@ -2,83 +2,154 @@
 <html lang="pt-BR">
 
 <head>
-  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
-  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+    {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+    {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+    {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
 <body>
-  <header>
-    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
-  </header>
+    <header>
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+    </header>
 
-  <div class="container__total">
+    <div class="container__total">
 
-    <section class="container-lojas">
-    
-        <div class="lojas__top">
-            <div class="lojas__top--descricao">
-                <h1 class="lojas__top--title">ABC da Construção</h1>
-                <div class="lojas__top--text">
-                    <h2>Saiba mais sobre a ABC da Construção</h2>
-                    <br><p>A ABC da Construção é a maior especialista em acabamentos do Brasil, com mais de 300 lojas em Minas Gerais, Rio de Janeiro, São Paulo e Espírito Santo. Aqui você encontra todos os produtos para construir ou reformar, as melhores marcas, produtos originais e as muitas ofertas para economizar. Um atendimento personalizado e com especialistas que vão te ajudar a encontrar as melhores soluções para a sua obra. Os horários, endereços, formas de contato e ofertas você encontra na página de cada unidade. <p>
+        <section class="container-lojas">
 
-                    <br><h2>Pisos e Revestimentos</h2></p>
-                    <br><p> A ABC da Construção possui uma ampla variedade de opções de <a style="color:#e31837" href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos"> <b> revestimentos </b></a> para o seu projeto. Se você procura um piso durável e fácil de manter, o <a style="color:#e31837" href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos/piso-vinilico?pagina=1"> <b> piso vinílico </b></a> é uma ótima opção. Já o <a style="color:#e31837" href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos/porcelanato"> <b> porcelanato </b></a> é a escolha perfeita para quem procura um revestimento de alta qualidade, resistente e com uma ampla variedade de opções de cores e texturas. E se você procura um revestimento de madeira para dar um toque rústico ao seu projeto, o <a style="color:#e31837" href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos/piso-laminado-de-madeira"> <b> piso laminado de madeira </b></a> é a escolha certa. </p>
-                    <br><p> Não perca mais tempo procurando por lojas de pisos e revestimentos, visite a nossa unidade e tenha acesso a todos os materiais necessários para transformar seu projeto em realidade. Escolher a ABC da Construção é ter certeza de que está fazendo a escolha certa.</p></p>
-                    <br><h2>Lojas em Minas Gerais</h2></p>
-                    <br><p> Em Minas Gerais a ABC da Construção está presente em Além Paraíba, Barbacena, Belo Horizonte, Belo Vale, Betim, Bicas, Boa Esperança, Brasília de Minas, Brumadinho, Campo Belo, Capelinha, Carangola, Caratinga, Cataguases, Caxambu, Conselheiro Lafaiete, Contagem, Coronel Fabriciano, Curvelo, Diamantina, Divino, Divinópolis, Ervália, Espera Feliz, Extrema, Formiga, Governador Valadares, Guanhães, Guaxupé, Igarapé, Ipanema, Ipatinga, Itabira, Itabirito, Itajubá, Itamonte, Itaúna, Janaúba, João Monlevade, João Pinheiro, Juiz de Fora, Lagoa da Prata, Lagoa Santa, Lavras, Leopoldina, Lima Duarte, Machado, Manhuaçu, Mariana, Mateus Leme, Matias Barbosa, Mercês, Miraí, Montes Claros, Muriaé, Mutum, Nepomuceno, Nova Lima, Nova Resende, Nova Serrana, Ouro Branco, Ouro Preto, Pará de Minas, Passa Quatro, Passos, Patos de Minas, Pedro Leopoldo, Perdões, Pirapora, Piumhi, Poços de Caldas, Ponte Nova, Porteirinha, Pouso Alegre, Ribeirão das Neves, Rio Pomba, Sabará, Santa Luzia, Santos Dumont, São Gotardo, São João Del Rei, São João Nepomuceno, São Lourenço, Sete Lagoas, Tarumirim, Teófilo Otoni, Tocantins, Três Corações, Três Marias, Três Pontas, Ubá, Varginha, Varginha, Vespasiano, Viçosa e Visconde do Rio Branco. </p>
+            <div class="lojas__top">
+                <div class="lojas__top--descricao">
+                    <h1 class="lojas__top--title">ABC da Construção</h1>
+                    <div class="lojas__top--text">
+                        <h2>Saiba mais sobre a ABC da Construção</h2>
+                        <br>
+                        <p>A ABC da Construção é a maior especialista em acabamentos do Brasil, com mais de 300 lojas em
+                            Minas Gerais, Rio de Janeiro, São Paulo e Espírito Santo. Aqui você encontra todos os
+                            produtos para construir ou reformar, as melhores marcas, produtos originais e as muitas
+                            ofertas para economizar. Um atendimento personalizado e com especialistas que vão te ajudar
+                            a encontrar as melhores soluções para a sua obra. Os horários, endereços, formas de contato
+                            e ofertas você encontra na página de cada unidade. <p>
 
-                    <br><h2>Lojas no Rio de Janeiro</h2></p>
-                    <br><p> No estado do Rio de Janeiro as lojas ABC da Construção estão localizadas na capital Rio de Janeiro, em Araruama, Rio de Janeiro, Bom Jesus do Itabapoana, Cachoeiras de Macacu, Itaguaí, Petrópolis, Itaperuna, Itatiaia, Macaé, Magé, Maricá, Niterói, Nova Friburgo, Paraíba do Sul, Petrópolis, Resende, Santo Antônio de Pádua, Teresópolis, Três Rios e Volta Redonda. </p>
+                                <br>
+                                <h2>Pisos e Revestimentos</h2>
+                            </p>
+                            <br>
+                            <p> A ABC da Construção possui uma ampla variedade de opções de <a style="color:#e31837"
+                                    href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos"> <b> revestimentos
+                                    </b></a> para o seu projeto. Se você procura um piso durável e fácil de manter, o <a
+                                    style="color:#e31837"
+                                    href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos/piso-vinilico?pagina=1">
+                                    <b> piso vinílico </b></a> é uma ótima opção. Já o <a style="color:#e31837"
+                                    href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos/porcelanato"> <b>
+                                        porcelanato </b></a> é a escolha perfeita para quem procura um revestimento de
+                                alta qualidade, resistente e com uma ampla variedade de opções de cores e texturas. E se
+                                você procura um revestimento de madeira para dar um toque rústico ao seu projeto, o <a
+                                    style="color:#e31837"
+                                    href="https://www.abcdaconstrucao.com.br/pisos-e-revestimentos/piso-laminado-de-madeira">
+                                    <b> piso laminado de madeira </b></a> é a escolha certa. </p>
+                            <br>
+                            <p> Não perca mais tempo procurando por lojas de pisos e revestimentos, visite a nossa
+                                unidade e tenha acesso a todos os materiais necessários para transformar seu projeto em
+                                realidade. Escolher a ABC da Construção é ter certeza de que está fazendo a escolha
+                                certa.</p>
+                        </p>
+                        <br>
+                        <h2>Lojas em Minas Gerais</h2>
+                        </p>
+                        <br>
+                        <p> Em Minas Gerais a ABC da Construção está presente em Além Paraíba, Barbacena, Belo
+                            Horizonte, Belo Vale, Betim, Bicas, Boa Esperança, Brasília de Minas, Brumadinho, Campo
+                            Belo, Capelinha, Carangola, Caratinga, Cataguases, Caxambu, Conselheiro Lafaiete, Contagem,
+                            Coronel Fabriciano, Curvelo, Diamantina, Divino, Divinópolis, Ervália, Espera Feliz,
+                            Extrema, Formiga, Governador Valadares, Guanhães, Guaxupé, Igarapé, Ipanema, Ipatinga,
+                            Itabira, Itabirito, Itajubá, Itamonte, Itaúna, Janaúba, João Monlevade, João Pinheiro, Juiz
+                            de Fora, Lagoa da Prata, Lagoa Santa, Lavras, Leopoldina, Lima Duarte, Machado, Manhuaçu,
+                            Mariana, Mateus Leme, Matias Barbosa, Mercês, Miraí, Montes Claros, Muriaé, Mutum,
+                            Nepomuceno, Nova Lima, Nova Resende, Nova Serrana, Ouro Branco, Ouro Preto, Pará de Minas,
+                            Passa Quatro, Passos, Patos de Minas, Pedro Leopoldo, Perdões, Pirapora, Piumhi, Poços de
+                            Caldas, Ponte Nova, Porteirinha, Pouso Alegre, Ribeirão das Neves, Rio Pomba, Sabará, Santa
+                            Luzia, Santos Dumont, São Gotardo, São João Del Rei, São João Nepomuceno, São Lourenço, Sete
+                            Lagoas, Tarumirim, Teófilo Otoni, Tocantins, Três Corações, Três Marias, Três Pontas, Ubá,
+                            Varginha, Varginha, Vespasiano, Viçosa e Visconde do Rio Branco. </p>
 
-                    <br><h2>Lojas em São Paulo</h2></p>
-                    <br><p> Em São Paulo você encontra lojas ABC da Construção em Amparo, Aparecida, Araraquara, Artur Nogueira, Arujá, Assis, Atibaia, Avaré, Barretos, Botucatu, Bragança Paulista, Caçapava, Caraguatatuba, Cruzeiro, Guaratinguetá, Indaiatuba, Itapira, Itu, Jacareí, Jaguariúna, Lorena, Louveira, Mogi das Cruzes, Mogi Guaçu, Mogi Mirim, Pindamonhangaba, Piracaia, Piracicaba, Praia Grande, Ribeirão Preto, Santa Isabel, Santo Antônio de Posse, São João da Boa Vista, São José do Rio Pardo, São José do Rio Preto, São José dos Campos, São Roque, Sertãozinho, Sorocaba, Taubaté e Ubatuba.</p>
+                        <br>
+                        <h2>Lojas no Rio de Janeiro</h2>
+                        </p>
+                        <br>
+                        <p> No estado do Rio de Janeiro as lojas ABC da Construção estão localizadas na capital Rio de
+                            Janeiro, em Araruama, Rio de Janeiro, Bom Jesus do Itabapoana, Cachoeiras de Macacu,
+                            Itaguaí, Petrópolis, Itaperuna, Itatiaia, Macaé, Magé, Maricá, Niterói, Nova Friburgo,
+                            Paraíba do Sul, Petrópolis, Resende, Santo Antônio de Pádua, Teresópolis, Três Rios e Volta
+                            Redonda. </p>
 
-                    <br><h2>Lojas no Espírito Santo</h2></p>
-                    <br><p> No Espírito Santo as lojas ABC da Construção estão localizadas em Afonso Cláudio, Baixo Guandu, Colatina, Guaçuí, Guarapari, Iconha, Iúna, Linhares, Mimoso do Sul, Serra e Vitória. </p>
+                        <br>
+                        <h2>Lojas em São Paulo</h2>
+                        </p>
+                        <br>
+                        <p> Em São Paulo você encontra lojas ABC da Construção em Amparo, Aparecida, Araraquara, Artur
+                            Nogueira, Arujá, Assis, Atibaia, Avaré, Barretos, Botucatu, Bragança Paulista, Caçapava,
+                            Caraguatatuba, Cruzeiro, Guaratinguetá, Indaiatuba, Itapira, Itu, Jacareí, Jaguariúna,
+                            Lorena, Louveira, Mogi das Cruzes, Mogi Guaçu, Mogi Mirim, Pindamonhangaba, Piracaia,
+                            Piracicaba, Praia Grande, Ribeirão Preto, Santa Isabel, Santo Antônio de Posse, São João da
+                            Boa Vista, São José do Rio Pardo, São José do Rio Preto, São José dos Campos, São Roque,
+                            Sertãozinho, Sorocaba, Taubaté e Ubatuba.</p>
 
-                    <br><h2>Visite Nossas Lojas!</h2></p>
-                    <br><p> A ABC da Construção está presente em toda a Região Sudeste e possui entrega para todo o Brasil, são mais de 20 mil produtos disponíveis para compra, as melhores marcas do mercado, atendimento de excelência, uma incrível experiência de compra e ofertas imperdíveis. Encontre a loja ABC da Construção mais próxima de você: </p>
+                        <br>
+                        <h2>Lojas no Espírito Santo</h2>
+                        </p>
+                        <br>
+                        <p> No Espírito Santo as lojas ABC da Construção estão localizadas em Afonso Cláudio, Baixo
+                            Guandu, Colatina, Guaçuí, Guarapari, Iconha, Iúna, Linhares, Mimoso do Sul, Serra e Vitória.
+                        </p>
 
+                        <br>
+                        <h2>Visite Nossas Lojas!</h2>
+                        </p>
+                        <br>
+                        <p> A ABC da Construção está presente em toda a Região Sudeste e possui entrega para todo o
+                            Brasil, são mais de 20 mil produtos disponíveis para compra, as melhores marcas do mercado,
+                            atendimento de excelência, uma incrível experiência de compra e ofertas imperdíveis.
+                            Encontre a loja ABC da Construção mais próxima de você: </p>
+
+                    </div>
+                </div>
+                <div class="lojas__top--show">
+                    <button class="lojas__top--button">Mostrar mais</button>
                 </div>
             </div>
-            <div class="lojas__top--show">
-                <button class="lojas__top--button">Mostrar mais</button>
-            </div>
-        </div>
-        
-        <div class="lojas__middle">
-            <h2 class="lojas__middle--title">Encontre a loja mais próxima de você</h2>
-            <div class="lojas__form">
-                <div class="lojas__form--endereco">
-                    <select class="lojas__form--select" name="select">
-                        
-                    </select>
-                    <input class="lojas__form--input" type="text" name="cidade" id="" placeholder="Digite o nome da sua cidade">
-                    <button class="lojas__form--button">BUSCAR LOJAS</button>
+
+            <div class="lojas__middle">
+                <h2 class="lojas__middle--title">Encontre a loja mais próxima de você</h2>
+                <div class="lojas__form">
+                    <div class="lojas__form--endereco">
+                        <select class="lojas__form--select" name="select">
+
+                        </select>
+                        <input class="lojas__form--input" type="text" name="cidade" id=""
+                            placeholder="Digite o nome da sua cidade">
+                        <button class="lojas__form--button">BUSCAR LOJAS</button>
+                    </div>
                 </div>
+
             </div>
+
+        </section>
+
+        <section class="lojas__bottom">
+            <h2 class="lojas__bottom--title">Lojas Por cidade</h2>
+            <div class="lojas__bottom--container">
+            </div>
+        </section>
+
+    </div>
+    {{ footer products:common.lighbox_products.products.nodes }}
     
-        </div>
-    
-    </section>
+    {{ db_lojas }}
 
-    <section class="lojas__bottom">
-        <h2 class="lojas__bottom--title">Lojas Por cidade</h2>
-        <div class="lojas__bottom--container">
-        </div>
+    {{ sdk_client }}
 
-    </section>
-    
-  </div>
-  {{ footer products:common.lighbox_products.products.nodes }}
+    {{ old_newsletter_popup }}
 
-  {{ sdk_client }}
-
-  {{ old_newsletter_popup }}
-
-  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter",  "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "diretorio_de_lojas"] }}
+    {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter",  "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "diretorio_de_lojas"] }}
 </body>
 
 </html>

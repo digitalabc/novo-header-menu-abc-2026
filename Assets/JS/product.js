@@ -134,7 +134,7 @@ async function addToCartClick(productVariantId){
         const input = getAttributeProductAndQuantity(productVariantId);
         const success = await addOrCreateCheckout(input);
         if (success){
-            // showAlert('Produto adicionado ao carrinho!');
+            showAlert('Produto adicionado ao carrinho!');
             await loadMiniCart();
             openOffcanvas("#minicart-offcanvas")
         }
@@ -676,22 +676,22 @@ function m2ParseBox(m2) {
     document.getElementById("amountBoxes").innerHTML = calcAmountBoxes > 1 ? calcAmountBoxes + ' caixas' : calcAmountBoxes + ' caixa';
 }
 
-// function calcAtualizar() {
-//   var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
+function calcAtualizar() {
+  var precoM2 = parseFloat(document.querySelector('#precoCalculado').textContent.trim().split(' ').pop().replaceAll('.', '').replace(',', '.'));
   
-//   var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
-//   var m2PorCaixa = precoM2 / precoProduto;
-//   var quant = parseInt(document.querySelector('#amountBoxes').textContent.split(' ')[0]);
-//   var m2total = (m2PorCaixa * quant).toFixed(2).replace('.', ',');
+  var precoProduto = parseFloat(document.querySelector('.product__prices .spot-price h3 span').textContent.trim().split(' ')[1].replaceAll('.', '').replace(',', '.'));
+  var m2PorCaixa = precoM2 / precoProduto;
+  var quant = parseInt(document.querySelector('#amountBoxes').textContent.split(' ')[0]);
+  var m2total = (m2PorCaixa * quant).toFixed(2).replace('.', ',');
 
-//   document.querySelector('.fake-quantity').value = `${(quant == 1 ? '1 caixa' : quant + 'caixas')} = ${m2total} m²`;
+  document.querySelector('.fake-quantity').value = `${(quant == 1 ? '1 caixa' : quant + 'caixas')} = ${m2total} m²`;
 
-//   document.getElementById('selected-quantity').value = quant
+  document.getElementById('selected-quantity').value = quant
   
-//   document.getElementById('selected-quantity').onchange();
+  document.getElementById('selected-quantity').onchange();
 
-//   document.querySelector(".calculator .uk-close").click()
-// }
+  document.querySelector(".calculator .ah-close").click()
+}
 
 /**
  * Show/hide product floating button

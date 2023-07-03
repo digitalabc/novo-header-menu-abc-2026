@@ -70,3 +70,25 @@ async function miniCartPartnerAssociate(checkoutUrl) {
     var checkoutId = checkoutUrl.split("/").at(-1);
     if (checkoutId) await checkoutPartnerAssociate(checkoutId);
 }
+
+async function checkoutRemoveProduct(id) {
+  try {
+      const rcheckout = await client.checkout.get();
+
+      let rvariables = {
+          checkoutId: "",
+          hasCheckout: true,
+      };
+
+      if (rcheckout && rcheckout.data.checkoutId != "") {
+          rvariables.id = rcheckout.data.checkoutId;
+          console.warn(rcheckout.data.checkoutId)
+      }
+
+      const r = await client.checkout.remove(id, rvariables.id);
+      loadMiniCart()
+
+  } catch (error) {
+      console.error(error);
+  }
+}

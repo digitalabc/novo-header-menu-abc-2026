@@ -37,6 +37,7 @@
 				"Igarapé",
 				"Ipanema",
 				"Ipatinga",
+				"Ipuiúna",
 				"Itabira",
 				"Itabirito",
 				"Itajubá",
@@ -44,8 +45,10 @@
 				"Itamonte",
 				"Itaúna",
 				"Janaúba",
+				"Januária",
 				"João Monlevade",
 				"João Pinheiro",
+				"Juatuba",
 				"Juiz de Fora",
 				"Lagoa da Prata",
 				"Lagoa Santa",
@@ -59,6 +62,7 @@
 				"Matias Barbosa",
 				"Mercês",
 				"Miraí",
+				"Montalvânia",
 				"Montes Claros",
 				"Muriaé",
 				"Mutum",
@@ -72,6 +76,7 @@
 				"Passa Quatro",
 				"Passos",
 				"Patos de Minas",
+				"Patrocínio",
 				"Pedro Leopoldo",
 				"Perdões",
 				"Pirapora",
@@ -86,6 +91,7 @@
 				"Salinas",
 				"Santa Luzia",
 				"Santos Dumont",
+				"São Gonçalo do Sapucaí",
 				"São Gotardo",
 				"São João Del Rei",
 				"São João Nepomuceno",
@@ -137,25 +143,34 @@
 			"estado": "Bahia",
 			"coluna": "2",
 			"coluna_mobile": "2",
-			"cidades": ["Vitória da Conquista"]
+			"cidades": [
+				"Vitória da Conquista"
+			]
 		},
 		{
 			"estado": "Distrito Federal",
 			"coluna": "2",
 			"coluna_mobile": "2",
-			"cidades": ["Brasília"]
+			"cidades": [
+				"Brasília"
+			]
 		},
 		{
 			"estado": "Goiás",
 			"coluna": "2",
 			"coluna_mobile": "2",
-			"cidades": ["Catalão"]
+			"cidades": [
+				"Catalão"
+			]
 		},
 		{
 			"estado": "Paraná",
 			"coluna": "2",
 			"coluna_mobile": "2",
-			"cidades": ["Londrina", "Toledo"]
+			"cidades": [
+				"Londrina",
+				"Toledo"
+			]
 		},
 		{
 			"estado": "São Paulo",
@@ -176,6 +191,8 @@
 				"Botucatu",
 				"Bragança Paulista",
 				"Caçapava",
+				"Campinas",
+				"Caraguatatuba",
 				"Cruzeiro",
 				"Guaratinguetá",
 				"Indaiatuba",
@@ -183,24 +200,30 @@
 				"Itu",
 				"Jacareí",
 				"Jaguariúna",
+				"Lins",
 				"Lorena",
 				"Louveira",
 				"Marília",
+				"Matão",
 				"Mogi das Cruzes",
 				"Mogi Guaçu",
 				"Mogi Mirim",
 				"Pindamonhangaba",
 				"Piracaia",
 				"Piracicaba",
+				"Pirituba",
 				"Praia Grande",
 				"Ribeirão Preto",
 				"Santa Isabel",
 				"Santo Antônio de Posse",
+				"São Bernardo do Campo",
+				"São Caetano do Sul",
 				"São José do Rio Preto",
 				"São José dos Campos",
 				"São Roque",
 				"Sertãozinho",
 				"Sorocaba",
+				"Taguaí",
 				"Taubaté",
 				"Ubatuba"
 			]

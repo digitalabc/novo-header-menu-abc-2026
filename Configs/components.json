@@ -301,7 +301,7 @@
         ],
         "availableInAllPages": true,
         "availableInAllComponents": true
-    }, 
+    },
     {
         "name": "spot_carousel",
         "path": "spot_carousel.html",
@@ -490,7 +490,7 @@
             {
                 "name": "attribute_selections",
                 "required": true
-            }, 
+            },
             {
                 "name": "product_id",
                 "required": true
@@ -515,7 +515,7 @@
             {
                 "name": "attribute_selections",
                 "required": true
-            }, 
+            },
             {
                 "name": "product_id",
                 "required": true
@@ -540,7 +540,7 @@
             {
                 "name": "attribute_selections",
                 "required": true
-            }, 
+            },
             {
                 "name": "product_id",
                 "required": true
@@ -565,7 +565,7 @@
             {
                 "name": "attribute_selections",
                 "required": true
-            }, 
+            },
             {
                 "name": "product_id",
                 "required": true
@@ -933,7 +933,7 @@
             {
                 "name": "banners",
                 "required": true
-            }, 
+            },
             {
                 "name": "name",
                 "required": true
@@ -1161,6 +1161,12 @@
     {
         "name": "whatsapp",
         "path": "floating-whats.html",
+        "inheritVariables": false,
+        "availableInAllPages": true
+    },
+    {
+        "name": "db_lojas",
+        "path": "db_lojas.html",
         "inheritVariables": false,
         "availableInAllPages": true
     }

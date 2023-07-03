@@ -40,7 +40,7 @@
     <span class="product__info">
       {{ if product.sku }}<span class="product__sku">SKU:<span id="productSku">{{ product.sku }}</span></span><span class="pipe">|</span>{{ end }}
       {{ if product.product_brand }}{{ product_brand brand: product.product_brand }}<span class="pipe">|</span>{{ end }}
-      <span>### Estrelas Opiniões Verificadas ###</span>
+      <!-- <span>### Estrelas Opiniões Verificadas ###</span> --> 
     </span>
     {{~ installment_plans = product.prices.installment_plans ~}}
     {{~ discount_percentage = 0 ~}}

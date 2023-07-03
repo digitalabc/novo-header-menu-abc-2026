@@ -99,7 +99,6 @@ let criarListaDeCidades = (estadosData) => {
     listaFinal.append('<div class="col col4"></div>')
   }
   if (listaFinal) {
-    console.log(estadosData)
     estadosData.forEach((estado) => {
       let ulCompleta = criaLis(estado.cidades, estado)
       if (DESKTOP.matches) {
@@ -151,10 +150,15 @@ $(".lojas__form--select").on("change", function () {
 $(".lojas__form--button").on("click", function () {
   let stateQuery = $(".lojas__form--select").val();
   let cityQuery = $(".lojas__form--input").val().slugify();
+
+  console.log(stateQuery)
+  console.log(cityQuery)
+
   if (cityQuery != '') {
     if (stateQuery == "") {
       $(".lojas__bottom--container ul").hide()
     }
+
     $(".lojas__bottom--container li").hide()
     $(`.lojas__bottom--container li a`).each(function () {
       let cityName = $(this).text().slugify();

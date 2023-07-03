@@ -7324,7 +7324,7 @@ header {
   z-index: 1;
 }
 #menu-offcanvas .nav-mobile__dropdown.open {
-  left: 0;
+  opacity: 1;
 }
 #menu-offcanvas .nav-mobile__dropdown--nv1,
 #menu-offcanvas .nav-mobile__dropdown--nv2 {
@@ -7333,7 +7333,7 @@ header {
   background: #fff;
   height: calc(100vh - 55px);
   height: calc(100dvh - 55px);
-  left: -100%;
+  opacity: 0;
   top: 55px;
   transition: all 0.2s ease-in-out;
   z-index: 99;

@@ -9,6 +9,7 @@
   .ah-offcanvas-bar
     left: calc(-270px - 55px);
     width: 270px;
+    isolation: isolate;
 
   .nav-mobile
     &__header
@@ -43,6 +44,8 @@
             display: none;
 
     &__others
+      z-index: -1;
+      position: relative;
       ul
         li
           display: flex;
@@ -105,12 +108,14 @@
       gap: 15px;
 
     &__dropdown
+      z-index: 1;
+      position: relative;
       &.open
         left: 0;
 
       &--nv1, &--nv2
         // Usando position fixed e width fixo pois absolute quebra o top para nivel 2+
-        position: absolute;
+        position: fixed;
         top: 55px;
         left: -100%;
         z-index: 99;
@@ -119,11 +124,6 @@
         height: calc(100dvh - 55px);
         background: #fff;
         transition: $transition;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-
-      &--nv2
-        top: 0;
 
     &__list
       &--root

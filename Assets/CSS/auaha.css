@@ -7263,7 +7263,7 @@ header {
 #menu-offcanvas .nav-mobile__others {
   z-index: -1;
   position: relative;
-  background: #f00;
+  background: #00f;
 }
 #menu-offcanvas .nav-mobile__others ul li {
   display: flex;
@@ -7336,7 +7336,7 @@ header {
 #menu-offcanvas .nav-mobile__dropdown--nv2 {
   position: fixed;
   top: 55px;
-  left: -100%;
+  left: -30%;
   z-index: 99;
   width: 270px;
   height: calc(100vh - 55px);

@@ -7333,6 +7333,7 @@ header {
   top: 55px;
   transition: all 0.2s ease-in-out;
   z-index: 99;
+  -webkit-transform: translateZ(0);
 }
 #menu-offcanvas .nav-mobile__list--root {
   max-height: calc(100vh - 55px - 240px);

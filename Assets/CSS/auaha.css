@@ -7259,9 +7259,6 @@ header {
 #menu-offcanvas .nav-mobile__header .info__links.authenticated {
   display: none;
 }
-#menu-offcanvas .nav-mobile__others {
-  background: #ffc0cb;
-}
 #menu-offcanvas .nav-mobile__others ul li {
   display: flex;
   align-items: center;

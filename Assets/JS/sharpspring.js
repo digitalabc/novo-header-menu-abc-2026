@@ -10,6 +10,10 @@ function sendSharpSpring(campos, componente) {
 
   switch (componente) {
     case 'newsletter':
+      formSharp = 'c799f48e-eebe-4c61-8862-d489d4aeddc9';
+      break;
+
+    case 'primeira-compra':
       formSharp = '4b33d785-88f6-4006-a90a-12fc47e7dc50';
       break;
 
@@ -50,11 +54,20 @@ function sendSharpSpring(campos, componente) {
           console.log("TORCEDOR")
           break;
 
+        case 'franquia':
+          document.querySelector(".cidade__fale-conosco__button").value = "ENVIADO!"
+          document.querySelector(".cidade__fale-conosco__button").setAttribute("disabled", true)
+          break;
+
         default:
           break;
       }
       __ss_noform = [];
     } else {
+      if (componente == "franquia") {
+        document.querySelector(".cidade__fale-conosco__button").value = "ERRO AO ENVIAR"
+        document.querySelector(".cidade__fale-conosco__button").setAttribute("disabled", false)
+      }
       console.warn("SharpSpring error")
     }
   }

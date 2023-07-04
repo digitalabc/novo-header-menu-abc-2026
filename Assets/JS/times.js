@@ -12,7 +12,7 @@ function cidades() {
   })
 }
 
-function abcEnvia_contato() {
+function abcEnvia_contato(endpoint) {
 
   let countErrors = 0;
   let nome = document.querySelector('input[placeholder="Nome"]');
@@ -43,7 +43,7 @@ function abcEnvia_contato() {
     };
 
     $.ajax({
-      url: `https://app-3QNTA3QZ8S.marketingautomation.services/webforms/receivePostback/MzawMLE0tjQ0AwA/efd71307-19c6-4026-a037-3f6c8c09bd89/jsonp/`,
+      url: `https://app-3QNTA3QZ8S.marketingautomation.services/webforms/receivePostback/MzawMLE0tjQ0AwA/${endpoint}/jsonp/`,
       dataType: 'jsonp',
       type: "POST",
       data: campos,
@@ -52,6 +52,7 @@ function abcEnvia_contato() {
     }).always(() => {
       var formulario = document.querySelector(".formulario");
       formulario.parentNode.removeChild(formulario);
+
       if (__ss_noform) {
         var p = document.createElement('p');
         p.innerHTML = `<span class="msg-formulario"><p>Cadastro feito com sucesso!</p></span>`;
@@ -61,8 +62,8 @@ function abcEnvia_contato() {
         document.querySelector('input[placeholder="E-mail"]').classList.remove('error-formulario');
         document.querySelector('input[placeholder="Celular"]').classList.remove('error-formulario');
         __ss_noform = [];
-      } else {
 
+      } else {
         var p = document.createElement('p');
         p.innerHTML = `<span class="msg-formulario"><p>Ocorreu um problema no envio. Por favor,tente mais tarde.</p></span>`;
         document.querySelector(".texto").append(p.cloneNode(true));
@@ -95,10 +96,10 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle(document.getElementById("times-modal"))
   });
 
-  document.querySelector('.formulario > button').addEventListener("click", function (e) {
-    e.preventDefault();
-    abcEnvia_contato();
-  });
+  // document.querySelector('.formulario > button').addEventListener("click", function (e) {
+  //   e.preventDefault();
+  //   abcEnvia_contato();
+  // });
 
 });
 

@@ -297,7 +297,7 @@ $("#acceptTerms").on("change", function () {
  * Franquia
  */
 
-$(".cidade__fale-conosco--form input, .cidade__fale-conosco--form select ").on("change", function (e) {
+$(".cidade__fale-conosco--form input, .cidade__fale-conosco--form select").on("change", function (e) {
   let name = $("#especialista_name").val()
     , email = $("#especialista_email").val()
     , phone = $("#especialista_phone").val()
@@ -320,6 +320,7 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
     , stage = $("#especialista_stage").val()
     , catalogAccept = document.getElementById("acceptTerms_catalogo").checked
     , visitAccept = document.getElementById("acceptTerms_obra").checked
+    , store = String(location.pathname.split("/").slice(-1))
 
     , campos = {
       nome: name,
@@ -327,9 +328,9 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
       whatsapp: phone,
       estagio_da_obra: stage,
       receber_catalogo: catalogAccept,
-      receber_visita: visitAccept
+      receber_visita: visitAccept,
+      loja: store
     }
 
-  sendSharpSpring(campos, "franquia");
-
+  sendSharpSpring(campos, "franquia")
 })

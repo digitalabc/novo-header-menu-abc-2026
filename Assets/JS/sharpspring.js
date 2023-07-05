@@ -50,10 +50,6 @@ function sendSharpSpring(campos, componente) {
           dataLayer.push({ 'event': 'formClubeABC' });
           break;
 
-        case 'time':
-          console.log("TORCEDOR")
-          break;
-
         case 'franquia':
           document.querySelector(".cidade__fale-conosco__button").value = "ENVIADO!"
           document.querySelector(".cidade__fale-conosco__button").setAttribute("disabled", true)

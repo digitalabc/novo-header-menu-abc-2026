@@ -31,7 +31,6 @@
             {{~ end ~}}
           </ul>
           <figure class="nav-banner">
-            {{ current_menu | debug.log }}
             {{~ if current_menu.full_image_url ~}}
               <img src={{current_menu.full_image_url}} alt="{{current_menu.name | string.downcase | string.capitalize}}" width="320" height="200">
             {{~ end ~}}

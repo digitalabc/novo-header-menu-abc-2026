@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             localStorage.setItem("Estado", data['uf']);
             localStorage.setItem("ultima_atualizacao", Date.now().toString());
-            console.log(cepCodigo[0], 'posicao');
           }
         });
     }
@@ -61,19 +60,16 @@ function checa_regiao(estado) {
 
   if (regiao_1.includes(estado)) {
 
-    console.log('regiao 1')
     Fbits.Parceiro.Set('regiao_1')
     window.location.href = "/parceiros/regiao_1";
 
 
   } else if (regiao_3.includes(estado)) {
     Fbits.Parceiro.Set('regiao_3')
-    console.log('regiao 3')
     window.location.href = "/parceiros/regiao_3";
 
   } else {
     Fbits.Parceiro.Set('regiao_2')
-    console.log('regiao 2')
     window.location.href = "/parceiros/regiao_2";
   }
 

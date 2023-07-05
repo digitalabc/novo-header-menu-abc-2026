@@ -20,7 +20,7 @@ async function ShippingQuoteSubmit(e, productVariantId) {
         document.getElementById("shipping-quotes-snippet-div-" + productVariantId).innerHTML = snippetResponse;
     }
     catch(error) {
-        console.log(error);
+        console.error(error);
     }
 }
 

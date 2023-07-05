@@ -243,7 +243,6 @@ async function addOrCreateCheckout(input){
         return true;
     } catch (error){
         showAlert('Erro ao adicionar produto ao carrinho.', true);
-        console.log(error)
         return false;
     }
 }
@@ -465,7 +464,6 @@ async function spotBackInStockOnClick(e){
       partnerAccessToken: null,
       productVariantId: productVariantId,
   }
-  console.log(bisInput)
   const success = await client.product.createRestockAlert(bisInput);
   if(success){
     sendSharpSpring({ email: email, productVariantId }, 'aviseme');
@@ -738,7 +736,6 @@ if (produtoSKUDiv && quantidadeInput) {
       return response.json();
     })
     .then(function(data) {
-      console.log(data)
       let { referencia, peso, departamento } = data[0];
       if (referencia === produtoSKU) {
           pesoTotal = quantidade * peso;
@@ -764,7 +761,7 @@ if (produtoSKUDiv && quantidadeInput) {
       }
     })
     .catch(function(error) {
-      console.log('Request failed', error)
+      console.error('Request failed', error)
     });
 }
 

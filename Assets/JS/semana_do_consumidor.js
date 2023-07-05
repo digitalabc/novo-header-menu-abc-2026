@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //cronometro
   let promodate = document.getElementById('cronometro').getAttribute('data-promotion')
-  console.log(promodate)
   let count = new Date(promodate).getTime();
   const d = new Date().getTime();
 

@@ -27,7 +27,7 @@ async function wishlistLoad(){
             }
         }
     } catch(error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -136,6 +136,6 @@ async function addOrRemoveWishlist(productId, add){
             }
         }
     } catch(error) {
-        console.log(error);
+        console.error(error);
     }
 }

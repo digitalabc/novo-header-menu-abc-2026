@@ -119,7 +119,6 @@ function getLojas() {
                     lojasHtml += "</div>";
                 }
 
-                console.log(lojas);
 
                 $("#lojas").html(lojasHtml);
                 $("#resultado-busca").show();
@@ -291,7 +290,6 @@ $(document).ajaxComplete(() => {
 });
 
 $(document).ready(() => {
-  console.log("solucoes!!!")
   $('.solucoes .solucoes-slider').slick({
     speed: '600',
     autoplay: true,

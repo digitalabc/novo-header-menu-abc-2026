@@ -1,5 +1,4 @@
 let productImages = document.querySelectorAll('.gallery-slider .swiper-slide');
-console.log(productImages)
 
 productImages.forEach((img) => {
   const image = img.querySelector('img');

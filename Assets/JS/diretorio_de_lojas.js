@@ -129,7 +129,6 @@ let criaLis = (listaCidades, estado) => {
     li.appendChild(a)
     ul.appendChild(li)
   })
-  // console.log(ul)
   return ul
 }
 
@@ -150,9 +149,6 @@ $(".lojas__form--select").on("change", function () {
 $(".lojas__form--button").on("click", function () {
   let stateQuery = $(".lojas__form--select").val();
   let cityQuery = $(".lojas__form--input").val().slugify();
-
-  console.log(stateQuery)
-  console.log(cityQuery)
 
   if (cityQuery != '') {
     if (stateQuery == "") {
@@ -182,10 +178,8 @@ function isStoreOpen(currentHour, currentMinutes, openingTime, closingTime) {
   let closingHour = closingTime.split(":")[0]
   let closingMinutes = closingTime.split(":")[1]
 
-  // console.log(openingHour, openingMinutes, closingHour, closingMinutes)
 
   let isOpen = false
-  // console.log((currentMinutes >= openingMinutes))
   if ((currentHour == openingHour) && (currentMinutes >= openingMinutes)) {
     isOpen = true
   }

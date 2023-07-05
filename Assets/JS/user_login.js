@@ -37,7 +37,7 @@ async function checkUserLogin() {
         }
         window.dispatchEvent(new CustomEvent("userChecked", { email: user?.email} ));
     } catch(error) {
-        console.log(error);
+        console.error(error);
     }
 }
 

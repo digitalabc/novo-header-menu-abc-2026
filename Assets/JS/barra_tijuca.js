@@ -1,52 +1,50 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   var dataString = 'c=listagemEstados';
-  
+
   fetch(`https://blog.abcdaconstrucao.com.br/atendimento/ajax/sac.ajax.php`, {
     method: "POST",
     cache: "no-cache",
-    body: dataString, 
-    }).then(function (data) {
-      console.log(data);
-      const estado = document.getElementById("estado")
-      estado.innerHTML = response;
-    }).catch(function (error) {
-      console.warn(error);
-    })
+    body: dataString,
+  }).then(function (data) {
+    const estado = document.getElementById("estado")
+    estado.innerHTML = response;
+  }).catch(function (error) {
+    console.warn(error);
+  })
 
-  document.querySelector(".barra-tijuca-modal-close").addEventListener("click", function(){
+  document.querySelector(".barra-tijuca-modal-close").addEventListener("click", function () {
     toggle(document.getElementById("barra-tijuca-modal"))
   }, false);
-  document.querySelector(".barra-tijuca-modal-btn").addEventListener("click", function(){
+  document.querySelector(".barra-tijuca-modal-btn").addEventListener("click", function () {
     toggle(document.getElementById("barra-tijuca-modal"))
   }, false);
 }); //fim principal
 
-document.getElementById("estado").addEventListener("change", function(){
+document.getElementById("estado").addEventListener("change", function () {
   getElementById("cidade").innerHTML("<option>Aguarde...</option>");
   var estado = document.querySelector("#estado option:selected").getAttribute("value");
   var dataString = "c=consultaCidade&estado=" + estado;
-  
+
   fetch(`https://blog.abcdaconstrucao.com.br/atendimento/ajax/sac.ajax.php`, {
     method: "POST",
     cache: "no-cache",
-    body: dataString, 
-    }).then(function (data) {
-      console.log(data);
-      const cidade = document.getElementById("cidade")
-      cidade.innerHTML = response;
-    }).catch(function (error) {
-      console.warn(error);
-    })
+    body: dataString,
+  }).then(function (data) {
+    const cidade = document.getElementById("cidade")
+    cidade.innerHTML = response;
+  }).catch(function (error) {
+    console.warn(error);
+  })
 
 }, false);
 
-document.getElementById("btnFormulario").addEventListener("click", function(){
+document.getElementById("btnFormulario").addEventListener("click", function () {
 
   var nome = document.getElementById("nome").value.toUpperCase();
   var email = document.getElementById("email").value.toUpperCase();
   var telefone = document.getElementById("telefone").value.toUpperCase();
-  
+
   var cliente_especificador = document.querySelector("input[name=paracliente]:checked").getAttribute("class");
 
   var cidade = document.querySelector("#cidade option:selected").value;
@@ -64,7 +62,6 @@ document.getElementById("btnFormulario").addEventListener("click", function(){
     valid(estado, "estado", "Estado") ||
     valid(cidade, "cidade", "Cidade")
   ) {
-    console.log('erro');
     document.querySelector('.barra-tijuca-modal-text').innerHTML = 'Todos os campos são obrigátorios.'
     document.querySelector('.barra-tijuca-modal-btn').style.backgroundColor = '#e31837';
     toggle(document.getElementById("barra-tijuca-modal"))
@@ -87,11 +84,11 @@ document.getElementById("btnFormulario").addEventListener("click", function(){
   fetch(`https://blog.abcdaconstrucao.com.br/atendimento/ajax/landingpage.ajax.php`, {
     method: "POST",
     cache: "no-cache",
-    body: post, 
-    }).then(function (data) {
-      console.log(data);
-    }).catch(function (error) {
-      console.warn(error);
+    body: post,
+  }).then(function (data) {
+    console.log(data);
+  }).catch(function (error) {
+    console.warn(error);
   })
   // $.ajax({
   //     type: "POST",
@@ -103,8 +100,6 @@ document.getElementById("btnFormulario").addEventListener("click", function(){
   //         $("#controleformulario").show("fast");
   //         $("#EnviaFormulario").show("fast");
   //         load("#loadForm", false);
-
-  //         console.log(response);
 
   //         if (response != "") {
 
@@ -141,7 +136,7 @@ document.getElementById("btnFormulario").addEventListener("click", function(){
 
   //       } else {
   //           $("#EnviaFormulario").show();
-    
+
   //           alert(
   //               "Houve um erro interno, tente novamente mais tarde ou entre em contato conosco pelo telefone."
   //           );

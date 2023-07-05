@@ -4,7 +4,6 @@ function cidades() {
     cache: "no-cache",
     body: "c=lojasTray&tipo=regiao&estado=MG",
   }).then(function (data) {
-    console.log(data);
     const cidade = document.querySelector(".section-duvidas .duvida:last-child > span")
     cidade.innerHTML = response;
   }).catch(function (error) {
@@ -105,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   setTimeout(() => {
-    console.log('... pcwABC events');
     document.querySelector('#popconvert-iframe-pcw-container .pcwbtn').addEventListener("click", function () {
       let pcwNome = document.querySelector('input[placeholder="Seu nome"]').value;
       let pcwCelular = document.querySelector('input[placeholder="Seu celular"]').value;

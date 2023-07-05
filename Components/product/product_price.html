@@ -55,7 +55,6 @@
 {{~ if product_is_box && page_product ~}}
   <div class="box-price">
     <span>Neste produto a m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
-    {{ prices.multiplication_factor | debug.log}}
   </div>
 {{~ end ~}}
 

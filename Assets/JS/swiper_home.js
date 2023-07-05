@@ -97,7 +97,7 @@ var swiper = new Swiper(".stores .swiper", {
   }
 });
 
-if(MOBILE.matches) {
+if (MOBILE.matches) {
   var swiper = new Swiper(".blog .swiper", {
     slidesPerView: 'auto',
     spaceBetween: 20,

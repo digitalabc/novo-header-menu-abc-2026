@@ -6376,6 +6376,9 @@ header {
 .banner-grid > div:first-child {
   margin-bottom: 20px;
 }
+.banner-grid ul {
+  display: flex;
+}
 .banner-grid ul li {
   overflow: hidden;
   position: relative;
@@ -7803,6 +7806,7 @@ header {
   background: #e30613;
 }
 .shipping {
+  display: none;
   margin-bottom: 20px;
 }
 .shipping__title {

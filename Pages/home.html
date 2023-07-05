@@ -13,12 +13,12 @@
 
   <!-- Fullbanner -->
   <section class="fullbanner desktop">
-    {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Centro" }}
+    {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
   </section>
 
   <!-- Fullbanner mobile -->
   <section class="fullbanner mobile">
-    {{ banner carousel: true type: "fullbanner"  banners: data.hotsite.banners position: "Mobile Centro" }}
+    {{ banner carousel: true type: "fullbanner"  banners: data.hotsite.banners position: "Mobile Topo" }}
   </section>
 
   <div class="container">
@@ -95,10 +95,10 @@
     <section class="banner-oportunidades">
       <h2>{{ "Seleção de oportunidades" | lang }}</h2>
       <div class="desktop">
-        {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+        {{ banner carousel: false banners: data.hotsite.banners position: "Centro" }}
       </div>
       <div class="mobile">
-        {{ banner carousel: true banners: data.hotsite.banners position: "Mobile Topo" }}
+        {{ banner carousel: true banners: data.hotsite.banners position: "Mobile Centro" }}
       </div>
     </section>
 
@@ -110,8 +110,8 @@
 
     <!-- Grid de banners -->
     <section class="banner-grid">
-      {{ banner carousel: true banners: data.hotsite.banners position: "Centro Lower" }}
-      {{ banner carousel: true banners: data.hotsite.banners position: "Centro Lower" }}
+      {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Top" }}
+      {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Bottom" }}
     </section>
 
     <!-- Compre por departamento -->
@@ -538,7 +538,7 @@
 
       <!-- Banners centro -->
       <section class="banner-centro desktop">
-        {{ banner carousel: true banners: data.hotsite.banners position: "Lateral Direita" }}
+        {{ banner carousel: true banners: data.hotsite.banners position: "Centro Lower" }}
       </section>
 
       <!-- Banners centro -->
@@ -555,87 +555,7 @@
       <!-- Nossas lojas -->
       <section class="stores">
         <h2 class="stores__title">Nossas lojas</h2>
-        <div class="swiper-container">
-          <div class="swiper">
-            <ul class="swiper-wrapper">
-              <li class="swiper-slide stores__item">
-                <a href="#">
-                  <div class="stores__img">
-                    <img
-                      src="{{- store.urls.static_img }}nossas-lojas/loja01.png?theme={{store.theme}}&v={{store.last_modified}}"
-                      width="193" height="193" alt="Loja 1" />
-                  </div>
-                </a>
-              </li>
-              <li class="swiper-slide stores__item">
-                <a href="#">
-                  <div class="stores__img">
-                    <img
-                      src="{{- store.urls.static_img }}nossas-lojas/loja02.png?theme={{store.theme}}&v={{store.last_modified}}"
-                      width="193" height="193" alt="Loja 2" />
-                  </div>
-                </a>
-              </li>
-              <li class="swiper-slide stores__item">
-                <a href="#">
-                  <div class="stores__img">
-                    <img
-                      src="{{- store.urls.static_img }}nossas-lojas/loja03.png?theme={{store.theme}}&v={{store.last_modified}}"
-                      width="193" height="193" alt="Loja 3" />
-                  </div>
-                </a>
-              </li>
-              <li class="swiper-slide stores__item">
-                <a href="#">
-                  <div class="stores__img">
-                    <img
-                      src="{{- store.urls.static_img }}nossas-lojas/loja04.png?theme={{store.theme}}&v={{store.last_modified}}"
-                      width="193" height="193" alt="Loja 4" />
-                  </div>
-                </a>
-              </li>
-              <li class="swiper-slide stores__item">
-                <a href="#">
-                  <div class="stores__img">
-                    <img
-                      src="{{- store.urls.static_img }}nossas-lojas/loja05.png?theme={{store.theme}}&v={{store.last_modified}}"
-                      width="193" height="193" alt="Loja 5" />
-                  </div>
-                </a>
-              </li>
-              <li class="swiper-slide stores__item">
-                <a href="#">
-                  <div class="stores__img">
-                    <img
-                      src="{{- store.urls.static_img }}nossas-lojas/loja06.png?theme={{store.theme}}&v={{store.last_modified}}"
-                      width="193" height="193" alt="Loja 6" />
-                  </div>
-                </a>
-              </li>
-              <li class="swiper-slide stores__item">
-                <a href="#">
-                  <div class="stores__img">
-                    <img
-                      src="{{- store.urls.static_img }}nossas-lojas/loja07.png?theme={{store.theme}}&v={{store.last_modified}}"
-                      width="193" height="193" alt="Loja 7" />
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <button class="swiper-button-prev">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-              <path id="Path_151" data-name="Path 151"
-                d="M15,0A15,15,0,1,1,0,15,15.017,15.017,0,0,1,15,0ZM10.366,15.884l6.25,6.25a1.25,1.25,0,1,0,1.768-1.767L13.017,15l5.366-5.366a1.25,1.25,0,1,0-1.767-1.767l-6.25,6.25A1.249,1.249,0,0,0,10.366,15.884Z" />
-            </svg>
-          </button>
-          <button class="swiper-button-next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-              <path id="Path_151" data-name="Path 151"
-                d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z" />
-            </svg>
-          </button>
-        </div>
+        {{ banner carousel: true banners: data.hotsite.banners position: "Lateral Direita" }}
       </section>
 
       <!-- Nosso Blog -->

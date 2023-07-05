@@ -33,8 +33,6 @@
           <figure class="nav-banner">
             {{~ if current_menu.image_url ~}}
               <img src={{current_menu.image_url}} alt="{{current_menu.name | string.downcase | string.capitalize}}" width="320" height="200">
-            {{~ else ~}}
-              <img src="https://via.placeholder.com/320x200" alt="{{current_menu.name | string.downcase | string.capitalize}}" width="320" height="200">
             {{~ end ~}}
           </figure>
         </div>

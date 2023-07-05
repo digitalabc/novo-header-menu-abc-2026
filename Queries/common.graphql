@@ -2,13 +2,16 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
   menuGroups(url:$url) {
     menuGroupId
     position
+    imageUrl
+    fullImageUrl
     menus {
       menuId
       parentMenuId
+      imageUrl
+      fullImageUrl
       name
       cssClass
       link
-      order
     }  
   }
   scripts(url:$url, pageType:$scriptPageTypes) {

@@ -9,6 +9,8 @@
 <body class="home">
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+
+    {{ common | debug.log }} 
   </header>
 
   <!-- Fullbanner -->
@@ -110,7 +112,7 @@
 
     <!-- Grid de banners -->
     <section class="banner-grid">
-      {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Top" }}
+      {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Topo" }}
       {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Bottom" }}
     </section>
 

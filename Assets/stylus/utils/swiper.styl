@@ -7,20 +7,24 @@
   &-container
     position: relative;
 
+    @media (max-width: 1330px)
+      padding: 0 40px;
+
   &-wrapper
     margin: 0;
     padding: 0;
 
   &-button
     &-prev, &-next
-      background-color unset
-      margin 0
-      transform translateY(-50%)
-      width 30px
-      height 30px
-      color #5D5D5D
-      z-index 1
-      transition $transition
+      z-index: 1;
+      margin: 0;
+      width: 30px;
+      height: 30px;
+      background-color: unset;
+      color: #5D5D5D;
+      transition: $transition;
+      transform: translateY(-50%);
+
       &:hover
         color: $primary;
 
@@ -37,6 +41,12 @@
       @media desktop
         left: -50px;
 
+      @media (max-width: 1330px)
+        left: 0;
+
     &-next
       @media desktop
         right: -50px;
+
+      @media (max-width: 1330px)
+        right: 0;

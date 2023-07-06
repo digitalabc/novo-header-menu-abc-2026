@@ -8745,6 +8745,9 @@ section.newsletter--home .newsletter__alert {
   padding: 20px 25px 60px;
   position: relative;
 }
+.seo:empty {
+  display: none;
+}
 @media screen and (max-width: 991px) {
   .seo {
     margin-bottom: 40px;

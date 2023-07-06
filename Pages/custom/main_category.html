@@ -1,168 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
-        {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-        {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
-    </head>
 
-    <body class="category">
-        <header>
-            {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
-        </header>
+<head>
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
 
-        <div class="container">
-          {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
+<body class="category">
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+  </header>
 
-          <section class="seo">
-            {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false}}
-            <button type="button" class="seo__button" onclick="toggleSeo()">
-              Ver mais
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                <g id="_318476" data-name="318476" transform="translate(0 20) rotate(-90)">
-                  <g id="Group_320" data-name="Group 320" transform="translate(0)">
-                    <path id="Path_151" data-name="Path 151" d="M10,0A10,10,0,1,1,0,10,10.011,10.011,0,0,1,10,0ZM6.911,10.589l4.167,4.167a.833.833,0,1,0,1.178-1.178L8.678,10l3.577-3.577a.833.833,0,0,0-1.178-1.178L6.911,9.411A.832.832,0,0,0,6.911,10.589Z" fill="#0fa848"/>
-                  </g>
-                </g>
-              </svg>
-            </button>
-          </section>
+  <div class="container">
+    {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
 
-          {{ # content position: "Centro" contents: data.hotsite.contents show_title: false }}
-          <section class="subcategories">
-            <h2 class="subcategories__title">Navegue por ambiente</h2>
-            <div class="swiper-container">
-              <div class="swiper">
-                <ul class="swiper-wrapper">
-                  <li class="swiper-slide subcategories__item">
-                      <a href="#">
-                          <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/200x200" alt="Revestimento para Fachada"/>
-                          </div>
-                          <h3 class="subcategories__title">
-                            Revestimento para Fachada
-                          </h3>
-                      </a>
-                  </li>
-                  <li class="swiper-slide subcategories__item">
-                      <a href="#">
-                          <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/200x200" alt="Banheiro"/>
-                          </div>
-                          <h3 class="subcategories__title">
-                            Banheiro
-                          </h3>
-                      </a>
-                  </li>
-                  <li class="swiper-slide subcategories__item">
-                      <a href="#">
-                          <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/200x200" alt="Cozinha"/>
-                          </div>
-                          <h3 class="subcategories__title">
-                            Cozinha
-                          </h3>
-                      </a>
-                  </li>
-                  <li class="swiper-slide subcategories__item">
-                      <a href="#">
-                          <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/200x200" alt="Piscina"/>
-                          </div>
-                          <h3 class="subcategories__title">
-                            Piscina
-                          </h3>
-                      </a>
-                  </li>
-                  <li class="swiper-slide subcategories__item">
-                      <a href="#">
-                          <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/200x200" alt="Escritório"/>
-                          </div>
-                          <h3 class="subcategories__title">
-                            Escritório
-                          </h3>
-                      </a>
-                  </li>
-                  <li class="swiper-slide subcategories__item">
-                      <a href="#">
-                          <div class="subcategories__img">
-                            <img src="https://via.placeholder.com/200x200" alt="Sala de Estar"/>
-                          </div>
-                          <h3 class="subcategories__title">
-                            Sala de Estar
-                          </h3>
-                      </a>
-                  </li>
-                </ul>
-              </div>
-              <button class="swiper-button-prev">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                  <path id="Path_151" data-name="Path 151" d="M15,0A15,15,0,1,1,0,15,15.017,15.017,0,0,1,15,0ZM10.366,15.884l6.25,6.25a1.25,1.25,0,1,0,1.768-1.767L13.017,15l5.366-5.366a1.25,1.25,0,1,0-1.767-1.767l-6.25,6.25A1.249,1.249,0,0,0,10.366,15.884Z"/>
-                </svg>
-              </button>
-              <button class="swiper-button-next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                  <path id="Path_151" data-name="Path 151" d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z"/>
-                </svg>
-              </button>
-            </div>
-          </section>
+    <!-- SEO -->
+    {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true }}
 
-          <!-- Vitrine 1 -->
-          <section class="showcase showcase__banner">
-            {{ # banner carousel: false banners: data.hotsite.banners position: "Topo" }}
-            
-            <ul>
-              <li>
-                <a target="_blank" href="#">
-                  <img srcset="https://via.placeholder.com/640x440 w" sizes="px" src="https://via.placeholder.com/640x440" alt="Banner Pisos e Revestimentos" class="">
-                </a>
-              </li>
-            </ul>
-            
-            <h2 class="mobile">Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
+    {{ content position: "Centro" contents: data.hotsite.contents show_title: false }}
 
-            <div class="desktop">
-              {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
-            </div>
-            <div class="mobile">
-              {{ spot_carousel class: "showcase-1" products: data.vitrine_mobile.products.nodes }}
-            </div>
-          </section>
-          
-          <!-- Vitrine 2 -->
-          <section class="showcase desktop">
-            {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
-          </section>
-        </div>
+    <!-- Vitrine 1 -->
+    <section class="showcase showcase__banner">
+      {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
 
-        <div class="gray-bg">
-          <div class="container">
-            <!-- Carrossel de marcas -->
-            <section class="brands">
-                <h2>Navegar por marca</h2>
-                {{ brands_list brands: data.brands.nodes }}
-            </section>
-          </div>
-        </div>
+      <h2 class="mobile">Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
 
-        <div class="container">
-          <!-- Vitrine 3 -->
-          <section class="showcase desktop">
-            {{ spot_carousel class: "showcase-3" products: data.vitrine3.products.nodes }}
-          </section>
-        </div>
-        
-        <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+      <div class="desktop">
+        {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
+      </div>
+      <div class="mobile">
+        {{ spot_carousel class: "showcase-1" products: data.vitrine_mobile.products.nodes }}
+      </div>
+    </section>
 
-        {{ footer products:common.lighbox_products.products.nodes }}
-        
-        {{ gtm_config gtm_id: common.gtm_id }}
-        {{ gtm_hotsite_view product_lists: [data.vitrine_banner.products.nodes, products: data.vitrine_mobile.products.nodes, data.vitrine2.products.nodes, data.vitrine3.products.nodes]}}
+    <!-- Vitrine 2 -->
+    <section class="showcase desktop">
+      {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
+    </section>
+  </div>
 
-        {{ sdk_client }}
-        
-        {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring"]}}
-    </body>
+  <div class="gray-bg">
+    <div class="container">
+      <!-- Carrossel de marcas -->
+      <section class="brands">
+        <h2>Navegar por marca</h2>
+        {{ brands_list brands: data.brands.nodes }}
+      </section>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Vitrine 3 -->
+    <section class="showcase desktop">
+      {{ spot_carousel class: "showcase-3" products: data.vitrine3.products.nodes }}
+    </section>
+  </div>
+
+  <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ gtm_config gtm_id: common.gtm_id }}
+  {{ gtm_hotsite_view product_lists: [data.vitrine_banner.products.nodes, products: data.vitrine_mobile.products.nodes, data.vitrine2.products.nodes, data.vitrine3.products.nodes]}}
+
+  {{ sdk_client }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring"]}}
+</body>
+
 </html>

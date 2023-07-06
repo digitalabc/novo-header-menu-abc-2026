@@ -7369,6 +7369,7 @@ header {
 }
 #menu-offcanvas .nav-mobile__list--root {
   max-height: calc(100vh - 55px - 240px);
+  max-height: calc(100dvh - 55px - 240px);
   overflow: auto;
 }
 #menu-offcanvas .nav-mobile__list--root::-webkit-scrollbar {
@@ -7377,6 +7378,7 @@ header {
 #menu-offcanvas .nav-mobile__list--nv1 {
   overflow: auto;
   max-height: calc(100vh - 55px - 40px);
+  max-height: calc(100dvh - 55px - 40px);
 }
 .search__form {
   position: relative;

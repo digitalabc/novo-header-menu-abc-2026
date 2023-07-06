@@ -120,6 +120,11 @@ input[type='search']::-webkit-search-results-decoration {
     padding: 0 40px;
   }
 }
+@media screen and (max-width: 991px) {
+  .swiper-container {
+    padding: 0;
+  }
+}
 .swiper-wrapper {
   margin: 0;
   padding: 0;

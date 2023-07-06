@@ -49,7 +49,7 @@
             },
             {
                 "urlMatch": "auaha-loja-por-cidade",
-                "path": "Custom/diretorio_de_lojas/franquia.html",
+                "path": "Custom/diretorio_de_lojas/franquia_auaha.html",
                 "query": "generic.graphql"
             },
             {

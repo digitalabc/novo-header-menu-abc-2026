@@ -7369,7 +7369,7 @@ header {
 }
 #menu-offcanvas .nav-mobile__list--root {
   max-height: calc(100vh - 55px - 240px);
-  max-height: calc(100dvh - 55px - 240px);
+  max-height: calc(100dvh - 240px);
   overflow: auto;
 }
 #menu-offcanvas .nav-mobile__list--root::-webkit-scrollbar {

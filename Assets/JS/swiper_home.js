@@ -1,7 +1,7 @@
 var swiper = new Swiper(".fullbanner .swiper", {
   loop: true,
   autoplay: {
-    delay: 3000,
+    delay: 5000,
   },
 });
 

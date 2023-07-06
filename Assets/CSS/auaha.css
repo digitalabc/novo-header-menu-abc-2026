@@ -7643,6 +7643,12 @@ header {
   width: 100%;
   display: none;
 }
+.user__content > a {
+  display: block;
+}
+.user__content > a:not(:last-child) {
+  margin-bottom: 12px;
+}
 #mini-cart-core {
   display: flex;
   flex-direction: column;

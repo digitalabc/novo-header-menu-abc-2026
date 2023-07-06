@@ -22,10 +22,12 @@ async function checkUserLogin() {
             document.querySelectorAll(".not-authenticated").forEach(div => {
               div.style.display = 'none';
             });
+
             document.querySelectorAll(".authenticated").forEach(div => {
               div.style.display = 'block';
             });
         }
+        
         else{
             document.querySelectorAll(".user-href").forEach(div => {
               div.href += window.location.href;

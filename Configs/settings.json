@@ -51,6 +51,13 @@
           }
         },
         {
+          "name": "Maior Desconto",
+          "setting": {
+            "key": "DISCOUNT",
+            "direction": "DESC"
+          }
+        },
+        {
           "name": "Menor Preço",
           "setting": {
             "key": "PRICE",
@@ -97,6 +104,13 @@
           "name": "Vendas",
           "setting": {
             "key": "SALES",
+            "direction": "DESC"
+          }
+        },
+        {
+          "name": "Maior Desconto",
+          "setting": {
+            "key": "DISCOUNT",
             "direction": "DESC"
           }
         },

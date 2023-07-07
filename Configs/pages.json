@@ -48,6 +48,42 @@
                 "priority": 1
             },
             {
+                "urlMatch": "diretorio-de-lojas/sao-paulo/*",
+                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql",
+                "priority": 1
+            },
+            {
+                "urlMatch": "diretorio-de-lojas/espirito-santo/*",
+                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql",
+                "priority": 1
+            },
+            {
+                "urlMatch": "diretorio-de-lojas/bahia/*",
+                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql",
+                "priority": 1
+            },
+            {
+                "urlMatch": "diretorio-de-lojas/distrito-federal/*",
+                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql",
+                "priority": 1
+            },
+            {
+                "urlMatch": "diretorio-de-lojas/goias/*",
+                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql",
+                "priority": 1
+            },
+            {
+                "urlMatch": "diretorio-de-lojas/parana/*",
+                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "query": "generic.graphql",
+                "priority": 1
+            },
+            {
                 "urlMatch": "auaha-loja-por-cidade",
                 "path": "Custom/diretorio_de_lojas/franquia_auaha.html",
                 "query": "generic.graphql"

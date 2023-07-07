@@ -87,8 +87,10 @@
             <section class="section-hero">
                 <div class="texto">
                     <div class="logo-links">
-                        <a href="#"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/logo-topo-200x54.png"
-                                alt="ABC da Construção" title="ABC da Construção"></a>
+                        <a href="#">
+                            <img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/logo-topo-200x54.png"
+                                alt="ABC da Construção" title="ABC da Construção">
+                        </a>
                         <a href="#">Home</a>
                         <a href="#duvidas-frequentes">Tire suas dúvidas</a>
                     </div>
@@ -108,8 +110,7 @@
                     </div>
                 </div>
                 <div class="imagem">
-                    <img src="https://recursos.abcdaconstrucao.com.br/i/lps/flamengo/SITE_ABC_FLA-MAES-2023.jpg"
-                        alt="Flamengo">
+                    {{ banner banners: data.hotsite.banners position: "Topo" carousel: false }}
                 </div>
             </section>
         </div>

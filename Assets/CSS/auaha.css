@@ -6065,10 +6065,10 @@ header {
 #footer .footer__block--atendimento .footer__list li a {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 500;
   color: #5d5d5d;
+  font-weight: 500;
+  font-size: 16px;
+  gap: 8px;
 }
 #footer .footer__block--atendimento .footer__list li a:hover {
   color: #e30613;
@@ -6078,10 +6078,10 @@ header {
   font-size: 13px;
 }
 #footer .footer__title {
+  margin: 0;
   color: #004a68;
   font-weight: 600;
   font-size: 14px;
-  margin: 0;
 }
 @media screen and (min-width: 992px) {
   #footer .footer__title {
@@ -6094,15 +6094,15 @@ header {
 @media screen and (max-width: 991px) {
   #footer .footer__title {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
   }
   #footer .footer__title svg {
     transform: rotateX(180deg);
   }
   #footer .footer__title + *:not(.social) {
-    height: 0;
     overflow: hidden;
+    height: 0;
     transition: all 0.2s ease-in-out;
   }
   #footer .footer__title.open svg {
@@ -6116,8 +6116,8 @@ header {
   margin-bottom: 7px;
 }
 #footer .footer__link {
-  font-size: 13px;
   color: #5d5d5d;
+  font-size: 13px;
 }
 #footer .footer__link:hover {
   font-weight: 500;
@@ -6141,8 +6141,8 @@ header {
 @media screen and (max-width: 991px) {
   #footer .footer-middle {
     flex-wrap: wrap;
-    gap: 40px;
     padding-bottom: 40px;
+    gap: 40px;
   }
 }
 #footer .footer-middle .social {
@@ -6180,15 +6180,15 @@ header {
 }
 @media screen and (min-width: 992px) {
   #footer .footer-bottom .footer__container {
-    height: 50px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    height: 50px;
   }
 }
 #footer .footer-bottom .footer__copyright {
-  font-size: 10px;
   color: #4d4d4d;
+  font-size: 10px;
 }
 @media screen and (max-width: 991px) {
   #footer .footer-bottom .footer__copyright {
@@ -6212,9 +6212,9 @@ header {
   }
 }
 #footer .newsletter__title {
-  font-size: 14px;
-  font-weight: 600;
   margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
 }
 @media screen and (max-width: 991px) {
   #footer .newsletter__title {
@@ -6226,33 +6226,33 @@ header {
 }
 #footer .newsletter__form input {
   margin: 0;
+  margin-bottom: 10px;
   width: 100%;
   height: 50px;
   border: none;
   border-radius: 0;
   background: #f7f7f7;
-  font-size: 12px;
-  font-weight: 600;
   color: #392f2d;
-  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 12px;
   transition: all 0.2s ease-in-out;
 }
 #footer .newsletter__form input::placeholder {
   color: #392f2d;
 }
 #footer .newsletter__form button {
-  margin-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  margin-top: 5px;
   width: 100%;
+  height: 50px;
   background: #392f2d;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  color: #fff;
   font-weight: 700;
   font-size: 12px;
-  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 #footer .newsletter__form button:hover {
   background: #e30613;
@@ -6268,6 +6268,10 @@ header {
   bottom: 40px;
   z-index: 999999;
   filter: drop-shadow(2px 4px 6px #999);
+  transition: all 0.2s ease-in-out;
+}
+.show-mobile-nav #whatsapp {
+  bottom: 80px;
 }
 .ah-offcanvas-container {
   overflow: hidden;

@@ -39,39 +39,39 @@ query Hotsite($url: String!) {
       name
     }
   }
-  vitrineBanner: search(query: "") {
+  vitrineBanner: hotsite(hotsiteId: 98787) {
     ...vitrineBanner
   }
-  vitrineMobile: search(query: "") {
+  vitrineMobile: hotsite(hotsiteId: 98788) {
     ...vitrineMobile
   }
-  vitrine2: search(query: "") {
+  vitrine2: hotsite(hotsiteId: 98789) {
     ...vitrine2
   }
-  vitrine3: search(query: "") {
+  vitrine3: hotsite(hotsiteId: 98790) {
     ...vitrine3
   }
 }
 
-fragment vitrineBanner on Search {
+fragment vitrineBanner on SingleHotsite{
   products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
     ...productsCon
   }
 }
 
-fragment vitrineMobile on Search {
+fragment vitrineMobile on SingleHotsite {
   products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
     ...productsCon
   }
 }
 
-fragment vitrine2 on Search {
+fragment vitrine2 on SingleHotsite {
   products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
     ...productsCon
   }
 }
 
-fragment vitrine3 on Search {
+fragment vitrine3 on SingleHotsite {
   products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
     ...productsCon
   }

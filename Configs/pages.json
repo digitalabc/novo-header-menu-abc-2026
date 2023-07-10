@@ -89,6 +89,11 @@
                 "query": "generic.graphql"
             },
             {
+                "urlMatch": "diretorio-de-lojas/cidades/piracicaba",
+                "path": "Custom/diretorio_de_lojas/cidade-piracicaba.html",
+                "query": "generic.graphql"
+            },
+            {
                 "urlMatch": "barra-da-tijuca-rj",
                 "path": "Custom/old_se/barra_tijuca.html",
                 "query": "generic.graphql"

@@ -16,14 +16,14 @@
                     {{~ product = item.node ?? item }}
                     {
                         item_id: {{product.product_id}},
-                        item_name: `{{product.product_name | string.escape}}`,
+                        item_name: "{{product.product_name | string.escape}}",
                         {{~ if product.prices ~}}
                         discount: {{ product.prices.list_price - product.prices.price }},
                         price: {{ product.prices.list_price }},
                         {{~ end ~}}
                         index: 0,
                         {{ if product.product_brand?.name}}
-                        item_brand: `{{product.product_brand.name | string.escape}}`,
+                        item_brand: "{{product.product_brand.name | string.escape}}",
                         {{ end }}
                         {{ i = 1 }}
                         {{ for category in product.product_categories }}

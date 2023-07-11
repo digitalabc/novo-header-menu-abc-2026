@@ -45,7 +45,7 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
       }
     }
   }
-  gtm_id: shopSettings(settingNames: "Fbits-GoogleAnalyticsId") {
+  gtm_id: shopSettings(settingNames: "GoogleTagManagerId") {
     name
     value
   }

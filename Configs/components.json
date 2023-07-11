@@ -817,7 +817,7 @@
         "availableInAllPages": true,
         "params": [
             {
-                "name": "gtm_id",
+                "name": "gtm_ids",
                 "required": true
             }
         ]

@@ -2,7 +2,7 @@
   <div class="state">
     <p class="state__header">Escolha a cidade</p>
     <select class="state__select" name="pick-up-state" id="pick-up-state" >
-      {{~ for state in settings.pick_up_states ~}}
+      {{~ for state in settings.cidades ~}}
         <option value="{{ state.name | string.handleize }}">{{ state.name }}</option>
       {{~ end ~}}
     </select>
@@ -20,7 +20,7 @@
       </svg>
       Lojas Disponíveis
     </div>
-    {{~ for state in settings.pick_up_states ~}}
+    {{~ for state in settings.cidades ~}}
       <ul class="stores__list" data-state="{{ state.name | string.handleize }}">
         {{~ for store in state.stores ~}}
           <li class="store">

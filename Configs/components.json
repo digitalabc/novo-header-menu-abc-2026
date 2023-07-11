@@ -1169,5 +1169,29 @@
         "path": "db_lojas.html",
         "inheritVariables": false,
         "availableInAllPages": true
+    },
+    {
+        "name": "cidade_html",
+        "path": "Custom/diretorio_de_lojas/cidade.html",
+        "inheritVariables": false,
+        "availableInAllPages": true,
+        "params": [
+            {
+                "name": "data",
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "franquia_html",
+        "path": "Custom/diretorio_de_lojas/franquia.html",
+        "inheritVariables": false,
+        "availableInAllPages": true,
+        "params": [
+            {
+                "name": "data",
+                "required": true
+            }
+        ]
     }
 ]

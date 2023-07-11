@@ -36,62 +36,10 @@
                 "query": "generic.graphql"
             },
             {
-                "urlMatch": "diretorio-de-lojas/minas-gerais/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
+                "urlMatch": "diretorio-de-lojas/*",
+                "path": "Custom/diretorio_de_lojas/cidade_franquia.html",
                 "query": "generic.graphql",
                 "priority": 1
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/rio-de-janeiro/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/sao-paulo/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/espirito-santo/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/bahia/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/distrito-federal/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/goias/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/parana/*",
-                "path": "Custom/diretorio_de_lojas/cidade.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "auaha-loja-por-cidade",
-                "path": "Custom/diretorio_de_lojas/franquia_auaha.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/cidades/piracicaba",
-                "path": "Custom/diretorio_de_lojas/cidade-piracicaba.html",
-                "query": "generic.graphql"
             },
             {
                 "urlMatch": "barra-da-tijuca-rj",
@@ -152,6 +100,11 @@
                 "urlMatch": "semana-do-consumidor",
                 "path": "Custom/old_se/semana_do_consumidor.html",
                 "query": "semana_do_consumidor.graphql"
+            },
+            {
+                "urlMatch": "auaha-loja-por-cidade",
+                "path": "Custom/diretorio_de_lojas/franquia.html",
+                "query": "generic.graphql"
             }
         ]
     },

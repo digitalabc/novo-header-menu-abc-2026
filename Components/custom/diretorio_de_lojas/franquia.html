@@ -35,10 +35,20 @@
     </div>
 
     <script>
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      };
+
       let whatsapp_link = document.getElementById("custom-zap");
 
+      let store = window.location.pathname.split("/").slice(-1)[0]
+      store = store?.replaceAll("-", " ").toUpperCase()
+
+      let city = window.location.pathname.split("/").slice(-2)[0]
+      city = city?.replaceAll("-", " ").toUpperCase()
+
       whatsapp_link.setAttribute("href",
-        `https://api.whatsapp.com/send?phone=553192490299&text=[ABCZAP] Olá! Acessei o site da ABC da Construção  e gostaria de informações`
+        `https://api.whatsapp.com/send?phone=553192490299&text=[ABCZAP] Olá! Acessei a página da ABC ${store} - ${city} e gostaria de mais informações`
       )
     </script>
   </section>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
+        {{ gtm_config_head gtm_id: common.gtm_id }}        
         {{ default_title_not_found = "Página não encontrada - Erro 404" | string.append " | ABC da Construção" }}
         {{ header default_title: default_title_not_found }}
     </head>
     <body>
+        {{ gtm_config_body gtm_id: common.gtm_id }}                
         <header>
             {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>

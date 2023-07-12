@@ -144,9 +144,10 @@
       "stores": [
         {
           "name": "Centro - Além Paraíba",
-          "adress": "Av.Dr.Ricardo Grimaldo Estides,215- Centro, Além Paraíba - MG, 36660-000",
-          "opening_hours": "Seg a Sex 8h às 19h e Sáb. 8h às 13h00",
-          "phone": "(32) 99179-5577"
+          "adress": "Av. Dr. Ricardo Grimaldo Estides, 215- Centro, Além Paraíba - MG, 36660-000",
+          "opening_hours": "Seg a Sex 8:00 às 19:00 e Sáb. 8:00 às 13:00",
+          "phone": "(32) 3462-4934",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro"              
         }
       ]
     },
@@ -157,7 +158,8 @@
           "name": "Centro",
           "adress": "R. Mal. Floriano Peixoto, 229 - Centro, Barbacena - MG, 36202-344",
           "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h00",
-          "phone": "(32) 3331-0349"
+          "phone": "(32) 3331-0349",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/barbacena/centro"
         }
       ]
     },
@@ -167,8 +169,9 @@
         {
           "name": "Atelier ABC - Lourdes",
           "adress": "Av. Olegário Maciel, 1.699 - Lourdes <br />Belo Horizonte - MG, 30180-117",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 13h00",
-          "phone": "(31) 98857-0132"
+          "opening_hours": "Seg a Sex 9:00 às 19:00 e Sáb. 9:00h às 13:00",
+          "phone": "(31) 3047-8717",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/lourdes"
         },
         {
           "name": "ABC da Construção Castelo",

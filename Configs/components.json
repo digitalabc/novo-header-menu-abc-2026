@@ -812,7 +812,7 @@
         ]
     }, 
     {
-        "name": "gtm_config",
+        "name": "gtm_config_head",
         "path": "gtm/gtm_config_head.html",
         "availableInAllPages": true,
         "params": [
@@ -823,7 +823,7 @@
         ]
     }, 
     {
-        "name": "gtm_config",
+        "name": "gtm_config_body",
         "path": "gtm/gtm_config_body.html",
         "availableInAllPages": true,
         "params": [

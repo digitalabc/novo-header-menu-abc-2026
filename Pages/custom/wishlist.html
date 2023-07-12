@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
+        {{ gtm_config_head gtm_id: common.gtm_id }}              
         {{ header default_title: data.hotsite.name }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
     </head>
@@ -12,6 +13,7 @@
     }
 </style>
     <body>
+        {{ gtm_config_body gtm_id: common.gtm_id }}                      
         <header>
             {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
         </header>

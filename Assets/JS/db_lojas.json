@@ -6,6 +6,7 @@
 			"coluna_mobile": "1",
 			"cidades": [
 				"Além Paraíba",
+				"Alfenas",
 				"Barbacena",
 				"Belo Horizonte",
 				"Belo Vale",
@@ -148,6 +149,14 @@
 			]
 		},
 		{
+			"estado": "Mato Grosso do Sul",
+			"coluna": "2",
+			"coluna_mobile": "2",
+			"cidades": [
+				"Campo Grande"
+			]
+		},
+		{
 			"estado": "Distrito Federal",
 			"coluna": "2",
 			"coluna_mobile": "2",
@@ -195,6 +204,7 @@
 				"Caraguatatuba",
 				"Cruzeiro",
 				"Guaratinguetá",
+				"Hortolândia",
 				"Indaiatuba",
 				"Itapira",
 				"Itu",
@@ -208,6 +218,7 @@
 				"Mogi das Cruzes",
 				"Mogi Guaçu",
 				"Mogi Mirim",
+				"Paulínia",
 				"Pindamonhangaba",
 				"Piracaia",
 				"Piracicaba",
@@ -216,8 +227,11 @@
 				"Ribeirão Preto",
 				"Santa Isabel",
 				"Santo Antônio de Posse",
+				"Santos",
 				"São Bernardo do Campo",
 				"São Caetano do Sul",
+				"São João da Boa Vista",
+				"São José do Rio Pardo",
 				"São José do Rio Preto",
 				"São José dos Campos",
 				"São Roque",
@@ -234,6 +248,7 @@
 			"coluna_mobile": "2",
 			"cidades": [
 				"Afonso Cláudio",
+				"Anchieta",
 				"Baixo Guandu",
 				"Colatina",
 				"Guaçuí",

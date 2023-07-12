@@ -812,6 +812,28 @@
         ]
     }, 
     {
+        "name": "gtm_config",
+        "path": "gtm/gtm_config_head.html",
+        "availableInAllPages": true,
+        "params": [
+            {
+                "name": "gtm_id",
+                "required": true
+            }
+        ]
+    }, 
+    {
+        "name": "gtm_config",
+        "path": "gtm/gtm_config_body.html",
+        "availableInAllPages": true,
+        "params": [
+            {
+                "name": "gtm_id",
+                "required": true
+            }
+        ]
+    },     
+    {
         "name": "gtm_product_view",
         "path": "gtm/gtm_product_view.html",
         "params": [

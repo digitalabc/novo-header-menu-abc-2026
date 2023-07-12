@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+  {{ gtm_config_head gtm_id: common.gtm_id }}            
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
@@ -11,6 +12,7 @@
 {{ page_size = data.hotsite.page_size }}
 
 <body class="hotsite{{ if products.total_count == 0 }} empty{{ end }}">
+  {{ gtm_config_body gtm_id: common.gtm_id }}              
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
   </header>

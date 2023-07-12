@@ -2,11 +2,12 @@
 <html lang="pt-BR">
 
 <head>
-  {{ gtm_config gtm_id: common.gtm_id }}
+  {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ header default_title: "ABC da Construção" seo: data.hotsite.seo}}
 </head>
 
 <body class="home">
+  {{ gtm_config_body gtm_id: common.gtm_id }}
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
   </header>

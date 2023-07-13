@@ -145,9 +145,11 @@
         {
           "name": "Centro - Além Paraíba",
           "adress": "Av. Dr. Ricardo Grimaldo Estides, 215- Centro, Além Paraíba - MG, 36660-000",
-          "opening_hours": "Seg a Sex 8:00 às 19:00 e Sáb. 8:00 às 13:00",
           "phone": "(32) 3462-4934",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro"              
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -157,9 +159,11 @@
         {
           "name": "Centro",
           "adress": "R. Mal. Floriano Peixoto, 229 - Centro, Barbacena - MG, 36202-344",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h00",
           "phone": "(32) 3331-0349",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/barbacena/centro"
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/barbacena/centro",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -169,45 +173,59 @@
         {
           "name": "Atelier ABC - Lourdes",
           "adress": "Av. Olegário Maciel, 1.699 - Lourdes <br />Belo Horizonte - MG, 30180-117",
-          "opening_hours": "Seg a Sex 9:00 às 19:00 e Sáb. 9:00h às 13:00",
           "phone": "(31) 3047-8717",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/lourdes"
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/lourdes",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Castelo",
           "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,<br />Belo Horizonte - MG, 31330-472",
-          "opening_hours": "Seg a Sex 8h às 19h e Sáb. 8h às 14h00",
-          "phone": "(31) 98368-9898"
+          "phone": "(31) 98368-9898",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 14:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Catalão",
           "adress": "Av. Presidente Carlos Luz, 1205 - Caiçaras <br />Belo Horizonte - MG, 31250-970",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 16h00",
-          "phone": "(31) 98368-9898"
+          "phone": "(31) 98368-9898",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 16:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Cidade Nova",
           "adress": "Av. Cristiano Machado, 673 - Graça <br />Belo Horizonte - MG, 31140-003",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00",
-          "phone": "(xx) xxxxx-xxxx"
+          "phone": "(xx) xxxxx-xxxx",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Nossa Senhora do Carmo",
           "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, <br />Belo Horizonte - MG, 30320-000",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00",
-          "phone": "(31) 3656-0000"
+          "phone": "(31) 3656-0000",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Pedro II",
           "adress": "Av. Dom Pedro II, 1275, Carlos Prates <br />Belo Horizonte, MG, 30130-010",
-          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 12h30",
-          "phone": "(31) 3047-8878"
+          "phone": "(31) 3047-8878",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 12:30",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Venda Nova",
           "adress": "Rua Dr. Álvaro Camargos, 489 - São João Batista <br />Belo Horizonte - MG, 31515-200",
-          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 12h30",
-          "phone": "(31) 99076 8831"
+          "phone": "(31) 99076 8831",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 12:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -217,8 +235,10 @@
         {
           "name": "Centro",
           "adress": "Rua Basilicio de Faria, 35, CentroBelo Vale, MG, 35473-000",
-          "opening_hours": "Seg a Sex 8h às 17h e Sáb. 8h às 12h00",
-          "phone": "(31) 7525-9521"
+          "phone": "(31) 7525-9521",
+          "week": "8:00 às 17:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -228,14 +248,18 @@
         {
           "name": "ABC da Construção Angola",
           "adress": "Av. Edmeia Matos Lazzarotti, nº 3289 - Angola,Betim - MG, 32604-155",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00",
-          "phone": "(31) 3787-3146"
+          "phone": "(31) 3787-3146",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Parque das Acácias",
           "adress": "Av. Tapajós, 1200 - Loja 01, 02 e 03 - Parque das Acácias, Betim - MG, 32675-700",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 14h00",
-          "phone": "(31) 3532-6068"
+          "phone": "(31) 3532-6068",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -245,8 +269,10 @@
         {
           "name": "Centro",
           "adress": "R. Barão de Catas Altas, 480 - CentroBicas - MG, 36600-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h00",
-          "phone": "(32) 3271-4757"
+          "phone": "(32) 3271-4757",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -256,8 +282,10 @@
         {
           "name": "Centro",
           "adress": "Av. Delduque Barbosa, 798 - Centro,Boa Esperança - MG, 37170-000",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 12h00",
-          "phone": "(35) 98849-1813"
+          "phone": "(35) 98849-1813",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -267,8 +295,10 @@
         {
           "name": "Centro",
           "adress": "R. Prof. Durval Passos, 70 - CentroBrasília de Minas - MG, 39330-000",
-          "opening_hours": "Seg a Sex 7h às 19h e Sáb. 7h às 12h00",
-          "phone": "(38) 8415-4471"
+          "phone": "(38) 8415-4471",
+          "week": "7:00 às 19:00",
+          "saturday": "7:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -278,7 +308,9 @@
         {
           "name": "Santo Antônio",
           "adress": "R. República da Bolívia, Rua Padre Eustáquio, 158 - Santo Antônio, Brumadinho - MG, 35460-000",
-          "opening_hours": "Seg a Sex 7:30h às 17:30h e Sáb. 7:30h às 12h00"
+          "week": "7:30 às 17:30",
+          "saturday": "7:30 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -288,8 +320,10 @@
         {
           "name": "Jardim Europa",
           "adress": "R. Padre Alberto Fuger, 13 - Jardim Europa,Campo Belo - MG, 37270-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 12h00",
-          "phone": "(35) 99976-0205"
+          "phone": "(35) 99976-0205",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -299,8 +333,10 @@
         {
           "name": "Centro",
           "adress": "Rua Rio Branco, 645 - Centro,Capelinha - MG, 39680000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 13h00",
-          "phone": "(33) 9135-9669"
+          "phone": "(33) 9135-9669",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -310,8 +346,10 @@
         {
           "name": "Triângulo",
           "adress": "R. Antônio Marquês, 260 - Triângulo, Carangola - MG, 36800-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 12h00",
-          "phone": "(32) 99909-5510"
+          "phone": "(32) 99909-5510",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -321,8 +359,10 @@
         {
           "name": "Dário Grossi",
           "adress": "Av. Dário da Anunciação Grossi, 585 - Loja 1 - Dário Grossi,Caratinga - MG, 35304-210",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8h às 12h00",
-          "phone": "(33) 3322-5812"
+          "phone": "(33) 3322-5812",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -332,8 +372,10 @@
         {
           "name": "Dário Grossi",
           "adress": "Av. Dário da Anunciação Grossi, 585 - Loja 1 - Dário Grossi,Caratinga - MG, 35304-210",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8h às 12h00",
-          "phone": "(33) 3322-5812"
+          "phone": "(33) 3322-5812",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -343,8 +385,10 @@
         {
           "name": "Centro",
           "adress": "Av. Gabriel Alves Fernandes, 329 - Centro, Caxambu - MG, 37440-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8h às 12h00",
-          "phone": "(35) 99217-0928"
+          "phone": "(35) 99217-0928",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -354,8 +398,10 @@
         {
           "name": "Centro",
           "adress": "Rua Telésforo Cândido Rezende E, 530 - Centro,Conselheiro Lafaiete - MG, 36400-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8h às 12h00",
-          "phone": "(31) 98571-2725"
+          "phone": "(31) 98571-2725",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -365,8 +411,10 @@
         {
           "name": "Novo Eldorado",
           "adress": "Av. João César de Oliveira, 6185 - Novo Eldorado, Contagem - MG, 32341-000",
-          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 18h30",
-          "phone": "(31) 8399-7551"
+          "phone": "(31) 8399-7551",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 18:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -376,8 +424,10 @@
         {
           "name": "Giovanini",
           "adress": "Av. Gov. José de Magalhães Pinto, nº85 - Loja 02 - Giovanini,Coronel Fabriciano - MG, 35170-096",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 98918-5343"
+          "phone": "(31) 98918-5343",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -387,8 +437,10 @@
         {
           "name": "Centro",
           "adress": "R. Pacífico Mascarenhas, 222 - Centro,Curvelo - MG, 35790-132",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(31) 9388-2225"
+          "phone": "(31) 9388-2225",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -398,8 +450,10 @@
         {
           "name": "Centro",
           "adress": "Av. João Antunes de Oliveira, 376 - Centro, Diamantina - MG, 39100-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(38) 99959-6908"
+          "phone": "(38) 99959-6908",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -409,8 +463,10 @@
         {
           "name": "Barra do Taquaracu",
           "adress": "R. Pedro Alves de Abreu, 11 - Barra do Taquaracu,Divino - MG, 36820-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 99939-8078"
+          "phone": "(32) 99939-8078",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -420,14 +476,18 @@
         {
           "name": "ABC da Construção 21 de abril",
           "adress": "Av. 21 de Abril, 290 - Centro,Divinópolis - MG, 35500-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(37) 3016-2802"
+          "phone": "(37) 3016-2802",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção R. Goiás",
           "adress": "R. Goiás, 1596 - Centro,Divinópolis - MG, 35500-617",
-          "opening_hours": "Seg a Sex 8:30h às 17:30h e Sáb. 8:30h às 12h00",
-          "phone": "(37) 3016-2802"
+          "phone": "(37) 3016-2802",
+          "week": "8:30 às 17:30",
+          "saturday": "8:30 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -437,8 +497,10 @@
         {
           "name": "Centro",
           "adress": "Av. Gov. Valadares, 127 - Centro,Ervália - MG, 36555-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 99851-9942"
+          "phone": "(32) 99851-9942",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -448,8 +510,10 @@
         {
           "name": "Vale do Sol ll",
           "adress": "BR-482, 4091, Vale do Sol ll,Espera Feliz - MG, 36830-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 3552-1599"
+          "phone": "(32) 3552-1599",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -459,8 +523,10 @@
         {
           "name": "Ponte Nova",
           "adress": "Av. Delegado Waldemar Gomes Pinto, 615 - Pte. Nova,Extrema - MG, 37640-000",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00",
-          "phone": "(35) 3613-0615"
+          "phone": "(35) 3613-0615",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -470,8 +536,10 @@
         {
           "name": "Centro",
           "adress": "R. Artimenio Piva Toneli, 50 - Loja 03 - Centro, Formiga - MG, 35570-056",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(37) 3321-2522"
+          "phone": "(37) 3321-2522",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -481,8 +549,10 @@
         {
           "name": "Nossa Senhora das Graças",
           "adress": "Av. Minas Gerais, 1287 - Nossa Sra. das Gracas,Governador Valadares - MG, 35060-360",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(33) 3014-1255"
+          "phone": "(33) 3014-1255",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -492,8 +562,10 @@
         {
           "name": "Novo Retiro",
           "adress": "Av. Milton Campos, 1286 - Novo Retiro,Guanhães - MG, 39740-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(33) 8832-6396"
+          "phone": "(33) 8832-6396",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -503,8 +575,10 @@
         {
           "name": "Novo Retiro",
           "adress": "Av. Ver. Nelson Elias, 1355 - Japy,Guaxupé - MG, 37800-000",
-          "opening_hours": "Seg a Sex 8:00h às 17:30h e Sáb. 8:00h às 13h00",
-          "phone": "(35) 3406-2497"
+          "phone": "(35) 3406-2497",
+          "week": "8:00 às 17:30",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -514,8 +588,10 @@
         {
           "name": "União",
           "adress": "Av. Prof. Clóvis Salgado, 1769 - União,Igarapé - MG, 32900-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 9986-4067"
+          "phone": "(31) 9986-4067",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -525,8 +601,10 @@
         {
           "name": "Centro",
           "adress": "Rua João Tremensaque, n° 17 - Centro,Ipanema - MG, 36950-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(33) 3314-1173"
+          "phone": "(33) 3314-1173",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -536,8 +614,10 @@
         {
           "name": "Cidade Nobre",
           "adress": "Av. Carlos Chagas, nº 1096 - Cidade Nobre, Ipatinga - MG, 35162-359",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 3826-8070"
+          "phone": "(31) 3826-8070",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -547,8 +627,10 @@
         {
           "name": "Centro",
           "adress": "Rod. Juscelino Kubitschek de Oliveira, 55 - Centro,Ipuiúna - MG, 37588-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 99842-7263"
+          "phone": "(35) 99842-7263",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -558,8 +640,10 @@
         {
           "name": "Alto Pereira",
           "adress": "R. Israel Pinheiro, 66 - Alto Pereira,Itabira - MG, 35900-246",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 3840-1111"
+          "phone": "(31) 3840-1111",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -569,8 +653,10 @@
         {
           "name": "Centro",
           "adress": "Av. Waldir Salvador de Oliveira, 20 - Centro,Itabirito - MG, 35450-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 3561-3257"
+          "phone": "(31) 3561-3257",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -580,8 +666,10 @@
         {
           "name": "São Judas Tadeu",
           "adress": "Av Presidente Tancredo de Almeida Neves, São Judas Tadeu, 542,Itajubá - MG, 37504-066",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(35) 3622-1367"
+          "phone": "(35) 3622-1367",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -591,8 +679,10 @@
         {
           "name": "Centro",
           "adress": "R. Pres. Vargas, 378 - Centro,Itamonte - MG, 37466-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h30",
-          "phone": "(35) 3721-2591"
+          "phone": "(35) 3721-2591",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:20",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -602,8 +692,10 @@
         {
           "name": "Graças",
           "adress": "Av. Jove Soares, 1549 - Graças,Itaúna - MG, 35680-346",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(37) 3243-1715"
+          "phone": "(37) 3243-1715",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -613,8 +705,10 @@
         {
           "name": "Centro",
           "adress": "R. Américo Soares, 764 - Centro,Janaúba - MG, 39442-002",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(38) 3821-3333"
+          "phone": "(38) 3821-3333",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -624,8 +718,10 @@
         {
           "name": "Centro",
           "adress": "R. Cel. Serrão, 409 - LOJA 8 - Centro,Januária - MG, 39480-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(38) 99982-0359"
+          "phone": "(38) 99982-0359",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -635,8 +731,10 @@
         {
           "name": "Carneirinhos",
           "adress": "Av. Gentil Bicalho, 493 - Carneirinhos,João Monlevade - MG, 35930-478",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 3850-1111"
+          "phone": "(31) 3850-1111",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -646,8 +744,10 @@
         {
           "name": "Centro",
           "adress": "R. Cap. Speridião, 722 - Loja 103 - Centro, João Pinheiro - MG, 38770-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(38) 3361-0382"
+          "phone": "(38) 3361-0382",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -657,8 +757,10 @@
         {
           "name": "Centro",
           "adress": "R. Antônio Sugasai, 114 - Centro, Juatuba - MG, 35675-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(31) 3129-1020"
+          "phone": "(31) 3129-1020",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -668,45 +770,61 @@
         {
           "name": "ABTAH",
           "adress": "Av. Dr. Paulo Japiassú Coelho, 729 - Cascatinha, Juiz de Fora - MG, 36033-310",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00",
-          "phone": ""
+          "phone": "",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Bom Clima",
           "adress": "R. Paracatu, 705 - Santa Terezinha,Juiz de Fora - MG, 36046-040",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 3223-5622"
+          "phone": "(32) 3223-5622",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Costa Carvalho",
           "adress": "Av. Brasil, 1.100 - Costa Carvalho,Juiz de Fora - MG, 36070-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Jóquei Clube",
           "adress": "Av. Doardino Longo, 669 - Jóquei Clube, Juiz de Fora - MG, 36085-050",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00"
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Matriz",
           "adress": "Av. Francisco Bernardino, 115 - Centro, Juiz de Fora - MG, 36013-100",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Nova Era",
           "adress": "Av. Presidente Juscelino Kubitschek, 5301/5321 - Nova Era,Juiz de Fora - MG, 36087-000",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 12h00",
-          "phone": "(32) 3214-6686"
+          "phone": "(32) 3214-6686",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 12:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção São Pedro",
           "adress": "Rua José Lourenço, 710 - São Pedro,Juiz de Fora - MG, 36036-230",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00"
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Spazio",
           "adress": "Ladeira Alexandre Leonel, 111 - Cascatinha,Juiz de Fora - MG, 36033-240",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -716,8 +834,10 @@
         {
           "name": "Centro",
           "adress": "Rua Prof. Jacinto Ribeiro, 470 - Centro,Lagoa da Prata - MG, 35590-054",
-          "opening_hours": "Seg a Sex 9:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(37) 98855-2325"
+          "phone": "(37) 98855-2325",
+          "week": "9:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -727,8 +847,10 @@
         {
           "name": "Centro",
           "adress": "R. Chagas Dória, 245 - Centro,Lavras - MG, 37200-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 3821-8174"
+          "phone": "(35) 3821-8174",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -738,8 +860,10 @@
         {
           "name": "Centro",
           "adress": "Av. Getúlio Vargas, 82 - Centro,Leopoldina - MG, 36700-000",
-          "opening_hours": "Seg a Sex 7:00h às 18:00h e Sáb. 7:00h às 12h00",
-          "phone": "(32) 3441-4037"
+          "phone": "(32) 3441-4037",
+          "week": "7:00 às 18:00",
+          "saturday": "7:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -749,8 +873,10 @@
         {
           "name": "Centro",
           "adress": "R. Raul Fonseca, 04 - Centro,Lima Duarte - MG, 36140-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 99957-8949"
+          "phone": "(32) 99957-8949",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -760,8 +886,10 @@
         {
           "name": "Centro",
           "adress": "Av. Artur Bernardes, 569 - Centro,Machado - MG, 37750-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(11) 99833-4763"
+          "phone": "(11) 99833-4763",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -771,8 +899,10 @@
         {
           "name": "Engenho da Serra",
           "adress": "R. Abalem Chibel Nacif, 60 - Engenho da Serra, Manhuaçu - MG, 36900-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(33) 3331-8020"
+          "phone": "(33) 3331-8020",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -782,8 +912,10 @@
         {
           "name": "Vila do Carmo",
           "adress": "Av. Nossa Sra. do Carmo, 925 - Vila do Carmo, Mariana - MG, 35420-000",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 12h00",
-          "phone": "(31) 3560-3203"
+          "phone": "(31) 3560-3203",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -793,8 +925,10 @@
         {
           "name": "Estancia Champagnat",
           "adress": "Av. Prefeito José Surdo, 1735 - Loja 103 - Estancia Champagnat,Mateus Leme - MG, 35670-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 3138-1020"
+          "phone": "(31) 3138-1020",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -804,8 +938,10 @@
         {
           "name": "Parque dos Sabias",
           "adress": "R. Solano Braga, 272 - Parque dos Sabias,Matias Barbosa - MG, 36120-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 9959-4320"
+          "phone": "(32) 9959-4320",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -815,8 +951,10 @@
         {
           "name": "Centro",
           "adress": "R. São José, 70 - Centro,Mercês - MG, 36190-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h30",
-          "phone": "(32) 3571-5080"
+          "phone": "(32) 3571-5080",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -826,8 +964,10 @@
         {
           "name": "Centro",
           "adress": "Avenida Presidente Medice, 150 - Centro, Miraí - MG, 36790-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 98851-9942"
+          "phone": "(32) 98851-9942",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -837,8 +977,10 @@
         {
           "name": "Centro",
           "adress": "Av. Confúcio, 1568 - Centro,Montalvânia - MG, 39495-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(38) 99873-3560"
+          "phone": "(38) 99873-3560",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -848,8 +990,10 @@
         {
           "name": "Todos Os Santos",
           "adress": "Av. Dep. Esteves Rodrigues, 1001 - Todos Os Santos, Montes Claros - MG, 39400-634",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 9:00h às 13h00",
-          "phone": "(38) 3221-0210"
+          "phone": "(38) 3221-0210",
+          "week": "8:00 às 19:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -859,8 +1003,10 @@
         {
           "name": "Barra",
           "adress": "Av. Dr. Passos, 444 - Barra,Muriaé - MG, 36884-002",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": ""
+          "phone": "",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -870,8 +1016,10 @@
         {
           "name": "Centro",
           "adress": "Praça Benedito Valadares, 34 - Centro,Mutum - MG, 36955-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(33) 98433-1432"
+          "phone": "(33) 98433-1432",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -881,8 +1029,10 @@
         {
           "name": "Centro",
           "adress": "R. João Inácio Dias, 684 - Centro,Nepomuceno - MG, 37250-000",
-          "opening_hours": "Seg a Sex 7:00h às 17:00h e Sáb. 7:00h às 11h00",
-          "phone": "(35) 9883-6721"
+          "phone": "(35) 9883-6721",
+          "week": "7:00 às 17:00",
+          "saturday": "7:00 às 11:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -892,13 +1042,17 @@
         {
           "name": "ABC da Construção Chácara Bom Retiro",
           "adress": "Rod. José Francisco da Silva, 490 - Chácara Bom Retiro, Nova Lima - MG, 34002-000",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 14h00",
-          "phone": "(31) 9 9062-3143"
+          "phone": "(31) 9 9062-3143",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Jardim Canada",
           "adress": "Av. Toronto, 1.308 - Jardim Canada,Nova Lima - MG, 34000-975",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 14h00"
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -908,8 +1062,10 @@
         {
           "name": "ABC da Construção Chácara Bom Retiro",
           "adress": "Rod. José Francisco da Silva, 490 - Chácara Bom Retiro, Nova Lima - MG, 34002-000",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 14h00",
-          "phone": "(31) 9 9062-3143"
+          "phone": "(31) 9 9062-3143",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -919,8 +1075,10 @@
         {
           "name": "Centro",
           "adress": "R. João Silva, 716 - Centro,Nova Resende - MG, 37860-000",
-          "opening_hours": "Seg a Sex 8:00h às 16:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 9992-0695"
+          "phone": "(35) 9992-0695",
+          "week": "8:00 às 16:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -930,8 +1088,10 @@
         {
           "name": "Jardim do Lago",
           "adress": "Av. Dom Cabral, 250 - Jardim do Lago, Nova Serrana - MG, 35522-008",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(37) 3222-0335"
+          "phone": "(37) 3222-0335",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -941,8 +1101,10 @@
         {
           "name": "Centro",
           "adress": "R. Santo Antônio, 1140, CentroOuro Branco - MG, 36420-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 3938-0660"
+          "phone": "(31) 3938-0660",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -952,8 +1114,10 @@
         {
           "name": "Cachoeira do Campo Centro",
           "adress": "Br, 356 Rodovia dos Inconfidentes, 04 Cachoeira do Campo Centro,Ouro Preto - MG, 35410-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 14h00",
-          "phone": "(31) 98120-1661"
+          "phone": "(31) 98120-1661",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -963,7 +1127,9 @@
         {
           "name": "Vila Sinho",
           "adress": "Av. Prof. Mello Cançado, 981 - Vila Sinho,Pará de Minas - MG, 35660-084",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -973,8 +1139,10 @@
         {
           "name": "Centro",
           "adress": "Av. Cel. Ribeiro Pereira, 1171 - Centro,Passa Quatro - MG, 37460-000",
-          "opening_hours": "Seg a Sex 8:30h às 18:00h e Sáb. 8:30h às 12h30",
-          "phone": "(35) 3371-2584"
+          "phone": "(35) 3371-2584",
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 12:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -984,8 +1152,10 @@
         {
           "name": "Centro",
           "adress": "R. Maj. Gote, 1401 - Centro,Patos de Minas - MG, 38700-001",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 14h00",
-          "phone": "(34) 99241-5291"
+          "phone": "(34) 99241-5291",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -995,8 +1165,10 @@
         {
           "name": "São Vicente",
           "adress": "Av. José Amando Queirós, 928 - São Vicente,Patrocínio - MG, 38740-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(34) 996774633"
+          "phone": "(34) 996774633",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1006,8 +1178,10 @@
         {
           "name": "Cachoeira Grande",
           "adress": "R. José Píres de Araújo, 363 - Cachoeira Grande,Pedro Leopoldo - MG, 33600-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 3665-0880"
+          "phone": "(31) 3665-0880",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1017,8 +1191,10 @@
         {
           "name": "Nome da Franquia",
           "adress": "Vila Marginal Jaime Teixeira, 2275 - São Francisco,Perdões - MG, 37260-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 3864-2701"
+          "phone": "(35) 3864-2701",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1028,8 +1204,10 @@
         {
           "name": "Santos Dumont",
           "adress": "Av. Pio XII, 48 - Santos Dumont,Pirapora - MG, 39274-158",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(38) 3740-2400"
+          "phone": "(38) 3740-2400",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1039,8 +1217,10 @@
         {
           "name": "Nome da Franquia",
           "adress": "Av. Pio XII, 48 - Santos Dumont,Pirapora - MG, 39274-158",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(37) 99183-0014"
+          "phone": "(37) 99183-0014",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1050,8 +1230,10 @@
         {
           "name": "Jardim Elizabete",
           "adress": "Avenida Mansur Frayra, 535 - Jardim Elizabete,Poços de Caldas - MG, 37704-355",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(35) 3714-3250"
+          "phone": "(35) 3714-3250",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1061,8 +1243,10 @@
         {
           "name": "Guarapiranga",
           "adress": "Av. Dr. José Grossi, 158 - LJ 1 - Guarapiranga,Ponte Nova - MG, 35430-213",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 8315-9215"
+          "phone": "(31) 8315-9215",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1072,8 +1256,10 @@
         {
           "name": "Centro",
           "adress": "Av. Gov. Valadares, 357 - Centro,Porteirinha - MG, 39520-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(38) 9148-8855"
+          "phone": "(38) 9148-8855",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1083,8 +1269,10 @@
         {
           "name": "Fatima",
           "adress": "Av. Porfírio Ribeiro de Andrade, 375 - Fatima,Pouso Alegre - MG, 37550-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(35) 3425-1317"
+          "phone": "(35) 3425-1317",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1094,8 +1282,10 @@
         {
           "name": "Veneza",
           "adress": "R. Helena Sapori Faluba, nº581 - Veneza,Ribeirão das Neves - MG, 33820-170",
-          "opening_hours": "Seg a Sex 9:00h às 19:00h e Sáb. 9:00h às 14h00",
-          "phone": "(31) 99915-2572"
+          "phone": "(31) 99915-2572",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1105,8 +1295,10 @@
         {
           "name": "Centro",
           "adress": "R. Felemon Tôrres, 34 - Centro,Rio Pomba - MG, 36180-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 14h30",
-          "phone": "(32) 3571-5080"
+          "phone": "(32) 3571-5080",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 14:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1116,8 +1308,10 @@
         {
           "name": "Centro",
           "adress": "R. Princesa Isabel, 21 - Centro,Sabará - MG, 34505-310",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00",
-          "phone": "(31) 97162-2279"
+          "phone": "(31) 97162-2279",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1127,8 +1321,10 @@
         {
           "name": "Centro",
           "adress": "R. Princesa Isabel, 21 - Centro,Sabará - MG, 34505-310",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00",
-          "phone": "(31) 97162-2279"
+          "phone": "(31) 97162-2279",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1138,7 +1334,9 @@
         {
           "name": "Duquesa I",
           "adress": "Av. Brasília, N° 1351 - Duquesa I,Santa Luzia - MG, 33170-000",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00"
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1148,8 +1346,10 @@
         {
           "name": "Centro",
           "adress": "R. Afonso Pena, 194 - Centro,Santos Dumont - MG, 36240-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(32) 3251-4528"
+          "phone": "(32) 3251-4528",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1159,8 +1359,10 @@
         {
           "name": "Praião",
           "adress": "R. do Ouro, 291 - Praião,São Gonçalo do Sapucaí - MG, 37490-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 9 9737-4942"
+          "phone": "(35) 9 9737-4942",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1170,8 +1372,10 @@
         {
           "name": "Nossa Senhora Aparecida",
           "adress": "Av. Pref. Erotides Batista, 792 - Nossa Senhora Aparecida, São Gotardo - MG, 38800-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:30h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 99766-7565"
+          "phone": "(31) 99766-7565",
+          "week": "8:00 às 18:30",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1181,8 +1385,10 @@
         {
           "name": "Fábricas",
           "adress": "Av. Leite de Castro, 1400 - Fábricas,São João del Rei - MG, 36301-182",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 98756-9901"
+          "phone": "(31) 98756-9901",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1192,8 +1398,10 @@
         {
           "name": "Centro",
           "adress": "Praça Dr. Augusto Glória, 327 - Lojas 123/124, Centro São João Nepomuceno, MG, 36680-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(31) 99959-4320"
+          "phone": "(31) 99959-4320",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1203,8 +1411,10 @@
         {
           "name": "Centro",
           "adress": "R. Dr. Ribeiro da Luz, 173 - Centro,São Lourenço - MG, 37470-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(35) 3331-7312"
+          "phone": "(35) 3331-7312",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1214,8 +1424,10 @@
         {
           "name": "Canaã",
           "adress": "Av. Dr. Renato Azeredo, 569 - Canaã,Sete Lagoas - MG, 35700-312",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(31) 3773-9900"
+          "phone": "(31) 3773-9900",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1225,8 +1437,10 @@
         {
           "name": "Centro",
           "adress": "R. São Geraldo, 307, Centro Tarumirim, MG, 35140-000",
-          "opening_hours": "Seg a Sex 7:00h às 18:00h e Sáb. 7:00h às 13h00",
-          "phone": "(33) 3233 1088"
+          "phone": "(33) 3233 1088",
+          "week": "7:00 às 18:00",
+          "saturday": "7:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1236,8 +1450,10 @@
         {
           "name": "Centro",
           "adress": "Av. Dr. Luís Boali Pôrto Salman, 934 - Loja A - Centro, Teófilo Otoni - MG, 39802-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 13h00",
-          "phone": "(31) 9 9993-3330"
+          "phone": "(31) 9 9993-3330",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1247,8 +1463,10 @@
         {
           "name": "Bela Vista",
           "adress": "Av. Doutor João Cataldo Pinto 715 Bela Vista, BR-265, 715, Tocantins - MG, 36512-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h30",
-          "phone": "(32) 98804-1436"
+          "phone": "(32) 98804-1436",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1258,8 +1476,10 @@
         {
           "name": "Jardim das hortências",
           "adress": "Av. Dep. Renato Azeredo, 1190 - Jardim das hortências, Três Corações - MG, 37410-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(35) 3235-2800"
+          "phone": "(35) 3235-2800",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1269,8 +1489,10 @@
         {
           "name": "Parque Diadorim",
           "adress": "Av. Campos Gerais, 71 - Parque Diadorim, Três Marias - MG, 39205-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(38) 3754-4336"
+          "phone": "(38) 3754-4336",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1280,8 +1502,10 @@
         {
           "name": "Aeroporto",
           "adress": "Av. Ipiranga, 1320 - Aeroporto,Três Pontas - MG, 37190-000",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 3265-9797"
+          "phone": "(35) 3265-9797",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1291,7 +1515,9 @@
         {
           "name": "Centro",
           "adress": "Av. Padre Arnaldo Jansem, 06 - Centro, Ubá - MG, 36500-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00"
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1301,14 +1527,18 @@
         {
           "name": "ABC da Construção Conj. Hab. Centenario",
           "adress": "Av. Celina Ferreira Ottoni, 2569 - Conj. Hab. Centenario,Varginha - MG, 37048-580",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 3212-5025"
+          "phone": "(35) 3212-5025",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Rezende",
           "adress": "Av. Princesa do Sul, 1650 - Rezende,Varginha - MG, 37062-442",
-          "opening_hours": "Seg a Sex 8:00h às 18:00h e Sáb. 8:00h às 12h00",
-          "phone": "(35) 3212-7319"
+          "phone": "(35) 3212-7319",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1318,8 +1548,10 @@
         {
           "name": "Názia",
           "adress": "Av. Thales Chagas, 675 - Názia,Vespasiano - MG, 33200-442",
-          "opening_hours": "Seg a Sex 8:30h às 18:30h e Sáb. 8:30h às 13h00",
-          "phone": "(31) 3621-3569"
+          "phone": "(31) 3621-3569",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1329,8 +1561,10 @@
         {
           "name": "Centro",
           "adress": "Av. Mal. Humberto Castelo Branco, 1.190 - Centro, Viçosa - MG, 36570-000",
-          "opening_hours": "Seg a Sex 8:00h às 19:00h e Sáb. 8:00h às 13h00",
-          "phone": "(31) 3891-5600"
+          "phone": "(31) 3891-5600",
+          "week": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1340,8 +1574,10 @@
         {
           "name": "Centro",
           "adress": "R. Gen. Osório, 137 - Centro,Visc. do Rio Branco - MG, 36520-000",
-          "opening_hours": "Seg a Sex 9:00h às 18:00h e Sáb. 9:00h às 13h00",
-          "phone": "(32) 3551-4052"
+          "phone": "(32) 3551-4052",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1351,7 +1587,9 @@
         {
           "name": "Silvestre",
           "adress": "Av. da Saudade, 490 - Silvestre, Amparo - SP, 13901-014",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 13h"
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1361,8 +1599,10 @@
         {
           "name": "Silvestre",
           "adress": "Av. da Saudade, 490 - Silvestre, Amparo - SP, 13901-014",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 13h",
-          "phone": "(19) 99905-4882"
+          "phone": "(19) 99905-4882",
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1372,8 +1612,10 @@
         {
           "name": "Piscina",
           "adress": "Av. Bandeirantes, 1961 - Piscina, Andradina - SP, 16901-445",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(18) 98137-7048"
+          "phone": "(18) 98137-7048",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1383,8 +1625,10 @@
         {
           "name": "Jardim Paraíba",
           "adress": "Av. Sólon Pereira, 193 - Jardim Paraíba, Aparecida - SP, 12570-000",
-          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 8h30 às 13h",
-          "phone": "(12) 98136-2082"
+          "phone": "(12) 98136-2082",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1394,8 +1638,10 @@
         {
           "name": "Vila Sedenho",
           "adress": "Av. Luís Alberto, 643 - Vila Sedenho, Araraquara - SP, 14806-005",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 9h às 13h",
-          "phone": "(16) 99745-4747"
+          "phone": "(16) 99745-4747",
+          "week": "8:30 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1405,8 +1651,10 @@
         {
           "name": "São Bento",
           "adress": "Rod. Prefeito Aziz Lian, SP-107, Km 45 - São Bento, Artur Nogueira - SP, 13169-899",
-          "opening_hours": "Seg a Sex 7h às 18h e Sáb. 8h às 12h",
-          "phone": "(19) 3877-1902"
+          "phone": "(19) 3877-1902",
+          "week": "7:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1416,8 +1664,10 @@
         {
           "name": "Jardim Limoeiro",
           "adress": "Rod. Alberto Hinoto, 965 - Jardim Limoeiro, Arujá - SP, 07434-100",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(11) 994749-4719"
+          "phone": "(11) 994749-4719",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1427,8 +1677,10 @@
         {
           "name": "Vila Claudia",
           "adress": "Av. Valter Antônio Fontana, 1155 - Vila Claudia, Assis - SP, 19815-340",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(43) 99972-9631"
+          "phone": "(43) 99972-9631",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1438,14 +1690,18 @@
         {
           "name": "ABC da Construção Jardim Paulista",
           "adress": "Alameda Prof. Lucas Nogueira Garcez, 3027 - Jardim Paulista, Atibaia - SP, 12947-000",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h",
-          "phone": "(11) 3402- 3951"
+          "phone": "(11) 3402- 3951",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 15:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Ponte",
           "adress": "Av. São João, 1673 - Ponte, Atibaia - SP, 12940-260",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 15h",
-          "phone": "(11) 4418-6157"
+          "phone": "(11) 4418-6157",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 15:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1455,8 +1711,10 @@
         {
           "name": "Jardim Paineiras",
           "adress": "Av. Dr. Miguel Coutinho, 241 - Jardim Paineiras, Avaré - SP, 18705-640",
-          "opening_hours": "Seg a Sex 7h30 às 18h e Sáb. 8h às 13h",
-          "phone": "(14) 99808-1616"
+          "phone": "(14) 99808-1616",
+          "week": "7:30 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1466,8 +1724,10 @@
         {
           "name": "Vila São José",
           "adress": "Av. Amazonas, 480 - Vila São José, Bariri - SP, 17257-062",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(14) 98127-6991"
+          "phone": "(14) 98127-6991",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1477,8 +1737,10 @@
         {
           "name": "Centro",
           "adress": "R. Vinte e Quatro, 290 - Centro, Barretos - SP, 14780-090",
-          "opening_hours": "Seg a Sex 9h às 18h30 e Sáb. 9h às 13h",
-          "phone": "(17) 98193-1929"
+          "phone": "(17) 98193-1929",
+          "week": "9:00 às 18:30",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1488,8 +1750,10 @@
         {
           "name": "Vila Padovan",
           "adress": "R. Visc. do Rio Branco, 1267 - Vila Padovan, Botucatu - SP, 18607-740",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(14) 3815-8700"
+          "phone": "(14) 3815-8700",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1499,8 +1763,10 @@
         {
           "name": "Taboão",
           "adress": "R. Tupi, 175 - Box 1 - Taboão, Bragança Paulista - SP, 12900-290",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h",
-          "phone": "(11) 99174-2026 "
+          "phone": "(11) 99174-2026 ",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 15:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1510,8 +1776,10 @@
         {
           "name": "Residencial Esperanca",
           "adress": "R. Romeu Cherquer, 48 - Res. Esperanca, Caçapava - SP, 12285-505",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(12) 99741-4089"
+          "phone": "(12) 99741-4089",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1521,8 +1789,10 @@
         {
           "name": "Cambuí",
           "adress": "Av. Cel. Silva Telles, 675 - Cambuí, Campinas - SP, 13024-001",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 14h",
-          "phone": "(19) 99155-2081"
+          "phone": "(19) 99155-2081",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1532,8 +1802,10 @@
         {
           "name": "Retiro da Mantiqueira",
           "adress": "Av. Dr. Teodoro Quartim Barbosa, 780 - Retiro da Mantiqueira, Cruzeiro - SP, 12712-000",
-          "opening_hours": "Seg a Sex 7h30h às 18h e Sáb. 7h30h às 14h",
-          "phone": "(12) 2144-8174"
+          "phone": "(12) 2144-8174",
+          "week": "7:30 às 18:00",
+          "saturday": "7:30 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1543,14 +1815,18 @@
         {
           "name": "ABC da Construção Campo do Galvão",
           "adress": "Av. Juscelino Kubitscheck de Oliveira, 777 - Campo do Galvão, Guaratinguetá - SP, 12505-300",
-          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 9h30 às 13h",
-          "phone": "(12) 99634-8271"
+          "phone": "(12) 99634-8271",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Jardim Bela Vista",
           "adress": "R. Profa. Maria Aparecida Antunes Cavalca, 34 - Jardim Bela Vista, Guaratinguetá - SP, 12514-430",
-          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 8h às 13h",
-          "phone": "(12) 2103-1137 "
+          "phone": "(12) 2103-1137 ",
+          "week": "8:30 às 18:30",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1560,8 +1836,10 @@
         {
           "name": "Jardim Esplanada",
           "adress": "Av Fábio Ferraz Bicudo - 1209, Jardim Esplanada, Indaiatuba - SP, 13331-742",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(19) 3199-9695"
+          "phone": "(19) 3199-9695",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1571,8 +1849,10 @@
         {
           "name": "Centro",
           "adress": "Av. Rio Branco, 409 - Centro, Itapira - SP, 13970-070",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(19) 98211-0699"
+          "phone": "(19) 98211-0699",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1582,8 +1862,10 @@
         {
           "name": "Parque das Indústrias",
           "adress": "Av. Caetano Ruggieri, 4540 - Parque das Industrias, Itu - SP, 13309-710",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": " (11) 97802-8749"
+          "phone": " (11) 97802-8749",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1593,20 +1875,26 @@
         {
           "name": "ABC da Construção Jardim California 1",
           "adress": "Av. Getúlio Dorneles Vargas, 1600 - Jardim California, Jacareí - SP, 12305-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 18h",
-          "phone": "(12) 97401-9501"
+          "phone": "(12) 97401-9501",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Jardim Califórnia 2",
           "adress": "Av. Getúlio Dorneles Vargas, 2451 - Jardim California, Jacareí - SP, 12305-010",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(12) 97401-9501"
+          "phone": "(12) 97401-9501",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção São João",
           "adress": "Av. Maria Augusta Fagundes Gomes, 65 - São João, Jacareí - SP, 12322-300",
-          "opening_hours": "Seg a Sex 9h às 18h30 e Sáb. 8h30 às 13h",
-          "phone": "(12) 97401-9501"
+          "phone": "(12) 97401-9501",
+          "week": "9:00 às 18:30",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1616,8 +1904,10 @@
         {
           "name": "Jardim Europa",
           "adress": "Av. Antônio Pinto Catão, 1954 - Jardim Europa, Jaguariúna - SP, 13914-002",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 13h",
-          "phone": "(19) 3837-1444"
+          "phone": "(19) 3837-1444",
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1627,8 +1917,10 @@
         {
           "name": "Centro",
           "adress": "R. Luiz Gama, 567 - Centro, Lins - SP, 16400-080",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(14) 99111-7500"
+          "phone": "(14) 99111-7500",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1638,14 +1930,18 @@
         {
           "name": "Centro",
           "adress": "Av. São José, 120 - Centro, Lorena - SP, 12600-560",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(12) 98214-2828"
+          "phone": "(12) 98214-2828",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         },
         {
           "name": "Parque das Rodovias",
           "adress": "Alameda Armênio Gomes, 15 - Parque das Rodovias, Lorena - SP, 12605-470",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(12) 97403-1211"
+          "phone": "(12) 97403-1211",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1655,8 +1951,10 @@
         {
           "name": "Jardim Niero II",
           "adress": "R. Euríco Dutra, 54 fundos - Jardim Niero II, Louveira - SP, 13290-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(19) 3948-5210"
+          "phone": "(19) 3948-5210",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1666,8 +1964,10 @@
         {
           "name": "Centro",
           "adress": "R. Oreste Bozeli, 95 - Centro, Matão - SP, 15990-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(16) 99768-0794"
+          "phone": "(16) 99768-0794",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1677,8 +1977,10 @@
         {
           "name": "Vila Suissa",
           "adress": "Av. Francisco Rodrigues Filho, 580 - Vila Suissa, Mogi das Cruzes - SP, 08810-000",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(11) 96377-0578"
+          "phone": "(11) 96377-0578",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1688,8 +1990,10 @@
         {
           "name": "Parque Cidade Nova",
           "adress": "Av. Júlio Xavier da Silva, 53 - Parque Cidade Nova, Mogi Guaçu - SP, 13845-414",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(19) 3362-2240"
+          "phone": "(19) 3362-2240",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1699,8 +2003,10 @@
         {
           "name": "Centro",
           "adress": "Rua Professor Ferreira Lima, 100 - Centro, Mogi Mirim - SP, 13800-199",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(19) 99837-3831"
+          "phone": "(19) 99837-3831",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1710,8 +2016,10 @@
         {
           "name": "São Benedito",
           "adress": "Av. Albuquerque Lins, 653 - São Benedito, Pindamonhangaba - SP, 12410-030",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(12) 3643-1800"
+          "phone": "(12) 3643-1800",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1721,8 +2029,10 @@
         {
           "name": "Guaxinduva",
           "adress": "SP-036, 78 – Guaxinduva, Mairiporã - SP, 12970-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(11) 97544-0059"
+          "phone": "(11) 97544-0059",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1732,8 +2042,10 @@
         {
           "name": "Piracicamirim",
           "adress": "Av. Dois Córregos, 153 - Piracicamirim, Piracicaba - SP, 13420-610",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(19) 99142-2535"
+          "phone": "(19) 99142-2535",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1743,8 +2055,10 @@
         {
           "name": "Vila Pirituba",
           "adress": "Av. Mutinga, 682 - Vila Pirituba, Pirituba - SP, 05154-000",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(11) 96961-0108"
+          "phone": "(11) 96961-0108",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1754,8 +2068,10 @@
         {
           "name": "Guilhermina",
           "adress": "Av. Dr. Roberto de Almeida Vinhas, 348 - Guilhermina, Praia Grande - SP, 11707-520",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h30",
-          "phone": "(13) 4040-4949"
+          "phone": "(13) 4040-4949",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1765,8 +2081,10 @@
         {
           "name": "Maurílio Biagi",
           "adress": "Av. Maurílio Biagi, 510 - Santa Cruz do Jose Jacques, Ribeirão Preto - SP, 14020-750",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 18h",
-          "phone": "(16) 3237-5581"
+          "phone": "(16) 3237-5581",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 18:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1776,8 +2094,10 @@
         {
           "name": "Vila Nova",
           "adress": "R. Vereador, R. Sebastião Claudiano, 296 - Vila Nova, Santa Isabel - SP, 07500-000",
-          "opening_hours": "Seg a Sex 7h30 às 18h e Sáb. 7h30 às 13h",
-          "phone": "(11) 4656-2110"
+          "phone": "(11) 4656-2110",
+          "week": "7:30 às 18:00",
+          "saturday": "7:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1787,8 +2107,10 @@
         {
           "name": "Vila Bianchi",
           "adress": "Av. da Saudade, 584 - Vila Bianchi, Santo Antônio de Posse - SP, 13830-030",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 13h",
-          "phone": "(19) 99142-2535"
+          "phone": "(19) 99142-2535",
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1798,8 +2120,10 @@
         {
           "name": "Centro",
           "adress": "R. Santa Filomena, 289 - Centro, São Bernardo do Campo - SP, 09710-060",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(11) 95807-0966"
+          "phone": "(11) 95807-0966",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1809,8 +2133,10 @@
         {
           "name": "Jardim Moyses Miguel Haddad",
           "adress": "Av. Pres. Juscelino K. de Oliveira, 3653 - Jardim Moyses Miguel Haddad, São José do Rio Preto - SP, 15093-215",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 12h30",
-          "phone": "(17) 3226-5547"
+          "phone": "(17) 3226-5547",
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1820,8 +2146,10 @@
         {
           "name": "Vila Ema",
           "adress": "R. Me. Paula de São José, 162 - Vila Ema, São José dos Campos - SP, 12243-010",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(12) 3600-0384"
+          "phone": "(12) 3600-0384",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1831,8 +2159,10 @@
         {
           "name": "Centro",
           "adress": "Av. Brasil, 145 - Centro, São Roque - SP, 18130-485",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h",
-          "phone": "(11) 4784-8910"
+          "phone": "(11) 4784-8910",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 15:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1842,8 +2172,10 @@
         {
           "name": "Jardim Diamante",
           "adress": "Av. Egisto Sichieri, 1203 - Jardim Diamante, Sertãozinho - SP, 14177-131",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(16) 99603-0980"
+          "phone": "(16) 99603-0980",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1853,8 +2185,10 @@
         {
           "name": "Parque Campolim",
           "adress": "R. Raphael Dias da Silva, 205 - Parque Campolim, Sorocaba - SP, 18048-120",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 15h",
-          "phone": "(11) 99813-9102"
+          "phone": "(11) 99813-9102",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 15:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1864,8 +2198,10 @@
         {
           "name": "Centro",
           "adress": "R. José Inácio Ribeiro, 297 - Centro, Taguaí - SP, 18890-075",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(14) 99756-5494"
+          "phone": "(14) 99756-5494",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1875,8 +2211,10 @@
         {
           "name": "Jardim Julieta",
           "adress": "Rod. Oswaldo Cruz, 1620 - KM 2 - Jardim Julieta, Taubaté - SP, 12090-700",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 9h às 14h",
-          "phone": "(12) 98213-3104"
+          "phone": "(12) 98213-3104",
+          "week": "8:00 às 18:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1886,8 +2224,10 @@
         {
           "name": "Jardim Carolina",
           "adress": "Rod. Oswaldo Cruz, 2221 - Sala 2219 - Jardim Carolina, Ubatuba - SP, 11691-032",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 18h",
-          "phone": "(11) 97325-0454"
+          "phone": "(11) 97325-0454",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 18:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1897,8 +2237,10 @@
         {
           "name": "Grama",
           "adress": "Av. Inácio Lamas, 129 - Grama, Afonso Cláudio - ES, 29600-000",
-          "opening_hours": "Seg a Sex 8h às 17h30 e Sáb. 8h às 12h",
-          "phone": "(27) 99774-9692"
+          "phone": "(27) 99774-9692",
+          "week": "8:00 às 17:30",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1908,8 +2250,10 @@
         {
           "name": "Centro",
           "adress": "R. Antônio Sampaio, 675 - Centro Baixo Guandu - ES, 29730-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(33) 98418-2728"
+          "phone": "(33) 98418-2728",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1919,8 +2263,10 @@
         {
           "name": "Lacê",
           "adress": "Av. Silvio Avidos, 351 - Lacê Colatina - ES, 29703-070",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(27) 3131-0631"
+          "phone": "(27) 3131-0631",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1930,8 +2276,10 @@
         {
           "name": "Loteamento Santa Cecilia",
           "adress": "Rodovia Br 482, S/N° - Lote 120, Quadra - Loteamento Santa Cecilia Guaçuí - ES, 29560-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(28) 99940-6974"
+          "phone": "(28) 99940-6974",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1941,8 +2289,10 @@
         {
           "name": "Aeroporto",
           "adress": "Av. Padre José Anchieta, 3116 - Loja 03 - Aeroporto, Guarapari - ES, 29216-705",
-          "opening_hours": "Seg a Sex 8h às 17h30 e Sáb. 8h às 12h",
-          "phone": "(27) 99983-6001"
+          "phone": "(27) 99983-6001",
+          "week": "8:00 às 17:30",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1952,8 +2302,10 @@
         {
           "name": "Centro",
           "adress": "R. José Donatelli, 42 - Centro Iconha - ES, 29280-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(28) 99907-3809"
+          "phone": "(28) 99907-3809",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1963,8 +2315,10 @@
         {
           "name": "Iuna",
           "adress": "R. Cap. João Inácio de Almeida, 96 - Centro Iúna - ES, 29390-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(28) 99886-1470"
+          "phone": "(28) 99886-1470",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1974,8 +2328,10 @@
         {
           "name": "Centro",
           "adress": "Av. Vitória, 1803 - Centro, Linhares - ES, 29900-084",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 12h30",
-          "phone": "(27) 99742-0694"
+          "phone": "(27) 99742-0694",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:30",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -1985,8 +2341,10 @@
         {
           "name": "Pratinha",
           "adress": "R. Dr. José Monteiro da Silva, 639 - Pratinha, Mimoso do Sul - ES, 29400-000",
-          "opening_hours": "Seg a Dom 8h às 18h",
-          "phone": "(28) 99984-7946"
+          "phone": "(28) 99984-7946",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 18:00",
+          "sunday": "8:00 às 18:00"
         }
       ]
     },
@@ -1996,8 +2354,10 @@
         {
           "name": "Jardim Limoeiro",
           "adress": "Av. Des. Mário da Silva Nunes, 1411 - Jardim Limoeiro, Serra - ES, 29164-044",
-          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 8h30 às 13h",
-          "phone": "(27) 99778-1066 "
+          "phone": "(27) 99778-1066 ",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2007,8 +2367,10 @@
         {
           "name": "Santa Lucia",
           "adress": "Av. Leitão da Silva, 1506 - Santa Lucia, Vitória - ES, 29056-186",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 8h30 às 12h",
-          "phone": "(27) 99696-7879"
+          "phone": "(27) 99696-7879",
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2018,8 +2380,10 @@
         {
           "name": "Pontinha",
           "adress": "R. Narciso Lovato, s/n - Pontinha Araruama - RJ, 28981-745",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(21) 96404-2123"
+          "phone": "(21) 96404-2123",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2029,8 +2393,10 @@
         {
           "name": "Centro",
           "adress": "Av. Gov. Roberto Silveira, 25 - Centro, Bom Jesus do Itabapoana - RJ, 28360-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(22) 99850-7454"
+          "phone": "(22) 99850-7454",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2040,14 +2406,18 @@
         {
           "name": "ABC da Construção Japuíba",
           "adress": "RJ-116, Km 28 - Loja 01 - Japuíba Cachoeiras de Macacu - RJ, 28685-000",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(21) 2745-2762"
+          "phone": "(21) 2745-2762",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Pupucaia",
           "adress": "RJ-116, Km 20 - Loja 01 - Papucaia, Cachoeiras de Macacu - RJ, 28695-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 14h",
-          "phone": "(21) 99979-2939"
+          "phone": "(21) 99979-2939",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2057,8 +2427,10 @@
         {
           "name": "Brisamar",
           "adress": "Rod. Rio-Santos, 7 - Brisamar Itaguaí - RJ, 23825-205",
-          "opening_hours": "Seg a Sex 8h às 17h e Sáb. 8h às 13h",
-          "phone": ""
+          "phone": "",
+          "week": "8:00 às 17:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2068,8 +2440,10 @@
         {
           "name": "Cidade Nova",
           "adress": "Av. Dep. Carlos Pinto Filho, 175 - Cidade Nova Itaperuna - RJ, 28300-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(22) 3823-6080"
+          "phone": "(22) 3823-6080",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2079,8 +2453,10 @@
         {
           "name": "Centro",
           "adress": "Av. dos Expedicionários, 580 - loja 03 - Centro Itatiaia - RJ, 27580-000",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(24) 2340-1186"
+          "phone": "(24) 2340-1186",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2090,8 +2466,10 @@
         {
           "name": "Riviera Fluminense",
           "adress": "Av. Carlos Augusto Tinoco Garcia, 1450 - Riviera Fluminense Macaé - RJ, 27937-590",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(22) 99971-4070"
+          "phone": "(22) 99971-4070",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2101,8 +2479,10 @@
         {
           "name": "Centro",
           "adress": "R. João Valerio, 40 - Centro Magé - RJ, 25900-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(21) 99387-2569 "
+          "phone": "(21) 99387-2569",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2112,8 +2492,10 @@
         {
           "name": "São José de Imbassai",
           "adress": "RJ-106, s/n - km 23 - São José de Imbassai Maricá - RJ, 24900-065",
-          "opening_hours": "Seg a Sex 9h às 18h e Sáb. 9h às 14h",
-          "phone": "(21) 99128-4854"
+          "phone": "(21) 99128-4854",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2123,8 +2505,10 @@
         {
           "name": "São Francisco",
           "adress": "Av. Pres. Roosevelt, 175 - São Francisco, Niterói - RJ, 24360-066",
-          "opening_hours": "Seg a Sáb 9h às 18h",
-          "phone": "(21) 99128-4854"
+          "phone": "(21) 99128-4854",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 18:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2134,8 +2518,10 @@
         {
           "name": "Centro",
           "adress": "R. Padre Roberto Sabóia de Medeiros, 03 - Centro Nova Friburgo - RJ, 28625-080",
-          "opening_hours": "Seg a Sex 8h30 às 18h e Sáb. 9h às 13h",
-          "phone": "(22) 3261-3901"
+          "phone": "(22) 3261-3901",
+          "week": "8:30 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2145,8 +2531,10 @@
         {
           "name": "Jatoba",
           "adress": "Av. Dr. Randolfo Pena, N° 1021 - Jatoba Paraíba do Sul - RJ, 25850-000",
-          "opening_hours": "Seg a Sex 7h30 às 18h e Sáb. 7h30 às 13h",
-          "phone": "(24) 2263-5712"
+          "phone": "(24) 2263-5712",
+          "week": "7:30 às 18:00",
+          "saturday": "7:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2156,14 +2544,18 @@
         {
           "name": "ABC da Construção Itaipava",
           "adress": "Estr. União e Indústria, 9785 - Itaipava Petrópolis - RJ, 25730-736",
-          "opening_hours": "Seg a Sáb 9h às 18h",
-          "phone": "(24) 2244-7498"
+          "phone": "(24) 2244-7498",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 18:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Quitandinha",
           "adress": "R. Gen. Rondon, 1317 - Quitandinha Petrópolis - RJ, 25650-027",
-          "opening_hours": "Seg a Sab 9h às 18h e Sáb. 9h às 13h",
-          "phone": "(24) 2235-6595"
+          "phone": "(24) 2235-6595",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2173,8 +2565,10 @@
         {
           "name": "Santa Isabel",
           "adress": "Av. Tenente-Coronel Adalberto Mendes, 1560 - Santa Isabel Resende - RJ, 27522-240",
-          "opening_hours": "Seg a Sex 8h30 às 18h30 e Sáb. 9h às 13h",
-          "phone": "(24) 99814-3573"
+          "phone": "(24) 99814-3573",
+          "week": "8:30 às 18:30",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2184,8 +2578,10 @@
         {
           "name": "Jardim Mariléa",
           "adress": "Av. Jane Maria Martins Figueira, 519 - Jardim Mariléa Rio das Ostras - RJ, 28896-013",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(22) 98167-0653"
+          "phone": "(22) 98167-0653",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2195,38 +2591,50 @@
         {
           "name": "ABC da Construção Barra da Tijuca",
           "adress": "Condomínio Barra Express - Av. Ayrton Senna, 3383 - Loja 102 - Barra da Tijuca Rio de Janeiro - RJ, 22775-004",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 13h",
-          "phone": "(21) 3268-7665"
+          "phone": "(21) 3268-7665",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Centro",
           "adress": "R. Frei Caneca, 77 - Centro Rio de Janeiro - RJ, 20211-030",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(21) 99113-1340"
+          "phone": "(21) 99113-1340",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Copacabana",
           "adress": "R. Barata Ribeiro, 70 - Copacabana Rio de Janeiro - RJ, 22011-002",
-          "opening_hours": "Seg. 10h às 18h, Ter a Sex 9h às 18h e Sáb. 9h às 14h",
-          "phone": "(21) 3496-8008"
+          "phone": "(21) 3496-8008",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 14:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Ilha do Governador",
           "adress": "Ilha do Governador, Estrada do Galeão, 1290 - Jardim Carioca Rio de Janeiro - RJ, 21931-522",
-          "opening_hours": "Seg a Sex 9h às 19h e Sáb. 9h às 18h",
-          "phone": "(21) 3393-0348 "
+          "phone": "(21) 3393-0348 ",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 18:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Ipanema",
           "adress": "R. Farme de Amoedo, 122 - Ipanema Rio de Janeiro - RJ, 22420-020",
-          "opening_hours": "Seg a Quinta 9h às 18h, Sex 9h às 14h e Sáb. 9h às 18h",
-          "phone": "((21) 3268-1796"
+          "phone": "((21) 3268-1796",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 18:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Recreio dos Bandeirantes",
           "adress": "Av. das Américas, 16701 - Recreio dos Bandeirantes Rio de Janeiro - RJ, 22790703",
-          "opening_hours": "Seg a Sáb. 9h às 19h",
-          "phone": "(21) 99548-1648"
+          "phone": "(21) 99548-1648",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 19:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2236,8 +2644,10 @@
         {
           "name": "ABC da Construção Santo Antônio de Pádua",
           "adress": "Rod. 186 Santa Afra, 186 Santo Antônio de Pádua - RJ, 28470-000",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 12h",
-          "phone": "(32) 99920-2978"
+          "phone": "(32) 99920-2978",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2247,8 +2657,10 @@
         {
           "name": "Várzea",
           "adress": "Av. Feliciano Sodré, 66 - Várzea Teresópolis - RJ, 25963-081",
-          "opening_hours": "Seg a Sáb. 9h às 18h",
-          "phone": "(21) 2642-3031"
+          "phone": "(21) 2642-3031",
+          "week": "9:00 às 18:00",
+          "saturday": "9:00 às 18:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2258,8 +2670,10 @@
         {
           "name": "Centro",
           "adress": "R. Barão do Rio Branco, 466 - Centro Três Rios - RJ, 25804-010",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 14h",
-          "phone": "(24) 2255-4076"
+          "phone": "(24) 2255-4076",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 14:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2269,8 +2683,10 @@
         {
           "name": "Vila Santa Cecília",
           "adress": "R. Trinta e Três, 187 - Vila Santa Cecília Volta Redonda - RJ, 27261-310",
-          "opening_hours": "Seg a Sex 9h às 18h30 e Sáb. 9h às 13h",
-          "phone": "(24) 3026-8320"
+          "phone": "(24) 3026-8320",
+          "week": "8:00 às 18:30",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2280,8 +2696,10 @@
         {
           "name": "Jardim Shangri-Lá",
           "adress": "Av. Tiradentes, 540 - Jardim Shangri-Lá, Londrina - PR, 86070-545",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(43) 98811-0815"
+          "phone": "(43) 98811-0815",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -2291,8 +2709,10 @@
         {
           "name": "Asa Sul",
           "adress": "W3 Sul, 511, Bloco A, Loja 03, Asa Sul, Brasília - DF, 70361-510",
-          "opening_hours": "Seg a Sex 8h às 18h e Sáb. 8h às 13h",
-          "phone": "(61) 99300-7426"
+          "phone": "(61) 99300-7426",
+          "week": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     }

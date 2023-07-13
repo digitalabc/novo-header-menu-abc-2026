@@ -148,14 +148,7 @@
 				"Vitória da Conquista"
 			]
 		},
-		{
-			"estado": "Mato Grosso do Sul",
-			"coluna": "2",
-			"coluna_mobile": "2",
-			"cidades": [
-				"Campo Grande"
-			]
-		},
+		
 		{
 			"estado": "Distrito Federal",
 			"coluna": "2",
@@ -259,6 +252,14 @@
 				"Mimoso do Sul",
 				"Serra",
 				"Vitória"
+			]
+		},
+		{
+			"estado": "Mato Grosso do Sul",
+			"coluna": "2",
+			"coluna_mobile": "2",
+			"cidades": [
+				"Campo Grande"
 			]
 		}
 	]

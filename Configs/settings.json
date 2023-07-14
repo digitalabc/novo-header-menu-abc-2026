@@ -144,136 +144,87 @@
       "stores": [
         {
           "name": "Centro - Além Paraíba",
-          "adress": "Av. Dr. Ricardo Grimaldo Estides, 215 Centro, Além Paraíba - MG, 36660-000",
+          "adress": "Av. Dr. Ricardo Grimaldo Estides, 215- Centro, Além Paraíba - MG, 36660-000",
           "phone": "(32) 3462-4934",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro",   
-          "monday": "8:00 às 19:00",
-          "tuesday": "8:00 às 19:00",
-          "wednesday": "8:00 às 19:00",
-          "thursday": "8:00 às 19:00",
-          "friday": "8:00 às 19:00",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro",
+          "week": "8:00 às 19:00",
           "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
-         }
+        }
       ]
-     },
+    },
     {
       "name": "Barbacena",
       "stores": [
-         {
+        {
           "name": "Centro",
           "adress": "R. Mal. Floriano Peixoto, 229 - Centro, Barbacena - MG, 36202-344",
           "phone": "(32) 3331-0349",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/barbacena/centro",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
+          "week": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
-         }
+        }
       ]
-     },
+    },
     {
       "name": "Belo Horizonte",
       "stores": [
         {
           "name": "Atelier ABC - Lourdes",
-          "adress": "Av. Olegário Maciel, 1.699 - Lourdes Belo Horizonte - MG, 30180-117",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 13:00",
+          "adress": "Av. Olegário Maciel, 1.699 - Lourdes <br />Belo Horizonte - MG, 30180-117",
           "phone": "(31) 3047-8717",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/lourdes",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
+          "week": "9:00 às 19:00",
           "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Castelo",
-          "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,Belo Horizonte - MG, 31330-472",
-          "opening_hours": "Seg a Sex 08:00 às 19:00 e Sáb. 08:00 às 14:00",
+          "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,<br />Belo Horizonte - MG, 31330-472",
           "phone": "(31) 98368-9898",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/castelo",
-          "monday": "8:00 às 19:00",
-          "tuesday": "8:00 às 19:00",
-          "wednesday": "8:00 às 19:00",
-          "thursday": "8:00 às 19:00",
-          "friday": "8:00 às 19:00",
+          "week": "8:00 às 19:00",
           "saturday": "8:00 às 14:00",
           "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Catalão",
-          "adress": "Av. Presidente Carlos Luz, 1205 - Caiçaras Belo Horizonte - MG, 31250-970",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 16:00",
-          "phone": "(31) 3411-1164",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/catalao",
-          "monday": "9:00 às 19:00",
-          "tuesday": "9:00 às 19:00",
-          "wednesday": "9:00 às 19:00",
-          "thursday": "9:00 às 19:00",
-          "friday": "9:00 às 19:00",
+          "adress": "Av. Presidente Carlos Luz, 1205 - Caiçaras <br />Belo Horizonte - MG, 31250-970",
+          "phone": "(31) 98368-9898",
+          "week": "9:00 às 19:00",
           "saturday": "9:00 às 16:00",
           "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Cidade Nova",
-          "adress": "Av. Cristiano Machado, 673 - Graça Belo Horizonte - MG, 31140-003",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 14:00",
-          "phone": "(31) 3482-5974",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/cidade-nova",
-          "monday": "9:00 às 19:00",
-          "tuesday": "9:00 às 19:00",
-          "wednesday": "9:00 às 19:00",
-          "thursday": "9:00 às 19:00",
-          "friday": "9:00 às 19:00",
+          "adress": "Av. Cristiano Machado, 673 - Graça <br />Belo Horizonte - MG, 31140-003",
+          "phone": "(xx) xxxxx-xxxx",
+          "week": "9:00 às 19:00",
           "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Nossa Senhora do Carmo",
-          "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, Belo Horizonte - MG, 30320-000",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 14:00",
+          "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, <br />Belo Horizonte - MG, 30320-000",
           "phone": "(31) 3656-0000",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/nossa-senhora-do-carmo",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
+          "week": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Pedro II",
-          "adress": "Av. Dom Pedro II, 1275, Carlos Prates Belo Horizonte, MG, 30710-010",
-          "opening_hours": "Seg a Sex 08:30 às 18:30 e Sáb. 08:30 às 12:30",
+          "adress": "Av. Dom Pedro II, 1275, Carlos Prates <br />Belo Horizonte, MG, 30130-010",
           "phone": "(31) 3047-8878",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/pedro-ii",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 12:30",
           "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Venda Nova",
-          "adress": "Rua Dr. Álvaro Camargos, 489 - São João Batista Belo Horizonte - MG, 31515-200",
-          "opening_hours": "Seg a Sex 08:30 às 18:30 e Sáb. 08:30 às 12:30",
-          "phone": "(31) 2537-3993",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/venda-nova",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
+          "adress": "Rua Dr. Álvaro Camargos, 489 - São João Batista <br />Belo Horizonte - MG, 31515-200",
+          "phone": "(31) 99076 8831",
+          "week": "8:30 às 18:30",
+          "saturday": "8:30 às 12:30",
           "sunday": "Fechado"
         }
       ]
@@ -1636,32 +1587,33 @@
         {
           "name": "Silvestre",
           "adress": "Av. da Saudade, 490 - Silvestre, Amparo - SP, 13901-014",
-          "phone": "(19) 99905-4882",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/amparo/silvstre",
-          "monday": "8:30 às 19:00",
-          "tuesday": "8:30 às 19:00",
-          "wednesday": "8:30 às 19:00",
-          "thursday": "8:30 às 19:00",
-          "friday": "8:30 às 19:00",
+          "week": "8:30 às 18:00",
           "saturday": "8:30 às 13:00",
           "sunday": "Fechado"
-         }
+        }
       ]
-     },
+    },
+    {
+      "name": "Amparo",
+      "stores": [
+        {
+          "name": "Silvestre",
+          "adress": "Av. da Saudade, 490 - Silvestre, Amparo - SP, 13901-014",
+          "phone": "(19) 99905-4882",
+          "week": "8:30 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
     {
       "name": "Andradina",
       "stores": [
         {
           "name": "Piscina",
           "adress": "Av. Bandeirantes, 1961 - Piscina, Andradina - SP, 16901-445",
-          "opening_hours": "Seg a Sex 08:00 às 18:00 e Sáb. 08:00 às 12:00",
           "phone": "(18) 98137-7048",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/andradina/piscina",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
+          "week": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }

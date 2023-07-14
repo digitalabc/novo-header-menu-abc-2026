@@ -139,7 +139,7 @@
     }
   },
   "cidades": [
-    {
+        {
       "name": "Além Paraíba",
       "stores": [
         {
@@ -181,7 +181,6 @@
         {
           "name": "Atelier ABC - Lourdes",
           "adress": "Av. Olegário Maciel, 1.699 - Lourdes Belo Horizonte - MG, 30180-117",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 13:00",
           "phone": "(31) 3047-8717",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/lourdes",
           "monday": "9:00 às 18:00",
@@ -195,7 +194,6 @@
         {
           "name": "ABC da Construção Castelo",
           "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,Belo Horizonte - MG, 31330-472",
-          "opening_hours": "Seg a Sex 08:00 às 19:00 e Sáb. 08:00 às 14:00",
           "phone": "(31) 98368-9898",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/castelo",
           "monday": "8:00 às 19:00",
@@ -209,7 +207,6 @@
         {
           "name": "ABC da Construção Catalão",
           "adress": "Av. Presidente Carlos Luz, 1205 - Caiçaras Belo Horizonte - MG, 31250-970",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 16:00",
           "phone": "(31) 3411-1164",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/catalao",
           "monday": "9:00 às 19:00",
@@ -223,7 +220,6 @@
         {
           "name": "ABC da Construção Cidade Nova",
           "adress": "Av. Cristiano Machado, 673 - Graça Belo Horizonte - MG, 31140-003",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 14:00",
           "phone": "(31) 3482-5974",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/cidade-nova",
           "monday": "9:00 às 19:00",
@@ -237,21 +233,19 @@
         {
           "name": "ABC da Construção Nossa Senhora do Carmo",
           "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, Belo Horizonte - MG, 30320-000",
-          "opening_hours": "Seg a Sex 09:00 às 19:00 e Sáb. 09:00 às 14:00",
           "phone": "(31) 3656-0000",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/nossa-senhora-do-carmo",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
+          "monday": "9:00 às 19:00",
+          "tuesday": "9:00 às 19:00",
+          "wednesday": "9:00 às 19:00",
+          "thursday": "9:00 às 19:00",
+          "friday": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Pedro II",
           "adress": "Av. Dom Pedro II, 1275, Carlos Prates Belo Horizonte, MG, 30710-010",
-          "opening_hours": "Seg a Sex 08:30 às 18:30 e Sáb. 08:30 às 12:30",
           "phone": "(31) 3047-8878",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/pedro-ii",
           "monday": "8:00 às 18:00",
@@ -265,7 +259,6 @@
         {
           "name": "ABC da Construção Venda Nova",
           "adress": "Rua Dr. Álvaro Camargos, 489 - São João Batista Belo Horizonte - MG, 31515-200",
-          "opening_hours": "Seg a Sex 08:30 às 18:30 e Sáb. 08:30 às 12:30",
           "phone": "(31) 2537-3993",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/venda-nova",
           "monday": "8:00 às 18:00",
@@ -275,6 +268,7 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
+        }
       ]
     },
     {

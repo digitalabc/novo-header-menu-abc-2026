@@ -269,6 +269,7 @@ input[type='search']::-webkit-search-results-decoration {
   .category .showcase__banner,
   .search .showcase__banner {
     display: flex;
+    align-items: center;
     gap: 20px;
   }
   .hotsite .showcase__banner >*,

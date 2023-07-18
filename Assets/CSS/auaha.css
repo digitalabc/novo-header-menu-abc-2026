@@ -1985,15 +1985,15 @@ input[type='search']::-webkit-search-results-decoration {
   font-size: 14px;
   line-height: 18px;
 }
-@media screen and (max-width: 991px) {
+.cidade__fullbanner {
+  margin-bottom: 25px;
+}
+@media screen and (min-width: 992px) {
   .cidade__fullbanner.mobile {
     display: none;
   }
 }
-.cidade__fullbanner.desktop {
-  margin-bottom: 25px;
-}
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 991px) {
   .cidade__fullbanner.desktop {
     display: none;
   }

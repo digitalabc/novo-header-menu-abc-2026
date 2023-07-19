@@ -330,7 +330,7 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
     fase_da_obra: stage,
     receber_catalogo: catalogAccept,
     visitar_obra: visitAccept,
-    loja: `[UF]${uf}, [CIDADE] ${store}, [LOJA] ${store}`,
+    loja: `[UF] ${uf}, [CIDADE] ${city}, [LOJA] ${store}`,
     politica_de_privacidade: "sim"
   }
 

@@ -2254,7 +2254,7 @@
           "name": "Silvestre",
           "adress": "Av. da Saudade, 490 - Silvestre, Amparo - SP, 13901-014",
           "phone": "(19) 99905-4882",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/amparo/silvestre",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/amparo/silvstre",
           "monday": "8:30 às 19:00",
           "tuesday": "8:30 às 19:00",
           "wednesday": "8:30 às 19:00",
@@ -2307,7 +2307,7 @@
         {
           "name": "Vila Sedenho",
           "adress": "Av. Luís Alberto, 643 - Vila Sedenho, Araraquara - SP, 14806-005",
-          "phone": "(16) 99745-4747",
+          "phone": "(16) 99740-5258",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/araraquara/vila-sedenho",
           "monday": "8:30 às 18:00",
           "tuesday": "8:30 às 18:00",
@@ -3076,7 +3076,7 @@
           "name": "Centro",
           "adress": "R. Santa Filomena, 289 - Centro, São Bernardo do Campo - SP, 09710-060",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/sao-bernardo-do-campo/centro",
-          "phone": "(11) 95807-0966",
+          "phone": "(11) 4330-6022",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
           "wednesday": "9:00 às 18:00",
@@ -3807,12 +3807,12 @@
           "adress": "Condomínio Barra Express - Av. Ayrton Senna, 3383 - Loja 102 - Barra da Tijuca Rio de Janeiro - RJ, 22775-004",
           "phone": "(21) 3268-7665",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/barra-da-tijuca",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 13:00",
+          "monday": "9:00 às 19:00",
+          "tuesday": "9:00 às 19:00",
+          "wednesday": "9:00 às 19:00",
+          "thursday": "9:00 às 19:00",
+          "friday": "9:00 às 19:00",
+          "saturday": "9:00 às 19:00",
           "sunday": "Fechado"
         },
         {
@@ -3872,12 +3872,12 @@
           "adress": "Av. das Américas, 16701 - Recreio dos Bandeirantes Rio de Janeiro - RJ, 22790703",
           "phone": "(21) 99548-1648",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/recreio-dos-bandeirantes",
-          "monday": "8:00 às 19:00",
-          "tuesday": "8:00 às 19:00",
-          "wednesday": "8:00 às 19:00",
-          "thursday": "8:00 às 19:00",
-          "friday": "8:00 às 19:00",
-          "saturday": "9:00 às 16:00",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
         }
       ]
@@ -3986,6 +3986,78 @@
           "thursday": "8:00 às 18:30",
           "friday": "8:00 às 18:30",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Vitória da Conquista",
+      "stores": [
+        {
+          "name": "Felícia",
+          "adress": "Av. Juracy Magalhães, 1240 - Letra A - Felícia, Vitória da Conquista - BA, 45055-235",
+          "phone": "(77) 3420-9005",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/vitoria-da-conquista/felicia",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Toledo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Alm. Barroso, 2733 - Centro, Toledo - PR, 85900-020",
+          "phone": "(61) 99977-0773",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/toledo/centro%22",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Catalão",
+      "stores": [
+        {
+          "name": "Santa Rita",
+          "adress": "Av. Dr. Lamartine Pinto de Avelar, 1512 - Santa Rita, Catalão - GO, 75705-220",
+          "phone": "(43) 3037-3070",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/catalao/santa-rita%22",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Campo Grande",
+      "stores": [
+        {
+          "name": "Vila Rica",
+          "adress": "Av. Ceará, 2480 - Vila Rica, Campo Grande - MS, 79022-391",
+          "phone": "(64) 3040-4909",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/campo-grande/vila-rica%22",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

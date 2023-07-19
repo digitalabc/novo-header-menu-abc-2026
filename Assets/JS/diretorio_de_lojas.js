@@ -324,14 +324,14 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
   visitAccept = visitAccept ? "sim" : "não"
 
   let campos = {
-    nome: name,
+    agendar_visita: visitAccept,
     email: email,
-    whatsapp: phone,
-    fase_da_obra: stage,
+    estagio_da_obra: stage,
+    nome: name,
+    nome_loja: `[UF] ${uf}, [CIDADE] ${city}, [LOJA] ${store}`,
+    politica_privacidade: "sim",
     receber_catalogo: catalogAccept,
-    visitar_obra: visitAccept,
-    loja: `[UF] ${uf}, [CIDADE] ${city}, [LOJA] ${store}`,
-    politica_de_privacidade: "sim"
+    whatsapp: phone
   }
 
   sendSharpSpring(campos, "franquia")

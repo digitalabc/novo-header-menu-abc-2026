@@ -23,14 +23,14 @@
     ~}}
 
   {{~ for category in product.product_categories ~}}
-  {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
-  {{ product_has_specialist_popup = true }}
-  {{~ end ~}}
+    {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
+      {{ product_has_specialist_popup = true }}
+    {{~ end ~}}
   {{~ end ~}}
 
   {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936"] }}
-  {{~ if (product.product_brand?.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
-  {{ product_hide_pix = true }}
+    {{~ if (product.product_brand?.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
+    {{ product_hide_pix = true }}
   {{~ end ~}}
 
   {{ 
@@ -45,10 +45,10 @@
       } 
     }}
   {{~ for marca in _marcasCupom | object.keys ~}}
-  {{~ if (product.product_brand | string.contains marca) && (_skusParaCupom[marca] | array.contains product.sku) ~}}
-  {{ product_show_coupon = true }}
-  <input type="hidden" id="product-coupon" name="product-coupon" value="{{ _marcasCupom[marca] }}">
-  {{~ end ~}}
+    {{~ if (product.product_brand | string.contains marca) && (_skusParaCupom[marca] | array.contains product.sku) ~}}
+    {{ product_show_coupon = true }}
+      <input type="hidden" id="product-coupon" name="product-coupon" value="{{ _marcasCupom[marca] }}">
+    {{~ end ~}}
   {{~ end ~}}
 
   {{~ if (product.product_brand | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
@@ -75,7 +75,7 @@
 
     <!-- Description -->
     {{~ if product.informations ~}}
-    {{ product_information informations: product.informations }}
+      {{ product_information informations: product.informations }}
     {{~ end ~}}
 
     <div style="display: none;" class="product__reviews">
@@ -92,7 +92,7 @@
   {{ product_floating product: product }}
 
   {{~ if product_has_specialist_popup ~}}
-  {{ product_popup }}
+    {{ product_popup }}
   {{~ end ~}}
 
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>

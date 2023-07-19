@@ -314,17 +314,25 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
     , stage = $("#especialista_stage").val()
     , catalogAccept = document.getElementById("acceptTerms_catalogo").checked
     , visitAccept = document.getElementById("acceptTerms_obra").checked
+    , uf = String(location.pathname.split("/").slice(-3)[0])
+    , city = String(location.pathname.split("/").slice(-2)[0])
     , store = String(location.pathname.split("/").slice(-1))
 
-    , campos = {
-      nome: name,
-      email: email,
-      whatsapp: phone,
-      estagio_da_obra: stage,
-      receber_catalogo: catalogAccept,
-      receber_visita: visitAccept,
-      loja: store
-    }
+    console.log( )
+
+  catalogAccept = catalogAccept ? "sim" : "não"
+  visitAccept = visitAccept ? "sim" : "não"
+
+  let campos = {
+    nome: name,
+    email: email,
+    whatsapp: phone,
+    fase_da_obra: stage,
+    receber_catalogo: catalogAccept,
+    visitar_obra: visitAccept,
+    loja: `[UF]${uf}, [CIDADE] ${store}, [LOJA] ${store}`,
+    politica_de_privacidade: "sim"
+  }
 
   sendSharpSpring(campos, "franquia")
 })

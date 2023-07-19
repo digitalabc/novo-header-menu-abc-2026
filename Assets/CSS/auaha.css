@@ -1882,7 +1882,7 @@ input[type='search']::-webkit-search-results-decoration {
   position: absolute;
   top: calc(100% + 15px);
   left: 0;
-  z-index: 1;
+  z-index: 99;
   visibility: hidden;
   padding: 15px;
   border-radius: 5px;
@@ -2496,7 +2496,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 .cidade__clientes {
   background: #f0f3f5;
-  padding: 70px 0;
+  padding: 70px 0 35px;
 }
 .cidade__clientes h2 {
   margin-bottom: 32px;
@@ -2537,6 +2537,7 @@ input[type='search']::-webkit-search-results-decoration {
   line-height: 160%;
 }
 .cidade__marcas {
+  padding-top: 35px;
   margin: 0 auto;
   max-width: 1300px;
   width: 100%;
@@ -2718,7 +2719,7 @@ input[type='search']::-webkit-search-results-decoration {
   position: absolute;
   top: calc(100% + 15px);
   right: -45px;
-  z-index: 1;
+  z-index: 99;
   visibility: hidden;
   padding: 40px 40px 25px;
   width: 305px;
@@ -2737,7 +2738,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 .opening-hours__day {
   display: inline-block;
-  width: 120px;
+  width: 115px;
 }
 .opening-hours__arrow {
   position: absolute;

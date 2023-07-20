@@ -291,6 +291,17 @@ $("#acceptTerms").on("change", function () {
  * Franquia
  */
 
+// Form Focus
+document.querySelectorAll("*[href='#contactForm']")?.forEach(anchor => {
+  anchor.addEventListener("click", function () {
+    document.querySelector("body")?.classList.add("form_focus")
+
+    setTimeout(() => {
+      document.querySelector("body")?.classList.remove("form_focus")
+    }, 3000)
+  })
+})
+
 $(".cidade__fale-conosco--form input, .cidade__fale-conosco--form select").on("change", function (e) {
   let name = $("#especialista_name").val()
     , email = $("#especialista_email").val()
@@ -312,13 +323,11 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
     , email = $("#especialista_email").val()
     , phone = $("#especialista_phone").val()
     , stage = $("#especialista_stage").val()
-    , catalogAccept = document.getElementById("acceptTerms_catalogo").checked
-    , visitAccept = document.getElementById("acceptTerms_obra").checked
+    , catalogAccept = document.getElementById("acceptTerms_catalogo")?.checked
+    , visitAccept = document.getElementById("acceptTerms_obra")?.checked
     , uf = String(location.pathname.split("/").slice(-3)[0])
     , city = String(location.pathname.split("/").slice(-2)[0])
     , store = String(location.pathname.split("/").slice(-1))
-
-    console.log( )
 
   catalogAccept = catalogAccept ? "sim" : "não"
   visitAccept = visitAccept ? "sim" : "não"
@@ -334,5 +343,7 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
     whatsapp: phone
   }
 
-  sendSharpSpring(campos, "franquia")
+  sendSharpSpring(campos, "franquia");
 })
+
+

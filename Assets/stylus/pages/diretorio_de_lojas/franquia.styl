@@ -1,3 +1,25 @@
+body
+  transition: all ease-in-out 0.3s;
+
+body.form_focus
+  position: relative;
+
+  &:before
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    content: "";
+    opacity: 0.3;
+
+  div#contactForm
+    position: relative;
+    z-index: 99;
+
 .container__cidade
   width 100%
   height 100%

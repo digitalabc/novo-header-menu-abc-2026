@@ -9,7 +9,6 @@
 {{~ selected_variant = product.attribute_selections?.selected_variant ~}}
 {{~ product_is_kit = product.buy_list_id ?! true ~}}
 {{ product_is_box = false }}
-
 {{~ if selected_variant ~}}
   {{~ available = product.attribute_selections.selected_variant.available ~}}
   {{~ if product.attribute_selections.selected_variant.prices.multiplication_factor > 1 ~}}
@@ -73,7 +72,6 @@
 
     <!-- Shippng -->
     
-
     {{~ if available && !product_is_kit ~}}
       {{~ if selected_variant ~}}
           {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}

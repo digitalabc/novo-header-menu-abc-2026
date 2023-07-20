@@ -53,6 +53,13 @@ function sendSharpSpring(campos, componente) {
         case 'franquia':
           document.querySelector(".cidade__fale-conosco__button").value = "ENVIADO!"
           document.querySelector(".cidade__fale-conosco__button").setAttribute("disabled", true)
+          $("#especialista_name").val("")
+          $("#especialista_email").val("")
+          $("#especialista_phone").val("")
+          $("#especialista_stage").val("")
+          document.getElementById("acceptTerms_politica").checked = false
+          document.getElementById("acceptTerms_catalogo").checked = false
+          document.getElementById("acceptTerms_obra").checked = false
           break;
 
         default:

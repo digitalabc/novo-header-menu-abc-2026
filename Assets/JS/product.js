@@ -736,6 +736,8 @@ if (produtoSKUDiv && quantidadeInput) {
       return response.json();
     })
     .then(function(data) {
+      console.warn(data);
+
       let { referencia, peso, departamento } = data[0];
       if (referencia === produtoSKU) {
           pesoTotal = quantidade * peso;
@@ -748,7 +750,13 @@ if (produtoSKUDiv && quantidadeInput) {
           ) {
               temExcecao = true;
           }
-          if (!temExcecao && pesoTotal <= 50) {
+          if (departamento == "LOUÇAS/INOX/SINTETICO") {
+            shippingResponse.classList.add("hide-pickup")
+            otherButtons.forEach(button => {
+              button.style.display = "flex"
+            });
+          }
+          else if (!temExcecao && pesoTotal <= 50) {
             pickUpButton.forEach((btn) => { 
               btn.style.display = "flex"
           })}

@@ -137,3 +137,9 @@ function Position(obj) {
     return [currenttop];
   }
 }
+
+function jump(id) {
+  var headerHeight = document.querySelector("header").getBoundingClientRect().height
+  var top = document.getElementById(id).offsetTop;
+  window.scrollTo(0, (top - headerHeight));
+}​

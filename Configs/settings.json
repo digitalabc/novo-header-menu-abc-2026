@@ -157,6 +157,24 @@
          }
       ]
      },
+     {
+      "name": "Alfenas",
+      "stores": [
+         {
+          "name": "Cruz Preta",
+          "adress": "Av. José Paulino da Costa, n° 290 - Cruz Preta, Alfenas - MG, 37132-204",
+          "phone": "(35) 99164-0014",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alfenas/cruz-preta",
+          "monday": "7:30 às 17:30",
+          "tuesday": "7:30 às 17:30",
+          "wednesday": "7:30 às 17:30",
+          "thursday": "7:30 às 17:30",
+          "friday": "7:30 às 17:30",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+         }
+      ]
+     },
     {
       "name": "Barbacena",
       "stores": [
@@ -578,7 +596,7 @@
         {
           "name": "Centro",
           "adress": "Av. João Antunes de Oliveira, 376 - Centro, Diamantina - MG, 39100-000",
-          "phone": "(38) 99959-6908",
+          "phone": "(38) 3503-1515",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/diamantina/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -1834,24 +1852,6 @@
           "thursday": "8:30 às 18:00",
           "friday": "8:30 às 18:00",
           "saturday": "8:30 às 12:30",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
-      "name": "Sabará",
-      "stores": [
-        {
-          "name": "Centro",
-          "adress": "R. Princesa Isabel, 21 - Centro, Sabará - MG, 34505-310",
-          "phone": "(31) 97162-2279",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sabara/centro",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]
@@ -3642,7 +3642,7 @@
       ]
     },
     {
-      "name": "Mage",
+      "name": "Magé",
       "stores": [
         {
           "name": "Centro",

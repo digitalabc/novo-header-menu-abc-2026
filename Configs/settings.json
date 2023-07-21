@@ -2163,6 +2163,42 @@
       ]
     },
     {
+      "name": "Uberaba",
+      "stores": [
+        {
+          "name": "São Benedito",
+          "adress": "Av. Barão do Rio Branco, 848 - São Benedito, Uberaba - MG, 38020-300",
+          "phone": "(34) 3311-9731",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/uberaba/sao-benedito",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Uberlândia",
+      "stores": [
+        {
+          "name": "Martins",
+          "adress": "Av. Vasconcelos Costa, 197 - Martins, Uberlândia - MG, 38400-448",
+          "phone": "(34) 3233-0600",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/uberlandia/martins",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Varginha",
       "stores": [
         {
@@ -2603,7 +2639,7 @@
         {
           "name": "Jardim do Bosque",
           "adress": "R. Antônio Nelson Barbosa, 254 - Jardim do Bosque, Hortolândia - SP, 13186-231",
-          "phone": "(xx) xxxxx-xxxx",
+          "phone": "(19) 98236-0033",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/hortolandia/jardim-do-bosque",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",

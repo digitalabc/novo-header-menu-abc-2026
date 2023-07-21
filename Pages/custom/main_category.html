@@ -22,7 +22,7 @@
 
     <!-- Navegue por ambiente -->
     {{ content position: "Centro" contents: data.hotsite.contents show_title: false }}
-
+    <h2 class="mobile">Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
     <!-- Vitrine 1 -->
     <section class="showcase showcase__banner">
       {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
@@ -37,8 +37,9 @@
     </section>
 
     <!-- Vitrine 2 -->
+    <h2>Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
     <section class="showcase desktop">
-      <h2>Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
+      
       {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
     </section>
   </div>

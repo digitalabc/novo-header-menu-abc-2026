@@ -209,9 +209,9 @@ input[type='search']::-webkit-search-results-decoration {
   }
 }
 .home h2 {
-  font-size: 20px;
-  font-weight: 500;
   margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
 }
 @media screen and (max-width: 991px) {
   .home h2 {
@@ -219,9 +219,9 @@ input[type='search']::-webkit-search-results-decoration {
   }
 }
 .home .gray-bg {
+  margin-bottom: 20px;
   padding-top: 70px;
   background: #f0f3f5;
-  margin-bottom: 20px;
   background-position: bottom center;
   background-repeat: no-repeat;
 }

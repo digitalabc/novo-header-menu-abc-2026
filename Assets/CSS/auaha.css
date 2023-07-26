@@ -2549,6 +2549,7 @@ body.form_focus div#contactForm {
 }
 .cidade__clientes--card svg {
   margin-bottom: 16px;
+  flex-shrink: 0;
 }
 .cidade__clientes--name {
   display: block;

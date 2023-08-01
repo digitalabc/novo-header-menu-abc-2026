@@ -447,6 +447,25 @@
       ]
     },
     {
+      "name": "Carandaí",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Afrânio de Melo Franco, 172 - Centro, Carandaí - MG, 36280-060",
+          "phone": "(32) 99126-0108",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/carandai/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 1:00",
+          "sunday": "Fechado"
+
+        }
+      ]
+    },
+    {
       "name": "Carangola",
       "stores": [
         {
@@ -2956,7 +2975,7 @@
           "wednesday": "8:00 às 18:00",
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 13:00",
+          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]
@@ -3683,7 +3702,7 @@
         {
           "name": "Centro",
           "adress": "R. João Valério, 40 - Centro Magé - RJ, 25900-000",
-          "phone": "(21) 99387-2569",
+          "phone": "(21) 99387-2569 ",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/mage/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -3752,13 +3771,12 @@
       ]
     },
     {
-      "name": "Paraíba do Sul",
+      "name": "Paraiba do Sul",
       "stores": [
         {
           "name": "Jatoba",
           "adress": "Av. Dr. Randolfo Pena, N° 1021 - Jatoba Paraíba do Sul - RJ, 25850-000",
           "phone": "(24) 2263-5712",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/paraiba-do-sul/jatoba",
           "monday": "7:30 às 18:00",
           "tuesday": "7:30 às 18:00",
           "wednesday": "7:30 às 18:00",
@@ -4016,7 +4034,7 @@
           "name": "Asa Sul",
           "adress": "W3 Sul, 511, Bloco A, Loja 03, Asa Sul, Brasília - DF, 70361-510",
           "phone": "(61) 99300-7426",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/distrito-federal/brasilia/asa-sul",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/brasilia/distrito-federal/asa-sul",
           "monday": "8:00 às 18:30",
           "tuesday": "8:00 às 18:30",
           "wednesday": "8:00 às 18:30",

@@ -8,7 +8,8 @@
 ## }}
 {{ quotes = data.shipping_quotes }}
 
-{{~ retirada_com_maior_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" | array.last ~}}
+{{~ retirada_com_maior_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" | array.first ~}}
+{{~ retirada = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" ~}}
 
 {{~ custom_quotes = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" ~}}
 

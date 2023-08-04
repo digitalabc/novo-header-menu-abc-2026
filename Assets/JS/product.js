@@ -525,12 +525,16 @@ function verifyQuantity(input, warningQuery) {
   }
 }
 
-function updateFakeQuantity(input, fakeQuantityId) {
+function updateFakeQuantity(input, fakeQuantityId, type) {
   const quant = Number(input.value),
     fakeQuantityInput = document.getElementById(fakeQuantityId)
   if (fakeQuantityInput) {
     const boxPrice = fakeQuantityInput.dataset.boxprice
-    fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant).toFixed(2).replace(',', '.')} m²`;
+    if (type == "m²") {
+      fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant).toFixed(2).replace(',', '.')} ${type}`;
+    } else if (type == "un.") {
+      fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant)} ${type}`;
+    }
   }
 }
 

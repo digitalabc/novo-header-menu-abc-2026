@@ -10,6 +10,7 @@
         ret item.subscription_only == true
     end
 }}
+
 {{~ product_id = product.product_id ~}}
 {{~ selected_variant = product.attribute_selections?.selected_variant ~}}
 {{~ subscription_only_list = product.subscription_groups | array.filter @select_subscription_only ~}}
@@ -60,18 +61,26 @@
                     <div class="quantity {{ if product_is_box }}fake-quantity{{ end }}">
                         <button class="quantity-less" onclick="quantityChange('#selected-quantity', 'decrease', '.product__quantity--wrapper')">-</button>
 
-                        <input type="number" class="selected-quantity" id="selected-quantity" 
-                        name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity');">
+                        {{~ if !comprePorUnidade ~}}
+                            <input type="number" class="selected-quantity" id="selected-quantity" 
+                            name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity', 'm²');">
+                        {{~ else ~}}
+                            <input type="number" class="selected-quantity" id="selected-quantity" 
+                            name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity', 'un.');">
+                        {{~ end ~}}
 
-                        {{~ if product_is_box ~}}
-                        <input id="fake-quantity" 
-                        name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }}m²" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
+                        {{~ if product_is_box && !comprePorUnidade ~}}
+                            <input id="fake-quantity" 
+                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }}m²" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
+                        {{~ else if product_is_box && comprePorUnidade ~}}
+                            <input id="fake-quantity" 
+                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }} un." data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
                         {{~ end ~}}
 
                         <button class="quantity-more" onclick="quantityChange('#selected-quantity', 'increase', '.product__quantity--wrapper')">+</button>
                     </div>
 
-                    {{~ if product_is_box ~}}
+                    {{~ if product_is_box && !comprePorUnidade ~}}
                       {{ product_calculator }}
                     {{~ end ~}}
                 </div>

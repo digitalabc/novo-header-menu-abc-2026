@@ -520,11 +520,11 @@
       ]
     },
     {
-      "name": "Caxambu",
+      "name": "Caxambú",
       "stores": [
         {
           "name": "Centro",
-          "adress": "Av. Gabriel Alves Fernandes, 329 - Centro, Caxambu - MG, 37440-000",
+          "adress": "Av. Gabriel Alves Fernandes, 329 - Centro, Caxambú - MG, 37440-000",
           "phone": "(35) 99217-0928",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/caxambu/centro",
           "monday": "8:00 às 18:00",
@@ -1835,6 +1835,24 @@
           "thursday": "8:00 às 19:00",
           "friday": "8:00 às 19:00",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Raul Soares",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Profa. Elza de Almeida Bacelar, 1119 - Raul Soares, MG, 35350-000",
+          "phone": "(33) 99821-3819",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/raul-soares/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3777,6 +3795,7 @@
           "name": "Jatoba",
           "adress": "Av. Dr. Randolfo Pena, N° 1021 - Jatoba Paraíba do Sul - RJ, 25850-000",
           "phone": "(24) 2263-5712",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/paraiba-do-sul/jatoba",
           "monday": "7:30 às 18:00",
           "tuesday": "7:30 às 18:00",
           "wednesday": "7:30 às 18:00",

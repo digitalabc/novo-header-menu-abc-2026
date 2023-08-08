@@ -1,0 +1,65 @@
+h3
+  margin-bottom: 20px;
+  color: $primary;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+> section
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child)
+    margin-bottom: 60px;
+
+  textarea
+    width: 100%;
+    height: 178px;
+    border: 1px solid #E3E3E3;
+    background: #FAFAFA;
+
+  label
+    margin-bottom: 6px;
+    color: $primary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+  input
+    &:not(:last-child)
+      margin-bottom: 20px;
+
+    &[type="password"], &[type="text"], &[type="email"], &[type="tel"]
+      height: 48px;
+      border: 1px solid #E3E3E3;
+      background: #FAFAFA;
+      transition: $transition;
+
+      &:focus
+        border-color: $primary;
+        background: #ffffff;
+
+    &[type="submit"]
+      margin-top: 24px;
+      height: 48px;
+      background: $primary;
+      color: #ffffff;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      transition: $transition;
+
+      @media desktop
+        &:hover
+          background: $secondary;
+          color: #000000;
+
+  > div
+    label
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 5px;

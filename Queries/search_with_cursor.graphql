@@ -81,6 +81,10 @@ query ($searchQuery: String,
           title
         }
         addToCartFromSpot
+        attributes {
+          name
+          value
+        }
       }
     }
     aggregations {

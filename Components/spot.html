@@ -11,6 +11,17 @@
   {{ product_is_box = true }}
 {{~ end ~}}
 
+{{ product | debug.log }} 
+
+{{
+
+    for attributes in product.attributes
+        if attributes.value == "UN" || attributes.value == "PC"
+            comprePorUnidade = true
+        end
+    end
+}}
+
 <div class="spot">
     <div class="spot__image">
         {{ stamps promotions: product.promotions }}

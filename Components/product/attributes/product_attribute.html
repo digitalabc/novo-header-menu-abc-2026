@@ -66,7 +66,7 @@
                             name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity', 'm²');">
                         {{~ else ~}}
                             <input type="number" class="selected-quantity" id="selected-quantity" 
-                            name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity', 'un.');">
+                            name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity', 'pç.');">
                         {{~ end ~}}
 
                         {{~ if product_is_box && !comprePorUnidade ~}}
@@ -74,7 +74,7 @@
                             name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }}m²" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
                         {{~ else if product_is_box && comprePorUnidade ~}}
                             <input id="fake-quantity" 
-                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }} un." data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
+                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }} pç." data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
                         {{~ end ~}}
 
                         <button class="quantity-more" onclick="quantityChange('#selected-quantity', 'increase', '.product__quantity--wrapper')">+</button>

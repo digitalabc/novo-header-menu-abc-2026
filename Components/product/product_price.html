@@ -24,10 +24,16 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
-        {{~ if product_is_box && !page_product ~}}
+        {{~ if product_is_box && !page_product && !comprePorUnidade ~}}
           <p class="precoCalculado">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
             <small>/m²</small>
+          </p>
+          {{ comprePorUnidade | debug.log }} 
+        {{ else if product_is_box && !page_product && comprePorUnidade }}
+          <p class="precoCalculado">
+            <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
+            <small>/pç</small>
           </p>
         {{~ end ~}}
         {{~ if page_product ~}}
@@ -55,11 +61,11 @@
 
 {{~ if product_is_box && page_product && !comprePorUnidade ~}}
   <div class="box-price">
-    <span>Neste produto a m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
+    <span>Neste produto o m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
   </div>
 {{~ else if product_is_box && page_product && comprePorUnidade ~}}
   <div class="box-price">
-    <span>Neste produto a unidade sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
+    <span>Neste produto a peça sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
   </div>
 {{~ end ~}}
 

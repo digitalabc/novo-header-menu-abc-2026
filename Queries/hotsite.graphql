@@ -1,12 +1,5 @@
-query Hotsite($url: String!,
-      $resultSize: Int, 
-      $offset: Int, 
-      $sortKey: ProductSortKeys, 
-      $sortDirection: SortDirection, 
-      $filters: [ProductFilterInput],
-      $maximumPrice: Decimal,
-      $minimumPrice: Decimal) {
-  hotsite (url:$url) {
+query Hotsite($url: String!, $resultSize: Int, $offset: Int, $sortKey: ProductSortKeys, $sortDirection: SortDirection, $filters: [ProductFilterInput], $maximumPrice: Decimal, $minimumPrice: Decimal) {
+  hotsite(url: $url) {
     name
     pageSize
     banners {
@@ -22,10 +15,10 @@ query Hotsite($url: String!,
       content
       height
       title
-      width 
+      width
       position
     }
-    breadcrumbs{
+    breadcrumbs {
       link
       text
     }
@@ -37,13 +30,14 @@ query Hotsite($url: String!,
       scheme
     }
     productsByOffset(
-      limit: $resultSize,
-      offset: $offset,
-      sortKey: $sortKey,
-      sortDirection: $sortDirection,
-      filters: $filters,
-      minimumPrice: $minimumPrice,
-      maximumPrice: $maximumPrice) {
+      limit: $resultSize
+      offset: $offset
+      sortKey: $sortKey
+      sortDirection: $sortDirection
+      filters: $filters
+      minimumPrice: $minimumPrice
+      maximumPrice: $maximumPrice
+    ) {
       totalCount
       page
       pageSize
@@ -53,13 +47,13 @@ query Hotsite($url: String!,
         productName
         productVariantId
         alias
-        similarProducts{
+        similarProducts {
           alias
           image
           name
           imageUrl(w: 50, h: 50)
         }
-        images(width:245, height:245) {
+        images(width: 245, height: 245) {
           url
           print
         }
@@ -69,10 +63,10 @@ query Hotsite($url: String!,
           price
           discountPercentage
           multiplicationFactor
-          installmentPlans{
+          installmentPlans {
             displayName
             name
-            installments{
+            installments {
               discount
               fees
               number
@@ -88,13 +82,17 @@ query Hotsite($url: String!,
             value
           }
         }
-        promotions{
+        promotions {
           content
           id
           stamp
           title
         }
         addToCartFromSpot
+        attributes {
+          name
+          value
+        }
       }
     }
     aggregations {

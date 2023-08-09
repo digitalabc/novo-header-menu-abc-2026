@@ -532,7 +532,7 @@ function updateFakeQuantity(input, fakeQuantityId, type) {
     const boxPrice = fakeQuantityInput.dataset.boxprice
     if (type == "m²") {
       fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant).toFixed(2).replace(',', '.')} ${type}`;
-    } else if (type == "un.") {
+    } else if (type == "pç.") {
       fakeQuantityInput.value = `${(quant == 1 ? '1 caixa' : quant + ' caixas')} = ${(boxPrice * quant)} ${type}`;
     }
   }

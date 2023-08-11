@@ -398,6 +398,7 @@
         {
           "name": "Santo Antônio",
           "adress": "R. República da Bolívia, Rua Padre Eustáquio, 158 - Santo Antônio, Brumadinho - MG, 35460-000",
+          "phone": "(31) 2010-0632",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/brumadinho/santo-antonio",
           "monday": "7:30 às 19:00",
           "tuesday": "7:30 às 17:30",
@@ -459,7 +460,7 @@
           "wednesday": "8:00 às 18:00",
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 1:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
 
         }
@@ -527,6 +528,24 @@
           "adress": "Av. Gabriel Alves Fernandes, 329 - Centro, Caxambú - MG, 37440-000",
           "phone": "(35) 99217-0928",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/caxambu/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"          
+        }
+      ]
+    },
+    {
+      "name": "Congonhas",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Júlia Kubitscheck, 830 - Centro, Congonhas - MG, 36410-084",
+          "phone": "(35) 99217-0928",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/congonhas/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -665,7 +684,7 @@
         {
           "name": "ABC da Construção R. Goiás",
           "adress": "R. Goiás, 1596 - Centro, Divinópolis - MG, 35500-617",
-          "phone": "(xx) xxxx-xxxx",
+          "phone": "(37) 3016-2802",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/divinopolis/goias",
           "monday": "8:30 às 17:30",
           "tuesday": "8:30 às 17:30",
@@ -1092,9 +1111,9 @@
         },
         {
           "name": "ABC da Construção Bom Clima",
-          "adress": "R. Paracatu, 705 - Santa Terezinha,Juiz de Fora - MG, 36046-040",
+          "adress": "R. Paracatu, 705 - Santa Terezinha, Juiz de Fora - MG, 36046-040",
           "phone": "(32) 3223-5622",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/abtah",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/bom-clima",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -1739,6 +1758,24 @@
           "adress": "Av. Pio XII, 48 - Santos Dumont, Pirapora - MG, 39274-158",
           "phone": "(38) 3740-2400",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/pirapora/santos-dumont",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Piraúba",
+      "stores": [
+        {
+          "name": "Sossego",
+          "adress": "Av. Darcy Prata, 2125 - Sossego, Piraúba - MG, 36170-000",
+          "phone": "(32) 98804-1436",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/pirauba/sossego",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -2640,6 +2677,24 @@
       ]
     },
     {
+      "name": "Divinolândia",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Praça Nossa Senhora do Rosário, 66 - Centro, Divinolândia - SP, 13780-000",
+          "phone": "(19) 99830-8404",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/divinolandia/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Guaratinguetá",
       "stores": [
         {
@@ -2950,7 +3005,7 @@
         {
           "name": "Centro",
           "adress": "Rua Professor Ferreira Lima, 100 - Centro, Mogi Mirim - SP, 13800-199",
-          "phone": "(19) 99837-3831",
+          "phone": "(19) 3862-2832",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/mogi-mirim/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -3553,6 +3608,24 @@
           "thursday": "8:30 às 18:30",
           "friday": "8:30 às 18:30",
           "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Venda Nova do Imigrate",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Lourenço Lourenção, 94 - Centro, Venda Nova do Imigrante - ES, 29375-000",
+          "phone": "(28) 99939-9716",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/venda-nova-do-imigrante/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

@@ -1,0 +1,102 @@
+<!--Data Layers-->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    window.criteo_q = window.criteo_q || [];
+
+    let productState = [];
+    /* Criteo Basket/Cart Tag */
+    function criteoBasket(produtos) {
+        let deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/
+            .test(navigator.userAgent) ? "m" : "d";
+
+        produtos = produtos.map((produto) => {
+            return {
+                id: produto.id,
+                price: produto.price,
+                quantity: produto.quantity
+            }
+        });
+
+        window.criteo_q.push({
+            event: "setAccount",
+            account: 79533
+        }, {
+            event: "setEmail",
+            email: (Fbits.Carrinho.Usuario.Email || '')
+        }, {
+            event: "setSiteType",
+            type: deviceType
+        }, {
+            event: "viewBasket",
+            item: produtos
+        });
+    }
+
+    /* END Criteo Basket/Cart Tag */
+
+    function addProducts() {
+
+        if (Fbits.Carrinho && Fbits.Carrinho.Produtos && Fbits.Carrinho.Produtos.length > 0) {
+            for (p = 0; p < Fbits.Carrinho.Produtos.length; p++) {
+                productState.push({
+                    'name': "" + Fbits.Carrinho.Produtos[p].Nome + "",
+                    'id': "" + Fbits.Carrinho.Produtos[p].ProdutoId + "",
+                    'price': Fbits.Carrinho.Produtos[p].PrecoPor,
+                    'brand': "" + Fbits.Carrinho.Produtos[p].Fabricante + "",
+                    'variant': "" + Fbits.Carrinho.Produtos[p].ProdutoVarianteId + "",
+                    'category': "" + Fbits.Carrinho.Produtos[p].Categoria + "",
+                    'quantity': Fbits.Carrinho.Produtos[p].Quantidade,
+                });
+            }
+        }
+
+
+        window.dataLayer.push({
+            'event': 'checkout',
+            'ecommerce': {
+                'checkout': {
+                    'actionField': {
+                        'step': 1
+                    },
+                    'products': productState
+                }
+            }
+        });
+
+        criteoBasket(productState);
+    }
+
+    function removeProducts() {
+        let variant = [];
+        let removeProductState = [];
+
+        document.querySelectorAll('[data-produtovarianteid]').forEach((el) => {
+            variant.push(el.dataset.produtovarianteid);
+        });
+
+        removeProductState = productState.filter((el) => {
+            return !variant.includes(el.variant);
+        });
+
+        if (removeProductState.length > 0) {
+            window.dataLayer.push({
+                'event': 'removeFromCart',
+                'ecommerce': {
+                    'remove': {
+                        'products': removeProductState
+                    }
+                }
+            });
+        }
+    }
+
+    $(document).ready(() => {
+
+        addProducts();
+
+        $('.fbits-responsive-carrinho').on('click', '.remover', () => {
+            removeProducts();
+        });
+
+    });
+</script>

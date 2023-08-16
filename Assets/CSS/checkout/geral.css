@@ -1,9 +1,9 @@
 @media (max-width: 1330px) {
 }
-.fbits-confirmacao section.confirmacao-buttons a,
 .fbits-login .questao,
 .fbits-login .cadastroUsuario .btn-primary,
-.fbits-login .fbits-box-login .btn.btn-success {
+.fbits-login .fbits-box-login .btn.btn-success,
+.fbits-confirmacao section.confirmacao-buttons a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +17,10 @@
   font-size: 16px;
   transition: all 0.2s ease-in-out;
 }
-.fbits-confirmacao section.confirmacao-buttons a:hover,
 .fbits-login .questao:hover,
 .fbits-login .cadastroUsuario .btn-primary:hover,
-.fbits-login .fbits-box-login .btn.btn-success:hover {
+.fbits-login .fbits-box-login .btn.btn-success:hover,
+.fbits-confirmacao section.confirmacao-buttons a:hover {
   background: #e30613;
 }
 input,
@@ -100,6 +100,7 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 40px 15px;
+    gap: 150px;
   }
 }
 @media (min-width: 1330px) {
@@ -139,6 +140,7 @@ html {
 }
 .fbits-carrinho {
   padding: 0 !important;
+  max-width: 100% !important;
 }
 @media screen and (max-width: 991px) {
   .fbits-carrinho .fbits-box-login {
@@ -165,8 +167,8 @@ html {
   box-shadow: none;
 }
 .fbits-carrinho label {
-  font-weight: 400;
   color: #6d6d5c;
+  font-weight: 400;
 }
 .fbits-carrinho .tyc_container {
   margin: 0 auto;
@@ -204,12 +206,12 @@ html {
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-header {
   display: flex;
   justify-content: space-between;
-  background: #392f2d;
   padding: 0 15px;
+  background: #392f2d;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-header li {
-  background: none;
   height: 42px;
+  background: none;
   color: #fff;
   text-align: left;
   font-weight: 700;
@@ -218,8 +220,8 @@ html {
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-header li .share-minicart {
   display: flex;
   align-items: center;
-  gap: 5px;
   cursor: pointer;
+  gap: 5px;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-header li .share-minicart:hover {
   text-decoration: underline;
@@ -322,6 +324,7 @@ html {
   text-align: left;
   font-weight: 700;
   font-size: 18px;
+  line-height: 43px;
 }
 @media screen and (max-width: 991px) {
   .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency {
@@ -364,11 +367,32 @@ html {
     padding: 0 15px;
   }
 }
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-desconto-input,
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-frete-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-desconto-input .btn-danger,
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-frete-input .btn-danger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-color: #e30613;
+  line-height: normal;
+}
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes input.form-control {
   height: 35px;
   border: 1px solid #e8e8e8;
   border-radius: 0;
   box-shadow: none;
+}
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes input.form-control[disabled] {
+  margin-right: 0;
+  width: calc(100% - 40px);
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes input.btn.btn-success.btnCalcular {
   height: 35px;
@@ -418,8 +442,8 @@ html {
   padding: 0;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item .fbits-responsive-carrinho-frete-complemento span {
-  text-align: right;
   display: block;
+  text-align: right;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-desconto-texto,
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-frete-texto,
@@ -433,8 +457,8 @@ html {
   font-size: 12px;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-desconto-texto {
-  font-size: 14px;
   font-weight: 500;
+  font-size: 14px;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-desconto,
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-responsive-carrinho-frete {
@@ -459,9 +483,9 @@ html {
   padding: 0;
   height: 45px;
   border-radius: 0;
-  line-height: 45px;
-  font-weight: 700;
   text-transform: uppercase;
+  font-weight: 700;
+  line-height: 45px;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .botoes-bottom .btfinalizar {
   border: none !important;
@@ -517,9 +541,8 @@ html {
   border: none;
 }
 .fbits-carrinho .new-checkout.fbits-nc-carrinho h5.title-box {
-  font-size: 13px;
-  font-weight: 400;
-  color: #000;
+  font-weight: 700;
+  font-size: 16px;
 }
 .fbits-carrinho .fechamento-section3 a.voltar-carrinho {
   color: #117abc;
@@ -535,16 +558,16 @@ html {
 }
 .fbits-carrinho .fechamento-section3 span.fbits-responsive-carrinho-subtotal-valor span {
   color: #333;
-  font-size: 14px;
   font-weight: 400;
+  font-size: 14px;
 }
 .fbits-carrinho .fechamento-section3 span.fbits-responsive-carrinho-subtotal-valor span.currency {
   font-weight: bold;
 }
 .fbits-carrinho .fechamento-section3 .text-right.fbits-responsive-carrinho-total-header {
   color: #333;
-  font-size: 16px;
   font-weight: 400;
+  font-size: 16px;
 }
 .fbits-carrinho .fechamento-section3 .text-right.fbits-responsive-carrinho-total-header .currency {
   font-weight: bold;
@@ -554,8 +577,8 @@ html {
   border: none !important;
   background: #0fa848;
   color: #fff;
-  font-weight: bold;
   text-transform: uppercase;
+  font-weight: bold;
   transition: all 0.2s ease-in-out;
 }
 .fbits-carrinho .fechamento-section3 .btfinalizar:hover {
@@ -564,49 +587,63 @@ html {
 .fbits-carrinho .etiqueta-atacado-container {
   clear: both;
 }
-.fbits-confirmacao {
-  padding: 0 !important;
+.fbits-carrinho .formas-pagamento input[type="radio"] {
+  display: none;
 }
-.fbits-confirmacao .box-pedido-numero+.box-pedido-numero {
-  position: static;
+.fbits-carrinho .new-checkout .item-frete-option.selected {
+  border: 2px solid #e30613;
 }
-.fbits-confirmacao section.confirmacao-box {
+.fbits-carrinho .fbits-cupom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.fbits-carrinho .fbits-cupom-container form {
   width: 100%;
 }
-.fbits-confirmacao .container {
-  margin: 0 auto;
-  max-width: 1300px;
+.fbits-carrinho .fbits-cupom-container input[type="text"] {
+  margin-bottom: 12px;
 }
-@media screen and (min-width: 992px) {
-  .fbits-confirmacao section.confirmacao-buttons {
-    display: flex;
-    justify-content: space-between;
-  }
+.fbits-carrinho .fbits-cupom-container input[type="text"][disabled] {
+  max-width: calc(100% - 45px);
 }
-.fbits-confirmacao section.confirmacao-buttons >* {
-  float: none !important;
+.fbits-carrinho .fbits-cupom-container .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  background-color: #e30613;
+  color: #fff;
+  font-size: 14px;
+  line-height: normal;
 }
-@media screen and (max-width: 991px) {
-  .fbits-confirmacao section.confirmacao-buttons >* {
-    display: block;
-    margin: 0 auto 10px;
-    max-width: 400px;
-  }
+.fbits-carrinho .fbits-cupom-container .btn.btn-danger {
+  width: 40px;
 }
-.fbits-confirmacao section.confirmacao-buttons a {
-  text-transform: none;
+.fbits-carrinho .nav-tabs>li.active>a {
+  border-color: #e30613;
+  border-bottom-color: transparent !important;
 }
-@media screen and (max-width: 991px) {
-  .fbits-gateway-status-reprovado div {
-    width: 90%;
-  }
-  .fbits-gateway-status-reprovado div >h3 >svg {
-    top: 10px;
-    right: 10px;
-  }
+.fbits-carrinho .nav-tabs>li.active>a::after {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  display: block;
+  margin-top: 1px;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  content: "";
 }
-h2.title-confirmacao {
-  margin-top: 20px;
+.fbits-carrinho .new-checkout div#myTabContent {
+  border-color: #e30613;
+  border-radius: 0 0 3px 3px;
+}
+.fbits-login {
+  max-width: 100% !important;
 }
 .fbits-login .fbits-social-login:before {
   text-align: center;
@@ -871,7 +908,7 @@ h2.title-confirmacao {
 .fbits-minhaConta .bt {
   border: none;
   border-radius: 0;
-  background: #000;
+  background: #392f2d;
   color: #fff;
   text-transform: uppercase;
   font-weight: bold;
@@ -895,7 +932,7 @@ h2.title-confirmacao {
   font-size: 14px;
 }
 .fbits-minhaConta .switch-field input:checked+label {
-  background-color: #000 !important;
+  background-color: #392f2d !important;
 }
 .fbits-minhaConta .switch-field label:last-of-type {
   border-left: none;
@@ -917,7 +954,7 @@ h2.title-confirmacao {
   margin-bottom: 18px;
   border: none;
   border-radius: 3px;
-  background: #000;
+  background: #392f2d;
   color: #fff;
   text-transform: none;
   font-weight: bold;
@@ -929,7 +966,7 @@ h2.title-confirmacao {
 .fbits-minhaConta .sideBar .filtroPai {
   padding-top: 0;
   padding-bottom: 10px;
-  color: #000;
+  color: #392f2d;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;
@@ -946,19 +983,19 @@ h2.title-confirmacao {
   height: 55px;
   border: 1px solid #e3e3e3;
   background: #fff;
-  color: #000;
+  color: #392f2d;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;
   transition: all 0.2s ease-in-out;
 }
 .fbits-minhaConta .sideBar ul.filtroFilho li a.sel {
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid #392f2d;
+  color: #392f2d;
 }
 .fbits-minhaConta .sideBar ul.filtroFilho li a:hover {
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid #392f2d;
+  color: #392f2d;
 }
 .fbits-minhaConta .sideBar ul.filtroFilho li a i {
   display: flex;
@@ -968,10 +1005,55 @@ h2.title-confirmacao {
   width: 55px;
   height: 55px;
   border: none;
-  background: #000;
+  background: #392f2d;
   color: #fff;
   font-weight: 400 !important;
 }
 .fbits-minhaConta .sideBar ul.filtroFilho li a i:before {
   margin: 0;
+}
+.fbits-confirmacao {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+.fbits-confirmacao .box-pedido-numero+.box-pedido-numero {
+  position: static;
+}
+.fbits-confirmacao section.confirmacao-box {
+  width: 100%;
+}
+.fbits-confirmacao .container {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+@media screen and (min-width: 992px) {
+  .fbits-confirmacao section.confirmacao-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.fbits-confirmacao section.confirmacao-buttons >* {
+  float: none !important;
+}
+@media screen and (max-width: 991px) {
+  .fbits-confirmacao section.confirmacao-buttons >* {
+    display: block;
+    margin: 0 auto 10px;
+    max-width: 400px;
+  }
+}
+.fbits-confirmacao section.confirmacao-buttons a {
+  text-transform: none;
+}
+@media screen and (max-width: 991px) {
+  .fbits-gateway-status-reprovado div {
+    width: 90%;
+  }
+  .fbits-gateway-status-reprovado div >h3 >svg {
+    top: 10px;
+    right: 10px;
+  }
+}
+h2.title-confirmacao {
+  margin-top: 20px;
 }

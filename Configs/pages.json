@@ -105,6 +105,10 @@
                 "urlMatch": "auaha-loja-por-cidade",
                 "path": "Custom/diretorio_de_lojas/franquia.html",
                 "query": "generic.graphql"
+            },
+            {
+                "urlMatch": "central-de-atendimento/*",
+                "path": "attendance.html"
             }
         ]
     },

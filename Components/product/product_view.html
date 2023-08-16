@@ -21,6 +21,14 @@
   {{~ end ~}}
 {{~ end ~}}
 
+{{
+    for attributes in product.attributes
+        if attributes.value == "UN" || attributes.value == "PC"
+            comprePorUnidade = true
+        end
+    end
+}}
+
 <section class="product__image">
     {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
         {{ product_gallery product: product images: product.attribute_selections.selected_variant.images }}
@@ -48,10 +56,10 @@
     <div class="product__prices" id="product-prices-div">
         {{~ if selected_variant ~}}
           {{~ installment_plans = selected_variant.prices.installment_plans ~}}
-          {{~ product_price prices: selected_variant.prices page_product: true product_is_box: product_is_box product_hide_pix: product_hide_pix ~}}
+          {{~ product_price prices: selected_variant.prices page_product: true product_is_box: product_is_box comprePorUnidade: comprePorUnidade product_hide_pix: product_hide_pix ~}}
           {{~ discount_percentage = selected_variant.prices.discount_percentage ~}}
         {{~ else ~}}
-          {{~ product_price prices: product.prices page_product: true product_is_box: product_is_box product_hide_pix: product_hide_pix ~}}
+          {{~ product_price prices: product.prices page_product: true product_is_box: product_is_box comprePorUnidade: comprePorUnidade product_hide_pix: product_hide_pix ~}}
           {{~ discount_percentage = product.prices.discount_percentage ~}}
         {{~ end ~}}
         {{~ product_installments installments: installment_plans ~}}
@@ -68,7 +76,7 @@
     {{~ end ~}}
 
     <!-- Attributes -->
-    {{ product_attribute product: product product_is_box: product_is_box product_is_pick_up: product_is_pick_up }}
+    {{ product_attribute product: product product_is_box: product_is_box comprePorUnidade: comprePorUnidade product_is_pick_up: product_is_pick_up }}
 
     <!-- Shippng -->
     

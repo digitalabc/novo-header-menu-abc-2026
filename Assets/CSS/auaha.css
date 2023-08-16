@@ -209,9 +209,9 @@ input[type='search']::-webkit-search-results-decoration {
   }
 }
 .home h2 {
-  font-size: 20px;
-  font-weight: 500;
   margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
 }
 @media screen and (max-width: 991px) {
   .home h2 {
@@ -219,9 +219,9 @@ input[type='search']::-webkit-search-results-decoration {
   }
 }
 .home .gray-bg {
+  margin-bottom: 20px;
   padding-top: 70px;
   background: #f0f3f5;
-  margin-bottom: 20px;
   background-position: bottom center;
   background-repeat: no-repeat;
 }
@@ -2549,6 +2549,7 @@ body.form_focus div#contactForm {
 }
 .cidade__clientes--card svg {
   margin-bottom: 16px;
+  flex-shrink: 0;
 }
 .cidade__clientes--name {
   display: block;
@@ -5800,6 +5801,508 @@ div[class^=como-chegar] > span + i {
   color: #8d8d8d;
   text-align: center;
   font-size: 8px;
+}
+.attendence main {
+  display: flex;
+  justify-content: space-between;
+  margin: 36px auto 60px;
+  max-width: 1300px;
+}
+@media (max-width: 1330px) {
+  .attendence main {
+    padding: 0 15px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .attendence main {
+    flex-direction: column;
+    gap: 60px;
+  }
+}
+.attendence main h1 {
+  margin-bottom: 20px;
+  color: #e30613;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+}
+.attendence main h2 {
+  margin-bottom: 20px;
+  color: #e30613;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+}
+@media screen and (min-width: 992px) {
+  .attendence main > aside {
+    width: 30%;
+  }
+}
+.attendence main > aside > h2.title {
+  display: none;
+}
+.attendence main > aside ul:not(:last-child) {
+  margin-bottom: 60px;
+}
+.attendence main > aside li {
+  width: 100%;
+}
+.attendence main > aside li:not(:last-child) {
+  margin-bottom: 7px;
+}
+.attendence main > aside li.current > a {
+  border-color: #e30613;
+  color: #e30613;
+  font-weight: 700;
+}
+.attendence main > aside li > a {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  width: 100%;
+  height: 56px;
+  border: 1px solid #e3e3e3;
+  background-color: #fff;
+  color: #000;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  transition: all 0.2s ease-in-out;
+  gap: 10px;
+}
+.attendence main > aside li > a + ul {
+  margin-top: 12px;
+  border-left: 1px solid #e30613;
+}
+.attendence main > aside li > a + ul > li:not(:last-child) {
+  margin-bottom: 12px;
+}
+.attendence main > aside li > a + ul > li > a {
+  padding: 0 24px;
+  height: auto;
+  border: none;
+}
+.attendence main > aside li > ul {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.2s ease-in-out;
+}
+@media screen and (min-width: 992px) {
+  .attendence main > .lateral-direita {
+    width: calc(70% - 60px);
+  }
+}
+.attendence main > .lateral-direita p {
+  margin-bottom: 20px;
+  color: #000;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+.attendence main > .lateral-direita h3 {
+  color: #000;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}
+.attendence main > .lateral-direita article {
+  color: #000;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+.attendence main > .lateral-direita article .payment-flags {
+  display: flex;
+  gap: 10px;
+}
+.attendence main > .lateral-direita article .info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto 30px;
+  max-width: 700px;
+  gap: 10px;
+}
+@media screen and (max-width: 991px) {
+  .attendence main > .lateral-direita article .info-grid {
+    max-width: 100%;
+  }
+}
+.attendence main > .lateral-direita article .info-grid > a {
+  flex: 0 0 calc(50% - 5px);
+  padding: 12px 16px;
+  background: #000;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+@media screen and (max-width: 991px) {
+  .attendence main > .lateral-direita article .info-grid > a {
+    flex: 0 0 100%;
+  }
+}
+.attendence main > .lateral-direita form.atendimento-form .forminline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.attendence main > .lateral-direita form.atendimento-form .forminline:first-child > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.attendence main > .lateral-direita form.atendimento-form .forminline:first-child > * {
+  flex: 0 0 calc((100% / 3) - (40px / 3));
+}
+.attendence main > .lateral-direita form.atendimento-form .forminline:not(:last-child) {
+  margin-bottom: 20px;
+}
+.attendence main > .lateral-direita form.atendimento-form .forminline > * {
+  flex: 0 0 calc(50% - 10px);
+}
+.attendence main > .lateral-direita form.atendimento-form .forminline select,
+.attendence main > .lateral-direita form.atendimento-form .forminline input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #e3e3e3;
+  background: #fafafa;
+  color: #888;
+}
+.attendence main > .lateral-direita form.atendimento-form > label {
+  display: block;
+  margin-bottom: 20px;
+  padding-top: 16px;
+  color: #1d1d1b;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.attendence main > .lateral-direita form.atendimento-form textarea {
+  margin-bottom: 36px;
+  width: 100%;
+  height: 178px;
+  border: 1px solid #e3e3e3;
+  background: #fafafa;
+  color: #888;
+}
+.attendence main > .lateral-direita form.atendimento-form > span {
+  display: block;
+  margin-bottom: 20px;
+  padding: 0 12px;
+  color: #e30613;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.attendence main > .lateral-direita form.atendimento-form #btnEnviarFormulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  background: #e30613;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+@media screen and (min-width: 992px) {
+  .attendence main > .lateral-direita form.atendimento-form #btnEnviarFormulario:hover {
+    background: #e4ff72;
+    color: #000;
+  }
+}
+.attendence main > .lateral-direita form.fornecedor-form h3 {
+  margin-bottom: 20px;
+  color: #e30613;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section {
+  display: flex;
+  flex-direction: column;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section:not(:last-child) {
+  margin-bottom: 60px;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section textarea {
+  width: 100%;
+  height: 178px;
+  border: 1px solid #e3e3e3;
+  background: #fafafa;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section label {
+  margin-bottom: 6px;
+  color: #e30613;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section input:not(:last-child) {
+  margin-bottom: 20px;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="password"],
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="text"],
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="email"],
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="tel"] {
+  height: 48px;
+  border: 1px solid #e3e3e3;
+  background: #fafafa;
+  transition: all 0.2s ease-in-out;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="password"]:focus,
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="text"]:focus,
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="email"]:focus,
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="tel"]:focus {
+  border-color: #e30613;
+  background: #fff;
+}
+.attendence main > .lateral-direita form.fornecedor-form > section input[type="submit"] {
+  margin-top: 24px;
+  height: 48px;
+  background: #e30613;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+@media screen and (min-width: 992px) {
+  .attendence main > .lateral-direita form.fornecedor-form > section input[type="submit"]:hover {
+    background: #e4ff72;
+    color: #000;
+  }
+}
+.attendence main > .lateral-direita form.fornecedor-form > section > div label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 5px;
+}
+.attendence main > .lateral-direita .accordion li {
+  border-bottom: 1px solid #e3e3e3;
+}
+.attendence main > .lateral-direita .accordion li div {
+  overflow: hidden;
+  margin: 0;
+  padding: 0 16px;
+  max-height: 0;
+  color: #e30613;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  transition: all 0.2s ease-in-out;
+}
+.attendence main > .lateral-direita .accordion li h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 12px;
+  color: #e30613;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+.attendence main > .lateral-direita .accordion li h3:after {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  content: "";
+  transition: all 0.2s ease-in-out;
+}
+.attendence main > .lateral-direita .accordion li h3.active {
+  background-color: #e3e3e3;
+}
+.attendence main > .lateral-direita .accordion li h3.active:after {
+  transform: rotate(180deg);
+}
+.attendence main > .lateral-direita .accordion li h3.active + div {
+  margin: 12px 0;
+}
+.attendence main .cards {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 991px) {
+  .attendence main .cards {
+    flex-direction: column;
+    gap: 48px;
+  }
+}
+.attendence main .cards .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(((100% - (24px * 2)) / 3));
+  gap: 8px;
+}
+@media screen and (max-width: 991px) {
+  .attendence main .cards .card {
+    width: auto;
+  }
+}
+.attendence main .cards .card h3 {
+  text-align: center;
+  font-size: 16px;
+}
+.attendence main .cards .card p {
+  margin-bottom: 0;
+  height: 32px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+}
+.attendence main .cards .card a {
+  color: #e30613;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 14px;
+}
+.attendence #form-message {
+  position: fixed;
+  top: 100px;
+  right: 15px;
+  display: flex;
+  align-items: flex-start;
+  padding: 16px 12px 12px 24px;
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+  animation: popupOpen linear 0.3s;
+  animation-fill-mode: backwards;
+}
+@media screen and (max-width: 991px) {
+  .attendence #form-message {
+    top: 15px;
+  }
+}
+.attendence #form-message.remove {
+  animation: popupClose linear 0.3s;
+  animation-fill-mode: forwards;
+}
+.attendence #form-message > svg {
+  width: 20px;
+  color: #a5cc00;
+  fill: none;
+}
+.attendence #form-message > svg.error {
+  color: #e40000;
+}
+.attendence #form-message p {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin-left: 5px;
+  color: #333;
+  white-space: nowrap;
+  line-height: 20px;
+}
+.attendence #form-message p small {
+  color: #666;
+}
+.attendence #form-message button#close {
+  width: 20px;
+  height: 20px;
+  background: none;
+  color: #666;
+  cursor: pointer;
+}
+.attendence #form-message button#close:hover {
+  color: #e4ff72;
+}
+@-moz-keyframes popupOpen {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes popupOpen {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@-o-keyframes popupOpen {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes popupOpen {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@-moz-keyframes popupClose {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes popupClose {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+@-o-keyframes popupClose {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+@keyframes popupClose {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
 .topbar {
   background: #392f2d;

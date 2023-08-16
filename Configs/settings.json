@@ -5,7 +5,7 @@
   "phone_number": "(31) 9 9249-0299",
   "whatsapp_number": "(31) 9 9249-0299",
   "whatsapp_link": "https://wa.me/553192490299",
-  "email": "ajuda@abcdaconstrucao.com.br",
+  "email": "abcnasuacasa.atendimento@abcdaconstrucao.com.br",
   "page_size": {
     "default": 24,
     "options": [
@@ -398,6 +398,7 @@
         {
           "name": "Santo Antônio",
           "adress": "R. República da Bolívia, Rua Padre Eustáquio, 158 - Santo Antônio, Brumadinho - MG, 35460-000",
+          "phone": "(31) 2010-0632",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/brumadinho/santo-antonio",
           "monday": "7:30 às 19:00",
           "tuesday": "7:30 às 17:30",
@@ -441,6 +442,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+
+        }
+      ]
+    },
+    {
+      "name": "Carandaí",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Afrânio de Melo Franco, 172 - Centro, Carandaí - MG, 36280-060",
+          "phone": "(32) 3471-0001",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/carandai/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
 
         }
@@ -508,6 +528,24 @@
           "adress": "Av. Gabriel Alves Fernandes, 329 - Centro, Caxambú - MG, 37440-000",
           "phone": "(35) 99217-0928",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/caxambu/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"          
+        }
+      ]
+    },
+    {
+      "name": "Congonhas",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Júlia Kubitscheck, 830 - Centro, Congonhas - MG, 36410-084",
+          "phone": "(35) 99217-0928",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/congonhas/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -646,7 +684,7 @@
         {
           "name": "ABC da Construção R. Goiás",
           "adress": "R. Goiás, 1596 - Centro, Divinópolis - MG, 35500-617",
-          "phone": "(xx) xxxx-xxxx",
+          "phone": "(37) 3016-2802",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/divinopolis/goias",
           "monday": "8:30 às 17:30",
           "tuesday": "8:30 às 17:30",
@@ -1073,9 +1111,9 @@
         },
         {
           "name": "ABC da Construção Bom Clima",
-          "adress": "R. Paracatu, 705 - Santa Terezinha,Juiz de Fora - MG, 36046-040",
+          "adress": "R. Paracatu, 705 - Santa Terezinha, Juiz de Fora - MG, 36046-040",
           "phone": "(32) 3223-5622",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/abtah",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/bom-clima",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -1273,11 +1311,11 @@
       ]
     },
     {
-      "name": "Manhuaçú",
+      "name": "Manhuaçu",
       "stores": [
         {
           "name": "Engenho da Serra",
-          "adress": "R. Abalem Chibel Nacif, 60 - Engenho da Serra, Manhuaçú - MG, 36900-000",
+          "adress": "R. Abalem Chibel Nacif, 60 - Engenho da Serra, Manhuaçu - MG, 36900-000",
           "phone": "(33) 3331-8020",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/manhuacu/engenho-da-serra",
           "monday": "8:00 às 18:00",
@@ -1572,10 +1610,10 @@
           "sunday": "Fechado"
         },
         {
-          "name": "Cachoeira do Campo Centro",
+          "name": "Cachoeira do Campo",
           "adress": "Br, 356 Rodovia dos Inconfidentes, 04 Cachoeira do Campo Centro, Ouro Preto - MG, 35410-000",
           "phone": "(31) 98120-1661",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/ouro-preto/cachoeira-do-campo-centro",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/ouro-preto/cachoeira-do-campo",
           "monday": "8:00 às 19:00",
           "tuesday": "8:00 às 19:00",
           "wednesday": "8:00 às 19:00",
@@ -1731,6 +1769,24 @@
       ]
     },
     {
+      "name": "Piraúba",
+      "stores": [
+        {
+          "name": "Sossego",
+          "adress": "Av. Darcy Prata, 2125 - Sossego, Piraúba - MG, 36170-000",
+          "phone": "(32) 98804-1436",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/pirauba/sossego",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Piumhi",
       "stores": [
         {
@@ -1816,6 +1872,24 @@
           "thursday": "8:00 às 19:00",
           "friday": "8:00 às 19:00",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Raul Soares",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Profa. Elza de Almeida Bacelar, 1119 - Raul Soares, MG, 35350-000",
+          "phone": "(33) 99821-3819",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/raul-soares/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -1969,7 +2043,7 @@
       "stores": [
         {
           "name": "Fábricas",
-          "adress": "Av. Leite de Castro, 1400 - Fábricas, São João Del Rei - MG, 36301-182",
+          "adress": "Av. Leite de Castro, 1400 - Fábricas, São João del Rei - MG, 36301-182",
           "phone": "(31) 98756-9901",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-joao-del-rei/fabricas",
           "monday": "8:00 às 18:00",
@@ -2554,7 +2628,7 @@
         {
           "name": "Cambuí",
           "adress": "Av. Cel. Silva Telles, 675 - Cambuí, Campinas - SP, 13024-001",
-          "phone": "(19) 99155-2081",
+          "phone": "(19) 3255-6030",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/campinas/cambui",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
@@ -2598,6 +2672,24 @@
           "thursday": "7:30 às 18:00",
           "friday": "7:30 às 18:00",
           "saturday": "7:30 às 14:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Divinolândia",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Praça Nossa Senhora do Rosário, 66 - Centro, Divinolândia - SP, 13780-000",
+          "phone": "(19) 99830-8404",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/divinolandia/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -2695,12 +2787,12 @@
           "adress": "Av. Caetano Ruggieri, 4540 - Parque das Industrias, Itu - SP, 13309-710",
           "phone": " (11) 97802-8749",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/itu/parque-das-industrias",
-          "monday": "08:00 às 18:00",
-          "tuesday": "08:00 às 18:00",
-          "wednesday": "08:00 às 18:00",
-          "thursday": "08:00 às 18:00",
-          "friday": "08:00 às 18:00",
-          "saturday": "08:00 às 13:00",
+          "monday": "09:00 às 18:00",
+          "tuesday": "09:00 às 18:00",
+          "wednesday": "09:00 às 18:00",
+          "thursday": "09:00 às 18:00",
+          "friday": "09:00 às 18:00",
+          "saturday": "09:00 às 13:00",
           "sunday": "Fechado"
         }
       ]
@@ -2913,7 +3005,7 @@
         {
           "name": "Centro",
           "adress": "Rua Professor Ferreira Lima, 100 - Centro, Mogi Mirim - SP, 13800-199",
-          "phone": "(19) 99837-3831",
+          "phone": "(19) 3862-2832",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/mogi-mirim/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -2956,7 +3048,7 @@
           "wednesday": "8:00 às 18:00",
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 13:00",
+          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]
@@ -3040,7 +3132,7 @@
           "name": "Maurílio Biagi",
           "adress": "Av. Maurílio Biagi, 510 - Santa Cruz do José Jacques, Ribeirão Preto - SP, 14020-750",
           "phone": "(16) 3237-5581",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/ribeirao-preto/santa-cruz-do-jose-jacques",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/ribeirao-preto/maurilio-biagi",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
           "wednesday": "9:00 às 18:00",
@@ -3255,14 +3347,14 @@
         {
           "name": "Parque Campolim",
           "adress": "R. Raphael Dias da Silva, 205 - Parque Campolim, Sorocaba - SP, 18048-120",
-          "phone": "(11) 99813-9102",
+          "phone": "(15) 99827-1977",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/sorocaba/parque-campolim",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 15:00",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 14:00",
           "sunday": "Fechado"
         }
       ]
@@ -3451,7 +3543,7 @@
       "name": "Iúna",
       "stores": [
         {
-          "name": "Iúna",
+          "name": "Iuna",
           "adress": "R. Cap. João Inácio de Almeida, 96 - Centro Iúna - ES, 29390-000",
           "phone": "(28) 99886-1470",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/iuna/centro",
@@ -3521,6 +3613,24 @@
       ]
     },
     {
+      "name": "Venda Nova do Imigrate",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Lourenço Lourenção, 94 - Centro, Venda Nova do Imigrante - ES, 29375-000",
+          "phone": "(28) 99939-9716",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/venda-nova-do-imigrante/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Vitória",
       "stores": [
         {
@@ -3544,7 +3654,7 @@
         {
           "name": "Pontinha",
           "adress": "R. Narciso Lovato, s/n - Pontinha Araruama - RJ, 28981-745",
-          "phone": "(21) 96404-2123",
+          "phone": "(22) 99101-1808",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/araruama/pontinha",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
@@ -3660,7 +3770,7 @@
       ]
     },
     {
-      "name": "Macaé",
+      "name": "Macae",
       "stores": [
         {
           "name": "Riviera Fluminense",
@@ -3683,7 +3793,7 @@
         {
           "name": "Centro",
           "adress": "R. João Valério, 40 - Centro Magé - RJ, 25900-000",
-          "phone": "(21) 99387-2569 ",
+          "phone": "(21) 99391-5674",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/mage/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -3696,7 +3806,7 @@
       ]
     },
     {
-      "name": "Maricá",
+      "name": "Marica",
       "stores": [
         {
           "name": "São José de Imbassai",
@@ -3715,7 +3825,7 @@
       ]
     },
     {
-      "name": "Niterói",
+      "name": "Niteroi",
       "stores": [
         {
           "name": "São Francisco",
@@ -3758,6 +3868,7 @@
           "name": "Jatoba",
           "adress": "Av. Dr. Randolfo Pena, N° 1021 - Jatoba Paraíba do Sul - RJ, 25850-000",
           "phone": "(24) 2263-5712",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/paraiba-do-sul/jatoba",
           "monday": "7:30 às 18:00",
           "tuesday": "7:30 às 18:00",
           "wednesday": "7:30 às 18:00",
@@ -3854,7 +3965,7 @@
         {
           "name": "ABC da Construção Centro",
           "adress": "R. Frei Caneca, 77 - Centro Rio de Janeiro - RJ, 20211-030",
-          "phone": "(21) 99113-1340",
+          "phone": "(21) 2252-2112",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -3906,7 +4017,7 @@
         {
           "name": "ABC da Construção Recreio dos Bandeirantes",
           "adress": "Av. das Américas, 16701 - Recreio dos Bandeirantes Rio de Janeiro - RJ, 22790703",
-          "phone": "(21) 99548-1648",
+          "phone": "(21) 3496-4401",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/recreio-dos-bandeirantes",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
@@ -3996,7 +4107,7 @@
         {
           "name": "Jardim Shangri-Lá",
           "adress": "Av. Tiradentes, 540 - Jardim Shangri-Lá, Londrina - PR, 86070-545",
-          "phone": "(43) 98811-0815",
+          "phone": "(43) 99172-1770",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/londrina/jardim-shangrila",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
@@ -4014,8 +4125,8 @@
         {
           "name": "Asa Sul",
           "adress": "W3 Sul, 511, Bloco A, Loja 03, Asa Sul, Brasília - DF, 70361-510",
-          "phone": "(61) 99300-7426",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/brasilia/distrito-federal/asa-sul",
+          "phone": "(61) 3686-5559",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/distrito-federal/brasilia/asa-sul",
           "monday": "8:00 às 18:30",
           "tuesday": "8:00 às 18:30",
           "wednesday": "8:00 às 18:30",

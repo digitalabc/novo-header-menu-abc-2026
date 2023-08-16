@@ -264,7 +264,7 @@ html {
   display: none;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .qtdCarrinho {
-  min-width: 20px;
+  min-width: 40px;
   height: 45px;
   border: 1px solid #e8e8e8;
   border-width: 1px 0 1px 0;
@@ -435,11 +435,15 @@ html {
   margin-left: 0;
   padding: 5px;
 }
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item[data-frete-item-tipo="Retirada"] {
+  display: none;
+}
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item .fbits-frete-retirada-endereco {
   margin: 0 !important;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item .fbits-responsive-carrinho-frete-header {
   padding: 0;
+  line-height: 16px;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item .fbits-responsive-carrinho-frete-complemento span {
   display: block;
@@ -592,6 +596,9 @@ html {
 }
 .fbits-carrinho .new-checkout .item-frete-option.selected {
   border: 2px solid #e30613;
+}
+.fbits-carrinho .new-checkout .item-frete-option[data-frete-item-tipo="Retirada"] {
+  display: none;
 }
 .fbits-carrinho .fbits-cupom-container {
   display: flex;

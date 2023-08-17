@@ -7,11 +7,9 @@
         spot product: product
 ## }}
 
-{{~ if product.prices.multiplication_factor > 1 ~}}
+{{~ if product.prices.multiplication_factor != 1 ~}}
   {{ product_is_box = true }}
 {{~ end ~}}
-
-{{ product | debug.log }} 
 
 {{
 

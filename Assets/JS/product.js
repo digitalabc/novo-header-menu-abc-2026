@@ -431,6 +431,7 @@ async function backInStockOnClick(e) {
     productVariantId: productVariantId,
   }
   const success = await client.product.createRestockAlert(bisInput);
+
   if (success) {
     sendSharpSpring({ email: email, productVariantId }, 'aviseme');
     alert.innerHTML = 'Email cadastrado com sucesso!';

@@ -5,440 +5,488 @@
 /* geral.css >> Definições de Cabeçalho e Rodapé */
 /* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
 .fbits-carrinho
-  padding 0 !important
+  padding: 0 !important;
+  max-width: 100% !important;
 
   @media mobile
     .fbits-box-login
-      margin-top -270px
-      margin-left -175px
-      max-width 350px
-  .fa-pencil-square-o:before
-    position relative
-    top -50px
-  .fa-edit:before,
-  .fa-pencil-square-o:before
-    content "Editar"
+      margin-top: -270px;
+      margin-left: -175px;
+      max-width: 350px;
 
-  input[type="text"],
-  input[type="password"],
-  input[type="tel"],
-  input[type="Date"],
-  select
-    max-width 100%
-    border 1px solid #E8E8E8
-    box-shadow none
+  .fa-pencil-square-o:before
+    position: relative;
+    top: -50px;
+
+  .fa-edit:before, .fa-pencil-square-o:before
+    content: "Editar";
+
+  input[type="text"], input[type="password"], input[type="tel"], input[type="Date"], select
+    max-width: 100%;
+    border: 1px solid #E8E8E8;
+    box-shadow: none;
 
   label
-    font-weight 400
-    color #6D6D5C
+    color: #6D6D5C;
+    font-weight: 400;
 
   .tyc_container
-    margin 0 auto
-    max-width 1300px
+    margin: 0 auto;
+    max-width: 1300px;
 
-    @media (max-width 1300px)
-      padding 0 15px
+    @media (max-width: 1300px)
+      padding: 0 15px;
 
     .full-container
       @media mobile
-        padding 20px 15px
-        
+        padding: 20px 15px;
+
   .fbits-responsive-carrinho
     .fbits-responsive-carrinho-items
-      border none
+      border: none;
 
-      @media (min-width 1024px)
-        max-width 70%
+      @media (min-width: 1024px)
+        max-width: 70%;
 
       @media mobile
-        padding 0 15px
+        padding: 0 15px;
 
       .fbits-responsive-carrinho-item-titulo
-        padding-right 90px
+        padding-right: 90px;
 
         a.btn.btn-danger.icon.remover
           &:before
-            top 10px
+            top: 10px;
 
       .fbits-responsive-carrinho-header
         display: flex;
         justify-content: space-between;
-        background: $black;
         padding: 0 15px;
+        background: $black;
+
         li
-          background none
-          height 42px
-          color #fff
-          text-align left
-          font-weight 700
-          font-size 14px
+          height: 42px;
+          background: none;
+          color: #fff;
+          text-align: left;
+          font-weight: 700;
+          font-size: 14px;
+
           .share-minicart
-            display flex
-            align-items center
-            gap 5px
-            cursor pointer
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            gap: 5px;
+
             &:hover
-              text-decoration underline
+              text-decoration: underline;
 
       .fbits-responsive-carrinho-produtos
         li
-          border-bottom 1px solid #DDDDDD
+          border-bottom: 1px solid #DDDDDD;
+
           &:nth-child(odd)
-            background-color #FAFAFA
+            background-color: #FAFAFA;
+
           &:nth-child(even)
-            background-color #F1F1F1
+            background-color: #F1F1F1;
 
           @media desktop
             &:last-child
-              border none
+              border: none;
 
           @media mobile
-            margin-bottom 15px
+            margin-bottom: 15px;
+
             &:last-child
-              margin-bottom 40px
+              margin-bottom: 40px;
 
         .fbits-responsive-carrinho-item-descricao
           @media mobile
-            width 95%
+            width: 95%;
 
           >a
-            color #000
-            text-align left
-            font-weight 400
-            font-size 18px
-            line-height 15px
+            color: #000;
+            text-align: left;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 15px;
 
           .fbits-reponsive-carrinho-item-prazo-entrega
-            display none
+            display: none;
 
         .fbits-responsive-carrinho-item-quantidade
           .qtdCarrinho
-            min-width 20px
-            height 45px
-            border 1px solid #E8E8E8
-            border-width 1px 0 1px 0
-            box-shadow none
-            font-size 18px
+            min-width: 40px;
+            height: 45px;
+            border: 1px solid #E8E8E8;
+            border-width: 1px 0 1px 0;
+            box-shadow: none;
+            font-size: 18px;
 
             @media mobile
-              min-width 15px
-              height 40px
+              min-width: 15px;
+              height: 40px;
 
           .btn.btn-default.btn-number
-            height 45px
-            border 1px solid #E8E8E8
+            height: 45px;
+            border: 1px solid #E8E8E8;
 
             @media mobile
-              height 40px
+              height: 40px;
 
             &:hover
               a.arrow
-                color #676767 !important
+                color: #676767 !important;
 
             a.arrow
-              display flex
-              justify-content center
-              align-items center
-              padding 0
-              width 45px
-              color #676767
-              font-weight 400
-              font-size 18px
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 0;
+              width: 45px;
+              color: #676767;
+              font-weight: 400;
+              font-size: 18px;
 
               @media mobile
-                width 40px
+                width: 40px;
 
               &:before
-                display none
+                display: none;
 
             &[data-type="minus"]
-              border-right none
+              border-right: none;
 
               a.arrow:before
-                content "-"
+                content: "-";
 
             &[data-type="plus"]
-              border-left none
+              border-left: none;
 
               a.arrow:before
-                content "+"
+                content: "+";
 
         .fbits-responsive-carrinho-item-valor-unitario
           .currency
-            color #000
-            text-align left
-            font-weight 700
-            font-size 18px
+            color: #000;
+            text-align: left;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 43px;
+
             @media mobile
-              font-size 16px
+              font-size: 16px;
+
             &.promo
-              font-size 12px
+              font-size: 12px;
 
         .fbits-responsive-carrinho-item-total
           @media mobile
-            padding-left 0
-            min-height 65px
+            padding-left: 0;
+            min-height: 65px;
 
           > .text-nowrap .currency
-            color #000
-            text-align right
-            font-weight 500
-            font-size 18px
+            color: #000;
+            text-align: right;
+            font-weight: 500;
+            font-size: 18px;
+
             @media mobile
-              font-size 17px
+              font-size: 17px;
 
           .precoParcela
-            color #717171
-            text-align right
-            font-weight 500
-            font-size 15px
+            color: #717171;
+            text-align: right;
+            font-weight: 500;
+            font-size: 15px;
 
             @media mobile
-              font-size 12px
+              font-size: 12px;
 
     .fbits-responsive-carrinho-detalhes
       @media mobile
-        padding 0 15px
+        padding: 0 15px;
+
+      .fbits-responsive-carrinho-desconto-input, .fbits-responsive-carrinho-frete-input
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .btn-danger
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 35px;
+          height: 35px;
+          border: none;
+          background-color: $primary;
+          line-height: normal;
 
       input.form-control
-        height 35px
-        border 1px solid #E8E8E8
-        border-radius 0
-        box-shadow none
+        height: 35px;
+        border: 1px solid #E8E8E8;
+        border-radius: 0;
+        box-shadow: none;
+
+        &[disabled]
+          margin-right: 0;
+          width: calc(100% - 40px);
 
       input.btn.btn-success.btnCalcular
-        height 35px
-        border none
-        border-radius 0
-        background $black
-        color #fff
-        text-transform uppercase
-        font-weight 700
-        font-size 12px
-        transition $transition
+        height: 35px;
+        border: none;
+        border-radius: 0;
+        background: $black;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 12px;
+        transition: $transition;
 
         &:not([disabled])
           &:hover
-            background $primary
+            background: $primary;
 
       #naoSeiCep
-        display block
-        clear both
-        padding-top 5px
-        color #000
-        font-size 12px
+        display: block;
+        clear: both;
+        padding-top: 5px;
+        color: #000;
+        font-size: 12px;
 
       .fbits-responsive-carrinho-subtotal
-        border none
-        border-radius 0
-        background $black
+        border: none;
+        border-radius: 0;
+        background: $black;
 
         .fbits-responsive-carrinho-subtotal-header
-          color #fff
-          text-align left
-          font-weight 500
-          font-size 14px
+          color: #fff;
+          text-align: left;
+          font-weight: 500;
+          font-size: 14px;
 
         .fbits-responsive-carrinho-subtotal-valor
-          color #fff
-          font-weight 700
+          color: #fff;
+          font-weight: 700;
 
       .fbits-carrinho-frete-item
-        margin-right 0
-        margin-left 0
-        padding 5px
+        margin-right: 0;
+        margin-left: 0;
+        padding: 5px;
+
+        &[data-frete-item-tipo="Retirada"]
+          display: none;
 
         .fbits-frete-retirada-endereco
-          margin 0 !important
-        
+          margin: 0 !important;
+
         .fbits-responsive-carrinho-frete-header
-          padding 0
+          padding: 0;
+          line-height: 16px;
 
         .fbits-responsive-carrinho-frete-complemento
           span
-            text-align: right
-            display: block
+            display: block;
+            text-align: right;
 
-      .fbits-responsive-carrinho-desconto-texto,
-      .fbits-responsive-carrinho-frete-texto,
-      .fbits-responsive-carrinho-desconto-calculo,
-      .fbits-responsive-carrinho-frete-calculo
-        margin-bottom 0
-        padding 0
-        color #000
-        text-align left
-        font-weight 400
-        font-size 12px
+      .fbits-responsive-carrinho-desconto-texto, .fbits-responsive-carrinho-frete-texto, .fbits-responsive-carrinho-desconto-calculo, .fbits-responsive-carrinho-frete-calculo
+        margin-bottom: 0;
+        padding: 0;
+        color: #000;
+        text-align: left;
+        font-weight: 400;
+        font-size: 12px;
 
       .fbits-responsive-carrinho-desconto-texto
-        font-size 14px
-        font-weight 500
+        font-weight: 500;
+        font-size: 14px;
 
-      .fbits-responsive-carrinho-desconto,
-      .fbits-responsive-carrinho-frete
-        border none
+      .fbits-responsive-carrinho-desconto, .fbits-responsive-carrinho-frete
+        border: none;
 
       .fbits-responsive-carrinho-total
-        border none
-        border-top 1px solid #DDDDDD
-        background #fff
-        color #000
-        font-weight 500
-        font-size 14px
+        border: none;
+        border-top: 1px solid #DDDDDD;
+        background: #fff;
+        color: #000;
+        font-weight: 500;
+        font-size: 14px;
 
         >*
-          padding 0
+          padding: 0;
 
       .botoes-bottom
-        padding-top 0
+        padding-top: 0;
 
-        .btfinalizar,
-        .btcontinuar
-          padding 0
-          height 45px
-          border-radius 0
-          line-height 45px
-          font-weight 700
-          text-transform uppercase
+        .btfinalizar, .btcontinuar
+          padding: 0;
+          height: 45px;
+          border-radius: 0;
+          text-transform: uppercase;
+          font-weight: 700;
+          line-height: 45px;
+
         .btfinalizar
-          border none !important
-          background #0FA848
-          color #fff
-          font-weight bold
-          font-size 16px
-          transition $transition
+          border: none !important;
+          background: #0FA848;
+          color: #fff;
+          font-weight: bold;
+          font-size: 16px;
+          transition: $transition;
 
           &:hover
-            background $primary
+            background: $primary;
 
         .btcontinuar
-          border 1px solid $black
-          background #fff
-          color $black
-          font-weight 400
-          font-size 14px
-          transition $transition
+          border: 1px solid $black;
+          background: #fff;
+          color: $black;
+          font-weight: 400;
+          font-size: 14px;
+          transition: $transition;
 
           &:hover
-            border 1px solid $primary
-            background $primary
-            color #fff
+            border: 1px solid $primary;
+            background: $primary;
+            color: #fff;
 
   .checkout-active
-    border 2px solid $primary !important
+    border: 2px solid $primary !important;
 
   .checkout-observacao
-    padding 3px
-    width 100%
-    border 1px solid #767676
-    border-radius 2px
+    padding: 3px;
+    width: 100%;
+    border: 1px solid #767676;
+    border-radius: 2px;
 
   .box-default
     .btn-outline-primary
-      padding 0
-      background transparent
+      padding: 0;
+      background: transparent;
 
     input[name="IE"]
-      display inline
-      float none
-      margin-top 0
-      margin-left 10px
-      width 15px
-      height 15px
+      display: inline;
+      float: none;
+      margin-top: 0;
+      margin-left: 10px;
+      width: 15px;
+      height: 15px;
 
   .new-checkout.fbits-nc-carrinho
     @media mobile
-      padding 0 15px
+      padding: 0 15px;
 
     .fechamento-section3 .fbits-responsive-carrinho-item
-      border none
+      border: none;
+
     h5.title-box
-      font-size 13px
-      font-weight 400
-      color #000
+      font-weight: 700;
+      font-size: 16px;
+
   .fechamento-section3
     a.voltar-carrinho
-      color #117ABC
+      color: #117ABC;
 
     .fbits-responsive-carrinho-subtotal
-      background #F7F7F7
+      background: #F7F7F7;
 
     .fbits-responsive-carrinho-total
-      margin 10px -15px 0
-      padding 0 15px
-      border none
-      background #F7F7F7
+      margin: 10px -15px 0;
+      padding: 0 15px;
+      border: none;
+      background: #F7F7F7;
 
     span.fbits-responsive-carrinho-subtotal-valor
       span
-          color #333333
-          font-size 14px
-          font-weight 400
-          &.currency
-            font-weight bold
+        color: #333333;
+        font-weight: 400;
+        font-size: 14px;
+
+        &.currency
+          font-weight: bold;
 
     .text-right.fbits-responsive-carrinho-total-header
-      color #333333
-      font-size 16px
-      font-weight 400
+      color: #333333;
+      font-weight: 400;
+      font-size: 16px;
+
       .currency
-        font-weight bold
-        font-size 16px
+        font-weight: bold;
+        font-size: 16px;
 
     .btfinalizar
-      border none !important
-      background #0FA848
-      color #fff
-      font-weight bold
-      text-transform uppercase
-      transition $transition
+      border: none !important;
+      background: #0FA848;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: $transition;
 
       &:hover
-        background $primary
+        background: $primary;
 
   .etiqueta-atacado-container
-    clear both
+    clear: both;
 
-.fbits-confirmacao
-  padding 0 !important
+  .formas-pagamento
+    input[type="radio"]
+      display: none;
 
-  .box-pedido-numero+.box-pedido-numero
-    position static
+  .new-checkout .item-frete-option.selected
+    border: 2px solid $primary;
 
-  section.confirmacao-box
-    width 100%
+  .new-checkout .item-frete-option
+    &[data-frete-item-tipo="Retirada"]
+      display: none;
 
-  .container
-    margin 0 auto
-    max-width 1300px
+  // Cupom
+  .fbits-cupom-container
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-  section.confirmacao-buttons
-    @media desktop
-      display flex
-      justify-content space-between
+    form
+      width: 100%;
 
-    >*
-      float none !important
+    input[type="text"]
+      margin-bottom: 12px;
 
-      @media mobile
-        display block
-        margin 0 auto 10px
-        max-width 400px
+      &[disabled]
+        max-width: calc(100% - 45px);
 
-    a
-      @extends $default-button
-      text-transform none
+    .btn
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      border: none;
+      border-radius: 3px;
+      background-color: $primary;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: normal;
 
-.fbits-gateway-status-reprovado
-  @media mobile
-    div
-      width 90%
+      &.btn-danger
+        width: 40px;
 
-      >h3
-        >svg
-          top 10px
-          right 10px
+  // Pagamento
+  .nav-tabs>li.active>a
+    border-color: $primary;
+    border-bottom-color: transparent !important;
 
+    &::after
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      display: block;
+      margin-top: 1px;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      content: "";
 
-h2.title-confirmacao
-  margin-top 20px
+  .new-checkout div#myTabContent
+    border-color: $primary;
+    border-radius: 0 0 3px 3px;

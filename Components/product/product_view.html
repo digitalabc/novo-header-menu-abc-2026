@@ -11,12 +11,12 @@
 {{ product_is_box = false }}
 {{~ if selected_variant ~}}
   {{~ available = product.attribute_selections.selected_variant.available ~}}
-  {{~ if product.attribute_selections.selected_variant.prices.multiplication_factor > 1 ~}}
+  {{~ if product.attribute_selections.selected_variant.prices.multiplication_factor != 1 ~}}
     {{ product_is_box = true }}
   {{~ end ~}}
 {{~ else ~}}
   {{~ available = product.available ~}}
-  {{~ if product.prices.multiplication_factor > 1 ~}}
+  {{~ if product.prices.multiplication_factor != 1 ~}}
     {{ product_is_box = true }}
   {{~ end ~}}
 {{~ end ~}}

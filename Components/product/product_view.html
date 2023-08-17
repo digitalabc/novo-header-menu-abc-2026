@@ -22,11 +22,14 @@
 {{~ end ~}}
 
 {{
-    for attributes in product.attributes
-        if attributes.value == "UN" || attributes.value == "PC"
-            comprePorUnidade = true
-        end
+  for attributes in product.attributes
+    if attributes.value == "M2" || attributes.value == "m2"
+      product_is_box  = true
     end
+    if attributes.value == "UN" || attributes.value == "PC"
+        comprePorUnidade = true
+    end
+  end
 }}
 
 <section class="product__image">

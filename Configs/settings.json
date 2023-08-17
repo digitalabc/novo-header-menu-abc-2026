@@ -139,7 +139,7 @@
     }
   },
   "cidades": [
-        {
+    {
       "name": "Além Paraíba",
       "stores": [
         {
@@ -1516,19 +1516,6 @@
           "adress": "Rod. José Francisco da Silva, 490 - Chácara Bom Retiro, Nova Lima - MG, 34002-000",
           "phone": "(31) 99062-3143",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/chacara-bom-retiro",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 14:00",
-          "sunday": "Fechado"
-        },
-        {
-          "name": "ABC da Construção Jardim Canada",
-          "adress": "Av. Toronto, 1.308 - Jardim Canada, Nova Lima - MG, 34000-975",
-          "phone": "(31) 2391-3433",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/jardim-canada",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
           "wednesday": "9:00 às 18:00",

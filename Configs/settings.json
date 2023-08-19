@@ -2266,7 +2266,7 @@
           "name": "ABC da Construção Conj. Hab. Centenario",
           "adress": "Av. Celina Ferreira Ottoni, 2569 - Conj. Hab. Centenario, Varginha - MG, 37048-580",
           "phone": "(35) 3212-5025",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/centenario",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/varginha/centenario",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -3703,24 +3703,6 @@
       ]
     },
     {
-      "name": "Itaguai",
-      "stores": [
-        {
-          "name": "Brisamar",
-          "adress": "Rod. Rio-Santos, 7 - Brisamar Itaguaí - RJ, 23825-205",
-          "phone": "(21) 2688-4182",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/itaguai/brisamar",
-          "monday": "8:00 às 17:00",
-          "tuesday": "8:00 às 17:00",
-          "wednesday": "8:00 às 17:00",
-          "thursday": "8:00 às 17:00",
-          "friday": "8:00 às 17:00",
-          "saturday": "8:00 às 13:00",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
       "name": "Itaperuna",
       "stores": [
         {
@@ -3757,7 +3739,7 @@
       ]
     },
     {
-      "name": "Macae",
+      "name": "Macaé",
       "stores": [
         {
           "name": "Riviera Fluminense",
@@ -3793,7 +3775,7 @@
       ]
     },
     {
-      "name": "Marica",
+      "name": "Maricá",
       "stores": [
         {
           "name": "São José de Imbassai",
@@ -3812,7 +3794,7 @@
       ]
     },
     {
-      "name": "Niteroi",
+      "name": "Niterói",
       "stores": [
         {
           "name": "São Francisco",
@@ -3903,7 +3885,7 @@
         {
           "name": "Santa Isabel",
           "adress": "Av. Tenente-Coronel Adalberto Mendes, 1560 - Santa Isabel Resende - RJ, 27522-240",
-          "phone": "(24) 99814-3573",
+          "phone": "(24) 99934-8144",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/resende/santa-isabel",
           "monday": "8:30 às 18:30",
           "tuesday": "8:30 às 18:30",

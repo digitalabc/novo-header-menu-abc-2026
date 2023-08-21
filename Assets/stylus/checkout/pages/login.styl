@@ -21,6 +21,8 @@
             transition $transition
             border 1px solid #000000
             color #000
+            @media mobile
+                width: 100%;
             &.facebook
                 &:hover
                     border 1px solid #416bb7
@@ -201,7 +203,7 @@
 @media(max-width: 500px)
     .fbits-login .fbits-social-login button 
         margin: 10px 0
-        width: 100%
+        width: 100% !important
         margin-right 0 !important
         margin-left 0 !important
 

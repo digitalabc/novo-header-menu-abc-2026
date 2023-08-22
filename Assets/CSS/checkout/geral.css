@@ -664,6 +664,11 @@ html {
   border: 1px solid #000;
   color: #000;
 }
+@media screen and (max-width: 991px) {
+  .fbits-login .fbits-social-login button.btn {
+    width: 100% !important;
+  }
+}
 .fbits-login .fbits-social-login button.btn.facebook:hover {
   border: 1px solid #416bb7;
   color: #416bb7;
@@ -860,7 +865,7 @@ html {
 @media (max-width: 500px) {
   .fbits-login .fbits-social-login button {
     margin: 10px 0;
-    width: 100%;
+    width: 100% !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
   }

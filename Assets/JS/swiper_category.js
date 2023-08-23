@@ -4,11 +4,8 @@ var swiper = new Swiper(".subcategories .swiper", {
     prevEl: '.subcategories .swiper-button-prev'
   },
   spaceBetween: 20,
-  slidesPerView: 1.7,
+  slidesPerView: "auto",
   breakpoints: {
-    768: {
-      slidesPerView: 4
-    },
     991: {
       slidesPerView: 6
     }
@@ -27,7 +24,7 @@ var swiper = new Swiper(".subTopo .swiper", {
       slidesPerView: 8
     },
     991: {
-      slidesPerView: 11
+      slidesPerView: 10
     }
   }
 });

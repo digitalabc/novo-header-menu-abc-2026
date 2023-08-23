@@ -9433,6 +9433,16 @@ section.newsletter--home .newsletter__alert {
 .subTopo__item {
   text-align: center;
 }
+@media screen and (max-width: 991px) {
+  .subcategories__item,
+  .subTopo__item {
+    width: 130px;
+  }
+}
+.category .subcategories__item,
+.category .subTopo__item {
+  width: 200px;
+}
 .subcategories__item:hover .subcategories__img img,
 .subTopo__item:hover .subcategories__img img {
   outline: 3px solid #e30613;

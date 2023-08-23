@@ -22,14 +22,19 @@
     <!-- SEO -->
     {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true }}
 
+    <!--Qual tipo de piso você está procurando? -->
+    {{ content position: "Topo" contents: data.hotsite.contents show_title: false }}
+
     <!-- Navegue por ambiente -->
     {{ content position: "Centro" contents: data.hotsite.contents show_title: false }}
 
     <!-- Vitrine 1 -->
     <section class="showcase showcase__banner">
-      {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
-
-      <h2 class="mobile">Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
+    <div class="showcase_title">
+        <h2>Gostou desse ambiente? Veja abaixo o que você irá precisar!</h2>
+        
+        {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+      </div>
       <div class="desktop">
         {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
       </div>
@@ -39,8 +44,8 @@
     </section>
 
     <!-- Vitrine 2 -->
-    <section class="showcase desktop">
-      <h2>Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
+    <section class="showcase">
+      <h2>Pisos e revestimentos em alta</h2>
       {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
     </section>
   </div>
@@ -57,7 +62,8 @@
 
   <div class="container">
     <!-- Vitrine 3 -->
-    <section class="showcase desktop">
+    <section class="showcase">
+      <h2>Confira também estas ofertas</h2>
       {{ spot_carousel class: "showcase-3" products: data.vitrine3.products.nodes }}
     </section>
   </div>

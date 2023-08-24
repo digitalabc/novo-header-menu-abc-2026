@@ -4,10 +4,27 @@ var swiper = new Swiper(".subcategories .swiper", {
     prevEl: '.subcategories .swiper-button-prev'
   },
   spaceBetween: 20,
-  slidesPerView: 'auto',
+  slidesPerView: "auto",
   breakpoints: {
     991: {
       slidesPerView: 6
+    }
+  }
+});
+
+var swiper = new Swiper(".subTopo .swiper", {
+  navigation: {
+    nextEl: '.showcase-1 .swiper-button-next',
+    prevEl: '.showcase-1 .swiper-button-prev'
+  },
+  spaceBetween: 20,
+  slidesPerView: 3.2,
+  breakpoints: {
+    768: {
+      slidesPerView: 8
+    },
+    991: {
+      slidesPerView: 10
     }
   }
 });

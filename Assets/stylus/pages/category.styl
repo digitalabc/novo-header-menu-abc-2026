@@ -1,11 +1,10 @@
 .hotsite, .category, .search
   h2
     margin-bottom: 25px;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 20px;
-
     @media mobile
-      text-align: center;
+      font-size: 16px;
 
   .banner
     margin-bottom: 30px;
@@ -21,20 +20,22 @@
 
     &__banner
       @media desktop
-        display: flex;
-        align-items: center;
-        gap: 20px;
+        >div
+          display: flex;
+          align-items: flex-start;
+          gap: 20px;
+          >*
+            width: calc(50% - 10px);
 
-        >*
-          width: calc(50% - 10px);
+        
+          .swiper
+            margin-right: 20px;
+            margin-left: auto;
+            max-width: 555px;
 
-        .swiper
-          margin-right: 20px;
-          margin-left: auto;
-          max-width: 555px;
+          .swiper-button-prev
+            left: 0;
 
-        .swiper-button-prev
-          left: 0;
 
       @media mobile
         >ul, >h2
@@ -42,10 +43,23 @@
 
         >h2
           text-align: left;
-          font-size: 16px;
 
     &_title
       margin-bottom: 25px;
+
+      @media desktop
+        margin-bottom 0
+
+        >ul
+          >li
+            aspect-ratio: 1.38;
+            width: 100%;
+
+            a              
+              >img
+                width 100%
+                height 100%
+                object-fit: cover
 
   .gray-bg
     margin-bottom: 60px;

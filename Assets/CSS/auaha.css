@@ -229,7 +229,7 @@ input[type='search']::-webkit-search-results-decoration {
 .category h2,
 .search h2 {
   margin-bottom: 25px;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 20px;
 }
 @media screen and (max-width: 991px) {

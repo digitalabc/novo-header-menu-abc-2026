@@ -756,6 +756,31 @@
         "availableInAllComponents": true
     },
     {
+        "name": "titulo_banner",
+        "path": "titulo_banner.html",
+        "params": [
+{
+                "name": "banners",
+                "required": true
+            },
+            {
+                "name": "position",
+                "required": false
+            },
+            {
+                "name": "carousel",
+                "required": true
+            },
+            {
+                "name": "blank",
+                "required": false
+            }
+        ],
+        "inheritVariables": false,
+        "availableInAllPages": true,
+        "availableInAllComponents": true
+    },
+    {
         "name": "product_installments",
         "path": "product/product_installments.html",
         "params": [

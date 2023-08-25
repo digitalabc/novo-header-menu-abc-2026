@@ -1923,7 +1923,7 @@
         {
           "name": "Centro",
           "adress": "R. Princesa Isabel, 21 - Centro, Sabará - MG, 34505-310",
-          "phone": "(31) 97162-2279",
+          "phone": "(31) 3098-0580",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sabara/centro",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
@@ -4071,6 +4071,24 @@
       ]
     },
     {
+      "name": "Foz do Iguaçu",
+      "stores": [
+        {
+          "name": "Monjolo",
+          "adress": "Avenida José Maria de Brito Vl Pérola/Jd Central, e das Nações, 1549 - Monjolo, Foz do Iguaçu - PR, 85864-320",
+          "phone": "(43) 99172-1770",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/foz-do-iguacu/monjolo",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Londrina",
       "stores": [
         {
@@ -4150,6 +4168,24 @@
           "adress": "Av. Dr. Lamartine Pinto de Avelar, 1512 - Santa Rita, Catalão - GO, 75705-220",
           "phone": "(43) 3037-3070",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/catalao/santa-rita",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Goiânia",
+      "stores": [
+        {
+          "name": "Setor Sul",
+          "adress": "R. 87, 148 - St. Sul, Goiânia - GO, 74093-300",
+          "phone": "(62) 98125-8580",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/goiania/setor-sul",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",

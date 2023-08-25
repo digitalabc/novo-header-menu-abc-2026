@@ -30,11 +30,14 @@
 
     <!-- Vitrine 1 -->
     <section class="showcase showcase__banner">
-      {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
-
-      <h2 class="mobile">Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
+      {{titulo_banner carousel: false banners: data.hotsite.banners position: "Topo"}}
+      <div>
+      <div class="showcase_title">
+        {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+      </div>
       <div class="desktop">
         {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
+      </div>
       </div>
       <div class="mobile">
         {{ spot_carousel class: "showcase-1" products: data.vitrine_mobile.products.nodes }}
@@ -42,7 +45,7 @@
     </section>
 
     <!-- Vitrine 2 -->
-    <section class="showcase desktop">
+    <section class="showcase">
       <h2>Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
       {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
     </section>
@@ -52,7 +55,7 @@
     <div class="container">
       <!-- Carrossel de marcas -->
       <section class="brands">
-        <h2><b>Navegar por marca</b></h2>
+        <h2>Navegar por marcas</h2>
         {{ brands_list brands: data.brands.nodes }}
       </section>
     </div>

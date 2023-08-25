@@ -1,0 +1,20 @@
+{{ ##
+Description: Renders a banner carousel from a list of banners
+Params:
+- banners: list of banners
+- position: banner position to use
+Usage:
+carousel banners: banners position: "Topo"
+## }}
+{{~ if banners && position ~}}
+{{~ grouped_banners = banners | group.by @(do; ret $0.position;end) ~}}
+{{~ banners = grouped_banners | group.get position ~}}
+{{~ end ~}}
+
+
+
+{{~ for banner in banners ~}}
+{{ if banner.title}}
+<h2>{{banner.title}}</h2>
+{{~ end ~}}
+{{~ end ~}}

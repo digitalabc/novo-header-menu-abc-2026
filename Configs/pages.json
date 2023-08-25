@@ -25,6 +25,11 @@
                 "priority": 10
             },
             {
+                "urlMatch": "realidade-aumentada",
+                "path": "Custom/vr_category.html",
+                "priority": 20
+            },
+            {
                 "urlMatch": "pisos-e-revestimentos",
                 "subtype": "category",
                 "path": "Custom/main_category.html",

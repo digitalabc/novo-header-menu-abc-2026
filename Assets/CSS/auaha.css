@@ -6317,6 +6317,34 @@ div[class^=como-chegar] > span + i {
     opacity: 0;
   }
 }
+.hotsite.vr-category .vr_showcase {
+  margin-bottom: 28px;
+}
+@media screen and (max-width: 991px) {
+  .hotsite.vr-category .vr_showcase {
+    margin-right: -15px;
+  }
+}
+.hotsite.vr-category .stamps-vr {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  z-index: 1;
+}
+.hotsite.vr-category .vr-banners {
+  padding: 0;
+}
+.hotsite.vr-category .vr-banners > ul {
+  margin-bottom: 16px;
+}
+.hotsite.vr-category .vr-banners ul a {
+  display: flex;
+}
+.hotsite.vr-category .vr-banners > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 .topbar {
   background: #392f2d;
   color: #fff;

@@ -666,7 +666,7 @@ html {
 }
 @media screen and (max-width: 991px) {
   .fbits-login .fbits-social-login button.btn {
-    width: 100% !important;
+    width: 100%;
   }
 }
 .fbits-login .fbits-social-login button.btn.facebook:hover {

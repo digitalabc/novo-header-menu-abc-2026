@@ -4,6 +4,9 @@
           {{ for image in images }}
             <div class="swiper-slide"><img src="{{ image.url }}" alt="{{product.product_name}} - Imagem principal - {{ math.uuid }}"></div>
           {{ end }}
+          <div class="swiper-slide swiper-no-swiping" id="virtual_reality-slide">
+            <div id="viewer-3d"></div>
+          </div>
         </div>
     </div>
 
@@ -13,6 +16,9 @@
               {{ for image in images }}
                 <li class="swiper-slide"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="{{product.product_name}} - {{ math.uuid }}"></li>
               {{ end }}
+              <li class="swiper-slide" id="virtual_reality-thumb" style="display: none;">
+                <img src="{{- store.urls.static_img }}realidade_aumentada-icon.png?theme={{store.theme}}&v={{store.last_modified}}" alt="">
+              </li>
           </ul>
       </div>
       <button class="swiper-button-prev">

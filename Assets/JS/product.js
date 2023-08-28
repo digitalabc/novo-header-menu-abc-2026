@@ -102,6 +102,7 @@ async function renderAttributes(attributeList, productId) {
     thumbs: {
       swiper: thumbs,
     },
+    noSwiping: true
   });
 
 }

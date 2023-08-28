@@ -115,7 +115,7 @@
   {{ product_floating product: product }}
 
   {{~ if product_has_specialist_popup ~}}
-  {{ product_popup }}
+    {{ product_popup }}
   {{~ end ~}}
 
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
@@ -151,7 +151,8 @@
         </defs>
       </svg>
     </button>
-    <a href="#">
+    
+    <button onclick="open3d('{{ product.images.size }}')">
       <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_145_151)">
           <path
@@ -186,7 +187,7 @@
           </linearGradient>
         </defs>
       </svg>
-    </a>
+    </button>
   </div>
 
   {{ footer products:common.lighbox_products.products.nodes }}

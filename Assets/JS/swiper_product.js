@@ -17,3 +17,9 @@ var slider = new Swiper('.gallery-slider', {
   },
   noSwiping: true
 });
+
+
+function open3d(index) {
+  window.scrollTo(0, 0)
+  slider.slideTo(Number(index), 0, false)
+}

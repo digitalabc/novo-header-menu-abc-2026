@@ -8048,6 +8048,9 @@ header {
   width: 100%;
   height: calc(100vh - 500px);
 }
+.show-mobile-nav .virtual_reality__icons {
+  bottom: 155px;
+}
 .autocomplete {
   position: relative;
 }

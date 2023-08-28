@@ -1386,7 +1386,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 @media screen and (max-width: 991px) {
   .product .obs {
-    margin-bottom: 70px;
+    margin-bottom: 17px;
   }
 }
 .product-floating {
@@ -6338,6 +6338,10 @@ div[class^=como-chegar] > span + i {
   .hotsite.vr-category .vr_showcase {
     margin-right: -15px;
   }
+  .hotsite.vr-category .vr_showcase .swiper-button-next,
+  .hotsite.vr-category .vr_showcase .swiper-button-prev {
+    display: none;
+  }
 }
 .hotsite.vr-category .stamps-vr {
   position: absolute;
@@ -6358,6 +6362,12 @@ div[class^=como-chegar] > span + i {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+.hotsite.vr-category .vr-banners > div ul {
+  width: calc(50% - 8px);
+}
+.hotsite.vr-category .vr-banners > div ul img {
+  width: 100%;
 }
 .topbar {
   background: #392f2d;
@@ -10048,6 +10058,56 @@ section.newsletter--home .newsletter__alert {
 .bis button:hover {
   background: #e30613;
   color: #fff;
+}
+@media screen and (min-width: 992px) {
+  #virtual_reality-slide #viewer-3d {
+    display: none;
+  }
+}
+#virtual_reality-slide #viewer-3d > div {
+  width: 100%;
+  height: 530px;
+}
+@media screen and (max-width: 991px) {
+  #virtual_reality-slide #viewer-3d > div {
+    height: 355px;
+  }
+}
+.virtual_reality__banner {
+  position: relative;
+  display: none;
+  margin-bottom: 24px;
+}
+.virtual_reality__banner #qrCode {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  padding: 10px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #8f8f8f;
+  border-radius: 10px;
+  background-color: #fff;
+  transform: translateY(-50%);
+}
+.virtual_reality__icons {
+  position: fixed;
+  right: 15px;
+  bottom: 115px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-in-out;
+  gap: 16px;
+}
+.virtual_reality__icons button,
+.virtual_reality__icons a {
+  display: flex;
+  border: none;
+  background: none;
+}
+.show-mobile-nav .virtual_reality__icons {
+  bottom: 155px;
 }
 html {
   display: block;

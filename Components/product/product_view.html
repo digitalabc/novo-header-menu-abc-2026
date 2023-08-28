@@ -80,9 +80,32 @@
 
     <!-- Attributes -->
     {{ product_attribute product: product product_is_box: product_is_box comprePorUnidade: comprePorUnidade product_is_pick_up: product_is_pick_up }}
+    
+    <!-- Realidade Aumentada -->
+    <div class="virtual_reality__banner desktop">
+      {{~ for category in product.product_categories ~}}
+        {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
+        <img
+          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+          alt="Realidade Aumentada Qr-Code">
+        {{~ else if category.name | string.downcase == "metais sanitários" ~}}
+        <img
+          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-metais.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+          alt="Realidade Aumentada Qr-Code">
+        {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
+        <img
+          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-chuveiro-ou-duchas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+          alt="Realidade Aumentada Qr-Code">
+        {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
+        <img
+          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-louças.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+          alt="Realidade Aumentada Qr-Code">
+        {{~ end ~}}
+      {{~ end ~}}
+      <div id="qrCode"></div>
+    </div>
 
     <!-- Shippng -->
-    
     {{~ if available && !product_is_kit ~}}
       {{~ if selected_variant ~}}
           {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}

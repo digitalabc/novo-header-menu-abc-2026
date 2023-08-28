@@ -7991,9 +7991,9 @@ header {
   width: 100%;
   height: 40px;
   border: none;
+  border-bottom: 1px solid #5d5d5d;
   background: none;
   color: #392f2d;
-  border-bottom: 1px solid #5d5d5d;
 }
 .search__form input::placeholder {
   color: #5d5d5d;
@@ -8002,17 +8002,17 @@ header {
   outline: none;
 }
 .search__submit {
-  height: 40px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
   position: absolute;
   top: 0;
   right: 0;
+  display: grid;
+  height: 40px;
   border: none;
   background: none;
   color: #e30613;
+  cursor: pointer;
   transition: color 0.2s ease-in-out;
+  place-items: center;
 }
 .search__submit:hover {
   color: #392f2d;
@@ -8023,14 +8023,14 @@ header {
   }
 }
 .show-mobile-nav .search__form {
-  padding: 20px 15px;
   position: fixed;
-  inset: 0;
-  z-index: 5;
-  background: #fff;
   top: -100vh;
+  z-index: 5;
+  padding: 20px 15px;
   height: 500px;
+  background: #fff;
   transition: transform 0.2s ease-in-out;
+  inset: 0;
 }
 .show-search.show-mobile-nav .search__form {
   transform: translateY(100vh);
@@ -8040,13 +8040,16 @@ header {
   right: 15px;
 }
 .show-mobile-nav .search__close {
-  background: rgba(0,0,0,0.3);
-  content: '';
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   height: calc(100vh - 500px);
+  background: rgba(0,0,0,0.3);
+  content: "";
+}
+.show-mobile-nav .virtual_reality__icons {
+  bottom: 155px;
 }
 .autocomplete {
   position: relative;
@@ -10059,20 +10062,6 @@ section.newsletter--home .newsletter__alert {
   background: #e30613;
   color: #fff;
 }
-@media screen and (min-width: 992px) {
-  #virtual_reality-slide #viewer-3d {
-    display: none;
-  }
-}
-#virtual_reality-slide #viewer-3d > div {
-  width: 100%;
-  height: 530px;
-}
-@media screen and (max-width: 991px) {
-  #virtual_reality-slide #viewer-3d > div {
-    height: 355px;
-  }
-}
 .virtual_reality__banner {
   position: relative;
   display: none;
@@ -10106,8 +10095,19 @@ section.newsletter--home .newsletter__alert {
   border: none;
   background: none;
 }
-.show-mobile-nav .virtual_reality__icons {
-  bottom: 155px;
+@media screen and (min-width: 992px) {
+  #virtual_reality-slide #viewer-3d {
+    display: none;
+  }
+}
+#virtual_reality-slide #viewer-3d > div {
+  width: 100%;
+  height: 530px;
+}
+@media screen and (max-width: 991px) {
+  #virtual_reality-slide #viewer-3d > div {
+    height: 355px;
+  }
 }
 html {
   display: block;

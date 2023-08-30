@@ -1,6 +1,5 @@
 function cidades() {
-  //fetch(`https://blog.abcdaconstrucao.com.br/atendimento/ajax/sac.ajax.php`, {
-    fetch(`https://apiblog.digitalabc.com.br/atendimento/ajax/sac.ajax.php`, {
+  /*fetch(`https://blog.abcdaconstrucao.com.br/atendimento/ajax/sac.ajax.php`, {
     method: "POST",
     cache: "no-cache",
     body: "c=lojasTray&tipo=regiao&estado=MG",
@@ -9,7 +8,21 @@ function cidades() {
     cidade.innerHTML = response;
   }).catch(function (error) {
     console.warn(error);
-  })
+  })*/
+    $.ajax(
+      {
+        type: "POST",
+        url: "https://apiblog.digitalabc.com.br/atendimento/ajax/sac.ajax.php",
+        data: 'c=lojasTray&tipo=regiao&estado=MG',
+        cache: false        
+      }).always((response, status) => {
+         if(status === 'success') {
+               const cidade = document.querySelector(".section-duvidas .duvida:last-child > span")
+            cidade.innerHTML = response;
+         } else {
+             console.warn(response);
+         }
+      });
 }
 
 function abcEnvia_contato(endpoint) {

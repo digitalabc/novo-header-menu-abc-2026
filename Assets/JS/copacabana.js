@@ -86,7 +86,6 @@ document.getElementById("btnFormulario").addEventListener("click", function () {
     cache: "no-cache",
     body: post,
   }).then(function (data) {
-    console.log(data);
   }).catch(function (error) {
     console.warn(error);
   })

@@ -1,0 +1,44 @@
+.virtual_reality
+  &__banner
+    position: relative;
+    display: none;
+    margin-bottom: 24px;
+
+    #qrCode
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      padding: 10px;
+      width: 150px;
+      height: 150px;
+      border: 1px solid #8f8f8f;
+      border-radius: 10px;
+      background-color: #fff;
+      transform: translateY(-50%);
+
+  &__icons
+    position: fixed;
+    right: 15px;
+    bottom: 115px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease-in-out;
+    gap: 16px;
+
+    button, a
+      display: flex;
+      border: none;
+      background: none;
+
+#virtual_reality-slide
+  #viewer-3d
+    @media desktop
+      display: none;
+
+    > div
+      width: 100%;
+      height: 530px;
+
+      @media mobile
+        height: 355px;

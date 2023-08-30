@@ -10,13 +10,13 @@
 {{~ if products?.items # offset pagination case ~}}
     <div class="spots d-flex row">    
         {{ for item in products?.items }}
-            {{ spot product: item }}
+            {{ spot product: item virtual_reality: virtual_reality }}
         {{ end }}
     </div>
 {{~ else if products?.edges # cursor pagination case ~}}
     <div class="spots d-flex row">
         {{ for productEdge in products?.edges }}
-            {{ spot product: productEdge.node }}
+            {{ spot product: productEdge.node virtual_reality: virtual_reality }}
         {{ end }}
     </div>
 {{~ end ~}}

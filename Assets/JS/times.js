@@ -9,11 +9,27 @@ function cidades() {
   }).catch(function (error) {
     console.warn(error);
   })*/
-    $.ajax(
+    let urlTime = window.location.pathname.replace('/','').toLowerCase();
+      let uf = '';
+      switch (urlTime) {
+        case 'atletico':
+          uf = 'MG'
+          break;
+        case 'flamengo':
+          uf = 'RJ'
+          break;
+        case 'saopaulo':
+          uf = 'SP'
+          break;
+      
+        default:
+          break;
+      }
+      $.ajax(
       {
         type: "POST",
         url: "https://apiblog.digitalabc.com.br/atendimento/ajax/sac.ajax.php",
-        data: 'c=lojasTray&tipo=regiao&estado=MG',
+        data: `c=lojasTray&tipo=regiao&estado=${uf}`,
         cache: false        
       }).always((response, status) => {
          if(status === 'success') {

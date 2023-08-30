@@ -1208,7 +1208,7 @@
         {
           "name": "Centro",
           "adress": "Rua Prof. Jacinto Ribeiro, 470 - Centro, Lagoa da Prata - MG, 35590-054",
-          "phone": "(37) 98855-2325",
+          "phone": "(37) 99868-7253",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/lagoa-da-prata/centro",
           "monday": "9:00 às 19:00",
           "tuesday": "9:00 às 19:00",
@@ -1607,6 +1607,24 @@
           "thursday": "8:00 às 19:00",
           "friday": "8:00 às 19:00",
           "saturday": "8:00 às 14:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Paracatu",
+      "stores": [
+        {
+          "name": "Av. Alto Córrego",
+          "adress": "Rua Lindolfo Garcia Adjuto, Av. Alto Córrego, 660, Paracatu - MG, 38606-026",
+          "phone": "(38) 3408 1434",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/paracatu/alto-corrego",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -4156,6 +4174,24 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Balneário Camboriú",
+      "stores": [
+        {
+          "name": "Nações",
+          "adress": "R. Chile, 36 - Nações, Balneário Camboriú - SC, 88338-320",
+          "phone": "(47) 3515-3540",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/santa-catarina/balneario-camboriu/nacoes",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]

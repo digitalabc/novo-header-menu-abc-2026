@@ -12,3 +12,4 @@ var swiper = new Swiper(".subcategories .swiper", {
     }
   }
 });
+

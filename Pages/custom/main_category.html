@@ -32,12 +32,12 @@
     <section class="showcase showcase__banner">
       {{titulo_banner carousel: false banners: data.hotsite.banners position: "Topo"}}
       <div>
-      <div class="showcase_title">
-        {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
-      </div>
-      <div class="desktop">
-        {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
-      </div>
+        <div class="showcase_title">
+          {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+        </div>
+        <div class="desktop">
+          {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
+        </div>
       </div>
       <div class="mobile">
         {{ spot_carousel class: "showcase-1" products: data.vitrine_mobile.products.nodes }}
@@ -46,7 +46,7 @@
 
     <!-- Vitrine 2 -->
     <section class="showcase desktop">
-      <h2>Gostou desse ambiente? Saiba abaixo o que você irá precisar!</h2>
+      <h2>Pisos e revestimentos em alta</h2>
       {{ spot_carousel class: "showcase-2" products: data.vitrine2.products.nodes }}
     </section>
   </div>
@@ -74,11 +74,14 @@
   {{ footer products:common.lighbox_products.products.nodes }}
 
   {{ gtm_config gtm_id: common.gtm_id }}
-  {{ gtm_hotsite_view product_lists: [data.vitrine_banner.products.nodes, products: data.vitrine_mobile.products.nodes, data.vitrine2.products.nodes, data.vitrine3.products.nodes]}}
+  {{ gtm_hotsite_view product_lists: [data.vitrine_banner.products.nodes, products: data.vitrine_mobile.products.nodes,
+  data.vitrine2.products.nodes, data.vitrine3.products.nodes]}}
 
   {{ sdk_client }}
 
-  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring"]}}
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "seo", "navbar", "mini_cart",
+  "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox", "offcanvas",
+  "event_manager", "sharpspring"]}}
 </body>
 
 </html>

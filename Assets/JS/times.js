@@ -18,7 +18,7 @@ function cidades() {
         case 'flamengo':
           uf = 'RJ'
           break;
-        case 'saopaulo':
+        case 'saopaulofc':
           uf = 'SP'
           break;
       

@@ -1,5 +1,6 @@
 function cidades() {
-  fetch(`https://blog.abcdaconstrucao.com.br/atendimento/ajax/sac.ajax.php`, {
+  //fetch(`https://blog.abcdaconstrucao.com.br/atendimento/ajax/sac.ajax.php`, {
+    fetch(`https://apiblog.digitalabc.com.br/atendimento/ajax/sac.ajax.php`, {
     method: "POST",
     cache: "no-cache",
     body: "c=lojasTray&tipo=regiao&estado=MG",

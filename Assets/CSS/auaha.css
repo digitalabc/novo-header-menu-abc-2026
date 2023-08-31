@@ -402,15 +402,10 @@ input[type='search']::-webkit-search-results-decoration {
   width: 100%;
 }
 @media screen and (max-width: 991px) {
-  .hotsite .spots .spot,
-  .category .spots .spot,
-  .search .spots .spot {
-    border: none;
-  }
   .hotsite .spots .spot__content,
   .category .spots .spot__content,
   .search .spots .spot__content {
-    padding: 10px 0 0;
+    padding: 10px 3px 5px;
   }
   .hotsite .spots .spot__image,
   .category .spots .spot__image,
@@ -449,6 +444,13 @@ input[type='search']::-webkit-search-results-decoration {
   .category .spots .spot .best-installment span,
   .search .spots .spot .best-installment span {
     display: inline;
+  }
+}
+@media screen and (max-width: 991px) and (max-width: 991px) {
+  .hotsite .spots .spot__image,
+  .category .spots .spot__image,
+  .search .spots .spot__image {
+    border: none;
   }
 }
 @media (max-width: 1300px) {

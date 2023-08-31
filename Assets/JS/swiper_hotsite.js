@@ -15,6 +15,7 @@ var swiper = new Swiper(".subcategories .swiper", {
   }
 });
 
+
 function generateRABanner() {
   let link = document.createElement("a"), image = document.createElement("img"), vitrine = document.querySelector(".spots.d-flex.row");
 

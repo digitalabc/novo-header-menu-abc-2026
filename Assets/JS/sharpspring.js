@@ -21,8 +21,16 @@ function sendSharpSpring(campos, componente) {
       formSharp = 'f6cd0f91-1758-4a18-9dc5-f4082862ca4c';
       break;
 
-    case 'time':
+    case 'roleta_atletico':
+      formSharp = 'a1730132-6189-4467-b3e5-a66ad1ebf608';
+      break;
+
+    case 'roleta_flamengo':
       formSharp = '82ea5d1e-63c5-4cc3-bca0-e6ece0a1e475';
+      break;
+
+    case 'roleta_saopaulofc':
+      formSharp = '9e8c36e5-a20d-4e20-896f-6bbdbb8b80d8';
       break;
 
     case 'franquia':

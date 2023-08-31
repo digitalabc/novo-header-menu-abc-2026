@@ -14,17 +14,15 @@ var swiper = new Swiper(".subcategories .swiper", {
 
 var swiper = new Swiper(".subTopo .swiper", {
   navigation: {
-    nextEl: '.showcase-1 .swiper-button-next',
-    prevEl: '.showcase-1 .swiper-button-prev'
+    nextEl: '.subTopo .swiper-button-next',
+    prevEl: '.subTopo .swiper-button-prev'
   },
-  spaceBetween: 20,
-  slidesPerView: 3.2,
+  spaceBetween: 15,
+  slidesPerView: 'auto',
   breakpoints: {
-    768: {
-      slidesPerView: 8
-    },
     991: {
-      slidesPerView: 10
+      spaceBetween: 20,
+      slidesPerView: 11
     }
   }
 });

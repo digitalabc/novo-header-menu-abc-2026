@@ -133,16 +133,13 @@ function cidades() {
     //   e.preventDefault();
     //   abcEnvia_contato();
     // });
-  
-
-    
   });
+  
   document.addEventListener('DOMContentLoaded', function () {
    setTimeout(() => {
       document.querySelector('#popconvert-iframe-pcw-container .pcwbtn').addEventListener("click", function () {
-        console.log('numerPCW' + numeroPCW);
-        let pcwNome = document.querySelector('input[placeholder="Seu nome"]').value;
-        let pcwCelular = document.querySelector('input[placeholder="Seu celular"]').value;
+        let pcwNome = document.querySelector('input[data-v-71b05d9a][placeholder="Seu nome"]').value;
+        let pcwCelular = document.querySelector('input[data-v-71b05d9a][placeholder="Seu e-mail"]').value;
         localStorage.setItem('abc_pcw_temp', JSON.stringify({ pcwNome, pcwCelular }));
       });
   
@@ -155,38 +152,9 @@ function cidades() {
           nome: pcwABCTemp.pcwNome,
           celular: pcwABCTemp.pcwCelular
         };
-        console.log('numerPCW' + numeroPCW, sharpDados);
         __ss_noform = [];
   
         sendSharpSpring(sharpDados, `roleta_${nomeLPTime}`)
       });
     }, 8000);
   });
-
-/*$(document).ready(function () {
-    setTimeout(() => {
-        console.log('... pcwABC events');        
-        $('#popconvert-iframe-pcw-container').on('click', '.pcwbtn', () => {
-            let pcwNome = $('input[placeholder="Seu nome"]').val();
-            let pcwCelular = $('input[placeholder="Seu celular"]').val();
-            localStorage.setItem('abc_pcw_temp', JSON.stringify({pcwNome, pcwCelular}));
-
-        });
-        // evento que pega dados popconvert para enviar pra sharpspring
-        $('#popconvert-iframe-pcw-container').on('click', '.the-button', () => {
-            let pcwCampanhaABC = JSON.parse(localStorage.getItem(`pcwApp_www.abcdaconstrucao.com.br_${numeroPCW}`));
-            let pcwABCTemp = JSON.parse(localStorage.getItem('abc_pcw_temp'));
-            let sharpDados = {
-                email: pcwCampanhaABC.userAlreadyJoined,
-                coupon: pcwCampanhaABC.prizeForWinner.data.coupon,
-                nome: pcwABCTemp.pcwNome,
-                celular: pcwABCTemp.pcwCelular
-            };
-           __ss_noform = [];
-  
-        sendSharpSpring(sharpDados, `roleta_${nomeLPTime}`)
-             
-        });
-    }, 8000);
-  });
-  */

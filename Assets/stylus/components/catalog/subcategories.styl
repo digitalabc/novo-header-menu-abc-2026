@@ -4,6 +4,11 @@
   @media mobile
     margin-bottom: 20px;
 
+  .swiper-wrapper
+    &:not(.swiper-initialized)
+      .swiper-slide
+        flex: 0 0 calc(100% / 6 - (20px * 5 / 6))
+
   &__item
     text-align: center;
 
@@ -12,7 +17,6 @@
 
     .category &
       width: 200px;
-
 
     &:hover
       .subcategories

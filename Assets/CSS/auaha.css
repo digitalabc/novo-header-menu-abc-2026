@@ -9498,6 +9498,10 @@ section.newsletter--home .newsletter__alert {
     margin-bottom: 20px;
   }
 }
+.subcategories .swiper-wrapper:not(.swiper-initialized) .swiper-slide,
+.subTopo .swiper-wrapper:not(.swiper-initialized) .swiper-slide {
+  flex: 0 0 calc(100% / 6 - (20px * 5 / 6));
+}
 .subcategories__item,
 .subTopo__item {
   text-align: center;

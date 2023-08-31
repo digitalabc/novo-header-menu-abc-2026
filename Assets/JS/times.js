@@ -134,8 +134,11 @@ function cidades() {
     //   abcEnvia_contato();
     // });
   
-/*document.addEventListener('DOMContentLoaded', function () {
-   /* setTimeout(() => {
+
+    
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+   setTimeout(() => {
       document.querySelector('#popconvert-iframe-pcw-container .pcwbtn').addEventListener("click", function () {
         console.log('numerPCW' + numeroPCW);
         let pcwNome = document.querySelector('input[placeholder="Seu nome"]').value;
@@ -158,8 +161,6 @@ function cidades() {
         sendSharpSpring(sharpDados, `roleta_${nomeLPTime}`)
       });
     }, 8000);
-  });*/
-    
   });
 
 /*$(document).ready(function () {

@@ -135,7 +135,10 @@ function cidades() {
     // });
   
 
-    setTimeout(() => {
+    
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+   setTimeout(() => {
       document.querySelector('#popconvert-iframe-pcw-container .pcwbtn').addEventListener("click", function () {
         console.log('numerPCW' + numeroPCW);
         let pcwNome = document.querySelector('input[placeholder="Seu nome"]').value;
@@ -159,4 +162,31 @@ function cidades() {
       });
     }, 8000);
   });
+
+/*$(document).ready(function () {
+    setTimeout(() => {
+        console.log('... pcwABC events');        
+        $('#popconvert-iframe-pcw-container').on('click', '.pcwbtn', () => {
+            let pcwNome = $('input[placeholder="Seu nome"]').val();
+            let pcwCelular = $('input[placeholder="Seu celular"]').val();
+            localStorage.setItem('abc_pcw_temp', JSON.stringify({pcwNome, pcwCelular}));
+
+        });
+        // evento que pega dados popconvert para enviar pra sharpspring
+        $('#popconvert-iframe-pcw-container').on('click', '.the-button', () => {
+            let pcwCampanhaABC = JSON.parse(localStorage.getItem(`pcwApp_www.abcdaconstrucao.com.br_${numeroPCW}`));
+            let pcwABCTemp = JSON.parse(localStorage.getItem('abc_pcw_temp'));
+            let sharpDados = {
+                email: pcwCampanhaABC.userAlreadyJoined,
+                coupon: pcwCampanhaABC.prizeForWinner.data.coupon,
+                nome: pcwABCTemp.pcwNome,
+                celular: pcwABCTemp.pcwCelular
+            };
+           __ss_noform = [];
   
+        sendSharpSpring(sharpDados, `roleta_${nomeLPTime}`)
+             
+        });
+    }, 8000);
+  });
+  */

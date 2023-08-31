@@ -134,7 +134,7 @@ function cidades() {
     //   abcEnvia_contato();
     // });
   
-
+/*document.addEventListener('DOMContentLoaded', function () {
    /* setTimeout(() => {
       document.querySelector('#popconvert-iframe-pcw-container .pcwbtn').addEventListener("click", function () {
         console.log('numerPCW' + numeroPCW);
@@ -158,11 +158,11 @@ function cidades() {
         sendSharpSpring(sharpDados, `roleta_${nomeLPTime}`)
       });
     }, 8000);
-    */
+  });*/
     
   });
-  
-$(document).ready(function () {
+
+/*$(document).ready(function () {
     setTimeout(() => {
         console.log('... pcwABC events');        
         $('#popconvert-iframe-pcw-container').on('click', '.pcwbtn', () => {
@@ -187,4 +187,5 @@ $(document).ready(function () {
              
         });
     }, 8000);
-    });
+  });
+  */

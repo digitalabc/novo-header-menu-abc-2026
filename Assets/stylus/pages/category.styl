@@ -3,6 +3,7 @@
     margin-bottom: 25px;
     font-weight: 500;
     font-size: 20px;
+
     @media mobile
       font-size: 16px;
 
@@ -24,10 +25,10 @@
           display: flex;
           align-items: flex-start;
           gap: 20px;
+
           >*
             width: calc(50% - 10px);
 
-        
           .swiper
             margin-right: 20px;
             margin-left: auto;
@@ -35,7 +36,6 @@
 
           .swiper-button-prev
             left: 0;
-
 
       @media mobile
         >ul, >h2
@@ -48,18 +48,18 @@
       margin-bottom: 25px;
 
       @media desktop
-        margin-bottom 0
+        margin-bottom: 0;
 
         >ul
           >li
-            aspect-ratio: 1.38;
             width: 100%;
+            aspect-ratio: 1.38;
 
-            a              
+            a
               >img
-                width 100%
-                height 100%
-                object-fit: cover
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
 
   .gray-bg
     margin-bottom: 60px;
@@ -148,6 +148,15 @@
     @media (max-width: 600px)
       grid-template-columns: repeat(2, calc(50% - 5px));
       gap: 60px 10px;
+
+    .spot-banner
+      grid-area: 2 / 1 / 3 / 5;
+
+      @media (max-width: 1300px)
+        grid-area: 2 / 1 / 3 / 4;
+
+      @media (max-width: 600px)
+        grid-area: 2 / 1 / 3 / 3;
 
 .empty-search
   padding: 60px 0;

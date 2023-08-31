@@ -318,8 +318,8 @@ input[type='search']::-webkit-search-results-decoration {
   .hotsite .showcase_title >ul >li,
   .category .showcase_title >ul >li,
   .search .showcase_title >ul >li {
-    aspect-ratio: 1.38;
     width: 100%;
+    aspect-ratio: 1.38;
   }
   .hotsite .showcase_title >ul >li a >img,
   .category .showcase_title >ul >li a >img,
@@ -471,6 +471,25 @@ input[type='search']::-webkit-search-results-decoration {
   .search .spots {
     grid-template-columns: repeat(2, calc(50% - 5px));
     gap: 60px 10px;
+  }
+}
+.hotsite .spots .spot-banner,
+.category .spots .spot-banner,
+.search .spots .spot-banner {
+  grid-area: 2/1/3/5;
+}
+@media (max-width: 1300px) {
+  .hotsite .spots .spot-banner,
+  .category .spots .spot-banner,
+  .search .spots .spot-banner {
+    grid-area: 2/1/3/4;
+  }
+}
+@media (max-width: 600px) {
+  .hotsite .spots .spot-banner,
+  .category .spots .spot-banner,
+  .search .spots .spot-banner {
+    grid-area: 2/1/3/3;
   }
 }
 .empty-search {
@@ -6348,6 +6367,9 @@ div[class^=como-chegar] > span + i {
   top: 50px;
   right: 10px;
   z-index: 1;
+}
+.hotsite.vr-category .stamps-vr--no_discount {
+  top: 10px;
 }
 .hotsite.vr-category .vr-banners {
   padding: 0;

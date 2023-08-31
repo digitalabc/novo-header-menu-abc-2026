@@ -137,21 +137,13 @@ function cidades() {
 
   document.addEventListener('DOMContentLoaded', function () {
    setTimeout(() => {
-    /*
-      document.querySelector('#popconvert-iframe-pcw-container .pcwbtn').addEventListener("click", function () {
-        let pcwNome = document.querySelector('input[data-v-71b05d9a][placeholder="Seu nome"]').value;
-        let pcwCelular = document.querySelector('input[data-v-71b05d9a][placeholder="Seu celular"]').value;
-        localStorage.setItem('abc_pcw_temp', JSON.stringify({ pcwNome, pcwCelular }));
-      });
-  */
       $('#popconvert-iframe-pcw-container').on('click', '.the-button', () => {
         let pcwCampanhaABC = JSON.parse(localStorage.getItem(`pcwApp_www.abcdaconstrucao.com.br_${numeroPCW}`));
-        let pcwABCTemp = JSON.parse(localStorage.getItem('abc_pcw_temp'));
         let sharpDados = {
           email: pcwCampanhaABC.lead.mail,
           coupon: pcwCampanhaABC.prizeForWinner.data.coupon,
-          nome: pcwABCTemp.lead.name,
-          celular: pcwABCTemp.lead.phone
+          nome: pcwCampanhaABC.lead.name,
+          celular: pcwCampanhaABC.lead.phone
         };
         __ss_noform = [];
   

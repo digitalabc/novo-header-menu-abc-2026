@@ -5736,7 +5736,7 @@ div[class^=como-chegar] > span + i {
 .semana-do-consumidor #cronometro .cron .sep:before,
 .semana-do-consumidor #cronometro .cron .sep:after {
   content: '';
-  background: #fff;
+  background: #363636;
   border-radius: 50%;
   width: 3px;
   height: 3px;

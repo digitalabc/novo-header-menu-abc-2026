@@ -5748,7 +5748,8 @@ div[class^=como-chegar] > span + i {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 7px;
+  margin-bottom: 16px;
+  margin-top: 24px;
 }
 .semana-do-consumidor .showcase__title {
   font-size: 26px;

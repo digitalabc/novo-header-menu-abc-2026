@@ -5631,7 +5631,7 @@ div[class^=como-chegar] > span + i {
   }
 }
 .semana-do-consumidor {
-  background: #f0f0f0;
+  background: #ffffff;
   margin-top: -10px;
   padding-bottom: 30px;
 }
@@ -5770,7 +5770,7 @@ div[class^=como-chegar] > span + i {
   color: #e30613;
 }
 .semana-do-consumidor .showcase[data-showcase="cronometer"] {
-  background: #4b4c4e;
+  background: #ebebeb;
   padding: 40px 0;
 }
 @media screen and (max-width: 991px) {

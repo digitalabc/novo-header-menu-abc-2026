@@ -5800,7 +5800,7 @@ div[class^=como-chegar] > span + i {
   width: fit-content;
   margin-left: auto;
   margin-bottom: 5px;
-  color: #fff;
+  color: #363636;
 }
 .semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__link:hover {
   color: #e30613;

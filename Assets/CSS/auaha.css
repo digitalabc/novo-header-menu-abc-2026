@@ -6480,6 +6480,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding-block: 15px;
 }
 @media screen and (max-width: 991px) {
@@ -8567,7 +8568,7 @@ header {
 #zone-popup div input {
   padding: 0 20px;
   height: 48px;
-  border-color: #5d5d5d;
+  border: 1px solid #5d5d5d;
   border-right: 0;
   border-radius: 6px 0 0 6px;
   color: #949494;

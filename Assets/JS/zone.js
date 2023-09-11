@@ -8,8 +8,8 @@ function setupZone() {
   if (localStorage.getItem("zone")) {
     console.log("zona selecionada: ", localStorage.getItem("zone"))
     zone_name.innerHTML = localStorage.getItem("zone");
-    zone_popup.style.display = "block"
   }
+  zone_popup.style.display = "block"
 }
 
 function closeZone() {
@@ -19,8 +19,8 @@ function closeZone() {
 function submitZonePopup() {
   let zoneCep = document.getElementById("zone-cep")
   if (zoneCep.value != "") {
-    localStorage.setItem("zone", zoneCep.value)
-    setupZone()
-    closeZone()
+    localStorage.setItem("zone", zoneCep.value);
+    setupZone();
+    closeZone();
   }
 }

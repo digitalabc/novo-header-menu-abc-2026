@@ -8514,6 +8514,11 @@ header {
   cursor: pointer;
   gap: 9px;
 }
+@media screen and (max-width: 991px) {
+  #zone {
+    margin-bottom: 10px;
+  }
+}
 #zone > p {
   color: #392f2d;
   font-weight: 500;

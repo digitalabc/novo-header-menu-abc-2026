@@ -7,7 +7,7 @@
         navbar menu_groups: data...menu_group position: "Topo Header"
 ## }}
 {{~ capture logo_source ~}}
-  {{- store.urls.static_img}}{{settings.logo_path}}?theme={{store.theme -}}&v={{store.last_modified-}}
+{{- store.urls.static_img}}{{settings.logo_path}}?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 {{~ menu_group = menu_groups | group.by @(do; ret $0.position;end) | group.get position | array.first ~}}
 {{~ menus = menu_group.menus | group.by @(do; ret $0.parent_menu_id;end) ~}}
@@ -17,95 +17,136 @@
 {{~ grouped_categories = categories | group.by @(do; ret $0.parent_category_id;end) ~}}
 
 {{~ if grouped_categories ~}}
-  {{~ all_categories = grouped_categories | group.get 0  ~}}
+{{~ all_categories = grouped_categories | group.get 0  ~}}
 {{~ end ~}}
 
 {{ topbar }}
 <nav class="navbar">
-    <div class="navbar__container ">
-        {{ ## Search ## }}
-        <div class="navbar__search">
-          <form class="search__form" onsubmit="search(event, null)">
-              <div class="autocomplete">
-                  <input id="search-bar" type="search" placeholder='{{ "Digite aqui sua busca" | lang }}'
-                      autocomplete="off">
-                  <div id="autocomplete-list"></div>
-              </div>
-              <button class="search__submit" aria-label="search-button" type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14.626" height="14.608" viewBox="0 0 14.626 14.608">
-                  <path id="Path_23304" data-name="Path 23304" d="M0,6.567A6.437,6.437,0,0,1,12.787,5.38a6.119,6.119,0,0,1-1.054,4.667c-.144.208-.137.318.044.5.858.838,1.7,1.691,2.547,2.542a.84.84,0,0,1,.244.926.854.854,0,0,1-.691.58.918.918,0,0,1-.84-.34c-.832-.832-1.671-1.658-2.491-2.5-.171-.176-.271-.175-.467-.04A6.422,6.422,0,0,1,.262,8.234,6.933,6.933,0,0,1,0,6.567Zm11.126-.123a4.7,4.7,0,1,0-4.7,4.667,4.69,4.69,0,0,0,4.7-4.667Z" transform="translate(0.005 0.005)"/>
-                </svg>
-              </button>
-              <button class="search__close" aria-label="search-close-button" type="button" onclick="hideMobileSearch(event)"></button>
-          </form>
+  <div class="navbar__container ">
+    {{ ## Search ## }}
+    <div class="navbar__search">
+      <form class="search__form" onsubmit="search(event, null)">
+        <div class="autocomplete">
+          <input id="search-bar" type="search" placeholder='{{ "Digite aqui sua busca" | lang }}' autocomplete="off">
+          <div id="autocomplete-list"></div>
         </div>
-
-        {{##  Menu mobile ##}}
-        <div class="navbar__menu-mobile mobile">
-          {{ menu_mobile main_categories: all_categories checkout_url: store.urls.checkout }}
-        </div>
-
-        {{ ## Logo ## }}
-        <div class="navbar__logo">
-          {{~ if home ~}}
-          <h1>
-          {{~ end ~}}
-            <a class="navbar-brand" href="/">
-              <img src="{{ logo_source }}" alt="ABC da Construção" title="ABC da Construção" width="104" height="70">
-            </a>
-          {{~ if home ~}}
-          </h1>
-          {{~ end ~}}
-        </div>
-
-        <div class="navbar__right">
-            {{ ## Nossas Lojas ## }}
-            <a class="navbar__lojas" href="/diretorio-de-lojas">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22.665" viewBox="0 0 22 22.665">
-                  <g id="Camada_1" data-name="Camada 1" transform="translate(0.009)">
-                    <path id="Path_23300" data-name="Path 23300" d="M77.917,0c.357.1.73.111,1.086.216a6.715,6.715,0,0,1,5.009,5.4,8.358,8.358,0,0,1-.55,4.656,18.5,18.5,0,0,1-3.534,5.71,20.254,20.254,0,0,1-2.266,2.23.473.473,0,0,1-.71.009A20.767,20.767,0,0,1,71.58,11.35a10.806,10.806,0,0,1-1.118-4.372A6.857,6.857,0,0,1,76.025.122,1.868,1.868,0,0,0,76.592,0h1.326ZM77.3,3.359a3.494,3.494,0,1,0,3.485,3.5,3.488,3.488,0,0,0-3.485-3.5Z" transform="translate(-66.307)"/>
-                    <path id="Path_23301" data-name="Path 23301" d="M9.356,265.791c-.04-.083-.117-.043-.175-.046a26.99,26.99,0,0,1-4.088-.53,11.483,11.483,0,0,1-3.568-1.285,3.848,3.848,0,0,1-1.1-.945A1.86,1.86,0,0,1,.421,260.6a4.684,4.684,0,0,1,1.9-1.357,13.707,13.707,0,0,1,2.641-.836.755.755,0,0,1,.944.543.747.747,0,0,1-.6.925,12.375,12.375,0,0,0-2.629.866,4.24,4.24,0,0,0-.786.485c-.517.416-.52.763,0,1.179a4.791,4.791,0,0,0,1.3.687,17.284,17.284,0,0,0,4.153.97,29.368,29.368,0,0,0,5.18.179,20.236,20.236,0,0,0,6.366-1.19,4.647,4.647,0,0,0,1.164-.618c.563-.435.565-.8,0-1.233a7.121,7.121,0,0,0-2.4-1.073c-.331-.1-.669-.169-1-.257a.748.748,0,0,1-.579-.919.738.738,0,0,1,.9-.549,11.717,11.717,0,0,1,3.43,1.222,3.908,3.908,0,0,1,1.061.854,1.9,1.9,0,0,1-.064,2.694,5.89,5.89,0,0,1-2.332,1.423,17.946,17.946,0,0,1-3.939.928q-1.247.172-2.505.226c-.035,0-.075-.007-.087.043h-.354c-.059-.074-.118-.062-.177,0H9.975c-.059-.062-.118-.074-.177,0H9.357Z" transform="translate(0 -243.126)"/>
-                    <path id="Path_23302" data-name="Path 23302" d="M166.09,383.047c.059-.074.118-.062.177,0Z" transform="translate(-156.291 -360.382)"/>
-                    <path id="Path_23303" data-name="Path 23303" d="M203.5,383.047c.059-.062.118-.074.177,0Z" transform="translate(-191.493 -360.382)"/>
-                  </g>
-                </svg>
-                Nossas Lojas
-            </a>
-
-            {{ ## User menu ## }}
-            {{ user_login checkout_url: store.urls.checkout }}
-
-            {{ ## Minicart ## }}
-            {{ mini_cart }}
-            {{ mini_cart_ah }}
-        </div>
+        <button class="search__submit" aria-label="search-button" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14.626" height="14.608" viewBox="0 0 14.626 14.608">
+            <path id="Path_23304" data-name="Path 23304"
+              d="M0,6.567A6.437,6.437,0,0,1,12.787,5.38a6.119,6.119,0,0,1-1.054,4.667c-.144.208-.137.318.044.5.858.838,1.7,1.691,2.547,2.542a.84.84,0,0,1,.244.926.854.854,0,0,1-.691.58.918.918,0,0,1-.84-.34c-.832-.832-1.671-1.658-2.491-2.5-.171-.176-.271-.175-.467-.04A6.422,6.422,0,0,1,.262,8.234,6.933,6.933,0,0,1,0,6.567Zm11.126-.123a4.7,4.7,0,1,0-4.7,4.667,4.69,4.69,0,0,0,4.7-4.667Z"
+              transform="translate(0.005 0.005)" />
+          </svg>
+        </button>
+        <button class="search__close" aria-label="search-close-button" type="button"
+          onclick="hideMobileSearch(event)"></button>
+      </form>
+      <div id="zone" onclick="setupZone()">
+        <svg width="13" height="18" viewBox="0 0 13 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M6.41221 8.99988C6.85305 8.99988 7.23057 8.84199 7.54477 8.52622C7.85844 8.21098 8.01527 7.83183 8.01527 7.38877C8.01527 6.94572 7.85844 6.5663 7.54477 6.25052C7.23057 5.93528 6.85305 5.77766 6.41221 5.77766C5.97137 5.77766 5.59412 5.93528 5.28046 6.25052C4.96626 6.5663 4.80916 6.94572 4.80916 7.38877C4.80916 7.83183 4.96626 8.21098 5.28046 8.52622C5.59412 8.84199 5.97137 8.99988 6.41221 8.99988ZM6.41221 14.9207C8.04199 13.417 9.25095 12.0508 10.0391 10.822C10.8273 9.59385 11.2214 8.50312 11.2214 7.54988C11.2214 6.08646 10.757 4.88806 9.82832 3.95469C8.90015 3.02186 7.76145 2.55545 6.41221 2.55545C5.06298 2.55545 3.92401 3.02186 2.99531 3.95469C2.06714 4.88806 1.60305 6.08646 1.60305 7.54988C1.60305 8.50312 1.99714 9.59385 2.78531 10.822C3.57347 12.0508 4.78244 13.417 6.41221 14.9207ZM6.41221 17.0554C4.26145 15.2161 2.65519 13.5075 1.59344 11.9297C0.531145 10.3524 0 8.89248 0 7.54988C0 5.536 0.644695 3.9316 1.93408 2.7367C3.22294 1.54179 4.71565 0.944336 6.41221 0.944336C8.10878 0.944336 9.60149 1.54179 10.8903 2.7367C12.1797 3.9316 12.8244 5.536 12.8244 7.54988C12.8244 8.89248 12.2936 10.3524 11.2318 11.9297C10.1695 13.5075 8.56298 15.2161 6.41221 17.0554Z"
+            fill="#E11E3C" />
+        </svg>
+        <p>Ver ofertas para <span id="zone-name">minha região</span></p>
+      </div>
     </div>
-    
-    {{ ## Menu desktop ## }}
-    <div class="navbar__collapse desktop" id="navbarSupportedContent">
-        <ul class="navbar__wrapper">
-            <li class="nav-all__item nav-all__item--root">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10">
-                <g id="Group_3451" data-name="Group 3451" transform="translate(-2349 -177)">
-                  <rect id="Rectangle_820" data-name="Rectangle 820" width="12" height="2" transform="translate(2349 177)" fill="#e30613"/>
-                  <rect id="Rectangle_821" data-name="Rectangle 821" width="12" height="2" transform="translate(2349 181)" fill="#e30613"/>
-                  <rect id="Rectangle_822" data-name="Rectangle 822" width="12" height="2" transform="translate(2349 185)" fill="#e30613"/>
-                </g>
-              </svg>
-              Todas as categorias
-              <div class="nav-all__dropdown nav-all__dropdown--root">
-                <ul class="nav-all__list nav-all__list--root">
-                  {{~ for category in all_categories ~}}
-                    {{ nav_item_all category: category level: 1 max_level: 2}}
-                  {{~ end ~}}
-                </ul>
-              </div>
-            </li>
-            {{~ if top_level ~}}
-              {{~ for top_menu in top_level ~}}
-                {{ nav_item menus: menu_group.menus current_menu: top_menu }}
-              {{~ end ~}}
+
+    <div id="zone-popup">
+      <i>
+        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.85996 0L15.674 13.5344H0.0458984L7.85996 0Z" fill="white" />
+        </svg>
+      </i>
+      <button onclick="closeZone()">
+        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11.7949 11.3879C11.9067 11.5009 11.9695 11.6534 11.9695 11.8124C11.9695 11.9714 11.9067 12.1239 11.7949 12.2369C11.681 12.347 11.5288 12.4086 11.3704 12.4086C11.212 12.4086 11.0597 12.347 10.9459 12.2369L6.00819 7.29179L1.07053 12.2369C0.956648 12.347 0.804435 12.4086 0.646023 12.4086C0.487612 12.4086 0.335399 12.347 0.221518 12.2369C0.109638 12.1239 0.046875 11.9714 0.046875 11.8124C0.046875 11.6534 0.109638 11.5009 0.221518 11.3879L5.16663 6.45023L0.221518 1.51256C0.12651 1.3968 0.0779579 1.24984 0.0853041 1.10026C0.0926503 0.950688 0.15537 0.809192 0.261264 0.703298C0.367158 0.597404 0.508654 0.534684 0.65823 0.527338C0.807806 0.519992 0.954768 0.568544 1.07053 0.663552L6.00819 5.60866L10.9459 0.663552C11.0616 0.568544 11.2086 0.519992 11.3582 0.527338C11.5077 0.534684 11.6492 0.597404 11.7551 0.703298C11.861 0.809192 11.9237 0.950688 11.9311 1.10026C11.9384 1.24984 11.8899 1.3968 11.7949 1.51256L6.84976 6.45023L11.7949 11.3879Z"
+            fill="#949494" />
+        </svg>
+      </button>
+      <h3>Qual a sua localização?</h3>
+      <div>
+        <input id=type="text" placeholder="Digite seu cep" maxlength="9" onkeypress="cepMask(this)">
+        <button onclick="submitZonePopup">
+          OK
+        </button>
+      </div>
+    </div>
+
+    {{##  Menu mobile ##}}
+    <div class="navbar__menu-mobile mobile">
+      {{ menu_mobile main_categories: all_categories checkout_url: store.urls.checkout }}
+    </div>
+
+    {{ ## Logo ## }}
+    <div class="navbar__logo">
+      {{~ if home ~}}
+      <h1>
+        {{~ end ~}}
+        <a class="navbar-brand" href="/">
+          <img src="{{ logo_source }}" alt="ABC da Construção" title="ABC da Construção" width="104" height="70">
+        </a>
+        {{~ if home ~}}
+      </h1>
+      {{~ end ~}}
+    </div>
+
+    <div class="navbar__right">
+      {{ ## Nossas Lojas ## }}
+      <a class="navbar__lojas" href="/diretorio-de-lojas">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22.665" viewBox="0 0 22 22.665">
+          <g id="Camada_1" data-name="Camada 1" transform="translate(0.009)">
+            <path id="Path_23300" data-name="Path 23300"
+              d="M77.917,0c.357.1.73.111,1.086.216a6.715,6.715,0,0,1,5.009,5.4,8.358,8.358,0,0,1-.55,4.656,18.5,18.5,0,0,1-3.534,5.71,20.254,20.254,0,0,1-2.266,2.23.473.473,0,0,1-.71.009A20.767,20.767,0,0,1,71.58,11.35a10.806,10.806,0,0,1-1.118-4.372A6.857,6.857,0,0,1,76.025.122,1.868,1.868,0,0,0,76.592,0h1.326ZM77.3,3.359a3.494,3.494,0,1,0,3.485,3.5,3.488,3.488,0,0,0-3.485-3.5Z"
+              transform="translate(-66.307)" />
+            <path id="Path_23301" data-name="Path 23301"
+              d="M9.356,265.791c-.04-.083-.117-.043-.175-.046a26.99,26.99,0,0,1-4.088-.53,11.483,11.483,0,0,1-3.568-1.285,3.848,3.848,0,0,1-1.1-.945A1.86,1.86,0,0,1,.421,260.6a4.684,4.684,0,0,1,1.9-1.357,13.707,13.707,0,0,1,2.641-.836.755.755,0,0,1,.944.543.747.747,0,0,1-.6.925,12.375,12.375,0,0,0-2.629.866,4.24,4.24,0,0,0-.786.485c-.517.416-.52.763,0,1.179a4.791,4.791,0,0,0,1.3.687,17.284,17.284,0,0,0,4.153.97,29.368,29.368,0,0,0,5.18.179,20.236,20.236,0,0,0,6.366-1.19,4.647,4.647,0,0,0,1.164-.618c.563-.435.565-.8,0-1.233a7.121,7.121,0,0,0-2.4-1.073c-.331-.1-.669-.169-1-.257a.748.748,0,0,1-.579-.919.738.738,0,0,1,.9-.549,11.717,11.717,0,0,1,3.43,1.222,3.908,3.908,0,0,1,1.061.854,1.9,1.9,0,0,1-.064,2.694,5.89,5.89,0,0,1-2.332,1.423,17.946,17.946,0,0,1-3.939.928q-1.247.172-2.505.226c-.035,0-.075-.007-.087.043h-.354c-.059-.074-.118-.062-.177,0H9.975c-.059-.062-.118-.074-.177,0H9.357Z"
+              transform="translate(0 -243.126)" />
+            <path id="Path_23302" data-name="Path 23302" d="M166.09,383.047c.059-.074.118-.062.177,0Z"
+              transform="translate(-156.291 -360.382)" />
+            <path id="Path_23303" data-name="Path 23303" d="M203.5,383.047c.059-.062.118-.074.177,0Z"
+              transform="translate(-191.493 -360.382)" />
+          </g>
+        </svg>
+        Nossas Lojas
+      </a>
+
+      {{ ## User menu ## }}
+      {{ user_login checkout_url: store.urls.checkout }}
+
+      {{ ## Minicart ## }}
+      {{ mini_cart }}
+      {{ mini_cart_ah }}
+    </div>
+  </div>
+
+  {{ ## Menu desktop ## }}
+  <div class="navbar__collapse desktop" id="navbarSupportedContent">
+    <ul class="navbar__wrapper">
+      <li class="nav-all__item nav-all__item--root">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10">
+          <g id="Group_3451" data-name="Group 3451" transform="translate(-2349 -177)">
+            <rect id="Rectangle_820" data-name="Rectangle 820" width="12" height="2" transform="translate(2349 177)"
+              fill="#e30613" />
+            <rect id="Rectangle_821" data-name="Rectangle 821" width="12" height="2" transform="translate(2349 181)"
+              fill="#e30613" />
+            <rect id="Rectangle_822" data-name="Rectangle 822" width="12" height="2" transform="translate(2349 185)"
+              fill="#e30613" />
+          </g>
+        </svg>
+        Todas as categorias
+        <div class="nav-all__dropdown nav-all__dropdown--root">
+          <ul class="nav-all__list nav-all__list--root">
+            {{~ for category in all_categories ~}}
+            {{ nav_item_all category: category level: 1 max_level: 2}}
             {{~ end ~}}
-        </ul>
-    </div>
+          </ul>
+        </div>
+      </li>
+      {{~ if top_level ~}}
+      {{~ for top_menu in top_level ~}}
+      {{ nav_item menus: menu_group.menus current_menu: top_menu }}
+      {{~ end ~}}
+      {{~ end ~}}
+    </ul>
+  </div>
 </nav>

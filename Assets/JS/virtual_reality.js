@@ -27,5 +27,6 @@
     if (window.innerWidth < 991) document.querySelector(".virtual_reality__banner.mobile").style.display = "block"
   } else {
     document.getElementById("virtual_reality-slide").style.display = "none"
+    document.querySelector(".gallery .swiper-pagination-bullet:last-child").style.display = "none"
   }
 })()

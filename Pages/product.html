@@ -75,25 +75,34 @@
 
     <!-- Realidade Aumentada -->
     <div class="virtual_reality__banner mobile">
-      {{~ for category in product.product_categories ~}}
-      {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ else if category.name | string.downcase == "metais sanitários" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-torneiras-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-duchas-mobile?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-louças-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ end ~}}
-      {{~ end ~}}
+      <a href="/realidade-aumentada">
+        {{ valid = true }}
+        {{~ for category in product.product_categories ~}}
+          {{ if valid }}
+            {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
+            <img
+              src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Realidade Aumentada Qr-Code">
+              {{ valid = false }}
+            {{~ else if category.name | string.downcase == "metais sanitários" ~}}
+            <img
+              src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-torneiras-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Realidade Aumentada Qr-Code">
+              {{ valid = false }}
+            {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
+            <img
+              src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-duchas-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Realidade Aumentada Qr-Code">
+              {{ valid = false }}
+            {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
+            <img
+              src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-loucas-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Realidade Aumentada Qr-Code">
+              {{ valid = false }}
+            {{~ end ~}}
+          {{ end }}
+        {{~ end ~}}
+      </a>
     </div>
 
     <!-- Description -->
@@ -115,7 +124,7 @@
   {{ product_floating product: product }}
 
   {{~ if product_has_specialist_popup ~}}
-    {{ product_popup }}
+  {{ product_popup }}
   {{~ end ~}}
 
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
@@ -151,7 +160,7 @@
         </defs>
       </svg>
     </button>
-    
+
     <button onclick="open3d('{{ product.images.size }}')">
       <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_145_151)">

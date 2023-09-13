@@ -8,16 +8,16 @@
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
-<body>
+<body class="cidade">
   {{ gtm_config_body gtm_id: common.gtm_id }}                
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
   </header>
 
   {{~ if data.hotsite.name | string.contains "Franquia" ~}}
-  {{ franquia_html data: data }}
+    {{ franquia_html data: data }}
   {{~ else ~}}
-  {{ cidade_html data: data }}
+    {{ cidade_html data: data }}
   {{~ end ~}}
 
   {{ footer products:common.lighbox_products.products.nodes }}

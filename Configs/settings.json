@@ -143,8 +143,8 @@
       "name": "Além Paraíba",
       "stores": [
         {
-          "name": "Centro - Além Paraíba",
-          "adress": "Av. Dr. Ricardo Grimaldo Estides, 215 Centro, Além Paraíba - MG, 36660-000",
+          "name": "Centro",
+          "adress": "Rua Dr. Sobral Pinto, 175, Vila Laroca, Além Paraíba - MG, 36660-000",
           "phone": "(32) 3462-4934",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro",   
           "monday": "8:00 às 19:00",
@@ -2973,7 +2973,7 @@
       "stores": [
         {
           "name": "Vila Suissa",
-          "adress": "Av. Francisco Rodrigues Filho, 580 - Vila Suissa, Mogi das Cruzes - SP, 08810-000",
+          "adress": "Av. Francisco Rodrigues Filho, 580 - Mogilar, Mogi das Cruzes - SP, 08773-380",
           "phone": "(11) 2564-9105",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/mogi-das-cruzes/vila-suissa",
           "monday": "9:00 às 18:00",
@@ -4071,6 +4071,24 @@
       ]
     },
     {
+      "name": "Valença",
+      "stores": [
+        {
+          "name": "Parque Pentagna",
+          "adress": "R. Vito Pentagna, 469 - Parque Pentagna, Valença - RJ, 27600-000",
+          "phone": "(24) 2025-0419",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/valenca/parque-pentagna",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Volta Redonda",
       "stores": [
         {
@@ -4143,6 +4161,24 @@
       ]
     },
     {
+      "name": "Teixeira de Freitas",
+      "stores": [
+        {
+          "name": "São Lourenço",
+          "adress": "Av. Presidente Getúlio Vargas, 3941 - São Lourenço, Teixeira de Freitas - BA, 45.992-000",
+          "phone": "(73) 99999-9120",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/teixeira-de-freitas/sao-lourenco",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Vitória da Conquista",
       "stores": [
         {
@@ -4192,6 +4228,42 @@
           "thursday": "9:00 às 18:00",
           "friday": "9:00 às 18:00",
           "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "São Francisco do Sul",
+      "stores": [
+        {
+          "name": "Iperoba",
+          "adress": "R. Evelina Monteiro Musse, 6301 - Iperoba, São Francisco do Sul - SC, 89240-000",
+          "phone": "(41) 98874-5839",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/santa-catarina/sao-francisco-do-sul/iperoba",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Anápolis",
+      "stores": [
+        {
+          "name": "Jundiaí",
+          "adress": "Av. Visc. de Taunay, 588 - Jundiaí, Anápolis - GO, 75110-730",
+          "phone": "(62) 99304-7022",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/anapolis/jundiai",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

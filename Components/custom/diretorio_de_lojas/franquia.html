@@ -38,7 +38,7 @@
       return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
-    let custom_number = document.querySelector(".cidade__info .whatsapp-link").href
+    let custom_number = document.querySelector(".cidade__info .whatsapp-link")?.href + "?" ?? "https://api.whatsapp.com/send?phone=553192490299&"
 
     let whatsapp_link = document.querySelectorAll(".whatsapp-link");
 
@@ -50,7 +50,7 @@
 
     whatsapp_link.forEach(wts => {
       wts.setAttribute("href",
-        `${custom_number}?text=[ABCZAP] Olá! Acessei a página da ABC ${store} - ${city} e gostaria de mais informações`
+        `${custom_number}text=[ABCZAP] Olá! Acessei a página da ABC ${store} - ${city} e gostaria de mais informações`
       )
     })
   </script>

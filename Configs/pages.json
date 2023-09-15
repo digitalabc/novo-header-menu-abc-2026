@@ -102,7 +102,7 @@
                 "query": "generic.graphql"
             },
             {
-                "urlMatch": "semana-do-consumidor",
+                "urlMatch": "semana-do-cliente",
                 "path": "Custom/old_se/semana_do_consumidor.html",
                 "query": "semana_do_consumidor.graphql"
             },

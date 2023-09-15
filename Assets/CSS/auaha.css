@@ -5829,7 +5829,7 @@ div[class^=como-chegar] > span + i {
   width: 100%;
   height: 20px;
   border-radius: 8px;
-  background: rgba(225,30,60,0.52);
+  background: #94a9a5;
   color: #fff;
   text-align: center;
   font-size: 10px;
@@ -5842,7 +5842,7 @@ div[class^=como-chegar] > span + i {
   position: absolute;
   left: 0;
   height: 100%;
-  background: #e11e3c;
+  background: #114037;
   z-index: -1;
 }
 .semana-do-consumidor .showcase .spot .cronometro {

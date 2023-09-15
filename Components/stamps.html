@@ -11,8 +11,7 @@
         {{~ for promotion in promotions ~}}
             {{~ if promotion.stamp ~}}        
                 {{~ if !promotion.stamp.empty ~}}
-                    {{ stamp_url = store.urls.static_img + promotion.stamp }}
-                    <img class="stamp-image" src="{{stamp_url}}" style="max-width: 80px" />
+                    <img class="stamp-image" src="{{promotion.full_stamp_url}}" style="max-width: 80px" /> <br />
                 {{~ end ~}}
             {{~ end ~}}
         {{~ end ~}}

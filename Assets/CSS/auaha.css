@@ -5676,7 +5676,7 @@ div[class^=como-chegar] > span + i {
 }
 .semana-do-consumidor #cronometro >span {
   margin-right: 20px;
-  color: #fff;
+  color: #114037;
   font-weight: 500;
   font-size: 25px;
 }
@@ -5704,12 +5704,12 @@ div[class^=como-chegar] > span + i {
   align-items: center;
   justify-content: center;
   padding: 0 4px;
-  background: #fff;
+  background: #f3ebe2;
   min-width: 40px;
   height: 26px;
   font-size: 25px;
   font-weight: bold;
-  color: #363636;
+  color: #114037;
 }
 @media screen and (max-width: 991px) {
   .semana-do-consumidor #cronometro .cron .days,
@@ -5738,7 +5738,7 @@ div[class^=como-chegar] > span + i {
 .semana-do-consumidor #cronometro .cron .sep:before,
 .semana-do-consumidor #cronometro .cron .sep:after {
   content: '';
-  background: #fff;
+  background: #f3ebe2;
   border-radius: 50%;
   width: 3px;
   height: 3px;
@@ -5754,7 +5754,7 @@ div[class^=como-chegar] > span + i {
 }
 .semana-do-consumidor .showcase__title {
   font-size: 26px;
-  color: #333;
+  color: #114037;
   font-weight: 700;
 }
 @media screen and (max-width: 991px) {
@@ -5764,7 +5764,7 @@ div[class^=como-chegar] > span + i {
 }
 .semana-do-consumidor .showcase__link {
   text-decoration: underline;
-  color: #000;
+  color: #114037;
   font-size: 12px;
   transition: all 0.2s ease-in-out;
 }
@@ -5801,7 +5801,7 @@ div[class^=como-chegar] > span + i {
   width: fit-content;
   margin-left: auto;
   margin-bottom: 5px;
-  color: #fff;
+  color: #f3ebe2;
 }
 .semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__link:hover {
   color: #e30613;

@@ -20,67 +20,34 @@ query Hotsite($url: String!) {
       urlOnClick
     }
   }
-  vitrineCronometro: search(query: "") {
-    ...vitrineCronometro
+  vitrineCronometro: hotsite(hotsiteId: 98563) {
+    ...produtos
   }
-  vitrine1: search(query: "") {
-    ...vitrine1
+  vitrine1: hotsite(hotsiteId: 99008) {
+    ...produtos
   }
-  vitrine2: search(query: "") {
-    ...vitrine2
+  vitrine2: hotsite(hotsiteId: 99009) {
+    ...produtos
   }
-  vitrine3: search(query: "") {
-    ...vitrine3
+  vitrine3: hotsite(hotsiteId: 99010) {
+    ...produtos
   }
-  vitrine4: search(query: "") {
-    ...vitrine4
+  vitrine4: hotsite(hotsiteId: 99011) {
+    ...produtos
   }
-  vitrine5: search(query: "") {
-    ...vitrine5
+  vitrine5: hotsite(hotsiteId: 99012) {
+    ...produtos
   }
-  vitrine6: search(query: "") {
-    ...vitrine6
-  }
-}
-fragment vitrineCronometro on Search {
-  products(first: 9, sortKey: SALES, sortDirection: DESC) {
-    ...productsCon
+  vitrine6: hotsite(hotsiteId: 99013) {
+    ...produtos 
   }
 }
 
-fragment vitrine1 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+fragment produtos on SingleHotsite {
+  products(first: 20, sortKey: SALES, sortDirection: DESC) {
     ...productsCon
   }
 }
-
-fragment vitrine2 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-
-fragment vitrine3 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-fragment vitrine4 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-fragment vitrine5 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-fragment vitrine6 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-
 
 fragment productsCon on ProductsConnection {
   nodes {

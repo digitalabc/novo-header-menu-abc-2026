@@ -24,12 +24,12 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
-        {{~ if product_is_box && !page_product && !comprePorUnidade ~}}
+        {{~ if product_is_box && !page_product && !comprePorUnidade && prices.multiplication_factor > 0 ~}}
           <p class="precoCalculado">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
             <small>/m²</small>
           </p>
-        {{ else if product_is_box && !page_product && comprePorUnidade }}
+        {{ else if product_is_box && !page_product && comprePorUnidade && prices.multiplication_factor > 0 }}
           <p class="precoCalculado">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
             <small>/pç</small>

@@ -23,6 +23,7 @@
 }}
 
 <div class="spot">
+  {{ product | debug.log }} 
     <div class="spot__image">
         {{ stamps promotions: product.promotions  }}
         {{ product_discount_spot discount_percentage: product.prices.discount_percentage virtual_reality: virtual_reality }}

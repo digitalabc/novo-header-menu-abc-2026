@@ -6,11 +6,15 @@
     Usage:
       carousel banners: banners position: "Topo"
 ## }}
-{{~ if banners && position ~}}
-{{~ grouped_banners = banners | group.by @(do; ret $0.position;end) ~}}
-{{~ banners = grouped_banners | group.get position ~}}
-{{~ end ~}}
-
+{{~ 
+  if banners && position
+    banners = banners | array.sort "order"
+    grouped_banners = banners | group.by @(do; ret $0.position;end)
+    banners = grouped_banners | group.get position
+    banners_by_name = banners | group.by @(do; ret $0.banner_name;end)
+    banners_names = banners_by_name | object.keys
+  end 
+~}}
 
 {{~ if banners && banners.size > 0 ~}}
   {{~ if carousel ~}}

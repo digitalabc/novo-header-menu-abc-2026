@@ -10,6 +10,7 @@ query Home {
       title
       width
       urlOnClick
+      order
     }
     contents {
       content

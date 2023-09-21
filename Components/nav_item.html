@@ -14,7 +14,7 @@
     {{~ link = link | string.prepend "/" ~}}
 {{~ end ~}}
 {{~ if children.size == 0 && !is_submenu ~}}
-    <li class="nav-item nav-item--nv1">
+    <li class="nav-item nav-item--nv1" style="order: {{current_menu.order}}">
         <a class="nav-link" href="{{link}}">{{current_menu.name | string.downcase | string.capitalize}}</a>
     </li>
 {{~ else if children.size == 0 && is_submenu ~}}
@@ -22,7 +22,7 @@
         <a class="nav-link" href="{{link}}">{{current_menu.name | string.downcase | string.capitalize}}</a>
     </li>
 {{~ else if !is_submenu ~}}
-    <li class="nav-item nav-item--nv1">
+    <li class="nav-item nav-item--nv1" style="order: {{current_menu.order}}">
         <a href="{{link}}" class="nav-link dropdown-toggle" >{{current_menu.name | string.downcase | string.capitalize}}</a>
         <div class="dropdown-menu">
           <ul>

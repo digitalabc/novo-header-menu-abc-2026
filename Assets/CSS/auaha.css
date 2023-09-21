@@ -5676,7 +5676,7 @@ div[class^=como-chegar] > span + i {
 }
 .semana-do-consumidor #cronometro >span {
   margin-right: 20px;
-  color: #f3ebe2;
+  color: #fff;
   font-weight: 500;
   font-size: 25px;
 }
@@ -5704,12 +5704,12 @@ div[class^=como-chegar] > span + i {
   align-items: center;
   justify-content: center;
   padding: 0 4px;
-  background: #f3ebe2;
+  background: #fff;
   min-width: 40px;
   height: 26px;
   font-size: 25px;
   font-weight: bold;
-  color: #114037;
+  color: #363636;
 }
 @media screen and (max-width: 991px) {
   .semana-do-consumidor #cronometro .cron .days,
@@ -5738,7 +5738,7 @@ div[class^=como-chegar] > span + i {
 .semana-do-consumidor #cronometro .cron .sep:before,
 .semana-do-consumidor #cronometro .cron .sep:after {
   content: '';
-  background: #f3ebe2;
+  background: #fff;
   border-radius: 50%;
   width: 3px;
   height: 3px;
@@ -5764,7 +5764,7 @@ div[class^=como-chegar] > span + i {
 }
 .semana-do-consumidor .showcase__link {
   text-decoration: underline;
-  color: #114037;
+  color: #000;
   font-size: 12px;
   transition: all 0.2s ease-in-out;
 }
@@ -5772,7 +5772,7 @@ div[class^=como-chegar] > span + i {
   color: #e30613;
 }
 .semana-do-consumidor .showcase[data-showcase="cronometer"] {
-  background: #114037;
+  background: #f2ebe1;
   padding: 40px 0;
 }
 @media screen and (max-width: 991px) {
@@ -5801,7 +5801,7 @@ div[class^=como-chegar] > span + i {
   width: fit-content;
   margin-left: auto;
   margin-bottom: 5px;
-  color: #f3ebe2;
+  color: #fff;
 }
 .semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__link:hover {
   color: #e30613;
@@ -7992,8 +7992,8 @@ header {
   z-index: 99;
 }
 #menu-offcanvas .nav-mobile__list--root {
-  max-height: calc(100vh - 55px - 240px);
-  max-height: calc(100dvh - 240px);
+  max-height: calc(100vh - 55px - 255px);
+  max-height: calc(100dvh - 255px);
   overflow: auto;
 }
 #menu-offcanvas .nav-mobile__list--root::-webkit-scrollbar {
@@ -8002,7 +8002,7 @@ header {
 #menu-offcanvas .nav-mobile__list--nv1 {
   overflow: auto;
   max-height: calc(100vh - 55px - 40px);
-  max-height: calc(100dvh - 55px - 40px);
+  max-height: calc(100dvh - 40px);
 }
 .search__form {
   position: relative;

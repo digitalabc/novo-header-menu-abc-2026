@@ -110,7 +110,7 @@ function checkZipAddress(zipcode) {
     }
     else {
       address = "Rio Grande do Sul"
-    }
+    } 
   } else {
     window.alert("Região inválida")
   }

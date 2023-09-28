@@ -1,9 +1,9 @@
-query ProductPage($productId: Long!, $selections: [AttributeFilterInput]){
+query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partnerAccessToken: String){
   shop {
     mainUrl
     checkoutUrl
   }
-  product(productId:$productId) {
+  product(productId:$productId,  partnerAccessToken: $partnerAccessToken) {
     buyTogether{
       productId
     }
@@ -40,6 +40,7 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput]){
       reviewDate
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp
@@ -67,7 +68,7 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput]){
       subscriptionOnly
     }
   }
-  productRecommendations(productId:$productId) {
+  productRecommendations(productId:$productId, partnerAccessToken: $partnerAccessToken) {
     alias
     productName
     productId
@@ -107,6 +108,7 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput]){
       }
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp

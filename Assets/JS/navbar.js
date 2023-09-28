@@ -134,6 +134,14 @@ async function checkoutPartnerAssociate(checkoutId) {
 }
 
 /**
+ * Disassociates a partner with a checkout
+ * @param {string} checkoutId - The id of the checkout to be disassociated
+ */
+async function checkoutPartnerDisassociate(checkoutId) {
+    return await client.checkout.partnerDisassociate(checkoutId);
+}
+
+/**
  * Returns a given cookie's value
  * @param {string} name - The cookie key
  */

@@ -7205,12 +7205,6 @@ header {
 .spot__image-wrapper a {
   display: flex;
 }
-.spot__image .stamps {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
-}
 .spot__image .stamps-discount {
   z-index: 1;
   position: absolute;
@@ -7771,6 +7765,17 @@ header {
   display: block;
   margin: 0 auto 3px;
   min-height: 20px;
+}
+.stamps {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 112px;
+  gap: 4px;
 }
 .nav-all__item--root {
   font-weight: 500;
@@ -8525,39 +8530,48 @@ header {
   font-size: 14px;
   text-decoration-line: underline;
 }
-#zone-popup {
+#dialog_input_cep {
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 99;
-  display: none;
+  visibility: hidden;
   padding: 36px 24px 24px;
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 0 0 2px 0 #000, 0 6px 6px 0 rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
 }
 @media screen and (max-width: 991px) {
-  #zone-popup {
+  #dialog_input_cep {
     left: 15px;
     max-width: calc(100% - 30px);
     width: 100%;
   }
 }
-#zone-popup i {
+#dialog_input_cep.hidden {
+  display: none;
+}
+#dialog_input_cep.open {
+  visibility: visible;
+  opacity: 1;
+}
+#dialog_input_cep i {
   position: absolute;
   top: -10px;
   left: 18px;
   z-index: -1;
   filter: drop-shadow(0 -3px 0 rgba(0,0,0,0.3));
 }
-#zone-popup > h3 {
+#dialog_input_cep > h3 {
   margin-bottom: 18px;
   color: #392f2d;
   font-weight: 600;
   font-size: 16px;
   line-height: 110%;
 }
-#zone-popup > button {
+#dialog_input_cep > button {
   position: absolute;
   top: 0;
   right: 0;
@@ -8565,11 +8579,11 @@ header {
   padding: 12px;
   background: none;
 }
-#zone-popup div {
+#dialog_input_cep div {
   display: flex;
   align-items: center;
 }
-#zone-popup div input {
+#dialog_input_cep div input {
   padding: 0 20px;
   height: 48px;
   border: 1px solid #5d5d5d;
@@ -8580,7 +8594,7 @@ header {
   font-size: 12px;
   line-height: normal;
 }
-#zone-popup div button {
+#dialog_input_cep div button {
   padding: 16px 40px;
   border-radius: 0 6px 6px 0;
   background-color: #e30613;

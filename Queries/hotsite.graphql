@@ -1,5 +1,5 @@
-query Hotsite($url: String!, $resultSize: Int, $offset: Int, $sortKey: ProductSortKeys, $sortDirection: SortDirection, $filters: [ProductFilterInput], $maximumPrice: Decimal, $minimumPrice: Decimal) {
-  hotsite(url: $url) {
+query Hotsite($url: String!, $resultSize: Int, $offset: Int, $sortKey: ProductSortKeys, $sortDirection: SortDirection, $filters: [ProductFilterInput], $maximumPrice: Decimal, $minimumPrice: Decimal, $partnerAccessToken: String) {
+  hotsite(url: $url, partnerAccessToken: $partnerAccessToken) {
     name
     pageSize
     banners {
@@ -83,6 +83,7 @@ query Hotsite($url: String!, $resultSize: Int, $offset: Int, $sortKey: ProductSo
           }
         }
         promotions {
+          fullStampUrl
           content
           id
           stamp

@@ -1,4 +1,4 @@
-query Hotsite($url: String!) {
+query Hotsite($url: String!, $partnerAccessToken: String) {
   hotsite(url:$url) {
     name
     seo {
@@ -20,25 +20,25 @@ query Hotsite($url: String!) {
       urlOnClick
     }
   }
-  vitrineCronometro: search(query: "") {
+  vitrineCronometro: search(query: "", partnerAccessToken: $partnerAccessToken) {
     ...vitrineCronometro
   }
-  vitrine1: search(query: "") {
+  vitrine1: search(query: "", partnerAccessToken: $partnerAccessToken) {
     ...vitrine1
   }
-  vitrine2: search(query: "") {
+  vitrine2: search(query: "", partnerAccessToken: $partnerAccessToken) {
     ...vitrine2
   }
-  vitrine3: search(query: "") {
+  vitrine3: search(query: "", partnerAccessToken: $partnerAccessToken) {
     ...vitrine3
   }
-  vitrine4: search(query: "") {
+  vitrine4: search(query: "", partnerAccessToken: $partnerAccessToken) {
     ...vitrine4
   }
-  vitrine5: search(query: "") {
+  vitrine5: search(query: "", partnerAccessToken: $partnerAccessToken) {
     ...vitrine5
   }
-  vitrine6: search(query: "") {
+  vitrine6: search(query: "", partnerAccessToken: $partnerAccessToken) {
     ...vitrine6
   }
 }
@@ -129,6 +129,7 @@ fragment productsCon on ProductsConnection {
       }
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp

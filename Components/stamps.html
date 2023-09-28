@@ -7,14 +7,13 @@
 ## }}
 
 {{~ if promotions ~}}
-    <div class="stamps d-flex row">
-        {{~ for promotion in promotions ~}}
-            {{~ if promotion.stamp ~}}        
-                {{~ if !promotion.stamp.empty ~}}
-                    {{ stamp_url = "{{store.urls.static_img}}" + promotion.stamp }}
-                    <img class="stamp-image" src="{{stamp_url}}" style="max-width: 80px" />
-                {{~ end ~}}
-            {{~ end ~}}
+  <div class="stamps">
+    {{~ for promotion in promotions ~}}
+      {{~ if promotion.stamp ~}}
+        {{~ if !promotion.stamp.empty ~}}
+          <img class="stamp-image" src="{{promotion.full_stamp_url}}" />
         {{~ end ~}}
-    </div>
+      {{~ end ~}}
+    {{~ end ~}}
+  </div>
 {{~ end ~}}

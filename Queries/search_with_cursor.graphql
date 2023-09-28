@@ -75,6 +75,7 @@ query ($searchQuery: String,
           }
         }
         promotions{
+          fullStampUrl
           content
           id
           stamp

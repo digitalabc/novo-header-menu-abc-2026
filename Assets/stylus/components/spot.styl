@@ -59,27 +59,21 @@
       a
         display flex
 
-    .stamps
-      position: absolute;
+    .stamps-discount
+      z-index 1
+      position absolute
       top: 10px;
-      left: 10px;
-      z-index: 1;
-
-      &-discount
-        z-index 1
-        position absolute
-        top: 10px;
-        right 10px
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 35px;
-        height: 35px;
-        background: #392F2D
-        color: #ffffff;
-        font-weight: 600;
-        font-size: 12px;
-        border-radius 50%
+      right 10px
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35px;
+      height: 35px;
+      background: #392F2D
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 12px;
+      border-radius 50%
 
   &__buttons
     >*:not(.add-to-cart-button)

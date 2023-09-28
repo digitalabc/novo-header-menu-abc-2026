@@ -1,5 +1,5 @@
-query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
-  menuGroups(url:$url) {
+query Common($url: String!, $scriptPageTypes: [ScriptPageType!], $partnerAccessToken: String) {
+  menuGroups(url:$url, partnerAccessToken: $partnerAccessToken) {
     menuGroupId
     position
     imageUrl
@@ -21,7 +21,7 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!]) {
     priority
     content
   }
-  lighboxProducts: hotsite(hotsiteId: 98669) {
+  lighboxProducts: hotsite(hotsiteId: 98669, partnerAccessToken: $partnerAccessToken) {
     ...lighboxProducts
   }
   categories(first: 50) {
@@ -108,6 +108,7 @@ fragment productsCon on ProductsConnection {
       value
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp

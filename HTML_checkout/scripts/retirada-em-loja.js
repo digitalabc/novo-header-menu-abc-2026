@@ -85,7 +85,6 @@ function validaRetireEmLoja() {
 
     $.ajax(settings).done(function (response, status) {
       response.forEach(({ referencia, peso, departamento, categoria, subcategoria }) => {
-        console.log(response)
         retireEmLoja = listaRetireEmLoja.includes(categoria.toLowerCase()) || listaRetireEmLoja.includes(departamento.toLowerCase()) || listaRetireEmLoja.includes(subcategoria.toLowerCase())
         pesoTotal += (produtos[referencia] * peso);
 

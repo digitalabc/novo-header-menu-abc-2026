@@ -33,16 +33,17 @@
 }}
 
 <section class="product__image">
-    {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
-        {{ product_gallery product: product images: product.attribute_selections.selected_variant.images }}
-    {{~ else ~}}
-        {{ product_gallery product: product images: product.images }}
-    {{~ end ~}}
-    <div class="obs desktop">
-      Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas <br>
-      exclusivamente pelo site. O frete não está incluso. Fotos meramente <br>
-      ilustrativas.
-    </div>
+  {{ stamps promotions: product.promotions }}
+  {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
+      {{ product_gallery product: product images: product.attribute_selections.selected_variant.images }}
+  {{~ else ~}}
+      {{ product_gallery product: product images: product.images }}
+  {{~ end ~}}
+  <div class="obs desktop">
+    Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas <br>
+    exclusivamente pelo site. O frete não está incluso. Fotos meramente <br>
+    ilustrativas.
+  </div>
 </section>
 
 <div class="product__details">

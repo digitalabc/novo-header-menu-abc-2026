@@ -1,5 +1,5 @@
-query Hotsite($url: String!) {
-  hotsite (url:$url) {
+query Hotsite($url: String!, $partnerAccessToken: String) {
+  hotsite (url:$url, partnerAccessToken: $partnerAccessToken) {
     name
     pageSize
     banners {
@@ -39,16 +39,16 @@ query Hotsite($url: String!) {
       name
     }
   }
-  vitrineBanner: hotsite(hotsiteId: 98787) {
+  vitrineBanner: hotsite(hotsiteId: 98787, partnerAccessToken: $partnerAccessToken) {
     ...vitrineBanner
   }
-  vitrineMobile: hotsite(hotsiteId: 98788) {
+  vitrineMobile: hotsite(hotsiteId: 98788, partnerAccessToken: $partnerAccessToken) {
     ...vitrineMobile
   }
-  vitrine2: hotsite(hotsiteId: 98789) {
+  vitrine2: hotsite(hotsiteId: 98789, partnerAccessToken: $partnerAccessToken) {
     ...vitrine2
   }
-  vitrine3: hotsite(hotsiteId: 98790) {
+  vitrine3: hotsite(hotsiteId: 98790, partnerAccessToken: $partnerAccessToken) {
     ...vitrine3
   }
 }
@@ -76,7 +76,6 @@ fragment vitrine3 on SingleHotsite {
     ...productsCon
   }
 }
-
 
 fragment productsCon on ProductsConnection {
   nodes {
@@ -125,6 +124,7 @@ fragment productsCon on ProductsConnection {
       }
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp

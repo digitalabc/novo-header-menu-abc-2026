@@ -580,7 +580,7 @@
         {
           "name": "Novo Eldorado",
           "adress": "Av. João César de Oliveira, 6185 - Novo Eldorado, Contagem - MG, 32341-000",
-          "phone": "(31) 98399-7551",
+          "phone": "(31) 4112-9283",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/contagem/novo-eldorado",
           "monday": "8:30 às 18:30",
           "tuesday": "8:30 às 18:30",
@@ -1234,6 +1234,24 @@
           "thursday": "9:00 às 19:00",
           "friday": "9:00 às 19:00",
           "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+        {
+      "name": "Lajinha",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Natal Rodrigues Pereira, 214 - Centro, Lajinha - MG, 36980-000",
+          "phone": "(33) 98436-9170",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/lajinha/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -2865,6 +2883,24 @@
       ]
     },
     {
+      "name": "Jaú",
+      "stores": [
+        {
+          "name": "Chácara Bela Vista",
+          "adress": "Av. Isaltino do Amaral Carvalho, 1770 - Chácara Bela Vista, Jaú - SP, 17209-010",
+          "phone": "(14) 3601-2023",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/são-paulo/jau/chacara-bela-vista",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Lins",
       "stores": [
         {
@@ -3012,6 +3048,24 @@
           "adress": "Rua Professor Ferreira Lima, 100 - Centro, Mogi Mirim - SP, 13800-199",
           "phone": "(19) 3862-2832",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/mogi-mirim/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Pacaembu",
+      "stores": [
+        {
+          "name": "Santa Cecília",
+          "adress": "Av. Pacaembu, 925 - Santa Cecília, Pacaembu - SP, 01234-001",
+          "phone": "(11) 2495-4365",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/pacaembu/santa-cecilia",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -4143,6 +4197,24 @@
       ]
     },
     {
+      "name": "Ponta Grossa",
+      "stores": [
+        {
+          "name": "Jardim Carvalho",
+          "adress": "R. Padre Renato Canto, Canta, 207 - Jardim Carvalho, Ponta Grossa - PR, 84015-476",
+          "phone": "(42) 3323-2581",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/ponta-grossa/jardim-carvalho",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Brasília",
       "stores": [
         {
@@ -4312,6 +4384,19 @@
           "adress": "Av. Ceará, 2480 - Vila Rica, Campo Grande - MS, 79022-391",
           "phone": "(64) 3040-4909",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/campo-grande/vila-rica",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        },
+        {
+          "name": "Vila Santa Dorotheia",
+          "adress": "Av. Eduardo Elias Zahran, 455 - Vila Santa Dorotheia, Campo Grande - MS, 79050-000",
+          "phone": "(67) 4001-3131",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/campo-grande/vila-santa-dorotheia",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",

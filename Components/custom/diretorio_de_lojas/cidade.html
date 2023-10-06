@@ -9,11 +9,14 @@
   end
 }}
 
+{{ info_cidade = settings.cidades | array.filter @(do; ret $0.name == cidade ;end) | array.first }}
+{{ estado = info_cidade.state }}
+
 <section class="template__container">
   <div class="template__content">
     <div class="lojas__top">
       <div class="lojas__top--descricao">
-        <h1 class="lojas__top--title">Loja de Material de Construção {{ cidade }}</h1>
+        <h1 class="lojas__top--title">Loja de Material de Construção {{cidade}}</h1>
         <div class="lojas__top--text">
           <br>
           <h2>Por que comprar na ABC da Construção?</h2>
@@ -89,7 +92,7 @@
           </p>
 
           <br>
-          <p>As lojas ABC da Construção em Minas Gerais estão localizadas nas principais cidades do Estado. As lojas
+          <p>As lojas ABC da Construção em {{estado}} estão localizadas nas principais cidades do Estado. As lojas
             de material de construção em {{cidade}} vão deixar os mineiros ansiosos para construir ou reformar com
             tantas ofertas!</p>
 
@@ -111,7 +114,7 @@
           </p>
 
           <br>
-          <p>Encontre a loja ABC da Construção em Minas Gerais mais próxima de você, e aproveite as ofertas para
+          <p>Encontre a loja ABC da Construção em {{estado}} mais próxima de você, e aproveite as ofertas para
             finalizar a sua obra!</p>
 
         </div>

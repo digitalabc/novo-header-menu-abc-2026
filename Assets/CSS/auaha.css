@@ -6366,15 +6366,6 @@ div[class^=como-chegar] > span + i {
     display: none;
   }
 }
-.hotsite.vr-category .stamps-vr {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  z-index: 1;
-}
-.hotsite.vr-category .stamps-vr--no_discount {
-  top: 10px;
-}
 .hotsite.vr-category .vr-banners {
   padding: 0;
 }
@@ -7209,7 +7200,6 @@ header {
 }
 .spot__image .stamps-discount {
   position: absolute;
-  position: absolute;
   top: 10px;
   right: 10px;
   z-index: 1;
@@ -7780,6 +7770,15 @@ header {
   max-height: 112px;
   pointer-events: none;
   gap: 4px;
+}
+.stamps-vr {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  z-index: 1;
+}
+.stamps-vr--no_discount {
+  top: 10px;
 }
 .nav-all__item--root {
   font-weight: 500;

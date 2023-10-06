@@ -141,12 +141,13 @@
   "cidades": [
     {
       "name": "Além Paraíba",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
           "adress": "Rua Dr. Sobral Pinto, 175, Vila Laroca, Além Paraíba - MG, 36660-000",
           "phone": "(32) 2010-1807",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro",   
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/alem-paraiba/centro",
           "monday": "8:00 às 19:00",
           "tuesday": "8:00 às 19:00",
           "wednesday": "8:00 às 19:00",
@@ -154,13 +155,14 @@
           "friday": "8:00 às 19:00",
           "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
-         }
+        }
       ]
-     },
-     {
+    },
+    {
       "name": "Alfenas",
+      "state": "Minas Gerais",
       "stores": [
-         {
+        {
           "name": "Cruz Preta",
           "adress": "Av. José Paulino da Costa, n° 290 - Cruz Preta, Alfenas - MG, 37132-204",
           "phone": "(35) 99164-0014",
@@ -172,13 +174,14 @@
           "friday": "7:30 às 17:30",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
-         }
+        }
       ]
-     },
+    },
     {
       "name": "Barbacena",
+      "state": "Minas Gerais",
       "stores": [
-         {
+        {
           "name": "Centro",
           "adress": "R. Mal. Floriano Peixoto, 229 - Centro, Barbacena - MG, 36202-344",
           "phone": "(32) 3331-0349",
@@ -190,11 +193,12 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
-         }
+        }
       ]
-     },
+    },
     {
       "name": "Belo Horizonte",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Atelier ABC - Lourdes",
@@ -291,6 +295,7 @@
     },
     {
       "name": "Belo Vale",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -309,6 +314,7 @@
     },
     {
       "name": "Betim",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "ABC da Construção Angola",
@@ -340,6 +346,7 @@
     },
     {
       "name": "Bicas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -358,6 +365,7 @@
     },
     {
       "name": "Boa Esperança",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -376,6 +384,7 @@
     },
     {
       "name": "Brasília de Minas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -394,6 +403,7 @@
     },
     {
       "name": "Brumadinho",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Santo Antônio",
@@ -412,6 +422,7 @@
     },
     {
       "name": "Campo Belo",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Jardim Europa",
@@ -430,6 +441,7 @@
     },
     {
       "name": "Capelinha",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -443,12 +455,12 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
-
         }
       ]
     },
     {
       "name": "Carandaí",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -462,12 +474,12 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
-
         }
       ]
     },
     {
       "name": "Carangola",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Triângulo",
@@ -486,6 +498,7 @@
     },
     {
       "name": "Caratinga",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Dário Grossi",
@@ -504,6 +517,7 @@
     },
     {
       "name": "Cataguases",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Vila Domingos Lopes",
@@ -522,6 +536,7 @@
     },
     {
       "name": "Caxambú",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -534,12 +549,13 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
-          "sunday": "Fechado"          
+          "sunday": "Fechado"
         }
       ]
     },
     {
       "name": "Congonhas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -552,12 +568,13 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
-          "sunday": "Fechado"          
+          "sunday": "Fechado"
         }
       ]
     },
     {
       "name": "Conselheiro Lafaiete",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -576,6 +593,7 @@
     },
     {
       "name": "Contagem",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Novo Eldorado",
@@ -594,6 +612,7 @@
     },
     {
       "name": "Coronel Fabriciano",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Giovanini",
@@ -612,6 +631,7 @@
     },
     {
       "name": "Curvelo",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -630,6 +650,7 @@
     },
     {
       "name": "Diamantina",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -648,6 +669,7 @@
     },
     {
       "name": "Divino",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Barra do Taquaracu",
@@ -666,6 +688,7 @@
     },
     {
       "name": "Divinópolis",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "ABC da Construção 21 de abril",
@@ -679,7 +702,6 @@
           "friday": "8:00 às 19:00",
           "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
-
         },
         {
           "name": "ABC da Construção R. Goiás",
@@ -698,6 +720,7 @@
     },
     {
       "name": "Ervália",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -716,6 +739,7 @@
     },
     {
       "name": "Espera Feliz",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Vale do Sol ll",
@@ -734,6 +758,7 @@
     },
     {
       "name": "Extrema",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Ponte Nova",
@@ -752,6 +777,7 @@
     },
     {
       "name": "Formiga",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -770,6 +796,7 @@
     },
     {
       "name": "Governador Valadares",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Nossa Senhora das Graças",
@@ -788,6 +815,7 @@
     },
     {
       "name": "Guanhães",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Novo Retiro",
@@ -806,6 +834,7 @@
     },
     {
       "name": "Guaxupé",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Japy",
@@ -824,6 +853,7 @@
     },
     {
       "name": "Igarapé",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "União",
@@ -842,6 +872,7 @@
     },
     {
       "name": "Ipanema",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -860,6 +891,7 @@
     },
     {
       "name": "Ipatinga",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Cidade Nobre",
@@ -878,6 +910,7 @@
     },
     {
       "name": "Ipuiúna",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -896,6 +929,7 @@
     },
     {
       "name": "Itabira",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Alto Pereira",
@@ -914,6 +948,7 @@
     },
     {
       "name": "Itabirito",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -932,6 +967,7 @@
     },
     {
       "name": "Itajubá",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "São Judas Tadeu",
@@ -950,6 +986,7 @@
     },
     {
       "name": "Itamarandiba",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -963,12 +1000,12 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
-
         }
       ]
     },
     {
       "name": "Itamonte",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -987,6 +1024,7 @@
     },
     {
       "name": "Itaúna",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Graças",
@@ -1005,6 +1043,7 @@
     },
     {
       "name": "Janaúba",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1023,6 +1062,7 @@
     },
     {
       "name": "Januária",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1041,6 +1081,7 @@
     },
     {
       "name": "João Monlevade",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Carneirinhos",
@@ -1059,6 +1100,7 @@
     },
     {
       "name": "João Pinheiro",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1077,6 +1119,7 @@
     },
     {
       "name": "Juatuba",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1095,6 +1138,7 @@
     },
     {
       "name": "Juiz de Fora",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "ABTAH",
@@ -1204,6 +1248,7 @@
     },
     {
       "name": "Lagoa da Prata",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1222,6 +1267,7 @@
     },
     {
       "name": "Lagoa Santa",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Joana Darc",
@@ -1238,8 +1284,9 @@
         }
       ]
     },
-        {
+    {
       "name": "Lajinha",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1258,6 +1305,7 @@
     },
     {
       "name": "Lavras",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1276,6 +1324,7 @@
     },
     {
       "name": "Leopoldina",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1294,6 +1343,7 @@
     },
     {
       "name": "Lima Duarte",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1312,6 +1362,7 @@
     },
     {
       "name": "Machado",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1330,6 +1381,7 @@
     },
     {
       "name": "Manhuaçu",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Engenho da Serra",
@@ -1348,6 +1400,7 @@
     },
     {
       "name": "Mariana",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Vila do Carmo",
@@ -1366,6 +1419,7 @@
     },
     {
       "name": "Mateus Leme",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Estancia Champagnat",
@@ -1384,6 +1438,7 @@
     },
     {
       "name": "Matias Barbosa",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Parque dos Sabias",
@@ -1402,6 +1457,7 @@
     },
     {
       "name": "Mercês",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1420,6 +1476,7 @@
     },
     {
       "name": "Miraí",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1438,6 +1495,7 @@
     },
     {
       "name": "Montalvânia",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1456,6 +1514,7 @@
     },
     {
       "name": "Montes Claros",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Todos Os Santos",
@@ -1474,6 +1533,7 @@
     },
     {
       "name": "Muriaé",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Barra",
@@ -1492,6 +1552,7 @@
     },
     {
       "name": "Mutum",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1510,6 +1571,7 @@
     },
     {
       "name": "Nepomuceno",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1528,6 +1590,7 @@
     },
     {
       "name": "Nova Lima",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "ABC da Construção Chácara Bom Retiro",
@@ -1546,6 +1609,7 @@
     },
     {
       "name": "Nova Resende",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1564,6 +1628,7 @@
     },
     {
       "name": "Nova Serrana",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Jardim do Lago",
@@ -1582,6 +1647,7 @@
     },
     {
       "name": "Ouro Branco",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1600,6 +1666,7 @@
     },
     {
       "name": "Ouro Preto",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Barra",
@@ -1631,6 +1698,7 @@
     },
     {
       "name": "Paracatu",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Av. Alto Córrego",
@@ -1649,6 +1717,7 @@
     },
     {
       "name": "Pará de Minas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Vila Sinho",
@@ -1667,6 +1736,7 @@
     },
     {
       "name": "Passa Quatro",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1685,6 +1755,7 @@
     },
     {
       "name": "Passos",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Distrito São Francisco",
@@ -1703,6 +1774,7 @@
     },
     {
       "name": "Patos de Minas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1721,6 +1793,7 @@
     },
     {
       "name": "Patrocínio",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "São Vicente",
@@ -1739,6 +1812,7 @@
     },
     {
       "name": "Pedro Leopoldo",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Cachoeira Grande",
@@ -1757,6 +1831,7 @@
     },
     {
       "name": "Perdões",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "São Francisco",
@@ -1775,6 +1850,7 @@
     },
     {
       "name": "Pirapora",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Santos Dumont",
@@ -1793,6 +1869,7 @@
     },
     {
       "name": "Piraúba",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Sossego",
@@ -1811,6 +1888,7 @@
     },
     {
       "name": "Piumhi",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1829,6 +1907,7 @@
     },
     {
       "name": "Poços de Caldas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Jardim Elizabete",
@@ -1847,6 +1926,7 @@
     },
     {
       "name": "Ponte Nova",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Guarapiranga",
@@ -1865,6 +1945,7 @@
     },
     {
       "name": "Porteirinha",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1883,6 +1964,7 @@
     },
     {
       "name": "Pouso Alegre",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Fatima",
@@ -1901,6 +1983,7 @@
     },
     {
       "name": "Raul Soares",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1919,6 +2002,7 @@
     },
     {
       "name": "Ribeirão das Neves",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Veneza",
@@ -1937,6 +2021,7 @@
     },
     {
       "name": "Rio Pomba",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1955,6 +2040,7 @@
     },
     {
       "name": "Sabará",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -1973,6 +2059,7 @@
     },
     {
       "name": "Salinas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Alvorada",
@@ -1991,6 +2078,7 @@
     },
     {
       "name": "Santa Luzia",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Duquesa I",
@@ -2009,6 +2097,7 @@
     },
     {
       "name": "Santos Dumont",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2027,6 +2116,7 @@
     },
     {
       "name": "São Gonçalo do Sapucaí",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Praião",
@@ -2045,6 +2135,7 @@
     },
     {
       "name": "São Gotardo",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Nossa Senhora Aparecida",
@@ -2063,6 +2154,7 @@
     },
     {
       "name": "São João Del-Rei",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Fábricas",
@@ -2075,12 +2167,13 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
-          "sunday": "Fechado"          
+          "sunday": "Fechado"
         }
       ]
     },
     {
       "name": "São João Nepomuceno",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2099,6 +2192,7 @@
     },
     {
       "name": "São Lourenço",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2117,6 +2211,7 @@
     },
     {
       "name": "Sete Lagoas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Canaã",
@@ -2135,6 +2230,7 @@
     },
     {
       "name": "Tarumirim",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2153,6 +2249,7 @@
     },
     {
       "name": "Teófilo Otoni",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2171,6 +2268,7 @@
     },
     {
       "name": "Tocantins",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Bela Vista",
@@ -2189,6 +2287,7 @@
     },
     {
       "name": "Três Corações",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Jardim das hortências",
@@ -2207,6 +2306,7 @@
     },
     {
       "name": "Três Marias",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Parque Diadorim",
@@ -2225,6 +2325,7 @@
     },
     {
       "name": "Três Pontas",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Aeroporto",
@@ -2243,6 +2344,7 @@
     },
     {
       "name": "Ubá",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2261,6 +2363,7 @@
     },
     {
       "name": "Uberaba",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "São Benedito",
@@ -2279,6 +2382,7 @@
     },
     {
       "name": "Uberlândia",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Martins",
@@ -2297,6 +2401,7 @@
     },
     {
       "name": "Varginha",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "ABC da Construção Conj. Hab. Centenario",
@@ -2322,12 +2427,13 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
-          "sunday": "Fechado"          
+          "sunday": "Fechado"
         }
       ]
     },
     {
       "name": "Vespasiano",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Názia",
@@ -2346,6 +2452,7 @@
     },
     {
       "name": "Viçosa",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2364,6 +2471,7 @@
     },
     {
       "name": "Visconde do Rio Branco",
+      "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
@@ -2382,6 +2490,7 @@
     },
     {
       "name": "Amparo",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Silvestre",
@@ -2395,11 +2504,12 @@
           "friday": "8:30 às 19:00",
           "saturday": "8:30 às 13:00",
           "sunday": "Fechado"
-         }
+        }
       ]
-     },
+    },
     {
       "name": "Andradina",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Piscina",
@@ -2418,6 +2528,7 @@
     },
     {
       "name": "Aparecida",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Paraíba",
@@ -2436,6 +2547,7 @@
     },
     {
       "name": "Araraquara",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Sedenho",
@@ -2454,6 +2566,7 @@
     },
     {
       "name": "Artur Nogueira",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "São Bento",
@@ -2472,6 +2585,7 @@
     },
     {
       "name": "Arujá",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Limoeiro",
@@ -2490,6 +2604,7 @@
     },
     {
       "name": "Assis",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Claudia",
@@ -2508,6 +2623,7 @@
     },
     {
       "name": "Atibaia",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "ABC da Construção Jardim Paulista",
@@ -2539,6 +2655,7 @@
     },
     {
       "name": "Avaré",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Paineiras",
@@ -2557,6 +2674,7 @@
     },
     {
       "name": "Bariri",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila São José",
@@ -2575,6 +2693,7 @@
     },
     {
       "name": "Barretos",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -2593,6 +2712,7 @@
     },
     {
       "name": "Botucatu",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Padovan",
@@ -2611,6 +2731,7 @@
     },
     {
       "name": "Bragança Paulista",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Taboão",
@@ -2629,6 +2750,7 @@
     },
     {
       "name": "Caçapava",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Residencial Esperança",
@@ -2647,6 +2769,7 @@
     },
     {
       "name": "Campinas",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Cambuí",
@@ -2665,6 +2788,7 @@
     },
     {
       "name": "Caraguatatuba",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Pontal de Santa Marina",
@@ -2683,6 +2807,7 @@
     },
     {
       "name": "Cruzeiro",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Retiro da Mantiqueira",
@@ -2701,6 +2826,7 @@
     },
     {
       "name": "Divinolândia",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -2719,6 +2845,7 @@
     },
     {
       "name": "Guaratinguetá",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "ABC da Construção Campo do Galvão",
@@ -2750,6 +2877,7 @@
     },
     {
       "name": "Hortolândia",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim do Bosque",
@@ -2768,6 +2896,7 @@
     },
     {
       "name": "Indaiatuba",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Res. Dona Maria José",
@@ -2786,6 +2915,7 @@
     },
     {
       "name": "Itapira",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -2804,6 +2934,7 @@
     },
     {
       "name": "Itu",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Parque das Indústrias",
@@ -2822,6 +2953,7 @@
     },
     {
       "name": "Jacareí",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "ABC da Construção Jardim California 1",
@@ -2866,6 +2998,7 @@
     },
     {
       "name": "Jaguariúna",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Europa",
@@ -2884,6 +3017,7 @@
     },
     {
       "name": "Jaú",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Chácara Bela Vista",
@@ -2902,6 +3036,7 @@
     },
     {
       "name": "Lins",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -2920,6 +3055,7 @@
     },
     {
       "name": "Lorena",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -2951,6 +3087,7 @@
     },
     {
       "name": "Louveira",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Niero II",
@@ -2969,6 +3106,7 @@
     },
     {
       "name": "Marília",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Fragata",
@@ -2987,6 +3125,7 @@
     },
     {
       "name": "Matão",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -3000,12 +3139,12 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
-
         }
       ]
     },
     {
       "name": "Mogi das Cruzes",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Mogilar",
@@ -3024,6 +3163,7 @@
     },
     {
       "name": "Mogi Guaçu",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Parque Cidade Nova",
@@ -3042,6 +3182,7 @@
     },
     {
       "name": "Mogi Mirim",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -3060,6 +3201,7 @@
     },
     {
       "name": "Pacaembu",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Santa Cecília",
@@ -3078,6 +3220,7 @@
     },
     {
       "name": "Paulínia",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Santa Cecília",
@@ -3096,6 +3239,7 @@
     },
     {
       "name": "Pindamonhangaba",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "São Benedito",
@@ -3114,6 +3258,7 @@
     },
     {
       "name": "Piracaia",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim São Maria",
@@ -3132,6 +3277,7 @@
     },
     {
       "name": "Piracicaba",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Piracicamirim",
@@ -3150,6 +3296,7 @@
     },
     {
       "name": "Pirituba",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Pirituba",
@@ -3168,6 +3315,7 @@
     },
     {
       "name": "Praia Grande",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Guilhermina",
@@ -3186,6 +3334,7 @@
     },
     {
       "name": "Ribeirão Preto",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Maurílio Biagi",
@@ -3204,6 +3353,7 @@
     },
     {
       "name": "Santa Isabel",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Nova",
@@ -3222,6 +3372,7 @@
     },
     {
       "name": "Santo Antônio de Posse",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Bianchi",
@@ -3240,6 +3391,7 @@
     },
     {
       "name": "Santos",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Boqueirão",
@@ -3258,6 +3410,7 @@
     },
     {
       "name": "São Bernardo do Campo",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -3276,6 +3429,7 @@
     },
     {
       "name": "São Caetano do Sul",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -3294,6 +3448,7 @@
     },
     {
       "name": "São João da Boa Vista",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Santo André",
@@ -3312,6 +3467,7 @@
     },
     {
       "name": "São José do Rio Pardo",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Brasil",
@@ -3330,6 +3486,7 @@
     },
     {
       "name": "São José do Rio Preto",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Moyses Miguel Haddad",
@@ -3348,6 +3505,7 @@
     },
     {
       "name": "São José dos Campos",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Vila Ema",
@@ -3366,6 +3524,7 @@
     },
     {
       "name": "São Roque",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -3384,6 +3543,7 @@
     },
     {
       "name": "Sertãozinho",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Diamante",
@@ -3402,6 +3562,7 @@
     },
     {
       "name": "Sorocaba",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Parque Campolim",
@@ -3420,6 +3581,7 @@
     },
     {
       "name": "Taguaí",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Centro",
@@ -3438,6 +3600,7 @@
     },
     {
       "name": "Taubaté",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Julieta",
@@ -3456,6 +3619,7 @@
     },
     {
       "name": "Ubatuba",
+      "state": "São Paulo",
       "stores": [
         {
           "name": "Jardim Carolina",
@@ -3474,6 +3638,7 @@
     },
     {
       "name": "Afonso Cláudio",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Grama",
@@ -3491,6 +3656,7 @@
       ]
     },
     {
+      "state": "Espírito Santo",
       "name": "Anchieta",
       "stores": [
         {
@@ -3510,6 +3676,7 @@
     },
     {
       "name": "Baixo Guandu",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Centro",
@@ -3528,6 +3695,7 @@
     },
     {
       "name": "Colatina",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Lacê",
@@ -3546,6 +3714,7 @@
     },
     {
       "name": "Guaçuí",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Loteamento Santa Cecilia",
@@ -3564,6 +3733,7 @@
     },
     {
       "name": "Guarapari",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Aeroporto",
@@ -3582,6 +3752,7 @@
     },
     {
       "name": "Iconha",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Centro",
@@ -3600,6 +3771,7 @@
     },
     {
       "name": "Iúna",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Iuna",
@@ -3618,6 +3790,7 @@
     },
     {
       "name": "Linhares",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Centro",
@@ -3631,12 +3804,12 @@
           "friday": "8:30 às 18:00",
           "saturday": "8:30 às 12:30",
           "sunday": "Fechado"
-          
         }
       ]
     },
     {
       "name": "Mimoso do Sul",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Pratinha",
@@ -3655,6 +3828,7 @@
     },
     {
       "name": "Serra",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Jardim Limoeiro",
@@ -3673,6 +3847,7 @@
     },
     {
       "name": "Venda Nova do Imigrante",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Centro",
@@ -3691,6 +3866,7 @@
     },
     {
       "name": "Vitória",
+      "state": "Espírito Santo",
       "stores": [
         {
           "name": "Santa Lucia",
@@ -3709,6 +3885,7 @@
     },
     {
       "name": "Araruama",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Pontinha",
@@ -3726,6 +3903,7 @@
       ]
     },
     {
+      "state": "Rio de Janeiro",
       "name": "Bom Jesus do Itabapoana",
       "stores": [
         {
@@ -3745,6 +3923,7 @@
     },
     {
       "name": "Cachoeiras de Macacu",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "ABC da Construção Japuíba",
@@ -3776,6 +3955,7 @@
     },
     {
       "name": "Itaperuna",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Cidade Nova",
@@ -3794,6 +3974,7 @@
     },
     {
       "name": "Itatiaia",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Centro",
@@ -3812,6 +3993,7 @@
     },
     {
       "name": "Macaé",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Riviera Fluminense",
@@ -3830,6 +4012,7 @@
     },
     {
       "name": "Magé",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Centro",
@@ -3848,6 +4031,7 @@
     },
     {
       "name": "Maricá",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "São José de Imbassai",
@@ -3861,12 +4045,12 @@
           "friday": "9:00 às 18:00",
           "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
-
         }
       ]
     },
     {
       "name": "Niterói",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "São Francisco",
@@ -3880,12 +4064,12 @@
           "friday": "9:00 às 18:00",
           "saturday": "9:00 às 18:00",
           "sunday": "Fechado"
-
         }
       ]
     },
     {
       "name": "Nova Friburgo",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Centro",
@@ -3904,6 +4088,7 @@
     },
     {
       "name": "Paraíba do Sul",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Jatoba",
@@ -3922,6 +4107,7 @@
     },
     {
       "name": "Petrópolis",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "ABC da Construção Itaipava",
@@ -3953,6 +4139,7 @@
     },
     {
       "name": "Resende",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Santa Isabel",
@@ -3971,6 +4158,7 @@
     },
     {
       "name": "Rio das Ostras",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Jardim Mariléa",
@@ -3989,6 +4177,7 @@
     },
     {
       "name": "Rio de Janeiro",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "ABC da Construção Barra da Tijuca",
@@ -4072,6 +4261,7 @@
     },
     {
       "name": "Santo Antônio de Pádua",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "ABC da Construção Santo Antônio de Pádua",
@@ -4090,6 +4280,7 @@
     },
     {
       "name": "Teresópolis",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Várzea",
@@ -4108,6 +4299,7 @@
     },
     {
       "name": "Três Rios",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Centro",
@@ -4126,6 +4318,7 @@
     },
     {
       "name": "Valença",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Parque Pentagna",
@@ -4144,6 +4337,7 @@
     },
     {
       "name": "Volta Redonda",
+      "state": "Rio de Janeiro",
       "stores": [
         {
           "name": "Vila Santa Cecília",
@@ -4162,6 +4356,7 @@
     },
     {
       "name": "Foz do Iguaçu",
+      "state": "Paraná",
       "stores": [
         {
           "name": "Monjolo",
@@ -4180,6 +4375,7 @@
     },
     {
       "name": "Londrina",
+      "state": "Paraná",
       "stores": [
         {
           "name": "Jardim Shangri-Lá",
@@ -4198,6 +4394,7 @@
     },
     {
       "name": "Ponta Grossa",
+      "state": "Paraná",
       "stores": [
         {
           "name": "Jardim Carvalho",
@@ -4216,6 +4413,7 @@
     },
     {
       "name": "Brasília",
+      "state": "Distrito Federal",
       "stores": [
         {
           "name": "Asa Sul",
@@ -4234,6 +4432,7 @@
     },
     {
       "name": "Teixeira de Freitas",
+      "state": "Bahia",
       "stores": [
         {
           "name": "São Lourenço",
@@ -4252,6 +4451,7 @@
     },
     {
       "name": "Vitória da Conquista",
+      "state": "Bahia",
       "stores": [
         {
           "name": "Felícia",
@@ -4270,6 +4470,7 @@
     },
     {
       "name": "Toledo",
+      "state": "Paraná",
       "stores": [
         {
           "name": "Centro",
@@ -4288,6 +4489,7 @@
     },
     {
       "name": "Balneário Camboriú",
+      "state": "Santa Catarina",
       "stores": [
         {
           "name": "Nações",
@@ -4306,6 +4508,7 @@
     },
     {
       "name": "São Francisco do Sul",
+      "state": "Santa Catarina",
       "stores": [
         {
           "name": "Iperoba",
@@ -4324,6 +4527,7 @@
     },
     {
       "name": "Anápolis",
+      "state": "Goiás",
       "stores": [
         {
           "name": "Jundiaí",
@@ -4342,6 +4546,7 @@
     },
     {
       "name": "Catalão",
+      "state": "Goiás",
       "stores": [
         {
           "name": "Santa Rita",
@@ -4360,6 +4565,7 @@
     },
     {
       "name": "Goiânia",
+      "state": "Goiás",
       "stores": [
         {
           "name": "Setor Sul",
@@ -4378,6 +4584,7 @@
     },
     {
       "name": "Campo Grande",
+      "state": "Mato Grosso do Sul",
       "stores": [
         {
           "name": "Vila Rica",

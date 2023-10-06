@@ -7,8 +7,20 @@
 ## }}
 
 {{~ if promotions ~}}
+    {{ promotionsFilter = promotions | array.filter @(do; ret $0.id != "10728" ;end) }}
+    {{ promotions3d = promotions | array.filter @(do; ret $0.id == "10728" ;end) }}
     <div class="stamps">
-        {{~ for promotion in promotions ~}}
+        {{~ for promotion in promotionsFilter ~}}
+            {{~ if promotion.stamp ~}}        
+                {{~ if !promotion.stamp.empty ~}}
+                    <img class="stamp-image" src="{{promotion.full_stamp_url}}" alt="selo promoção"/>
+                {{~ end ~}}
+            {{~ end ~}}
+        {{~ end ~}}
+    </div>
+    <div class="stamps-vr{{if discount_percentage <= 0 }} stamps-vr--no_discount{{end}}">
+        {{ discount_percentage | debug.log }} 
+        {{~ for promotion in promotions3d ~}}
             {{~ if promotion.stamp ~}}        
                 {{~ if !promotion.stamp.empty ~}}
                     <img class="stamp-image" src="{{promotion.full_stamp_url}}" alt="selo promoção"/>

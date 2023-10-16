@@ -16,6 +16,7 @@
 				"Brasília de Minas",
 				"Brumadinho",
 				"Campo Belo",
+				"Campos dos Goytacazes",
 				"Capelinha",
 				"Carangola",
 				"Caratinga",
@@ -177,6 +178,7 @@
 			"coluna": "2",
 			"coluna_mobile": "2",
 			"cidades": [
+				"Guarapuava",
 				"Londrina",
 				"Toledo"
 			]

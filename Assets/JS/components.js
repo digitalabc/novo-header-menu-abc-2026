@@ -142,4 +142,15 @@ function jump(id) {
   var headerHeight = document.querySelector("header").getBoundingClientRect().height
   var top = document.getElementById(id).offsetTop;
   window.scrollTo(0, (top - headerHeight));
-}​
+}
+
+function accordion(button) {
+  event.preventDefault();
+  button.classList.toggle("active")
+  var panel = button.nextElementSibling;
+  if (panel.style.maxHeight) {
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+}

@@ -1,9 +1,13 @@
 $bf_primary = #D88730;
 
 .black_friday
+  .container
+    max-width: 950px;
+
   &__fullbanner
     padding: 54px 0;
-    background-color: #000000;
+    background: url("https://s3-alpha-sig.figma.com/img/0248/7206/2bb57fa75bbb296fa190e2dff5c2047b?Expires=1698624000&Signature=gjL9OdUF4tYDx82y0vbiA~hB6ffXtOQv6eFprv9n~dGTUrRXBWhUfa-cNiwwm3En3Ci~5xRdQDkdOoGBNOpDoth64rOOVuXm~tlZVJxkd2TwJSOYZkFtrey0j0zkF3IGzLgA3ZvDQRTfi7Uw2nwSjMa4GtcbmQctP~PnGKhEOFi7jdQeOPwj~J5RBxZiMFB4nJVSCvMyaypw5zvXd8lyvhvzMR0G8jENcLZdFvIX~NrP9mDG2WStwF1SYq9BvOCa6j9J2NIliDqzwMZgpdpty4m1UQ4LxscmwLT8Aeibt5Qj5pokFMMGFoevIcXy2sfNfS50MPDZphAfC4NXGniVhw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"), lightgray 50% / cover no-repeat;
+    background-color: #141615;
 
     .container > div
       display: flex;
@@ -16,7 +20,13 @@ $bf_primary = #D88730;
     color: #FFF;
     font-weight: 700;
     font-size: 32px;
-    line-height: normal;
+
+  &__subtitle
+    margin-bottom: 32px;
+    color: #FFF;
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
 
   &__paragraph
     color: #FFF;
@@ -28,7 +38,7 @@ $bf_primary = #D88730;
     padding: 11px 57px;
     border-radius: 8px;
     background-color: $bf_primary;
-    color: #FFF;
+    color: #FFFFFF;
     font-weight: 600;
     font-size: 20px;
 
@@ -36,7 +46,7 @@ $bf_primary = #D88730;
       color: #ffffff;
 
   &__disclaimer
-    color: #FFF;
+    color: #FFFFFF;
     font-weight: 400;
     font-size: 10px;
     line-height: 140%;
@@ -44,3 +54,162 @@ $bf_primary = #D88730;
   &__advantages
     padding: 32px 0;
     background-color: $bf_primary;
+
+    h2
+      margin-bottom: 8px;
+
+    p
+      margin-bottom: 32px;
+      text-align: center;
+
+  &__cards
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media mobile
+      flex-wrap: wrap;
+
+  &__card
+    padding: 9px;
+    width: calc(((100% - 3 * 75px) / 4));
+    height: auto;
+    background-color: #000000;
+    aspect-ratio: 180 / 150;
+
+    @media mobile
+      margin-bottom: 32px;
+      width: calc(((100% - 1 * 32px) / 2));
+
+    i
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 45px;
+
+    h3
+      color: #FFFFFF;
+      text-align: center;
+      font-weight: 700;
+      font-size: 16px;
+
+  &__categories
+    padding: 32px 0;
+    background-color: #141615;
+    text-align: center;
+
+    .container
+      > h2
+        margin-bottom: 32px;
+
+  &__showcase
+    margin-bottom: 32px;
+
+    &-title
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 32px;
+
+      @media mobile
+        flex-direction: column;
+
+      h3
+        color: #FFFFFF;
+        text-align: center;
+        font-weight: 700;
+        font-size: 32px;
+
+      a
+        display: block;
+        padding: 4px 16px;
+        border-radius: 16px;
+        background-color: $bf_primary;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 16px;
+        transition: $transition;
+
+        @media desktop
+          position: absolute;
+          right: 0;
+
+          &:hover
+            background-color: #000000;
+            color: $bf_primary;
+
+    &-list
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media mobile
+        flex-wrap: wrap;
+
+  &__spot
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(((100% - 3 * 75px) / 4));
+    height: auto;
+    border: 1px solid #FFF;
+    border-radius: 8px;
+    background: #454040;
+    aspect-ratio: 180 / 150;
+
+    @media mobile
+      margin-bottom: 32px;
+      width: calc(((100% - 1 * 32px) / 2));
+
+  &__faq
+    padding: 32px 0;
+    background-color: #060606;
+
+    &-container
+      margin: 0 auto;
+      max-width: 930px;
+
+      @media mobile
+        padding: 0 15px;
+
+    .black_friday__link
+      display: block;
+      margin: 32px auto 0;
+      max-width: fit-content;
+
+  &__question
+    margin-bottom: 8px;
+
+    button
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 16px 32px 40px;
+      width: 100%;
+      border-radius: 16px;
+      background: #1D1D1D;
+      color: #D88730;
+      font-weight: 600;
+      font-size: 24px;
+      transition: $transition;
+
+      &.active
+        border-radius: 16px 16px 0 0;
+
+      svg
+        fill: none;
+
+    div
+      overflow: hidden;
+      max-height: 0;
+      border-radius: 0 0 16px 16px;
+      background-color: #1D1D1D;
+      transition: $transition;
+
+      p
+        padding-bottom: 32px;
+        color: #FFF;
+        font-weight: 400;
+        font-size: 18px;
+        padding-inline: 40px;

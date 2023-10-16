@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ gtm_config_head gtm_id: common.gtm_id }}
+  {{ header default_title: "ABC da Construção" seo: data.hotsite.seo}}
+</head>
+
+<body class="black_friday">
+  {{ gtm_config_body gtm_id: common.gtm_id }}
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+
+  <!-- Fullbanner -->
+  <section class="black_friday__fullbanner">
+    <div class="container">
+      <div>
+        <img src="{{- store.urls.static_img }}black_friday/logo-black_friday.png" alt="">
+        <h1 class="black_friday__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+        <p class="black_friday__paragraph">Aproveite! No mês Black, os melhores descontos
+          estão na ABC da Construção.</p>
+        <a href="" class="black_friday__link">COMPRAR</a>
+        <small class="black_friday__disclaimer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor
+          incididunt ut labore et
+          dolore magna aliqua.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="black_friday__advantages">
+    <div class="container">
+      <h2 class="black_friday__title">
+        Título de vantagens da Black
+      </h2>
+      <p class="black_friday__paragraph">Os quadradinhos encima do texto serão ícones simples.</p>
+    </div>
+  </section>
+
+
+  <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ old_newsletter_popup }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "sharpspring", "components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home", "lightbox", "offcanvas", "event_manager"]}}
+</body>
+
+</html>

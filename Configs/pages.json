@@ -114,6 +114,10 @@
             {
                 "urlMatch": "central-de-atendimento/*",
                 "path": "attendance.html"
+            },
+            {
+                "urlMatch": "black-friday|blackfriday",
+                "path": "custom/black-friday.html"
             }
         ]
     },

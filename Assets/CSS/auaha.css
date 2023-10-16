@@ -6386,6 +6386,50 @@ div[class^=como-chegar] > span + i {
 .hotsite.vr-category .vr-banners > div ul img {
   width: 100%;
 }
+.black_friday__fullbanner {
+  padding: 54px 0;
+  background-color: #000;
+}
+.black_friday__fullbanner .container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 550px;
+  gap: 16px;
+}
+.black_friday__title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: normal;
+}
+.black_friday__paragraph {
+  color: #fff;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+}
+.black_friday__link {
+  padding: 11px 57px;
+  border-radius: 8px;
+  background-color: #d88730;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+}
+.black_friday__link:hover {
+  color: #fff;
+}
+.black_friday__disclaimer {
+  color: #fff;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 140%;
+}
+.black_friday__advantages {
+  padding: 32px 0;
+  background-color: #d88730;
+}
 .topbar {
   background: #392f2d;
   color: #fff;

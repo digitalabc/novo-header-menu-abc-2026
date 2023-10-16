@@ -6458,6 +6458,10 @@ div[class^=como-chegar] > span + i {
   }
 }
 .black_friday__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 9px;
   width: calc(((100% - 3 * 75px) / 4));
   height: auto;

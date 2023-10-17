@@ -4058,9 +4058,22 @@
           "friday": "9:00 às 18:00",
           "saturday": "9:00 às 18:00",
           "sunday": "Fechado"
+        },
+        {
+          "name": "Piratininga",
+          "adress": "Av. Doutor Raul de Oliveira Rodrigues, 2545, Lote 857, Quadra 155 - Piratininga, Niterói - RJ, 24350-630",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/niteroi/sao-francisco",
+          "phone": "",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
         }
       ]
-    },
+    }, 
     {
       "name": "Nova Friburgo",
       "state": "Rio de Janeiro",

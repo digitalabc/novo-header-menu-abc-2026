@@ -7,13 +7,17 @@ const dialogInputCep = document.getElementById('dialog_input_cep');
 function openInputCepModal(showModal) {
   if (showModal) {
     document.getElementById('dialog_input_cep').classList.remove('hidden')
+    document.getElementById('regional_offers_overlay').classList.remove('hidden')
     setTimeout(() => {
       document.getElementById('dialog_input_cep').classList.add('open')
+      document.getElementById('regional_offers_overlay').classList.add('open')
     }, 200);
   } else {
     document.getElementById('dialog_input_cep').classList.remove('open')
+    document.getElementById('regional_offers_overlay').classList.remove('open')
     setTimeout(() => {
       document.getElementById('dialog_input_cep').classList.add('hidden')
+      document.getElementById('regional_offers_overlay').classList.add('hidden')
     }, 200);
   }
 }
@@ -26,13 +30,9 @@ const handleZipCode = (event) => {
   input.value = zipCodeMask(input.value)
 
   if (input.value.length === 9) {
-    document.getElementById('submit-region-form').classList.remove('bg-gray-400')
     document.getElementById('submit-region-form').disabled = false
-    document.getElementById('submit-region-form').classList.add('bg-primary-600')
   } else {
-    document.getElementById('submit-region-form').classList.add('bg-gray-400')
     document.getElementById('submit-region-form').disabled = true
-    document.getElementById('submit-region-form').classList.remove('bg-primary-600')
   }
 }
 
@@ -110,7 +110,7 @@ function checkZipAddress(zipcode) {
     }
     else {
       address = "Rio Grande do Sul"
-    } 
+    }
   } else {
     window.alert("Região inválida")
   }
@@ -156,7 +156,7 @@ function validateRegionalOffers() {
  * @param {string} cep - The searched cep.
  */
 function setCepText(cep) {
-  const texts = document.querySelectorAll('#zone > p');
+  const texts = document.querySelectorAll('#regional_offers > p');
   let zipCode = parseInt(cep.replace("-", ""));
   let address = checkZipAddress(zipCode);
 
@@ -165,4 +165,6 @@ function setCepText(cep) {
       element.innerText = `Visualizando ofertas de ${address}`;
     });
   }
+
+  openInputCepModal(false)
 }

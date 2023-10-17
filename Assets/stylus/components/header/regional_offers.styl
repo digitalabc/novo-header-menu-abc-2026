@@ -1,4 +1,4 @@
-#zone
+#regional_offers
   display: flex;
   align-items: center;
   color: #5D5D5D;
@@ -10,6 +10,23 @@
 
   @media mobile
     margin-bottom: 10px;
+
+  &_overlay
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(#000000, 0.3);
+    opacity: 0;
+
+    &.hidden
+      display: none;
+
+    &.open
+      visibility: visible;
+      opacity: 1;
 
   > p
     color: #392F2D;

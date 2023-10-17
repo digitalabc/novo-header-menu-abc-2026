@@ -1,4 +1,5 @@
-<div id="dialog_input_cep" class="hidden">
+<div id="regional_offers_overlay" class="open"></div>
+<div id="dialog_input_cep" class="open">
   <i>
     <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M7.85996 0L15.674 13.5344H0.0458984L7.85996 0Z" fill="white" />
@@ -14,7 +15,7 @@
   <h3>Qual a sua localização?</h3>
   <div>
     <input id="cep_input" type="text" placeholder="Digite seu cep" maxlength="9" onkeyup="handleZipCode(event)">
-    <button id="submit-region-form" onclick="setRegionalOffers()">
+    <button id="submit-region-form" onclick="setRegionalOffers()" disabled>
       OK
     </button>
   </div>

@@ -178,8 +178,10 @@
 			"coluna": "2",
 			"coluna_mobile": "2",
 			"cidades": [
+				"Foz do Iguaçu", 
 				"Guarapuava",
 				"Londrina",
+				"Ponta Grossa", 
 				"Toledo"
 			]
 		},

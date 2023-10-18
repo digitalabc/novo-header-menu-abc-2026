@@ -19,7 +19,6 @@
         {{~ end ~}}
     </div>
     <div class="stamps-vr{{if discount_percentage <= 0 }} stamps-vr--no_discount{{end}}">
-        {{ discount_percentage | debug.log }} 
         {{~ for promotion in promotions3d ~}}
             {{~ if promotion.stamp ~}}        
                 {{~ if !promotion.stamp.empty ~}}

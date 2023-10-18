@@ -87,12 +87,7 @@
       {{ valid = true }}
       {{~ for category in product.product_categories ~}}
         {{ if valid }}
-          {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
-          <img
-            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-            alt="Realidade Aumentada Qr-Code">
-            {{ valid = false }}
-          {{~ else if category.name | string.downcase == "metais sanitários" ~}}
+          {{~ if category.name | string.downcase == "metais sanitários" ~}}
           <img
             src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-metais.jpg?theme={{store.theme}}&v={{store.last_modified}}"
             alt="Realidade Aumentada Qr-Code">
@@ -110,7 +105,9 @@
           {{~ end ~}}
         {{ end }}
       {{~ end ~}}
-      <div id="qrCode"></div>
+      {{~ if !is_pisos ~}}
+        <div id="qrCode"></div>
+      {{~ end ~}}
     </div>
 
     <!-- Shippng -->

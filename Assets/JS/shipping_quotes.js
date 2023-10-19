@@ -5,6 +5,8 @@
 */
 async function ShippingQuoteSubmit(e, productVariantId) {
     e.preventDefault();
+    document.getElementById("shipping-quotes-snippet-div-" + productVariantId).innerHTML = `<img style="display: block; margin: auto;" src="/localstatic/img/my-loader.svg?theme=local&v=" alt="">`;
+
     if (validateShippingAddress()) {
         try {
             const cep = document.getElementById('shipping-quote-cep').value;
@@ -55,7 +57,8 @@ function validateShippingAddress() {
 
     if (cep == partnerCep) {
         return true;
-    }
+    };
+
     return false;
 }
 
@@ -73,6 +76,8 @@ function openShippingModal() {
     let partnerCep = client.partner.getCep();
 
     document.querySelector("[id^='shipping-quotes-snippet-div']").innerHTML = ""
+
+    if (cep == "" || partnerCep == "") return false;
 
     setTimeout(() => {
         document.getElementById("shipping-invalid").style.display = "block";

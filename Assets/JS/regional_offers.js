@@ -47,77 +47,6 @@ const zipCodeMask = (value) => {
 }
 
 /**
- * Zipcore state check
- * @param {integer} zipcode
- */
-
-function checkZipAddress(zipcode) {
-  let address;
-
-  if (zipcode > 999999 && zipcode < 100000000) {
-    if (zipcode < 20000000) {
-      address = "São Paulo"
-    } else if (zipcode < 29000000) {
-      address = "Rio de Janeiro"
-    } else if (zipcode < 30000000) {
-      address = "Espirito Santo"
-    } else if (zipcode < 40000000) {
-      address = "Minas Gerais"
-    } else if (zipcode < 49000000) {
-      address = "Bahia"
-    } else if (zipcode < 50000000) {
-      address = "Sergipe"
-    } else if (zipcode < 57000000) {
-      address = "Pernambuco"
-    } else if (zipcode < 58000000) {
-      address = "Alagoas"
-    } else if (zipcode < 59000000) {
-      address = "Paraiba"
-    } else if (zipcode < 60000000) {
-      address = "Rio Grande do Norte"
-    } else if (zipcode < 64000000) {
-      address = "Ceará"
-    } else if (zipcode < 65000000) {
-      address = "Piauí"
-    } else if (zipcode < 66000000) {
-      address = "Maranhão"
-    } else if (zipcode < 68900000) {
-      address = "Pará"
-    } else if (zipcode < 69000000) {
-      address = "Amapá"
-    } else if (zipcode < 69300000) {
-      address = "Amazonas"
-    } else if (zipcode < 69900000) {
-      address = "Roraima"
-    } else if (zipcode < 70000000) {
-      address = "Acre"
-    } else if (zipcode < 72800000) {
-      address = "Distrito Federal"
-    } else if (zipcode < 77000000) {
-      address = "Goiás"
-    } else if (zipcode < 78000000) {
-      address = "Tocantins"
-    } else if (zipcode < 78900000) {
-      address = "Mato Grosso"
-    } else if (zipcode < 79000000) {
-      address = "Rondônia"
-    } else if (zipcode < 80000000) {
-      address = "Mato Grosso do Sul"
-    } else if (zipcode < 88000000) {
-      address = "Paraná"
-    } else if (zipcode < 90000000) {
-      address = "Santa Catarina"
-    }
-    else {
-      address = "Rio Grande do Sul"
-    }
-  } else {
-    window.alert("Região inválida")
-  }
-  return address
-}
-
-/**
  * Validates if it contains and set regional offers.
  */
 async function setRegionalOffers() {
@@ -173,7 +102,37 @@ async function changeRegionalOffers(cep) {
  */
 function validateRegionalOffers() {
   const cep = client.partner.getCep();
-  if (cep) setCepText(cep);
+  if (cep) {
+    setCepText(cep)
+  } else {
+    openInputCepModal(true)
+  }
+}
+
+/**
+ * Zipcore state check
+ * @param {integer} zipcode
+ */
+
+async function checkZipAddress(cep) {
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    if (!response.ok) {
+      throw new Error('Erro na consulta à API');
+    }
+
+    const texts = document.querySelectorAll('#regional_offers > p');
+    const data = await response.json();
+    if (texts) {
+      texts.forEach(element => {
+        element.innerText = `Visualizando ofertas de ${data.localidade} (${data.cep})`;
+      });
+    }
+    return true;
+  } catch (error) {
+    console.error('Erro na consulta: ' + error);
+  }
+  return false;
 }
 
 /**
@@ -181,15 +140,7 @@ function validateRegionalOffers() {
  * @param {string} cep - The searched cep.
  */
 function setCepText(cep) {
-  const texts = document.querySelectorAll('#regional_offers > p');
   let zipCode = parseInt(cep.replace("-", ""));
-  let address = checkZipAddress(zipCode);
-
-  if (texts) {
-    texts.forEach(element => {
-      element.innerText = `Visualizando ofertas de ${address}`;
-    });
-  }
-
+  checkZipAddress(zipCode);
   openInputCepModal(false)
 }

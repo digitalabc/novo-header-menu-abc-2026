@@ -144,6 +144,31 @@ async function setRegionalOffers() {
 }
 
 /**
+ * Validates if it contains and change regional offers.
+ */
+async function changeRegionalOffers(cep) {
+  if (!cep) return;
+
+  const checkout = await client.checkout.get();
+
+  if (checkout && checkout.data.checkoutId) {
+    const hasPartnerByRegion = client.partner.hasPartnerByRegion();
+
+    if (hasPartnerByRegion) {
+      await checkoutPartnerDisassociate(checkout.data.checkoutId);
+    }
+
+    const ok = await client.partner.setPartnerByRegion(cep);
+
+    if (ok) {
+      await checkoutPartnerAssociate(checkout.data.checkoutId);
+    }
+  }
+
+  location.reload();
+}
+
+/**
  * Validates if it contains regional offers.
  */
 function validateRegionalOffers() {

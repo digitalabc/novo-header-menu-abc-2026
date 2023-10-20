@@ -138,6 +138,7 @@ const estados = [
 			"Santo Antônio de Pádua",
 			"Teresópolis",
 			"Três Rios",
+			"Valença",
 			"Volta Redonda"
 		]
 	},
@@ -146,6 +147,7 @@ const estados = [
 		"coluna": "2",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Teixeira de Freitas",
 			"Vitória da Conquista"
 		]
 	},
@@ -170,7 +172,9 @@ const estados = [
 		"coluna": "2",
 		"coluna_mobile": "2",
 		"cidades": [
-			"Catalão"
+			"Anápolis",
+			"Catalão",
+			"Goiânia"
 		]
 	},
 	{

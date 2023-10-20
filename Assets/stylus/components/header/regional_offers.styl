@@ -38,13 +38,12 @@
     @media mobile
       font-size: 16px;
 
-  #regional_offers-name
-    &:hover
-      + .tooltip__text
-        visibility: visible;
-
   .tooltip
     position: relative;
+
+    &:hover
+      .tooltip__text
+        visibility: visible;
 
     &__text
       position: absolute;
@@ -53,12 +52,12 @@
       z-index: 1;
       visibility: hidden;
       margin-left: 12px;
-      padding: 5px 2px;
+      padding: 2px 5px;
       border-radius: 6px;
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
       color: $black;
       white-space: nowrap;
-      font-size: 10px;
+      font-size: 12px;
       transform: translateY(-50%);
 
 #dialog_input_cep

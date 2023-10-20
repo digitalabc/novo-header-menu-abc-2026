@@ -19,7 +19,7 @@
     visibility: hidden;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(#000000, 0.3);
+    background-color: rgba(#B8B8B8, 0.3);
     opacity: 0;
 
     &.hidden
@@ -30,10 +30,36 @@
       opacity: 1;
 
   > p
-    color: #392F2D;
+    color: $black;
     font-weight: 500;
     font-size: 14px;
     text-decoration-line: underline;
+
+    @media mobile
+      font-size: 16px;
+
+  #regional_offers-name
+    &:hover
+      + .tooltip__text
+        visibility: visible;
+
+  .tooltip
+    position: relative;
+
+    &__text
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      z-index: 1;
+      visibility: hidden;
+      margin-left: 12px;
+      padding: 5px 2px;
+      border-radius: 6px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      color: $black;
+      white-space: nowrap;
+      font-size: 10px;
+      transform: translateY(-50%);
 
 #dialog_input_cep
   position: absolute;

@@ -8,6 +8,7 @@ function openInputCepModal(showModal) {
   if (showModal) {
     document.getElementById('dialog_input_cep').classList.remove('hidden')
     document.getElementById('regional_offers_overlay').classList.remove('hidden')
+    document.querySelector('body').style.overflow = "hidden"
     setTimeout(() => {
       document.getElementById('dialog_input_cep').classList.add('open')
       document.getElementById('regional_offers_overlay').classList.add('open')
@@ -15,6 +16,7 @@ function openInputCepModal(showModal) {
   } else {
     document.getElementById('dialog_input_cep').classList.remove('open')
     document.getElementById('regional_offers_overlay').classList.remove('open')
+    document.querySelector('body').style.overflow = null
     setTimeout(() => {
       document.getElementById('dialog_input_cep').classList.add('hidden')
       document.getElementById('regional_offers_overlay').classList.add('hidden')
@@ -123,9 +125,12 @@ async function checkZipAddress(cep) {
 
     const texts = document.querySelectorAll('#regional_offers > p');
     const data = await response.json();
+    console.log(data);
     if (texts) {
       texts.forEach(element => {
-        element.innerText = `Visualizando ofertas de ${data.localidade} (${data.cep})`;
+        element.innerHTML = `
+        ${data.localidade} - ${data.uf}
+        <span class="tooltip__text">${data.cep}</span>`;
       });
     }
     return true;

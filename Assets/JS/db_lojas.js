@@ -52,6 +52,7 @@ const estados = [
 			"Juiz de Fora",
 			"Lagoa da Prata",
 			"Lagoa Santa",
+			"Lajinha",
 			"Lavras",
 			"Leopoldina",
 			"Lima Duarte",

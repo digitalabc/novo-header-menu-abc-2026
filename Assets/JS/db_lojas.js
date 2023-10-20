@@ -213,6 +213,7 @@ const estados = [
 			"Itapira",
 			"Itu",
 			"Jacareí",
+			"Jaú",
 			"Jaguariúna",
 			"Lins",
 			"Lorena",

@@ -74,6 +74,7 @@ const estados = [
 			"Ouro Branco",
 			"Ouro Preto",
 			"Pará de Minas",
+			"Paracatu", 
 			"Passa Quatro",
 			"Passos",
 			"Patos de Minas",

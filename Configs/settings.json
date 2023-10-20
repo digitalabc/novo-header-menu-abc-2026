@@ -4381,6 +4381,25 @@
       ]
     },
     {
+      "name": "Curitiba",
+      "state": "Paraná",
+      "stores": [
+        {
+          "name": "Cabral",
+          "adress": "Rua Vereador Antônio dos Reis Cavalheiro, 175 - Cabral, Curitiba - PR, 80035-210",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/curitiba/cabral",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:30",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Foz do Iguaçu",
       "state": "Paraná",
       "stores": [

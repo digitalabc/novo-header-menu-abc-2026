@@ -109,6 +109,10 @@ $bf_primary = #D88730;
   &__showcase
     margin-bottom: 32px;
 
+    @media mobile
+      display: flex;
+      flex-direction: column;
+
     &-title
       position: relative;
       display: flex;
@@ -117,7 +121,8 @@ $bf_primary = #D88730;
       margin-bottom: 32px;
 
       @media mobile
-        flex-direction: column;
+        display: contents;
+        margin-bottom: 0;
 
       h3
         color: #FFFFFF;
@@ -125,9 +130,13 @@ $bf_primary = #D88730;
         font-weight: 700;
         font-size: 32px;
 
+        @media mobile
+          margin-bottom: 32px;
+
       a
         display: block;
         padding: 4px 16px;
+        width: max-content;
         border-radius: 16px;
         background-color: $bf_primary;
         color: #FFFFFF;
@@ -142,6 +151,10 @@ $bf_primary = #D88730;
           &:hover
             background-color: #000000;
             color: $bf_primary;
+
+        @media mobile
+          order: 1;
+          margin: 0 auto;
 
     &-list
       display: flex;

@@ -2711,6 +2711,25 @@
       ]
     },
     {
+      "name": "Bertioga",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Chácaras",
+          "adress": "Av. Central, 122, Sala 3 - Chácaras, Bertioga - SP, 11259-219",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/bertioga/chacaras",
+          "monday": "8:00 às 17:00",
+          "tuesday": "8:00 às 17:00",
+          "wednesday": "8:00 às 17:00",
+          "thursday": "8:00 às 17:00",
+          "friday": "8:00 às 17:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Botucatu",
       "state": "São Paulo",
       "stores": [

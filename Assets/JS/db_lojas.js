@@ -16,6 +16,7 @@ const estados = [
 			"Brumadinho",
 			"Campo Belo",
 			"Capelinha",
+			"Carandaí", 
 			"Carangola",
 			"Caratinga",
 			"Cataguases",

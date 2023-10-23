@@ -20,6 +20,7 @@ const estados = [
 			"Caratinga",
 			"Cataguases",
 			"Caxambú",
+			"Congonhas", 
 			"Conselheiro Lafaiete",
 			"Contagem",
 			"Coronel Fabriciano",

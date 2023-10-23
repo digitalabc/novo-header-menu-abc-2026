@@ -112,7 +112,7 @@ function validateRegionalOffers() {
 }
 
 /**
- * Zipcore state check
+ * Zipcore state check - Using open API VIACEP (only for city and uf info)
  * @param {integer} zipcode
  */
 

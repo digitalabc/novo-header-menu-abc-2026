@@ -235,7 +235,6 @@ const estados = [
 			"Pindamonhangaba",
 			"Piracaia",
 			"Piracicaba",
-			"Pirituba",
 			"Praia Grande",
 			"Ribeirão Preto",
 			"Santa Isabel",

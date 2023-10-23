@@ -215,6 +215,7 @@ const estados = [
 			"Campinas",
 			"Caraguatatuba",
 			"Cruzeiro",
+			"Divinolândia",
 			"Guaratinguetá",
 			"Hortolândia",
 			"Indaiatuba",

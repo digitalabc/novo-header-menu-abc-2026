@@ -194,6 +194,7 @@ const estados = [
 			"Guarapuava",
 			"Londrina",
 			"Ponta Grossa",
+			"Telêmaco Borba",
 			"Toledo"
 		]
 	},

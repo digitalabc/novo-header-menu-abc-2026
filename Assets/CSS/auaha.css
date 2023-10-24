@@ -6391,8 +6391,12 @@ div[class^=como-chegar] > span + i {
 }
 .black_friday__fullbanner {
   padding: 54px 0;
-  background: url("https://s3-alpha-sig.figma.com/img/0248/7206/2bb57fa75bbb296fa190e2dff5c2047b?Expires=1698624000&Signature=gjL9OdUF4tYDx82y0vbiA~hB6ffXtOQv6eFprv9n~dGTUrRXBWhUfa-cNiwwm3En3Ci~5xRdQDkdOoGBNOpDoth64rOOVuXm~tlZVJxkd2TwJSOYZkFtrey0j0zkF3IGzLgA3ZvDQRTfi7Uw2nwSjMa4GtcbmQctP~PnGKhEOFi7jdQeOPwj~J5RBxZiMFB4nJVSCvMyaypw5zvXd8lyvhvzMR0G8jENcLZdFvIX~NrP9mDG2WStwF1SYq9BvOCa6j9J2NIliDqzwMZgpdpty4m1UQ4LxscmwLT8Aeibt5Qj5pokFMMGFoevIcXy2sfNfS50MPDZphAfC4NXGniVhw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"), #d3d3d3 50%/cover no-repeat;
+  background: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/bg-fullbanner.jpg"), cover no-repeat;
   background-color: #141615;
+}
+.black_friday__fullbanner .container {
+  display: flex;
+  align-items: center;
 }
 .black_friday__fullbanner .container > div {
   display: flex;

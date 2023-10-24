@@ -280,5 +280,15 @@ const estados = [
 			"Serra",
 			"Vitória"
 		]
-	}
+	},
+	{
+		"estado": "Santa Catarina",
+		"coluna": "4",
+		"coluna_mobile": "4",
+		"cidades": [
+			"Balneário Camboriú",
+			"São Francisco do Sul"
+			
+		]
+	},
 ]

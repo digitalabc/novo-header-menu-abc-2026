@@ -129,7 +129,6 @@ const estados = [
 			"Bom Jesus do Itabapoana",
 			"Cachoeiras de Macacu",
 			"Campos dos Goytacazes",
-			"Itaguaí",
 			"Itaperuna",
 			"Itatiaia",
 			"Macaé",

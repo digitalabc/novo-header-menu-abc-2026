@@ -6391,12 +6391,19 @@ div[class^=como-chegar] > span + i {
 }
 .black_friday__fullbanner {
   padding: 54px 0;
-  background: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/bg-fullbanner.jpg"), cover no-repeat;
+  background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/bg-fullbanner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: #141615;
 }
 .black_friday__fullbanner .container {
   display: flex;
   align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__fullbanner .container {
+    flex-direction: column;
+  }
 }
 .black_friday__fullbanner .container > div {
   display: flex;
@@ -6471,6 +6478,7 @@ div[class^=como-chegar] > span + i {
   height: auto;
   background-color: #000;
   aspect-ratio: 180/150;
+  border-radius: 8px;
 }
 @media screen and (max-width: 991px) {
   .black_friday__card {
@@ -6482,7 +6490,10 @@ div[class^=como-chegar] > span + i {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 45px;
+  margin-bottom: 8px;
+}
+.black_friday__card i img {
+  height: 60px;
 }
 .black_friday__card h3 {
   color: #fff;
@@ -6578,6 +6589,7 @@ div[class^=como-chegar] > span + i {
   border-radius: 8px;
   background: #454040;
   aspect-ratio: 180/150;
+  overflow: hidden;
 }
 @media screen and (max-width: 991px) {
   .black_friday__spot {
@@ -6622,8 +6634,12 @@ div[class^=como-chegar] > span + i {
 .black_friday__question button.active {
   border-radius: 16px 16px 0 0;
 }
+.black_friday__question button.active svg {
+  transform: rotate(180deg);
+}
 .black_friday__question button svg {
   fill: none;
+  transition: all 0.2s ease-in-out;
 }
 .black_friday__question div {
   overflow: hidden;

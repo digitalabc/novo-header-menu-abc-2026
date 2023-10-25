@@ -6,12 +6,17 @@ $bf_primary = #D88730;
 
   &__fullbanner
     padding: 54px 0;
-    background: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/bg-fullbanner.jpg"), cover no-repeat;
+    background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/bg-fullbanner.jpg");
+    background-size: cover;
+    background-repeat no-repeat;
     background-color: #141615;
 
     .container
       display flex;
       align-items center;
+
+      @media mobile
+        flex-direction column;
 
       > div
         display: flex;
@@ -84,6 +89,7 @@ $bf_primary = #D88730;
     height: auto;
     background-color: #000000;
     aspect-ratio: 180 / 150;
+    border-radius: 8px
 
     @media mobile
       margin-bottom: 32px;
@@ -93,7 +99,10 @@ $bf_primary = #D88730;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 45px;
+      margin-bottom: 8px;
+
+      img
+        height: 60px
 
     h3
       color: #FFFFFF;
@@ -178,6 +187,7 @@ $bf_primary = #D88730;
     border-radius: 8px;
     background: #454040;
     aspect-ratio: 180 / 150;
+    overflow hidden;
 
     @media mobile
       margin-bottom: 32px;
@@ -218,8 +228,12 @@ $bf_primary = #D88730;
       &.active
         border-radius: 16px 16px 0 0;
 
+        svg 
+          transform: rotate(180deg);
+
       svg
         fill: none;
+        transition: $transition;
 
     div
       overflow: hidden;

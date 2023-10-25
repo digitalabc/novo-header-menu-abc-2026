@@ -6639,6 +6639,7 @@ div[class^=como-chegar] > span + i {
 }
 .black_friday__question button svg {
   fill: none;
+  flex-shrink: 0;
   transition: all 0.2s ease-in-out;
 }
 .black_friday__question div {

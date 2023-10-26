@@ -47,7 +47,6 @@ const estados = [
 			"Itamonte",
 			"Itaúna",
 			"Jacutinga", 
-			"Janaúba",
 			"Januária",
 			"João Monlevade",
 			"João Pinheiro",

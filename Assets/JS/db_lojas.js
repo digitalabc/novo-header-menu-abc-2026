@@ -277,6 +277,7 @@ const estados = [
 			"Linhares",
 			"Mimoso do Sul",
 			"Serra",
+			"Venda Nova do Imigrante",
 			"Vitória"
 		]
 	},

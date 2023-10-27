@@ -10,14 +10,3 @@ function currentPage(path, btnList) {
     }
   })
 }
-
-function accordion(button) {
-  event.preventDefault()
-  button.classList.toggle("active")
-  var panel = button.nextElementSibling;
-  if (panel.style.maxHeight) {
-    panel.style.maxHeight = null;
-  } else {
-    panel.style.maxHeight = panel.scrollHeight + "px";
-  }
-}

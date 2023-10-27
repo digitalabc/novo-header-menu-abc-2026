@@ -6386,6 +6386,276 @@ div[class^=como-chegar] > span + i {
 .hotsite.vr-category .vr-banners > div ul img {
   width: 100%;
 }
+.black_friday .container {
+  max-width: 950px;
+}
+.black_friday__fullbanner {
+  padding: 54px 0;
+  background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/bg-fullbanner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #141615;
+}
+.black_friday__fullbanner .container {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__fullbanner .container {
+    flex-direction: column;
+  }
+}
+.black_friday__fullbanner .container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 550px;
+  gap: 16px;
+}
+.black_friday__title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+}
+.black_friday__subtitle {
+  margin-bottom: 32px;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+}
+.black_friday__paragraph {
+  color: #fff;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+}
+.black_friday__link {
+  padding: 11px 57px;
+  border-radius: 8px;
+  background-color: #d88730;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+}
+.black_friday__link:hover {
+  color: #fff;
+}
+.black_friday__disclaimer {
+  color: #fff;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 140%;
+}
+.black_friday__advantages {
+  padding: 32px 0;
+  background-color: #d88730;
+}
+.black_friday__advantages h2 {
+  margin-bottom: 8px;
+}
+.black_friday__advantages p {
+  margin-bottom: 32px;
+  text-align: center;
+}
+.black_friday__cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__cards {
+    flex-wrap: wrap;
+  }
+}
+.black_friday__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 9px;
+  width: calc(((100% - 3 * 75px) / 4));
+  height: auto;
+  background-color: #000;
+  aspect-ratio: 180/150;
+  border-radius: 8px;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__card {
+    margin-bottom: 32px;
+    width: calc(((100% - 1 * 32px) / 2));
+  }
+}
+.black_friday__card i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.black_friday__card i img {
+  height: 60px;
+}
+.black_friday__card h3 {
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+.black_friday__categories {
+  padding: 32px 0;
+  background-color: #141615;
+  text-align: center;
+}
+.black_friday__categories .container > h2 {
+  margin-bottom: 32px;
+}
+.black_friday__showcase {
+  margin-bottom: 32px;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__showcase {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.black_friday__showcase-title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__showcase-title {
+    display: contents;
+    margin-bottom: 0;
+  }
+}
+.black_friday__showcase-title h3 {
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__showcase-title h3 {
+    margin-bottom: 32px;
+  }
+}
+.black_friday__showcase-title a {
+  display: block;
+  padding: 4px 16px;
+  width: max-content;
+  border-radius: 16px;
+  background-color: #d88730;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+@media screen and (min-width: 992px) {
+  .black_friday__showcase-title a {
+    position: absolute;
+    right: 0;
+  }
+  .black_friday__showcase-title a:hover {
+    background-color: #000;
+    color: #d88730;
+  }
+}
+@media screen and (max-width: 991px) {
+  .black_friday__showcase-title a {
+    order: 1;
+    margin: 0 auto;
+  }
+}
+.black_friday__showcase-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__showcase-list {
+    flex-wrap: wrap;
+  }
+}
+.black_friday__spot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(((100% - 3 * 75px) / 4));
+  height: auto;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  background: #454041;
+  aspect-ratio: 180/150;
+  overflow: hidden;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__spot {
+    margin-bottom: 32px;
+    width: calc(((100% - 1 * 32px) / 2));
+  }
+}
+.black_friday__faq {
+  padding: 32px 0;
+  background-color: #060606;
+}
+.black_friday__faq-container {
+  margin: 0 auto;
+  max-width: 930px;
+}
+@media screen and (max-width: 991px) {
+  .black_friday__faq-container {
+    padding: 0 15px;
+  }
+}
+.black_friday__faq .black_friday__link {
+  display: block;
+  margin: 32px auto 0;
+  max-width: fit-content;
+}
+.black_friday__question {
+  margin-bottom: 8px;
+}
+.black_friday__question button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 16px 32px 40px;
+  width: 100%;
+  border-radius: 16px;
+  background: #1d1d1d;
+  color: #d88730;
+  font-weight: 600;
+  font-size: 24px;
+  transition: all 0.2s ease-in-out;
+}
+.black_friday__question button.active {
+  border-radius: 16px 16px 0 0;
+}
+.black_friday__question button.active svg {
+  transform: rotate(180deg);
+}
+.black_friday__question button svg {
+  fill: none;
+  flex-shrink: 0;
+  transition: all 0.2s ease-in-out;
+}
+.black_friday__question div {
+  overflow: hidden;
+  max-height: 0;
+  border-radius: 0 0 16px 16px;
+  background-color: #1d1d1d;
+  transition: all 0.2s ease-in-out;
+}
+.black_friday__question div p {
+  padding-bottom: 32px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  padding-inline: 40px;
+}
 .topbar {
   background: #392f2d;
   color: #fff;

@@ -6390,7 +6390,7 @@ div[class^=como-chegar] > span + i {
   max-width: 950px;
 }
 .black_friday__fullbanner {
-  padding: 54px 0;
+  padding: 40px 0;
   background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/bg-fullbanner.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -6414,8 +6414,9 @@ div[class^=como-chegar] > span + i {
 }
 .black_friday__title {
   color: #fff;
-  font-weight: 700;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 1;
 }
 .black_friday__subtitle {
   margin-bottom: 32px;
@@ -6423,11 +6424,12 @@ div[class^=como-chegar] > span + i {
   text-align: center;
   font-weight: 700;
   font-size: 32px;
+ 
 }
 .black_friday__paragraph {
   color: #fff;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 140%;
 }
 .black_friday__link {
@@ -6452,7 +6454,7 @@ div[class^=como-chegar] > span + i {
   background-color: #d88730;
 }
 .black_friday__advantages h2 {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .black_friday__advantages p {
   margin-bottom: 32px;
@@ -6502,7 +6504,7 @@ div[class^=como-chegar] > span + i {
   font-size: 16px;
 }
 .black_friday__categories {
-  padding: 32px 0;
+  padding: 16px 0;
   background-color: #141615;
   text-align: center;
 }
@@ -6534,8 +6536,8 @@ div[class^=como-chegar] > span + i {
 .black_friday__showcase-title h3 {
   color: #fff;
   text-align: center;
-  font-weight: 700;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 24px;
 }
 @media screen and (max-width: 991px) {
   .black_friday__showcase-title h3 {
@@ -6580,12 +6582,11 @@ div[class^=como-chegar] > span + i {
   }
 }
 .black_friday__spot {
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: calc(((100% - 3 * 75px) / 4));
   height: auto;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   border-radius: 8px;
   background: #454041;
   aspect-ratio: 180/150;
@@ -6622,7 +6623,7 @@ div[class^=como-chegar] > span + i {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 16px 32px 40px;
+  padding: 24px 32px 8px 24px;
   width: 100%;
   border-radius: 16px;
   background: #1d1d1d;
@@ -6653,8 +6654,9 @@ div[class^=como-chegar] > span + i {
   padding-bottom: 32px;
   color: #fff;
   font-weight: 400;
-  font-size: 18px;
-  padding-inline: 40px;
+  font-size: 15px;
+  padding-inline: 60px;
+  padding-inline-end: 96px;
 }
 .topbar {
   background: #392f2d;

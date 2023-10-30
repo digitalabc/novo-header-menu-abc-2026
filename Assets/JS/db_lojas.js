@@ -73,6 +73,7 @@ const estados = [
 			"Nova Lima",
 			"Nova Resende",
 			"Nova Serrana",
+			"Oliveira",
 			"Ouro Branco",
 			"Ouro Preto",
 			"Pará de Minas",

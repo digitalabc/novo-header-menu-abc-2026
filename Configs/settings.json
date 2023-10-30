@@ -1646,6 +1646,25 @@
       ]
     },
     {
+      "name": "Oliveira",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Maracanã, 185 - Centro, Oliveira - MG, 35540-000",
+          "phone": "(37) 3454-0032",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/oliveira/centro",
+          "monday": "7:30 às 18:00",
+          "tuesday": "7:30 às 18:00",
+          "wednesday": "7:30 às 18:00",
+          "thursday": "7:30 às 18:00",
+          "friday": "7:30 às 18:00",
+          "saturday": "7:30 às 12:30",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Ouro Branco",
       "state": "Minas Gerais",
       "stores": [

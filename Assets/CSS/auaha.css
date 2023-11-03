@@ -6580,7 +6580,7 @@ div[class^=como-chegar] > span + i {
   }
 }
 .black_friday__spot {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   width: calc(((100% - 3 * 75px) / 4));

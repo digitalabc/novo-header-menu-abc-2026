@@ -1,7 +1,9 @@
+.navbar-brand img,
 .navbar__lojas svg,
 .user__header svg,
 .minicart__icon svg,
-.ruler__text-wrapper svg {
+.ruler__text-wrapper svg,
+.nav-mobile__header svg {
     filter: brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(0%) hue-rotate(53deg) brightness(100%) contrast(106%);
 }
 

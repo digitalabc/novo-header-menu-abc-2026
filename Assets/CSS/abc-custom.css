@@ -1,0 +1,16 @@
+.navbar__lojas svg,
+.user__header svg,
+.minicart__icon svg,
+.ruler__text-wrapper svg {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(0%) hue-rotate(53deg) brightness(100%) contrast(106%);
+}
+
+.ruler__text strong {
+    color: #000 !important;
+    text-decoration: underline !important;
+    
+}
+.minicart__button .label-cart-count,
+section.newsletter--home {
+    background-color: #000 !important;
+}

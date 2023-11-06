@@ -13,6 +13,8 @@
     
 }
 .minicart__button .label-cart-count,
-section.newsletter--home {
+section.newsletter--home,
+.topbar {
     background-color: #000 !important;
+    
 }

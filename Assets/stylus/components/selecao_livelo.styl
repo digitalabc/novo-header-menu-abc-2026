@@ -1,0 +1,62 @@
+.livelo
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  visibility: hidden;
+  padding: 32px;
+  border-radius: 1.6rem;
+  background: #FFF;
+  box-shadow: 0 0 2px 0 #000, 0 6px 6px 0 rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+
+  &.visible
+    visibility: visible;
+    opacity: 1;
+
+  &_modal
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#000000, 0.3);
+    opacity: 0;
+    transition: all ease-in-out 0.2s;
+
+    &.visible
+      visibility: visible;
+      opacity: 1;
+
+  &__title
+    margin-bottom: 16px;
+    color: $primary;
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+
+  &__paragraph
+    color: $black;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    line-height: normal;
+
+  &__stay
+    padding: 12px 8px;
+    border: 1px solid $primary;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #E30613;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: normal;
+
+  &__quit
+    padding: 12px 8px;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 12px;

@@ -1234,5 +1234,11 @@
                 "required": true
             }
         ]
+    },
+    {
+        "name": "livelo_popup",
+        "path": "Custom/livelo/livelo_popup.html",
+        "inheritVariables": false,
+        "availableInAllPages": true
     }
 ]

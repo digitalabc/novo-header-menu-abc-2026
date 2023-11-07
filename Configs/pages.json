@@ -62,6 +62,11 @@
                 "query": "generic.graphql"
             },
             {
+                "urlMatch": "selecao-livelo",
+                "path": "custom/selecao-livelo.html",
+                "query": "hotsite.graphql"
+            },
+            {
                 "urlMatch": "localizacao",
                 "path": "Custom/old_se/localizacao.html",
                 "query": "generic.graphql"

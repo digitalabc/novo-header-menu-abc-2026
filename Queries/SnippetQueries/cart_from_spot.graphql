@@ -47,6 +47,7 @@ query AddToCartFromSpot($productId: Long!
         value
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp

@@ -36,6 +36,7 @@ query Wishlist($customerAccessToken: String!, $productsIds: [Long]){
           }
         }
         promotions{
+          fullStampUrl
           content
           id
           stamp

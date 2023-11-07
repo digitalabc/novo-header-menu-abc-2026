@@ -1234,5 +1234,15 @@
                 "required": true
             }
         ]
+    },
+    {
+        "name": "regional_offers",
+        "path": "regional_offers.html",
+        "availableInAllPages": true
+    },
+    {
+        "name": "modal_regional_offers",
+        "path": "modal_regional_offers.html",
+        "availableInAllPages": true
     }
 ]

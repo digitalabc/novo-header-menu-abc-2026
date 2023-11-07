@@ -1,5 +1,5 @@
-query Home {
-  hotsite(url: "") {
+query Home($partnerAccessToken: String){
+  hotsite(url: "", partnerAccessToken: $partnerAccessToken) {
     banners {
       altText
       bannerName
@@ -36,10 +36,10 @@ query Home {
       name
     }
   }
-  vitrine1: hotsite(hotsiteId: 98667) {
+  vitrine1: hotsite(hotsiteId: 98667, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine2: hotsite(hotsiteId: 98668) {
+  vitrine2: hotsite(hotsiteId: 98668, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
 }
@@ -100,7 +100,8 @@ fragment productsCon on ProductsConnection {
       name
       value
     }
-    promotions {
+    promotions{
+      fullStampUrl
       content
       id
       stamp

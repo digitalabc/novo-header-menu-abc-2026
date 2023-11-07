@@ -5,24 +5,30 @@
 */
 async function ShippingQuoteSubmit(e, productVariantId) {
     e.preventDefault();
-    try {
-        const cep = document.getElementById('shipping-quote-cep').value;
-        let quantity = document.getElementById("selected-quantity").value;
+    document.getElementById("shipping-quotes-snippet-div-" + productVariantId).innerHTML = `<img style="display: block; margin: auto;" src="/localstatic/img/my-loader.svg?theme=local&v=" alt="">`;
 
-        let variables = {
-            cep,
-            productVariantId: Number(productVariantId),
-            quantity: Number(quantity)
+    if (validateShippingAddress()) {
+        try {
+            const cep = document.getElementById('shipping-quote-cep').value;
+            let quantity = document.getElementById("selected-quantity").value;
+
+            let variables = {
+                cep,
+                productVariantId: Number(productVariantId),
+                quantity: Number(quantity)
+            }
+
+            let snippetResponse = await client.snippet.render("product_shipping_quotes_snippet.html", "SnippetQueries/shipping_quotes.graphql", variables);
+
+            snippetResponse ??= '<span class="product-shipping__error">CEP inválido!</span>';
+
+            document.getElementById("shipping-quotes-snippet-div-" + productVariantId).innerHTML = snippetResponse;
         }
-
-        let snippetResponse = await client.snippet.render("product_shipping_quotes_snippet.html", "SnippetQueries/shipping_quotes.graphql", variables);
-
-        snippetResponse ??= '<span class="product-shipping__error">CEP inválido!</span>';
-
-        document.getElementById("shipping-quotes-snippet-div-" + productVariantId).innerHTML = snippetResponse;
-    }
-    catch (error) {
-        console.error(error);
+        catch (error) {
+            console.error(error);
+        }
+    } else {
+        openShippingModal()
     }
 }
 
@@ -43,4 +49,47 @@ function cepMask(t) {
 
     if (text.substring(0, 1) != out)
         t.value += text.substring(0, 1);
+}
+
+function validateShippingAddress() {
+    const cep = document.getElementById('shipping-quote-cep').value,
+        partnerCep = client.partner.getCep();
+
+    if (cep == partnerCep) {
+        return true;
+    };
+
+    return false;
+}
+
+function closeShippingModal(e, element = null) {
+    if (e.target == e.currentTarget) {
+        document.getElementById("shipping-invalid").classList.remove("visible");
+        setTimeout(() => {
+            element.style.display = "none"
+        }, 200);
+    }
+}
+
+function openShippingModal() {
+    let cep = document.getElementById('shipping-quote-cep').value
+    let partnerCep = client.partner.getCep();
+
+    document.querySelector("[id^='shipping-quotes-snippet-div']").innerHTML = ""
+
+    if (cep == "" || partnerCep == "") return false;
+
+    setTimeout(() => {
+        document.getElementById("shipping-invalid").style.display = "block";
+    }, 200);
+    document.getElementById("shipping-invalid").classList.add("visible");
+
+    document.getElementById("shipping-partner_cep").innerHTML = `${partnerCep} (${checkZipAddress(parseInt(partnerCep.replace("-", "")))})`
+    document.getElementById("shipping-cep").innerHTML = `${cep} (${checkZipAddress(parseInt(cep.replace("-", "")))})`
+}
+
+function changeParterByRegion() {
+    let cep = document.getElementById("shipping-quote-cep").value
+
+    if (cep) changeRegionalOffers(cep)
 }

@@ -18,6 +18,7 @@ query BuylistPage($id: Long!){
       value
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp

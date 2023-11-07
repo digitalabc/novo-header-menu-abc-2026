@@ -1,11 +1,36 @@
 <div class="product-shipping">
-    <h2 class="product-shipping__title">Consulte seu Frete</h2>
-    <form class="product-shipping__form" onsubmit='ShippingQuoteSubmit(event, "{{ product_variant_id }}")'>
-        <input class="product-shipping__input" type="text" id="shipping-quote-cep" name="shipping-quote-cep" placeholder="CEP" maxlength="9" onkeypress="cepMask(this)">
-        <input class="product-shipping__submit" type="submit" value="OK">
-    </form>
-    <div class="product-shipping__help">
-      <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">Não sei meu CEP</a>
+  <h2 class="product-shipping__title">Consulte seu Frete</h2>
+  <form class="product-shipping__form" onsubmit='ShippingQuoteSubmit(event, "{{ product_variant_id }}")'>
+    <input class="product-shipping__input" type="text" id="shipping-quote-cep" name="shipping-quote-cep"
+      placeholder="CEP" maxlength="9" onkeypress="cepMask(this)">
+    <input class="product-shipping__submit" type="submit" value="OK">
+  </form>
+  <div class="product-shipping__help">
+    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">Não sei meu CEP</a>
+  </div>
+  <div class="product-shipping__response" id="shipping-quotes-snippet-div-{{ product_variant_id }}"></div>
+  <div class="product-shipping__invalid" id="shipping-invalid" onclick="closeShippingModal(event, this)">
+    <div class="product-shipping__modal">
+      <button onclick="closeShippingModal(event, document.getElementById('shipping-invalid'))">
+        <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12.6706 10.8613C12.7825 10.9742 12.8452 11.1268 12.8452 11.2858C12.8452 11.4448 12.7825 11.5973 12.6706 11.7103C12.5567 11.8204 12.4045 11.882 12.2461 11.882C12.0877 11.882 11.9355 11.8204 11.8216 11.7103L6.88393 6.76518L1.94626 11.7103C1.83238 11.8204 1.68017 11.882 1.52176 11.882C1.36334 11.882 1.21113 11.8204 1.09725 11.7103C0.985371 11.5973 0.922607 11.4448 0.922607 11.2858C0.922607 11.1268 0.985371 10.9742 1.09725 10.8613L6.04236 5.92362L1.09725 0.985951C1.00224 0.87019 0.95369 0.723229 0.961037 0.573653C0.968383 0.424077 1.0311 0.28258 1.137 0.176687C1.24289 0.0707928 1.38439 0.008073 1.53396 0.000726782C1.68354 -0.00661944 1.8305 0.0419332 1.94626 0.136941L6.88393 5.08205L11.8216 0.136941C11.9374 0.0419332 12.0843 -0.00661944 12.2339 0.000726782C12.3835 0.008073 12.525 0.0707928 12.6309 0.176687C12.7368 0.28258 12.7995 0.424077 12.8068 0.573653C12.8142 0.723229 12.7656 0.87019 12.6706 0.985951L7.72549 5.92362L12.6706 10.8613Z"
+            fill="#949494" />
+        </svg>
+      </button>
+      <h3>Quer atualizar sua região?</h3>
+      <p>
+        O CEP que você forneceu para o frete do produto pertence a uma localidade diferente. Com isso <strong>precisamos
+          atualizar nosso site</strong> para acomodar essa nova região.
+        Ressaltamos que <strong>essa opção poderá afetar a disponibilidade do produto, opções de frete e os prazos de
+          entrega.</strong>
+        <div>
+          <button class="product-shipping__button product-shipping__button--deny"
+            onclick="closeShippingModal(event, document.getElementById('shipping-invalid'))">Não atualizar</button>
+          <button class="product-shipping__button product-shipping__button--accept"
+            onclick="changeParterByRegion()">Atualizar região</button>
+        </div>
+      </p>
     </div>
-    <div class="product-shipping__response" id="shipping-quotes-snippet-div-{{ product_variant_id }}"></div>
+  </div>
 </div>

@@ -23,22 +23,22 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
   vitrineCronometro: hotsite(hotsiteId: 98562, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine1: hotsite(hotsiteId: 98543) {
+  vitrine1: hotsite(hotsiteId: 98543, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine2: hotsite(hotsiteId: 98542) {
+  vitrine2: hotsite(hotsiteId: 98542, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine3: hotsite(hotsiteId: 98544) {
+  vitrine3: hotsite(hotsiteId: 98544, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine4: hotsite(hotsiteId: 98552) {
+  vitrine4: hotsite(hotsiteId: 98552, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine5: hotsite(hotsiteId: 98557) {
+  vitrine5: hotsite(hotsiteId: 98557, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine6: hotsite(hotsiteId: 98558) {
+  vitrine6: hotsite(hotsiteId: 98558, partnerAccessToken: $partnerAccessToken) {
     ...produtos 
   }
 }

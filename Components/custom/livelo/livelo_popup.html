@@ -1,5 +1,11 @@
 <div class="livelo_modal" id="livelo-modal" style="display: none;" onclick="liveloPopup(false)"></div>
 <div class="livelo" id="livelo-popup" style="display: none;">
+  <button class="livelo__close" onclick="liveloPopup(false)" type="button">
+    <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M12.6706 10.8613C12.7825 10.9742 12.8453 11.1268 12.8453 11.2858C12.8453 11.4448 12.7825 11.5973 12.6706 11.7103C12.5568 11.8204 12.4045 11.882 12.2461 11.882C12.0877 11.882 11.9355 11.8204 11.8216 11.7103L6.88396 6.76518L1.94629 11.7103C1.83241 11.8204 1.6802 11.882 1.52179 11.882C1.36337 11.882 1.21116 11.8204 1.09728 11.7103C0.985401 11.5973 0.922638 11.4448 0.922638 11.2858C0.922638 11.1268 0.985401 10.9742 1.09728 10.8613L6.04239 5.92362L1.09728 0.985951C1.00227 0.87019 0.953721 0.723229 0.961067 0.573653C0.968413 0.424077 1.03113 0.28258 1.13703 0.176687C1.24292 0.0707928 1.38442 0.008073 1.53399 0.000726782C1.68357 -0.00661944 1.83053 0.0419332 1.94629 0.136941L6.88396 5.08205L11.8216 0.136941C11.9374 0.0419332 12.0843 -0.00661944 12.2339 0.000726782C12.3835 0.008073 12.525 0.0707928 12.6309 0.176687C12.7368 0.28258 12.7995 0.424077 12.8068 0.573653C12.8142 0.723229 12.7656 0.87019 12.6706 0.985951L7.72552 5.92362L12.6706 10.8613Z" />
+    </svg>
+  </button>
   <h2 class="livelo__title">ATENÇÃO!</h2>
   <p class="livelo__paragraph">Você está prestes a sair do ambiente Livelo.
     <br />
@@ -7,8 +13,8 @@
     <br />
     Deseja realmente sair dessa página?
   </p>
-  <div>
+  <div class="livelo__buttons">
     <button class="livelo__stay" onclick="liveloPopup(false)">Permanecer</button>
-    <button class="livelo__quit">Sim, quero sair!</button>
+    <a href="/" class="livelo__leave" id="livelo-leave">Sim, quero sair!</a>
   </div>
 </div>

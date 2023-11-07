@@ -8083,7 +8083,20 @@ header {
   visibility: visible;
   opacity: 1;
 }
-.livelo__title {
+.livelo__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  padding: 8px;
+  background: none;
+  color: #949494;
+  transition: all 0.2s ease-in-out;
+}
+.livelo__close:hover {
+  color: #e30613;
+}
+.livelo h2.livelo__title {
   margin-bottom: 16px;
   color: #e30613;
   text-align: center;
@@ -8091,11 +8104,33 @@ header {
   font-size: 24px;
 }
 .livelo__paragraph {
+  margin-bottom: 16px;
+  max-width: 395px;
   color: #392f2d;
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
   line-height: normal;
+}
+@media screen and (max-width: 991px) {
+  .livelo__paragraph {
+    width: 250px;
+  }
+}
+.livelo__paragraph span {
+  color: #e30613;
+  font-weight: 400;
+}
+.livelo__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+@media screen and (max-width: 991px) {
+  .livelo__buttons {
+    justify-content: space-between;
+  }
 }
 .livelo__stay {
   padding: 12px 8px;
@@ -8106,12 +8141,25 @@ header {
   font-weight: 700;
   font-size: 12px;
   line-height: normal;
+  transition: all 0.2s ease-in-out;
 }
-.livelo__quit {
+.livelo__stay:hover {
+  background-color: #e30613;
+  color: #fff;
+}
+.livelo__leave {
   padding: 12px 8px;
+  border: 1px solid #392f2d;
+  border-radius: 4px;
+  background-color: #392f2d;
   color: #fff;
   font-weight: 700;
   font-size: 12px;
+  transition: all 0.2s ease-in-out;
+}
+.livelo__leave:hover {
+  background-color: #fff;
+  color: #392f2d;
 }
 .nav-all__item--root {
   font-weight: 500;

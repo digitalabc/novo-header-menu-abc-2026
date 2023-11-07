@@ -11,6 +11,9 @@ function liveloSetup() {
 
 function liveloClick() {
   event.preventDefault();
+  let button = document.getElementById("livelo-leave")
+  button.setAttribute("href", event.target.href)
+
   liveloPopup();
 }
 

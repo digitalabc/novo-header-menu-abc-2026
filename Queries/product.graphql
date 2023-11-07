@@ -7,7 +7,7 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
     buyTogether{
       productId
     }
-    ...SingleProductData    
+    ...SingleProductData
     id
     sku
     ean
@@ -16,7 +16,7 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       name
       alias
       fullUrlLogo
-    }  
+    }
     productCategories {
       active
       googleCategories
@@ -26,8 +26,8 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       main
       url
     }
-    informations{
-      id 
+    informations {
+      id
       title
       type
       value
@@ -45,8 +45,9 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       id
       stamp
       title
+      fullStampUrl
     }
-    breadcrumbs{
+    breadcrumbs {
       link
       text
     }
@@ -58,8 +59,8 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       scheme
     }
     addToCartFromSpot
-    subscriptionGroups{
-      recurringTypes{
+    subscriptionGroups {
+      recurringTypes {
         name
         days
         recurringTypeId
@@ -74,13 +75,13 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
     productId
     productVariantId
     available
-    similarProducts{
+    similarProducts {
       alias
       image
       name
       imageUrl(w: 50, h: 50)
     }
-    images{
+    images {
       url
     }
     prices {
@@ -88,15 +89,15 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       price
       discountPercentage
       multiplicationFactor
-      installmentPlans{
-          displayName
-          name
-          installments{
-            discount
-            fees
-            number
-            value
-          }
+      installmentPlans {
+        displayName
+        name
+        installments {
+          discount
+          fees
+          number
+          value
+        }
       }
       bestInstallment {
         name
@@ -113,6 +114,7 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       id
       stamp
       title
+      fullStampUrl
     }
     addToCartFromSpot
   }
@@ -135,15 +137,15 @@ fragment SingleProductData on SingleProduct {
     price
     discountPercentage
     multiplicationFactor
-    installmentPlans{
-        displayName
-        name
-        installments{
-          discount
-          fees
-          number
-          value
-        }
+    installmentPlans {
+      displayName
+      name
+      installments {
+        discount
+        fees
+        number
+        value
+      }
     }
     bestInstallment {
       name
@@ -153,7 +155,7 @@ fragment SingleProductData on SingleProduct {
       number
       value
     }
-    wholesalePrices{
+    wholesalePrices {
       price
       quantity
     }
@@ -162,7 +164,7 @@ fragment SingleProductData on SingleProduct {
     name
     value
   }
-  attributeSelections (selected: $selections) {
+  attributeSelections(selected: $selections) {
     canBeMatrix
     matrix {
       row {
@@ -187,11 +189,11 @@ fragment SingleProductData on SingleProduct {
         stock
       }
     }
-    selectedVariant{
+    selectedVariant {
       id
       alias
       available
-      images (height: 530, width: 530){
+      images(height: 530, width: 530) {
         fileName
         url
       }
@@ -200,15 +202,15 @@ fragment SingleProductData on SingleProduct {
         price
         discountPercentage
         multiplicationFactor
-        installmentPlans{
-            displayName
-            name
-            installments{
-              discount
-              fees
-              number
-              value
-            }
+        installmentPlans {
+          displayName
+          name
+          installments {
+            discount
+            fees
+            number
+            value
+          }
         }
         bestInstallment {
           name
@@ -218,7 +220,7 @@ fragment SingleProductData on SingleProduct {
           number
           value
         }
-        wholesalePrices{
+        wholesalePrices {
           price
           quantity
         }
@@ -227,12 +229,12 @@ fragment SingleProductData on SingleProduct {
       productVariantId
       stock
     }
-    selections{
+    selections {
       attributeId
       displayType
       name
       varyByParent
-      values{
+      values {
         alias
         available
         printUrl

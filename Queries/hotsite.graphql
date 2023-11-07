@@ -88,6 +88,7 @@ query Hotsite($url: String!, $resultSize: Int, $offset: Int, $sortKey: ProductSo
           id
           stamp
           title
+          fullStampUrl
         }
         addToCartFromSpot
         attributes {

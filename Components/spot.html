@@ -24,7 +24,7 @@
 
 <div class="spot">
     <div class="spot__image">
-        {{ stamps promotions: product.promotions  }}
+        {{ stamps promotions: product.promotions discount_percentage: product.prices.discount_percentage }}
         {{ product_discount_spot discount_percentage: product.prices.discount_percentage virtual_reality: virtual_reality }}
         {{ spot_image product: product }}
         {{~ if product.available ~}}

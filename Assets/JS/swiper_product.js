@@ -15,6 +15,10 @@ var slider = new Swiper('.gallery-slider', {
   thumbs: {
     swiper: thumbs,
   },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
   noSwiping: true
 });
 

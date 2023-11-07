@@ -1,0 +1,251 @@
+$bf_primary = #D88730;
+
+.black_friday
+  .container
+    max-width: 950px;
+
+  &__fullbanner
+    padding: 54px 0;
+    background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/blackfriday/fullbanner.jpg");
+    background-size: cover;
+    background-repeat no-repeat;
+    background-color: #141615;
+
+    .container
+      display flex;
+      align-items center;
+
+      @media mobile
+        flex-direction column;
+
+      > div
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 550px;
+        gap: 16px;
+
+  &__title
+    color: #FFF;
+    font-weight: 700;
+    font-size: 32px;
+
+  &__subtitle
+    margin-bottom: 32px;
+    color: #FFF;
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+
+  &__paragraph
+    color: #FFF;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+
+  &__link
+    padding: 11px 57px;
+    border-radius: 8px;
+    background-color: $bf_primary;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 20px;
+
+    &:hover
+      color: #ffffff;
+
+  &__disclaimer
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 140%;
+
+  &__advantages
+    padding: 32px 0;
+    background-color: $bf_primary;
+
+    h2
+      margin-bottom: 8px;
+
+    p
+      margin-bottom: 32px;
+      text-align: center;
+
+  &__cards
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media mobile
+      flex-wrap: wrap;
+
+  &__card
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 9px;
+    width: calc(((100% - 3 * 75px) / 4));
+    height: auto;
+    background-color: #000000;
+    aspect-ratio: 180 / 150;
+    border-radius: 8px
+
+    @media mobile
+      margin-bottom: 32px;
+      width: calc(((100% - 1 * 32px) / 2));
+
+    i
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 8px;
+
+      img
+        height: 60px
+
+    h3
+      color: #FFFFFF;
+      text-align: center;
+      font-weight: 700;
+      font-size: 16px;
+
+  &__categories
+    padding: 32px 0;
+    background-color: #141615;
+    text-align: center;
+
+    .container
+      > h2
+        margin-bottom: 32px;
+
+  &__showcase
+    margin-bottom: 32px;
+
+    @media mobile
+      display: flex;
+      flex-direction: column;
+
+    &-title
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 32px;
+
+      @media mobile
+        display: contents;
+        margin-bottom: 0;
+
+      h3
+        color: #FFFFFF;
+        text-align: center;
+        font-weight: 700;
+        font-size: 32px;
+
+        @media mobile
+          margin-bottom: 32px;
+
+      a
+        display: block;
+        padding: 4px 16px;
+        width: max-content;
+        border-radius: 16px;
+        background-color: $bf_primary;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 16px;
+        transition: $transition;
+
+        @media desktop
+          position: absolute;
+          right: 0;
+
+          &:hover
+            background-color: #000000;
+            color: $bf_primary;
+
+        @media mobile
+          order: 1;
+          margin: 0 auto;
+
+    &-list
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media mobile
+        flex-wrap: wrap;
+
+  &__spot
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(((100% - 3 * 75px) / 4));
+    height: auto;
+    border: 1px solid #FFF;
+    border-radius: 8px;
+    background: #454041;
+    aspect-ratio: 180 / 150;
+    overflow hidden; 
+
+    @media mobile
+      margin-bottom: 32px;
+      width: calc(((100% - 1 * 32px) / 2));
+
+  &__faq
+    padding: 32px 0;
+    background-color: #060606;
+
+    &-container
+      margin: 0 auto;
+      max-width: 930px;
+
+      @media mobile
+        padding: 0 15px;
+
+    .black_friday__link
+      display: block;
+      margin: 32px auto 0;
+      max-width: fit-content;
+
+  &__question
+    margin-bottom: 8px;
+
+    button
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 16px 32px 40px;
+      width: 100%;
+      border-radius: 16px;
+      background: #1D1D1D;
+      color: #D88730;
+      font-weight: 600;
+      font-size: 24px;
+      transition: $transition;
+
+      &.active
+        border-radius: 16px 16px 0 0;
+
+        svg 
+          transform: rotate(180deg);
+
+      svg
+        fill: none;
+        flex-shrink 0;
+        transition: $transition;
+
+    div
+      overflow: hidden;
+      max-height: 0;
+      border-radius: 0 0 16px 16px;
+      background-color: #1D1D1D;
+      transition: $transition;
+
+      p
+        padding-bottom: 32px;
+        color: #FFF;
+        font-weight: 400;
+        font-size: 18px;
+        padding-inline: 40px;

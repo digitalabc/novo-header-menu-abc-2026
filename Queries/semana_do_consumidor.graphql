@@ -20,67 +20,34 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
       urlOnClick
     }
   }
-  vitrineCronometro: search(query: "", partnerAccessToken: $partnerAccessToken) {
-    ...vitrineCronometro
+  vitrineCronometro: hotsite(hotsiteId: 98562, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
   }
-  vitrine1: search(query: "", partnerAccessToken: $partnerAccessToken) {
-    ...vitrine1
+  vitrine1: hotsite(hotsiteId: 98543) {
+    ...produtos
   }
-  vitrine2: search(query: "", partnerAccessToken: $partnerAccessToken) {
-    ...vitrine2
+  vitrine2: hotsite(hotsiteId: 98542) {
+    ...produtos
   }
-  vitrine3: search(query: "", partnerAccessToken: $partnerAccessToken) {
-    ...vitrine3
+  vitrine3: hotsite(hotsiteId: 98544) {
+    ...produtos
   }
-  vitrine4: search(query: "", partnerAccessToken: $partnerAccessToken) {
-    ...vitrine4
+  vitrine4: hotsite(hotsiteId: 98552) {
+    ...produtos
   }
-  vitrine5: search(query: "", partnerAccessToken: $partnerAccessToken) {
-    ...vitrine5
+  vitrine5: hotsite(hotsiteId: 98557) {
+    ...produtos
   }
-  vitrine6: search(query: "", partnerAccessToken: $partnerAccessToken) {
-    ...vitrine6
-  }
-}
-fragment vitrineCronometro on Search {
-  products(first: 9, sortKey: SALES, sortDirection: DESC) {
-    ...productsCon
+  vitrine6: hotsite(hotsiteId: 98558) {
+    ...produtos 
   }
 }
 
-fragment vitrine1 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+fragment produtos on SingleHotsite {
+  products(first: 20, sortKey: SALES, sortDirection: DESC) {
     ...productsCon
   }
 }
-
-fragment vitrine2 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-
-fragment vitrine3 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-fragment vitrine4 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-fragment vitrine5 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-fragment vitrine6 on Search {
-  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
-    ...productsCon
-  }
-}
-
 
 fragment productsCon on ProductsConnection {
   nodes {

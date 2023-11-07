@@ -12,9 +12,10 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!], $partnerAccessT
       name
       cssClass
       link
-    }  
+      order
+    }
   }
-  scripts(url:$url, pageType:$scriptPageTypes) {
+  scripts(url: $url, pageType: $scriptPageTypes) {
     name
     pageType
     position
@@ -63,18 +64,18 @@ fragment productsCon on ProductsConnection {
     productId
     productName
     productVariantId
-    productBrand{
+    productBrand {
       fullUrlLogo
       logoUrl
     }
     alias
-    similarProducts{
+    similarProducts {
       alias
       image
       name
       imageUrl(w: 50, h: 50)
     }
-    images(width:245, height:245) {
+    images(width: 245, height: 245) {
       url
       print
     }
@@ -84,10 +85,10 @@ fragment productsCon on ProductsConnection {
       price
       discountPercentage
       multiplicationFactor
-      installmentPlans{
+      installmentPlans {
         displayName
         name
-        installments{
+        installments {
           discount
           fees
           number

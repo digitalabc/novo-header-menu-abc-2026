@@ -65,13 +65,9 @@ if (btnMostrarMais_loja) {
 
 /*Método para os inputs da Página de Diretório de Lojas*/
 
-function renderizarConteudo() {
-  fetch("https://recursos.abcdaconstrucao.com.br/c/auaha/db_lojas.json?v=1")
-    .then(response => response.json())
-    .then(data => {
-      criarOptions(data.estados);
-      criarListaDeCidades(data.estados);
-    })
+async function renderizarConteudo() {
+  const opts = await criarOptions(estados);
+  const cidades = await criarListaDeCidades(estados);
 };
 
 let criarOptions = (estadosData) => {
@@ -147,6 +143,31 @@ $(".lojas__form--select").on("change", function () {
 })
 
 $(".lojas__form--button").on("click", function () {
+  let stateQuery = $(".lojas__form--select").val();
+  let cityQuery = $(".lojas__form--input").val().slugify();
+
+  if (cityQuery != '') {
+    if (stateQuery == "") {
+      $(".lojas__bottom--container ul").hide()
+    }
+
+    $(".lojas__bottom--container li").hide()
+    $(`.lojas__bottom--container li a`).each(function () {
+      let cityName = $(this).text().slugify();
+      if (cityName.includes(cityQuery)) {
+        $(this).parent().show()
+        if (stateQuery == "") {
+          $(this).parent().parent().show()
+        }
+      }
+    })
+  }
+  else {
+    $(".lojas__bottom--container li").show()
+  }
+})
+
+$(".lojas__form--input").on("keydown", function () {
   let stateQuery = $(".lojas__form--select").val();
   let cityQuery = $(".lojas__form--input").val().slugify();
 

@@ -84,26 +84,30 @@
     
     <!-- Realidade Aumentada -->
     <div class="virtual_reality__banner desktop">
+      {{ valid = true }}
       {{~ for category in product.product_categories ~}}
-        {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
-        <img
-          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-          alt="Realidade Aumentada Qr-Code">
-        {{~ else if category.name | string.downcase == "metais sanitários" ~}}
-        <img
-          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-metais.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-          alt="Realidade Aumentada Qr-Code">
-        {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
-        <img
-          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-chuveiro-ou-duchas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-          alt="Realidade Aumentada Qr-Code">
-        {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
-        <img
-          src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-louças.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-          alt="Realidade Aumentada Qr-Code">
-        {{~ end ~}}
+        {{ if valid }}
+          {{~ if category.name | string.downcase == "metais sanitários" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-metais.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
+          {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-chuveiro-ou-duchas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
+          {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-loucas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
+          {{~ end ~}}
+        {{ end }}
       {{~ end ~}}
-      <div id="qrCode"></div>
+      {{~ if !is_pisos ~}}
+        <div id="qrCode"></div>
+      {{~ end ~}}
     </div>
 
     <!-- Shippng -->

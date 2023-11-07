@@ -1,4 +1,4 @@
-window.addEventListener("load", generateRABanner())
+// window.addEventListener("load", generateRABanner())
 
 var swiper = new Swiper(".subcategories .swiper", {
   navigation: {

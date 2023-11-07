@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <span>TERMINA EM</span>
         <span class="cron">
           <span class='days'>
-            8D
+            6D
           </span>
           :
           <span class='hours'>

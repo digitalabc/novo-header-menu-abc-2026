@@ -23,10 +23,13 @@
     ~}}
 
   {{~ for category in product.product_categories ~}}
-  {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
-  {{ product_has_specialist_popup = true }}
+    {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
+      {{ product_has_specialist_popup = true }}
+    {{~ end ~}}
   {{~ end ~}}
-  {{~ end ~}}
+
+  {{ cat_pisos = product.product_categories | array.filter  @(do; ret $0.active == true && $0.id == 1618;end) }}
+  {{ is_pisos = cat_pisos == [] ? false : true}}
 
   {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936"] }}
   {{~ if (product.product_brand?.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
@@ -61,7 +64,7 @@
   <div class="container">
     {{~ breadcrumb breadcrumbs: product.breadcrumbs product: product ~}}
     <div id="product-view-div-{{ product.product_id }}" class="product__view">
-      {{ product_view product: product product_hide_pix: product_hide_pix }}
+      {{ product_view product: product product_hide_pix: product_hide_pix is_pisos: is_pisos }}
     </div>
 
     <div class="product__buy-together">
@@ -75,25 +78,29 @@
 
     <!-- Realidade Aumentada -->
     <div class="virtual_reality__banner mobile">
-      {{~ for category in product.product_categories ~}}
-      {{~ if category.name | string.downcase == "pisos e revestimentos" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ else if category.name | string.downcase == "metais sanitários" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-torneiras-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-duchas-mobile?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
-      <img
-        src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-louças-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
-        alt="Realidade Aumentada Qr-Code">
-      {{~ end ~}}
-      {{~ end ~}}
+      <a href="/realidade-aumentada">
+        {{ valid = true }}
+        {{~ for category in product.product_categories ~}}
+          {{ if valid }}
+            {{~ if category.name | string.downcase == "metais sanitários" ~}}
+            <img
+              src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-torneiras-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Realidade Aumentada Qr-Code">
+              {{ valid = false }}
+            {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
+            <img
+              src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-duchas-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Realidade Aumentada Qr-Code">
+              {{ valid = false }}
+            {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
+            <img
+              src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-loucas-mobile.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Realidade Aumentada Qr-Code">
+              {{ valid = false }}
+            {{~ end ~}}
+          {{ end }}
+        {{~ end ~}}
+      </a>
     </div>
 
     <!-- Description -->
@@ -121,36 +128,38 @@
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
 
   <div class="virtual_reality__icons mobile" id="virtual_reality-icons" style="display: none;">
-    <button id="ar-button">
-      <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#filter0_d_145_147)">
-          <path
-            d="M27 50C40.8071 50 52 38.8071 52 25C52 11.1929 40.8071 0 27 0C13.1929 0 2 11.1929 2 25C2 38.8071 13.1929 50 27 50Z"
-            fill="url(#paint0_linear_145_147)" />
-          <path
-            d="M22.8439 31.057H26.8713L24.002 26.876C25.6545 26.0768 26.6049 24.6343 26.6049 22.677C26.6049 19.6361 24.3248 17.7555 20.6947 17.7555H14.6129V31.057H18.3762V27.5217H20.4283L22.8416 31.057H22.8439ZM12.5043 14.437H11.4207V9.94897H15.9087V11.0326H12.5066V14.4347L12.5043 14.437ZM42.5793 14.437H41.4957V11.0349H38.0936V9.95123H42.5793V14.4392V14.437ZM42.5793 40.051H38.0936V38.9674H41.4957V35.5653H42.5793V40.051ZM15.9064 40.051H11.4185V35.5653H12.5021V38.9674H15.9042V40.051H15.9064ZM22.8055 22.677C22.8055 23.8938 22.0266 24.6162 20.4689 24.6162H18.3785V20.7197H20.4689C22.0266 20.7197 22.8055 21.4421 22.8055 22.677ZM38.6354 31.057H42.5499L36.66 17.7555H32.9554L27.0835 31.057H30.9213L31.9666 28.4721H37.5924L38.6376 31.057H38.6354ZM33.0683 25.6976L34.7772 21.4421L36.4884 25.6976H33.0683Z"
-            fill="white" />
-        </g>
-        <defs>
-          <filter id="filter0_d_145_147" x="0" y="0" width="54" height="54" filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha" />
-            <feOffset dy="2" />
-            <feGaussianBlur stdDeviation="1" />
-            <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_145_147" />
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_145_147" result="shape" />
-          </filter>
-          <linearGradient id="paint0_linear_145_147" x1="27" y1="0" x2="27" y2="50" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#004A68" />
-            <stop offset="1" stop-color="#29425A" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </button>
+    {{~ if !is_pisos ~}}
+      <button id="ar-button">
+        <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d_145_147)">
+            <path
+              d="M27 50C40.8071 50 52 38.8071 52 25C52 11.1929 40.8071 0 27 0C13.1929 0 2 11.1929 2 25C2 38.8071 13.1929 50 27 50Z"
+              fill="url(#paint0_linear_145_147)" />
+            <path
+              d="M22.8439 31.057H26.8713L24.002 26.876C25.6545 26.0768 26.6049 24.6343 26.6049 22.677C26.6049 19.6361 24.3248 17.7555 20.6947 17.7555H14.6129V31.057H18.3762V27.5217H20.4283L22.8416 31.057H22.8439ZM12.5043 14.437H11.4207V9.94897H15.9087V11.0326H12.5066V14.4347L12.5043 14.437ZM42.5793 14.437H41.4957V11.0349H38.0936V9.95123H42.5793V14.4392V14.437ZM42.5793 40.051H38.0936V38.9674H41.4957V35.5653H42.5793V40.051ZM15.9064 40.051H11.4185V35.5653H12.5021V38.9674H15.9042V40.051H15.9064ZM22.8055 22.677C22.8055 23.8938 22.0266 24.6162 20.4689 24.6162H18.3785V20.7197H20.4689C22.0266 20.7197 22.8055 21.4421 22.8055 22.677ZM38.6354 31.057H42.5499L36.66 17.7555H32.9554L27.0835 31.057H30.9213L31.9666 28.4721H37.5924L38.6376 31.057H38.6354ZM33.0683 25.6976L34.7772 21.4421L36.4884 25.6976H33.0683Z"
+              fill="white" />
+          </g>
+          <defs>
+            <filter id="filter0_d_145_147" x="0" y="0" width="54" height="54" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="2" />
+              <feGaussianBlur stdDeviation="1" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_145_147" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_145_147" result="shape" />
+            </filter>
+            <linearGradient id="paint0_linear_145_147" x1="27" y1="0" x2="27" y2="50" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#004A68" />
+              <stop offset="1" stop-color="#29425A" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </button>
+    {{~ end ~}}
 
     <button onclick="open3d('{{ product.images.size }}')">
       <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">

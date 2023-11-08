@@ -3935,6 +3935,25 @@
       ]
     },
     {
+      "name": "Vila Velha",
+      "state": "Espírito Santo",
+      "stores": [
+        {
+          "name": "Praia de Itaparica",
+          "adress": "Av. Santa Leopoldina, 511 - Praia de Itaparica, Vila Velha - ES, 29102-041",
+          "phone": "(27) 99918-1233",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/vila-velha/praia-de-itaparica",
+          "monday": "8:30 às 18:00",
+          "tuesday": "8:30 às 18:00",
+          "wednesday": "8:30 às 18:00",
+          "thursday": "8:30 às 18:00",
+          "friday": "8:30 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Vitória",
       "state": "Espírito Santo",
       "stores": [

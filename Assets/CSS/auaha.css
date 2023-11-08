@@ -8134,6 +8134,20 @@ header {
 }
 .livelo__stay {
   padding: 12px 8px;
+  border: 1px solid #392f2d;
+  border-radius: 4px;
+  background-color: #392f2d;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  transition: all 0.2s ease-in-out;
+}
+.livelo__stay:hover {
+  background-color: #fff;
+  color: #392f2d;
+}
+.livelo__leave {
+  padding: 12px 8px;
   border: 1px solid #e30613;
   border-radius: 4px;
   background-color: transparent;
@@ -8143,23 +8157,9 @@ header {
   line-height: normal;
   transition: all 0.2s ease-in-out;
 }
-.livelo__stay:hover {
+.livelo__leave:hover {
   background-color: #e30613;
   color: #fff;
-}
-.livelo__leave {
-  padding: 12px 8px;
-  border: 1px solid #392f2d;
-  border-radius: 4px;
-  background-color: #392f2d;
-  color: #fff;
-  font-weight: 700;
-  font-size: 12px;
-  transition: all 0.2s ease-in-out;
-}
-.livelo__leave:hover {
-  background-color: #fff;
-  color: #392f2d;
 }
 .nav-all__item--root {
   font-weight: 500;

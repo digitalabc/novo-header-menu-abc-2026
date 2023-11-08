@@ -78,6 +78,20 @@
 
   &__stay
     padding: 12px 8px;
+    border: 1px solid $black;
+    border-radius: 4px;
+    background-color: $black;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 12px;
+    transition: $transition;
+
+    &:hover
+      background-color: #ffffff;
+      color: $black;
+
+  &__leave
+    padding: 12px 8px;
     border: 1px solid $primary;
     border-radius: 4px;
     background-color: transparent;
@@ -90,17 +104,3 @@
     &:hover
       background-color: $primary;
       color: #ffffff;
-
-  &__leave
-    padding: 12px 8px;
-    border: 1px solid $black;
-    border-radius: 4px;
-    background-color: $black;
-    color: #FFF;
-    font-weight: 700;
-    font-size: 12px;
-    transition: $transition;
-
-    &:hover
-      background-color: #ffffff;
-      color: $black;

@@ -1,3 +1,7 @@
+.floating-navbar button svg,
+button.menu__button svg,
+.search__submit svg,
+#regional_offers svg,
 .navbar-brand img,
 .navbar__lojas svg,
 .user__header svg,
@@ -7,14 +11,18 @@
     filter: brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(0%) hue-rotate(53deg) brightness(100%) contrast(106%);
 }
 
+#menu-offcanvas .nav-mobile__header .info>p,
 .ruler__text strong {
     color: #000 !important;
-    text-decoration: underline !important;
-    
 }
+.ruler__text strong {
+    text-decoration: underline !important;
+}
+
+::-webkit-scrollbar-thumb,
+.ah-offcanvas-bar .ah-close,
 .minicart__button .label-cart-count,
 section.newsletter--home,
 .topbar {
-    background-color: #000 !important;
-    
+    background-color: #000 !important;    
 }

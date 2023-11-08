@@ -178,6 +178,25 @@
       ]
     },
     {
+      "name": "Araxá",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Vila Fertiza",
+          "adress": "Av. João Paulo II, n° 1745 - Vila Fertiza, Araxá - MG, 38184-223",
+          "phone": "(34) 3661-4000",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/araxa/vila-fertiza",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Barbacena",
       "state": "Minas Gerais",
       "stores": [

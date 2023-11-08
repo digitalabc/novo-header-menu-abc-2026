@@ -15,6 +15,7 @@ button.menu__button svg,
 .ruler__text strong {
     color: #000 !important;
 }
+
 .ruler__text strong {
     text-decoration: underline !important;
 }
@@ -24,5 +25,16 @@ button.menu__button svg,
 .minicart__button .label-cart-count,
 section.newsletter--home,
 .topbar {
-    background-color: #000 !important;    
+    background-color: #000 !important;
+}
+
+/* firefox */
+* {
+    scrollbar-color: #000 #fff;
+}
+
+@media (max-width: 991px) {
+    #mm-whatsapp {
+        bottom: 60px !important;
+    }
 }

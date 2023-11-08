@@ -6,6 +6,7 @@ const estados = [
 		"cidades": [
 			"Além Paraíba",
 			"Alfenas",
+			"Araxá", 
 			"Barbacena",
 			"Belo Horizonte",
 			"Belo Vale",

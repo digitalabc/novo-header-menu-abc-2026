@@ -28,13 +28,16 @@ section.newsletter--home,
     background-color: #000 !important;
 }
 
-/* firefox */
-* {
-    scrollbar-color: #000 #fff;
-}
-
 @media (max-width: 991px) {
     #mm-whatsapp {
         bottom: 60px !important;
     }
+}
+
+#dialog_input_cep { 
+    z-index: 100;
+}
+/* firefox */
+* {
+    scrollbar-color: #000 #fff;
 }

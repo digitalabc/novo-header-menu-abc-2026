@@ -1,0 +1,132 @@
+#regional_offers
+  display: flex;
+  align-items: center;
+  color: #5D5D5D;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 130%;
+  cursor: pointer;
+  gap: 9px;
+
+  @media mobile
+    margin-bottom: 10px;
+
+  &_overlay
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(#B8B8B8, 0.3);
+    opacity: 0;
+
+    &.hidden
+      display: none;
+
+    &.open
+      visibility: visible;
+      opacity: 1;
+
+  > p
+    color: $black;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration-line: underline;
+
+    @media mobile
+      font-size: 16px;
+
+  .tooltip
+    position: relative;
+
+    &:hover
+      .tooltip__text
+        visibility: visible;
+
+    &__text
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      z-index: 1;
+      visibility: hidden;
+      margin-left: 12px;
+      padding: 2px 5px;
+      border-radius: 6px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      color: $black;
+      white-space: nowrap;
+      font-size: 12px;
+      transform: translateY(-50%);
+
+#dialog_input_cep
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+  visibility: hidden;
+  padding: 36px 24px 24px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 2px 0 #000, 0 6px 6px 0 rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: $transition;
+
+  @media mobile
+    left: 15px;
+    max-width: calc(100% - 30px);
+    width: 100%;
+
+  &.hidden
+    display: none;
+
+  &.open
+    visibility: visible;
+    opacity: 1;
+
+  i
+    position: absolute;
+    top: -10px;
+    left: 18px;
+    z-index: -1;
+    filter: drop-shadow(0 -3px 0 rgba(0, 0, 0, 0.3));
+
+  > h3
+    margin-bottom: 18px;
+    color: #392F2D;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 110%;
+
+  > button
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    padding: 12px;
+    background: none;
+
+  div
+    display: flex;
+    align-items: center;
+
+    input
+      padding: 0 20px;
+      height: 48px;
+      border: 1px solid #5D5D5D;
+      border-right: 0;
+      border-radius: 6px 0 0 6px;
+      color: #949494;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: normal;
+
+    button
+      padding: 16px 40px;
+      border-radius: 0 6px 6px 0;
+      background-color: $primary;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: normal;

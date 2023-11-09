@@ -67,7 +67,8 @@ query ($searchQuery: String, $partnerAccessToken: String, $resultSize: Int = 12,
             value
           }
         }
-        promotions {
+        promotions{
+          fullStampUrl
           content
           id
           stamp

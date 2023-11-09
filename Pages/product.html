@@ -122,7 +122,7 @@
   {{ product_floating product: product }}
 
   {{~ if product_has_specialist_popup ~}}
-    {{ product_popup }}
+  {{ product_popup }}
   {{~ end ~}}
 
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
@@ -208,8 +208,10 @@
 
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "elevate-zoom"]}}
 
+  {{ asset type: "js" paths: ["regional_offers"] options:"async"}}
+
   {{~ if product_show_coupon ~}}
-  {{ asset type: "js" paths: ["product_cupom"]}}
+    {{ asset type: "js" paths: ["product_cupom"]}}
   {{~ end ~}}
 
   {{ asset type: "js" paths: ["virtual_reality"] }}

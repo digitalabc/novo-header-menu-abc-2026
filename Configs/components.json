@@ -1244,5 +1244,11 @@
         "name": "modal_regional_offers",
         "path": "modal_regional_offers.html",
         "availableInAllPages": true
+    },
+    {
+        "name": "livelo_popup",
+        "path": "Custom/livelo/livelo_popup.html",
+        "inheritVariables": false,
+        "availableInAllPages": true
     }
 ]

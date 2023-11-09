@@ -6583,7 +6583,7 @@ div[class^=como-chegar] > span + i {
   }
 }
 .black_friday__spot {
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: calc(((100% - 3 * 75px) / 4));
@@ -8052,6 +8052,117 @@ header {
 }
 .stamps-vr--no_discount {
   top: 10px;
+}
+.livelo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  visibility: hidden;
+  padding: 32px;
+  border-radius: 1.6rem;
+  background: #fff;
+  box-shadow: 0 0 2px 0 #000, 0 6px 6px 0 rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+.livelo.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.livelo_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: all ease-in-out 0.2s;
+}
+.livelo_modal.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.livelo__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  padding: 8px;
+  background: none;
+  color: #949494;
+  transition: all 0.2s ease-in-out;
+}
+.livelo__close:hover {
+  color: #e30613;
+}
+.livelo h2.livelo__title {
+  margin-bottom: 16px;
+  color: #e30613;
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+}
+.livelo__paragraph {
+  margin-bottom: 16px;
+  max-width: 395px;
+  color: #392f2d;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  line-height: normal;
+}
+@media screen and (max-width: 991px) {
+  .livelo__paragraph {
+    width: 250px;
+  }
+}
+.livelo__paragraph span {
+  color: #e30613;
+  font-weight: 400;
+}
+.livelo__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+@media screen and (max-width: 991px) {
+  .livelo__buttons {
+    justify-content: space-between;
+  }
+}
+.livelo__stay {
+  padding: 12px 8px;
+  border: 1px solid #392f2d;
+  border-radius: 4px;
+  background-color: #392f2d;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  transition: all 0.2s ease-in-out;
+}
+.livelo__stay:hover {
+  background-color: #fff;
+  color: #392f2d;
+}
+.livelo__leave {
+  padding: 12px 8px;
+  border: 1px solid #e30613;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #e30613;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: normal;
+  transition: all 0.2s ease-in-out;
+}
+.livelo__leave:hover {
+  background-color: #e30613;
+  color: #fff;
 }
 .nav-all__item--root {
   font-weight: 500;

@@ -2041,6 +2041,7 @@ body.form_focus div#contactForm {
 @media (max-width: 1024px) {
   .cidade__adress {
     margin: 0;
+    padding: 0 20px;
     text-align: center;
   }
 }
@@ -2052,11 +2053,11 @@ body.form_focus div#contactForm {
   line-height: 39px;
 }
 .cidade__adress--text {
+  max-width: 565px;
   color: #0d3547;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  max-width: 565px;
 }
 .cidade__fullbanner {
   margin-bottom: 25px;
@@ -2135,9 +2136,9 @@ body.form_focus div#contactForm {
 }
 @media screen and (max-width: 991px) {
   .cidade__info {
-    align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
     min-width: auto;
     width: 100%;
   }
@@ -2150,6 +2151,12 @@ body.form_focus div#contactForm {
 .cidade__info >div:not(.opening-hours) {
   display: flex;
   justify-content: center;
+}
+@media screen and (max-width: 991px) {
+  .cidade__info >div:not(.opening-hours) {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 .cidade__info p {
   display: flex;
@@ -2165,16 +2172,8 @@ body.form_focus div#contactForm {
 @media screen and (max-width: 991px) {
   .cidade__info a {
     padding: 10px 15px;
-  }
-}
-@media screen and (max-width: 991px) {
-  .cidade__info a.whatsapp-link {
-    display: none;
-  }
-}
-@media screen and (max-width: 991px) {
-  .cidade__info a.call-link {
-    margin-right: 20px;
+    width: 200px;
+    text-align: center;
   }
 }
 @media screen and (min-width: 992px) {
@@ -2213,8 +2212,8 @@ body.form_focus div#contactForm {
 }
 @media (max-width: 1300px) {
   .cidade__cards {
-    padding: 0 15px;
     margin-bottom: 65px;
+    padding: 0 15px;
   }
 }
 .cidade__card {
@@ -2225,8 +2224,8 @@ body.form_focus div#contactForm {
 }
 .cidade__card img {
   display: block;
-  transition: all 0.2s ease-in-out;
   max-width: 100%;
+  transition: all 0.2s ease-in-out;
 }
 .cidade__middle {
   display: flex;
@@ -2250,13 +2249,13 @@ body.form_focus div#contactForm {
   line-height: 29px;
 }
 .cidade__sobre-nos--text {
+  position: relative;
   overflow: hidden;
   height: 72px;
   color: #0d3547;
   font-weight: 300;
   font-size: 15px;
   line-height: 24px;
-  position: relative;
 }
 .cidade__sobre-nos--text:before {
   position: absolute;
@@ -2264,7 +2263,7 @@ body.form_focus div#contactForm {
   width: 100%;
   height: 48px;
   background: linear-gradient(transparent, #fff);
-  content: '';
+  content: "";
 }
 .cidade__sobre-nos--text.show-text {
   height: auto;
@@ -2299,14 +2298,14 @@ body.form_focus div#contactForm {
   background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
   background-size: contain;
   background-repeat: no-repeat;
+  content: "";
   transform: translateY(-50%);
-  content: '';
 }
 .cidade__sobre-nos--button.rotate {
   font-size: 0;
 }
 .cidade__sobre-nos--button.rotate:before {
-  content: 'Mostrar menos';
+  content: "Mostrar menos";
   font-size: 14px;
 }
 .cidade__sobre-nos--button.rotate:after {
@@ -2370,8 +2369,8 @@ body.form_focus div#contactForm {
 }
 .cidade__sobre-nos__categoria--cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   width: 100%;
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
 }
 @media (max-width: 991px) {
@@ -2409,9 +2408,9 @@ body.form_focus div#contactForm {
 }
 @media screen and (min-width: 992px) {
   .cidade__fale-conosco {
-    min-width: 410px;
     margin-top: -85px;
     padding-top: 85px;
+    min-width: 410px;
   }
 }
 .cidade__fale-conosco__wrap {
@@ -2419,8 +2418,8 @@ body.form_focus div#contactForm {
 }
 @media (max-width: 991px) {
   .cidade__fale-conosco {
-    margin-inline: 15px;
     width: auto;
+    margin-inline: 15px;
   }
 }
 .cidade__fale-conosco h2 {
@@ -2463,9 +2462,9 @@ body.form_focus div#contactForm {
     padding-bottom: 20px;
   }
 }
-.cidade__fale-conosco form input[type='email'],
-.cidade__fale-conosco form input[type='text'],
-.cidade__fale-conosco form input[type='tel'],
+.cidade__fale-conosco form input[type="email"],
+.cidade__fale-conosco form input[type="text"],
+.cidade__fale-conosco form input[type="tel"],
 .cidade__fale-conosco form select {
   display: block;
   padding: 0 25px;
@@ -2479,9 +2478,9 @@ body.form_focus div#contactForm {
   font-size: 12px;
   line-height: 15px;
 }
-.cidade__fale-conosco form input[type='email']::placeholder,
-.cidade__fale-conosco form input[type='text']::placeholder,
-.cidade__fale-conosco form input[type='tel']::placeholder,
+.cidade__fale-conosco form input[type="email"]::placeholder,
+.cidade__fale-conosco form input[type="text"]::placeholder,
+.cidade__fale-conosco form input[type="tel"]::placeholder,
 .cidade__fale-conosco form select::placeholder {
   color: #0d3547;
 }
@@ -2493,7 +2492,8 @@ body.form_focus div#contactForm {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-.cidade__fale-conosco form input[type='submit'] {
+.cidade__fale-conosco form input[type="submit"] {
+  margin-bottom: 20px;
   height: 50px;
   border: 1px solid transparent;
   border-radius: 50px;
@@ -2502,18 +2502,17 @@ body.form_focus div#contactForm {
   letter-spacing: 0.15em;
   font-size: 14px;
   transition: all 0.2s ease-in-out;
-  margin-bottom: 20px;
 }
-.cidade__fale-conosco form input[type='submit']:not([disabled]):hover {
+.cidade__fale-conosco form input[type="submit"]:not([disabled]):hover {
   border: 1px solid #e30613;
   background: #fff;
   color: #e30613;
 }
-.cidade__fale-conosco form input[type='submit'][disabled] {
+.cidade__fale-conosco form input[type="submit"][disabled] {
   background: #b9b9b9;
   cursor: not-allowed;
 }
-.cidade__fale-conosco form input[type='checkbox'] {
+.cidade__fale-conosco form input[type="checkbox"] {
   flex-shrink: 0;
   margin-right: 15px;
   padding: 0;
@@ -2527,7 +2526,7 @@ body.form_focus div#contactForm {
   background-repeat: no-repeat;
   appearance: none;
 }
-.cidade__fale-conosco form input[type='checkbox']:checked {
+.cidade__fale-conosco form input[type="checkbox"]:checked {
   background: #e30613;
 }
 .cidade__fale-conosco form label {
@@ -2568,8 +2567,8 @@ body.form_focus div#contactForm {
   aspect-ratio: 795/259;
 }
 .cidade__clientes {
-  background: #f0f3f5;
   padding: 70px 0 35px;
+  background: #f0f3f5;
 }
 .cidade__clientes h2 {
   margin-bottom: 32px;
@@ -2590,17 +2589,17 @@ body.form_focus div#contactForm {
   }
 }
 .cidade__clientes--card {
-  padding: 32px;
-  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 300px;
+  padding: 32px;
   width: 350px;
+  height: 300px;
+  background: #fff;
 }
 .cidade__clientes--card svg {
-  margin-bottom: 16px;
   flex-shrink: 0;
+  margin-bottom: 16px;
 }
 .cidade__clientes--name {
   display: block;
@@ -2611,8 +2610,8 @@ body.form_focus div#contactForm {
   line-height: 160%;
 }
 .cidade__marcas {
-  padding-top: 35px;
   margin: 0 auto;
+  padding-top: 35px;
   max-width: 1300px;
   width: 100%;
   background: #f0f3f5;
@@ -2640,9 +2639,9 @@ body.form_focus div#contactForm {
   display: none;
 }
 .cidade__marcas .fbits-listaMarcas-item img {
+  display: block;
   margin: 0 auto;
   max-width: 100%;
-  display: block;
 }
 @media screen and (max-width: 991px) {
   .cidade__marcas .fbits-listaMarcas-item img {
@@ -2655,13 +2654,13 @@ body.form_focus div#contactForm {
 }
 .cidade__banner--content {
   display: flex;
-  border-radius: 2px;
   overflow: hidden;
+  border-radius: 2px;
 }
 @media screen and (max-width: 991px) {
   .cidade__banner--content {
-    padding: 0;
     margin: 0 15px;
+    padding: 0;
     width: auto;
   }
 }
@@ -2735,11 +2734,11 @@ body.form_focus div#contactForm {
 }
 .opening-hours__header {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   color: #0d3547;
-  cursor: pointer;
   opacity: 0;
+  cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 .opening-hours__header.active {
@@ -2751,8 +2750,8 @@ body.form_focus div#contactForm {
 .opening-hours__status {
   display: flex;
   align-items: center;
-  color: #009e22;
   margin-right: 3px;
+  color: #009e22;
 }
 .opening-hours__status.closed {
   color: #e30613;
@@ -2761,14 +2760,14 @@ body.form_focus div#contactForm {
   margin: 0 3px;
 }
 .opening-hours__dot {
-  display: inline-block;
   position: relative;
-  vertical-align: middle;
+  display: inline-block;
+  margin-right: 5px;
   width: 16px;
   height: 16px;
-  background: rgba(0,158,34,0.5);
   border-radius: 50%;
-  margin-right: 5px;
+  background: rgba(0,158,34,0.5);
+  vertical-align: middle;
 }
 .opening-hours__dot.red {
   background: rgba(227,6,19,0.5);
@@ -2777,16 +2776,16 @@ body.form_focus div#contactForm {
   background: #e30613;
 }
 .opening-hours__dot:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
   display: block;
   width: 50%;
   height: 50%;
   border-radius: 50%;
   background: #009e22;
-  content: '';
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  content: "";
   transform: translate(-50%, -50%);
 }
 .opening-hours__dropdown {
@@ -2834,7 +2833,7 @@ body.form_focus div#contactForm {
   background: #999;
   background: #fff;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16);
-  content: '';
+  content: "";
   transform: translateX(-50%) rotate(45deg);
 }
 .opening-hours ul li.today {

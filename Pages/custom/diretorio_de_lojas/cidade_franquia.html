@@ -2,22 +2,25 @@
 <html lang="pt-BR">
 
 <head>
-  {{ gtm_config_head gtm_id: common.gtm_id }}              
+  {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
-<body class="cidade">
-  {{ gtm_config_body gtm_id: common.gtm_id }}                
+
+{{ isFranquia = data.hotsite.name | string.contains "Franquia" }}
+
+<body class="{{~ if isFranquia ~}}franquia{{~ else ~}}cidade{{~ end ~}}">
+  {{ gtm_config_body gtm_id: common.gtm_id }}
   <header>
-    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: false isFranquia: isFranquia }}
   </header>
 
-  {{~ if data.hotsite.name | string.contains "Franquia" ~}}
-    {{ franquia_html data: data }}
+  {{~ if isFranquia ~}}
+  {{ franquia_html data: data }}
   {{~ else ~}}
-    {{ cidade_html data: data }}
+  {{ cidade_html data: data }}
   {{~ end ~}}
 
   {{ footer products:common.lighbox_products.products.nodes }}

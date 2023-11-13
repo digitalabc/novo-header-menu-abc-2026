@@ -20,7 +20,10 @@
   {{~ all_categories = grouped_categories | group.get 0  ~}}
 {{~ end ~}}
 
-{{ topbar }}
+{{~ if !isFranquia ~}}
+  {{ topbar }}
+{{~ end ~}}
+
 <nav class="navbar">
     <div class="navbar__container ">
         {{ ## Search ## }}

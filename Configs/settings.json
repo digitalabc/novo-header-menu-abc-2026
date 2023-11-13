@@ -4811,15 +4811,15 @@
       "stores": [
         {
           "name": "Centro",
-          "adress": "Rua Doutor Oscar Guimarães, 655 - Centro, Três Lagoas - MS, 79600-020",
-          "phone": "",
+          "adress": "Rua Doutor Oscár Guimarães, 655 - Centro, Três Lagoas - MS, 79600-020",
+          "phone": "(67) 2104-3886",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/tres-lagoas/centro",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
+          "monday": "7:00 às 17:00",
+          "tuesday": "7:00 às 17:00",
+          "wednesday": "7:00 às 17:00",
+          "thursday": "7:00 às 17:00",
+          "friday": "7:00 às 17:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

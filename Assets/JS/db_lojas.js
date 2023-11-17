@@ -194,6 +194,7 @@ const estados = [
 			"Foz do Iguaçu",
 			"Guarapuava",
 			"Londrina",
+			"Maringá",
 			"Ponta Grossa",
 			"Telêmaco Borba",
 			"Toledo"

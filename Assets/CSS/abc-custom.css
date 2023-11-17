@@ -1,3 +1,4 @@
+/* blackfriday */
 .floating-navbar button svg,
 button.menu__button svg,
 .search__submit svg,
@@ -40,4 +41,9 @@ section.newsletter--home,
 /* firefox */
 * {
     scrollbar-color: #000 #fff;
+}
+
+/* blackfriday */
+.black_friday__spot {
+    padding-top: 5px;
 }

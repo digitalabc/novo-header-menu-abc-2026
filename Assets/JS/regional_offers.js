@@ -1,4 +1,5 @@
-window.addEventListener("load", validateRegionalOffers, false);
+// ABC - comentado a pedido do Rodrigo e Phaison
+//window.addEventListener("load", validateRegionalOffers, false);
 const dialogInputCep = document.getElementById('dialog_input_cep');
 
 /**

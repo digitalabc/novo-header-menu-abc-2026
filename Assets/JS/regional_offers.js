@@ -125,7 +125,6 @@ async function checkZipAddress(cep) {
 
     const texts = document.querySelectorAll('#regional_offers > p');
     const data = await response.json();
-    console.log(data);
     if (texts) {
       texts.forEach(element => {
         element.innerHTML = `
@@ -145,7 +144,7 @@ async function checkZipAddress(cep) {
  * @param {string} cep - The searched cep.
  */
 function setCepText(cep) {
-  let zipCode = parseInt(cep.replace("-", ""));
+  let zipCode = cep.replace("-", "");
   checkZipAddress(zipCode);
   openInputCepModal(false)
 }

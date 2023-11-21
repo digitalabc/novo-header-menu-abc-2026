@@ -371,7 +371,9 @@
 </footer>
 
 <!-- Floating Whatsapp  -->
-{{ whatsapp }}
+{{ if !isFranquia }}
+  {{ whatsapp }}
+{{ end }}
 
 <!-- Mobile floating menu -->
 {{ floating_navbar }}

@@ -273,6 +273,7 @@ const estados = [
 			"Afonso Cláudio",
 			"Anchieta",
 			"Baixo Guandu",
+			"Cachoeiro de Itapemirim", 
 			"Colatina",
 			"Guaçuí",
 			"Guarapari",

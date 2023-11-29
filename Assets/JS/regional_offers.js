@@ -36,6 +36,10 @@ const handleZipCode = (event) => {
   } else {
     document.getElementById('submit-region-form').disabled = true
   }
+
+  if (event.keyCode == 13) {
+    setRegionalOffers()
+  }
 }
 
 /**
@@ -107,7 +111,8 @@ function validateRegionalOffers() {
   if (cep) {
     setCepText(cep)
   } else {
-    openInputCepModal(true)
+    openInputCepModal(true);
+    window.scrollTo(0, 0)
   }
 }
 

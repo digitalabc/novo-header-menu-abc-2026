@@ -1,5 +1,5 @@
 /* blackfriday */
-.floating-navbar button svg,
+/* .floating-navbar button svg,
 button.menu__button svg,
 .search__submit svg,
 #regional_offers svg,
@@ -38,12 +38,11 @@ section.newsletter--home,
 #dialog_input_cep { 
     z-index: 100;
 }
-/* firefox */
+
 * {
     scrollbar-color: #000 #fff;
 }
 
-/* blackfriday */
 .black_friday__spot {
     padding-top: 5px;
-}
+} */

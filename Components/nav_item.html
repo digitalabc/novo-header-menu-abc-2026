@@ -16,7 +16,7 @@
 {{~ if children.size == 0 && !is_submenu ~}}
     <li class="nav-item nav-item--nv1" style="order: {{current_menu.order}}">
         {{~ if current_menu.name | string.downcase == "ofertas" ~}}
-            <a class="nav-link" href="/cyber-monday">🔥Cyber Monday🔥</a>
+            <a class="nav-link" href="/ofertas-natal">🎄Ofertas de Natal🎄</a>
         {{~ else ~}}
             <a class="nav-link" href="{{link}}">{{current_menu.name | string.downcase | string.capitalize}}</a>
         {{~ end ~}}

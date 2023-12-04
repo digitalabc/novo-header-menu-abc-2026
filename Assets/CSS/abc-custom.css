@@ -35,10 +35,6 @@ section.newsletter--home,
     }
 }
 
-#dialog_input_cep { 
-    z-index: 100;
-}
-
 * {
     scrollbar-color: #000 #fff;
 }
@@ -46,3 +42,7 @@ section.newsletter--home,
 .black_friday__spot {
     padding-top: 5px;
 } */
+
+#dialog_input_cep { 
+    z-index: 100;
+}

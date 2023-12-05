@@ -89,8 +89,18 @@
             display: block !important;
         }
         
+        @media screen and (min-width: 1268px) {
+            .card-body {
+                min-height: 150px;
+            }    
+        }
+        @media screen and (min-width: 968px) {
+            .card-body {
+                min-height: 200px;
+            }    
+        }
         .card-body {
-            min-height: 140px;
+            min-height: 200px;
         }
         .card img {
             align-self: center;
@@ -168,7 +178,7 @@
         <div class="album py-5 bg-body-tertiary">
             <div class="container-fluid">
 
-                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4">
+                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 g-4">
 
                     <!-- cols -->
                     <div class="col">

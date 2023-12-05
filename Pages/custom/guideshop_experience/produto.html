@@ -10,7 +10,11 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
     <style>
-        .card-boby > a {
+        .card-body {
+            display: grid;
+            gap: 10px;
+        }
+        .card-body > a {
             text-align: center;
         }
         #ar-button {
@@ -35,6 +39,10 @@
             align-items: center;
             gap: 10px;
         }
+        #qrCode {
+            margin: auto;
+            width: 150px;
+        }
     </style>
 </head>
 
@@ -48,7 +56,8 @@
                             <strong>SKU: </strong>
                         </p>
                         <p class="card-text"></p>
-                        <a href="http://">Visite o produto</a>
+                        <a class="visite" href="http://">Visite o produto</a>
+                        <a class="comprar" href="http://">Comprar o produto</a>
                         <div class="ar-button-group">
                             <p>Relidade aumentada</p>
                             <button id="ar-button"><svg width="54" height="54" viewBox="0 0 54 54" fill="none"
@@ -110,16 +119,15 @@
         await R2U.init({ customerId: 'f8e75cbb-150d-4c22-92b6-77eff4a5a849' })
         const sku = (new URLSearchParams(window.location.search)).get('sku') ?? false;
         const isActive = await R2U.sku.isActive(sku)
-
+        
         if (sku && isActive) {
             R2U.sku.getData(sku).then((info) => {
                 // pdpUrl
                 let cardText = document.querySelectorAll('.card-body .card-text');
                 cardText[0].querySelector('strong').innerText = `SKU: ${sku}`;
                 cardText[1].innerText = `${info.name}`;
-                if (inf.pdpUrl) {
-                    document.querySelector('.card-body > a').setAttribute('href', info.pdpUrl);
-                }
+                document.querySelector('.visite').setAttribute('href', info.pdpUrl);
+                document.querySelector('.comprar').setAttribute('href', `https://checkout.abcdaconstrucao.com.br/produto/adicionar?p=${sku}`);
             });
 
             const fallbackOptions = {

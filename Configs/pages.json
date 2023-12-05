@@ -123,6 +123,14 @@
             {
                 "urlMatch": "black-friday|blackfriday",
                 "path": "custom/black-friday.html"
+            },
+            {
+                "urlMatch": "guideshop-experience",
+                "path": "custom/guideshop_experience/lista-produtos.html"
+            },
+            {
+                "urlMatch": "guideshop-experience/*",
+                "path": "custom/guideshop_experience/produto.html"
             }
         ]
     },

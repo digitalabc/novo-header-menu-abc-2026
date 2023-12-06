@@ -10,7 +10,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -88,20 +88,23 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
-        
+
         @media screen and (min-width: 1268px) {
             .card-body {
                 min-height: 150px;
-            }    
+            }
         }
+
         @media screen and (min-width: 968px) {
             .card-body {
                 min-height: 200px;
-            }    
+            }
         }
+
         .card-body {
             min-height: 200px;
         }
+
         .card img {
             align-self: center;
             max-width: 100%;
@@ -167,15 +170,25 @@
                     <p class="lead text-body-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos
                         laudantium eveniet quae fugiat ducimus deleniti corporis non maiores labore veritatis, placeat
                         facilis dolore officiis perferendis consectetur veniam, repellendus est aut.</p>
+                    <!-- 
                     <p>
                         <a href="#" class="btn btn-primary my-2">call to action</a>
                         <a href="#" class="btn btn-secondary my-2">Secondary action</a>
                     </p>
+                    -->
+
                 </div>
             </div>
         </section>
 
         <div class="album py-5 bg-body-tertiary">
+            <div class="container m-auto mb-5">
+                <label class="form-label" for="">Pesquise por SKU ou nome do produto</label>
+                <div class=" input-group input-group-lg">
+                    <input type="text" class="form-control" id="search-input" placeholder="Pesquisas....">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                </div>
+            </div>
             <div class="container-fluid">
 
                 <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 g-4">
@@ -2491,6 +2504,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+    <script>
+        let cont = 0;
+        let produtos = [];
+        document.querySelectorAll('.album .row>.col').forEach((produto) => {
+
+            let sku = produto.querySelector('.card-body > p:first-child > strong').innerText.replace('SKU: ', '');
+            let nome = produto.querySelector('.card-body > p:last-child').innerText;
+            produtos.push({
+                'element': cont,
+                'sku': sku,
+                'nome': nome
+            });
+            cont++;
+        });
+
+    </script>
 </body>
 
 </html>

@@ -153,3 +153,11 @@ function setCepText(cep) {
   checkZipAddress(zipCode);
   openInputCepModal(false)
 }
+
+/*
+  temporariamente
+ */
+document.querySelector('#regional_offers_overlay').addEventListener('click', (e) => {
+  openInputCepModal(false);
+  e.stopPropagation();
+});

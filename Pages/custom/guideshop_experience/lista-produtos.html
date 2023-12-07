@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -116,6 +116,30 @@
             height: 250px;
             overflow: hidden;
         }
+
+        .lista-produtos>.row {
+            min-height: 48vh;
+        }
+
+        .message-search {
+            visibility: hidden;
+            display: flex;
+            padding-top: 20px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .message-search.show-message {
+            visibility: visible;
+        }
+
+        .searching .show-result {
+            display: block;
+        }
+
+        .searching .col:not(.show-result) {
+            display: none;
+        }
     </style>
 
 </head>
@@ -181,16 +205,16 @@
             </div>
         </section>
 
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container m-auto mb-5">
+        <div class="py-5 bg-body-tertiary">
+            <div class="container m-auto mb-3">
                 <label class="form-label" for="">Pesquise por SKU ou nome do produto</label>
                 <div class=" input-group input-group-lg">
                     <input type="text" class="form-control" id="search-input" placeholder="Pesquisas....">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
                 </div>
+                <div class="message-search">Não foram encontrados produtos com as informações digitadas.</div>
             </div>
-            <div class="container-fluid">
-
+            <div class="container-fluid lista-produtos">
                 <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 g-4">
 
                     <!-- cols -->
@@ -2507,16 +2531,58 @@
     <script>
         let cont = 0;
         let produtos = [];
-        document.querySelectorAll('.album .row>.col').forEach((produto) => {
+        document.querySelectorAll('.lista-produtos .row>.col').forEach((produto) => {
 
             let sku = produto.querySelector('.card-body > p:first-child > strong').innerText.replace('SKU: ', '');
             let nome = produto.querySelector('.card-body > p:last-child').innerText;
             produtos.push({
                 'element': cont,
-                'sku': sku,
-                'nome': nome
+                'sku': sku.toLowerCase(),
+                'nome': nome.toLowerCase()
             });
             cont++;
+        });
+
+        document.querySelector('#search-input').addEventListener('input', (e) => {
+            let elements = [];
+            let cards = document.querySelectorAll('.lista-produtos .row>.col');
+            let listaProdutos = document.querySelector('.lista-produtos');
+            let messageSearch = document.querySelector('.message-search');
+            if (e.target.value) {
+
+                for (const produto of produtos) {
+                    if (produto.sku.includes(e.target.value.toLowerCase()) || produto.nome.includes(e.target.value.toLowerCase())) {
+                        elements.push(produto.element);
+                    }
+                }
+
+                cards.forEach((card) => {
+                    if (card.classList.contains('show-result')) {
+                        card.classList.remove('show-result');
+                    }
+                });
+
+                if (elements.length) {
+                    if (messageSearch.classList.contains('show-message')) {
+                        messageSearch.classList.remove('show-message');
+                    }
+                    listaProdutos.classList.add('searching');
+                    for (const element of elements) {
+                        cards[element].classList.add('show-result');
+                    }
+                } else {
+                    messageSearch.classList.add('show-message');
+                }
+            } else {
+                cards.forEach((card) => {
+                    if (card.classList.contains('show-result')) {
+                        card.classList.remove('show-result');
+                    }
+                });
+                if (listaProdutos.classList.contains('searching')) {
+                    listaProdutos.classList.remove('searching');
+                }
+            }
         });
 
     </script>

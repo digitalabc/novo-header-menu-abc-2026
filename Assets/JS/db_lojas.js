@@ -6,6 +6,7 @@ const estados = [
 		"cidades": [
 			"Além Paraíba",
 			"Alfenas",
+			"Araçuaí",
 			"Araxá", 
 			"Barbacena",
 			"Belo Horizonte",
@@ -106,6 +107,7 @@ const estados = [
 			"São João Nepomuceno",
 			"São Lourenço",
 			"Sete Lagoas",
+			"Taiobeiras",
 			"Tarumirim",
 			"Teófilo Otoni",
 			"Tocantins",

@@ -178,6 +178,25 @@
       ]
     },
     {
+      "name": "Araçuaí",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua José Antônio Araújo, n° 105 - Centro, Araçuaí - MG, 39600-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/aracuai/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
+        }
+      ]
+    },
+    {
       "name": "Araxá",
       "state": "Minas Gerais",
       "stores": [
@@ -2282,6 +2301,25 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Taiobeiras",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. da Saudade, 73 - Centro, Taiobeiras - MG, 39550-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/taiobeiras/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
         }
       ]
     },

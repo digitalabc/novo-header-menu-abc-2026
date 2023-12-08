@@ -184,15 +184,15 @@
         {
           "name": "Centro",
           "adress": "Rua José Antônio Araújo, n° 105 - Centro, Araçuaí - MG, 39600-000",
-          "phone": "",
+          "phone": "(33) 99990-5326",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/aracuai/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },

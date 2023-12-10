@@ -4,21 +4,37 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Produto - Guide Shop Experience</title>
+    <title>Produto - Prateleira Infinita</title>
     <script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+        :root {
+            --ChumboABC: #454040;
+            --DarkABC: #392F2D;
+            --RedABC: #E30613;
+            --CardText: #0D3547;
+            --CardSVG: #20363F;
+            --DarkBtn: #20363F;
+        }
+
         .card-body {
             display: grid;
             gap: 10px;
         }
-        .card-body > a {
+
+        .card-body>a {
             text-align: center;
         }
+
         #ar-button {
             border: none;
+            background-color: transparent;
         }
 
         .qrCode-group {
@@ -31,6 +47,20 @@
         .ar-button-group p {
             margin: 0;
             padding: 0;
+            color: #212529;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17.911px;
+            font-style: normal;
+        }
+
+        .qrCode-group p {
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .ar-button-group p {
+            font-weight: 600;
+            line-height: 26.866px;
         }
 
         .ar-button-group {
@@ -38,10 +68,76 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
+            padding-top: 10px;
         }
+
         #qrCode {
             margin: auto;
             width: 150px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        .card {
+            border-radius: 7.565px;
+            border: 1.513px solid #E2E2E2;
+            background: #FFF;
+            box-shadow: 0px 0px 7.565px 0px rgba(0, 0, 0, 0.25);
+            width: 330px;
+            margin-bottom: 25px;
+        }
+
+        .card-body .card-text {
+            color: #212529;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17.911px;
+            font-style: normal;
+        }
+
+        .card-body .card-text:first-child {
+            font-weight: 700;
+            line-height: 26.866px;
+        }
+
+        .card-body .card-text:last-child {
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .card-body>a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8.955px 53.732px;
+            border-radius: 39.18px;
+            color: #FFF;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17.911px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 26.866px;
+        }
+
+        .visite {
+            background-color: #0B4864;
+        }
+
+        .comprar {
+            background-color: #0FA848;
+        }
+
+        .voltar {
+            text-decoration: none;
+            padding: 5.787px 34.722px;
+            border-radius: 25.318px;
+            border: 0.723px solid #909090;
+            color: #909090;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13.433px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 17.361px;
         }
     </style>
 </head>
@@ -49,48 +145,38 @@
 <body>
     <div class="container-fluid">
         <div class="row g-5 p-4">
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <p class="card-text">
-                            <strong>SKU: </strong>
+                            SKU:
                         </p>
                         <p class="card-text"></p>
                         <a class="visite" href="http://">Visite o produto</a>
                         <a class="comprar" href="http://">Comprar o produto</a>
                         <div class="ar-button-group">
                             <p>Relidade aumentada</p>
-                            <button id="ar-button"><svg width="54" height="54" viewBox="0 0 54 54" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <g filter="url(#filter0_d_145_147)">
+                            <button id="ar-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_11_238)">
                                         <path
-                                            d="M27 50C40.8071 50 52 38.8071 52 25C52 11.1929 40.8071 0 27 0C13.1929 0 2 11.1929 2 25C2 38.8071 13.1929 50 27 50Z"
-                                            fill="url(#paint0_linear_145_147)" />
+                                            d="M30.261 56.1212C45.7169 56.1212 58.2464 43.5917 58.2464 28.1358C58.2464 12.6799 45.7169 0.150391 30.261 0.150391C14.8051 0.150391 2.27557 12.6799 2.27557 28.1358C2.27557 43.5917 14.8051 56.1212 30.261 56.1212Z"
+                                            fill="url(#paint0_linear_11_238)" />
                                         <path
-                                            d="M22.8439 31.057H26.8713L24.002 26.876C25.6545 26.0768 26.6049 24.6343 26.6049 22.677C26.6049 19.6361 24.3248 17.7555 20.6947 17.7555H14.6129V31.057H18.3762V27.5217H20.4283L22.8416 31.057H22.8439ZM12.5043 14.437H11.4207V9.94897H15.9087V11.0326H12.5066V14.4347L12.5043 14.437ZM42.5793 14.437H41.4957V11.0349H38.0936V9.95123H42.5793V14.4392V14.437ZM42.5793 40.051H38.0936V38.9674H41.4957V35.5653H42.5793V40.051ZM15.9064 40.051H11.4185V35.5653H12.5021V38.9674H15.9042V40.051H15.9064ZM22.8055 22.677C22.8055 23.8938 22.0266 24.6162 20.4689 24.6162H18.3785V20.7197H20.4689C22.0266 20.7197 22.8055 21.4421 22.8055 22.677ZM38.6354 31.057H42.5499L36.66 17.7555H32.9554L27.0835 31.057H30.9213L31.9666 28.4721H37.5924L38.6376 31.057H38.6354ZM33.0683 25.6976L34.7772 21.4421L36.4884 25.6976H33.0683Z"
+                                            d="M25.6086 34.9162H30.117L26.905 30.2359C28.7549 29.3412 29.8188 27.7265 29.8188 25.5354C29.8188 22.1314 27.2664 20.0262 23.2028 20.0262H16.3947V34.9162H20.6074V30.9587H22.9046L25.6061 34.9162H25.6086ZM14.0343 16.3115H12.8213V11.2875H17.8453V12.5005H14.0369V16.3089L14.0343 16.3115ZM47.7008 16.3115H46.4878V12.5031H42.6794V11.29H47.7008V16.3139V16.3115ZM47.7008 44.9842H42.6794V43.7712H46.4878V39.9628H47.7008V44.9842ZM17.8427 44.9842H12.8188V39.9628H14.0318V43.7712H17.8402V44.9842H17.8427ZM25.5657 25.5354C25.5657 26.8976 24.6937 27.7062 22.95 27.7062H20.61V23.3444H22.95C24.6937 23.3444 25.5657 24.1531 25.5657 25.5354ZM43.2859 34.9162H47.6679L41.0746 20.0262H36.9276L30.3545 34.9162H34.6506L35.8207 32.0226H42.1184L43.2884 34.9162H43.2859ZM37.054 28.9168L38.967 24.1531L40.8825 28.9168H37.054Z"
                                             fill="white" />
                                     </g>
                                     <defs>
-                                        <filter id="filter0_d_145_147" x="0" y="0" width="54" height="54"
-                                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                            <feColorMatrix in="SourceAlpha" type="matrix"
-                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                            <feOffset dy="2" />
-                                            <feGaussianBlur stdDeviation="1" />
-                                            <feComposite in2="hardAlpha" operator="out" />
-                                            <feColorMatrix type="matrix"
-                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                            <feBlend mode="normal" in2="BackgroundImageFix"
-                                                result="effect1_dropShadow_145_147" />
-                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_145_147"
-                                                result="shape" />
-                                        </filter>
-                                        <linearGradient id="paint0_linear_145_147" x1="27" y1="0" x2="27" y2="50"
-                                            gradientUnits="userSpaceOnUse">
+                                        <linearGradient id="paint0_linear_11_238" x1="30.261" y1="0.150391" x2="30.261"
+                                            y2="56.1212" gradientUnits="userSpaceOnUse">
                                             <stop stop-color="#004A68" />
                                             <stop offset="1" stop-color="#29425A" />
                                         </linearGradient>
+                                        <clipPath id="clip0_11_238">
+                                            <rect width="60.4485" height="60.4485" fill="white"
+                                                transform="translate(0.0367126 0.150391)" />
+                                        </clipPath>
                                     </defs>
                                 </svg>
                             </button>
@@ -101,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="/guideshop-experience">Voltar</a>
+                <a class="voltar" href="/guideshop-experience">Voltar</a>
             </div>
             <div class="col-md-8">
                 <div id="3d-viewer"></div>
@@ -119,12 +205,12 @@
         await R2U.init({ customerId: 'f8e75cbb-150d-4c22-92b6-77eff4a5a849' })
         const sku = (new URLSearchParams(window.location.search)).get('sku') ?? false;
         const isActive = await R2U.sku.isActive(sku)
-        
+
         if (sku && isActive) {
             R2U.sku.getData(sku).then((info) => {
                 // pdpUrl
                 let cardText = document.querySelectorAll('.card-body .card-text');
-                cardText[0].querySelector('strong').innerText = `SKU: ${sku}`;
+                cardText[0].innerText = `SKU: ${sku}`;
                 cardText[1].innerText = `${info.name}`;
                 document.querySelector('.visite').setAttribute('href', info.pdpUrl);
                 document.querySelector('.comprar').setAttribute('href', `https://checkout.abcdaconstrucao.com.br/produto/adicionar?p=${sku}`);

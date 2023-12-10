@@ -5,13 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Guide Shop Experience</title>
+    <title>Prateleira Infinita</title>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+        :root {
+            --ChumboABC: #454040;
+            --DarkABC: #392F2D;
+            --RedABC: #E30613;
+            --CardText: #0D3547;
+            --CardSVG: #20363F;
+            --DarkBtn: #20363F;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -90,31 +103,31 @@
         }
 
         @media screen and (min-width: 1268px) {
-            .card-body {
+            /* .card-body {
                 min-height: 150px;
-            }
+            } */
         }
 
         @media screen and (min-width: 968px) {
-            .card-body {
+            /* .card-body {
                 min-height: 200px;
-            }
+            } */
         }
 
         .card-body {
-            min-height: 200px;
+            min-height: 140px;
+            padding-block: 15px;
         }
 
         .card img {
+            width: 194.797px;
+            height: 194.797px;
             align-self: center;
             max-width: 100%;
             max-height: 100%;
             min-height: 100%;
-            /* width: auto;
-            height: auto; */
-            width: 200px;
-            height: 250px;
             overflow: hidden;
+            padding-top: 15px;
         }
 
         .lista-produtos>.row {
@@ -140,77 +153,95 @@
         .searching .col:not(.show-result) {
             display: none;
         }
+
+        #search-input {
+            border-radius: 89.709px;
+            border: 0.5px solid #0D3547;
+            background: #FFF;
+        }
+
+        #search-input::placeholder {
+            color: #C6C6C6;
+            font-family: 'Inter', sans-serif;
+            font-size: 17.087px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .label-search-input {
+            color: var(--CardText);
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        section h1 {
+            color: var(--CardText);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        section p {
+            color: var(--CardText);
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 200;
+            line-height: normal;
+        }
+
+        .card-body .card-text {
+            color: var(--CardText);
+            font-family: 'Inter', sans-serif;
+            font-size: 15.13px;
+            font-style: normal;
+            line-height: normal;
+        }
+
+        .card-body .card-text:first-child {
+            font-weight: 700;
+        }
+
+        .card-body .card-text:last-child {
+            font-weight: 400;
+        }
+
+        .card {
+            border-radius: 7.565px;
+            border: 1.513px solid #E2E2E2;
+            background: #FFF;
+            box-shadow: 0px 0px 7.565px 0px rgba(0, 0, 0, 0.25);
+        }
     </style>
 
 </head>
 
 <body>
-    <header data-bs-theme="dark">
-        <div class="collapse text-bg-dark" id="navbarHeader">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <h4>About</h4>
-                        <p class="text-body-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima,
-                            doloremque? In quae ipsam laboriosam ad dolore officia eos optio, nihil repellendus magni
-                            perspiciatis obcaecati nostrum esse veritatis nulla repellat hic!.</p>
-                    </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                        <h4>Contact</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                            <li><a href="#" class="text-white">Like on Facebook</a></li>
-                            <li><a href="#" class="text-white">Email me</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <a href="#" class="navbar-brand d-flex align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
-                        viewBox="0 0 24 24">
-                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                        <circle cx="12" cy="13" r="4" />
-                    </svg>
-                    <strong>Album</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
     <main>
-
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Guide Shop Experience</h1>
-                    <p class="lead text-body-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos
-                        laudantium eveniet quae fugiat ducimus deleniti corporis non maiores labore veritatis, placeat
-                        facilis dolore officiis perferendis consectetur veniam, repellendus est aut.</p>
-                    <!-- 
-                    <p>
-                        <a href="#" class="btn btn-primary my-2">call to action</a>
-                        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                    <h1 class="">Prateleira Infinita</h1>
+                    <p class="">
+                        Ofereça uma experiência de compra completa e satisfaça as necessidades do seu cliente unindo o
+                        mundo físico com o digital.
                     </p>
-                    -->
-
                 </div>
             </div>
         </section>
 
         <div class="py-5 bg-body-tertiary">
             <div class="container m-auto mb-3">
-                <label class="form-label" for="">Pesquise por SKU ou nome do produto</label>
-                <div class=" input-group input-group-lg">
-                    <input type="text" class="form-control" id="search-input" placeholder="Pesquisas....">
-                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <label class="form-label label-search-input" for="">Pesquise por SKU ou nome do produto</label>
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" id="search-input" placeholder="Pesquisar SKU">
                 </div>
                 <div class="message-search">Não foram encontrados produtos com as informações digitadas.</div>
             </div>
@@ -218,14 +249,14 @@
                 <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 g-4">
 
                     <!-- cols -->
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261918" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261918/261918-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261918</strong>
+                                        SKU: 261918
                                     </p>
                                     <p class="card-text">
                                         Azulejo Monoporosa 32x60cm Retificado Tradizionale Bianco Brilhante La
@@ -235,14 +266,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=280761" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/280761/280761-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 280761</strong>
+                                        SKU: 280761
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Onix Bianco Lux Polido Biancogres 60x120Cm(Cód. Forn.
@@ -252,14 +283,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=262002" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262002/262002-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 262002</strong>
+                                        SKU: 262002
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Esmaltado 26x106cm Retificado Thimos Caramello Rústico Ld
@@ -269,14 +300,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=262094" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262094/262094-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 262094</strong>
+                                        SKU: 262094
                                     </p>
                                     <p class="card-text">
                                         Piso 60x60cm Bold Toronto Beige Externo Ld Biancogres(Cód. Forn. BN0386T1)
@@ -285,14 +316,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=287060" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/287060/287060-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 287060</strong>
+                                        SKU: 287060
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Cemento Hidráulico Biancogres 60x60 cm(Cód. Forn.
@@ -302,14 +333,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261798" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261798/261798-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261798</strong>
+                                        SKU: 261798
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado 83x83cm Ad4 Chicago Grigio Le Biancogres(Cód. Forn.
@@ -319,14 +350,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282294" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/282294/282294-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282294</strong>
+                                        SKU: 282294
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Clark Biancogres 60x60 cm(Cód. Forn. BP1590C1)
@@ -335,14 +366,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=287045" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/287045/287045-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 287045</strong>
+                                        SKU: 287045
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Marmo Egeu Satin Biancogres 90x90 cm(Cód. Forn. CC0298G1)
@@ -351,14 +382,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261709" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261709/261709-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261709</strong>
+                                        SKU: 261709
                                     </p>
                                     <p class="card-text">
                                         Porcelanato 90x90cm Retificado Calacata Altissimo Satin Ld Biancogres(Cód. Forn.
@@ -368,14 +399,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260896" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260896/260896-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260896</strong>
+                                        SKU: 260896
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Esmaltado 90x90cm Retificado Calacata Oro Satin Acetinado
@@ -385,14 +416,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=279862" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/279862/279862-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 279862</strong>
+                                        SKU: 279862
                                     </p>
                                     <p class="card-text">
                                         Azulejo Retificado Rig Bianco Biancogres 45X90Cm(Cód. Forn. CE0475B1)
@@ -401,14 +432,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261738" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261738/261738-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261738</strong>
+                                        SKU: 261738
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado 26x106cm Liverpool Ld Biancogres(Cód. Forn. C61661L1)
@@ -417,14 +448,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261659" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261659/261659-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261659</strong>
+                                        SKU: 261659
                                     </p>
                                     <p class="card-text">
                                         Azulejo 45x90cm Retificado Maximus Bianco La Biancogres(Cód. Forn. CE0765B1)
@@ -433,14 +464,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261705" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261705/261705-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261705</strong>
+                                        SKU: 261705
                                     </p>
                                     <p class="card-text">
                                         Porcelanato 90x90cm Retificado Calacata Altissimo Lux Lc Biancogres(Cód. Forn.
@@ -450,14 +481,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260234" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260234/260234-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260234</strong>
+                                        SKU: 260234
                                     </p>
                                     <p class="card-text">
                                         Ducha Higiênica Com Registro E Derivação Link 1984 Cromada Deca(Cód. Forn.
@@ -467,14 +498,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260387" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260387/260387-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260387</strong>
+                                        SKU: 260387
                                     </p>
                                     <p class="card-text">
                                         Acabamento Para Registro De Pressão Level 1/2" 3/4" 4916 Cromada Deca(Cód. Forn.
@@ -484,14 +515,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260278" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260278/260278-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260278</strong>
+                                        SKU: 260278
                                     </p>
                                     <p class="card-text">
                                         Chuveiro De Teto Redondo Acqua Plus 1990 Com Tubo Cromado Deca(Cód. Forn.
@@ -501,14 +532,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261213" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261213/261213-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261213</strong>
+                                        SKU: 261213
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Esmaltado 90x90cm Retificado Brera Cimento Acetinado Ld Eliane(Cód.
@@ -518,14 +549,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=262915" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262915/262915-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 262915</strong>
+                                        SKU: 262915
                                     </p>
                                     <p class="card-text">
                                         Porcelanato 90x90cm Retificado Dolmen Cinza Acetinado Eliane(Cód. Forn. 8045538)
@@ -534,14 +565,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261496" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261496/261496-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261496</strong>
+                                        SKU: 261496
                                     </p>
                                     <p class="card-text">
                                         Revestimento Cerâmico 10x20cm Bold Metrô White Brilhante In Eliane(Cód. Forn.
@@ -551,14 +582,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261665" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261665/261665-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261665</strong>
+                                        SKU: 261665
                                     </p>
                                     <p class="card-text">
                                         Porcelanato 26x106cm Retificado Scandinavo Bianco Ld Biancogres(Cód. Forn.
@@ -568,14 +599,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=291762" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/291762/291762-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 291762</strong>
+                                        SKU: 291762
                                     </p>
                                     <p class="card-text">
                                         Azulejo Retificado Rig Palha A/la Biancogres 45x90cm(Cód. Forn. CE0475P1)
@@ -584,14 +615,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261656" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261656/261656-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261656</strong>
+                                        SKU: 261656
                                     </p>
                                     <p class="card-text">
                                         Azulejo 45x90cm Retificado Rig Legno La Biancogres(Cód. Forn. CE0475G1)
@@ -600,14 +631,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=259925" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/259925/259925-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 259925</strong>
+                                        SKU: 259925
                                     </p>
                                     <p class="card-text">
                                         Acabamento Para Registro Base Deca Lift1/2" 3/4" 1" Cromado Docol(Cód. Forn.
@@ -617,14 +648,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261710" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261710/261710-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261710</strong>
+                                        SKU: 261710
                                     </p>
                                     <p class="card-text">
                                         Azulejo 32x60cm Retificado Rig Legno La Biancogres(Cód. Forn. BR0475G1)
@@ -633,14 +664,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282285" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/282285/282285-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282285</strong>
+                                        SKU: 282285
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Royal Black Lux A/lc Biancogres 60x120 cm(Cód. Forn.
@@ -650,14 +681,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=287114" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/287114/287114-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 287114</strong>
+                                        SKU: 287114
                                     </p>
                                     <p class="card-text">
                                         Torneira para Cozinha de Mesa Nova Vitalis Cromado Docol(Cód. Forn. 1579306)
@@ -666,14 +697,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=262013" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262013/262013-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 262013</strong>
+                                        SKU: 262013
                                     </p>
                                     <p class="card-text">
                                         Azulejo Monoporosa 32x60cm Retificado Stelle Bianche Acetinado La
@@ -683,14 +714,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260679" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260679/260679-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260679</strong>
+                                        SKU: 260679
                                     </p>
                                     <p class="card-text">
                                         Misturador Monocomando Para Cozinha De Mesa Twin Com Filtro Bica Alta 2240
@@ -700,14 +731,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261410" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261410/261410-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261410</strong>
+                                        SKU: 261410
                                     </p>
                                     <p class="card-text">
                                         Acabamento Para Registro De Gaveta Level 1/2" 3/4" 1"4900 Cromada Deca(Cód.
@@ -717,14 +748,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260913" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260913/260913-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260913</strong>
+                                        SKU: 260913
                                     </p>
                                     <p class="card-text">
                                         Chuveiro De Parede Redondo Acqua Plus Com Tubo 1990 Cromada Deca(Cód. Forn.
@@ -734,14 +765,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261411" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261411/261411-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261411</strong>
+                                        SKU: 261411
                                     </p>
                                     <p class="card-text">
                                         Acabamento Monocomando Para Chuveiro Level Alta E Baixa Pressão 4993 Cromado
@@ -751,14 +782,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=275007" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/42263/42263-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 275007</strong>
+                                        SKU: 275007
                                     </p>
                                     <p class="card-text">
                                         Cuba De Semiencaixe Quadrada 41cm Com Mesa L830 Branca Deca(Cód. Forn. L.830.17)
@@ -767,14 +798,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=280886" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/59646/59646-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 280886</strong>
+                                        SKU: 280886
                                     </p>
                                     <p class="card-text">
                                         Cuba de Sobrepor Retangular Com Mesa e Tampo Skyline Horizon 80x38cm Onix
@@ -784,14 +815,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269756" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/7948/7948-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269756</strong>
+                                        SKU: 269756
                                     </p>
                                     <p class="card-text">
                                         Cuba De Sobrepor Oval 50x37cm L680 Branco Deca(Cód. Forn. L.680.17)
@@ -800,14 +831,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269850" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/41651/41651-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269850</strong>
+                                        SKU: 269850
                                     </p>
                                     <p class="card-text">
                                         Cuba De Sobrepor Redonda 31cm L50 Branco Deca(Cód. Forn. L.50.17)
@@ -816,14 +847,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269852" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/41642/41642-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269852</strong>
+                                        SKU: 269852
                                     </p>
                                     <p class="card-text">
                                         Cuba De Embutir Oval 49x36cm L37 Branca Deca(Cód. Forn. L.37.17)
@@ -832,14 +863,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269830" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/41399/41399-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269830</strong>
+                                        SKU: 269830
                                     </p>
                                     <p class="card-text">
                                         Cuba De Embutir Redonda Sem Mesa Sem Ladrão 36,5cm Branco Incepa(Cód. Forn.
@@ -849,14 +880,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=287451" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/68267/68267-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 287451</strong>
+                                        SKU: 287451
                                     </p>
                                     <p class="card-text">
                                         Cuba Apoio Mesa Rt19 Branco Docol 48,5x38x14cm(Cód. Forn. 1668126)
@@ -865,14 +896,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282362" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61543/61543-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282362</strong>
+                                        SKU: 282362
                                     </p>
                                     <p class="card-text">
                                         Cuba De Apoio Redonda Com Mesa Slim Branco Deca 40 cm(Cód. Forn. L.12040.M.17)
@@ -881,14 +912,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282354" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61535/61535-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282354</strong>
+                                        SKU: 282354
                                     </p>
                                     <p class="card-text">
                                         Cuba De Apoio Quadrada Slim Branco Deca 30 cm(Cód. Forn. L.11030.17)
@@ -897,14 +928,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282346" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61527/61527-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282346</strong>
+                                        SKU: 282346
                                     </p>
                                     <p class="card-text">
                                         Cuba De Apoio Oval Com Mesa Slim Branco Deca 60 cm(Cód. Forn. L.14060.M.17)
@@ -913,14 +944,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=273219" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/22951/22951-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 273219</strong>
+                                        SKU: 273219
                                     </p>
                                     <p class="card-text">
                                         Cuba De Apoio Quadrada 41cm L73 Ébano Fosco Deca(Cód. Forn. L.73.94)
@@ -929,14 +960,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269200" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/12898/12898-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269200</strong>
+                                        SKU: 269200
                                     </p>
                                     <p class="card-text">
                                         Cuba de Embutir Luna 35 BL Em Aço Inox Pré-polido Tramontina(Cód. Forn.
@@ -946,14 +977,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260223" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/12902/12902-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260223</strong>
+                                        SKU: 260223
                                     </p>
                                     <p class="card-text">
                                         Cuba de embutir Lavinia 47 BL em aço inox acetinado 47x30cm Tramontina(Cód.
@@ -963,14 +994,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261075" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/8605/8605-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261075</strong>
+                                        SKU: 261075
                                     </p>
                                     <p class="card-text">
                                         Tanque Em Inox De Encaixe Hera 50x40cm 3.1/2 Com Válvula 94400/107 Acetinado
@@ -980,14 +1011,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269748" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/9406/9406-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269748</strong>
+                                        SKU: 269748
                                     </p>
                                     <p class="card-text">
                                         Caixa Acoplada Para Vaso Sanitário Monte Carlo 3/6 Litros Branco Deca(Cód. Forn.
@@ -997,14 +1028,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269752" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/41890/41890-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269752</strong>
+                                        SKU: 269752
                                     </p>
                                     <p class="card-text">
                                         Lavatório Suspenso Izy 39,5x29,5cm L.15.17 Branco Deca(Cód. Forn. L.15.17)
@@ -1013,14 +1044,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=274567" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/e9dbb83a-940b-4606-90ea-3636402eea0c/0b8c9226-5253-4f89-8bc3-a7c1fcc094cf.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 274567</strong>
+                                        SKU: 274567
                                     </p>
                                     <p class="card-text">
                                         Cuba De Embutir Redonda 36cm L41 Branco Deca(Cód. Forn. L.41.17)
@@ -1029,14 +1060,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=275921" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/42218/42218-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 275921</strong>
+                                        SKU: 275921
                                     </p>
                                     <p class="card-text">
                                         Cuba De Embutir Oval 40x30cm L59 Branco Deca(Cód. Forn. L.59.17)
@@ -1045,14 +1076,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=235375" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/30198/30198-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 235375</strong>
+                                        SKU: 235375
                                     </p>
                                     <p class="card-text">
                                         Revestimento Eliane Metro White Acetinado 10x20cm Branco Bold(Cód. Forn.
@@ -1062,14 +1093,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261677" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/44624/44624-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261677</strong>
+                                        SKU: 261677
                                     </p>
                                     <p class="card-text">
                                         Piso Cerâmico Embramaco Almond Brilhante 60x60cm Bege Retificado(Cód. Forn.
@@ -1079,14 +1110,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261679" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/44621/44621-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261679</strong>
+                                        SKU: 261679
                                     </p>
                                     <p class="card-text">
                                         Piso Cerâmico Embramaco Valência Bright Brilhante 60x60cm Bege Bold(Cód. Forn.
@@ -1096,14 +1127,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282297" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61269/61269-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282297</strong>
+                                        SKU: 282297
                                     </p>
                                     <p class="card-text">
                                         Piso Semi Grês Retificado Calacata Oro Lux Prime P75280 Embramaco 75x75 cm(Cód.
@@ -1113,14 +1144,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=274533" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/52674/52674-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 274533</strong>
+                                        SKU: 274533
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Elizabeth Spazzolato Vecchio Externo 84x84cm Cinza Retificado(Cód.
@@ -1130,14 +1161,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=275642" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/55068/55068-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 275642</strong>
+                                        SKU: 275642
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Delta Barcelona Plata Polido 84x84cm Cinza Retificado(Cód. Forn.
@@ -1147,14 +1178,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=310299" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/73586/73586-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 310299</strong>
+                                        SKU: 310299
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Mos Opera Piano Polido Portobello 60x60cm(Cód. Forn.
@@ -1164,14 +1195,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=292348" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/72118/72118-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 292348</strong>
+                                        SKU: 292348
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Vogue Plus 83024 A/ld Embramaco 83x83cm(Cód. Forn. 83024)
@@ -1180,14 +1211,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=274241" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/51524/51524-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 274241</strong>
+                                        SKU: 274241
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Elizabeth Luxury Acetinado 84x84cm Bege Retificado(Cód. Forn.
@@ -1197,14 +1228,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=289728" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/62368/62368-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 289728</strong>
+                                        SKU: 289728
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Retificado Gran Ducal Satiny 60582 A/ld Embramaco 62x122cm(Cód.
@@ -1214,14 +1245,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282291" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61197/61197-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282291</strong>
+                                        SKU: 282291
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Embramaco Gran Calacata Gold Acetinado 62x122cm Mármore
@@ -1231,14 +1262,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282058" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/60264/60264-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282058</strong>
+                                        SKU: 282058
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Embramaco Gran Carbon Off White Acetinado 62x122Cm Branco
@@ -1248,14 +1279,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282057" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/60263/60263-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282057</strong>
+                                        SKU: 282057
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Embramaco Gran Ônix Premium Acetinado 62x122Cm Mármore
@@ -1265,14 +1296,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282091" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/60466/60466-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282091</strong>
+                                        SKU: 282091
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Incesa Paviment Gray Acetinado 60x60Cm Cinza Retificado(Cód. Forn.
@@ -1282,14 +1313,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=275491" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/53820/53820-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 275491</strong>
+                                        SKU: 275491
                                     </p>
                                     <p class="card-text">
                                         Piso Vinílico Injoy Papoula 2mm Tarkett 123x20,8cm(Cód. Forn. 24124384)
@@ -1298,14 +1329,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261806" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/38230/38230-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261806</strong>
+                                        SKU: 261806
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Biancogres Carvalho Acetinado 26x106cm Madeira Retificado(Cód. Forn.
@@ -1315,14 +1346,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=262008" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/28882/28882-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 262008</strong>
+                                        SKU: 262008
                                     </p>
                                     <p class="card-text">
                                         Porcelanato Biancogres Legno Maso Acetinado 26x106cm Madeira Retificado(Cód.
@@ -1332,14 +1363,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=262097" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/25418/25418-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 262097</strong>
+                                        SKU: 262097
                                     </p>
                                     <p class="card-text">
                                         Piso Cerâmico Biancogres Oxford Grigio Acetinado 60x60cm Cinza Bold(Cód. Forn.
@@ -1349,14 +1380,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=279863" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/57407/57407-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 279863</strong>
+                                        SKU: 279863
                                     </p>
                                     <p class="card-text">
                                         Azulejo Retificado Folhas Bianco Biancogres 45X90Cm(Cód. Forn. CE0761B1)
@@ -1365,14 +1396,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=279865" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/57409/57409-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 279865</strong>
+                                        SKU: 279865
                                     </p>
                                     <p class="card-text">
                                         Azulejo Retificado Botanic Biancogres 45X90Cm(Cód. Forn. CE0794B1)
@@ -1381,14 +1412,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261739" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/40545/40545-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261739</strong>
+                                        SKU: 261739
                                     </p>
                                     <p class="card-text">
                                         Revestimento Biancogres Originale Bianco Acetinado 32x60cm Branco
@@ -1398,14 +1429,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261928" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/31663/31663-0jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261928</strong>
+                                        SKU: 261928
                                     </p>
                                     <p class="card-text">
                                         Revestimento Incesa Artico Cetim Acetinado 32x60cm Branco Retificado(Cód. Forn.
@@ -1415,14 +1446,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=273292" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/b7462ed8-1d3f-4739-b62a-6e533466a3b8/8faf96c0-a53d-4cf4-84b6-c52e1bd60732.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 273292</strong>
+                                        SKU: 273292
                                     </p>
                                     <p class="card-text">
                                         Cuba De Embutir/sobrepor Retangular 57x41cm L1061 Branco Deca
@@ -1431,14 +1462,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282356" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/d7e9bb31-9a13-4985-8976-a7dee4ec56ab/68943245-4016-4329-9e15-db16c82e2d48.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282356</strong>
+                                        SKU: 282356
                                     </p>
                                     <p class="card-text">
                                         Cuba De Apoio Quadrada Slim Deca 40 cm
@@ -1447,14 +1478,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=275433" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/dca9ede1-419a-4a77-940b-413cf4e281fe/8bf9c1f3-78be-42b1-bbe1-45bbe65732db.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 275433</strong>
+                                        SKU: 275433
                                     </p>
                                     <p class="card-text">
                                         Kit Vaso Sanitário Com Caixa Acoplada E Acessórios Fast Branco Deca
@@ -1463,14 +1494,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=273258" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/e47512d8-e0a3-4bf2-92ba-abed7df229b5/808cd1d2-a60b-4c7f-9d94-a267f890be46.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 273258</strong>
+                                        SKU: 273258
                                     </p>
                                     <p class="card-text">
                                         Cuba De Embutir Retangular 48x36cm L375 Branco Deca
@@ -1479,14 +1510,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=282345" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/de41f60f-9dd0-44e5-b86a-133e323d3c64/bbc9f39f-1917-4de0-907a-3fa30cf460e3.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 282345</strong>
+                                        SKU: 282345
                                     </p>
                                     <p class="card-text">
                                         Cuba De Apoio Oval Slim Branco Deca 50 cm
@@ -1495,14 +1526,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=275430" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/4128176d-031b-443b-a8d1-6d0820ad1e58/d85c4a0e-0f32-40aa-9661-59eed03dbba9.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 275430</strong>
+                                        SKU: 275430
                                     </p>
                                     <p class="card-text">
                                         Kit Vaso Sanitário Com Caixa Acoplada E Acessórios Flex Branco Deca
@@ -1511,14 +1542,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=266896" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/34b614df-c029-4b98-97ba-591153db9725/9b5f2168-0a3e-4074-bb00-ee7f5022cb00.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 266896</strong>
+                                        SKU: 266896
                                     </p>
                                     <p class="card-text">
                                         Cuba De Sobrepor Quadrada 41x41cm L700 Branca Deca
@@ -1527,14 +1558,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=270632" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/0b436776-5648-4716-afcc-a25f9722f617/aa846878-74dc-47dc-ad40-c585f773f045.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 270632</strong>
+                                        SKU: 270632
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro 290 Liss grafite escovado
@@ -1543,14 +1574,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271455" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/fe793028-52fe-4533-9fb1-77144cbcff94/0a209459-c03f-42f2-b88b-cacb37a7a0af.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271455</strong>
+                                        SKU: 271455
                                     </p>
                                     <p class="card-text">
                                         Acabamento para registro DocolBase 3/4" Minima grafite escovado
@@ -1559,14 +1590,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271855" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/b86456b2-a68b-43f1-aa90-6611c38d94ce/62bd13ca-7a88-4d22-b335-66856f3bc6f2.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271855</strong>
+                                        SKU: 271855
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro Minima grafite escovado
@@ -1575,14 +1606,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271604" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/cd50d45a-28f5-488e-9f81-771bd4cfa63a/75ca866e-d052-4919-931a-7f83db10dc0c.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271604</strong>
+                                        SKU: 271604
                                     </p>
                                     <p class="card-text">
                                         Chuveiro de teto Docol Eden R300
@@ -1591,14 +1622,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271612" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/9fdbf34f-64fc-4d31-9c8d-958e093de354/a15596bb-4067-43d8-8402-95832c4a40da.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271612</strong>
+                                        SKU: 271612
                                     </p>
                                     <p class="card-text">
                                         Chuveiro de teto Docol Heaven Q200 níquel escovado
@@ -1607,14 +1638,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260379" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/594b125b-1da5-4e98-862e-d69c4d80c16e/71ca9360-d56e-4b53-847c-c8f20c49e08f.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260379</strong>
+                                        SKU: 260379
                                     </p>
                                     <p class="card-text">
                                         Monocomando para cozinha Docol Spice
@@ -1623,14 +1654,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=267578" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00904857/00904857-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 267578</strong>
+                                        SKU: 267578
                                     </p>
                                     <p class="card-text">
                                         Torneira para cozinha de parede Docol Spice preta
@@ -1639,14 +1670,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260778" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00902157/00902157-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260778</strong>
+                                        SKU: 260778
                                     </p>
                                     <p class="card-text">
                                         Torneira para cozinha Docol Spice preta
@@ -1655,14 +1686,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=267577" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00902057/00902057-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 267577</strong>
+                                        SKU: 267577
                                     </p>
                                     <p class="card-text">
                                         Misturador para cozinha de parede Docol Spice preto
@@ -1671,14 +1702,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260189" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00901957/00901957-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260189</strong>
+                                        SKU: 260189
                                     </p>
                                     <p class="card-text">
                                         Misturador para cozinha Docol Spice preto
@@ -1687,14 +1718,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260646" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/cb05be46-cad3-45e5-b0ec-8f6b82f0b4b4/27a86361-01e8-4d20-beb7-a808ad71c745.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260646</strong>
+                                        SKU: 260646
                                     </p>
                                     <p class="card-text">
                                         Chuveiro Docol Heaven Q200
@@ -1703,14 +1734,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=267013" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/6d7068eb-2d87-45a8-85e0-4c076b04d988/0c9767dd-145d-4eec-9997-0ded5b8b6b70.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 267013</strong>
+                                        SKU: 267013
                                     </p>
                                     <p class="card-text">
                                         Chuveiro Docol Heaven Q150
@@ -1719,14 +1750,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260696" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/c029ac8e-a2a3-4640-8b0c-327c6c6de4b7/6df8fa0f-27d2-456e-9a91-7406dad8fa26.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260696</strong>
+                                        SKU: 260696
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro Docol City
@@ -1735,14 +1766,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=267043" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00878006/00878006-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 267043</strong>
+                                        SKU: 267043
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro de parede Docol City
@@ -1751,14 +1782,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=268164" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/6053a751-e755-4415-b50a-16d428d37eaa/bbe88c64-f75b-4f8b-aa48-79f1c1f97349.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 268164</strong>
+                                        SKU: 268164
                                     </p>
                                     <p class="card-text">
                                         Misturador para cozinha de parede Docol City
@@ -1767,14 +1798,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260635" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/4d74151b-c1e7-452e-a306-af3f6f630d8c/35a9591f-4148-434a-a924-798abf96acfa.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260635</strong>
+                                        SKU: 260635
                                     </p>
                                     <p class="card-text">
                                         Misturador para cozinha Docol City
@@ -1783,14 +1814,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=259874" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00877606/00877606-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 259874</strong>
+                                        SKU: 259874
                                     </p>
                                     <p class="card-text">
                                         Acabamento para registro base Fabrimar 1/2", 3/4" e 1" Docol City
@@ -1799,14 +1830,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260925" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00876906/00876906-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260925</strong>
+                                        SKU: 260925
                                     </p>
                                     <p class="card-text">
                                         Ducha higiênica com registro e derivação c/ gatilho Docol City
@@ -1815,14 +1846,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261144" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/30148e7a-f2b7-4a45-bb93-da2ca958bff0/abc24f51-475c-425e-84cf-a45c18b073d9.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261144</strong>
+                                        SKU: 261144
                                     </p>
                                     <p class="card-text">
                                         Torneira para cozinha de parede bica alta Docol City
@@ -1831,14 +1862,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=268165" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/30f1d835-8212-4a3f-a45b-2396aad3f398/40441b2a-ec99-483c-9541-c9676a0131ac.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 268165</strong>
+                                        SKU: 268165
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro de parede Docol City
@@ -1847,14 +1878,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260488" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/d32bf704-c8ab-4c09-8d32-24ec40f4c9c0/c112ab53-356f-4914-9103-7ea59a4b0257.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260488</strong>
+                                        SKU: 260488
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro Docol City
@@ -1863,14 +1894,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260839" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/86c059a5-f4ce-4880-be0e-102777141d3f/thumbs/9fef8672-5e9d-4abc-8a35-2b447a20b278.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260839</strong>
+                                        SKU: 260839
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro Lift
@@ -1879,14 +1910,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260035" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/ac24800e-900d-4fa3-8cb6-ec6d9d37b493/9828be75-5d81-415d-8264-5a53c8766e64.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260035</strong>
+                                        SKU: 260035
                                     </p>
                                     <p class="card-text">
                                         Monocomando para cozinha Docol Ozônio
@@ -1895,14 +1926,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271688" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00832470/00832470-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271688</strong>
+                                        SKU: 271688
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro de parede Docol Stillo grafite escovado
@@ -1911,14 +1942,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271686" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00832469/00832469-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271686</strong>
+                                        SKU: 271686
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro de parede Docol Stillo cobre escovado
@@ -1927,14 +1958,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=259844" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00832406/00832406-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 259844</strong>
+                                        SKU: 259844
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro de parede Docol Stillo
@@ -1943,14 +1974,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271863" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00824870/00824870-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271863</strong>
+                                        SKU: 271863
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro bica alta 90° Docol Stillo grafite escovado
@@ -1959,14 +1990,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271861" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00824869/00824869-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271861</strong>
+                                        SKU: 271861
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro bica alta 90° Docol Stillo cobre escovado
@@ -1975,14 +2006,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260031" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00824806/00824806-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260031</strong>
+                                        SKU: 260031
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro bica alta 90° Docol Stillo
@@ -1991,14 +2022,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260451" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/ceb1167d-639a-4345-a695-f2551b2d6ae1/91ac7a5a-1580-4ec9-ac25-83b81a5905b1.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260451</strong>
+                                        SKU: 260451
                                     </p>
                                     <p class="card-text">
                                         Acabamento para registro base Deca 1/2", 3/4" e 1" Docol Stillo
@@ -2007,14 +2038,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=269055" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823970/00823970-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 269055</strong>
+                                        SKU: 269055
                                     </p>
                                     <p class="card-text">
                                         Acabamento para registro DocolBase 1/2", 3/4" e 1" Docol Stillo grafite escovado
@@ -2023,14 +2054,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=266946" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823969/00823969-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 266946</strong>
+                                        SKU: 266946
                                     </p>
                                     <p class="card-text">
                                         Acabamento para registro DocolBase 1/2", 3/4" e 1" Docol Stillo cobre escovado
@@ -2039,14 +2070,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=266958" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823770/00823770-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 266958</strong>
+                                        SKU: 266958
                                     </p>
                                     <p class="card-text">
                                         Ducha higiênica com registro e derivação Docol Stillo grafite escovado
@@ -2055,14 +2086,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261230" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823706/00823706-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261230</strong>
+                                        SKU: 261230
                                     </p>
                                     <p class="card-text">
                                         Ducha higiênica com registro e derivação Docol Stillo
@@ -2071,14 +2102,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=271909" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/e39a525c-6b43-477e-a7b3-8c223ea3d1bc/d4e866d5-c17b-4154-a810-264ac3000e37.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 271909</strong>
+                                        SKU: 271909
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro de parede Docol Stillo cobre escovado
@@ -2087,14 +2118,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260608" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/40bd6259-f8f0-408e-aede-c2b5fb39ad28/5b1ab8a8-fd13-4d3b-9cff-e81bc0965cf9.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260608</strong>
+                                        SKU: 260608
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro de parede Docol Stillo
@@ -2103,14 +2134,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261055" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820506/00820506-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261055</strong>
+                                        SKU: 261055
                                     </p>
                                     <p class="card-text">
                                         Acabamento para registro DocolBase 1.1/4" e 1.1/2" Docol Stillo
@@ -2119,14 +2150,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=266951" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820470/00820470-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 266951</strong>
+                                        SKU: 266951
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro Docol Stillo grafite escovado
@@ -2135,14 +2166,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=266945" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820469/00820469-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 266945</strong>
+                                        SKU: 266945
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro Docol Stillo cobre escovado
@@ -2151,14 +2182,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=261232" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820406/00820406-0.jpeg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 261232</strong>
+                                        SKU: 261232
                                     </p>
                                     <p class="card-text">
                                         Misturador para banheiro Docol Stillo
@@ -2167,14 +2198,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260988" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/e6b54067-7b4d-4a49-aa1a-e71b11319811/ed710152-6ba1-447d-8139-c1ede73de840.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260988</strong>
+                                        SKU: 260988
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro bica alta Docol Stillo
@@ -2183,14 +2214,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=266954" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/fa9d73a7-e1d8-48a2-8cf6-346a71a96c9d/1bdb8f10-299e-4ddc-837c-47598acd177c.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 266954</strong>
+                                        SKU: 266954
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro Docol Stillo cobre escovado
@@ -2199,14 +2230,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260832" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/0603d935-5508-4a67-8a8f-9129b0da29f7/thumbs/5b854ce2-5078-4330-9c05-31b8f5ac13db.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260832</strong>
+                                        SKU: 260832
                                     </p>
                                     <p class="card-text">
                                         Torneira para banheiro Docol Stillo
@@ -2215,14 +2246,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=260441" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/0bdfd352-42e5-4203-8352-27af87080fb8/0543583a-5f45-41d8-ac76-73e67a352f7c.webp">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 260441</strong>
+                                        SKU: 260441
                                     </p>
                                     <p class="card-text">
                                         Acabamento para válvula de descarga Square Salvágua
@@ -2231,14 +2262,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281082" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/9fabf423-ef2c-4f16-a607-2e4a86ed7fd2/thumbs/a0789fdd-c3e5-42c9-9fae-9d57bdaa753e.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281082</strong>
+                                        SKU: 281082
                                     </p>
                                     <p class="card-text">
                                         VERANO FRESCO 14,5X14,5 EXT BOLD
@@ -2247,14 +2278,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281080" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/108e76e4-d3ac-41da-bbf5-c36e359f5d01/thumbs/e5e79b7c-a2af-4b3c-81b7-208bb9f8c76e.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281080</strong>
+                                        SKU: 281080
                                     </p>
                                     <p class="card-text">
                                         VERANO CIELO 14,5X14,5 EXT BOLD
@@ -2263,14 +2294,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281079" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/c1488a20-517e-4ed2-bb3f-b4c049efd49c/thumbs/f070bd12-c2c9-4ad6-9274-099066014316.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281079</strong>
+                                        SKU: 281079
                                     </p>
                                     <p class="card-text">
                                         VERANO BRISA 14,5X14,5 EXT BOLD
@@ -2279,14 +2310,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281093" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/8eccc085-895d-4f11-bc09-91bf0e14b449/thumbs/4e2981b0-6c79-4bee-85f7-9f58842e5600.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281093</strong>
+                                        SKU: 281093
                                     </p>
                                     <p class="card-text">
                                         CHARLESTON 90X90 POL RET
@@ -2295,14 +2326,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281098" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/d841e45a-d28f-4f5b-8bce-8bc22997a088/thumbs/c87b88f4-b94b-42f4-a8e6-2a4691a9e67f.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281098</strong>
+                                        SKU: 281098
                                     </p>
                                     <p class="card-text">
                                         CHARLESTON 90X90 NAT RET
@@ -2311,14 +2342,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281092" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/4bd5e3c4-b434-4db8-804b-01735b4681d5/ad305420-3d35-45d4-a928-52bdfbbb2650.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281092</strong>
+                                        SKU: 281092
                                     </p>
                                     <p class="card-text">
                                         CHARLESTON 90X180 POL RET
@@ -2327,14 +2358,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281078" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/e94591af-55be-4573-9882-6f18090ea7d1/thumbs/f8a04c7c-2458-4b4f-a8d7-2c79831a69c0.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281078</strong>
+                                        SKU: 281078
                                     </p>
                                     <p class="card-text">
                                         CHARLESTON 120X120 POL RET
@@ -2343,14 +2374,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281077" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/5e40097e-aacc-4414-8260-bf4fba9f567b/thumbs/19b7b975-22b0-4551-9054-82029e2534af.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281077</strong>
+                                        SKU: 281077
                                     </p>
                                     <p class="card-text">
                                         CHARLESTON 120X120 NAT RET
@@ -2359,14 +2390,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281089" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/da9ef147-bd8c-4a83-bb5a-fc71b67fa16d/thumbs/909dc7e6-797e-4296-837d-75f86cdb8e00.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281089</strong>
+                                        SKU: 281089
                                     </p>
                                     <p class="card-text">
                                         MALIBU LAKE 20X20 EXT BOLD
@@ -2375,14 +2406,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281087" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/ed4f09d1-4a54-4113-b57c-f8ec1e72149a/thumbs/0fd2f239-77f0-4e85-8db3-98d060fb9169.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281087</strong>
+                                        SKU: 281087
                                     </p>
                                     <p class="card-text">
                                         GAIA TURMALINA 20,5X20,5 MATT BOLD
@@ -2391,14 +2422,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281086" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/669a06c8-7a35-4a5c-a8b4-3f63b05d3e44/thumbs/9a4a58c5-0680-435b-8753-05582293d2b1.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281086</strong>
+                                        SKU: 281086
                                     </p>
                                     <p class="card-text">
                                         GAIA OPALINA DECOR 20,5X20,5 MATT BOLD
@@ -2407,14 +2438,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281085" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/c12e909d-d5d1-4a50-b89f-50ee24dd4942/thumbs/c680d978-d27a-4428-8deb-5b7aa17a5221.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281085</strong>
+                                        SKU: 281085
                                     </p>
                                     <p class="card-text">
                                         GAIA OPALINA 20,5X20,5 MATT BOLD
@@ -2423,14 +2454,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281084" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/97c0f3ed-9b60-44f2-adca-874452129acf/thumbs/fc5a58f0-e429-422c-9b94-5f7d6026f4f8.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281084</strong>
+                                        SKU: 281084
                                     </p>
                                     <p class="card-text">
                                         GAIA JADE DECOR 20,5X20,5 MATT BOLD
@@ -2439,14 +2470,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281083" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/002d30ee-c61f-4897-9b9d-6fd87d036962/thumbs/a8533213-ec03-4d95-8cc9-91ec07502941.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281083</strong>
+                                        SKU: 281083
                                     </p>
                                     <p class="card-text">
                                         GAIA JADE 20,5X20,5 MATT BOLD
@@ -2455,14 +2486,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281097" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/633be190-7457-4090-a14d-82e96f31bb2f/b90838bd-2339-4a59-b818-6338962e9820.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281097</strong>
+                                        SKU: 281097
                                     </p>
                                     <p class="card-text">
                                         BEATS SAGE 90X90 NAT RET
@@ -2471,14 +2502,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281096" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/1a469325-ee95-4ddf-8923-ed2e731f10eb/5f686942-07eb-455d-ab2a-7e2489bdabeb.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281096</strong>
+                                        SKU: 281096
                                     </p>
                                     <p class="card-text">
                                         BEATS BONE 90X90 NAT RET
@@ -2487,14 +2518,14 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4">
                         <a href="/guideshop-experience/produto?sku=281094" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
                                     src="https://storage.googleapis.com/reviewer-production/references/fe3358eb-812e-4e38-91fe-928e213f8634/thumbs/485dad8d-19cb-4315-91bf-6ac05c01f4ce.jpg">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong>SKU: 281094</strong>
+                                        SKU: 281094
                                     </p>
                                     <p class="card-text">
                                         BEATS ASH 90X90 EXT RET

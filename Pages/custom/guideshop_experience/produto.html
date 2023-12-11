@@ -139,65 +139,89 @@
             font-weight: 600;
             line-height: 17.361px;
         }
+        .produto {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 20px;
+            grid-row-gap: 0px;
+            justify-content: center;
+            align-items: center;
+        }
 
-        canvas { 
-            background-color: transparent;
+        .info-card {
+            grid-area: 2 / 1 / 3 / 2;
+            margin-inline: auto;
+        }
+
+        .produto3d {
+            width: 96%;
+            height: 95%;
+            grid-area: 1 / 2 / 4 / 3;
+            border-radius: 7.565px;
+            border: 1.513px solid #E2E2E2;            
+            box-shadow: 0px 0px 7.565px 0px rgba(0, 0, 0, 0.25);
+        }
+        .produto3d > div {
+            height: 100%;
         }
     </style>
 </head>
 
-<body>
-    <div class="container-fluid">
-        <div class="row g-5 p-4">
-            <div class="col-md-4">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <p class="card-text">
-                            SKU:
-                        </p>
-                        <p class="card-text"></p>
-                        <a class="visite" href="http://">Visite o produto</a>
-                        <!-- <a class="comprar" href="http://">Comprar o produto</a> -->
-                        <div class="ar-button-group">
-                            <p>Relidade aumentada</p>
-                            <button id="ar-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_11_238)">
-                                        <path
-                                            d="M30.261 56.1212C45.7169 56.1212 58.2464 43.5917 58.2464 28.1358C58.2464 12.6799 45.7169 0.150391 30.261 0.150391C14.8051 0.150391 2.27557 12.6799 2.27557 28.1358C2.27557 43.5917 14.8051 56.1212 30.261 56.1212Z"
-                                            fill="url(#paint0_linear_11_238)" />
-                                        <path
-                                            d="M25.6086 34.9162H30.117L26.905 30.2359C28.7549 29.3412 29.8188 27.7265 29.8188 25.5354C29.8188 22.1314 27.2664 20.0262 23.2028 20.0262H16.3947V34.9162H20.6074V30.9587H22.9046L25.6061 34.9162H25.6086ZM14.0343 16.3115H12.8213V11.2875H17.8453V12.5005H14.0369V16.3089L14.0343 16.3115ZM47.7008 16.3115H46.4878V12.5031H42.6794V11.29H47.7008V16.3139V16.3115ZM47.7008 44.9842H42.6794V43.7712H46.4878V39.9628H47.7008V44.9842ZM17.8427 44.9842H12.8188V39.9628H14.0318V43.7712H17.8402V44.9842H17.8427ZM25.5657 25.5354C25.5657 26.8976 24.6937 27.7062 22.95 27.7062H20.61V23.3444H22.95C24.6937 23.3444 25.5657 24.1531 25.5657 25.5354ZM43.2859 34.9162H47.6679L41.0746 20.0262H36.9276L30.3545 34.9162H34.6506L35.8207 32.0226H42.1184L43.2884 34.9162H43.2859ZM37.054 28.9168L38.967 24.1531L40.8825 28.9168H37.054Z"
-                                            fill="white" />
-                                    </g>
-                                    <defs>
-                                        <linearGradient id="paint0_linear_11_238" x1="30.261" y1="0.150391" x2="30.261"
-                                            y2="56.1212" gradientUnits="userSpaceOnUse">
-                                            <stop stop-color="#004A68" />
-                                            <stop offset="1" stop-color="#29425A" />
-                                        </linearGradient>
-                                        <clipPath id="clip0_11_238">
-                                            <rect width="60.4485" height="60.4485" fill="white"
-                                                transform="translate(0.0367126 0.150391)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="qrCode-group">
-                            <p>Escaneie o QR Code para ver este produto na sua casa.</p>
-                            <div id="qrCode"></div>
-                        </div>
+<body class="">
+    <div class="produto">
+        <div class="info-card">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">
+                        SKU:
+                    </p>
+                    <p class="card-text"></p>
+                    <a class="visite" href="http://">Visite o produto</a>
+                    <!-- <a class="comprar" href="http://">Comprar o produto</a> -->
+                    <div class="ar-button-group">
+                        <p>Relidade aumentada</p>
+                        <button id="ar-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61"
+                                fill="none">
+                                <g clip-path="url(#clip0_11_238)">
+                                    <path
+                                        d="M30.261 56.1212C45.7169 56.1212 58.2464 43.5917 58.2464 28.1358C58.2464 12.6799 45.7169 0.150391 30.261 0.150391C14.8051 0.150391 2.27557 12.6799 2.27557 28.1358C2.27557 43.5917 14.8051 56.1212 30.261 56.1212Z"
+                                        fill="url(#paint0_linear_11_238)" />
+                                    <path
+                                        d="M25.6086 34.9162H30.117L26.905 30.2359C28.7549 29.3412 29.8188 27.7265 29.8188 25.5354C29.8188 22.1314 27.2664 20.0262 23.2028 20.0262H16.3947V34.9162H20.6074V30.9587H22.9046L25.6061 34.9162H25.6086ZM14.0343 16.3115H12.8213V11.2875H17.8453V12.5005H14.0369V16.3089L14.0343 16.3115ZM47.7008 16.3115H46.4878V12.5031H42.6794V11.29H47.7008V16.3139V16.3115ZM47.7008 44.9842H42.6794V43.7712H46.4878V39.9628H47.7008V44.9842ZM17.8427 44.9842H12.8188V39.9628H14.0318V43.7712H17.8402V44.9842H17.8427ZM25.5657 25.5354C25.5657 26.8976 24.6937 27.7062 22.95 27.7062H20.61V23.3444H22.95C24.6937 23.3444 25.5657 24.1531 25.5657 25.5354ZM43.2859 34.9162H47.6679L41.0746 20.0262H36.9276L30.3545 34.9162H34.6506L35.8207 32.0226H42.1184L43.2884 34.9162H43.2859ZM37.054 28.9168L38.967 24.1531L40.8825 28.9168H37.054Z"
+                                        fill="white" />
+                                </g>
+                                <defs>
+                                    <linearGradient id="paint0_linear_11_238" x1="30.261" y1="0.150391" x2="30.261"
+                                        y2="56.1212" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#004A68" />
+                                        <stop offset="1" stop-color="#29425A" />
+                                    </linearGradient>
+                                    <clipPath id="clip0_11_238">
+                                        <rect width="60.4485" height="60.4485" fill="white"
+                                            transform="translate(0.0367126 0.150391)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="qrCode-group">
+                        <p>Escaneie o QR Code para ver este produto na sua casa.</p>
+                        <div id="qrCode"></div>
                     </div>
                 </div>
-                <a class="voltar" href="/guideshop-experience">Voltar</a>
             </div>
-            <div class="col-md-8">
-                <div id="3d-viewer"></div>
-            </div>
+            <a class="voltar" href="/guideshop-experience">Voltar</a>
         </div>
+        <div class="produto3d">
+            <div id="3d-viewer"></div>
+        </div>
+
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -1151,8 +1175,8 @@
             "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-mos-opera-piano-polido-portobello-60x60cm/73586/73586"
         }
     };
-    
-    
+
+
     ; (async () => {
         const isMobileR2U = () => (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
@@ -1168,7 +1192,7 @@
                 cardText[1].innerText = `${info.name}`;
                 /* document.querySelector('.visite').setAttribute('href', info.pdpUrl); */
                 document.querySelector('.visite').setAttribute('href', produtos[sku].urlPlataforma);
-                /* document.querySelector('.comprar').setAttribute('href', `https://checkout.abcdaconstrucao.com.br/produto/adicionar?p=${sku}`); */               
+                /* document.querySelector('.comprar').setAttribute('href', `https://checkout.abcdaconstrucao.com.br/produto/adicionar?p=${sku}`); */
 
             });
 

@@ -1151,9 +1151,12 @@
             "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-mos-opera-piano-polido-portobello-60x60cm/73586/73586"
         }
     };
+    const isMobile = () => {
+        return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
     ; (async () => {
 
-        await R2U.init({ customerId: 'f8e75cbb-150d-4c22-92b6-77eff4a5a849' })
+        await R2U.init({ customerId: 'f8e75cbb-150d-4c22-92b6-77eff4a5a849' });
         const sku = (new URLSearchParams(window.location.search)).get('sku') ?? false;
         const isActive = await R2U.sku.isActive(sku)
 
@@ -1189,6 +1192,12 @@
             await R2U.viewer.create({
                 element: viewer,
                 sku,
+                viewerProps: {
+                    activeShadow: !isMobile(),
+                    shadowRadius: 20,
+                    shadowOpacity: 0.2
+                },
+                autoRotate: false
                 // popup: false
             })
 

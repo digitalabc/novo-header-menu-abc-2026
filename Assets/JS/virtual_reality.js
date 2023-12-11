@@ -1,4 +1,5 @@
 ; (async () => {
+  const isMobileR2U = () => (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
   await R2U.init({ customerId: 'f8e75cbb-150d-4c22-92b6-77eff4a5a849' });
   let skuCode = document.getElementById("product-variant-id").value
 
@@ -16,7 +17,7 @@
     }
 
     const viewer = document.getElementById('viewer-3d');
-    await R2U.viewer.create({ element: viewer, sku });
+    await R2U.viewer.create({ element: viewer, sku, viewerProps: {activeShadow: !isMobileR2U(), shadowRadius: 20, shadowOpacity: 0.2}, });
     viewer.style.display = "block"
 
     const element = document.getElementById('qrCode');

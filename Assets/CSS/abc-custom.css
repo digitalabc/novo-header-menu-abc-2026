@@ -46,3 +46,7 @@ section.newsletter--home,
 #dialog_input_cep { 
     z-index: 100;
 }
+/* esconde  o selo do 3D na imagem do produto */
+body.product div[id^="product-view-div-"] section .stamps-vr {
+    display: none;
+}

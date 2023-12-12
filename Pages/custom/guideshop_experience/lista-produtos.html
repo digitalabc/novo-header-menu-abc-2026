@@ -1426,7 +1426,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-4" data-categoria="Lavatórios">
+                    <!-- <div class="col-md-4" data-categoria="Lavatórios">
                         <a href="/guideshop-experience/produto?sku=269752" style="text-decoration: none;">
                             <div class="card shadow-sm">
                                 <img
@@ -1441,7 +1441,7 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    </div> -->
                     <div class="col-md-4" data-categoria="Pisos e Revestimentos">
                         <a href="/guideshop-experience/produto?sku=280761" style="text-decoration: none;">
                             <div class="card shadow-sm">
@@ -2530,7 +2530,7 @@
             let listaProdutos = document.querySelector('.lista-produtos');
             let messageSearch = document.querySelector('.message-search');
             
-            if (el.value) {
+            if (el.value.trim()) {
                 if (inputType === 'input') {
                     document.querySelector('#filtra-categoria').value = '';
                     for (const produto of produtos) {

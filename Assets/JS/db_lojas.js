@@ -97,6 +97,7 @@ const estados = [
 			"Ribeirão das Neves",
 			"Rio Pomba",
 			"Sabará",
+			"Sacramento", 
 			"Salinas",
 			"Santa Luzia",
 			"Santos Dumont",

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    {{ gtm_config_head gtm_id: common.gtm_id }}
+    {{ header default_title: "ABC da Construção" seo: data.hotsite.seo}}
+</head>
+
+<body class="cupom-abc">
+    {{ gtm_config_body gtm_id: common.gtm_id }}
+    <header>
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+    </header>
+    <div class="desktop">
+        {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
+    </div>
+    <div class="mobile">
+        {{ banner carousel: false banners: data.hotsite.banners position: "Mobile Topo" }}
+    </div>
+    {{ content position: "Topo" contents: data.hotsite.contents show_title: false }}
+
+    {{ content position: "Centro" contents: data.hotsite.contents show_title: false }}
+
+    {{ content position: "Lateral Esquerda" contents: data.hotsite.contents show_title: false }}
+
+    {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false }}
+
+    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+
+    {{ footer products:common.lighbox_products.products.nodes }}
+
+    {{ sdk_client }}
+
+    {{ old_newsletter_popup }}
+
+    {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "sharpspring", "components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home", "lightbox", "offcanvas", "event_manager"]}}
+</body>
+
+</html>

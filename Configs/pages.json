@@ -131,6 +131,10 @@
             {
                 "urlMatch": "guideshop-experience/*",
                 "path": "custom/guideshop_experience/produto.html"
+            },
+            {
+                "urlMatch": "cupom-abc-da-construcao",
+                "path": "custom/cupom-abc-da-construcao.html"
             }
         ]
     },

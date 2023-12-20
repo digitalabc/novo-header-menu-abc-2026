@@ -14,7 +14,7 @@
             {{~ end ~}}
         ],
         {{~ if description ~}}
-            "description": "{{ description.value ~}}",
+            "description": "{{ description.value | string.remove_last `depois` | html.strip ~}}",
         {{~ end ~}}
         "sku": "{{ product.sku }}",
         {{~ if product.ean ~}}

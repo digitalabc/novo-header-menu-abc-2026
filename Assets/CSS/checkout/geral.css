@@ -1,3 +1,12 @@
+/* LEIA-ME */
+
+/* login.css >> Definições das páginas de LOGIN do novo Checkout */
+/* minhaconta.css >> Definições das páginas de MINHA CONTA do novo Checkout */
+/* checkout.css >> Definições das páginas de CARRINHO, FECHAMENTO E CONFIRMAÇÃO do novo Checkout */
+/* geral.css >> Definições de Cabeçalho e Rodapé */
+
+/* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
+
 @media (max-width: 1330px) {
 }
 .fbits-login .questao,
@@ -666,7 +675,7 @@ html {
 }
 @media screen and (max-width: 991px) {
   .fbits-login .fbits-social-login button.btn {
-    width: 100%;
+    width: 100% !important;
   }
 }
 .fbits-login .fbits-social-login button.btn.facebook:hover {

@@ -284,6 +284,7 @@ const estados = [
 			"Iúna",
 			"Linhares",
 			"Mimoso do Sul",
+			"São Mateus",
 			"Serra",
 			"Venda Nova do Imigrante",
 			"Vila Velha",

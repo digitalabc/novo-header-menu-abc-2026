@@ -12,8 +12,16 @@
             align-self: stretch;
         }
 
+        .texto-branco {
+            color: #FFF;
+        }
+
+        .texto-preto {
+            color: #000;
+        }
+
         .cupom-abc-cupoms {
-            padding-block: 32px;            
+            padding-block: 32px;
             align-self: stretch;
             background-color: #F0F3F5;
         }
@@ -55,7 +63,7 @@
             background-color: burlywood;
             width: 100%;
             height: 300px;
-            max-width: 761.75px;
+            max-width: 762px;
             max-height: 300px;
             padding: 19.224px 28.836px 19.224px 76.896px;
             gap: 40.091px;
@@ -366,19 +374,14 @@
 <body class="cupom-abc">
     {{ gtm_config_body gtm_id: common.gtm_id }}
     <header>
-        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true
+        }}
     </header>
 
     <main>
-        <section class="cupom-abc-banner">
-            <div>
-                <img srcset="https://abcdaconstrucao.fbitsstatic.net/img/b/9f49451b-1b89-4729-a24d-8e01d91011ad.jpg?w=&amp;h=&amp;v=no-change w"
-                    sizes="px" width="" height=""
-                    src="https://abcdaconstrucao.fbitsstatic.net/img/b/9f49451b-1b89-4729-a24d-8e01d91011ad.jpg"
-                    alt="home Setembro B&amp;A">
-            </div>
-        </section>
-        
+
+        {{ content position: "Top" contents: data.hotsite.contents show_title: false }}
+
         {{ content position: "Centro" contents: data.hotsite.contents show_title: false }}
 
         {{ content position: "Lateral Esquerda" contents: data.hotsite.contents show_title: false }}

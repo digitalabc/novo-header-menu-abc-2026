@@ -135,6 +135,10 @@
             {
                 "urlMatch": "cupom-abc-da-construcao",
                 "path": "custom/cupom-abc-da-construcao.html"
+            },
+            {
+                "urlMatch": "liquida-abc",
+                "path": "custom/liquida-abc.html"
             }
         ]
     },

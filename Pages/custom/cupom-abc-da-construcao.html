@@ -17,13 +17,41 @@
         {{ content position: "Topo" contents: data.hotsite.contents show_title: false }}
 
         {{ content position: "Centro" contents: data.hotsite.contents show_title: false }}
-
+        
         {{ content position: "Lateral Esquerda" contents: data.hotsite.contents show_title: false }}
 
         {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false }}
+        
+        
     </main>
 
     <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+
+    <div class="toast">
+        <div class="toast-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <mask id="mask0_449_17" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30"
+                    height="30">
+                    <rect width="30" height="30" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_449_17)">
+                    <path
+                        d="M13.25 20.75L22.0625 11.9375L20.3125 10.1875L13.25 17.25L9.6875 13.6875L7.9375 15.4375L13.25 20.75ZM15 27.5C13.2708 27.5 11.6458 27.1719 10.125 26.5156C8.60417 25.8594 7.28125 24.9688 6.15625 23.8438C5.03125 22.7188 4.14063 21.3958 3.48438 19.875C2.82812 18.3542 2.5 16.7292 2.5 15C2.5 13.2708 2.82812 11.6458 3.48438 10.125C4.14063 8.60417 5.03125 7.28125 6.15625 6.15625C7.28125 5.03125 8.60417 4.14063 10.125 3.48438C11.6458 2.82812 13.2708 2.5 15 2.5C16.7292 2.5 18.3542 2.82812 19.875 3.48438C21.3958 4.14063 22.7188 5.03125 23.8438 6.15625C24.9688 7.28125 25.8594 8.60417 26.5156 10.125C27.1719 11.6458 27.5 13.2708 27.5 15C27.5 16.7292 27.1719 18.3542 26.5156 19.875C25.8594 21.3958 24.9688 22.7188 23.8438 23.8438C22.7188 24.9688 21.3958 25.8594 19.875 26.5156C18.3542 27.1719 16.7292 27.5 15 27.5ZM15 25C17.7917 25 20.1562 24.0312 22.0938 22.0938C24.0312 20.1562 25 17.7917 25 15C25 12.2083 24.0312 9.84375 22.0938 7.90625C20.1562 5.96875 17.7917 5 15 5C12.2083 5 9.84375 5.96875 7.90625 7.90625C5.96875 9.84375 5 12.2083 5 15C5 17.7917 5.96875 20.1562 7.90625 22.0938C9.84375 24.0312 12.2083 25 15 25Z"
+                        fill="#41A648" />
+                </g>
+            </svg>
+
+            <div class="message">
+                <span class="text text-1">CUPOM COPIADO COM SUCESSO!</span>
+                <span class="text text-2">Explore a vitrine desejada! Cole o código copiado no checkout após
+                    selecionar seus produtos. <strong>⚠️ Cupom não cumulativo! ⚠️</strong></span>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="close" width="21" height="21" viewBox="0 0 21 21" fill="none">
+        <path d="M11.675 10.5L16.925 5.25837C17.0819 5.10145 17.1701 4.88862 17.1701 4.6667C17.1701 4.44478 17.0819 4.23195 16.925 4.07503C16.7681 3.91811 16.5553 3.82996 16.3333 3.82996C16.1114 3.82996 15.8986 3.91811 15.7417 4.07503L10.5 9.32503L5.25833 4.07503C5.10141 3.91811 4.88858 3.82996 4.66667 3.82996C4.44475 3.82996 4.23192 3.91811 4.075 4.07503C3.91808 4.23195 3.82992 4.44478 3.82992 4.6667C3.82992 4.88862 3.91808 5.10145 4.075 5.25837L9.325 10.5L4.075 15.7417C3.99689 15.8192 3.9349 15.9113 3.89259 16.0129C3.85028 16.1144 3.8285 16.2234 3.8285 16.3334C3.8285 16.4434 3.85028 16.5523 3.89259 16.6538C3.9349 16.7554 3.99689 16.8476 4.075 16.925C4.15247 17.0031 4.24464 17.0651 4.34619 17.1074C4.44773 17.1497 4.55666 17.1715 4.66667 17.1715C4.77668 17.1715 4.8856 17.1497 4.98715 17.1074C5.0887 17.0651 5.18086 17.0031 5.25833 16.925L10.5 11.675L15.7417 16.925C15.8191 17.0031 15.9113 17.0651 16.0129 17.1074C16.1144 17.1497 16.2233 17.1715 16.3333 17.1715C16.4433 17.1715 16.5523 17.1497 16.6538 17.1074C16.7554 17.0651 16.8475 17.0031 16.925 16.925C17.0031 16.8476 17.0651 16.7554 17.1074 16.6538C17.1497 16.5523 17.1715 16.4434 17.1715 16.3334C17.1715 16.2234 17.1497 16.1144 17.1074 16.0129C17.0651 15.9113 17.0031 15.8192 16.925 15.7417L11.675 10.5Z" fill="#BCBCBC"/>
+        </svg>
+        <div class="progress"></div>
+    </div>
 
     {{ footer products:common.lighbox_products.products.nodes }}
 
@@ -32,6 +60,7 @@
     {{ old_newsletter_popup }}
 
     {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "sharpspring", "components", "navbar", "product", "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home", "lightbox", "offcanvas", "event_manager", "regional_offers"]}}
+    {{ asset type: "js" paths: ["cupom-abc.js"]}}    
 </body>
 
 </html>

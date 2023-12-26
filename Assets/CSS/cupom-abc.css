@@ -41,30 +41,6 @@ main {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.30);
 }
 
-.cupom:not(.big-cupom) {
-    background-color: beige;
-    width: 100%;
-    height: 250px;
-    max-width: 634px;
-    padding: 16px 24px 16px 64px;
-    gap: 33.368px;
-    color: #000;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 40.184px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.cupom.big-cupom {
-    background-color: burlywood;
-    width: 100%;
-    height: 300px;
-    max-width: 762px;
-    max-height: 300px;
-    padding: 19.224px 28.836px 19.224px 76.896px;
-    gap: 40.091px;
-}
 
 .cupom-content {
     display: flex;
@@ -82,32 +58,26 @@ main {
     line-height: normal;
 }
 
-.cupom.big-cupom .cupom-content>p:nth-child(1) {
+.cupom {
+    width: 100%;
+    height: 250px;
+    max-width: 634px;
+    padding: 16px 32px;
+    gap: 32px;
+    color: #000;
     font-size: 40.184px;
-}
-
-.cupom.big-cupom .cupom-content>p:nth-child(2) {
-    font-size: 24.11px;
-}
-
-.cupom.big-cupom .cupom-content>p:nth-child(4) {
-    font-size: 9.635px;
-}
-
-.cupom.big-cupom .cupom-content>button {
-    padding: 12.055px 10.046px;
-    font-size: 16.074px;
+    font-weight: 600;    
 }
 
 .cupom-content>p:nth-child(1) {
     color: #000;
-    font-size: 33.445px;
+    font-size: 24px;
     font-weight: 600;
 }
 
 .cupom-content>p:nth-child(2) {
     color: #000;
-    font-size: 20.067px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -120,7 +90,7 @@ main {
 .cupom-content>p:nth-child(4) {
     color: #959595;
     text-align: justify;
-    font-size: 8.019px;
+    font-size: 8px;
     font-weight: 500;
 }
 
@@ -136,7 +106,7 @@ main {
     border: 0.804px solid #E30613;
     color: #E30613;
     text-align: center;
-    font-size: 13.378px;
+    font-size: 6.689px;
     font-weight: 600;
 }
 
@@ -224,12 +194,12 @@ main {
 }
 
 .help-title>p:nth-child(1) {
-    font-size: 48px;
+    font-size: 24px;
     font-weight: 500;
 }
 
 .help-title>p:nth-child(2) {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
 }
 
@@ -312,6 +282,7 @@ main {
 
 .cupom-abc-flags>div {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 40px;
     flex-shrink: 0;
@@ -338,6 +309,7 @@ main {
 .flags-payment>.flags {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 4px;
 }
 
@@ -462,22 +434,101 @@ main {
     }
 }
 
-/* button {
-    padding: 12px 20px;
-    font-size: 20px;
-    outline: none;
-    border: none;
-    background-color: #2770ff;
-    color: #fff;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  button:hover {
-    background-color: #2770ff;
-  }
-   */
 .toast.active~button {
     pointer-events: none;
+}
+
+@media (min-width: 991px) {
+    .cupom:not(.big-cupom) {
+        height: 250px;
+        max-width: 634px;
+        padding: 16px 24px 16px 64px;
+        gap: 33.368px;
+        color: #000;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 40.184px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+
+    .cupom.big-cupom {
+        height: 300px;
+        max-width: 762px;
+        max-height: 300px;
+        padding: 19.224px 28.836px 19.224px 76.896px;
+        gap: 40.091px;
+    }
+
+    .cupom.big-cupom .cupom-content>p:nth-child(1) {
+        font-size: 40.184px;
+    }
+
+    .cupom.big-cupom .cupom-content>p:nth-child(2) {
+        font-size: 24.11px;
+    }
+
+    .cupom.big-cupom .cupom-content>p:nth-child(4) {
+        font-size: 9.635px;
+    }
+
+    .cupom.big-cupom .cupom-content>button {
+        padding: 12.055px 10.046px;
+        font-size: 16.074px;
+    }
+
+    .cupom-content>p:nth-child(1) {
+        font-size: 33.445px;
+    }
+
+    .cupom-content>p:nth-child(2) {
+        font-size: 20.067px;
+    }
+
+    .cupom-content>p:nth-child(4) {
+        font-size: 8.019px;
+    }
+
+    .cupom-content>button {
+        padding: 10.033px 8.361px;
+        font-size: 13.378px;
+    }
+
+    .cupom-linha {
+        height: 212.974px;
+        flex-shrink: 0;
+    }
+
+    .cupom-link>a {
+        font-size: 12px;
+    }
+
+    .cupom-link>a>svg {
+        width: 15.365px;
+        height: 11.951px; 
+    }
+
+    .help-title>p:nth-child(1) {
+        font-size: 48px;        
+    }
+    
+    .help-title>p:nth-child(2) {
+        font-size: 16px;
+    }
+
+    .instruction>p {
+        font-size: 32px;    
+    }
+    
+    .instruction>p:nth-child(2) {
+        font-size: 32px;        
+    }
+    
+    .instruction>p:nth-child(3) {
+        font-size: 18px;        
+    }
+    
+    .cupom-abc-help>div>p {
+        font-size: 14px;
+    }
 }

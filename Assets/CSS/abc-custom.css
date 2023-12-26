@@ -52,3 +52,8 @@ section.newsletter--home,
 body.product div[id^="product-view-div-"] section .stamps-vr {
     display: none;
 }
+
+/* liquida-abc */
+.liquida-abc .container {
+    max-width: 950px;
+}

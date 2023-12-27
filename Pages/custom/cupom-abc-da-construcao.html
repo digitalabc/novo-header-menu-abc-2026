@@ -21,11 +21,8 @@
         {{ content position: "Lateral Esquerda" contents: data.hotsite.contents show_title: false }}
 
         {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false }}
-    </main>
-
-    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
-
-    <div class="toast">
+    
+        <div class="toast">
         <div class="toast-content">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                 <mask id="mask0_449_17" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30"
@@ -50,6 +47,10 @@
         </svg>
         <div class="progress"></div>
     </div>
+    </main>
+
+    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+    
 
     {{ footer products:common.lighbox_products.products.nodes }}
 

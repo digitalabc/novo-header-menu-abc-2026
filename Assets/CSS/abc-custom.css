@@ -52,3 +52,17 @@ section.newsletter--home,
 body.product div[id^="product-view-div-"] section .stamps-vr {
     display: none;
 }
+
+@media (max-width: 991px) {
+    header .navbar__container {
+        padding-block: 8px !important;
+    }
+
+    header .search__form {
+        margin-bottom: 8px !important;
+    }
+
+    header .navbar__search {
+        margin-top: 8px !important;
+    }
+}

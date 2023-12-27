@@ -446,20 +446,6 @@ main {
     pointer-events: none;
 }
 
-@media (max-width: 991px) {
-    .navbar__container {
-        padding-block: 8px !important;
-    }
-
-    .search__form {
-        margin-bottom: 8px !important;
-    }
-
-    .navbar__search {
-        margin-top: 8px !important;
-    }
-}
-
 @media (min-width: 991px) {
     .cupom:not(.big-cupom) {
         height: 250px;

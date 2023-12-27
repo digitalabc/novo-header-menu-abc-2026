@@ -32,12 +32,13 @@ main {
     flex-wrap: wrap;
 }
 
-.cupom:hover ,
+.cupom:hover,
 .instruction:hover {
     -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
+
 .cupom {
     display: flex;
     align-items: center;
@@ -445,6 +446,20 @@ main {
     pointer-events: none;
 }
 
+@media (max-width: 991px) {
+    .navbar__container {
+        padding-block: 8px !important;
+    }
+
+    .search__form {
+        margin-bottom: 8px !important;
+    }
+
+    .navbar__search {
+        margin-top: 8px !important;
+    }
+}
+
 @media (min-width: 991px) {
     .cupom:not(.big-cupom) {
         height: 250px;
@@ -512,34 +527,34 @@ main {
 
     .cupom-link>a>svg {
         width: 15.365px;
-        height: 11.951px; 
+        height: 11.951px;
     }
-    
+
     .message .text {
         font-size: 14px;
         width: 340px;
     }
 
     .help-title>p:nth-child(1) {
-        font-size: 48px;        
+        font-size: 48px;
     }
-    
+
     .help-title>p:nth-child(2) {
         font-size: 16px;
     }
 
     .instruction>p {
-        font-size: 32px;    
+        font-size: 32px;
     }
-    
+
     .instruction>p:nth-child(2) {
-        font-size: 32px;        
+        font-size: 32px;
     }
-    
+
     .instruction>p:nth-child(3) {
-        font-size: 18px;        
+        font-size: 18px;
     }
-    
+
     .cupom-abc-help>div>p {
         font-size: 14px;
     }

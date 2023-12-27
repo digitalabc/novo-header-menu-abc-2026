@@ -343,10 +343,11 @@ main {
 .cupom-abc .toast {
     position: fixed;
     top: 50px;
-    right: 30px;
+    /* right: 30px; */
     padding: 16px;
     overflow: hidden;
-    transform: translateX(calc(100% + 30px));
+    /* transform: translateX(calc(100% + 30px)); */
+    transform: translateY(calc(0% - 300px));
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
     z-index: 9999;
     border-radius: 4px;
@@ -356,7 +357,7 @@ main {
 }
 
 .toast.active {
-    transform: translateX(0%);
+    transform: translateY(0%);
 }
 
 .cupom-abc .toast .toast-content {

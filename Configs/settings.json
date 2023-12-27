@@ -4673,14 +4673,14 @@
         {
           "name": "Parque Residencial Alcântara",
           "adress": "Av. Garibaldi Deliberador, 885 - Parque Residencial Alcântara, Londrina - PR, 86047-410",
-          "phone": "",
+          "phone": "(43) 3326-9600",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/londrina/parque-residencial-alcantara",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]

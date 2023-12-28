@@ -30,13 +30,13 @@
 }
 
 .liquida-abc .black_friday__fullbanner .container>div:last-child img {
-    width: 400px;
+    width: 300px;
 }
 
 .liquida-abc .black_friday__fullbanner .container>div:first-child .black_friday__title {
     color: #E30613;
     font-family: 'Montserrat', sans-serif;
-    font-size: 64px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -45,14 +45,14 @@
 .liquida-abc .black_friday__fullbanner .container>div:first-child .black_friday__paragraph {
     color: #FF6B4B;
     font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
 .liquida-abc .black_friday__fullbanner .container>div:first-child .black_friday__paragraph span {
-    font-size: 48px;
+    font-size: 30px;
 }
 
 .liquida-abc .black_friday__link {
@@ -132,17 +132,30 @@
     .liquida-abc .black_friday__fullbanner .container {
         gap: 50px;
     }
+    .liquida-abc .black_friday__fullbanner .container>div:last-child img {
+        width: 400px;
+    }
+    .liquida-abc .black_friday__fullbanner .container>div:first-child .black_friday__title {
+        font-size: 64px;    
+    }
+    .liquida-abc .black_friday__fullbanner .container>div:first-child .black_friday__paragraph {
+        font-size: 32px;
+    }
+    .liquida-abc .black_friday__fullbanner .container>div:first-child .black_friday__paragraph span {
+        font-size: 48px;
+    }
+
 }
 
 @media (max-width: 991px) {
     .liquida-abc .black_friday__fullbanner {
         background-position: center;
+        padding: 25px 0;
     }
-
     .liquida-abc .black_friday__fullbanner .container>div {
         align-items: center;
     }
     .liquida-abc .black_friday__card {
         width: calc(((100% - 1*32px)/2));
-    }
+    }    
 }

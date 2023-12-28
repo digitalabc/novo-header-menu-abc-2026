@@ -135,6 +135,13 @@
 }
 
 @media (max-width: 991px) {
+    .liquida-abc .black_friday__fullbanner {
+        background-position: center;
+    }
+
+    .liquida-abc .black_friday__fullbanner .container>div {
+        align-items: center;
+    }
     .liquida-abc .black_friday__card {
         width: calc(((100% - 1*32px)/2));
     }

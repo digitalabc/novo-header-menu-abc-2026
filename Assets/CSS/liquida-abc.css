@@ -91,6 +91,10 @@
     background-color: #fe8568;
 }
 
+.liquida-abc .black_friday__categories .black_friday__spot {
+    aspect-ratio: 180/149;    
+}
+
 .liquida-abc .black_friday__showcase-title a {
     background-color: transparent;
     border: 1px solid #FFF;

@@ -23,6 +23,7 @@
 
 .liquida-abc .black_friday__fullbanner {
     background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/liquidaabc/fullbanner.jpg");
+    background-color: #fcf7f3;
 }
 
 .liquida-abc .black_friday__fullbanner .container>div:first-child img {

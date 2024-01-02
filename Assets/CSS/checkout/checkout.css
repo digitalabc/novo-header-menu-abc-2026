@@ -6,3 +6,77 @@
 /* geral.css >> Definições de Cabeçalho e Rodapé */
 
 /* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
+
+/* Mensagem de aviso da nota fiscal no carrinho e no checkout */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.msg-warning-invoice {
+    display: none;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #FCA004;
+    background-color: #FFFBED;
+}
+
+.msg-warning-invoice>div:first-child {
+    align-self: start;
+}
+
+.msg-warning-invoice>div:first-child svg {
+    fill: transparent;
+    width: 24px;
+    height: 24px;
+}
+
+.msg-warning-invoice>div:last-child>p:first-child {
+    color: #181818;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.msg-warning-invoice>div:last-child>p {
+    margin: 0;
+    padding: 0;
+}
+
+.msg-warning-invoice>div:last-child>p:last-child {
+    color: #6D6D5F;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.botoes-bottom {
+    margin-top: 7px;
+}
+
+.fechamento-section3 .msg-warning-invoice {
+    margin-block: 10px;
+}
+
+.fbits-carrinho .col-lg-2.col-md-2.col-sm-4.col-xs-4.text-center.text-nowrap.fbits-responsive-carrinho-item-valor-unitario>span {
+    text-align: center;
+}
+
+.fbits-carrinho .col-lg-2.col-md-2.col-sm-4.col-xs-4.text-center.text-nowrap.fbits-responsive-carrinho-item-valor-unitario,
+.fbits-carrinho .col-lg-2.col-md-2.col-sm-4.col-xs-4.text-center.text-nowrap.fbits-responsive-carrinho-item-valor-unitario>span>.currency {
+    text-align: right !important;
+    line-height: unset;
+}
+
+@media (max-width: 498px) {
+    .col-lg-6.col-md-6.col-sm-12.col-xs-12.fbits-responsive-carrinho-item-titulo {
+        padding-bottom: 5px;
+    }
+    .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency.promo,
+    .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency {
+        font-size: 12px;
+    }
+}

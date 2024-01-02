@@ -118,6 +118,7 @@ const estados = [
 			"Ubá",
 			"Uberaba",
 			"Uberlândia",
+			"Unaí", 
 			"Varginha",
 			"Vespasiano",
 			"Viçosa",

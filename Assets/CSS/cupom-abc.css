@@ -16,6 +16,7 @@ main {
     color: #000;
 }
 
+/* cupons */
 .cupom-abc-cupoms {
     padding-block: 32px;
     align-self: stretch;
@@ -40,125 +41,118 @@ main {
 }
 
 .cupom {
+    width: 100%;
+    height: 230px;
+    /* max-width: 634px; */
+    max-width: 450px;
     display: flex;
+    padding: 16px 24px;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    border-radius: 8px;
     border: 0.5px solid #BBB;
     background: #FFF;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.30);
-    width: 100%;
-    height: 250px;
-    max-width: 634px;
-    padding: 16px 32px;
-    gap: 32px;
-    color: #000;
-    font-size: 40.184px;
-    font-weight: 600;
     transition: transform .5s ease;
 }
 
-
-.cupom-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6.689px;
-    flex: 1 0 0;
-}
-
-.cupom-content * {
-    align-self: stretch;
+.cupom>p,
+.cupom>button,
+.cupom>a {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     line-height: normal;
 }
 
-.cupom-content>p:nth-child(1) {
+.cupom>*:nth-child(1) {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    padding: 6.2px;
+    justify-content: center;
+    align-items: center;
+    gap: 6.2px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 0.775px solid #000;
+}
+
+.cupom>*:nth-child(1) svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: #1C1B1F;
+}
+
+.cupom>*:nth-child(2) {
     color: #000;
     font-size: 24px;
     font-weight: 600;
 }
 
-.cupom-content>p:nth-child(2) {
+.cupom>*:nth-child(3) {
     color: #000;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
 }
 
-.cupom-content>p:nth-child(2)>span {
+.cupom>*:nth-child(3) .cupom-name {
     color: #E30613;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-.cupom-content>p:nth-child(4) {
-    color: #959595;
-    /* text-align: justify; */
-    font-size: 8px;
-    font-weight: 500;
-    letter-spacing: -0.1px;
+.cupom>button,
+.cupom>a {
+    padding: 8px;
+    border-radius: 4px;
 }
 
-.cupom-content>p:nth-child(4)>a {
-    color: #959595;
-    text-decoration: underline;
-    word-break: break-all;
-}
-
-.cupom-content>button {
-    padding: 10.033px 8.361px;
-    border-radius: 8.037px;
-    border: 0.804px solid #E30613;
+.cupom>*:nth-child(4) {
+    width: 300px;
+    border: 0.669px solid #E30613;
     color: #E30613;
-    text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
 }
 
-.cupom-content>button:hover {
+.cupom>*:nth-child(4):hover {
     color: #FFF;
     background-color: #E30613;
 }
 
-.cupom-linha {
-    width: 0px;
-    height: 212.974px;
-    flex-shrink: 0;
-    stroke-width: 2.515px;
-    stroke: rgba(102, 102, 102, 0.20);
+.cupom>*:nth-child(5) {
+    color: #5D5D5D;
+    text-align: center;
+    font-size: 6px;
+    font-weight: 500;
 }
 
-.cupom-link {
-    display: flex;
-    align-items: flex-end;
-    flex: 1 0 0;
-    align-self: stretch;
+.cupom>*:nth-child(5)>a {
+    color: #006DD5;
+    font-size: 6px;
+    font-weight: 500;
+    text-decoration-line: underline;
 }
 
-.cupom-link>a {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 7.209px;
-    flex: 1 0 0;
-    color: #000;
-    text-align: right;
+.cupom>*:nth-child(6) {
+    border: 0.5px solid #5D5D5D;
+    background: #FFF;
+    color: #5D5D5D;
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-style: normal;
+    font-size: 8px;
     font-weight: 600;
-    line-height: normal;
-    text-decoration: none;
 }
 
-.cupom-link>a>svg {
-    width: 15.365px;
-    height: 11.951px;
-    stroke-width: 1.707px;
-    stroke: #000;
+.cupom>*:nth-child(6):hover {
+    color: #FFF;
+    background-color: #006DD5;
 }
 
+/* cupons */
 .cupom-abc-help {
     padding-block: 32px;
     background-color: #FFF;
@@ -446,102 +440,4 @@ main {
     pointer-events: none;
 }
 
-@media (min-width: 991px) {
-    .cupom:not(.big-cupom) {
-        height: 250px;
-        max-width: 634px;
-        padding: 16px 24px 16px 64px;
-        gap: 33.368px;
-        color: #000;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 40.184px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-    }
-
-    .cupom.big-cupom {
-        height: 300px;
-        max-width: 762px;
-        max-height: 300px;
-        padding: 19.224px 28.836px 19.224px 76.896px;
-        gap: 40.091px;
-    }
-
-    .cupom.big-cupom .cupom-content>p:nth-child(1) {
-        font-size: 40.184px;
-    }
-
-    .cupom.big-cupom .cupom-content>p:nth-child(2) {
-        font-size: 24.11px;
-    }
-
-    .cupom.big-cupom .cupom-content>p:nth-child(4) {
-        font-size: 9.635px;
-    }
-
-    .cupom.big-cupom .cupom-content>button {
-        padding: 12.055px 10.046px;
-        font-size: 16.074px;
-    }
-
-    .cupom-content>p:nth-child(1) {
-        font-size: 33.445px;
-    }
-
-    .cupom-content>p:nth-child(2) {
-        font-size: 20.067px;
-    }
-
-    .cupom-content>p:nth-child(4) {
-        font-size: 8.019px;
-    }
-
-    .cupom-content>button {
-        padding: 10.033px 8.361px;
-        font-size: 13.378px;
-    }
-
-    .cupom-linha {
-        height: 212.974px;
-        flex-shrink: 0;
-    }
-
-    .cupom-link>a {
-        font-size: 12px;
-    }
-
-    .cupom-link>a>svg {
-        width: 15.365px;
-        height: 11.951px;
-    }
-
-    .message .text {
-        font-size: 14px;
-        width: 340px;
-    }
-
-    .help-title>p:nth-child(1) {
-        font-size: 48px;
-    }
-
-    .help-title>p:nth-child(2) {
-        font-size: 16px;
-    }
-
-    .instruction>p {
-        font-size: 32px;
-    }
-
-    .instruction>p:nth-child(2) {
-        font-size: 32px;
-    }
-
-    .instruction>p:nth-child(3) {
-        font-size: 18px;
-    }
-
-    .cupom-abc-help>div>p {
-        font-size: 14px;
-    }
-}
+@media (min-width: 991px) {}

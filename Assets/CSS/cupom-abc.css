@@ -35,15 +35,14 @@ main {
 
 .cupom:hover,
 .instruction:hover {
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.05);
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 .cupom {
     width: 100%;
     height: 230px;
-    /* max-width: 634px; */
     max-width: 450px;
     display: flex;
     padding: 16px 24px;
@@ -90,6 +89,7 @@ main {
     color: #000;
     font-size: 24px;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .cupom>*:nth-child(3) {
@@ -127,14 +127,14 @@ main {
 .cupom>*:nth-child(5) {
     color: #5D5D5D;
     text-align: center;
-    font-size: 6px;
+    font-size: 8px;
     font-weight: 500;
 }
 
 .cupom>*:nth-child(5)>a {
     color: #006DD5;
-    font-size: 6px;
-    font-weight: 500;
+    /* font-size: 6px;
+    font-weight: 500; */
     text-decoration-line: underline;
 }
 
@@ -143,7 +143,7 @@ main {
     background: #FFF;
     color: #5D5D5D;
     font-family: 'Inter', sans-serif;
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 600;
 }
 

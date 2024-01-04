@@ -467,4 +467,11 @@ main {
     pointer-events: none;
 }
 
-@media (min-width: 991px) {}
+@media (min-width: 991px) {
+    .help-title>p:nth-child(1) {
+        font-size: 48px;
+    }
+    .help-title>p:nth-child(2) {
+        font-size: 16px;
+    }
+}

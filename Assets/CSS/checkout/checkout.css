@@ -71,6 +71,11 @@
     line-height: unset;
 }
 
+/* cor da mensagem do cupom */
+.fbits-cupom-msg.fbits-fechamento-cupom-sucesso {
+    color: #0fa848;
+}
+
 @media (max-width: 498px) {
     .col-lg-6.col-md-6.col-sm-12.col-xs-12.fbits-responsive-carrinho-item-titulo {
         padding-bottom: 5px;

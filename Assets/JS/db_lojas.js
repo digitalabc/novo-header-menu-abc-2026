@@ -185,6 +185,7 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Anápolis",
+			"Aparecida de Goiânia",
 			"Catalão",
 			"Goiânia"
 		]
@@ -222,6 +223,7 @@ const estados = [
 			"Barretos",
 			"Bertioga",
 			"Bauru", 
+			"Borborema",
 			"Botucatu",
 			"Bragança Paulista",
 			"Caçapava",

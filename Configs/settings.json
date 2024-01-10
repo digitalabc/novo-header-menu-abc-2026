@@ -2882,15 +2882,15 @@
         {
           "name": "Jardim Estoril",
           "adress": "Av. Comendador José da Silva Martha, 1319 - Jardim Estoril, Bauru - SP, 17016-080",
-          "phone": "",
+          "phone": "(14) 99898-4732",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/bauru/jardim-estoril",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },

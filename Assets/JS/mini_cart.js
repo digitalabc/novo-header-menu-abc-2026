@@ -54,6 +54,9 @@ async function loadMiniCart() {
       div.innerHTML = response_count_formatted;
     });
 
+    if (variables.hasCheckout) {
+      await addUtmMetadata(variables.checkoutId);
+    }
 
   } catch (error) {
     console.error(error);
@@ -98,5 +101,35 @@ async function checkoutRemoveProduct(id, qty) {
 
   } catch (error) {
     console.error(error);
+  }
+}
+
+// funcionalidade para promocoes - utm
+async function addUtmMetadata(checkoutId) {
+  var metadataValues = []
+  let utmSource = queryStringParams.get("utm_source");
+  let utmMedium = queryStringParams.get("utm_medium");
+  let utmCampaign = queryStringParams.get("utm_campaign");
+  let utmTerm = queryStringParams.get("utm_term");
+  let utmContent = queryStringParams.get("utm_content");
+
+  if (utmSource) {
+      metadataValues.push({key: "utmSource", value: utmSource})
+  }
+  if (utmMedium) {
+      metadataValues.push({key: "utmMedium", value: utmMedium})
+  }
+  if (utmCampaign) {
+      metadataValues.push({key: "utmCampaign", value: utmCampaign})
+  }
+  if (utmTerm) {
+      metadataValues.push({key: "utmTerm", value: utmTerm})
+  }
+  if (utmContent) {
+      metadataValues.push({key: "utmContent", value: utmContent})
+  }
+
+  if (metadataValues.length > 0) {
+      await client.checkout.addCheckoutMetadata(metadataValues, checkoutId);
   }
 }

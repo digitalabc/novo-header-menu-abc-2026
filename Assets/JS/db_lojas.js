@@ -297,7 +297,7 @@ const estados = [
 	{
 		"estado": "Santa Catarina",
 		"coluna": "4",
-		"coluna_mobile": "4",
+		"coluna_mobile": "2",
 		"cidades": [
 			"Balneário Camboriú",
 			"São Francisco do Sul"

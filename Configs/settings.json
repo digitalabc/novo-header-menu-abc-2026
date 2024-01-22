@@ -4051,13 +4051,13 @@
           "adress": "Rodovia Othovarino Duarte Santos, 383 - Carapina, São Mateus - ES, 29933-010",
           "phone": "",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/sao-mateus/carapina",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "8:00 às 17:30",
+          "tuesday": "8:00 às 17:30",
+          "wednesday": "8:00 às 17:30",
+          "thursday": "8:00 às 17:30",
+          "friday": "8:00 às 17:30",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },

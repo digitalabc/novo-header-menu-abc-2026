@@ -264,6 +264,7 @@ const estados = [
 			"São José dos Campos",
 			"São Paulo",
 			"São Roque",
+			"São Sebastião",
 			"Sertãozinho",
 			"Sorocaba",
 			"Taguaí",

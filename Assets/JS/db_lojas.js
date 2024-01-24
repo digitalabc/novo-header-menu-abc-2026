@@ -233,6 +233,7 @@ const estados = [
 			"Divinolândia",
 			"Guaratinguetá",
 			"Hortolândia",
+			"Ibitinga",
 			"Indaiatuba",
 			"Itapira",
 			"Itu",

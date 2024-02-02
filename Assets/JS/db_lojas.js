@@ -132,6 +132,7 @@ const estados = [
 		"cidades": [
 			"Araruama",
 			"Bom Jesus do Itabapoana",
+			"Cabo Frio",
 			"Cachoeiras de Macacu",
 			"Campos dos Goytacazes",
 			"Itaperuna",
@@ -198,6 +199,7 @@ const estados = [
 			"Curitiba",
 			"Foz do Iguaçu",
 			"Guarapuava",
+			'Guaratuba',
 			"Londrina",
 			"Maringá",
 			"Ponta Grossa",

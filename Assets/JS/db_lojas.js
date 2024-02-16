@@ -143,6 +143,7 @@ const estados = [
 			"Niterói",
 			"Nova Friburgo",
 			"Paraíba do Sul",
+			"Paraty",
 			"Petrópolis",
 			"Resende",
 			"Rio das Ostras",

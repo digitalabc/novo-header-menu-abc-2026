@@ -4214,6 +4214,25 @@
       ]
     },
     {
+      "state": "Rio de Janeiro",
+      "name": "Cabo Frio",
+      "stores": [
+        {
+          "name": "São Cristóvão",
+          "adress": "Av. América Central, 196 - São Cristóvão, Cabo Frio - RJ, 28909-582",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/cabo-frio/sao-cristovao",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Cachoeiras de Macacu",
       "state": "Rio de Janeiro",
       "stores": [

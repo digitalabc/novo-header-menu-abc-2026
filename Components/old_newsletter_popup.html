@@ -175,6 +175,25 @@
   body:not(.home) #abc-newsletter-popup {
     display: none !important;
   }
+  
+  /* aceite */
+  .accept-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  .accept-checkbox>span {
+    color: var(--Chumbo-ABC, #454040);
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  #inp-aceito {
+    margin: 0;
+  }
+  /* * */
 </style>
 
 <div id="abc-newsletter-popup" class="abc-newsletter-popup-overlay">
@@ -188,6 +207,15 @@
           privilegiadas sobre promoções e ofertas direto no seu email.*
         </p>
         <div class="abc-popup-form">
+          <div class="accept-checkbox">
+            <!-- <input type="hidden" id="inp-firstsession" name="firstsession">
+            <input type="hidden" id="inp-lastsession" name="lastsession">
+            <input type="hidden" name="id_submit" id="id_submit"> -->
+            <input type="checkbox" name="aceito" id="inp-aceito">
+            <span>
+              Concordo em receber e-mails, sms e whatsapp da ABC da Construção.
+            </span>
+          </div>
           <div class="abc-popup-inputs">
             <input class="input" id="abc-popup-input-nome" maxlength="50" placeholder="Nome" type="text" value="" />
             <input class="input" id="abc-popup-input-email" maxlength="70" placeholder="Email" type="text" value="" />
@@ -279,15 +307,26 @@
 
     const nameElement = document.querySelector('#abc-popup-input-nome');
     const emailElement = document.querySelector('#abc-popup-input-email');
-    const nameValue = nameElement.value
-    const emailValue = emailElement.value
+    const nameValue = nameElement.value;
+    const emailValue = emailElement.value;
+    const aceito = document.querySelector('#inp-aceito').checked ? 'Sim' : 'Não';
+    // const firstsession = document.querySelector("#inp-firstsession").value;
+    // const lastsession = document.querySelector("#inp-lastsession").value;
+    // const id_submit = document.querySelector("#id_submit").value;
 
     const validar = validarCadastroNewsletterModal(abcPopupMsg, nameElement, emailElement, '', false);
 
     if (validar) {
       const input = {
         name: nameValue,
-        email: emailValue,
+        email: emailValue,        
+      };
+      const inputSharp = {
+        ...input, 
+        aceito,
+        // firstsession,
+        // lastsession,
+        // id_submit
       };
 
       let response = await client.newsletter.create(input);
@@ -295,7 +334,7 @@
       if (response) {
         abcPopupMsg.innerHTML = "Cadastro realizado com sucesso!";
         abcPopupMsg.setAttribute('style', "color:green;");
-        sendSharpSpring(input, "primeira-compra");
+        sendSharpSpring(inputSharp, "primeira-compra");
         setTimeout(() => {
           document.getElementById('abc-newsletter-popup').classList.remove("abc-newsletter-popup-open");
         }, 3000);

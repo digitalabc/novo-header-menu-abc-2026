@@ -4430,6 +4430,25 @@
       ]
     },
     {
+      "name": "Paraty",
+      "state": "Rio de Janeiro",
+      "stores": [
+        {
+          "name": "Vila Colonial",
+          "adress": "Av. Roberto Silveira, N° 2089 - Vila Colonial Paraty - RJ, 23970-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/paraty/vila-colonial",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Petrópolis",
       "state": "Rio de Janeiro",
       "stores": [

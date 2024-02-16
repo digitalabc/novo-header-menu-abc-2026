@@ -4785,7 +4785,7 @@
       "state": "Paraná",
       "stores": [
         {
-          "name": "Guarapuava",
+          "name": "Centro",
           "adress": "Rua Presidente Getúlio Vargas, 2125 - Centro, Guarapuava - PR, 85010-280",
           "phone": "(42) 99935-9300",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/guarapuava/centro",
@@ -4795,6 +4795,25 @@
           "thursday": "8:30 às 18:00",
           "friday": "8:30 às 18:00",
           "saturday": "8:30 às 12:30",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Guaratuba",
+      "state": "Paraná",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Damião Botelho de Souza, 234 - Centro, Guaratuba - PR, 83280-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/guaratuba/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

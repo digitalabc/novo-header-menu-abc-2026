@@ -14,6 +14,7 @@
     {{- store.urls.static_img}}{{settings.favicon_path}}?theme={{store.theme -}}&v={{store.last_modified -}}
 {{~ end ~}}
 <link rel="icon" type="image/x-icon" href="{{ favicon_source }}">
+<link rel="canonical" href="{{ store.urls.current }}" />
 
 <script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
 <script src="//tag.goadopt.io/injector.js?website_code=5116c68f-2055-4add-99c3-41f216482e8c" class="adopt-injector"></script>

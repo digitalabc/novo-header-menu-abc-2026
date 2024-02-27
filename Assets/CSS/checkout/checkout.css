@@ -85,3 +85,9 @@
         font-size: 12px;
     }
 }
+
+/* scroll no frete do carrinho */
+#div-frete {
+    overflow-y: scroll;
+    max-height: 350px;   
+}

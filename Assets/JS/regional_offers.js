@@ -131,7 +131,7 @@ async function checkZipAddress(cep) {
 
     const texts = document.querySelectorAll('#regional_offers > p');
     const data = await response.json();
-    console.log('bleh2 ', data.hasOwnProperty('erro'));
+    
     if (texts && !data.hasOwnProperty('erro')) {
       texts.forEach(element => {
         element.innerHTML = `

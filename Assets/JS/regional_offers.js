@@ -124,17 +124,25 @@ function validateRegionalOffers() {
 async function checkZipAddress(cep) {
   try {
     const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    
     if (!response.ok) {
       throw new Error('Erro na consulta à API');
     }
 
     const texts = document.querySelectorAll('#regional_offers > p');
     const data = await response.json();
-    if (texts) {
+    
+    if (texts && !data.hasOwnProperty('erro')) {
       texts.forEach(element => {
         element.innerHTML = `
         ${data.localidade} - ${data.uf}
         <span class="tooltip__text">${data.cep}</span>`;
+      });
+    } else {
+      texts.forEach(element => {
+        element.innerHTML = `
+        Cep não identificado
+        <span class="tooltip__text">Digite um CEP válido</span>`;
       });
     }
     return true;

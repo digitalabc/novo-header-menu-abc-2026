@@ -3631,6 +3631,25 @@
       ]
     },
     {
+      "name": "São Carlos",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Jardim São Carlos",
+          "adress": "Rua General Osório, 1330 - Jardim São Carlos, São Carlos - SP, 13560-640",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/sao-carlos/jardim-sao-carlos",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
+        }
+      ]
+    },
+    {
       "name": "São João da Boa Vista",
       "state": "São Paulo",
       "stores": [

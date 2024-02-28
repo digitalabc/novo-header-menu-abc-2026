@@ -262,6 +262,7 @@ const estados = [
 			"Santos",
 			"São Bernardo do Campo",
 			"São Caetano do Sul",
+			"São Carlos",
 			"São João da Boa Vista",
 			"São José do Rio Pardo",
 			"São José do Rio Preto",

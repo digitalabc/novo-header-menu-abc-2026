@@ -4,27 +4,6 @@ var logo_url = "https://yata-apix-93d012ec-4c75-4f53-98f2-f493481f90de.s3-object
 var site_title = "ABC da Construção";
 var hello_message = 'Olá! Tudo bem? Fale com nosso time de consultores via whatsapp e faça seu orçamento.';
 
-function set_cookie(name, value, days, domain) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + ";domain=."+domain+";path=/";
-}
-
-function get_cookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-
 function preWhatsappHandler(url) {
 
     formWpp = document.querySelector('#form-pre-whatsapp');
@@ -40,7 +19,7 @@ function preWhatsappHandler(url) {
             formWppEmail = formWpp.querySelector('.form-wpp-email').value;
             formWppPhone = formWpp.querySelector('.form-wpp-phone').value;
             formWppPhoneEmail = formWppPhone.replace('(', '').replace(')', '').replace(' ', '').replace('-', '');
-
+            formWppPhone = formWpp.querySelector('.form-wpp-phone').value;
             /*if(formWppName != '' && formWppPhone != '' && formWppPhone.length == 15) {*/
             if(formWppName != '' && formWppPhone != '' && formWppPhone.length >= 11) {
 
@@ -49,12 +28,18 @@ function preWhatsappHandler(url) {
                     "event_params": {
                       "name": formWppName,
                       "email": formWppEmail,
-                      "phone": formWppPhone,
+                      "phone": formWppPhone,                      
                       "current_url": location.href,
-                      "cookies": get_cookie("mm_tracker")
+                      "cookies": getCookie("mm_tracker")
                     }
                 };
-              
+
+                sendSharpSpring({ 
+                    ...dataFormWpp.event_params, 
+                    firstSession: getCookie('FirstSession'), 
+                    lastSession: getCookie('LastSession')                    
+                }, 'whats_form');
+
                 var dataFormWpp = JSON.stringify(dataFormWpp);
 
                 var response = jQuery.ajax({
@@ -72,8 +57,8 @@ function preWhatsappHandler(url) {
                   event: "whatsapp_form_send"
                 });
 
-                //window.open(url, '_blank');
-                location.href = url;
+                window.open(url, '_blank');
+                //location.href = url;
                 formWpp.style.display = 'none';
 
             } else {
@@ -180,7 +165,7 @@ function showWhatsAppForm() {
     formHeaderClose.style.top = '5px';
     formHeaderClose.style.right = '15px';
     formHeaderClose.style.cursor = 'pointer';
-    formHeaderClose.addEventListener('click', function(){formBox.style.display = 'none'});
+    formHeaderClose.addEventListener('click', function(){formBox.style.display = 'none'; document.querySelector('#mm-whatsapp').style.display = 'block';});
 
     var formHeaderLeft = document.createElement('div');
     formHeaderLeft.style.display = 'flex';

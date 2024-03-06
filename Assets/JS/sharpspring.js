@@ -36,6 +36,10 @@ function sendSharpSpring(campos, componente) {
     case 'franquia':
       formSharp = 'db4e4d50-3ad5-47ed-b624-b1a2fa2ed8a9';
       break;
+    
+    case 'whats_form':
+      formSharp = '954c7b40-8da6-436f-a98f-e8114cb417d6';
+      break;
 
     default:
       break;

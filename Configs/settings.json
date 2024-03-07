@@ -2520,15 +2520,15 @@
         {
           "name": "Centro",
           "adress": "Rua Natal Justino da Costa, 1009 - Centro, Unaí - MG, 38610-044",
-          "phone": "",
+          "phone": "(38) 3493-0137",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/unai/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },
@@ -4812,14 +4812,14 @@
         {
           "name": "Centro",
           "adress": "Av. Damião Botelho de Souza, 234 - Centro, Guaratuba - PR, 83280-000",
-          "phone": "",
+          "phone": "(41) 99539-2244",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/guaratuba/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "9:00 às 16:00",
           "sunday": "Fechado"
         }
       ]
@@ -5066,15 +5066,15 @@
         {
           "name": "Cardoso",
           "adress": "Av. Rio Verde, SN, Quadra 01, Lote 07 - Cardoso, Aparecida de Goiânia - GO, 74933-215",
-          "phone": "",
+          "phone": "(62) 3549-0520",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/aparecida-de-goiania/cardoso",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },

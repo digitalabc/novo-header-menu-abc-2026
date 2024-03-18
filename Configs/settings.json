@@ -3698,6 +3698,19 @@
       "state": "São Paulo",
       "stores": [
         {
+          "name": "Urbanova",
+          "adress": "Av. Linneu de Moura, 1705 - Urbanova, São José dos Campos - SP, 12244-380",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/sao-jose-dos-campos/urbanova",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        },
+        {
           "name": "Vila Ema",
           "adress": "R. Me. Paula de São José, 162 - Vila Ema, São José dos Campos - SP, 12243-010",
           "phone": "(12) 3600-0384",

@@ -280,6 +280,10 @@ for (var i = 0; i < wppButtons.length; i++) {
         e.preventDefault();
         wppIconButton.style.display = 'none';
         showWhatsAppForm();
+        
+        dataLayer.push({
+          event: "whatsapp_form_click"
+        });
 
         if (wppUrl) {
 

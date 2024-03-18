@@ -4565,13 +4565,13 @@
           "adress": "Estrada do Monteiro, 549 - Campo Grande Rio de Janeiro - RJ, 23045-831",
           "phone": "",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/campo-grande",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         },
         {
           "name": "ABC da Construção Centro",

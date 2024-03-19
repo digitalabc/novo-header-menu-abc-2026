@@ -3508,6 +3508,19 @@
       "state": "São Paulo",
       "stores": [
         {
+          "name": "Atelier - João Fiúsa",
+          "adress": "Av. Prof. João Fiúsa, Fiuza, 1259 - Jardim Sao Luiz, Ribeirão Preto - SP, 14025-310",
+          "phone": "(16) 3237-5578",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/ribeirao-preto/prof-joao-fiusa",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        },
+        {
           "name": "Maurílio Biagi",
           "adress": "Av. Maurílio Biagi, 510 - Santa Cruz do José Jacques, Ribeirão Preto - SP, 14020-750",
           "phone": "(16) 3237-5581",
@@ -3517,7 +3530,7 @@
           "wednesday": "9:00 às 18:00",
           "thursday": "9:00 às 18:00",
           "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]

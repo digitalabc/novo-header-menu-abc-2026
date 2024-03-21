@@ -25,6 +25,11 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!], $partnerAccessT
   lighboxProducts: hotsite(hotsiteId: 98669, partnerAccessToken: $partnerAccessToken) {
     ...lighboxProducts
   }
+
+    kits: hotsite(hotsiteId: 183759) {
+    ...produtos
+  }
+
   categories(first: 50) {
     nodes {
       hotsiteAlias
@@ -53,6 +58,12 @@ query Common($url: String!, $scriptPageTypes: [ScriptPageType!], $partnerAccessT
 }
 
 fragment lighboxProducts on SingleHotsite {
+  products(first: 20, sortKey: SALES, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment produtos on SingleHotsite {
   products(first: 20, sortKey: SALES, sortDirection: DESC) {
     ...productsCon
   }

@@ -141,11 +141,15 @@
                 "path": "custom/liquida-abc.html"
             },
             {
-                "urlMatch": "pisos-e-revestimentos/cidade/*",
-                "path": "custom/pisos_por_cidade.html",
-                "query": "category.graphql"
+                "urlMatch": "abc-prime",
+                "path": "custom/abc-prime.html",
+                "query": "abcPrime.graphql"
+            },
+            {
+                "urlMatch": "lp-abc-prime",
+                "path": "custom/lp-abc-prime.html",
+                "query": "abcPrime.graphql"
             }
-            
         ]
     },
     {

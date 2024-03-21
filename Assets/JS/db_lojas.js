@@ -61,7 +61,7 @@ const estados = [
 			"Leopoldina",
 			"Lima Duarte",
 			"Machado",
-			"Manhuaçú",
+			"Manhuaçu",
 			"Mariana",
 			"Mateus Leme",
 			"Matias Barbosa",

@@ -66,3 +66,90 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
         margin-top: 8px !important;
     }
 }
+
+/* LP ABC PRIME */
+
+.planosPrime__list {
+    padding-bottom: 32px;
+}
+
+.abc_prime .abcPrime__fullbanner .container {
+    gap: 40px;
+}
+
+.beneficiosPrime__benefits {
+    padding-bottom: 64px;
+}
+
+.planosPrime {
+    padding-bottom: 16px;
+}
+
+.abc_prime h2.abcPrime-title {
+    font-size: 24px;
+    padding: 24px 0 24px 0;
+}
+
+.planosPrime__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.planosPrime__item {
+    padding: 40px 40px;
+    max-width: 380px;
+    height: auto;
+    transition: transform .1s;
+}
+
+.showcasePrime__content {
+    padding: 24px;
+}
+
+.showcasePrime__content .swiper:before {
+    box-shadow: unset;
+}
+
+.showcasePrime__content .swiper:after {
+    box-shadow: unset;
+}
+
+.primeReviews {
+    font-family: Poppins;
+}
+
+.primeReviews {
+    padding-bottom: 24px;
+}
+
+.primeReviews__list {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.primeReviews__item {
+    height: auto;
+}
+
+.primeReviews__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    width: 280px;
+    padding: 24px 16px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 10px;
+    border: 1.2px solid #fff;
+}
+
+
+/* flag abc prime */
+.spot-price .desconto_prime {
+    display: none;
+}

@@ -14,7 +14,7 @@ var swiper = new Swiper(".beneficiosPrime__benefits .swiper", {
     slidesPerView: 1.5,
     breakpoints: {
         991: {
-            spaceBetween: 16,
+            spaceBetween: 33,
             slidesPerView: 4
         }
     }

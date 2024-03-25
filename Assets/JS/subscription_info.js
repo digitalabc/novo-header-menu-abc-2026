@@ -5,7 +5,7 @@ async function subscriptionInfoLoad(){
 }
 
 async function subscriptionInfo() {
-    let user = await client.user.get();
+    let user = await client.user.get();    
     if (!user) return;   
     
     let response = await client.snippet.render(

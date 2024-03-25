@@ -12,7 +12,7 @@
 {{~ 
   descontoPrime = 0
   
-  produtosPrime = [{ "id": "73422", "desconto": 0.01}, {"id": "74852", "desconto": 0.05}, {"id": "74586", "desconto": 0.03 }]
+  produtosPrime = [{ "id": "73422", "desconto": 0.01}, {"id": "74852", "desconto": 0.05}, {"id": "74586", "desconto": 0.03 }, {"id": "74915", "desconto": 0.50}]
   
   if produtosPrime
     for produto in produtosPrime
@@ -38,7 +38,7 @@
           {{~ end ~}}
         </h3>
         {{~ if descontoPrime != 0 ~}}
-          <p class="desconto_prime">{{ prices.price | math.minus (prices.price | math.times descontoPrime) | math.format "c" "pt-BR"}}
+          <p class="desconto_prime">{{ prices.price | math.minus (prices.price | math.times descontoPrime) | math.format "c" "pt-BR"}}&nbsp;
             <span>com</span>
             <img src="{{- store.urls.static_img }}svg/abcPrime_icon.svg?theme={{store.theme}}&v={{store.last_modified}}"
               alt="abc prime desconto icone" width="65" height="14">

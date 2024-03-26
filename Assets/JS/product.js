@@ -804,13 +804,14 @@ if (produtoSKUDiv && quantidadeInput) {
     })
     .then(function (data) {
 
-      let { referencia, peso, departamento, categoria, subcategoria } = data[0];
+      let { referencia, peso, departamento, categoria, subcategoria, is_estoque_industria } = data[0];
       if (referencia === produtoSKU) {
         pesoTotal = quantidade * peso;
 
         if (departamento !== ""
           && typeof retiraLojaArr != "undefined"
           && (retiraLojaArr.includes(departamento.toLowerCase()) || retiraLojaArr.includes(categoria.toLowerCase()) || retiraLojaArr.includes(subcategoria.toLowerCase()))
+          && !is_estoque_industria
         ) {
           retirarEmLoja = true;
         };

@@ -38,10 +38,10 @@
           {{~ end ~}}
         </h3>
         {{~ if descontoPrime != 0 ~}}
-          <p class="desconto_prime">{{ prices.price | math.minus (prices.price | math.times descontoPrime) | math.format "c" "pt-BR"}}&nbsp;
+          <p class="desconto_prime">{{ prices.price | math.minus (prices.price | math.times descontoPrime) | math.format "c" "pt-BR"}}
             <span>com</span>
             <img src="{{- store.urls.static_img }}svg/abcPrime_icon.svg?theme={{store.theme}}&v={{store.last_modified}}"
-              alt="abc prime desconto icone" width="65" height="14">
+              alt="ABC Prime" width="65" height="14">
           </p>
         {{~ end ~}}
         {{~ if product_is_box && !page_product && !comprePorUnidade && prices.multiplication_factor > 0 ~}}

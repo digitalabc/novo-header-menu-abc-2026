@@ -152,4 +152,20 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 /* flag abc prime */
 .spot-price .desconto_prime {
     display: none;
+    align-items: center;
+    border-radius: 3.6px;
+    background: #138779;
+    padding: 5px 8px;
+    gap: 5px;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 7px 0;
+}
+
+:not(.product__view) .spot-price .desconto_prime {
+    align-self: start;    
 }

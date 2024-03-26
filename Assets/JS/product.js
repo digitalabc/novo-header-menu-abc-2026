@@ -850,3 +850,19 @@ window.addEventListener("load", () => {
     });
   }
 });
+
+$(document).on("ready", function () {
+  var productId = $("#product-id").val();
+  if (productId == "110588") {
+    $(".product__view .product__quantity").append(
+      '<fieldset style="margin-bottom: 25px;"><label for="check-term"><input type="checkbox" value="true" id="check-term" style="margin-right: 8px">Concordo com os <a href="#" style="text-decoration: underline">termos de uso</a>.</label></fieldset>'
+    );
+
+    $(".subscription-div button").prop("disabled", true);
+
+    $("#check-term").live("change", function () {
+      $(".subscription-div button").prop("disabled", !$(this).is(":checked"));
+    });
+  }
+});
+

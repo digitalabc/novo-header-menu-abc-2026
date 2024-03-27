@@ -6818,7 +6818,7 @@ div[class^=como-chegar] > span + i {
   top: 150px;
   left: 0;
   width: 100%;
-  z-index: 999999;
+  z-index: 99;
 }
 @media screen and (min-width: 992px) {
   .beneficiosPrime__ruler ul {

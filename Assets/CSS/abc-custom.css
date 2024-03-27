@@ -167,5 +167,14 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 }
 
 :not(.product__view) .spot-price .desconto_prime {
-    align-self: start;    
+    align-self: start;
+}
+
+@media (max-width: 991px) {
+    .spot-price .desconto_prime {
+        font-size: 13px;
+    }
+    .spot-price .desconto_prime img {
+        width: 30%;
+    }
 }

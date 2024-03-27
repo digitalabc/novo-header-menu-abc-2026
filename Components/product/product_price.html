@@ -10,9 +10,11 @@
 ## }}
 
 {{~ 
+  store.urls | debug.log
+  urlABCPrime = store.urls.current | string.index_of "/abc-prime"
   descontoPrime = 0
   
-  produtosPrime = [{ "id": "73422", "desconto": 0.01}, {"id": "74852", "desconto": 0.05}, {"id": "74586", "desconto": 0.03 }, {"id": "74915", "desconto": 0.05}]
+  produtosPrime = [{ "id": "73422", "desconto": 0.01},{"id": "74852", "desconto": 0.05},{"id": "74586", "desconto": 0.03 },{"id": "74915", "desconto": 0.05},{"id": "74306", "desconto": 0.15},{"id": "29589", "desconto": 0.20},{"id": "68464", "desconto": 0.20},{"id": "61830", "desconto": 0.20},{"id": "75279", "desconto": 0.20},{"id": "37971", "desconto": 0.25}]
   
   if produtosPrime
     for produto in produtosPrime
@@ -39,7 +41,12 @@
         </h3>
         {{~ if descontoPrime != 0 ~}}
           <p class="desconto_prime">
-            <strong>Até 25% OFF</strong>
+            {{~ if urlABCPrime > 0 ~}}
+              <strong>{{ descontoPrime | math.times 100 }}% OFF</strong>
+            {{~ else ~}}
+              {{ prices.price | math.minus (prices.price | math.times descontoPrime) | math.format "c" "pt-BR"}}
+              <span>com</span>            
+            {{~ end ~}}            
             <img src="{{- store.urls.static_img }}svg/abcPrime_icon.svg?theme={{store.theme}}&v={{store.last_modified}}"
               alt="ABC Prime" width="65" height="14">
           </p>

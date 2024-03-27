@@ -10802,7 +10802,6 @@ section.newsletter--home .newsletter__alert {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
 }
 @media screen and (max-width: 991px) {
   .pagination__list .page-item-desktop {
@@ -10830,11 +10829,11 @@ section.newsletter--home .newsletter__alert {
 }
 .pagination__list .page-item > a:hover {
   color: #fff;
-  background: #0fa848;
+  background: #000;
 }
 .pagination__list .page-item.active > a {
   color: #fff;
-  background: #0fa848;
+  background: #000;
 }
 .seo {
   position: relative;
@@ -10907,6 +10906,10 @@ section.newsletter--home .newsletter__alert {
 }
 .seo > * {
   display: none;
+}
+.seo img:first-child {
+  display: block;
+  margin-bottom: 30px;
 }
 .seo__button {
   position: absolute;

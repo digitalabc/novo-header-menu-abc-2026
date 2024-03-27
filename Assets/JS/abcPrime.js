@@ -14,8 +14,8 @@ var swiper = new Swiper(".beneficiosPrime__benefits .swiper", {
     slidesPerView: 1.5,
     breakpoints: {
         991: {
-            spaceBetween: 33,
-            slidesPerView: 4
+            spaceBetween: 16,
+            slidesPerView: 3
         }
     }
 
@@ -79,3 +79,13 @@ function modalClose() {
     document.getElementById("exitModal").style.display = "none";
     document.body.classList.remove("modal-open");
 }
+
+window.addEventListener("scroll", (event) => {    
+    let scroll = this.scrollY;
+
+    if(scroll > 400) {
+        document.querySelector('.beneficiosPrime__ruler').classList.add('floating');
+    } else {
+        document.querySelector('.beneficiosPrime__ruler').classList.remove('floating');
+    }
+});

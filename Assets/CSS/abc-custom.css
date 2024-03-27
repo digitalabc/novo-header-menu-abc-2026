@@ -78,17 +78,17 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 }
 
 .beneficiosPrime__benefits {
-    padding-bottom: 64px;
+    padding-bottom: 75px;
 }
 
 .planosPrime {
     padding-bottom: 16px;
 }
 
-.abc_prime h2.abcPrime-title {
+/* .abc_prime h2.abcPrime-title {
     font-size: 24px;
     padding: 24px 0 24px 0;
-}
+} */
 
 .planosPrime__list {
     display: flex;
@@ -98,8 +98,8 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 }
 
 .planosPrime__item {
-    padding: 40px 40px;
-    max-width: 380px;
+    padding: 40px 32px;
+    max-width: 320px;
     height: auto;
     transition: transform .1s;
 }
@@ -139,11 +139,11 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     justify-content: space-between;
     height: auto;
     width: 280px;
-    padding: 24px 16px;
-    font-size: 14px;
+    padding: 24px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 18px;
     border-radius: 10px;
     border: 1.2px solid #fff;
 }

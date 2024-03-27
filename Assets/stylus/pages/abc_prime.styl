@@ -1,40 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+
 .abc_prime
 
     h2.abcPrime-title
         color: #FFF;
-        font-family: Poppins;
-        font-size: 36px;
+        font-family: "Poppins", sans-serif;
+        font-size: 24px;
         font-style: normal;
         font-weight: 400;
-        line-height: normal;
-        text-align: center
-        padding: 74px 0 40px 0
-        @media mobile
-            padding: 40px 0
-
+        line-height: 36px;
+        text-align: center;
+        padding: 24px 0;
+        
         strong
             color: #FFE2AA;
-            font-family: Poppins;
-            font-size: 36px; 
+            font-family: "Poppins", sans-serif;
+            font-size: 24px; 
             font-style: normal;
-            font-weight: 800;
-            line-height: normal;
+            font-weight: 700;
+            line-height: 36px;
             text-transform: uppercase;
+            display: block
 
     .abcPrime
         &__fullbanner
-            background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/abcPrime_fullbanner.jpg");
+            background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/abc-prime-container_banner.png");
             background-size: cover;
             background-repeat no-repeat;
-            padding: 54px 0 87px 0
+            padding: 57.5px 0;
 
             .container
                 display flex
                 align-items: center
-                font-family: Poppins;
+                font-family: "Poppins", sans-serif;
                 @media desktop
-                    justify-content: center
-                    gap 15px
+                    justify-content: space-between
+                    gap: 0
                 
                 @media mobile
                     flex-direction: column-reverse
@@ -45,41 +46,45 @@
 
         &__title
             color: #FDFDFD;
-            font-size: 40px;
+            font-size: 32px;
             font-style: normal;
             font-weight: 600;
-            line-height: 130%; /* 52px */
-            padding-bottom 20px
+            line-height: 48px;
+            padding-bottom 16px;
+            font-family: "Poppins", sans-serif;
 
         &__paragraph
             color: #FDFDFD;
-            font-size: 22px;
+            font-size: 18px;
             font-style: normal;
             font-weight: 400;
-            line-height: 120%; /* 26.4px */
+            line-height: 21.6px;
+            font-family: "Poppins", sans-serif;
 
         &__paragraphStrong
-            color: #FFE2AA ;
-            font-size: 28px;
+            color: #FFE2AA;
+            font-size: 24px;
             font-style: normal;
-            font-weight: 400;
-            line-height: 120%;
-            padding-bottom 24px
+            font-weight: 700;
+            line-height: 28.8px;
+            padding-bottom 24px;
+            font-family: "Poppins", sans-serif;
 
         &__link
-            max-width 378px
+            max-width 255px
             width 100%
             border-radius: 32px;
             background: #FFE2AA;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            padding: 16px 26px;
-            display: inline-block
+            height: 46px;
+            line-height: 46px;
             text-align: center
+            display: inline-block
             color: #20725E;
-            font-size: 24px;
+            font-size: 20px;
             font-style: normal;
             font-weight: 700;
-            line-height: normal;
+            font-family: "Poppins", sans-serif;
             @media desktop
                 &:hover
                     background: #fff
@@ -88,6 +93,7 @@
 //section benefícios
     .beneficiosPrime
         background: #3E3E3E;
+        padding-top: 16px
 
         &__container
             position: relative
@@ -116,16 +122,25 @@
                     box-shadow: inset 70px 0px 67px -48px #3E3E3E;
         
         &__ruler
-            margin: 0 auto
-            border-bottom: 1.2px solid  #FFE2AA
+            margin: 0
+            box-shadow: 0px 4px 10px 0px #00000066;
+            background: #3e3e3e
+
+            @media mobile
+                display: none
             
+            &.floating 
+                position: fixed;
+                top: 150px;
+                left: 0;
+                width: 100%;
+                z-index: 999999;
+
             ul
-                height 100px
                 @media desktop
                     display flex
                     align-items: center
                     justify-content: center
-                    gap 48px
 
                 li
                     @media desktop
@@ -133,23 +148,24 @@
 
                     a
                         color: #FFF;
-                        font-family: Inter;
+                        font-family: "Inter", sans-serif;
                         font-size: 14px;
                         font-style: normal;
                         font-weight: 400;
-                        line-height: normal;
+                        line-height: 17px;
                         text-transform: uppercase;
                         height 100%
                         display flex
                         align-items: center
                         justify-content: center
+                        padding: 31.5px 16px
 
                         &:hover
                             color: #FFE2AA
         &__benefits
             max-width: 1300px
             margin: 0 auto
-            padding-bottom: 110px
+            padding-bottom: 75px
 
             @media mobile
                 padding 0 0px 90px 10px
@@ -198,8 +214,8 @@
             li
                 max-width: 300px
                 height 450px
-                padding: 25px
-                font-family: Poppins;
+                padding: 32px
+                font-family: "Poppins", sans-serif;
                 display flex
                 flex-direction: column
                 justify-content: space-between
@@ -207,7 +223,11 @@
                 border: 1px solid #fff
                 background-repeat: no-repeat;
                 background-position: center;
-                background-size: cover;    
+                background-size: cover;   
+                transition: all 0.5s ease-out allow-discrete;
+
+                &:hover 
+                    background-size: 110%;
 
                 &:last-child
                     margin-right: 0 !important 
@@ -222,22 +242,24 @@
 
                 h3
                     color: #FFF;
-                    font-size: 29px;
+                    font-size: 20px;
                     font-style: normal;
                     font-weight: 600;
-                    line-height: 120%; /* 33.6px */
-                    margin-bottom 8px
+                    line-height: 24px;
+                    margin-bottom 8px;
+                    font-family: "Poppins", sans-serif;
 
                 p
                     color: #FFF;
                     font-size: 14px;
                     font-style: normal;
-                    font-weight: 300;
-                    line-height: normal;
+                    font-weight: 500;
+                    line-height: 21px;
+                    font-family: "Poppins", sans-serif;
 
                 a
                     color: #FFF;
-                    font-family: Poppins;
+                    font-family: "Poppins", sans-serif;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 600;
@@ -279,12 +301,21 @@
         @media mobile
             padding: 0 10px
 
+        h2.abcPrime-title
+            font-size: 20px !important
+            line-height: 30px
+            font-family: "Poppins", sans-serif;
+
+            strong
+                font-weight: 800
+                font-size: 20px
+                line-height: 30px
+
         &__list
             display flex
             justify-content: center
             align-items: center
             gap: 23px
-            margin-bottom 44px
 
 
             @media mobile
@@ -299,7 +330,7 @@
             height 665px
             border-radius: 10.573px;
             border: 1.322px solid #FFF;
-            background: #2B887C;
+            background: #3E3E3E;
             box-shadow: 0px 0px 26.962px 0px rgba(0, 0, 0, 0.20);
             transition: transform 0.4s
             z-index 1
@@ -319,39 +350,38 @@
                         transform: scale(1.03)
 
             img
-                max-width 175px
+                max-width 155px
                 width 100%
-                margin-bottom 24px
+                margin-bottom 16px
 
             h4
-                font-family: Poppins;
-                font-size: 1.3rem;
+                font-family: "Poppins", sans-serif;
+                font-size: 14px;
                 font-style: normal;
-                font-weight: 300;
-                line-height: 120%; /* 24px */
+                font-weight: 400;
+                line-height: 21px;
                 
             p
-                font-family: Poppins;
-                font-size: 22px;
+                font-family: "Poppins", sans-serif;
+                font-size: 20px;
                 font-style: normal;
-                font-weight: 500;
-                line-height: 120%;
-                margin-bottom 15px
+                font-weight: 700;
+                line-height: 27px;
+                margin-bottom 9.5px;
 
             p.price
-                font-family: Poppins;
-                font-size: 21px;
+                font-family: "Poppins", sans-serif;
+                font-size: 20px;
                 font-style: normal;
-                font-weight: 600;
-                line-height: 93.75%
+                font-weight: 700;
+                line-height: 27px
 
                 strong
-                    font-family: Open Sans;
-                    font-size: 31.72px;
+                    font-family: "Poppins", sans-serif;
+                    font-size: 20px;
                     font-style: normal;
                     font-weight: 700;
-                    line-height: 29.737px; /* 93.75% */
-                    margin-bottom 11px
+                    line-height: 27px
 
             a
                 border-radius: 23px
@@ -362,7 +392,7 @@
                 width 100%
                 height 40px
                 color: #247269;
-                font-family: Poppins;
+                font-family: "Poppins", sans-serif;
                 font-size: 15px;
                 font-style: normal;
                 font-weight: 600;
@@ -376,9 +406,11 @@
 
                 li
                     text-align: left
-                    padding: 15px 50px
+                    padding: 15px 0
                     width 100%
                     border-bottom: 0.6px solid #FFF;
+                    display: flex
+                    align-items: center
 
                     &:before
                         content: ''
@@ -389,15 +421,16 @@
                         display: inline-block
             
             a.planosPrime__btContinuar
-                max-width: 100%
-                height 50px
+                max-width: 100%;
+                height 54px;
+                line-height 54px;
                 background: #FFE2AA;
-                color: #000;
-                font-size: 1.8rem;
+                color: #3E3E3E;
+                font-size: 20px;
                 font-style: normal;
                 font-weight: 700;
-                line-height: 50px;
-                margin-bottom 0
+                margin-bottom 0;
+                border-radius: 4px;
 
         small
             max-width: 950px
@@ -405,7 +438,7 @@
             margin: 0 auto
             display: block
             color: #FFF;
-            font-family: Poppins;
+            font-family: "Poppins", sans-serif;
             font-size: 14px;
             font-style: normal;
             font-weight: 300;
@@ -423,8 +456,22 @@
         @media mobile
             padding: 0 10px
 
+        h2.abcPrime-title
+            padding: 16px 0
+            font-size: 20px
+            line-height: 30px
+            font-weight: 400
+            font-family: "Poppins", sans-serif
+            text-transform: uppercase
+
+            strong
+                font-weight: 800
+                font-size: 20px
+                line-height: 30px
+
         &__content
             max-width: 865px
+            width: 100%
             margin 0 auto
             padding: 0
 
@@ -475,7 +522,7 @@
                         border-radius: 1.985px;
                         background: linear-gradient(0deg, rgba(15, 168, 72, 0.2) 0%, rgba(15, 168, 72, 0.2) 100%), #FFF;
                         color: #0FA848;
-                        font-family: Montserrat;
+                        font-family: "Montserrat", sans-serif;
                         font-size: 12px;
                         font-style: normal;
                         font-weight: 600;
@@ -496,7 +543,7 @@
                         border-radius: 1.985px;
                         background: #006DD5B2;
                         color: #FFF;
-                        font-family: Montserrat;
+                        font-family: "Montserrat", sans-serif;
                         font-size: 12px;
                         font-style: normal;
                         font-weight: 600;
@@ -517,7 +564,7 @@
                         border-radius: 1.985px;
                         background: #FF80FAB2;
                         color: #000;
-                        font-family: Montserrat;
+                        font-family: "Montserrat", sans-serif;
                         font-size: 12px;
                         font-style: normal;
                         font-weight: 600;
@@ -536,7 +583,7 @@
                         border-radius: 1.985px;
                         background: linear-gradient(0deg, rgba(227, 6, 19, 0.15) 0%, rgba(227, 6, 19, 0.15) 100%), #FFF;
                         color: #E30613;
-                        font-family: Montserrat;
+                        font-family: "Montserrat", sans-serif;
                         font-size: 12px;
                         font-style: normal;
                         font-weight: 600;
@@ -547,7 +594,7 @@
                         &:after
                             content: 'OFF'
                             color: #E30613;
-                            font-family: Montserrat;
+                            font-family: "Montserrat", sans-serif;
                             font-size: 11.908px;
                             font-style: normal;
                             font-weight: 600;
@@ -566,59 +613,52 @@
                         margin 10px
 
                     .spot__content
-                        padding: 15px
+                        padding: 16px
 
                         &-title
-                            padding-top 30px
-                           
+                            padding: 16px 0
+                            overflow: hidden;
 
                             h3                                
                                 color: #686565;
-                                height 35px
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                display: -webkit-box;
-                                -webkit-line-clamp: 2;
-                                -webkit-box-orient: vertical;
+                                height 60px
                                 margin: 0;
-                                font-family: Montserrat;
+                                font-family: "Montserrat", sans-serif;
                                 font-size: 13px;
                                 font-style: normal;
                                 font-weight: 500;
                                 line-height: normal;
 
                         &-price
-                            padding-top 15px
 
                             .spot-price
-                                height 90px
-                                margin-bottom 8px
+                                height auto
+                                margin-bottom 0
 
                                 .precoPor
-                                    display flex
-                                    align-items: center
-                                    gap 8px
-
+                                    display none
+                                    
                                     &:first-child
                                         padding-top: 0;
 
                                     span
                                         color: #000;
-                                        font-family: Montserrat;
+                                        font-family: "Montserrat", sans-serif;
                                         font-size: 23px;
                                         font-style: normal;
                                         font-weight: 700;
                                         line-height: 104.57%;
 
                                     small
-                                        font-family: Montserrat;
+                                        font-family: "Montserrat", sans-serif;
                                         font-size: 13.893px;
                                         font-style: normal;
                                         line-height: 112%;
                                     
                                 .precoDe
+                                    display: none
                                     color: #4F4F4F;
-                                    font-family: Montserrat;
+                                    font-family: "Montserrat", sans-serif;
                                     font-size: 11px;
                                     font-style: normal;
                                     font-weight: 400;
@@ -626,25 +666,26 @@
                                     margin-bottom 8px
 
                                 .desconto_prime
+                                    width: 100%
                                     display flex
-                                    justify-content: space-evenly
+                                    justify-content: center
                                     align-items: center
                                     border-radius: 3.6px;
-                                    background: #138779;
-                                    padding: 9px 24px
-                                    gap 5px
+                                    background: linear-gradient(85.64deg, #247067 18.39%, #38B0A1 136.66%);
+                                    padding: 13px
                                     color: #FFF;
-                                    font-family: Montserrat;
+                                    font-family: "Montserrat", sans-serif;
                                     font-size: 15px;
                                     font-style: normal;
-                                    font-weight: 600;
-                                    line-height: normal;
-                                    margin: 7px 0
+                                    font-weight: 800;
+                                    line-height: 19px;
+                                    margin: 0
                                     @media mobile
                                         padding: 9px 5px
                                         gap 2px
 
                             .best-installment
+                                display: none
                                 padding 15px 0
                                 border-top: 0.496px solid #D3D3D3;
                                 text-align: center
@@ -656,7 +697,7 @@
 
 
             .swiper-slide
-                max-width: 290px
+                max-width: 277px
 
                 @media desktop
                     transform scale(1)
@@ -677,13 +718,13 @@
             border-radius: 32px;
             background: #FFE2AA;
             color: #3E3E3E;
-            font-family: Poppins;
+            font-family: "Poppins", sans-serif;
             font-size: 24px;
             font-style: normal;
             font-weight: 700;
             text-align: center
             margin-top 24px
-            margin-bottom 40px
+            margin-bottom 36px
 
             &:hover
                 background: #fff
@@ -694,11 +735,23 @@
         background: #3E3E3E
         color: #FFF;
         font-family: Nunito;
+
+        h2.abcPrime-title
+            font-size: 20px
+            line-height: 30px
+            font-weight: 400
+            font-family: "Poppins", sans-serif
+            
+            strong
+                font-weight: 800
+                font-size: 20px
+                line-height: 30px
+                font-family: "Poppins", sans-serif
+                display: inline
         
         &__list
             max-width: 1200px
             margin: 0 auto
-            padding-bottom 40px
 
             .swiper-wrapper
                 @media mobile
@@ -721,22 +774,25 @@
 
             p
                 text-align: right;
-                font-size: 18px;
+                font-size: 14px;
                 font-style: normal;
                 font-weight: 700;
-                line-height: normal;
+                line-height: 21px;
+                font-family: "Poppins", sans-serif
+
                 @media mobile
                     font-size 15px
 
         &__item
             width: 280px;
-            padding: 24px 16px;
-            font-size: 14px;
+            padding: 24px;
+            font-size: 12px;
             font-style: normal;
             font-weight: 400;
-            line-height: normal;
+            line-height: 18px;
             border-radius: 10px;
             border: 1.2px solid #FFF;
+            font-family: "Poppins", sans-serif
 
         &__person
             margin-top 16px
@@ -749,11 +805,11 @@
 
         &__name
             color: #FFF;
-            font-family: Poppins;
-            font-size: 18px;
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
             font-style: normal;
             font-weight: 700;
-            line-height: normal;
+            line-height: 21px;
 
 //FAQ
     .primeFAQ
@@ -762,6 +818,9 @@
         flex-direction: column
         align-items: center
         padding-bottom 40px
+
+        h2.abcPrime-title
+            padding: 0 0 24px
 
         @media mobile
             padding: 0 10px 40px
@@ -782,12 +841,12 @@
                 align-items: center
                 justify-content: space-between
                 background: transparent
-                font-family: Inter;
+                font-family: "Poppins", sans-serif;
                 color: #FFF;
-                font-size: 24px;
+                font-size: 20px;
                 font-style: normal;
                 font-weight: 600;
-                line-height: normal;
+                line-height: 30px;
                 margin: 32px 0 0
                 transition all .2s ease-in-out
 
@@ -811,11 +870,11 @@
 
             p
                 color: #FFE2AA;
-                font-family: Inter;
-                font-size: 18px;
+                font-family: "Poppins", sans-serif;
+                font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: normal;
+                line-height: 21px;
                 max-width: 768px
                 padding-top 32px
  
@@ -824,7 +883,7 @@
             height 68px
             display: inline-block
             color: #3D4544;
-            font-family: Poppins;
+            font-family: "Poppins", sans-serif;
             font-size: 24px;
             font-style: normal;
             font-weight: 700;

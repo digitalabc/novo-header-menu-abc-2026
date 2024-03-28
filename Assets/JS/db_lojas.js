@@ -114,7 +114,6 @@ const estados = [
 			"Tocantins",
 			"Três Corações",
 			"Três Marias",
-			"Três Pontas",
 			"Ubá",
 			"Uberaba",
 			"Uberlândia",

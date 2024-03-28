@@ -4174,6 +4174,19 @@
       "state": "Espírito Santo",
       "stores": [
         {
+          "name": "Centro de Vila Velha ",
+          "adress": "Av. Champagnat, 850, - Centro de Vila Velha , Vila Velha - ES, 29100-010",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/vila-velha/centro-de-vila-velha",
+          "monday": "8:30 às 18:00",
+          "tuesday": "8:30 às 18:00",
+          "wednesday": "8:30 às 18:00",
+          "thursday": "8:30 às 18:00",
+          "friday": "8:30 às 18:00",
+          "saturday": "8:30 às 13:00",
+          "sunday": "Fechado"
+        },
+        {
           "name": "Praia de Itaparica",
           "adress": "Av. Santa Leopoldina, 511 - Praia de Itaparica, Vila Velha - ES, 29102-041",
           "phone": "(27) 99918-1233",

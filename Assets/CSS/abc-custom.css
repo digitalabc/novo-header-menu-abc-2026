@@ -170,11 +170,27 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     align-self: start;
 }
 
+.beneficiosPrime__benefits button {
+    display: none;
+}
+
 @media (max-width: 991px) {
     .spot-price .desconto_prime {
         font-size: 13px;
     }
     .spot-price .desconto_prime img {
         width: 30%;
+    }
+    .abc_prime .abcPrime__fullbanner .container div {
+        text-align: center;
+    }
+    .abc_prime .abcPrime__fullbanner .container div h1 {
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 991px) {
+    .abc_prime .abcPrime__fullbanner .container {
+        max-width: 1000px;
     }
 }

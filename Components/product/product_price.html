@@ -41,7 +41,7 @@
         {{~ if descontoPrime != 0 ~}}
           <p class="desconto_prime">
             {{~ if urlABCPrime > 0 ~}}
-              <strong>{{ descontoPrime | math.times 100 }}% OFF</strong>
+              <strong>{{ descontoPrime | math.times 100 | math.round }}% OFF</strong>
             {{~ else ~}}
               {{ prices.price | math.minus (prices.price | math.times descontoPrime) | math.format "c" "pt-BR"}}
             {{~ end ~}}            

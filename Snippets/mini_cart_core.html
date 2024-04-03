@@ -66,8 +66,27 @@
                   <div class="quantity">
                       Qtd - {{ product.quantity }}
                   </div>
+                  {{~ 
+                    miniCartHasPrime = false
+                    minicarDescontoPrime = 0
+
+                    for prime in settings.promocao_prime
+                      if prime.id == product.product_id
+                        miniCartHasPrime = true
+                        minicarDescontoPrime = prime.desconto
+                      end
+                    end
+                  ~}}
                   <div class="price">
-                      {{ product.price * product.quantity | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
+                    {{~ if miniCartHasPrime ~}}
+                      <div class="prime_calculated">
+                      {{ product.price | math.minus (product.price | math.times minicarDescontoPrime) | math.times product.quantity| math.format "c" "pt-BR" }}
+                      </div>                    
+                    {{~ end ~}}
+                      <div class="no_prime">
+                        {{ product.price * product.quantity | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
+                      </div>
+                      
                       <button id="remove"
                       onclick="checkoutRemoveProduct('{{product.product_variant_id}}', '{{product.quantity}}')">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">

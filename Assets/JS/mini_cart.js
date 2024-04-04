@@ -135,20 +135,20 @@ async function addUtmMetadata(checkoutId) {
   }
 }
 
-// prime no minicart
-const minicartHasPrime = async () => {
-    let user = await client.user.get();
-    if (!user) return;   
+// prime no minicart pausado
+// const minicartHasPrime = async () => {
+//     let user = await client.user.get();
+//     if (!user) return;   
     
-    let response_subscription = await client.snippet.render(
-        "subscription_info_snippet.html",
-        "SnippetQueries/subscription_info.graphql",
-        { customerAccessToken: user.customerAccessToken }
-    );
-    response_subscription = JSON.parse(response_subscription);
-    let minicartHasPrime = document.querySelector('.minicart__offcanvas-body > .item__list');
+//     let response_subscription = await client.snippet.render(
+//         "subscription_info_snippet.html",
+//         "SnippetQueries/subscription_info.graphql",
+//         { customerAccessToken: user.customerAccessToken }
+//     );
+//     response_subscription = JSON.parse(response_subscription);
+//     let minicartHasPrime = document.querySelector('.minicart__offcanvas-body > .item__list');
     
-    if (response_subscription.status && minicartHasPrime) {
-        minicartHasPrime.classList.add('hasPrime');
-    }   
-}
+//     if (response_subscription.status && minicartHasPrime) {
+//         minicartHasPrime.classList.add('hasPrime');
+//     }   
+// }

@@ -174,8 +174,8 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     display: none;
 }
 
-/* abcprime minicart */
-.minicart__offcanvas-body .item__list .prime_calculated {
+/* abcprime minicart  pausado */
+/* .minicart__offcanvas-body .item__list .prime_calculated {
     display: none;
 }
 .minicart__offcanvas-body .item__list.hasPrime .prime_calculated ~ .no_prime {
@@ -183,7 +183,7 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 }
 .minicart__offcanvas-body .item__list.hasPrime .prime_calculated {
     display: block;
-}
+} */
 
 @media (max-width: 991px) {
     .spot-price .desconto_prime {

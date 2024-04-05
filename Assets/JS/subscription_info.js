@@ -17,6 +17,7 @@ async function subscriptionInfo() {
     let descontoPrime = document.querySelectorAll('.spot-price .desconto_prime');
     
     if (response.status && descontoPrime) {
+        document.querySelector('.prime_bar').style.display = 'flex';
         descontoPrime.forEach((el) => {
             el.style.display = "flex";
         });

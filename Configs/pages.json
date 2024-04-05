@@ -32,17 +32,17 @@
             {
                 "urlMatch": "pisos-e-revestimentos",
                 "subtype": "category",
-                "path": "Custom/main_category.html",
+                "path": "custom/main_category.html",
                 "query": "category.graphql"
             },
             {
                 "urlMatch": "diretorio-de-lojas",
-                "path": "Custom/diretorio_de_lojas/diretorio.html",
+                "path": "custom/diretorio_de_lojas/diretorio.html",
                 "query": "generic.graphql"
             },
             {
                 "urlMatch": "diretorio-de-lojas/*",
-                "path": "Custom/diretorio_de_lojas/cidade_franquia.html",
+                "path": "custom/diretorio_de_lojas/cidade_franquia.html",
                 "query": "generic.graphql",
                 "priority": 1
             },

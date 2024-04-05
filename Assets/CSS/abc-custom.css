@@ -185,18 +185,38 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     display: block;
 } */
 
+/* abcprime bar */
+.prime_bar {
+    display: none;
+    background-color: #138779;
+    padding: 20px;
+    justify-content: center;
+}
+.prime_bar { 
+    color: #ffe2aa;
+    font-size: 16px;
+    font-weight: 700;    
+}
+
 @media (max-width: 991px) {
     .spot-price .desconto_prime {
         font-size: 13px;
     }
+
     .spot-price .desconto_prime img {
         width: 30%;
     }
+
     .abc_prime .abcPrime__fullbanner .container div {
         text-align: center;
     }
+
     .abc_prime .abcPrime__fullbanner .container div h1 {
         font-size: 40px;
+    }
+
+    .prime_bar > p {  
+        text-align: center;
     }
 }
 

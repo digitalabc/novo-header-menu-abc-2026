@@ -14,8 +14,8 @@
   urlABCPrime = 0
   for pedaco_url in store.urls.current | string.split '/'
   if (pedaco_url | string.downcase == "prime") || (pedaco_url | string.downcase == "abc-prime")
-      pedaco_url | debug.log 'pedaco' 
       urlABCPrime = atributo
+      break
     end
   end
   

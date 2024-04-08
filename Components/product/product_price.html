@@ -9,10 +9,17 @@
         product_price prices: product.prices displayed_installment: "Boleto Yapay"
 ## }}
 
-{{~ 
-  urlABCPrime = store.urls.current | string.index_of "/abc-prime"
-  descontoPrime = 0
+{{~
   
+  urlABCPrime = 0
+  for pedaco_url in store.urls.current | string.split '/'
+  if (pedaco_url | string.downcase == "prime") || (pedaco_url | string.downcase == "abc-prime")
+      pedaco_url | debug.log 'pedaco' 
+      urlABCPrime = atributo
+    end
+  end
+  
+  descontoPrime = 0  
   produtosPrime = settings.promocao_prime
   
   if produtosPrime
@@ -40,7 +47,7 @@
         </h3>
         {{~ if descontoPrime != 0 ~}}
           <p class="desconto_prime">
-            {{~ if urlABCPrime > 0 ~}}
+            {{~ if urlABCPrime != 0 ~}}
               <strong>{{ descontoPrime | math.times 100 | math.round }}% OFF</strong>
             {{~ else ~}}
               {{ prices.price | math.minus (prices.price | math.times descontoPrime) | math.format "c" "pt-BR"}}

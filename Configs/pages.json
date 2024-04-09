@@ -141,7 +141,7 @@
                 "path": "custom/liquida-abc.html"
             },
             {
-                "urlMatch": "abc-prime",
+                "urlMatch": "prime",
                 "path": "custom/abc-prime.html",
                 "query": "abcPrime.graphql"
             },

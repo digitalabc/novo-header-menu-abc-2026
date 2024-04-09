@@ -17,9 +17,13 @@ async function subscriptionInfo() {
     let descontoPrime = document.querySelectorAll('.spot-price .desconto_prime');
     
     if (response.status && descontoPrime) {
+        document.querySelector('header').classList.add('has_prime');
+        document.querySelectorAll('.is_prime').forEach((link) => {
+            link.classList.add('showprime');
+        });
         document.querySelector('.prime_bar').style.display = 'flex';
         descontoPrime.forEach((el) => {
             el.style.display = "flex";
         });
-    }    
+    }
   }  

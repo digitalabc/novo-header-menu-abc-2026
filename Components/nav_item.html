@@ -17,9 +17,13 @@
 {{~ if children.size == 0 && !is_submenu ~}}
     {{~ if current_menu.name | string.downcase == "ofertas" ~}}
         <li class="nav-item nav-item--nv1" style="order: {{current_menu.order}}">
-            <a class="nav-link" style="color: #392f2d; font-weight: 500;" href="/cupom-abc-da-construcao">🎟️ Cupons ABC 🎟️</a>
+            <a class="nav-link no_prime" href="/cupom-abc-da-construcao">Cupons</a>
         </li>
         <li class="nav-item nav-item--nv1" style="order: {{current_menu.order + 1}}">
+            <a class="nav-link is_prime" href="/hotsite-abc-prime">ABC Prime</a>
+            <a class="nav-link" href="/abc-prime">ABC Prime</a>
+        </li>
+        <li class="nav-item nav-item--nv1" style="order: {{current_menu.order + 2}}">
             <a class="nav-link" href="/ofertas">Ofertas</a>
         </li>
     {{~ else ~}}

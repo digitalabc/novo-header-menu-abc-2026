@@ -93,9 +93,10 @@
 }
 
 /* abcprime bar */
-.prime_bar_wrapper {
-    top: 0;
+
+.prime_bar_wrapper.prime_sticky { 
     position: sticky;
+    top: 0;
     z-index: 999;
 }
     

@@ -15,7 +15,7 @@
   url_current_completa = store.urls.current | string.split '/'
   
   for pedaco_url in url_current_completa
-  if (pedaco_url | string.downcase == "prime") || (pedaco_url | string.downcase == "abc-prime") && (url_current_completa | array.size == 3)
+  if (pedaco_url | string.downcase == "prime") && (url_current_completa | array.size == 3)
       urlABCPrime = atributo
       break
     end

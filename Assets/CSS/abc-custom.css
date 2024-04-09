@@ -85,11 +85,6 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     padding-bottom: 16px;
 }
 
-/* .abc_prime h2.abcPrime-title {
-    font-size: 24px;
-    padding: 24px 0 24px 0;
-} */
-
 .planosPrime__list {
     display: flex;
     justify-content: center;
@@ -202,6 +197,52 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     margin: 0;
     padding: 0;   
 }
+
+/* logo */
+.is_prime.showprime {
+    display: block !important;
+}
+.is_prime.showprime + * {
+    display: none !important;
+}
+.is_prime {
+   display: none; 
+}
+
+header.has_prime .nav-all__item--root svg,
+header.has_prime .floating-navbar button svg,
+header.has_prime button.menu__button svg,
+header.has_prime .search__submit svg,
+header.has_prime #regional_offers svg,
+header.has_prime .navbar__lojas svg,
+header.has_prime .user__header svg,
+header.has_prime .minicart__icon svg,
+header.has_prime .ruler__text-wrapper svg,
+header.has_prime .nav-mobile__header svg {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(0%) hue-rotate(53deg) brightness(100%) contrast(106%);
+}
+
+header.has_prime .nav-all__item--root,
+header.has_prime #menu-offcanvas .nav-mobile__header .info>p,
+header.has_prime .ruler__text strong {
+    color: #000 !important;
+}
+
+header.has_prime .ruler__text strong {
+    text-decoration: underline !important;
+}
+
+header.has_prime ::-webkit-scrollbar-thumb,
+header.has_prime .minicart__button .label-cart-count,
+header.has_prime section.newsletter--home,
+header.has_prime .topbar {
+    background-color: #000 !important;
+}
+
+.navbar__wrapper .nav-item--nv1:last-child > .nav-link {
+    color: #5d5d5d;
+    font-weight: 300;
+  }
 
 @media (max-width: 991px) {
     .spot-price .desconto_prime {

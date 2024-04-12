@@ -283,7 +283,6 @@ const estados = [
 			"Baixo Guandu",
 			"Cachoeiro de Itapemirim", 
 			"Colatina",
-			"Guaçuí",
 			"Guarapari",
 			"Iconha",
 			"Iúna",

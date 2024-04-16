@@ -149,6 +149,11 @@
                 "urlMatch": "lp-abc-prime",
                 "path": "custom/lp-abc-prime.html",
                 "query": "abcPrime.graphql"
+            },
+            {
+                "urlMatch": "pisos-e-revestimentos/cidade/*",
+                "path": "custom/pisos_por_cidade.html",
+                "query": "category.graphql"
             }
         ]
     },

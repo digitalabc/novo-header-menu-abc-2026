@@ -165,9 +165,9 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     align-self: start;
 }
 
-.beneficiosPrime__benefits button {
+/* .beneficiosPrime__benefits button {
     display: none;
-}
+} */
 
 /* abcprime minicart  pausado */
 /* .minicart__offcanvas-body .item__list .prime_calculated {

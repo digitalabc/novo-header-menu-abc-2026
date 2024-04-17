@@ -6929,7 +6929,7 @@ div[class^=como-chegar] > span + i {
   transition: all 0.5s ease-out allow-discrete;
 }
 .beneficiosPrime__benefitsList li:hover {
-  background-size: 110%;
+  background-size: 130%;
 }
 .beneficiosPrime__benefitsList li:last-child {
   margin-right: 0 !important;

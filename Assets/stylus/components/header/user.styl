@@ -45,9 +45,10 @@
     top calc(100% + 20px)
     left 50%
     transform translateX(-50%)
-    padding: 0 20px;
-    width 220px
-    height 170px
+    padding: 0 24px;
+    width 280px
+    // height 170px
+    height auto
     text-align center
     display grid
     place-items center
@@ -86,7 +87,8 @@
       align-items center
       justify-content center
       width 100%
-      height 40px
+      height 50px
+      font-size: 20px
       margin-bottom 20px
       background: $primary;
       color: #fff
@@ -97,19 +99,59 @@
         background: $black;
     p
       line-height 15px
-      font-size 12px
       margin-bottom 4px
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18.2px;
+      text-align: center;
+
 
     #register-href
       color: $black;
       font-weight 600
       transition $transition
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      line-height: 18.2px;
+      text-align: center;
+      margin-bottom: 50px
+
 
       &:hover
         color: $primary;
   &__content
     width 100%
     display none
+
+    &.authenticated
+      i
+        display: block
+        margin: 50px 0 16px
+        svg
+          width: 140px
+          height: 30px
+
+    &.not-authenticated
+      i
+        display: block
+        margin: 50px 0 16px
+        svg
+          width: 140px
+          height: 30px
+
+        &+p
+          font-family: 'Montserrat', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 21.94px;
+          text-align: center;
+          margin-bottom: 24px
+
+          a
+            color: #006DD5;
+
+
 
     > a
       display: block;

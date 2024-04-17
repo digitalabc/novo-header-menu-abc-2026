@@ -22,6 +22,7 @@ async function subscriptionInfo() {
             link.classList.add('showprime');
         });
         document.querySelector('.prime_bar').style.display = 'flex';
+        document.querySelector('.user__content.authenticated i').style.display = 'block';
         descontoPrime.forEach((el) => {
             el.style.display = "flex";
         });

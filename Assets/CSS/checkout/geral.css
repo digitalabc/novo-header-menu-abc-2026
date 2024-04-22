@@ -213,7 +213,7 @@ html {
   top: 10px;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-header {
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   padding: 0 15px;
   background: #392f2d;

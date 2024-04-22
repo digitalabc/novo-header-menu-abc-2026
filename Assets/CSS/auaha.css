@@ -6928,8 +6928,10 @@ div[class^=como-chegar] > span + i {
   background-size: cover;
   transition: all 0.5s ease-out allow-discrete;
 }
-.beneficiosPrime__benefitsList li:hover {
-  background-size: 130%;
+@media screen and (min-width: 992px) {
+  .beneficiosPrime__benefitsList li:hover {
+    background-size: 130%;
+  }
 }
 .beneficiosPrime__benefitsList li:last-child {
   margin-right: 0 !important;

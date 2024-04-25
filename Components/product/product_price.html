@@ -13,13 +13,16 @@
   urlABCPrime = store.urls.current == store.urls.base + "/prime"
   
   descontoPrime = 0  
-  produtosPrime = settings.promocao_prime
-  
+  produtosPrime = [settings.promocao_prime, settings.promocao_prime1, settings.promocao_prime2, settings.promocao_prime3]
+    
   if produtosPrime
-    for produto in produtosPrime
-      if produto.id == product.product_id
-        descontoPrime = produto.desconto
-      end    
+    for produtos in produtosPrime
+      for produto in produtos
+        if produto.id == product.product_id
+          descontoPrime = produto.desconto
+          break
+        end    
+      end
     end
   end  
 ~}}
@@ -39,7 +42,7 @@
           {{~ end ~}}
         </h3>
         {{~ if descontoPrime != 0 ~}}
-          <p class="desconto_prime">
+        <p class="desconto_prime" data-promoprime="{{ descontoPrime }}" data-pricenopromo="{{ prices.list_price }}" data-primepage="{{~ if urlABCPrime == true ~}} true {{~ else ~}} false {{~ end ~}}">
             {{~ if urlABCPrime == true ~}}
               <strong>{{ descontoPrime | math.times 100 | math.round }}% OFF</strong>
             {{~ else ~}}

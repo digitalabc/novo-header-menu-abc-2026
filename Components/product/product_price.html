@@ -10,21 +10,16 @@
 ## }}
 {{~
   urlABCPrime = false
-  urlABCPrime = store.urls.current == store.urls.base + "/prime"
+  preco_prime = 0
+
+  urlABCPrime = store.urls.current == store.urls.base + "/prime"  
   
-  descontoPrime = 0  
-  produtosPrime = [settings.promocao_prime, settings.promocao_prime1, settings.promocao_prime2, settings.promocao_prime3]
-    
-  if produtosPrime
-    for produtos in produtosPrime
-      for produto in produtos
-        if produto.id == product.product_id
-          descontoPrime = produto.desconto
-          break
-        end    
-      end
+  for row in product.prices.price_tables
+    if row.id == 81
+      preco_prime = row.price    
     end
   end  
+  
 ~}}
 <div class="spot-price">
     {{ if prices.list_price }}
@@ -41,12 +36,14 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
-        {{~ if descontoPrime != 0 ~}}
-        <p class="desconto_prime" data-promoprime="{{ descontoPrime }}" data-pricenopromo="{{ prices.list_price }}" data-primepage="{{~ if urlABCPrime == true ~}} true {{~ else ~}} false {{~ end ~}}">
+        {{~ if preco_prime != 0 ~}}
+        <p class="desconto_prime">
             {{~ if urlABCPrime == true ~}}
-              <strong>{{ descontoPrime | math.times 100 | math.round }}% OFF</strong>
+              {{ (prices.list_price / preco_prime) * 100 | math.minus 100 | math.round | debug.log 'preco'}}
+              <strong>{{ (100 - (preco_prime / prices.list_price) * 100) | math.round }}% OFF</strong>
             {{~ else ~}}
-              {{ prices.list_price | math.minus (prices.list_price | math.times descontoPrime) | math.format "c" "pt-BR"}}
+              {{ ##prices.list_price | math.minus (prices.list_price | math.times descontoPrime) | math.format "c" "pt-BR" ##}}
+              {{ preco_prime | math.format "c" "pt-BR" }}
             {{~ end ~}}            
             <img src="{{- store.urls.static_img }}svg/abcPrime_icon.svg?theme={{store.theme}}&v={{store.last_modified}}"
               alt="ABC Prime" width="65" height="14">

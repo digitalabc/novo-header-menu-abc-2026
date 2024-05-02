@@ -87,6 +87,11 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
     prices {
       listPrice
       price
+      priceTables {
+        id
+        listPrice
+        price
+      }
       discountPercentage
       multiplicationFactor
       installmentPlans {
@@ -135,6 +140,11 @@ fragment SingleProductData on SingleProduct {
   prices {
     listPrice
     price
+    priceTables {
+      id
+      listPrice
+      price
+    }
     discountPercentage
     multiplicationFactor
     installmentPlans {

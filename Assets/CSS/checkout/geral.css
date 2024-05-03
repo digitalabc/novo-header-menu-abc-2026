@@ -662,11 +662,11 @@ html {
 .fbits-login .fbits-social-login button.btn {
   margin: 10px 10px 10px 0;
   width: 47%;
-  border-radius: 0;
   height: 50px;
-  transition: all 0.2s ease-in-out;
   border: 1px solid #000;
+  border-radius: 0;
   color: #000;
+  transition: all 0.2s ease-in-out;
 }
 @media screen and (max-width: 991px) {
   .fbits-login .fbits-social-login button.btn {
@@ -687,42 +687,42 @@ html {
 }
 .fbits-login .respostas li a,
 .fbits-login .fbits-label.fbits-label-login input,
-.fbits-login input[type="text"],
-.fbits-login input[type="password"],
-.fbits-login input[type="tel"],
-.fbits-login input[type="Date"],
+.fbits-login input[type='text'],
+.fbits-login input[type='password'],
+.fbits-login input[type='tel'],
+.fbits-login input[type='Date'],
 .fbits-login select {
-  border: 1px solid #000;
-  height: 50px !important;
   padding: 0 15px;
+  height: 50px !important;
+  border: 1px solid #000;
   border-radius: 0 !important;
   box-shadow: none;
-  font-size: 14px;
   color: #000;
   text-align: left;
   font-weight: 400;
+  font-size: 14px;
 }
 .fbits-login .respostas li a::placeholder,
 .fbits-login .fbits-label.fbits-label-login input::placeholder,
-.fbits-login input[type="text"]::placeholder,
-.fbits-login input[type="password"]::placeholder,
-.fbits-login input[type="tel"]::placeholder,
-.fbits-login input[type="Date"]::placeholder,
+.fbits-login input[type='text']::placeholder,
+.fbits-login input[type='password']::placeholder,
+.fbits-login input[type='tel']::placeholder,
+.fbits-login input[type='Date']::placeholder,
 .fbits-login select::placeholder {
   color: #000;
 }
-.fbits-login .cadastroUsuario input[type="text"],
-.fbits-login .cadastroUsuario input[type="password"],
-.fbits-login .cadastroUsuario input[type="tel"],
-.fbits-login .cadastroUsuario input[type="Date"] {
-  background: #fff;
+.fbits-login .cadastroUsuario input[type='text'],
+.fbits-login .cadastroUsuario input[type='password'],
+.fbits-login .cadastroUsuario input[type='tel'],
+.fbits-login .cadastroUsuario input[type='Date'] {
   border: 1px solid !important;
+  background: #fff;
   color: #000;
 }
-.fbits-login .cadastroUsuario input[type="text"]::placeholder,
-.fbits-login .cadastroUsuario input[type="password"]::placeholder,
-.fbits-login .cadastroUsuario input[type="tel"]::placeholder,
-.fbits-login .cadastroUsuario input[type="Date"]::placeholder {
+.fbits-login .cadastroUsuario input[type='text']::placeholder,
+.fbits-login .cadastroUsuario input[type='password']::placeholder,
+.fbits-login .cadastroUsuario input[type='tel']::placeholder,
+.fbits-login .cadastroUsuario input[type='Date']::placeholder {
   color: #000;
 }
 .fbits-login .respostas li a {
@@ -737,15 +737,15 @@ html {
 .fbits-login .header-cadastro .title {
   margin-bottom: 0;
   color: #000;
-  font-size: 25px;
-  font-weight: bold;
   text-transform: uppercase;
+  font-weight: bold;
+  font-size: 25px;
 }
 .fbits-login .fbits-subtitle-login,
 .fbits-login .header-cadastro p {
   color: #676767;
-  font-size: 16px;
   font-weight: normal;
+  font-size: 16px;
 }
 .fbits-login .row {
   display: flex;
@@ -760,18 +760,18 @@ html {
   text-align: center;
 }
 .fbits-login .cadastroUsuario #naoSeiCep {
-  font-size: 14px;
-  font-weight: bold;
   color: #676767;
+  font-weight: bold;
+  font-size: 14px;
   transition: all 0.2s ease-in-out;
 }
 .fbits-login .cadastroUsuario #naoSeiCep:hover {
   color: #000;
 }
 .fbits-login .cadastroUsuario label {
-  font-size: 14px;
   color: #676767;
   font-weight: bold;
+  font-size: 14px;
 }
 .fbits-login .ola {
   color: #000;
@@ -780,20 +780,20 @@ html {
   content: 'Olá, ';
 }
 .fbits-login .ola:after {
-  content: "Identificamos que voc\00ea \00a0 j\00e1 \00a0 possui cadastro. Para sua seguran\00e7 a, selecione a op\00e7\00e3o correta para continuar:";
   display: block;
+  padding-bottom: 15px;
   background: #fff;
   color: #676767;
-  padding-bottom: 15px;
+  content: 'Identificamos que voc\00ea \00a0 j\00e1 \00a0 possui cadastro. Para sua seguran\00e7 a, selecione a op\00e7\00e3o correta para continuar:';
+  font-weight: 400;
   font-size: 14px;
   line-height: normal;
-  font-weight: 400;
 }
 .fbits-login .pergunta >a {
   display: block;
   margin: 0 0 0 auto;
-  width: min-content;
   margin-top: 15px;
+  width: min-content;
   color: #848484;
   transition: all 0.2s ease-in-out;
 }
@@ -803,34 +803,34 @@ html {
 .fbits-login .pergunta +.fbits-social-login {
   padding: 0 15px;
 }
-.fbits-login a[href="/Login/Authenticate"] {
-  background: #fff;
-  border: 1px solid #ccc;
-  margin: 0 auto;
+.fbits-login a[href='/Login/Authenticate'] {
   display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 50px;
   width: 250px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 50px;
-  margin-top: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
   color: #333;
-  font-size: 0.9em;
   text-transform: uppercase;
+  font-size: 0.9em;
   transition: all 0.2s ease-in-out;
 }
-.fbits-login a[href="/Login/Authenticate"]:hover {
+.fbits-login a[href='/Login/Authenticate']:hover {
   background: #b2b2b2;
   color: #fff;
 }
 @media (max-width: 500px) {
-  .fbits-login a[href="/Login/Authenticate"] {
+  .fbits-login a[href='/Login/Authenticate'] {
     width: calc(100% - 30px);
   }
 }
-.fbits-login label[for="TelefonePrincipalDDD"],
-.fbits-login label[for="TelefoneSecundarioDDD"] {
+.fbits-login label[for='TelefonePrincipalDDD'],
+.fbits-login label[for='TelefoneSecundarioDDD'] {
   width: 100%;
 }
 .fbits-login .cadastroUsuario .fbits-btn-show-password {
@@ -838,17 +838,17 @@ html {
 }
 .fbits-login label.form-check-label {
   display: inline;
-  font-weight: 400;
   color: #393939;
+  font-weight: 400;
 }
 .fbits-login .cadastroUsuario .title.big {
+  border-radius: 5px;
   background: #000 !important;
   color: #fff;
-  font-weight: bold;
-  line-height: 45px;
-  border-radius: 5px;
-  font-size: 18px;
   text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 45px;
 }
 .fbits-login .questao:before {
   display: none;
@@ -862,16 +862,28 @@ html {
 }
 @media screen and (max-width: 991px) {
   .fbits-login .fbits-link-senha::before {
-    content: '';
     display: block;
+    content: '';
   }
+}
+.fbits-login .logo-login-checkout,
+.fbits-login .texto-login-checkout {
+  margin-bottom: 13px;
+}
+.fbits-login .texto-login-checkout {
+  color: #828282;
+  font-size: 16px;
+}
+.fbits-login .texto-login-checkout a {
+  color: #000;
+  font-weight: bold;
 }
 @media (max-width: 500px) {
   .fbits-login .fbits-social-login button {
     margin: 10px 0;
-    width: 100% !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
+    width: 100% !important;
   }
 }
 @media (max-width: 991px) {
@@ -892,13 +904,13 @@ html {
   }
   .fbits-login .cadastroUsuario .form-group {
     margin-bottom: 10px;
-    width: 100%;
     padding: 0;
+    width: 100%;
   }
   .fbits-login .cadastroUsuario .col-md-6 {
-    width: 100%;
-    padding: 0;
     margin-bottom: 10px;
+    padding: 0;
+    width: 100%;
   }
   .fbits-login .cadastroUsuario .formBox:last-child .form-row > .form-group.col-md-6:last-child > label {
     display: none;

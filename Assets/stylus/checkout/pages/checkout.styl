@@ -18,10 +18,15 @@
     position: relative;
     top: -50px;
 
-  .fa-edit:before, .fa-pencil-square-o:before
-    content: "Editar";
+  .fa-edit:before
+  .fa-pencil-square-o:before
+    content: 'Editar';
 
-  input[type="text"], input[type="password"], input[type="tel"], input[type="Date"], select
+  input[type='text']
+  input[type='password']
+  input[type='tel']
+  input[type='Date']
+  select
     max-width: 100%;
     border: 1px solid #E8E8E8;
     box-shadow: none;
@@ -113,6 +118,7 @@
             line-height: 15px;
 
           .fbits-reponsive-carrinho-item-prazo-entrega
+          .fbits-responsive-carrinho-item-personalizacoes-item-price
             display: none;
 
         .fbits-responsive-carrinho-item-quantidade
@@ -155,17 +161,17 @@
               &:before
                 display: none;
 
-            &[data-type="minus"]
+            &[data-type='minus']
               border-right: none;
 
               a.arrow:before
-                content: "-";
+                content: '-';
 
-            &[data-type="plus"]
+            &[data-type='plus']
               border-left: none;
 
               a.arrow:before
-                content: "+";
+                content: '+';
 
         .fbits-responsive-carrinho-item-valor-unitario
           .currency
@@ -208,7 +214,8 @@
       @media mobile
         padding: 0 15px;
 
-      .fbits-responsive-carrinho-desconto-input, .fbits-responsive-carrinho-frete-input
+      .fbits-responsive-carrinho-desconto-input
+      .fbits-responsive-carrinho-frete-input
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -275,7 +282,7 @@
         margin-left: 0;
         padding: 5px;
 
-        &[data-frete-item-tipo="Retirada"]
+        &[data-frete-item-tipo='Retirada']
           display: none;
 
         .fbits-frete-retirada-endereco
@@ -290,7 +297,10 @@
             display: block;
             text-align: right;
 
-      .fbits-responsive-carrinho-desconto-texto, .fbits-responsive-carrinho-frete-texto, .fbits-responsive-carrinho-desconto-calculo, .fbits-responsive-carrinho-frete-calculo
+      .fbits-responsive-carrinho-desconto-texto
+      .fbits-responsive-carrinho-frete-texto
+      .fbits-responsive-carrinho-desconto-calculo
+      .fbits-responsive-carrinho-frete-calculo
         margin-bottom: 0;
         padding: 0;
         color: #000;
@@ -302,7 +312,8 @@
         font-weight: 500;
         font-size: 14px;
 
-      .fbits-responsive-carrinho-desconto, .fbits-responsive-carrinho-frete
+      .fbits-responsive-carrinho-desconto
+      .fbits-responsive-carrinho-frete
         border: none;
 
       .fbits-responsive-carrinho-total
@@ -319,7 +330,8 @@
       .botoes-bottom
         padding-top: 0;
 
-        .btfinalizar, .btcontinuar
+        .btfinalizar
+        .btcontinuar
           padding: 0;
           height: 45px;
           border-radius: 0;
@@ -365,7 +377,7 @@
       padding: 0;
       background: transparent;
 
-    input[name="IE"]
+    input[name='IE']
       display: inline;
       float: none;
       margin-top: 0;
@@ -430,14 +442,14 @@
     clear: both;
 
   .formas-pagamento
-    input[type="radio"]
+    input[type='radio']
       display: none;
 
   .new-checkout .item-frete-option.selected
     border: 2px solid $primary;
 
   .new-checkout .item-frete-option
-    &[data-frete-item-tipo="Retirada"]
+    &[data-frete-item-tipo='Retirada']
       display: none;
 
   // Cupom
@@ -449,7 +461,7 @@
     form
       width: 100%;
 
-    input[type="text"]
+    input[type='text']
       margin-bottom: 12px;
 
       &[disabled]
@@ -485,7 +497,7 @@
       width: 100%;
       height: 1px;
       background-color: #fff;
-      content: "";
+      content: '';
 
   .new-checkout div#myTabContent
     border-color: $primary;

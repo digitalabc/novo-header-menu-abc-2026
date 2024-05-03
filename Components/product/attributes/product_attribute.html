@@ -94,6 +94,9 @@
                         {{ product_subscription subscription_groups: product.subscription_groups btn_value: btn_value btn_click: "subscriptionClick(this.value);" disabled: disabled }}
                     {{~ end ~}}
                 </div>
+                {{~ if product.customizations ~}}
+                  {{~ product_customizations customizations: product.customizations ~}}
+              {{~ end ~}}
             {{~ else ~}}
                 <h3 class="product__unavailable">Produto Indisponível</h3>
                 {{ product_back_in_stock form_submit: "backInStockOnClick(event);" spot: false}}

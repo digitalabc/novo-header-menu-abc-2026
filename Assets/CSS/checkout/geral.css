@@ -1,12 +1,3 @@
-/* LEIA-ME */
-
-/* login.css >> Definições das páginas de LOGIN do novo Checkout */
-/* minhaconta.css >> Definições das páginas de MINHA CONTA do novo Checkout */
-/* checkout.css >> Definições das páginas de CARRINHO, FECHAMENTO E CONFIRMAÇÃO do novo Checkout */
-/* geral.css >> Definições de Cabeçalho e Rodapé */
-
-/* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
-
 @media (max-width: 1330px) {
 }
 .fbits-login .questao,
@@ -164,12 +155,12 @@ html {
 }
 .fbits-carrinho .fa-edit:before,
 .fbits-carrinho .fa-pencil-square-o:before {
-  content: "Editar";
+  content: 'Editar';
 }
-.fbits-carrinho input[type="text"],
-.fbits-carrinho input[type="password"],
-.fbits-carrinho input[type="tel"],
-.fbits-carrinho input[type="Date"],
+.fbits-carrinho input[type='text'],
+.fbits-carrinho input[type='password'],
+.fbits-carrinho input[type='tel'],
+.fbits-carrinho input[type='Date'],
 .fbits-carrinho select {
   max-width: 100%;
   border: 1px solid #e8e8e8;
@@ -269,7 +260,8 @@ html {
   font-size: 18px;
   line-height: 15px;
 }
-.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-descricao .fbits-reponsive-carrinho-item-prazo-entrega {
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-descricao .fbits-reponsive-carrinho-item-prazo-entrega,
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-descricao .fbits-responsive-carrinho-item-personalizacoes-item-price {
   display: none;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .qtdCarrinho {
@@ -316,17 +308,17 @@ html {
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number a.arrow:before {
   display: none;
 }
-.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type="minus"] {
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type='minus'] {
   border-right: none;
 }
-.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type="minus"] a.arrow:before {
-  content: "-";
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type='minus'] a.arrow:before {
+  content: '-';
 }
-.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type="plus"] {
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type='plus'] {
   border-left: none;
 }
-.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type="plus"] a.arrow:before {
-  content: "+";
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-quantidade .btn.btn-default.btn-number[data-type='plus'] a.arrow:before {
+  content: '+';
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency {
   color: #000;
@@ -444,7 +436,7 @@ html {
   margin-left: 0;
   padding: 5px;
 }
-.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item[data-frete-item-tipo="Retirada"] {
+.fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item[data-frete-item-tipo='Retirada'] {
   display: none;
 }
 .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-detalhes .fbits-carrinho-frete-item .fbits-frete-retirada-endereco {
@@ -537,7 +529,7 @@ html {
   padding: 0;
   background: transparent;
 }
-.fbits-carrinho .box-default input[name="IE"] {
+.fbits-carrinho .box-default input[name='IE'] {
   display: inline;
   float: none;
   margin-top: 0;
@@ -600,13 +592,13 @@ html {
 .fbits-carrinho .etiqueta-atacado-container {
   clear: both;
 }
-.fbits-carrinho .formas-pagamento input[type="radio"] {
+.fbits-carrinho .formas-pagamento input[type='radio'] {
   display: none;
 }
 .fbits-carrinho .new-checkout .item-frete-option.selected {
   border: 2px solid #e30613;
 }
-.fbits-carrinho .new-checkout .item-frete-option[data-frete-item-tipo="Retirada"] {
+.fbits-carrinho .new-checkout .item-frete-option[data-frete-item-tipo='Retirada'] {
   display: none;
 }
 .fbits-carrinho .fbits-cupom-container {
@@ -617,10 +609,10 @@ html {
 .fbits-carrinho .fbits-cupom-container form {
   width: 100%;
 }
-.fbits-carrinho .fbits-cupom-container input[type="text"] {
+.fbits-carrinho .fbits-cupom-container input[type='text'] {
   margin-bottom: 12px;
 }
-.fbits-carrinho .fbits-cupom-container input[type="text"][disabled] {
+.fbits-carrinho .fbits-cupom-container input[type='text'][disabled] {
   max-width: calc(100% - 45px);
 }
 .fbits-carrinho .fbits-cupom-container .btn {
@@ -652,7 +644,7 @@ html {
   width: 100%;
   height: 1px;
   background-color: #fff;
-  content: "";
+  content: '';
 }
 .fbits-carrinho .new-checkout div#myTabContent {
   border-color: #e30613;
@@ -675,7 +667,7 @@ html {
 }
 @media screen and (max-width: 991px) {
   .fbits-login .fbits-social-login button.btn {
-    width: 100% !important;
+    width: 100%;
   }
 }
 .fbits-login .fbits-social-login button.btn.facebook:hover {

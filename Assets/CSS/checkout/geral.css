@@ -589,6 +589,9 @@ html {
 .fbits-carrinho .fechamento-section3 .btfinalizar:hover {
   background: #e30613;
 }
+.fbits-carrinho .fechamento-section3 .fbits-responsive-carrinho-item-personalizacoes-item-price {
+  display: none;
+}
 .fbits-carrinho .etiqueta-atacado-container {
   clear: both;
 }

@@ -28,6 +28,11 @@ query BuylistPage($id: Long!){
     prices {
       listPrice
       price
+      priceTables {
+        id
+        listPrice
+        price
+      }
       discountPercentage
       installmentPlans{
           displayName

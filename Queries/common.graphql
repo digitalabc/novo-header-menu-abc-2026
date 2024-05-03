@@ -94,6 +94,11 @@ fragment productsCon on ProductsConnection {
     prices {
       listPrice
       price
+      priceTables {
+        id
+        listPrice
+        price
+      }
       discountPercentage
       multiplicationFactor
       installmentPlans {

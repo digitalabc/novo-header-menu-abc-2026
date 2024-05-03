@@ -61,6 +61,11 @@ query Hotsite($url: String!, $resultSize: Int, $offset: Int, $sortKey: ProductSo
         prices {
           listPrice
           price
+          priceTables {
+            id
+            listPrice
+            price
+          }
           discountPercentage
           multiplicationFactor
           installmentPlans {

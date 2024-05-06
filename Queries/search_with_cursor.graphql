@@ -46,6 +46,11 @@ query ($searchQuery: String, $partnerAccessToken: String, $resultSize: Int = 12,
         prices {
           listPrice
           price
+          priceTables {
+            id
+            listPrice
+            price
+          }
           discountPercentage
           multiplicationFactor
           installmentPlans {

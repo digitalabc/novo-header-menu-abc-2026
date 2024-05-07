@@ -47,10 +47,10 @@ end~}}
         </button>
         <div class="option__list">
           <ul>
-            {{ parcelaPrime = 99.90 }}
-            {{~ for $i in (12..1) ~}}
+            {{ totalPrime = product.prices.list_price }}
+            {{~ for $i in (1..12) ~}}
               <li>
-                {{ 13 - $i }}x de {{parcelaPrime | math.times $i | math.format "c" "pt-BR" }} sem juros
+                {{ $i }}x de {{ totalPrime | math.divided_by $i | math.format "c" "pt-BR" }} sem juros
               </li>
              {{~ end ~}}
           </ul>
@@ -66,7 +66,7 @@ end~}}
         <div class="option__list">
           <ul>
               <li>
-                1 x de {{parcelaPrime | math.times 12 | math.format "c" "pt-BR" }} sem juros
+                1 x de {{ totalPrime | math.format "c" "pt-BR" }} sem juros
               </li>
           </ul>
         </div>

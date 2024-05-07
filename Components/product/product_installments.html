@@ -46,11 +46,11 @@ end~}}
           </svg>
         </button>
         <div class="option__list">
-          <ul>
-            {{ totalPrime = product.prices.list_price }}
+          <ul> 
+            {{ totalPrime = product.prices.list_price  }}
             {{~ for $i in (1..12) ~}}
               <li>
-                {{ $i }}x de {{ totalPrime | math.divided_by $i | math.format "c" "pt-BR" }} sem juros
+                {{ $i }}x de {{ totalPrime / $i | math.format "c" "pt-BR" }} sem juros
               </li>
              {{~ end ~}}
           </ul>

@@ -103,7 +103,7 @@
             },
             {
                 "urlMatch": "quemsomos",
-                "path": "Custom/old_se/quemsomos.html",
+                "path": "custom/old_se/quemsomos.html",
                 "query": "generic.graphql"
             },
             {

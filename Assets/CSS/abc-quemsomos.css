@@ -6,7 +6,6 @@
 .tpl-quem-somos .historia .cards .card.missao>div,
 .tpl-quem-somos .historia .cards .card.valores>div,
 .tpl-quem-somos .historia .cards .card.visao>div {
-    padding-block: 40px 0px;
     padding-inline: 10px !important;
 }
 
@@ -48,6 +47,12 @@
     .tpl-quem-somos .historia .cards .card.visao>div {
         margin-top: unset;
     }
+
+    .tpl-quem-somos .historia .cards .card.missao>div,
+    .tpl-quem-somos .historia .cards .card.valores>div,
+    .tpl-quem-somos .historia .cards .card.visao>div {
+        padding-block: 30px 0;        
+    }
 }
 
 @media (min-width: 1038px) {
@@ -58,7 +63,7 @@
     }
 
     .tpl-quem-somos .historia .cards .card.visao>div {
-        margin-top: -5px !important;
+        margin-left: 0 !important;
     }
 
     .tpl-quem-somos .historia .cards .card.valores {

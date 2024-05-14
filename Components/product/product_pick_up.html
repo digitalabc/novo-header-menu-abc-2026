@@ -2,8 +2,8 @@
   <div class="state">
     <p class="state__header">Escolha a cidade</p>
     <select class="state__select" name="pick-up-state" id="pick-up-state" >
-      {{~ for state in settings.cidades ~}}
-        <option value="{{ state.name | string.handleize }}">{{ state.name }}</option>
+      {{~ for name in settings.cidades | array.map "name" | array.uniq | array.sort ~}}
+        <option value="{{ name | string.handleize }}">{{ name }}</option>
       {{~ end ~}}
     </select>
     <button class="state__button" type="button" onclick="choosePickUpState(this)">Consultar</button>

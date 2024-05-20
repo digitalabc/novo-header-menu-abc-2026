@@ -1247,7 +1247,7 @@
     },
     {
         "name": "livelo_popup",
-        "path": "Custom/livelo/livelo_popup.html",
+        "path": "custom/livelo/livelo_popup.html",
         "inheritVariables": false,
         "availableInAllPages": true
     }

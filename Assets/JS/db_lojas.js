@@ -185,7 +185,8 @@ const estados = [
 			"Anápolis",
 			"Aparecida de Goiânia",
 			"Catalão",
-			"Goiânia"
+			"Goiânia",
+			"Trindade"
 		]
 	},
 	{

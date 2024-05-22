@@ -74,6 +74,7 @@ function addToCartEvent(eventInput) {
 }
 
 function productPageEvent(eventInput) {
+    console.log('eventInput', eventInput);
     if (eventInput.detail.type == "product")
         gtag("event", "view_item", gtm_product_details);
 }

@@ -74,11 +74,11 @@ function addToCartEvent(eventInput) {
 }
 
 function productPageEvent(eventInput) {
-    getUserInfo().then((user_info) => {
-        if (eventInput.detail.type == "product") {
+    if (eventInput.detail.type == "product") {
+        getUserInfo().then((user_info) => {
             gtag("event", "view_item", {...gtm_product_details, user: user_info});
-        }
-    });
+        });
+    }
 }
 
 function addToWishlistEvent(eventInput) {

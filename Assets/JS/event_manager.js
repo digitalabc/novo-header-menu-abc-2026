@@ -74,8 +74,11 @@ function addToCartEvent(eventInput) {
 }
 
 function productPageEvent(eventInput) {
-    if (eventInput.detail.type == "product")
-        gtag("event", "view_item", gtm_product_details);
+    getUserInfo().then((user_info) => {
+        if (eventInput.detail.type == "product") {
+            gtag("event", "view_item", {...gtm_product_details, user: user_info});
+        }
+    });
 }
 
 function addToWishlistEvent(eventInput) {
@@ -113,4 +116,22 @@ function getCartData(checkoutData) {
         items: cartProducts
     };
     return formated;
+}
+
+async function getUserInfo() {
+    let user = await client.user.get();
+    if (!user) { return []; }
+    let response = await client.snippet.render(
+        "subscription_info_snippet.html",
+        "SnippetQueries/subscription_info.graphql",
+        { customerAccessToken: user.customerAccessToken }
+    );
+    response = JSON.parse(response);
+
+    return {
+        id: user.id,
+        email: user.email,
+        user_type: response ? 'assinante' : 'não assinante',
+        phoneNumber: user.phoneNumber
+    };
 }

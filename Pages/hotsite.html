@@ -75,6 +75,8 @@
     </div>
   </div>
 
+  {{ livelo_popup }}
+
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
 
   {{ footer products:common.lighbox_products.products.nodes }}
@@ -82,8 +84,10 @@
   {{ gtm_config gtm_id: common.gtm_id }}
   {{ gtm_hotsite_view product_lists: [products]}}
 
-  {{ sdk_client }}
 
+  {{ sdk_client }}
+  
+  {{ asset type: "js" paths: ["livelo"] }}
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "seo", "sort", "filter", "pagination", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_hotsite", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "regional_offers", "whats_form", "subscription_info"]}}
 </body>
 

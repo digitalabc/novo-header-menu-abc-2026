@@ -1,4 +1,8 @@
-window.addEventListener("load", liveloSetup, false);
+const urlPage = window.location.pathname;
+if (urlPage.includes("livelo")) {
+  window.addEventListener("load", liveloSetup, false);
+}
+
 const links = document.querySelectorAll("header a, footer a");
 const popup = document.getElementById("livelo-popup");
 const modal = document.getElementById("livelo-modal");

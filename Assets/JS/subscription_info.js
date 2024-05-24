@@ -5,8 +5,7 @@ async function subscriptionInfoLoad(){
 }
 
 async function subscriptionInfo() {
-    //let user = await client.user.get();
-    let user = {customerAccessToken: 'MHG6l60z6S1xteFdjRDjWB9eBCfDdZSCjJmMT8alvmDHR8FFLj2rnHypERPwRWj9PB7dXqW9RggUCXcvTLGbDYsy27+LL7Esjg3Fap869QR0nd0kYSGMZpQp8MSlX6bB2gmy4B95r7lYjMSgvH+VdmGlDhrisogdAuwE03j9tQem1MAnxWA3hPa/jFlaNgAY'};
+    let user = await client.user.get();
     if (!user) return;   
     
     let response = await client.snippet.render(

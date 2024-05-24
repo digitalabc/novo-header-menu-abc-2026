@@ -52,21 +52,20 @@
       {{ if product.sku }}<span class="product__sku">SKU:<span id="productSku">{{ product.sku }}</span></span><span class="pipe">|</span>{{ end }}
       {{ if product.product_brand }}{{ product_brand brand: product.product_brand }}<span class="pipe">|</span>{{ end }}
       {{
-        pontos_livelo = 0
+        pontos_calculados = 0
         produto_livelo = false
-        for row in product.prices.price_tables
-          if row.id == 81
-            pontos_livelo = row.price / 12
+        livelo_calculo = settings.livelo_calculo
+        
+        for idwake in settings.livelo
+          if idwake == product.product_id
+            pontos_calculados = product.prices.price * livelo_calculo
             produto_livelo = true
           end
-        end
-        
-        product.prices.price_tables | debug.log "teste"
-
+        end        
       }}
         <!-- <span>### Estrelas Opiniões Verificadas ###</span> --> 
         {{~ if produto_livelo == true ~}}
-        <span class="livelo_pontos" data-livelo-pontos="{{ pontos_livelo }}">Livelo <strong>{{ pontos_livelo | math.floor }}</strong> ponto(s) </span>
+          <span class="livelo_pontos" data-livelo-pontos="{{ pontos_calculados }}">Livelo <strong>{{ pontos_calculados | math.ceil }}</strong> ponto(s)</span>
         {{~ end ~}}
     </span>
     {{~ installment_plans = product.prices.installment_plans ~}}

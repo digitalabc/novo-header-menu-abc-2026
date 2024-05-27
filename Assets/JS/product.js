@@ -520,6 +520,12 @@ function quantityChange(inputId, action) {
     input.value++;
     input.onchange();
   }
+  let livelo_pontos = document.querySelector('.livelo_pontos');
+  if (livelo_pontos) {
+    let pontos  = Number(livelo_pontos.dataset.liveloPontos);
+    livelo_pontos.querySelector('strong').innerText = Math.floor(pontos * input.value);
+  }
+  
 }
 
 function verifyQuantity(input, warningQuery) {

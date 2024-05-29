@@ -4241,6 +4241,25 @@
     },
     {
       "state": "Rio de Janeiro",
+      "name": "Barra Mansa",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Avenida Domingos Mariano 929, Centro Barra Mansa - RJ, 27345-310",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/barra-mansa/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "state": "Rio de Janeiro",
       "name": "Bom Jesus do Itabapoana",
       "stores": [
         {

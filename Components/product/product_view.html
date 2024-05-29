@@ -54,10 +54,14 @@
       {{
         ## ponto para todos os produtos não livelo ##
         pontos_calculados = (product.prices.price * 1) | math.ceil
+        listas = [settings.livelo, settings.livelo1]
         
-        if (settings.livelo | array.contains product.product_id)
-          pontos_calculados = (product.prices.price * settings.livelo_calculo_padrao) | math.ceil
-        end        
+        for lista in listas
+          if (lista | array.contains product.product_id)
+            pontos_calculados = (product.prices.price * settings.livelo_calculo_padrao) | math.ceil
+            break
+          end
+        end
       }}
         <!-- <span>### Estrelas Opiniões Verificadas ###</span> --> 
         <span class="livelo_pontos" data-livelo-pontos="{{ pontos_calculados }}">Até <strong>{{ pontos_calculados }}</strong> ponto(s) Livelo</span>

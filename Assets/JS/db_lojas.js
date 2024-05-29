@@ -127,6 +127,7 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Araruama",
+			"Barra Mansa",
 			"Bom Jesus do Itabapoana",
 			"Cabo Frio",
 			"Cachoeiras de Macacu",

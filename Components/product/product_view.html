@@ -54,7 +54,7 @@
       {{
         ## ponto para todos os produtos não livelo ##
         pontos_calculados = (product.prices.price * 1) | math.ceil
-        listas = [settings.livelo, settings.livelo1]
+        listas = [settings.livelo, settings.livelo1, settings.livelo2]
         
         for lista in listas
           if (lista | array.contains product.product_id)

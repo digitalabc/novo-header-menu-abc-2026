@@ -69,8 +69,12 @@ function hotsitePageEvent(eventInput) {
 }
 
 function addToCartEvent(eventInput) {
-    gtag("event", "add_to_cart", getProductData(eventInput.detail.products));
-    gtag("event", "view_item_list", getCartData(eventInput.detail.cart));
+    getUserInfo().then((user_info) => {
+        let productData = getProductData(eventInput.detail.products);
+        let cartData = getCartData(eventInput.detail.cart);
+        gtag("event", "add_to_cart", {...productData, user: user_info});
+        gtag("event", "view_item_list", {...cartData, user: user_info});
+    });
 }
 
 function productPageEvent(eventInput) {

@@ -216,6 +216,25 @@
       ]
     },
     {
+      "name": "Barão de Cocais",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Sagrada Família",
+          "adress": "R. Campo São João, 847 - Sagrada Família, Barão de Cocais - MG, 35970-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/barao-de-cocais/sagrada-familia",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Barbacena",
       "state": "Minas Gerais",
       "stores": [

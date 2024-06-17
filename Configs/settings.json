@@ -4094,6 +4094,25 @@
       ]
     },
     {
+      "name": "Jaguaré",
+      "state": "Espírito Santo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. 09 de Agosto, 1319 - Centro, Jaguaré - ES, 29950-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/jaguare/centro",
+          "monday": "8:30 às 18:00",
+          "tuesday": "8:30 às 18:00",
+          "wednesday": "8:30 às 18:00",
+          "thursday": "8:30 às 18:00",
+          "friday": "8:30 às 18:00",
+          "saturday": "8:30 às 12:30",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Linhares",
       "state": "Espírito Santo",
       "stores": [

@@ -4839,6 +4839,25 @@
       ]
     },
     {
+      "name": "Cianorte",
+      "state": "Paraná",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Goiás, 1422 - Centro, Cianorte - PR, 87209-052",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/cianorte/centro",
+          "monday": "9:00 às 18:30",
+          "tuesday": "9:00 às 18:30",
+          "wednesday": "9:00 às 18:30",
+          "thursday": "9:00 às 18:30",
+          "friday": "9:00 às 18:30",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Curitiba",
       "state": "Paraná",
       "stores": [

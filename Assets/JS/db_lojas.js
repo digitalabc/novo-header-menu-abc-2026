@@ -196,6 +196,7 @@ const estados = [
 		"coluna": "2",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Cianorte",
 			"Curitiba",
 			"Foz do Iguaçu",
 			"Guarapuava",

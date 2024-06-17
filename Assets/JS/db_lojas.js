@@ -290,6 +290,7 @@ const estados = [
 			"Guarapari",
 			"Iconha",
 			"Iúna",
+			"Jaguaré", 
 			"Linhares",
 			"Mimoso do Sul",
 			"São Mateus",

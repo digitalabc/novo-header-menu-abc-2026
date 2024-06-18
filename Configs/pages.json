@@ -67,6 +67,11 @@
                 "query": "hotsite.graphql"
             },
             {
+                "urlMatch": "indicacao-store-store",
+                "path": "Custom/indicacao-store-store.html",
+                "query": "generic.graphql"
+            },
+            {
                 "urlMatch": "localizacao",
                 "path": "Custom/old_se/localizacao.html",
                 "query": "generic.graphql"

@@ -148,7 +148,8 @@
                     <div class="field">
                         <label for="telefonedaloja">Telefone da loja <span>*</span></label>
                         <input class="input wide" id="telefonedaloja" name="telefonedaloja"
-                            placeholder="(99) 9 9999-9999" required="" tabindex="3" type="text" />
+                            placeholder="(99) 9 9999-9999" required="" tabindex="3" type="text"
+                            oninput="mascaraTelefone(this)" />
                     </div>
 
                     <div class="field">
@@ -160,7 +161,8 @@
                     <div class="field">
                         <label for="emaildaloja">E-mail da loja <span>*</span></label>
                         <input class="input wide" id="emaildaloja" name="emaildaloja"
-                            placeholder="emaildaloja@mailto.com.br" required="" tabindex="3" type="text" />
+                            placeholder="emaildaloja@mailto.com.br" required="" tabindex="3" type="text"
+                            oninput="validarEmail(this)" />
                     </div>
 
                     <input class="btn-sumbit btn-next-1" id="btnNextFormulario1" name="btnNextFormulario1" type="button"

@@ -225,3 +225,22 @@ function validateFields(section) {
     });
     return isValid;
 }
+
+function mascaraTelefone(input) {
+    let telefone = input.value;
+    telefone = telefone.replace(/\D/g, ""); // Remove caracteres não numéricos
+    telefone = telefone.replace(/^(\d{2})(\d)/g, "($1) $2"); // Adiciona parênteses em torno dos dois primeiros dígitos
+    telefone = telefone.replace(/(\d)(\d{4})$/, "$1 $2"); // Adiciona espaço entre o quinto e sexto dígitos
+    telefone = telefone.replace(/(\d{4})(\d{4})$/, "$1-$2"); // Adiciona hífen entre o nono e décimo dígitos
+    input.value = telefone;
+}
+
+function validarEmail(input) {
+    const email = input.value;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expressão regular para validar o formato do e-mail
+    if (!regex.test(email)) {
+        input.setCustomValidity("Por favor, insira um endereço de e-mail válido.");
+    } else {
+        input.setCustomValidity(""); // Campo válido
+    }
+}

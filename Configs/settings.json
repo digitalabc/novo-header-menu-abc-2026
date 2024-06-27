@@ -5309,6 +5309,25 @@
       ]
     },
     {
+      "name": "São Gabriel do Oeste",
+      "state": "Mato Grosso do Sul",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Santa Catarina, 1694 - Sala 01 - Centro, São Gabriel do Oeste - MS, 79490-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/sao-gabriel-do-oeste/centro",
+          "monday": "7:00 às 17:00",
+          "tuesday": "7:00 às 17:00",
+          "wednesday": "7:00 às 17:00",
+          "thursday": "7:00 às 17:00",
+          "friday": "7:00 às 17:00",
+          "saturday": "7:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Três Lagoas",
       "state": "Mato Grosso do Sul",
       "stores": [

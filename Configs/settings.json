@@ -5163,6 +5163,25 @@
       ]
     },
     {
+      "name": "Joinville",
+      "state": "Santa Catarina",
+      "stores": [
+        {
+          "name": "Anita Garibaldi",
+          "adress": "R. Gothard Kaesemodel, 641 - Anita Garibaldi, Joinville - SC, 89203-400",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/santa-catarina/joinville/anita-garibaldi",
+          "monday": "7:30 às 18:00",
+          "tuesday": "7:30 às 18:00",
+          "wednesday": "7:30 às 18:00",
+          "thursday": "7:30 às 18:00",
+          "friday": "7:30 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "São Francisco do Sul",
       "state": "Santa Catarina",
       "stores": [

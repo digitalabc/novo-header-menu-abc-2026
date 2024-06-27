@@ -185,6 +185,7 @@ function nextForm2() {
     const lojaFields = document.querySelector('.fields-loja');
     const btnNext2 = document.getElementById('btnNextFormulario2');
     const btnSubmit = document.getElementById('btnEnviarFormulario');
+    const titlePage = document.querySelector('.block-title .title');
 
     btnNext2.addEventListener('click', function () {
         if (proprietarioFields.classList.contains('active')) {
@@ -192,6 +193,7 @@ function nextForm2() {
                 btnNext2.style.display = 'none';
                 lojaFields.classList.add('active');
                 btnSubmit.style.display = 'block';
+                titlePage.textContent = 'Revisar informações';
             }
         }
     });
@@ -205,6 +207,8 @@ function handleMsgSubmit() {
     const step2 = document.querySelector('.step-2');
     const step3 = document.querySelector('.step-3');
     const btnOk = document.querySelector('.btn-voltar');
+    const AtendimentoForm = document.querySelector('.atendimento-form');
+    const titlePage = document.querySelector('.block-title .title');
 
     proprietarioFields.classList.remove('active');
     lojaFields.classList.remove('active');
@@ -213,6 +217,8 @@ function handleMsgSubmit() {
     step2.style.display = 'none';
     step3.style.display = 'block';
     btnOk.style.display = 'block';
+    AtendimentoForm.style.display = 'none';
+    titlePage.style.display = 'none';
 }
 
 function validateFields(section) {

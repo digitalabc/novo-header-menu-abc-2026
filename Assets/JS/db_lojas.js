@@ -306,6 +306,7 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Balneário Camboriú",
+			"Joinville",
 			"São Francisco do Sul"
 			
 		]

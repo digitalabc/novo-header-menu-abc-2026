@@ -168,6 +168,7 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Campo Grande",
+			"São Gabriel do Oeste",
 			"Três Lagoas"
 		]
 	},

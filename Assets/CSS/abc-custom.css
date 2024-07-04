@@ -187,26 +187,29 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     padding: 20px;
     justify-content: center;
 }
-.prime_bar { 
+
+.prime_bar {
     color: #ffe2aa;
     font-size: 16px;
-    font-weight: 700;    
+    font-weight: 700;
 }
 
-.prime_bar > p {
+.prime_bar>p {
     margin: 0;
-    padding: 0;   
+    padding: 0;
 }
 
 /* logo */
 .is_prime.showprime {
     display: block !important;
 }
-.is_prime.showprime + * {
+
+.is_prime.showprime+* {
     display: none !important;
 }
+
 .is_prime {
-   display: none; 
+    display: none;
 }
 
 header.has_prime .nav-all__item--root svg,
@@ -239,10 +242,10 @@ header.has_prime .topbar {
     background-color: #000 !important;
 }
 
-.navbar__wrapper .nav-item--nv1:last-child > .nav-link {
+.navbar__wrapper .nav-item--nv1:last-child>.nav-link {
     color: #5d5d5d;
     font-weight: 300;
-  }
+}
 
 @media (max-width: 991px) {
     .spot-price .desconto_prime {
@@ -261,14 +264,20 @@ header.has_prime .topbar {
         font-size: 40px;
     }
 
-    .prime_bar > p {
+    .prime_bar>p {
         margin: 0;
-        padding: 0;  
+        padding: 0;
         text-align: center;
     }
 }
 
 @media (min-width: 991px) {
+
+    /* menu autoatendimento rodape */
+    .footer__block--ajuda {
+        padding-bottom: 40px;
+    }
+
     .abc_prime .abcPrime__fullbanner .container {
         max-width: 1000px;
     }

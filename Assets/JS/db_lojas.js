@@ -127,6 +127,7 @@ const estados = [
 		"coluna": "2",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Angra dos Reis",
 			"Araruama",
 			"Barra Mansa",
 			"Bom Jesus do Itabapoana",

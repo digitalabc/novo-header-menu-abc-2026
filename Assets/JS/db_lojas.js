@@ -65,6 +65,7 @@ const estados = [
 			"Mateus Leme",
 			"Matias Barbosa",
 			"Mercês",
+			"Minas Novas",
 			"Miraí",
 			"Montalvânia",
 			"Montes Claros",

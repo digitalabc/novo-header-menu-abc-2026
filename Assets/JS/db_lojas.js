@@ -243,6 +243,7 @@ const estados = [
 			"Hortolândia",
 			"Ibitinga",
 			"Indaiatuba",
+			"Itapeva",
 			"Itapira",
 			"Itu",
 			"Jacareí",

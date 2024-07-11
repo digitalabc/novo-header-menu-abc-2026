@@ -4259,6 +4259,25 @@
       ]
     },
     {
+      "name": "Angra dos Reis",
+      "state": "Rio de Janeiro",
+      "stores": [
+        {
+          "name": "Parque Belém",
+          "adress": "Av. São José, 1405 - LOJA 02 L 10 B1 - Parque Belém, Angra dos Reis - RJ, 23935-010",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/angra-dos-reis/parque-belem",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Araruama",
       "state": "Rio de Janeiro",
       "stores": [

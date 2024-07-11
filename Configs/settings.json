@@ -795,6 +795,25 @@
       ]
     },
     {
+      "name": "Esmeraldas",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Quintas São José",
+          "adress": "Alameda Ipê Amarelo, 259 - Quintas São José, Esmeraldas - MG, 32816-576",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/esmeraldas/quintas-sao-jose",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Espera Feliz",
       "state": "Minas Gerais",
       "stores": [
@@ -2459,6 +2478,25 @@
           "adress": "Av. Campos Gerais, 71 - Parque Diadorim, Três Marias - MG, 39205-000",
           "phone": "(38) 3754-4336",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/tres-marias/parque-diadorim",
+          "monday": "8:00 às 19:00",
+          "tuesday": "8:00 às 19:00",
+          "wednesday": "8:00 às 19:00",
+          "thursday": "8:00 às 19:00",
+          "friday": "8:00 às 19:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Turmalina",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Lauro Machado, 215 - Centro, Turmalina - MG, 39660-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/turmalina/centro",
           "monday": "8:00 às 19:00",
           "tuesday": "8:00 às 19:00",
           "wednesday": "8:00 às 19:00",

@@ -3142,6 +3142,25 @@
       ]
     },
     {
+      "name": "Itapeva",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Vila Ophelia",
+          "adress": "Av. Paulina de Morais, 285 - Vila Ophelia, Itapeva - SP, 18400-818",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/itapeva/vila-ophelia",
+          "monday": "8:30 às 18:00",
+          "tuesday": "08:30 às 18:00",
+          "wednesday": "08:30 às 18:00",
+          "thursday": "08:30 às 18:00",
+          "friday": "08:30 às 18:00",
+          "saturday": "08:30 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Itapira",
       "state": "São Paulo",
       "stores": [

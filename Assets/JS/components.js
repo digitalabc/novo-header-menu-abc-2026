@@ -157,4 +157,10 @@ function accordion(button) {
   } else {
     panel.style.maxHeight = panel.scrollHeight + "px";
   }
-}
+} 
+// temporario pra garantir nao usar regionalizacao
+;(() => { 
+  if (getCookie('sf_regional_cep')) {
+    document.cookie = 'sf_regional_cep=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';    
+  }
+})();

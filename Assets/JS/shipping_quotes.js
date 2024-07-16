@@ -7,7 +7,7 @@ async function ShippingQuoteSubmit(e, productVariantId) {
     e.preventDefault();
     document.getElementById("shipping-quotes-snippet-div-" + productVariantId).innerHTML = `<img style="display: block; margin: auto;" src="/localstatic/img/my-loader.svg?theme=local&v=" alt="">`;
 
-    if (validateShippingAddress()) {
+    // if (validateShippingAddress()) {
         try {
             const cep = document.getElementById('shipping-quote-cep').value;
             let quantity = document.getElementById("selected-quantity").value;
@@ -27,9 +27,9 @@ async function ShippingQuoteSubmit(e, productVariantId) {
         catch (error) {
             console.error(error);
         }
-    } else {
-        openShippingModal()
-    }
+    // } else {
+    //     openShippingModal()
+    // }
 }
 
 /**

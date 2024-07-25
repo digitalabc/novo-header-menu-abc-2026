@@ -51,16 +51,16 @@ function cepMask(t) {
         t.value += text.substring(0, 1);
 }
 
-function validateShippingAddress() {
-    const cep = document.getElementById('shipping-quote-cep').value,
-        partnerCep = client.partner.getCep();
+// function validateShippingAddress() {
+//     const cep = document.getElementById('shipping-quote-cep').value,
+//         partnerCep = client.partner.getCep();
 
-    if (cep == partnerCep) {
-        return true;
-    };
+//     if (cep == partnerCep) {
+//         return true;
+//     };
 
-    return false;
-}
+//     return false;
+// }
 
 function closeShippingModal(e, element = null) {
     if (e.target == e.currentTarget) {
@@ -71,25 +71,25 @@ function closeShippingModal(e, element = null) {
     }
 }
 
-function openShippingModal() {
-    let cep = document.getElementById('shipping-quote-cep').value
-    let partnerCep = client.partner.getCep();
+// function openShippingModal() {
+//     let cep = document.getElementById('shipping-quote-cep').value
+//     let partnerCep = client.partner.getCep();
 
-    document.querySelector("[id^='shipping-quotes-snippet-div']").innerHTML = ""
+//     document.querySelector("[id^='shipping-quotes-snippet-div']").innerHTML = ""
 
-    if (cep == "" || partnerCep == "") return false;
+//     if (cep == "" || partnerCep == "") return false;
 
-    setTimeout(() => {
-        document.getElementById("shipping-invalid").style.display = "block";
-    }, 200);
-    document.getElementById("shipping-invalid").classList.add("visible");
+//     setTimeout(() => {
+//         document.getElementById("shipping-invalid").style.display = "block";
+//     }, 200);
+//     document.getElementById("shipping-invalid").classList.add("visible");
 
-    document.getElementById("shipping-partner_cep").innerHTML = `${partnerCep} (${checkZipAddress(parseInt(partnerCep.replace("-", "")))})`
-    document.getElementById("shipping-cep").innerHTML = `${cep} (${checkZipAddress(parseInt(cep.replace("-", "")))})`
-}
+//     document.getElementById("shipping-partner_cep").innerHTML = `${partnerCep} (${checkZipAddress(parseInt(partnerCep.replace("-", "")))})`
+//     document.getElementById("shipping-cep").innerHTML = `${cep} (${checkZipAddress(parseInt(cep.replace("-", "")))})`
+// }
 
-function changeParterByRegion() {
-    let cep = document.getElementById("shipping-quote-cep").value
+// function changeParterByRegion() {
+//     let cep = document.getElementById("shipping-quote-cep").value
 
-    if (cep) changeRegionalOffers(cep)
-}
+//     if (cep) changeRegionalOffers(cep)
+// }

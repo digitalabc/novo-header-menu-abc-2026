@@ -57,8 +57,7 @@ async function loadMiniCart() {
     if (variables.hasCheckout) {
       await addUtmMetadata(variables.checkoutId);
     }
-
-    await minicartHasPrime();
+    
   } catch (error) {
     console.error(error);
   }
@@ -134,21 +133,3 @@ async function addUtmMetadata(checkoutId) {
       await client.checkout.addCheckoutMetadata(metadataValues, checkoutId);
   }
 }
-
-// prime no minicart pausado
-// const minicartHasPrime = async () => {
-//     let user = await client.user.get();
-//     if (!user) return;   
-    
-//     let response_subscription = await client.snippet.render(
-//         "subscription_info_snippet.html",
-//         "SnippetQueries/subscription_info.graphql",
-//         { customerAccessToken: user.customerAccessToken }
-//     );
-//     response_subscription = JSON.parse(response_subscription);
-//     let minicartHasPrime = document.querySelector('.minicart__offcanvas-body > .item__list');
-    
-//     if (response_subscription.status && minicartHasPrime) {
-//         minicartHasPrime.classList.add('hasPrime');
-//     }   
-// }

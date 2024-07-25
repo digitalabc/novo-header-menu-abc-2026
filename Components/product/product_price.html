@@ -8,19 +8,7 @@
     Usage:
         product_price prices: product.prices displayed_installment: "Boleto Yapay"
 ## }}
-{{~
-  urlABCPrime = false
-  preco_prime = 0
 
-  urlABCPrime = store.urls.current == store.urls.base + "/prime"  
-  
-  for row in product.prices.price_tables
-    if row.id == 81
-      preco_prime = row.price    
-    end
-  end  
-  
-~}}
 <div class="spot-price">
     {{ if prices.list_price }}
         {{~ if prices.price != prices.list_price ~}}
@@ -36,19 +24,6 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
-        {{~ if preco_prime != 0 ~}}
-        <p class="desconto_prime">
-            {{~ if urlABCPrime == true ~}}
-              {{ (prices.list_price / preco_prime) * 100 | math.minus 100 | math.round | debug.log 'preco'}}
-              <strong>{{ (100 - (preco_prime / prices.list_price) * 100) | math.round }}% OFF</strong>
-            {{~ else ~}}
-              {{ ##prices.list_price | math.minus (prices.list_price | math.times descontoPrime) | math.format "c" "pt-BR" ##}}
-              {{ preco_prime | math.format "c" "pt-BR" }}
-            {{~ end ~}}            
-            <img src="{{- store.urls.static_img }}svg/abcPrime_icon.svg?theme={{store.theme}}&v={{store.last_modified}}"
-              alt="ABC Prime" width="65" height="14">
-          </p>
-        {{~ end ~}}
         {{~ if product_is_box && !page_product && !comprePorUnidade && prices.multiplication_factor > 0 ~}}
           <p class="precoCalculado">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
@@ -93,8 +68,8 @@
   </div>
 {{~ end ~}}
 
-{{~ if product.product_id != 110588 ~}}
-  {{~ if page_product && !product_hide_pix ~}}
+
+{{~ if page_product && !product_hide_pix ~}}
   <div class="pix">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14.001" viewBox="0 0 14 14.001">
       <g id="Group_4354" data-name="Group 4354" transform="translate(-617.999 -160)">
@@ -105,11 +80,10 @@
     </svg>
     <span>Compre com <strong>Pix</strong> e tenha <strong>5%</strong> de desconto</span>
   </div>
-  {{~ end ~}}
+{{~ end ~}}
 
-  {{~ if displayed_installment ~}}
-      {{ product_filtered_installment installment_plans: prices.installment_plans displayed_installment: displayed_installment }}
-  {{~ else ~}}
-      {{ product_best_installment best_installment: prices.best_installment }}
-  {{~ end ~}}
+{{~ if displayed_installment ~}}
+    {{ product_filtered_installment installment_plans: prices.installment_plans displayed_installment: displayed_installment }}
+{{~ else ~}}
+    {{ product_best_installment best_installment: prices.best_installment }}
 {{~ end ~}}

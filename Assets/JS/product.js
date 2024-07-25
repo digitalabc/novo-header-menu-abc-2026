@@ -857,25 +857,3 @@ window.addEventListener("load", () => {
   }
 });
 
-$(document).on("ready", function () {
-  var productId = $("#product-id").val();
-  if (productId == "110588") {
-    var subscriptionButton = $(".subscription-div button")
-    // console.log(subscriptionButton)
-    var customizationSelect = $("#customization-35")
-    subscriptionButton.prop("disabled", true);
-
-    $("#check-term").live("change", function () {
-      if ($(this).is(":checked")) {
-        subscriptionButton.prop("disabled", false);
-        customizationSelect.val('Sim').change();
-      }
-      else{
-        subscriptionButton.prop("disabled", true);
-        customizationSelect.val('Não').change();
-      }
-
-    });
-  }
-});
-

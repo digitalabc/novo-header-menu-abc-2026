@@ -145,7 +145,7 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 
 
 /* flag abc prime */
-.spot-price .desconto_prime {
+/* .spot-price .desconto_prime {
     display: none;
     align-items: center;
     border-radius: 3.6px;
@@ -163,7 +163,7 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 
 :not(.product__view) .spot-price .desconto_prime {
     align-self: start;
-}
+} */
 
 /* .beneficiosPrime__benefits button {
     display: none;
@@ -181,7 +181,7 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 } */
 
 /* abcprime bar */
-.prime_bar {
+/* .prime_bar {
     display: none;
     background-color: #138779;
     padding: 20px;
@@ -198,8 +198,9 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
     margin: 0;
     padding: 0;
 }
-
+*/
 /* logo */
+/*
 .is_prime.showprime {
     display: block !important;
 }
@@ -240,7 +241,7 @@ header.has_prime .minicart__button .label-cart-count,
 header.has_prime section.newsletter--home,
 header.has_prime .topbar {
     background-color: #000 !important;
-}
+} */
 
 .navbar__wrapper .nav-item--nv1:last-child>.nav-link {
     color: #5d5d5d;
@@ -248,7 +249,7 @@ header.has_prime .topbar {
 }
 
 @media (max-width: 991px) {
-    .spot-price .desconto_prime {
+    /* .spot-price .desconto_prime {
         font-size: 13px;
     }
 
@@ -268,7 +269,7 @@ header.has_prime .topbar {
         margin: 0;
         padding: 0;
         text-align: center;
-    }
+    } */
 }
 
 @media (min-width: 991px) {
@@ -278,7 +279,7 @@ header.has_prime .topbar {
         padding-bottom: 40px;
     }
 
-    .abc_prime .abcPrime__fullbanner .container {
+    /* .abc_prime .abcPrime__fullbanner .container {
         max-width: 1000px;
-    }
+    } */
 }

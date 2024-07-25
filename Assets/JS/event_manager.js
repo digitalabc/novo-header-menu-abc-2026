@@ -125,17 +125,18 @@ function getCartData(checkoutData) {
 async function getUserInfo() {
     let user = await client.user.get();
     if (!user) { return []; }
-    let response = await client.snippet.render(
-        "subscription_info_snippet.html",
-        "SnippetQueries/subscription_info.graphql",
-        { customerAccessToken: user.customerAccessToken }
-    );
-    response = JSON.parse(response);
+    // let response = await client.snippet.render(
+    //     "subscription_info_snippet.html",
+    //     "SnippetQueries/subscription_info.graphql",
+    //     { customerAccessToken: user.customerAccessToken }
+    // );
+    // response = JSON.parse(response);
 
     return {
         id: user.id,
         email: user.email,
-        user_type: response ? 'assinante' : 'não assinante',
+        // user_type: response ? 'assinante' : 'não assinante',
+        user_type: 'não assinante',
         phoneNumber: user.phoneNumber
     };
 }

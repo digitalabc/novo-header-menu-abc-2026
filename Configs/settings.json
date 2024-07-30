@@ -2191,14 +2191,14 @@
         {
           "name": "Centro",
           "adress": "Av. Antônio Carlos, 327 - Centro, Sacramento - MG, 38190-000",
-          "phone": "",
+          "phone": "(34) 3351-4002",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sacramento/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "7:30 às 12:00",
           "sunday": "Fechado"
         }
       ]

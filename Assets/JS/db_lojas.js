@@ -6,6 +6,7 @@ const estados = [
 		"cidades": [
 			"Além Paraíba",
 			"Alfenas",
+			"Andradas",
 			"Araçuaí",
 			"Araxá",
 			"Barão de Cocais",
@@ -47,7 +48,8 @@ const estados = [
 			"Itajubá",
 			"Itamarandiba",
 			"Itamonte",
-			"Jacutinga", 
+			"Jacutinga",
+			"Jaíba",
 			"Januária",
 			"João Monlevade",
 			"João Pinheiro",
@@ -68,6 +70,7 @@ const estados = [
 			"Minas Novas",
 			"Miraí",
 			"Montalvânia",
+			"Monte Azul",
 			"Montes Claros",
 			"Muriaé",
 			"Mutum",
@@ -209,6 +212,7 @@ const estados = [
 			"Londrina",
 			"Maringá",
 			"Ponta Grossa",
+			"São José dos Pinhais",
 			"Telêmaco Borba",
 			"Toledo"
 		]
@@ -312,6 +316,8 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Balneário Camboriú",
+			"Florianópolis",
+			"Jaraguá do Sul",
 			"Joinville",
 			"São Francisco do Sul"
 			

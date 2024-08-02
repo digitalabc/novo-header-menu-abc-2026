@@ -178,6 +178,25 @@
       ]
     },
     {
+      "name": "Andradas",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Sete de Setembro",
+          "adress": "R. Maj. Pantaleão, 541 - Sete de Setembro, Andradas - MG, 37841-004",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/andradas/sete-de-setembro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
+        }
+      ]
+    },
+    {
       "name": "Araçuaí",
       "state": "Minas Gerais",
       "stores": [

@@ -1627,6 +1627,25 @@
       ]
     },
     {
+      "name": "Monte Azul",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Praça 12 de Outubro, 122 - Centro, Monte Azul - MG, 39500-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/monte-azul/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
+        }
+      ]
+    },
+    {
       "name": "Montes Claros",
       "state": "Minas Gerais",
       "stores": [

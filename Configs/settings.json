@@ -5258,6 +5258,44 @@
       ]
     },
     {
+      "name": "Florianópolis",
+      "state": "Santa Catarina",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Des. Arno Hoeschl, 243 - Loja Comercial 01 - Centro, Florianópolis - SC, 88015-620",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/santa-catarina/florianopolis/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
+        }
+      ]
+    },
+    {
+      "name": "Jaraguá do Sul",
+      "state": "Santa Catarina",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Cel. Procópio Gomes de Oliveira, 1219 - Centro, Jaraguá do Sul - SC, 89251-201",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/santa-catarina/jaragua-do-sul/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
+        }
+      ]
+    },
+    {
       "name": "Joinville",
       "state": "Santa Catarina",
       "stores": [

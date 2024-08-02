@@ -1169,6 +1169,25 @@
       ]
     },
     {
+      "name": "Jaíba",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Cel. Moacir José da Silva, 10 - Centro, Jaíba - MG, 39508-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/jaiba/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": ""
+        }
+      ]
+    },
+    {
       "name": "Januária",
       "state": "Minas Gerais",
       "stores": [

@@ -206,7 +206,6 @@ const estados = [
 		"cidades": [
 			"Cianorte",
 			"Curitiba",
-			"Foz do Iguaçu",
 			"Guarapuava",
 			'Guaratuba',
 			"Londrina",

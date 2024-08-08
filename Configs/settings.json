@@ -2685,25 +2685,6 @@
       ]
     },
     {
-      "name": "Aparecida",
-      "state": "São Paulo",
-      "stores": [
-        {
-          "name": "Jardim Paraíba",
-          "adress": "Av. Sólon Pereira, 193 - Jardim Paraíba, Aparecida - SP, 12570-000",
-          "phone": " (12) 3105-3399",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/aparecida/jardim-paraiba",
-          "monday": "8:30 às 18:30",
-          "tuesday": "8:30 às 18:30",
-          "wednesday": "8:30 às 18:30",
-          "thursday": "8:30 às 18:30",
-          "friday": "8:30 às 18:30",
-          "saturday": "8:30 às 13:00",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
       "name": "Araraquara",
       "state": "São Paulo",
       "stores": [

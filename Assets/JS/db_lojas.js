@@ -87,7 +87,6 @@ const estados = [
 			"Passos",
 			"Patos de Minas",
 			"Patrocínio",
-			"Pedro Leopoldo",
 			"Perdões",
 			"Pirapora",
 			"Piraúba",
@@ -223,7 +222,6 @@ const estados = [
 		"cidades": [
 			"Amparo",
 			"Andradina",
-			"Aparecida",
 			"Araraquara",
 			"Artur Nogueira",
 			"Arujá",

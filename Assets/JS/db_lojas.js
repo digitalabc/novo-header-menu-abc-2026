@@ -261,7 +261,6 @@ const estados = [
 			"Paulínia",
 			"Pindamonhangaba",
 			"Piracaia",
-			"Piracicaba",
 			"Praia Grande",
 			"Ribeirão Preto",
 			"Santa Isabel",

@@ -11,26 +11,17 @@
 {{ product_is_box = false }}
 {{~ if selected_variant ~}}
   {{~ available = product.attribute_selections.selected_variant.available ~}}
-  {{~ if product.attribute_selections.selected_variant.prices.multiplication_factor != 1 ~}}
+  {{~ if product.attribute_selections.selected_variant.prices.multiplication_factor > 1 ~}}
     {{ product_is_box = true }}
   {{~ end ~}}
 {{~ else ~}}
   {{~ available = product.available ~}}
-  {{~ if product.prices.multiplication_factor != 1 ~}}
+  {{~ if product.prices.multiplication_factor > 1 ~}}
     {{ product_is_box = true }}
+  {{~ else ~}}
+    {{ comprePorUnidade = true }}
   {{~ end ~}}
 {{~ end ~}}
-
-{{
-  for attributes in product.attributes
-    if attributes.value == "M2" || attributes.value == "m2"
-      product_is_box  = true
-    end
-    if attributes.value == "UN" || attributes.value == "PC"
-        comprePorUnidade = true
-    end
-  end
-}}
 
 <section class="product__image">
   {{ stamps promotions: product.promotions }}

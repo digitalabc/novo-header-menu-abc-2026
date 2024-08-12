@@ -8,6 +8,21 @@
     Usage:
         product_price prices: product.prices displayed_installment: "Boleto Yapay"
 ## }}
+{{~
+  attribute = (product.attributes | array.filter @(do; ret $0.name == 'Unidade' ;end) | array.first) | object.values | array.last | string.downcase
+
+  if product_is_box
+    unidade_ = (settings.lista_por_unidade | array.filter @(do; ret $0.abreviatura == attribute ;end) | array.first) | object.values
+    
+    if attribute_ == 'm2'
+      unidade_abreviatura =  "m²"
+    else 
+      unidade_abreviatura =  unidade_ | array.first | string.downcase
+    end
+    
+    unidade_display = unidade_| array.last | string.downcase
+  end
+~}}
 
 <div class="spot-price">
     {{ if prices.list_price }}
@@ -24,15 +39,10 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
-        {{~ if product_is_box && !page_product && !comprePorUnidade && prices.multiplication_factor > 0 ~}}
+        {{~ if product_is_box && !page_product ~}}
           <p class="precoCalculado">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
-            <small>/m²</small>
-          </p>
-        {{ else if product_is_box && !page_product && comprePorUnidade && prices.multiplication_factor > 0 }}
-          <p class="precoCalculado">
-            <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
-            <small>/pç</small>
+            <small>/{{ unidade_abreviatura }}</small>            
           </p>
         {{~ end ~}}
         {{~ if page_product ~}}
@@ -52,22 +62,17 @@
         {{~ if product_is_box && !page_product ~}}
           <p class="precoCalculado">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
-            <small>/m²</small>
+            <small>/{{ unidade_abreviatura }}</small>
           </p>
         {{~ end ~}}
     {{ end }}
 </div>
 
-{{~ if product_is_box && page_product && !comprePorUnidade ~}}
+{{~ if product_is_box && page_product ~}}
   <div class="box-price">
-    <span>Neste produto o m² sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
-  </div>
-{{~ else if product_is_box && page_product && comprePorUnidade ~}}
-  <div class="box-price">
-    <span>Neste produto a peça sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span></span>
+    <spdade>Neste produto {{ unidade_display }} sai por <span id="precoCalculado">{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ " }}</span></span>
   </div>
 {{~ end ~}}
-
 
 {{~ if page_product && !product_hide_pix ~}}
   <div class="pix">

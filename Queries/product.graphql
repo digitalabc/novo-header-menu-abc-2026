@@ -75,6 +75,10 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
     productId
     productVariantId
     available
+    attributes {
+      name
+      value
+    }
     similarProducts {
       alias
       image

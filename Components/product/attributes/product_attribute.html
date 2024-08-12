@@ -16,7 +16,8 @@
 {{~ subscription_only_list = product.subscription_groups | array.filter @select_subscription_only ~}}
 {{~ subscription_only = subscription_only_list && subscription_only_list.size > 0 ~}}
 {{~ attribute_selections = product.attribute_selections ~}}
-
+{{~ attribute = (product.attributes | array.filter @(do; ret $0.name == 'Unidade' ;end) | array.first) | object.values | array.last | string.downcase ~}}
+    
 {{~ if attribute_selections ~}}
     {{~ if attribute_selections.can_be_matrix ~}}
         <div class='attribute-selections'>
@@ -69,12 +70,20 @@
                             name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity', 'pç.');">
                         {{~ end ~}}
 
-                        {{~ if product_is_box && !comprePorUnidade ~}}
+                        {{~ if product_is_box ~}}
+                            {{~ 
+                                if attribute == 'm2'
+                                    unidade_abreviatura = 'm²'
+                                else 
+                                    unidade_abreviatura = (settings.lista_por_unidade | array.filter @(do; ret $0.abreviatura == attribute ;end) | array.first) | object.values | array.first | string.downcase
+                                end 
+                            ~}}
                             <input id="fake-quantity" 
-                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }}m²" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
+                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }} {{ unidade_abreviatura }}" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
                         {{~ else if product_is_box && comprePorUnidade ~}}
+                            {{ unidade_ = (settings.lista_por_unidade | array.filter @(do; ret $0.abreviatura == attribute ;end) | array.first) | object.values | array.first | string.downcase }}
                             <input id="fake-quantity" 
-                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }} pç." data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
+                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }} {{ unidade_abreviatura }}." data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
                         {{~ end ~}}
 
                         <button class="quantity-more" onclick="quantityChange('#selected-quantity', 'increase', '.product__quantity--wrapper')">+</button>

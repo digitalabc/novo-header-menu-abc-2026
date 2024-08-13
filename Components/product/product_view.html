@@ -54,8 +54,12 @@
           end
         end
       }}
-        <!-- <span>### Estrelas Opiniões Verificadas ###</span> --> 
+     
+      <!-- <span>### Estrelas Opiniões Verificadas ###</span> -->
+      {{# se produto esta na tabela para produtos que nao deven mostrar pontos livelo entao retorna true #}}
+      {{~ if (product.prices.price_tables | array.filter @(do; ret $0.id == 82 ;end)).empty? ~}} 
         <span class="livelo_pontos" data-livelo-pontos="{{ pontos_calculados }}">Até <strong>{{ pontos_calculados }}</strong> ponto(s) Livelo</span>
+      {{~ end ~}}
     </span>
     {{~ installment_plans = product.prices.installment_plans ~}}
     {{~ discount_percentage = 0 ~}}

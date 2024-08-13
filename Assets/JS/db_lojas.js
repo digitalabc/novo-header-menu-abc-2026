@@ -236,6 +236,7 @@ const estados = [
 			"Botucatu",
 			"Bragança Paulista",
 			"Caçapava",
+			"Cafelândia",
 			"Campinas",
 			"Caraguatatuba",
 			"Cruzeiro",

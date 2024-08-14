@@ -2191,6 +2191,25 @@
       ]
     },
     {
+      "name": "Resplendor",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Olegário Maciel, 317 - Centro, Resplendor - MG, 35230-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/resplendor/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Ribeirão das Neves",
       "state": "Minas Gerais",
       "stores": [
@@ -2338,6 +2357,25 @@
           "thursday": "8:00 às 19:00",
           "friday": "8:00 às 19:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "São Geraldo",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. São Geraldo, 27 - Centro, São Geraldo - MG, 36530-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-geraldo/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]
@@ -4556,6 +4594,25 @@
       ]
     },
     {
+      "name": "Miguel Pereira",
+      "state": "Rio de Janeiro",
+      "stores": [
+        {
+          "name": "Plante Café",
+          "adress": "Av. Mal. Rondon, 157 - Plante Café, Miguel Pereira - RJ, 26900-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/miguel-pereira/plante-cafe",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Niterói",
       "state": "Rio de Janeiro",
       "stores": [
@@ -4610,6 +4667,19 @@
       "name": "Paraíba do Sul",
       "state": "Rio de Janeiro",
       "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Visc. do Rio Novo, 333 - Loja A e B - Centro, Paraíba do Sul - RJ, 25850-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/paraiba-do-sul/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        },
         {
           "name": "Jatoba",
           "adress": "Av. Dr. Randolfo Pena, N° 1021 - Jatoba Paraíba do Sul - RJ, 25850-000",

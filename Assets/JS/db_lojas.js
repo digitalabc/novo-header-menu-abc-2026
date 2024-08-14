@@ -12,7 +12,7 @@ const estados = [
 			"Araçuaí",
 			"Araguari",
 			"Araxá",
-			"Bambuí"
+			"Bambuí",
 			"Barão de Cocais",
 			"Barbacena",
 			"Belo Horizonte",

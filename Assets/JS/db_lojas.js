@@ -4,11 +4,15 @@ const estados = [
 		"coluna": "1",
 		"coluna_mobile": "1",
 		"cidades": [
+			"Abre Campo",
+			"Aimorés",
 			"Além Paraíba",
 			"Alfenas",
 			"Andradas",
 			"Araçuaí",
+			"Araguari",
 			"Araxá",
+			"Bambuí"
 			"Barão de Cocais",
 			"Barbacena",
 			"Belo Horizonte",

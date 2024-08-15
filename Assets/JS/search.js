@@ -1,5 +1,5 @@
 window.addEventListener("load", searchLoad, false);
-
+window.addEventListener("load", registerSearchRecord, false);
 /**
  * Page load function.
  */
@@ -111,4 +111,15 @@ async function showMore() {
     if (newButton){
         newButton.addEventListener("click", showMore);
     }
+}
+
+async function registerSearchRecord() {
+    await client.query(
+        `mutation SearchRecord($input: SearchRecordInput!) {
+            createSearchTermRecord(input: $input){
+                isSuccess
+                date
+                query
+            }
+        }`, search_record_data);
 }

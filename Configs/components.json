@@ -1250,5 +1250,17 @@
         "path": "custom/livelo/livelo_popup.html",
         "inheritVariables": false,
         "availableInAllPages": true
+    },
+    {
+        "name": "search_record_data",
+        "path": "utils/search_record_data.html",
+        "params": [
+            {
+                "name": "search_data",
+                "required": true
+            }
+        ],
+        "inheritVariables": false,
+        "availableInAllPages": true
     }
 ]

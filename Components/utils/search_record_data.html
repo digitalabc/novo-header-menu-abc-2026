@@ -1,0 +1,13 @@
+{{ products = search_data.products?? search_data.products_by_offset }}
+
+<script>
+    const search_record_data = {
+        input: {
+            query: new URLSearchParams(window.location.search).get("busca") ?? "", 
+            pageUrl: window.location.href, 
+            page: {{ current_page ?? 1 }}, 
+            pageSize: {{ search_data.page_size }},
+            totalResults: {{ products.total_count }}
+        }
+    };
+</script>

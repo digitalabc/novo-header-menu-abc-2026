@@ -64,7 +64,7 @@
     {{ gtm_search_view products: products.items }}
 
     {{ sdk_client }}
-    
+    {{ search_record_data search_data: data.search current_page: current_page}}
     {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "sort", "filter", "search", "pagination", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "whats_form"]}}
 
 </body>

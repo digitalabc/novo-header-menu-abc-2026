@@ -3947,15 +3947,15 @@
         {
           "name": "Praia do Porto Grande",
           "adress": "Av. Guarda Mor Lobo Viana, 1521 - Praia do Porto Grande, São Sebastião - SP, 11608-200",
-          "phone": "",
+          "phone": "(12) 2132-6339",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/sao-sebastiao/praia-do-porto-grande",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "9:00 às 18:30",
+          "tuesday": "9:00 às 18:30",
+          "wednesday": "9:00 às 18:30",
+          "thursday": "9:00 às 18:30",
+          "friday": "9:00 às 18:30",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },

@@ -2197,14 +2197,14 @@
         {
           "name": "Centro",
           "adress": "Av. Olegário Maciel, 317 - Centro, Resplendor - MG, 35230-000",
-          "phone": "",
+          "phone": "(33) 3263-9000",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/resplendor/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:30 às 17:30",
+          "tuesday": "7:30 às 17:30",
+          "wednesday": "7:30 às 17:30",
+          "thursday": "7:30 às 17:30",
+          "friday": "7:30 às 17:30",
+          "saturday": "7:30 às 12:00",
           "sunday": "Fechado"
         }
       ]

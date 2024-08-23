@@ -2368,14 +2368,14 @@
         {
           "name": "Centro",
           "adress": "R. São Geraldo, 27 - Centro, São Geraldo - MG, 36530-000",
-          "phone": "",
+          "phone": "(32) 3556-1209",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-geraldo/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "7:30 às 12:00",
           "sunday": "Fechado"
         }
       ]

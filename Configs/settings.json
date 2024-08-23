@@ -2463,14 +2463,14 @@
         {
           "name": "Centro",
           "adress": "R. José Gabriel de Rezende, 243 - Tereza Cristina, São Joaquim de Bicas - MG, 32920-000",
-          "phone": "",
+          "phone": "(31) 3108-0001",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-joaquim-de-bicas/tereza-cristina",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:30 às 18:00",
+          "tuesday": "7:30 às 18:00",
+          "wednesday": "7:30 às 18:00",
+          "thursday": "7:30 às 18:00",
+          "friday": "7:30 às 18:00",
+          "saturday": "7:30 às 13:00",
           "sunday": "Fechado"
         }
       ]

@@ -815,14 +815,14 @@ if (produtoSKUDiv && quantidadeInput) {
       if (referencia === produtoSKU) {
         pesoTotal = quantidade * peso;
         // temporario
-        if (departamento !== ""
-          && typeof retiraLojaArr != "undefined"
-          && (retiraLojaArr.includes(departamento.toLowerCase()) || retiraLojaArr.includes(categoria.toLowerCase()) || retiraLojaArr.includes(subcategoria.toLowerCase()))
-          && !is_estoque_industria
-          && !produtoEncomenda 
-        ) {
-          retirarEmLoja = true;
-        };
+        // if (departamento !== ""
+        //   && typeof retiraLojaArr != "undefined"
+        //   && (retiraLojaArr.includes(departamento.toLowerCase()) || retiraLojaArr.includes(categoria.toLowerCase()) || retiraLojaArr.includes(subcategoria.toLowerCase()))
+        //   && !is_estoque_industria
+        //   && !produtoEncomenda 
+        // ) {
+        //   retirarEmLoja = true;
+        // };
         
         if (retirarEmLoja && pesoTotal <= 50) {
           pickUpButton.forEach((btn) => {

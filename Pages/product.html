@@ -57,8 +57,10 @@
   {{~ if (product.product_brand | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
   {{ product_hide_pix = true }}
   {{~ end ~}}
-
-  <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
+  {{ 
+    produtoEncomenda = data.product.prices.price_tables | array.filter @(do; ret $0.id == 84 ;end) 
+  }}
+  <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}" {{~ if !produtoEncomenda.empty? ~}}data-produto-encomenda="{{!produtoEncomenda.empty?}}"{{~ end ~}}> 
   <input type="hidden" id="product-variant-id" name="product-variant-id" value="{{ data.product.product_variant_id }}">
 
   <div class="container">

@@ -1,0 +1,10 @@
+query ProdutoEncomenda($productId: Long!){
+ 	product(productId: $productId) {
+		author
+    prices {
+      priceTables {
+        id
+      }
+    }
+  }   
+}

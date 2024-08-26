@@ -117,3 +117,8 @@
     margin: 0;
     padding: 0;   
 }
+
+/* produto encomenda sem retira em loja temporariamente */
+[data-frete-item-tipo="Retirada"].produto_encomenda {
+    display: none !important;
+}

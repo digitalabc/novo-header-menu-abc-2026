@@ -803,6 +803,7 @@ if (produtoSKUDiv && quantidadeInput) {
   const shippingResponse = document.querySelector(".product-shipping__response")
   const otherButtons = document.querySelectorAll(".secondary-button")
 
+  ;const produtoEncomenda = document.querySelector('#product-id').dataset.produtoEncomenda;
   quantidade = quantidade !== "" ? quantidade : 1;
   fetch("https://produtos.abcdaconstrucao.com.br/api/v1/produtos/pesos/referencias/" + produtoSKU, { mode: 'cors', })
     .then(function (response) {
@@ -814,13 +815,14 @@ if (produtoSKUDiv && quantidadeInput) {
       if (referencia === produtoSKU) {
         pesoTotal = quantidade * peso;
         // temporario
-        // if (departamento !== ""
-        //   && typeof retiraLojaArr != "undefined"
-        //   && (retiraLojaArr.includes(departamento.toLowerCase()) || retiraLojaArr.includes(categoria.toLowerCase()) || retiraLojaArr.includes(subcategoria.toLowerCase()))
-        //   && !is_estoque_industria
-        // ) {
-        //   retirarEmLoja = true;
-        // };
+        if (departamento !== ""
+          && typeof retiraLojaArr != "undefined"
+          && (retiraLojaArr.includes(departamento.toLowerCase()) || retiraLojaArr.includes(categoria.toLowerCase()) || retiraLojaArr.includes(subcategoria.toLowerCase()))
+          && !is_estoque_industria
+          && !produtoEncomenda 
+        ) {
+          retirarEmLoja = true;
+        };
         
         if (retirarEmLoja && pesoTotal <= 50) {
           pickUpButton.forEach((btn) => {

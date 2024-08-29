@@ -770,7 +770,7 @@ const _listaCategoriaABC = [
   "JANELA DE ALUMINIO",
   "JANELAS",
   "JANELAS",
-  // "LOUÇAS/INOX/SINTETICO",
+  "LOUÇAS/INOX/SINTETICO",
   "MATERIAIS HIDRÁULICOS",
   "MEDIDOR CONTORNO",
   "METAIS SANITÁRIOS",
@@ -812,6 +812,7 @@ if (produtoSKUDiv && quantidadeInput) {
     .then(function (data) {
 
       let { referencia, peso, departamento, categoria, subcategoria, is_estoque_industria } = data[0];
+      console.log("is_estoque_industria", is_estoque_industria);
       if (referencia === produtoSKU) {
         pesoTotal = quantidade * peso;
         if (departamento !== ""

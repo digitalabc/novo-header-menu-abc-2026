@@ -5601,7 +5601,7 @@
     }
   ],
   "livelo_calculo_padrao": 12,
-  "livelo": [],
+  "livelo":[],
   "lista_por_unidade": [
     {"abreviatura": "m2", "display": "o m²"},
     {"abreviatura": "lt", "display": "a lata"},

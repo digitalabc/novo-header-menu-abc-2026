@@ -101,6 +101,7 @@ const estados = [
 			"Porteirinha",
 			"Pouso Alegre",
 			"Raul Soares",
+			"Recreio",
 			"Resplendor",
 			"Ribeirão das Neves",
 			"Rio Pomba",
@@ -182,6 +183,7 @@ const estados = [
 		"coluna": "2",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Bonito",
 			"Campo Grande",
 			"São Gabriel do Oeste",
 			"Três Lagoas"
@@ -202,6 +204,7 @@ const estados = [
 		"cidades": [
 			"Anápolis",
 			"Aparecida de Goiânia",
+			"Caldas Novas",
 			"Catalão",
 			"Goiânia",
 			"Trindade"

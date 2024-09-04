@@ -5473,6 +5473,25 @@
       ]
     },
     {
+      "name": "Caldas Novas",
+      "state": "Goiás",
+      "stores": [
+        {
+          "name": "Itanhangá",
+          "adress": "Av. C, 1126 - Itanhangá, Caldas Novas - GO, 75690-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/caldas-novas/itanhanga",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Catalão",
       "state": "Goiás",
       "stores": [
@@ -5525,6 +5544,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Bonito",
+      "state": "Mato Grosso do Sul",
+      "stores": [
+        {
+          "name": "Formoso",
+          "adress": "R. Cel. Pílad Rébua, 736 - Formoso, Bonito - MS, 79290-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/bonito/formoso",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

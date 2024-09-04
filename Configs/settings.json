@@ -2191,6 +2191,25 @@
       ]
     },
     {
+      "name": "Recreio",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Major Christiano Guimaraes, 96 - Centro, Recreio - MG, 36740-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/recreio/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Resplendor",
       "state": "Minas Gerais",
       "stores": [

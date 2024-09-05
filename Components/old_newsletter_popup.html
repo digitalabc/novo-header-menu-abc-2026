@@ -363,14 +363,14 @@
       e.preventDefault();
       abcNewsletterEnviar();
     });
+
+    window.removeEventListener('scroll', abcNewsletterPopup);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     // if (document.cookie.indexOf('popup-newsletter-abc-home') < 0 && getCookie("sf_regional_cep")) {
     if (document.cookie.indexOf('popup-newsletter-abc-home')) {
-      setTimeout(() => {
-        abcNewsletterPopup();
-      }, 2000);
+      window.addEventListener("scroll", abcNewsletterPopup);
     }
   });
 </script>

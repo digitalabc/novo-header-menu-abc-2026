@@ -166,8 +166,33 @@ function accordion(button) {
 })();
 
 document.addEventListener("DOMContentLoaded", () => {
+  const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+  if (isMobile) {
+    const fullbannerDesktop = document.querySelector(".fullbanner.desktop");
+    const navbarCollapse = document.querySelector(".navbar__collapse.desktop");
+    if (fullbannerDesktop) {
+      fullbannerDesktop.remove();
+      navbarCollapse.remove();
+    }
+  }
+
   function removeNoscript() {
-    document.querySelectorAll('[data-lazy="true"]').forEach((element) => {
+    if (isDesktop) {
+      document.querySelectorAll('[data-lazy="true"]').forEach((element) => {
+        const noscriptTag = element.querySelector("noscript");
+        if (noscriptTag) {
+          element.innerHTML = noscriptTag.innerHTML;
+
+          initSwipers();
+        }
+      });
+
+      window.removeEventListener("scroll", removeNoscript);
+    }
+
+    document.querySelectorAll('[data-lazy="false"]').forEach((element) => {
       const noscriptTag = element.querySelector("noscript");
       if (noscriptTag) {
         element.innerHTML = noscriptTag.innerHTML;
@@ -365,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  window.addEventListener("scroll", removeNoscript);
+  window.addEventListener("scroll", removeNoscript, { once: true });
 
   initSwipers();
 });

@@ -222,15 +222,15 @@
         {
           "name": "Sete de Setembro",
           "adress": "R. Maj. Bonifácio, 541 - Sete de Setembro, Andradas - MG, 37841-004",
-          "phone": "",
+          "phone": " (35) 3414-4558",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/andradas/sete-de-setembro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },

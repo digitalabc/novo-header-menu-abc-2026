@@ -770,7 +770,16 @@ const _listaCategoriaABC = [
   "JANELA DE ALUMINIO",
   "JANELAS",
   "JANELAS",
-  "LOUÇAS/INOX/SINTETICO",
+  "BANCA INOX",
+  "BANCA INOX C/ FOGÃO",
+  "CUBAS INOX ACESS",
+  "CUBAS INOX ACETINADO",
+  "CUBAS INOX ALTO BRILHO",
+  "CUBAS INOX POLIDO/BRILHO",
+  "CUBAS INOX TEXTURIZADA",
+  "CUBAS INOX/VIDRO",
+  "MICTORIO INOX",
+  "TANQUE INOX",
   "MATERIAIS HIDRÁULICOS",
   "MEDIDOR CONTORNO",
   "METAIS SANITÁRIOS",
@@ -789,6 +798,7 @@ const _listaCategoriaABC = [
   "VENTOSA",
   "VERNIZ PORTA/JANELA/PAREDE"
 ];
+
 
 const retiraLojaArr = _listaCategoriaABC.map(categoria => categoria.toLowerCase());
 const produtoSKUDiv = document.getElementById("productSku");

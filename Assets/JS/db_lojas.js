@@ -162,7 +162,6 @@ const estados = [
 			"Resende",
 			"Rio das Ostras",
 			"Rio de Janeiro",
-			"Santo Antônio de Pádua",
 			"Teresópolis",
 			"Três Rios",
 			"Valença",

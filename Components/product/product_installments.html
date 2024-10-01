@@ -46,7 +46,7 @@ end~}}
           <ul>
             {{~ for installment in plan.installments~}}
             <li>
-              {{installment.number}}x de {{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} {{if installment.fees}}com juros{{else}}sem juros{{end}}
+              {{installment.number}}x de {{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} {{if installment.fees}}com juros{{else}}sem juros{{end}} {{if plan.display_name | string.downcase | string.contains 'pix'}} + 5% de desconto{{end}}
             </li>
             {{~ end ~}}
           </ul>

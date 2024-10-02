@@ -123,6 +123,6 @@
     display: none !important;
 }
 
-[data-frete-item-tipo="Custom"]:not(.quotes_overview) {
+/* [data-frete-item-tipo="Custom"]:not(.quotes_overview) {
     display: none;
-}
+} */

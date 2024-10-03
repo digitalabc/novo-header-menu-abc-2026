@@ -90,5 +90,6 @@
 {{~ if displayed_installment ~}}
     {{ product_filtered_installment installment_plans: prices.installment_plans displayed_installment: displayed_installment }}
 {{~ else ~}}
-    {{ product_best_installment best_installment: prices.best_installment }}
+  {{## tirando temporariamente - google merchant ##}}
+    {{## product_best_installment best_installment: prices.best_installment ##}}
 {{~ end ~}}

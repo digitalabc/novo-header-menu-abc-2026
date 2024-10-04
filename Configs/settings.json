@@ -2248,6 +2248,25 @@
       ]
     },
     {
+      "name": "Rio Pardo de Minas",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Praça Dr. Miguel Rosa, 46 - Centro, Rio Pardo de Minas - MG, 39530-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/rio-pardo-de-minas/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Rio Pomba",
       "state": "Minas Gerais",
       "stores": [

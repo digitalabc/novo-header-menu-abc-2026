@@ -4842,6 +4842,25 @@
       ]
     },
     {
+      "name": "Quatis",
+      "state": "Rio de Janeiro",
+      "stores": [
+        {
+          "name": "Jardim Independencia",
+          "adress": "R. Vítor Marcondes Sampaio, 60 - Jardim Independencia, Quatis - RJ, 27430-110",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/quatis/jardim-independencia",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Resende",
       "state": "Rio de Janeiro",
       "stores": [

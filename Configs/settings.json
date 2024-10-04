@@ -5395,6 +5395,19 @@
       "state": "Bahia",
       "stores": [
         {
+          "name": "Boa Vista",
+          "adress": "Av. Gilenilda Alves, 234 - Boa Vista, Vitória da Conquista - BA, 45027-560",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/vitoria-da-conquista/boa-vista",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        },
+        {
           "name": "Felícia",
           "adress": "Av. Juracy Magalhães, 1240 - Letra A - Felícia, Vitória da Conquista - BA, 45055-235",
           "phone": "(77) 3420-9005",

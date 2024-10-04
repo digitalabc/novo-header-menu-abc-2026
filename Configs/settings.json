@@ -4302,6 +4302,25 @@
       ]
     },
     {
+      "name": "Nova Venécia",
+      "state": "Espírito Santo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Colatina, 393 - Centro, Nova Venécia - ES, 29830-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/nova-venecia/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "São Mateus",
       "state": "Espírito Santo",
       "stores": [

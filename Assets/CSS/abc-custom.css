@@ -106,6 +106,13 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
   font-weight: 300;
 }
 
+.topbar {
+  background: #000;
+}
+.topbar__container li span {
+  color: #fff;
+}
+
 @media (min-width: 991px) {
   /* menu autoatendimento rodape */
   .footer__block--ajuda {

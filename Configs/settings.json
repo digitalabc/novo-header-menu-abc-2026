@@ -2197,14 +2197,14 @@
         {
           "name": "Centro",
           "adress": "Rua Major Christiano Guimaraes, 96 - Centro, Recreio - MG, 36740-000",
-          "phone": "",
+          "phone": "(32) 99848-7368",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/recreio/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

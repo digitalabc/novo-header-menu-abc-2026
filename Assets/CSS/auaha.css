@@ -5266,9 +5266,11 @@ div[class^="como-chegar"] > span + i {
   color: #fff;
   font-weight: 600;
   font-size: 20px;
+  transition: 0.3s all ease-in-out;
 }
 .black_friday__link:hover {
-  color: #fff;
+  background-color: #CD7A20;
+  transform: scale(1.2);
 }
 .black_friday__disclaimer {
   color: #fff;
@@ -5380,7 +5382,7 @@ div[class^="como-chegar"] > span + i {
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   &:hover {
-    border: 3px solid #D88730;
+    outline: 3px solid #fff;
   }
 }
 

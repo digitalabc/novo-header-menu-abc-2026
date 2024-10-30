@@ -5270,7 +5270,8 @@ div[class^="como-chegar"] > span + i {
 }
 .black_friday__link:hover {
   background-color: #CD7A20;
-  transform: scale(1.2);
+  color: #fff;
+  transform: scale(1.1);
 }
 .black_friday__disclaimer {
   color: #fff;

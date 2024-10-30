@@ -5373,12 +5373,17 @@ div[class^="como-chegar"] > span + i {
   align-items: center;
   width: calc(((100% - 3 * 75px) / 4));
   height: auto;
-  border: 1px solid #fff;
+  border: none; 
   border-radius: 8px;
   background: #454041;
   aspect-ratio: 180/150;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    border: 3px solid #D88730;
+  }
 }
+
 
 .black_friday__faq {
   padding: 32px 0;
@@ -5398,6 +5403,7 @@ div[class^="como-chegar"] > span + i {
   margin-bottom: 16px;
 }
 .black_friday__question button {
+  text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10277,8 +10283,9 @@ section.newsletter--home .newsletter__alert {
     right: 0;
   }
   .black_friday__showcase-title a:hover {
-    background-color: #000;
-    color: #d88730;
+    background-color: #d88730;
+    color: #fff;
+    border: none;
   }
   .attendence
     main

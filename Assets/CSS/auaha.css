@@ -5383,7 +5383,9 @@ div[class^="como-chegar"] > span + i {
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   &:hover {
-    outline: 3px solid #fff;
+    outline: 3px solid #CD7A20;
+    transform: scale(1.03);
+    border: 2px solid #CD7A20;
   }
 }
 

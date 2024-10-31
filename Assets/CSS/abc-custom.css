@@ -276,6 +276,10 @@ display: none;
   fill: #808080;
 }
 
+.user__dropdown #register-href {
+  color: #d88730;
+}
+
 .user {
   position: relative;
   color: #fff;

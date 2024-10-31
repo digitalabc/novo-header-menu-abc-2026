@@ -79,14 +79,17 @@ html {
   }
 }
 .headerLogo {
-  float: none;
+    float: none;
 }
+
 .headerLogo img {
-  margin: 0;
-  max-width: 153px;
-  width: 100%;
-  image-rendering: -webkit-optimize-contrast;
+    margin: 0;
+    max-width: 153px;
+    width: 100%;
+    image-rendering: -webkit-optimize-contrast;
+    filter: brightness(0) saturate(100%) invert(91%) sepia(6%) saturate(0%) hue-rotate(180deg) brightness(103%) contrast(90%);
 }
+
 .fechamento-checkout .copyright-footer {
   float: none;
   margin: auto;

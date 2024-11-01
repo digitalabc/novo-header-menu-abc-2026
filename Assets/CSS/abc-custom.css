@@ -528,5 +528,33 @@ filter: brightness(0) invert(1);
     fill: #d88730 !important;
 }
 
+/*5% DE DESCONTO NO PIX*/
+.ruler__item:nth-child(3) .ruler__text-wrapper {
+  background-color: #38BEB01A;
+  border: 1px solid #38BEB0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+}
+
+.ruler__item:nth-child(3) .ruler__text-wrapper svg path {
+  fill: #38BEB0 !important;
+}
+
+.ruler__item:nth-child(3) .ruler__text {
+  color: #000;
+  margin-left: 8px;
+}
+
+.ruler__item:nth-child(3) .ruler__text a {
+  text-decoration: none;
+}
+
+.ruler__item:nth-child(3) .ruler__text a strong {
+  color: #38BEB0 !important;
+  font-weight: bold;
+}
+
 
 

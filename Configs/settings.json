@@ -2708,6 +2708,19 @@
       "state": "Minas Gerais",
       "stores": [
         {
+          "name": "Olinda",
+          "adress": "Av. Dona Maria de Santana Borges, 1536 - Olinda, Uberaba - MG, 38.055-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/uberaba/olinda",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        },
+        {
           "name": "São Benedito",
           "adress": "Av. Barão do Rio Branco, 848 - São Benedito, Uberaba - MG, 38020-300",
           "phone": "(34) 3311-9731",

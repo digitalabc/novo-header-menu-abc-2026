@@ -3351,6 +3351,25 @@
       ]
     },
     {
+      "name": "Iracemápolis",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Distrito Industrial",
+          "adress": "R. João Casemiro Filho, Filho, 37 - Distrito Industrial, Iracemápolis - SP, 13497-006",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/iracemapolis/distrito-industrial",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Itapeva",
       "state": "São Paulo",
       "stores": [

@@ -207,6 +207,7 @@ const estados = [
 			"Aparecida de Goiânia",
 			"Caldas Novas",
 			"Catalão",
+			"Formosa",
 			"Goiânia",
 			"Trindade"
 		]
@@ -258,6 +259,7 @@ const estados = [
 			"Hortolândia",
 			"Ibitinga",
 			"Indaiatuba",
+			"Iracemápolis",
 			"Itapeva",
 			"Itapira",
 			"Itu",

@@ -498,10 +498,6 @@ filter: brightness(0) invert(1);
     color: #e5e5e5;
 }
 
-.nav-link svg path {
-    fill: #e5e5e5 !important;
-}
-
 #menu-offcanvas .nav-mobile__link {
     color: #e5e5e5;
 }

@@ -5652,6 +5652,25 @@
       ]
     },
     {
+      "name": "Formosa",
+      "state": "Goiás",
+      "stores": [
+        {
+          "name": "Formosinha",
+          "adress": "Av. Maestro João Luiz do Espírito Santo, 20 - Formosinha, Formosa - GO, 73813-120",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/formosa/formosinha",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Goiânia",
       "state": "Goiás",
       "stores": [

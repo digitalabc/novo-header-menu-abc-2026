@@ -236,7 +236,6 @@ const estados = [
 		"cidades": [
 			"Amparo",
 			"Andradina",
-			"Araraquara",
 			"Artur Nogueira",
 			"Arujá",
 			"Assis",

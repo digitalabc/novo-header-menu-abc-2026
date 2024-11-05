@@ -5414,6 +5414,20 @@ div[class^="como-chegar"] > span + i {
 .black_friday__question {
   margin-bottom: 16px;
 }
+/* .black_friday__question button {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px 16px 20px;
+  width: 100%;
+  border-radius: 12px;
+  background: #1d1d1d;
+  color: #d88730;
+  font-weight: 600;
+  font-size: 20px;
+  transition: all 0.2s ease-in-out;
+} */
 .black_friday__question button {
   text-align: left;
   display: flex;
@@ -5427,6 +5441,11 @@ div[class^="como-chegar"] > span + i {
   font-weight: 600;
   font-size: 20px;
   transition: all 0.2s ease-in-out;
+}
+.black_friday__question h3 {
+  color: #d88730;
+  font-weight: 600;
+  font-size: 20px;  
 }
 .black_friday__question button.active {
   border-radius: 16px 16px 0 0;

@@ -1090,3 +1090,7 @@ html {
 h2.title-confirmacao {
   margin-top: 20px;
 }
+
+::-webkit-scrollbar {
+  width: 10px !important;
+}

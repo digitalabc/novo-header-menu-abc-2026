@@ -21,7 +21,10 @@
       product_has_specialist_popup = false
       product_hide_pix = false
       product_show_coupon = false
-      ~}}
+
+    ## sem mensagem 5% desconto do pix para categorias especificas ##
+    noPixMesssage = product.product_categories | array.filter  @(do; ret $0.name == 'PISOS E REVESTIMENTOS';end)
+  ~}}
       
   {{ lista_categoria_popup = ["ARGAMASSAS/REJUNTES", "PISOS E REVESTIMENTOS", "ACESSORIOS/LOUCA", "ASSENTO ALMOFADADO", "ASSENTO ESPECIAL", "ASSENTO INFANTIL", "ASSENTO LINHA ESPECIFICA", "ASSENTO SOFT CLOSE", "ASSENTO TPJ", "ASSENTO TPK", "ASSENTOS MDF", "ASSENTOS POLYESTER", "BANCA GRANITO", "BANCA SINTETICO", "BANCA VIDRO", "BIDE LOUCA", "COLUNA LOUÇA", "COLUNA SINTETICA", "CUBA POLYESTER APOIO", "CUBAS LOUÇA APOIO", "CUBAS LOUÇA EMBUTIR", "CUBAS LOUÇA OUTROS", "CUBAS LOUÇA SEMI ENCAIXE", "CUBAS LOUÇA SOBREPOR", "CUBAS MARMORE/GRANITO", "CUBAS QUARTZO", "CUBAS VIDRO APOIO", "ECONOMICO", "ESPECIAIS", "KIT LOUÇAS", "LAVATORIOS LOUÇA COLUNA", "LAVATORIOS LOUÇA DE PISO", "LAVATORIOS LOUÇA OUTROS", "LAVATORIOS LOUÇA SUSPENSO", "LUXO", "MEDIO LUXO", "MICTORIO LOUCA", "OUTROS/LOUCA", "RETANGULAR", "SUPER LUXO", "TANQUE LOUCA", "TANQUE SIMPLES", "TANQUE/PLASTICO"] }}
   
@@ -63,6 +66,11 @@
   {{ 
     produtoEncomenda = data.product.prices.price_tables | array.filter @(do; ret $0.id == 84 ;end) 
   }}
+
+  {{## sem mensagem 5% desconto do pix para categorias especificas ## }}
+  {{~ if (noPixMesssage != empty) ~}}
+  {{ product_hide_pix = true }}
+  {{~ end ~}}
   <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}" {{~ if !produtoEncomenda.empty? ~}}data-produto-encomenda="{{!produtoEncomenda.empty?}}"{{~ end ~}}> 
   <input type="hidden" id="product-variant-id" name="product-variant-id" value="{{ data.product.product_variant_id }}">
 

@@ -94,19 +94,20 @@
     <!-- Realidade Aumentada -->
     <div class="virtual_reality__banner desktop">
       {{ valid = true }}
-      {{~ for category in product.product_categories ~}}
+      {{## trocado categoria por breadcrumb devido mudancas na arvore de categoria ##}}
+      {{~ for breadcrumb in product.breadcrumbs ~}}
         {{ if valid }}
-          {{~ if category.name | string.downcase == "metais sanitários" ~}}
+          {{~ if breadcrumb.text | string.downcase == "metais sanitários" ~}}
           <img
             src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-metais.jpg?theme={{store.theme}}&v={{store.last_modified}}"
             alt="Realidade Aumentada Qr-Code">
             {{ valid = false }}
-          {{~ else if category.name | string.downcase == "banho e aquecimento água" ~}}
+          {{~ else if breadcrumb.text | string.downcase == "banho e aquecimento água" ~}}
           <img
             src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-chuveiro-ou-duchas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
             alt="Realidade Aumentada Qr-Code">
             {{ valid = false }}
-          {{~ else if category.name | string.downcase == "louças/inox/sintetico" ~}}
+          {{~ else if breadcrumb.text | string.downcase == "louças/inox/sintetico" ~}}
           <img
             src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-loucas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
             alt="Realidade Aumentada Qr-Code">

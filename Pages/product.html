@@ -36,7 +36,9 @@
     {{~ end ~}}
   {{~ end ~}}
 
-  {{ cat_pisos = product.product_categories | array.filter  @(do; ret $0.active == true && $0.id == 1618;end) }}
+  {{ cat_realidade_aumentada = ["metais sanitários", "banho e aquecimento água", "louças/inox/sintetico"] }}
+  {{## cat_pisos = product.product_categories | array.filter  @(do; ret $0.active == true && $0.id == 1618;end) ##}}
+  {{ cat_pisos = product.product_categories | array.filter  @(do; ret $0.active == true && (cat_realidade_aumentada | array.contains ($0.name | string.downcase)) ;end) }}
   {{ is_pisos = cat_pisos == [] ? false : true}}
 
   {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936", "51252", "47379", "39082", "65266", "56914", "00661", "28149", "58812", "64995", "62360", "29457", "64954", "47745", "34647"] }}

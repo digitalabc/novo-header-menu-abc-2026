@@ -1798,14 +1798,14 @@
         {
           "name": "ABC da Construção Jardim Canadá",
           "adress": "Av. Canadá, 63 - Jardim Canada, Nova Lima - MG, 34007-654",
-          "phone": "",
+          "phone": "(31) 3340-3812",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/jardim-canada",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "9:00 às 19:00",
+          "tuesday": "9:00 às 19:00",
+          "wednesday": "9:00 às 19:00",
+          "thursday": "9:00 às 19:00",
+          "friday": "9:00 às 19:00",
+          "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
         }
       ]

@@ -1677,15 +1677,15 @@
         {
           "name": "Centro",
           "adress": "Praça 12 de Outubro, 122 - Centro, Monte Azul - MG, 39500-000",
-          "phone": "",
+          "phone": "(38) 99753-8473",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/monte-azul/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": ""
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },

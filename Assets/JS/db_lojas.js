@@ -175,6 +175,7 @@ const estados = [
 		"coluna": "2",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Guanambi",
 			"Teixeira de Freitas",
 			"Vitória da Conquista"
 		]
@@ -292,6 +293,7 @@ const estados = [
 			"São Roque",
 			"São Sebastião",
 			"Sertãozinho",
+			"Socorro",
 			"Sorocaba",
 			"Taguaí",
 			"Taubaté",

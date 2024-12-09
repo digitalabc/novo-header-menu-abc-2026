@@ -127,7 +127,7 @@ color: #e5e5e5;
 
 /* NÃO APAGAR! Header Menu BLACK FRIDAY ABC 2024 */
 
-.navbar-brand svg rect {
+/* .navbar-brand svg rect {
 fill: #e5e5e5; 
 }
 
@@ -147,26 +147,26 @@ a:hover {
 
 .navbar-brand img {
 filter: brightness(0) invert(1);
-}
+} */
 
 
 /* Barra superior do site */
-.topbar {
+/* .topbar {
   background: #4D4D4D;
 }
 
 .topbar__container li {
   height: 32px;
   font-weight: 600;
-}
+} */
 
-.topbar__container li a:hover {
-  /*Tirar o Span do HTML "Compre pelo Whatsapp*/
+/*Tirar o Span do HTML "Compre pelo Whatsapp*/
+/* .topbar__container li a:hover {
   color: #D88730;
-}
+} */
 
 /* Fundo do Header */
-.navbar {
+/* .navbar {
 background-color: #232323;
 }
 
@@ -176,11 +176,11 @@ fill: #e5e5e5 !important;
 
 .nav-item.nav-item--nv1[style="order:10"] {
 display: none;
-}
+} */
 
 
 /* Componente de Pesquisar produtos */
-.search__form input {
+/* .search__form input {
   color: #E5E5E5;
   border-bottom: 1px solid #E5E5E5;
 }
@@ -195,20 +195,20 @@ display: none;
 
 .search__form input::placeholder {
   color: #676767;
-}
+} */
 
 
 /* Nossas Lojas */
-.navbar__lojas {
+/* .navbar__lojas {
   color: #E5E5E5;
 }
 
 .navbar__lojas:hover {
   color: #D88730;
-}
+} */
 
 /* Entre ou cadastre-se */
-.user {
+/* .user {
   color: #fff;
 }
 
@@ -239,10 +239,10 @@ display: none;
 .user__dropdown #user-href {
   border-radius: 6px;
   background: #4D4D4D;
-}
+} */
 
 /* Meu carrinho */
-.minicart__button:hover {
+/* .minicart__button:hover {
   color: #d88730;
 }
 
@@ -269,10 +269,10 @@ display: none;
 
 .navbar__lojas svg {
   fill: #808080;
-}
+} */
 
 /* Login */
-.user__header svg {
+/* .user__header svg {
   fill: #808080;
 }
 
@@ -283,21 +283,21 @@ display: none;
 .user {
   position: relative;
   color: #fff;
-}
+} */
 
 /* Minicart */
-.minicart__button:hover {
+/* .minicart__button:hover {
   color: #D88730;
 }
 
 .minicart__count.label-cart-count-formatted {
 font-size: 14px;
 color: #e5e5e5;
-}
+} */
 
 
 /* "Todas as categorias" */
-.nav-all__item--root {
+/* .nav-all__item--root {
   color: #E5E5E5
 }
 
@@ -359,20 +359,20 @@ color: #e5e5e5;
 
 .navbar__wrapper .nav-item--sub > a.nav-link {
   color: #e5e5e5;
-}
+} */
 
 /*banner oportunidades*/
-.banner-oportunidades ul li {
+/* .banner-oportunidades ul li {
     border-radius: 8px;
 }
-
+ */
 /*banner promoções*/
-.swiper-backface-hidden .swiper-slide {
+/* .swiper-backface-hidden .swiper-slide {
     border-radius: 8px;
-}
+} */
 
 /*vantagens*/
-.ruler__list .ruler__item svg path {
+/* .ruler__list .ruler__item svg path {
   fill: #1a1a1a !important;
 }
 
@@ -383,13 +383,14 @@ color: #e5e5e5;
 .ruler__text strong {
   color: #4d4d4d !important;
 }
-
-.ruler__text {
-  font-weight: 300 !important; /* Controla o peso dos textos que não são strong */
-}
+*/
+/* Controla o peso dos textos que não são strong */
+/* .ruler__text {
+  font-weight: 300 !important; 
+} */
 
 /*News Letter*/
-section.newsletter--home {
+/* section.newsletter--home {
   background-color: #1a1a1a;
   border-radius: 8px;
 
@@ -413,19 +414,19 @@ section.newsletter--home .newsletter__button:hover {
 .newsletter--home {
   background-image: none !important;
 }
-
+ */
 
 /*CHECKOUT*/
-.headFechamento {
+/* .headFechamento {
 background: #1a1a1a;
 }
 
 .logoHome {
 filter: brightness(0) invert(1);
-}
+} */
 
 /*Minicart lateral*/
-.minicart__offcanvas-top {
+/* .minicart__offcanvas-top {
   background: #1a1a1a;
 }
 
@@ -433,10 +434,10 @@ filter: brightness(0) invert(1);
   background: #4d4d4d;
 
 }
-
+ */
 /*MOBILE*/
 
-.menu__button svg path {
+/* .menu__button svg path {
     fill: #d88730;
 }
 
@@ -478,7 +479,7 @@ filter: brightness(0) invert(1);
 }
 
 
-#menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2,  {
+#menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2  {
     background: #282828;
 }
 
@@ -526,7 +527,9 @@ filter: brightness(0) invert(1);
 
 .nav-mobile__back svg path {
     fill: #d88730 !important;
-}
+} */
+
+/* fim black friday */
 
 /*5% DE DESCONTO NO PIX*/
 .ruler__item:nth-child(2) .ruler__text-wrapper {

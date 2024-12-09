@@ -4043,6 +4043,25 @@
       ]
     },
     {
+      "name": "Socorro",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Jardim Diamante",
+          "adress": "Av. Pref. José Mario de Faria, 881 - Lavras de Baixo, Socorro - SP, 13960-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/socorro/lavras-de-baixo",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Sorocaba",
       "state": "São Paulo",
       "stores": [

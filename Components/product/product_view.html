@@ -112,6 +112,11 @@
             src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-loucas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
             alt="Realidade Aumentada Qr-Code">
             {{ valid = false }}
+          {{~ else if breadcrumb.text | string.downcase == "pisos e revestimentos" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
           {{~ end ~}}
         {{ end }}
       {{~ end ~}}

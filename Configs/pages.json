@@ -26,7 +26,7 @@
             },
             {
                 "urlMatch": "realidade-aumentada",
-                "path": "Custom/realidade-aumentada.html",
+                "path": "custom/realidade-aumentada.html",
                 "priority": 20
             },
             {

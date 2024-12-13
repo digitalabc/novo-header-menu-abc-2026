@@ -266,7 +266,6 @@ const estados = [
 			"Jacareí",
 			"Jaú",
 			"Jaguariúna",
-			"Lins",
 			"Lorena",
 			"Louveira",
 			"Marília",

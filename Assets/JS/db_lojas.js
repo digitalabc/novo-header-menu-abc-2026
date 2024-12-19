@@ -109,7 +109,6 @@ const estados = [
 			"Sabará",
 			"Sacramento", 
 			"Salinas",
-			"Santa Luzia",
 			"Santos Dumont",
 			"São Francisco", 
 			"São Geraldo",

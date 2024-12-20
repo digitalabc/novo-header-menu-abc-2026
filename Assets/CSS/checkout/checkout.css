@@ -126,3 +126,35 @@
 /* [data-frete-item-tipo="Custom"]:not(.quotes_overview) {
     display: none;
 } */
+
+/* pde-450 */
+.warning__message__wrapper {
+    display: flex;
+    justify-content: center;
+}
+.warning__message {
+    padding: 15px;         
+}
+
+.warning__message>div {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 16px;
+    background: #FFF9E3;
+}
+
+.warning__message>div>p {
+    color: #333;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.warning__message>div>p>strong {
+    font-weight: 700;
+}

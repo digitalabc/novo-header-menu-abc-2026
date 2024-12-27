@@ -1,13 +1,11 @@
-<div class="best-installment">
-    {{~ if !product_hide_pix}}        
+<div class="">        
     {{~ if best_installment.display_name | string.contains "Boleto" ~}}
-        <p><strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</strong> no boleto</p>
-    {{~ else if best_installment.display_name | string.contains "Pix" ~}}
-        <p><strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }}</strong> no PIX</p>
+        <p>{{ best_installment.value | math.format "c" "pt-BR" }} no boleto</p>
     {{~ else if best_installment.display_name | string.contains "Cartão" ~}}
-        <p>Ou <strong>{{ best_installment.number }}x</strong> de <strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</strong> <span>({{ if best_installment.fees }}com juros{{ else }}sem juros{{ end }})</span></p>
+        <p>ou <b>em {{ best_installment.number }}x de {{ best_installment.value | math.format "c" "pt-BR" }} {{ if best_installment.fees }}com juros{{ else }}sem juros{{ end }} no cartão</b></p>
+    {{~ else if best_installment.display_name | string.contains "Pix" ~}}
+        <p>{{ best_installment.value | math.format "c" "pt-BR" }} no PIX</p>
     {{~ else ~}}
-        <p>Ou <strong>{{ best_installment.number }}x</strong> de <strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</strong> <span>({{ if best_installment.fees }}com juros{{ else }}sem juros{{ end }})</span></p>
-    {{~ end ~}}
+        <p>ou <b>em {{ best_installment.number }}x de {{ best_installment.value | math.format "c" "pt-BR" }} {{ if best_installment.fees }}com juros{{ else }}sem juros{{ end }}</b></p>
     {{~ end ~}}
 </div>

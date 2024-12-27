@@ -5,55 +5,73 @@ let pageUser = null;
  * Checks if the user is logged to change the site's login settings.
 */
 async function checkUserLogin() {
+    let user;
     try {
-        const user = await client.user.get();
+        user = await client.customer.get();
     
-        if(user != null) {
-            pageUser = user;
-            const name = parseUserName(user.name);
-
-            document.querySelectorAll(".user-name").forEach(el => {
-              el.innerHTML = name;
-            });
-            
-            const logoutUrl = client.user.logoutUrl();
-            document.getElementById("logout-href").href = logoutUrl + "?returnUrl=" + window.location.href;
-
-            document.querySelectorAll(".not-authenticated").forEach(div => {
-              div.style.display = 'none';
-            });
-
-            document.querySelectorAll(".authenticated").forEach(div => {
-              div.style.display = 'block';
-            });
-        }
+        const login = document.querySelectorAll("[id='login']");
+        const userName = document.querySelectorAll("[id='user-name']");
+        const userHref = document.querySelectorAll("[id='user-href']");
+        const loggedUser = document.querySelectorAll("[id='logged-user']");
+        const userAction = document.querySelectorAll("[id='user-action']");
         
-        else{
-            document.querySelectorAll(".user-href").forEach(div => {
-              div.href += window.location.href;
+        if(user?.data) {
+            pageUser = user;
+            const name = parseUserName(user.data.customerName);
+            // const logoutUrl = client.user.logoutUrl();
+
+            login.forEach(x => {
+                x.classList.add('hidden');
+            });
+
+            loggedUser.forEach(x => {
+                x.classList.remove('hidden');
+                x.classList.add('flex');
+            });
+
+            // userLogout.forEach(x => {
+            //     x.href = logoutUrl + "?returnUrl=" + window.location.href;
+            // });
+            
+            userName.forEach(x => {
+                x.innerHTML = `${name}`
             });
             
-            document.querySelectorAll(".not-authenticated").forEach(div => {
-              div.style.display = 'block';
+            userAction.forEach(x => {
+                x.innerHTML = "Logout";
             });
         }
-        window.dispatchEvent(new CustomEvent("userChecked", { email: user?.email} ));
+        else{
+            login.forEach(x => {
+                x.classList.remove('hidden');
+            });
+
+            loggedUser.forEach(x => {
+                x.classList.add('hidden');
+                x.classList.remove('flex');
+            });
+            
+            userHref.forEach(x => {
+                x.href += window.location.href;
+            });
+        }
+        await handleUserCheckDataLayerEvent(); 
     } catch(error) {
-        console.error(error);
+        console.log(error);
     }
+}
+
+function redirectToLogin(){
+    const loginUrl = document.getElementById('login-url')?.value;
+    if (!loginUrl) return;
+    
+    window.location = loginUrl + window.location.href;
 }
 
 /**
  * Returns the first name of the user.
  * @param {string} fullname - User full name.
 */
-function redirectToLogin(){
-    const loginUrl = document.getElementById('login-url')?.value;
-    if (!loginUrl) return;
-
-    window.location = loginUrl + window.location.href;
-}
-
 function parseUserName(fullname) {
     const names = fullname.split(" ");
     return names[0];
@@ -63,12 +81,12 @@ function parseUserName(fullname) {
  * Show user options on mouse enter.
 */
 function userMouseEnter(){
-    document.getElementById("user-options").style.visibility = "visible";
+    document.getElementById("user-options").style.display = "flex";
 }
 
 /**
  * Hides user options on mouse leave.
 */
 function userMouseLeave(){
-    document.getElementById("user-options").style.visibility = "hidden";
+    document.getElementById("user-options").style.display = "none";
 }

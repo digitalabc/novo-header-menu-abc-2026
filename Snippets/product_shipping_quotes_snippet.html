@@ -7,43 +7,14 @@
         await client.snippet.render("product_shipping_quotes_snippet.html", ...);
 ## }}
 {{ quotes = data.shipping_quotes }}
-
-{{~ retirada_com_maior_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" | array.first ~}}
-{{~ retirada = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" ~}}
-
-{{~ custom_quotes = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" ~}}
-
-{{~ entrega_com_menor_preco = custom_quotes | array.sort "value" | array.first ~}}
-{{~ entrega_com_menor_prazo = custom_quotes | array.sort "deadline" | array.first ~}}
-
 {{~ if quotes ~}}
-<div class="product-shipping__list">
-    {{~ if retirada_com_maior_prazo ~}}
-      <div class="product-shipping__quote free-shipping">
-          <span>Retirada em loja</span>
-          <span class="free-shipping" >
-            Frete grátis
-          </span>
-          <small>Em até {{ retirada_com_maior_prazo.deadline }} dias úteis</small>
-      </div>
-    {{ end }}
-    {{~ if entrega_com_menor_preco ~}}
-      <div class="product-shipping__quote">
-          <span>Entrega econômica</span>
-          <span>
-            {{ entrega_com_menor_preco.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
-          </span>
-          <small>Em até {{ entrega_com_menor_preco.deadline }} dias úteis</small>
-      </div>
-    {{ end }}
-    {{~ if entrega_com_menor_preco?.name != entrega_com_menor_prazo?.name ~}}
-      <div class="product-shipping__quote">
-          <span>Entrega expressa</span>
-          <span>
-            {{ entrega_com_menor_prazo.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
-          </span>
-          <small>Em até {{ entrega_com_menor_prazo.deadline }} dias úteis</small>
-      </div>
-    {{ end }}
-</div>
+    {{~ for quote in quotes ~}}
+        <div class="product-shipping-quote container-fluid mb-1">
+            <strong>{{ quote.name }}</strong>
+            <br>
+            <span style="font-size: 20px;">{{ quote.value | math.format "c" "pt-BR" }}</span>
+            <br>
+            <span style="font-size: 12px;">Em até {{ quote.deadline }} dias úteis</span>
+        </div>
+    {{~ end ~}}
 {{~ end ~}}

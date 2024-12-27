@@ -1,121 +1,123 @@
 {{ ##
     Description: Renders a pagination button depending on the pagination
-                    type: by offset or by cursor (buttons with page numbers or "show more button", respectively).
-                    For the first option it is necessary to set a window range to be
-                    be displayed in the component in settings.json
+                 type: by offset or by cursor (buttons with page numbers or "show more button", respectively).
+                 For the first option it is necessary to set a window range to be
+                 be displayed in the component in settings.json
     Params:
     - products: the products returned from the query response
     - page_size: the quantity of products displayed on a page
     - current_page: the current page of products
     Usage:
-        pagination products: data..products page_size: page_size current_page: current_page
+      pagination products: data..products page_size: page_size current_page: current_page
 ## }}
 
 {{~ if products?.page_info # Pagination by cursor ~}}
-{{~ if (products.page_info.has_next_page) ~}}
-<input type="hidden" class="end-cursor" value='{{ products.page_info.end_cursor }}'>
-<div class="col-12 d-flex justify-content-center" id="div-button-show-more">
-    <button id="show-more-button" type="button" class="btn btn-primary">Mostrar mais</button>
-</div>
-{{~ end ~}}
+    {{~ if (products.page_info.has_next_page) ~}}
+    <div class="flex flex-col justify-between items-center my-3 py-3" id="div-button-show-more" data-end-cursor="{{ products.page_info.end_cursor }}">
+        <button type="button" class="flex items-center justify-center text-white bg-primary-500 lg:hover:bg-primary-600 p-2" id="show-more-button">Mostrar mais</button>
+    </div>
+    {{~ end ~}}    
 {{~ else # Pagination by offset ~}}
-<nav class="pagination" aria-label="Page navigation">
-    <ul class="pagination__list">
-        {{ func totalPages
+    {{ 
+        func totalPages
             total = products.total_count / page_size | math.ceil | string.append ""
             ret total | string.to_int
-          end }}
-        {{ total = totalPages }}
+        end
+        total = totalPages
+    }}
+    {{~ if total > 1 ~}}
+    <div class="flex justify-center items-center my-3">
+        <nav aria-label="Page navigation">
+            <ul class="flex flex-row items-start">
+                {{~ if current_page != 1 # Buttons for previous page and first page ~}}
+                    <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_first'>
+                        <a class="px-4 py-2" id='first-page' onclick="selectPage(1);" href="#">
+                            <img src="{{- store.urls.static_img}}icons/double-arrow-left.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="double-arrow-left" class="w-5 h-5"/>
+                        </a>
+                    </li>
+                    <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_prev'><a class="px-4 py-2" id='prev-page'
+                        onclick="selectPage('{{ current_page - 1 }}');" href="#">Anterior</a>
+                    </li>
+                {{~ end ~}}
+                {{ window_size = (settings.pagination_by_offset.window * 2) + 1 }}
+                
+                {{~ if total < window_size # Window range size is greater than the total of pages ~}}
+                    {{~ for page in 1..total ~}}
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_{{page}}'>
+                            <a 
+                            class="px-4 py-2" 
+                            id='{{page}}'
+                            onclick="selectPage(this.id);" 
+                            href="#">{{page}}</a>
+                        </li>
+                    {{~ end ~}}
+                {{~ else # Total pages is greater than window range size ~}}
+                    {{ 
+                        if current_page > settings.pagination_by_offset.window
+                            min = (current_page - settings.pagination_by_offset.window) | string.append "" | string.to_int
+                        else
+                            min = 1
+                        end
 
-        {{~ if current_page != 1 # Buttons for previous page ~}}
-        <li class="page-item" id='pagination_prev'>
-          <a class="page-link" id='prev-page' onclick="selectPage('{{ current_page - 1 }}');" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="9.825" height="15.229" viewBox="0 0 9.825 15.229">
-              <path id="Path_23324" data-name="Path 23324" d="M1.225,0A1.049,1.049,0,0,1,1.85.272Q5.627,3.506,9.4,6.743a1.073,1.073,0,0,1-.008,1.716Q5.6,11.711,1.8,14.957a1.081,1.081,0,1,1-1.37-1.672Q3.655,10.52,6.886,7.76c.153-.131.165-.189.005-.325Q3.793,4.793.7,2.141a1.516,1.516,0,0,1-.626-.83A1.1,1.1,0,0,1,1.225,0Z" transform="translate(9.826 15.229) rotate(180)"/>
-            </svg>
-          </a>
-        </li>
-        {{~ end ~}}
-        {{ window_size = (settings.pagination_by_offset.window * 2) + 1 }}
+                        if (current_page + settings.pagination_by_offset.window) < total
+                            max = (current_page + settings.pagination_by_offset.window) | string.append "" | string.to_int
+                        else
+                            max = total
+                        end
+                    }}
 
-        {{~ if total < window_size # Window range size is greater than the total of pages ~}}
-        {{~ for page in 1..total ~}}
-          <li class="page-item" id='pagination_{{page}}'><a class="page-link" id='{{page}}' onclick="selectPage(this.id);"
-          href="#">{{page}}</a>
-          </li>
-        {{~ end ~}}
+                    <div class="hidden lg:flex">
+                    {{~ if min > 1 && max < total # Display page window in the middle of range ~}}
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_1'><a class="px-4 py-2" id='1'
+                            onclick="selectPage(1);" href="#">1</a>
+                        </li>
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700  disabled" id='pagination_space'><a class="px-4 py-2" id='space-before'>...</a></li>
+                        {{ for page in min..max }}
+                            <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_{{page}}'><a class="px-4 py-2" id='{{page}}'
+                                onclick="selectPage(this.id);" href="#">{{page}}</a>
+                            </li>
+                        {{~ end ~}}
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700  disabled" id='pagination_space'><a class="px-4 py-2" id='space-after'>...</a></li>
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_{{total}}'><a class="px-4 py-2" id='{{total}}'
+                            onclick="selectPage('{{total}}');" href="#">{{total}}</a>
+                        </li>
+                    {{~ else if min == 1 && max < total # Display page window in the beginning of range ~}}
+                        {{~ for page in min..max ~}}
+                            <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_{{page}}'><a class="px-4 py-2" id='{{page}}'
+                                onclick="selectPage(this.id);" href="#">{{page}}</a>
+                            </li>
+                        {{~ end ~}} 
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700  disabled" id='pagination_space'><a class="px-4 py-2" id='space-after'>...</a></li>
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_{{total}}'><a class="px-4 py-2" id='{{total}}'
+                            onclick="selectPage('{{total}}');" href="#">{{total}}</a>
+                        </li>
+                    {{~ else # Display page window in the end of range ~}}
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_1'><a class="px-4 py-2" id='1'
+                            onclick="selectPage(1);" href="#">1</a>
+                        </li>
+                        <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700  disabled" id='pagination_space'><a class="px-4 py-2" id='space-before'>...</a></li>
+                        {{ for page in min..max }}
+                            <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_{{page}}'><a class="px-4 py-2" id='{{page}}'
+                                onclick="selectPage(this.id);" href="#">{{page}}</a>
+                            </li>
+                        {{~ end ~}}
+                    {{~ end ~}}
+                    </div>
 
-        {{~ else # Total pages is greater than window range size ~}}
-        {{ 
-          if current_page > settings.pagination_by_offset.window
-              min = (current_page - settings.pagination_by_offset.window) | string.append "" | string.to_int
-          else
-              min = 1
-          end
+                {{~ end ~}}
 
-          if (current_page + settings.pagination_by_offset.window) < total
-              max = (current_page + settings.pagination_by_offset.window) | string.append "" | string.to_int
-          else
-              max = total
-          end
-        }}
-
-        {{~ if min > 1 && max < total # Display page window in the middle of range ~}}
-        <li class="page-item page-item-desktop" id='pagination_1'>
-          <a class="page-link" id='1' onclick="selectPage(1);" href="#">1</a>
-        </li>
-        <li class="page-item page-item-desktop disabled" id='pagination_space'>
-          <span class="page-link" id='space-before'>...</span>
-        </li>
-        {{ for page in min..max }}
-          <li class="page-item" id='pagination_{{page}}'>
-            <a class="page-link" id='{{page}}' onclick="selectPage(this.id);" href="#">{{page}}</a>
-          </li>
-        {{~ end ~}}
-        <li class="page-item page-item-desktop disabled" id='pagination_space'>
-          <span class="page-link" id='space-after'>...</span>
-        </li>
-        <li class="page-item page-item-desktop" id='pagination_{{total}}'>
-          <a class="page-link" id='{{total}}' onclick="selectPage('{{total}}');" href="#">{{total}}</a>
-        </li>
-
-        {{~ else if min == 1 && max < total # Display page window in the beginning of range ~}}
-        {{~ for page in min..max ~}}
-          <li class="page-item" id='pagination_{{page}}'>
-            <a class="page-link" id='{{page}}' onclick="selectPage(this.id);" href="#">{{page}}</a>
-          </li>
-        {{~ end ~}}
-        <li class="page-item page-item-desktop disabled" id='pagination_space'>
-          <span class="page-link" id='space-after'>...</span>
-        </li>
-        <li class="page-item page-item-desktop" id='pagination_{{total}}'>
-          <a class="page-link" id='{{total}}' onclick="selectPage('{{total}}');" href="#">{{total}}</a>
-        </li>
-
-        {{~ else # Display page window in the end of range ~}}
-        <li class="page-item page-item-desktop" id='pagination_1'>
-          <a class="page-link" id='1' onclick="selectPage(1);" href="#">1</a>
-        </li>
-        <li class="page-item page-item-desktop disabled" id='pagination_space'>
-          <span class="page-link" id='space-before'>...</span>
-        </li>
-        {{ for page in min..max }}
-          <li class="page-item" id='pagination_{{page}}'>
-            <a class="page-link" id='{{page}}' onclick="selectPage(this.id);" href="#">{{page}}</a>
-          </li>
-        {{~ end ~}}
-        {{~ end ~}}
-        {{~ end ~}}
-
-        {{~ if current_page != total # Buttons for next page ~}}
-        <li class="page-item" id='pagination_next'>
-          <a class="page-link" id='next-page' onclick="selectPage('{{ current_page + 1 }}');" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="9.825" height="15.229" viewBox="0 0 9.825 15.229">
-              <path id="Path_23324" data-name="Path 23324" d="M1.225,0A1.049,1.049,0,0,1,1.85.272Q5.627,3.506,9.4,6.743a1.073,1.073,0,0,1-.008,1.716Q5.6,11.711,1.8,14.957a1.081,1.081,0,1,1-1.37-1.672Q3.655,10.52,6.886,7.76c.153-.131.165-.189.005-.325Q3.793,4.793.7,2.141a1.516,1.516,0,0,1-.626-.83A1.1,1.1,0,0,1,1.225,0Z" transform="translate(0)"/>
-            </svg>
-          </a>
-        </li>
-        {{~ end ~}}
-    </ul>
-</nav>
+                {{~ if current_page != total # Buttons for next page and last page ~}}
+                    <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_next'><a class="px-4 py-2" id='next-page'
+                        onclick="selectPage('{{ current_page + 1 }}');" href="#">Próxima</a>
+                    </li>
+                    <li class="page-item inline-flex items-center border border-secondary-300 text-sm font-medium hover:bg-secondary-50 hover:text-secondary-700" id='pagination_last'>
+                        <a class="px-4 py-2" id='last-page' onclick="selectPage('{{ total }}');" href="#">
+                            <img src="{{- store.urls.static_img}}icons/double-arrow-right.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="double-arrow-right" class="w-5 h-5">
+                        </a>
+                    </li>
+                {{~ end ~}}
+            </ul>
+        </nav>
+    </div>
+    {{~ end ~}}
 {{~ end ~}}

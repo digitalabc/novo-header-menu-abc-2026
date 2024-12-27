@@ -1,1 +1,45 @@
-ExpiracaoBoleto  
+<table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
+  <tbody>
+      <tr>
+          <td align="center" valign="top" style="background-color: #f6f6f6;">
+              <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">            
+                  
+                  <!-- HEADER -->
+                  {{header_mail}}
+                  <!-- END HEADER -->
+                  
+                  <!-- MAIN -->
+                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
+                      <tbody>
+                          <tr align="center">
+                              <td>
+                                  <h1 style="font-size: 36px; line-height: 100%;">Boleto Expirado</h1>
+                              </td>
+                          </tr>
+                          <tr align="center">
+                              <td>
+                                  <p>Olá {{pedido.usuario.nome}},</p>
+                                  <p>Identificamos que o boleto referente ao seu pedido #{{pedido.pedido_id}} venceu e ainda não foi pago. Gostaríamos de lembrar que o prazo para pagamento era até {{pedido.data_pagamento}}.</p>
+                                  <p>Total do Pedido: R$ {{pedido.valor_total}}</p>
+                                  <p>Valor do Boleto: R$ {{pedido.formapagamento[0].valor_forma_pagamento}}</p>
+                                  <p>Para evitar cancelamentos e garantir o envio do seu pedido, pedimos que efetue o pagamento o mais breve possível. Você pode acessar o boleto através do link abaixo:</p>
+                                  <p><a href="{{pedido.formapagamento[0].boleto.url}}" target="_blank">{{pedido.formapagamento[0].boleto.url}}</a></p>
+                                  <p>Se preferir, também é possível realizar o pagamento por outras formas disponíveis em nosso site: <a href="{{configuracao.url_ecommerce}}" target="_blank">{{configuracao.url_ecommerce}}</a>.</p>
+                                  <p>Caso já tenha efetuado o pagamento, por favor, desconsidere esta mensagem.</p>
+                                  <p>Agradecemos pela preferência!</p>
+                                  <p>Equipe {{configuracao.nome_ecommerce}}</p>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <!-- END MAIN -->
+                  <br>
+                  <!-- FOOTER -->
+                  {{footer_mail}}
+                  <!-- END FOOTER -->
+
+              </div>
+          </td>
+      </tr>
+  </tbody>
+</table>

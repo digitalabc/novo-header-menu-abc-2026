@@ -5,28 +5,34 @@
     Usage:
         await client.snippet.render("autocomplete_snippet.html", ...);
 ## }}
-{{~ for suggestion in data.autocomplete.suggestions ~}}
-<div onclick="search(event, '{{ suggestion }}')">
-    {{ suggestion }}
-</div>
-{{~ end ~}}
-{{~ for product in data.autocomplete.products ~}}
-<a href="/{{ product.alias }}">
-    <div class="autocomplete-item" id="{{ product.alias }}">
-        <div>
-            {{~ imageUrl = "https://" + store.store_name + ".fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg?w=100" ~}}
-            {{~ if product.images.size > 0 ~}}
-            {{~ firstImage = product.images | array.first ~}}
-            {{~ imageUrl = firstImage.url ~}}
+{{ if !data.autocomplete.suggestions.empty? || !data.autocomplete.products.empty? }}
+    <div class="bg-mainBg shadow-2xl p-4">
+        <div class="border-b mb-4 pb-4">
+            {{~ for suggestion in data.autocomplete.suggestions ~}}
+                <div suggestion onclick="search(event, '{{ suggestion }}')" class="text-md mb-1 cursor-pointer hover:text-secondary-600">
+                    {{ suggestion }}
+                </div>
             {{~ end ~}}
-            <img src="{{ imageUrl }}" width="50px">
-            <p>
-                {{ product.product_name }}
-            </p>
-            <div class="autocomplete-price">
-                {{ product.prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
-            </div>
+        </div>
+        <div>
+            {{~ for product in data.autocomplete.products ~}}
+                <a href="/{{ product.alias }}">
+                    <div suggestion product-suggestion class="flex items-center justify-start p-1 mb-1 hover:shadow-sm" id="{{ product.alias }}">
+                        <section class="mr-5">
+                            {{~ imageUrl = "https://" + store.store_name + ".fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg?w=100" ~}}
+                            {{~ if product.images.size > 0 ~}}
+                                {{~ firstImage = product.images | array.first ~}}
+                                {{~ imageUrl = firstImage.url ~}}
+                            {{~ end ~}}
+                            <img src="{{ imageUrl }}" width="50px">
+                        </section>
+                        <section class="flex flex-col">
+                            <div class="text-base">{{ product.product_name }}</div>
+                            <div>{{ product.prices.price | math.format "c" "pt-BR" }}</div>
+                        </section>
+                    </div>
+                </a>
+            {{~ end ~}}
         </div>
     </div>
-</a>
-{{~ end ~}}
+{{ end }}

@@ -1,4 +1,15 @@
-query ($searchQuery: String, $partnerAccessToken: String, $resultSize: Int = 12, $offset: Int, $sortKey: ProductSearchSortKeys, $sortDirection: SortDirection, $filters: [ProductFilterInput], $minimumPrice: Decimal, $maximumPrice: Decimal) {
+query ($searchQuery: String, 
+  $partnerAccessToken: String, 
+  $sortKey: ProductSearchSortKeys, 
+  $sortDirection: SortDirection, 
+  $filters: [ProductFilterInput],
+  $minimumPrice: Decimal,
+  $maximumPrice: Decimal,
+	$after: String,
+	$before: String,
+  $resultSize: Int = 12,
+  $last: Int,
+	$onlyMainVariant: Boolean) {
   search(query: $searchQuery, partnerAccessToken: $partnerAccessToken) {
     redirectUrl
     pageSize
@@ -7,83 +18,57 @@ query ($searchQuery: String, $partnerAccessToken: String, $resultSize: Int = 12,
       content
       height
       title
-      width
+      width 
       position
     }
-    breadcrumbs {
+    breadcrumbs{
       link
       text
     }
-    productsByOffset(
-      limit: $resultSize
-      offset: $offset
-      sortKey: $sortKey
-      sortDirection: $sortDirection
-      filters: $filters
-      minimumPrice: $minimumPrice
-      maximumPrice: $maximumPrice
-    ) {
+    products(after: $after, before: $before, filters: $filters, first: $resultSize, last: $last, minimumPrice: $minimumPrice, 
+      			 maximumPrice: $maximumPrice, onlyMainVariant: $onlyMainVariant, sortDirection: $sortDirection, sortKey: $sortKey) {
       totalCount
-      page
-      pageSize
-      items {
-        id
-        productId
-        productName
-        productVariantId
-        alias
-        similarProducts {
+      pageInfo{
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+      edges{
+        cursor
+        node{
+          id
+          productId
+          productName
+          productVariantId
           alias
-          image
-          name
-          imageUrl(w: 50, h: 50)
-        }
-        images(width: 245, height: 245) {
-          url
-          print
-        }
-        available
-        prices {
-          listPrice
-          price
-          priceTables {
-            id
+          images(width:275, height:275) {
+            url
+            print
+          }
+          available
+          prices {
             listPrice
             price
-          }
-          discountPercentage
-          multiplicationFactor
-          installmentPlans {
-            displayName
-            name
-            installments {
+            discountPercentage
+            bestInstallment {
+              name
+              displayName
               discount
               fees
               number
               value
             }
           }
-          bestInstallment {
-            name
-            displayName
-            discount
-            fees
-            number
-            value
+          promotions{
+            content
+            id
+            stamp
+            fullStampUrl
+            title
+            disclosureType
           }
-        }
-        promotions{
-          fullStampUrl
-          content
-          id
-          stamp
-          title
-          fullStampUrl
-        }
-        addToCartFromSpot
-        attributes {
-          name
-          value
+          addToCartFromSpot
         }
       }
     }
@@ -95,7 +80,7 @@ query ($searchQuery: String, $partnerAccessToken: String, $resultSize: Int = 12,
           quantity
         }
       }
-      priceRanges {
+      priceRanges{
         range
         quantity
       }

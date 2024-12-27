@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout - Resumo</title>
+  {{ asset type: "css" paths: ["output", "output_checkout"]}}
+  {{ data_layer_config }}
+</head>
+<body class="bg-mainBg">
+  {{ wake_checkout_header }}
+  {{ wake_overlay }}
+  <div class="wake-cart-wrapper">
+    {{~ if data.checkout.products.size > 0 ~}}  
+      <div id="checkout_product_snippet" class="wake-cart-wrapper-product-snippet">
+        {{ wake_checkout_products_list products: data.checkout.products kits: data.checkout.kits }}
+      </div>
+      <div class="wake-cart-container">
+        {{ wake_checkout_shipping_quote checkout_id: data.checkout.checkout_id }}
+        {{ wake_checkout_coupon coupon: data.checkout.coupon }}
+        <div id="checkout_subtotal_snippet" class="wake-cart-subtotal">
+          <span>Subtotal:</span>
+          {{ data.checkout.subtotal | math.format "c" "pt-BR" }}
+        </div>
+        <div id="checkout_total_snippet" class="wake-cart-total">
+          <div>
+            <span>Desconto:</span>
+            <span>{{ data.checkout.discount < 0 ? (data.checkout.discount | math.format "c" "pt-BR") : '-' }}</span>
+          </div>
+          <div>
+            <span>Cupom:</span>
+            <span>{{ data.checkout.coupon_discount < 0 ? (data.checkout.coupon_discount | math.format "c" "pt-BR") : '-' }}</span>
+          </div>
+          <div class="total">
+            <span>Total:</span>
+            {{ data.checkout.total | math.format "c" "pt-BR" }}
+          </div>
+        </div>
+        <div id="checkout_total_snippet" class="wake-cart-finish-wrapper">
+          <a href="/checkout/complete" class="wake-cart-finish-button">Finalizar compra</a>        
+          <a href="/" class="wake-cart-continue-button">Continuar comprando</a>
+        </div>
+      </div>
+    {{~ else ~}}
+      <div class="wake-cart-container-empty">
+        <img src="{{- store.urls.static_img}}icons/empty-orders.svg?theme={{store.theme}}&v={{store.last_modified}}" class="w-40 mb-5">
+        <h3 class="wake-cart-empty-title">Seu Carrinho de compras está vazio</h3>
+        <p class="wake-cart-empty-text">Você não possui itens no carrinho</p>
+        <a href="/" type="button" class="wake-cart-empty-continue-button">Continue comprando</a>
+      </div>
+    {{~ end ~}}
+  </div>
+  {{ wake_confirmation_modal }}
+  {{ wake_checkout_footer }}
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+      <script type="text/javascript">document.write(JSON.stringify({{data}}, null, 2));</script>
+  </pre>
+  {{ sdk_client }}
+  {{ data_layer_checkout_view checkout: data.checkout}}
+  {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
+  {{ asset type: "js" paths: ["checkout_user_login", "event_manager"] options: "async"}}
+</body>
+</html>

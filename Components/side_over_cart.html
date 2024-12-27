@@ -1,0 +1,12 @@
+<div id="side-card-over-list" class="relative z-40 ease-in-out duration-500 opacity-0 hidden"
+  aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-secondary-500 bg-opacity-75 transition-opacity"></div>
+  <div class="fixed inset-0 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden" onclick="setCartDivVisibility()"></div>
+    <div id="side-bar-cart" class="pointer-events-none fixed inset-y-0 right-0 flex
+      max-w-full pl-10 transform transition ease-in-out duration-500 sm:duration-700 
+      translate-x-full">
+      <div class="pointer-events-auto w-screen max-w-md" id="min-cart-items"></div>
+    </div>
+  </div>
+</div>

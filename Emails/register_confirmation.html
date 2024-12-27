@@ -1,6 +1,43 @@
-<h4>Email teste Sotrefront - ConfirmacaoCadastro</h4>
-<br>
-<p>Olá {{usuario.nome}}</p>
-<br>
-<p>Bem vindo à {{configuracao.nome_ecommerce}}!</p>
-
+<table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
+    <tbody>
+        <tr>
+            <td align="center" valign="top" style="background-color: #f6f6f6;">
+                <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">            
+                    
+                    <!-- HEADER -->
+                    {{header_mail}}
+                    <!-- END HEADER -->
+                    
+                    <!-- MAIN -->
+                    <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
+                        <tbody>
+                            <tr align="center">
+                                <td>
+                                    <h1 style="font-size: 36px; line-height: 100%;">Confirmação de Cadastro!</h1>
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                    <p>Bem vindo, à {{configuracao.nome_ecommerce}}.</p><br>
+                                    {{ if usuario.sexo == "Masculino" }}
+                                        <p>Oi amigo {{ usuario.nome }}, bem vindo!</p>
+                                    {{ else if usuario.sexo == "Feminino" }}
+                                        <p>Olá amiga {{ usuario.nome }}, bem vinda!</p>
+                                    {{ else }}
+                                        <p>Olá {{usuario.nome}}</p>
+                                    {{ end }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- END MAIN -->
+                    
+                    <!-- FOOTER -->
+                    {{footer_mail}}
+                    <!-- END FOOTER -->
+  
+                </div>
+            </td>
+        </tr>
+    </tbody>
+  </table>

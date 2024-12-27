@@ -6,17 +6,20 @@
     Usage:
         spot_list products: data...products
 ## }}
-
 {{~ if products?.items # offset pagination case ~}}
-    <div class="spots d-flex row">    
+    <div class="flex flex-wrap justify-evenly after:flex-auto md:justify-start items-start">    
         {{ for item in products?.items }}
-            {{ spot product: item virtual_reality: virtual_reality }}
+            <div class="flex w-[180px] lg:w-auto">{{ spot product: item }}</div>
         {{ end }}
     </div>
-{{~ else if products?.edges # cursor pagination case ~}}
-    <div class="spots d-flex row">
+{{~ else if products?.edges && !products.edges.empty? # cursor pagination case ~}}
+    <div class="flex flex-wrap justify-evenly after:flex-auto md:justify-start items-start">
         {{ for productEdge in products?.edges }}
-            {{ spot product: productEdge.node virtual_reality: virtual_reality }}
+            <div class="flex w-[180px] lg:w-auto">
+                {{ spot product: productEdge.node }}
+            </div>
         {{ end }}
     </div>
+{{~ else ~}}
+    <h1 class="my-2 text-secondary-800 font-bold text-2xl">Nenhum produto encontrado</h1>
 {{~ end ~}}

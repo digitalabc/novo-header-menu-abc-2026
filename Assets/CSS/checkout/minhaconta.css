@@ -6,28 +6,3 @@
 /* geral.css >> Definições de Cabeçalho e Rodapé */
 
 /* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
-
-/* abcprime bar */
-.prime_bar_wrapper.prime_sticky { 
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-    
-.prime_bar {
-    display: none;
-    background-color: #138779;
-    padding: 20px;
-    justify-content: center;
-}
-    
-.prime_bar {
-    color: #ffe2aa;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.prime_bar > p {
-    margin: 0;
-    padding: 0;   
-}

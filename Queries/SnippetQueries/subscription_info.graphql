@@ -1,8 +1,0 @@
-query SubscriptionInfo($customerAccessToken: String!){
-  customer(customerAccessToken: $customerAccessToken) {
-    subscriptions {      
-      status
-      subscriptionGroupId
-    }
-  }
-}

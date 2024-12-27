@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output","output_login"]}}
+  <title>Document</title>
+</head>
+<body class="bg-mainBg">
+  <header class="shadow-xl lg:shadow-none bg-lightBg">
+      {{ links }}
+      {{ head }}
+      {{ side_cart }}
+      {{ wake_overlay }}
+      {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+  </header>
+  <div class="wake-autenticate-wrapper">
+    <div>
+      {{ wake_login_authenticate }}
+      {{ wake_login_social facebook_app_id: common.facebook_app_id[0]?.value google_client_id: common.google_client_id[0]?.value }}
+      <div class="register">
+        <h3>Cadastrar</h3>
+        <span class="text-md">Não tem conta ainda? Faça seu cadastro</span>
+        <a href="{{store.urls.checkout_pages.login.signup}}" 
+        class="button-register">
+          Cadastrar
+        </a>
+      </div>
+    </div>
+  </div>
+  {{ footer is_preview: is_preview store: store }}
+  {{ sdk_client }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
+  {{ asset type: "js" paths: ["mini_cart"] options: "async"}}
+</body>
+</html>

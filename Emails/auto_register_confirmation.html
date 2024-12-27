@@ -1,1 +1,42 @@
-ConfirmacaoCadastroAutomatico
+<table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
+  <tbody>
+      <tr>
+          <td align="center" valign="top" style="background-color: #f6f6f6;">
+              <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">            
+                  
+                  <!-- HEADER -->
+                  {{header_mail}}
+                  <!-- END HEADER -->
+                  
+                  <!-- MAIN -->
+                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
+                      <tbody>
+                          <tr align="center">
+                              <td>
+                                  <h1 style="font-size: 36px; line-height: 100%;">Bem-vindo(a) ao {{configuracao.nome_ecommerce}}!</h1>
+                              </td>
+                          </tr>
+                          <tr align="center">
+                              <td>
+                                  <p>Olá {{usuario.nome}},</p>
+                                  <p>Seja bem-vindo(a) ao {{configuracao.nome_ecommerce}}! É um prazer tê-lo(a) como nosso(a) cliente.</p>
+                                  <p>Agora você faz parte de nossa comunidade, onde oferecemos produtos de qualidade, promoções exclusivas e um excelente atendimento.</p>
+                                  <p>Confira nosso site em {{configuracao.url_ecommerce}} e aproveite para explorar as opções disponíveis.</p>
+                                  <p>Em caso de dúvidas ou necessidade de suporte, nossa equipe está pronta para ajudar.</p>
+                                  <p>Obrigado por escolher o {{configuracao.nome_ecommerce}}!</p>
+                                  <p>Equipe {{configuracao.nome_ecommerce}}</p>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <!-- END MAIN -->
+                  <br>
+                  <!-- FOOTER -->
+                  {{footer_mail}}
+                  <!-- END FOOTER -->
+
+              </div>
+          </td>
+      </tr>
+  </tbody>
+</table>

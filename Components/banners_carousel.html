@@ -6,24 +6,74 @@
     Usage:
       banners_carousel banners: banners position: "Topo"
 ## }}
-{{~ if banners && position ~}}
-  {{~ grouped_banners = banners | group.by @(do; ret $0.position;end) ~}}
-  {{~ banners = grouped_banners | group.get position ~}}
-{{~ end ~}}
+{{~ 
+  if banners && position
+    banners = banners | array.sort "order"
+    grouped_banners = banners | group.by @(do; ret $0.position;end)
+    banners = grouped_banners | group.get position
+    banners_by_name = banners | group.by @(do; ret $0.banner_name;end)
+    banners_names = banners_by_name | object.keys
+  end 
+~}}
 {{~ if banners && banners.size > 0 ~}}
-  <div id="bannersCarouselIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      {{~ for banner in banners ~}}
-        <button type="button" data-bs-target="#bannersCarouselIndicators" data-bs-slide-to="{{for.index}}" {{ if for.first ~}}class="active" aria-current="true"{{~ end ~}} aria-label="Slide {{for.index}}"></button>
-      {{~ end ~}}
-    </div>
-    <div class="carousel-inner">
-      {{~ for banner in banners ~}}
-        <div class="carousel-item {{ if for.first ~}} active {{~ end ~}}">
-          {{~ alt = banner.title ?? "banner" ~}}
-          {{~ image source: banner.banner_url sizes: [{w:720, h:270}, {w: 1280, h: 400}, {w: 1920, h: 600}] alt: alt class:"w-100" ~}}
+  <div class="swiffy-slider slider-nav-dark slider-nav-visible slider-nav-autoplay slider-nav-autopause slider-indicators-round 
+  slider-indicators-dark slider-indicators-highlight slider-indicators-sm min-h-[390px] md:min-h-min" data-slider-nav-autoplay-interval="5000">
+      <ul class="slider-container">
+        {{~ for banner_name in banners_names ~}}
+          {{ banner_by_name = banners_by_name | group.get banner_name | array.sort "width" }}
+          {{ if banner_by_name.size == 1 }}
+            {{- alt = banner_by_name[0].title ?? "banner" -}}
+            {{ if banner_by_name[0].url_on_click }} 
+              <li><a href="{{ banner_by_name[0].url_on_click }}" {{ if banner_by_name[0].open_new_tab }} target="_blank" {{ end }}>
+            {{ end }}
+            {{~ image source: banner_by_name[0].banner_url sizes: [{w:720, h:208}, {w: 1280, h:371}, {w: 1549, h:449}] alt: alt class:"object-cover w-full h-auto" ~}}
+            {{ if banner_by_name[0].url_on_click }}</a></li>{{ end }}
+          {{ else }}
+            {{
+              current_sources = []
+              for cb in banner_by_name
+                current_media = "(max-width: " + (cb.width+40) + "px)"
+                if for.last
+                  default = cb.banner_url
+                  default_url_on_click = cb.url_on_click
+                  default_open_new_tab = cb.open_new_tab
+                end
+                current_sources = current_sources | array.add {src:cb.banner_url, w:cb.width, media: current_media}
+            	end 
+            ~}}
+            <li>
+              {{ if default_url_on_click }} 
+                <a href="{{ default_url_on_click }}" {{ if default_open_new_tab }} target="_blank" {{ end }}>
+              {{ end }}
+              <picture>
+                  {{~ for source in current_sources ~}}
+                      <source media="{{source.media}}" srcset="{{source.src}}?w={{source.w}}&h={{source.h}}">   
+                  {{~ end ~}}
+                  
+                  <img src="{{default}}" alt="banner" width="640" height="100" class="object-cover w-full h-auto" 
+                    {{ if for.first }}fetchpriority="high"{{else}}loading="lazy"{{end}}>
+              </picture>
+              {{ if default_url_on_click }} 
+                </a>
+              {{ end }}
+            </li>
+          {{ end }}
+        {{~ end ~}}
+      </ul>
+      {{ if banners.size >= 2}}
+        <button type="button" class="slider-nav" name="prev">
+          <img src="{{- store.urls.static_img}}icons/arrow-left.svg?theme={{store.theme}}&v={{store.last_modified}}" 
+      alt="arrow-left" class="w-6 h-6 m-2"/>
+        </button>
+        <button type="button" class="slider-nav slider-nav-next" name="next">
+          <img src="{{- store.urls.static_img}}icons/arrow-right.svg?theme={{store.theme}}&v={{store.last_modified}}" 
+      alt="arrow-right" class="w-6 h-6 m-2"/>
+        </button>
+
+        <div class="slider-indicators">
+            <button class="active" aria-label="Indicador de slide"></button>
+            <button aria-label="Indicador de slide"></button>
         </div>
-      {{~ end ~}}
-    </div>
+      {{ end }}
   </div>
 {{~ end ~}}

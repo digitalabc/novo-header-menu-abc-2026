@@ -9,7 +9,7 @@
 }}
 
 {{~ if installment_plans ~}}
-    <div class="row filtered-installment" style="font-size: 12px; color: gray;">
+    <div class="row filtered-installment" style="font-size: 12px; color: secondary;">
         {{~ if displayed_installment && displayed_installment.size > 0 ~}}
             {{~ 
                 filtered_installment_plan = installment_plans | array.filter @select_installments | array.first
@@ -17,14 +17,14 @@
             ~}}
 
             {{~ if filtered_installment_plan.display_name | string.contains "Boleto" ~}}
-                <p>{{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} no boleto</p>
+                <p>{{installment.value | math.format "c" "pt-BR"}} no boleto</p>
             {{~ else if filtered_installment_plan.display_name | string.contains "Cartão" ~}}
-                <p>ou em {{installment.number}}x de {{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} {{if installment.fees}}com juros{{else}}sem juros{{end}} no cartão</p>
+                <p>ou em {{installment.number}}x de {{installment.value | math.format "c" "pt-BR"}} {{if installment.fees}}com juros{{else}}sem juros{{end}} no cartão</p>
             {{~ else if filtered_installment_plan.display_name | string.contains "Pix" ~}}
-                <p>{{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} no PIX</p>
+                <p>{{installment.value | math.format "c" "pt-BR"}} no PIX</p>
             {{~ end ~}}
         {{~ else ~}}
-            <p>ou em {{installment.number}}x de {{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} {{if installment.fees}}com juros{{else}}sem juros{{end}}</p>
+            <p>ou em {{installment.number}}x de {{installment.value | math.format "c" "pt-BR"}} {{if installment.fees}}com juros{{else}}sem juros{{end}}</p>
         {{~ end ~}}
     </div>
 {{~ end ~}}

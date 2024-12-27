@@ -12,7 +12,7 @@
     {{~ for attr in attribute_selections ~}}
         <div class="row">
             <p>{{ attr.name | string.upcase }}</p>
-            <div class="row d-flex justify-content">
+            <div class="flex justify-start items-start">
                 {{~ grouped_selected = attr.values | group.by @(do; ret $0.selected;end) ~}}
                 {{~ selected = grouped_selected | group.get true | array.first ~}}
                 {{~ if selected ~}}
@@ -26,7 +26,7 @@
                     {{~ for value in attr.values ~}}
                         {{~ option_id = attr.attribute_id + "__" + value.value + "__" + product_id + "__" + math.uuid ~}}
                         <div class="col-xl-4">
-                            <input type="radio" class="btn-check"  
+                            <input type="radio" class="btn-check hidden"  
                                 id="{{ option_id }}" 
                                 product-id = "{{ product_id }}"
                                 attribute-id = "{{ attr.attribute_id }}"
@@ -39,7 +39,9 @@
                                 {{~ end ~}}  
                                 {{ if value.selected }} checked {{ end }} 
                                 {{ if !value.available }} disabled {{ end }}>
-                            <label class="btn btn-outline-success radio-label col-11" for="{{ option_id }}">
+                            <label 
+                            class="flex border mt-4 py-1 px-3 mr-2 cursor-pointer {{ if !value.available }} cursor-default {{ end }} {{ if value.selected }} border-black {{ end }}" 
+                            for="{{ option_id }}">
                                 {{ value.value }}
                             </label>
                         </div>
@@ -48,4 +50,5 @@
             </div>   
         </div>
     {{~ end ~}}
+    <br>
 {{~ end ~}}

@@ -90,7 +90,7 @@ fragment SingleProductData on SingleProduct {
   alias
   stock
   available
-  images (width:245, height:245){
+  images {
     url
     print
     fileName
@@ -108,5 +108,12 @@ fragment SingleProductData on SingleProduct {
           value
         }
     }
+  }
+  customizations {
+    customizationId
+    cost
+    name
+    type
+    values
   }  
 }

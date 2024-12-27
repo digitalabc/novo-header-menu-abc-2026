@@ -1,0 +1,38 @@
+{{##
+    Description: Renders the parallel options attributes and quantity input.
+    Params:
+        - product: product data
+    Usage:
+        parallel_options_product_attribute product: product
+##}}
+{{~ attribute_selections = product.attribute_selections ~}}            
+{{~
+    grouped_attribute_selections = attribute_selections.selections | group.by @(do; ret $0.display_type;end)
+    combo_attr = grouped_attribute_selections | group.get "Combo"
+    product_combo_attribute attribute_selections: combo_attr product_id: product.product_id on_click: "selectParallelAttribute"
+~}}
+{{~ 
+    available = true
+    variant_id = ""
+    stock = 0
+    if attribute_selections.selected_variant
+        variant_id = attribute_selections.selected_variant.product_variant_id
+        available = attribute_selections.selected_variant.available
+        stock = attribute_selections.selected_variant.stock
+    else if attribute_selections.selections.size == 0
+        variant_id = product.product_variant_id
+        available = product.available
+        stock = product.stock
+    end 
+~}}
+<div class="row">
+    <div class="mb-4">
+        {{~ if available ~}}
+            <p>Quantidade</p>
+            <input type="number" class="form-control" id="parallel-option-selected-quantity-{{ math.uuid }}" 
+            variant-id="{{ variant_id }}" value="1" min="1" max="{{ stock }}" aria-label="Quantidade">
+        {{~ else ~}}
+            <p>Indisponível</p>
+        {{~ end ~}}
+    </div>
+</div>

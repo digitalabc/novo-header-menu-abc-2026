@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output","output_account"]}}
+  <title>Meus Dados</title>
+</head>
+<body class="bg-mainBg">
+  {{ wake_checkout_header }}
+  {{ wake_overlay }}
+  <div class="wake-account-wrapper">
+    {{ wake_account_sidebar customer: data.customer }}
+    {{ wake_account_data account: data.customer token_details: data.customer_access_token_details change_email_with_access_key: data.change_email_with_access_key?.value }}  
+  </div>
+  {{ wake_checkout_footer }}
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+      <script type="text/javascript">document.write(JSON.stringify({{data}}, null, 2));</script>
+  </pre>
+  {{ sdk_client }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_account"] }}
+</body>
+</html>

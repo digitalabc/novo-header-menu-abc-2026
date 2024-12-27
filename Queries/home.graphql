@@ -5,11 +5,11 @@ query Home($partnerAccessToken: String){
       bannerName
       bannerUrl
       position
+      urlOnClick
       openNewTab
       height
       title
       width
-      urlOnClick
       order
     }
     contents {
@@ -27,25 +27,36 @@ query Home($partnerAccessToken: String){
       scheme
     }
   }
-  brands(first: 50, brandInput: {groupIds: [19]}) {
-    nodes {
-      active
-      urlLogo
-      alias
-      fullUrlLogo
-      name
+  lancamentos: search(query: "", partnerAccessToken: $partnerAccessToken) {
+    ...lancamentos
+  }
+  maisVendidos: search(query: "", partnerAccessToken: $partnerAccessToken) {
+    ...maisVendidos
+  }
+  brands(first: 10) {
+    ...brands
+  }
+  newsletterInformationGroupFields {
+    displayType
+    fieldName
+    id
+    order
+    required
+    values{
+      order
+      value
     }
-  }
-  vitrine1: hotsite(hotsiteId: 98667, partnerAccessToken: $partnerAccessToken) {
-    ...produtos
-  }
-  vitrine2: hotsite(hotsiteId: 98668, partnerAccessToken: $partnerAccessToken) {
-    ...produtos
   }
 }
 
-fragment produtos on SingleHotsite {
-  products(first: 20, sortKey: SALES, sortDirection: DESC) {
+fragment lancamentos on Search {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment maisVendidos on Search {
+  products(first: 9, sortKey: SALES, sortDirection: DESC) {
     ...productsCon
   }
 }
@@ -56,18 +67,17 @@ fragment productsCon on ProductsConnection {
     productId
     productName
     productVariantId
-    productBrand {
-      fullUrlLogo
-      logoUrl
-    }
     alias
-    similarProducts {
+    freeShipping
+    averageRating
+    newRelease
+    similarProducts{
       alias
       image
       name
       imageUrl(w: 50, h: 50)
     }
-    images(width: 245, height: 245) {
+    images(width:275, height:275) {
       url
       print
     }
@@ -75,17 +85,11 @@ fragment productsCon on ProductsConnection {
     prices {
       listPrice
       price
-      priceTables {
-        id
-        listPrice
-        price
-      }
       discountPercentage
-      multiplicationFactor
-      installmentPlans {
+      installmentPlans{
         displayName
         name
-        installments {
+        installments{
           discount
           fees
           number
@@ -101,18 +105,24 @@ fragment productsCon on ProductsConnection {
         value
       }
     }
-    attributes {
-      name
-      value
-    }
     promotions{
-      fullStampUrl
       content
       id
       stamp
-      title
       fullStampUrl
+      title
+      disclosureType
     }
     addToCartFromSpot
+  }
+}
+
+fragment brands on BrandsConnection {
+  nodes {
+    active
+    urlLogo
+    alias
+    fullUrlLogo(width:270)
+    name
   }
 }

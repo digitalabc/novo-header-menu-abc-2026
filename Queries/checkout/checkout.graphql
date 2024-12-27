@@ -1,0 +1,156 @@
+query Checkout(
+  $checkoutId: String!
+  $customerAccessToken: String!
+  $hasCustomerAccessToken: Boolean!
+) {
+  checkout(checkoutId: $checkoutId) {
+    checkoutId
+    url
+    coupon
+    couponDiscount
+    customizationValue
+    discount
+    paymentFees
+    totalDiscount
+    products {
+      url
+      listPrice
+      totalListPrice
+      price
+      ajustedPrice
+      totalAdjustedPrice
+      category
+      adjustments {
+        observation
+        type
+        value
+      }
+      productId
+      productVariantId
+      imageUrl
+      quantity
+      name
+      gift
+      kit
+      attributeSelections {
+        selectedVariant {
+          id
+          alias
+          available
+          images {
+            fileName
+            url
+          }
+          prices {
+            listPrice
+            price
+            discountPercentage
+            installmentPlans {
+              displayName
+              name
+              installments {
+                discount
+                fees
+                number
+                value
+              }
+            }
+            bestInstallment {
+              name
+              displayName
+              discount
+              fees
+              number
+              value
+            }
+            wholesalePrices {
+              price
+              quantity
+            }
+          }
+          productId
+          productVariantId
+          stock
+        }
+        selections {
+          attributeId
+          displayType
+          name
+          varyByParent
+          values {
+            alias
+            available
+            printUrl
+            selected
+            value
+          }
+        }
+      }
+      productAttributes {
+        name
+        type
+        value
+      }
+      customization {
+        id
+        values {
+          cost
+          name
+          value
+        }
+      }
+      subscription {
+        availableSubscriptions {
+          name
+          recurringDays
+          recurringTypeId
+          selected
+          subscriptionGroupDiscount
+          subscriptionGroupId
+        }
+        selected {
+          selected
+          name
+          recurringDays
+          recurringTypeId
+          subscriptionGroupDiscount
+          subscriptionGroupId
+        }
+      }
+    }
+    kits {
+      kitId
+      kitGroupId
+      alias
+      imageUrl
+      listPrice
+      price
+      totalListPrice
+      totalAdjustedPrice
+      name
+      quantity
+      products {
+        productId
+        productVariantId
+        imageUrl
+        name
+        url
+        quantity
+        productAttributes {
+          name
+          value
+        }
+      }
+    }
+    shippingFee
+    subtotal
+    total
+  }
+  customer(customerAccessToken: $customerAccessToken)
+    @include(if: $hasCustomerAccessToken) {
+    customerId
+    customerName
+    customerType
+    email
+  }
+}

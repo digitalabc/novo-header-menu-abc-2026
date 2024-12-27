@@ -1,0 +1,50 @@
+{{ ##
+    Description: Data layer checkout component, saves the info of checkout
+                to use when pushing the data to the datalayer
+    Params:
+        - checkout: the checkout data to save in tag manager
+    Usage:
+        data_layer_checkout_view checkout: data.checkout
+## }}
+{{
+    items = []
+    
+    for product_in_list in checkout.products
+        product = product_in_list.node ?? product_in_list
+
+        item = {
+            item_id: product.product_id,
+            item_variant: product.product_variant_id,
+            item_name: product.name | string.escape,
+            item_category: product.category,
+            index: for.index,
+            quantity: product.quantity
+        }
+
+        if product.prices
+            if product.prices.list_price > 0 && product.prices.list_price > product.prices.price
+                item.discount = product.prices.list_price - product.prices.price
+                item.price = product.prices.list_price
+            else
+                item.discount = 0
+                item.price = product.prices.price
+            end
+        end
+
+        if product.product_brand
+            item.item_brand = product.product_brand.name
+        end
+
+        items = items | array.add item
+    end
+
+    data_layer_checkout_details = {
+        value: checkout.total,
+        subtotal: checkout.subtotal,
+        currency: "BRL",
+        items: items
+    }
+}}
+<script>
+    const data_layer_checkout_details = {{ data_layer_checkout_details | map.to_json }}
+</script>

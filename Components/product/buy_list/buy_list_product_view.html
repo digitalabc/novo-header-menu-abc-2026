@@ -5,95 +5,52 @@
     Usage:
         buy_list_product_view product: product
 ## }}
-{{~ product_id = product.product_id ~}}
-{{~ product_available = false ~}}
-{{~ product_variant_id = "" ~}}
-{{~ product_stock = 0 ~}}
-{{~ product_prices = 0 ~}}
-{{~ if product.attribute_selections.selected_variant ~}}
-{{~ product_available = product.attribute_selections.selected_variant.available ~}}
-{{~ product_variant_id = product.attribute_selections.selected_variant.product_variant_id ~}}
-{{~ product_prices = product.attribute_selections.selected_variant.prices ~}}
-{{~ product_stock = product.attribute_selections.selected_variant.stock ~}}
-{{~ else if product.attribute_selections.selections.size == 0 ~}}
-{{~ product_variant_id = product.product_variant_id ~}}
-{{~ product_available = product.available ~}}
-{{~ product_prices = product.prices ~}}
-{{~ product_stock = product.stock ~}}
-{{~ else ~}}
-{{~ product_variant_id = product.product_variant_id ~}}
-{{~ product_prices = product.prices ~}}
-{{~ end ~}}
+{{~ 
+    product_id = product.product_id
+    product_available = false
+    product_prices = 0 
+    if product.attribute_selections.selected_variant
+        product_available = product.attribute_selections.selected_variant.available
+        product_prices = product.attribute_selections.selected_variant.prices
+    else if product.attribute_selections.selections.size == 0
+        product_available = product.available
+        product_prices = product.prices
+    else
+        product_prices = product.prices
+    end 
+~}}
 
-<div class="buy_list__product-wrap">
-  <input type="hidden" id="buy-list-product-variant-{{ product_id }}" name="buy-list-product-variant-{{ product_id }}"
-      value="{{ product_variant_id }}">
-  
-  <div class="buy_list__image swiper">
-      {{ spot_image product: product }}
-  </div>
-  
-  <div class="buy_list__block">
-      <div class="buy_list__name">
-          <input id="buy-list-product-checked-{{ product_id }}" type="checkbox"
-              {{ if product_available || product.attribute_selections.can_be_matrix}}
-              onchange="buyListCalculatePrices('{{ product_id }}');" checked {{ else }} disabled {{ end }}>
-          <label class="fake-checkbox"  for="buy-list-product-checked-{{ product_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="5.995" viewBox="0 0 6 5.995">
-              <path id="Path_23322" data-name="Path 23322" d="M5.386,5.982a.619.619,0,0,1-.46-.208C4.319,5.165,3.708,4.558,3.1,3.947c-.08-.081-.12-.089-.2,0q-.916.928-1.843,1.846a.6.6,0,0,1-.874.025A.6.6,0,0,1,.2,4.95q.89-.895,1.785-1.786a.206.206,0,0,0,0-.329q-.9-.9-1.794-1.795a.6.6,0,0,1,.022-.9A.594.594,0,0,1,1.04.194Q1.8.95,2.558,1.71c.119.119.242.234.355.358.066.073.1.07.174,0C3.705,1.445,4.328.825,4.949.2a.6.6,0,0,1,.937.742,1.318,1.318,0,0,1-.141.156c-.6.6-1.2,1.205-1.807,1.8-.08.079-.073.119,0,.194q.927.918,1.845,1.844a.6.6,0,0,1-.073.945.566.566,0,0,1-.329.1Z" transform="translate(0.002 0.002)" fill="#e30613"/>
-            </svg>
-          </label>
-          <a href="/{{product.alias}}">
-              <h5>{{ product.product_name }}</h5>
-          </a>
-      </div>
-  
-      <div class="buy_list__attributes">
-          {{ buy_list_product_attribute product: product }}
-      </div>
-
-      <div class="buy_list__wrapper">
-          <div class="buy_list__quantity">
-              {{~ 
-                attribute_selections = product.attribute_selections
-                available = true
-                variantId = ""
-                stock = 0
-                if attribute_selections.selected_variant
-                    variantId = attribute_selections.selected_variant.product_variant_id
-                    available = attribute_selections.selected_variant.available
-                    stock = attribute_selections.selected_variant.stock
-                else if attribute_selections.selections.size == 0
-                    variantId = product.product_variant_id
-                    available = product.available
-                    stock = product.stock
-                end
-                quantity_id = "buy-list-product-selected-quantity-" + product.product_id 
-              ~}}
-              {{~ if available ~}}
-                  <div class="quantity">
-                      <button class="quantity-less"
-                          onclick="quantityChange('#{{ quantity_id }}', 'decrease', '.buy_list__quantity'), buyListCalculatePrices('{{ product.product_id }}');">-</button>
-                      <input type="number" class="form-control"
-                          id="{{ quantity_id }}" name="selected-quantity"
-                          value="1" min="1" max="{{ stock }}"
-                          product-variant-id="{{ variantId }}"
-                          onchange="verifyQuantity(this, '.buy_list__quantity')">
-                      <button class="quantity-more"
-                          onclick="quantityChange('#{{ quantity_id }}', 'increase', '.buy_list__quantity'), buyListCalculatePrices('{{ product.product_id }}');">+</button>
-                  </div>
-              {{~ else ~}}
-                  <h3>Produto indisponível</h3>
-              {{~ end ~}}
-          </div>
-          <div class="buy_list__price" id="buy-list-product-price-{{ product_id }}">
-              {{~ if product_available ~}}
-                  {{ product_price prices: product_prices }}
-              {{~ else ~}}
-                  <span>Selecione uma variação.</span>
-              {{~ end ~}}
-          </div>
-      </div>
-  
-  </div>
+<div class="flex justify-start w-full">
+    <label class="flex justify-start items-center cursor-pointer">
+        {{~ if !is_kit ~}}
+            <input id="buy-list-product-checked-{{ product_id }}" class="mr-4" type="checkbox"
+            {{ if product_available || product.attribute_selections.can_be_matrix}} 
+                onchange="buyListCalculatePrices('{{ product_id }}');" checked
+            {{ else }}
+                disabled
+            {{ end }}>
+        {{~ end ~}}
+        <div class="flex justify-between items-center w-full">
+            <div class="flex flex-col justify-start items-center w-1/5 mr-3">
+                <div class="border p-1">
+                    {{ spot_image product: product }}
+                </div>
+            </div>
+            <div class="flex flex-col items-start justify-start w-10/12">
+                <h3 class="flex text-2xl font-normal">{{ product.product_name }}</h3>
+                <div id="buy-list-product-price-{{ product_id }}" class="">
+                    {{~ if !is_kit ~}}
+                        {{~ if product_available ~}}
+                            {{ product_price prices: product_prices }}
+                        {{~ else ~}}
+                            Selecione uma das opções.
+                        {{~ end ~}}
+                    {{~ end ~}}
+                </div>
+                <div class="">
+                    {{ buy_list_product_attribute product: product is_kit: is_kit }}
+                </div>
+            </div>
+        </div>
+    </label>
 </div>

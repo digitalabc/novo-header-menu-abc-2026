@@ -1,13 +1,10 @@
-<div class="bis">
-    {{~ if !spot ~}}
-      <p class="bis__text">Preencha o formulário para ser avisado assim que o produto voltar ao estoque!</p>
-    {{~ end ~}}
-    <form id="form-avise-me" onsubmit="{{form_submit}}">
-      {{~ if spot ~}}
-      <input class="product-variant-id" type="hidden" name="product-variant-id" value="{{ product.product_variant_id }}" >
-      {{~ end ~}}
-      <input class="form-control bis-email" type="email" name="email" placeholder='{{ "E-mail" | lang }}' required>
-      <button type="submit" class="btn btn-success btn-avise-me">AVISE-ME</button>
+<div class="flex flex-col">
+    <p class="flex w-full justify-center text-center">{{ message }}</p>
+    <form id="form-avise-me" onsubmit="backInStockOnClick('{{ product_variant_id }}', event)" class="flex-wrap flex flex-col lg:flex-row justify-between">
+        <input id="bis-name-{{ product_variant_id }}" class="w-full flex" type="text" placeholder='{{ "Nome" | lang }}' required>
+        <input id="bis-email-{{ product_variant_id }}" class="w-full flex" type="email" placeholder='{{ "E-mail" | lang }}' required>
+        <div class="flex w-full justify-center">
+            <button type="submit" class="lg:w-60 w-full justify-center flex text-base p-2 mt-1 bg-secondary-400 hover:bg-secondary-700 text-white">AVISE-ME</button>
+        </div>
     </form>
-    <div class="bis__alert bis-alert"></div>
 </div>

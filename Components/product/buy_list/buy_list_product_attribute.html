@@ -5,12 +5,53 @@
     Usage:
         product_attribute product: product
 ## }}
-<div class='attribute-selections'>
-    {{~ attribute_selections = product.attribute_selections ~}}
-    {{~ if attribute_selections.can_be_matrix ~}}
-        {{~ on_change = "buyListCalculatePrices('" + product.product_id +"');" ~}}
-        {{~ product_matrix_attribute attribute_selections: attribute_selections on_change: on_change is_secondary_product: true ~}}
+<div attribute-selections>
+    <div class="flex justify-start gap-5">
+        {{~ attribute_selections = product.attribute_selections ~}}
+        {{~
+            on_attribute_click = "buyListSelectAttribute"
+            if is_kit 
+                on_attribute_click = "kitSelectAttribute"
+            end
+            grouped_attribute_selections = attribute_selections.selections | group.by @(do; ret $0.display_type;end)
+            combo_attr = grouped_attribute_selections | group.get "Combo"
+            div_attr = grouped_attribute_selections | group.get "DIV"
+            div_img_attr = grouped_attribute_selections | group.get "DIV com foto do produto variante"
+            div_color_attr = grouped_attribute_selections | group.get "DIV com cor"
+            product_combo_attribute attribute_selections: combo_attr product_id: product.product_id on_click: on_attribute_click
+            product_div_attribute attribute_selections: div_attr product_id: product.product_id on_click: on_attribute_click
+            product_div_with_image_attribute attribute_selections: div_img_attr product_id: product.product_id on_click: on_attribute_click
+            product_div_with_color_attribute attribute_selections: div_color_attr product_id: product.product_id on_click: on_attribute_click
+            available = true
+            variant_id = ""
+            stock = 0
+            if attribute_selections.selected_variant
+                variant_id = attribute_selections.selected_variant.product_variant_id
+                available = attribute_selections.selected_variant.available
+                stock = attribute_selections.selected_variant.stock
+            else if attribute_selections.selections.size == 0
+                variant_id = product.product_variant_id
+                available = product.available
+                stock = product.stock
+            end
+        ~}}
+    </div>
+    {{~ if available ~}}
+        {{~ if is_kit ~}}
+            <input type="hidden" id="kit-product-selected-variant-{{ math.uuid }}" value="{{ variant_id }}" product-id="{{ product.product_id }}">
+        {{~ else ~}}
+            <div class="flex flex-col w-24 mt-1">
+                <small>Quantidade</small>
+                {{~ quantity_id = "buy-list-product-selected-quantity-" + product.product_id ~}}
+                <input type="number" class="form-control" 
+                    id="{{ quantity_id }}" name="selected-quantity" 
+                    value="1" min="1" max="{{ stock }}" 
+                    product-variant-id="{{ variant_id }}"
+                    onchange="buyListCalculatePrices('{{ product.product_id }}');">
+            </div>
+        {{~ end ~}}
     {{~ else ~}}
-        {{~ product_combo_attribute attribute_selections: attribute_selections.selections product_id: product.product_id on_click: "buyListSelectAttribute" is_secondary_product: true ~}}
+        <h3>Produto indisponível</h3>
     {{~ end ~}}
 </div>
+<br>

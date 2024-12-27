@@ -1,0 +1,26 @@
+{{ ##
+    Description: Renders a list of spots depending on the type of pagination
+                 returned on the query response (by cursor or by offset)
+    Params:
+      - products: the products list
+    Usage:
+        spot_list products: data...products
+## }}
+
+{{~ if products?.items # offset pagination case ~}}
+    <div class="flex flex-wrap justify-between items-start">    
+        {{ for item in products?.items }}
+            <div class="flex w-[180px] lg:w-auto">
+                {{ buy_box_spot product: item }}
+            </div>
+        {{ end }}
+    </div>
+{{~ else if products?.edges # cursor pagination case ~}}
+    <div class="flex flex-wrap justify-start items-start">
+        {{ for productEdge in products?.edges }}
+            <div class="flex w-[180px] lg:w-auto">
+                {{ buy_box_spot product: productEdge.node }}
+            </div>
+        {{ end }}
+    </div>
+{{~ end ~}}

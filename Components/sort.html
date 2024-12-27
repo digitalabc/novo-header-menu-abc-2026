@@ -7,18 +7,18 @@
       sort page_type: type
 ## }}
 
-<div class="sort">
-  <span class="sort__text">{{ "Ordenar por" | lang }}:</span>
-  {{ sort_options = {} }}
-  {{~ if page_type == "search" ~}}
-      {{~ sort_options = settings.sort.search.options ~}}
-  {{~ else if page_type == "hotsite" ~}}
-      {{~ sort_options = settings.sort.hotsite.options ~}}
-  {{~ end ~}}
-  <select name="sort_options" id="sort_options" onChange="sortResult(this.value);">
-      <option value="" selected disabled hidden>{{ "Ordenar por" | lang }}</option>
-      {{~ for option in sort_options ~}}
-          <option value="{{option.setting.key}}:{{option.setting.direction}}">{{option.name}}</option>
-      {{~ end ~}}
-  </select>
+<div class="flex flex-col lg:flex-row w-full lg:w-auto lg:justify-between lg:items-center">
+    <label class="hidden lg:flex lg:mr-2 mb-1 text-sm" for="sort_options">{{ "Ordenação" | lang }}:</label>
+    {{ sort_options = {} }}
+    {{~ if page_type == "search" ~}}
+        {{~ sort_options = settings.sort.search.options ~}}
+    {{~ else if page_type == "hotsite" ~}}
+        {{~ sort_options = settings.sort.hotsite.options ~}}
+    {{~ end ~}}
+    <select name="sort_options" id="sort_options" onChange="sortResult(this.value);" class="p-1 text-sm lg:text-base">
+        <option value="" selected disabled hidden>{{ "Selecione" | lang }}</option>
+        {{~ for option in sort_options ~}}
+            <option value="{{option.setting.key}}:{{option.setting.direction}}">{{option.name}}</option>
+        {{~ end ~}}
+    </select>
 </div>

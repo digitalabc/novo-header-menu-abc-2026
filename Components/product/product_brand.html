@@ -1,5 +1,5 @@
-{{~ if brand?.alias && brand?.name ~}}
-  <a href="/{{ brand.alias }}">
-    Ver outros produtos <strong>{{ brand.name }}</strong>
-  </a>
+{{~ if brand?.logo_url ~}}
+    <div>
+        <img src="{{ brand.full_url_logo }}" alt="{{ brand.name }}" width="80px" height="40px" alt="brand_logo">
+    </div>
 {{~ end ~}}

@@ -51,7 +51,6 @@ function filterSetup() {
     });
 }
 
-
 /**
  * Defines the selected filter
  * @param {string} filterId - The filter id
@@ -68,6 +67,8 @@ function setFilter(filterId) {
     } else {
         queryStringParams.append("filtro", filterId);
     }
+
+    queryStringParams.delete("pagina");
     window.location.search = queryStringParams.toString();
 }
 
@@ -84,6 +85,8 @@ function clearFilters() {
  * Takes the price range informations and pass it to the query
  */
 function setFieldPriceFilter() {
+    if (refreshTimeout) clearTimeout(refreshTimeout);
+
     const minPrice = document.getElementById("minimum-price-filter").value;
     const maxPrice = document.getElementById("maximum-price-filter").value;
     const filter = minPrice + ";" + maxPrice;
@@ -121,73 +124,20 @@ function applyPriceFilterUrl(filter) {
     window.location.search = queryStringParams.toString();
 }
 
-/**
- * Collapse filters
- */
-
-function toggleSlide(elem) {
-    if (!elem.style.height) {
-        elem.style.height = `${elem.scrollHeight}px`
+function openFilter() {
+    if (!document.getElementById('category-filters')?.classList.contains('open')) {
+        document.getElementById('category-filters')?.classList.remove('hidden')
+        setTimeout(() => {
+            document.getElementById('category-filters')?.classList.remove('opacity-0')
+            document.getElementById('category-filters')?.classList.add('opacity-100')
+            document.getElementById('category-filters')?.classList.add('open')
+        }, 100)
+    } else {
+        document.getElementById('category-filters')?.classList.add('opacity-0')
+        document.getElementById('category-filters')?.classList.remove('opacity-100')
+        document.getElementById('category-filters')?.classList.remove('open')
+        setTimeout(() => { document.getElementById('category-filters')?.classList.add('hidden') }, 1000)
     }
-    else {
-        elem.style.height = ``
-    }
-}
-
-const filterTitles = document.querySelectorAll(".filter__title");
-
-filterTitles.forEach(function (title) {
-    title.addEventListener("click", function () {
-        const filterItem = title.parentElement,
-            filterList = title.nextElementSibling
-        filterItem.classList.toggle("open")
-        toggleSlide(filterList);
-    });
-});
-
-/**
- * Expand filter list
- */
-
-function toggleSlideMaxHeight(elem, maxHeight) {
-    if (!elem.style.maxHeight || elem.style.maxHeight == `${maxHeight}px`) {
-        elem.style.maxHeight = `${elem.scrollHeight}px`
-    }
-    else {
-        elem.style.maxHeight = `${maxHeight}px`
-    }
-}
-
-function expandFilterList(button) {
-    var filterList = button.previousElementSibling
-    toggleSlideMaxHeight(filterList, 140);
-    button.classList.toggle("ver-menos")
-}
-
-/**
- * Mobile filter
- */
-
-if (MOBILE.matches) {
-    const body = document.querySelector("body")
-    const filter = document.querySelector(".filter");
-    const openButton = document.querySelector(".filter__button");
-    const closeButton = document.querySelector(".filter__close");
-
-    filter.addEventListener("click", function (e) {
-        if (e.target == e.currentTarget) {
-            body.classList.remove("on-filter")
-        }
-    })
-    openButton.addEventListener("click", function (e) {
-        body.classList.add("on-filter")
-    })
-
-    closeButton.addEventListener("click", function (e) {
-        body.classList.remove("on-filter")
-    })
-
-
 }
 
 function refreshMin(elem, inputValue = null) {
@@ -207,7 +157,7 @@ function refreshMin(elem, inputValue = null) {
     document.getElementById('price-min-selected').value = priceValue;
 
     if (inputValue) return;
-
+    
     updateFieldPrice('minimum-price-filter', priceValue);
     waitAndRefresh();
 }
@@ -260,14 +210,14 @@ function updateFieldPrice(inputId, value) {
 /**
  * Gets price filter values.
 */
-function getPriceFilter() {
+function getPriceFilter(){
     const priceFilter = queryStringParams.get("precoPor");
     let minPrice = null;
     let maxPrice = null;
 
-    if (priceFilter) {
+    if (priceFilter){
         var splitedPrice = priceFilter.replace().split(";");
-
+        
         minPrice = parseFloat(splitedPrice[0]);
         maxPrice = parseFloat(splitedPrice[1]);
     }
@@ -278,17 +228,17 @@ function getPriceFilter() {
 /**
  * Gets filters values.
 */
-function getFilters() {
+function getFilters(){
     const filters = queryStringParams.getAll("filtro");
 
-    if (filters) {
+    if (filters){
         let filtersList = [];
 
         for (let i = 0; i < filters.length; i++) {
             const item = filters[i];
             let itemSplited = item.split("__");
 
-            if (itemSplited.length < 2) {
+            if (itemSplited.length < 2){
                 itemSplited = item.split(":");
             }
 

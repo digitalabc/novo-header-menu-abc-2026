@@ -6,7 +6,6 @@ query Checkout($checkoutId: String!, $hasCheckout: Boolean!) {
     checkoutId
     url
     products {
-      url
       listPrice
       price
       ajustedPrice
@@ -15,10 +14,44 @@ query Checkout($checkoutId: String!, $hasCheckout: Boolean!) {
       imageUrl
       quantity
       name
+      gift
+      kit
       productAttributes{
         name
         type
         value
+      }
+      customization{
+        id
+        values{
+          cost
+          name
+          value
+        }
+      }
+    }
+    kits {
+      kitId
+      kitGroupId
+      alias
+      imageUrl
+      listPrice
+      price
+      totalListPrice
+      totalAdjustedPrice
+      name
+      quantity
+      products {
+        productId
+        productVariantId
+        imageUrl
+        name
+        url
+        quantity
+        productAttributes {
+          name
+          value
+        }
       }
     }
     shippingFee

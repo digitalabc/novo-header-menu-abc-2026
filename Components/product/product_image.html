@@ -1,17 +1,14 @@
-<div class="d-flex justify-content-center">
-    <div class="col-2">
-        <div>
-            {{ for image in images }}
-                <div class="col-12" style="border-style: solid; border-width: thin; border-top: 0px;">
-                    <img src="{{ image.url }}" class="img-fluid" alt="image_{{ math.uuid }}">
-                </div>
-            {{ end }}
-        </div>
-    </div>
-    <div class="col-10">
+<div class="flex flex-col">
+    <div class="">
         {{~ firstImage = images | array.first ~}}    
         {{ if firstImage }}
-            <img src="{{ firstImage.url }}" class="img-fluid" alt="image_{{ math.uuid }}">
+            <img src="{{ firstImage.url }}" alt="Product main image - {{math.uuid}}" class="img-fluid w-full" id="firstImage">
         {{ end }}
-    </div>
+    </div>    
+    <div class="flex flex-wrap justify-start items-center my-2">
+        {{ for image in images }}
+            <img src="{{ image.url }}" class="w-20 h-20 lg:w-28 lg:h-28 object-cover object-center border bg-secondary-300 m-1 cursor-pointer" 
+            alt="image_{{ math.uuid }}" onclick="changeFirstImage('{{image.url}}')">
+        {{ end }}
+    </div>   
 </div>

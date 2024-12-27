@@ -1,32 +1,19 @@
 query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partnerAccessToken: String){
-  shop {
-    mainUrl
-    checkoutUrl
-  }
-  product(productId:$productId,  partnerAccessToken: $partnerAccessToken) {
+  product(productId:$productId, partnerAccessToken: $partnerAccessToken) {
     buyTogether{
       productId
     }
-    ...SingleProductData
+    ...SingleProductData    
     id
     sku
     ean
     averageRating
     productBrand {
       name
-      alias
+      logoUrl
       fullUrlLogo
-    }
-    productCategories {
-      active
-      googleCategories
-      hierarchy
-      id
-      name
-      main
-      url
-    }
-    informations {
+    }  
+    informations{
       id
       title
       type
@@ -40,14 +27,14 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       reviewDate
     }
     promotions{
-      fullStampUrl
       content
       id
       stamp
-      title
       fullStampUrl
+      title
+      disclosureType
     }
-    breadcrumbs {
+    breadcrumbs{
       link
       text
     }
@@ -59,8 +46,8 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       scheme
     }
     addToCartFromSpot
-    subscriptionGroups {
-      recurringTypes {
+    subscriptionGroups{
+      recurringTypes{
         name
         days
         recurringTypeId
@@ -75,38 +62,28 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
     productId
     productVariantId
     available
-    attributes {
-      name
-      value
-    }
-    similarProducts {
+    similarProducts{
       alias
       image
       name
       imageUrl(w: 50, h: 50)
     }
-    images {
+    images{
       url
     }
     prices {
       listPrice
       price
-      priceTables {
-        id
-        listPrice
-        price
-      }
       discountPercentage
-      multiplicationFactor
-      installmentPlans {
-        displayName
-        name
-        installments {
-          discount
-          fees
-          number
-          value
-        }
+      installmentPlans{
+          displayName
+          name
+          installments{
+            discount
+            fees
+            number
+            value
+          }
       }
       bestInstallment {
         name
@@ -118,67 +95,18 @@ query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partn
       }
     }
     promotions{
-      fullStampUrl
       content
       id
       stamp
       title
-      fullStampUrl
+      disclosureType
     }
     addToCartFromSpot
   }
 }
 
 fragment SingleProductData on SingleProduct {
-  productId
-  productName
-  productVariantId
-  alias
-  stock
-  available
-  images(height: 530, width: 530) {
-    url
-    fileName
-    print
-  }
-  prices {
-    listPrice
-    price
-    priceTables {
-      id
-      listPrice
-      price
-    }
-    discountPercentage
-    multiplicationFactor
-    installmentPlans {
-      displayName
-      name
-      installments {
-        discount
-        fees
-        number
-        value
-      }
-    }
-    bestInstallment {
-      name
-      displayName
-      discount
-      fees
-      number
-      value
-    }
-    wholesalePrices {
-      price
-      quantity
-    }
-  }
-  attributes {
-    name
-    value
-  }
-  attributeSelections(selected: $selections) {
+  attributeSelections (selected: $selections) {
     canBeMatrix
     matrix {
       row {
@@ -203,11 +131,11 @@ fragment SingleProductData on SingleProduct {
         stock
       }
     }
-    selectedVariant {
+    selectedVariant{
       id
       alias
       available
-      images(height: 530, width: 530) {
+      images {
         fileName
         url
       }
@@ -215,16 +143,15 @@ fragment SingleProductData on SingleProduct {
         listPrice
         price
         discountPercentage
-        multiplicationFactor
-        installmentPlans {
-          displayName
-          name
-          installments {
-            discount
-            fees
-            number
-            value
-          }
+        installmentPlans{
+            displayName
+            name
+            installments{
+              discount
+              fees
+              number
+              value
+            }
         }
         bestInstallment {
           name
@@ -234,7 +161,7 @@ fragment SingleProductData on SingleProduct {
           number
           value
         }
-        wholesalePrices {
+        wholesalePrices{
           price
           quantity
         }
@@ -243,12 +170,12 @@ fragment SingleProductData on SingleProduct {
       productVariantId
       stock
     }
-    selections {
+    selections{
       attributeId
       displayType
       name
       varyByParent
-      values {
+      values{
         alias
         available
         printUrl
@@ -257,7 +184,50 @@ fragment SingleProductData on SingleProduct {
       }
     }
   }
+  alias
+  productId
+  productName
+  productVariantId
+  stock
+  available
+  parallelOptions
+  images {
+    url
+    fileName
+    print
+  }
+  prices {
+    listPrice
+    price
+    discountPercentage
+    installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+    }
+    bestInstallment {
+      name
+      displayName
+      discount
+      fees
+      number
+      value
+    }
+    wholesalePrices{
+      price
+      quantity
+    }
+  }
+  productCategories {
+    name
+  }
   customizations {
+    required
     customizationId
     cost
     name

@@ -1,0 +1,58 @@
+<table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
+  <tbody>
+      <tr>
+          <td align="center" valign="top" style="background-color: #f6f6f6;">
+              <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">            
+                  
+                  <!-- HEADER -->
+                  {{header_mail}}
+                  <!-- END HEADER -->
+                  
+                  <!-- MAIN -->
+                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
+                      <tbody>
+                          <tr align="center">
+                              <td>
+                                  <h1 style="font-size: 36px; line-height: 100%;">Pedido Recebido</h1>
+                              </td>
+                          </tr>
+                          <tr align="center">
+                              <td>
+                                  <p>Olá {{ pedido?.usuario?.primeiro_nome }},</p>
+                                  <p>Seu pedido <b>{{ pedido?.pedido_id }}</b> através da nossa loja em {{ pedido?.data }} : {{ pedido?.hora }}, foi recebido com sucesso!</p><br>
+                                  <p>Vamos envia-lo para o endereço: {{pedido?.frete?.endereco?.logradouro}}, {{pedido?.frete?.endereco?.cidade}}</p>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="padding: 8px;">
+                      <tbody>
+                          <tr>
+                              <td colspan="4">
+                                  <h1 style="font-size: 24px; line-height: 100%;">Resumo do pedido</h1>
+                              </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:100%;">
+                                <tbody>
+                                  {{ for product in pedido?.produtos }}
+                                    {{ product_mail product: product }}
+                                  {{ end }}
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <!-- END MAIN -->
+                  <br>
+                  <!-- FOOTER -->
+                  {{footer_mail}}
+                  <!-- END FOOTER -->
+
+              </div>
+          </td>
+      </tr>
+  </tbody>
+</table>

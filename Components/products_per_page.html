@@ -7,10 +7,12 @@
         products_per_page
 ## }}
 
-{{ "Produtos por página" | lang }}:
-<select name="page_size" id="page_size" onChange="setPageSize(this.value);">
-    <option value="" selected disabled hidden>{{ "Selecione" | lang }}</option>
-    {{~ for option in settings.page_size.options ~}}
-        <option value='{{option}}'>{{ option }}</option>
-    {{~ end ~}}
-</select>
+<div class="hidden lg:flex flex-col lg:flex-row lg:justify-between w-full lg:w-auto lg:items-center mr-4">
+    <label for="page_size" class="lg:mr-2 mb-1 text-sm">{{ "Produtos por página" | lang }}:</label>
+    <select name="page_size" id="page_size" onChange="setPageSize(this.value);" class="p-1 text-base min-w-[120px]">
+        <option value="" selected disabled hidden>{{ "Selecione" | lang }}</option>
+        {{~ for option in settings.page_size.options ~}}
+            <option value='{{option}}'>{{ option }}</option>
+        {{~ end ~}}
+    </select>
+</div>

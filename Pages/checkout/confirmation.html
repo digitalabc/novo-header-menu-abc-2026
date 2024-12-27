@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ asset type: "css" paths: ["output", "output_checkout"]}}
+    <title>Pedido confirmado</title>
+    {{ data_layer_config }}
+</head>
+
+<body class="bg-mainBg">
+    {{ wake_checkout_header }}
+    {{ wake_overlay }}
+    {{~ first_order = data.checkout.orders | array.first ~}}
+    {{~ if first_order ~}}
+        <div class="wake-confirmation-wrapper">
+            <h2 class="wake-confirmation-order-success-message">
+                <img src="{{- store.urls.static_img}}icons/white-check.svg?theme={{store.theme}}&v={{store.last_modified}}" class="h-5 w-5 mr-1">
+                O seu pedido foi realizado com sucesso!
+            </h2>    
+            <div class="wake-confirmation-order">
+                <div class="wake-confirmation-order-container">
+                    <h3 class="wake-confirmation-order-title">
+                        Número do pedido
+                        <b class="wake-confirmation-order-id">{{ first_order.order_id }}</b>
+                    </h3>
+                    <span class="wake-confirmation-order-text">A confirmação foi enviada para o e-mail: <b>{{ data.customer?.email ? data.customer.email : '' }}</b></span>
+                </div>
+            </div>
+            <div class="wake-confirmation-order-details">
+                <div class="wake-confirmation-order-details-container">
+                    <div class="wake-confirmation-section">
+                        <h2 class="wake-confirmation-section-title">Informações do pedido</h2>
+                        <div class="wake-confirmation-order-status">
+                            Status: {{ first_order.order_status }}
+                        </div>
+                        <ul class="wake-confirmation-order-details-list">
+                            <li class="total">Valor total: {{ first_order.total_value | math.format "c" "pt-BR"}}</li>
+                            <li><b class="mr-1">Data do pedido:</b> {{date.parse first_order.date | date.to_string '%d/%m/%Y - %R' culture:'pt-BR'}}</li>
+                            <li><b class="mr-1">Comprado por:</b> {{data.customer?.customer_name ? data.customer.customer_name : ''}}</li>
+                            <li><b class="mr-1">Forma de pagamento:</b> {{first_order.payment.name}}</li>
+                        </ul>
+                        <span class="wake-confirmation-order-details-note">Você pode acompanhar o status do seu pedido em Minha Conta > Meus pedidos</span>
+
+                        {{ if first_order.order_status == "AWAITING_PAYMENT" }}
+                            {{ wake_change_payment_button checkout_id: data.checkout.checkout_id order_id: first_order.order_id }}
+                        {{ end }}
+                    </div>
+                    {{~ if !first_order.payment.card ~}}
+                        <div class="wake-confirmation-section mt-6">
+                            {{ wake_checkout_order_confirmation order: first_order.payment }}
+                        </div>
+                    {{~ end ~}}
+                    <div class="wake-confirmation-section wake-confirmation-address mt-6">
+                        <h2 class="wake-confirmation-section-title wake-confirmation-address-title">Endereço de entrega</h2>
+                        <div class="wake-confirmation-address-container">
+                            <div class="wake-confirmation-address-column">
+                                <h3 class="wake-confirmation-delivery-title">Endereço de entrega</h3>
+                                <span>{{first_order.delivery.address.address}}</span>
+                                <span>{{first_order.delivery.address.city}}</span>
+                                <span>{{first_order.delivery.address.neighborhood}}</span>
+                            </div>
+                            <div class="wake-confirmation-address-column ml-10">
+                                <div class="wake-confirmation-address-column">
+                                    <h3 class="wake-confirmation-delivery-title">Método de entrega</h3>
+                                    <span>{{first_order.delivery.name ? first_order.delivery.name : 'Frete grátis'}}</span>
+                                </div>
+                                <div class="wake-confirmation-address-column">
+                                    <h3 class="wake-confirmation-delivery-title">Prazo de entrega</h3>
+                                    <span>{{first_order.delivery.delivery_time}} dias úteis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wake-confirmation-section mt-6">
+                        <h2 class="wake-confirmation-section-title">Resumo do pedido</h2>
+                        <table class="wake-confirmation-summary-table">
+                            <thead>
+                                <tr>
+                                    <th>Produtos</th>
+                                    <th></th>
+                                    <th>Quantidade</th>
+                                    <th>Preço unitário</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{~ for product in first_order.products ~}}
+                                    <tr class="border-b">
+                                        <td class="img"><img src="{{product.image_url}}"/></td>
+                                        <td class="attr">
+                                            <div class="flex flex-col">
+                                                <span class="prod-name">{{product.name}}</span>
+                                                <div class="product-attributes">
+                                                    {{~ for attr in product.attributes ~}}
+                                                        <span class="item-attribute mr-1">{{ attr.name }}:</span> <b class="border-r mr-2 pr-2 last:border-none last:m-0 last:p-0">{{ attr.value }}</b> {{type}}
+                                                    {{~ end ~}}
+                                                </div>
+                                                <div class="flex text-sm md:hidden">Quantidade: <span class="font-semibold ml-1">{{product.quantity}}</span></div>
+                                            </div>
+                                        </td>
+                                        <td class="quantity">{{product.quantity}}</td>
+                                        <td class="quantity">{{product.value / product.quantity | math.format "c" "pt-BR"}}</td>
+                                        <td class="value">{{product.value | math.format "c" "pt-BR"}}</td>
+                                    </tr>
+                                {{~ end ~}}
+                            </tbody>
+                        </table>
+                        <div class="wake-confirmation-summary-section">
+                            <div class="wake-confirmation-summary-container">
+                                <div class="wake-confirmation-summary-subtotal hidden">
+                                    <span class="mr-10">Subtotal:</span> {{ first_order.subtotal | math.format "c" "pt-BR" }}
+                                </div>
+                                <div class="wake-confirmation-summary-discount">
+                                    <span class="mr-10">Desconto:</span>
+                                    <span>{{first_order.discount_value ? (first_order.discount_value | math.format "c" "pt-BR") : '-'}}</span>
+                                </div>
+                                <div class="wake-confirmation-summary-shipping">
+                                    <span class="mr-10">Frete:</span>
+                                    {{first_order.shipping_value | math.format "c" "pt-BR"}}
+                                </div>
+                                <div class="wake-confirmation-summary-total">
+                                    <span class="mr-10">Total:</span>
+                                    {{first_order.total_value | math.format "c" "pt-BR"}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wake-confirmation-myorder">
+                    <div class="wake-confirmation-section">
+                        <h2 class="wake-confirmation-section-title">Acessar Meus pedidos:</h2>
+                        <p>É necessário criar ou recuperar sua senha. Você receberá um e-mail</p>
+                        <a href="{{ store.urls.checkout_pages.account.orders }}" class="wake-confirmation-myorder-link">
+                            ir para meus pedidos
+                        </a>
+                    </div>            
+                    <div class="wake-confirmation-section mt-6">
+                        <h2 class="wake-confirmation-section-title">Precisa de ajuda?</h2>
+                        <ul class="wake-confirmation-help-list">
+                            <li><a href="#">Opções de pagamento</a></li>
+                            <li><a href="#" class="my-2">Entregas e prazos</a></li>
+                            <li><a href="#">Mais ajuda</a></li>
+                        </ul>
+                    </div>            
+                </div>
+            </div>
+            <div class="wake-confirmation-button-back">
+                <a href="/">Voltar para a loja</a>
+            </div>
+        </div>
+    {{~ end ~}}
+    {{ wake_payment_change_scripts }}
+    {{ wake_checkout_footer }}
+    <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+        <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
+    </pre>
+    {{ sdk_client }}
+    {{ data_layer_confirmation_view checkout: data.checkout}}
+    {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
+    {{ asset type: "js" paths: ["checkout_user_login", "event_manager"] options: "async"}}
+  </body>
+
+</html>

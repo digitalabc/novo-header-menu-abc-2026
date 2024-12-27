@@ -1,41 +1,6 @@
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Agência Auaha">
-<meta name="adopt-website-id" content="5116c68f-2055-4add-99c3-41f216482e8c" />
-          
-{{ title default_title: default_title seo:seo }}
-
-{{~ if seo && seo.size > 0 ~}}
-  {{ meta_tags seo: seo}}
-{{~ end ~}}
-
+<title>{{title}}</title>
 {{~ capture favicon_source ~}}
-    {{- store.urls.static_img}}{{settings.favicon_path}}?theme={{store.theme -}}&v={{store.last_modified -}}
+    {{- store.urls.static_img}}{{settings.favicon_path}}?theme={{store.theme -}}&v={{store.last_modified}}
 {{~ end ~}}
-<link rel="icon" type="image/x-icon" href="{{ favicon_source }}">
-<link rel="canonical" href="{{ store.urls.current }}" />
+<link rel="icon" type="image/png" href="{{ favicon_source }}">
 
-<script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
-<script src="//tag.goadopt.io/injector.js?website_code=5116c68f-2055-4add-99c3-41f216482e8c" class="adopt-injector"></script>
-<style>html{display: none;}</style>
-
-{{# CSS Customizado #}}
-{{ asset type: "css" paths: ["swiper-bundle.min" ] }}
-{{ asset type: "css" paths: ["auaha" ] }}
-{{ asset type: "css" paths: ["abc-custom" ] }}
-
-{{# Google Fonts #}}
-{{ font_url = "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="{{ font_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-
-<noscript>
-  <link href="{{ font_url }}" rel="stylesheet" type="text/css" />
-</noscript>
-
-{{# Defer background images #}}
-<style id="no-bg-img">
-  *{background-image:none!important}
-</style>

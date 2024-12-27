@@ -1,0 +1,108 @@
+query Hotsite($url: String!,
+       $partnerAccessToken: String, 
+       $sortKey: ProductSortKeys, 
+       $sortDirection: SortDirection, 
+       $filters: [ProductFilterInput],
+       $maximumPrice: Decimal,
+       $minimumPrice: Decimal,
+       $after: String,
+       $before: String,
+       $resultSize: Int, 
+       $last: Int,
+       $onlyMainVariant: Boolean) {
+  hotsite (url:$url, partnerAccessToken: $partnerAccessToken) {
+    name
+    pageSize
+    banners {
+      bannerName
+      bannerUrl
+      position
+      urlOnClick
+      openNewTab
+      height
+      title
+      width
+      order
+    }
+    contents {
+      content
+      height
+      title
+      width 
+      position
+    }
+    breadcrumbs{
+      link
+      text
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    products(after: $after, before: $before, filters: $filters, first: $resultSize, last: $last, minimumPrice: $minimumPrice, 
+      			 maximumPrice: $maximumPrice, onlyMainVariant: $onlyMainVariant, sortDirection: $sortDirection, sortKey: $sortKey, partnerAccessToken: $partnerAccessToken) {
+      totalCount
+      pageInfo{
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+      edges{
+        cursor
+        node{
+          id
+          productId
+          productName
+          productVariantId
+          alias
+          images(width:275, height:275) {
+            url
+            print
+          }
+          available
+          prices {
+            listPrice
+            price
+            discountPercentage
+            bestInstallment {
+              name
+              displayName
+              discount
+              fees
+              number
+              value
+            }
+          }
+          promotions{
+            content
+            id
+            stamp
+            fullStampUrl
+            title
+            disclosureType
+          }
+          addToCartFromSpot
+        }
+      }
+    }
+    aggregations {
+      maximumPrice
+      minimumPrice
+      filters {
+        field
+        values {
+          name
+          quantity
+        }
+      }
+      priceRanges {
+        quantity
+        range
+      }
+    }
+  }
+}

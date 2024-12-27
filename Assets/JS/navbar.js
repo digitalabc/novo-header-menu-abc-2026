@@ -1,6 +1,5 @@
 autocomplete(document.getElementById("search-bar"));
 window.addEventListener("load", loadPartnerLogo());
-window.addEventListener("load", menuMobileLoad, false);
 
 /**
  * Redirects to the search page with the given term, or searching for 
@@ -14,8 +13,6 @@ function search(e, term) {
 
     let query = term;
     if (!term) query = document.getElementById("search-bar").value;
-
-    if (!query) return false;
 
     let searchPage =
         document.location.protocol + "//" +
@@ -40,7 +37,7 @@ async function renderAutocompleteSnippet(val) {
             query: val,
         }
     );
-    replaceInnerHtml(response, "autocomplete-list");
+    setInnerHtmlById(response, "autocomplete-list");
 }
 
 /**
@@ -81,7 +78,7 @@ function autocomplete(inp) {
 
     inp.addEventListener("keydown", function (e) {
         var x = document.getElementById("autocomplete-list");
-        if (x) x = x.getElementsByTagName("div");
+        if (x) x = x.querySelectorAll("div[suggestion]");
 
         if (e.keyCode == 40) {
             currentFocus++;
@@ -92,7 +89,7 @@ function autocomplete(inp) {
         } else if (e.keyCode == 13) {
             e.preventDefault();
             if (currentFocus < 0 || !x) return;
-            
+
             const selectedDiv = x[currentFocus];
             if (!selectedDiv.classList.value.includes("product-suggestion"))
                 search(null, selectedDiv.innerHTML.trim());
@@ -101,7 +98,7 @@ function autocomplete(inp) {
     });
 
     document.addEventListener("click", function (e) {
-        replaceInnerHtml("", "autocomplete-list");
+        setInnerHtmlById("", "autocomplete-list");
     });
 
     function addActive(items) {
@@ -115,8 +112,8 @@ function autocomplete(inp) {
     }
 
     function removeActive(items) {
-        for (let i = 0; i < items.length; i++) 
-        items[i].classList.remove("autocomplete-active");
+        for (let i = 0; i < items.length; i++)
+            items[i].classList.remove("autocomplete-active");
     }
 }
 
@@ -125,7 +122,7 @@ function autocomplete(inp) {
  * @param {string} checkoutId - The id of the checkout to be associated
  */
 async function checkoutPartnerAssociate(checkoutId) {
-    const partnerAccessToken = getCookie("sf_partner_access_token");
+    const partnerAccessToken = await client.cookie.get("sf_partner_access_token");
     if (partnerAccessToken)
         return await client.checkout.partnerAssociate(
             checkoutId,
@@ -134,28 +131,10 @@ async function checkoutPartnerAssociate(checkoutId) {
 }
 
 /**
- * Disassociates a partner with a checkout
- * @param {string} checkoutId - The id of the checkout to be disassociated
- */
-async function checkoutPartnerDisassociate(checkoutId) {
-    return await client.checkout.partnerDisassociate(checkoutId);
-}
-
-/**
- * Returns a given cookie's value
- * @param {string} name - The cookie key
- */
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-}
-
-/**
  * If there is a partner access token registered in the cookies, loads a snippet to get a custom logo in the navbar
  */
 async function loadPartnerLogo() {
-    const partnerAccessToken = getCookie("sf_partner_access_token");
+    const partnerAccessToken = await client.cookie.get("sf_partner_access_token");
     if (!partnerAccessToken) return;
 
     const partnerLogo = await client.snippet.render(
@@ -163,66 +142,55 @@ async function loadPartnerLogo() {
         "SnippetQueries/partner_logo.graphql",
         { partnerAccessToken: partnerAccessToken }
     );
-    if (partnerLogo) replaceInnerHtml(partnerLogo, "navbar-logo");
+    if (partnerLogo) setInnerHtmlById(partnerLogo, "navbar-logo");
 }
 
-/**
- * Setups the mobile menu navigation from click event
- */
-async function menuMobileLoad(){
-  const menuMobileLinks = document.querySelectorAll(".nav-mobile__link");
-  const menuMobileBackButtons = document.querySelectorAll(".nav-mobile__back");
-  if (menuMobileLinks){
-    menuMobileLinks.forEach(button => {
-      button.addEventListener('click', (event) => { handleMenuLinkClick(event); }) 
-    });
-  }
-  if (menuMobileBackButtons){
-    menuMobileBackButtons.forEach(button => {
-      button.addEventListener('click', (event) => { handleBackButtonClick(event); }) 
-    });
-  }
+function showSubMenu(menuId) {
+    document.getElementById('drop-nav-menu-'+ menuId).style.display = 'flex'
 }
 
-/**
- * Mobile menu navigation
- */
-function handleMenuLinkClick(event) {
-  if (event.target.tagName == "BUTTON") {
-    event.preventDefault()
-    var button = event.target
-    var anchor = button.parentElement
-    var dropdown = anchor.nextElementSibling
-
-    dropdown.classList.add("open")
-  }
-}
-function handleBackButtonClick(event) {
-  var button = event.target
-  var dropdown = button.parentElement
-
-  dropdown.classList.remove("open")
+function hideSubMenu(menuId) {
+    document.getElementById('drop-nav-menu-'+ menuId).style.display = 'none'
 }
 
-function showMobileSearch(){
-  const body = document.body
-  body.classList.add("show-search")
+const showNavBar = (action) => {
+    if (action) {
+        document.getElementById('navbar').classList.remove('hidden');
+        document.getElementById('navbar-bg-opacity').classList.remove('hidden');
+        setTimeout(() => {
+            document.getElementById('navbar-bg-opacity').classList.remove('opacity-0');
+            document.getElementById('navbar-bg-opacity').classList.add('opacity-100');
+            document.getElementById("navbar").classList.remove('-translate-x-full')
+            document.getElementById("navbar").classList.add('translate-x-0') 
+        }, 100);
+    } else {
+        document.getElementById('navbar-bg-opacity').classList.remove('opacity-100');
+        document.getElementById('navbar-bg-opacity').classList.add('opacity-0');
+        document.getElementById("navbar").classList.add('-translate-x-full');
+        document.getElementById("navbar").classList.remove('translate-x-0');
+
+        setTimeout(() => { 
+            document.getElementById('navbar').classList.add('hidden');
+            document.getElementById('navbar-bg-opacity').classList.add('hidden');
+        }, 200);
+    }
+
 }
 
-function hideMobileSearch(event){
-  const body = document.body
-  body.classList.remove("show-search")
+const showSearchBar = () => {
+    if (document.getElementById('search').classList.contains('hidden')) {
+        document.getElementById('search').classList.remove('hidden')
+        setTimeout(() => {
+            document.getElementById('search').classList.remove('opacity-0')
+            document.getElementById('search').classList.add('opacity-100')
+            document.getElementById('search').classList.add('flex')
+        }, 100)
+    } else {
+        document.getElementById('search').classList.remove('opacity-100')
+        document.getElementById('search').classList.add('opacity-0')
+        setTimeout(() => {
+            document.getElementById('search').classList.add('hidden')
+            document.getElementById('search').classList.remove('flex')
+        }, 100)
+    }
 }
-
-function onScroll(evt) {
-  // Store the scroll value for laterz.
-  lastScrollY = window.scrollY;
-
-  // Prevent multiple rAF callbacks.
-  if (scheduledAnimationFrame) return;
-
-  scheduledAnimationFrame = true;
-  requestAnimationFrame(readAndUpdatePage);
-}
-
-window.addEventListener("scroll", onScroll);

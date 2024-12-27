@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output","output_login"]}}
+  <title>Document</title>
+</head>
+<body class="bg-mainBg">
+  <header class="shadow-xl lg:shadow-none bg-lightBg">
+      {{ links }}
+      {{ head }}
+      {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}            
+  </header>
+  {{ wake_overlay }}
+  <div class="wake-simple-login-wrapper">
+    <div>
+      {{ wake_login_simple }}
+      {{ wake_login_social facebook_app_id: common.facebook_app_id[0]?.value google_client_id: common.google_client_id[0]?.value }}
+    </div>    
+  </div>
+  {{ footer is_preview: is_preview store: store }}        
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+      <script type="text/javascript">document.write(JSON.stringify({{data}}, null, 2));</script>
+  </pre>
+  {{ sdk_client }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
+</body>
+</html>

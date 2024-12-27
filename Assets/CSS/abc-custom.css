@@ -562,3 +562,20 @@ filter: brightness(0) invert(1);
 ::-webkit-scrollbar {
   width: 10px !important;
 }
+
+/* pde-464 */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+.breadcrumb > a:last-child{
+  white-space: nowrap; 
+  width: 250px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+.breadcrumb__link {
+  font-size: 12px;
+}
+/*  */

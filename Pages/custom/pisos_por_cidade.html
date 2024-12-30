@@ -36,7 +36,7 @@
           {{ banner carousel: false banners: data.hotsite.banners position: "Topo" }}
         </div>
         <div>
-          {{ spot_carousel class: "showcase-1" products: data.vitrine_banner.products.nodes }}
+          {{ spot_carousel class: "showcase-1-pisosporcidade" products: data.vitrine_banner.products.nodes }}
         </div>
       </div>
     </section>
@@ -77,6 +77,32 @@
   {{ sdk_client }}
 
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "seo", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "topbar", "swiper_category", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "whats_form"]}}
+
+  {{## mudanca nome de classe para resolver resolver conflito ##}}
+ <script>
+  var swiper = new Swiper(".showcase-1-pisosporcidade .swiper", {
+  navigation: {
+    nextEl: '.showcase-1-main-category .swiper-button-next',
+    prevEl: '.showcase-1-main-category .swiper-button-prev'
+  },
+  spaceBetween: 5,
+  slidesPerView: 2.1,
+  breakpoints: {
+    768: {
+      slidesPerView: 3.1
+    },
+    991: {
+      spaceBetween: 40,
+      slidesPerView: 1
+    },
+    1090: {
+      spaceBetween: 40,
+      slidesPerView: 2
+    }
+  }
+});
+
+ </script>
 </body>
 
 </html>

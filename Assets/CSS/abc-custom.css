@@ -579,3 +579,16 @@ filter: brightness(0) invert(1);
   font-size: 12px;
 }
 /*  */
+
+/* pde-463 */
+
+#footer .footer-logo {
+  padding-bottom: 24px;
+}
+
+@media screen and (max-width: 991px) {
+  #footer .footer-logo {
+      text-align: center;
+  }
+}
+/*  */

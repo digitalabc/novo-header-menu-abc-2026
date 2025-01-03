@@ -81,6 +81,7 @@ const estados = [
 			"Montes Claros",
 			"Muriaé",
 			"Mutum",
+			"Nanuque",
 			"Nepomuceno",
 			"Nova Lima",
 			"Nova Resende",

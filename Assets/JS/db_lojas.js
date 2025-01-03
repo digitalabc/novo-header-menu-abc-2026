@@ -212,6 +212,7 @@ const estados = [
 			"Catalão",
 			"Formosa",
 			"Goiânia",
+			"Rio Verde",
 			"Trindade"
 		]
 	},

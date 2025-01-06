@@ -10,6 +10,7 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
       height
       title
       width
+      urlOnClick
     }
     contents {
       content

@@ -273,6 +273,25 @@
       ]
     },
     {
+      "name": "Araponga",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. São Geraldo, 66 - Centro, Araponga - MG, 36594-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/araponga/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Araxá",
       "state": "Minas Gerais",
       "stores": [
@@ -568,6 +587,25 @@
           "thursday": "7:00 às 19:00",
           "friday": "7:00 às 19:00",
           "saturday": "7:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Cambuí",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "São Judas",
+          "adress": "R. São Caetano, 772 - São Judas, Cambuí - MG, 37600-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/cambui/sao-judas",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

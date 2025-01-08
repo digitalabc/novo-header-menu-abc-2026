@@ -84,9 +84,9 @@
 
           {{~ end ~}}
       </ul>
-      <h5 class="fullprice ">
+      <p class="fullprice ">
         Subtotal <strong>{{ data.checkout.subtotal | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</strong>
-      </h5>
+      </p>
       <a href={{checkoutUrl}} class="gotocheckout">
         Finalizar compra
       </a>

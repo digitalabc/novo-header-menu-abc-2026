@@ -491,7 +491,23 @@ async function spotBackInStockOnClick(e) {
 }
 
 function togglePayment(button) {
-  button.parentElement.classList.toggle("open")
+  // button.parentElement.classList.toggle("open")
+  if (button === 'open') {
+    document.querySelector('.payment__dialog').show();
+  } else {
+    document.querySelector('.payment__dialog').close();
+  }
+}
+function showPaymentInstallment(input) {
+  if (!input.value) { return; }
+  
+  document.querySelectorAll('.payment__options__installments ul').forEach((ul) => {
+    if (ul.classList.contains('show__installments')) {
+      ul.classList.remove('show__installments');
+    }
+  });
+
+  document.querySelector(`.${input.value}`).classList.add('show__installments');    
 }
 
 function createWarning(div) {

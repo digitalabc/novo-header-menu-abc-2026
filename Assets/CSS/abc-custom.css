@@ -591,3 +591,16 @@ filter: brightness(0) invert(1);
   }
 }
 /*  */
+
+@media (max-width: 700px) {
+  .navbar__logo svg {
+    width: 99px;
+    height: 28px;
+  }
+  
+  /* pde-474 */
+  input[type="text"],   
+  input[type="search"] {
+    font-size: 16px;
+  }
+}

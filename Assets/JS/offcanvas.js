@@ -2,12 +2,15 @@ const openCanvasButtons = document.querySelectorAll("[ah-toggle]")
 
 openCanvasButtons.forEach((element) => {
   const offcanvasId = element.getAttribute("ah-toggle");
-  const offcanvas = document.querySelector(offcanvasId)
-
-  element.addEventListener("click", () => openOffcanvas(offcanvasId))
-
-  offcanvas.addEventListener("click", (evt) => handleCanvasClick(offcanvasId, evt))
-})
+  
+  if (offcanvasId !== 'user-page') {
+    const offcanvas = document.querySelector(offcanvasId)
+    element.addEventListener("click", () => openOffcanvas(offcanvasId));
+    offcanvas.addEventListener("click", (evt) => handleCanvasClick(offcanvasId, evt));
+  } else {
+    element.addEventListener("click", () => openOffcanvas(offcanvasId));
+  }
+});
 
 function openOffcanvas(offcanvasId){
   const offcanvas = document.querySelector(offcanvasId);

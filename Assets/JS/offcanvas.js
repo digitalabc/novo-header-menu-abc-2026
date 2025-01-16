@@ -40,7 +40,7 @@ function closeOffcanvas(offcanvasId){
 function handleCanvasUserPage() {
   let url = 'https://checkout.abcdaconstrucao.com.br/Login/Authenticate?returnUrl=https://www.abcdaconstrucao.com.br/'
   if (document.querySelector('.user__links.authenticated').style.length) {
-    url = 'https://checkout.abcdaconstrucao.com.br/MinhaConta/Dados';
+    url = 'https://checkout.abcdaconstrucao.com.br/MinhaConta/Pedido/';
   }
   window.location.href = url;
 }

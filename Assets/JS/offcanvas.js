@@ -2,12 +2,15 @@ const openCanvasButtons = document.querySelectorAll("[ah-toggle]")
 
 openCanvasButtons.forEach((element) => {
   const offcanvasId = element.getAttribute("ah-toggle");
-  const offcanvas = document.querySelector(offcanvasId)
-
-  element.addEventListener("click", () => openOffcanvas(offcanvasId))
-
-  offcanvas.addEventListener("click", (evt) => handleCanvasClick(offcanvasId, evt))
-})
+  
+  if (offcanvasId !== 'user-page') {
+    const offcanvas = document.querySelector(offcanvasId)
+    element.addEventListener("click", () => openOffcanvas(offcanvasId));
+    offcanvas.addEventListener("click", (evt) => handleCanvasClick(offcanvasId, evt));
+  } else {
+    element.addEventListener("click", () => openOffcanvas(offcanvasId));
+  }
+});
 
 function openOffcanvas(offcanvasId){
   const offcanvas = document.querySelector(offcanvasId);
@@ -40,7 +43,7 @@ function closeOffcanvas(offcanvasId){
 function handleCanvasUserPage() {
   let url = 'https://checkout.abcdaconstrucao.com.br/Login/Authenticate?returnUrl=https://www.abcdaconstrucao.com.br/'
   if (document.querySelector('.user__links.authenticated').style.length) {
-    url = 'https://checkout.abcdaconstrucao.com.br/MinhaConta/Dados';
+    url = 'https://checkout.abcdaconstrucao.com.br/MinhaConta/Pedido/';
   }
   window.location.href = url;
 }

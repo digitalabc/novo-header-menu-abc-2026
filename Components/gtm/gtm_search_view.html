@@ -24,7 +24,7 @@
                     {{ end }}
                     {{ i = 1 }}
                     {{ for category in product.product_categories }}
-                        item_category{{if i > 1}}i{{end}}:{{category.name}},
+                        item_category{{if i > 1}}{{i}}{{end}}:{{category.name}},
                         {{i = i + 1}}
                     {{ end }}
                     quantity: 1

@@ -11,7 +11,7 @@
         currency: "BRL",
         value: {{ product.prices.price }},
         items: [
-            {
+        {
                 item_id: {{ product.product_id }},
                 item_name: `{{ product.product_name }}`,
                 {{~ if product.prices ~}}
@@ -22,10 +22,17 @@
                 {{~ if product.product_brand ~}}
                     item_brand: "{{product.product_brand.name}}",
                 {{~ end ~}}
-                {{~ i = 1 ~}}
-                {{~ for category in product.product_categories ~}}
-                    item_category{{if i > 1}}i{{end}}:"{{category.name}}",
-                    {{~ i = i + 1 ~}}
+                {{~ i = 0 ~}}
+                {{~ if (product.product_categories | array.size) == 3 ~}}
+                    {{~ for category in product.product_categories ~}}
+                        item_category{{if i != 0}}{{i}}{{end}}:"{{category.name}}",
+                        {{~ i = i + 1 ~}}
+                    {{~ end ~}}
+                {{~ else ~}}
+                    {{~ for breadcrumb in product.breadcrumbs ~}}
+                        item_category{{if i != 0}}{{i}}{{end}}:"{{breadcrumb.text}}",
+                        {{~ i = i + 1 ~}}
+                    {{~ end ~}}                    
                 {{~ end ~}}
                 {{~ if product.attribute_selections.selected_variant ~}}
                     item_variant: "{{product.attribute_selections.selected_variant.alias}}",

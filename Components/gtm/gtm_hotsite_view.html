@@ -14,7 +14,7 @@
                 {{~ products = items?.edges && !items.edges.empty? ? items.edges : items ~}}
                 {{~ for item in products ~}}
                     {{~ product = item.node ?? item }}
-                    {{
+                    {
                         item_id: {{product.product_id}},
                         item_name: "{{product.product_name | string.escape}}",
                         {{~ if product.prices ~}}

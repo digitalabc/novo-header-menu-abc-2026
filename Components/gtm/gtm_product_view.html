@@ -23,16 +23,9 @@
                     item_brand: "{{product.product_brand.name}}",
                 {{~ end ~}}
                 {{~ i = 0 ~}}
-                {{~ if (product.product_categories | array.size) == 3 ~}}
-                    {{~ for category in product.product_categories ~}}
-                        item_category{{if i != 0}}{{i}}{{end}}:"{{category.name}}",
-                        {{~ i = i + 1 ~}}
-                    {{~ end ~}}
-                {{~ else ~}}
-                    {{~ for breadcrumb in product.breadcrumbs ~}}
-                        item_category{{if i != 0}}{{i}}{{end}}:"{{breadcrumb.text}}",
-                        {{~ i = i + 1 ~}}
-                    {{~ end ~}}                    
+                {{~ for breadcrumb in product.breadcrumbs ~}}
+                    item_category{{if i != 0}}{{i}}{{end}}:"{{breadcrumb.text}}",
+                    {{~ i = i + 1 ~}}
                 {{~ end ~}}
                 {{~ if product.attribute_selections.selected_variant ~}}
                     item_variant: "{{product.attribute_selections.selected_variant.alias}}",

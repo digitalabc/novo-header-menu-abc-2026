@@ -211,6 +211,7 @@ const estados = [
 			"Caldas Novas",
 			"Catalão",
 			"Formosa",
+			"Goianésia",
 			"Goiânia",
 			"Rio Verde",
 			"Trindade"
@@ -269,6 +270,7 @@ const estados = [
 			"Jacareí",
 			"Jaú",
 			"Jaguariúna",
+			"Jundiaí",
 			"Lorena",
 			"Louveira",
 			"Marília",

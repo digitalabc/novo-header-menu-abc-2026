@@ -5734,6 +5734,25 @@
       ]
     },
     {
+      "name": "Goianésia",
+      "state": "Goiás",
+      "stores": [
+        {
+          "name": "Setor Sul",
+          "adress": "Av. Goiás, 592 - Setor Sul, Goianésia - GO, 76382-187",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/goianesia/setor-sul",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Goiânia",
       "state": "Goiás",
       "stores": [

@@ -22,6 +22,7 @@ const estados = [
 			"Bicas",
 			"Boa Esperança",
 			"Bom Jardim de Minas",
+			"Bom Jesus da Penha",
 			"Brasília de Minas",
 			"Cambuí",
 			"Campo Belo",

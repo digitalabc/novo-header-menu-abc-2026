@@ -1118,25 +1118,6 @@
       ]
     },
     {
-      "name": "Ipuiúna",
-      "state": "Minas Gerais",
-      "stores": [
-        {
-          "name": "Centro",
-          "adress": "Rod. Juscelino Kubitschek de Oliveira, 55 - Centro, Ipuiúna - MG, 37588-000",
-          "phone": "(35) 99842-7263",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/ipuiuna/centro",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
       "name": "Itabira",
       "state": "Minas Gerais",
       "stores": [
@@ -1933,6 +1914,25 @@
           "adress": "Av. Mariza de Souza Mendes, 995 - Soledade, Ouro Branco - MG, 36494-061",
           "phone": "(31) 3938-0660",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/ouro-branco/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Ouro Fino",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Delfim Moreira, 536 - Centro, Ouro Fino - MG, 37370-000",
+          "phone": "(35) 99842-7263",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/ouro-fino/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",

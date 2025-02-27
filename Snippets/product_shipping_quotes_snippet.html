@@ -8,23 +8,23 @@
 ## }}
 {{ quotes = data.shipping_quotes }}
 
-{{~ retirada_com_maior_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" | array.first ~}}
-{{~ retirada = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" ~}}
+{{~ retirada_com_menor_prazo = quotes | array.filter @(do; ret $0.name | string.downcase | string.contains "retire";end) | array.sort "deadline" | array.first ~}}
+{{~ retirada = quotes | array.filter @(do; ret ($0.name | string.downcase | string.contains "retire");end) | array.sort "deadline" ~}}
 
-{{~ custom_quotes = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" ~}}
+{{~ custom_quotes = quotes | array.filter @(do; ret $0.name | string.downcase | !string.contains "retire" && $0.type == "Custom";end) ~}}
 
 {{~ entrega_com_menor_preco = custom_quotes | array.sort "value" | array.first ~}}
 {{~ entrega_com_menor_prazo = custom_quotes | array.sort "deadline" | array.first ~}}
 
 {{~ if quotes ~}}
 <div class="product-shipping__list">
-    {{~ if retirada_com_maior_prazo ~}}
+    {{~ if retirada_com_menor_prazo ~}}
       <div class="product-shipping__quote free-shipping">
           <span>Retirada em loja</span>
           <span class="free-shipping" >
             Frete grátis
           </span>
-          <small>Em até {{ retirada_com_maior_prazo.deadline }} dias úteis</small>
+          <small>Em até {{ retirada_com_menor_prazo.deadline }} dias úteis</small>
       </div>
     {{ end }}
     {{~ if entrega_com_menor_preco ~}}

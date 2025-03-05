@@ -4,6 +4,7 @@ const estados = [
 		"coluna": "1",
 		"coluna_mobile": "1",
 		"cidades": [
+			"Abaeté",
 			"Abre Campo",
 			"Aimorés",
 			"Além Paraíba",
@@ -24,6 +25,7 @@ const estados = [
 			"Bom Jardim de Minas",
 			"Bom Jesus da Penha",
 			"Brasília de Minas",
+			"Brumado",
 			"Cambuí",
 			"Campo Belo",
 			"Capelinha",
@@ -64,6 +66,7 @@ const estados = [
 			"Juiz de Fora",
 			"Lagoa da Prata",
 			"Lagoa Santa",
+			"Lambari",
 			"Lajinha",
 			"Lavras",
 			"Leopoldina",

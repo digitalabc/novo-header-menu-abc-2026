@@ -76,6 +76,7 @@ const estados = [
 			"Mariana",
 			"Mateus Leme",
 			"Matias Barbosa",
+			"Mato Verde",
 			"Mercês",
 			"Minas Novas",
 			"Miraí",

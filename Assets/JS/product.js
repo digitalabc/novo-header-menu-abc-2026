@@ -747,7 +747,7 @@ function setProductFloating(scrollTop, offsetToShowProduct, offsetToHideProduct)
 /**
  * Show pick up button
  */
-
+/* 
 const _listaCategoriaABC = [
   "AQUECEDOR DE PASSAGEM",
   "AQUECEDOR GAS",
@@ -866,7 +866,7 @@ if (produtoSKUDiv && quantidadeInput) {
     .catch(function (error) {
       console.error('Request failed', error)
     });
-}
+} */
 
 window.addEventListener("load", () => {
   if (productButtons) {

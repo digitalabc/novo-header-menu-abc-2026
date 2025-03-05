@@ -582,9 +582,16 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-bottom: 35px;
 }
 
-.product__buttons .pick-up-button,
+/* update freterapido */
+/* .product__buttons .pick-up-button,
 .product__buttons .secondary-button,
 .product__buttons .buy-whatsapp-button {
+  display: none;
+} */
+.product__buttons .buy-whatsapp-button {
+  display: flex;
+} 
+.product__buttons .pick-up-button {
   display: none;
 }
 .product__buttons .buy-button {

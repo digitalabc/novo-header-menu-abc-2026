@@ -250,7 +250,6 @@ const estados = [
 			"Arujá",
 			"Assis",
 			"Atibaia",
-			"Avaré",
 			"Bariri",
 			"Barretos",
 			"Bertioga",

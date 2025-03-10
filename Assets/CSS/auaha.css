@@ -8342,7 +8342,7 @@ header {
 }
 
 .ruler__text_pix {
-  color:#38beb0
+  color:#38beb0;
 }
 .ruler__text-wrapper {
   display: flex;

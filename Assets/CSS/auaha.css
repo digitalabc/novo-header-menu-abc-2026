@@ -8340,6 +8340,10 @@ header {
   line-height: 20px;
   font-weight: 600;
 }
+
+.ruler__text_pix {
+  color:#38beb0
+}
 .ruler__text-wrapper {
   display: flex;
   justify-content: center;

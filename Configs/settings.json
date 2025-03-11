@@ -140,6 +140,25 @@
   },
   "cidades": [
     {
+      "name": "Abaeté",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Renascença",
+          "adress": "Saída para Paineiras - Av. Milton Campos, 831 - Renascença, Abaeté - MG, 35620-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/abaete/renascenca",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Abre Campo",
       "state": "Minas Gerais",
       "stores": [
@@ -1462,6 +1481,25 @@
       ]
     },
     {
+      "name": "Lambari",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Floresta",
+          "adress": "Av. Mauricio Leo, 90 - Floresta, Lambari - MG, 37480-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/lambari/floresta",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Lajinha",
       "state": "Minas Gerais",
       "stores": [
@@ -1628,6 +1666,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Mato Verde",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Felicíssimo Dias, 167 - Centro, Mato Verde - MG, 39527-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/mato-verde/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]
@@ -5418,6 +5475,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Brumado",
+      "state": "Bahia",
+      "stores": [
+        {
+          "name": "Santa Teresa",
+          "adress": "Rua Ápio Cardoso da Paixão, 32 - Santa Teresa, Brumado - BA, 46114-172",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/brumado/santa-teresa",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

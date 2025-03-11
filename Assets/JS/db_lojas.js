@@ -25,7 +25,6 @@ const estados = [
 			"Bom Jardim de Minas",
 			"Bom Jesus da Penha",
 			"Brasília de Minas",
-			"Brumado",
 			"Cambuí",
 			"Campo Belo",
 			"Capelinha",
@@ -182,6 +181,7 @@ const estados = [
 		"coluna": "2",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Brumado",
 			"Guanambi",
 			"Teixeira de Freitas",
 			"Vitória da Conquista"

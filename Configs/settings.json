@@ -3795,6 +3795,25 @@
       ]
     },
     {
+      "name": "Promissão",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Minas Gerais, 752 - Centro, Centro - MG, 16370-055",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/promissao/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Ribeirão Preto",
       "state": "São Paulo",
       "stores": [

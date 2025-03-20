@@ -598,14 +598,14 @@
         {
           "name": "Centro",
           "adress": "Rua Coronel Antônio Ribeiro, 143 - Centro, Bom Jesus da Penha - MG, 37948-000",
-          "phone": "",
+          "phone": "(35) 3563-1203 ",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/bom-jesus-da-penha/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

@@ -24,7 +24,7 @@ html {
   padding: 0;
   outline: none;
   border: none;
-  list-style: none;
+  /* list-style: none; */
 }
 input,
 textarea,

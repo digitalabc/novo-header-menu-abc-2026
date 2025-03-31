@@ -1842,6 +1842,25 @@
       ]
     },
     {
+      "name": "Nanuque",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Novo Horizonte",
+          "adress": "Rua Acesso ao Condominio Terrari Nanuque, 40, Loja 01 - Novo Horizonte, Nanuque - MG, 39860-000",
+          "phone": "(33) 99823-7700",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nanuque/novo-horizonte",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Nepomuceno",
       "state": "Minas Gerais",
       "stores": [

@@ -235,8 +235,7 @@ const estados = [
 			"Maringá",
 			"Ponta Grossa",
 			"São José dos Pinhais",
-			"Telêmaco Borba",
-			"Toledo"
+			"Telêmaco Borba"
 		]
 	},
 	{

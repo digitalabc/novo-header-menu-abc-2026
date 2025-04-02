@@ -339,7 +339,6 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Balneário Camboriú",
-			"Florianópolis",
 			"Jaraguá do Sul",
 			"Joinville",
 			"São Francisco do Sul"

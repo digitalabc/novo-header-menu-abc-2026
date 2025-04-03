@@ -138,6 +138,7 @@ const estados = [
 			"Uberlândia",
 			"Unaí", 
 			"Varginha",
+			"Veredinha",
 			"Vespasiano",
 			"Viçosa",
 			"Visconde do Rio Branco"
@@ -182,6 +183,7 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Brumado",
+			"Eunápolis",
 			"Guanambi",
 			"Teixeira de Freitas",
 			"Vitória da Conquista"

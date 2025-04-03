@@ -5537,6 +5537,25 @@
       ]
     },
     {
+      "name": "Eunápolis",
+      "state": "Bahia",
+      "stores": [
+        {
+          "name": "Dinah Borges",
+          "adress": "Av. Antônio Carlos Magalhães, 1610 - Dinah Borges, Eunápolis - BA, 45825-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/eunapolis/dinah-borges",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Guanambi",
       "state": "Bahia",
       "stores": [

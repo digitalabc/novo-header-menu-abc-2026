@@ -2905,7 +2905,7 @@
       "state": "Minas Gerais",
       "stores": [
         {
-          "name": "ABC da Construção Rezende",
+          "name": "Rezende",
           "adress": "Av. Princesa do Sul, 1650 - Rezende, Varginha - MG, 37062-442",
           "phone": "(35) 3212-7319",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/varginha/rezende",
@@ -2915,6 +2915,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Veredinha",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Liberdade",
+          "adress": "Praça do Cruzeiro, 194 - Liberdade, Veredinha - MG, 39663-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/veredinha/liberdade",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

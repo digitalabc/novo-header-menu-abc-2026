@@ -604,3 +604,9 @@ filter: brightness(0) invert(1);
     font-size: 16px;
   }
 }
+@media screen and (min-width: 992px) {
+  /* pde-631 */
+  .scroll-down header {
+    top: unset !important;
+  }
+}

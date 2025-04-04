@@ -10236,9 +10236,10 @@ section.newsletter--home .newsletter__alert {
   header {
     position: sticky;
   }
-  .scroll-down header {
+  /* pde-631 */
+  /* .scroll-down header {
     top: -30px;
-  }
+  } */
   .topbar__right {
     justify-content: flex-end;
     gap: 20px;

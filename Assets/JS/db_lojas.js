@@ -303,7 +303,6 @@ const estados = [
 			"São Roque",
 			"São Sebastião",
 			"Sertãozinho",
-			"Socorro",
 			"Sorocaba",
 			"Taguaí",
 			"Taubaté",

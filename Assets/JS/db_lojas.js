@@ -264,7 +264,6 @@ const estados = [
 			"Caraguatatuba",
 			"Cruzeiro",
 			"Divinolândia",
-			"Guaratinguetá",
 			"Hortolândia",
 			"Ibitinga",
 			"Indaiatuba",

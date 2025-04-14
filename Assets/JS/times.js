@@ -143,7 +143,7 @@ function cidades() {
           email: pcwCampanhaABC.lead.mail,
           coupon: pcwCampanhaABC.prizeForWinner.data.coupon,
           nome: pcwCampanhaABC.lead.name,
-          celular: pcwCampanhaABC.lead.phone
+          telefone: pcwCampanhaABC.lead.phone          
         };
         __ss_noform = [];
   

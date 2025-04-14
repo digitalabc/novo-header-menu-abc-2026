@@ -5556,14 +5556,14 @@
         {
           "name": "São Francisco",
           "adress": "Av. Gov. Nilo Coelho, 3200 - São Francisco, Guanambi - BA, 46430-000",
-          "phone": "",
+          "phone": "(77) 99700-8090",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/guanambi/sao-francisco",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

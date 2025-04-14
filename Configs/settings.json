@@ -4435,14 +4435,14 @@
         {
           "name": "Centro",
           "adress": "R. Colatina, 393 - Centro, Nova Venécia - ES, 29830-000",
-          "phone": "",
+          "phone": "(27) 99811-7190",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/nova-venecia/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:15 às 17:00",
+          "tuesday": "7:15 às 17:00",
+          "wednesday": "7:15 às 17:00",
+          "thursday": "7:15 às 17:00",
+          "friday": "7:15 às 17:00",
+          "saturday": "7:30 às 11:30",
           "sunday": "Fechado"
         }
       ]

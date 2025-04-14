@@ -361,7 +361,7 @@ $(".cidade__fale-conosco--form").on("submit", function (e) {
     nome_loja: `[UF] ${uf}, [CIDADE] ${city}, [LOJA] ${store}`,
     politica_privacidade: "sim",
     receber_catalogo: catalogAccept,
-    whatsapp: phone
+    telefone: phone    
   }
 
   sendSharpSpring(campos, "franquia");

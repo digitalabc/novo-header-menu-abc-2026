@@ -20,6 +20,7 @@ async function newsletterSubmit(form) {
 
   if (response) {
     showNewsletterAlert(newsletterAlert);
+    sendSharpSpring(input, "newsletter");
   }
   else {
     showNewsletterError(newsletterAlert);

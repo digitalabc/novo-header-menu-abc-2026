@@ -1677,14 +1677,14 @@
         {
           "name": "Centro",
           "adress": "R. Felicíssimo Dias, 167 - Centro, Mato Verde - MG, 39527-000",
-          "phone": "",
+          "phone": "(38) 99943-9070",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/mato-verde/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 17:00",
+          "tuesday": "7:00 às 17:00",
+          "wednesday": "7:00 às 17:00",
+          "thursday": "7:00 às 17:00",
+          "friday": "7:00 às 17:00",
+          "saturday": "7:00 às 11:00",
           "sunday": "Fechado"
         }
       ]

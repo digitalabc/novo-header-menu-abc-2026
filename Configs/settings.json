@@ -1487,14 +1487,14 @@
         {
           "name": "Floresta",
           "adress": "Av. Mauricio Leo, 90 - Floresta, Lambari - MG, 37480-000",
-          "phone": "",
+          "phone": "(35) 3271-3323",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/lambari/floresta",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -5518,14 +5518,14 @@
         {
           "name": "Santa Teresa",
           "adress": "Rua Ápio Cardoso da Paixão, 32 - Santa Teresa, Brumado - BA, 46114-172",
-          "phone": "",
+          "phone": "(77) 99908-0032",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/brumado/santa-teresa",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

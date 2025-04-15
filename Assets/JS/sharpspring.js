@@ -1,41 +1,34 @@
 
-/**
- * SharpSpring function to send data
- */
-
-// var __ss_noform = __ss_noform || [];
-
 function sendSharpSpring(campos, componente) {
   let formSharp = '';
 
   switch (componente) {
     case 'newsletter':
-      // formSharp = 'c799f48e-eebe-4c61-8862-d489d4aeddc9';
       campos.canal = 'Site Newsletter';
       break;
 
     case 'primeira-compra':
-      // formSharp = '4b33d785-88f6-4006-a90a-12fc47e7dc50';
       campos.canal = 'Site Primeira Compra';
       break;
 
     case 'aviseme':
-      //formSharp = 'f6cd0f91-1758-4a18-9dc5-f4082862ca4c';
       campos.canal = 'Site Avise me disponível'
       break;    
 
     case 'franquia':
-      //formSharp = 'db4e4d50-3ad5-47ed-b624-b1a2fa2ed8a9';
       campos.canal = 'Site Diretório de Lojas';
       break;
     
     case 'whats_form':
-      //formSharp = '954c7b40-8da6-436f-a98f-e8114cb417d6';
       campos.canal = 'Site WhatsApp';
       break;
 
     default:
       break;
+  }
+
+  if (!campos.hasOwnProperty('telefone')) {
+    campos.telefone = '';
   }
 
   fetch('https://leadwake.br-s1.cloudhub.io/api/lead', {

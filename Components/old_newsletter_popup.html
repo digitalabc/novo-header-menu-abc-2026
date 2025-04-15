@@ -321,20 +321,20 @@
         name: nameValue,
         email: emailValue
       };
-      const inputSharp = {
-        ...input, 
-        aceito,        
-        // firstsession,
-        // lastsession,
-        // id_submit
-      };
+      
 
       let response = await client.newsletter.create(input);
 
       if (response) {
         abcPopupMsg.innerHTML = "Cadastro realizado com sucesso!";
         abcPopupMsg.setAttribute('style', "color:green;");
-        sendSharpSpring(inputSharp, "primeira-compra");
+
+        sendSharpSpring({
+          nome: nameValue,
+          email: emailValue,
+          telefone: ''
+        }, "primeira-compra");
+        
         setTimeout(() => {
           document.getElementById('abc-newsletter-popup').classList.remove("abc-newsletter-popup-open");
         }, 3000);

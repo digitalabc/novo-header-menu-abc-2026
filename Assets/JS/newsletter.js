@@ -9,18 +9,17 @@ async function newsletterSubmit(form) {
   const nameValue = nameElement.value
   const emailValue = emailElement.value
 
-  __ss_noform.push(['submit', null, 'c799f48e-eebe-4c61-8862-d489d4aeddc9']);
 
   const input = {
     name: nameElement.value,
-    email: emailElement.value,
+    email: emailElement.value,    
   };
 
   let response = await client.newsletter.create(input);
 
   if (response) {
     showNewsletterAlert(newsletterAlert);
-    sendSharpSpring(input, "newsletter");
+    sendSharpSpring({nome: nameElement.value, email: emailElement.value, telefone: ''}, "newsletter");
   }
   else {
     showNewsletterError(newsletterAlert);

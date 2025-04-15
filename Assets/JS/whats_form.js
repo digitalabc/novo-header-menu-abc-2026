@@ -35,7 +35,11 @@ function preWhatsappHandler(url) {
                 };
 
                 sendSharpSpring({ 
-                    ...dataFormWpp.event_params, 
+                    nome: formWppName,
+                    email: formWppEmail,
+                    telefone: formWppPhone,                      
+                    current_url: location.href,
+                    cookies: getCookie("mm_tracker"), 
                     telefone: formWppPhone,
                     firstSession: getCookie('FirstSession'), 
                     lastSession: getCookie('LastSession')                    

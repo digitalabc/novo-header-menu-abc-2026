@@ -184,14 +184,14 @@
         {
           "name": "Centro",
           "adress": "R. Cel. Antônio Lôbo, 63 - Centro, Aimorés - MG, 35200-000",
-          "phone": "",
+          "phone": "(32) 3267-4877",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/aimores/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 17:30",
+          "tuesday": "7:00 às 17:30",
+          "wednesday": "7:00 às 17:30",
+          "thursday": "7:00 às 17:30",
+          "friday": "7:00 às 17:30",
+          "saturday": "7:00 às 11:00",
           "sunday": "Fechado"
         }
       ]

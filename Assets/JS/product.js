@@ -433,6 +433,7 @@ async function backInStockOnClick(e) {
   // const name = document.getElementById("bis-name").value;
   const email = productViewDiv.querySelector(".bis-email").value;
   const alert = productViewDiv.querySelector(".bis-alert");
+  const productSku = document.querySelector("#productSku").innerText;
   const bisInput = {
     email: email,
     // name: name,
@@ -442,7 +443,8 @@ async function backInStockOnClick(e) {
   const success = await client.product.createRestockAlert(bisInput);
 
   if (success) {
-    sendSharpSpring({ email: email, productVariantId }, 'aviseme');
+    sendSharpSpring({ email: email, productVariantId, nome: `${productSku}#${(new Date()).toLocaleString('pt-BR').replace(/\D+/g, '')}` }, 'aviseme');
+
     alert.innerHTML = 'Email cadastrado com sucesso!';
     setTimeout(function () {
       alert.innerHTML = '';
@@ -468,6 +470,7 @@ async function spotBackInStockOnClick(e) {
   // const name = document.getElementById("bis-name").value;
   const email = bis.querySelector(".bis-email").value;
   const alert = bis.querySelector(".bis-alert");
+  const productSku = document.querySelector("#productSku").innerText;
   const bisInput = {
     email: email,
     // name: name,
@@ -476,7 +479,7 @@ async function spotBackInStockOnClick(e) {
   }
   const success = await client.product.createRestockAlert(bisInput);
   if (success) {
-    sendSharpSpring({ email: email, productVariantId }, 'aviseme');
+    sendSharpSpring({ email: email, productVariantId, nome: `${productSku}#${(new Date()).toLocaleString('pt-BR').replace(/\D+/g, '')}` }, 'aviseme');
     alert.innerHTML = 'Email cadastrado com sucesso!';
     setTimeout(function () {
       alert.innerHTML = '';

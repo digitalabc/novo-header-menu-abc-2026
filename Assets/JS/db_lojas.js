@@ -290,7 +290,6 @@ const estados = [
 			"Pindamonhangaba",
 			"Piracaia",
 			"Praia Grande",
-			"Promissão",
 			"Ribeirão Preto",
 			"Santa Isabel",
 			"Santo Antônio de Posse",

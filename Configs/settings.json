@@ -241,7 +241,7 @@
         {
           "name": "São Pedro",
           "adress": "Av. Olindo de Miranda, 1273 - São Pedro, Almenara - MG, 39900-000",
-          "phone": "(35) 99164-0014",
+          "phone": "",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/almenara/sao-pedro",
           "monday": "",
           "tuesday": "",
@@ -1284,6 +1284,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Janaúba",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Esplanada",
+          "adress": "Rua Mauricio Augusto de Azevedo, 130 - Esplanada, Janaúba - MG, 39445-150",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/janauba/esplanada",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]
@@ -2573,6 +2592,25 @@
           "thursday": "7:00 às 18:00",
           "friday": "7:00 às 18:00",
           "saturday": "7:30 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "São Gonçalo do Rio Abaixo",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Fonte do Mato",
+          "adress": "Av. Central, 415 - Loja 01 - Fonte do Mato, São Gonçalo do Rio Abaixo - MG, 35935-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-goncalo-do-rio-abaixo/fonte-do-mato",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

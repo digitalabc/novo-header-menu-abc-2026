@@ -235,6 +235,25 @@
       ]
     },
     {
+      "name": "Almenara",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "São Pedro",
+          "adress": "Av. Olindo de Miranda, 1273 - São Pedro, Almenara - MG, 39900-000",
+          "phone": "(35) 99164-0014",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/almenara/sao-pedro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Andradas",
       "state": "Minas Gerais",
       "stores": [
@@ -2941,6 +2960,25 @@
           "adress": "Praça do Cruzeiro, 194 - Liberdade, Veredinha - MG, 39663-000",
           "phone": "",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/veredinha/liberdade",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Vermelho Novo",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. João Pinto da Silva, 32 - Centro, Vermelho Novo - MG, 35359-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/vermelho-novo/centro",
           "monday": "",
           "tuesday": "",
           "wednesday": "",

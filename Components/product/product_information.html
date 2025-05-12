@@ -1,7 +1,7 @@
 <section class="product__information" data-lazy="true">
   <noscript>
     {{ for information in informations }}
-        {{~ if information.value != '' && information.title != '' ~}}
+        {{~ if information.value != '' && information.title != '' && information.title != 'Descrição' ~}}
           <h2 onclick="toggleInformation(this)" {{if for.index == 0}}class="active"{{end}}>
             <a href="#information-{{for.index}}">{{ information.title }}</a>
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">

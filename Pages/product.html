@@ -120,7 +120,9 @@
 
     <!-- Description -->
     {{~ if product.informations ~}}
-    {{ product_information informations: product.informations }}
+      {{## retira descricao ##}}
+      {{~ product__informations = product.informations | array.filter @(do; ret $0.title != 'Descrição' ;end) ~}}
+    {{ product_information informations: product__informations }}
     {{~ end ~}}
 
     <div style="display: none;" class="product__reviews">

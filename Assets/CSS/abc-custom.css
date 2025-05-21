@@ -559,9 +559,9 @@ filter: brightness(0) invert(1);
   font-weight: bold;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px !important;
-}
+} */
 
 /* pde-464 */
 .breadcrumb {

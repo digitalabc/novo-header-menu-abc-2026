@@ -5584,6 +5584,19 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
+        },
+        {
+          "name": "Vicente Pires",
+          "adress": "Rua Rua 5 Chácara 231, 29 - Loja A, Setor Habitacional Vicente Pires, Brasília - DF, 72006-120",
+          "phone": "",
+          "details_link": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
         }
       ]
     },

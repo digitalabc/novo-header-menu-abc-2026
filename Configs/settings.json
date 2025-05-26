@@ -1042,6 +1042,25 @@
       ]
     },
     {
+      "name": "Goçalves",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Cel João Viêira, 177 - Centro, Gonçalves - MG, 37680-000",
+          "phone": "",
+          "details_link": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Governador Valadares",
       "state": "Minas Gerais",
       "stores": [

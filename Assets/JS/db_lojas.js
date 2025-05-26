@@ -46,6 +46,7 @@ const estados = [
 			"Espera Feliz",
 			"Extrema",
 			"Formiga",
+			"Gonçalves",
 			"Governador Valadares",
 			"Guanhães",
 			"Guaxupé",

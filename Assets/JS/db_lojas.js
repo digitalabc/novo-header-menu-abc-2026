@@ -320,7 +320,6 @@ const estados = [
 			"Afonso Cláudio",
 			"Anchieta",
 			"Baixo Guandu",
-			"Cachoeiro de Itapemirim", 
 			"Colatina",
 			"Guarapari",
 			"Iconha",

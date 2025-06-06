@@ -5760,6 +5760,25 @@
       ]
     },
     {
+      "name": "Florianópolis",
+      "state": "Santa Catarina",
+      "stores": [
+        {
+          "name": "Campeche",
+          "adress": "Rod. Francisco Magno Vieira, 2785 - Campeche, Florianópolis - SC, 88065-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/santa-catarina/florianopolis/campeche",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Jaraguá do Sul",
       "state": "Santa Catarina",
       "stores": [

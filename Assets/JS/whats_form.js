@@ -281,7 +281,7 @@ for (var i = 0; i < wppButtons.length; i++) {
     wppButtons[i].addEventListener('click', function(e){
 
         var wppUrl = this.getAttribute('href');
-        var wppDefault = 'https://api.whatsapp.com/send?phone=553192490299&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es';
+        var wppDefault = 'https://api.whatsapp.com/send?phone=553191055920&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es';
         e.preventDefault();
         wppIconButton.style.display = 'none';
         showWhatsAppForm();

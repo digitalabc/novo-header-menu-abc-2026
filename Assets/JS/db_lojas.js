@@ -110,6 +110,7 @@ const estados = [
 			"Ponte Nova",
 			"Porteirinha",
 			"Pouso Alegre",
+			"Promissão",
 			"Raul Soares",
 			"Recreio",
 			"Resplendor",

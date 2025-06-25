@@ -1524,14 +1524,14 @@
       "stores": [
         {
           "name": "Joana Darc",
-          "adress": "Avenida Acadêmico Nilo Figueiredo Vila, 2425 - Joana Darc, Lagoa Santa - MG, 33400-000",
+          "adress": "Avenida Acadêmico Nilo Figueiredo, 2425 - Joana Darc, Lagoa Santa - MG, 33239-210",
           "phone": "(31) 3133-1542",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/lagoa-santa/joana-darc",
-          "monday": "9:00 às 19:00",
-          "tuesday": "9:00 às 19:00",
-          "wednesday": "9:00 às 19:00",
-          "thursday": "9:00 às 19:00",
-          "friday": "9:00 às 19:00",
+          "monday": "9:00 às 18h30",
+          "tuesday": "9:00 às 18h30",
+          "wednesday": "9:00 às 18h30",
+          "thursday": "9:00 às 18h30",
+          "friday": "9:00 às 18h30",
           "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }

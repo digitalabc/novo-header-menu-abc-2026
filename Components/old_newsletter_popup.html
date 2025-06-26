@@ -1,4 +1,28 @@
 <style>
+  /*inputs autofill*/
+  input:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #333 !important;
+    background-color: white !important;
+    caret-color: #333 !important;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  input:-webkit-autofill:hover,
+  select:-webkit-autofill:hover,
+  input:-webkit-autofill:active,
+  select:-webkit-autofill:active,
+  input:-webkit-autofill:focus,
+  select:-webkit-autofill:focus,
+  input:-webkit-autofill:valid,
+  select:-webkit-autofill:valid {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #333 !important;
+    background-color: white !important;
+    caret-color: #333 !important;
+  }
+
   .abc-newsletter-popup-open {
     display: block !important;
   }
@@ -62,7 +86,8 @@
 
   .abc-newsletter-popup-footer {
     background-color: #fff;
-    padding: 5px 10px;
+    padding: 24px 20px 20px;
+    border-radius: 0 0 16px 16px;
   }
 
   .abc-newsletter-popup-footer>p {
@@ -86,24 +111,25 @@
     background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
+    border-radius: 16px 16px 0 0;
     align-items: center;
-    gap: 20px;
-    padding: 20px 10px 0;
+    gap: 24px;
+    padding: 28px 20px 0;
   }
 
   .abc-newsletter-popup-modal .abc-newsletter-popup-body>p {
     text-align: center;
-    color: #4b4c4e;
+    color: #333;
     margin: 0;
   }
 
   .abc-newsletter-popup-modal .abc-newsletter-popup-body>p:nth-child(1) {
-    font-size: 38px;
+    font-size: 36px;
     line-height: 1;
   }
 
   .abc-newsletter-popup-modal .abc-newsletter-popup-body>p:nth-child(2) {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .abc-newsletter-popup-modal .abc-newsletter-popup-body>p:nth-child(1)>strong {
@@ -117,28 +143,124 @@
   }
 
   .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     gap: 10px
   }
 
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs>input {
-    border-radius: 5px;
-    border: 1px solid gray;
-    text-indent: 5px;
-    padding: 20px 0;
+  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs>input,
+  .abc-cep-container input {
+    all: unset;
+    display: flex;
+    height: 48px;
+    padding: 0px 16px;
+    align-items: center;
+    width: 100%;
+    border-radius: 6px;
+    background: #FFF;
+    border: 1px solid #E0E0E0;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs>input::placeholder,
+  .abc-cep-container input::placeholder {
+    color: #999;
+    font-size: 14px;
+  }
+
+  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs>input:focus,
+  .abc-cep-container input:focus {
+    outline: none;
+    border: 1px solid #a1a1a1;
+    box-shadow: 0 0 3px rgba(135, 135, 135, 0.4);
   }
 
   .abc-newsletter-popup-modal .abc-popup-btn {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 30px;
-    display: block;
-    background-color: #e21937;
-    border-radius: 5px;
-    clear: both;
+    position: relative;
+    height: 38px;
+    width: 100%;
+    background-color: #333;
+    font-size: 16px;
     color: #fff;
-    text-align: center;
+    line-height: 16px;
+    border-radius: 8px;
+    text-transform: uppercase;
     cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background-color 0.4s ease-in-out,
+      font-size 0.2s ease-in-out,
+      transform 0.1s ease-in-out;
+  }
+
+  .abc-newsletter-popup-modal .abc-popup-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.4s ease-in-out;
+  }
+
+  .abc-newsletter-popup-modal .abc-popup-btn:hover {
+    background-color: #000;
+    font-size: 16.2px;
+    font-weight: bold;
+  }
+
+  .abc-newsletter-popup-modal .abc-popup-btn:hover::before {
+    left: 100%;
+  }
+
+  .abc-newsletter-popup-modal .abc-popup-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  @media (max-width: 600px) {
+    .abc-newsletter-popup-modal .abc-popup-btn {
+      height: 48px;
+    }
+  }
+
+  .abc-popup-msg {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    min-height: 20px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+  }
+
+  .abc-popup-msg:not(:empty):not([style*="&nbsp;"]) {
+    padding: 16px;
+    margin: 16px 0;
+  }
+
+  .abc-popup-msg[style*="color:green"] {
+    background: #f0f9f4;
+    border: 1px solid #00A859;
+    color: #00A859;
+  }
+
+  .abc-popup-msg[style*="color:red"] {
+    background: #fef2f2;
+    border: 1px solid #E3062D;
+    color: #E3062D;
   }
 
   .abc-newsletter-popup-modal .abc-newsletter-popup-close {
@@ -164,7 +286,7 @@
 
   @media (min-width: 768px) {
     .abc-newsletter-popup-modal {
-      max-width: 600px;
+      max-width: 480px;
     }
 
     .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs {
@@ -175,7 +297,7 @@
   body:not(.home) #abc-newsletter-popup {
     display: none !important;
   }
-  
+
   /* aceite */
   .accept-checkbox {
     display: flex;
@@ -185,14 +307,44 @@
   }
 
   .accept-checkbox>span {
-    color: var(--Chumbo-ABC, #454040);
-    font-size: 10px;
-    font-weight: 600;
+    color: #333;
+    font-size: 11px;
+    font-weight: 400;
   }
 
   #inp-aceito {
     margin: 0;
   }
+
+  .abc-cep-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .abc-cep-container input {
+    flex: 1;
+  }
+
+  .abc-cep-link {
+    font-size: 12px;
+    color: #007bff;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .abc-cep-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 768px) {
+    .abc-cep-link {
+      font-size: 13px;
+    }
+  }
+
   /* * */
 </style>
 

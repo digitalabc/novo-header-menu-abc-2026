@@ -23,6 +23,7 @@ const estados = [
 			"Betim",
 			"Bicas",
 			"Boa Esperança",
+			"Bocaiúva",
 			"Bom Jardim de Minas",
 			"Bom Jesus da Penha",
 			"Brasília de Minas",
@@ -84,6 +85,7 @@ const estados = [
 			"Miraí",
 			"Montalvânia",
 			"Monte Azul",
+			"Monte Santo de Minas",
 			"Montes Claros",
 			"Muriaé",
 			"Mutum",
@@ -190,6 +192,7 @@ const estados = [
 			"Brumado",
 			"Eunápolis",
 			"Guanambi",
+			"Porto Seguro",
 			"Teixeira de Freitas",
 			"Vitória da Conquista"
 		]

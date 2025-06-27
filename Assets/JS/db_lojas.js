@@ -240,7 +240,7 @@ const estados = [
 			"Cianorte",
 			"Curitiba",
 			"Guarapuava",
-			'Guaratuba',
+			"Guaratuba",
 			"Londrina",
 			"Maringá",
 			"Ponta Grossa",
@@ -350,6 +350,15 @@ const estados = [
 			"Jaraguá do Sul",
 			"Joinville",
 			"São Francisco do Sul"
+			
+		]
+	},
+	{
+		"estado": "Mato Grosso",
+		"coluna": "4",
+		"coluna_mobile": "2",
+		"cidades": [
+			"Paranatinga"
 			
 		]
 	},

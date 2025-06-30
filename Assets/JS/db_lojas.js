@@ -93,7 +93,6 @@ const estados = [
 			"Nepomuceno",
 			"Nova Lima",
 			"Nova Resende",
-			"Nova Serrana",
 			"Oliveira",
 			"Ouro Branco",
 			"Ouro Fino",

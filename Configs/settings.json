@@ -592,6 +592,25 @@
       ]
     },
     {
+      "name": "Bocaiúva",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Luiz Antônio Monteiro, 1507 - Centro, Bocaiúva - MG, 39390-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/bocaiuva/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Bom Jardim de Minas",
       "state": "Minas Gerais",
       "stores": [
@@ -1837,6 +1856,25 @@
           "thursday": "7:00 às 18:00",
           "friday": "7:00 às 18:00",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Monte Santo de Minas",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Antônio Pereira Lima, 261 - Letra A - Centro, Monte Santo de Minas - MG, 37958-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/monte-santo-de-minas/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]
@@ -5640,6 +5678,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Porto Seguro",
+      "state": "Bahia",
+      "stores": [
+        {
+          "name": "Tabapiri",
+          "adress": "Av. Adno Musser, 9897 - Tabapiri, Porto Seguro - BA, 45810-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/porto-seguro/tabapiri",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

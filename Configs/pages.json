@@ -130,6 +130,10 @@
                 "path": "custom/black-friday.html"
             },
             {
+                "urlMatch": "aniversario-abc",
+                "path": "custom/aniversario-abc.html"
+            },
+            {
                 "urlMatch": "guideshop-experience",
                 "path": "custom/guideshop_experience/lista-produtos.html"
             },

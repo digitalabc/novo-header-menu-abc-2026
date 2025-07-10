@@ -1,18 +1,15 @@
-<div class="my-4">
-    <h2>Assinar produto</h2>
-    <div class="flex justify-start">
-        <select class="" name="subscription-recurring-type" id="subscription-recurring-type"> 
-        {{~ for subscription_group in subscription_groups ~}}
-            {{~ for type in subscription_group.recurring_types ~}}
-                <option subscription-group-id="{{ subscription_group.subscription_group_id }}" 
-                    value="{{ type.recurring_type_id }}" >{{ type.name }} ({{ type.days }} dias)</option>
-            {{~ end ~}}
+<div class="subscription-div">
+    Produto disponível para
+    <h5>ASSINATURA</h5>
+    <select class="form-control" style="margin-bottom: 3%;" name="subscription-recurring-type" 
+        id="subscription-recurring-type"> 
+    {{~ for subscription_group in subscription_groups ~}}
+        {{~ for type in subscription_group.recurring_types ~}}
+            <option subscription-group-id="{{ subscription_group.subscription_group_id }}" 
+                value="{{ type.recurring_type_id }}" >{{ type.name }} ({{ type.days }} dias)</option>
         {{~ end ~}}
-        </select>
-        <button type="button" 
-        class="flex p-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold cursor-pointer ml-4" 
-        value="{{ btn_value }}" onclick="{{ btn_click }}" {{~ if disabled ~}} disabled {{~ end ~}}>
-            ASSINAR
-        </button>
-    </div>
+    {{~ end ~}}
+    </select>
+    <button type="button" class="btn btn-success btn-lg" style="margin-bottom: 1%;" value="{{ btn_value }}" 
+        onclick="{{ btn_click }}" {{~ if disabled ~}} disabled {{~ end ~}}>ASSINAR</button>
 </div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body>
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+
+  <div class="container" id="page-location">
+    <div class="location-wrapper overlay-dark visible">
+        <div class="overlay">
+            <div>
+                <svg class="spinner" width="50" height="50" viewBox="0 0 66 66"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                    </circle>
+                </svg>
+            </div>
+        </div>
+        <form autocomplete="off" class="location-form">
+            <div class="background-form">
+                <h2 class="modal-title"><i class="fas fa-map-marker-alt"></i>Onde você está?</h2>
+                <p class="modal-text">
+                    Dessa forma você terá acesso aos produtos e ofertas da sua região.
+                    <br><br>
+                    Defina sua localização:
+                </p>
+                <div class="region-select">
+                    <select name="state" id="stateForm">
+                        <option value="">Selecione o Estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+                <span class="modal-text" style="margin:0;">ou</span>
+                <input type="text" name="zipcode" placeholder="Digitar o CEP" maxlength="9" class="text-input" 
+                value="">
+
+                <div class="second-step" id="teste">
+                    <button color="red" class="btn-sucess">Confirmar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ old_newsletter_popup }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "mask", "components", "navbar", "mini_cart", "user_login", "newsletter",  "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "localizacao", "whats_form"] }}
+</body>
+
+</html>

@@ -55,7 +55,7 @@ query Hotsite($url: String!,
         productId
         productName
         productVariantId
-        alias
+        alias: aliasComplete
         buyBox {
           installmentPlans{
             displayName

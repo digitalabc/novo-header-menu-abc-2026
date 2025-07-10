@@ -1,0 +1,95 @@
+.nav-all
+  &__item
+    &--root
+      font-weight 500
+      color $primary
+      position relative
+      display flex
+      align-items center
+      height: 40px;
+      gap 6px
+      isolation isolate
+      &:hover
+        & ^[0]__dropdown--root
+          opacity 1
+          visibility visible
+    &--nv1
+      color #5D5D5D
+      display flex
+      align-items center
+      height 40px
+      flex-shrink 0
+      min-width 220px
+      padding 0 15px
+      justify-content space-between
+      gap 5px
+      color #5D5D5D
+      transition $transition
+      >svg
+        max-width: unset;
+      &:hover
+        background $primary
+        color #fff
+        & ^[0]__dropdown--nv1
+          opacity 1
+          visibility visible
+          transform translateX(0)
+          transition-delay 0 // Reset vitar que o menu feche ao passar por cima da barra de rolagem
+    &--nv2
+      margin-bottom 20px
+
+  &__link
+    white-space nowrap
+    &--nv1
+      font-weight 500
+      color currentColor
+      transition none
+      &:hover
+        color currentColor
+    &--nv2
+      color #5D5D5D
+
+  &__dropdown
+    position absolute
+    background #fff
+    &--root
+      top 100%
+      box-shadow 0 1px 4px rgba(#000, 0.16)
+      opacity 0
+      visibility hidden
+      transition $transition
+
+    &--nv1
+      left 100%
+      top 0
+      padding 20px 40px
+      min-width 530px
+      height 100%
+      display flex
+      flex-direction column
+      z-index -1
+      box-shadow 0 1px 4px rgba(#000, 0.16)
+      opacity 0
+      visibility hidden
+      transform translateX(-100px)
+      transition $transition
+      transition-delay 50ms // Evitar que o menu feche ao passar por cima da barra de rolagem
+      
+  &__title
+    font-size 20px
+    font-weight 600
+    color $primary
+    margin-bottom 20px
+
+  &__list
+    &--root
+      max-height 280px
+      overflow auto
+      display flex
+      flex-direction column
+
+    &--nv1
+      overflow auto
+      column-count: 2;
+      gap: 20px;
+      padding-right 10px

@@ -58,7 +58,7 @@ query Hotsite($url: String!,
           productId
           productName
           productVariantId
-          alias
+          alias: aliasComplete
           images(width:275, height:275) {
             url
             print

@@ -1,0 +1,266 @@
+/* LEIA-ME */
+/* login.css >> Definições das páginas de LOGIN do novo Checkout */
+/* minhaconta.css >> Definições das páginas de MINHA CONTA do novo Checkout */
+/* checkout.css >> Definições das páginas de CARRINHO, FECHAMENTO E CONFIRMAÇÃO do novo Checkout */
+/* geral.css >> Definições de Cabeçalho e Rodapé */
+/* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
+.fbits-login
+  max-width: 100% !important;
+
+  .fbits-social-login
+    &:before
+      text-align: center;
+
+    button.btn
+      margin: 10px 10px 10px 0;
+      width: 47%;
+      height: 50px;
+      border: 1px solid #000000;
+      border-radius: 0;
+      color: #000;
+      transition: $transition;
+
+      @media mobile
+        width: 100%;
+
+      &.facebook
+        &:hover
+          border: 1px solid #416bb7;
+          color: #416bb7;
+
+      &.google
+        &:hover
+          border: 1px solid #dc453a;
+          color: #dc453a;
+
+      &.cadastro
+        &:hover
+          border: 1px solid $primary;
+          color: $primary;
+
+  .respostas li a
+  .fbits-label.fbits-label-login input
+  input[type='text']
+  input[type='password']
+  input[type='tel']
+  input[type='Date']
+  select
+    padding: 0 15px;
+    height: 50px !important;
+    border: 1px solid #000000;
+    border-radius: 0 !important;
+    box-shadow: none;
+    color: #000000;
+    text-align: left;
+    font-weight: 400;
+    font-size: 14px;
+
+    &::placeholder
+      color: #000000;
+
+  .cadastroUsuario
+    input[type='text']
+    input[type='password']
+    input[type='tel']
+    input[type='Date']
+      border: 1px solid !important;
+      background: #fff;
+      color: #000000;
+
+      &::placeholder
+        color: #000000;
+
+  .respostas li a
+    text-align: center;
+    transition: $transition;
+
+    &:hover
+      background: #919191;
+      color: #fff;
+
+  .fbits-title-login
+  .header-cadastro .title
+    margin-bottom: 0;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 25px;
+
+  .fbits-subtitle-login
+  .header-cadastro p
+    color: #676767;
+    font-weight: normal;
+    font-size: 16px;
+
+  .row
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 991px)
+      flex-wrap: wrap;
+
+  .header-cadastro
+    text-align: center;
+
+  .cadastroUsuario #naoSeiCep
+    color: #676767;
+    font-weight: bold;
+    font-size: 14px;
+    transition: $transition;
+
+    &:hover
+      color: #000;
+
+  .cadastroUsuario label
+    color: #676767;
+    font-weight: bold;
+    font-size: 14px;
+
+  .ola
+    color: #000;
+
+    &:before
+      content: 'Olá, ';
+
+    &:after
+      display: block;
+      padding-bottom: 15px;
+      background: #fff;
+      color: #676767;
+      content: 'Identificamos que voc\00ea \00a0 j\00e1 \00a0 possui cadastro. Para sua seguran\00e7 a, selecione a op\00e7\00e3o correta para continuar:';
+      font-weight: 400;
+      font-size: 14px;
+      line-height: normal;
+
+  .pergunta
+    >a
+      display: block;
+      margin: 0 0 0 auto;
+      margin-top: 15px;
+      width: min-content;
+      color: #848484;
+      transition: $transition;
+
+      &:hover
+        color: #000;
+
+    +.fbits-social-login
+      padding: 0 15px;
+
+  a[href='/Login/Authenticate']
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    width: 250px;
+    height: 50px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    transition: $transition;
+
+    &:hover
+      background: #B2B2B2;
+      color: #fff;
+
+    @media (max-width: 500px)
+      width: calc(100% - 30px);
+
+  label[for='TelefonePrincipalDDD']
+  label[for='TelefoneSecundarioDDD']
+    width: 100%;
+
+  .cadastroUsuario .fbits-btn-show-password
+    top: 33px !important;
+
+  label.form-check-label
+    display: inline;
+    color: #393939;
+    font-weight: 400;
+
+  .cadastroUsuario .title.big
+    border-radius: 5px;
+    background: #000 !important;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 45px;
+
+  .questao
+    &:before
+      display: none;
+
+    &:hover
+      background: #fff;
+
+  .fbits-link-senha
+    color: #028AFF;
+    text-decoration: underline;
+
+    @media mobile
+      &::before
+        display: block;
+        content: '';
+
+  .questao
+  .cadastroUsuario .btn-primary
+  .fbits-box-login .btn.btn-success
+  .cadastroUsuario .btn-primary
+    @extend $default-button;
+
+  .logo-login-checkout
+  .texto-login-checkout
+    margin-bottom: 13px;
+
+  .texto-login-checkout
+    color: #828282;
+    font-size: 16px;
+
+    a
+      color: #000000;
+      text-decoration: underline;
+      font-weight: bold;
+
+@media (max-width: 500px)
+  .fbits-login .fbits-social-login button
+    margin: 10px 0;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+
+@media (max-width: 991px)
+  .fbits-login
+    .row
+      margin: 0 !important;
+
+    label
+      display: block;
+
+    .cadastroUsuario
+      .fbits-btn-show-password
+        top: 8px !important;
+
+      .header-cadastro .btn.btn-secondary
+        display: inline;
+
+      .formBox
+        padding: 0;
+
+      .form-group
+        margin-bottom: 10px;
+        padding: 0;
+        width: 100%;
+
+      .col-md-6
+        margin-bottom: 10px;
+        padding: 0;
+        width: 100%;
+
+      .formBox:last-child .form-row > .form-group.col-md-6:last-child > label
+        display: none;

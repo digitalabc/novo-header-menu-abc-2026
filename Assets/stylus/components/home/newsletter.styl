@@ -1,0 +1,70 @@
+section.newsletter--home
+  background-color $primary
+  background-position center left
+  padding 30px 40px
+  margin-bottom 65px
+  @media mobile
+    margin 0 -15px
+    padding 15px
+    background-position right 700px top -100px
+  .newsletter
+    &__container
+      @media desktop
+        display flex
+        align-items center
+        gap 35px
+    &__header
+      color #fff
+      white-space nowrap
+      text-align center
+      h2
+        margin-bottom 0
+        font-size 20px
+        font-weight 600
+        color #fff
+      @media mobile
+        margin-bottom 25px
+    &__form
+      position relative
+      @media desktop
+        flex 1
+        display flex
+        gap 35px
+    
+    &__input
+      flex 1
+      height 45px
+      border-radius 0
+      color $black
+      font-size 12px
+      border none
+      padding 0 20px
+      &::placeholder
+        color #5D5D5D
+      @media mobile
+        width 100%
+        &.newsletter-name
+          margin-bottom 6px
+        &.newsletter-email
+          margin-bottom 18px
+    &__button
+      cursor pointer
+      display flex
+      align-items center
+      justify-content center
+      font-weight 600
+      background-color #fff
+      color $black
+      transition $transition
+      width 150px
+      height 45px
+      @media mobile
+        width 100%
+      &:hover
+        background-color $black
+        color #fff
+    &__alert
+      font-weight 500
+      color #fff
+      position absolute
+      bottom -20px

@@ -21,7 +21,7 @@ async function buyTogetherSetup(){
                 pageProductId: Number(pageProductId),
                 buyTogetherProductId: Number(buyTogetherProductId)
             });
-        setInnerHtml(response, row);
+        replaceInnerHtml(response, row.id);
         await buyTogetherCalculatePrices(row);
         setButtonsEnabledByAvailability(row);
     }
@@ -38,11 +38,11 @@ async function buyTogetherSelectAttribute(element){
 	const attrId = element.getAttribute("attribute-id");
 	const attrValue = element.value;
 	const productId = element.getAttribute("product-id");
-	const attributeDiv = element.closest('[attribute-selections]');
+	const attributeDiv = element.closest('.attribute-selections');
 	const selections = getSelectedAttributes(attributeDiv, attrId, attrValue);
 	
-    const spotDiv = element.closest('[product-view-div]');
-	const rowDiv = element.closest('[buy-together-row-div]');
+    const spotDiv = element.closest('.product-view-div');
+	const rowDiv = element.closest('.buy-together-row-div');
 	
 	await buyTogetherRenderAttributes(productId, selections, spotDiv);
     await buyTogetherCalculatePrices(rowDiv);
@@ -67,7 +67,7 @@ async function buyTogetherRenderAttributes(productId, selections, spotDiv){
         "buy_together_spot_snippet.html",
         "SnippetQueries/buy_together_spot.graphql",
         variables);
-    setInnerHtml(response, spotDiv);
+    spotDiv.innerHTML = response;
 }
 
 /**
@@ -77,10 +77,9 @@ async function buyTogetherRenderAttributes(productId, selections, spotDiv){
 async function buyTogetherAddToCartClick(element){
     const success = await checkoutOperations(element, 'buy-together-row-div');
     if (success){
-        showOverlay("Produto adicionado!", "Produtos adicionado ao carrinho!")
-        await loadMiniCart();
-    } else {
-        showOverlay('Não foi possível adicionar o produto(s) ao carrinho', 'Selecione preencher os campos corretamente e tente novamente', true)
+        // showAlert("Produtos adicionado ao carrinho!");
+        await loadMiniCart();        
+        openOffcanvas("#minicart-offcanvas")
     }
 }
 
@@ -90,13 +89,8 @@ async function buyTogetherAddToCartClick(element){
  */
 async function buyTogetherBuyClick(element){
     const success = await checkoutOperations(element, 'buy-together-row-div');
-    
-    if(!success) {
-        showOverlay('Não foi possível adicionar o produto(s) ao carrinho', 'Selecione preencher os campos corretamente e tente novamente', true)
-    }
-
-    if (success){
-        window.location = checkout_pages.checkout.home;
+    if (success && checkoutUrl != ""){
+        window.location = checkoutUrl;
     }
 }
 
@@ -105,7 +99,7 @@ async function buyTogetherBuyClick(element){
  * @param {HTMLInputElement} element - The quantity input originating the operation, for context.
  */
 async function buyTogetherQuantityOnChange(element){
-    const rowDiv = element.closest('[buy-together-row-div]');
+    const rowDiv = element.closest('.buy-together-row-div');
     await buyTogetherCalculatePrices(rowDiv);
     setButtonsEnabledByAvailability(rowDiv);
 }
@@ -123,6 +117,5 @@ async function buyTogetherCalculatePrices(rowDiv){
         "price_snippet.html",
         "SnippetQueries/calculate_prices.graphql",
         { calculatePricesProductsInput: input });
-        
-    setInnerHtml(response, priceDiv);
+    priceDiv.innerHTML = response;
 }

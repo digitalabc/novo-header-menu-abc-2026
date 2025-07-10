@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout - Resumo</title>
+  <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+  <link rel="preload" href="https://fonts.cdnfonts.com/css/satoshi" as="style">
+  {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping"]}}
+  {{ data_layer_config }}
+</head>
+<body class="checkout-shipping">
+  {{ checkout_header }}
+  {{ wake_overlay }}
+  <main id="data-render-delivery">
+  </main>
+  {{ wake_confirmation_modal }}
+  {{ checkout_footer }}
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+      <script type="text/javascript">document.write(JSON.stringify({{data}}, null, 2));</script>
+  </pre>
+  {{ sdk_client_checkout }}
+  {{ data_layer_checkout_view checkout: data.checkout}}
+  {{ wake_scripts scripts: ["wake_utils"] }}
+  {{ asset type: "js" paths: ["checkout_user_login", "checkout_delivery", "checkout_close"] options: "async"}}
+</body>
+</html>

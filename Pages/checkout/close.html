@@ -44,7 +44,7 @@
         <div class="wake-checkout-column wake-checkout-column-secondary">
             <div class="wake-checkout-section wake-checkout-coupon">
                 <h2 class="wake-checkout-title wake-checkout-coupon-title">Cupom de desconto</h2>
-                {{ wake_checkout_coupon coupon: data.checkout.coupon checkout_page: true}}
+                {{ checkout_coupon coupon: data.checkout.coupon checkout_page: true}}
             </div>
             {{~ if data.customer != null && data.customer.checking_account_balance > 0 -}}
                 <div id="data_checking_account" class="wake-checkout-section wake-checkout-coupon-checking-account">
@@ -137,7 +137,7 @@
     <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
         <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
     </pre>
-    {{ sdk_client }}
+    {{ sdk_client_checkout }}
     {{ data_layer_checkout_complete_view checkout: data.checkout }}
     {{ wake_scripts scripts: ["wake_utils", "wake_checkout_close"] }}
     {{ asset type: "js" paths: ["checkout_user_login", "event_manager"] options: "async"}}

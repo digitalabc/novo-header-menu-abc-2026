@@ -1,8 +1,36 @@
+{{~ if position ~}}
 {{~ grouped_contents = contents | group.by @(do; ret $0.position;end) ~}}
 {{~ filtered_contents = grouped_contents | group.get position ~}}
+{{~ end ~}}
+
+{{~ if content_id ~}}
+{{~ grouped_contents = contents | group.by @(do; ret $0.content_id;end) ~}}
+{{~ filtered_contents = grouped_contents | group.get content_id ~}}
+{{~ end ~}}
+
 {{ for content in filtered_contents }}
-    <div class="lg:max-w-[1330px] text-justify">
-        <h2 class="text-lg lg:text-2xl uppercase my-2 p-2 border-b">{{content.title}}</h2>
-        <div class="flex p-2 lg:text-base text-sm">{{content.content}}</div>
-    </div>
+{{~ if seo ~}}
+<section class="seo">
+  {{~ end ~}}
+  {{~ if show_title ~}}
+  <h2>{{content.title}}</h2>
+  {{~ end ~}}
+  {{content.content}}
+  {{ if seo }}
+  <button type="button" class="seo__button" onclick="toggleSeo()">
+    Ver mais
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+      <g id="_318476" data-name="318476" transform="translate(0 20) rotate(-90)">
+        <g id="Group_320" data-name="Group 320" transform="translate(0)">
+          <path id="Path_151" data-name="Path 151"
+            d="M10,0A10,10,0,1,1,0,10,10.011,10.011,0,0,1,10,0ZM6.911,10.589l4.167,4.167a.833.833,0,1,0,1.178-1.178L8.678,10l3.577-3.577a.833.833,0,0,0-1.178-1.178L6.911,9.411A.832.832,0,0,0,6.911,10.589Z"
+            fill="#0fa848" />
+        </g>
+      </g>
+    </svg>
+  </button>
+  {{end}}
+  {{~ if seo ~}}
+</section>
+{{~ end ~}}
 {{ end }}

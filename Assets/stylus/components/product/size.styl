@@ -1,0 +1,46 @@
+.size
+  margin-top: 12px;
+
+  #size
+    &-button
+      color: $primary;
+      text-decoration: underline;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      cursor: pointer;
+
+    &-modal
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      visibility: hidden;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      background: rgba(#000000, 30%);
+      opacity: 0;
+      transition: $transition;
+
+      &.show
+        visibility: visible;
+        opacity: 1;
+
+  &-modal
+    &__container
+      position: relative;
+
+    &__close
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;

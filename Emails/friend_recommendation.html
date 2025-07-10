@@ -1,80 +1,10 @@
-<table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
-  <tbody>
-      <tr>
-          <td align="center" valign="top" style="background-color: #f6f6f6;">
-              <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">            
-                  
-                  <!-- HEADER -->
-                  {{header_mail}}
-                  <!-- END HEADER -->
-                  
-                  <!-- MAIN -->
-                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
-                      <tbody>
-                          <tr align="center">
-                              <td>
-                                  <h1 style="font-size: 36px; line-height: 100%;">Indicação de amigo!</h1>
-                              </td>
-                          </tr>
-                          <tr align="center">
-                              <td>
-                                  <p>Olá, {{indicacao.indicado.nome}}.</p><br>
-                                  <p>Seu amigo {{indicacao.indicador.nome}}, indicou um produto para você!</p>
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
-                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="padding: 8px;">
-                      <tbody>
-                          <tr>
-                              <td colspan="4">
-                                  <h1 style="font-size: 24px; line-height: 100%;">Produto indicado</h1>
-                              </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:100%;">
-                                <tbody>
-                                  <tr>
-                                    <td style="padding: 8px;"><img src="{{produto?.imagem}}" alt="{{produto?.nome}}" height="70" width="70" /></td>
-                                    <td style="padding: 8px;">
-                                      <small>{{produto?.nome}}</small>
-                                      <small>{{produto?.atributos}}</small>
-                                      <small>{{produto?.embalagens}}</small>
-                                      <small>{{produto?.personalizacoes}}</small>
-                                      <small>{{produto?.primeiro_prazo}}</small>
-                                      <small>{{produto?.segundo_prazo}}</small>
-                                    </td>
-                                    <td style="padding: 8px;"><small>Qtd: {{produto?.quantidade}}</small></td>
-                                    <td style="padding: 8px;"><small>{{produto?.preco_unitario}}</small></td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="5" style="border-top: 1px solid #eaeaea;"></td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                      </tbody>
-                  </table>
-                  <table style="padding: 30px 0;">
-                    <tbody>
-                      <tr align="center">
-                        <td>
-                          <a href="{{produto?.adicionarcarrinho}}" style="border-radius: 6px;border: none;background: 
-                          #C40EEF;text-transform: uppercase;font-size: 16px;color: #ffffff;padding: 15px;text-decoration: none;">COMPRAR PRODUTO</a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- END MAIN -->
-                  
-                  <!-- FOOTER -->
-                  {{footer_mail}}
-                  <!-- END FOOTER -->
+<h5>Enviado pelo Storefont - Template IndicacaoAmigo</h5>
+<br>
+<p>Olá {{indicacao.indicado.nome}}</p>
+<br>
+<p>Seu amigo, {{indicacao.indicador.nome}}, indicou um produto para você!</p>.
 
-              </div>
-          </td>
-      </tr>
-  </tbody>
-</table>
+
+
+
+

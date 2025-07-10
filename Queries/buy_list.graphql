@@ -2,11 +2,9 @@ query BuylistPage($id: Long!){
   buyList(id:$id) {
     alias
     buyListId
-    kit
     buyListProducts {
       productId
       quantity
-      includeSameParent
     }
     images{
       url
@@ -20,17 +18,21 @@ query BuylistPage($id: Long!){
       value
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp
-      fullStampUrl
       title
-      disclosureType
     }
     productName
     prices {
       listPrice
       price
+      priceTables {
+        id
+        listPrice
+        price
+      }
       discountPercentage
       installmentPlans{
           displayName

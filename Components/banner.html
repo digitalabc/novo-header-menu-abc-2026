@@ -1,0 +1,45 @@
+{{ ##
+    Description: Renders a banner carousel from a list of banners
+    Params:
+      - banners: list of banners
+      - position: banner position to use
+    Usage:
+      carousel banners: banners position: "Topo"
+## }}
+{{~ 
+  if banners && position
+    banners = banners | array.sort "order"
+    grouped_banners = banners | group.by @(do; ret $0.position;end)
+    banners = grouped_banners | group.get position
+    banners_by_name = banners | group.by @(do; ret $0.banner_name;end)
+    banners_names = banners_by_name | object.keys
+  end 
+~}}
+
+{{~ if banners && banners.size > 0 ~}}
+  {{~ if carousel ~}}
+    <div class="swiper">
+      <ul class="swiper-wrapper">
+        {{~ for banner in banners ~}}
+          {{~ banner_title = banner.alt_text ?? "banner" ~}}
+          <li class="swiper-slide">
+            <a {{ if blank }} target="_blank" {{ end }} href="{{banner.url_on_click}}" >
+              {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title ~}}
+            </a>
+          </li>
+        {{~ end ~}}
+      </ul>
+    </div>
+  {{~ else ~}}
+    <ul>
+      {{~ for banner in banners ~}}
+        {{~ banner_title = banner.alt_text ?? "banner" ~}}
+        <li>
+          <a {{ if blank }} target="_blank" {{ end }} href="{{banner.url_on_click}}">
+            {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title ~}}
+          </a>
+        </li>
+      {{~ end ~}}
+    </ul>
+  {{~ end ~}}
+{{~ end ~}}

@@ -419,6 +419,101 @@
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.wake-payment-rejected-modal .wake-payment-rejected-modal-bg {
+  position: fixed;
+  inset: 0px;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.75;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-content {
+  position: fixed;
+  inset: 0px;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-content-inner {
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-content-inner {
+    padding: 0px;
+  }
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.375rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding: 1rem;
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-header img {
+  height: 1.25rem;
+  width: 1.25rem;
+  cursor: pointer;
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-button-cancel {
+  height: 2.25rem;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.wake-payment-rejected-modal .wake-payment-rejected-modal-button-confirm {
+  margin-left: 0.5rem;
+  height: 2.25rem;
+  border-radius: 4px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .wake-checkout-form-atenticate {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;

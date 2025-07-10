@@ -1,0 +1,40 @@
+{{ ##
+    Description: Google Tag Manager hotsite component, saves the info of products
+                to use when pushing the data to the datalayer
+    Params:
+        - product: the product data to save in tag manager
+    Usage:
+        gtm_hotsite_view product: data.product
+## }}
+<script>
+    const gtm_hotsite_details = {
+        item_list_name: "Hotsite products",
+        items: [
+            {{~ for items in product_lists ~}}
+                {{~ products = items?.edges && !items.edges.empty? ? items.edges : items ~}}
+                {{~ for item in products ~}}
+                    {{~ product = item.node ?? item }}
+                    {
+                        item_id: {{product.product_id}},
+                        item_name: "{{product.product_name | string.escape}}",
+                        {{~ if product.prices ~}}
+                        discount: {{ product.prices.list_price - product.prices.price }},
+                        price: {{ product.prices.list_price }},
+                        {{~ end ~}}
+                        index: 0,
+                        {{ if product.product_brand?.name}}
+                        item_brand: "{{product.product_brand.name | string.escape}}",
+                        {{ end }}
+                        {{ i = 1 }}
+                        {{ for category in product.product_categories }}
+                        item_category{{if i > 1}}{{i}}{{end}}:{{category.name}},
+                        {{i = i + 1}}
+                        {{ end }}
+                        quantity: 1
+                    }{{if !for.last}},{{end}}
+                {{~ end ~}}
+                {{if !for.last}},{{end}}
+            {{~ end ~}}
+        ]
+    };
+</script>

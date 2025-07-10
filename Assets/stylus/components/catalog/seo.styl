@@ -1,0 +1,87 @@
+
+.seo
+  position: relative;
+  margin-bottom: 30px;
+  padding: 20px 25px 60px;
+  border: 1px solid #D5D5D5;
+
+  &:empty
+    display: none;
+
+  @media mobile
+    margin-bottom: 20px;
+
+  &.expand
+    > *
+      display: block;
+
+    .seo__button
+      font-size: 0;
+      gap: 3.5px;
+
+      @media mobile
+        gap: 5px;
+
+      &:before
+        content: "Ver menos";
+        font-size: 20px;
+
+        @media mobile
+          font-size: 16px;
+
+      svg
+        transform: rotate(180deg);
+
+  > h1
+    display: block;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 20px;
+
+    @media mobile
+      margin-bottom: 10px;
+
+    + *
+      display: -webkit-box !important;
+      overflow: hidden;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+  > h2
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 1.5em;
+
+  > p
+    margin-bottom: 10px;
+
+    + h2, + h3, + h4, + h5
+      margin-top: 20px;
+
+  > *
+    display: none;
+
+  > img
+    display: block
+    margin-bottom: 30px
+
+  &__button
+    position: absolute;
+    bottom: 20px;
+    display: flex !important;
+    align-items: center;
+    background: none;
+    color: #0FA848;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    gap: 7px;
+
+    @media mobile
+      font-weight: 500;
+      font-size: 16px;
+      gap: 10px;
+
+      svg
+        width: 15px;
+        height: 15px;

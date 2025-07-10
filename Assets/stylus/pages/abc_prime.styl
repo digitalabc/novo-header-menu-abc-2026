@@ -1,0 +1,904 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+
+.abc_prime
+
+    h2.abcPrime-title
+        color: #FFF;
+        font-family: "Poppins", sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 36px;
+        text-align: center;
+        padding: 24px 0;
+        
+        strong
+            color: #FFE2AA;
+            font-family: "Poppins", sans-serif;
+            font-size: 24px; 
+            font-style: normal;
+            font-weight: 700;
+            line-height: 36px;
+            text-transform: uppercase;
+            display: block
+
+    .abcPrime
+        &__fullbanner
+            background-image: url("https://abcdaconstrucao.fbitsstatic.net/sf/img/abc-prime-container_banner.png");
+            background-size: cover;
+            background-repeat no-repeat;
+            padding: 57.5px 0;
+
+            .container
+                display flex
+                align-items: center
+                font-family: "Poppins", sans-serif;
+                @media desktop
+                    justify-content: space-between
+                    gap: 0
+                
+                @media mobile
+                    flex-direction: column-reverse
+
+                    img
+                        padding-bottom 20px
+                        width initial !important
+
+        &__title
+            color: #FDFDFD;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 48px;
+            padding-bottom 16px;
+            font-family: "Poppins", sans-serif;
+
+        &__paragraph
+            color: #FDFDFD;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 21.6px;
+            font-family: "Poppins", sans-serif;
+
+        &__paragraphStrong
+            color: #FFE2AA;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 28.8px;
+            padding-bottom 24px;
+            font-family: "Poppins", sans-serif;
+
+        &__link
+            max-width 255px
+            width 100%
+            border-radius: 32px;
+            background: #FFE2AA;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            height: 46px;
+            line-height: 46px;
+            text-align: center
+            display: inline-block
+            color: #20725E;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            font-family: "Poppins", sans-serif;
+            @media desktop
+                &:hover
+                    background: #fff
+                    color: #20725E;
+
+//section benefícios
+    .beneficiosPrime
+        background: #3E3E3E;
+        padding-top: 16px
+
+        &__container
+            position: relative
+
+            &:after
+                position: absolute
+                content: ''
+                width 100%
+                height 100%
+                top 0
+                right: 0
+                box-shadow: inset -150px 0px 67px -48px #3E3E3E;
+                @media mobile
+                    box-shadow: inset -70px 0px 67px -48px #3E3E3E;
+
+            &:before
+                position: absolute
+                content: ''
+                width 100%
+                height 100%
+                top 0
+                left 0
+                z-index 1
+                box-shadow: inset 150px 0px 67px -48px #3E3E3E;
+                @media mobile
+                    box-shadow: inset 70px 0px 67px -48px #3E3E3E;
+        
+        &__ruler
+            margin: 0
+            box-shadow: 0px 4px 10px 0px #00000066;
+            background: #3e3e3e
+
+            @media mobile
+                display: none
+            
+            &.floating 
+                position: fixed;
+                top: 150px;
+                left: 0;
+                width: 100%;
+                z-index: 99;
+
+            ul
+                @media desktop
+                    display flex
+                    align-items: center
+                    justify-content: center
+
+                li
+                    @media desktop
+                        width initial
+
+                    a
+                        color: #FFF;
+                        font-family: "Inter", sans-serif;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 17px;
+                        text-transform: uppercase;
+                        height 100%
+                        display flex
+                        align-items: center
+                        justify-content: center
+                        padding: 31.5px 16px
+
+                        &:hover
+                            color: #FFE2AA
+        &__benefits
+            max-width: 1300px
+            margin: 0 auto
+            padding-bottom: 75px
+
+            @media mobile
+                padding 0 0px 90px 10px
+                button
+                    display: none
+
+            @media screen and (min-width: 992px) and (max-width: 1024px)
+                padding: 0 10px 110px
+
+            .swiper-button-prev
+                transform: rotate(-90deg)
+                left: initial
+                right: 90px
+                @media mobile
+                    right 70px
+
+            .swiper-button-next
+                transform: rotate(90deg) 
+                right: 40px
+
+                @media mobile
+                    right 10px
+
+            .swiper-button-next,
+            .swiper-button-prev
+                background: #FFE2AA
+                border-radius: 50%
+                border: 1px solid #FFE2AA
+                top: 87%
+
+                svg
+                    fill: none
+                    stroke: #3E3E3E;
+
+            .swiper-button-disabled
+                opacity: 1
+                background: transparent
+                 
+                svg 
+                    stroke: #fff
+
+        &__benefitsList
+            display flex
+            
+            @media desktop
+              justify-content: center
+
+            li
+                max-width: 300px
+                // height 450px
+                height 340px
+                padding: 32px
+                font-family: "Poppins", sans-serif;
+                display flex
+                flex-direction: column
+                justify-content: space-between
+                border-radius: 15px
+                border: 1px solid #fff
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;   
+                transition: all 0.5s ease-out allow-discrete;
+
+                &:hover 
+                    @media desktop
+                        background-size: 130%;
+
+                &:last-child
+                    margin-right: 0 !important 
+
+                @media desktop
+                    &:hover
+                        a
+                            color: #FFE2AA   
+
+                @media mobile
+                    height 450px
+
+                h3
+                    display: none
+                    color: #FFF;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    margin-bottom 8px;
+                    font-family: "Poppins", sans-serif;
+
+                p
+                    display: none
+                    color: #FFF;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 21px;
+                    font-family: "Poppins", sans-serif;
+
+                a
+                    display: none
+                    color: #FFF;
+                    font-family: "Poppins", sans-serif;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 150%
+
+                    &:before
+                        content: ''
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cg clip-path='url(%23clip0_1586_2668)'%3E%3Cpath d='M4.42664 10.4733L8.75997 6.13997L4.42664 1.80664' stroke='white' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1586_2668'%3E%3Crect width='10.4' height='10.4' fill='white' transform='translate(0.959961 0.939941)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+                        width: 10px;
+                        height: 10px;
+                        flex-shrink: 0;
+                        display: inline-block
+                        margin-right: 7px
+
+                
+
+            li.beneficiosPrime__descontos
+                background-image: url('https://abcdaconstrucao.fbitsstatic.net/media/abcprime-beneficios01.png?v=01234')
+            
+            li.beneficiosPrime__promocoes
+                background-image: url('https://abcdaconstrucao.fbitsstatic.net/media/abcprime-beneficios02.png?v=01234')
+            
+            li.beneficiosPrime__frete
+                background-image: url('https://abcdaconstrucao.fbitsstatic.net/media/abcprime-beneficios03.png?v=01234')
+
+            li.beneficiosPrime__atendimento
+                background-image: url('https://abcdaconstrucao.fbitsstatic.net/media/abcprime-beneficios04.png?v=01234')
+            
+            li.beneficiosPrime__servicos
+                background-image: url('https://abcdaconstrucao.fbitsstatic.net/media/abcprime-beneficios05.png?v=01234')
+
+            // li.beneficiosPrime__outro
+            //     background-image: url('https://abcdaconstrucao.fbitsstatic.net/media/abcprime-beneficios01.png')
+
+//planos assinatura prime
+    .planosPrime
+        background: linear-gradient(86deg, #247067 18.39%, #38B0A1 136.66%);
+        position: relative
+        @media mobile
+            padding: 0 10px
+
+        h2.abcPrime-title
+            font-size: 20px !important
+            line-height: 30px
+            font-family: "Poppins", sans-serif;
+
+            strong
+                font-weight: 800
+                font-size: 20px
+                line-height: 30px
+
+        &__list
+            display flex
+            justify-content: center
+            align-items: center
+            gap: 23px
+
+
+            @media mobile
+                flex-direction: column
+
+        &__item
+            padding: 50px 30px
+            text-align: center
+            color: #FFF;
+            max-width 460px
+            width 100%
+            height 665px
+            border-radius: 10.573px;
+            border: 1.322px solid #FFF;
+            background: #3E3E3E;
+            box-shadow: 0px 0px 26.962px 0px rgba(0, 0, 0, 0.20);
+            transition: transform 0.4s
+            z-index 1
+            @media mobile
+                height auto
+
+            @media desktop
+                &:hover
+                    transform: scale(1.03)
+                    background: rgba(62, 62, 62, 0.80);
+
+                    a
+                        background: #FFE2AA;
+                        color: #3E3E3E;
+                    
+                    a, h4, p
+                        transform: scale(1.03)
+
+            img
+                max-width 155px
+                width 100%
+                margin-bottom 16px
+
+            h4
+                font-family: "Poppins", sans-serif;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 21px;
+                
+            p
+                font-family: "Poppins", sans-serif;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 27px;
+                margin-bottom 9.5px;
+
+            p.price
+                font-family: "Poppins", sans-serif;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 27px
+
+                strong
+                    font-family: "Poppins", sans-serif;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 27px
+
+            a
+                border-radius: 23px
+                background: #EFEFEF;
+                margin-bottom 30px
+                max-width 205px
+                display inline-block
+                width 100%
+                height 40px
+                color: #247269;
+                font-family: "Poppins", sans-serif;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 40px;
+            ul
+                display flex
+                flex-direction: column
+                align-content: center
+                flex-wrap: wrap
+                margin-bottom 22px
+
+                li
+                    text-align: left
+                    padding: 15px 0
+                    width 100%
+                    border-bottom: 0.6px solid #FFF;
+                    display: flex
+                    align-items: center
+
+                    &:before
+                        content: ''
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.8525 19.1064C11.0674 19.1064 12.2705 18.8671 13.393 18.4021C14.5154 17.9372 15.5353 17.2557 16.3944 16.3966C17.2535 15.5375 17.935 14.5176 18.3999 13.3952C18.8649 12.2727 19.1042 11.0696 19.1042 9.85469C19.1042 8.63975 18.8649 7.4367 18.3999 6.31423C17.935 5.19177 17.2535 4.17187 16.3944 3.31278C15.5353 2.45368 14.5154 1.77221 13.393 1.30727C12.2705 0.842329 11.0674 0.603027 9.8525 0.603027C7.3988 0.603027 5.0456 1.57775 3.31058 3.31278C1.57556 5.0478 0.60083 7.401 0.60083 9.85469C0.60083 12.3084 1.57556 14.6616 3.31058 16.3966C5.0456 18.1316 7.3988 19.1064 9.8525 19.1064ZM9.61401 13.5965L14.7538 7.4287L13.1749 6.11291L8.75463 11.4162L6.46741 9.12792L5.01388 10.5815L8.09776 13.6654L8.89341 14.461L9.61401 13.5965Z' fill='%23FFE2AA'/%3E%3C/svg%3E");
+                        margin-right 22px
+                        width 20px
+                        height 20px
+                        display: inline-block
+            
+            a.planosPrime__btContinuar
+                max-width: 100%;
+                height 54px;
+                line-height 54px;
+                background: #FFE2AA;
+                color: #3E3E3E;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                margin-bottom 0;
+                border-radius: 4px;
+
+        small
+            max-width: 950px
+            text-align: center
+            margin: 0 auto
+            display: block
+            color: #FFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 150%; /* 21px */
+            padding-bottom 57px
+
+//vitrine descontos
+    .showcasePrime
+        background: #3E3E3E
+        @media desktop
+            display flex
+            flex-direction: column
+            align-items: center
+
+        @media mobile
+            padding: 0 10px
+
+        h2.abcPrime-title
+            padding: 16px 0
+            font-size: 20px
+            line-height: 30px
+            font-weight: 400
+            font-family: "Poppins", sans-serif
+            text-transform: uppercase
+
+            strong
+                font-weight: 800
+                font-size: 20px
+                line-height: 30px
+
+        &__content
+            max-width: 865px
+            width: 100%
+            margin 0 auto
+            padding: 0
+
+            .swiper
+                position: relative
+                @media desktop
+                    &:after
+
+                        position: absolute
+                        content: ''
+                        width 100%
+                        height 100%
+                        top 0
+                        right: 0
+                        z-index 3                    
+                        box-shadow: inset -100px 0px 67px -48px #3E3E3E;
+                        
+
+                    &:before
+                        position: absolute
+                        content: ''
+                        width 100%
+                        height 100%
+                        top 0
+                        left 0
+                        z-index 3
+                        box-shadow: inset 100px 0px 67px -48px #3E3E3E;
+                        
+                  
+            li
+                border-radius: 3.969px;
+                border: 0.695px solid #D3D3D3;
+                background: #FFF;
+                padding: 0 10px
+
+                .spot
+                    border: none
+
+                    &__image
+                        position relative
+                    &:hover
+                        box-shadow: none
+
+                    .stamps-frete
+                        left 0
+                        width 87px
+                        height 22px
+                        border-radius: 1.985px;
+                        background: linear-gradient(0deg, rgba(15, 168, 72, 0.2) 0%, rgba(15, 168, 72, 0.2) 100%), #FFF;
+                        color: #0FA848;
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                        display flex
+                        align-items: center
+                        justify-content: center
+                        gap 3px
+                        top: 16px
+                        position absolute
+                        z-index 9999
+
+                    .stamps-vendido
+                        left 0
+                        bottom 0
+                        width 94px
+                        height 24px
+                        border-radius: 1.985px;
+                        background: #006DD5B2;
+                        color: #FFF;
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                        display flex
+                        align-items: center
+                        justify-content: center
+                        gap 3px
+                        position absolute
+                        z-index 9999
+
+                    .stamps-livelo
+                        position absolute
+                        right: 0
+                        bottom: 0
+                        width 152px
+                        height 24px
+                        border-radius: 1.985px;
+                        background: #FF80FAB2;
+                        color: #000;
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                        display flex
+                        align-items: center
+                        justify-content: center
+                        gap 3px
+                        z-index 9999
+
+                    .stamps-discount
+                        top: 40px
+                        left 0
+                        width 87px
+                        height 21px
+                        border-radius: 1.985px;
+                        background: linear-gradient(0deg, rgba(227, 6, 19, 0.15) 0%, rgba(227, 6, 19, 0.15) 100%), #FFF;
+                        color: #E30613;
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                        display flex
+                        gap 3px
+
+                        &:after
+                            content: 'OFF'
+                            color: #E30613;
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 11.908px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: normal;
+
+                        &:before
+                            content: ''
+                            background-image: url("data:image/svg+xml,%3Csvg width='5' height='9' viewBox='0 0 5 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.327706 6.27115L0.316226 6.30046V6.33194V6.50408V6.54167L0.332357 6.57562C0.383602 6.68347 0.456578 6.77955 0.546681 6.85784C1.04713 7.35884 1.54724 7.8622 2.04702 8.36792C2.12937 8.464 2.23468 8.53777 2.3532 8.58235L2.38157 8.59303H2.41188H2.52565H2.55209L2.57723 8.58485C2.67238 8.55388 2.76023 8.50389 2.83545 8.4379L2.83571 8.43821L2.84388 8.42997C3.39035 7.87888 3.93683 7.33017 4.4833 6.78386L4.48393 6.78322C4.5789 6.68725 4.63293 6.55818 4.63462 6.42318L4.6347 6.42318L4.6346 6.41805C4.63271 6.31399 4.59901 6.213 4.53804 6.12865C4.4774 6.04474 4.39266 5.9813 4.29511 5.94671C4.20629 5.91389 4.10981 5.9077 4.0175 5.92891C3.92542 5.95006 3.84151 5.99757 3.77601 6.0656C3.50641 6.33406 3.23846 6.60232 2.97215 6.87038V6.86054V6.84955V6.83857V6.82759V6.8166V6.80562V6.79464V6.78365V6.77267V6.76169V6.75071V6.73972V6.72874V6.71776V6.70677V6.69579V6.68481V6.67382V6.66284V6.65186V6.64087V6.62989V6.61891V6.60793V6.59694V6.58596V6.57498V6.56399V6.55301V6.54203V6.53104V6.52006V6.50908V6.4981V6.48711V6.47613V6.46515V6.45416V6.44318V6.4322V6.42121V6.41023V6.39925V6.38826V6.37728V6.3663V6.35532V6.34433V6.33335V6.32237V6.31138V6.3004V6.28942V6.27843V6.26745V6.25647V6.24548V6.2345V6.22352V6.21254V6.20155V6.19057V6.17959V6.1686V6.15762V6.14664V6.13565V6.12467V6.11369V6.10271V6.09172V6.08074V6.06976V6.05877V6.04779V6.03681V6.02582V6.01484V6.00386V5.99287V5.98189V5.97091V5.95993V5.94894V5.93796V5.92698V5.91599V5.90501V5.89403V5.88304V5.87206V5.86108V5.85009V5.83911V5.82813V5.81715V5.80616V5.79518V5.7842V5.77321V5.76223V5.75125V5.74026V5.72928V5.7183V5.70732V5.69633V5.68535V5.67437V5.66338V5.6524V5.64142V5.63043V5.61945V5.60847V5.59748V5.5865V5.57552V5.56454V5.55355V5.54257V5.53159V5.5206V5.50962V5.49864V5.48765V5.47667V5.46569V5.4547V5.44372V5.43274V5.42176V5.41077V5.39979V5.38881V5.37782V5.36684V5.35586V5.34487V5.33389V5.32291V5.31193V5.30094V5.28996V5.27898V5.26799V5.25701V5.24603V5.23504V5.22406V5.21308V5.20209V5.19111V5.18013V5.16915V5.15816V5.14718V5.1362V5.12521V5.11423V5.10325V5.09226V5.08128V5.0703V5.05931V5.04833V5.03735V5.02637V5.01538V5.0044V4.99342V4.98243V4.97145V4.96047V4.94948V4.9385V4.92752V4.91654V4.90555V4.89457V4.88359V4.8726V4.86162V4.85064V4.83965V4.82867V4.81769V4.8067V4.79572V4.78474V4.77376V4.76277V4.75179V4.74081V4.72982V4.71884V4.70786V4.69687V4.68589V4.67491V4.66392V4.65294V4.64196V4.63098V4.61999V4.60901V4.59803V4.58704V4.57606V4.56508V4.55409V4.54311V4.53213V4.52115V4.51016V4.49918V4.4882V4.47721V4.46623V4.45525V4.44426V4.43328V4.4223V4.41131V4.40033V4.38935V4.37837V4.36738V4.3564V4.34542V4.33443V4.32345V4.31247V4.30148V4.2905V4.27952V4.26853V4.25755V4.24657V4.23559V4.2246V4.21362V4.20264V4.19165V4.18067V4.16969V4.1587V4.14772V4.13674V4.12576V4.11477V4.10379V4.09281V4.08182V4.07084V4.05986V4.04887V4.03789V4.02691V4.01592V4.00494V3.99396V3.98298V3.97199V3.96101V3.95003V3.93904V3.92806V3.91708V3.90609V3.89511V3.88413V3.87314V3.86216V3.85118V3.8402V3.82921V3.81823V3.80725V3.79626V3.78528V3.7743V3.76331V3.75233V3.74135V3.73037V3.71938V3.7084V3.69742V3.68643V3.67545V3.66447V3.65348V3.6425V3.63152V3.62053V3.60955V3.59857V3.58759V3.5766V3.56562V3.55464V3.54365V3.53267V3.52169V3.5107V3.49972V3.48874V3.47775V3.46677V3.45579V3.44481V3.43382V3.42284V3.41186V3.40087V3.38989V3.37891V3.36792V3.35694V3.34596V3.33498V3.32399V3.31301V3.30203V3.29104V3.28006V3.26908V3.25809V3.24711V3.23613V3.22514V3.21416V3.20318V3.1922V3.18121V3.17023V3.15925V3.14826V3.13728V3.1263V3.11531V3.10433V3.09335V3.08236V3.07138V3.0604V3.04942V3.03843V3.02745V3.01647V3.00548V2.9945V2.98352V2.97253V2.96155V2.95057V2.93958V2.9286V2.91762V2.90664V2.89565V2.88467V2.87369V2.8627V2.85172V2.84074V2.82975V2.81877V2.80779V2.79681V2.78582V2.77484V2.76386V2.75287V2.74189V2.73091V2.71992V2.70894V2.69796V2.68697V2.67599V2.66501V2.65403V2.64304V2.63206V2.62108V2.61009V2.59911V2.58813V2.57714V2.56616V2.55518V2.54419V2.53321V2.52223V2.51125V2.50026V2.48928V2.4783V2.46731V2.45633V2.44535V2.43436V2.42338V2.4124V2.40142V2.39043V2.37945V2.36847V2.35748V2.3465V2.33552V2.32453V2.31355V2.30257V2.29158V2.2806V2.26962V2.25864V2.24765V2.23667V2.22569V2.2147V2.20372V2.19274V2.18175V2.17077V2.15979V2.1488V2.13782V2.12684V2.11586V2.10487V2.09389V2.08291V2.07192V2.06094V2.04996V2.03897V2.02799V2.01701V2.00603V1.99504V1.98406V1.97308V1.96209V1.95111V1.94013V1.92914V1.91816V1.90718V1.89619V1.88521V1.87423V1.86325V1.85226V1.84128V1.8303V1.81931V1.80833V1.79735V1.78636V1.77538V1.7644V1.75341V1.74243V1.73145V1.72047V1.70948V1.6985V1.68752V1.67653V1.66555V1.65457V1.64358V1.6326V1.62162V1.61063V1.59965V1.58867V1.57769V1.5667V1.55572V1.54474V1.54453V1.54432V1.54411V1.5439V1.54369V1.54348V1.54327V1.54305V1.54284V1.54263V1.54242V1.54221V1.542V1.54179V1.54158V1.54137V1.54116V1.54095V1.54074V1.54053V1.54032V1.54011V1.5399V1.53969V1.53948V1.53927V1.53905V1.53884V1.53863V1.53842V1.53821V1.538V1.53779V1.53758V1.53737V1.53716V1.53695V1.53674V1.53652V1.53631V1.5361V1.53589V1.53568V1.53547V1.53526V1.53505V1.53484V1.53462V1.53441V1.5342V1.53399V1.53378V1.53357V1.53336V1.53315V1.53293V1.53272V1.53251V1.5323V1.53209V1.53188V1.53167V1.53146V1.53124V1.53103V1.53082V1.53061V1.5304V1.53019V1.52997V1.52976V1.52955V1.52934V1.52913V1.52892V1.52871V1.52849V1.52828V1.52807V1.52786V1.52765V1.52744V1.52722V1.52701V1.5268V1.52659V1.52638V1.52616V1.52595V1.52574V1.52553V1.52532V1.5251V1.52489V1.52468V1.52447V1.52426V1.52405V1.52383V1.52362V1.52341V1.5232V1.52298V1.52277V1.52256V1.52235V1.52214V1.52192V1.52171V1.5215V1.52129V1.52108V1.52086V1.52065V1.52044V1.52023V1.52001V1.5198V1.51959V1.51938V1.51917V1.51895V1.51874V1.51853V1.51832V1.5181V1.51789V1.51768V1.51747V1.51725V1.51704V1.51683V1.51662V1.5164V1.51619V1.51598V1.51577V1.51555V1.51534V1.51513V1.51492V1.5147V1.51449V1.51428V1.51407V1.51385V1.51364V1.51343V1.51322V1.513V1.51279V1.51258V1.51237V1.51215V1.51194V1.51173V1.51152V1.5113V1.51109V1.51088V1.51066V1.51045V1.51024V1.51003V1.50981V1.5096V1.50939V1.50918V1.50896V1.50875V1.50854V1.50832V1.50811V1.5079V1.50769V1.50747V1.50726V1.50705V1.50683V1.50662V1.50641V1.5062V1.50598V1.50577V1.50556V1.50534V1.50513V1.50492V1.50471V1.50449V1.50428V1.50407V1.50385V1.50364V1.50343V1.50321V1.503V1.50279V1.50258V1.50236V1.50215V1.50194V1.50172V1.50151V1.5013V1.50108V1.50087V1.50066V1.50045V1.50023V1.50002V1.49981V1.49959V1.49938V1.49917V1.49895V1.49874V1.49853V1.49831V1.4981V1.49789V1.49768V1.49746V1.49725V1.49704V1.49682V1.49661V1.4964V1.49618V1.49597V1.49576V1.49554V1.49533V1.49512V1.49491V1.49469V1.49448V1.49427V1.49405V1.49384V1.49363V1.49341V1.4932V1.49299V1.49277V1.49256V1.49235V1.49213V1.49192V1.49171V1.4915V1.49128V1.49107V1.49086V1.49064V1.49043V1.49022V1.49V1.48979V1.48958V1.48936V1.48915V1.48894V1.48872V1.48851V1.4883V1.48809V1.48787V1.48766V1.48745V1.48723V1.48702V1.48681V1.48659V1.48638V1.48617V1.48595V1.48574V1.48553V1.48531V1.4851V1.48489V1.48468V1.48446V1.48425V1.48404V1.48382V1.48361V1.4834V1.48318V1.48297V1.48276V1.48254V1.48233V1.48212V1.48191V1.48169V1.48148V1.48127V1.48105V1.48084V1.48063V1.48041V1.4802V1.47999V1.47977V1.47956V1.47935V1.47914V1.47892V1.47871V1.4785V1.47828V1.47807V1.47786V1.47764V1.47743V1.47722V1.47701V1.47679V1.47658V1.47637V1.47615V1.47594V1.47573V1.47552V1.4753V1.47509V1.47488V1.47466V1.47445V1.47424V1.47403V1.47381V1.4736V1.47339V1.47317V1.47296V1.47275V1.47254V1.47232V1.47211V1.4719V1.47168V1.47147V1.47126V1.47105V1.47083V1.47062V1.47041V1.47019V1.46998V1.46977V1.46956V1.46934V1.46913V1.46892V1.46871V1.46849V1.46828V1.46807V1.46786V1.46764V1.46743V1.46722V1.467V1.46679V1.46658V1.46637V1.46615V1.46594V1.46573V1.46552V1.4653V1.46509V1.46488V1.46467V1.46445V1.46424V1.46403V1.46382V1.4636V1.46339V1.46318V1.46297V1.46276V1.46254V1.46233V1.46212V1.46191V1.46169V1.46148V1.46127V1.46106V1.46084V1.46063V1.46042V1.46021V1.46V1.45978V1.45957V1.45936V1.45915V1.45893V1.45872V1.45851V1.4583V1.45809V1.45787V1.45766V1.45745V1.45724V1.45703V1.45681V1.4566V1.45639V1.45618V1.45597V1.45575V1.45554V1.45533V1.45512V1.45491V1.4547V1.45448V1.45427V1.45406V1.45385V1.45364V1.45342V1.45321V1.453V1.45279V1.45258V1.45237V1.45215V1.45194V1.45173V1.45152V1.45131V1.4511V1.45088V1.45067V1.45046V1.45025V1.45004V1.44983V1.44962V1.4494V1.44919V1.44898V1.44877V1.44856V1.44835V1.44814V1.44792V1.44771V1.4475V1.44729V1.44708V1.44687V1.44666V1.44645V1.44623V1.44602V1.44581V1.4456V1.44539V1.44518V1.44497V1.44476V1.44455V1.44434V1.44412V1.44391V1.4437V1.44349V1.44328V1.44307V1.44286V1.44265V1.44244V1.44223V1.44202V1.4418V1.44159V1.44138V1.44117V1.44096V1.44075V1.44054V1.44033V1.44012V1.43991V1.4397V1.43949V1.43928V1.43907V1.43886V1.43865V1.43844V1.43823V1.43801V1.4378V1.43759V1.43738V1.43717V1.43696V1.43675V1.43654V1.43633V1.43612H2.97216L2.97214 1.43444C2.97124 1.34559 2.947 1.25854 2.90185 1.18202C2.8567 1.10549 2.79223 1.04218 2.7149 0.998427C2.63757 0.954671 2.5501 0.932005 2.46125 0.932697C2.37345 0.933381 2.28734 0.956852 2.21137 1.00079C2.12865 1.04589 2.06122 1.11463 2.01772 1.19826C1.97542 1.27957 1.95764 1.37133 1.96641 1.46241V1.46475V1.47596V1.48716V1.49837V1.50958V1.52079V1.53199V1.5432V1.55441V1.56561V1.57682V1.58803V1.59924V1.61044V1.62165V1.63286V1.64406V1.65527V1.66648V1.67769V1.68889V1.7001V1.71131V1.72251V1.73372V1.74493V1.75614V1.76734V1.77855V1.78976V1.80097V1.81217V1.82338V1.83459V1.84579V1.857V1.86821V1.87942V1.89062V1.90183V1.91304V1.92424V1.93545V1.94666V1.95787V1.96907V1.98028V1.99149V2.00269V2.0139V2.02511V2.03632V2.04752V2.05873V2.06994V2.08115V2.09235V2.10356V2.11477V2.12597V2.13718V2.14839V2.1596V2.1708V2.18201V2.19322V2.20442V2.21563V2.22684V2.23805V2.24925V2.26046V2.27167V2.28287V2.29408V2.30529V2.3165V2.3277V2.33891V2.35012V2.36133V2.37253V2.38374V2.39495V2.40615V2.41736V2.42857V2.43978V2.45098V2.46219V2.4734V2.4846V2.49581V2.50702V2.51823V2.52943V2.54064V2.55185V2.56305V2.57426V2.58547V2.59668V2.60788V2.61909V2.6303V2.64151V2.65271V2.66392V2.67513V2.68633V2.69754V2.70875V2.71996V2.73116V2.74237V2.75358V2.76478V2.77599V2.7872V2.79841V2.80961V2.82082V2.83203V2.84324V2.85444V2.86565V2.87686V2.88806V2.89927V2.91048V2.92169V2.93289V2.9441V2.95531V2.96651V2.97772V2.98893V3.00014V3.01134V3.02255V3.03376V3.04496V3.05617V3.06738V3.07859V3.08979V3.101V3.11221V3.12341V3.13462V3.14583V3.15704V3.16824V3.17945V3.19066V3.20187V3.21307V3.22428V3.23549V3.24669V3.2579V3.26911V3.28032V3.29152V3.30273V3.31394V3.32514V3.33635V3.34756V3.35877V3.36997V3.38118V3.39239V3.40359V3.4148V3.42601V3.43722V3.44842V3.45963V3.47084V3.48205V3.49325V3.50446V3.51567V3.52687V3.53808V3.54929V3.5605V3.5717V3.58291V3.59412V3.60532V3.61653V3.62774V3.63895V3.65015V3.66136V3.67257V3.68378V3.69498V3.70619V3.7174V3.7286V3.73981V3.75102V3.76223V3.77343V3.78464V3.79585V3.80705V3.81826V3.82947V3.84068V3.85188V3.86309V3.8743V3.8855V3.89671V3.90792V3.91913V3.93033V3.94154V3.95275V3.96396V3.97516V3.98637V3.99758V4.00878V4.01999V4.0312V4.04241V4.05361V4.06482V4.07603V4.08723V4.09844V4.10965V4.12086V4.13206V4.14327V4.15448V4.16568V4.17689V4.1881V4.19931V4.21051V4.22172V4.23293V4.24414V4.25534V4.26655V4.27776V4.28896V4.30017V4.31138V4.32259V4.33379V4.345V4.35621V4.36741V4.37862V4.38983V4.40104V4.41224V4.42345V4.43466V4.44586V4.45707V4.46828V4.47949V4.49069V4.5019V4.51311V4.52432V4.53552V4.54673V4.55794V4.56914V4.58035V4.59156V4.60277V4.61397V4.62518V4.63639V4.64759V4.6588V4.67001V4.68122V4.69242V4.70363V4.71484V4.72604V4.73725V4.74846V4.75967V4.77087V4.78208V4.79329V4.8045V4.8157V4.82691V4.83812V4.84932V4.86053V4.87174V4.88295V4.89415V4.90536V4.91657V4.92777V4.93898V4.95019V4.9614V4.9726V4.98381V4.99502V5.00622V5.01743V5.02864V5.03985V5.05105V5.06226V5.07347V5.08468V5.09588V5.10709V5.1183V5.1295V5.14071V5.15192V5.16313V5.17433V5.18554V5.19675V5.20795V5.21916V5.23037V5.24158V5.25278V5.26399V5.2752V5.28641V5.29761V5.30882V5.32003V5.33123V5.34244V5.35365V5.36486V5.37606V5.38727V5.39848V5.40968V5.42089V5.4321V5.44331V5.45451V5.46572V5.47693V5.48813V5.49934V5.51055V5.52176V5.53296V5.54417V5.55538V5.56659V5.57779V5.589V5.60021V5.61141V5.62262V5.63383V5.64504V5.65624V5.66745V5.67866V5.68986V5.70107V5.71228V5.72349V5.73469V5.7459V5.75711V5.76831V5.77952V5.79073V5.80194V5.81314V5.82435V5.83556V5.84677V5.85797V5.86918V5.88039V5.89159V5.9028V5.91401V5.92522V5.93642V5.94763V5.95884V5.97004V5.98125V5.99246V6.00367V6.01487V6.02608V6.03729V6.04849V6.0597V6.07091V6.08212V6.09332V6.10453V6.11574V6.12695V6.13815V6.14936V6.16057V6.17177V6.18298V6.19419V6.2054V6.2166V6.22781V6.23902V6.25022V6.26143V6.27264V6.28385V6.29505V6.30626V6.31747V6.32867V6.33988V6.35109V6.3623V6.3735V6.38471V6.39592V6.40713V6.41833V6.42954V6.44075V6.45195V6.46316V6.47437V6.48558V6.49678V6.50799V6.5192V6.5304V6.54161V6.55282V6.56403V6.57523V6.58644V6.59765V6.60885V6.62006V6.63127V6.64248V6.65368V6.66489V6.6761V6.68731V6.69851V6.70972V6.72093V6.73213V6.74334V6.75455V6.76576V6.77696V6.78817V6.79938V6.81058V6.82179V6.833V6.84421V6.85541V6.86662V6.87359C1.69367 6.6034 1.42504 6.3334 1.15642 6.05948L1.15668 6.05923L1.1485 6.05193C1.06517 5.97743 0.959913 5.932 0.848548 5.92245C0.737182 5.9129 0.625722 5.93974 0.530924 5.99896L0.520367 6.00555L0.510907 6.01364C0.429627 6.08314 0.366707 6.17158 0.327706 6.27115Z' fill='%23E30613' stroke='%23E30613' stroke-width='0.333367'/%3E%3C/svg%3E%0A");
+                            width 5px
+                            height 9px
+                            display: inline-block
+                            
+                    .spot__image-wrapper
+                        border none
+                        max-width: 250px
+                        margin 10px
+
+                    .spot__content
+                        padding: 16px
+
+                        &-title
+                            padding: 16px 0
+                            overflow: hidden;
+
+                            h3                                
+                                color: #686565;
+                                height 60px
+                                margin: 0;
+                                font-family: "Montserrat", sans-serif;
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: normal;
+
+                        &-price
+
+                            .spot-price
+                                height auto
+                                margin-bottom 0
+
+                                .precoPor
+                                    display none
+                                    
+                                    &:first-child
+                                        padding-top: 0;
+
+                                    span
+                                        color: #000;
+                                        font-family: "Montserrat", sans-serif;
+                                        font-size: 23px;
+                                        font-style: normal;
+                                        font-weight: 700;
+                                        line-height: 104.57%;
+
+                                    small
+                                        font-family: "Montserrat", sans-serif;
+                                        font-size: 13.893px;
+                                        font-style: normal;
+                                        line-height: 112%;
+                                    
+                                .precoDe
+                                    display: none
+                                    color: #4F4F4F;
+                                    font-family: "Montserrat", sans-serif;
+                                    font-size: 11px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: 130%; 
+                                    margin-bottom 8px
+
+                                .desconto_prime
+                                    width: 100%
+                                    display flex
+                                    justify-content: center
+                                    align-items: center
+                                    border-radius: 3.6px;
+                                    background: linear-gradient(85.64deg, #247067 18.39%, #38B0A1 136.66%);
+                                    padding: 8px 5px;
+                                    color: #FFF;
+                                    font-family: "Montserrat", sans-serif;
+                                    font-size: 15px;
+                                    font-style: normal;
+                                    font-weight: 800;
+                                    line-height: 19px;
+                                    margin: 0
+                                    @media mobile
+                                        font-size: 13px;
+                                        gap 2px
+
+                            .best-installment
+                                display: none
+                                padding 15px 0
+                                border-top: 0.496px solid #D3D3D3;
+                                text-align: center
+                                span
+                                    display inline-block
+
+                .spot__buttons .add-to-cart-button
+                    display none
+
+
+            .swiper-slide
+                max-width: 277px
+
+                @media desktop
+                    transform scale(1)
+
+                &:not(.swiper-slide-next)
+                    @media desktop
+                        transform scale(0.89)
+
+            .swiper-button-prev, .swiper-button-next
+                display none
+
+        &__button
+            display: inline-block
+            max-width 370px
+            width 100%
+            height 68px
+            line-height: 68px
+            border-radius: 32px;
+            background: #FFE2AA;
+            color: #3E3E3E;
+            font-family: "Poppins", sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center
+            margin-top 24px
+            margin-bottom 36px
+
+            &:hover
+                background: #fff
+                color: #3E3E3E;
+
+//primeReviews
+    .primeReviews
+        background: #3E3E3E
+        color: #FFF;
+        font-family: Nunito;
+
+        h2.abcPrime-title
+            font-size: 20px
+            line-height: 30px
+            font-weight: 400
+            font-family: "Poppins", sans-serif
+            
+            strong
+                font-weight: 800
+                font-size: 20px
+                line-height: 30px
+                font-family: "Poppins", sans-serif
+                display: inline
+        
+        &__list
+            max-width: 1200px
+            margin: 0 auto
+
+            .swiper-wrapper
+                @media mobile
+                    padding: 0 0 0 10px
+
+            .swiper-button-next, .swiper-button-prev
+                @media mobile
+                    display none
+
+        &__topo
+            display flex
+            justify-content: space-between
+            align-items: center
+            margin-bottom 16px
+
+            img
+                @media mobile
+                    width 80px
+                    height 18px
+
+            p
+                text-align: right;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 21px;
+                font-family: "Poppins", sans-serif
+
+                @media mobile
+                    font-size 15px
+
+        &__item
+            width: 280px;
+            padding: 24px;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 18px;
+            border-radius: 10px;
+            border: 1.2px solid #FFF;
+            font-family: "Poppins", sans-serif
+
+        &__person
+            margin-top 16px
+            display flex
+            gap 13px
+            align-items: center
+
+            img
+                border-radius: 50%
+
+        &__name
+            color: #FFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 21px;
+
+//FAQ
+    .primeFAQ
+        background: #3E3E3E
+        display flex
+        flex-direction: column
+        align-items: center
+        padding-bottom 40px
+
+        h2.abcPrime-title
+            padding: 0 0 24px
+
+        @media mobile
+            padding: 0 10px 40px
+
+        &__question
+            max-width: 930px
+            margin: 0 auto
+            padding: 0 40px 32px
+            border-radius: 16px;
+            border: 1.2px solid #FFF;
+            margin-bottom: 8px
+            @media mobile
+                padding: 0 10px 20px
+
+            button
+                width 100%
+                display flex
+                align-items: center
+                justify-content: space-between
+                background: transparent
+                font-family: "Poppins", sans-serif;
+                color: #FFF;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 30px;
+                margin: 32px 0 0
+                transition all .2s ease-in-out
+
+                @media mobile
+                    margin: 20px 0 0
+                    font-size 18px
+                    gap 5px
+
+                svg
+                    fill: none
+                    flex-shrink: 0;
+                    transition: all .2s ease-in-out;
+
+            button.active
+                svg
+                    transform: rotateZ(180deg)
+
+        &__response
+            max-height: 0
+            overflow: hidden
+
+            p
+                color: #FFE2AA;
+                font-family: "Poppins", sans-serif;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 21px;
+                max-width: 768px
+                padding-top 32px
+ 
+        a
+            width 215px
+            height 68px
+            display: inline-block
+            color: #3D4544;
+            font-family: "Poppins", sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 68px;
+            border-radius: 32px;
+            background: #FFE2AA;
+            text-align: center
+            margin-top 16px
+
+            &:hover
+                background: #fff

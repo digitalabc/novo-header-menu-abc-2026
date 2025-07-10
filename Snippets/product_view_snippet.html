@@ -5,6 +5,4 @@
     Usage:
         await client.snippet.render("product_view_snippet.html", ...);
 ## }}
-{{~ selected_variant = data.product.attribute_selections?.selected_variant ~}}
-<input hidden id="product-variant-data-layer" value="{{selected_variant?.product_variant_id}}">
 {{ product_view product: data.product }}

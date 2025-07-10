@@ -1,13 +1,12 @@
 {{~ if product.buy_together ~}}
-    {{~ if product.buy_together.size > 0 ~}}
-        <h2 class="w-full text-lg lg:text-2xl uppercase mb-4 pb-4 border-b">{{ "Compre junto" | lang }}</h2>
-        {{~ for bt_product in product.buy_together ~}}
-            <div buy-together-row-div
-                id="buy-together-row-{{ product.product_id }}-{{ bt_product.product_id }}"
-                class="w-full flex justify-between items-center"
-                buy-together-product-id = "{{ bt_product.product_id }}"       
-                page-product-id = "{{ product.product_id }}">
-            </div>
-        {{~ end ~}}
-    {{~ end ~}}
+  {{~ if product.buy_together.size > 0 ~}}
+      <h2>{{ "Compre Junto" | lang}}</h2>
+      {{~ for bt_product in product.buy_together ~}}
+          <div id="buy-together-row-{{ product.product_id }}-{{ bt_product.product_id }}"
+              class="buy-together-row-div" 
+              buy-together-product-id = "{{ bt_product.product_id }}"       
+              page-product-id = "{{ product.product_id }}">
+          </div>
+      {{~ end ~}}
+  {{~ end ~}}
 {{~ end ~}}

@@ -1,0 +1,73 @@
+.forminline
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:first-child
+    > span
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+    > *
+      flex: 0 0 calc((100% / 3) - (40px / 3));
+
+  &:not(:last-child)
+    margin-bottom: 20px;
+
+  > *
+    flex: 0 0 calc(50% - 10px);
+
+  select, input
+    width: 100%;
+    height: 48px;
+    border: 1px solid #e3e3e3;
+    background: #fafafa;
+    color: #888888;
+
+> label
+  display: block;
+  margin-bottom: 20px;
+  padding-top: 16px;
+  color: #1D1D1B;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+textarea
+  margin-bottom: 36px;
+  width: 100%;
+  height: 178px;
+  border: 1px solid #e3e3e3;
+  background: #fafafa;
+  color: #888888;
+
+> span
+  display: block;
+  margin-bottom: 20px;
+  padding: 0 12px;
+  color: $primary;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+#btnEnviarFormulario
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  background: $primary;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 18px;
+  cursor: pointer;
+  transition: $transition;
+
+  @media desktop
+    &:hover
+      background: $secondary;
+      color: #000000;

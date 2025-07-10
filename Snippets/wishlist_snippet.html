@@ -7,12 +7,10 @@
 ## }}
 {{~ wishlist = data.customer.wishlist ~}}
 {{~ if wishlist -}}
-    <div class="flex flex-wrap justify-evenly after:flex-auto md:justify-start items-start">    
-        {{~ for product in wishlist.products ~}}
-            <div class="flex w-[180px] lg:w-auto">
-                {{~ spot product: product wishlist: true ~}}
-            </div>
-        {{~ end ~}}
+    <div class="spots d-flex row">    
+    {{~ for product in wishlist.products ~}}
+        {{~ spot product: product wishlist: true ~}}
+    {{~ end ~}}
     </div>
 {{~ else -}}
     <h3>A lista de desejos está vazia!</h3>

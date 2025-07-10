@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{ asset type: "css" paths: ["output","output_login"]}}
-  <title>Document</title>
+  {{ asset type: "css" paths: ["output","output_login","output_checkout", "signup"]}}
+  <title>Cadastro</title>
+  {{ data_layer_config }}
 </head>
+
 <body class="bg-mainBg">
   <header class="shadow-xl lg:shadow-none bg-lightBg">
-      {{ links }}
-      {{ head }}
-      {{ side_cart }}
-      {{ wake_overlay }}
-      {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}            
+    {{ checkout_header }}
   </header>
+  {{ wake_overlay }}
   <div class="flex flex-col items-center w-full lg:w-[1330px] mx-auto my-10">
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full signup-container-wrapper">
       {{ wake_login_signup }}
     </div>
   </div>
-  {{ footer is_preview: is_preview store: store }}        
+  {{ checkout_footer }}
   <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
-      <script type="text/javascript">document.write(JSON.stringify({{data}}, null, 2));</script>
+      <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
   </pre>
-  {{ sdk_client }}
-  {{ wake_scripts scripts: ["wake_utils", "wake_login", "wake_signup"] }}
-  {{ asset type: "js" paths: ["mini_cart"] options: "async"}}
+  {{ sdk_client_checkout }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
+  {{ asset type: "js" paths: ["signup"] options: "async"}}
 </body>
+
 </html>

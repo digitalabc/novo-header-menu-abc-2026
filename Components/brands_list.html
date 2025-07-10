@@ -1,0 +1,37 @@
+{{ ##
+    Description: Renders a brands carousel from a list of brands
+    Params:
+      - brands: list of brand nodes
+    Usage:
+      brands brands: brands
+## }}
+
+{{~ if brands && brands.size > 0 ~}}
+  <div class="brands">
+    <div class="swiper-container">
+      <div class="swiper">
+        <ul class="swiper-wrapper">
+          {{~ for brand in brands ~}}
+            {{~ if brand.active && brand.full_url_logo ~}}
+              <li class="swiper-slide brand">
+                <a href="/{{brand.alias}}">
+                  <img src="{{ brand.full_url_logo }}" alt="{{brand.name}}" title="{{brand.name}}" width="200" height="103">
+                </a>
+              </li>
+            {{~ end ~}}
+          {{~ end ~}}
+        </ul>
+      </div>
+      <button class="swiper-button-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+          <path id="Path_151" data-name="Path 151" d="M15,0A15,15,0,1,1,0,15,15.017,15.017,0,0,1,15,0ZM10.366,15.884l6.25,6.25a1.25,1.25,0,1,0,1.768-1.767L13.017,15l5.366-5.366a1.25,1.25,0,1,0-1.767-1.767l-6.25,6.25A1.249,1.249,0,0,0,10.366,15.884Z"/>
+        </svg>
+      </button>
+      <button class="swiper-button-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+          <path id="Path_151" data-name="Path 151" d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+{{~ end ~}}

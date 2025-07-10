@@ -1,34 +1,24 @@
-query Hotsite($url: String!,
-       $resultSize: Int, 
-       $offset: Int, 
-       $sortKey: ProductSortKeys, 
-       $sortDirection: SortDirection, 
-       $filters: [ProductFilterInput],
-       $maximumPrice: Decimal,
-       $minimumPrice: Decimal,
-			 $partnerAccessToken: String) {
-  hotsite (url:$url, partnerAccessToken: $partnerAccessToken) {
+query Hotsite($url: String!, $resultSize: Int, $offset: Int, $sortKey: ProductSortKeys, $sortDirection: SortDirection, $filters: [ProductFilterInput], $maximumPrice: Decimal, $minimumPrice: Decimal, $partnerAccessToken: String) {
+  hotsite(url: $url, partnerAccessToken: $partnerAccessToken) {
     name
     pageSize
     banners {
       bannerName
       bannerUrl
       position
-      urlOnClick
       openNewTab
       height
       title
       width
-      order
     }
     contents {
       content
       height
       title
-      width 
+      width
       position
     }
-    breadcrumbs{
+    breadcrumbs {
       link
       text
     }
@@ -40,13 +30,14 @@ query Hotsite($url: String!,
       scheme
     }
     productsByOffset(
-      limit: $resultSize,
-      offset: $offset,
-      sortKey: $sortKey,
-      sortDirection: $sortDirection,
-      filters: $filters,
-      minimumPrice: $minimumPrice,
-      maximumPrice: $maximumPrice) {
+      limit: $resultSize
+      offset: $offset
+      sortKey: $sortKey
+      sortDirection: $sortDirection
+      filters: $filters
+      minimumPrice: $minimumPrice
+      maximumPrice: $maximumPrice
+    ) {
       totalCount
       page
       pageSize
@@ -56,13 +47,13 @@ query Hotsite($url: String!,
         productName
         productVariantId
         alias
-        similarProducts{
+        similarProducts {
           alias
           image
           name
           imageUrl(w: 50, h: 50)
         }
-        images(width:275, height:275) {
+        images(width: 245, height: 245) {
           url
           print
         }
@@ -70,11 +61,17 @@ query Hotsite($url: String!,
         prices {
           listPrice
           price
+          priceTables {
+            id
+            listPrice
+            price
+          }
           discountPercentage
-          installmentPlans{
+          multiplicationFactor
+          installmentPlans {
             displayName
             name
-            installments{
+            installments {
               discount
               fees
               number
@@ -90,20 +87,18 @@ query Hotsite($url: String!,
             value
           }
         }
-        productCategories{
-          name
-        }
-        promotions{
+        promotions {
+          fullStampUrl
           content
           id
           stamp
-          fullStampUrl
           title
-          disclosureType
+          fullStampUrl
         }
         addToCartFromSpot
-        productCategories {
+        attributes {
           name
+          value
         }
       }
     }

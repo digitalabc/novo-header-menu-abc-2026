@@ -1,6 +1,5 @@
 query BuyListProduct ($id: Long!, 
-$selections:[AttributeFilterInput],
-$includeParentIdVariants: Boolean) {
+$selections:[AttributeFilterInput]) {
   product(productId: $id) {
     productId
     productName
@@ -42,7 +41,8 @@ $includeParentIdVariants: Boolean) {
       subscriptionGroupId
       subscriptionOnly
     }  
-    attributeSelections (selected: $selections, includeParentIdVariants: $includeParentIdVariants) {
+    attributeSelections (selected: $selections) {
+      canBeMatrix
       matrix {
         row {
           name
@@ -109,6 +109,7 @@ $includeParentIdVariants: Boolean) {
         attributeId
         displayType
         name
+        varyByParent
         values {
           alias
           available
@@ -117,9 +118,6 @@ $includeParentIdVariants: Boolean) {
           value
         }
       }
-    }
-    productCategories {
-      name
     }
   }
 }

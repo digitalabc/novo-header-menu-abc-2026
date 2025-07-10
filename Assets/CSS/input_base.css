@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Globals */
+  .text-size-sm {
+    @apply text-sm;
+  }
+  
+  .text-size-lg {
+    @apply text-lg;
+  }
+
+  .status-canceled {
+    @apply bg-red-400;
+  }
+  
+  .status-paid {
+    @apply bg-green-400;
+  }
+  
+  .status-initial {
+    @apply bg-secondary-300;
+  }
+
+  .text-success {
+    @apply text-green-600;
+  }
+  
+  .text-active {
+    @apply text-green-500;
+  }
+  
+  .text-paused {
+    @apply text-yellow-500;
+  }
+  
+  .text-canceled {
+    @apply text-yellow-500;
+  }
+  
+  .text-initial {
+    @apply text-gray-600;
+  }
+
+  .text-danger {
+    @apply text-red-600;
+  }
+
+  .hidden-el {
+    @apply hidden;
+  }
+
+  /* Wake Modal */
+  .wake-modal {
+    @apply relative z-20;
+  }
+  
+  .wake-modal .modal-opacity {
+    @apply fixed inset-0 bg-secondary-500 bg-opacity-75 transition-opacity;
+  }
+  
+  .wake-modal .modal-content {
+    @apply fixed inset-0 z-10 overflow-y-auto;
+  }
+  
+  .wake-modal .wrapper {
+    @apply flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0;
+  }
+
+  /* Wake Overlay*/
+  .wake-overlay {
+    @apply pointer-events-none fixed inset-0 flex z-50 items-end px-4 py-6 sm:items-start sm:p-6;
+  }
+  
+  .wake-overlay .overlay-box {
+    @apply w-full flex-col items-center space-y-4 sm:items-end;
+  }
+  
+  .wake-overlay .overlay-wrapper {
+    @apply pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-mainBg shadow-secondary-400 shadow-lg ring-1 ring-black ring-opacity-5;
+  }
+  
+  .wake-overlay .overlay-wrapper > div {
+    @apply p-4;
+  }
+  
+  .wake-overlay .overlay-content {
+    @apply flex items-start;
+  }
+  
+  .wake-overlay .overlay-content .status {
+    @apply flex-shrink-0;
+  }
+  
+  .wake-overlay .overlay-content .status .success{
+    @apply h-6 w-6 text-green-400;
+  }
+  
+  .wake-overlay .overlay-content .status .error {
+    @apply w-6 h-6 text-red-400;
+  }
+  
+  .wake-overlay .overlay-content .message{
+    @apply ml-3 w-0 flex-1;
+  }
+  
+  .wake-overlay .overlay-content .message .title{
+    @apply text-base font-medium text-secondary-900;
+  }
+  
+  .wake-overlay .overlay-content .message .content{
+    @apply mt-1 text-sm p-2;
+  }
+  
+  .wake-overlay .overlay-content .action{
+    @apply ml-4 flex flex-shrink-0;
+  }
+  
+  .wake-overlay .overlay-content .action button{
+    @apply inline-flex rounded-md bg-mainBg text-secondary-400 hover:text-secondary-500;
+  }
+  
+  .wake-overlay .overlay-content .action button svg{
+    @apply h-5 w-5;
+  }

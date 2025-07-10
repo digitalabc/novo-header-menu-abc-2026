@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{ asset type: "css" paths: ["output","output_login"]}}
+  {{ asset type: "css" paths: ["output","output_login","output_checkout"]}}
   <title>Impersonar usuário</title>
 </head>
 <body class="bg-mainBg">
   <header class="shadow-xl lg:shadow-none bg-lightBg">
-      {{ links }}
-      {{ head }}
-      {{ side_cart }}
-      {{ wake_overlay }}
-      {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+    {{ checkout_header }}
   </header>
   <div class="wake-impersonate-wrapper">
     <div class="">
       {{ wake_login_impersonate_form customer_name: data.customer.customer_name }}
     </div>
   </div>
-  {{ footer is_preview: is_preview store: store }}
-  {{ sdk_client }}
+  {{ checkout_footer }}
+  {{ sdk_client_checkout }}
   {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
   {{ asset type: "js" paths: ["mini_cart"] options: "async"}}
 </body>

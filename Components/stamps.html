@@ -7,10 +7,23 @@
 ## }}
 
 {{~ if promotions ~}}
-    <div class="stamps d-flex row">
-        {{~ for promotion in promotions ~}}
-            {{~ if promotion.full_stamp_url ~}}        
-                <img class="stamp-image" alt="promotion-stamp" src="{{promotion.full_stamp_url}}" style="max-width: 80px" />
+    {{ promotionsFilter = promotions | array.filter @(do; ret $0.id != "10728" ;end) }}
+    {{ promotions3d = promotions | array.filter @(do; ret $0.id == "10728" ;end) }}
+    <div class="stamps">
+        {{~ for promotion in promotionsFilter ~}}
+            {{~ if promotion.stamp ~}}        
+                {{~ if !promotion.stamp.empty ~}}
+                    <img class="stamp-image" src="{{promotion.full_stamp_url}}" alt="selo promoção"/>
+                {{~ end ~}}
+            {{~ end ~}}
+        {{~ end ~}}
+    </div>
+    <div class="stamps-vr{{if discount_percentage <= 0 }} stamps-vr--no_discount{{end}}">
+        {{~ for promotion in promotions3d ~}}
+            {{~ if promotion.stamp ~}}        
+                {{~ if !promotion.stamp.empty ~}}
+                    <img class="stamp-image" src="{{promotion.full_stamp_url}}" alt="selo promoção"/>
+                {{~ end ~}}
             {{~ end ~}}
         {{~ end ~}}
     </div>

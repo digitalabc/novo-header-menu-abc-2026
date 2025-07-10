@@ -1,108 +1,291 @@
-<table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
-  <tbody>
-      <tr>
-          <td align="center" valign="top" style="background-color: #f6f6f6;">
-              <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">            
-                  
-                  <!-- HEADER -->
-                  {{header_mail}}
-                  <!-- END HEADER -->
-                  
-                  <!-- MAIN -->
-                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
-                      <tbody>
-                          <tr align="center">
-                              <td style="padding-bottom: 30px;">
-                                  <img src="https://gpjpey.stripocdn.email/content/guids/CABINET_83c79fe6710c9b2a88d2db353ad3b6f6/images/99411618298697620.png" alt="{{ pedido?.nome_ecommerce }}" style="display: block;" width="100">
-                              </td>
-                          </tr>
-                          <tr align="center">
-                              <td>
-                                  <h1 style="font-size: 36px; line-height: 100%;">Pedido Confirmado</h1>
-                              </td>
-                          </tr>
-                          <tr align="center">
-                              <td>
-                                  <p>Olá {{ pedido?.usuario?.primeiro_nome }},</p>
-                                  <p>Confirmamos o recebimento do seu pedido <b>{{ pedido?.pedido_id }}</b> através da nossa loja em {{ pedido?.data }} : {{ pedido?.hora }}.</p><br>
-                                  <!--<a href="{{configuracao?.url_carrinho}}" style="border-radius: 6px;border: none;background: #C40EEF;text-transform: uppercase;font-size: 16px;color: #ffffff;padding: 15px;text-decoration: none;">VER CARRINHO</a>-->
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
-                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="padding: 8px;">
-                      <tbody>
-                          <tr>
-                              <td colspan="4">
-                                  <h1 style="font-size: 24px; line-height: 100%;">Resumo do pedido</h1>
-                              </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:100%;">
-                                <tbody>
-                                  {{ for product in pedido?.produtos }}
-                                    {{ product_mail product: product }}
-                                  {{ end }}
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                      </tbody>
-                  </table>
-                  <table border="0" width="620" cellpadding="0" cellspacing="0" style="padding: 8px;">
-                      <tbody>
-                          {{ if pedido?.aliquota?.texto_aliquotas}}
-                          <tr>
-                              <td align="right" style="width: 80%;">{{pedido?.aliquota?.texto_aliquotas}}:</td>
-                              <td style="width: 20%;padding-left: 8px;">{{pedido?.aliquota?.valor_aliquotas}}</td>
-                          </tr>
-                          {{ end }}
-
-                          {{ if pedido?.embalagem?.valor_embalagens}}
-                          <tr>
-                              <td align="right" style="width: 80%;">Embalagens:</td>
-                              <td style="width: 20%;padding-left: 8px;">{{pedido?.embalagem?.valor_embalagens}}</td>
-                          </tr>
-                          {{ end }}
-
-                          {{ if pedido?.personalizacao?.valor_personalizacoes}}
-                          <tr>
-                              <td align="right" style="width: 80%;">Personalizações:</td>
-                              <td style="width: 20%;padding-left: 8px;">{{pedido?.personalizacao?.valor_personalizacoes}}</td>
-                          </tr>
-                          {{ end }}
-
-                          <tr>
-                              <td align="right" style="width: 80%;">Frete :</td>
-                              <td style="width: 20%;padding-left: 8px;">{{ pedido?.frete?.valor_frete}}</td>
-                          </tr>
-                          <tr>
-                              <td align="right" style="width: 80%;">Entrega estimada:</td>
-                              <td style="width: 20%;padding-left: 8px;">{{ pedido?.frete?.entrega_estimativa_data}}</td>
-                          </tr>
-                          <tr>
-                              <td align="right" style="width: 80%;">Desconto:</td>
-                              <td style="width: 20%;padding-left: 8px;">{{pedido?.valor_desconto}}</td>
-                          </tr>
-                          <tr>
-                              <td align="right" style="width: 80%;">Subtotal:</td>
-                              <td style="width: 20%;padding-left: 8px;">{{pedido?.valor_sub_total}}</td>
-                          </tr>
-                          <tr>
-                              <td align="right" style="width: 80%;">Total:</td>
-                              <td style="width: 20%;padding-left: 8px;">{{pedido?.valor_total}}</td>
-                          </tr>
-                      </tbody>
-                  </table>
-                  <!-- END MAIN -->
-                  <br>
-                  <!-- FOOTER -->
-                  {{footer_mail}}
-                  <!-- END FOOTER -->
-
-              </div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" dir="ltl" lang="pt-br">
+  <head>
+    <title>Confirmação de Pedido</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+      table,
+      thead,
+      tbody,
+      tfoot,
+      th,
+      tr,
+      td,
+      h1,
+      p,
+      a,
+      img {
+        border: 0 none;
+        color: #666666;
+        font: 12px 'Lucida Sans Unicode', Tahoma, Sans-serif;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <table style="color: rgb(102, 102, 102); font-family: 'Lucida Sans Unicode',Tahoma,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-size-adjust: none; font-stretch: normal;" cellpadding="0" cellspacing="0" width="600">
+      <thead>
+        <tr style="width: 600px;text-align: center;">
+            <td style="width:100%; padding: 10px 0 25px;">
+                <a href="{{configuracao.url_ecommerce}}"><img alt="Logo ABC da Construção"
+                        src="{{configuracao.url_recursos}}i/email/logo_email.png" /></a>
+            </td>
+        </tr>
+        <tr>
+          <td style="border-top: 1px solid #EDEDED; background: transparent url({{configuracao.url_recursos}}i/email/fundo_cabecalho.gif) repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; height: 45px;">
+            <p style="border-bottom: 2px solid rgb(0, 0, 0); text-align: center; color: rgb(0, 0, 0); text-transform: uppercase; padding-bottom: 5px; font-size: 14px;">Pedido Confirmado</p> Este &eacute; um e-mail autom&aacute;tico, por favor n&atilde;o responda, para mais informa&ccedil;&otilde;es acesse: <a style="color: rgb(0, 0, 0); text-decoration: none ! important;" href="{{configuracao.url_ecommerce}}">{{configuracao.url_ecommerce}}</a>
           </td>
-      </tr>
-  </tbody>
-</table>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0pt 0px 20px; color: rgb(0, 0, 0); font-size: 18px;">
+            <br /> Ol&aacute; <span style="font-weight: bold;">{{ pedido.usuario.primeiro_nome }}</span>,
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0pt 0px;">
+            <p style="color: rgb(102, 102, 102);"> Confirmamos o recebimento do seu pedido <span style="color: rgb(0, 0, 0);">{{ pedido.pedidoid }}</span> atrav&eacute;s do site em {{ pedido.data }} {{ pedido.hora }}. </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 30px 0px;">
+            <p style="border-bottom: 2px solid rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 14px; padding-bottom: 5px;"> Pagamento </p>
+            <br /><p style="color: rgb(0, 0, 0);"> Forma de pagamento: {{ pedido.formapagamento.nome }} </p>
+            <p style="color: rgb(102, 102, 102);"> Parcelamento: <span style="color: rgb(0, 0, 0);">{{ pedido.formapagamento.numero_parcelas }}</span>
+            </p>
+            <p style="color: rgb(102, 102, 102);"> Valor da parcela: <span style="color: rgb(0, 0, 0);">{{ pedido.formapagamento.valor_parcelas }}</span>
+            </p>
+            <br />
+            {{ if pedido.formapagamento.boleto }}
+            <a href="{{ pedido.formapagamento.boleto.url }}">
+              <img src="{{configuracao.url_recursos}}i/email/imprimir_boleto.gif" alt="Imprimir Boleto" height="30" width="200" />
+            </a>
+            {{ end }}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0pt 0px 30px;">
+            <p style="border-bottom: 2px solid rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 14px; padding-bottom: 5px;"> Endere&ccedil;o de Entrega </p>
+            <br />
+            <p style="font-size: 13px;"> Nome do Destinat&aacute;rio: <span style="color: rgb(0, 0, 0);">{{ pedido.frete.endereco.destinatario }}</span>
+            </p>
+            <p style="font-size: 13px;"> Endere&ccedil;o: <span>
+                <b>{{ pedido.frete.endereco.logradouro }}{{ pedido.frete.endereco.numero }}{{ pedido.frete.endereco.complemento }} | {{ pedido.frete.endereco.bairro }} - {{ pedido.frete.endereco.cidade }} - {{ pedido.frete.endereco.estado }} - CEP: {{ pedido.frete.endereco.cep }}</b>
+              </span>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0pt 0px 30px;">
+            <p style="color: rgb(102, 102, 102);"> Para a sua seguran&ccedil;a realizamos an&aacute;lise interna das informa&ccedil;&otilde;es de seu pedido atrav&eacute;s da valida&ccedil;&atilde;o de dados cadastrais. </p>
+            <p style="color: rgb(102, 102, 102);"> &Eacute; importante que voc&ecirc; mantenha seus dados sempre atualizados e completos, pois poderemos entrar em contato para confirm&aacute;-los. </p>
+            <p style="color: rgb(102, 102, 102);"> Importante: a partir desse momento n&atilde;o &eacute; permitido incluir novos produtos em seu pedido ou alterar o endere&ccedil;o de entrega. </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table style="border: 1px solid rgb(187, 187, 187); margin: 0pt 0px;" cellpadding="0" cellspacing="0" width="600">
+              <tbody>
+                <tr>
+                  <td style="border-bottom: 1px dotted rgb(187, 187, 187); padding: 10px; color: rgb(0, 0, 0); text-transform: uppercase;">Informa&ccedil;&otilde;es do Produto </td>
+                </tr>
+                <tr>
+                  <td style="padding: 15px 10px 10px;">
+                    <table cellpadding="0" cellspacing="0" width="578">
+                      <tbody>
+                        <tr>
+                          <td style="border: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;" colspan="2">Produto </td>
+                          <td style="border-top: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;">Qtde </td>
+                          <td style="border-top: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;">Unit&aacute;rio </td>
+                          <td style="border-top: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; text-align: center;">Subtotal </td>
+                        </tr> 
+                        {{ for produto in pedido.produtos }}
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; height: 70px; width: 70px;">
+                            <img src="{{produto.imagem}}" alt="{{produto.nome}}" height="70" width="70" />
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; width: 300px;">
+                            <p style="color: rgb(0, 0, 0);"> {{produto.nome}} </p>
+                            <p style="color: rgb(0, 0, 0);"> {{produto.atributo}} </p>
+                            <p style="color: rgb(0, 0, 0);"> {{produto.embalagens}} </p>
+                            <p style="color: rgb(0, 0, 0);"> {{produto.personalizacoes}} </p>
+                            <p> {{produto.primeiro_prazo}} </p>
+                            <p> {{produto.segundo_prazo}} </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; color: rgb(0, 0, 0); text-align: center;">{{produto.quantidade}} </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; color: rgb(0, 0, 0); text-align: center;">{{produto.preco_unitario}} </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 5px; color: rgb(0, 0, 0); text-align: center;">{{produto.preco_total}} </td>
+                        </tr>
+                        {{ end }}
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Subtotal <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{pedido.valor_sub_total}}</td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;">  {{pedido.aliquota.texto_aliquotas}} <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">  {{pedido.aliquota.valor_aliquotas}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Embalagens <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3"> {{pedido.embalagem.valor_embalagens}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Personalizações <img style="" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3"> {{pedido.personalizacao.valor_personalizacoes}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{ pedido.valor_desconto }} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Frete <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{ pedido.frete.valor_frete }} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Valor de Frete <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3"> {{pedido.frete.valor_frete}}
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Valor de Personalização <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{pedido.personalizacao.valor_personalizacoes}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Valor de Embalagem <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{pedido.embalagem.valor_embalagens}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto do Frete <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{pedido.frete.promocaofrete}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto de Conta Corrente <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{pedido.contacorrente}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Desconto da Forma de Pagamento <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{pedido.valor_forma_pagamento}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="5"> <br> Nome da Promoção - {{pedido.promocao.observacao}} <br> Valor de desconto da Promção SUMARIZADO (SUBTOTAL/TOTAL DO PEDIDO) - {{pedido.promocao.valor}} <br>  </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> {{pedido.frete.texto_estimativa}} <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; color: rgb(0, 0, 0);" colspan="3">{{pedido.frete.entrega_estimativa}} </td>
+                        </tr>
+                        <tr>
+                          <td style="border-left: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; text-align: right;" colspan="2">
+                            <p style="display: inline; text-transform: uppercase;"> Total <img style="display: inline;" src="{{configuracao.url_recursos}}i/email/seta.gif" alt="" height="10" width="14" />
+                            </p>
+                          </td>
+                          <td style="border-right: 1px solid rgb(187, 187, 187); border-bottom: 1px solid rgb(187, 187, 187); padding: 12px 10px; background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);" colspan="3">{{pedido.valor_total}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot style="width: 600px">
+          <tr>
+              <td style="width: 600px; border-top: 1px solid #EDEDED; padding:  5px 0 30px; color: #004A68; font-size: 14px; font-weight:600; text-align: center; ">
+                Central de Atendimento
+              </td>
+          </tr>
+          <tr>
+              <td style="padding-bottom: 30px;">
+                <table style="width: 600px;background: #fff; table-layout: fixed; ">
+                    <tbody>
+                        <tr >
+                            <td style="padding-left: 30px;">
+                                <img src="{{configuracao.url_recursos}}i/email/icon-tel.png" alt="Ícone Telefone" style="vertical-align: middle; margin-right: 8px; ">
+                                <a href="tel:08008871526" style="vertical-align: middle; color: #5D5D5D;font-size: 16px; font-weight: 500;">0800 887-1526</a>
+                            </td>
+                            <td style="padding-right: 30px; text-align:right;">
+                                <img src="{{configuracao.url_recursos}}i/email/icon-whatsapp.png" alt="Ícone Whatsapp" style="vertical-align: middle; margin-right: 8px;  ">
+                                <a href="{{ settings.whatsapp_link }}" target="_blank" style="vertical-align: middle; color: #5D5D5D;font-size: 16px; font-weight: 500;">(31) 9 9249-0299</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom:15px; text-align: center;">
+                <img src="{{configuracao.url_recursos}}i/email/icon-email.png" alt="Ícone Email" style="vertical-align: middle; margin-right: 8px;">
+                <a href="mailto:abcnasuacasa.atendimento@abcdaconstrucao.com.br" style="vertical-align: middle; color: #5D5D5D;font-size: 16px; font-weight: 500;">abcnasuacasa.atendimento@abcdaconstrucao.com.br</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom:30px; text-align: center;">
+                <span style="color: #004A68;font-size: 13px; text-align: center;">Atendimento de Seg a sex das 8:00 às 17:48.</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 30px; text-align: center;">
+                <a href="https://www.facebook.com/novaabcdaconstrucao/" target="_blank" style="margin-right: 10px;">
+                    <img style=" vertical-align: middle;" src="{{configuracao.url_recursos}}i/email/icon-facebook.png" alt="Ícone facebook">
+                </a>
+                <a href="https://www.instagram.com/abcdaconstrucao/" target="_blank" style="margin-right: 10px;">
+                    <img style=" vertical-align: middle;" src="{{configuracao.url_recursos}}i/email/icon-instagram.png" alt="Ícone Instagram">
+                </a>   
+                <a href="https://www.youtube.com/user/ABCdaConstrucao" target="_blank" style="margin-right: 10px;">
+                    <img style=" vertical-align: middle;" src="{{configuracao.url_recursos}}i/email/icon-youtube.png" alt="Ícone Youtube">
+                </a>   
+                <a href="https://www.linkedin.com/company/abc-da-construcao" target="_blank" style="margin-right: 10px;">
+                    <img style=" vertical-align: middle;" src="{{configuracao.url_recursos}}i/email/icon-linkedin.png" alt="Ícone Linkedin">
+                </a>   
+                <a href="https://blog.abcdaconstrucao.com.br/?_ga=2.225548953.2099033157.1678708969-1067716573.1678451906" target="_blank">
+                    <img style=" vertical-align: middle;" src="{{configuracao.url_recursos}}i/email/icon-blog.png" alt="Ícone Blog">
+                </a>   
+            </td>
+          </tr>
+      </tfoot>
+
+    </table>
+  </body>
+</html>

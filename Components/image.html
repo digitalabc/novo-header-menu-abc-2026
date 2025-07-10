@@ -5,9 +5,9 @@
 <img srcset="
     {{- for s in sizes -}}
         {{- if !for.last -}}
-             {{source}}{{qs_var}}w={{s.w}}&h={{s.h}}&v=no-change {{s.w}}w,
+            {{source}}{{qs_var}}w={{~s.w~}}&h={{~s.h~}}&v=no-change {{s.w~}}w,
         {{- else -}}
-             {{source}}{{qs_var}}w={{s.w}}&h={{s.h}}&v=no-change {{s.w}}w
+            {{source}}{{qs_var}}w={{~s.w~}}&h={{~s.h~}}&v=no-change {{s.w~}}w
         {{- end -}}
     {{- end ~}}"
     sizes="
@@ -18,4 +18,4 @@
             {{s.w}}px
         {{- end -}}
     {{- end ~}}"
-src="{{source}}" alt="{{alt}}" class="{{class}}" {{ if hidden }} hidden {{end}}>    
+    width="{{sizes[0].w}}" height="{{sizes[0].h}}" src="{{source}}" alt="{{alt}}" {{ if class }}class="{{class}}"{{ end }}>    

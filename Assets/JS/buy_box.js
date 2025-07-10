@@ -23,6 +23,7 @@ async function buyBoxBuyClick(button) {
     const input = buyBoxGetProductsAndQuantities(button);
     const success = await addOrCreateCheckout(input);
     if (success) {
+        await addUtmMetadataIfExists(); // mini_cart.js
         window.location = checkout_pages.checkout.home;
     }
 }

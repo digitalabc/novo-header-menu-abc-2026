@@ -10,9 +10,9 @@
 ## }}
 {{~ if attribute_selections.size > 0 ~}}
     {{~ for attr in attribute_selections ~}}
-        <div class="flex flex-col">
-            <p class="mb-2">{{ attr.name | string.upcase }}</p>
-            <div class="flex justify-start items-center">
+        <div class="row">
+            <p>{{ attr.name | string.upcase }}</p>
+            <div class="row d-flex justify-content">
                 {{~ grouped_selected = attr.values | group.by @(do; ret $0.selected;end) ~}}
                 {{~ selected = grouped_selected | group.get true | array.first ~}}
                 {{~ if selected ~}}
@@ -25,11 +25,11 @@
                 {{~ else ~}}
                     {{~ for value in attr.values ~}}
                         {{~ option_id = attr.attribute_id + "__" + value.value + "__" + product_id + "__" + math.uuid ~}}
-                        <div class="flex">
+                        <div class="col-md-2 col-sm-6">
                             {{~ if value.print_url ~}}
                             <label>
                             {{~ end ~}}
-                            <input type="radio" class="btn-check hidden"  
+                            <input type="radio" class="btn-check"  
                                 id="{{ option_id }}" 
                                 product-id = "{{ product_id }}"
                                 attribute-id = "{{ attr.attribute_id }}"
@@ -49,8 +49,7 @@
                             {{~ else ~}}
                                 <img src="{{ value.print_url }}"
                                 alt="{{ value.value }}" 
-                                title="{{ value.value }}"
-                                class="{{ if value.selected }} border p-1  {{ end }} cursor-pointer mr-1">
+                                title="{{ value.value }}">
                             {{~ end ~}}
                             </label>
                         </div>

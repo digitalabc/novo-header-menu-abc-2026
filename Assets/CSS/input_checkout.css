@@ -103,6 +103,36 @@
   .wake-checkout-modal-text-login {
     @apply flex text-center justify-center text-black font-normal	text-sm
   }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-bg {
+    @apply fixed inset-0 bg-secondary-500 bg-opacity-75 transition-opacity;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-content {
+    @apply fixed inset-0 z-10 overflow-y-auto;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-content-inner {
+    @apply flex min-h-full justify-center p-4 text-center items-center sm:p-0;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-container {
+    @apply flex flex-col p-4 bg-white rounded-md shadow-xl;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-header {
+    @apply flex justify-between mb-6;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-header img {
+    @apply h-5 w-5 cursor-pointer;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-title {
+    @apply font-semibold text-xl;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-footer {
+    @apply flex justify-end items-center mt-6;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-button-cancel {
+    @apply font-semibold uppercase py-[6px] px-4 h-9;
+  }
+  .wake-payment-rejected-modal .wake-payment-rejected-modal-button-confirm {
+    @apply bg-black uppercase font-semibold text-white py-[6px] px-4 ml-2 rounded-[4px] h-9;
+  }
   .wake-checkout-form-atenticate {
     @apply flex flex-col my-6 items-center
   }

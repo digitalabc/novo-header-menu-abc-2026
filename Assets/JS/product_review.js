@@ -1,5 +1,13 @@
-window.addEventListener("userChecked", enableReviewButton, true);
+window.addEventListener("load", windowReviewLoad, false);
 let reviewAlert = "";
+
+/**
+ * Page load function.
+ */
+async function windowReviewLoad(){
+    setTimeout(VerifyPageUser, 1000);
+    reviewAlert = document.getElementById("alert-review");
+}
 
 /**
  * Sends a product review form.
@@ -49,14 +57,3 @@ function showReviewAlert(){
     reviewAlert.innerHTML = '<div class="alert alert-success col-6" role="alert" style="visibility: visible; position: relative; text-align: center; margin-bottom: auto; z-index: 1;">Review enviada com sucesso!</div>';
     setTimeout(hideReviewAlert, 2000);
 }
-
-/**
- * Enable review button.
-*/
-function enableReviewButton(){
-    if(pageUser){
-        document.getElementById("login-review").classList.add('hidden');
-        document.getElementById("review-form").classList.remove('hidden');    
-    }
-}
-

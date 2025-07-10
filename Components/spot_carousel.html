@@ -2,41 +2,55 @@
     Description: Renders a spot carousel from a list of products
     Params:
       - products: list of products
-      - class: the html class for styling
-      - title: text to show on top
     Usage:
-      spot_carousel products: data...products class:"best-sellers" title:"Mais Vendidos"
+      spot_carousel products: data...products
 ## }}
 {{~ if products && products.size > 0 ~}}
-    <div class="flex flex-col my-4 w-full lg:flex-row lg:justify-center {{class}} bg-mainBg">
-        <div class="flex flex-col items-start w-full lg:max-w-[1330px] px-2 relative">
-            <h2 class="w-full text-lg lg:text-2xl uppercase mb-4 pb-4 border-b">{{ title | lang }}</h2>
-            <div class="swiffy-slider slider-nav-dark slider-nav-visible slider-nav-autoplay slider-nav-autopause slider-indicators-round 
-            slider-indicators-dark slider-indicators-highlight slider-indicators-sm slider-item-show4 slider-item-show2-sm slider-item-snapstart" data-slider-nav-autoplay-interval="5000">
-                <div class="slider-container">
-                    {{~ for product in products ~}}
-                        {{ img_priority = for.index >= 4 ? false : true }}
-                        {{ spot product: product img_priority: img_priority img_lazy_load: !img_priority}}
-                    {{~ end ~}}
-                </div>
-                <div class="{{if products.size < 4}} lg:hidden {{end}} {{if products.size <= 2}} hidden {{end}}">
-                    <div class="absolute bg-inherit 
-                    shadow-none rounded-none outline-none p-0 z-10 text-4xl left-auto 
-                    -top-12 right-16">
-                        <button type="button" class="slider-nav">
-                            <img src="{{- store.urls.static_img}}icons/arrow-left.svg?theme={{store.theme}}&v={{store.last_modified}}" 
-                        alt="arrow-left" class="w-6 h-6 m-2"/>
-                        </button>
-                    </div>
-                    <div class="absolute bg-inherit shadow-none 
-                    rounded-none outline-none p-0 z-10 text-4xl left-auto -top-12 right-0">
-                        <button type="button" class="slider-nav slider-nav-next">
-                            <img src="{{- store.urls.static_img}}icons/arrow-right.svg?theme={{store.theme}}&v={{store.last_modified}}" 
-    alt="arrow-right" class="w-6 h-6 m-2"/>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </div>
+<div class="swiper-container {{class}}">
+  <div class="swiper">
+    <ul class="swiper-wrapper">
+      {{~ for product in products ~}}
+      <li class="swiper-slide">
+        {{ spot product: product show_buy_mobile: show_buy_mobile }}
+      </li>
+      {{~ end ~}}
+    </ul>
+  </div>
+  <button class="swiper-button-prev">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+      <path id="Path_151" data-name="Path 151"
+        d="M15,0A15,15,0,1,1,0,15,15.017,15.017,0,0,1,15,0ZM10.366,15.884l6.25,6.25a1.25,1.25,0,1,0,1.768-1.767L13.017,15l5.366-5.366a1.25,1.25,0,1,0-1.767-1.767l-6.25,6.25A1.249,1.249,0,0,0,10.366,15.884Z" />
+    </svg>
+  </button>
+  <button class="swiper-button-next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+      <path id="Path_151" data-name="Path 151"
+        d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z" />
+    </svg>
+  </button>
+</div>
+{{~ else if products && products.total_count > 0  ~}}
+<div class="swiper-container {{class}}">
+  <div class="swiper">
+    <ul class="swiper-wrapper">
+      {{ for item in products?.items }}
+      <li class="swiper-slide">
+        {{ spot product: item virtual_reality: virtual_reality }}
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  <button class="swiper-button-prev">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+      <path id="Path_151" data-name="Path 151"
+        d="M15,0A15,15,0,1,1,0,15,15.017,15.017,0,0,1,15,0ZM10.366,15.884l6.25,6.25a1.25,1.25,0,1,0,1.768-1.767L13.017,15l5.366-5.366a1.25,1.25,0,1,0-1.767-1.767l-6.25,6.25A1.249,1.249,0,0,0,10.366,15.884Z" />
+    </svg>
+  </button>
+  <button class="swiper-button-next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+      <path id="Path_151" data-name="Path 151"
+        d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z" />
+    </svg>
+  </button>
+</div>
 {{~ end ~}}

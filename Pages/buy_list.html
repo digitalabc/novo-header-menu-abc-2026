@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        {{~ buy_list = data.buy_list ~}}
-        {{ header title: data.buy_list.product_name store: store }}
-        {{ data_layer_config }}
-        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "product", "user_login", "spot", "output"]}}
-        {{~ if  buy_list.seo ~}}
-        {{ meta_tags seo: buy_list.seo }} 
-        {{~ end ~}}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <input hidden id="data-layer-page-type" value="PRODUCT - BUYLIST"/>
-    </head>
-    
-    <body class="bg-mainBg">
-        <header class="shadow-xl lg:shadow-none bg-mainBg">
-            {{ links }}
-            {{ head }}
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}            
-        </header>
-        {{ side_cart }}
-        {{ wake_overlay }}
-        <input type="hidden" id="buy-list-id" name="buy-list-id" value="{{ data.buy_list.buy_list_id }}">
-        <div class="flex flex-col my-4 w-full lg:flex-row lg:justify-center bg-mainBg">
-            <div class="flex flex-col items-start w-full lg:max-w-[1330px] px-2 relative">
-                {{ buy_list_view buy_list: buy_list }}
-                {{~ product_information informations: buy_list.informations ~}}
-                {{~ if  buy_list.product_recommendations ~}}
-                    {{ spot_carousel products: buy_list.product_recommendations }}
-                {{~ end ~}}
-                {{~ if  buy_list.reviews ~}}
-                    {{ product_reviews products: buy_list.reviews }}
-                {{~ end ~}}
-            </div>
+  
+<head>
+    {{ gtm_config_head gtm_id: common.gtm_id }}        
+    {{~ buy_list = data.buy_list ~}}
+    {{ default_title_buy_list = data.buy_list.product_name | string.append " | ABC da Construção" }}
+    {{ header default_title: default_title_buy_list seo: buy_list.seo }}
+</head>
+
+<body class="product buy_list">
+    {{ gtm_config_body gtm_id: common.gtm_id }}          
+    <header>
+        {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
+    </header>
+    <div class="container">
+        <div class="breadcrumb">
+            {{~ if settings.breadcrumb?.home_text ~}}
+                <a href="/" class="breadcrumb__link">{{ settings.breadcrumb.home_text }}</a>
+                >
+            {{~ end ~}}
+            <a href="{{ breadcrumbLink }}" class="breadcrumb__link last" >{{ buy_list.product_name }}</a>
         </div>
-        {{ footer is_preview: is_preview store: store }}
-        {{ sdk_client }}
-        {{ wake_scripts scripts: ["wake_utils"] }}
-        {{ asset type: "js" paths: ["product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "product_review", "wishlist", "event_manager"]}}
-    </body>
+
+        <div id="product-view-div" class="product__view">
+            {{ product_view product: buy_list }}
+        </div>
+        
+        <!-- Description -->
+        {{~ if buy_list.informations ~}}
+        <section class="product__information">
+          {{ for information in buy_list.informations }}
+            {{ information.value }}
+          {{ end }}
+        </section>
+
+        {{~ end ~}}
+
+        <div style="display: none;" class="product__reviews">
+          <h2>### Avaliaçoes Opniões Verificadas ###</h2>
+        </div>
+
+        {{~ if  buy_list.product_recommendations ~}}
+          <section class="product__recommendation showcase">
+            <h2>{{ "Quem viu, viu também" | lang }}</h2>
+            {{ spot_carousel class: "related-products" products: buy_list.product_recommendations }}
+          </section>
+        {{~ end ~}}
+    </div>
+
+    <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
+    
+    {{ footer products:common.lighbox_products.products.nodes }}
+
+    {{ gtm_config gtm_id: common.gtm_id }}
+
+    {{ sdk_client }}
+    
+    {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "buy_list", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "swiper_product", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "whats_form"]}}
+</body>
 </html>

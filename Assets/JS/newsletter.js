@@ -1,46 +1,67 @@
+
 /**
  * Sends the configured newsletter from the provided informtation on page
  */
-async function newsletterSubmit(e) {
-    e.preventDefault();
+async function newsletterSubmit(form) {
+  let newsletterAlert = form.querySelector(".newsletter__alert");
+  const nameElement = form.querySelector(".newsletter-name");
+  const emailElement = form.querySelector(".newsletter-email");
+  const nameValue = nameElement.value
+  const emailValue = emailElement.value
 
-    const nameElement = document.getElementById("newsletter-form-name");
-    const emailElement = document.getElementById("newsletter-form-email");
 
-    const elements = document.querySelectorAll('[id^="newsletter-form-"]');
-    const informationGroups = [];
+  const input = {
+    name: nameElement.value,
+    email: emailElement.value,    
+  };
 
-    elements.forEach(el => {
-        if (el.id == "newsletter-form-name" || el.id == "newsletter-form-email"){
-            return;
-        }
+  let response = await client.newsletter.create(input);
 
-        const informationGroup = {
-            id: el.getAttribute("value-id"),
-            value: el.value
-        };
+  if (response) {
+    showNewsletterAlert(newsletterAlert);
+    sendSharpSpring({nome: nameElement.value, email: emailElement.value, telefone: ''}, "newsletter");
+  }
+  else {
+    showNewsletterError(newsletterAlert);
+  }
 
-        informationGroups.push(informationGroup);
-    });
-
-    const input = {
-        name: nameElement.value,
-        email: emailElement.value,
-        informationGroupValues: informationGroups
-    };
-
-    await client.newsletter.create(input);
-    
-    showNewsletterAlert();
-    
-    elements.forEach(el => {
-        el.value = "";
-    });
+  nameElement.value = "";
+  emailElement.value = "";
 }
 
 /**
- * Show an alert message with 2s duration
+ * Removes the div content
  */
-function showNewsletterAlert() {
-    showOverlay('Cadastro realizado com sucesso!', '');
+function hideNewsletterAlert(newsletterAlert) {
+  newsletterAlert.innerHTML = "";
 }
+
+/**
+ * Show an alert message with 5s duration
+ */
+function showNewsletterError(newsletterAlert) {
+  newsletterAlert.innerHTML = 'Falha ao realizar cadastro';
+  setTimeout(function () {
+    hideNewsletterAlert(newsletterAlert);
+  }, 5000);
+}
+
+/**
+ * Show an alert message with 5s duration
+ */
+function showNewsletterAlert(newsletterAlert) {
+  newsletterAlert.innerHTML = 'Cadastro realizado com sucesso!';
+  setTimeout(function () {
+    hideNewsletterAlert(newsletterAlert);
+  }, 5000);
+}
+
+/**
+ * Newsletter checkbox toggle
+ */
+const newsletterCheckbox = document.querySelector("#newsletter-lightbox .checkbox__input");
+const newsletterButton = document.querySelector("#newsletter-lightbox .newsletter__button");
+
+newsletterCheckbox.addEventListener('change', function (e) {
+  newsletterButton.disabled = newsletterButton.disabled ? false : true;
+})

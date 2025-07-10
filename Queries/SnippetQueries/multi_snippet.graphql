@@ -9,7 +9,7 @@ query CalcPrices($prodVar: Long!, $quantity: Int!, $query: String!, $partnerAcce
     suggestions
     products{
       productName
-      alias
+      alias: aliasComplete
       images{
         url
       }

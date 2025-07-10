@@ -1,85 +1,10 @@
-<table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
-    <tbody>
-        <tr>
-            <td align="center" valign="top" style="background-color: #f6f6f6;">
-                <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">            
-                    
-                    <!-- HEADER -->
-                    {{header_mail}}
-                    <!-- END HEADER -->
-                    
-                    <!-- MAIN -->
-                    <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
-                        <tbody>
-                            <tr align="center">
-                                <td>
-                                    <img src="https://gpjpey.stripocdn.email/content/guids/CABINET_83c79fe6710c9b2a88d2db353ad3b6f6/images/99411618298697800.png" alt style="display: block;" width="100">
-                                </td>
-                            </tr>
-                            <tr align="center">
-                                <td>
-                                    <h1 style="font-size: 36px; line-height: 100%;">Salvamos seu carrinho!</h1>
-                                </td>
-                            </tr>
-                            <tr align="center">
-                                <td>
-                                    <p>Olá {{carrinho.usuario.nome}}, Temos uma oferta especial para você!</p><br>
-                                    <a href="{{configuracao.url_carrinho}}" style="border-radius: 6px;border: none;background: #C40EEF;text-transform: uppercase;font-size: 16px;color: #ffffff;padding: 15px;text-decoration: none;">VER CARRINHO</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;padding: 10px;">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <h2>Seu carrinho!</h2>
-                                </td>                                
-                            </tr>
-                            
-                            {{ for produto in carrinho.produto }}
-                                <tr>
-                                    <td>
-                                        <table style="width: 100%;">
-                                            <tbody>
-                                                <tr>
-                                                    <td><a target="_blank"><img class="adapt-img" src="{{produto.url_imagem}}" alt style="display: block;" width="110"></td>
-                                                    <td style="vertical-align: top;">
-                                                        <p><strong>{{produto.nome}}</strong></p>
-                                                        <p>{{produto.preco_de}}</p>
-                                                        <p><strong>{{produto.preco_por}}</strong></p>
-                                                    </td>
-                                                    <td style="vertical-align: middle;">
-                                                        <p>Quantidade: 1</p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            {{ end }}
+<h1>Não vá embora, {{carrinho.usuario.nome}}!</h1>
 
-                            <tr>
-                                <td style="padding-top: 10px;">
-                                    <table style="width: 100%;border-top:1px solid #efefef;padding: 4px 0;">
-                                        <tbody>
-                                            <tr align="right">
-                                                <td style="padding: 8px 0;"><h3>Total:&nbsp;<strong>{{carrinho.valor_total}}</strong></h3></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!-- END MAIN -->
-                    
-                    <!-- FOOTER -->
-                    {{footer_mail}}
-                    <!-- END FOOTER -->
+<p>Temos uma oferta especial para você!</p>
+<br>
+<p>Seu produto: {{carrinho.produto.nome}}</p>
+<br>
+<p>Valor Desconto: {{carrinho.valor_desconto}}</p>
+<br>
+<p>A loja {{configuracao.nome_ecommerce}} agradeçe!</p>.
 
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>

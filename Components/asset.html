@@ -10,15 +10,11 @@
 ## }}
 {{~ joined_paths = paths | array.join "," ~}}
 {{~ capture source ~}}
-	{{- store.urls.static_bundle}}?type={{type}}&paths={{joined_paths}}&theme={{ store.theme -}}&v={{- store.last_modified -}}
+	{{- store.urls.static_bundle}}?type={{type}}&paths={{joined_paths}}&theme={{store.theme -}}&v={{~store.last_modified~}}
 {{~ end ~}}
-{{ 
-	if fetch_priority 
-		fetch_priority = "fetchpriority=\"" + fetch_priority + "\""
-	end
-}}
 {{~ if type == "js" -}}
-	<script src="{{- source -}}" {{fetch_priority}} {{options}}></script>
+	<script src="{{- source -}}"></script>
 {{~ else if type == "css" -}}
-	<link href="{{- source -}}" rel="stylesheet" {{fetch_priority}} {{options}}>
+  <link rel="preload" href="{{- source -}}" as="style">
+	<link href="{{- source -}}" rel="stylesheet">
 {{~ end ~}}

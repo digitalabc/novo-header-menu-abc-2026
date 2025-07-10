@@ -15,12 +15,12 @@
       {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
   </header>
   <div class="wake-autenticate-wrapper">
-    <div>
+    <div class="wake-access-key">
       {{ wake_login_access_key }}
     </div>
   </div>
   {{ footer is_preview: is_preview store: store }}
-  {{ sdk_client }}
+  {{ sdk_client_checkout }}
   {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
   {{ asset type: "js" paths: ["mini_cart"] options: "async"}}
 </body>

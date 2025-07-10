@@ -1,81 +1,119 @@
-{{##
+{{ ##
     Description: Renders the 'buy' and 'add to cart' buttons and calls attribute components.
     Params:
         - product: product data
     Usage:
         product_attribute product: product
-##}}
-{{~ if product.attribute_selections ~}}
-    {{~ attribute_selections = product.attribute_selections ~}}
+## }}
+{{
+    func select_subscription_only(item)
+        ret item.subscription_only == true
+    end
+}}
+
+{{~ product_id = product.product_id ~}}
+{{~ selected_variant = product.attribute_selections?.selected_variant ~}}
+{{~ subscription_only_list = product.subscription_groups | array.filter @select_subscription_only ~}}
+{{~ subscription_only = subscription_only_list && subscription_only_list.size > 0 ~}}
+{{~ attribute_selections = product.attribute_selections ~}}
+{{~ attribute = (product.attributes | array.filter @(do; ret $0.name == 'Unidade' ;end) | array.first) | object.values | array.last | string.downcase ~}}
+    
+{{~ if attribute_selections ~}}
     {{~ if attribute_selections.can_be_matrix ~}}
-        <div attribute-selections>
+        <div class='attribute-selections'>
             {{ product_matrix_attribute attribute_selections: attribute_selections on_change: "productMatrixOnChange(this);" }}
-            <br>  
+            {{~ if product.similar_products ~}}
+                <div class="product__similar">
+                    <h3>VEJA OS PRODUTOS SIMILARES</h3>
+                    {{ product_similar products: product.similar_products }}
+                </div>
+            {{~ end ~}}
             <div class="row">
                 <div class="col-12">
-                    {{ product_buy_button add_to_cart_click: "addToCartMatrixClick(this)" buy_click: "buyMatrixClick(this)" }}
+                    {{ product_buy_button add_to_cart_text: "Adicionar ao carrinho" buy_text: "Comprar" add_to_cart_click: "addToCartMatrixClick(this)" buy_click: "buyMatrixClick(this)" disabled: true }}
                 </div>
             </div>
         </div>
     {{~ else ~}}
-        <div attribute-selections>
-            {{~
-                grouped_attribute_selections = attribute_selections.selections | group.by @(do; ret $0.display_type;end)
-                combo_attr = grouped_attribute_selections | group.get "Combo"
-                div_attr = grouped_attribute_selections | group.get "DIV"
-                div_img_attr = grouped_attribute_selections | group.get "DIV com foto do produto variante"
-                div_color_attr = grouped_attribute_selections | group.get "DIV com cor"
-                product_combo_attribute attribute_selections: combo_attr product_id: product.product_id on_click: "selectAttribute"
-                product_div_attribute attribute_selections: div_attr product_id: product.product_id on_click: "selectAttribute"
-                product_div_with_image_attribute attribute_selections: div_img_attr product_id: product.product_id on_click: "selectAttribute"
-                product_div_with_color_attribute attribute_selections: div_color_attr product_id: product.product_id on_click: "selectAttribute"
-            ~}}
-        </div>
-        {{~ 
-            available = true
-            variant_id = ""
-            stock = 0
-            if attribute_selections.selected_variant
-                variant_id = attribute_selections.selected_variant.product_variant_id
-                available = attribute_selections.selected_variant.available
-                stock = attribute_selections.selected_variant.stock
-            else if attribute_selections.selections.size == 0
-                variant_id = product.product_variant_id
-                available = product.available
-                stock = product.stock
-            end 
-        ~}}
-        <div class="row">
+        {{ if attribute_selections.selections.size > 0 }}
+            <div class='attribute-selections'>
+              {{ product_combo_attribute attribute_selections: attribute_selections.selections product_id: product_id on_click: "selectAttribute" }}
+            </div>
+        {{ end }}
+
+        {{~ available = true ~}}
+        {{~ variant_id = "" ~}}
+        {{~ stock = 0 ~}}
+        {{~ if attribute_selections.selected_variant ~}}
+            {{~ variant_id = attribute_selections.selected_variant.product_variant_id ~}}
+            {{~ available = attribute_selections.selected_variant.available ~}}
+            {{~ stock = attribute_selections.selected_variant.stock ~}}
+        {{~ else if attribute_selections.selections.size == 0 ~}}
+            {{~ variant_id = product.product_variant_id ~}}
+            {{~ available = product.available ~}}
+            {{~ stock = product.stock ~}}
+        {{~ end ~}}
+        <div class="product__quantity">
             {{~ if available ~}}
                 {{~ disabled = variant_id == "" ~}}
                 {{~ btn_value = variant_id ~}}
-                <div class="">
-                    <div class="mb-4">
-                        <p>Quantidade</p>
-                        <input type="number" class="form-control" id="selected-quantity" 
-                        name="selected-quantity" value="1" min="1" max="{{ stock }}" aria-label="Quantidade">
+                <div class="product__quantity--wrapper">
+                    <label for="selected-quantity">Qtd.</label>
+                    <div class="quantity {{ if product_is_box }}fake-quantity{{ end }}">
+                        <button class="quantity-less" onclick="quantityChange('#selected-quantity', 'decrease', '.product__quantity--wrapper')">-</button>
+
+                        {{~ if product_is_box ~}}
+                            {{~ 
+                                if attribute == 'm2'
+                                    unidade_abreviatura = 'm²'
+                                else 
+                                    unidade_abreviatura = (settings.lista_por_unidade | array.filter @(do; ret $0.abreviatura == attribute ;end) | array.first) | object.values | array.first | string.downcase
+                                end 
+                            ~}}
+                        
+                            <input type="number" class="selected-quantity" id="selected-quantity" 
+                            name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity', '{{ unidade_abreviatura }}');">
+                                                
+                            <input id="fake-quantity" 
+                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }} {{ unidade_abreviatura }}" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
+                        
+                        {{~ else  ~}}
+                            
+                            <input type="number" class="selected-quantity" id="selected-quantity" 
+                            name="selected-quantity" value="1" min="1" max="{{ stock }}" onchange="verifyQuantity(this, '.product__quantity--wrapper'); updateFakeQuantity(this, 'fake-quantity');">
+
+                            <input id="fake-quantity" 
+                            name="fake-quantity" value="1 caixa = {{ product.prices.multiplication_factor | string.replace "." "," }}" data-boxPrice="{{ product.prices.multiplication_factor }}" readonly>
+                        {{~ end ~}}
+
+                        <button class="quantity-more" onclick="quantityChange('#selected-quantity', 'increase', '.product__quantity--wrapper')">+</button>
                     </div>
-                    <div class="flex">
-                        {{~ 
-                            if product.subscription_groups && product.subscription_groups.size > 0
-                                product_subscription subscription_groups: product.subscription_groups btn_value: btn_value btn_click: "subscriptionClick(this.value);" disabled: disabled
-                            end 
-                        ~}}
-                    </div>
-                    {{~ 
-                        grouped_subscription_only_list = product.subscription_groups | group.by @(do; ret $0.subscription_only;end)
-                        subscription_only_list = grouped_subscription_only_list | group.get true
-                        subscription_only = subscription_only_list && subscription_only_list.size > 0
-                        if !subscription_only
-                            product_buy_button btn_value: btn_value add_to_cart_click: "addToCartClick(this.value)" buy_click: "buyClick(this.value)"
-                        end 
-                    ~}}
+
+                    {{~ if product_is_box && attribute == 'm2' ~}}
+                        {{ product_calculator }}
+                    {{~ end ~}}
                 </div>
+                {{~ if !subscription_only ~}}
+                  <div class="product__buttons">
+                    {{ product_buy_button add_to_cart_text: "Adicionar ao carrinho" buy_text: "Comprar" product:product btn_value: btn_value add_to_cart_click: "addToCartClick(this.value)" buy_click: "buyClick(this.value)" product_is_box: product_is_box page_product: true product_is_pick_up: product_is_pick_up disabled: disabled }}
+                  </div>
+                {{~ end ~}}
+                <div>
+                    {{~ if product.subscription_groups && product.subscription_groups.size > 0 ~}}
+                        {{ product_subscription subscription_groups: product.subscription_groups btn_value: btn_value btn_click: "subscriptionClick(this.value);" disabled: disabled }}
+                    {{~ end ~}}
+                </div>
+                {{~ if product.customizations ~}}
+                  {{~ product_customizations customizations: product.customizations ~}}
+              {{~ end ~}}
             {{~ else ~}}
-                <h3 class="text-xl">Produto esgotado</h3>
-                {{ product_back_in_stock product_variant_id: product.product_variant_id message: "Preencha os campos para ser avisado assim que o produto voltar ao estoque!" }}
+                <h3 class="product__unavailable">Produto Indisponível</h3>
+                {{ product_back_in_stock form_submit: "backInStockOnClick(event);" spot: false}}
             {{~ end ~}}
         </div>
     {{~ end ~}}
+{{~ else ~}}
+    {{~ if product.buy_list_id ~}}
+        {{ product_buy_button add_to_cart_text: "Comprar selecionados" buy_text: "Comprar selecionados" add_to_cart_click: "buyListAddToCartClick()" buy_click: "buyListBuyClick()" }}
+    {{~ end ~}}
 {{~ end ~}}
-<br>

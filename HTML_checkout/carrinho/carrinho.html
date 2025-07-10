@@ -1,0 +1,182 @@
+<FBITS:Cabecalho />
+<div class="container tyc_container">
+  <div class="row">
+    <div class="full-container">
+      <FBITS:CarrinhoVazio />
+      <section class="fbits-responsive-carrinho">
+        <div class="fbits-responsive-carrinho-items col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <ul class="fbits-responsive-carrinho-header hidden-sm hidden-xs">
+            <li class="fbits-responsive-carrinho-header-coluna-title">Carrinho</li>
+            <li class="fbits-responsive-carrinho-header-coluna-share">
+              <div class="share-minicart" data-share-whatsapp="Ei, olha só. Produtos já separados. Aproveita!">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18.106" viewBox="0 0 18 18.106">
+                  <g id="Camada_1" data-name="Camada 1" transform="translate(0 0.002)">
+                    <path id="Path_23294" data-name="Path 23294"
+                      d="M0,18.1.707,15.52c.175-.64.348-1.281.528-1.92a.323.323,0,0,0-.034-.266A8.489,8.489,0,0,1,.1,8.375,8.69,8.69,0,0,1,5.34.835,8.831,8.831,0,0,1,15.986,3.323a8.7,8.7,0,0,1,1.971,6.525,8.945,8.945,0,0,1-6.308,7.713,8.82,8.82,0,0,1-6.77-.634.343.343,0,0,0-.267-.028Q2.4,17.483.195,18.058c-.054.014-.108.025-.195.046Zm2.15-2.123c.877-.231,1.724-.45,2.569-.681a.556.556,0,0,1,.473.065,7.287,7.287,0,0,0,5.3.928,7.454,7.454,0,0,0-2.6-14.676A7.306,7.306,0,0,0,4.078,3.434,7.3,7.3,0,0,0,1.6,8.585a7.308,7.308,0,0,0,1.213,4.5.348.348,0,0,1,.048.312c-.237.85-.469,1.7-.712,2.586Z"
+                      transform="translate(0 0)" fill="#fff" />
+                    <path id="Path_23295" data-name="Path 23295"
+                      d="M158.4,173.055a2.474,2.474,0,0,1,.817-1.85.792.792,0,0,1,.593-.24,2.6,2.6,0,0,0,.358,0,.47.47,0,0,1,.519.341q.369.883.736,1.767a.4.4,0,0,1-.04.393,6.642,6.642,0,0,1-.564.751.35.35,0,0,0-.033.46,6.162,6.162,0,0,0,3.081,2.646.35.35,0,0,0,.45-.111c.223-.279.457-.551.671-.837a.348.348,0,0,1,.454-.146c.656.267,1.283.593,1.914.912a.259.259,0,0,1,.139.265,1.747,1.747,0,0,1-1.325,1.853,2.641,2.641,0,0,1-1.771.016,9.108,9.108,0,0,1-5.02-3.747,5.224,5.224,0,0,1-.91-1.818,2.615,2.615,0,0,1-.069-.658Z"
+                      transform="translate(-153.907 -166.122)" fill="#fff" />
+                  </g>
+                </svg>
+                Compartilhar carrinho
+              </div>
+            </li>
+          </ul>
+          <FBITS:Produtos />
+          <FBITS:CarrinhoMensagens />
+        </div>
+        <div class="fbits-responsive-carrinho-detalhes col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="fbits-responsive-carrinho-subtotal">
+            <span
+              class="text-left col-lg-6 col-md-6 col-sm-6 col-xs-6 fbits-responsive-carrinho-subtotal-header">Subtotal</span>
+            <span class="text-right col-lg-6 col-md-6 col-sm-6 col-xs-6 fbits-responsive-carrinho-subtotal-valor">
+              <span class="currency">
+                <FBITS:Subtotal /></span>
+            </span>
+          </div>
+          <FBITS:Frete />
+          <FBITS:Cupom />
+          <div class="fbits-responsive-carrinho-total">
+            <div class="text-left col-lg-6 col-md-6 col-sm-6 col-xs-6 fbits-responsive-carrinho-total-header">
+              Total
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right fbits-responsive-carrinho-total-valor">
+              <span class="currency">
+                <FBITS:Total /></span>
+            </div>
+          </div>
+          <div class="msg-warning-invoice">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                <path
+                  d="M10.29 4.00001L1.82002 18.14C1.64539 18.4424 1.55299 18.7853 1.55201 19.1345C1.55103 19.4837 1.64151 19.8271 1.81445 20.1305C1.98738 20.4339 2.23675 20.6868 2.53773 20.8639C2.83871 21.041 3.18082 21.1362 3.53002 21.14H20.47C20.8192 21.1362 21.1613 21.041 21.4623 20.8639C21.7633 20.6868 22.0127 20.4339 22.1856 20.1305C22.3585 19.8271 22.449 19.4837 22.448 19.1345C22.4471 18.7853 22.3547 18.4424 22.18 18.14L13.71 4.00001C13.5318 3.70611 13.2807 3.46313 12.9812 3.29449C12.6817 3.12585 12.3438 3.03726 12 3.03726C11.6563 3.03726 11.3184 3.12585 11.0188 3.29449C10.7193 3.46313 10.4683 3.70611 10.29 4.00001V4.00001Z"
+                  stroke="#FCA004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 9.14001V13.14" stroke="#FCA004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 17.14H12.01" stroke="#FCA004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <p>AVISO IMPORTANTE!</p>
+              <p>Prazo no site somente iniciará após emissão da Nota Fiscal emitida pela ABC. Pedimos compreensão.</p>
+            </div>
+          </div>
+          <div class="botoes-bottom">
+            <div class="container-finalizar">
+              <FBITS:Finalizar />
+            </div>
+            <div class="container-continuar">
+              <a href="#" class="block-a">
+              </a>
+              <FBITS:Continuar />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<FBITS:Rodape />
+
+<!--Data Layers - OLD CHECKOUT-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.criteo_q = window.criteo_q || [];
+
+  let productState = [];
+  /* Criteo Basket/Cart Tag */
+  function criteoBasket(produtos) {
+    let deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/
+      .test(navigator.userAgent) ? "m" : "d";
+
+    produtos = produtos.map((produto) => {
+      return {
+        id: produto.id,
+        price: produto.price,
+        quantity: produto.quantity
+      }
+    });
+
+    window.criteo_q.push({
+      event: "setAccount",
+      account: 79533
+    }, {
+      event: "setEmail",
+      email: (Fbits.Carrinho.Usuario.Email || '')
+    }, {
+      event: "setSiteType",
+      type: deviceType
+    }, {
+      event: "viewBasket",
+      item: produtos
+    });
+  }
+
+  /* END Criteo Basket/Cart Tag */
+
+  function addProducts() {
+
+    if (Fbits.Carrinho && Fbits.Carrinho.Produtos && Fbits.Carrinho.Produtos.length > 0) {
+      for (p = 0; p < Fbits.Carrinho.Produtos.length; p++) {
+        productState.push({
+          'name': "" + Fbits.Carrinho.Produtos[p].Nome + "",
+          'id': "" + Fbits.Carrinho.Produtos[p].ProdutoId + "",
+          'price': Fbits.Carrinho.Produtos[p].PrecoPor,
+          'brand': "" + Fbits.Carrinho.Produtos[p].Fabricante + "",
+          'variant': "" + Fbits.Carrinho.Produtos[p].ProdutoVarianteId + "",
+          'category': "" + Fbits.Carrinho.Produtos[p].Categoria + "",
+          'quantity': Fbits.Carrinho.Produtos[p].Quantidade,
+        });
+      }
+    }
+
+
+    window.dataLayer.push({
+      'event': 'checkout',
+      'ecommerce': {
+        'checkout': {
+          'actionField': {
+            'step': 1
+          },
+          'products': productState
+        }
+      }
+    });
+
+    criteoBasket(productState);
+  }
+
+  function removeProducts() {
+    let variant = [];
+    let removeProductState = [];
+
+    document.querySelectorAll('[data-produtovarianteid]').forEach((el) => {
+      variant.push(el.dataset.produtovarianteid);
+    });
+
+    removeProductState = productState.filter((el) => {
+      return !variant.includes(el.variant);
+    });
+
+    if (removeProductState.length > 0) {
+      window.dataLayer.push({
+        'event': 'removeFromCart',
+        'ecommerce': {
+          'remove': {
+            'products': removeProductState
+          }
+        }
+      });
+    }
+  }
+
+  $(document).ready(() => {
+
+    addProducts();
+
+    $('.fbits-responsive-carrinho').on('click', '.remover', () => {
+      removeProducts();
+    });
+
+  });
+</script>

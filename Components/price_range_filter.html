@@ -1,41 +1,25 @@
 {{ ##
-Description: Renders checkbox fields to filter product price
-Params:
-- price_ranges: price ranges associated with the search
-Usage:
-price_range_filter aggregations: data_search.aggregations
+    Description: Renders checkbox fields to filter product price
+    Params:
+        - price_ranges: price ranges associated with the search
+    Usage:
+        price_range_filter price_ranges: data_search.aggregations.price_ranges
 ## }}
 
-<div class="flex flex-col flex-wrap">
+<div class="row">
     <div>
-    <h4 class="text-base font-semibold uppercase mb-2">Preço</h4>
+        <h5>Preços</h5>
         <ul>
             {{ for range in price_ranges }}
-                {{
-                    parsed_range = range.range | string.split "-"
-                    if parsed_range[0] == "*"
-                    price_range = "Até " + (parsed_range[1] | string.to_double | math.format "c" "pt-BR" )
-                    else if parsed_range[1] == "*"
-                    price_range = "Mais de " + (parsed_range[0] | string.to_double | math.format "c" "pt-BR" )
-                    else
-                    price_range = "De " + (parsed_range[0] | string.to_double | math.format "c" "pt-BR" )
-                    price_range += " até " + (parsed_range[1] | string.to_double | math.format "c" "pt-BR" )
-                    end
-                }}
-                <li class="">
+                <li>
                     {{ if range.quantity > 0 }}
-                        <input class="cursor-pointer mx-1" type="checkbox" id='{{ range.range }}' name='{{ range.range }}'
+                        <input type="checkbox" id='{{ range.range }}' name='{{ range.range }}' 
                             onchange="setRangePriceFilter(this.id);">
-                        <label for="{{ range.range }}" class="cursor-pointer">
-                            {{ price_range }} ({{ range.quantity }})
-                        </label>
                     {{ else }}
-                        <input class="border-secondary-400 mx-1" type="checkbox" id='{{ range.range }}' name='{{ range.range }}'
+                        <input type="checkbox" id='{{ range.range }}' name='{{ range.range }}' 
                             onchange="setRangePriceFilter(this.id);" disabled>
-                        <label for="{{ range.range }}" class="text-secondary-400">
-                            {{ price_range }} ({{ range.quantity }})
-                        </label>
                     {{ end }}
+                    <label for="{{ range.range }}">{{ range.range }} ({{ range.quantity }})</label>
                 </li>
             {{ end }}
         </ul>

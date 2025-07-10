@@ -6,6 +6,7 @@ query Confirmation($checkoutId: String!, $customerAccessToken: String!, $hasCust
     orders{
       date
       orderStatus
+      orderStatusDisplay
       orderId
       totalValue
       discountValue

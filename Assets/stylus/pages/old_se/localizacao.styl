@@ -1,0 +1,126 @@
+
+@font-face {
+    font-family: "icomoon";
+    src: url("https://recursos.abcdaconstrucao.com.br/f/icomoon.eot?jqwqy9");
+    src: url("https://recursos.abcdaconstrucao.com.br/f/icomoon.eot?jqwqy9#iefix") format("embedded-opentype"),
+        url("https://recursos.abcdaconstrucao.com.br/f/icomoon.ttf?jqwqy9") format("truetype"),
+        url("https://recursos.abcdaconstrucao.com.br/f/icomoon.woff?jqwqy9") format("woff"),
+        url("https://recursos.abcdaconstrucao.com.br/f/icomoon.svg?jqwqy9#icomoon") format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+#page-location {
+  padding 0
+  margin 0
+  max-width unset
+}
+#page-location .container {
+    font-family: "Open Sans", arial, sans-serif;
+}
+#page-location .location-form {
+    left: 50%;
+    max-width: 320px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+#page-location .location-wrapper {
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    background: url("https://recursos.abcdaconstrucao.com.br/i/background.png");
+    position: relative;
+}
+#page-location .overlay {
+    background-color: #0007;
+    width: 100%;
+}
+#page-location .background-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 3rem 0;
+    position: relative;
+}
+#page-location .geolocation-link {
+    color: #e31837;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 16px 0px 24px;
+}
+#page-location .modal-title {
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+#page-location .modal-text {
+    color: #2e2e2e;
+    font-size: 16px;
+    margin: 8px 0px 0px;
+    padding: 0px 70px;
+    text-align: center;
+}
+#page-location .region-select {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+#page-location .text-input,
+#stateForm {
+    margin: 0.5rem 0px;
+    width: 100%;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-family: sans-serif;
+    color: rgb(102, 102, 102);
+    border: 0.0625rem solid rgb(238, 238, 240);
+    outline: transparent;
+    border-radius: 1.875rem;
+    appearance: none;
+    transition: all 300ms ease-in 0s;
+    max-width: 250px;
+    text-align: left;
+}
+#page-location .btn-sucess {
+    display: block;
+    float: none;
+    margin: auto;
+    border: 0;
+    background-color: #e31837;
+    color: #fff;
+    height: 35px;
+    width: 250px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+#page-location .fas.fa-map-marker-alt::before {
+    content: "\e904";
+    font-family: "icomoon";
+    display: inline-block;
+    font-size: 24px;
+    position: relative;
+    font-style: normal;
+    color: #e31837;
+}
+@media (min-width: 768px) {
+  #page-location .background-form {
+      padding: 3rem 1.5rem;
+  }
+  #page-location .location-form {
+      max-width: 522px;
+  }
+}

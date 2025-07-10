@@ -1,6 +1,10 @@
-<button type="button" class="wishlist-button-{{product_id}}" aria-label="Add to wishlist" alt="wishlist"
-    onclick='wishlistAddClick(this, "{{product_id}}");'>
-    <svg class="w-6 h-6" id="wishlist-icon-{{product_id}}" width="24" height="24" viewBox="0 0 23 20" fill="none" stroke="black" xmlns="http://www.w3.org/2000/svg" >
-        <path d="M3.12825 3.05745C2.67628 3.50942 2.31775 4.04599 2.07314 4.63652C1.82853 5.22705 1.70264 5.85997 1.70264 6.49916C1.70264 7.13834 1.82853 7.77127 2.07314 8.3618C2.31775 8.95233 2.67628 9.4889 3.12825 9.94087L11.4372 18.2499L19.7462 9.94087C20.659 9.02807 21.1718 7.79005 21.1718 6.49916C21.1718 5.20827 20.659 3.97025 19.7462 3.05745C18.8334 2.14465 17.5954 1.63185 16.3045 1.63185C15.0136 1.63185 13.7756 2.14465 12.8628 3.05745L11.4372 4.48302L10.0117 3.05745C9.5597 2.60548 9.02313 2.24695 8.4326 2.00234C7.84207 1.75773 7.20915 1.63184 6.56996 1.63184C5.93078 1.63184 5.29785 1.75773 4.70732 2.00234C4.11679 2.24695 3.58022 2.60548 3.12825 3.05745Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<button type="button" id="wishlist-button-{{product_id}}"
+    {{~ if in_wishlist ~}} 
+        class="btn btn-sm btn-danger" onclick='wishlistRemoveClick(this, "{{product_id}}");'
+    {{~ else ~}}
+        class="btn btn-sm btn-outline-danger" onclick='wishlistAddClick(this, "{{product_id}}");'
+    {{~ end ~}}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
     </svg>
 </button>

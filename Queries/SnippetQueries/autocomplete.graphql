@@ -1,5 +1,5 @@
-query ($query: String!, $partnerAccessToken: String){
-  autocomplete(query: $query, limit: 5, partnerAccessToken: $partnerAccessToken){
+query ($query: String!){
+  autocomplete(query: $query, limit: 5){
     suggestions
     products{
       productName

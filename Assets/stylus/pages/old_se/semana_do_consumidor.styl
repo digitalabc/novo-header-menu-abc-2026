@@ -1,0 +1,166 @@
+.semana-do-consumidor
+  background #FFFFFF
+  margin-top -10px
+  padding-bottom 30px
+  .fullbanner 
+    &.desktop
+      @media mobile
+        display none
+    &.mobile
+      @media desktop
+        display none
+    img
+      display block
+      margin 0 auto
+
+  .container
+    width: 100%
+    margin: 0 auto;
+    max-width 1300px
+    @media mobile
+      padding-inline 15px !important
+
+  #cronometro
+    display flex
+    align-items center
+    justify-content center
+    svg
+      margin-right 8px
+      @media mobile
+        margin-right 6px
+    >span
+      margin-right 20px
+      color #fff
+      font-weight 500
+      font-size 25px
+      @media mobile
+        margin-right 15px
+        font-size 20px
+    .cron
+      opacity 0
+      display flex
+      gap 5px
+      @media mobile
+        gap 4px
+      .days
+      .hours
+      .minutes
+      .seconds
+        display flex
+        align-items center
+        justify-content center
+        padding 0 4px
+        background #fff
+        min-width 40px
+        height 26px
+        font-size 25px
+        font-weight bold
+        color: #363636;
+        @media mobile
+          padding 0 2px
+          min-width 25px
+          height 16px
+          font-size 16px
+
+      .sep
+        position relative
+        width 3px
+        display flex
+        flex-direction column
+        gap 5px
+        justify-content center
+        @media mobile
+          gap 4px
+        &:before
+        &:after
+          content ''
+          background #fff
+          border-radius 50%
+          width 3px
+          height 3px
+
+  .showcase
+    margin-bottom 10px
+    &__header
+      display flex
+      align-items center
+      justify-content space-between
+      margin-bottom 7px
+    &__title
+      font-size 26px
+      color #333333
+      font-weight 700
+      @media mobile
+        max-width 210px
+    &__link
+      text-decoration underline
+      color #000000
+      font-size 12px
+      transition $transition
+      &:hover
+        color $primary
+    &[data-showcase="cronometer"]
+      background #f2ebe1
+      padding 40px 0
+      @media mobile
+        padding 15px 0
+      .showcase
+        &__header
+          @media desktop
+            width 80%
+          @media mobile
+            display block
+            margin-bottom 15px
+            >svg
+              max-width 235px
+              display block
+              margin 0 auto 5px
+        &__link
+          display block
+          width fit-content
+          margin-left auto
+          margin-bottom 5px
+          color #fff
+          &:hover
+            color $primary
+    .spot
+      &__content-price
+        position relative
+      &:hover
+        .overlay
+          display none
+
+      .overlay
+        position absolute
+        background #fff
+        inset 0
+        padding-top: 30px;
+        @media mobile
+          display none
+
+      .products-sold
+        isolation: isolate;
+        position relative
+        width 100%
+        height 20px
+        border-radius 8px
+        background #94a9a5
+        color #fff
+        text-align center
+        font-size 10px
+        line-height 20px
+        font-weight bold
+        overflow hidden
+        margin-bottom 10px
+        &__progress
+          position absolute
+          left 0
+          height 100%
+          background #114037
+          z-index -1
+      .cronometro
+        bottom 10px
+        width 100%
+        color: #8D8D8D;
+        text-align center
+        font-size 8px

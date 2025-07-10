@@ -1,0 +1,46 @@
+.topbar
+  background: $black
+  color: #000000;
+  font-size: 13px;
+
+  &__container
+    @extends $container
+    @media mobile
+      padding 0
+    ul
+      @media desktop
+        display flex
+        justify-content space-between
+        align-items center
+
+    li
+      height: 30px;
+      display: flex;
+      align-items: center;
+      @media mobile
+        justify-content center
+      @media desktop
+        width auto
+    
+      a
+        display flex
+        align-items center
+        color #fff
+        transition $transition
+        &:hover
+          color $primary
+        svg
+          margin-right 5px
+      
+      strong
+        font-weight 600
+
+  &__left
+  &__right
+    @media desktop
+      flex 1
+  &__right
+    gap 10px
+    @media desktop
+      justify-content flex-end
+      gap 20px

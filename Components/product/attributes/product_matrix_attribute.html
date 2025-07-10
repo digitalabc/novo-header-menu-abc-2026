@@ -13,17 +13,17 @@
     column_size = matrix_column.values.size - 1 
 ~}}
 {{~ if is_secondary_product ~}}
-    {{~ class_modifier = " text-sm" ~}}
+    {{~ class_modifier = " small" ~}}
 {{~ end ~}}
 <div class="row">
     <div>
-        <table class="flex">
-            <tr class="w-full h-full">
+        <table class="matrix-table" style="table-layout: fixed">
+            <tr>
                 <th class="first-row-column{{ class_modifier }}">{{ matrix_row.name }} / {{ matrix_column.name }}</th>
                 {{~ for col in matrix_column.values ~}}
                     {{~ if matrix_column.display_type == "DIV com foto do produto variante" ~}}
                         <th class="matrix-title{{ class_modifier }}">
-                            <img src="{{ col.print_url }}" alt="{{ matrix_column.name }}_{{ col.value }}" title="{{ col.value }}" class="w-8 h-8">
+                            <img src="{{ col.print_url }}" alt="{{ matrix_column.name }}_{{ col.value }}" title="{{ col.value }}">
                         </th>
                     {{~ else ~}}
                         <th class="matrix-title{{ class_modifier }}">{{ col.value }}</th>
@@ -31,30 +31,27 @@
                 {{~ end ~}}
             </tr>
             {{~ for i in 0..row_size ~}}
-                <tr class="w-full flex flex-row flex-no-wrap">
+                <tr>
                     {{~ if matrix_row.display_type == "DIV com foto do produto variante" ~}}
                         <th class="matrix-title{{ class_modifier }}">
                             <img src="{{ matrix_row.values[i].print_url }}" 
-                                alt="{{ matrix_row.name }}_{{ matrix_row.values[i].value }}" title="{{ matrix_row.values[i].value }}" 
-                                class="w-20 h-14 object-contain border">
+                                alt="{{ matrix_row.name }}_{{ matrix_row.values[i].value }}" title="{{ matrix_row.values[i].value }}">
                         </th>
                     {{~ else ~}}
                         <th class="matrix-title{{ class_modifier }}">{{ matrix_row.values[i].value }}</th>
                     {{~ end ~}}
                     {{~ for j in 0..column_size ~}}
-                        {{~ current_product = matrix_data[i][j] ~}}
+                        {{~ current_data = matrix_data[i][j] ~}}
                         {{~ stock = 0 ~}}
                         <td class="matrix-column{{ class_modifier }}">
-                            <input matrix-input-quantity
-                                type="number" class="w-full h-full border-secondary-300"
-                                product-variant-id="{{ current_product.product_variant_id }}"
-                                id="matrix-number-{{ current_product.product_variant_id }}"
-                                {{ if !current_product.available -}} disabled="true"
-                                {{- else ~}} {{~ stock = current_product.stock -}}
-                                {{~ end ~}}
-                                min="0" max="{{~ stock ~}}"
-                                onchange="{{ on_change }}"
-                                aria-label="Quantidade">
+                            <input type="number" class="form-control matrix-input-quantity"
+                                product-variant-id="{{ current_data.product_variant_id }}"
+                                id="matrix-number-{{ current_data.product_variant_id }}"
+                                {{ if !current_data.available }} disabled="true"
+                                {{ else }} {{ stock = current_data.stock }}
+                                {{ end }}
+                                min="0" max="{{ stock }}"
+                                onchange="{{ on_change }}">
                         </td>
                     {{~ end ~}}
                 </tr>

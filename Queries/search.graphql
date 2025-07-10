@@ -9,7 +9,6 @@ query Search($searchQuery: String,
   $maximumPrice: Decimal) {
   search(query: $searchQuery, partnerAccessToken: $partnerAccessToken) {
     redirectUrl
-    pageSize
     searchTime
     breadcrumbs{
       link
@@ -24,7 +23,6 @@ query Search($searchQuery: String,
     }
     productsByOffset(limit: $resultSize, offset: $offset, sortKey: $sortKey, sortDirection: $sortDirection, filters: $filters, minimumPrice: $minimumPrice, maximumPrice: $maximumPrice) {
       totalCount
-      pageSize
       page
       items {
         id
@@ -46,6 +44,11 @@ query Search($searchQuery: String,
         prices {
           listPrice
           price
+          priceTables {
+            id
+            listPrice
+            price
+          }
           discountPercentage
           bestInstallment {
             name
@@ -61,12 +64,11 @@ query Search($searchQuery: String,
           }
         }
         promotions{
+          fullStampUrl
           content
           id
           stamp
-          fullStampUrl
           title
-          disclosureType
         }
         addToCartFromSpot
       }

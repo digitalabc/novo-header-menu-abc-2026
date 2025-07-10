@@ -96,6 +96,16 @@
           print-color-adjust: exact;
 }
 
+.form-select:where([size]:not([size="1"])) {
+  background-image: initial;
+  background-position: initial;
+  background-repeat: unset;
+  background-size: initial;
+  padding-right: 0.75rem;
+  -webkit-print-color-adjust: unset;
+          print-color-adjust: unset;
+}
+
 /* wake-account */
 
 .wake-account-wrapper {
@@ -137,7 +147,7 @@
   font-size: 1.5rem;
   line-height: 2rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account .card {
@@ -210,7 +220,7 @@
   margin-left: 0.5rem;
   cursor: pointer;
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .wake-account form label {
@@ -220,15 +230,15 @@
 .wake-account form input, .wake-account form select {
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .wake-account form input:disabled, .wake-account form select:disabled {
   cursor: not-allowed;
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -240,7 +250,7 @@
 .wake-account form .disabled {
   cursor: not-allowed;
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
 .wake-account .actions {
@@ -279,7 +289,7 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding: 0.75rem;
 }
 
@@ -325,7 +335,7 @@
 .wake-account-modal .modal-opacity {
   position: fixed;
   inset: 0px;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
   --tw-bg-opacity: 0.75;
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -354,7 +364,7 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-modal .header svg {
@@ -365,21 +375,21 @@
 .wake-account-modal .header button {
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-modal .header button:hover {
   --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-modal .header button:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(196 14 239 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(196 14 239 / var(--tw-ring-opacity, 1));
   --tw-ring-offset-width: 2px;
 }
 
@@ -393,16 +403,16 @@
   align-items: center;
   justify-content: center;
   --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
   padding: 0.75rem;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-modal .content button:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
 }
 
 .wake-account-modal .wrapper {
@@ -427,7 +437,7 @@
   width: 91.666667%;
   flex-direction: column;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   padding: 1rem;
 }
 
@@ -447,9 +457,9 @@
   width: 100%;
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -577,11 +587,11 @@
   cursor: not-allowed;
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -607,9 +617,9 @@
   width: 100%;
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -632,18 +642,67 @@
   }
 }
 
+.wake-account-modal .wake-change-email-with-access-key {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.wake-account-modal .wake-change-email-with-access-key > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.wake-account-modal .wake-change-email-with-access-key input {
+  width: 100%;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
+}
+
+.wake-account-modal .wake-change-email-with-access-key input:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity, 1));
+}
+
+.wake-account-modal .wake-change-email-with-access-key label {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+.wake-account-modal .wake-change-email-with-access-key button {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .wake-account .actions div button.save {
   display: flex;
   justify-content: center;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-account .actions div .autenticate {
@@ -658,7 +717,7 @@
   margin-left: 0.25rem;
   margin-right: 0.25rem;
   --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
 }
 
 /* Account Sidebar*/
@@ -689,7 +748,7 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
   padding: 0.5rem;
 }
 
@@ -719,7 +778,7 @@
 .wake-account-sidebar-summary .customer {
   display: flex;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-sidebar-summary .arrow {
@@ -755,13 +814,13 @@
   justify-content: flex-start;
   border-bottom-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-border-opacity));
+  border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
   padding: 1rem;
 }
 
 .wake-account-sidebar-nav > a:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -796,7 +855,7 @@
   font-size: 1.5rem;
   line-height: 2rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-orders h4 {
@@ -806,7 +865,7 @@
   line-height: 1.75rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-orders .no-orders {
@@ -830,7 +889,7 @@
   justify-content: flex-start;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-border-opacity));
+  border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
 }
 
 .wake-account-orders details:last-child {
@@ -839,7 +898,7 @@
 
 .wake-account-orders details:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
 .wake-account-orders summary {
@@ -856,7 +915,7 @@
 
 .wake-account-orders summary > div:first-child {
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
 .wake-account-orders summary > div:last-child {
@@ -888,7 +947,7 @@
   margin-bottom: 0.5rem;
   display: flex;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-orders summary > div > span.order {
@@ -907,7 +966,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-orders summary > div > b {
@@ -925,7 +984,7 @@
   flex-direction: column;
   border-top-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-border-opacity));
+  border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
   padding: 0.5rem;
 }
 
@@ -972,7 +1031,7 @@
   line-height: 1.5rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -1045,11 +1104,11 @@
   justify-content: center;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
   font-size: 0.75rem;
   line-height: 1rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-order-details .kits .\!items div span {
@@ -1063,11 +1122,11 @@
   justify-content: center;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
   font-size: 0.75rem;
   line-height: 1rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-order-details .products {
@@ -1137,7 +1196,7 @@
   justify-content: center;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding: 0.5rem;
 }
 
@@ -1153,7 +1212,7 @@
   font-size: 1.125rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-order-details .payments .boleto .barcode div {
@@ -1180,7 +1239,7 @@
   display: flex;
   width: 100%;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding-right: 2.5rem;
 }
 
@@ -1227,7 +1286,7 @@
   display: flex;
   width: 100%;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding-right: 2.5rem;
 }
 
@@ -1321,7 +1380,7 @@
   font-size: 1.5rem;
   line-height: 2rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-full-order-details h4 {
@@ -1353,7 +1412,7 @@
   line-height: 1rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-full-order-details .order-number {
@@ -1362,9 +1421,9 @@
   justify-content: space-between;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
   padding: 1rem;
 }
 
@@ -1413,7 +1472,7 @@
 .wake-account-full-order-details .order-payment-details {
   border-bottom-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-border-opacity));
+  border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
   padding-bottom: 1rem;
 }
 
@@ -1436,7 +1495,7 @@
   justify-content: flex-start;
   border-bottom-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-border-opacity));
+  border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
 }
 
 .wake-account-full-order-details details:last-child {
@@ -1541,7 +1600,7 @@
   justify-content: center;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding: 0.5rem;
 }
 
@@ -1577,7 +1636,7 @@
   font-size: 1.125rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-full-order-details .payment .order-payment .boleto div img {
@@ -1595,7 +1654,7 @@
   display: flex;
   width: 100%;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding-right: 2.5rem;
 }
 
@@ -1637,7 +1696,7 @@
   display: flex;
   width: 100%;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding-right: 2.5rem;
 }
 
@@ -1672,7 +1731,7 @@
   justify-content: center;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
   padding: 0.5rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -1680,7 +1739,7 @@
 
 .wake-account-full-order-details .footer button:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -1838,7 +1897,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
 .wake-payment-list .payment-option {
@@ -1901,7 +1960,7 @@
   justify-content: center;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
   padding: 0.5rem;
   text-align: center;
   font-size: 1.125rem;
@@ -1909,7 +1968,7 @@
   font-weight: 600;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -2028,7 +2087,7 @@
 
 .wake-subscription-content .header span b {
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-content .status {
@@ -2069,23 +2128,23 @@
 
 .wake-subscription-content .status button.paused {
   --tw-border-opacity: 1;
-  border-color: rgb(253 224 71 / var(--tw-border-opacity));
+  border-color: rgb(253 224 71 / var(--tw-border-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(234 179 8 / var(--tw-text-opacity));
+  color: rgb(234 179 8 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-content .status button.canceled {
   --tw-border-opacity: 1;
-  border-color: rgb(252 165 165 / var(--tw-border-opacity));
+  border-color: rgb(252 165 165 / var(--tw-border-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-content .status button.active {
   --tw-border-opacity: 1;
-  border-color: rgb(134 239 172 / var(--tw-border-opacity));
+  border-color: rgb(134 239 172 / var(--tw-border-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
+  color: rgb(34 197 94 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-content .products {
@@ -2117,12 +2176,12 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-bg-opacity: 1;
-  background-color: rgb(196 14 239 / var(--tw-bg-opacity));
+  background-color: rgb(196 14 239 / var(--tw-bg-opacity, 1));
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -2141,12 +2200,12 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-bg-opacity: 1;
-  background-color: rgb(196 14 239 / var(--tw-bg-opacity));
+  background-color: rgb(196 14 239 / var(--tw-bg-opacity, 1));
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -2439,7 +2498,7 @@
 .wake-subscription-modal .modal-opacity {
   position: fixed;
   inset: 0px;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
   --tw-bg-opacity: 0.75;
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2476,7 +2535,7 @@
   width: 91.666667%;
   overflow-y: auto;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   padding: 1rem;
 }
 
@@ -2501,20 +2560,20 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-modal .header button {
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-modal .header button:hover {
   --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-modal .header svg {
@@ -2539,12 +2598,12 @@
   align-items: center;
   justify-content: center;
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
   padding: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-modal .content .subscription-products {
@@ -2615,7 +2674,7 @@
   width: 100%;
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
   padding: 0.5rem;
   text-align: center;
 }
@@ -2639,18 +2698,18 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-bg-opacity: 1;
-  background-color: rgb(196 14 239 / var(--tw-bg-opacity));
+  background-color: rgb(196 14 239 / var(--tw-bg-opacity, 1));
   padding: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-subscription-modal .content .subscription-products .add:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(148 7 181 / var(--tw-bg-opacity));
+  background-color: rgb(148 7 181 / var(--tw-bg-opacity, 1));
 }
 
 .wake-subscription-modal .content .subscription-products .remove {
@@ -2660,7 +2719,7 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(17 24 39 / var(--tw-border-opacity));
+  border-color: rgb(17 24 39 / var(--tw-border-opacity, 1));
   padding: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -2693,7 +2752,7 @@
   font-size: 1.5rem;
   line-height: 2rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-current-account h3 .balance {
@@ -2740,7 +2799,7 @@
 
 .wake-current-account .current-data table thead {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
 .wake-current-account .current-data table thead th {
@@ -2792,7 +2851,7 @@
   font-size: 1.5rem;
   line-height: 2rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-address .addresses {
@@ -2837,12 +2896,12 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
   padding: 0.75rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-address .add-address button:hover {
@@ -2872,7 +2931,7 @@
   width: 100%;
   flex-direction: column;
   --tw-border-opacity: 1;
-  border-color: rgb(249 250 251 / var(--tw-border-opacity));
+  border-color: rgb(249 250 251 / var(--tw-border-opacity, 1));
   padding: 1rem;
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
@@ -2900,7 +2959,7 @@
   line-height: 1.25rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-account-address .address .actions {
@@ -2934,7 +2993,7 @@
   margin-left: 0.25rem;
   margin-right: 0.25rem;
   --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
 }
 
 /* Adress Modal */
@@ -2947,7 +3006,7 @@
 .wake-address-modal .modal-opacity {
   position: fixed;
   inset: 0px;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
   --tw-bg-opacity: 0.75;
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2983,7 +3042,7 @@
   width: 91.666667%;
   flex-direction: column;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   padding: 1rem;
 }
 
@@ -3008,20 +3067,20 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .wake-address-modal .modal-content .wrapper .wrapper-content .header button {
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
 .wake-address-modal .modal-content .wrapper .wrapper-content .header button:hover {
   --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 
 .wake-address-modal .modal-content .wrapper .wrapper-content .header button:focus {
@@ -3063,7 +3122,7 @@
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding: 0.75rem;
 }
 
@@ -3135,22 +3194,22 @@
   align-items: center;
   justify-content: center;
   --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
   padding: 0.75rem;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .wake-add-address-form > button:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
 }
 
 .wake-add-address-form input {
   border-radius: 0.375rem;
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
 }
 
 .wake-add-address-form a {
@@ -3158,19 +3217,19 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
 }
 
 .wake-add-address-form a:hover {
   --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
+  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
   text-decoration-line: underline;
 }
 
 .wake-add-address-form label {
   margin-bottom: 0.5rem;
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .wake-add-address-form .message {
@@ -3179,7 +3238,7 @@
   line-height: 1.25rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
 }
 
 .wake-add-address-form .name {
@@ -3240,7 +3299,7 @@
 .wake-cart-modal-confirmation-remove .modal-bg {
   position: fixed;
   inset: 0px;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
   --tw-bg-opacity: 0.75;
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -3274,7 +3333,7 @@
   flex-direction: column;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   padding: 1rem;
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -3320,7 +3379,7 @@
   height: 2.25rem;
   border-radius: 4px;
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 1rem;
@@ -3328,7 +3387,7 @@
   font-weight: 600;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 /*Modal Change Address*/
@@ -3358,7 +3417,7 @@
   width: 100%;
   flex-direction: column;
   --tw-border-opacity: 1;
-  border-color: rgb(249 250 251 / var(--tw-border-opacity));
+  border-color: rgb(249 250 251 / var(--tw-border-opacity, 1));
   padding: 1rem;
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
@@ -3382,7 +3441,7 @@
   line-height: 1.25rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 /* Wake Checkout Header*/
@@ -3447,7 +3506,7 @@
   align-items: center;
   justify-content: space-between;
   --tw-bg-opacity: 1;
-  background-color: rgb(196 14 239 / var(--tw-bg-opacity));
+  background-color: rgb(196 14 239 / var(--tw-bg-opacity, 1));
   padding: 1rem;
 }
 
@@ -3464,7 +3523,7 @@
   flex-direction: column;
   text-align: center;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -3482,5 +3541,11 @@
 .wake-checkout-footer .footer-content .wake-logo span {
   margin-right: 0.25rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.wake-qrcode {
+  margin-bottom: 1rem !important;
+  height: 15rem !important;
+  width: 15rem !important;
 }

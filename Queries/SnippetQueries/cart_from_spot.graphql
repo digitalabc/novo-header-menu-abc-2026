@@ -47,39 +47,14 @@ query AddToCartFromSpot($productId: Long!
         value
     }
     promotions{
+      fullStampUrl
       content
       id
       stamp
-      fullStampUrl
       title
-      disclosureType
     }
     addToCartFromSpot
     attributeSelections (selected: $selections) {
-      canBeMatrix
-      matrix {
-        row {
-          name
-          displayType
-          values {
-            value
-            printUrl
-          }
-        }
-        column {
-          name
-          displayType
-          values {
-            value
-            printUrl
-          }
-        }
-        data {
-          productVariantId
-          available
-          stock
-        }
-      }
       selectedVariant{
         id
         alias

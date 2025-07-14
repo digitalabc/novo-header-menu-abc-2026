@@ -1,0 +1,8 @@
+{{ ##
+    Description: Re-renders the product view
+    Params:
+        - Uses product.graphql
+    Usage:
+        await client.snippet.render("buy_together_snippet.html", ...);
+## }}
+{{ buy_together_product_view product: data.product }}

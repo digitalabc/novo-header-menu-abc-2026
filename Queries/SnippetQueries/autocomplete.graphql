@@ -1,0 +1,15 @@
+query ($query: String!){
+  autocomplete(query: $query, limit: 5){
+    suggestions
+    products{
+      productName
+      alias
+      images{
+        url
+      }
+      prices{
+        price
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{{ ##
+    Description: Renders the product(s) price view, which can be the price information 
+        for a single product, or a combination of products and quantities
+    Params:
+        - Uses calculate_prices.graphql
+    Usage:
+        await client.snippet.render("price_snippet.html", ...);
+## }}
+{{~ installment_plans = data.calculate_prices.installment_plans ~}}
+{{~ product_price prices: data.calculate_prices ~}}

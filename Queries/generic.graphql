@@ -1,0 +1,40 @@
+query Hotsite($url: String!){
+  hotsite(url:$url) {
+    name
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    contents {
+      content
+      contentId
+      height
+      title
+      width
+      position
+    }
+    banners {
+      altText
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+      urlOnClick
+    }
+  }
+  brands(first: 50, brandInput: {groupIds: [19]}) {
+    nodes {
+      active
+      urlLogo
+      alias
+      fullUrlLogo
+      name
+    }
+  }
+}

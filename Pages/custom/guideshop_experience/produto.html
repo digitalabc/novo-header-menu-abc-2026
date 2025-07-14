@@ -1,0 +1,1237 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Produto - Prateleira Infinita</title>
+    <script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+        :root {
+            --ChumboABC: #454040;
+            --DarkABC: #392F2D;
+            --RedABC: #E30613;
+            --CardText: #0D3547;
+            --CardSVG: #20363F;
+            --DarkBtn: #20363F;
+        }
+
+        .card-body {
+            display: grid;
+            gap: 10px;
+        }
+
+        .card-body>a {
+            text-align: center;
+        }
+
+        #ar-button {
+            border: none;
+            background-color: transparent;
+        }
+
+        .qrCode-group {
+            display: grid;
+            gap: 10px;
+            padding-block: 10px;
+        }
+
+        .qrCode-group p,
+        .ar-button-group p {
+            margin: 0;
+            padding: 0;
+            color: #212529;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17.911px;
+            font-style: normal;
+        }
+
+        .qrCode-group p {
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .ar-button-group p {
+            font-weight: 600;
+            line-height: 26.866px;
+        }
+
+        .ar-button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding-top: 10px;
+        }
+
+        #qrCode {
+            margin: auto;
+            width: 150px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        .card {
+            border-radius: 7.565px;
+            border: 1.513px solid #E2E2E2;
+            background: #FFF;
+            box-shadow: 0px 0px 7.565px 0px rgba(0, 0, 0, 0.25);
+            width: 330px;
+            margin-bottom: 25px;
+        }
+
+        .card-body .card-text {
+            color: #212529;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17.911px;
+            font-style: normal;
+        }
+
+        .card-body .card-text:first-child {
+            font-weight: 700;
+            line-height: 26.866px;
+        }
+
+        .card-body .card-text:last-child {
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .card-body>a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8.955px 53.732px;
+            border-radius: 39.18px;
+            color: #FFF;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17.911px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 26.866px;
+        }
+
+        .visite {
+            background-color: #0B4864;
+        }
+
+        .comprar {
+            background-color: #0FA848;
+        }
+
+        .voltar {
+            text-decoration: none;
+            padding: 5.787px 34.722px;
+            border-radius: 25.318px;
+            border: 0.723px solid #909090;
+            color: #909090;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13.433px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 17.361px;
+        }
+        .produto {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 20px;
+            grid-row-gap: 0px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-card {
+            grid-area: 2 / 1 / 3 / 2;
+            margin-inline: auto;
+        }
+
+        .produto3d {
+            width: 96%;
+            height: 95%;
+            grid-area: 1 / 2 / 4 / 3;
+            border-radius: 7.565px;
+            border: 1.513px solid #E2E2E2;            
+            box-shadow: 0px 0px 7.565px 0px rgba(0, 0, 0, 0.25);
+        }
+        .produto3d > div {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="">
+    <div class="produto">
+        <div class="info-card">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">
+                        SKU:
+                    </p>
+                    <p class="card-text"></p>
+                    <a class="visite" href="http://">Visite o produto</a>
+                    <!-- <a class="comprar" href="http://">Comprar o produto</a> -->
+                    <div class="ar-button-group">
+                        <p>Relidade aumentada</p>
+                        <button id="ar-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61"
+                                fill="none">
+                                <g clip-path="url(#clip0_11_238)">
+                                    <path
+                                        d="M30.261 56.1212C45.7169 56.1212 58.2464 43.5917 58.2464 28.1358C58.2464 12.6799 45.7169 0.150391 30.261 0.150391C14.8051 0.150391 2.27557 12.6799 2.27557 28.1358C2.27557 43.5917 14.8051 56.1212 30.261 56.1212Z"
+                                        fill="url(#paint0_linear_11_238)" />
+                                    <path
+                                        d="M25.6086 34.9162H30.117L26.905 30.2359C28.7549 29.3412 29.8188 27.7265 29.8188 25.5354C29.8188 22.1314 27.2664 20.0262 23.2028 20.0262H16.3947V34.9162H20.6074V30.9587H22.9046L25.6061 34.9162H25.6086ZM14.0343 16.3115H12.8213V11.2875H17.8453V12.5005H14.0369V16.3089L14.0343 16.3115ZM47.7008 16.3115H46.4878V12.5031H42.6794V11.29H47.7008V16.3139V16.3115ZM47.7008 44.9842H42.6794V43.7712H46.4878V39.9628H47.7008V44.9842ZM17.8427 44.9842H12.8188V39.9628H14.0318V43.7712H17.8402V44.9842H17.8427ZM25.5657 25.5354C25.5657 26.8976 24.6937 27.7062 22.95 27.7062H20.61V23.3444H22.95C24.6937 23.3444 25.5657 24.1531 25.5657 25.5354ZM43.2859 34.9162H47.6679L41.0746 20.0262H36.9276L30.3545 34.9162H34.6506L35.8207 32.0226H42.1184L43.2884 34.9162H43.2859ZM37.054 28.9168L38.967 24.1531L40.8825 28.9168H37.054Z"
+                                        fill="white" />
+                                </g>
+                                <defs>
+                                    <linearGradient id="paint0_linear_11_238" x1="30.261" y1="0.150391" x2="30.261"
+                                        y2="56.1212" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#004A68" />
+                                        <stop offset="1" stop-color="#29425A" />
+                                    </linearGradient>
+                                    <clipPath id="clip0_11_238">
+                                        <rect width="60.4485" height="60.4485" fill="white"
+                                            transform="translate(0.0367126 0.150391)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="qrCode-group">
+                        <p>Escaneie o QR Code para ver este produto na sua casa.</p>
+                        <div id="qrCode"></div>
+                    </div>
+                </div>
+            </div>
+            <a class="voltar" href="/guideshop-experience">Voltar</a>
+        </div>
+        <div class="produto3d">
+            <div id="3d-viewer"></div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+<script>
+    const produtos = {
+        "235375": {
+            "sku": 235375,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/30198/30198-0jpeg",
+            "nome": "Revestimento Eliane Metro White Acetinado 10x20cm Branco Bold(Cód. Forn. 8028101)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-eliane-metro-white-acetinado-10x20cm-branco-bold/30198/30198"
+        },
+        "259844": {
+            "sku": 259844,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00832406/00832406-0.jpeg",
+            "nome": "Misturador para banheiro de parede Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-parede-stillo-cromado-docol/28816/28816"
+        },
+        "259874": {
+            "sku": 259874,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00877606/00877606-0.jpeg",
+            "nome": "Acabamento para registro base Fabrimar 1/2\", 3/4\" e 1\" Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-base-fabrimar-1-2-3-4-1-city-cromado-docol/31807/31807"
+        },
+        "259925": {
+            "sku": 259925,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/259925/259925-0jpeg",
+            "nome": "Acabamento Para Registro Base Deca Lift1/2\" 3/4\" 1\" Cromado Docol(Cód. Forn. 811906)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-base-deca-lift1-2-3-4-1-cromado-docol/27739/27739"
+        },
+        "260031": {
+            "sku": 260031,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00824806/00824806-0.jpeg",
+            "nome": "Torneira para banheiro bica alta 90° Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-bica-alta-90-stillo-cromada-docol/28819/28819"
+        },
+        "260035": {
+            "sku": 260035,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/ac24800e-900d-4fa3-8cb6-ec6d9d37b493/9828be75-5d81-415d-8264-5a53c8766e64.webp",
+            "nome": "Monocomando para cozinha Docol Ozônio",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-monocomando-para-cozinha-de-mesa-ozonio-cromada-docol/37254/37254"
+        },
+        "260189": {
+            "sku": 260189,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00901957/00901957-0.jpeg",
+            "nome": "Misturador para cozinha Docol Spice preto",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-cozinha-de-mesa-spice-cromada-preta-docol/37722/37722"
+        },
+        "260223": {
+            "sku": 260223,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/12902/12902-0jpeg",
+            "nome": "Cuba de embutir Lavinia 47 BL em aço inox acetinado 47x30cm Tramontina(Cód. Forn. 94022107)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-embutir-lavinia-47-bl-em-aco-inox-acetinado-47x30cm-tramontina/12902/12902"
+        },
+        "260234": {
+            "sku": 260234,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260234/260234-0jpeg",
+            "nome": "Ducha Higiênica Com Registro E Derivação Link 1984 Cromada Deca(Cód. Forn. 1984.C.ACT.LNK.CR)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/ducha-higienica-com-registro-e-derivacao-link-1984-cromada-deca/09694/09694"
+        },
+        "260278": {
+            "sku": 260278,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260278/260278-0jpeg",
+            "nome": "Chuveiro De Teto Redondo Acqua Plus 1990 Com Tubo Cromado Deca(Cód. Forn. 1990.C.TET)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/chuveiro-de-teto-redondo-acqua-plus-1990-com-tubo-cromado-deca/07418/07418"
+        },
+        "260379": {
+            "sku": 260379,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/594b125b-1da5-4e98-862e-d69c4d80c16e/71ca9360-d56e-4b53-847c-c8f20c49e08f.webp",
+            "nome": "Monocomando para cozinha Docol Spice",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-monocomando-para-cozinha-de-mesa-spice-preto-cromado-docol/37723/37723"
+        },
+        "260387": {
+            "sku": 260387,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260387/260387-0jpeg",
+            "nome": "Acabamento Para Registro De Pressão Level 1/2\" 3/4\" 4916 Cromada Deca(Cód. Forn. 4916.C26.PQ)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-de-pressao-level-1-2-3-4-4916-cromado-deca/25523/25523"
+        },
+        "260441": {
+            "sku": 260441,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/0bdfd352-42e5-4203-8352-27af87080fb8/0543583a-5f45-41d8-ac76-73e67a352f7c.webp",
+            "nome": "Acabamento para válvula de descarga Square Salvágua",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-valvula-de-descarga-square-cromado-docol/052291/052291"
+        },
+        "260451": {
+            "sku": 260451,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/ceb1167d-639a-4345-a695-f2551b2d6ae1/91ac7a5a-1580-4ec9-ac25-83b81a5905b1.webp",
+            "nome": "Acabamento para registro base Deca 1/2\", 3/4\" e 1\" Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-base-deca-stillo-1-2-3-4-1-cromado-docol/28825/28825"
+        },
+        "260488": {
+            "sku": 260488,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/d32bf704-c8ab-4c09-8d32-24ec40f4c9c0/c112ab53-356f-4914-9103-7ea59a4b0257.webp",
+            "nome": "Torneira para banheiro Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-city-bica-alta-cromada-docol/31801/31801"
+        },
+        "260608": {
+            "sku": 260608,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/40bd6259-f8f0-408e-aede-c2b5fb39ad28/5b1ab8a8-fd13-4d3b-9cff-e81bc0965cf9.webp",
+            "nome": "Torneira para banheiro de parede Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-parede-stillo-cromada-docol/28820/28820"
+        },
+        "260635": {
+            "sku": 260635,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/4d74151b-c1e7-452e-a306-af3f6f630d8c/35a9591f-4148-434a-a924-798abf96acfa.webp",
+            "nome": "Misturador para cozinha Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-cozinha-de-mesa-city-cromada-docol/31809/31809"
+        },
+        "260646": {
+            "sku": 260646,
+            "categoria": "Chuveiros e Duchas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/cb05be46-cad3-45e5-b0ec-8f6b82f0b4b4/27a86361-01e8-4d20-beb7-a808ad71c745.webp",
+            "nome": "Chuveiro Docol Heaven Q200",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/chuveiro-de-parede-quadrado-heaven-q200-cromado-docol/40875/40875"
+        },
+        "260679": {
+            "sku": 260679,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260679/260679-0jpeg",
+            "nome": "Misturador Monocomando Para Cozinha De Mesa Twin Com Filtro Bica Alta 2240 Cromada Deca(Cód. Forn. 2240.C)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-monocomando-para-cozinha-de-mesa-twin-com-filtro-bica-alta-2240-cromada-deca/17378/17378"
+        },
+        "260696": {
+            "sku": 260696,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/c029ac8e-a2a3-4640-8b0c-327c6c6de4b7/6df8fa0f-27d2-456e-9a91-7406dad8fa26.webp",
+            "nome": "Misturador para banheiro Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-mesa-city-bica-alta-cromado-docol/31803/31803"
+        },
+        "260778": {
+            "sku": 260778,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00902157/00902157-0.jpeg",
+            "nome": "Torneira para cozinha Docol Spice preta",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-de-mesa-spice-para-cozinha-bica-alta-cromada-preta-docol/37719/37719"
+        },
+        "260832": {
+            "sku": 260832,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/0603d935-5508-4a67-8a8f-9129b0da29f7/thumbs/5b854ce2-5078-4330-9c05-31b8f5ac13db.jpg",
+            "nome": "Torneira para banheiro Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-de-mesa-para-lavatorio-bica-baixa-cromada-docol/28817/28817"
+        },
+        "260839": {
+            "sku": 260839,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/86c059a5-f4ce-4880-be0e-102777141d3f/thumbs/9fef8672-5e9d-4abc-8a35-2b447a20b278.jpg",
+            "nome": "Torneira para banheiro Lift",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-lift-bica-baixa-cromada-docol/36522/36522"
+        },
+        "260896": {
+            "sku": 260896,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260896/260896-0jpeg",
+            "nome": "Porcelanato Esmaltado 90x90cm Retificado Calacata Oro Satin Acetinado Biancogres(Cód. Forn. CC0261O1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-calacata-oro-satin-acetinado-90x90cm-marmore-retificado/44368/44368"
+        },
+        "260913": {
+            "sku": 260913,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/260913/260913-0jpeg",
+            "nome": "Chuveiro De Parede Redondo Acqua Plus Com Tubo 1990 Cromada Deca(Cód. Forn. 1990.C.CT)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/chuveiro-de-parede-redondo-acqua-plus-com-tubo-1990-cromada-deca/052064/052064"
+        },
+        "260925": {
+            "sku": 260925,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00876906/00876906-0.jpeg",
+            "nome": "Ducha higiênica com registro e derivação c/ gatilho Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/ducha-higienica-com-registro-e-derivacao-city-cromada-docol/31794/31794"
+        },
+        "260988": {
+            "sku": 260988,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/e6b54067-7b4d-4a49-aa1a-e71b11319811/ed710152-6ba1-447d-8139-c1ede73de840.webp",
+            "nome": "Torneira para banheiro bica alta Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-stillo-bica-alta-cromada-docol/28818/28818"
+        },
+        "261055": {
+            "sku": 261055,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820506/00820506-0.jpeg",
+            "nome": "Acabamento para registro DocolBase 1.1/4\" e 1.1/2\" Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-docolbase-stillo-1-1-4-1-1-2-cromado-docol/28824/28824"
+        },
+        "261075": {
+            "sku": 261075,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/8605/8605-0jpeg",
+            "nome": "Tanque Em Inox De Encaixe Hera 50x40cm 3.1/2 Com Válvula 94400/107 Acetinado Tramontina(Cód. Forn. 94400107)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/tanque-em-inox-de-encaixe-hera-50x40cm-3-1-2-com-valvula-94400-107-acetinado-tramontina/08605/08605"
+        },
+        "261144": {
+            "sku": 261144,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/30148e7a-f2b7-4a45-bb93-da2ca958bff0/abc24f51-475c-425e-84cf-a45c18b073d9.webp",
+            "nome": "Torneira para cozinha de parede bica alta Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-cozinha-de-parede-bica-alta-city-cromada-docol/31795/31795"
+        },
+        "261213": {
+            "sku": 261213,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261213/261213-0jpeg",
+            "nome": "Porcelanato Esmaltado 90x90cm Retificado Brera Cimento Acetinado Ld Eliane(Cód. Forn. 8045527)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-eliane-brera-cimento-acetinado-90x90cm-cinza-retificado/38972/38972"
+        },
+        "261230": {
+            "sku": 261230,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823706/00823706-0.jpeg",
+            "nome": "Ducha higiênica com registro e derivação Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/ducha-higienica-com-registro-e-derivacao-stillo-cromada-docol/28821/28821"
+        },
+        "261232": {
+            "sku": 261232,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820406/00820406-0.jpeg",
+            "nome": "Misturador para banheiro Docol Stillo",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-mesa-bica-alta-stillo-cromado-docol/28815/28815"
+        },
+        "261410": {
+            "sku": 261410,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261410/261410-0jpeg",
+            "nome": "Acabamento Para Registro De Gaveta Level 1/2\" 3/4\" 1\"4900 Cromada Deca(Cód. Forn. 4900.C26.PQ)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-de-gaveta-level-1-2-3-4-14900-cromado-deca/25522/25522"
+        },
+        "261411": {
+            "sku": 261411,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261411/261411-0jpeg",
+            "nome": "Acabamento Monocomando Para Chuveiro Level Alta E Baixa Pressão 4993 Cromado Deca(Cód. Forn. 4993.C26.CHU)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-monocomando-para-chuveiro-level-alta-e-baixa-pressao-4993-cromado-deca/24194/24194"
+        },
+        "261496": {
+            "sku": 261496,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261496/261496-0jpeg",
+            "nome": "Revestimento Cerâmico 10x20cm Bold Metrô White Brilhante In Eliane(Cód. Forn. 180661)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-eliane-metro-white-brilhante-10x20cm-branco-bold/10826/10826"
+        },
+        "261656": {
+            "sku": 261656,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261656/261656-0jpeg",
+            "nome": "Azulejo 45x90cm Retificado Rig Legno La Biancogres(Cód. Forn. CE0475G1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-biancogres-rig-legno-acetinado-45x90cm-madeira-retificado/46654/46654"
+        },
+        "261659": {
+            "sku": 261659,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261659/261659-0jpeg",
+            "nome": "Azulejo 45x90cm Retificado Maximus Bianco La Biancogres(Cód. Forn. CE0765B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-biancogres-maximus-bianco-acetinado-45x90cm-branco-retificado/46651/46651"
+        },
+        "261665": {
+            "sku": 261665,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261665/261665-0jpeg",
+            "nome": "Porcelanato 26x106cm Retificado Scandinavo Bianco Ld Biancogres(Cód. Forn. C61742B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-scandinavo-bianco-acetinado-26x106cm-madeira-retificado/46641/46641"
+        },
+        "261677": {
+            "sku": 261677,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/44624/44624-0jpeg",
+            "nome": "Piso Cerâmico Embramaco Almond Brilhante 60x60cm Bege Retificado(Cód. Forn. RT60506)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/piso-ceramico-embramaco-almond-brilhante-60x60cm-bege-retificado/44624/44624"
+        },
+        "261679": {
+            "sku": 261679,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/44621/44621-0jpeg",
+            "nome": "Piso Cerâmico Embramaco Valência Bright Brilhante 60x60cm Bege Bold(Cód. Forn. 61507)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/piso-ceramico-embramaco-valencia-bright-brilhante-60x60cm-bold/44621/44621"
+        },
+        "261705": {
+            "sku": 261705,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261705/261705-0jpeg",
+            "nome": "Porcelanato 90x90cm Retificado Calacata Altissimo Lux Lc Biancogres(Cód. Forn. CD0261U1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-calacata-altis-lux-polido-90x90cm-marmore-retificado/43643/43643"
+        },
+        "261709": {
+            "sku": 261709,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261709/261709-0jpeg",
+            "nome": "Porcelanato 90x90cm Retificado Calacata Altissimo Satin Ld Biancogres(Cód. Forn. CC0261A1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-calacata-altis-satin-acetinado-90x90cm-marmore-retificado/43639/43639"
+        },
+        "261710": {
+            "sku": 261710,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261710/261710-0jpeg",
+            "nome": "Azulejo 32x60cm Retificado Rig Legno La Biancogres(Cód. Forn. BR0475G1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-biancogres-rig-legno-acetinado-32x60cm-madeira-retificado/43610/43610"
+        },
+        "261738": {
+            "sku": 261738,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261738/261738-0jpeg",
+            "nome": "Porcelanato Retificado 26x106cm Liverpool Ld Biancogres(Cód. Forn. C61661L1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-liverpool-acetinado-26x106cm-madeira-retificado/40549/40549"
+        },
+        "261739": {
+            "sku": 261739,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/40545/40545-0jpeg",
+            "nome": "Revestimento Biancogres Originale Bianco Acetinado 32x60cm Branco Retificado(Cód. Forn. BR0112I1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-biancogres-originale-bianco-acetinado-32x60cm-branco-retificado/40545/40545"
+        },
+        "261798": {
+            "sku": 261798,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/261798/261798-0jpeg",
+            "nome": "Porcelanato Retificado 83x83cm Ad4 Chicago Grigio Le Biancogres(Cód. Forn. BF0246I1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-chicago-grigio-ad4-83x83cm-cimento-retificado/38427/38427"
+        },
+        "261806": {
+            "sku": 261806,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/38230/38230-0jpeg",
+            "nome": "Porcelanato Biancogres Carvalho Acetinado 26x106cm Madeira Retificado(Cód. Forn. C61342N1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-carvalho-acetinado-26x106cm-madeira-retificado/38230/38230"
+        },
+        "261928": {
+            "sku": 261928,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/31663/31663-0jpeg",
+            "nome": "Revestimento Incesa Artico Cetim Acetinado 32x60cm Branco Retificado(Cód. Forn. BR0476C1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-incesa-artico-cetim-acetinado-32x60cm-branco-retificado/31663/31663"
+        },
+        "262002": {
+            "sku": 262002,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262002/262002-0jpeg",
+            "nome": "Porcelanato Esmaltado 26x106cm Retificado Thimos Caramello Rústico Ld Biancogres(Cód. Forn. C61465C1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-onix-bianco-lux-polido-60x120cm-retificado/57436/57436"
+        },
+        "262008": {
+            "sku": 262008,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/28882/28882-0jpeg",
+            "nome": "Porcelanato Biancogres Legno Maso Acetinado 26x106cm Madeira Retificado(Cód. Forn. C61305M1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-legno-maso-acetinado-26x106cm-madeira-retificado/28882/28882"
+        },
+        "262013": {
+            "sku": 262013,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262013/262013-0jpeg",
+            "nome": "Azulejo Monoporosa 32x60cm Retificado Stelle Bianche Acetinado La Biancogres(Cód. Forn. BR0256B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-biancogres-stelle-bianche-acetinado-32x60cm-branco-retificado/28703/28703"
+        },
+        "262094": {
+            "sku": 262094,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262094/262094-0jpeg",
+            "nome": "Piso 60x60cm Bold Toronto Beige Externo Ld Biancogres(Cód. Forn. BN0386T1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-thimos-caramello-rustico-acetinado-26x106cm-madeira-retificado/28976/28976"
+        },
+        "262097": {
+            "sku": 262097,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/25418/25418-0jpeg",
+            "nome": "Piso Cerâmico Biancogres Oxford Grigio Acetinado 60x60cm Cinza Bold(Cód. Forn. BN0383G1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/piso-ceramico-biancogres-oxford-grigio-acetinado-60x60cm-cinza-bold/25418/25418"
+        },
+        "262915": {
+            "sku": 262915,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/262915/262915-0jpeg",
+            "nome": "Porcelanato 90x90cm Retificado Dolmen Cinza Acetinado Eliane(Cód. Forn. 8045538)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-eliane-dolmen-acetinado-90x90cm-cinza-retificado/46971/46971"
+        },
+        "266945": {
+            "sku": 266945,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820469/00820469-0.jpeg",
+            "nome": "Misturador para banheiro Docol Stillo cobre escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-mesa-stillo-bica-baixa-cobre-escovado-docol/45863/45863"
+        },
+        "266946": {
+            "sku": 266946,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823969/00823969-0.jpeg",
+            "nome": "Acabamento para registro DocolBase 1/2\", 3/4\" e 1\" Docol Stillo cobre escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-stillo-1-2-3-4-1-cobre-escovado-docol/45655/45655"
+        },
+        "266951": {
+            "sku": 266951,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00820470/00820470-0.jpeg",
+            "nome": "Misturador para banheiro Docol Stillo grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-mesa-stillo-bica-alta-grafite-escovado-docol/44452/44452"
+        },
+        "266954": {
+            "sku": 266954,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/fa9d73a7-e1d8-48a2-8cf6-346a71a96c9d/1bdb8f10-299e-4ddc-837c-47598acd177c.webp",
+            "nome": "Torneira para banheiro Docol Stillo cobre escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-stillo-bica-baixa-cobre-escovado-docol/44341/44341"
+        },
+        "266958": {
+            "sku": 266958,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823770/00823770-0.jpeg",
+            "nome": "Ducha higiênica com registro e derivação Docol Stillo grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/ducha-higienica-com-registro-e-derivacao-stillo-grafite-escovado-docol/43679/43679"
+        },
+        "267013": {
+            "sku": 267013,
+            "categoria": "Chuveiros e Duchas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/6d7068eb-2d87-45a8-85e0-4c076b04d988/0c9767dd-145d-4eec-9997-0ded5b8b6b70.webp",
+            "nome": "Chuveiro Docol Heaven Q150",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/chuveiro-de-parede-quadrado-heaven-q150-cromado-docol/40212/40212"
+        },
+        "267043": {
+            "sku": 267043,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00878006/00878006-0.jpeg",
+            "nome": "Misturador para banheiro de parede Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-parede-city-bica-baixa-cromada-docol/31804/31804"
+        },
+        "267577": {
+            "sku": 267577,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00902057/00902057-0.jpeg",
+            "nome": "Misturador para cozinha de parede Docol Spice preto",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-cozinha-de-parede-spice-cromada-preta-docol/37721/37721"
+        },
+        "267578": {
+            "sku": 267578,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00904857/00904857-0.jpeg",
+            "nome": "Torneira para cozinha de parede Docol Spice preta",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-de-parede-spice-para-cozinha-cromada-preta-docol/37720/37720"
+        },
+        "268164": {
+            "sku": 268164,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/6053a751-e755-4415-b50a-16d428d37eaa/bbe88c64-f75b-4f8b-aa48-79f1c1f97349.webp",
+            "nome": "Misturador para cozinha de parede Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-cozinha-de-parede-city-cromada-docol/31810/31810"
+        },
+        "268165": {
+            "sku": 268165,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/30f1d835-8212-4a3f-a45b-2396aad3f398/40441b2a-ec99-483c-9541-c9676a0131ac.webp",
+            "nome": "Torneira para banheiro de parede Docol City",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-parede-bica-alta-city-cromada-docol/31802/31802"
+        },
+        "269055": {
+            "sku": 269055,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00823970/00823970-0.jpeg",
+            "nome": "Acabamento para registro DocolBase 1/2\", 3/4\" e 1\" Docol Stillo grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-stillo-3-4-grafite-escovado-docol/44453/44453"
+        },
+        "269200": {
+            "sku": 269200,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/12898/12898-0jpeg",
+            "nome": "Cuba de Embutir Luna 35 BL Em Aço Inox Pré-polido Tramontina(Cód. Forn. 94073507)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-embutir-luna-35-bl-em-aco-inox-pre-polido-tramontina/12898/12898"
+        },
+        "269748": {
+            "sku": 269748,
+            "categoria": "Vasos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/9406/9406-0jpeg",
+            "nome": "Caixa Acoplada Para Vaso Sanitário Monte Carlo 3/6 Litros Branco Deca(Cód. Forn. CD.01F.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/caixa-acoplada-para-vaso-sanitario-monte-carlo-3-6-litros-branco-deca/09406/09406"
+        },
+        "269752": {
+            "sku": 269752,
+            "categoria": "Lavatórios",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/41890/41890-0jpeg",
+            "nome": "Lavatório Suspenso Izy 39,5x29,5cm L.15.17 Branco Deca(Cód. Forn. L.15.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/lavatorio-suspenso-izy-39-5x29-5cm-l-15-17-branco-deca/041890/041890"
+        },
+        "269756": {
+            "sku": 269756,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/7948/7948-0jpeg",
+            "nome": "Cuba De Sobrepor Oval 50x37cm L680 Branco Deca(Cód. Forn. L.680.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-sobrepor-oval-50x37cm-l680-branco-deca/07948/07948"
+        },
+        "269850": {
+            "sku": 269850,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/41651/41651-0jpeg",
+            "nome": "Cuba De Sobrepor Redonda 31cm L50 Branco Deca(Cód. Forn. L.50.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-sobrepor-redonda-31cm-l50-branco-deca/041651/041651"
+        },
+        "269852": {
+            "sku": 269852,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/41642/41642-0jpeg",
+            "nome": "Cuba De Embutir Oval 49x36cm L37 Branca Deca(Cód. Forn. L.37.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-embutir-oval-49x36cm-l37-branca-deca/041642/041642"
+        },
+        "270632": {
+            "sku": 270632,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/0b436776-5648-4716-afcc-a25f9722f617/aa846878-74dc-47dc-ad40-c585f773f045.webp",
+            "nome": "Misturador para banheiro 290 Liss grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-mesa-liss-grafite-escovado-docol/40889/40889"
+        },
+        "271455": {
+            "sku": 271455,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/fe793028-52fe-4533-9fb1-77144cbcff94/0a209459-c03f-42f2-b88b-cacb37a7a0af.webp",
+            "nome": "Acabamento para registro DocolBase 3/4\" Minima grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/acabamento-para-registro-minima-1-2-3-4-1-grafite-escovado-docol/45638/45638"
+        },
+        "271604": {
+            "sku": 271604,
+            "categoria": "Chuveiros e Duchas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/cd50d45a-28f5-488e-9f81-771bd4cfa63a/75ca866e-d052-4919-931a-7f83db10dc0c.webp",
+            "nome": "Chuveiro de teto Docol Eden R300",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/chuveiro-de-teto-redondo-eden-r300-cromada-docol/45790/45790"
+        },
+        "271612": {
+            "sku": 271612,
+            "categoria": "Chuveiros e Duchas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/9fdbf34f-64fc-4d31-9c8d-958e093de354/a15596bb-4067-43d8-8402-95832c4a40da.webp",
+            "nome": "Chuveiro de teto Docol Heaven Q200 níquel escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/chuveiro-de-teto-quadrado-heaven-q200-niquel-escovado-docol/45798/45798"
+        },
+        "271686": {
+            "sku": 271686,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00832469/00832469-0.jpeg",
+            "nome": "Misturador para banheiro de parede Docol Stillo cobre escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-parede-stillo-cobre-escovado-docol/45880/45880"
+        },
+        "271688": {
+            "sku": 271688,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00832470/00832470-0.jpeg",
+            "nome": "Misturador para banheiro de parede Docol Stillo grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/misturador-para-lavatorio-de-parede-stillo-grafite-escovado-docol/45882/45882"
+        },
+        "271855": {
+            "sku": 271855,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/b86456b2-a68b-43f1-aa90-6611c38d94ce/62bd13ca-7a88-4d22-b335-66856f3bc6f2.webp",
+            "nome": "Torneira para banheiro Minima grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-minima-bica-baixa-grafite-escovado-docol/46050/46050"
+        },
+        "271861": {
+            "sku": 271861,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00824869/00824869-0.jpeg",
+            "nome": "Torneira para banheiro bica alta 90° Docol Stillo cobre escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-stillo-bica-alta-90-cobre-escovado-docol/46056/46056"
+        },
+        "271863": {
+            "sku": 271863,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/docol/images/00824870/00824870-0.jpeg",
+            "nome": "Torneira para banheiro bica alta 90° Docol Stillo grafite escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-mesa-stillo-bica-alta-90-grafite-escovado-docol/46058/46058"
+        },
+        "271909": {
+            "sku": 271909,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/e39a525c-6b43-477e-a7b3-8c223ea3d1bc/d4e866d5-c17b-4154-a810-264ac3000e37.webp",
+            "nome": "Torneira para banheiro de parede Docol Stillo cobre escovado",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-lavatorio-de-parede-stillo-cobre-escovado-docol/46111/46111"
+        },
+        "273258": {
+            "sku": 273258,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/e47512d8-e0a3-4bf2-92ba-abed7df229b5/808cd1d2-a60b-4c7f-9d94-a267f890be46.webp",
+            "nome": "Cuba De Embutir Retangular 48x36cm L375 Branco Deca",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-embutir-retangular-48x36cm-l375-branco-deca/26315/26315"
+        },
+        "273292": {
+            "sku": 273292,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/b7462ed8-1d3f-4739-b62a-6e533466a3b8/8faf96c0-a53d-4cf4-84b6-c52e1bd60732.webp",
+            "nome": "Cuba De Embutir/sobrepor Retangular 57x41cm L1061 Branco Deca",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-embutir-sobrepor-retangular-57x41cm-l1061-branco-deca/28098/28098"
+        },
+        "274241": {
+            "sku": 274241,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/51524/51524-0jpeg",
+            "nome": "Porcelanato Elizabeth Luxury Acetinado 84x84cm Bege Retificado(Cód. Forn. 1040001002908)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-elizabeth-luxury-acetinado-84x84cm-bege-retificado/51524/51524"
+        },
+        "274533": {
+            "sku": 274533,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/52674/52674-0jpeg",
+            "nome": "Porcelanato Elizabeth Spazzolato Vecchio Externo 84x84cm Cinza Retificado(Cód. Forn. 1040001002932)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-elizabeth-spazzolato-vecchio-externo-84x84cm-cinza-retificado/52674/52674"
+        },
+        "274567": {
+            "sku": 274567,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/e9dbb83a-940b-4606-90ea-3636402eea0c/0b8c9226-5253-4f89-8bc3-a7c1fcc094cf.webp",
+            "nome": "Cuba De Embutir Redonda 36cm L41 Branco Deca(Cód. Forn. L.41.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-embutir-redonda-36cm-l41-branco-deca/07021/07021"
+        },
+        "275007": {
+            "sku": 275007,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/42263/42263-0jpeg",
+            "nome": "Cuba De Semiencaixe Quadrada 41cm Com Mesa L830 Branca Deca(Cód. Forn. L.830.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-semiencaixe-quadrada-41cm-com-mesa-l830-branca-deca/042263/042263"
+        },
+        "275430": {
+            "sku": 275430,
+            "categoria": "Vasos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/4128176d-031b-443b-a8d1-6d0820ad1e58/d85c4a0e-0f32-40aa-9661-59eed03dbba9.webp",
+            "nome": "Kit Vaso Sanitário Com Caixa Acoplada E Acessórios Flex Branco Deca",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/kit-vaso-sanitario-com-caixa-acoplada-e-acessorios-flex-branco-deca/49531/49531"
+        },
+        "275433": {
+            "sku": 275433,
+            "categoria": "Vasos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/dca9ede1-419a-4a77-940b-413cf4e281fe/8bf9c1f3-78be-42b1-bbe1-45bbe65732db.webp",
+            "nome": "Kit Vaso Sanitário Com Caixa Acoplada E Acessórios Fast Branco Deca",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/kit-vaso-sanitario-com-caixa-acoplada-e-acessorios-fast-branco-deca/49534/49534"
+        },
+        "275491": {
+            "sku": 275491,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/53820/53820-0jpeg",
+            "nome": "Piso Vinílico Injoy Papoula 2mm Tarkett 123x20,8cm(Cód. Forn. 24124384)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/piso-vinilico-injoy-papoula-2mm-tarkett-123x20-8cm/53820/53820"
+        },
+        "275642": {
+            "sku": 275642,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/55068/55068-0jpeg",
+            "nome": "Porcelanato Delta Barcelona Plata Polido 84x84cm Cinza Retificado(Cód. Forn. 2225-A)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-delta-barcelona-plata-polido-84x84cm-cinza-retificado/55068/55068"
+        },
+        "275921": {
+            "sku": 275921,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/42218/42218-0jpeg",
+            "nome": "Cuba De Embutir Oval 40x30cm L59 Branco Deca(Cód. Forn. L.59.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-embutir-oval-40x30cm-l59-branco-deca/042218/042218"
+        },
+        "279862": {
+            "sku": 279862,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/279862/279862-0jpeg",
+            "nome": "Azulejo Retificado Rig Bianco Biancogres 45X90Cm(Cód. Forn. CE0475B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/azulejo-retificado-rig-bianco-biancogres-45x90cm/57406/57406"
+        },
+        "279863": {
+            "sku": 279863,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/57407/57407-0jpeg",
+            "nome": "Azulejo Retificado Folhas Bianco Biancogres 45X90Cm(Cód. Forn. CE0761B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/azulejo-retificado-folhas-bianco-biancogres-45x90cm/57407/57407"
+        },
+        "279865": {
+            "sku": 279865,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/57409/57409-0jpeg",
+            "nome": "Azulejo Retificado Botanic Biancogres 45X90Cm(Cód. Forn. CE0794B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/azulejo-retificado-botanic-biancogres-45x90cm/57409/57409"
+        },
+        "280761": {
+            "sku": 280761,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/280761/280761-0jpeg",
+            "nome": "Porcelanato Retificado Onix Bianco Lux Polido Biancogres 60x120Cm(Cód. Forn. CI0599B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-biancogres-tradizionale-bianco-brilhante-32x60cm-retificado/31925/31925"
+        },
+        "280886": {
+            "sku": 280886,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/59646/59646-0jpeg",
+            "nome": "Cuba de Sobrepor Retangular Com Mesa e Tampo Skyline Horizon 80x38cm Onix Roca(Cód. Forn. A327278648)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-sobrepor-retangular-com-mesa-e-tampo-skyline-horizon-80x38cm-onix-roca/59646/59646"
+        },
+        "281077": {
+            "sku": 281077,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/5e40097e-aacc-4414-8260-bf4fba9f567b/thumbs/19b7b975-22b0-4551-9054-82029e2534af.jpg",
+            "nome": "CHARLESTON 120X120 NAT RET",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-charleston-natural-portobello-120x120cm/59915/59915"
+        },
+        "281079": {
+            "sku": 281079,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/c1488a20-517e-4ed2-bb3f-b4c049efd49c/thumbs/f070bd12-c2c9-4ad6-9274-099066014316.jpg",
+            "nome": "VERANO BRISA 14,5X14,5 EXT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-bold-verano-brisa-externo-portobello-14-5x14-5cm/59917/59917"
+        },
+        "281080": {
+            "sku": 281080,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/108e76e4-d3ac-41da-bbf5-c36e359f5d01/thumbs/e5e79b7c-a2af-4b3c-81b7-208bb9f8c76e.jpg",
+            "nome": "VERANO CIELO 14,5X14,5 EXT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-bold-verano-cielo-externo-portobello-14-5x14-5cm/59918/59918"
+        },
+        "281082": {
+            "sku": 281082,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/9fabf423-ef2c-4f16-a607-2e4a86ed7fd2/thumbs/a0789fdd-c3e5-42c9-9fae-9d57bdaa753e.jpg",
+            "nome": "VERANO FRESCO 14,5X14,5 EXT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-bold-verano-fresco-externo-portobello-14-5x14-5cm/59920/59920"
+        },
+        "281083": {
+            "sku": 281083,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/002d30ee-c61f-4897-9b9d-6fd87d036962/thumbs/a8533213-ec03-4d95-8cc9-91ec07502941.jpg",
+            "nome": "GAIA JADE 20,5X20,5 MATT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-gaia-jade-matte-portobello-20-5x20-5cm/59921/59921"
+        },
+        "281084": {
+            "sku": 281084,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/97c0f3ed-9b60-44f2-adca-874452129acf/thumbs/fc5a58f0-e429-422c-9b94-5f7d6026f4f8.jpg",
+            "nome": "GAIA JADE DECOR 20,5X20,5 MATT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-gaia-jade-decor-matte-portobello-20-5x20-5cm/59922/59922"
+        },
+        "281085": {
+            "sku": 281085,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/c12e909d-d5d1-4a50-b89f-50ee24dd4942/thumbs/c680d978-d27a-4428-8deb-5b7aa17a5221.jpg",
+            "nome": "GAIA OPALINA 20,5X20,5 MATT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-gaia-opalina-matte-portobello-20-5x20-5cm/59923/59923"
+        },
+        "281086": {
+            "sku": 281086,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/669a06c8-7a35-4a5c-a8b4-3f63b05d3e44/thumbs/9a4a58c5-0680-435b-8753-05582293d2b1.jpg",
+            "nome": "GAIA OPALINA DECOR 20,5X20,5 MATT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-gaia-opalina-decor-matte-portobello-20-5x20-5cm/59924/59924"
+        },
+        "281087": {
+            "sku": 281087,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/ed4f09d1-4a54-4113-b57c-f8ec1e72149a/thumbs/0fd2f239-77f0-4e85-8db3-98d060fb9169.jpg",
+            "nome": "GAIA TURMALINA 20,5X20,5 MATT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/revestimento-gaia-turmalina-matte-portobello-20-5x20-5cm/59925/59925"
+        },
+        "281089": {
+            "sku": 281089,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/da9ef147-bd8c-4a83-bb5a-fc71b67fa16d/thumbs/909dc7e6-797e-4296-837d-75f86cdb8e00.jpg",
+            "nome": "MALIBU LAKE 20X20 EXT BOLD",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-portobello-malibu-lake-externo-20x20cm-bold/59927/59927"
+        },
+        "281092": {
+            "sku": 281092,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/4bd5e3c4-b434-4db8-804b-01735b4681d5/ad305420-3d35-45d4-a928-52bdfbbb2650.jpg",
+            "nome": "CHARLESTON 90X180 POL RET",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-charleston-polido-a-portobello-90x180cm/72728/72728"
+        },
+        "281093": {
+            "sku": 281093,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/8eccc085-895d-4f11-bc09-91bf0e14b449/thumbs/4e2981b0-6c79-4bee-85f7-9f58842e5600.jpg",
+            "nome": "CHARLESTON 90X90 POL RET",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-charleston-polido-portobello-90x90cm/59931/59931"
+        },
+        "281094": {
+            "sku": 281094,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/fe3358eb-812e-4e38-91fe-928e213f8634/thumbs/485dad8d-19cb-4315-91bf-6ac05c01f4ce.jpg",
+            "nome": "BEATS ASH 90X90 EXT RET",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-beats-ash-externo-portobello-90x90cm/59932/59932"
+        },
+        "281096": {
+            "sku": 281096,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/1a469325-ee95-4ddf-8923-ed2e731f10eb/5f686942-07eb-455d-ab2a-7e2489bdabeb.jpg",
+            "nome": "BEATS BONE 90X90 NAT RET",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-beats-bone-natural-portobello-90x90cm/59934/59934"
+        },
+        "281097": {
+            "sku": 281097,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/633be190-7457-4090-a14d-82e96f31bb2f/b90838bd-2339-4a59-b818-6338962e9820.jpg",
+            "nome": "BEATS SAGE 90X90 NAT RET",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-beats-sage-natural-portobello-90x90cm/59935/59935"
+        },
+        "281098": {
+            "sku": 281098,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/d841e45a-d28f-4f5b-8bce-8bc22997a088/thumbs/c87b88f4-b94b-42f4-a8e6-2a4691a9e67f.jpg",
+            "nome": "CHARLESTON 90X90 NAT RET",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-charleston-natural-portobello-90x90cm/59936/59936"
+        },
+        "282057": {
+            "sku": 282057,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/60263/60263-0jpeg",
+            "nome": "Porcelanato Embramaco Gran Ônix Premium Acetinado 62x122Cm Mármore Retificado(Cód. Forn. 60570)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-embramaco-gran-onix-premium-acetinado-62x122cm-retificado/60263/60263"
+        },
+        "282058": {
+            "sku": 282058,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/60264/60264-0jpeg",
+            "nome": "Porcelanato Embramaco Gran Carbon Off White Acetinado 62x122Cm Branco Retificado(Cód. Forn. 60571)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-embramaco-gran-carbon-off-white-acetinado-62x122cm-retificado/60264/60264"
+        },
+        "282091": {
+            "sku": 282091,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/60466/60466-0jpeg",
+            "nome": "Porcelanato Incesa Paviment Gray Acetinado 60x60Cm Cinza Retificado(Cód. Forn. BP1453G1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-incesa-paviment-gray-acetinado-60x60cm-cinza-retificado/60466/60466"
+        },
+        "282285": {
+            "sku": 282285,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/282285/282285-0jpeg",
+            "nome": "Porcelanato Retificado Royal Black Lux A/lc Biancogres 60x120 cm(Cód. Forn. CI0297B1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-biancogres-royal-black-lux-polido-60x120cm-preto-retificado/57438/57438"
+        },
+        "282291": {
+            "sku": 282291,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61197/61197-0jpeg",
+            "nome": "Porcelanato Embramaco Gran Calacata Gold Acetinado 62x122cm Mármore Retificado(Cód. Forn. 60520)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-embramaco-gran-calacata-gold-acetinado-62x122cm-marmore-retificado/61197/61197"
+        },
+        "282294": {
+            "sku": 282294,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/282294/282294-0jpeg",
+            "nome": "Porcelanato Retificado Clark Biancogres 60x60 cm(Cód. Forn. BP1590C1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-clark-biancogres-60x60-cm/61249/61249"
+        },
+        "282297": {
+            "sku": 282297,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61269/61269-0jpeg",
+            "nome": "Piso Semi Grês Retificado Calacata Oro Lux Prime P75280 Embramaco 75x75 cm(Cód. Forn. P75280)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/piso-ceramico-retificado-calacata-oro-lux-prime-p75280-embramaco-75x75-cm/61269/61269"
+        },
+        "282345": {
+            "sku": 282345,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/de41f60f-9dd0-44e5-b86a-133e323d3c64/bbc9f39f-1917-4de0-907a-3fa30cf460e3.webp",
+            "nome": "Cuba De Apoio Oval Slim Branco Deca 50 cm",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-apoio-oval-slim-branco-deca-50-cm/61526/61526"
+        },
+        "282346": {
+            "sku": 282346,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61527/61527-0jpeg",
+            "nome": "Cuba De Apoio Oval Com Mesa Slim Branco Deca 60 cm(Cód. Forn. L.14060.M.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-apoio-oval-com-mesa-slim-branco-deca-60-cm/61527/61527"
+        },
+        "282354": {
+            "sku": 282354,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61535/61535-0jpeg",
+            "nome": "Cuba De Apoio Quadrada Slim Branco Deca 30 cm(Cód. Forn. L.11030.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-apoio-quadrada-slim-branco-deca-30-cm/61535/61535"
+        },
+        "282356": {
+            "sku": 282356,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/reviewer-production/references/d7e9bb31-9a13-4985-8976-a7dee4ec56ab/68943245-4016-4329-9e15-db16c82e2d48.webp",
+            "nome": "Cuba De Apoio Quadrada Slim Deca 40 cm",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-apoio-quadrada-slim-deca-40-cm/61537/61537"
+        },
+        "282362": {
+            "sku": 282362,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/61543/61543-0jpeg",
+            "nome": "Cuba De Apoio Redonda Com Mesa Slim Branco Deca 40 cm(Cód. Forn. L.12040.M.17)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-de-apoio-redonda-com-mesa-slim-branco-deca-40-cm/61543/61543"
+        },
+        "287045": {
+            "sku": 287045,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/287045/287045-0jpeg",
+            "nome": "Porcelanato Retificado Marmo Egeu Satin Biancogres 90x90 cm(Cód. Forn. CC0298G1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-marmo-egeu-satin-biancogres-90x90-cm/62073/62073"
+        },
+        "287060": {
+            "sku": 287060,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/287060/287060-0jpeg",
+            "nome": "Porcelanato Retificado Cemento Hidráulico Biancogres 60x60 cm(Cód. Forn. BP1209H1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-cemento-hidraulico-biancogres-60x60-cm/64733/64733"
+        },
+        "287114": {
+            "sku": 287114,
+            "categoria": "Metais",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/287114/287114-0jpeg",
+            "nome": "Torneira para Cozinha de Mesa Nova Vitalis Cromado Docol(Cód. Forn. 1579306)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/torneira-para-cozinha-de-mesa-com-filtro-purificador-nova-vitalis-cromado-docol/65219/65219"
+        },
+        "287451": {
+            "sku": 287451,
+            "categoria": "Cubas",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/68267/68267-0jpeg",
+            "nome": "Cuba Apoio Mesa Rt19 Branco Docol 48,5x38x14cm(Cód. Forn. 1668126)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/cuba-apoio-mesa-rt19-branco-docol-48-5x38x14cm/68267/68267"
+        },
+        "289728": {
+            "sku": 289728,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/62368/62368-0jpeg",
+            "nome": "Porcelanato Retificado Gran Ducal Satiny 60582 A/ld Embramaco 62x122cm(Cód. Forn. 60582)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-gran-ducal-satiny-60582-a-ld-embramaco-62x122cm/62368/62368"
+        },
+        "291762": {
+            "sku": 291762,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/291762/291762-0jpeg",
+            "nome": "Azulejo Retificado Rig Palha A/la Biancogres 45x90cm(Cód. Forn. CE0475P1)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/azulejo-retificado-rig-palha-a-la-biancogres-45x90cm/72921/72921"
+        },
+        "292348": {
+            "sku": 292348,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/72118/72118-0jpeg",
+            "nome": "Porcelanato Retificado Vogue Plus 83024 A/ld Embramaco 83x83cm(Cód. Forn. 83024)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-vogue-plus-83024-a-ld-embramaco-83x83cm/72118/72118"
+        },
+        "310299": {
+            "sku": 310299,
+            "categoria": "Pisos e Revestimentos",
+            "urlImage": "https://storage.googleapis.com/r2u-integrations-bucket/abc-da-construcao/images/73586/73586-0jpeg",
+            "nome": "Porcelanato Retificado Mos Opera Piano Polido Portobello 60x60cm(Cód. Forn. 27787E)",
+            "urlPlataforma": "https://vendas.digitalabc.com.br/produto/porcelanato-retificado-mos-opera-piano-polido-portobello-60x60cm/73586/73586"
+        }
+    };
+
+
+    ; (async () => {
+        const isMobileR2U = () => (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+
+        await R2U.init({ customerId: 'f8e75cbb-150d-4c22-92b6-77eff4a5a849' });
+        const sku = (new URLSearchParams(window.location.search)).get('sku') ?? false;
+        const isActive = await R2U.sku.isActive(sku)
+
+        if (sku && isActive) {
+            R2U.sku.getData(sku).then((info) => {
+                // pdpUrl
+                let cardText = document.querySelectorAll('.card-body .card-text');
+                cardText[0].innerText = `SKU: ${sku}`;
+                cardText[1].innerText = `${info.name}`;
+                /* document.querySelector('.visite').setAttribute('href', info.pdpUrl); */
+                document.querySelector('.visite').setAttribute('href', produtos[sku].urlPlataforma);
+                /* document.querySelector('.comprar').setAttribute('href', `https://checkout.abcdaconstrucao.com.br/produto/adicionar?p=${sku}`); */
+
+            });
+
+            const fallbackOptions = {
+                //adiciona a mensagem de alerta
+                alertMessage: 'AR não suportado por esse device',
+                //abre um visualizador 3D em uma tela de aviso
+                fallback: 'viewer'
+            }
+
+            const arButton = document.getElementById('ar-button')
+            await R2U.ar.attach({
+                element: arButton,
+                sku,
+                fallbackOptions: fallbackOptions,
+                // showInstructions: 'always'
+                // showInstructions: 'once' | 'always' | 'never'
+            })
+
+            const viewer = document.getElementById('3d-viewer')
+            await R2U.viewer.create({
+                element: viewer,
+                sku,
+                viewerProps: {
+                    activeShadow: !isMobileR2U(),
+                    shadowRadius: 20,
+                    shadowOpacity: 0.2
+                },
+                autoRotate: false
+                // popup: false
+            })
+
+            const element = document.getElementById('qrCode');
+            if (element) {
+                await R2U.qrCode.create({ element, sku });
+            }
+
+        }
+    })()
+</script>
+
+</html>

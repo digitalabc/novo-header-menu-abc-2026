@@ -1,0 +1,104 @@
+query ProductPage($id: Long!,
+									$selections: [AttributeFilterInput]){
+  product(productId:$id) {
+    ...SingleProductData    
+    attributeSelections (selected: $selections) {
+      ...AttributeSelectionsData      
+    }
+  }
+}
+
+fragment AttributeSelectionsData on AttributeSelection{
+  canBeMatrix
+      matrix {
+        row {
+          name
+          displayType
+          values {
+            value
+            printUrl
+          }
+        }
+        column {
+          name
+          displayType
+          values {
+            value
+            printUrl
+          }
+        }
+        data {
+          productVariantId
+          available
+          stock
+        }
+      }
+      selectedVariant{
+        id
+        alias
+        available
+        images {
+          fileName
+          url
+          print
+        }
+        prices {
+          listPrice
+          price
+          installmentPlans{
+            displayName
+            name
+            installments{
+              discount
+              fees
+              number
+              value
+            }
+          }
+        }
+        productId
+        productVariantId
+        stock
+      }
+      selections{
+        attributeId
+        displayType
+        name
+        varyByParent
+        values{
+          alias
+          available
+          printUrl
+          selected
+          value
+        }
+      }
+}
+
+fragment SingleProductData on SingleProduct {
+  productId
+  productName
+  productVariantId
+  alias
+  stock
+  available
+  images {
+    url
+    print
+    fileName
+  }
+  prices {
+    listPrice
+    price
+    installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+    }
+  }  
+}

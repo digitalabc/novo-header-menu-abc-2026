@@ -1,0 +1,61 @@
+{{ ##
+    Description: Renders mini cart contents
+    Params:
+        - Uses SnippetQueries/mini_cart.graphql
+    Usage:
+        await client.snippet.render("mini_cart_snippet.html", ...);
+## }}
+{{~ 
+    checkoutUrl = ""
+    productsCount = 0 
+    products = null 
+
+    if data.checkout 
+    if store.is_local
+        checkoutUrl = data.checkout.url
+    else 
+        index = data.checkout.url | string.index_of "/" startIndex: 8           #ignores the first 8 characters 'https://'
+        checkoutUrl = data.checkout.url | string.slice 0 lenght: (index + 1)    #removes the cart Id from the URL
+    end
+
+    productsCount = data.checkout.products.size
+    products = data.checkout.products
+    else 
+    checkoutUrl = data.shop.checkout_url
+    end 
+~}}
+<div class="cart-href-div" onmouseover="setCartDivVisibility('visible')" onmouseout="setCartDivVisibility('hidden')">
+    <a class="cart-href" id="cart-href" href="{{ checkoutUrl }}" onclick='miniCartPartnerAssociate("{{ checkoutUrl }}");'>
+        <span class='badge badge-warning' id='label-cart-count'>{{ productsCount }}</span>
+        <img id="cart-icon" src="{{- store.urls.static_img-}}cart.png?v={{store.last_modified -}}" width="40px" height="40px" alt="cart">
+    </a>
+</div>
+<div class="flex-div">
+    <div id="checkout-list-div" class="checkout-list-div" onmouseover="setCartDivVisibility('visible')" onmouseout="setCartDivVisibility('hidden')">
+        {{~ if products ~}}
+            <table>
+                <tr>
+                <th class="table-title">Produto</th>
+                <th class="quantity-column table-title">Quantidade</th>
+                </tr>
+                {{~ for product in products ~}}
+                    <tr>
+                        <td>
+                            <strong>{{ product.name }}</strong>
+                            <br>
+                            {{~ for attr in product.product_attributes ~}}
+                                {{ attr.name }}: {{ attr.value }};
+                            {{~ end ~}}
+                        </td>
+                        <td class="quantity-column">{{ product.quantity }}</td>
+                    </tr>
+                {{~ end ~}}
+            </table>
+            <br>
+            <h5>Total: {{ data.checkout.subtotal | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</h5>
+        {{~ else ~}}
+        <div class="empty-mini-cart-message"><h5>O carrinho está vazio!</h5></div>            
+        {{~ end ~}}
+    </div>
+    {{ gtm_cart_view checkout: data.checkout}}
+</div>

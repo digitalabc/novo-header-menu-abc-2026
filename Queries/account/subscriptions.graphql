@@ -1,0 +1,103 @@
+query Account(
+  $customerAccessToken: String!
+  $hasCustomerAccessToken: Boolean!
+) {
+  customer(customerAccessToken: $customerAccessToken)
+    @include(if: $hasCustomerAccessToken) {
+    customerId
+    customerName
+    customerType
+    email
+    addresses {
+      id
+      name
+      addressDetails
+      address
+      addressNumber
+      neighborhood
+      city
+      state
+      cep
+    }
+    subscriptions {
+      status
+      cancellationDate
+      coupon
+      date
+      intercalatedRecurrenceDate
+      nextRecurrenceDate
+      recurring {
+        name
+        days
+        description
+        recurringId
+        removed
+      }
+      products{
+        productVariantId
+        quantity
+        removed
+        subscriptionProductId
+        value
+      }
+      subscriptionGroupId
+      subscriptionId
+      orders {
+        date
+        coupon
+    		checkingAccount
+        orderId
+        paymentDate
+        payments{
+          status
+          discount
+          fees
+          installmentValue
+          installments
+          message
+          paymentOption
+          total
+          card{
+            brand
+          }
+          pix{
+            qrCode
+            qrCodeExpirationDate
+            qrCodeUrl
+          }
+          boleto{
+            digitableLine
+            paymentLink
+          }
+        }
+        products {
+          image
+          name
+          price
+          quantity
+          gift
+          salePrice
+          sku
+          unitaryValue
+          trackings {
+            code
+            url
+          }
+        }
+      }
+      deliveryAddress {
+        address
+        address2
+        addressDetails
+        addressNumber
+        cep
+        city
+        country
+        neighborhood
+        referencePoint
+        state
+        id
+      }
+    }
+  }
+}

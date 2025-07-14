@@ -1,0 +1,138 @@
+query Hotsite($url: String!,
+       $resultSize: Int, 
+       $offset: Int, 
+       $sortKey: ProductSortKeys, 
+       $sortDirection: SortDirection, 
+       $filters: [ProductFilterInput],
+       $maximumPrice: Decimal,
+       $minimumPrice: Decimal,
+			 $partnerAccessToken: String) {
+  hotsite (url:$url, partnerAccessToken: $partnerAccessToken) {
+    name
+    pageSize
+    banners {
+      bannerName
+      bannerUrl
+      position
+      urlOnClick
+      openNewTab
+      height
+      title
+      width
+      order
+    }
+    contents {
+      content
+      height
+      title
+      width 
+      position
+    }
+    breadcrumbs{
+      link
+      text
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    productsByOffset(
+      limit: $resultSize,
+      offset: $offset,
+      sortKey: $sortKey,
+      sortDirection: $sortDirection,
+      filters: $filters,
+      minimumPrice: $minimumPrice,
+      maximumPrice: $maximumPrice) {
+      totalCount
+      page
+      pageSize
+      items {
+        id
+        productId
+        productName
+        productVariantId
+        alias: aliasComplete
+        buyBox {
+          installmentPlans{
+            displayName
+            name
+            installments{
+              discount
+              fees
+              number
+              value
+            }
+          }
+          maximumPrice
+          minimumPrice
+          quantityOffers
+          sellers {
+            name
+          }
+        }
+        similarProducts{
+          alias
+          image
+          name
+          imageUrl(w: 50, h: 50)
+        }
+        images(width:275, height:275) {
+          url
+          print
+        }
+        available
+        prices {
+          listPrice
+          price
+          discountPercentage
+          installmentPlans{
+            displayName
+            name
+            installments{
+              discount
+              fees
+              number
+              value
+            }
+          }
+          bestInstallment {
+            name
+            displayName
+            discount
+            fees
+            number
+            value
+          }
+        }
+        promotions{
+          content
+          id
+          stamp
+          fullStampUrl
+          title
+          disclosureType
+        }
+        addToCartFromSpot
+      }
+    }
+    aggregations {
+      maximumPrice
+      minimumPrice
+      filters {
+        field
+        values {
+          name
+          quantity
+        }
+      }
+      priceRanges {
+        quantity
+        range
+      }
+    }
+  }
+}

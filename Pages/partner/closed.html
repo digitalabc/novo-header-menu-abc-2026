@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output_base", "output_partner"]}}
+  {{ header title: "Parceiro" store: store }}
+</head>
+<body class="bg-mainBg">
+  <header class="shadow-xl lg:shadow-none bg-lightBg">
+      {{ links }}
+      {{ head }}
+      {{ side_cart }}
+      {{ wake_overlay }}
+      {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+  </header>
+  <div class="wake-partner-wrapper">
+    <div class="partner-client">
+      {{ wake_partner_closed }}
+    </div>
+  </div>
+  {{ footer is_preview: is_preview store: store }}
+  {{ sdk_client }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_partner_closed"] }}
+  {{ asset type: "js" paths: ["components"] options: "async"}}
+</body>
+</html>

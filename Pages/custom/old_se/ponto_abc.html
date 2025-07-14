@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body>
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+
+  <div  id="pontoabc-new">
+    <section id="pontoabc-new-banner">
+      <div class="pontoabc-new">
+        <div id="pontoabc-new-banner-text">
+          <div class="pontoabc-new-pontoabc-logo">
+            <img src="https://recursos.abcdaconstrucao.com.br/i/PontoABC/logo-branca.png" alt="Ponto ABC" />
+          </div>
+          <div id="pontoabc-new-banner-text-span">
+            <span id="text-transforme">Transforme Seu Neg&oacute;cio</span><br>
+            <span id="text-seja">Seja parceiro de uma maiores redes de <br> acabamento do Brasil!</span>
+          </div>
+          <div class="pontoabc-new-buttons">
+            <div class="pontoabc-new-buttons-ajuste">
+              <a href="#pontoabc-new-form" class="pontoabc-new-btn pontoabc-new-btn-red">Quero ser um parceiro</a>
+              <div style="width: 20px;"></div>
+              <a href="#pontoabc-new-vantagens" class="pontoabc-new-btn pontoabc-new-btn-transparent">Conhe&ccedil;a os
+                benef&iacute;cios</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="pontoabc-new">
+      <section id="pontoabc-new-pontoabc">
+        <div class="pontoabc-new-pontoabc-logo">
+          <img src="https://recursos.abcdaconstrucao.com.br/i/PontoABC/logo-cor.png" alt="Ponto ABC" />
+        </div>
+        <div id="pontoabc-new-pontoabc-text">
+          <p>O Ponto ABC &eacute; uma parceria entre ABC da Constru&ccedil;&atilde;o e lojas de materiais de
+            constru&ccedil;&atilde;o locais, que desejam refor&ccedil;ar o seu mix de acabamento. Nosso
+            principal objectivo &eacute; fortalecer o seu neg&oacute;cio fornecendo v&aacute;rios
+            benef&iacute;cios
+            que s&oacute; um parceiro ABC tem acesso, como por exemplo:</p>
+
+        </div>
+        <div id="pontoabc-new-pontoabc-cards">
+          <div class="pontoabc-new-card pontoabc-new-card-color">
+            <p><span class="pontoabc-new-cards-title">Acesso ao mix especializado em acabamentos</span>
+              <br>
+              Acesso ao mix especializado em acabamentos, sem a necessidade de investimentos em estoque e
+              capital de giro.
+            </p>
+          </div>
+          <div class="pontoabc-new-card pontoabc-new-card-color">
+            <p><span class="pontoabc-new-cards-title">Cart&atilde;o de cr&eacute;dito</span>
+              <br>
+              Condi&ccedil;&otilde;es e taxas especiais da ABC para toda a loja do parceiro. Parcelamento
+              em
+              até 10x.
+            </p>
+          </div>
+          <div class="pontoabc-new-card pontoabc-new-card-color">
+            <p><span class="pontoabc-new-cards-title">Compras para estoque</span>
+              <br>
+              Compras de produtos para estoque com condi&ccedil;&otilde;es especiais.
+            </p>
+          </div>
+        </div>
+        <div class="pontoabc-new-buttons">
+          <div class="pontoabc-new-buttons-ajuste">
+            <a href="#pontoabc-new-form" class="pontoabc-new-btn pontoabc-new-btn-red">Quero ser um parceiro</a>
+            <div style="width: 20px;"></div>
+            <a href="#pontoabc-new-vantagens" class="pontoabc-new-btn pontoabc-new-btn-white">Conhe&ccedil;a outros
+              benef&iacute;cios</a>
+          </div>
+        </div>
+        <div id="pontoabc-new-marcas">
+          {{ brands_list brands: data.brands.nodes }}
+        </div>
+      </section>
+    </div>
+    <section id="pontoabc-new-vantagens">
+      <div class="pontoabc-new">
+        <div class="pontoabc-new-titles">
+          <span>Mais vantagens de um parceiro Ponto ABC</span>
+        </div>
+        <div id="pontoabc-new-vantagens-cards">
+          <div class="pontoabc-new-card">
+            <p><span class="pontoabc-new-cards-title">Mais lucro e redu&ccedil;&atilde;o do investimento em
+                estoque</span>
+              <br>
+              Acesso ao mix especializado em acabamentos, sem a necessidade de investimentos em estoque e
+              capital de giro.
+            </p>
+          </div>
+          <div class="pontoabc-new-card pontoabc-new-card-color">
+            <p><span class="pontoabc-new-cards-title">Cart&atilde;o de cr&eacute;dito</span>
+              <br>Condi&ccedil;&otilde;es e taxas especiais da ABC para toda a loja do parceiro.
+              Parcelamento em at&eacute; 10x.
+            </p>
+          </div>
+          <div class="pontoabc-new-card">
+            <p><span class="pontoabc-new-cards-title">Plataforma digital</span>
+              <br>Digitaliza&ccedil;&atilde;o do parceiro atrav&eacute;s da plataforma ABC, que fornece
+              acesso a milhares de itens, acesso a treinamentos e proporciona maior assertividade no
+              momento da venda.
+            </p>
+          </div>
+          <div class="pontoabc-new-card pontoabc-new-card-color">
+            <p><span class="pontoabc-new-cards-title">Compras para estoque</span>
+              <br>
+              Compras de produtps para estoque com condi&ccedil;&otilde;es especiais.
+            </p>
+          </div>
+          <div class="pontoabc-new-card pontoabc-new-pontoabc-logo">
+            <img src="https://recursos.abcdaconstrucao.com.br/i/PontoABC/logo-cor.png" alt="Ponto ABC" />
+          </div>
+          <div class="pontoabc-new-card pontoabc-new-card-color">
+            <p><span class="pontoabc-new-cards-title">Log&iacute;stica eficiente</span>
+              <br>
+              O parceiro conta a entrega ABC direto na sua loja ou retirada em nossas lojas, franquias ou
+              centros de distribui&ccedil;&atilde;o.
+            </p>
+          </div>
+          <div class="pontoabc-new-card">
+            <p><span class="pontoabc-new-cards-title">For&ccedil;a da marca</span>
+              <br>
+              Comunica&ccedil;&atilde;o e uso da marca de uma das principais redes de acabamento do
+              Brasil, somada ao seu neg&oacute;cio.
+            </p>
+          </div>
+          <div class="pontoabc-new-card pontoabc-new-card-color">
+            <p><span class="pontoabc-new-cards-title">Layout e identidade visual profissional</span>
+              <br>
+              Mais credibilidade atrav&eacute;s de uma espa&ccedil;o que proporciona a melhor
+              experi&ecirc;ncia para seu cliente no momento da escolha do acabamento.
+            </p>
+          </div>
+          <div class="pontoabc-new-card">
+            <p><span class="pontoabc-new-cards-title">Mostru&aacute;rio f&iacute;sico especialzado em
+                acabamento</span>
+              <br>
+              Centenas de produtos especilizados em acabamento, das principais marcas do mercado
+            </p>
+          </div>
+        </div>
+        <div class="pontoabc-new-buttons">
+          <a href="#pontoabc-new-form" class="pontoabc-new-btn pontoabc-new-btn-red">Quero ser um parceiro</a>
+        </div>
+      </div>
+    </section>
+    <div class="pontoabc-new">
+      <section id="pontoabc-new-depoimentos">
+        <div class="pontoabc-new-titles">
+          <span>Depoimentos</span>
+        </div>
+        <div class="carousel-depoimentos">
+          <div class="pontoabc-new-depoimento">
+            <div class="pontoabc-new-depoimento-texto">
+              <p>"O Ponto.ABC foi fundamental para ampliar o meu acesso a novas marcas e produtos de material de
+                acabamento. Durante a pandemia, encontrei com mais facilidade e agilidade os produtos para
+                comprar, que não tinha acesso com as fábricas.</p>
+              <br>
+              <p>Com o grande mix de produtos da ABC da Construção, comecei a
+                atender clientes que não atendia antigamente e faço vendas com volumes mais altos, que sem a
+                parceria não seria possível devido ao limite de estoque."</p>
+            </div>
+            <div class="pontoabc-depoimento-prietario">
+              <span>Leandro</span>
+              <span class="pontoabc-depoimento-local">Proprietário - Ponto.ABC - MG/Descoberto</span>
+            </div>
+          </div>
+          <div class="pontoabc-new-depoimento">
+            <div class="pontoabc-new-depoimento-texto">
+              <p>"Antes da parceria Ponto.ABC, nós tínhamos uma venda muito baixa de porcelanatos e o nosso
+                foco
+                não
+                era material de acabamento. Com a implementação do Ponto.ABC, podemos ter acesso a uma variedade
+                de
+                mix sem precisar ter estoque, e com o mostruário exposto na loja as vendas aumentaram.</p>
+              <br>
+              <p>O
+                Ponto.ABC
+                nos últimos meses representou de 30% a 40% do faturamento mensal da loja. A loja não tinha
+                volume
+                para fazer compras a um valor mais baixo e por isso não tinha preço para disputar com
+                concorrentes e
+                agora nós conseguimos disputar de igual para igual."</p>
+            </div>
+            <div class="pontoabc-depoimento-prietario">
+              <span>Eliezer</span>
+              <span class="pontoabc-depoimento-local">Proprietário - Ponto.ABC - SP/Atibaia</span>
+            </div>
+          </div>
+        </div>
+    </div>
+    <section id="pontoabc-new-comofunciona">
+      <div id="pontoabc-new-comofunciona-text">
+        <span>Como funciona?</span>
+        <p>Ap&oacute;s o preenchimento do formul&aacute;rio uma equipe especializada entrar&aacute; em
+          contato
+          com voc&ecirc; para prosseguir o atendimento.</p>
+        <p>Durante essa etapa de contato direto, voc&ecirc; inclusive pode tirar d&uacute;vidas sobre o
+          funcionamento da log&iacute;stica, sobre a disponibilidade do mix de produtos, sobre a
+          precifica&ccedil;&atilde;o do ABC e &eacute; claro suas margens.</p>
+      </div>
+      <div id="pontoabc-new-comofunciona-img">
+        <img src="https://recursos.abcdaconstrucao.com.br/i/PontoABC/imagem-como-funciona.jpg" alt="Como funciona?" />
+      </div>
+    </section>
+    <div class="pontoabc-new">
+      <section id="pontoabc-new-form">
+        <div id="pontoabc-new-form-text">
+          <span id="pontoabc-new-form-text-title">Preencha um formul&aacute;rio e seja um parceiro Ponto ABC</span><br>
+          <span id="pontoabc-new-form-text-subtitle">Atualmente estamos presentes nos estados de Minas Gerais,
+            S&atilde;o Paulo e Rio de Janeiro.</span>
+        </div>
+        {{ content position: "Centro" contents: data.hotsite.contents show_title: false}}
+        <!-- form -->
+      </section>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    $(function () {
+      $('.carousel-depoimentos').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        fade: true,
+        autoplay: true,
+        autoplaySpeed: 3000
+      });
+      $(".pontoabc-new-btn").click(function (e) {
+        e.preventDefault();
+        let href = $(this).attr('href');
+        $("body,html").animate({
+          scrollTop: $(href).offset().top
+        },
+          1000
+        );
+      });
+    }); 
+  </script>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ old_newsletter_popup }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "ponto_abc", "whats_form"] }}
+</body>
+
+</html>

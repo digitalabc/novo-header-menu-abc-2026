@@ -1,0 +1,15 @@
+{{ ##
+    Description: Returna true ou false se o produto de encomenda
+    Params:
+        - Uses produto_encomenda.graphql
+    Usage:
+        await client.snippet.render("produto_encomenda_snippet.html", ...);        
+        attribute = (product.attributes | array.filter @(do; ret $0.id == 82 ;end) | array.first) | object.values | array.last | string.downcase            
+            encomenda = produtoEncomenda | array.filter @(do; ret $0.id == 82 ;end)
+## }}
+{{~
+    status = false
+    produtoEncomenda = data.product.prices.price_tables | array.filter @(do; ret $0.id == 84 ;end)
+~}}
+
+{{ !produtoEncomenda.empty? }}

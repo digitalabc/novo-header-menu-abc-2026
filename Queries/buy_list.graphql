@@ -1,0 +1,57 @@
+query BuylistPage($id: Long!){
+  buyList(id:$id) {
+    alias
+    buyListId
+    buyListProducts {
+      productId
+      quantity
+    }
+    images{
+      url
+      fileName
+      print
+    }
+    informations{
+      id
+      title
+      type
+      value
+    }
+    promotions{
+      fullStampUrl
+      content
+      id
+      stamp
+      title
+    }
+    productName
+    prices {
+      listPrice
+      price
+      priceTables {
+        id
+        listPrice
+        price
+      }
+      discountPercentage
+      installmentPlans{
+          displayName
+          name
+          installments{
+            discount
+            fees
+            number
+            value
+          }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+  }
+}

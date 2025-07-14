@@ -1,0 +1,17 @@
+{{ ##
+    Description: Loads the wishlist component, a list of product spots that represent the users saved products.
+    Params:
+        - Uses wishlist.graphql
+    Usage:
+        await client.snippet.render("wishlist_snippet.html", ...);
+## }}
+{{~ wishlist = data.customer.wishlist ~}}
+{{~ if wishlist -}}
+    <div class="spots d-flex row">    
+    {{~ for product in wishlist.products ~}}
+        {{~ spot product: product wishlist: true ~}}
+    {{~ end ~}}
+    </div>
+{{~ else -}}
+    <h3>A lista de desejos está vazia!</h3>
+{{- end ~}}

@@ -1,0 +1,19 @@
+User-agent: Googlebot
+Disallow:
+
+User-agent: Googlebot-image
+Disallow:
+
+User-agent: *
+Allow: /
+Disallow: /busca*
+Disallow: *errorPath=*
+Disallow: */login*
+Disallow: *ec=*
+Disallow: *utm_source*
+Disallow: *busca=*
+Disallow: *ordenacao=*
+Disallow: *porcentagemDesconto*
+Disallow: *filtro=*
+
+Sitemap: https://www.abcdaconstrucao.com.br/sitemap.xml

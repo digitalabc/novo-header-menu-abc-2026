@@ -1,0 +1,8 @@
+query AccessKey($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
+  customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
+    customerId
+    customerName
+    customerType
+    email
+  }
+}

@@ -1,0 +1,34 @@
+{{ payment_method = data?.result?.selected_payment_method }}
+{{ is_card = payment_method.html | string.contains "data-gateway-cartao" }}
+
+{{ if !is_card }}
+    <span class="hidden">
+        {{ payment_method.html }}
+    </span>
+{{ end }}
+<h3> Resumo do Pedido </h3>
+
+<h4> Forma de pagamento escolhida: </h4>
+<div id="paymentMethodSelected"></div>
+<h5>Itens do pedido: </h5>
+<div class="productsItemsWrapper">
+    {{ for product in data.result.products }}
+        <div class="productInformation">
+            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+            <div class="productName">
+                <h4>
+                    {{ product.name }}
+                </h4>
+                <span>
+                    Quantidade: {{ product.quantity }}
+                </span>
+            </div>
+        </div>
+    {{ end }}
+</div>
+
+<h5> Endereço do destinatário </h5>
+<div class="adrressInformations">
+    <span>{{ data.result.selected_address.receiver_name }}</span>
+    <span>{{ data.result.selected_address.street}}{{ if data.result.selected_address.number}}, {{ data.result.selected_address.number}}{{ end}}, {{ data.result.selected_address.city}}, {{ data.result.selected_address.neighborhood}} - {{ data.result.selected_address.state }}, CEP: {{ data.result.selected_address.cep }} </span>
+</div>

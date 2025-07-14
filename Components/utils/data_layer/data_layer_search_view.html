@@ -1,0 +1,50 @@
+{{ ##
+    Description: Data layer search component, saves the info of products
+                to use when pushing the data to the datalayer
+    Params:
+        - product: the product data to save in tag manager
+    Usage:
+        data_layer_search_view product: data.product
+## }}
+{{
+    items = []
+    
+    for product in products
+        item = {
+            item_id: product.product_id,
+            item_name: product.product_name | string.escape,
+            index: for.index,
+            quantity: 1
+        }
+
+        if product.prices
+            if product.prices.list_price > 0 && product.prices.list_price > product.prices.price
+                item.discount = product.prices.list_price - product.prices.price
+                item.price = product.prices.list_price
+            else
+                item.discount = 0
+                item.price = product.prices.price
+            end
+        end
+
+        if product.product_brand
+            item.item_brand = product.product_brand.name
+        end
+
+        for category in product.product_categories
+            i = for.index + 1
+            category_key = "item_category" | string.append (i > 1 ? i : '')
+            item[category_key] = category.name
+        end
+
+        items = items | array.add item
+    end
+
+    data_layer_search_details = {
+        item_list_name: "Search results",
+        items: items
+    }
+}}
+<script>
+    const data_layer_search_details = {{ data_layer_search_details | map.to_json }};
+</script>

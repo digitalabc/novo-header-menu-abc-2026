@@ -1,0 +1,53 @@
+<div class="shipping-address">
+  <div class="shipping-address-container">
+    <h2 class="shipping-address--title">1. Endereço do destinatário</h2>
+
+    {{~ if selected_address ~}}
+    <p class="shipping-address--selected-address">
+      {{~ if selected_address.street ~}}
+      {{ selected_address.street }},
+      {{~ end ~}}
+      {{~ if selected_address.address_number ~}}
+      {{ selected_address.address_number }} -
+      {{~ end ~}}
+      {{~ if selected_address.neighborhood ~}}
+      {{ selected_address.neighborhood }} -
+      {{~ end ~}}
+      {{~ if selected_address.city ~}}
+      {{ selected_address.city }} -
+      {{~ end ~}}
+      {{~ if selected_address.state ~}}
+      {{ selected_address.state }} -
+      {{~ end ~}}
+      {{~ if selected_address.cep ~}}
+      {{ selected_address.cep | regex.replace `^(\d{7})$` "0$1" | string.slice 0 5 }}-{{ selected_address.cep |
+      regex.replace `^(\d{7})$` "0$1" | string.slice 5 3 }}
+      {{~ end ~}}
+
+    </p>
+    {{~ end ~}}
+    <p class="shipping-address--user-name">{{ customer.customer_name }}</p>
+
+    <div class="shipping-address-buttons">
+      <a class="shipping-address--newAddress" href="/checkout/shipping/new-address">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M7.95781 12.7148H9.55781V9.51484H12.7578V7.91484H9.55781V4.71484H7.95781V7.91484H4.75781V9.51484H7.95781V12.7148ZM8.75781 16.7148C7.65115 16.7148 6.61115 16.5048 5.63781 16.0848C4.66448 15.6648 3.81781 15.0948 3.09781 14.3748C2.37781 13.6548 1.80781 12.8082 1.38781 11.8348C0.967812 10.8615 0.757812 9.82151 0.757812 8.71484C0.757812 7.60818 0.967812 6.56818 1.38781 5.59484C1.80781 4.62151 2.37781 3.77484 3.09781 3.05484C3.81781 2.33484 4.66448 1.76484 5.63781 1.34484C6.61115 0.924844 7.65115 0.714844 8.75781 0.714844C9.86448 0.714844 10.9045 0.924844 11.8778 1.34484C12.8511 1.76484 13.6978 2.33484 14.4178 3.05484C15.1378 3.77484 15.7078 4.62151 16.1278 5.59484C16.5478 6.56818 16.7578 7.60818 16.7578 8.71484C16.7578 9.82151 16.5478 10.8615 16.1278 11.8348C15.7078 12.8082 15.1378 13.6548 14.4178 14.3748C13.6978 15.0948 12.8511 15.6648 11.8778 16.0848C10.9045 16.5048 9.86448 16.7148 8.75781 16.7148ZM8.75781 15.1148C10.5445 15.1148 12.0578 14.4948 13.2978 13.2548C14.5378 12.0148 15.1578 10.5015 15.1578 8.71484C15.1578 6.92818 14.5378 5.41484 13.2978 4.17484C12.0578 2.93484 10.5445 2.31484 8.75781 2.31484C6.97115 2.31484 5.45781 2.93484 4.21781 4.17484C2.97781 5.41484 2.35781 6.92818 2.35781 8.71484C2.35781 10.5015 2.97781 12.0148 4.21781 13.2548C5.45781 14.4948 6.97115 15.1148 8.75781 15.1148Z"
+            fill="#0092ff" />
+        </svg>
+        Novo
+      </a>
+      {{~ if customer.addresses | array.size > 0 ~}}
+      <a class="shipping-address--savedAddresses" href="/checkout/shipping/addresses">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2.25781 16.7148V2.49262C2.25781 2.00373 2.43189 1.58521 2.78003 1.23707C3.12818 0.888918 3.5467 0.714844 4.03559 0.714844H12.9245C13.4134 0.714844 13.8319 0.888918 14.18 1.23707C14.5282 1.58521 14.7023 2.00373 14.7023 2.49262V16.7148L8.48004 14.0482L2.25781 16.7148ZM4.03559 14.0037L8.48004 12.0926L12.9245 14.0037V2.49262H4.03559V14.0037Z"
+            fill="#0092ff" />
+        </svg>
+
+        Salvos
+      </a>
+      {{~ end ~}}
+    </div>
+  </div>
+</div>

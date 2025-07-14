@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "url": "{{ current_url }}",
+        {{~ if hotsite.products_by_offset ~}}
+            "numberOfItems": "{{ hotsite.products_by_offset.total_count }}",
+            "itemListElement": [
+            {{~ for product in hotsite.products_by_offset.items ~}}
+                {{~ generic_structured_data product: product base_url: base_url ~}}
+                {{~ if !for.last ~}},{{ end }}
+            {{~ end ~}}
+            ]
+        {{~ else if hotsite.products ~}}
+            "numberOfItems": "{{ hotsite.products.total_count }}",
+            "itemListElement": [
+            {{~ for product in hotsite.products.edges ~}}
+                {{~ generic_structured_data product: product.node base_url: base_url ~}}
+                {{~ if !for.last ~}},{{ end }}
+            {{~ end ~}}
+            ]
+        {{~ end ~}}
+    }
+</script>

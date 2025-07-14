@@ -1,0 +1,61 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <table role="Newsletter" aria-label="Awake" lang="en" dir="ltr" border="0" width="100%" cellpadding="0" cellspacing="0" style="font-size:medium;font-size:max(16px,1rem);font-family: Arial, Helvetica, sans-serif;">
+        <tbody>
+            <tr>
+                <td align="center" valign="top" style="background-color: #f6f6f6;">
+                    <div style="max-width:620px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;background-color: #ffffff;">
+                        <!-- HEADER -->
+                        {{header_mail}}
+                        <!-- END HEADER -->
+
+                        <!-- MAIN -->
+                        <table border="0" width="620" cellpadding="0" cellspacing="0" style="width:620px;max-width:620px;margin: 15px 0;padding: 10px;">
+                            <tbody>
+                                <tr align="center">
+                                    <td>
+                                        <h1 style="font-size: 36px; line-height: 100%;">Consumo do Produto</h1>
+                                    </td>
+                                </tr>
+                                <tr align="center">
+                                    <td>
+                                        <p>Olá,</p>
+                                        <p>Esperamos que você esteja aproveitando bem os seus produtos. Queremos lembrá-lo(a) que a validade dos seguintes produtos está se aproximando:</p>
+                                        {{ for p in produto }}
+                                        <p><strong>{{ p.nome }}</strong> - SKU: {{ p.sku }}</p>
+                                        {{ end }}
+                                        <p>Para garantir que você continue desfrutando dos benefícios dos seus produtos preferidos, sugerimos que adquira novos antes que os atuais expirem.</p>
+                                        <table border="0" cellpadding="0" cellspacing="0" style="margin: 20px auto;">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="padding: 10px;">
+                                                        <a href="{{ configuracao.url_carrinho }}?add={{ produto.id }}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                                                            Comprar Novos Produtos
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>Não perca a oportunidade de continuar a usufruir dos benefícios dos seus produtos preferidos.</p>
+                                        <p>Atenciosamente,</p>
+                                        <p><strong>{{ configuracao.nome_ecommerce }}</strong></p>
+                                        <p><a href="{{ configuracao.url_ecommerce }}" style="color: #4CAF50;">Visite nosso
+                                            site</a> | <a href="{{ configuracao.url_opt_in }}"
+                                            style="color: #4CAF50;">Gerencie suas preferências</a></p> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- END MAIN -->
+
+                        <!-- FOOTER -->
+                        {{footer_mail}}
+                        <!-- END FOOTER -->
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>

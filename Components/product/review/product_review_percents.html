@@ -1,0 +1,22 @@
+{{##
+    Description: Renders a customer review list for the product. 
+    Params:
+      - reviews: the reviews given for the product by customers
+    Usage:
+      product_review_percents reviews: product.reviews
+##}}
+
+{{ rating_groups = reviews | group.by @(do; ret $0.rating; end) }}
+<div class="">
+    {{~ for i in 1..5 | array.reverse ~}}
+        {{ rating_group = rating_groups | group.get i }}
+        {{ rating_percent = rating_group.size > 0 ? rating_group.size / reviews.size : 0}}
+        {{ rating_percent = rating_percent | math.format "p0" "pt-BR" }}
+        <div class="mb-1 text-base font-medium">{{ i }} estrelas</div>
+        <div class="w-full bg-secondary-200 rounded-full h-1.5 mb-4 dark:bg-secondary-300">
+            <div class="bg-primary-500 h-1.5 rounded-full dark:bg-primary-500"
+            {{ "style='width:" + rating_percent +  "'" }}>
+            </div>
+        </div>
+    {{~ end ~}}
+</div>

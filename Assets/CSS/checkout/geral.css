@@ -86,6 +86,14 @@ html {
   font-size: 14px;
   text-align: center;
 }
+.headFechamento .head-carrinho-text:before {
+  content: '⚠️';
+}
+@media screen and (max-width: 991px) {
+  .headFechamento .head-carrinho-text {
+    flex-direction: column;
+  }
+}
 .headerLogo {
   float: none;
 }

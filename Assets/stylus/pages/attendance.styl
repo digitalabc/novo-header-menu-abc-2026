@@ -1,0 +1,248 @@
+.attendence
+  main
+    display: flex;
+    justify-content: space-between;
+    margin: 36px auto 60px;
+    max-width: 1300px;
+
+    @media (max-width: 1330px)
+      padding: 0 15px;
+
+    @media mobile
+      flex-direction: column;
+      gap: 60px;
+
+    h1
+      margin-bottom: 20px;
+      color: $primary;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+
+    h2
+      margin-bottom: 20px;
+      color: $primary;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 23px;
+
+    > aside
+      @media desktop
+        width: 30%;
+
+      > h2.title
+        display: none;
+
+      ul
+        &:not(:last-child)
+          margin-bottom: 60px;
+
+      li
+        width: 100%;
+
+        &:not(:last-child)
+          margin-bottom: 7px;
+
+        &.current
+          > a
+            border-color: $primary;
+            color: $primary;
+            font-weight: 700;
+
+        > a
+          display: flex;
+          align-items: center;
+          padding: 0 12px;
+          width: 100%;
+          height: 56px;
+          border: 1px solid #E3E3E3;
+          background-color: #ffffff;
+          color: #000000;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 16px;
+          transition: $transition;
+          gap: 10px;
+
+          + ul
+            margin-top: 12px;
+            border-left: 1px solid $primary;
+
+            > li
+              &:not(:last-child)
+                margin-bottom: 12px;
+
+              > a
+                padding: 0 24px;
+                height: auto;
+                border: none;
+
+        > ul
+          overflow: hidden;
+          max-height: 0;
+          transition: $transition;
+
+    > .lateral-direita
+      @media desktop
+        width: calc(70% - 60px);
+
+      p
+        margin-bottom: 20px;
+        color: #000000;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+
+      h3
+        color: #000000;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 24px;
+
+      article
+        color: #000000;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+
+        .payment-flags
+          display: flex;
+          gap: 10px;
+
+        .info-grid
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 auto 30px;
+          max-width: 700px;
+          gap: 10px;
+
+          @media mobile
+            max-width: 100%;
+
+          > a
+            flex: 0 0 calc(50% - 5px);
+            padding: 12px 16px;
+            background: #000000;
+            color: #ffffff;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+
+            @media mobile
+              flex: 0 0 100%;
+
+      form
+        &.atendimento-form
+          @import "../components/atendimento.styl";
+
+        &.fornecedor-form
+          @import "../components/seja-um-fornecedor.styl";
+
+      .accordion
+        @import "../components/accordion.styl";
+
+    .cards
+      display: flex;
+      justify-content: space-between;
+
+      @media mobile
+        flex-direction: column;
+        gap: 48px;
+
+      .card
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: calc(((100% - (24px * 2)) / 3));
+        gap: 8px;
+
+        @media mobile
+          width: auto;
+
+        h3
+          text-align: center;
+          font-size: 16px;
+
+        p
+          margin-bottom: 0;
+          height: 32px;
+          text-align: center;
+          font-size: 14px;
+          line-height: 16px;
+
+        a
+          color: $primary;
+          text-decoration: underline;
+          font-weight: 500;
+          font-size: 14px;
+
+  #form-message
+    position: fixed;
+    top: 100px;
+    right: 15px;
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 12px 12px 24px;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    animation: popupOpen linear 0.3s;
+    animation-fill-mode: backwards;
+
+    @media mobile
+      top: 15px;
+
+    &.remove
+      animation: popupClose linear 0.3s;
+      animation-fill-mode: forwards;
+
+    > svg
+      width: 20px;
+      color: #a5cc00;
+      fill: none;
+
+      &.error
+        color: #e40000;
+
+    p
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      margin-left: 5px;
+      color: #333333;
+      white-space: nowrap;
+      line-height: 20px;
+
+      small
+        color: #666666;
+
+    button#close
+      width: 20px;
+      height: 20px;
+      background: none;
+      color: #666666;
+      cursor: pointer;
+
+      &:hover
+        color: $secondary;
+
+@keyframes popupOpen
+  0%
+    visibility: hidden;
+    opacity: 0;
+
+  100%
+    visibility: visible;
+    opacity: 1;
+
+@keyframes popupClose
+  0%
+    visibility: visible;
+    opacity: 1;
+
+  100%
+    visibility: hidden;
+    opacity: 0;

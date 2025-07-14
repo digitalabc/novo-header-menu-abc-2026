@@ -1,0 +1,255 @@
+.showcase
+  .swiper
+    margin: -10px;
+    padding: 10px;
+
+    @media mobile
+      margin: -10px -15px;
+      padding: 10px 15px;
+
+    &:not(.swiper-initialized)
+      ul
+        gap: 5px;
+
+        @media desktop
+          gap: 20px;
+
+        li
+          flex: 0 0 calc((100% / 2.1) - (2 * 5px / 5));
+
+          @media (min-width: 768px)
+            flex: 0 0 calc((100% / 3.1) - (3 * 5px / 5));
+
+          @media (min-width: 768px)
+            flex: 0 0 calc((100% / 4) - (3 * 20px / 5));
+
+          @media (min-width: 768px)
+            flex: 0 0 calc((100% / 5) - (4 * 20px / 5));
+
+    &-container
+      position: relative;
+
+    &-button-prev, &-button-next
+      @media mobile
+        display: none;
+
+.spot
+  border: 1px solid #EAEAEA;
+  transition: $transition;
+
+  @media desktop
+    &:hover
+      box-shadow: $bs;
+
+      .add-to-cart-button
+        opacity: 1;
+
+      .spot
+        &__overlay
+          visibility: visible;
+          opacity: 1;
+
+        &__unavailable
+          visibility: visible;
+          opacity: 1;
+
+  &__image
+    position: relative;
+    overflow: hidden;
+
+    img
+      width: 100%;
+
+    &-wrapper
+      position: relative;
+      margin: 0 auto;
+      max-width: 245px;
+      border-bottom: 1px solid #EAEAEA;
+
+      a
+        display: flex;
+
+    .stamps-discount
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #392F2D;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 12px;
+
+  &__buttons
+    >*:not(.add-to-cart-button)
+      display: none !important;
+
+    .add-to-cart-button
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+      width: 100%;
+      height: 40px;
+      background: $buy-btn;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      gap: 6px;
+
+      @media desktop
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: $transition;
+
+        &:hover
+          background: $black;
+
+  &__overlay
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    opacity: 0;
+    transition: $transition;
+
+  &__content
+    padding: 20px 10px;
+    background: #fff;
+
+  &__title
+    h3
+      display: -webkit-box;
+      overflow: hidden;
+      margin-bottom: 20px;
+      height: 60px;
+      color: $black;
+      text-overflow: ellipsis;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      transition: $transition;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+      @media mobile
+        margin-bottom: 15px;
+        height: 57px;
+        font-size: 12px;
+        line-height: 19px;
+
+      &:hover
+        color: $primary;
+
+  &__unavailable
+    @media desktop
+      visibility: hidden;
+      opacity: 0;
+      transition: $transition;
+
+      &:focus-within
+        visibility: visible;
+        opacity: 1;
+
+    p
+      margin-bottom: 10px;
+      font-size: 12px;
+
+    .bis
+      @media mobile
+        margin-bottom: 0;
+
+      &__alert
+        position: absolute;
+        margin-top: 0;
+        font-weight: 400;
+
+      input
+        flex: 1;
+        width: 100%;
+
+  &-price
+    margin-bottom: 5px;
+
+    @media mobile
+      margin-bottom: 2px;
+
+    .precoDe
+      display: block;
+      margin-bottom: 5px;
+      color: #B4B4B4;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+
+      @media mobile
+        margin-bottom: 3px;
+        font-size: 12px;
+        line-height: 15px;
+
+    .precoPor
+      &:first-child
+        padding-top: 23px;
+
+        @media mobile
+          padding-top: 18px;
+
+      span
+        color: $primary;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+
+        @media mobile
+          font-size: 16px;
+          line-height: 19px;
+
+      small
+        color: #000000;
+        font-weight: 400;
+        font-size: 12px;
+
+    .precoCalculado
+      margin-top: 5px;
+      color: #000;
+
+      span
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+
+        @media mobile
+          font-size: 16px;
+          line-height: 19px;
+
+      small
+        font-weight: 400;
+        font-size: 12px;
+
+  .best-installment
+    font-size: 12px;
+    line-height: 15px;
+
+    @media mobile
+      min-height: 30px;
+
+    strong
+      font-weight: 400;
+
+    span
+      @media mobile
+        display: block;
+
+  .spot-price
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 80px;

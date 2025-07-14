@@ -1,0 +1,48 @@
+{{ ##
+	Description: Component for configuring the Data layer
+    Params:
+        - gtag_id : the google analytics id, accepts a string array separated by comma
+    Usage:
+        gtag_config gtag_id: common.gtag_id
+## }}
+{{ gtag_id = gtag_id != null ? gtag_id[0]?.value : null }}
+{{ 
+	if gtag_id && gtag_id | string.contains ","
+		gtag_array = gtag_id | string.split "," | array.each @string.strip
+		gtag_id = gtag_array | array.first
+	end
+}}
+
+<!-- /Google tag (gtag.js) -->
+<script>
+	let gtagSetup;
+	{{ if gtag_id && !gtag_id.empty? }}
+		gtagSetup = (userId) => {
+			const script = document.createElement('script');
+			script.type = 'text/javascript';
+			script.onload = () => { 
+				dpush('js', new Date());
+				{{ if gtag_array }}
+					{{ for gtag in gtag_array }}
+				if (userId)
+					dpush('config', "{{ gtag }}", {
+						'user_id': userId
+					});
+				else
+					dpush('config', "{{ gtag }}");
+					{{ end }}
+				{{ else }}
+				if (userId)
+					dpush('config', "{{ gtag_id }}", {
+						'user_id': userId
+					});
+				else
+					dpush('config', "{{ gtag_id }}");
+				{{end}}
+			}
+			script.src = 'https://www.googletagmanager.com/gtag/js?id={{~gtag_id~}}';
+			script.defer = true;
+			document.getElementsByTagName('body')[0].appendChild(script);
+		}
+	{{end}}
+</script>

@@ -1,0 +1,72 @@
+{{ ##
+    Description: Renders a product spot containing the main image, the product name,
+                 list price, price and the button "comprar".
+    Params:
+      - product: the product that will be displayed
+    Usage:
+      spot product: product
+## }}
+<div class="flex flex-col justify-center items-center hover:shadow-xl p-2 mx-2 mb-1 lg:mr-7 lg:last:mr-0 group">
+    <div class="flex flex-col relative justify-start items-center lg:w-60 w-full min-h-[530px]">
+        {{ spot_image product: product priority: img_priority lazy: img_lazy_load}}
+        {{~ if product.similar_products ~}}
+            <div class="flex justify-start items-center w-full">
+                {{~ for sim_prod in product.similar_products | array.limit 4 ~}}
+                    <div class="border">
+                        <a href="/{{ sim_prod.alias }}">
+                            <img src="{{ sim_prod.image_url }}" alt="{{ sim_prod.name }}" title="{{ sim_prod.name }}" class="w-10 h-10" />
+                        </a>
+                    </div>
+                {{~ end ~}}
+            </div>
+        {{~ end ~}}
+        <div class="flex flex-col justify-between h-full">
+            <div class="flex flex-col">
+                <a href="/{{product.alias}}">
+                    <span class="text-xl my-2 text-[#1E1E1E]">{{ product.product_name }}</span>
+                </a>
+                {{~
+                    promotionsTypes = product.promotions | group.by @(do; ret $0.disclosure_type;end)
+                    promotionsSpot = promotionsTypes | group.get "Spot"
+                    stamps promotions: promotionsSpot
+                    if product.prices
+                        product_price prices: product.prices
+                        product_discount discount_percentage: product.prices.discount_percentage
+                    end
+                ~}}
+            </div>
+            <!--BUY BOX-->
+            {{~ if product.available ~}}
+                <div class="flex justify-end">
+                <span>{{ product.buy_box.quantity_offers }} vendedores com ofertas</span>
+                <br>
+                <span>
+                    De {{ product.buy_box.minimum_price | math.format "c" "pt-BR" }} 
+                    até {{ product.buy_box.maximum_price | math.format "c" "pt-BR" }} 
+                </span>
+            </div>
+            <div class="flex flex-col lg:flex-row justify-between items-center w-full my-3 py-3 lg:group-hover:translate-y-5 
+                        lg:translate-y-0 lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible 
+                        lg:duration-500 lg:ease-in-out lg:group-hover:transform">
+            
+                <button class="flex items-center justify-center text-white bg-primary-500 lg:hover:bg-primary-600 w-full p-2"
+                onclick="window.location.href='{{product.alias}}';">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+                DETALHES
+                </button>
+            </div>
+            <!--/BUY BOX-->
+            </div>
+            {{~ else ~}}
+                <p>Produto indisponível</p>
+            {{~ end ~}}
+        </div>
+    </div>
+    <div class="modal" id="add-to-cart-modal-{{ product.product_id }}" aria-labelledby="addToCartFromSpot" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered" >
+            <div id="add-to-cart-modal-content-{{ product.product_id }}"></div>
+        </div>
+    </div>
+</div>

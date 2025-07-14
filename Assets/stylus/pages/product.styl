@@ -1,0 +1,979 @@
+.product
+  .breadcrumb
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    background: none;
+
+    @media mobile
+      margin-top: 0;
+      font-size: 12px;
+
+  &__view
+    @media desktop
+      display: grid;
+      margin-bottom: 120px;
+      grid-template-columns: calc((530 / 1300) * 100%) 1fr;
+      gap: 60px;
+
+  &__image
+    position: relative;
+    grid-area: 1 / 1 / 2 / 2;
+
+  &__details
+    max-width: 640px;
+    grid-area: 1 / 2 / 2 / 3;
+
+    @media mobile
+      margin-bottom: 60px;
+
+  &__title
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 20px;
+
+  &__info
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D5D5D5;
+    color: #B4B4B4;
+    font-weight: 500;
+    font-size: 12px;
+    gap: 20px;
+    gap: 5px 20px;
+
+    a
+      color: #B4B4B4;
+
+      &:hover
+        text-decoration: underline;
+
+    strong
+      font-weight: 600;
+
+  &__prices
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #D5D5D5;
+
+    .spot-price
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 10px;
+      white-space: nowrap;
+      gap: 10px 20px;
+
+      .precoDe
+        margin-bottom: 0;
+
+      .precoPor
+        &:first-child
+          padding-top: 0;
+
+        span
+          @media mobile
+            font-size: 20px;
+            line-height: 24px;
+
+      .stamps-discount
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 25px;
+        background: #0FA848;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        gap: 5px;
+
+    .box-price
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+      max-width: 100%;
+      width: 380px;
+      height: 40px;
+      background: #D5D5D5;
+
+    .pix
+    .best-installment
+      margin-bottom: 10px;
+      font-size: 12px;
+
+      strong
+        font-weight: 600;
+
+  &__installments
+    .payment
+      &.open
+        .payment
+          &__list
+            margin-top: 5px;
+            max-height: 1000px;
+
+          &__button
+            font-size: 0;
+            gap: 3.5px;
+
+            &:before
+              content: 'Ocultar formas de pagamento';
+              font-size: 12px;
+
+            svg
+              padding-top: 0;
+              padding-bottom: 2px;
+              transform: rotateX(180deg);
+
+      &__button
+        display: flex;
+        align-items: center;
+        background: none;
+        color: $black;
+        text-decoration: underline;
+        font-weight: 500;
+        font-size: 12px;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+        gap: 7px;
+
+        svg
+          padding-top: 2px;
+          transition: transform 0.2s ease-in-out;
+
+        &:hover
+          color: $primary;
+
+      &__list
+        overflow: hidden;
+        max-height: 0;
+        transition: $transition;
+
+      .option
+        &:not(:last-child)
+          margin-bottom: 5px;
+
+        &__button
+          display: flex;
+          align-items: center;
+          height: 20px;
+          background: none;
+          background: none;
+          color: #392f2d;
+          line-height: 20px;
+          cursor: pointer;
+          transition: $transition;
+          gap: 5px;
+
+          &:hover
+            color: $primary;
+
+          svg
+            transition: transform 0.2s ease-in-out;
+
+          &.open
+            svg
+              transform: rotateX(180deg);
+
+        &__list
+          overflow: hidden;
+          max-width: 200px;
+          height: 0;
+          transition: $transition;
+
+          li
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 20px;
+            cursor: pointer;
+
+            &:nth-child(even)
+              background: #f5f5f5;
+
+  .attribute-selections
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d5d5d5;
+
+    h3
+      margin-bottom: 12px;
+      color: #5D5D5D;
+      font-weight: 700;
+      font-size: 14px;
+
+    .attribute
+      &:not(:last-child)
+        margin-bottom: 30px;
+
+      select
+        padding: 0 7px;
+        width: 200px;
+        height: 40px;
+        border: 1px solid #D5D5D5;
+        border-radius: 0;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAABHNCSVQICAgIfAhkiAAAAG9JREFUCFtjjImJecDAwJCwZMmSA0AaDmJjYxOAnABGEOP///8T/v3757Bs2bILIBXIYowgAaApDUDKn4WFxfHXr18KzMzM+4GaAkGmghVAFS0A0vqMjIwKQLpw8eLFID4DXAFUEciKC0CdIPvBAAB98DALc2GrVAAAAABJRU5ErkJggg==');
+        background-position: right 10px center;
+        background-repeat: no-repeat;
+        color: #5D5D5D;
+        font-weight: 500;
+        font-size: 12px;
+        appearance: none;
+
+        @media mobile
+          width: 100%;
+
+  &__quantity
+    &--wrapper
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 25px;
+
+      @media mobile
+        flex-wrap: wrap;
+        gap: 15px 25px;
+
+      .warning
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        margin-left: 10px;
+        color: #f00;
+        white-space: nowrap;
+        font-weight: 500;
+        font-size: 14px;
+        transform: translateY(-50%);
+
+      label
+        color: #5D5D5D;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 19px;
+
+    .subscription-div
+      button
+        display: inline-block;
+        margin: 0 0 30px 30px !important;
+        width: 250px;
+        height: 40px;
+        background: #0fa848;
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &[disabled]
+          opacity: 0.6;
+          pointer-events: none;
+
+    .quantity
+      position: relative;
+      overflow: hidden;
+      width: 125px;
+      height: 30px;
+      border: 1px solid #D5D5D5;
+
+      &.fake-quantity
+        width: 225px;
+
+        input.selected-quantity
+          display: none;
+
+      input
+        width: 100%;
+        height: 100%;
+        color: #5D5D5D;
+        text-align: center;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        -moz-appearance: textfield;
+
+        &::-webkit-outer-spin-button
+        &::-webkit-inner-spin-button
+          margin: 0;
+          -webkit-appearance: none;
+
+        &.fake-quantity
+          width: 225px;
+
+      > button
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        background: #ffffff;
+        color: #392F2D;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: $transition;
+        transform: translateY(-50%);
+
+        &:hover
+          background: $primary;
+          color: #fff;
+
+      &-less
+        left: 0;
+        border-right: 1px solid #D5D5D5;
+
+      &-more
+        right: 0;
+        border-left: 1px solid #D5D5D5;
+
+  &__buttons
+    margin-bottom: 35px;
+
+    @media (min-width: 450px)
+      display: flex;
+      margin-bottom: 25px;
+      gap: 10px;
+
+    .pick-up-button
+    .secondary-button
+    .buy-whatsapp-button
+      display: none; // Toggled with js
+
+    .buy-button
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      background: #0FA848;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: $transition;
+
+      @media (max-width: 449px)
+        margin-bottom: 10px;
+
+      @media (min-width: 450px)
+        width: 245px;
+
+      &[disabled]
+        background: #B4B4B4;
+        cursor: not-allowed;
+
+      &:not([disabled]):hover
+        background: $primary;
+
+      &:not([disabled]).hollow
+        border: 1px solid #0FA848;
+        background: #fff;
+        color: #0FA848;
+
+        &:hover
+          background: #0FA848;
+          color: #fff;
+
+    .pick-up-button
+      // display: flex; //applied with js
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      border: 1px solid #0FA848;
+      background: #fff;
+      color: #0FA848;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: $transition;
+
+      @media (min-width: 450px)
+        width: 215px;
+
+      &[disabled]
+        border: 1px solid #B4B4B4;
+        background: #B4B4B4;
+        color: #fff;
+        cursor: not-allowed;
+
+      &:not([disabled]):hover
+      &.full
+        background: #0FA848;
+        color: #fff;
+
+      &.full
+        &:hover
+          background: #fff;
+          color: #0FA848;
+
+    .add-to-cart-button
+      // display: flex; //applied with js
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      border: 1px solid #0FA848;
+      background: #fff;
+      color: #0FA848;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: $transition;
+
+      @media (min-width: 450px)
+        width: 245px;
+
+      &[disabled]
+        border: 1px solid #B4B4B4;
+        background: #B4B4B4;
+        color: #fff;
+        cursor: not-allowed;
+
+      &:not([disabled]):hover
+      &.full
+        background: #0FA848;
+        color: #fff;
+
+    .buy-whatsapp-button
+      // display: flex; //applied with js
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      background: #D5D5D5;
+      color: #5D5D5D;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      transition: $transition;
+      gap: 10px;
+
+      @media (max-width: 449px)
+        margin-bottom: 10px;
+
+      @media (min-width: 450px)
+        width: 245px;
+
+      svg
+        transition: $transition;
+        fill: #0FA848;
+
+      &[disabled]
+        background: #B4B4B4;
+        cursor: not-allowed;
+
+        svg
+          fill: #5D5D5D;
+
+      &:not([disabled]):hover
+        background: #0FA848;
+        color: #fff;
+
+        svg
+          fill: #fff;
+
+  &__information
+    display: flex;
+    flex-wrap: wrap;
+
+    @media desktop
+      margin-bottom: 60px;
+
+      &::before
+        display: block;
+        order: -1;
+        margin-bottom: 25px;
+        width: 100%;
+        height: 3px;
+        background: #E6E6E6;
+        content: '';
+
+    h2
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 19px;
+      cursor: pointer;
+
+      @media mobile
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        color: #333333;
+        font-weight: 500;
+
+        &.active
+          svg
+            transform: rotate(0);
+
+      @media desktop
+        position: relative;
+        order: -2;
+        padding: 0 25px 10px;
+        color: #6E6D6D;
+
+        &:after
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 1;
+          display: block;
+          width: 100%;
+          height: 3px;
+          background: $primary;
+          content: '';
+          opacity: 0;
+          transition: $transition;
+
+        &.active
+          color: #333333;
+          font-weight: 500;
+
+          &:after
+            opacity: 1;
+
+        &:not(last-of-type)
+          margin-right: 100px;
+
+        &:first-of-type
+          padding-left: 0;
+
+      svg
+        transition: $transition;
+        transform: rotate(180deg);
+
+        @media desktop
+          display: none;
+
+    > div
+      width: 100%;
+      color: #333333;
+      font-size: 14px;
+      line-height: 25px;
+      transition: $transition;
+
+      // @media desktop
+      // display: none;
+      @media mobile
+        overflow: hidden;
+        margin-bottom: 60px;
+        max-height: 0;
+
+      &.show
+        // @media desktop
+        // display: block;
+        @media mobile
+          padding-top: 20px;
+          max-height: 1500px;
+
+    iframe
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+
+  .product-shipping
+    margin-bottom: 15px;
+
+    @media desktop
+      display: grid;
+      align-items: center;
+      gap: 5px 7px;
+      grid-template-columns: auto 1fr;
+      align-contents: center;
+
+      &__help
+        grid-area: 2 / 2 / 3 / 3;
+
+      &__response
+        max-width: 335px;
+        grid-area: 3 / 2 / 4 / 3;
+
+    &__title
+      font-weight: 700;
+      font-size: 12px;
+
+      @media mobile
+        margin-bottom: 20px;
+
+    &__form
+      display: flex;
+
+      @media mobile
+        margin-bottom: 5px;
+
+    &__input
+      max-width: 225px;
+      width: 100%;
+      height: 35px;
+      border: 1px solid #D5D5D5;
+      border-radius: 0;
+      color: $black;
+      font-weight: 500;
+      font-size: 12px;
+
+      &::placeholder
+        color: #B4B4B4;
+
+      @media mobile
+        flex: 1;
+        max-width: unset;
+
+    &__submit
+      width: 110px;
+      height: 35px;
+      border-radius: 0;
+      background: #D5D5D5;
+      color: #5D5D5D;
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover
+        background: $primary;
+        color: #fff;
+
+    &__help
+      display: flex;
+      flex: 0 0 100%;
+
+      a
+        color: #5D5D5D;
+        text-decoration: underline;
+        font-size: 9px;
+        line-height: 12px;
+        transition: $transition;
+
+        &:hover
+          color: $primary;
+
+    &__response
+      &.hide-pickup
+        .free-shipping
+          display: none !important;
+
+    &__list
+      margin-top: 5px;
+      padding: 3px;
+      width: 335px;
+      border: 1px solid #d5d5d5;
+
+    &__quote
+      display: grid;
+      padding: 5px;
+      font-size: 13px;
+      grid-template-columns: 1fr auto;
+
+      span
+        color: $primary;
+        font-weight: 500;
+
+        &.free-shipping
+          color: #0FA848;
+
+        &:nth-child(2)
+          text-align: right;
+
+      small
+        color: #5d5d5d;
+        font-size: 12px;
+
+    &__error
+      color: $primary;
+      font-weight: 500;
+      font-size: 12px;
+
+  &__pick-up
+    display: none;
+
+  &__similar
+    margin-bottom: 30px;
+
+    h3
+      margin-bottom: 12px;
+      color: #000000;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+
+    .similar
+      &__list
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+
+  &__buy-together
+    h2
+      margin-bottom: 20px;
+      font-weight: 500;
+      font-size: 20px;
+
+      @media mobile
+        text-align: center;
+
+    .buy-together-row-div
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      max-width: 935px;
+
+      @media mobile
+        flex-direction: column;
+        margin-bottom: 40px;
+        gap: 40px;
+
+      img
+        max-width: 245px;
+        width: 100%;
+        border: 1px solid #EAEAEA;
+
+    .separator
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 245px;
+
+      &.equal
+        @media mobile
+          display: none;
+
+      h3
+        color: #333333;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 40px;
+
+    .attribute-selections
+      margin: 0 auto;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      max-width: 245px;
+      border-bottom: none;
+
+      h3
+        margin-bottom: 9px;
+        color: #1F1F1F;
+        font-weight: 600;
+
+      .attribute
+        &:not(:last-child)
+          margin-bottom: 15px;
+
+        select
+          max-width: 200px;
+
+    .buy-together
+      &__image
+        margin-bottom: 12px;
+
+        .spot__image-wrapper
+          border: none;
+
+      &__quantity
+        display: none;
+
+      &__price
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-height: 245px;
+
+        @media mobile
+          align-items: center;
+
+        .spot-price
+          @media mobile
+            margin-bottom: 15px;
+            text-align: center;
+
+          .precoDe
+            display: block;
+            margin-bottom: 8px;
+            color: #333333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+
+          .precoPor
+            font-size: 18px;
+
+            small
+              display: none;
+
+        .best-installment
+          display: none;
+
+        .buy-button
+        .pick-up-button
+          display: none;
+
+        .add-to-cart-button
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 245px;
+          height: 40px;
+          background: #0FA848;
+          color: #ffffff;
+          font-weight: 700;
+          font-size: 14px;
+          cursor: pointer;
+          transition: $transition;
+
+          &[disabled]
+            background: #656565;
+            cursor: not-allowed;
+
+          &:not([disabled]):hover
+            background: $primary;
+
+      &__title
+        margin-bottom: 15px;
+        color: #333333;
+        font-size: 16px;
+
+        strong
+          color: $primary;
+
+  &__reviews
+    margin-bottom: 70px;
+
+    h2
+      font-weight: 500;
+      font-size: 20px;
+
+  &__recommendation
+    margin-bottom: 20px;
+
+    h2
+      margin-bottom: 20px;
+      font-weight: 500;
+      font-size: 20px;
+
+      @media mobile
+        text-align: center;
+
+  &__unavailable
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+  .obs
+    color: #5D5D5D;
+    font-size: 11px;
+
+    @media mobile
+      margin-bottom: 17px;
+
+  &__customization
+    margin-bottom: 25px;
+
+    .term-select
+      display: none;
+
+.product-floating
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  background: #F7F7F7;
+  transition: $transition;
+  transform: translateY(100%);
+
+  @media mobile
+    padding: 0;
+
+  .show-floating &
+    transform: translateY(0);
+
+    @media mobile
+      transform: translateY(-75px);
+
+  &__container
+    @extend $container;
+
+    display: flex;
+    align-items: center;
+    padding: 7.5px 35px;
+    gap: 10px;
+
+    @media mobile
+      flex-direction: column;
+      padding: 20px 20px 0;
+      gap: 20px;
+
+  &__image
+    @media mobile
+      display: none;
+
+  &__title
+    flex: 1;
+    font-weight: 500;
+    font-size: 20px;
+
+    @media mobile
+      font-size: 14px;
+
+  .buy-button
+  .pick-up-button
+    display: none;
+
+  .add-to-cart-button
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background: #0FA848;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: $transition;
+
+    @media (min-width: 450px)
+      width: 245px;
+
+    &[disabled]
+      background: #B4B4B4;
+      cursor: not-allowed;
+
+    &:not([disabled]):hover
+      background: $primary;
+
+  .pick-up-button
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #0FA848;
+    background: #fff;
+    color: #0FA848;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: $transition;
+
+    @media (min-width: 450px)
+      width: 215px;
+
+    &[disabled]
+      border: 1px solid #B4B4B4;
+      background: #B4B4B4;
+      color: #fff;
+      cursor: not-allowed;
+
+    &:not([disabled]):hover
+      background: #0FA848;
+      color: #fff;

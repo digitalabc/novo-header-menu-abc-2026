@@ -1,0 +1,7 @@
+query Checkout($checkoutId: String!, $hasCheckout: Boolean!) {
+  checkout(checkoutId:$checkoutId) @include(if: $hasCheckout) {
+    products {
+      productId
+    }
+  }
+}

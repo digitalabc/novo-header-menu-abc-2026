@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  {{ asset type: "css" paths: ["output_login", "checkout/login", "output","output_checkout"]}}
+  <title>Entrar ABC Prime</title>
+</head>
+
+<body>
+  {{ checkout_header }}
+  {{ wake_overlay }}
+  <div class="login">
+    <div class="login__container">
+      <div class="login__image">
+        <!-- <img src="https://abcprime.fbitsstatic.net/media/banner-login-prime.jpg"> -->
+      </div>
+
+      <div class="login_container_content">
+        <div class="login__content">
+          <div class="login__header">
+            <h2 class="login__title">Bem-vindo(a)</h2>
+            <p class="login__subtitle">Entre com sua conta ABC PRIME</p>
+          </div>
+
+          <div class="login__social">
+            {{ wake_login_social facebook_app_id: common.facebook_app_id[0]?.value google_client_id: common.google_client_id[0]?.value }}
+          </div>
+
+          <div class="login__divider">
+            <div class="login__divider-line"></div>
+            <span class="login__divider-text">Ou</span>
+            <div class="login__divider-line"></div>
+          </div>
+
+
+            {{ login_authenticate }}
+            {{wake_login_password_recovery}}
+
+            
+
+          <div class="login__register">
+            <span>Não tem uma conta? </span>
+            <a href="{{store.urls.checkout_pages.login.signup}}" class="login__register-link">Registre uma conta</a>
+          </div>
+
+          <p class="login__terms">
+            Ao continuar você indica que leu e concordou<br> com os <a href="https://www.abcprime.shop/central-de-atendimento/termos-abc-prime" class="login__terms-link">Termos
+              de Uso</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ checkout_footer }}
+  {{ sdk_client_checkout }}
+  {{ wake_scripts scripts: ["wake_utils"] }}
+  {{ asset type: "js" paths: ["login"] options: "async"}}
+  <script>
+    var checkout_pages = {{ store.urls.checkout_pages | map.to_json}};
+  </script>
+</body>
+
+</html>

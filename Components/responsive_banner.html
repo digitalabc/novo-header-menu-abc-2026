@@ -1,0 +1,51 @@
+{{ ##
+  Description: Renders a banner, changing the image source depending on the device's screen resolution
+               (using srcset as explained in https://css-tricks.com/a-guide-to-the-responsive-images-syntax-in-html/#using-srcset)
+  Params:
+      - banners: array of banners (available on Admin)
+                 Make sure to register the images with the same name or pattern
+                 (e.g., "responsive banner L", "responsive banner M", "responsive banner S")
+                 and to fill the image width field
+      - name: name to filter the array of banners
+              (e.g., "responsive banner")
+  Usage:
+      responsive_banner banners: data...banners name: "banner name"
+## }}
+{{~ #Function used to filter the banners that contains the given paramenter 'name'
+  func filter_by_name(banner)
+    contains = false
+    if banner && (banner.banner_name | string.contains name)
+      contains = true
+    end
+    ret contains
+  end
+~}}
+{{~
+  filtered_banners = banners | array.filter @filter_by_name
+  responsive_banners = filtered_banners | array.sort "width"
+~}}
+{{~ if responsive_banners != empty ~}}
+{{~
+  alt_text = responsive_banners[0].alt_text
+
+  for banner in responsive_banners
+    srcset = srcset + banner.banner_url + " " + banner.width + "w"
+    if !for.last
+      srcset = srcset + ","
+    end
+
+    if !for.last
+      sizes = sizes + "(max-width: " + (responsive_banners[for.index + 1].width - 10) + "px) " + banner.width + "px, "
+    else
+      sizes = sizes + banner.width + "px"
+    end
+  end
+~}}
+<div class="col-12 responsive-banner justify-content-center" style="display: flex; justify-content: center;">
+    <img
+      alt="{{alt_text}}"
+      srcset="{{srcset}}"
+      sizes="{{sizes}}"
+    >
+</div>
+{{~ end ~}}

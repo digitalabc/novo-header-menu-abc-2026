@@ -1,0 +1,118 @@
+query Home($partnerAccessToken: String){
+  hotsite(url: "", partnerAccessToken: $partnerAccessToken) {
+    banners {
+      altText
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+      urlOnClick
+      order
+    }
+    contents {
+      content
+      height
+      title
+      width
+      position
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+  }
+  brands(first: 50, brandInput: {groupIds: [19]}) {
+    nodes {
+      active
+      urlLogo
+      alias
+      fullUrlLogo
+      name
+    }
+  }
+  vitrine1: hotsite(hotsiteId: 98667, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine2: hotsite(hotsiteId: 98668, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+}
+
+fragment produtos on SingleHotsite {
+  products(first: 20, sortKey: SALES, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment productsCon on ProductsConnection {
+  nodes {
+    id
+    productId
+    productName
+    productVariantId
+    productBrand {
+      fullUrlLogo
+      logoUrl
+    }
+    alias
+    similarProducts {
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images(width: 245, height: 245) {
+      url
+      print
+    }
+    available
+    prices {
+      listPrice
+      price
+      priceTables {
+        id
+        listPrice
+        price
+      }
+      discountPercentage
+      multiplicationFactor
+      installmentPlans {
+        displayName
+        name
+        installments {
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    attributes {
+      name
+      value
+    }
+    promotions{
+      fullStampUrl
+      content
+      id
+      stamp
+      title
+      fullStampUrl
+    }
+    addToCartFromSpot
+  }
+}

@@ -1,0 +1,86 @@
+<FBITS:Cabecalho />
+<div class="container tyc_container">
+  <div class="row">
+    <div class="full-container">
+      <section class="fbits-nc-carrinho new-checkout">
+        <div class="col-xs-12">
+          <div class="tyc-mensagem alert alert-error" style="display:none;"></div>
+        </div>
+        <div class="fbits-nc-carrinho-col col-lg-4 col-md-4 col-sm-12 col-xs-12 fechamento-section1">
+          <FBITS:Usuario />
+          <FBITS:Endereco />
+          <FBITS:Frete ordenacao="" />
+        </div>
+        <div class="fbits-nc-carrinho-col col-lg-4 col-md-4 col-sm-12 col-xs-12 fechamento-section2">
+          <FBITS:Observacao titulo="Observação"
+            subtitulo="Preencha o campo abaixo para adicionar uma observação ao seu pedido"
+            placeholder="Adicione uma observação ao seu pedido" />
+          <FBITS:Cupom />
+          <FBITS:ContaCorrente />
+          <FBITS:Pagamento />
+        </div>
+        <div class="fbits-nc-carrinho-col col-lg-4 col-md-4 col-sm-12 col-xs-12 fechamento-section3">
+          <div class="fbits-produtos-container">
+            <h5 class="title-box"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Resumo do Pedido
+            </h5>
+            <a class="voltar-carrinho">Voltar ao carrinho</a>
+            <FBITS:CarrinhoMensagens />
+            <FBITS:Produtos />
+            <FBITS:Resumo />
+          </div>
+          <div class="msg-warning-invoice">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                <path
+                  d="M10.29 4.00001L1.82002 18.14C1.64539 18.4424 1.55299 18.7853 1.55201 19.1345C1.55103 19.4837 1.64151 19.8271 1.81445 20.1305C1.98738 20.4339 2.23675 20.6868 2.53773 20.8639C2.83871 21.041 3.18082 21.1362 3.53002 21.14H20.47C20.8192 21.1362 21.1613 21.041 21.4623 20.8639C21.7633 20.6868 22.0127 20.4339 22.1856 20.1305C22.3585 19.8271 22.449 19.4837 22.448 19.1345C22.4471 18.7853 22.3547 18.4424 22.18 18.14L13.71 4.00001C13.5318 3.70611 13.2807 3.46313 12.9812 3.29449C12.6817 3.12585 12.3438 3.03726 12 3.03726C11.6563 3.03726 11.3184 3.12585 11.0188 3.29449C10.7193 3.46313 10.4683 3.70611 10.29 4.00001V4.00001Z"
+                  stroke="#FCA004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 9.14001V13.14" stroke="#FCA004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 17.14H12.01" stroke="#FCA004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <p>AVISO IMPORTANTE!</p>
+              <p>Prazo no site somente iniciará após emissão da Nota Fiscal emitida pela ABC. Pedimos compreensão.</p>
+            </div>
+          </div>
+          <FBITS:Finalizar />
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<FBITS:Rodape />
+
+<!--Data Layers - OLD CHECKOUT-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  const dlp = [];
+
+  $(document).ready(function () {
+
+    for (p = 0; p < Fbits.Carrinho.Produtos.length; p++) {
+      dlp.push({
+        name: Fbits.Carrinho.Produtos[p].Nome.toString(),
+        id: Fbits.Carrinho.Produtos[p].ProdutoId.toString(),
+        price: Fbits.Carrinho.Produtos[p].PrecoPor,
+        brand: Fbits.Carrinho.Produtos[p].Fabricante.toString(),
+        variant: Fbits.Carrinho.Produtos[p].ProdutoVarianteId.toString(),
+        category: Fbits.Carrinho.Produtos[p].Categoria.toString(),
+        quantity: Fbits.Carrinho.Produtos[p].Quantidade,
+      });
+    }
+
+    window.dataLayer.push({
+      'event': 'checkout',
+      'ecommerce': {
+        'checkout': {
+          'actionField': {
+            'step': 3
+          },
+          'products': dlp
+        }
+      }
+    });
+
+  });
+</script>

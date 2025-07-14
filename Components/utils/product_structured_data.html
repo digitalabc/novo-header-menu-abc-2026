@@ -1,0 +1,80 @@
+{{~ grouped_informations = product.informations | group.by @(do; ret $0.title;end) ~}}
+{{~ description_information = grouped_informations | group.get "Descrição" ~}}
+{{~ description = description_information | array.first ~}}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "{{ product.product_name }}",
+        "image": [
+            {{~ for image in product.images ~}}
+                {{~ if image.url ~}}
+                    "{{ image.url }}"{{ if !for.last }},{{ end }}
+                {{~ end ~}}
+            {{~ end ~}}
+        ],
+        {{~ if description ~}}
+            "description": "{{ description.value ~}}",
+        {{~ end ~}}
+        "sku": "{{ product.sku }}",
+        {{~ if product.ean ~}}
+            {{~ eanSize = product.ean | string.size ~}}
+            {{~ if eanSize == 8 ~}}
+                "gtin8": "{{ product.ean }}",
+            {{~ else if eanSize == 12 ~}}
+                "gtin12": "{{ product.ean }}",
+            {{~ else if eanSize == 13 ~}}
+                "gtin13": "{{ product.ean }}",
+            {{~ else if eanSize == 14 ~}}
+                "gtin14": "{{ product.ean }}",
+            {{~ else ~}}
+                "gtin": "{{ product.ean }}",
+            {{~ end ~}}
+        {{~ end ~}}
+        "url": "{{ current_url }}",
+        {{~ if product.product_brand ~}}
+            "brand": {
+                "@type": "Brand",
+                "name": "{{ product.product_brand.name }}"
+            },
+        {{~ end ~}}
+        {{~ if product.reviews.size > 0 ~}}
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "{{ product.average_rating }}",
+                "reviewCount": "{{ product.reviews.size }}"
+            },
+            "review": [
+            {{~ sortRating = product.reviews | array.sort "rating" | array.map "rating" ~}}
+            {{~ bestRating = sortRating | array.last ~}}
+            {{~ worstRating = sortRating | array.first ~}}
+            {{~ for review in product.reviews ~}}
+                {
+                    "@type": "Review",
+                    "author": "{{ review.customer }}",
+                    "datePublished": "{{ review.review_date }}",
+                    "reviewBody": "{{ review.review }}",
+                    "reviewRating": {
+                    "@type": "Rating",
+                    "bestRating": "{{ bestRating }}",
+                    "ratingValue": "{{ review.rating }}",
+                    "worstRating": "{{ worstRating }}"
+                    }
+                }{{~ if !for.last ~}},{{ end }}
+            {{~ end ~}}
+            ],
+        {{~ end ~}}    
+        "offers": {
+            "@type": "Offer",
+            "url": "{{ current_url }}",
+            "priceCurrency": "BRL",
+            "price": "{{ product.prices.price }}",
+            {{~ if product.stock > 0 ~}}
+                "availability": "https://schema.org/InStock",
+            {{~ else ~}}
+                "availability": "https://schema.org/OutOfStock",
+            {{~ end ~}}
+            "itemCondition": "https://schema.org/NewCondition"
+        }
+    }
+</script>

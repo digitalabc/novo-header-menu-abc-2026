@@ -1,0 +1,9 @@
+{{ ##
+    Description: Render a single row of the buy together component of a product page,
+    containing two product columns, and a price column with a buy button
+    Params:
+        - Uses buy_together.graphql
+    Usage:
+        await client.snippet.render("buy_together_row_snippet.html", ...);
+## }}
+{{~ buy_together_row bt_product: data.buy_together_product principal_product: data.page_product ~}}

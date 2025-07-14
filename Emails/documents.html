@@ -1,0 +1,11 @@
+<h5>Enviado pelo Storefont - Template PedidoDocumento</h5>
+<br>
+<p>Olá, {{pedido.usuario.nome}}</p>
+<p>Data pedido: {{pedido.data}}</p>
+<p>valor do pedido: {{pedido.valor_total}}</p>
+
+<p>Produtos comprados:</p>
+{{for p in pedido.produtos}}
+<p>- {{p.nome}}</p>
+{{end}}
+

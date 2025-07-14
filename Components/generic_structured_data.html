@@ -1,0 +1,24 @@
+{
+    "@type": "Product",
+    {{~ if product.images.size > 0 ~}}
+        "image": "{{ product.images[0].url }}",                   
+    {{~ else ~}}
+        "image": "https://{{store.store_name}}.fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg?w=250&h=250&v=20220125251131&qs=ignore",
+    {{~ end ~}}
+    "url": "{{ base_url | string.append "/" | string.append product.alias }}",
+    "name": "{{ product.product_name }}",
+    "offers": {
+        "@type": "Offer",
+        {{~ if product.prices -}}
+        "price": "{{ product.prices.price }}",
+        {{~ end ~}}
+        "priceCurrency": "BRL",
+        "url": "{{ base_url | string.append "/" | string.append product.alias }}",
+        {{~ if product.available ~}}
+        "availability": "https://schema.org/InStock",
+        {{~ else ~}}
+        "availability": "https://schema.org/OutOfStock",
+        {{~ end ~}}
+        "itemCondition": "https://schema.org/NewCondition"
+    }
+} 

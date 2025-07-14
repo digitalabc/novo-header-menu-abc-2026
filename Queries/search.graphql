@@ -1,0 +1,102 @@
+query Search($searchQuery: String, 
+  $partnerAccessToken: String, 
+  $resultSize: Int = 12,
+  $offset: Int, 
+  $sortKey: ProductSearchSortKeys, 
+  $sortDirection: SortDirection, 
+  $filters: [ProductFilterInput],
+  $minimumPrice: Decimal,
+  $maximumPrice: Decimal) {
+  search(query: $searchQuery, partnerAccessToken: $partnerAccessToken) {
+    redirectUrl
+    searchTime
+    breadcrumbs{
+      link
+      text
+    }
+    contents {
+      content
+      height
+      title
+      width 
+      position
+    }
+    productsByOffset(limit: $resultSize, offset: $offset, sortKey: $sortKey, sortDirection: $sortDirection, filters: $filters, minimumPrice: $minimumPrice, maximumPrice: $maximumPrice) {
+      totalCount
+      page
+      items {
+        id
+        productId
+        productName
+        productVariantId
+        alias
+        similarProducts{
+          alias
+          image
+          name
+          imageUrl(w: 50, h: 50)
+        }
+        images(width:275, height:275) {
+          url
+          print
+        }
+        available
+        prices {
+          listPrice
+          price
+          priceTables {
+            id
+            listPrice
+            price
+          }
+          discountPercentage
+          bestInstallment {
+            name
+            displayName
+            discount
+            fees
+            number
+            value
+          }
+          wholesalePrices{
+            price
+            quantity
+          }
+        }
+        promotions{
+          fullStampUrl
+          content
+          id
+          stamp
+          title
+        }
+        addToCartFromSpot
+      }
+    }
+    aggregations {
+      filters {
+        field
+        values {
+          name
+          quantity
+        }
+      }
+      priceRanges{
+        range
+        quantity
+      }
+      maximumPrice
+      minimumPrice
+    }
+    banners {
+      bannerUrl
+      openNewTab
+      width
+      height
+      order
+      position
+      title
+      urlOnClick
+    }
+  }
+}

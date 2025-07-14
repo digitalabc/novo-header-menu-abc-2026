@@ -1,0 +1,406 @@
+.filter
+  @media desktop
+    flex: 0 0 220px;
+
+  @media mobile
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transition: $transition;
+    isolation: isolate;
+
+    &:before
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      z-index: -1;
+      display: block;
+      visibility: hidden;
+      width: 100%;
+      height: 100%;
+      background: rgba(#000000, 30%);
+      content: "";
+      opacity: 0;
+      transition: $transition;
+
+    .on-filter &
+      left: 0;
+
+      &:before
+        visibility: visible;
+        opacity: 1;
+
+  &__button
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    color: #5D5D5D;
+    font-weight: 500;
+    font-size: 16px;
+    gap: 10px;
+
+    @media mobile
+      flex-shrink: 0;
+      width: 165px;
+      height: 40px;
+      background: $black;
+      color: #fff;
+      cursor: pointer;
+
+    svg
+      fill: $primary;
+
+      @media mobile
+        fill: #ffffff;
+
+  &__top
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    background: #392F2D;
+
+    h4
+      color: #fff;
+      font-weight: bold;
+      line-height: 55px;
+
+    @media desktop
+      display: none;
+
+  &__close
+    position: absolute;
+    right: -55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    background: $primary;
+    cursor: pointer;
+
+    svg
+      pointer-events: none;
+
+  &__list
+    @media mobile
+      flex: 1;
+      overflow: auto;
+      padding: 20px 15px;
+      max-height: 100vh;
+      max-height: 100dvh;
+      width: 320px;
+      background: #fff;
+
+  &__item
+    &:not(:last-child)
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #D5D5D5;
+
+    &.open
+      .filter
+        &__options
+          margin-top: 15px;
+
+        &__title
+          svg
+            transform: rotateX(180deg);
+
+      .show-more
+        margin-top: 15px;
+        max-height: 16px;
+
+  &__title
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $black;
+    font-weight: 500;
+    cursor: pointer;
+
+    svg
+      transition: $transition;
+
+    @media mobile
+      margin: 0;
+
+  &__options
+    overflow: hidden;
+    height: 0;
+    transition: $transition;
+
+    &.collapsed
+      overflow: hidden;
+      max-height: 140px;
+      transition: $transition;
+
+    .option
+      display: flex;
+      gap: 5px;
+
+      &:not(:last-child)
+        margin-bottom: 15px;
+
+      &__checkbox
+        display: none;
+
+        &:checked
+          +.fake-checkbox
+            border: 1px solid $primary;
+
+            svg
+              opacity: 1;
+
+      .fake-checkbox
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #5D5D5D;
+        cursor: pointer;
+        transition: $transition;
+
+        svg
+          opacity: 0;
+          transition: $transition;
+
+      &__label
+        color: #000000;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        cursor: pointer;
+        cursor: pointer;
+
+  .color-filter
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    @media mobile
+      gap: 8px;
+
+    &.selected
+      img
+        border: 1px solid $primary;
+
+    img
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      pointer-events: none;
+
+    input
+      border: none;
+
+    label
+      color: #000;
+      letter-spacing: 0.05em;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+
+  .show-more
+    display: block;
+    overflow: hidden;
+    max-height: 0;
+    background: none;
+    color: $primary;
+    text-decoration: underline;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, max-height 0.2s ease-in-out, margin 0.2s ease-in-out;
+
+    &.ver-menos
+      font-size: 0;
+
+      &:after
+        content: "Ver menos";
+        font-size: 13px;
+
+.relative
+  position: relative;
+
+.mt-4
+  margin-top: 1rem;
+
+.h-3
+  height: 0.75rem;
+
+#price-range-slider>div>#unselected-left, #price-range-slider>div>#unselected-right
+  margin: 0 5px;
+  border-radius: 10px;
+
+.bg-secondary-300
+  background-color: #F7F7F7;
+
+.bg-primary-500, .bg-primary-600
+  background-color: $primary;
+
+.h-10px
+  height: 7px;
+
+.left-0
+  left: 0;
+
+.right-0
+  right: 0;
+
+.right-3
+  right: 0.75rem;
+
+.left-3
+  left: 0.75rem;
+
+.absolute
+  position: absolute;
+
+#price-range-slider>div>#unselected-left
+  margin: 0 5px;
+  border-radius: 10px;
+
+#price-range-slider>div>#unselected-right
+  margin: 0 5px;
+  border-radius: 10px;
+
+#price-range-slider>div>#selected-range-slider
+  border-radius: 10px;
+
+#price-range-slider>div>[thumb]
+  top: -3.5px;
+  z-index: 2;
+  margin-left: -11px;
+  width: 14px;
+  height: 14px;
+  outline: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  cursor: pointer;
+
+#price-range-slider>input[type=range]
+  position: absolute;
+  top: -2px;
+  z-index: 3;
+  width: 100%;
+  height: 10px;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+
+#price-range-slider>input[type=range]::-ms-track
+  background: transparent;
+  color: transparent;
+  -webkit-appearance: none;
+
+#price-range-slider>input[type=range]::-moz-range-track
+  background: transparent;
+  color: transparent;
+  -moz-appearance: none;
+
+#price-range-slider>input[type=range]:focus::-webkit-slider-runnable-track
+  border: transparent;
+  background: transparent;
+
+#price-range-slider>input[type=range]:focus
+  outline: none;
+
+#price-range-slider>input[type=range]::-ms-thumb
+  width: 14px;
+  height: 14px;
+  border: 0 none;
+  border-radius: 0;
+  background: #f00;
+  pointer-events: all;
+
+#price-range-slider>input[type=range]::-moz-range-thumb
+  width: 14px;
+  height: 14px;
+  border: 0 none;
+  border-radius: 0;
+  background: #f00;
+  pointer-events: all;
+
+#price-range-slider>input[type=range]::-webkit-slider-thumb
+  width: 14px;
+  height: 14px;
+  border: 0 none;
+  border-radius: 0;
+  background: #f00;
+  pointer-events: all;
+  -webkit-appearance: none;
+
+#price-range-slider>input[type=range]::-ms-fill-lower
+  border: 0 none;
+  background: transparent;
+
+#price-range-slider>input[type=range]::-ms-fill-upper
+  border: 0 none;
+  background: transparent;
+
+#price-range-slider>input[type=range]::-ms-tooltip
+  display: none;
+
+#price-range-slider>div>[sign]>span
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 14px;
+
+#price-range-slider:hover>div>[sign]
+  opacity: 1;
+
+#price-selection-fields>input::-webkit-outer-spin-button, #price-selection-fields>input::-webkit-inner-spin-button
+  margin: 0;
+  -webkit-appearance: none;
+
+#price-selection-fields>input[type=number]
+  -moz-appearance: textfield;
+
+#price-selection-fields
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-bottom: 20px;
+
+  #minimum-price-filter, #maximum-price-filter
+    width: calc((100% / 2) - 20px);
+    height: 30px;
+    border: 1px solid #EAEAEA;
+    text-align: center;
+
+    &:focus
+      border-color: $primary;
+
+  #apply-price-filter
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+
+    svg
+      width: 20px;
+      height: 20px;
+
+  > span
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 10px;

@@ -1,0 +1,20 @@
+{{ ##
+		Description: Renders a script or link tag that uses the static cdn server
+		Params:
+			- static_url: the static files url
+			- type: js or css
+			- paths: list of full file paths starting from the file type.
+							 Ex: file Assets/JS/folder/script.js -> paths: ["folder/script"]
+		Usage:
+				asset type: "js" paths: ["script1", "folder/script2"]
+## }}
+{{~ joined_paths = paths | array.join "," ~}}
+{{~ capture source ~}}
+	{{- store.urls.static_bundle}}?type={{type}}&paths={{joined_paths}}&theme={{store.theme -}}&v={{~store.last_modified~}}
+{{~ end ~}}
+{{~ if type == "js" -}}
+	<script src="{{- source -}}"></script>
+{{~ else if type == "css" -}}
+  <link rel="preload" href="{{- source -}}" as="style">
+	<link href="{{- source -}}" rel="stylesheet">
+{{~ end ~}}

@@ -1,0 +1,11 @@
+<h5>Enviado pelo Storefont - Template CancelamentoAssinatura</h5>
+<br>
+<p>Olá, {{assinatura.usuario.nome}}</p>
+<p>Data pedido: {{assinatura.data}}</p>
+
+<p>Produtos comprados:</p>
+{{for p in assinatura.produtos}}
+<p>- {{p.nome}}</p>
+{{end}}
+
+

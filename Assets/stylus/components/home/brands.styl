@@ -1,0 +1,25 @@
+.brands
+  .swiper-wrapper
+    align-items: center;
+
+  .brand
+    text-align: center;
+
+    a
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90px;
+      background: #ffffff;
+      opacity: 0.5;
+      transition: $transition;
+
+      &:hover
+        opacity: 1;
+
+  @media mobile
+    .swiper
+      &-button
+        &-next, &-prev
+          display: none;

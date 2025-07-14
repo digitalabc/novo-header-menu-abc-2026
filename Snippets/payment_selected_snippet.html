@@ -1,0 +1,96 @@
+{{ payment_method = data?.result?.selected_payment_method }}
+{{ if payment_method }}
+  {{ is_card = payment_method.html | string.contains "data-gateway-cartao" }}
+
+  <div class="wake-payment-data-options" data-gateway-pagamento="{{ payment_method.id }}" data-gateway-parcelas='1'>
+    <div
+      id="payment-container"
+      data-payment-transaction-id="{{ payment_method.id }}"
+      data-payment-method-id="{{ payment_method.payment_method_id }}"
+    >
+      {{ if is_card }}
+        <div class="cardWrapper">
+          <div id="paymentCartao" data-gateway-cartao>
+            <div class='card-wrapper'></div>
+            <form class="fake-form" onchange="formComplete(this)">
+              <h3 class="title">Cadastrar cartão de crédito</h3>
+              <h4 class="requiredWarning">
+                <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.0709 4.00105H8.35679V2.97833C8.35679 1.4871 7.26551 0.155845 5.77999 0.0130064C4.07736 -0.146973 2.64326 1.18999 2.64326 2.85835V4.00105H0.929199V12H10.0709V4.00105ZM5.50003 9.14323C4.87154 9.14323 4.35732 8.62901 4.35732 8.00053C4.35732 7.37204 4.87154 6.85782 5.50003 6.85782C6.12851 6.85782 6.64273 7.37204 6.64273 8.00053C6.64273 8.62901 6.12851 9.14323 5.50003 9.14323ZM3.78597 4.00105V2.85835C3.78597 1.9099 4.55158 1.14429 5.50003 1.14429C6.44847 1.14429 7.21409 1.9099 7.21409 2.85835V4.00105H3.78597Z" fill="#333333"/>
+                </svg>              
+                Campos indicados com * são obrigatórios
+              </h4>
+              <div class="forminline" id="inputCardNumber">
+                <label>Número do cartão *</label>
+                <input type="tel" name="number" placeholder="Digite o número do cartão" required onblur="cardType(this)" data-card-number/>
+              </div>
+              <div class="formCol">
+                <div class="forminline">
+                  <label>Vencimento *</label>
+                  <input type="text" name="expiryDate" placeholder="Digite o vencimento" oninput="expiryDateMask(this)" onchange="updateExpiryValue()" required/>
+                </div>
+                <div class="forminline">
+                  <label>CVV *</label>
+                  <input type="tel" name="cvc" required/>
+                </div>
+              </div>
+              <input type="hidden" name="year" value="01/1954" />
+              <input type="hidden" name="month" value="01/1954" />
+              <input type="hidden" name="expiry" value="01/1954" />
+              <div class="forminline">
+                <label>
+                  CPF do Titular *
+                </label>
+                <input type="text" name="cpf" id="cardDocument" placeholder="Digite o CPF" required oninput="formCpfMask(this)" onblur="validateCpf(this)"/>
+              </div>
+              <div class="forminline">
+                <label>
+                  Nome do titular *
+                </label>
+                <input type="text" name="name"  placeholder="Digite o nome" required/>
+              </div>
+              <div class="forminline">
+                <label>Parcelamento</label>
+                <select data-gateway-parcelamento onchange="selectPaymentInstallment('{{ payment_method.id }}', this)" id="installment-selection" required>
+                  <option value="" disabled selected>Digite aqui</option>
+                  {{ for installment in payment_method.installments }}
+                    <option value="{{ installment.number }}">
+                      {{ if installment.number == 1 }} À vista {{ else }}
+                      {{ installment.number }} parcelas {{ end }} ({{ installment.value | math.format "c" "pt-BR" }}) {{ if installment.adjustment > 0 }} com juros de {{ installment.adjustment | math.times 100 }}% {{ else }} sem juros {{ end }}
+                    </option>
+                  {{ end }}
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="payment-buttons">
+            <button class="checkout-back-button" onclick="backPaymentStep()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6.25 13.5L7.475 12.2312L4.36875 9.125H15V7.375H4.36875L7.475 4.26875L6.25 3L1 8.25L6.25 13.5Z" fill="#20A389"/>
+              </svg>
+              Voltar
+            </button>
+            <button class="checkout-finish-button" id="finish-card-form-button" disabled onclick="nextCardScreen('{{ payment_method.payment_method_id }}')">
+              Salvar e usar
+            </button>
+          </div>
+        </div>
+
+        {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
+        {{ payment_html }}
+
+        <div id="card-finish" class="hidden">
+          {{ finish_order data: data}}
+        </div>
+      {{ else}}
+        {{ finish_order data: data}}
+      {{ end }}
+    </div>
+    {{ if data.result.completed }}
+      <button onclick="orderChangePayment(this)">
+        <span id="btn-change-payment-text">Alterar</span>
+        <span id="btn-change-payment-loading" class="hidden">{{ loading }}</span>
+      </button>
+    {{ end }}
+  </div>
+{{ end }}

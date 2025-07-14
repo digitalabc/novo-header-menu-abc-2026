@@ -1,0 +1,23 @@
+{{ ##
+    Description: Returns status of user's subscription
+    Params:
+        - Uses subscription_info.graphql
+    Usage:
+        await client.snippet.render("subscription_info_snippet.html", ...);        
+## }}
+{{~
+    status = false
+    subscriptions = data.customer.subscriptions
+    current = 605
+
+    if !subscriptions.empty? 
+        for sub in subscriptions 
+            if (sub.status == 'Ativo') && (current == sub.subscription_group_id) 
+                status = true
+            end 
+        end 
+    end
+~}}
+{"status": {{ status }}} 
+
+

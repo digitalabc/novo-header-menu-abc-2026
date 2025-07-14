@@ -1,0 +1,38 @@
+{{ ##
+	Description: Component for configuring the GTM script
+    Params:
+        - gtm_id : the google tag manager id
+    Usage:
+        gtm_config gtm_id: common.gtm_id
+## }}
+{{ gtm_id = gtm_id != null ? gtm_id[0]?.value : null }}
+
+<!-- Google Tag Manager -->
+<script>
+    let gtmSetup;
+    {{ if gtm_id && !gtm_id.empty? }}
+        gtmSetup = (userId) => {
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); 
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; 
+                j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; 
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', '{{gtm_id}}');
+
+            const noscript = document.createElement('noscript');
+            const iframeElement = document.createElement('iframe');
+            iframeElement.src = 'https://www.googletagmanager.com/ns.html?id={{gtm_id}}';
+            iframeElement.height = '0';
+            iframeElement.width = '0';
+            iframeElement.style.display = 'none';
+            iframeElement.style.visibility = 'hidden';
+            noscript.appendChild(iframeElement);
+            const bodyElement = document.getElementsByTagName('body')[0];
+            bodyElement.insertBefore(noscript, bodyElement.firstChild);
+        }
+    {{ end }}
+</script>

@@ -1,0 +1,123 @@
+query BuyListProduct ($id: Long!, 
+$selections:[AttributeFilterInput]) {
+  product(productId: $id) {
+    productId
+    productName
+    productVariantId
+    alias
+    stock
+    available
+    images {
+      url
+      print
+      fileName
+    }
+    prices {
+      listPrice
+      price
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment{
+        discount
+        fees
+        number
+        value
+      }
+    }
+    subscriptionGroups{
+      recurringTypes{
+        name
+        days
+        recurringTypeId
+      }
+      subscriptionGroupId
+      subscriptionOnly
+    }  
+    attributeSelections (selected: $selections) {
+      canBeMatrix
+      matrix {
+        row {
+          name
+          displayType
+          values {
+            value
+            printUrl
+          }
+        }
+        column {
+          name
+          displayType
+          values {
+            value
+            printUrl
+          }
+        }
+        data {
+          productVariantId
+          available
+          stock
+        }
+      }
+      selectedVariant {
+        id
+        alias
+        available
+        images {
+          fileName
+          url
+        }
+        prices {
+          listPrice
+          price
+          discountPercentage
+          installmentPlans {
+              displayName
+              name
+              installments{
+                discount
+                fees
+                number
+                value
+              }
+          }
+          bestInstallment {
+            name
+            displayName
+            discount
+            fees
+            number
+            value
+          }
+          wholesalePrices{
+            price
+            quantity
+          }
+        }
+        productId
+        productVariantId
+        stock
+      }
+      selections{
+        attributeId
+        displayType
+        name
+        varyByParent
+        values {
+          alias
+          available
+          printUrl
+          selected
+          value
+        }
+      }
+    }
+  }
+}

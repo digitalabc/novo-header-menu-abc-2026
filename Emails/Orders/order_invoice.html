@@ -1,0 +1,9 @@
+<h4>PedidoPreparadoEnvio - Loja {{ configuracao.url_carrinho }}</h4>
+<h4>E-mail gerado pelo storefront</h4>
+<p>Olá {{pedido.usuario.nome}}
+<p>Pedido {{pedido.id}} feito em {{pedido.data}} as {{pedido.hora}}</p>
+<p>Valor : {{pedido.valor_total}}</p>
+
+{{for p in pedido.produtos}}
+<p>{{p.nome}}</p>
+{{end}}

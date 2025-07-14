@@ -1,0 +1,98 @@
+<FBITS:Cabecalho />
+<div class="container tyc_container">
+  <h2 class="title-confirmacao">Pedido realizado com sucesso!</h2>
+  <div class="row">
+    <FBITS:BannerEbit />
+    <section class="confirmacao-box col-xs-12">
+      <FBITS:Pedido />
+      </sction>
+      <section class="confirmacao-box col-xs-12">
+        <FBITS:Pagamento />
+      </section>
+  </div>
+  <div class="row">
+    <section class="confirmacao-itens col-xs-12">
+      <FBITS:Produtos />
+    </section>
+    <section class="confirmacao-entrega col-xs-12">
+      <FBITS:Entrega />
+    </section>
+  </div>
+  <div class="row">
+    <section class="confirmacao-buttons">
+      <FBITS:Continuar />
+      <FBITS:Imprimir />
+    </section>
+  </div>
+  <FBITS:MensagemListaEventos />
+</div>
+<FBITS:Rodape />
+
+<!--Data Layers - OLD CHECKOUT-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.criteo_q = window.criteo_q || [];
+
+  const dlp = [];
+
+  setTimeout(() => {
+    for (p = 0; p < Fbits.Carrinho.Produtos.length; p++) {
+      dlp.push({
+        name: Fbits.Carrinho.Produtos[p].Nome.toString(),
+        id: Fbits.Carrinho.Produtos[p].ProdutoId.toString(),
+        price: Fbits.Carrinho.Produtos[p].PrecoPor,
+        brand: Fbits.Carrinho.Produtos[p].Fabricante.toString(),
+        variant: Fbits.Carrinho.Produtos[p].ProdutoVarianteId.toString(),
+        quantity: Fbits.Carrinho.Produtos[p].Quantidade
+      });
+    }
+
+    window.dataLayer.push({
+      'event': 'purchase',
+      'ecommerce': {
+        'purchase': {
+          'actionField': {
+            'id': Fbits.Carrinho.PedidoId,
+            'affiliation': 'adias',
+            'revenue': Fbits.Carrinho.ValorTotal,
+            'shipping': (Fbits.Carrinho.Frete.Valor || 0),
+            'coupon': Fbits.Carrinho.Cupom
+          },
+          'products': dlp
+        }
+      },
+      'email': Fbits.Carrinho.Usuario.Email ? Fbits.Carrinho.Usuario.Email : 'usuario-nao-identificado',
+      'deadline': Fbits.Carrinho.Usuario.Email ? Fbits.Carrinho.Frete.Prazo : ''
+    });
+
+    /* Criteo Sales Tag */
+    {
+      var deviceType = /iPad/.test(navigator.userAgent) ? "t" :
+        /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+
+      let produtos = dlp.map((produto) => {
+        return {
+          id: produto.id,
+          price: produto.price,
+          quantity: produto.quantity
+        }
+      });
+      window.criteo_q.push({
+        event: "setAccount",
+        account: 79533
+      }, {
+        event: "setEmail",
+        email: (Fbits.Carrinho.Usuario.Email || '')
+      }, {
+        event: "setSiteType",
+        type: deviceType
+      }, {
+        event: "trackTransaction",
+        id: Fbits.Carrinho.PedidoId,
+        item: produtos
+      });
+    }
+
+    /* END Criteo Sales Tag */
+  });
+</script>

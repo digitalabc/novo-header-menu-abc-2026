@@ -1,0 +1,10 @@
+<h5>RetirarNaLoja - email criado pelo storefront </h5>
+
+<p>Ol[a, {{pedido.usuario.nome}}</p>
+<p>Data pedido: {{pedido.data}}</p>
+<p>valor do pedido: {{pedido.valor_total}}</p>
+
+<p>Produtos comprados:</p>
+{{for p in pedido.produtos}}
+<p>- {{p.nome}}</p>
+{{end}}

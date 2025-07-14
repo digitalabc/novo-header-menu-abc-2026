@@ -1,0 +1,23 @@
+{{##
+    Description: Renders the 'buy' and 'add to cart' buttons and calls parallel options attribute component.
+    Params:
+        - product: product data
+    Usage:
+        parallel_options product: product
+##}}
+<div class="flex flex-col md:flex-row justify-evenly">
+    {{~ for option in product.parallel_options ~}}
+        {{~ if product.attribute_selections ~}}
+            <div class="flex-col">
+                <strong>{{ option }}</strong>                
+                <div attribute-selections>
+                    {{ parallel_options_product_attribute product: product }}
+                </div>
+            </div>
+        {{~ end ~}}
+        <br>
+    {{~ end ~}}
+</div>
+<div>
+    {{ product_buy_button add_to_cart_click: "parallelOptionsAddToCartClick()" buy_click: "parallelOptionsBuyClick()" }}
+</div>

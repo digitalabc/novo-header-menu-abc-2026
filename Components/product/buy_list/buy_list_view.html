@@ -1,0 +1,84 @@
+{{ ##
+    Description: Renders the buy list view
+    Params:
+        - buy_list: buy list data
+    Usage:
+        buy_list_view product: product
+## }}
+{{~ is_kit = buy_list.kit ~}}
+<div id="add-cart-alert"></div>
+<div class="flex flex-col relative sm:flex-row justify-start w-full">
+    <div class="flex mr-5 lg:min-w-[40%]">
+        {{~ product_image images: buy_list.images ~}}
+    </div>
+    <div class="flex flex-col md:min-w-[55%]">
+        <div class="flex justify-between items-center w-full p-1 mb-4">
+            {{~ if buy_list.product_brand ~}}
+                {{~ product_brand brand: buy_list.product_brand ~}}
+            {{~ end ~}}
+        </div>
+        <h5 class="text-2xl mb-4">{{ buy_list.product_name }}</h5>
+        {{~
+            promotionsTypes = buy_list.promotions | group.by @(do; ret $0.disclosure_type;end)
+            promotionsPagProduto = promotionsTypes | group.get "Página produto"
+            stamps promotions: promotionsPagProduto
+            installment_plans = buy_list.prices.installment_plans 
+        ~}}
+        <div class="flex">
+            {{~ discount_percentage = 0 ~}}
+            <div id="product-prices-div" class="flex flex-col w-full">
+                {{~ 
+                    product_price prices: buy_list.prices
+                    discount_percentage = buy_list.prices.discount_percentage
+                    product_installments installments: installment_plans 
+                ~}}
+            </div>
+            <div class="">
+                {{ product_discount discount_percentage: discount_percentage }}
+            </div>
+        </div>
+        <div class="">
+            {{~ if is_kit ~}}
+                <div class="mb-4">
+                    <p>Quantidade</p>
+                    <input type="number" class="form-control" id="selected-quantity" name="selected-quantity" value="1" min="1" aria-label="Quantidade">
+                </div>
+            {{~ end ~}}
+            <div class="row">
+                <div class="col-6">
+                    {{~ add_to_cart_click = "buyListAddToCartClick()" ~}}
+                    {{~ buy_click = "buyListBuyClick()" ~}}
+                    {{~ if is_kit ~}}
+                        {{~ add_to_cart_click = "kitAddToCartClick()" ~}}
+                        {{~ buy_click = "kitBuyClick()" ~}}
+                    {{~ end ~}}
+                    {{ product_buy_button add_to_cart_click: add_to_cart_click buy_click: buy_click }}
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="">
+            {{~ if buy_list.buy_list_id ~}}
+                {{~ if is_kit ~}}
+                    <h2>Produtos do kit</h2>
+                    <input type="hidden" id="is_kit" value="true">
+                {{~ else ~}}
+                    <h2>Produtos da lista de compra</h2>
+                {{~ end ~}}
+                {{ for product in buy_list.buy_list_products }}
+                    {{~ if is_kit ~}}
+                        {{ product_quantity = product.quantity | string.to_int }}
+                        {{~ for index in 1..product_quantity ~}}
+                            {{~ if product_quantity > 1 ~}}
+                                <h2>Produto {{ index }} de {{ product_quantity }}</h2>
+                            {{~ end ~}}
+                            <div buy-list-product-div id="buy-list-product-div-{{ product.product_id }}-{{ index }}" class="" product-id="{{ product.product_id }}" include-same-parent="{{ product.include_same_parent }}"></div>
+                        {{~ end ~}}
+                    {{~ else ~}}
+                        <div buy-list-product-div id="buy-list-product-div-{{ product.product_id }}" class="" product-id="{{ product.product_id }}" include-same-parent="{{ product.include_same_parent }}"></div>
+                    {{~ end ~}}
+                {{ end }}
+            {{~ end ~}}
+        </div>
+    </div>
+</div>

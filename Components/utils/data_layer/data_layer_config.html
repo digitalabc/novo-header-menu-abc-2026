@@ -1,0 +1,19 @@
+{{ ##
+	Description: Component for configuring the GTAG or GTM scripts,
+        renders the respective components only if the ids are present
+    Usage:
+        data_layer_config
+## }}
+{{ gtag_config gtag_id: common.gtag_id}}
+{{ gtm_config gtm_id: common.gtm_id }}
+<script>
+    function dataLayerSetup(userId){
+        if (window.dataLayerConfigured) return false;
+        window.dataLayerConfigured = true;
+        
+        if (!!gtmSetup) gtmSetup(userId);
+        if (!!gtagSetup) gtagSetup(userId);
+			
+        window.dispatchEvent(new CustomEvent("dataLayerConfigured"));
+    }
+</script>

@@ -1,0 +1,60 @@
+<li class="flex py-6">
+    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-secondary-200">
+        <img src="{{ item.image_url ? item.image_url : noImage }}" width="80px">
+    </div>                                
+    <div class="ml-4 flex flex-1 flex-col">
+        <div class="flex justify-between text-base font-medium text-secondary-900">
+            <h3>
+            <a href="#">{{ item.name }}</a>
+            </h3>
+            {{~ if item.gift ~}}
+                <p class="ml-4">BRINDE</p>
+            {{~ else ~}}
+                <p class="ml-4">{{ item.price | math.format "c" "pt-BR" }}</p>
+            {{~ end ~}}
+        </div>
+        <p class="mt-1 text-sm text-secondary-500">
+            {{~ for attr in item.product_attributes ~}}
+                {{ attr.name }}: <b>{{ attr.value }}</b> {{type}}
+            {{~ end ~}}
+        </p>
+        {{~ if product?.customization && product?.customization?.values ~}}
+            {{~ customization_id = product.customization.id ~}}
+            <u>Personalizações</u>
+            <p class="mt-1 text-sm text-secondary-500">
+                {{~ for custom in item.customization.values ~}}
+                    <div>{{ custom.name }}: <b>{{ custom.value }}</b> ({{ custom.cost | math.format "c" "pt-BR" }})</div>
+                {{~ end ~}}
+            </p>
+        {{~ end ~}}
+        {{~ if !item.gift ~}}
+            <div class="flex justify-between text-base font-medium text-secondary-900 mt-4">
+                {{~
+                    mini_cart_subtract_quantity = "miniCartSubtractQuantity('" + item.product_variant_id + "', '" + customization_id + "')"
+                    mini_cart_add_quantity = "miniCartAddQuantity('" + item.product_variant_id + "', '" + customization_id + "')"
+                    remove_product_from_cart = "removeProductFromCart('" +  item.product_variant_id + "', " + item.quantity + ", '" + customization_id + "')"
+
+                    if is_kit
+                        mini_cart_subtract_quantity = "miniCartSubtractKitQuantity('" + item.kit_id + "', '" + item.kit_group_id + "')"
+                        mini_cart_add_quantity = "miniCartAddKitQuantity('" + item.kit_id + "', '" + item.kit_group_id + "')"
+                        remove_product_from_cart = "miniCartRemoveKit('" + item.kit_id + "', '" + item.kit_group_id + "'," + item.quantity + ")"
+                    end
+                ~}}
+                <div class="flex justify-between">
+                    <button onclick="{{ mini_cart_subtract_quantity }}" class="flex justify-center items-center rounded-sm mr-3 border">
+                        <img src="{{- store.urls.static_img}}icons/minus-small.svg?theme={{store.theme}}&v={{store.last_modified}}" class="h-5 w-5">
+                    </button>
+                    {{ item.quantity }}
+                    <button onclick="{{ mini_cart_add_quantity }}" class="flex justify-center items-center rounded-sm ml-3 border">
+                        <img src="{{- store.urls.static_img}}icons/plus-small.svg?theme={{store.theme}}&v={{store.last_modified}}" class="h-5 w-5">
+                    </button>
+                </div>
+                <p class="ml-4">
+                    <button type="button" onclick="{{ remove_product_from_cart }}">
+                        <img src="{{- store.urls.static_img}}icons/remove.svg?theme={{store.theme}}&v={{store.last_modified}}" class="h-5 w-5">
+                    </button>
+                </p>
+            </div>
+        {{~ end ~}}
+    </div>
+</li>

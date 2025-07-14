@@ -1,0 +1,13 @@
+<div class="best-installment">
+    {{~ if !product_hide_pix}}        
+    {{~ if best_installment.display_name | string.contains "Boleto" ~}}
+        <p><strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</strong> no boleto</p>
+    {{~ else if best_installment.display_name | string.contains "Pix" ~}}
+        <p><strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }}</strong> no PIX</p>
+    {{~ else if best_installment.display_name | string.contains "Cartão" ~}}
+        <p>Ou <strong>{{ best_installment.number }}x</strong> de <strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</strong> <span>({{ if best_installment.fees }}com juros{{ else }}sem juros{{ end }})</span></p>
+    {{~ else ~}}
+        <p>Ou <strong>{{ best_installment.number }}x</strong> de <strong>{{ best_installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</strong> <span>({{ if best_installment.fees }}com juros{{ else }}sem juros{{ end }})</span></p>
+    {{~ end ~}}
+    {{~ end ~}}
+</div>

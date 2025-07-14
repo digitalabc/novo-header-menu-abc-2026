@@ -1,0 +1,21 @@
+{{~ qs_var = "?" # if the source contains a query string or not ~}}
+{{~ if source | string.contains "?" ~}}
+    {{~ qs_var = "&" ~}}
+{{~ end ~}}
+<img srcset="
+    {{- for s in sizes -}}
+        {{- if !for.last -}}
+            {{source}}{{qs_var}}w={{~s.w~}}&h={{~s.h~}}&v=no-change {{s.w~}}w,
+        {{- else -}}
+            {{source}}{{qs_var}}w={{~s.w~}}&h={{~s.h~}}&v=no-change {{s.w~}}w
+        {{- end -}}
+    {{- end ~}}"
+    sizes="
+    {{- for s in sizes -}}
+        {{- if !for.last -}}
+            (max-width: {{s.w}}px) {{s.w}}px,
+        {{- else -}}
+            {{s.w}}px
+        {{- end -}}
+    {{- end ~}}"
+    width="{{sizes[0].w}}" height="{{sizes[0].h}}" src="{{source}}" alt="{{alt}}" {{ if class }}class="{{class}}"{{ end }}>    

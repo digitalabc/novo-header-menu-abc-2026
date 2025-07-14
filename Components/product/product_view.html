@@ -1,0 +1,141 @@
+{{ ##
+    Description: Renders the product view
+    Params:
+        - product: product data
+    Usage:
+        product_view product: product
+## }}
+{{
+  attribute = (product.attributes | array.filter @(do; ret $0.name == 'Unidade' ;end) | array.first) | object.values | array.last | string.downcase
+}}
+{{~ selected_variant = product.attribute_selections?.selected_variant ~}}
+{{~ product_is_kit = product.buy_list_id ?! true ~}}
+{{ product_is_box = false }}
+{{~ if selected_variant ~}}
+  {{~ available = product.attribute_selections.selected_variant.available ~}}
+  {{~ if product.attribute_selections.selected_variant.prices.multiplication_factor != 1 || attribute == 'm2' ~}}    {{ product_is_box = true }}
+  {{~ end ~}}
+{{~ else ~}}
+  {{~ available = product.available ~}}
+  {{~ if product.prices.multiplication_factor != 1 || attribute == 'm2' ~}}
+    {{ product_is_box = true }}
+  {{~ else ~}}
+    {{ comprePorUnidade = true }}
+  {{~ end ~}}
+{{~ end ~}}
+
+<section class="product__image">
+  {{ stamps promotions: product.promotions }}
+  {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
+      {{ product_gallery product: product images: product.attribute_selections.selected_variant.images }}
+  {{~ else ~}}
+      {{ product_gallery product: product images: product.images }}
+  {{~ end ~}}
+  <div class="obs desktop">
+    Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas <br>
+    exclusivamente pelo site. O frete não está incluso. Fotos meramente <br>
+    ilustrativas.
+  </div>
+</section>
+
+<div class="product__details">
+    <h1 class="product__title">{{ product.product_name }}</h1>
+    <span class="product__info">
+      {{ if product.sku }}<span class="product__sku">SKU:<span id="productSku">{{ product.sku }}</span></span><span class="pipe">|</span>{{ end }}
+      {{ if product.product_brand }}{{ product_brand brand: product.product_brand }}<span class="pipe">|</span>{{ end }}
+      {{
+        ## ponto para todos os produtos não livelo ##
+        pontos_calculados = (product.prices.price * 1) | math.ceil
+        listas = [settings.livelo]
+        
+        for lista in listas
+          if (lista | array.contains product.product_id)
+            pontos_calculados = (product.prices.price * settings.livelo_calculo_padrao) | math.ceil
+            break
+          end
+        end
+      }}
+     
+      <!-- <span>### Estrelas Opiniões Verificadas ###</span> -->
+      {{# se produto esta na tabela para produtos que nao deven mostrar pontos livelo entao retorna true #}}
+      {{~ if (product.prices.price_tables | array.filter @(do; ret $0.id == 82 ;end)).empty? ~}} 
+        <span class="livelo_pontos" data-livelo-pontos="{{ pontos_calculados }}">Até <strong>{{ pontos_calculados }}</strong> ponto(s) Livelo</span>
+      {{~ end ~}}
+    </span>
+    {{~ installment_plans = product.prices.installment_plans ~}}
+    {{~ discount_percentage = 0 ~}}
+    
+    {{~ if available || product_is_kit ~}}
+    <div class="product__prices" id="product-prices-div">
+        {{~ if selected_variant ~}}
+          {{~ installment_plans = selected_variant.prices.installment_plans ~}}
+          {{~ product_price prices: selected_variant.prices page_product: true product_is_box: product_is_box comprePorUnidade: comprePorUnidade product_hide_pix: product_hide_pix ~}}
+          {{~ discount_percentage = selected_variant.prices.discount_percentage ~}}
+        {{~ else ~}}
+          {{~ product_price prices: product.prices page_product: true product_is_box: product_is_box comprePorUnidade: comprePorUnidade product_hide_pix: product_hide_pix ~}}
+          {{~ discount_percentage = product.prices.discount_percentage ~}}
+        {{~ end ~}}
+        {{~ product_installments installments: installment_plans ~}}
+    </div>
+    {{~ end ~}}
+    
+    <!-- Buy list -->
+    {{~ if product_is_kit ~}}
+        <section class="buy_list__content">
+            {{ for product in product.buy_list_products}}
+                <div id="buy-list-product-div-{{ product.product_id }}" class="buy_list__product"  product-id="{{ product.product_id }}"></div>
+            {{ end }}
+        </section>
+    {{~ end ~}}
+
+    <!-- Attributes -->
+    {{ product_attribute product: product product_is_box: product_is_box comprePorUnidade: comprePorUnidade product_is_pick_up: product_is_pick_up }}
+    
+    <!-- Realidade Aumentada -->
+    <div class="virtual_reality__banner desktop">
+      {{ valid = true }}
+      {{## trocado categoria por breadcrumb devido mudancas na arvore de categoria ##}}
+      {{~ for breadcrumb in product.breadcrumbs ~}}
+        {{ if valid }}
+          {{~ if breadcrumb.text | string.downcase == "metais sanitários" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-metais.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
+          {{~ else if breadcrumb.text | string.downcase == "banho e aquecimento água" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-chuveiro-ou-duchas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
+          {{~ else if breadcrumb.text | string.downcase == "louças/inox/sintetico" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-loucas.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
+          {{~ else if breadcrumb.text | string.downcase == "pisos e revestimentos" ~}}
+          <img
+            src="{{- store.urls.static_img }}realidade-aumentada/banner-qr-code-pisos.jpg?theme={{store.theme}}&v={{store.last_modified}}"
+            alt="Realidade Aumentada Qr-Code">
+            {{ valid = false }}
+          {{~ end ~}}
+        {{ end }}
+      {{~ end ~}}
+      
+      <div id="qrCode"></div>
+      
+    </div>
+
+    <!-- Shippng -->
+    {{~ if available && !product_is_kit ~}}
+      {{~ if selected_variant ~}}
+          {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
+      {{ else }}
+        {{ product_shipping_quotes product_variant_id: product.product_variant_id }}
+      {{~ end ~}}
+    {{~ end ~}}
+
+    <!-- Pick up -->
+    <div class="product__pick-up" id="product-pick-up">
+      {{~ product_pick_up ~}}
+    </div>
+</div>

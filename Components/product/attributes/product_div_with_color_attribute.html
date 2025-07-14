@@ -1,0 +1,50 @@
+{{ ##
+    Description: Renders attributes of type "DIV com cor"
+    Params:
+        - attribute_selections: product attribute selections data
+        - product_id: page product ID
+        - is_secondary_product : if this is an attribute of a subproduct, like in a buy list, or in a buytogether component
+        - on_click : the name of the function call for the component onClick
+    Usage:
+        product_combo_attribute attribute_selections: attribute_selections product_id: product_id
+## }}
+{{~ if attribute_selections.size > 0 ~}}
+    <div class="row">
+        {{~ for attr in attribute_selections ~}}
+            <p>{{ attr.name | string.upcase }}</p>
+            {{~ grouped_selected = attr.values | group.by @(do; ret $0.selected;end) ~}}
+            {{~ selected = grouped_selected | group.get true | array.first ~}}
+            {{~ if selected ~}}
+                {{~ hidden_id = "hidden-selected-attribute-" + product_id + "-" + attr.attribute_id ~}}
+                <input type="hidden" id="{{ hidden_id }}" name="{{ hidden_id }}" value="{{ selected.value }}">
+            {{~ end ~}} 
+            {{~ if attr.vary_by_parent && is_secondary_product && selected}}
+                <p> {{ selected.value }}</p>
+            {{~ else ~}}
+                <div class="row d-flex justify-content">
+                    {{~ for value in attr.values ~}}
+                        <div class="col-md-2 col-sm-6">
+                            <label>
+                                <input type="radio" class="btn-check" 
+                                autocomplete="off" 
+                                id="{{ attr.attribute_id + "__" + value.value + "__" + product_id }}" 
+                                product-id = "{{ product_id }}"
+                                attribute-id = "{{ attr.attribute_id }}"
+                                attribute-value = "{{ value.value }}"
+                                {{~ if attr.vary_by_parent ~}}
+                                    onclick='location = this.value' value='/{{ value.alias }}'
+                                {{~ else ~}}
+                                    onclick="{{ on_click }}(this);" value="{{ value.value }}"
+                                {{~ end ~}}                            
+                                {{~ if value.selected ~}} checked {{~ end ~}} 
+                                {{~ if !value.available ~}} disabled {{~ end ~}}>
+                                <img src="/colorhandler?cor={{ value.value | string.downcase }}" alt="{{ value.value }}" title="{{ value.value }}" height="50" width="50">
+                            </label>
+                        </div>
+                    {{~ end ~}}
+                </div>
+            {{~ end ~}}
+        {{~ end ~}}
+    </div>
+    <br>
+{{~ end ~}}

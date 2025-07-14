@@ -1,0 +1,102 @@
+{{ ##
+Description: Renders address information based on the zip code entered.
+Params:
+- Uses address.graphql
+Usage:
+await client.snippet.render("adress.html", ...);
+## }}
+{{~ if address ~}}
+  <div id="CepPreenchido" class="w-full mb-1">
+    <div>
+      <div class="flex">
+        <p>CEP: </p>
+        <input type="text" name="CepElement" id="CepElement" class="border-none p-0 w-24 ml-1 rounded-[4px]" disabled value="{{address.cep}}" />
+        <p class="text-sky-500 text-sm">
+          <a class="px-2.5 underline" onclick="returnInput()" href="#">Alterar CEP</a>
+        </p>
+      </div>
+      <div>
+        <input type="text" name="address" id="address" class="border-none p-0 w-full text-base" disabled
+          value="{{ address.street }}{{ address.address }}" />
+
+        <input type="text" name="city" id="city" class="border-none p-0" disabled value="{{ address.city}}" />
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-start items-center w-full mb-6 hidden">
+    <div class="flex flex-col w-full">
+      <label for="address" class="flex mb-2 text-secondary-600">
+        <span>Endereço:</span>
+      </label>
+      <input type="text" name="address" id="address"
+        class="border-secondary-300 rounded-[4px] text-secondary-700 bg-secondary-100" disabled
+        value="{{ address.street}}" />
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row justify-start md:items-center w-full mb-6 hidden">
+    <div class="flex flex-col md:w-6/12 md:mr-4">
+      <label for="neighborhood" class="flex mb-2 text-secondary-600">
+        <span>Bairro:</span>
+      </label>
+      <input type="text" name="neighborhood" id="neighborhood"
+        class="border-secondary-300 rounded-[4px] text-secondary-700 bg-secondary-100" disabled
+        value="{{ address.neighborhood}}" />
+    </div>
+    <div class="flex justify-start w-full mt-4 md:mt-0 hidden">
+      <div class="flex flex-col w-3/4 md:w-4/12 mr-4">
+        <label for="city" class="flex mb-2 text-secondary-600">
+          <span>Cidade:</span>
+        </label>
+        <input type="text" name="city" id="city"
+          class="border-secondary-300 rounded-[4px] text-secondary-700 bg-secondary-100" disabled
+          value="{{ address.city}}" />
+      </div>
+      <div class="flex flex-col w-1/4 md:w-2/12 hidden">
+        <label for="state" class="flex mb-2 text-secondary-600">
+          <span>Estado:</span>
+        </label>
+        <input type="text" name="state" id="state"
+          class="border-secondary-300 rounded-[4px] text-secondary-700 bg-secondary-100" disabled
+          value="{{ address.state}}" />
+      </div>
+    </div>
+  </div>
+  <div class="w-full mb-1">
+    <div class="relative my-3 w-full items-center mb-6">
+      <input onblur="validateRequired(this)" data-id="valid" type="text" id="addressNumber" name="addressNumber"
+        class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-grey-500 focus:outline-none focus:ring-0 focus:border-grey-600 peer"
+        placeholder=" " value="{{ address.address_number }}"/>
+      <label for="addressNumber"
+        class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-grey-600 peer-focus:dark:text-grey-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+        Número *
+      </label>
+      <span class="text-sm error mb-2 text-red-600 hidden absolute top-11" id="error-number">Preencha com o número do endereço</span>
+    </div>
+    <div class="relative my-3 w-full flex-col mt-6">
+      <input type="text" name="addressDetails" id="addressComplement"
+        class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-grey-500 focus:outline-none focus:ring-0 focus:border-grey-600 peer"
+        placeholder=" " value="{{ address.address_details }}"/>
+      <label for="addressComplement" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-grey-600 peer-focus:dark:text-grey-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+        Complemento
+      </label>
+    </div>
+    <div class="relative my-3 w-full flex-col mt-6 mb-6">
+      <input type="text" name="referencePoint" id="referencePoint"
+        class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-grey-500 focus:outline-none focus:ring-0 focus:border-grey-600 peer"
+        placeholder=" " value="{{ address.reference_point }}"/>
+      <label for="referencePoint" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-grey-600 peer-focus:dark:text-grey-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+        Referência
+      </label>
+    </div>
+    <div class="relative my-3 w-full flex-col mt-6 mb-6">
+      <input onblur="validateRequired(this)" data-id="valid" type="text" name="name" id="receiverName"
+        class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-grey-500 focus:outline-none focus:ring-0 focus:border-grey-600 peer"
+        placeholder=" " value="{{ address.name }}"/>
+      <label for="receiverName"
+        class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-grey-600 peer-focus:dark:text-grey-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+        Destinatário
+      </label>
+      <span class="text-sm error mb-2 text-red-600 hidden absolute top-11" id="error-receiver">Preencha com o destinatário</span>
+    </div>
+  </div>
+{{~ end ~}}

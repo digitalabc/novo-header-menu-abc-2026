@@ -1,0 +1,40 @@
+{{~ if customizations && customizations.size > 0 ~}}
+  <div class='product__customization'>
+    {{ for customization in customizations }}
+      {{~ if customization.name == "Concordo com os termos de uso" ~}}
+        <select id="customization-{{ customization.customization_id }}" class="term-select" 
+        customization-id="{{~ customization.customization_id ~}}">
+            <option selected value=''>Selecione uma opção</option>
+            {{~ for value in customization.values ~}}
+                <option value="{{value}}">{{value}}</option>
+            {{~ end ~}}
+        </select>
+        <label for="check-term">
+          <input type="checkbox" value="true" id="check-term" style="margin-right: 8px">
+          Concordo com os <a href="https://www.abcdaconstrucao.com.br/central-de-atendimento/termos-abc-prime" target="_blank" style="text-decoration: underline">termos de uso</a>.
+        </label>
+      {{~ else ~}}
+        <div>
+          <p>{{customization.name}} - ({{ customization.cost | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }})</p>
+          {{~ case customization.type ~}}
+              {{~ when "Valores Predefinidos" ~}}
+                  <select id="customization-{{ customization.customization_id }}" class="form-select" 
+                  customization-id="{{~ customization.customization_id ~}}">
+                      <option selected value=''>Selecione uma opção</option>
+                      {{~ for value in customization.values ~}}
+                          <option value="{{value}}">{{value}}</option>
+                      {{~ end ~}}
+                  </select>
+              {{~ when "Texto Livre" ~}}
+                  <input id="customization-{{~ customization.customization_id ~}}" class="form-control"
+                  placeholder="Insira uma customização." customization-id="{{~ customization.customization_id ~}}"
+                  maxlength="{{ customization.max_length }}">
+              {{~ when "Número" ~}}
+                  <input id="customization-{{~ customization.customization_id ~}}" class="form-control" 
+                  placeholder="Insira uma customização." type="number" customization-id="{{~ customization.customization_id ~}}">
+          {{~ end ~}}
+        </div>
+      {{~ end ~}}
+    {{ end }}
+  </div>
+{{~ end ~}}

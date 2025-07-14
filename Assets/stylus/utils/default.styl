@@ -1,0 +1,24 @@
+::selection
+  background: $primary;
+  color: #fff;
+
+::-webkit-scrollbar
+  width: 5px;
+  height: 5px;
+
+::-webkit-scrollbar-track
+  background-color: #F5F5F5;
+
+::-webkit-scrollbar-thumb
+  background-color: $primary;
+
+.container
+  @extend $container;
+
+.desktop
+  @media mobile
+    display: none !important;
+
+.mobile
+  @media desktop
+    display: none !important;

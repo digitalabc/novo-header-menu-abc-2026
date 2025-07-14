@@ -1,0 +1,186 @@
+.hotsite, .category, .search
+  h2
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 20px;
+
+    @media mobile
+      font-size: 16px;
+
+  .banner
+    margin-bottom: 30px;
+
+    @media mobile
+      margin-bottom: 20px;
+
+  .showcase
+    margin-bottom: 40px;
+
+    @media mobile
+      margin-bottom: 20px;
+
+    &__banner
+      @media desktop
+        >div
+          display: flex;
+          align-items: flex-start;
+          gap: 20px;
+
+          >*
+            width: calc(50% - 10px);
+
+          .swiper
+            margin-right: 20px;
+            margin-left: auto;
+            max-width: 555px;
+
+          .swiper-button-prev
+            left: 0;
+
+      @media mobile
+        >ul, >h2
+          margin-bottom: 25px;
+
+        >h2
+          text-align: left;
+
+    &_title
+      margin-bottom: 25px;
+
+      @media desktop
+        margin-bottom: 0;
+
+        >ul
+          >li
+            width: 100%;
+            aspect-ratio: 1.38;
+
+            a
+              >img
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+  .gray-bg
+    margin-bottom: 60px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background: #F5F5F5;
+
+    @media mobile
+      margin-bottom: 20px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+
+  .category
+    &__toolbar
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      gap: 10px;
+
+      @media desktop
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #D5D5D5;
+
+    &__main
+      padding-bottom: 55px;
+
+      @media desktop
+        display: flex;
+        gap: 45px;
+
+        .empty&
+          justify-content: center;
+
+      #spots-list
+        flex: 1;
+
+  .spots
+    display: grid;
+    margin-bottom: 70px;
+    grid-template-columns: repeat(4, calc(25% - (3 * 20px) / 4));
+    gap: 70px 20px;
+    justify-items: center;
+
+    .spot
+      width: 100%;
+
+      @media mobile
+        &__content
+          padding: 10px 3px 5px;
+
+        &__image
+          border: 1px solid #EAEAEA;
+
+          @media mobile
+            border: none;
+
+        &-price
+          margin-bottom: 5px;
+
+          s
+            margin-bottom: 5px;
+            font-size: 14px;
+            line-height: 18px;
+
+          h3
+            &:first-child
+              padding-top: 23px;
+
+            span
+              font-size: 20px;
+              line-height: 24px;
+
+        .best-installment
+          min-height: unset;
+
+          span
+            display: inline;
+
+    @media (max-width: 1300px)
+      grid-template-columns: repeat(3, calc((100% / 3) - (2 * 20px) / 3));
+
+    @media mobile
+      gap: 60px 20px;
+
+    @media (max-width: 600px)
+      grid-template-columns: repeat(2, calc(50% - 5px));
+      gap: 60px 10px;
+
+    .spot-banner
+      margin: -55px 0;
+      grid-area: 2 / 1 / 3 / 5;
+
+      @media (max-width: 1300px)
+        grid-area: 2 / 1 / 3 / 4;
+
+      @media (max-width: 600px)
+        grid-area: 2 / 1 / 3 / 3;
+
+.empty-search
+  padding: 60px 0;
+
+  strong
+    display: block;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+
+  p
+    color: #676767;
+    text-align: center;
+    font-size: 15px;
+
+    a
+      color: #00CC00;
+      text-decoration: underline;
+      font-weight: bold;
+      transition: $transition;
+
+      &:hover
+        color: $primary;

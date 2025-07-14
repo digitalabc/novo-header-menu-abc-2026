@@ -1,0 +1,124 @@
+#price-range-slider>div>#unselected-left {
+    border-radius: 10px;
+    margin: 0 5px;
+}
+
+#price-range-slider>div>#unselected-right {
+    border-radius: 10px;
+    margin: 0 5px;
+}
+
+#price-range-slider>div>#selected-range-slider {
+    border-radius: 10px;
+}
+
+#price-range-slider>div>[thumb] {
+    z-index: 2;
+    top: -5px;
+    height: 20px;
+    width: 20px;
+    text-align: left;
+    margin-left: -11px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    outline: none;
+}
+
+#price-range-slider>input[type=range] {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    z-index: 3;
+    height: 10px;
+    top: -2px;
+    width: 100%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+}
+
+#price-range-slider>input[type=range]::-ms-track {
+    -webkit-appearance: none;
+    background: transparent;
+    color: transparent;
+}
+
+#price-range-slider>input[type=range]::-moz-range-track {
+    -moz-appearance: none;
+    background: transparent;
+    color: transparent;
+}
+
+#price-range-slider>input[type=range]:focus::-webkit-slider-runnable-track {
+    background: transparent;
+    border: transparent;
+}
+
+#price-range-slider>input[type=range]:focus {
+    outline: none;
+}
+
+#price-range-slider>input[type=range]::-ms-thumb {
+    pointer-events: all;
+    width: 28px;
+    height: 28px;
+    border-radius: 0px;
+    border: 0 none;
+    background: red;
+}
+
+#price-range-slider>input[type=range]::-moz-range-thumb {
+    pointer-events: all;
+    width: 28px;
+    height: 28px;
+    border-radius: 0px;
+    border: 0 none;
+    background: red;
+}
+
+#price-range-slider>input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 28px;
+    height: 28px;
+    border-radius: 0px;
+    border: 0 none;
+    background: red;
+    -webkit-appearance: none;
+}
+
+#price-range-slider>input[type=range]::-ms-fill-lower {
+    background: transparent;
+    border: 0 none;
+}
+
+#price-range-slider>input[type=range]::-ms-fill-upper {
+    background: transparent;
+    border: 0 none;
+}
+
+#price-range-slider>input[type=range]::-ms-tooltip {
+    display: none;
+}
+
+#price-range-slider>div>[sign]>span {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+#price-range-slider:hover>div>[sign] {
+    opacity: 1;
+}
+
+#price-selection-fields>input::-webkit-outer-spin-button,
+#price-selection-fields>input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#price-selection-fields>input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}

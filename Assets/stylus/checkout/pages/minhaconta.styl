@@ -1,0 +1,130 @@
+/* LEIA-ME */
+/* login.css >> Definições das páginas de LOGIN do novo Checkout */
+/* minhaconta.css >> Definições das páginas de MINHA CONTA do novo Checkout */
+/* checkout.css >> Definições das páginas de CARRINHO, FECHAMENTO E CONFIRMAÇÃO do novo Checkout */
+/* geral.css >> Definições de Cabeçalho e Rodapé */
+/* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
+.fbits-minhaConta
+  @media mobile
+    .minhaconta .center
+      padding 0
+
+    .sideBar
+      width 100%
+
+    .mainBarInterna
+      max-width 100%
+
+  .title.big
+    text-align center
+    text-transform uppercase
+    font-weight bold
+    font-size 25px
+
+  .bt
+    border none
+    border-radius 0
+    background #392F2D
+    color #fff
+    text-transform uppercase
+    font-weight bold
+    font-size 16px
+    transition $transition
+
+    &:hover
+      background #313131
+
+  input[type=text],
+  input[type=email],
+  input[type=date],
+  input[type=password],
+  input[type=number],
+  input[type=tel]
+    height 40px
+    border 1px solid #E3E3E3
+    border-radius 3px
+    color #919191
+    font-weight 400
+    font-size 14px
+
+  .switch-field
+    input:checked+label
+      background-color #392F2D !important
+
+    label
+      &:last-of-type
+        border-left none
+        border-radius 0 3px 3px 0 !important
+
+      &:first-of-type
+        border-radius 3px 0 0 3px !important
+
+  .sideBar
+    @media desktop
+      width 26%
+
+    .filtroPai,
+    .filtros .title
+      font-family 'Montserrat', sans-serif
+
+    .filtros .title
+      margin-bottom 18px
+      border none
+      border-radius 3px
+      background #392F2D
+      color #fff
+      text-transform none
+      font-weight bold
+      font-size 16px
+
+      .icon-bar
+        background-color #fff
+
+    .filtroPai
+      padding-top 0
+      padding-bottom 10px
+      color #392F2D
+      text-transform uppercase
+      font-weight 700
+      font-size 14px
+
+    ul.filtroFilho
+      float none
+      padding-top 5px
+
+      li a
+        display flex
+        justify-content space-between
+        align-items center
+        padding-left 70px
+        height 55px
+        border 1px solid #E3E3E3
+        background #fff
+        color #392F2D
+        text-transform uppercase
+        font-weight 700
+        font-size 14px
+        transition $transition
+
+        &.sel
+          border 1px solid #392F2D
+          color #392F2D
+
+        &:hover
+          border 1px solid #392F2D
+          color #392F2D
+
+        i
+          display flex
+          justify-content center
+          align-items center
+          margin -1px
+          width 55px
+          height 55px
+          border none
+          background #392F2D
+          color #fff
+          font-weight 400 !important
+
+          &:before
+            margin 0

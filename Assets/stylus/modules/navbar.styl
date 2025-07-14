@@ -1,0 +1,172 @@
+.navbar
+  @media desktop
+    box-shadow: $bs;
+
+  &__container
+    @extend $container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position relative
+    padding-block: 15px;
+
+    @media mobile
+      flex-wrap: wrap;
+      padding-block: 25px;
+
+  &__collapse
+    display: flex;
+    justify-content: flex-start;
+    @extend $container;
+
+  &__logo
+    @media mobile
+      max-width: 80px;
+
+  &__right
+    flex: 1;
+
+  &__search
+    @media desktop
+      flex: 1;
+
+  &__menu-mobile
+    @media mobile
+      flex: 1;
+
+  &__right
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+
+    @media mobile
+      gap: 20px;
+
+  &__search
+    @media mobile
+      order: 10;
+      margin-top: 20px;
+      width: 100%;
+
+  &__lojas
+    display: flex;
+    align-items: center;
+    color: $black;
+    font-weight: 500;
+    transition: $transition;
+    gap: 5px;
+
+    @media mobile
+      display: none;
+
+    svg
+      fill: $primary;
+
+    &:hover
+      color: $primary;
+
+  &__wrapper
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    @media desktop
+      justify-content: space-between;
+      align-items: center;
+
+    .nav-item
+      &--nv1
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 40px;
+
+        &:last-child
+          > .nav-link
+            color: #392F2D;
+            font-weight: 500;
+
+        &:nth-child(4)
+          > .dropdown-menu
+            left: 50%;
+            transform: translateX(-40%);
+
+        &:nth-child(5)
+          > .dropdown-menu
+            left: 50%;
+            transform: translateX(-50%);
+
+        &:nth-child(n + 6)
+          > .dropdown-menu
+            right: -60px;
+            left: unset;
+
+        &:last-child
+          > .dropdown-menu
+            right: 0;
+
+            @media (max-width: 1330px)
+              right: -15px;
+
+        > .dropdown-menu
+          position: absolute;
+          top: 100%;
+          left: -60px;
+          display: flex;
+          visibility: hidden;
+          justify-content: space-between;
+          padding: 30px 15px;
+          width: max-content;
+          background: #ffffff;
+          box-shadow: 0 1px 4px rgba(#000, 0.16);
+          opacity: 0;
+          transition: $transition;
+          gap: 35px;
+
+          >ul
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 30px;
+
+          > .nav-item--sub
+            > ul
+              display: none;
+
+            > .nav-link
+              margin-bottom: 10px;
+              color: #000000;
+              text-transform: uppercase;
+              font-weight: 700;
+
+        > .nav-link
+          color: #5D5D5D;
+          font-weight: 300;
+          font-size: 14px;
+
+        @media desktop
+          &:hover
+            > .dropdown-menu
+              visibility: visible;
+              opacity: 1;
+
+            > .nav-link
+              color: #000;
+
+      &--sub
+        display: flex;
+        flex-direction: column;
+
+        > .dropdown-menu
+          display: none;
+
+        > a.nav-link
+          color: #000000;
+          font-weight: 500;
+          font-size: 14px;
+          transition: $transition;
+
+          &:hover
+            color: $primary;

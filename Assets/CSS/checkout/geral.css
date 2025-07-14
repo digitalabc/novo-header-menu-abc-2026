@@ -57,7 +57,6 @@ html {
 }
 .headFechamento {
   background: #fff;
-  /* background-color: #1a1a1a; Black Friday */
   box-shadow: 0 3px 6px rgba(0,0,0,0.16);
 }
 .headFechamento .fbits-center-responsivo {
@@ -78,18 +77,24 @@ html {
     padding: 0 15px;
   }
 }
+.headFechamento .head-carrinho-text {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 16px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
 .headerLogo {
-    float: none;
+  float: none;
 }
-
 .headerLogo img {
-    margin: 0;
-    max-width: 153px;
-    width: 100%;
-    /* image-rendering: -webkit-optimize-contrast;
-    filter: brightness(0) saturate(100%) invert(91%) sepia(6%) saturate(0%) hue-rotate(180deg) brightness(103%) contrast(90%); */
+  margin: 0;
+  max-width: 153px;
+  width: 100%;
+  image-rendering: -webkit-optimize-contrast;
 }
-
 .fechamento-checkout .copyright-footer {
   float: none;
   margin: auto;
@@ -1090,7 +1095,3 @@ html {
 h2.title-confirmacao {
   margin-top: 20px;
 }
-
-/* ::-webkit-scrollbar {
-  width: 10px !important;
-} */

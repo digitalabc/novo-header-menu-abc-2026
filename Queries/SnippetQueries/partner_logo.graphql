@@ -1,6 +1,0 @@
-query partner_logo($partnerAccessToken: String!){
-  partner(partnerAccessToken: $partnerAccessToken) {
-    partnerId
-    logoUrl
-  }
-}

@@ -1132,6 +1132,19 @@
     "availableInAllPages": true
   },
   {
+    "name": "mini_cart_shipping_quotes",
+    "path": "mini_cart_shipping_quotes.html",
+    "params": [
+      {
+        "name": "checkout_id",
+        "required": true
+      }
+    ],
+    "inheritVariables": false,
+    "availableInAllComponents": true,
+    "availableInAllPages": true
+  },
+  {
     "name": "brands_list",
     "path": "brands_list.html",
     "params": [
@@ -1323,6 +1336,146 @@
       }
     ],
     "inheritVariables": true,
+    "availableInAllComponents": true,
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_shipping_address",
+    "path": "checkout/shipping/shipping_address.html",
+    "params": [
+      {
+        "name": "customer",
+        "required": true
+      },
+      {
+        "name": "selected_address",
+        "required": false
+      }
+    ],
+    "availableInAllComponents": true,
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_header",
+    "path": "checkout/checkout_header.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_footer",
+    "path": "checkout/checkout_footer.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_shipping_selected_close",
+    "path": "checkout/checkout_shipping_selected_close.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_shipping_choice_close",
+    "path": "checkout/checkout_shipping_choice_close.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_right_menu",
+    "path": "checkout/checkout_right_menu.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_share_cart",
+    "path": "checkout/checkout_share_cart.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "finish_order",
+    "path": "checkout/finish_order.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_coupon",
+    "path": "checkout/checkout_coupon.html",
+    "params": [
+      {
+        "name": "coupon",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_products_list",
+    "path": "checkout/checkout_products_list.html",
+    "params": [
+      {
+        "name": "products",
+        "required": true
+      },
+      {
+        "name": "kits",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true
+  },
+  {
+    "name": "checkout_product",
+    "path": "checkout/checkout_product.html",
+    "params": [
+      {
+        "name": "product",
+        "required": true
+      },
+      {
+        "name": "is_kit",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true
+  },
+  {
+    "name": "login_authenticate",
+    "path": "login/login_authenticate.html",
+    "params": [],
+    "availableInAllPages": true
+  },
+  {
+    "name": "header_mail",
+    "path": "emails/header.html",
+    "params": [],
+    "inheritVariables": false,
+    "availableInAllPages": true,
+    "availableInAllEmails": true
+  },
+  {
+    "name": "footer_mail",
+    "path": "emails/footer.html",
+    "params": [],
+    "inheritVariables": false,
+    "availableInAllPages": true,
+    "availableInAllEmails": true
+  },
+  {
+    "name": "product_mail",
+    "path": "emails/product.html",
+    "params": [
+      {
+        "name": "product",
+        "required": true
+      }
+    ],
+    "inheritVariables": false,
+    "availableInAllPages": true,
+    "availableInAllEmails": true
+  },
+  {
+    "name": "sdk_full_client",
+    "path": "sdk_full_client.html",
     "availableInAllComponents": true,
     "availableInAllPages": true
   }

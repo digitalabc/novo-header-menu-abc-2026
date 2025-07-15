@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {{ ##
     Description: Render the product inside the email template loop.
     Params:
@@ -21,28 +20,4 @@
 </tr>
 <tr>
   <td colspan="5" style="border-top: 1px solid #eaeaea;"></td>
-=======
-{{ ##
-    Description: Render the product inside the email template loop.
-    Params:
-      - product: the product that will be displayed
-    Usage:
-      spot product: product
-## }}
-<tr>
-  <td style="padding: 8px;"><img src="{{product?.imagem}}" alt="{{product?.nome}}" height="70" width="70" /></td>
-  <td style="padding: 8px;">
-    <small>{{product?.nome}}</small>
-    <small>{{product?.atributos}}</small>
-    <small>{{product?.embalagens}}</small>
-    <small>{{product?.personalizacoes}}</small>
-    <small>{{product?.primeiro_prazo}}</small>
-    <small>{{product?.segundo_prazo}}</small>
-  </td>
-  <td style="padding: 8px;"><small>Qtd: {{product?.quantidade}}</small></td>
-  <td style="padding: 8px;"><small>{{product?.preco_unitario}}</small></td>
-</tr>
-<tr>
-  <td colspan="5" style="border-top: 1px solid #eaeaea;"></td>
->>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </tr>

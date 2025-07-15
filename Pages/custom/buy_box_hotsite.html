@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -63,69 +62,3 @@
         {{ asset type: "js" paths: ["sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "glider", "wishlist", "event_manager"]}}
     </body>
 </html>
-=======
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        {{ header title: data.hotsite.name store: store }}
-        {{ data_layer_config }}
-        {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
-        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "spot", "product", "output_base", "glider", "slider_price"  ]}}
-        {{ meta_tags seo: data.hotsite.seo }}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-
-    <body class="bg-mainBg">
-        <header class="shadow-xl lg:shadow-none bg-mainBg">
-            {{ links }}
-            {{ head }}
-            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}              
-        </header>
-        <div id="add-cart-alert"></div>
-        {{ side_cart }}
-        {{ wake_overlay }}
-        {{ banners_carousel id: "banners_top" banners: data.hotsite.banners position: "Topo" }}
-        <div class="flex flex-col my-4 w-full lg:flex-row lg:justify-center">
-            <div class="flex flex-col items-start w-full lg:max-w-[1330px] relative">
-                {{content position: "Centro" contents: data.hotsite.contents}}
-            </div>
-        </div>
-        <div class="flex flex-col my-4 w-full lg:flex-row lg:justify-center">
-            <div class="flex relative justify-between w-full lg:max-w-[1330px] py-2 md:px-2 lg:p-0">
-                <div id="category-filters" class="hidden absolute lg:sticky top-10 left-0 shadow-2xl lg:shadow-none z-10 
-                bg-mainBg lg:flex lg:flex-auto lg:mr-2 h-screen lg:border-r p-4 lg:p-2 ease-in-out duration-500 opacity-0 
-                lg:opacity-100 w-64">
-                    {{ filter aggregations: data.hotsite.aggregations }}
-                </div>
-                <div class="flex flex-col w-full">
-                    <div class="px-2 flex flex-col lg:flex-row justify-between items-start w-full mb-10">
-                        {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
-                        <div class="flex justify-between lg:justify-start items-center' w-full lg:w-auto">
-                            <div class="flex justify-start items-center lg:hidden w-full uppercase font-medium" onclick="openFilter()">
-                                <img src="{{- store.urls.static_img}}icons/filter.svg?theme={{store.theme}}&v={{store.last_modified}}" class="w-4 h-4 mr-1" alt="Show mobile filters">
-                                Mostrar filtros
-                            </div>    
-                            {{ products_per_page }}
-                            {{ sort page_type: "hotsite" }}
-                        </div>
-                    </div>
-                    <div class="flex flex-col box-content">
-                        {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
-                        {{ page_size = data.hotsite.products_by_offset?.page_size ?? data.hotsite.products?.page_info?.total_count }}
-                        <input type="hidden" id="def_page_size" name="def_page_size" value="{{ page_size }}">
-                        {{ buy_box_spot_list products: products }}
-                        {{ pagination products: products page_size: page_size current_page: current_page }}
-                    </div>
-                    <div class="flex flex-col box-content" id="infinity-scroll-content-div"></div>
-                </div>
-            </div>
-        </div>
-        {{ wake_modal }}
-        {{ footer is_preview: is_preview store: store }}
-        {{ data_layer_hotsite_view product_lists: [products]}}
-        {{ sdk_client }}
-        {{ wake_scripts scripts: ["wake_utils"] }}
-        {{ asset type: "js" paths: ["sort", "filter", "pagination", "products_per_page", "navbar", "mini_cart", "cart_from_spot", "user_login", "product", "glider", "wishlist", "event_manager"]}}
-    </body>
-</html>
->>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

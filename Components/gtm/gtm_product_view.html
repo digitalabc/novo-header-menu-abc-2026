@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {{ ##
     Description: Google Tag Manager product component, saves the info of the 
                 product to pushing the view event to the datalayer
@@ -35,42 +34,4 @@
             }
         ]
     };
-=======
-{{ ##
-    Description: Google Tag Manager product component, saves the info of the 
-                product to pushing the view event to the datalayer
-    Params:
-        - product: the product data to save in tag manager
-    Usage:
-        gtm_product_view product: data.product
-## }}
-<script>
-    const gtm_product_details = {
-        currency: "BRL",
-        value: {{ product.prices.price }},
-        items: [
-        {
-                item_id: {{ product.product_id }},
-                item_name: `{{ product.product_name }}`,
-                {{~ if product.prices ~}}
-                    discount: {{ product.prices.list_price - product.prices.price }},
-                    price: {{ product.prices.list_price }},
-                {{~ end ~}}
-                index: 0,
-                {{~ if product.product_brand ~}}
-                    item_brand: "{{product.product_brand.name}}",
-                {{~ end ~}}
-                {{~ i = 0 ~}}
-                {{~ for breadcrumb in product.breadcrumbs ~}}
-                    item_category{{if i != 0}}{{i}}{{end}}:"{{breadcrumb.text}}",
-                    {{~ i = i + 1 ~}}
-                {{~ end ~}}
-                {{~ if product.attribute_selections.selected_variant ~}}
-                    item_variant: "{{product.attribute_selections.selected_variant.alias}}",
-                {{~ end ~}}
-                quantity: 1
-            }
-        ]
-    };
->>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </script>

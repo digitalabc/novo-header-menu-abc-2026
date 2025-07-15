@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 #close-preview-button {
     position: fixed;
     left: 2%;
     bottom: 0%;
     z-index: 1000;
-=======
-#close-preview-button {
-    position: fixed;
-    left: 2%;
-    bottom: 0%;
-    z-index: 1000;
->>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 query Account($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
   customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
     customerId
@@ -26,33 +25,4 @@ query Account($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) 
   changeEmailWithAccessKey: shopSetting(settingName: "AlterarEmailChaveAcesso"){
     value
   }
-=======
-query Account($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
-  customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
-    customerId
-    customerName
-    customerType
-    companyName
-    customerType
-    email
-    gender
-    cpf
-    cnpj
-    stateRegistration
-    rg
-    phoneNumber
-    mobilePhoneNumber
-    businessPhoneNumber
-    birthDate
-  }
-
-  customerAccessTokenDetails(customerAccessToken:$customerAccessToken) {
-    type
-    accessKey
-  }
-
-  changeEmailWithAccessKey: shopSetting(settingName: "AlterarEmailChaveAcesso"){
-    value
-  }
->>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 }

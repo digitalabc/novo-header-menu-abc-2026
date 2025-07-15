@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="breadcrumb">
     {{~ if settings.breadcrumb?.home_text ~}}
         <a href="/" class="breadcrumb__link">{{ settings.breadcrumb.home_text }}</a>
@@ -16,23 +15,4 @@
     <a href="{{ breadcrumbLink }}" class="breadcrumb__link" >{{ breadcrumb.text | string.downcase | string.capitalize }}</a>
         {{~ if !for.last ~}} > {{ end }}
     {{~ end ~}}    
-=======
-<div class="breadcrumb">
-    {{~ if settings.breadcrumb?.home_text ~}}
-        <a href="/" class="breadcrumb__link">{{ settings.breadcrumb.home_text }}</a>
-        {{~ if breadcrumbs.size > 0 ~}}
-            >
-        {{~ end ~}}
-    {{~ end ~}}
-    {{~ for breadcrumb in breadcrumbs ~}}
-        {{~ breadcrumbLink = "" ~}}
-        {{~ if breadcrumb.link | string.starts_with "/" ~}}
-            {{~ breadcrumbLink = breadcrumb.link ~}}
-        {{~ else ~}}
-            {{~ breadcrumbLink = "/" | string.append breadcrumb.link ~}}
-        {{~ end ~}}
-    <a href="{{ breadcrumbLink }}" class="breadcrumb__link" >{{ breadcrumb.text | string.downcase | string.capitalize }}</a>
-        {{~ if !for.last ~}} > {{ end }}
-    {{~ end ~}}    
->>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </div>

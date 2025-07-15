@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,4 +31,38 @@
         {{ wake_scripts scripts: ["wake_utils"] }}
         {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout_close", "payment_functions"] options: "async"}}
     </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Checkout - Fechamento</title>
+        {{ asset type: "css" paths: ["output", "output_checkout"]}}
+        {{ data_layer_config }}
+    </head>
+
+    <body class="bg-checkout">
+        {{ checkout_header }}
+        {{ wake_overlay }}
+        <div id="data_payment" class="checkout-section-wrapper">
+            {{~ if data.checkout != null && data.checkout.selected_shipping != null -}}
+                <div data-render-payment></div>
+            {{~ else -}}
+                <h2 class="wake-checkout-title wake-checkout-payment-title">Pagamento</h2>
+                <span class="wake-checkout-finish-step-text">Finalize o passo anterior para prosseguir</span>
+            {{~ end ~}}
+        </div>
+        {{ wake_checkout_scripts }}
+        {{ checkout_footer }}
+        <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+            <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
+        </pre>
+        {{ sdk_client_checkout }}
+        {{ data_layer_checkout_complete_view checkout: data.checkout }}
+        {{ wake_scripts scripts: ["wake_utils"] }}
+        {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout_close", "payment_functions"] options: "async"}}
+    </body>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </html>

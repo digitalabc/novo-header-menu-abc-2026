@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query($productId: Long!, $selections: [AttributeFilterInput]) {
   product(productId: $productId) {
     productId
@@ -22,3 +23,29 @@ query($productId: Long!, $selections: [AttributeFilterInput]) {
     }
   }
 }
+=======
+query($productId: Long!, $selections: [AttributeFilterInput]) {
+  product(productId: $productId) {
+    productId
+    productVariantId
+    attributeSelections(selected: $selections) {
+      selectedVariant {
+        productVariantId
+      }
+      selections {
+        attributeId
+        displayType
+        name
+        varyByParent
+        values {
+          alias
+          available
+          printUrl
+          selected
+          value
+        }
+      }
+    }
+  }
+}
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

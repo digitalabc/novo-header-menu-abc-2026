@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query Confirmation($checkoutId: String!, $customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
   checkout(checkoutId:$checkoutId) {
     checkoutId
@@ -60,4 +61,68 @@ query Confirmation($checkoutId: String!, $customerAccessToken: String!, $hasCust
     customerType
     email
   }
+=======
+query Confirmation($checkoutId: String!, $customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
+  checkout(checkoutId:$checkoutId) {
+    checkoutId
+    cep
+    completed
+    orders{
+      date
+      orderStatus
+      orderStatusDisplay
+      orderId
+      totalValue
+      discountValue
+      shippingValue
+      delivery{
+        name
+        deliveryTime
+        address{
+          address
+          neighborhood
+          city
+          cep
+          
+        }
+      }
+      payment{
+        name
+        invoice{
+          digitableLine
+          paymentLink
+        }
+        pix {
+          qrCode
+          qrCodeExpirationDate
+          qrCodeUrl
+        }
+        card{
+          brand
+          cardInterest
+          installments
+          name
+          number
+        }
+      }
+      products{
+        productVariantId
+      	name
+        quantity
+        value
+        imageUrl
+        attributes{
+          name
+          value
+        }
+      }
+    }
+  }
+  customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
+    customerId
+    customerName
+    customerType
+    email
+  }
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 }

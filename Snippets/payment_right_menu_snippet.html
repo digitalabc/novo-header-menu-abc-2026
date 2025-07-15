@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="finish-loading" class="payment-loading hidden">
     <div class="spinner"></div>
 </div>
@@ -39,4 +40,47 @@
             Finalizar compra
         </button>
     </div>
+=======
+<div id="finish-loading" class="payment-loading hidden">
+    <div class="spinner"></div>
+</div>
+
+<div class="checkout-right-menu payment-right-menu">
+    {{ checkout_coupon coupon: data.checkout.coupon }}
+    <div class="footer_mobile_bottom">
+        <div class="price-line">
+            <span>Frete</span>
+                {{ if data.checkout.shipping_fee == 0}}
+                <h3 class="flag">
+                    Grátis
+                </h3>
+                {{ else }}
+                    <h3>
+                        {{data.checkout.shipping_fee | math.format "c" "pt-BR"}}
+                    </h3>
+                {{ end }}
+
+        </div>
+        <div class="price-line">
+        <span>Você está economizando</span>
+        <h3 class="discount">
+            {{ if data.checkout.coupon }}
+                {{data.checkout.discount +  data.checkout.coupon_discount | math.format "c" "pt-BR"}}
+            {{ else }}
+                {{data.checkout.discount | math.format "c" "pt-BR"}}
+            {{ end }}
+        </h3>
+        </div>
+        <div class="price-line">
+            <span>Valor total</span>
+            <h3 class="total">{{data.checkout.total | math.format "c" "pt-BR"}}</h3>
+        </div>
+    </div>
+    <div class="right-menu-buttons">
+        <button class="checkout-back-button" onclick="backPaymentStep()">Voltar</button>
+        <button class="checkout-finish-button" id="finish-order-button" onclick="closeCheckout()">
+            Finalizar compra
+        </button>
+    </div>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </div>

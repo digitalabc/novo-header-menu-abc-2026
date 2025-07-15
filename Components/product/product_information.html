@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="product__information" data-lazy="true">
   
     {{ for information in informations }}
@@ -19,3 +20,26 @@
     {{ end }}
   
 </section>
+=======
+<section class="product__information" data-lazy="true">
+  
+    {{ for information in informations }}
+        {{~ if information.value != '' && information.title != '' ~}}
+          <h2 onclick="toggleInformation(this)" {{if for.index == 0}}class="active"{{end}}>
+            <a href="#information-{{for.index}}">{{ information.title }}</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+              <g id="_318476" data-name="318476" transform="translate(15) rotate(90)">
+                <g id="Group_320" data-name="Group 320">
+                  <path id="Path_151" data-name="Path 151" d="M7.5,0A7.5,7.5,0,1,0,15,7.5,7.508,7.508,0,0,0,7.5,0ZM9.817,7.942,6.692,11.067a.625.625,0,0,1-.884-.884L8.491,7.5,5.808,4.817a.625.625,0,0,1,.884-.884L9.817,7.058A.624.624,0,0,1,9.817,7.942Z" transform="translate(15 15) rotate(180)" fill="#004a68"/>
+                </g>
+              </g>
+            </svg>
+          </h2>
+          <div {{if for.index == 0}}class="show"{{end}} id="information-{{for.index}}">
+              {{ information.value }}
+          </div>
+        {{~ end ~}}
+    {{ end }}
+  
+</section>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

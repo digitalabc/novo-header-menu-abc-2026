@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query ListClient($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
   customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
     partners{
@@ -8,4 +9,16 @@ query ListClient($customerAccessToken: String!, $hasCustomerAccessToken: Boolean
       fullUrlLogo
     }
   }
+=======
+query ListClient($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
+  customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
+    partners{
+      alias
+      name
+      partnerAccessToken
+      endDate
+      fullUrlLogo
+    }
+  }
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 }

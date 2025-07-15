@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .black_friday__spot {
   padding-top: 5px;
 }
@@ -604,3 +605,611 @@ filter: brightness(0) invert(1);
     font-size: 16px;
   }
 }
+=======
+.black_friday__spot {
+  padding-top: 5px;
+}
+
+#dialog_input_cep {
+  z-index: 100;
+}
+
+/* esconde  o selo do 3D na imagem do produto */
+body.product div[id^="product-view-div-"] section .stamps-vr {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  header .navbar__container {
+      padding-block: 8px !important;
+  }
+
+  header .search__form {
+      margin-bottom: 8px !important;
+  }
+
+  header .navbar__search {
+      margin-top: 8px !important;
+  }
+}
+
+/* LP ABC PRIME */
+.planosPrime__list {
+  padding-bottom: 32px;
+}
+
+.abc_prime .abcPrime__fullbanner .container {
+  gap: 40px;
+}
+
+.beneficiosPrime__benefits {
+  padding-bottom: 75px;
+}
+
+.planosPrime {
+  padding-bottom: 16px;
+}
+
+.planosPrime__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-brand {
+color: #e5e5e5;
+}
+
+.planosPrime__item {
+  padding: 40px 32px;
+  max-width: 320px;
+  height: auto;
+  transition: transform 0.1s;
+}
+
+.showcasePrime__content {
+  padding: 24px;
+}
+
+.showcasePrime__content .swiper:before {
+  box-shadow: unset;
+}
+
+.showcasePrime__content .swiper:after {
+  box-shadow: unset;
+}
+
+.primeReviews {
+  font-family: Poppins;
+}
+
+.primeReviews {
+  padding-bottom: 24px;
+}
+
+.primeReviews__list {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.primeReviews__item {
+  height: auto;
+}
+
+.primeReviews__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  width: 280px;
+  padding: 24px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  border-radius: 10px;
+  border: 1.2px solid #fff;
+}
+
+.navbar__wrapper .nav-item--nv1:last-child > .nav-link {
+  color: #5d5d5d;
+  font-weight: 300;
+}
+
+.topbar {
+  background: #000;
+}
+
+.topbar__container li span {
+  color: #fff;
+}
+
+@media (min-width: 991px) {
+
+  /* menu autoatendimento rodape */
+  .footer__block--ajuda {
+      padding-bottom: 40px;
+  }
+}
+
+/* NÃO APAGAR! Header Menu BLACK FRIDAY ABC 2024 */
+
+/* .navbar-brand svg rect {
+fill: #e5e5e5; 
+}
+
+.nav-all__item svg rect {
+fill: #D88730; 
+}
+
+.minicart__icon svg path {
+fill: #d4d4d4 !important;
+
+}
+
+a:hover {
+  color: #d88730;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+filter: brightness(0) invert(1);
+} */
+
+
+/* Barra superior do site */
+/* .topbar {
+  background: #4D4D4D;
+}
+
+.topbar__container li {
+  height: 32px;
+  font-weight: 600;
+} */
+
+/*Tirar o Span do HTML "Compre pelo Whatsapp*/
+/* .topbar__container li a:hover {
+  color: #D88730;
+} */
+
+/* Fundo do Header */
+/* .navbar {
+background-color: #232323;
+}
+
+.user__dropdown svg path {
+fill: #e5e5e5 !important;
+}
+
+.nav-item.nav-item--nv1[style="order:10"] {
+display: none;
+} */
+
+
+/* Componente de Pesquisar produtos */
+/* .search__form input {
+  color: #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.search__submit {
+  color: #E5E5E5;
+}
+
+.search__submit:hover {
+  color: #D88730;
+}
+
+.search__form input::placeholder {
+  color: #676767;
+} */
+
+
+/* Nossas Lojas */
+/* .navbar__lojas {
+  color: #E5E5E5;
+}
+
+.navbar__lojas:hover {
+  color: #D88730;
+} */
+
+/* Entre ou cadastre-se */
+/* .user {
+  color: #fff;
+}
+
+.user:hover .user__links {
+  color: #D88730;
+}
+
+.user__dropdown {
+  z-index: 1;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  background: #232323;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.user__content.not-authenticated i + p a {
+  color: #D88730;
+  font-weight: 600;
+}
+
+.user__dropdown #register-href:hover {
+  color: #d88730;
+}
+
+.user__dropdown #user-href:hover {
+  background: #d88730;
+}
+
+.user__dropdown #user-href {
+  border-radius: 6px;
+  background: #4D4D4D;
+} */
+
+/* Meu carrinho */
+/* .minicart__button:hover {
+  color: #d88730;
+}
+
+.minicart__title {
+  color: #fff;
+}
+
+
+.minicart__button .label-cart-count {
+  background: #d88730;
+}
+
+.navbar__wrapper .nav-item--nv1 > .dropdown-menu {
+  background: #232323;
+}
+
+.navbar__wrapper .nav-item--nv1 > .nav-link {
+  color: #E5E5E5;
+}
+
+.nav-all__dropdown {
+  background: #232323;
+}
+
+.navbar__lojas svg {
+  fill: #808080;
+} */
+
+/* Login */
+/* .user__header svg {
+  fill: #808080;
+}
+
+.user__dropdown #register-href {
+  color: #d88730;
+}
+
+.user {
+  position: relative;
+  color: #fff;
+} */
+
+/* Minicart */
+/* .minicart__button:hover {
+  color: #D88730;
+}
+
+.minicart__count.label-cart-count-formatted {
+font-size: 14px;
+color: #e5e5e5;
+} */
+
+
+/* "Todas as categorias" */
+/* .nav-all__item--root {
+  color: #E5E5E5
+}
+
+.navbar__wrapper .nav-item--sub > a.nav-link {
+  color: #E5E5E5;
+}
+
+.nav-all__item--nv1:hover {
+  background: #4D4D4D;
+}
+
+.nav-all__dropdown {
+  background: #232323;
+}
+
+.nav-all__item--nv1 {
+  color: #e5e5e5;
+}
+
+.nav-all__item--nv1:hover {
+  background: #4D4D4D;
+  color: #fff;
+}
+
+.nav-all__title {
+  color: #d88730;
+}
+
+.nav-all__link--nv2 {
+  color: #e5e5e5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d88730;
+}
+
+.navbar__wrapper .nav-item--nv1 > .nav-link {
+  color: #e5e5e5;
+}
+
+.navbar__wrapper .nav-item--nv1:hover > .nav-link {
+  color: #CD7A20;
+  font-weight: 600;
+}
+
+.navbar__wrapper .nav-item--sub > a.nav-link:hover {
+  color: #CD7A20;
+  font-weight: 600;
+}
+
+.navbar__wrapper .nav-item--nv1:hover > .dropdown-menu {
+  border-radius: 0px 0px 8px 8px;
+}
+
+.navbar__wrapper .nav-item--nv1 > .dropdown-menu {
+  background: #232323;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.navbar__wrapper .nav-item--sub > a.nav-link {
+  color: #e5e5e5;
+} */
+
+/*banner oportunidades*/
+/* .banner-oportunidades ul li {
+    border-radius: 8px;
+}
+ */
+/*banner promoções*/
+/* .swiper-backface-hidden .swiper-slide {
+    border-radius: 8px;
+} */
+
+/*vantagens*/
+/* .ruler__list .ruler__item svg path {
+  fill: #1a1a1a !important;
+}
+
+.ruler__list .ruler__item svg {
+  fill: #1a1a1a !important;
+}
+
+.ruler__text strong {
+  color: #4d4d4d !important;
+}
+*/
+/* Controla o peso dos textos que não são strong */
+/* .ruler__text {
+  font-weight: 300 !important; 
+} */
+
+/*News Letter*/
+/* section.newsletter--home {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+
+}
+
+section.newsletter--home .newsletter__button {
+    background-color: #0FA848;
+    color: #FFF;
+    border-radius: 6px;
+}
+
+section.newsletter--home .newsletter__input {
+    border-radius: 6px;
+}
+
+section.newsletter--home .newsletter__button:hover {
+    background-color: #0DE05B;
+    color: #1a1a1a;
+}
+
+.newsletter--home {
+  background-image: none !important;
+}
+ */
+
+/*CHECKOUT*/
+/* .headFechamento {
+background: #1a1a1a;
+}
+
+.logoHome {
+filter: brightness(0) invert(1);
+} */
+
+/*Minicart lateral*/
+/* .minicart__offcanvas-top {
+  background: #1a1a1a;
+}
+
+.ah-offcanvas-bar .ah-close {
+  background: #4d4d4d;
+
+}
+ */
+/*MOBILE*/
+
+/* .menu__button svg path {
+    fill: #d88730;
+}
+
+.ah-offcanvas-bar .ah-close {
+    background: #4d4d4d;
+}
+
+#menu-offcanvas .nav-mobile__header {
+    background: #1a1a1a;
+}
+
+.nav-mobile__others {
+    background-color: #1a1a1a;
+}
+
+.nav-mobile__others,
+.nav-mobile__others ul,
+.nav-mobile__others li,
+.nav-mobile__others a {
+    border: none !important;
+    outline: none !important;
+}
+
+.nav-mobile__dropdown--nv1 {
+    background-color: #4d4d4d;
+}
+
+.nav-mobile__dropdown--nv2 {
+    background-color: #4d4d4d;
+}
+
+#menu-offcanvas .nav-mobile__item--nv1 {
+    background: #282828;
+}
+
+.nav-mobile__item--nv2,
+.nav-mobile__dropdown--nv2 {
+    background-color: #282828;
+}
+
+
+#menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2  {
+    background: #282828;
+}
+
+#menu-offcanvas .nav-mobile__item--nv2 {
+    border: none;
+}
+
+#menu-offcanvas .nav-mobile__others ul li a {
+    color: #e5e5e5;
+}
+
+#menu-offcanvas .nav-mobile__header .info__links {
+    color: #e5e5e5;
+}
+
+#menu-offcanvas .nav-mobile__header .info__links a {
+    color: #e5e5e5;
+}
+
+#menu-offcanvas .nav-mobile__link {
+    color: #e5e5e5;
+}
+
+.nav-mobile__open svg path {
+    fill: #d88730 !important;
+}
+
+.nav-mobile__header p {
+    color: #D88730 !important;
+}
+
+.nav-mobile__header svg path {
+    fill: #D88730 !important;
+}
+
+#menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2 {
+    background: #282828;
+
+}
+
+#menu-offcanvas .nav-mobile__back {
+    color: #d88730;
+    border: none;
+}
+
+.nav-mobile__back svg path {
+    fill: #d88730 !important;
+} */
+
+/* fim black friday */
+
+/*5% DE DESCONTO NO PIX*/
+.ruler__item:nth-child(2) .ruler__text-wrapper {
+  background-color: #38BEB01A;
+  border: 1px solid #38BEB0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+}
+
+.ruler__item:nth-child(2) .ruler__text-wrapper svg path {
+  fill: #38BEB0 !important;
+}
+
+.ruler__item:nth-child(2) .ruler__text {
+  color: #000;
+  margin-left: 8px;
+}
+
+.ruler__item:nth-child(2) .ruler__text a {
+  text-decoration: none;
+}
+
+.ruler__item:nth-child(2) .ruler__text a strong {
+  color: #38BEB0 !important;
+  font-weight: bold;
+}
+
+/* ::-webkit-scrollbar {
+  width: 10px !important;
+} */
+
+/* pde-464 */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.breadcrumb__link {
+  font-size: 12px;
+}
+/*  */
+
+/* pde-463 */
+
+#footer .footer-logo {
+  padding-bottom: 24px;
+}
+
+@media screen and (max-width: 991px) {
+  /* pde-472 */
+  #mm-whatsapp {
+    bottom: 70px !important;
+  }
+  #footer .footer-logo {
+      text-align: center;
+  }
+}
+/*  */
+
+@media (max-width: 700px) {
+  .navbar__logo svg {
+    width: 99px;
+    height: 28px;
+  }
+  
+  /* pde-474 */
+  input[type="text"],   
+  input[type="search"] {
+    font-size: 16px;
+  }
+}
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

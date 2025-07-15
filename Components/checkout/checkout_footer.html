@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="checkout-footer">
   {{ if data?.checkout }}
   <div class="checkout-footer-mobile">
@@ -94,4 +95,102 @@
 
 <script>
   var checkout_pages = {{ store.urls.checkout_pages | map.to_json}};
+=======
+<div class="checkout-footer">
+  {{ if data?.checkout }}
+  <div class="checkout-footer-mobile">
+    {{ checkout_share_cart }}
+
+    <div class="footer_mobile_bottom">
+      <div class="price-line">
+        <span>Você está economizando</span>
+        <h3 class="discount">
+          {{data.checkout.discount | math.format "c" "pt-BR"}}
+        </h3>
+      </div>
+      <div class="price-line">
+        <span>Valor total</span>
+        <h3 class="total">{{data.checkout.total | math.format "c" "pt-BR"}}</h3>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+
+  <div class="checkout-footer-desktop">
+    <div class="checkout-footer-top">
+      <div class="checkout-footer-left">
+        <img src="{{- store.urls.static_img}}checkout/logo-abc-box.svg?theme={{store.theme}}&v={{store.last_modified}}"
+          alt="logo" width="56" height="56" />
+        <h3>Em cada detalhe, a gente pensa em você!</h3>
+        <span>Confira nossas ofertas, vantagens, campanhas e informações nas nossas
+          redes sociais</span>
+        <div class="checkout-footer-socials">
+          <a href="https://www.instagram.com/abcdaconstrucao/" target="_blank" aria-label="Instagram ABC da Construção">
+            <img src="{{- store.urls.static_img}}checkout/instagram.svg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Instagram" width="18" height="18" />
+          </a>
+          <a href="https://www.linkedin.com/company/abc-da-construcao" target="_blank"
+            aria-label="Linkedin ABC da Construção">
+            <img src="{{- store.urls.static_img}}checkout/linkedin.svg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Linkedin" width="18" height="18" />
+          </a>
+          <a href="https://www.facebook.com/novaabcdaconstrucao/" target="_blank"
+            aria-label="Facebook ABC da Construção">
+            <img src="{{- store.urls.static_img}}checkout/facebook.svg?theme={{store.theme}}&v={{store.last_modified}}"
+              alt="Facebook" width="18" height="18" />
+          </a>
+        </div>
+      </div>
+      <div class="checkout-footer-right">
+        <a href="https://sejaumfranqueado.abcevoce.com.br/franquias">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 15 15" fill="none">
+            <path
+              d="M12.8135 9.04818V4.71484L9.48014 2.38151L6.14681 4.71484V5.71484H4.81348V4.04818L9.48014 0.714844L14.1468 4.04818V9.04818H12.8135ZM9.81348 5.04818H10.4801V4.38151H9.81348V5.04818ZM8.48014 5.04818H9.14681V4.38151H8.48014V5.04818ZM9.81348 6.38151H10.4801V5.71484H9.81348V6.38151ZM8.48014 6.38151H9.14681V5.71484H8.48014V6.38151ZM4.81348 12.0482L9.44681 13.3148L13.4135 12.0815C13.3579 11.9815 13.2774 11.8954 13.1718 11.8232C13.0663 11.751 12.9468 11.7148 12.8135 11.7148H9.44681C9.14681 11.7148 8.90792 11.7037 8.73014 11.6815C8.55237 11.6593 8.36903 11.6148 8.18014 11.5482L6.63014 11.0315L6.99681 9.73151L8.34681 10.1815C8.5357 10.2371 8.75792 10.2815 9.01348 10.3148C9.26903 10.3482 9.64681 10.3704 10.1468 10.3815C10.1468 10.2593 10.1107 10.1426 10.0385 10.0315C9.96626 9.9204 9.88014 9.84818 9.78014 9.81484L5.88014 8.38151H4.81348V12.0482ZM0.813477 14.3815V7.04818H5.88014C5.95792 7.04818 6.0357 7.05651 6.11348 7.07318C6.19125 7.08984 6.26348 7.10929 6.33014 7.13151L10.2468 8.58151C10.6135 8.71484 10.9107 8.94818 11.1385 9.28151C11.3663 9.61484 11.4801 9.98151 11.4801 10.3815H12.8135C13.369 10.3815 13.8413 10.5648 14.2301 10.9315C14.619 11.2982 14.8135 11.7815 14.8135 12.3815V13.0482L9.48014 14.7148L4.81348 13.4148V14.3815H0.813477ZM2.14681 13.0482H3.48014V8.38151H2.14681V13.0482Z"
+              fill="url(#paint0_linear_4021_36809)" />
+            <defs>
+              <linearGradient id="paint0_linear_4021_36809" x1="7.81348" y1="0.714844" x2="7.81348" y2="14.7148"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0092FF" />
+                <stop offset="0.885" stop-color="#0092FF" />
+                <stop offset="1" stop-color="#0092FF" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>Seja um franqueado</span>
+        </a>
+        <a href="https://www.abcprime.shop/central-de-atendimento/atendimento">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 14 15" fill="none">
+            <path
+              d="M6.25792 11.6037H7.81348V7.71484H6.25792V11.6037ZM7.0357 6.15929C7.25607 6.15929 7.44079 6.08475 7.58987 5.93568C7.73894 5.7866 7.81348 5.60188 7.81348 5.38151C7.81348 5.16114 7.73894 4.97642 7.58987 4.82734C7.44079 4.67827 7.25607 4.60373 7.0357 4.60373C6.81533 4.60373 6.63061 4.67827 6.48153 4.82734C6.33246 4.97642 6.25792 5.16114 6.25792 5.38151C6.25792 5.60188 6.33246 5.7866 6.48153 5.93568C6.63061 6.08475 6.81533 6.15929 7.0357 6.15929ZM0.813477 14.7148V5.38151L7.0357 0.714844L13.2579 5.38151V14.7148H0.813477ZM2.36903 13.1593H11.7024V6.15929L7.0357 2.65929L2.36903 6.15929V13.1593Z"
+              fill="url(#paint0_linear_4021_36813)" />
+            <defs>
+              <linearGradient id="paint0_linear_4021_36813" x1="7.0357" y1="0.714844" x2="7.0357" y2="14.7148"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0092FF" />
+                <stop offset="0.885" stop-color="#0092FF" />
+                <stop offset="1" stop-color="#0092FF" />
+              </linearGradient>
+            </defs>
+          </svg>
+          Central de ajuda
+        </a>
+      </div>
+    </div>
+
+    <div class="checkout-footer-bottom">
+      <img src="{{- store.urls.static_img}}checkoutSeguro.png?theme={{store.theme}}&v={{store.last_modified}}"
+        alt="Ambiente Seguro">
+      <img src="{{- store.urls.static_img}}paymentMethod.png?theme={{store.theme}}&v={{store.last_modified}}"
+        alt="Métodos de pagamento">
+      <span class="checkout-copyright">Copyright © 2025. Todos os direitos reservados. Todas as marcas e suas
+        imagens são de propriedade de seus respectivos donos. É vedada a
+        reprodução, total ou parcial, de qualquer conteúdo sem expressa
+        autorização.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  var checkout_pages = {{ store.urls.checkout_pages | map.to_json}};
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </script>

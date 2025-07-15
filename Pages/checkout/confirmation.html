@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -268,4 +269,276 @@
   {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout/confirmation_checkout"] options: "async"}}
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output", "output_checkout", "checkout/confirmation_checkout"]}}
+  <title>Pedido confirmado</title>
+  {{ data_layer_config }}
+</head>
+
+<body class="bg-mainBg">
+  {{ checkout_header }}
+  {{ wake_overlay }}
+  {{~ first_order = data.checkout.orders | array.first ~}}
+  {{~ 
+    isGuideShop = first_order?.delivery.name | string.contains "RETIRE"
+    storeName = first_order?.delivery?.name | string.replace "RETIRE EM - " "" 
+    storeParts = storeName | string.split " | "
+    cityAndDistrict = storeParts[0]
+    address = storeParts.size > 1 ? storeParts[1] : ""
+  ~}}
+  {{~ if first_order ~}}
+  <div class="wake-confirmation-wrapper">
+    <div class="wake-confirmation-max-width">
+      <!-- Título do Pedido Realizado ~~-->
+      <h2 class="wake-confirmation-order-success-message">
+          Pedido #{{first_order.order_id}}
+        {{ if isGuideShop }}
+          recebido! Programa-se para a retirada na Guide Shop.
+        {{ else }}
+          realizado com sucesso!
+        {{ end }}
+      </h2>
+      <!-- Mensagem Introdução ao usuário~~-->
+      <div class="confirmation-user-message">
+        <h3 class="welcomeUser">
+          Olá, {{ data?.customer?.customer_name ? data.customer.customer_name : '' }}
+        </h3>
+        Recebemos a solicitação de pedido em {{ date.parse(first_order.date) | date.to_string('%d/%m/%Y ás %R', culture:'pt-BR') }}
+        seu pedido #{{ first_order.order_id }}.
+        Certifique-se de que os dados são da ABC Prime ao realizar o pagamento.
+        {{ if isGuideShop }}
+          <br><br>
+          Seu pedido estará disponível para retirada a partir da confirmação do pagamento.
+        {{ end }}
+      </div>
+
+      <!-- Precisa de ajuda?Contato wpp-->
+      <div class="whatsapp-message">
+        <a href="https://wa.me/553221028262?text=Olá!" class="whatsapp-link" target="_blank">
+          <div class="whatsapp-content">
+            <img src="https://abcprime.fbitsstatic.net/media/whatsapp-email.png?v=202412101717" alt="Imagem de Suporte"
+              class="whatsapp-image">
+            <div class="whatsapp-text">
+              Precisa de ajuda? <strong>CLIQUE AQUI</strong> para falar com nosso time de atendimento. Estamos
+              disponíveis de segunda a sexta-feira, das 8h às 18h.
+              <br>
+              <strong>Entre em contato: +55 (32) 2102-8262</strong>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {{ if first_order.order_status == "AWAITING_PAYMENT" }}
+        {{ if  first_order.payment.name == "Pix ABC" }}
+          <div class="if-pix">
+            <div id="qrPix"></div>
+            <div class="codePixWrapper"></div>
+          </div>
+        {{ else if (first_order.payment.name | string.downcase) | string.contains "boleto"}}
+          <a class="printBoleto" target="_blank" href="{{first_order.payment.invoice.payment_link}}">
+            Imprimir Boleto 
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+              <path d="M14 5.47266V2.47266H6V5.47266H4V0.472656H16V5.47266H14ZM16 9.97266C16.2833 9.97266 16.5208 9.87682 16.7125 9.68516C16.9042 9.49349 17 9.25599 17 8.97266C17 8.68932 16.9042 8.45182 16.7125 8.26016C16.5208 8.06849 16.2833 7.97266 16 7.97266C15.7167 7.97266 15.4792 8.06849 15.2875 8.26016C15.0958 8.45182 15 8.68932 15 8.97266C15 9.25599 15.0958 9.49349 15.2875 9.68516C15.4792 9.87682 15.7167 9.97266 16 9.97266ZM14 16.4727V12.4727H6V16.4727H14ZM16 18.4727H4V14.4727H0V8.47266C0 7.62266 0.291667 6.91016 0.875 6.33516C1.45833 5.76016 2.16667 5.47266 3 5.47266H17C17.85 5.47266 18.5625 5.76016 19.1375 6.33516C19.7125 6.91016 20 7.62266 20 8.47266V14.4727H16V18.4727ZM18 12.4727V8.47266C18 8.18932 17.9042 7.95182 17.7125 7.76016C17.5208 7.56849 17.2833 7.47266 17 7.47266H3C2.71667 7.47266 2.47917 7.56849 2.2875 7.76016C2.09583 7.95182 2 8.18932 2 8.47266V12.4727H4V10.4727H16V12.4727H18Z" fill="#1C1B1F"/>
+            </svg>
+          </a>
+          <button onclick="copia(this, '{{first_order.payment.invoice.digitable_line}}')" id="buttonPixCopy">
+            Copiar código
+          </button>
+        {{ else }}
+          {{ wake_checkout_order_confirmation order: first_order.payment }}
+        {{~ end ~}}
+      {{~ end ~}}
+
+    {{ if first_order.order_status == "AWAITING_PAYMENT" }}
+      <div class="if-pix">
+        <div class="stepper-container">
+          <img src="https://abcprime.fbitsstatic.net/media/stepper-pedido-recebido2.png?v=202410071256"
+            alt="Stepper Pedido recebido" class="stepper-img">
+        </div>
+      </div>
+    {{~ end ~}}
+
+    {{ if isGuideShop }}
+      <div class="guideShopWrapper">
+        <div class="guideShopHead">
+          <img src="{{- store.urls.static_img}}mini-franquia-abc.png?theme={{store.theme -}}&v={{store.last_modified}}" alt="Guide Shop">
+          <div class="guideShopText">
+            <h3 class="title">
+              Retirar na Guide Shop
+            </h3>
+            <span class="subTitle">
+              Guide Shop selecionada:
+            </span>
+          </div>
+          <span class="flag">Grátis</span>
+        </div>
+        <h3 class="guideShopName">{{storeName}}</h3>
+        <h4 class="guideShopPickUpTime">
+          Retirar em até {{ first_order.delivery.delivery_time }} dias úteis
+          <br>
+          Após confirmação do pagamento
+        </h4>
+        <h5 class="guideShopAddress">
+          {{address}} {{cityAndDistrict}}
+        </h5>
+      </div>
+    {{ end }}
+
+      <!-- Mensagem de Golpe-->
+      <div class="golpe-message">
+        <div class="golpe-content">
+          <img src="https://abcprime.fbitsstatic.net/media/atencao-golpe.png?v=202412101751"
+            alt="Imagem de Alerta de golpe" class="golpe-image">
+          <div class="golpe-text">
+            <strong>Alerta de Segurança:</strong> para evitar fraudes e golpes, confira se os dados de pagamento estão
+            corretos! Na dúvida entre em contato no suporte. Sua segurança é nossa prioridade.
+            <br>
+            <strong>Entre em contato: </strong>
+            <br>
+            <strong>+55 (32) 2102-8262</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Título Detalhes do pedido -->
+      <div class="order-details-header">Detalhes do pedido</div>
+
+      <!-- Itens do pedido -->
+      <div class="order-itens">
+        <div class="section-header">Itens do pedido</div>
+        <div class="section-content">
+          <table>
+            <tbody>
+              {{~ for product in first_order.products ~}}
+              <tr class="border-b">
+                <td class="img"><img src="{{ product.image_url }}" /></td>
+                <td class="attr">
+                  <div class="flex flex-col">
+                    <span class="prod-name">{{ product.name }}</span>
+                    <div class="product-attributes">
+                      {{~ for attr in product.attributes ~}}
+                      <span class="item-attribute mr-1">{{ attr.name }}:</span> <b
+                        class="border-r mr-2 pr-2 last:border-none last:m-0 last:p-0">{{ attr.value }}</b>
+                      {{~ end ~}}
+                    </div>
+                    <div class="flex text-sm md:hidden">Quantidade: <span class="font-semibold ml-1">{{ product.quantity
+                        }}</span></div>
+                  </div>
+                </td>
+                <td class="quantity">{{ product.quantity }}</td>
+                <td class="quantity">{{ product.value / product.quantity | math.format "c" "pt-BR" }}</td>
+                <td class="value">{{ product.value | math.format "c" "pt-BR" }}</td>
+              </tr>
+              {{~ end ~}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Dados da Compra -->
+      <div class="order-itens">
+        <div class="section-header">Dados da Compra</div>
+        <div class="section-content-text-list">
+          <div class="item-line-order">
+            <div class="title-item-order">Número do pedido</div>
+            <div class="products-container-identificador">{{ first_order.order_id }}</div>
+          </div>
+          <div class="item-line-order">
+            <div class="title-item-order">Data do pedido</div>
+            <div class="products-container-identificador">{{ date.parse(first_order.date) | date.to_string('%d/%m/%Y -
+              %R', culture:'pt-BR') }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagamento -->
+      <div class="order-itens">
+        <div class="section-header">Pagamento</div>
+        <div class="section-content-text-list">
+          <div class="item-line-order">
+            <div class="title-item-order">Status</div>
+            <div class="products-container-identificador">
+              {{ if first_order.order_status == "PAID"}}
+                Pago
+              {{ else if first_order.order_status == "AWAITING_PAYMENT"}}
+                Pagamento Pendente
+              {{ else }}
+                {{ first_order.order_status }}
+              {{ end }}
+            </div>
+          </div>
+          <div class="item-line-order">
+            <div class="title-item-order">Forma de pagamento</div>
+            <div class="products-container-identificador">{{ first_order.payment.name }}</div>
+          </div>
+        </div>
+      </div>
+
+      {{ if !isGuideShop }}
+        <!-- Endereço de entrega -->
+        <div class="order-itens">
+          <div class="section-header">Endereço de entrega</div>
+          <div class="section-content-text-list">
+            <div class="item-line-order">
+              <div class="title-item-order">Endereço:</div>
+              <div class="products-container-identificador">
+                <span class="adress-total">{{ first_order?.delivery?.address?.address }} | {{
+                  first_order?.delivery?.address?.city }} | CEP: {{ first_order?.delivery?.address?.postal_code }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+
+      <!-- Resumo -->
+      <div class="order-itens">
+        <div class="section-header">Resumo</div>
+        <div class="section-content-text-list">
+          <div class="item-line-order">
+            <div class="title-item-order">Frete:</div>
+            <div class="products-container-identificador">
+              {{ if first_order.shipping_value > 0}}
+                {{ first_order.shipping_value | math.format("c", "pt-BR") }}
+                {{ else }}
+                Frete grátis
+              {{ end }}
+            </div>
+          </div>
+          <div class="item-line-order">
+            <div class="title-item-order">Desconto:</div>
+            <div class="products-container-identificador">{{ first_order.discount_value | math.format("c", "pt-BR") }}</div>
+          </div>
+          <div class="item-line-order">
+            <div class="title-item-order">Total:</div>
+            <div class="products-container-identificador">{{ first_order.total_value | math.format("c", "pt-BR") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!--FINAL MAX-WIDTH-->
+  </div>
+  {{~ end ~}}
+  {{ wake_payment_change_scripts }}
+  <!-- {{ wake_checkout_footer }} -->
+  {{ checkout_footer }}
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+    <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
+  </pre>
+  <script>
+    const orderInfo = {{ data.checkout.orders | array.first | map.to_json }}
+  </script>
+  {{ sdk_client }}
+  {{ data_layer_confirmation_view checkout: data.checkout }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
+  {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout/confirmation_checkout"] options: "async"}}
+</body>
+
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @tailwind components;
 
 @layer components {
@@ -589,3 +590,596 @@
     @apply flex text-center border-secondary-400 rounded-xl p-2 mb-4 antialiased text-slate-600;
   }
 }
+=======
+@tailwind components;
+
+@layer components {
+
+  /* authenticate */
+  .wake-autenticate-wrapper {
+    @apply flex flex-col items-center w-full lg:w-[1330px] mx-auto my-20;
+  }
+
+  .wake-autenticate-wrapper > div {
+    @apply flex flex-col p-2 md:min-w-[600px] w-80 items-center;
+  }
+
+  .wake-autenticate-wrapper > div > h3:first-of-type {
+    @apply flex justify-center mb-2 text-black font-normal text-2xl;
+  }
+
+  .wake-autenticate-wrapper > div > span:first-of-type {
+    @apply flex text-center justify-center text-black font-normal	text-sm;
+  }
+
+  .wake-autenticate-wrapper > div form {
+    @apply flex flex-col my-4 items-center;
+  }
+
+  .wake-autenticate-wrapper > div form > div:nth-of-type(1),
+  .wake-autenticate-wrapper > div form div:nth-of-type(2) {
+    @apply my-3 items-center min-w-[350px];
+  }
+
+  .wake-autenticate-wrapper > div form > div:first-child > div {
+    @apply flex relative;
+  }
+
+  .wake-autenticate-wrapper > div form div div input {
+    @apply flex h-[40px] px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-[4px] appearance-none focus:outline-none focus:ring-0;
+  }
+
+  .wake-autenticate-wrapper > div form div div label {
+    @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 left-1 z-10 origin-[0] bg-white px-2;
+  }
+
+  .wake-autenticate-wrapper > div form .hide-show-password {
+    @apply w-5 h-5 absolute right-3 top-3 antialiased cursor-pointer;
+  }
+  .wake-autenticate-wrapper > div form .input-error {
+    @apply text-sm text-red-600  ml-3 mt-1;
+  }
+
+  .wake-autenticate-wrapper > div form .forgot-password {
+    @apply mb-4 min-w-[350px];
+  }
+  
+  .wake-autenticate-wrapper > div form .forgot-password span {
+    @apply text-secondary-600 my-2 w-full text-xs;
+  }
+  
+  .wake-autenticate-wrapper > div form .forgot-password a {
+    @apply text-[#00000099] underline;
+  }
+
+  .wake-autenticate-wrapper > div .button-login,
+  .wake-autenticate-wrapper > div .button-register {
+    @apply flex min-w-[350px] h-[42px] justify-center font-semibold text-center text-base uppercase rounded-[4px] p-2 mb-2 text-white bg-black;
+  }
+
+   /* login-social */
+  .wake-login-social {
+    @apply flex flex-col items-center justify-center w-full;
+  }
+
+  .wake-login-social span {
+    @apply flex mb-4 text-base text-black;
+  }
+
+  .wake-login-social > div {
+    @apply flex flex-row justify-center items-center w-full;
+  }
+
+  .wake-login-social button {
+    @apply flex;
+  }
+
+  .wake-login-social button:nth-of-type(1) {
+    @apply mr-4;
+  }
+
+  .wake-login-social button img {
+    @apply w-6 h-6;
+  }
+
+  .wake-autenticate-wrapper .register {
+    @apply flex flex-col justify-center items-center mt-12;
+  }
+
+  .wake-autenticate-wrapper .register h3 {
+    @apply flex text-2xl;
+  }
+
+  .wake-autenticate-wrapper .register span {
+    @apply flex justify-center text-center w-full my-4  text-black;
+  }
+
+  /* password-recovery */
+  .wake-password-recovery-wrapper {
+    @apply flex flex-col items-center w-full lg:w-[1330px] mx-auto my-20;
+  }
+
+  .wake-password-recovery-wrapper > div {
+    @apply flex flex-col p-2 md:min-w-[600px];
+  }
+
+  .wake-password-recovery-wrapper > div h3 {
+    @apply flex justify-center mb-2 text-black font-normal text-2xl;
+  }
+
+  .wake-password-recovery-wrapper > div .step-one span {
+    @apply flex text-center justify-center text-black font-normal	text-sm;
+  }
+
+  .wake-password-recovery-wrapper > div .step-one form {
+    @apply flex flex-col my-6 items-center;
+  }
+
+  .wake-password-recovery-wrapper > div .step-one form > div {
+    @apply relative my-3 w-[350px] items-center;
+  }
+
+  .wake-password-recovery-wrapper > div .step-one form > div input {
+    @apply flex text-center w-[350px] h-[40px] border-secondary-400 rounded-[4px] p-2 mb-4 antialiased text-slate-600;
+  }
+
+  .wake-password-recovery-wrapper > div .step-one form > div button {
+    @apply flex w-[350px] h-[42px] justify-center font-semibold text-center text-lg rounded-[4px] p-2 mb-2 text-white bg-black;
+  }
+
+  .wake-password-recovery-wrapper > div .step-two span {
+    @apply flex text-center justify-center text-black font-normal	text-sm;
+  }
+
+  .wake-password-recovery-wrapper > div .step-two form {
+    @apply flex flex-col my-4 items-center;
+  }
+
+  .wake-password-recovery-wrapper > div .step-two form > div {
+    @apply relative my-3 items-center;
+  }
+
+  .wake-password-recovery-wrapper > div .step-two form > div input {
+    @apply flex text-center border-secondary-400 rounded-[4px] p-2 mb-4 antialiased text-slate-600 w-[350px] h-[40px];
+  }
+
+  .wake-password-recovery-wrapper > div .step-two form > div button {
+    @apply flex w-[350px] h-[42px] justify-center font-semibold text-center text-lg rounded-[4px] p-2 mb-2 text-white bg-black;
+  }
+
+  /* wake-signup */
+  .wake-signup-wrapper {
+    @apply flex flex-col w-full p-2 md:p-0 items-center;
+  }
+
+  .wake-signup-wrapper > h3 {
+    @apply flex justify-center mb-2 text-black font-normal text-2xl;
+  }
+
+  .wake-signup-wrapper > p {
+    @apply text-black text-center text-base;
+  }
+
+  .wake-signup-wrapper > form {
+    @apply justify-between my-10 w-full md:max-w-4xl md:rounded-md md:shadow-md;
+  }
+  
+  .wake-signup-wrapper > form > div {
+    @apply divide-x flex flex-col md:flex-row ;
+  }
+
+  /* registration */
+   .wake-signup-wrapper > form > div .registration .error {
+    @apply text-xs text-red-600;
+  } 
+
+  .wake-signup-wrapper > form > div .registration .error-absolute {
+    @apply absolute mb-2 top-11;
+  }
+  
+  .wake-signup-wrapper > form > div .registration {
+    @apply flex flex-col w-full md:w-3/6 relative p-5;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div {
+    @apply relative;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(2)) {
+    @apply w-full;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8)) {
+    @apply mb-8;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(9), :nth-child(10)) {
+    @apply mb-4;
+  }
+
+  .wake-signup-wrapper > form > div .registration div:not(:first-child):not(:nth-child(2)) {
+    @apply md:flex-row justify-start w-full;
+  }  
+
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(2), :nth-child(3)) > div {
+    @apply relative w-full flex-col mb-8;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(4)) > div {
+    @apply flex relative w-full items-center;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(5)) > div:first-child {
+    @apply flex flex-col mb-6 md:mb-0 md:mr-4 w-full md:w-3/6 relative;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(5)) > div:last-child {
+    @apply flex flex-col w-full md:w-3/6 relative ;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(6)) > div:first-child {
+    @apply flex-col mr-4 w-9/12;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(6)) > div:last-child {
+    @apply flex w-3/6;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(7)) > div:first-child {
+    @apply flex mb-6 md:mb-0 md:mr-4 w-full md:w-3/6 relative;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(7)) > div:last-child {
+    @apply flex w-full md:w-3/6 relative;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(8)) > div:first-child {
+    @apply flex flex-col mb-6 md:mb-0 md:mr-4 w-full md:w-3/6 relative;
+  }
+ 
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(8)) > div:last-child {
+    @apply flex flex-col w-full md:w-3/6 relative;
+  }
+    
+  .wake-signup-wrapper > form > div .registration > div > h3 {
+    @apply mb-6 text-black font-medium text-xl;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div .custom-cpf-cnpj {
+    @apply flex items-center mb-6;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .custom-cpf-cnpj > label {
+    @apply cursor-pointer flex w-80 justify-center font-semibold text-center text-lg p-2 border-solid border-2 border-black;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .custom-cpf-cnpj > label span {
+    @apply text-sm uppercase;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .custom-cpf-cnpj > label:first-child {
+    @apply rounded-[4px] rounded-r-none p-2 ;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .custom-cpf-cnpj > label:last-child {
+    @apply rounded-l-none ;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .custom-cpf-cnpj > label:last-child {
+    @apply rounded-l-none ;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .custom-cpf-cnpj input {
+    @apply mr-2 focus:ring-0 cursor-pointer hidden  ;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .custom-cpf-cnpj span {
+    @apply text-sm uppercase ;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .birthdate {
+    @apply flex flex-col;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .exemptStateRegistrationFree {
+    @apply flex items-center;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .phones {
+    @apply flex flex-col;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .phones .numbers {
+    @apply w-full relative;
+  }
+  
+  .wake-signup-wrapper > form > div .registration .passwords {
+    @apply flex flex-col;
+  }
+
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(2)) > div:first-child {
+    @apply  items-center  ;
+  }
+    
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(2), :nth-child(3), :nth-child(4), :nth-child(7)) input[type="text"],
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(5))  input[type="date"],
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(5))  select {
+    @apply block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] appearance-none focus:outline-none focus:ring-0;
+  }
+    
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(6)) input[type="text"]   {
+    @apply flex px-2.5 pb-1.5 pt-3 text-sm text-gray-900 bg-transparent rounded-[4px] appearance-none  focus:outline-none focus:ring-0;
+  } 
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(6)) input[type="checkbox"]   {
+    @apply focus:ring-0 cursor-pointer;
+  } 
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(7)) input[name="primaryPhoneAreaCode"],
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(7)) input[name="secondaryPhoneAreaCode"]  {
+    @apply block px-2.5 pb-1.5 pt-3 w-12 mr-2 text-sm text-gray-900 bg-transparent rounded-[4px]  appearance-none  focus:outline-none focus:ring-0 ;
+  }    
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(2), :nth-child(3), :nth-child(4), :nth-child(8) ) label {
+    @apply absolute text-sm left-1 text-gray-500 bg-white px-2;
+  }
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(5)) label {
+    @apply absolute -top-2 left-1 text-gray-500 transform z-10 bg-white px-2 start-1 text-xs;
+  } 
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(6)) label:first-child {
+    @apply absolute text-sm text-gray-500 bg-white px-2 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto;
+  } 
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(6)) label:last-child {
+    @apply text-secondary-600 ml-2 cursor-pointer;
+  } 
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(7)) label {
+    @apply absolute text-sm text-gray-500 z-10 bg-white duration-300 transform -translate-y-3 scale-75 top-1 left-1  origin-[0]   px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto;
+  } 
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(9), :nth-child(10)) label {
+    @apply  text-secondary-600 text-sm ml-2 cursor-pointer;
+  } 
+  
+  .wake-signup-wrapper > form > div .registration > div:is(:nth-child(8)) img {
+    @apply w-5 h-5 absolute right-3 top-3 antialiased cursor-pointer; 
+  }
+  
+  /* registration_address */
+  .wake-signup-wrapper > form > div .registration_address {
+    @apply flex flex-col w-full md:w-3/6 relative p-5;
+  }
+  
+  .wake-signup-wrapper > form > div .registration_address h3 {
+    @apply mb-6 text-black font-medium text-xl ;
+  }
+  
+  .wake-signup-wrapper > form > div .registration_address > div > div:first-child {
+    @apply flex flex-col md:flex-row justify-start w-full mb-0;
+  }
+  
+  .wake-signup-wrapper > form > div .registration_address > div > div:first-child > div {
+    @apply flex relative my-3 w-full items-center mt-0;
+  }
+  
+  .wake-signup-wrapper > form > div .registration_address > div > div:first-child > div input{
+    @apply block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] appearance-none   focus:outline-none focus:ring-0 ;
+  }
+ 
+  .wake-signup-wrapper > form > div .registration_address > div > div:first-child > div label{
+    @apply  absolute  left-1 text-gray-500 z-10 bg-white px-2 start-1;
+  }
+  
+  .wake-signup-wrapper > form > div .registration_address > div > div:last-child {
+    @apply flex items-center;
+  }
+  
+  .wake-signup-wrapper > form > div .registration_address > div > div:last-child span{
+    @apply text-sm pr-1;
+  }
+  
+  .wake-signup-wrapper > form > div .registration_address > div > div:last-child a{
+    @apply flex text-xs hover:cursor-pointer hover:underline;
+  }
+  
+  .wake-signup-wrapper > form > div:last-child {
+    @apply w-full flex items-center justify-center pt-7;
+  }
+  
+  .wake-signup-wrapper > form > div:last-child button {
+    @apply flex justify-center items-center bg-black text-white uppercase font-semibold p-2 rounded-md w-64 mb-7;
+  }
+  
+  .wake-signup-wrapper .wake-address-form {
+    @apply flex flex-col;
+  }
+  
+  .wake-signup-wrapper .wake-address-form .zipcode input {
+    @apply border-none p-0 w-24 ml-1 rounded-[4px];
+  }
+  
+  .wake-signup-wrapper .wake-address-form .zipcode a {
+    @apply text-sky-500 text-sm px-2.5 underline;
+  }
+  
+  .wake-signup-wrapper .wake-address-form .address-complete input{
+    @apply border-none p-0 w-full text-base;
+  }
+  
+  .wake-signup-wrapper .address {
+    @apply relative flex-col w-full justify-start items-center my-6;
+  }
+  
+  .wake-signup-wrapper .address label {
+    @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white px-2;;
+  }
+  
+  .wake-signup-wrapper .address input {
+    @apply block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] border border-gray-300 appearance-none disabled:bg-secondary-100;
+  }
+  
+  .wake-signup-wrapper .address-autocomplete {
+    @apply flex-col md:flex-row justify-start md:items-center w-full space-y-6 my-6;
+  }
+  
+  .wake-signup-wrapper .address-autocomplete label {
+    @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white px-2;
+  }
+  
+  .wake-signup-wrapper .address-autocomplete input {
+    @apply block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] border border-gray-300 appearance-none disabled:bg-secondary-100;
+  }
+
+  .wake-signup-wrapper .address-autocomplete .neighborhood {
+    @apply flex-col relative w-full md:mr-4;
+  }
+  
+  .wake-signup-wrapper .address-autocomplete .city, .wake-signup-wrapper .address-autocomplete .state {
+    @apply flex-col relative justify-start w-full mt-4 md:mt-0;
+  }
+    
+  .wake-signup-wrapper .address-complement {
+    @apply flex flex-col w-full space-y-6 mt-4;
+  }
+  
+  .wake-signup-wrapper .address-complement div {
+    @apply relative w-full flex-col;
+  }
+  
+  .wake-signup-wrapper .address-complement div input {
+    @apply block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-[4px] border border-gray-300 appearance-none;
+  }
+  
+  .wake-signup-wrapper .address-complement div label {
+    @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white px-2;
+  }
+  
+  .wake-signup-wrapper .address-complement div > span, .wake-signup-wrapper .error {
+    @apply text-sm mb-2 text-red-600 absolute top-11;
+  }
+  
+  /* wake-simple-login */
+  .wake-simple-login-wrapper {
+    @apply flex flex-col items-center w-full lg:w-[1330px] mx-auto my-20;
+  }
+  
+  .wake-simple-login-wrapper > div {
+    @apply flex flex-col p-2;
+  }
+  
+  .wake-simple-login-wrapper > div .mainSimpleLogin > h3{
+    @apply flex justify-center mb-2 text-black font-normal text-2xl;
+  }
+  
+  .wake-simple-login-wrapper > div .mainSimpleLogin > span{
+    @apply flex text-secondary-600 text-center text-sm;
+  }
+  
+  .wake-simple-login-wrapper > div .mainSimpleLogin > form{
+    @apply flex flex-col my-4 items-center;
+  }
+ 
+  .wake-simple-login-wrapper > div .mainSimpleLogin form > div{
+    @apply relative my-3 items-center;
+  }
+  
+  .wake-simple-login-wrapper > div .mainSimpleLogin form > div > input{
+    @apply flex w-[350px] h-[40px] px-2.5 pb-2.5 pt-4 text-sm text-gray-900 bg-transparent rounded-[4px]  border-gray-300 appearance-none focus:outline-none focus:ring-0;
+  }
+  
+  .wake-simple-login-wrapper > div .mainSimpleLogin form > div > label{
+    @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 left-1 z-10 origin-[0] bg-white px-2;
+  }
+  
+  .wake-simple-login-wrapper > div .mainSimpleLogin form > div > .error{
+    @apply mb-0 text-sm text-red-600;
+  }
+  
+  .wake-simple-login-wrapper > div .mainSimpleLogin form > button{
+    @apply flex w-[350px] h-[42px] justify-center font-semibold text-center text-lg rounded-[4px] p-2 mb-2 text-white bg-black;
+  }
+  
+  .wake-simple-login-wrapper form:not(.mainSimpleLogin form){
+    @apply flex-col justify-center items-center my-4;
+  }
+  
+  .wake-simple-login-wrapper form:not(.mainSimpleLogin form) > div:first-child{
+    @apply flex flex-col text-center w-[350px] mb-8 ;
+  }
+
+  .wake-simple-login-wrapper form:not(.mainSimpleLogin form) > div:first-child p:first-child{
+    @apply text-sm mb-4;
+  }
+  
+  .wake-simple-login-wrapper form:not(.mainSimpleLogin form) > div:first-child p:last-child{
+    @apply text-sm;
+  }
+  
+  .wake-simple-login-wrapper form:not(.mainSimpleLogin form) > div:nth-of-type(2) {
+    @apply flex flex-col w-[350px] justify-center items-center my-2;
+  }
+  
+  .wake-simple-login-wrapper form:not(.mainSimpleLogin form) button{
+    @apply flex w-[350px] h-[42px] justify-center font-semibold text-center text-lg rounded-[4px] p-2 mb-2 text-white bg-black;
+  }
+  
+  .wake-simple-login-wrapper form:not(.mainSimpleLogin form) a{
+    @apply flex w-[350px] h-[42px] justify-center text-center text-base text-blue-600;
+  }
+  
+  .wake-simple-login-wrapper .wake-authenticate-simple-questions{
+    @apply flex flex-col w-full;
+  }
+  
+  .wake-simple-login-wrapper .wake-authenticate-simple-questions h3{
+    @apply mb-4;
+  }
+  
+  .wake-simple-login-wrapper .wake-authenticate-simple-questions label{
+    @apply flex flex-col items-center cursor-pointer justify-center text-[15px] mb-2 py-2 w-full border rounded-[4px];
+  }
+  
+  .wake-simple-login-wrapper .wake-authenticate-simple-questions .wake-authenticate-simple-answer-selected{
+    @apply border-black font-semibold;
+  }
+  
+  .wake-simple-login-wrapper .wake-authenticate-simple-questions div {
+    @apply flex flex-col text-center items-center w-full;
+  }
+
+  /* impersonate */
+  .wake-impersonate-wrapper{
+    @apply flex flex-col items-center w-full lg:w-[1330px] mx-auto my-20;
+  }
+  
+  .wake-impersonate-wrapper > div{
+    @apply flex flex-col p-2 md:min-w-[600px];
+  }
+  
+  .wake-impersonate-wrapper > div h3{
+    @apply flex text-3xl text-secondary-600 justify-center mb-2;
+  }
+
+  .wake-impersonate-wrapper > div button{
+    @apply  flex justify-center font-semibold text-center text-lg rounded-xl p-2 mb-2 antialiased text-white bg-primary-500 hover:bg-primary-600;
+  }
+  
+  .wake-impersonate-wrapper > div > button{
+    @apply mt-2;
+  }
+  
+  .wake-impersonate-wrapper > div > h4{
+    @apply flex text-2xl text-secondary-600 justify-center mt-2;
+  }
+  
+  .wake-impersonate-wrapper > div > form{
+    @apply flex flex-col my-6;
+  }
+  
+  .wake-impersonate-wrapper > div > form input{
+    @apply flex text-center border-secondary-400 rounded-xl p-2 mb-4 antialiased text-slate-600;
+  }
+}
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

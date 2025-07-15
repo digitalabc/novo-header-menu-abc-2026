@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query Account($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
   customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
     customerId
@@ -13,3 +14,20 @@ query Account($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) 
     }
   }
 }
+=======
+query Account($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
+  customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
+    customerId
+    customerName
+    customerType
+    email
+    checkingAccountBalance
+    checkingAccountHistory{
+      date
+      historic
+      type
+      value
+    }
+  }
+}
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

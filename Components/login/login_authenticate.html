@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h3>Entrar</h3>
 <span>Entre com seu e-mail e senha para continuar</span>
 <form id="authenticateForm" onsubmit="authenticateSubmit(event);"> 
@@ -28,3 +29,35 @@
     Entrar
   </button>
 </form>
+=======
+<h3>Entrar</h3>
+<span>Entre com seu e-mail e senha para continuar</span>
+<form id="authenticateForm" onsubmit="authenticateSubmit(event);"> 
+  <div>
+    <div class="relative">
+      <input type="text" id="email" name="email" class="peer border border-gray-300 focus:border-grey-600" placeholder=" " />
+      <label for="email" id="emailLabel">Email</label>
+    </div>
+    <p id="errorMessageEmail" class="input-error hidden"><span>Preencha com seu email</span></p>
+  </div>
+  <div>
+    <div class="flex relative w-full">
+      <label for="password">Senha</label>
+      <div class="relative">
+        <input type="password" id="password" name="password" class="peer border border-gray-300 focus:border-grey-600 w-full" placeholder=" " />
+        <img src="{{- store.urls.static_img}}icons/eye.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="ocultar senha" id="show-password" class="hidden hide-show-password" loading="lazy" onclick="showPassword('password', false, 'show-password')" >
+        <img src="{{- store.urls.static_img}}icons/eye-slash.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="mostrar senha" id="hide-password" class="hide-show-password" loading="lazy" onclick="showPassword('password', true, 'hide-password')">
+      </div>
+    </div>
+    <p id="errorMessagePassword" class="input-error hidden"><span>Preencha com sua senha</span></p>
+  </div>
+  <div class="forgot-password">
+    <span>
+     <a href="/login/password/recovery" id="forgot-password" class="forgot-password">Esqueci minha senha</a>
+    </span>
+  </div>
+  <button class="button-login" type="submit">
+    Entrar
+  </button>
+</form>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

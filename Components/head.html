@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="flex w-full lg:justify-center lg:my-3 z-30 py-3 px-3 lg:py-0">
   <div class="flex relative justify-between items-center w-full lg:w-[1330px] lg:my-3">
     <div onclick="showNavBar(true)" class="lg:hidden">  
@@ -36,4 +37,44 @@
       </div>
     </div>
   </div>
+=======
+<div class="flex w-full lg:justify-center lg:my-3 z-30 py-3 px-3 lg:py-0">
+  <div class="flex relative justify-between items-center w-full lg:w-[1330px] lg:my-3">
+    <div onclick="showNavBar(true)" class="lg:hidden">  
+      <img class="w-12 h-12 md:w-14 md:h-14 p-2" src="{{- store.urls.static_img}}header/bars.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="header-bars">
+    </div>
+    <div class="flex-shrink">
+        <a href="/">            
+          <img src="{{- store.urls.static_img}}logo.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="logo" class="w-32 md:w-auto" width="128" height="13">
+        </a>
+    </div>
+    <form id="search" 
+    class="absolute lg:flex lg:sticky lg:w-auto sm:left-0 sm:top-[100%] bg-mainBg hidden top-16 w-full items-center 
+    border z-10 ease-in-out duration-500 opacity-100 lg:opacity-100" 
+    onsubmit="search(event, null)">
+        <div class="autocomplete sm:max-lg:w-full">
+            <input id="search-bar" class="border-none p-2 w-full focus:ring-0" type="search" placeholder='{{ "Busque aqui" | lang }}...' autocomplete="off">
+            <div id="autocomplete-list" class="absolute top-full right-0 left-0 z-20"></div>
+        </div>
+        <button class="flex items-center justify-center bg-secondary-300 py-3 px-1 w-20 text font-bold" type="submit">
+          <img src="{{- store.urls.static_img}}icons/search.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="search" class="w-4 h-4">
+        </button>
+    </form>
+    <div class="hidden lg:flex">
+      {{ user_login }}
+    </div>
+    <div class="hidden lg:flex">
+      {{ wishlist_menu }}
+    </div>
+    <div class="flex justify-start items-center">
+      <div class="flex lg:hidden px-1">
+        <img src="{{- store.urls.static_img}}icons/search.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="search" class="lg:hidden md:w-10 md:h-10 w-8 h-8 mr-2" id="open-search" onclick="showSearchBar()">
+      </div>
+      <div class="relative p-[0.7rem]">
+          <img src="{{- store.urls.static_img}}header/cart.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="cart" class="w-6 h-6 md:w-8 md:h-8 cursor-pointer" onclick="setCartDivVisibility()">
+          <span id="cart-qty-label" class="absolute top-6 -right-1 py-[0.2rem] px-[0.5rem] rounded-full bg-secondary-600 text-white text-[0.6rem]">0</span>
+      </div>
+    </div>
+  </div>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </div>

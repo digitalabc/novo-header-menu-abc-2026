@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query Simple($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
   customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
     customerId
@@ -6,3 +7,13 @@ query Simple($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
     email
   }
 }
+=======
+query Simple($customerAccessToken: String!, $hasCustomerAccessToken: Boolean!) {
+  customer(customerAccessToken: $customerAccessToken) @include(if: $hasCustomerAccessToken) {
+    customerId
+    customerName
+    customerType
+    email
+  }
+}
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

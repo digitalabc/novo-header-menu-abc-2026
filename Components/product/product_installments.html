@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{ ##
   Description: Renders a modal with all the installment options
   Params:
@@ -336,4 +337,344 @@ input[name="installment_dialog"]:checked + label {
     </dialog>
 
   </div>
+=======
+{{ ##
+  Description: Renders a modal with all the installment options
+  Params:
+      - installments: product installment plans (available on Admin).
+                      If needed, the config option payment_groups.display on settings.json 
+                      can be used to define which plans to display on modal.
+                      (e.g., display: ["Boleto Yapay", "Cartão Sem Desconto", "Pix"])
+  Usage:
+      product_installments installments: product.prices.installment_plans
+## }}
+
+
+{{~ #Function used to filter the installment plans available if any display option is set on settings.json
+func select_display(plans)
+  contains = false
+  if settings.payment_groups.display && (settings.payment_groups.display | array.contains plans.display_name)
+    contains = true
+  end
+  ret contains
+end~}}
+
+{{~ installment_plans = installments | array.filter @select_display ~}}
+{{~ if installment_plans == empty 
+      installment_plans = installments | array.reverse
+      installments_name = installment_plans | array.map "name"
+    end
+~}}
+
+<style>
+/**
+    * @license
+    *
+    * Font Family: Satoshi
+    * Designed by: Deni Anggara
+    * URL: https://www.fontshare.com/fonts/satoshi
+    * © 2024 Indian Type Foundry
+    *
+    * Satoshi Variable (Variable font)
+    *
+    */
+
+/**
+    * This is a variable font
+    * You can control variable axes as shown below:
+    * font-variation-settings: wght 900.0;
+    *
+    * available axes:
+    'wght' (range from 300.0 to 900.0
+    */
+
+    @font-face {
+  font-family: "Satoshi Variable";
+  src: url("https://abcprime.fbitsstatic.net/sf/fonts/prime/Satoshi-Variable.woff2")
+      format("woff2"),
+    url("https://abcprime.fbitsstatic.net/sf/fonts/prime/Satoshi-Variable.woff")
+      format("woff"),
+    url("https://abcprime.fbitsstatic.net/sf/fonts/prime/Satoshi-Variable.ttf")
+      format("truetype");
+  font-weight: 300 900;
+  font-style: normal;
+}
+
+.payment__dialog {
+  box-sizing: border-box;
+  position: fixed;
+  max-width: 360px;
+  left: max(calc(50vw - 360px / 2), 4vw);
+  top: 5vh;
+  z-index: 9999;
+  border-radius: 16px;  
+}
+
+.payment__dialog__wrapper {
+  box-shadow: 0px 8px 8px 0px rgba(123, 123, 123, 0.10);
+  border: 2px solid #E8E8E8;  
+  border-radius: 16px;
+  padding: 20px 12px;  
+  background: #FFF;  
+}
+
+.payment__dialog:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -2;
+}
+
+.payment__dialog:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.payment__dialog__wrapper > a  {
+    position: absolute;
+    top: 0;
+    right: 0px;
+}
+
+.payment__dialog__wrapper > div  {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+.payment__dialog__list  {
+  display: flex;  
+  gap: 8px;
+}
+
+.product__installments .payment .option:not(:last-child) {
+    margin-bottom: unset;
+}
+
+.payment__dialog__body p {
+  color: #040A17;
+  text-align: center;
+  font-family: "Satoshi Variable";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.48px;
+}
+
+.payment__dialog__body .payment__dialog__list .option button {
+  display: flex;
+  /* min-width: 80px;
+  max-width: 90px; */
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  
+  
+  color: #040A17;  
+  font-family: "Satoshi Variable";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+
+  border-radius: 6px;
+  border: 1.5px solid #20A389;
+  background: #EEFAF9;
+}
+
+.payment__dialog__body .payment__dialog__list .option_list {
+  color: #20A389;
+  text-align: center;
+  font-family: "Satoshi Variable";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14px; 
+}
+
+.option__list__message1,
+.option__list__message2 {
+  font-family: "Satoshi Variable";
+  font-style: normal;
+  background: unset !important;
+  padding-top: 16px !important;
+}
+
+.option__list__message2 {
+  color: #848484;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.option__list__message1 {
+  color: #040A17;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 14px;  
+}
+
+input[name="installment_dialog"] {
+  display: none;
+}
+
+input[name="installment_dialog"]:checked + label {  
+  border: 1.5px solid #E3062D !important;
+  background: #EEFAF9 !important;
+}
+
+.payment__options {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+.payment__options label {
+  cursor: pointer;
+  display: flex;
+  min-width: 90px;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex: 1 0 0;
+  border-radius: 6px;
+  border: 1px solid #E8E8E8;
+  background: #F6F8FA;
+  color: #040A17;
+  font-family: "Satoshi Variable";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+.payment__options label > svg {
+  width: 20px;
+  height: 18px;  
+}
+
+.payment__options__installments > ul:not(.show__installments) {
+    display: none;
+}
+.payment__options__installments ul {
+  display: grid;
+  justify-items: center;
+}
+.payment__options__installments li {
+  padding-block: 8px;
+  justify-self: stretch;
+  text-align: center;
+}
+
+.payment__options__installments ul:not(.installment__credito) > li:first-child,
+.payment__options__installments ul.installment__credito > li:nth-child(even) {
+  background: #F6F8FA;
+}
+
+.payment__options__installments ul:not(.installment__credito) > li:first-child {
+  color: #E3062D;
+  text-align: center;
+  font-family: "Satoshi Variable";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14px;
+  }
+.product__installments {
+  justify-content: center;
+}
+</style>
+
+<section class="product__installments" id="installments-modal" tabindex="-1" aria-labelledby="installments-modal-label">
+  <div class="payment">
+    <button class="payment__button" id="installments-modal-label" onclick="togglePayment('open')">
+      Ver formas de pagamento
+    </button>
+    
+    <dialog class="payment__dialog">
+      <div class="payment__dialog__wrapper">
+        <a onclick="togglePayment('close')"">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M0 0H40V40H12C5.37258 40 0 34.6274 0 28V0Z" fill="#E3062D"/>
+            <path d="M16.4 26L15 24.6L20.6 19L15 13.4L16.4 12L22 17.6L27.6 12L29 13.4L23.4 19L29 24.6L27.6 26L22 20.4L16.4 26Z" fill="white"/>
+          </svg>
+        </a>
+        <div class="payment__dialog__body">
+          <p>Formas de Pagamento</p>
+ 
+          <div class="payment__options">
+            
+              {{~ for name in installments_name ~}}
+                {{~ if name | string.downcase | string.contains "pix" ~}}
+                  <input type="radio" name="installment_dialog" onclick="showPaymentInstallment(this)" id="installment_dialog_pix" value="installment__pix" checked>
+                  <label for="installment_dialog_pix">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M12.1027 13.0691L9.39301 10.3594C9.29398 10.2603 9.17695 10.2423 9.11393 10.2423C9.05092 10.2423 8.93388 10.2603 8.83486 10.3594L6.11614 13.0781C5.81006 13.3842 5.33293 13.8793 3.73951 13.8793L7.07939 17.2102C7.58578 17.7159 8.27221 18 8.9879 18C9.70359 18 10.39 17.7159 10.8964 17.2102L14.2453 13.8703C13.4261 13.8703 12.7419 13.7082 12.1027 13.0691ZM6.11614 4.92192L8.83486 7.64064C8.90688 7.71266 9.01491 7.75767 9.11393 7.75767C9.21296 7.75767 9.32099 7.71266 9.39301 7.64064L12.0847 4.94893C12.7239 4.28275 13.4531 4.12971 14.2723 4.12971L10.9234 0.789833C10.417 0.284078 9.7306 0 9.01491 0C8.29922 0 7.61279 0.284078 7.1064 0.789833L3.76652 4.12071C5.35094 4.12071 5.83707 4.64285 6.11614 4.92192Z" fill="#040A17"/>
+                      <path d="M17.1977 7.06451L15.1722 5.02997H14.0379C13.5518 5.02997 13.0657 5.22802 12.7326 5.57912L10.0319 8.27983C9.77979 8.5319 9.4467 8.65793 9.11361 8.65793C8.77062 8.6531 8.44232 8.51792 8.19537 8.27983L5.47665 5.55211C5.13456 5.21002 4.66644 5.01197 4.17131 5.01197H2.84796L0.786415 7.08251C0.28066 7.5889 -0.00341797 8.27533 -0.00341797 8.99102C-0.00341797 9.70671 0.28066 10.3931 0.786415 10.8995L2.84796 12.9701H4.18031C4.66644 12.9701 5.13456 12.772 5.48566 12.4299L8.20437 9.71121C8.45644 9.45914 8.78953 9.33311 9.12261 9.33311C9.4557 9.33311 9.78879 9.45914 10.0409 9.71121L12.7506 12.4209C13.0927 12.763 13.5608 12.9611 14.0559 12.9611H15.1902L17.2157 10.9265C17.7236 10.411 18.0068 9.71546 18.0035 8.9918C18.0001 8.26815 17.7104 7.57525 17.1977 7.06451Z" fill="#040A17"/>
+                    </svg>
+                    Pix
+                  </label>
+                {{~ else if name | string.downcase | string.contains "cartão" ~}}
+                  <input type="radio" name="installment_dialog" onclick="showPaymentInstallment(this)" id="installment_dialog_credito" value="installment__credito">
+                  <label for="installment_dialog_credito">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+                      <path d="M2 18C1.45 18 0.979167 17.7797 0.5875 17.3391C0.195833 16.8984 0 16.3687 0 15.75V2.25C0 1.63125 0.195833 1.10156 0.5875 0.660938C0.979167 0.220312 1.45 0 2 0H18C18.55 0 19.0208 0.220312 19.4125 0.660938C19.8042 1.10156 20 1.63125 20 2.25V15.75C20 16.3687 19.8042 16.8984 19.4125 17.3391C19.0208 17.7797 18.55 18 18 18H2ZM2 9H18V4.5H2V9Z" fill="#040A17"/>
+                    </svg>
+                    Crédito
+                  </label>
+                {{~ else if name | string.downcase | string.contains "boleto" ~}}
+                  <input type="radio" name="installment_dialog" onclick="showPaymentInstallment(this)" id="installment_dialog_boleto" value="installment__boleto">
+                  <label for="installment_dialog_boleto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+                      <path d="M0 18V0H1.81818V18H0ZM2.72727 18V0H4.54545V18H2.72727ZM5.45455 18V0H6.36364V18H5.45455ZM8.18182 18V0H10V18H8.18182ZM10.9091 18V0H13.6364V18H10.9091ZM14.5455 18V0H15.4545V18H14.5455ZM17.2727 18V0H20V18H17.2727Z" fill="#040A17"/>
+                    </svg>
+                    Boleto
+                  </label>
+                {{~ end ~}}
+              {{~ end ~}}
+            
+          </div>              
+          <div class="payment__options__installments">
+            
+              {{~ for plan in installment_plans ~}}
+                <ul class="{{~ if plan.name | string.downcase | string.contains "pix" ~}} show__installments installment__pix{{~ else if plan.name | string.downcase | string.contains "cartão" ~}} installment__credito{{~ else if plan.name | string.downcase | string.contains "boleto" ~}} installment__boleto{{~ end ~}}">
+                  {{~ for installment in plan.installments ~}}
+                  <li>
+                    {{installment.number}}x de {{installment.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }} {{if installment.fees}}com juros{{else}}sem juros{{end}}
+                  </li>
+                  {{~ end ~}}
+                {{~ if plan.name | string.downcase | string.contains "pix" ~}}
+                  <li class="option__list__message1">À vista no Pix com 5% de desconto</li>
+                  <li class="option__list__message2">*Certifique-se de concluir o pagamento no prazo indicado para garantir a confirmação do pedido.</li>
+                  {{~ else if plan.name | string.downcase | string.contains "cartão" ~}}
+                    <li class="option__list__message2">*O limite do cartão deve cobrir o valor total da compra, mesmo em compras parceladas.</li>
+                  {{~ else if plan.name | string.downcase | string.contains "boleto" ~}}
+                    <li class="option__list__message1">À vista no Boleto Bancário</li>
+                    <li class="option__list__message2">*Atenção! O prazo de compensação para pagamentos via boleto é de até 3 dias úteis.</li>
+                  {{~ end ~}}  
+                </ul>
+              {{~ end ~}}                
+            
+          </div>
+            
+        </div>
+          
+            
+      </div>
+    </dialog>
+
+  </div>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </section>

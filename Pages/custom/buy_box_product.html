@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -50,3 +51,57 @@
         {{ asset type: "js" paths: ["swiffy-slider"] options:"defer"}}     
     </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        {{ header title: data.product.product_name store: store }}
+        {{ data_layer_config }}
+        {{ product_structured_data product: data.product current_url: store.urls.current }}
+        {{ asset type: "css" paths: ["navbar", "buy_box", "footer", "mini_cart", "product", "user_login", "spot", "output_base", "swiffy-slider"]}}
+        {{ meta_tags seo: data.product.seo }} 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body class="bg-mainBg">
+        <header class="shadow-xl lg:shadow-none bg-mainBg">
+            {{ links }}
+            {{ head }}
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        </header>
+        {{ side_cart }}
+        {{ wake_overlay }}
+        {{~ product = data.product ~}}
+        <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
+        <input type="hidden" id="product-variant-id" name="product-variant-id" value="{{ data.product.product_variant_id }}">
+        <div class="flex flex-col w-full lg:flex-row lg:justify-center">
+            <div class="flex flex-col items-start w-full lg:max-w-[1330px] relative p-2 lg:p-0">
+                <div class="my-4">{{~ breadcrumb breadcrumbs: product.breadcrumbs ~}}</div>
+                <div product-view-row class="w-full">
+                    <div product-view-div id="product-view-div-{{ product.product_id }}" class="">
+                        {{ buy_box_product_view product: product }}
+                    </div>
+                </div>
+                <div class="flex flex-col w-full relative my-4">
+                    {{ buy_together product: product }}
+                </div>
+                <div class="flex flex-col w-full relative my-4">                    
+                    {{ product_information informations: product.informations }}
+                </div>
+                {{~ if data.product_recommendations.size > 0 ~}}
+                    {{ spot_carousel products: data.product_recommendations class:"recommendations" title:"Produtos relacionados" }}
+                {{~ end ~}}
+                <div class="flex flex-col w-full relative my-4">
+                    {{ product_reviews reviews: product.reviews product_name: product.product_name }}
+                </div>
+            </div>
+        </div>
+        {{ footer is_preview: is_preview store: store }}
+        {{ data_layer_product_view product: data.product  }}
+        {{ sdk_client }}
+        {{ wake_scripts scripts: ["wake_utils"] }}   
+        {{ asset type: "js" paths: ["product", "buy_box", "mini_cart", "navbar", "cart_from_spot", "user_login", "product_review", "wishlist", "buy_together", "shipping_quotes", "event_manager"] options:"async"}}        
+        {{ asset type: "js" paths: ["swiffy-slider"] options:"defer"}}     
+    </body>
+</html>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="wake-checkout-coupon-container" id="checkout_coupon_snippet">
     <div class="wake-checkout-coupon-inner ">
       <label class="wake-checkout-coupon-label">Cupom de desconto</label>
@@ -9,4 +10,17 @@
             <button onclick="removeCoupon()" class="wake-checkout-coupon-button wake-checkout-coupon-button-change checkout-coupon-button-remove">Remover</button>
         {{~ end ~}}
     </div>
+=======
+<div class="wake-checkout-coupon-container" id="checkout_coupon_snippet">
+    <div class="wake-checkout-coupon-inner ">
+      <label class="wake-checkout-coupon-label">Cupom de desconto</label>
+        {{~ if !data.checkout.coupon ~}}
+            <input type="text" class="wake-checkout-coupon-input" name="cupom de desconto" id="coupon" placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
+            <button onclick="addCoupon()" class="wake-checkout-coupon-button">Aplicar</button>
+        {{~ else ~}}
+            <input type="text" disabled class="wake-checkout-coupon-input" name="cupom de desconto" id="coupon" placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
+            <button onclick="removeCoupon()" class="wake-checkout-coupon-button wake-checkout-coupon-button-change checkout-coupon-button-remove">Remover</button>
+        {{~ end ~}}
+    </div>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query Hotsite($url: String!, $partnerAccessToken: String) {
   hotsite (url:$url, partnerAccessToken: $partnerAccessToken) {
     name
@@ -143,3 +144,150 @@ fragment productsCon on ProductsConnection {
     }
   }
 }
+=======
+query Hotsite($url: String!, $partnerAccessToken: String) {
+  hotsite (url:$url, partnerAccessToken: $partnerAccessToken) {
+    name
+    pageSize
+    banners {
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+      urlOnClick
+    }
+    contents {
+      content
+      height
+      title
+      width 
+      position
+    }
+    breadcrumbs{
+      link
+      text
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+  }
+  brands(first: 50, brandInput: {groupIds: [19]}) {
+    nodes {
+      active
+      urlLogo
+      alias
+      fullUrlLogo
+      name
+    }
+  }
+  vitrineBanner: hotsite(hotsiteId: 98787, partnerAccessToken: $partnerAccessToken) {
+    ...vitrineBanner
+  }
+  vitrineMobile: hotsite(hotsiteId: 98788, partnerAccessToken: $partnerAccessToken) {
+    ...vitrineMobile
+  }
+  vitrine2: hotsite(hotsiteId: 98789, partnerAccessToken: $partnerAccessToken) {
+    ...vitrine2
+  }
+  vitrine3: hotsite(hotsiteId: 98790, partnerAccessToken: $partnerAccessToken) {
+    ...vitrine3
+  }
+}
+
+fragment vitrineBanner on SingleHotsite{
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrineMobile on SingleHotsite {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrine2 on SingleHotsite {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment vitrine3 on SingleHotsite {
+  products(first: 9, sortKey: RELEASE_DATE, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment productsCon on ProductsConnection {
+  nodes {
+    id
+    productId
+    productName
+    productVariantId
+    productBrand{
+      fullUrlLogo
+      logoUrl
+    }
+    alias
+    similarProducts{
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images(width:245, height:245) {
+      url
+      print
+    }
+    available
+    prices {
+      listPrice
+      price
+      priceTables {
+        id
+        listPrice
+        price
+      }
+      discountPercentage
+      multiplicationFactor
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    promotions{
+      fullStampUrl
+      content
+      id
+      stamp
+      title
+    }
+    addToCartFromSpot
+    attributes {
+      name
+      value
+    }
+  }
+}
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

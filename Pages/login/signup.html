@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,4 +29,36 @@
   {{ asset type: "js" paths: ["signup"] options: "async"}}
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output","output_login","output_checkout", "signup"]}}
+  <title>Cadastro</title>
+  {{ data_layer_config }}
+</head>
+
+<body class="bg-mainBg">
+  <header class="shadow-xl lg:shadow-none bg-lightBg">
+    {{ checkout_header }}
+  </header>
+  {{ wake_overlay }}
+  <div class="flex flex-col items-center w-full lg:w-[1330px] mx-auto my-10">
+    <div class="flex flex-col w-full signup-container-wrapper">
+      {{ wake_login_signup }}
+    </div>
+  </div>
+  {{ checkout_footer }}
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+      <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
+  </pre>
+  {{ sdk_client_checkout }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
+  {{ asset type: "js" paths: ["signup"] options: "async"}}
+</body>
+
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </html>

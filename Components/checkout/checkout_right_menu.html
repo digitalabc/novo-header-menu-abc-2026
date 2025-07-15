@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="checkout-right-menu">
     {{ checkout_share_cart }}
     <div class="footer_mobile_bottom">
@@ -12,4 +13,20 @@
         <h3 class="total">{{data.checkout.total | math.format "c" "pt-BR"}}</h3>
     </div>
     </div>
+=======
+<div class="checkout-right-menu">
+    {{ checkout_share_cart }}
+    <div class="footer_mobile_bottom">
+        <div class="price-line">
+        <span>Você está economizando</span>
+        <h3 class="discount">
+            {{data.checkout.discount | math.format "c" "pt-BR"}}
+        </h3>
+        </div>
+    <div class="price-line">
+        <span>Valor total</span>
+        <h3 class="total">{{data.checkout.total | math.format "c" "pt-BR"}}</h3>
+    </div>
+    </div>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </div>

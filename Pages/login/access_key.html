@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,4 +25,32 @@
   {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
   {{ asset type: "js" paths: ["mini_cart"] options: "async"}}
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output","output_login"]}}
+  <title>Document</title>
+</head>
+<body class="bg-mainBg">
+  <header class="shadow-xl lg:shadow-none bg-lightBg">
+      {{ links }}
+      {{ head }}
+      {{ side_cart }}
+      {{ wake_overlay }}
+      {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+  </header>
+  <div class="wake-autenticate-wrapper">
+    <div class="wake-access-key">
+      {{ wake_login_access_key }}
+    </div>
+  </div>
+  {{ footer is_preview: is_preview store: store }}
+  {{ sdk_client_checkout }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
+  {{ asset type: "js" paths: ["mini_cart"] options: "async"}}
+</body>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </html>

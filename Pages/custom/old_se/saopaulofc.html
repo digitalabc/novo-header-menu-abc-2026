@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -282,3 +283,289 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ gtm_config_head gtm_id: common.gtm_id }}
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body>
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+  <style>
+    header,
+    #whatsapp {
+        display: none !important;
+    }
+
+    .duvida span p a {
+        color: #94834f;
+        text-decoration: underline;
+    }
+
+    .msg-formulario {
+        padding-bottom: 25px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .msg-formulario>p {
+        opacity: 1;
+        color: #4b4c4e;
+        font-size: 2rem;
+        border-bottom: 2px solid #d61920;
+        transition: all .3s;
+    }
+
+    .abc-times .section-hero-wrap {
+        background-color: #f8faf9;
+    }
+
+    .abc-times .section-hero .texto .logo-links>a:not(:nth-child(1)):hover {
+        border-bottom: 2px solid #d61920;
+    }
+
+    .abc-times .section-hero .texto .formulario>input[type=text] {
+        border: 1px solid #000;
+        color: #4b4c4e;
+    }
+
+    .abc-times .section-hero .texto .formulario>input[type=text]::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #4b4c4e !important;
+        opacity: 1;
+        /* Firefox */
+    }
+
+    .abc-times .section-hero .texto .formulario>input[type=text]:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: #4b4c4e !important;
+    }
+
+    .abc-times .section-hero .texto .formulario>input[type=text]::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: #4b4c4e !important;
+    }
+
+    .abc-times .section-hero .texto .logo-links>a:nth-child(3) {
+        color: #4b4c4e !important;
+    }
+
+    .abc-times .section-hero .texto>p {
+        color: #d61920 !important;
+    }
+
+    .abc-times .section-duvidas>h2,
+    .abc-times .section-duvidas .duvida label[for^=mostrar],
+    .abc-times .section-hero .texto .logo-links>a:nth-child(2) {
+        color: #d61920;
+    }
+
+    .abc-times .section-hero .texto .formulario>button {
+        background-color: #d61920;
+    }
+
+    .abc-times .section-duvidas .duvida {
+        border: 1px solid #d61920;
+    }
+
+    .abc-times .section-icones-wrap {
+        background-image: url(https://recursos.abcdaconstrucao.com.br/i/lps/novas/saopaulo/box-saopaulo.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+  <link rel="stylesheet" href="https://recursos.abcdaconstrucao.com.br/c/lps/lp-abc-times.min.css?v=27120921">
+
+  <div class="abc-times">
+    <div class="section-hero-wrap">
+        <section class="section-hero">
+            <div class="texto">
+                <div class="logo-links">
+                    <a href="#"><img
+                            src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/logo-topo-vermelha-200x54.png"
+                            alt="ABC da Construção" title="ABC da Construção"></a>
+                    <a href="#">Home</a>
+                    <a href="#duvidas-frequentes">Tire suas dúvidas</a>
+                </div>
+                <p>
+                    <strong>Juntos com o Tricolor!</strong>
+                    <br>
+                    Você não vai ficar fora
+                    <br>
+                    dessa parceria!
+                </p>
+                <div class="formulario">
+                    <input type="text" placeholder="Nome">
+                    <input type="text" placeholder="E-mail">
+                    <input type="text" id="inp-telefone" name="telefone" placeholder="Celular">
+                    <button onclick="abcEnvia_contato('61f50820-8fd5-425a-88fa-a702e6d6ecf5')">Cadastre-se e descubra as vantagens!</button>
+                </div>
+            </div>
+            <div class="imagem">
+                {{ banner banners: data.hotsite.banners position: "Topo" carousel: false }}
+            </div>
+        </section>
+    </div>
+    <div class="section-icones-wrap">
+        <section class="section-icones">
+            <!--<div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo1.png"
+                    alt="Mais de 160 lojas"></div>
+            <div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo2.png"
+                    alt="Mais de 60 anos"></div>
+            <div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo3.png"
+                    alt="As Melhores Marcas"></div>
+            <div class="icone"><img src="https://recursos.abcdaconstrucao.com.br/i/lps/novas/selo4.png"
+                    alt="Entrega em 48 Horas"></div>-->
+        </section>
+    </div>
+    <section class="section-duvidas" id="duvidas-frequentes">
+        <h2>Dúvidas Frequentes</h2>
+        <div class="duvida">
+            <input type="checkbox" id="mostrar-pais">
+            <label for="mostrar-pais"><i class="fa fa-plus" aria-hidden="true"></i>Como participar da ação #ABCdaConstruçãoÉTricolor para ganhar camisas oficiais?
+            </label>
+            <span>
+                <br> A ABC da Construção divulgou a #ABCdaConstruçãoÉTricolor e convidou os usuários da rede social X (TWITTER) a realizar posts com o termo acima, aqueles que realizarem mais posts com o #ABCdaConstruçãoÉSPFC no período de 22 a 23 de setembro, até 10 horas da manhã de 2023 serão presenteados com uma camisa oficial do São Paulo FC, conforme disponibilidade de modelo e tamanho. Os ganhadores serão informados a partir do contato realizado por um representante da ABC da Construção via redes sociais para solicitar nome, e-mail, CPF, endereço e celular para registro e envio da camisa.
+               </br>
+                <br>
+                   O resultado será publicado nas redes oficiais da ABC da Construção no dia 16 de setembro. O prêmio não poderá ser trocado por algum outro tipo de benefício e/ou entrega realizada pela ABC da Construção. Informamos que os dados compartilhados no ato do cadastro serão utilizados para registro na base da ABC da Construção e envio de informações pelos nossos canais oficiais.
+                <br>
+                  Ao realizar o cadastro você autoriza o uso do seu nome e imagem em peças de divulgação nas redes sociais em peças exclusivamente relacionadas a campanha da marca. As imagens não serão utilizadas para fins comerciais. 
+                </br>
+                <br>            
+                    Para mais informações sobre tratamento de dados pessoais pela ABC da Construção, consulte:   <a href="https://www.abcdaconstrucao.com.br/Privacidade"> https://www.abcdaconstrucao.com.br/Privacidade
+
+                  </br>
+                </br>
+
+            </span>
+        </div>
+        <div class="duvida">
+            <input type="checkbox" id="mostrar-roleta">
+            <label for="mostrar-roleta"><i class="fa fa-plus" aria-hidden="true"></i>Quero saber mais sobre a
+                roleta Cadastrou Ganhou ABC da Construção?</label>
+            <span>
+                <p>
+                    Todos aqueles que realizaram o cadastro que aparece na roleta virtual da ação cadastrou ganhou ao
+                    acessar a página exclusiva dos clubes de futebol patrocinados pela ABC da Construção, poderão ganhar
+                    camisas oficiais do clube, ingressos para jogos e cupons de descontos para utilizar no site da ABC
+                    da Construção. O cupom de desconto é válido exclusivamente para produtos selecionados para as
+                    categorias de metais sanitários, móveis, tintas, banho e aquecimento, exclusivamente para compras no
+                    site da ABC da Construção até R$ 2.000,00 (dois mil reais). Esse desconto não é acumulativo com
+                    outras ofertas e não é válido para produtos em promoção, troca de mercadoria ou utilização de
+                    crédito de cancelamento. Consulte lojas para as demais condições de pagamento, lista de cidades
+                    atendidas para entrega e endereços de lojas no site <a href="http://www.abcdaconstrucao.com.br/">abcdaconstrucao.com.br</a>.
+                </p>
+                <br>
+                <p>
+                    Os contemplados com cupom de desconto e ingressos para jogos terão até o dia de 30 de junho de 2022
+                    para utilizar seu benefício, ou seja, efetivar a utilização do cupom ou resgatar seu prêmio. As
+                    camisas disponibilizadas para premiação são masculinas, nos tamanhos M, G ou GG e estão sujeitas à
+                    disponibilidade de estoque.
+                </p>
+                <br>
+                <p>
+                    Os cupons de desconto estão limitados a uma utilização por CPF. As regras de uso de cupom de
+                    desconto estão disponíveis em <a href="http://abcdaconstrucao.com.br/comocomprar">abcdaconstrucao.com.br/comocomprar</a>.
+                </p>
+                <br>
+                <p>
+                    Informamos que os dados pessoais tratados nesta campanha serão utilizados para fornecimento de cupom
+                    de desconto, envio de informações pelos nossos canais oficiais como e-mail marketing, whatsapp, SMS,
+                    ligações telefônicas e redes sociais, bem como para informar os contemplados e entregar os prêmios.
+                </p>
+                <br>
+                <p>
+                    Para mais informações sobre o tratamento de dados pessoais pelo ABC da Construção, acesse <a
+                        href="https://recursos.abcdaconstrucao.com.br/MediaCenter/politica-de-privacidade-abc-da-construcao.pdf?v=202505261659"
+                        target="_blank">nossa política de privacidade.</a>.
+
+                </p>
+            </span>
+        </div>
+        <div class="duvida">
+            <input type="checkbox" id="mostrar-0">
+            <label for="mostrar-0"><i class="fa fa-plus" aria-hidden="true"></i>Quando foi o início da parceria?</label>
+            <span>
+                <p>
+                    O início da parceira com o São Paulo Futebol Clube foi em Junho de 2021. Data em que a ABC da
+                    Construção se tornou
+                    patrocinadora oficial do Clube.
+                </p>
+            </span>
+        </div>
+        <div class="duvida">
+            <input type="checkbox" id="mostrar-1">
+            <label for="mostrar-1"><i class="fa fa-plus" aria-hidden="true"></i>Quero saber mais sobre a ABC da
+                Construção.</label>
+            <span>
+                <p>
+                    Com mais de 60 anos de história, a ABC da Construção é uma das maiores redes de
+                    acabamentos do Brasil. Pelo seu modelo inovador, a ABC está fazendo uma revolução no
+                    varejo de acabamentos e já é considerada uma das principais construtechs do país.
+                    Traduzindo em números, vendemos por ano, aproximadamente 5 milhões de metros
+                    quadrados de revestimentos. Por ano, são 240 mil clientes atendidos em nossas mais de
+                    160 lojas em 80 cidades.</p>
+                <p>
+                    O segredo? A gente entende de obra e vai te ajudar a comprar o acabamento certo, na
+                    quantidade certa pra sua obra. Nem mais, nem menos. Conte conosco pra finalizar sua obra de
+                    forma rápida, econômica e segura. Conte conosco pra deixar sua casa como sempre sonhou.
+                </p>
+            </span>
+        </div>
+        <div class="duvida">
+            <input type="checkbox" id="mostrar-2">
+            <label for="mostrar-2"><i class="fa fa-plus" aria-hidden="true"></i>Quais são as vantagens de se
+                cadastrar?</label>
+            <span>
+                <p>
+                    Ao se cadastrar você irá receber em primeira mão todas as ofertas, cupons, dicas, condições,
+                    ações e ativações especiais e imperdíveis relacionadas à diversidade e melhores marcas de
+                    acabamento para sua obra ou reforma. Nossa
+                    intenção é proporcionar experiências incríveis nas lojas ou no site da ABC junto ao seu time do
+                    coração.
+                </p>
+
+            </span>
+        </div>
+        <div class="duvida">
+            <input type="checkbox" id="mostrar-3">
+            <label for="mostrar-3"><i class="fa fa-plus" aria-hidden="true"></i>Encontre a ABC mais perto de
+                você!</label>
+            <span></span>
+        </div>
+
+    </section>
+</div>
+<div id="times-modal" class="times-modal-overlay">
+    <div class="times-modal-content">
+        <div class="times-modal-header">
+            <span class="times-modal-close">&times;</span>
+        </div>
+        <div class="times-modal-body">
+            <span class="times-modal-text"></span>
+        </div>
+        <div class="times-modal-footer">
+            <div class="times-modal-btn">Fechar</div>
+        </div>
+    </div>
+</div>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ old_newsletter_popup }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "mask", "components", "navbar", "mini_cart", "user_login", "newsletter",  "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "times", "whats_form"] }}
+</body>
+
+</html>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

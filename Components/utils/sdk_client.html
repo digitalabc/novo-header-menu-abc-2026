@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{ ##
     Description: Creates the SDK client using information injected in the page
     Usage:
@@ -12,4 +13,20 @@ const clientConfig = {
 };
     
 const client = StorefrontClient.createClient(clientConfig);
+=======
+{{ ##
+    Description: Creates the SDK client using information injected in the page
+    Usage:
+        sdk_client
+## }}
+
+<script src="https://static.fbits.net/storefront-sdk/latest/storefront-sdk-full.min.js?theme={{- store.theme -}}&v={{- store.last_modified -}}"></script>
+<script>
+const clientConfig = {
+    storefrontAccessToken: '{{settings.access_token}}',
+    storeUrl: '{{store.urls.base}}'
+};
+    
+const client = StorefrontClient.createClient(clientConfig);
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </script>

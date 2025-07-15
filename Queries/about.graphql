@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query Hotsite($url: String!) {
   hotsite(url: $url) {
     banners {
@@ -26,4 +27,34 @@ query Hotsite($url: String!) {
       scheme
     }
   }
+=======
+query Hotsite($url: String!) {
+  hotsite(url: $url) {
+    banners {
+      bannerName
+      bannerUrl
+      position
+      urlOnClick
+      openNewTab
+      height
+      title
+      width
+      order
+    }
+    contents {
+      content
+      height
+      title
+      width
+      position
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+  }
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 }

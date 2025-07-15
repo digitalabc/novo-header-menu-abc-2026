@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{ ##
     Description: Google Tag Manager search component, saves the info of products
                 to use when pushing the data to the datalayer
@@ -32,4 +33,40 @@
             {{~ end ~}}
         ]
     };
+=======
+{{ ##
+    Description: Google Tag Manager search component, saves the info of products
+                to use when pushing the data to the datalayer
+    Params:
+        - product: the product data to save in tag manager
+    Usage:
+        gtm_search_view product: data.product
+## }}
+<script>
+    const gtm_search_details = {
+        item_list_name: "Search results",
+        items: [
+            {{~ for product in products ~}}
+                {
+                    item_id: {{product.product_id}},
+                    item_name: "{{product.product_name}}",
+                    {{~ if product.prices ~}}
+                        discount: {{product.prices.list_price - product.prices.price}},
+                        price: {{product.prices.list_price}},
+                    {{ end }}
+                    index: 0,
+                    {{ if product.product_brand}}
+                        item_brand: {{product.product_brand.name}},
+                    {{ end }}
+                    {{ i = 1 }}
+                    {{ for category in product.product_categories }}
+                        item_category{{if i > 1}}{{i}}{{end}}:{{category.name}},
+                        {{i = i + 1}}
+                    {{ end }}
+                    quantity: 1
+                }{{if !for.last}},{{end}}
+            {{~ end ~}}
+        ]
+    };
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </script>

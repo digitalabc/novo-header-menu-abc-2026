@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partnerAccessToken: String){
   product(productId:$productId, partnerAccessToken: $partnerAccessToken) {
     buyTogether{
@@ -244,4 +245,252 @@ fragment SingleProductData on SingleProduct {
     type
     values
   }
+=======
+query ProductPage($productId: Long!, $selections: [AttributeFilterInput], $partnerAccessToken: String){
+  product(productId:$productId, partnerAccessToken: $partnerAccessToken) {
+    buyTogether{
+      productId
+    }
+    ...SingleProductData    
+    id
+    sku
+    ean
+    averageRating
+    productBrand {
+      name
+      logoUrl
+      fullUrlLogo
+    }  
+    informations{
+      id
+      title
+      type
+      value
+    }
+    reviews {
+      customer
+      email
+      rating
+      review
+      reviewDate
+    }
+    promotions{
+      content
+      id
+      stamp
+      fullStampUrl
+      title
+      disclosureType
+    }
+    breadcrumbs{
+      link
+      text
+    }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    addToCartFromSpot
+    subscriptionGroups{
+      recurringTypes{
+        name
+        days
+        recurringTypeId
+      }
+      subscriptionGroupId
+      subscriptionOnly
+    }
+  }
+  productRecommendations(productId:$productId, partnerAccessToken: $partnerAccessToken) {
+    alias: aliasComplete
+    productName
+    productId
+    available
+    similarProducts{
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images{
+      url
+    }
+    prices {
+      listPrice
+      price
+      discountPercentage
+      installmentPlans{
+          displayName
+          name
+          installments{
+            discount
+            fees
+            number
+            value
+          }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    promotions{
+      content
+      id
+      stamp
+      title
+      disclosureType
+    }
+    addToCartFromSpot
+  }
+}
+
+fragment SingleProductData on SingleProduct {
+  productId
+  productName
+  productVariantId
+  stock
+  available
+  images {
+    url
+    fileName
+    print
+  }
+  prices {
+    listPrice
+    price
+    discountPercentage
+    installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+    }
+    bestInstallment {
+      name
+      displayName
+      discount
+      fees
+      number
+      value
+    }
+    wholesalePrices{
+      price
+      quantity
+    }
+  }
+  attributeSelections (selected: $selections) {
+    canBeMatrix
+    matrix {
+      row {
+        name
+        displayType
+        values {
+          value
+          printUrl
+        }
+      }
+      column {
+        name
+        displayType
+        values {
+          value
+          printUrl
+        }
+      }
+      data {
+        productVariantId
+        available
+        stock
+      }
+    }
+    selectedVariant{
+      id
+      alias
+      available
+      images {
+        fileName
+        url
+      }
+      prices {
+        listPrice
+        price
+        discountPercentage
+        installmentPlans{
+            displayName
+            name
+            installments{
+              discount
+              fees
+              number
+              value
+            }
+        }
+        bestInstallment {
+          name
+          displayName
+          discount
+          fees
+          number
+          value
+        }
+        wholesalePrices{
+          price
+          quantity
+        }
+      }
+      offers {
+        name
+        productVariantId
+        prices {
+          price
+          listPrice
+          installmentPlans {
+            displayName
+            installments {
+              discount
+              fees
+              value
+              number
+            }
+          }
+        }
+      }
+      productId
+      productVariantId
+      stock
+    }
+    selections{
+      attributeId
+      displayType
+      name
+      varyByParent
+      values{
+        alias
+        available
+        printUrl
+        selected
+        value
+      }
+    }
+  }
+  customizations {
+    customizationId
+    cost
+    name
+    type
+    values
+  }
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -36,3 +37,43 @@
         {{ asset type: "js" paths: ["swiffy-slider"] options:"defer"}}
     </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        {{ header title: data.product.product_name store: store }}
+        {{ data_layer_config }}
+        {{ product_structured_data product: data.product current_url: store.urls.current }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "swiffy-slider"]}}
+        {{ meta_tags seo: data.product.seo }} 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body class="bg-mainBg">
+        <header>
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}
+        </header>
+        {{ side_cart }}
+        {{ wake_overlay }}
+        {{~ product = data.product ~}}
+        <input type="hidden" id="product-id" name="product-id" value="{{ data.product.product_id }}">
+        <div class="container">
+            {{~ breadcrumb breadcrumbs: product.breadcrumbs ~}}
+            <br>
+            {{ product_view product: product }}
+        </div>
+        <br>
+        <h3> Página Custom do {{ product.product_name }} </h3>
+        <br>
+        {{ product_information informations: product.informations }}
+        {{ spot_carousel products: data.product_recommendations }}
+        {{ product_reviews reviews: product.reviews }}
+        {{ footer is_preview: is_preview store: store }}
+        {{ data_layer_product_view product: data.product  }}
+        {{ sdk_client }}
+        {{ wake_scripts scripts: ["wake_utils"] }}
+        {{ asset type: "js" paths: ["product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "event_manager"]}}
+        {{ asset type: "js" paths: ["swiffy-slider"] options:"defer"}}
+    </body>
+</html>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006

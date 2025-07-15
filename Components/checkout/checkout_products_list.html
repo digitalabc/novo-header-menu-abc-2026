@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="wake-cart-product-list">
     <div class="wake-cart-product-list-wrapper">
         <h3>Resumo</h3>
@@ -33,4 +34,41 @@
             {{ end }}
         {{ end }}
     </tbody>
+=======
+<div class="wake-cart-product-list">
+    <div class="wake-cart-product-list-wrapper">
+        <h3>Resumo</h3>
+        <div class="total-itens">
+            Total de itens: {{ products.size }}
+        </div>
+    </div>
+    <button class="wake-cart-share-button hidden">
+        <img src="{{- store.urls.static_img}}icons/share.svg?theme={{store.theme}}&v={{store.last_modified}}" loading="lazy">
+        Compartilhar carrinho
+    </button>
+</div>
+<table class="wake-cart-product-list-table">
+    <thead>
+        <th scope="col" class="prod">Produtos</th>
+        <th scope="col" class="qtd">Quantidade</th>
+        <th scope="col" class="unit">Preço unitário</th>
+        <th scope="col" class="subtotal">Subtotal</th>
+        <th class="last"></th>
+    </thead>
+    <tbody>
+        {{~ for product in products ~}}
+            {{ if !product.kit }}
+                {{ checkout_product product: product }}
+            {{ end }}
+        {{~ end ~}}
+        {{- if kits && kits.size > 0 ~}}
+            {{~ for kit in kits ~}}
+                {{ checkout_product product: kit is_kit: true }}
+                {{~ for kit_product in kit.products ~}}
+                    {{ wake_checkout_kit_product product: kit_product }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </tbody>
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 </table>

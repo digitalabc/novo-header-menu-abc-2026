@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @tailwind components;
 
 @layer components {
@@ -1304,4 +1305,1312 @@
   .wake-qrcode {
     @apply !w-60 !h-60 !mb-4;
   }
+=======
+@tailwind components;
+
+@layer components {
+
+  /* wake-account */
+  .wake-account-wrapper {
+    @apply flex flex-col md:flex-row justify-between w-full md:w-[87%] mx-auto my-4;
+  }
+
+  .wake-account {
+    @apply flex flex-col w-full p-2 md:p-0 md:w-9/12 h-min;
+  }
+  
+  .wake-account h3 {
+    @apply text-secondary-800 text-2xl mb-6;
+  }
+  
+  .wake-account .card {
+    @apply flex flex-col md:flex-row mb-4 space-x-4;
+  }
+  
+  .wake-account form {
+    @apply flex flex-col box-content;
+  }
+
+  .wake-account form .group-form {
+    @apply flex flex-col md:w-6/12;
+  }
+  
+  .wake-account form select {
+    @apply w-full;
+  }
+
+  .wake-account form .state-registration {
+    @apply flex md:w-4/12;
+  }
+  
+  .wake-account form .state-registration div:first-child {
+    @apply flex flex-col;
+  }
+  
+  .wake-account form .state-registration div.exemptStateRegistration {
+    @apply flex justify-center items-center h-min w-max mt-10 ml-4;
+  }
+  
+  .wake-account form .state-registration div.exemptStateRegistration label {
+    @apply text-secondary-600 ml-2 cursor-pointer;
+  }
+  
+  .wake-account form label {
+    @apply mb-2;
+  }
+  
+  .wake-account form input, .wake-account form select {
+    @apply border-secondary-300 text-secondary-600 rounded-md disabled:cursor-not-allowed disabled:bg-gray-100;
+  }
+  
+  .wake-account form select {
+    @apply md:w-4/12;
+  }
+  
+  .wake-account form .disabled {
+    @apply bg-secondary-50 cursor-not-allowed;
+  }
+  
+  .wake-account .actions {
+    @apply flex flex-col md:flex-row justify-center w-full my-6;
+  }
+  
+  .wake-account .actions div {
+    @apply flex flex-col md:flex-row justify-between;
+  }
+  
+  .wake-account .actions div button {
+    @apply flex items-center justify-center border border-secondary-300 hover:shadow-lg p-3 rounded-md my-4 md:my-0 md:mx-4;
+  }
+  
+  .wake-account .actions div button img {
+    @apply h-5 w-5 mr-2;
+  }
+
+  /* Accounr Modal */
+
+  .wake-account-modal {
+    @apply relative z-20;
+  }
+
+  .wake-account-modal img {
+    @apply w-5 h-5 absolute right-3 top-3 antialiased cursor-pointer;
+  }
+  
+  .wake-account-modal .modal-opacity {
+    @apply fixed inset-0 bg-secondary-500 bg-opacity-75 transition-opacity;
+  }
+  
+  .wake-account-modal .modal-content {
+    @apply fixed inset-0 z-10 overflow-y-auto;
+  }
+  
+  .wake-account-modal .header {
+    @apply flex justify-between items-center w-full py-1 mb-4 border-b;
+  }
+  
+  .wake-account-modal .header h3 {
+    @apply text-secondary-800 text-xl;
+  }
+
+  .wake-account-modal .header svg {
+    @apply h-6 w-6;
+  }
+  
+  .wake-account-modal .header button {
+    @apply rounded-md bg-mainBg text-secondary-400 hover:text-secondary-500 focus:outline-none focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .wake-account-modal .content {
+    @apply flex flex-col;
+  }
+  
+  .wake-account-modal .content button {
+    @apply flex bg-secondary-800 hover:bg-secondary-700 text-white justify-center items-center p-3 uppercase;
+  }
+  
+  .wake-account-modal .wrapper {
+    @apply flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0;
+  }
+  
+  .wake-account-modal .wrapper-content {
+    @apply flex flex-col absolute bg-white p-4 w-11/12 md:w-auto;
+  }
+  
+  .wake-account-modal .change-password {
+    @apply flex flex-col box-content;
+  }
+  
+  .wake-account-modal .change-password input {
+    @apply border-secondary-300 text-secondary-600 rounded-md w-full md:w-auto;
+  }
+  
+  .wake-account-modal .change-password > div {
+    @apply flex flex-col md:flex-row mb-4 w-full md:w-auto;
+  }
+  
+  .wake-account-modal .change-password .current-password {
+    @apply flex flex-col items-start w-full md:w-auto;
+  }
+  
+  .wake-account-modal .change-password .current-password label {
+    @apply mb-2;
+  }
+  
+  .wake-account-modal .change-password .current-password div {
+    @apply flex relative w-full md:w-auto;
+  }
+  
+  .wake-account-modal .change-password .new-password {
+    @apply flex flex-col items-start mb-4 md:mb-0 md:mr-4;
+  }
+  
+  .wake-account-modal .change-password .new-password div {
+    @apply flex relative w-full md:w-auto mt-2;
+  }
+  
+  .wake-account-modal .change-password .confirm-new-password {
+    @apply flex flex-col items-start;
+  }
+  
+  .wake-account-modal .change-password .confirm-new-password div {
+    @apply flex relative w-full md:w-auto mt-2;
+  }
+  
+  .wake-account-modal .change-email {
+    @apply flex flex-col box-content;
+  }
+  
+  .wake-account-modal .change-email .current-email {
+    @apply flex mb-4;
+  }
+  
+  .wake-account-modal .change-email .current-email div {
+    @apply flex flex-col items-start w-full md:w-auto;
+  }
+  
+  .wake-account-modal .change-email .current-email div input {
+    @apply border-secondary-300 text-secondary-600 rounded-md bg-secondary-50 cursor-not-allowed w-full md:w-auto mt-2;
+  }
+  
+  .wake-account-modal .change-email .confirm-email {
+    @apply flex flex-col md:flex-row mb-4;
+  }
+  
+  .wake-account-modal .change-email .confirm-email input {
+    @apply border-secondary-300 text-secondary-600 rounded-md w-full md:w-auto mt-2;
+  }
+  
+  .wake-account-modal .change-email .confirm-email .new-email {
+    @apply flex flex-col items-start mb-4 md:mb-0 md:mr-4;
+  }
+
+  .wake-account-modal .wake-change-email-with-access-key {
+    @apply flex flex-col space-y-4 box-content;
+  }
+  
+  .wake-account-modal .wake-change-email-with-access-key input {
+    @apply w-full border border-gray-300 focus:border-secondary-600 rounded-md;
+  }
+  
+  .wake-account-modal .wake-change-email-with-access-key label {
+    @apply absolute -top-2 left-2 text-secondary-600 bg-white px-2 text-xs;
+  }
+  
+  .wake-account-modal .wake-change-email-with-access-key button {
+    @apply w-full px-4 py-2 rounded-md mt-4;
+  }
+  
+  .wake-account .actions div button.save {
+    @apply flex bg-secondary-800 justify-center text-white py-3 px-6 rounded-md;
+  }
+  
+  .wake-account .actions div .autenticate {
+    @apply flex items-center justify-center w-full text-center;
+  }
+  
+  .wake-account .actions div .autenticate span a {
+    @apply text-blue-600 mx-1;
+  }
+
+  /* Account Sidebar*/
+
+  .wake-account-sidebar-details {
+    @apply flex flex-col w-full p-2 md:p-0 md:w-3/12 mr-4 h-min cursor-pointer;
+  }
+  
+  .wake-account-sidebar-summary {
+    @apply flex justify-between items-center p-2 mb-4 border border-secondary-200 rounded-md;
+  }
+  
+  .wake-account-sidebar-summary div {
+    @apply flex;
+  }
+  
+  .wake-account-sidebar-summary div div {
+    @apply flex flex-col;
+  }
+
+  .wake-account-sidebar-summary .welcome {
+    @apply flex flex-row;
+  }
+  
+  .wake-account-sidebar-summary .avatar {
+    @apply h-12 w-12 mr-2 p-2 border rounded-full;
+  }
+  
+  .wake-account-sidebar-summary .customer {
+    @apply flex text-secondary-800;
+  }
+  
+  .wake-account-sidebar-summary .arrow {
+    @apply flex justify-end items-center p-4;
+  }
+  
+  .wake-account-sidebar-summary .arrow > img {
+    @apply h-6 w-6 group-open:rotate-180 transition-transform;
+  }
+
+  .wake-account-sidebar-nav {
+    @apply flex-col w-full;
+  }
+
+  .wake-account-sidebar-nav > a {
+    @apply flex justify-start items-center border-b border-secondary-100 p-4 mb-2 cursor-pointer hover:bg-secondary-50 hover:shadow-sm;
+  }
+  
+  .wake-account-sidebar-nav > a > img {
+    @apply h-6 w-6 mr-2;
+  }
+
+  /* Meus pedidos */
+
+  .wake-account-orders {
+    @apply flex flex-col w-full p-2 md:p-0 md:w-9/12 h-min;
+  }
+  
+  .wake-account-orders h3 {
+    @apply text-secondary-800 text-2xl mb-6;
+  }
+  
+  .wake-account-orders h4 {
+    @apply font-semibold text-xl my-8 text-secondary-700;
+  }
+  
+  .wake-account-orders .no-orders {
+    @apply flex flex-col w-full justify-center items-center;
+  }
+  
+  .wake-account-orders .no-orders img {
+    @apply h-80 w-80;
+  }
+  
+  .wake-account-orders details {
+    @apply flex flex-col justify-start border border-secondary-100 mb-4 last:mb-0 hover:bg-secondary-50 cursor-pointer;
+  }
+  
+  .wake-account-orders summary {
+    @apply flex w-full justify-between;
+  }
+  
+  .wake-account-orders summary > div {
+    @apply flex flex-col p-4 md:w-2/12 first:bg-secondary-50 last:justify-center last:items-end;
+  }
+  
+  .wake-account-orders summary > div.hide-mobile {
+    @apply hidden md:flex;
+  }
+  
+  .wake-account-orders summary > div.center {
+    @apply items-center;
+  }
+  
+  .wake-account-orders summary > div > span {
+    @apply flex text-secondary-800 mb-2;
+  }
+  
+  .wake-account-orders summary > div > span.order {
+    @apply font-semibold text-lg;
+  }
+  
+  .wake-account-orders summary > div > span.status {
+    @apply flex text-white text-sm w-max text-center p-2 rounded-full;
+  }
+  
+  .wake-account-orders summary > div > b {
+    @apply font-semibold;
+  }
+  
+  .wake-account-orders summary > div img {
+    @apply h-6 w-6;
+  }
+
+  .wake-account-order-details {
+    @apply flex flex-col w-full border-t border-secondary-100 p-2;
+  }
+  
+  .wake-account-order-details h4 {
+    @apply flex justify-start items-center text-lg font-semibold my-4;
+  }
+  
+  .wake-account-order-details h4 img {
+    @apply h-5 w-5 mr-2;
+  }
+  
+  .wake-account-order-details .kits {
+    @apply flex flex-col w-full;
+  }
+  
+  .wake-account-order-details .kits details {
+    @apply flex flex-col w-full h-min cursor-pointer;
+  }
+  
+  .wake-account-order-details .kits summary {
+    @apply flex flex-col;
+  }
+  
+  .wake-account-order-details .kits h3 {
+    @apply text-black font-semibold text-base w-36 md:w-full;
+  }
+  
+  .wake-account-order-details .kits .items {
+    @apply flex my-2 space-x-2;
+  }
+  
+  .wake-account-order-details .kits .items div {
+    @apply flex relative;
+  }
+  
+  .wake-account-order-details .kits .items div img {
+    @apply w-8 h-8;
+  }
+  
+  .wake-account-order-details .kits .chevron img {
+    @apply h-6 w-6;
+  }
+  
+  .wake-account-order-details .kits .kit-products {
+    @apply w-full;
+  }
+  
+  .wake-account-order-details .kits .items div span {
+    @apply absolute -bottom-1 -right-1 text-xs bg-gray-700 text-white w-4 h-4 rounded-full  
+    inline-flex items-center justify-center;
+  }
+  
+  .wake-account-order-details .products {
+    @apply flex flex-col w-full;
+  }
+  
+  .wake-account-order-details .details {
+    @apply flex flex-col md:flex-row justify-between w-full border-t my-4 py-4;
+  }
+  
+  .wake-account-order-details .payments {
+    @apply flex w-full md:w-4/12;
+  }
+  
+  .wake-account-order-details .payments .boleto {
+    @apply flex flex-col w-full border-b pb-4 mb-4 md:border-none md:pb-0 md:mb-0;
+  }
+  
+  .wake-account-order-details .payments .boleto a {
+    @apply flex justify-center items-center p-2 border-secondary-300 border my-4 w-full;
+  }
+  
+  .wake-account-order-details .payments .boleto .barcode {
+    @apply flex flex-col;
+  }
+  
+  .wake-account-order-details .payments .boleto .barcode h3 {
+    @apply flex p-2 text-lg text-secondary-600 mb-4;
+  }
+  
+  .wake-account-order-details .payments .boleto .barcode div {
+    @apply flex;
+  }
+  
+  .wake-account-order-details .payments .boleto .barcode div img {
+    @apply h-5 w-5 mr-2;
+  }
+  
+  .wake-account-order-details .payments .boleto .barcode .copy {
+    @apply relative;
+  }
+  
+  .wake-account-order-details .payments .boleto .barcode .copy img {
+    @apply absolute right-2 top-3;
+  }
+  
+  .wake-account-order-details .payments .boleto .barcode .copy input {
+    @apply flex border-secondary-300 w-full pr-10;
+  }
+  
+  .wake-account-order-details .payments .boleto .print img {
+    @apply w-5 h-5;
+  }
+
+  .wake-account-order-details .payments .pix {
+    @apply flex;
+  }
+  
+  .wake-account-order-details .payments .pix img {
+    @apply h-5 w-5 mr-2;
+  }
+  
+  .wake-account-order-details .payments .pix div {
+    @apply flex flex-col;
+  }
+  
+  .wake-account-order-details .payments .pix object {
+    @apply w-60 h-60 mb-4 md:mb-4;
+  }
+  
+  .wake-account-order-details .payments .pix .qr-code {
+    @apply flex justify-start items-center relative;
+  }
+  
+  .wake-account-order-details .payments .pix .qr-code input {
+    @apply flex border-secondary-300 w-full pr-10;
+  }
+  
+  .wake-account-order-details .payments .pix .qr-code img {
+    @apply absolute right-2 top-3;
+  }
+  
+  .wake-account-order-details .payments .pix small {
+    @apply text-xs mt-2;
+  }
+  
+  .wake-account-order-details table {
+    @apply flex table-auto justify-end flex-col;
+  }
+  
+  .wake-account-order-details table tr td.align-right {
+    @apply text-end;
+  }
+  
+  .wake-account-order-details table tr td b {
+    @apply pl-4 font-semibold;
+  }
+
+  .wake-account-order-details-button {
+    @apply flex flex-col justify-center md:flex-row w-full border-t my-4 py-4;
+  }
+  
+  .wake-account-order-details-button button {
+    @apply flex justify-center items-center shadow-md p-4 uppercase hover:shadow-none;
+  }
+  
+  .wake-account-order-details-button button img {
+    @apply h-5 w-5 mr-2;
+  }
+
+  .wake-account-full-order-details {
+    @apply flex flex-col w-full p-2 md:p-0 md:w-9/12 h-min;
+  }
+  
+  .wake-account-full-order-details h3 {
+    @apply text-secondary-800 text-2xl mb-6;
+  }
+  
+  .wake-account-full-order-details h4 {
+    @apply flex items-center font-semibold my-4;
+  }
+  
+  .wake-account-full-order-details h4 img {
+    @apply w-6 h-6;
+  }
+  
+  .wake-account-full-order-details .order-date {
+    @apply flex justify-between items-center mb-4;
+  }
+  
+  .wake-account-full-order-details .order-date span:last-child {
+    @apply flex text-center text-xs text-white p-2 font-semibold rounded-full;
+  }
+
+  .wake-account-full-order-details .order-number {
+    @apply flex flex-col md:flex-row justify-between bg-secondary-50 border border-secondary-200 p-4;
+  }
+  
+  .wake-account-full-order-details .order-number div:first-child {
+    @apply flex flex-col text-center mb-4 pb-4 border-b md:pb-0 md:mb-0 md:border-none md:mr-8;
+  }
+  
+  .wake-account-full-order-details .order-number div:last-child {
+    @apply flex flex-col text-center;
+  }
+  
+  .wake-account-full-order-details .order-payment-details {
+    @apply flex flex-col border-b border-secondary-100 pb-4 mt-4 space-y-1;
+  }
+  
+  .wake-account-full-order-details .order-payment-details b {
+    @apply mr-2 font-semibold;
+  }
+  
+  .wake-account-full-order-details h4 img {
+    @apply w-6 h-6;
+  }
+  
+  .wake-account-full-order-details details {
+    @apply flex flex-col justify-start last:mb-0 cursor-pointer my-4 border-b border-secondary-100;
+  }
+  
+  .wake-account-full-order-details details summary {
+    @apply flex w-full justify-between items-center;
+  }
+  
+  .wake-account-full-order-details details summary h3 {
+    @apply flex font-semibold uppercase;
+  }
+  
+  .wake-account-full-order-details details summary h3 img {
+    @apply h-6 w-6 mr-1;
+  }
+  
+  .wake-account-full-order-details details summary div {
+    @apply flex justify-end items-center p-4;
+  }
+  
+  .wake-account-full-order-details details summary div img {
+    @apply h-6 w-6 transition-transform;
+  }
+  
+  .wake-account-full-order-details .address {
+    @apply flex flex-col mt-2;
+  }
+  
+  .wake-account-full-order-details .address b {
+    @apply font-semibold mr-2;
+  }
+  
+  .wake-account-full-order-details details .products {
+    @apply flex flex-col w-full py-2;
+  }
+  
+  .wake-account-full-order-details .payment {
+    @apply flex w-full md:w-4/12;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment{
+    @apply flex flex-col w-full border-b pb-4 mb-4 md:border-none md:pb-0 md:mb-0;
+  } 
+  
+  .wake-account-full-order-details .payment .order-payment .print{
+    @apply flex justify-center items-center p-2 border-secondary-300 border my-4 w-full;
+  } 
+  
+  .wake-account-full-order-details .payment .order-payment .print img{
+    @apply h-5 w-5 mr-2;
+  } 
+  
+  .wake-account-full-order-details .payment .order-payment .print a{
+    @apply flex justify-start items-center space-x-2 w-max;
+  } 
+  
+  .wake-account-full-order-details .payment .order-payment .boleto{
+    @apply flex flex-col;
+  } 
+  
+  .wake-account-full-order-details .payment .order-payment .boleto div{
+    @apply flex p-2 text-lg text-secondary-600 mb-4;
+  } 
+  
+  .wake-account-full-order-details .payment .order-payment .boleto div img{
+    @apply mr-2 w-6 h-6;
+  }  
+  
+  .wake-account-full-order-details .payment .order-payment .boleto div div{
+    @apply flex relative;
+  } 
+  
+  .wake-account-full-order-details .payment .order-payment .boleto div div input{
+    @apply flex border-secondary-300 w-full pr-10;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment .boleto div div img{
+    @apply h-5 w-5 mr-2 absolute right-2 top-3;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment .pix{
+    @apply flex flex-col mt-2 p-4;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment .pix object{
+    @apply w-60 h-60 mb-4 md:mb-4;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment .pix div{
+    @apply flex items-center relative;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment .pix div input{
+    @apply flex border-secondary-300 w-full pr-10;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment .pix div img{
+    @apply h-5 w-5 ml-2;
+  }
+  
+  .wake-account-full-order-details .payment .order-payment .pix small{
+    @apply mt-2;
+  }
+
+  .wake-account-full-order-details .footer {
+    @apply flex flex-col md:flex-row justify-between items-end;
+  }
+  
+  .wake-account-full-order-details .footer button {
+    @apply flex w-full justify-center md:w-auto bg-secondary-200 hover:bg-secondary-100 uppercase font-semibold p-2 rounded-md print:hidden order-2 md:order-1 mt-4 md:mt-0;
+  }
+  
+  .wake-account-full-order-details .footer button img {
+    @apply h-6 w-6 mr-2;
+  }
+  
+  .wake-account-full-order-details .footer table {
+    @apply flex table-auto justify-end flex-col order-1 md:order-2;
+  }
+
+  .wake-account-full-order-details .footer table tr td.align-right {
+    @apply text-end;
+  }
+  
+  .wake-account-full-order-details .footer table tr td b {
+    @apply pl-4 font-semibold;
+  }
+
+  .wake-account-product {
+    @apply flex justify-start w-full border-b last:border-b-0 pb-4 mb-4;
+  }
+  
+  .wake-account-product img {
+    @apply h-20 w-20 border rounded-md mr-4;
+  }
+  
+  .wake-account-product div {
+    @apply flex flex-col md:flex-row justify-between;
+  }
+  
+  .wake-account-product div b {
+    @apply font-semibold;
+  }
+  
+  .wake-account-product .attibutes {
+    @apply flex flex-col w-full md:w-5/12 md:mr-4;
+  }
+  
+  .wake-account-product h3 {
+    @apply flex min-w-[280px] text-base;
+  }
+  
+  .wake-account-product .attibutes span {
+    @apply mt-2;
+  }
+  
+  .wake-account-product .summary {
+    @apply flex justify-between w-full md:w-7/12 mt-4 md:mt-0 border-t border-dashed pt-4 md:pt-0 md:border-none;
+  }
+  
+  .wake-account-product .summary span {
+    @apply mr-4 last:mr-0;
+  }
+  
+  /* wake-payment-list */
+
+  .wake-payment-list {
+    @apply w-full lg:w-1/2;
+  }
+  .wake-payment-list > h2 {
+    @apply font-semibold text-xl;
+  }
+
+  .wake-payment-list > span {
+    @apply text-sm text-black mt-2 mb-6;
+  }
+
+  .wake-payment-list .payment-option {
+    @apply flex w-full justify-start items-center shadow-sm shadow-secondary-400 p-4 rounded-[4px] mb-2;
+  }
+
+  .wake-payment-list .payment-option input {
+    @apply mr-2 focus:ring-0 cursor-pointer;
+  }
+
+  .wake-payment-list .payment-option label {
+    @apply cursor-pointer w-full;
+  }
+
+  .wake-payment-list .payment-option .payment-details {
+    @apply flex justify-between items-center;
+  }
+
+  .wake-payment-list .payment-option img {
+    @apply ml-2;
+  }
+
+  .wake-payment-list input[type=text], .wake-payment-list input[type=tel], .wake-payment-list select {
+    @apply w-full mb-3 rounded-md;
+  }
+  .wake-payment-list form label, .forminline label {
+      @apply text-sm mb-1;
+  }
+
+  .wake-payment-list button {
+    @apply w-full flex justify-center font-semibold uppercase text-center text-lg rounded-md p-2 mb-2 antialiased text-white bg-black hover:opacity-50;
+  }
+
+  /* Minhas Assinaturas */
+
+  .wake-subscriptions-wrapper {
+    @apply flex w-full;
+  }
+
+  .wake-subscription {
+    @apply flex flex-col w-full p-2 h-min;
+  }
+  
+  .wake-subscription h1 {
+    @apply text-2xl mb-8;
+  }
+  
+  .wake-subscription details {
+    @apply flex flex-col w-full h-min cursor-pointer transition-all duration-500 ease-in-out;
+  }
+  
+  .wake-subscription summary {
+    @apply flex justify-between items-center border-b mb-2 pb-2 md:pb-0;
+  }
+  
+  .wake-subscription summary div:last-child img {
+    @apply h-6 w-6 group-open:rotate-180 transition-transform;
+  }
+  
+  .wake-subscription summary div:first-child {
+    @apply flex flex-col md:flex-row md:items-center space-x-2;
+  }
+  
+  .wake-subscription summary div:last-child {
+    @apply flex justify-end items-center p-4;
+  }
+
+  .wake-subscription-content {
+    @apply overflow-hidden transition-all duration-500 ease-in-out;
+  }
+
+  .wake-subscription-content h3 {
+    @apply text-xl font-semibold my-4;
+  }
+  
+  .wake-subscription-content .header {
+    @apply flex justify-between mb-4;
+  }
+  
+  .wake-subscription-content .header span b {
+    @apply text-gray-600;
+  }
+  
+  .wake-subscription-content .status {
+    @apply flex justify-between space-x-2;
+  }
+  
+  .wake-subscription-content .status > button {
+    @apply flex justify-start items-center p-1 border rounded-md shadow-md hover:shadow-none font-semibold;
+  }
+  
+  .wake-subscription-content .status > button > img {
+    @apply h-5 w-5 mr-1;
+  }
+  
+  .wake-subscription-content .status button.paused {
+    @apply border-yellow-300 text-yellow-500;
+  }
+  
+  .wake-subscription-content .status button.canceled {
+    @apply border-red-300 text-red-500;
+  }
+  
+  .wake-subscription-content .status button.active {
+    @apply border-green-300 text-green-500;
+  }
+  
+  .wake-subscription-content .products {
+    @apply flex justify-between items-center text-xl font-semibold my-4;
+  }
+  
+  .wake-subscription-content .products button {
+    @apply flex justify-start items-center p-2 border rounded-md shadow-md hover:shadow-none text-white text-sm bg-primary-500;
+  }
+  
+  .wake-subscription-content .products button img {
+    @apply h-5 w-5 mr-1;
+  }
+  
+  .wake-subscription-content .product-view {
+    @apply flex flex-wrap justify-start space-x-4;
+  }
+  
+  .wake-subscription-content .product-view .product {
+    @apply flex flex-col border w-full md:w-96 md:mr-4 my-2 md:last:mr-0 p-2
+  }
+
+  .wake-subscription-content .product-view .product .info {
+    @apply flex items-center;
+  }
+  
+  .wake-subscription-content .product-view .product .info img {
+    @apply w-20 mr-1;
+  }
+  
+  .wake-subscription-content .product-view .product .info h3 {
+    @apply flex font-semibold text-base w-36;
+  }
+  
+  .wake-subscription-content .product-view .product .price {
+    @apply flex justify-between;
+  }
+  
+  .wake-subscription-content .product-view .product .price div {
+    @apply text-sm flex items-center first:mr-4;
+  }
+  
+  .wake-subscription-content .product-view .product .price div b {
+    @apply font-semibold mr-2;
+  }
+  
+  .wake-subscription-content .product-view .product div {
+    @apply flex;
+  }
+  
+  .wake-subscription-content .product-view .product .actions {
+    @apply flex items-center justify-center border-t pt-2 mt-2;
+  }
+  
+  .wake-subscription-content .product-view .product .actions div {
+    @apply flex items-center justify-start space-x-2 p-2 text-sm;
+  }
+  
+  .wake-subscription-content .product-view .product .actions div img {
+    @apply h-5 w-5 mr-1;
+  }
+  
+  .wake-subscription-content .address {
+    @apply flex flex-col border rounded-md w-full md:w-max p-2 space-y-2 text-sm my-4;
+  }
+  
+  .wake-subscription-content .address b {
+    @apply font-semibold;
+  }
+  
+  .wake-subscription-content .address button {
+    @apply flex md:hidden justify-center border-t p-2 mt-2;
+  }
+  
+  .wake-subscription-content .address button img {
+    @apply h-5 w-5 cursor-pointer;
+  }
+
+  /* Subscription Modal */
+  
+  .wake-subscription-modal {
+    @apply relative z-20;
+  }
+  
+  .wake-subscription-modal .modal-opacity {
+    @apply fixed inset-0 bg-secondary-500 bg-opacity-75 transition-opacity;
+  }
+  
+  .wake-subscription-modal .modal-content {
+    @apply fixed inset-0 z-10 overflow-y-auto;
+  }
+  
+  .wake-subscription-modal .wrapper {
+    @apply flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0 relative;
+  }
+  
+  .wake-subscription-modal .wrapper-content {
+    @apply relative bg-white p-4 w-11/12 md:w-auto max-h-screen overflow-y-auto;
+  }
+  
+  .wake-subscription-modal .header {
+    @apply flex justify-between items-center w-full py-1 mb-4 border-b;
+  }
+  
+  .wake-subscription-modal .header h3 {
+    @apply text-secondary-800 text-xl;
+  }
+  
+  .wake-subscription-modal .header button {
+    @apply rounded-md bg-mainBg text-secondary-400 hover:text-secondary-500;
+  }
+  
+  .wake-subscription-modal .header svg {
+    @apply h-6 w-6;
+  }
+  
+  .wake-subscription-modal .content {
+    @apply text-left relative;
+  }
+  
+  .wake-subscription-modal .content div {
+    @apply flex overflow-y-auto;
+  }
+  
+  .wake-subscription-modal .content button {
+    @apply items-center justify-center w-full bg-black text-white font-semibold uppercase my-4 p-3;
+  }
+
+  .wake-subscription-modal .content .subscription-products {
+    @apply flex flex-col md:flex-row justify-between flex-wrap w-full md:max-w-4xl overflow-y-auto items-stretch;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .subscription-product {
+    @apply flex flex-col justify-center items-center md:w-64 h-max shadow-md hover:shadow-none p-2 m-2;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .subscription-product img {
+    @apply w-24 h-24 mr-4;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .subscription-product b {
+    @apply font-semibold;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .subscription-product label {
+    @apply text-xs w-full text-center my-2;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .subscription-product input {
+    @apply flex w-full p-2 mt-1 text-center border-gray-200 rounded-md;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .subscription-product div {
+    @apply flex space-x-2 w-full;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .add {
+    @apply flex justify-center items-center border w-full p-3 rounded-md bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold;
+  }
+  
+  .wake-subscription-modal .content .subscription-products .remove {
+    @apply justify-center items-center border w-full p-3 rounded-md border-gray-900 text-sm font-semibold;
+  }
+  
+  /* Conta corrente */
+
+  .wake-current-account {
+    @apply flex flex-col w-full p-2 md:p-0 md:w-9/12 h-min;
+  }
+  
+  .wake-current-account h3 {
+    @apply flex justify-between items-center text-secondary-800 text-2xl mb-6;
+  }
+  
+  .wake-current-account h3 .balance {
+    @apply flex items-center justify-start text-base shadow-md rounded-xl p-2;
+  }
+  
+  .wake-current-account h3 .balance div {
+    @apply flex items-center mr-4;
+  }
+  
+  .wake-current-account h3 .balance div > img {
+    @apply h-5 w-5 mr-2;
+  }
+  
+  .wake-current-account h3 .balance span {
+    @apply font-semibold;
+  }
+  
+  .wake-current-account .current-data {
+    @apply flex min-w-full overflow-x-auto;
+  }
+  
+  .wake-current-account .current-data table {
+    @apply min-w-full text-center text-sm;
+  }
+  
+  .wake-current-account .current-data table thead {
+    @apply bg-secondary-100;
+  }
+  
+  .wake-current-account .current-data table thead th {
+    @apply font-semibold px-6 py-4;
+  }
+  
+  .wake-current-account .current-data table tbody tr {
+    @apply my-2;
+  }
+  
+  .wake-current-account .current-data table tbody tr td {
+    @apply whitespace-nowrap border px-6 py-4;
+  }
+  
+  .wake-current-account .current-data table tbody tr td b {
+    @apply font-semibold;
+  }
+
+  /* Meus Endereços*/
+  .wake-account-address {
+    @apply flex flex-col w-full p-2 md:p-0 md:w-9/12 h-min;
+  }
+  
+  .wake-account-address h3 {
+    @apply text-secondary-800 text-2xl mb-6;
+  }
+  
+  .wake-account-address .addresses {
+    @apply flex flex-wrap box-content;
+  }
+  
+  .wake-account-address .add-address {
+    @apply flex flex-col md:flex-row justify-center w-full my-6;
+  }
+  
+  .wake-account-address .add-address div {
+    @apply flex flex-col md:flex-row justify-between;
+  }
+  
+  .wake-account-address .add-address button {
+    @apply flex bg-secondary-800 text-white items-center justify-center border border-secondary-300 hover:shadow-lg p-3 rounded-md my-4 md:my-0 md:mx-4;
+  }
+  
+  .wake-account-address .add-address button img {
+    @apply h-5 w-5 mr-2;
+  }
+  
+  .wake-account-address .address {
+    @apply flex flex-col p-4 border-secondary-50 shadow-md hover:shadow-sm w-full md:w-4/12 relative;
+  }
+  
+  .wake-account-address .address span {
+    @apply max-w-72;
+  }
+  
+  .wake-account-address .address span b {
+    @apply font-semibold text-secondary-800 text-sm;
+  }
+  
+  .wake-account-address .address .actions {
+    @apply flex items-center absolute top-4 right-4;
+  }
+  
+  .wake-account-address .address .actions img {
+    @apply h-5 w-5 mr-2 cursor-pointer;
+  }
+
+  .wake-account-address .autenticate {
+    @apply flex items-center justify-center w-full text-center;
+  }
+  
+  .wake-account-address .autenticate span {
+    @apply w-full;
+  }
+  
+  .wake-account-address .autenticate span a {
+    @apply text-blue-600 mx-1;
+  }
+
+  /* Adress Modal */
+  .wake-address-modal {
+    @apply relative z-20;
+  }
+  
+  .wake-address-modal .modal-opacity {
+    @apply fixed inset-0 bg-secondary-500 bg-opacity-75 transition-opacity;
+  }
+  
+  .wake-address-modal .modal-content {
+    @apply fixed inset-0 z-10 overflow-y-auto;
+  }
+  
+  .wake-address-modal .modal-content .wrapper {
+    @apply flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content {
+    @apply flex flex-col absolute bg-white p-4 w-11/12 md:w-auto;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .header {
+    @apply flex justify-between items-center w-full py-1 mb-4 border-b;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .header h3 {
+    @apply text-secondary-800 text-xl;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .header button {
+    @apply rounded-md bg-mainBg text-secondary-400 hover:text-secondary-500 focus:outline-none;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .header svg {
+    @apply h-6 w-6;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .content {
+    @apply flex flex-col text-left;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .content span.confirm-text {
+    @apply mb-4;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .content .actions {
+    @apply flex flex-col md:flex-row justify-between;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .content .actions button {
+    @apply flex items-center justify-center border border-secondary-300 hover:shadow-lg p-3 rounded-md last:my-4 last:md:my-0 last:md:mx-4;
+  }
+  
+  .wake-address-modal .modal-content .wrapper .wrapper-content .content .actions button img {
+    @apply h-5 w-5 mr-2;
+  }
+
+  /* Add Address Form */
+  .wake-add-address-form {
+    @apply flex flex-col box-content;
+  }
+
+  .wake-add-address-form .group-form {
+    @apply flex flex-col md:w-4/12 space-x-2;
+  }
+  
+  .wake-add-address-form .gender {
+    @apply flex flex-col md:w-4/12;
+  }
+  
+  .wake-add-address-form > button {
+    @apply flex bg-secondary-800 hover:bg-secondary-700 text-white uppercase w-full justify-center items-center p-3;
+  }
+  
+  .wake-add-address-form input {
+    @apply border-secondary-300 rounded-md;
+  }
+  
+  .wake-add-address-form a {
+    @apply text-sm text-blue-600 hover:text-blue-500 hover:underline ml-2;
+  }
+  
+  .wake-add-address-form label {
+    @apply mb-2 text-secondary-600;
+  }
+  
+  .wake-add-address-form .message {
+    @apply font-semibold text-blue-600 text-sm mt-2;
+  }
+  
+  .wake-add-address-form .name {
+    @apply flex flex-col md:flex-row mb-4;
+  }
+  
+  .wake-add-address-form .cep {
+    @apply flex mb-4;
+  }
+  
+  .wake-add-address-form .cep div {
+    @apply w-full;
+  }
+  
+  .wake-add-address-form .address {
+    @apply flex flex-col md:flex-row mb-4;
+  }
+  
+  .wake-add-address-form .reference-point {
+    @apply flex flex-col mb-4;
+  }
+
+  /*Confirmation Modal*/
+  .wake-cart-modal-confirmation-remove {
+    @apply relative z-20 ;
+  }
+  .wake-cart-modal-confirmation-remove .modal-bg {
+    @apply fixed inset-0 bg-secondary-500 bg-opacity-75 transition-opacity;
+  }
+  .wake-cart-modal-confirmation-remove .modal-content {
+    @apply fixed inset-0 z-10 overflow-y-auto;
+  }
+  .wake-cart-modal-confirmation-remove .modal-content-inner {
+    @apply flex min-h-full justify-center p-4 text-center items-center sm:p-0;
+  }
+  .wake-cart-modal-confirmation-remove .modal-container {
+    @apply flex flex-col p-4 bg-white rounded-md shadow-xl;
+  }
+  .wake-cart-modal-confirmation-remove .modal-header {
+    @apply flex justify-between mb-6;
+  }
+  .wake-cart-modal-confirmation-remove .modal-header img {
+    @apply w-6 h-6;
+  }
+  .wake-cart-modal-confirmation-remove .modal-title {
+    @apply font-semibold text-xl;
+  }
+  .wake-cart-modal-confirmation-remove .modal-footer {
+    @apply flex justify-end items-center mt-6;
+  }
+  .wake-cart-modal-confirmation-remove .button-cancel {
+    @apply font-semibold uppercase py-[6px] px-4 h-9;
+  }
+  .wake-cart-modal-confirmation-remove .button-confirm {
+    @apply bg-black uppercase font-semibold text-white py-[6px] px-4 ml-2 rounded-[4px] h-9;
+  }
+
+  /*Modal Change Address*/
+  .wake-list-address-modal {
+    @apply flex flex-col md:flex-row justify-between flex-wrap w-full md:max-w-4xl h-60 overflow-y-auto items-stretch;
+  }
+  
+  .wake-list-address-modal .address {
+    @apply flex flex-col p-4 border-secondary-50 shadow-md hover:shadow-sm w-full md:w-4/12 relative h-full;
+  }
+  
+  .wake-list-address-modal .address span b {
+    @apply font-semibold text-secondary-800 text-sm;
+  }
+
+  /* Wake Checkout Header*/
+  .wake-checkout-header {
+    @apply flex w-full border-b pb-4 mb-6;
+  }
+  
+  .wake-checkout-header > div {
+    @apply flex justify-between items-center w-full md:w-[87%] p-4 my-0 mx-auto;
+  }
+  
+  .wake-checkout-header > div a img {
+    @apply w-32 md:w-auto;
+  }
+  
+  .wake-checkout-header > div .security {
+    @apply flex justify-start items-center;
+  }
+
+  /* Wake Checkout Footer*/
+  .wake-checkout-footer {
+    @apply flex w-full;
+  }
+  
+  .wake-checkout-footer .footer-content {
+    @apply flex flex-col md:flex-row justify-between items-center w-full md:w-[87%] p-4 my-0 mx-auto bg-primary-500;
+  }
+  
+  .wake-checkout-footer .footer-content .store-info {
+    @apply flex flex-col text-center md:text-left text-white mb-2;
+  }
+  
+  .wake-checkout-footer .footer-content .wake-logo {
+    @apply flex justify-start items-center;
+  }
+  
+  .wake-checkout-footer .footer-content .wake-logo span {
+    @apply text-white mr-1;
+  }
+
+  .wake-qrcode {
+    @apply !w-60 !h-60 !mb-4;
+  }
+>>>>>>> 09fc545d847559d4760a25524aeb0cc981ca5006
 }

@@ -1,14 +1,42 @@
 <div class="wake-cart-product-list">
-    <div class="wake-cart-product-list-wrapper">
+    <div class="wake-cart-product-list-header">
         <h3>Resumo</h3>
-        <div class="total-itens">
-            Total de itens: {{ products.size }}
+        <div class="wake-cart-whats-wrapper">
+            <div class="wake-cart-whats-content">
+                <a class="wake-cart-whats" id="whatsAppShare"
+                    href="https://api.whatsapp.com/send?text=Ei,%20olha%20s%C3%B3.%20Produtos%20j%C3%A1%20separados.%20Aproveita!%20https://checkout.abcdaconstrucao.com.br/cc2b9e1c-5ff2-4760-ac09-f252dc48475a"
+                    style="display: flex;">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.411204 7.93047C0.41083 9.27924 0.763251 10.5962 1.43337 11.757L0.347116 15.7231L4.40593 14.6589C5.52855 15.27 6.78635 15.5902 8.06454 15.5903H8.0679C12.2874 15.5903 15.7222 12.1568 15.724 7.9365C15.7248 5.89148 14.9292 3.96847 13.4835 2.5217C12.0381 1.07506 10.1158 0.277942 8.06759 0.277009C3.84756 0.277009 0.413008 3.71038 0.411266 7.93047"
+                            fill="url(#paint0_linear_1542_67130)"></path>
+                        <path
+                            d="M0.137866 7.92798C0.13743 9.32528 0.502482 10.6894 1.1965 11.8917L0.0712891 16L4.27564 14.8976C5.43407 15.5292 6.73836 15.8622 8.06553 15.8627H8.06896C12.4399 15.8627 15.9981 12.3057 15.9999 7.93433C16.0007 5.81582 15.1764 3.82368 13.6791 2.32508C12.1816 0.826671 10.1905 0.000871097 8.06896 0C3.69729 0 0.139608 3.55657 0.137866 7.92798ZM2.64171 11.6846L2.48473 11.4355C1.82481 10.3862 1.47649 9.17359 1.47699 7.92848C1.47836 4.29507 4.43536 1.339 8.07145 1.339C9.83231 1.33975 11.4871 2.02617 12.7318 3.27159C13.9764 4.51714 14.6613 6.17284 14.6609 7.93383C14.6592 11.5672 11.7022 14.5237 8.06896 14.5237H8.06634C6.88333 14.5231 5.72309 14.2054 4.71125 13.605L4.47045 13.4622L1.97551 14.1163L2.64171 11.6846Z"
+                            fill="url(#paint1_linear_1542_67130)"></path>
+                        <path
+                            d="M6.08671 4.61358C5.93825 4.28362 5.78201 4.27696 5.64084 4.27118C5.52523 4.2662 5.39307 4.26657 5.26104 4.26657C5.12888 4.26657 4.91415 4.31629 4.73265 4.51446C4.55097 4.71282 4.03901 5.19217 4.03901 6.16712C4.03901 7.14206 4.74914 8.08434 4.84814 8.21669C4.94726 8.34878 6.21906 10.4135 8.23328 11.2078C9.90728 11.868 10.2479 11.7367 10.6113 11.7036C10.9746 11.6706 11.7837 11.2243 11.9488 10.7616C12.114 10.2989 12.114 9.90232 12.0645 9.81944C12.015 9.73687 11.8828 9.68728 11.6846 9.58823C11.4865 9.48917 10.5121 9.0097 10.3305 8.94355C10.1488 8.87747 10.0167 8.8445 9.88457 9.04292C9.75241 9.24103 9.37293 9.68728 9.25726 9.81944C9.14171 9.95191 9.02604 9.9684 8.82793 9.86928C8.62963 9.76985 7.99143 9.56085 7.23426 8.88581C6.64515 8.36054 6.24743 7.71188 6.13182 7.51346C6.01622 7.31535 6.11944 7.20795 6.21881 7.10921C6.30785 7.02042 6.41704 6.87781 6.51623 6.76214C6.61503 6.64641 6.64801 6.56384 6.71409 6.43168C6.78023 6.2994 6.74713 6.18367 6.69766 6.08455C6.64801 5.98543 6.26292 5.00539 6.08671 4.61358Z"
+                            fill="white"></path>
+                        <defs>
+                            <linearGradient id="paint0_linear_1542_67130" x1="796.503" y1="1600" x2="796.503" y2="0"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1FAF38"></stop>
+                                <stop offset="1" stop-color="#60D669"></stop>
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_1542_67130" x1="796.503" y1="1600" x2="796.503" y2="0"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#F9F9F9"></stop>
+                                <stop offset="1" stop-color="white"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <p>Compartilhar</p>
+                </a>
+            </div>
         </div>
     </div>
-    <button class="wake-cart-share-button hidden">
-        <img src="{{- store.urls.static_img}}icons/share.svg?theme={{store.theme}}&v={{store.last_modified}}" loading="lazy">
-        Compartilhar carrinho
-    </button>
+    <div class="total-itens">
+        Total de itens: {{ products.size }}
+    </div>
 </div>
 <table class="wake-cart-product-list-table">
     <thead>
@@ -20,17 +48,17 @@
     </thead>
     <tbody>
         {{~ for product in products ~}}
-            {{ if !product.kit }}
-                {{ checkout_product product: product }}
-            {{ end }}
+        {{ if !product.kit }}
+        {{ checkout_product product: product }}
+        {{ end }}
         {{~ end ~}}
         {{- if kits && kits.size > 0 ~}}
-            {{~ for kit in kits ~}}
-                {{ checkout_product product: kit is_kit: true }}
-                {{~ for kit_product in kit.products ~}}
-                    {{ wake_checkout_kit_product product: kit_product }}
-                {{ end }}
-            {{ end }}
+        {{~ for kit in kits ~}}
+        {{ checkout_product product: kit is_kit: true }}
+        {{~ for kit_product in kit.products ~}}
+        {{ wake_checkout_kit_product product: kit_product }}
+        {{ end }}
+        {{ end }}
         {{ end }}
     </tbody>
 </table>

@@ -1,6 +1,10 @@
 <div class="checkout-footer">
   {{ if data?.checkout }}
   <div class="checkout-footer-mobile">
+    <div id="checkout_total_snippet" class="wake-cart-finish-wrapper">
+      <a href="/checkout/shipping" class="wake-cart-finish-button">Ir para endereço</a>
+      <a href="/" class="wake-cart-continue-button">Continuar comprando</a>
+    </div>
     {{ checkout_share_cart }}
 
     <div class="footer_mobile_bottom">
@@ -22,7 +26,7 @@
     <div class="checkout-footer-top">
       <div class="checkout-footer-left">
         <img src="{{- store.urls.static_img}}checkout/logo-abc-box.svg?theme={{store.theme}}&v={{store.last_modified}}"
-          alt="logo" width="56" height="56" />
+          alt="logo" width="40" height="40" />
         <h3>Em cada detalhe, a gente pensa em você!</h3>
         <span>Confira nossas ofertas, vantagens, campanhas e informações nas nossas
           redes sociais</span>
@@ -94,4 +98,16 @@
 
 <script>
   var checkout_pages = {{ store.urls.checkout_pages | map.to_json}};
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var pathname = window.location.pathname;
+    var wrapper = document.querySelector('.checkout-footer-mobile .wake-cart-finish-wrapper');
+
+    if (wrapper) {
+      if (pathname !== '/checkout' && pathname !== '/checkout/') {
+        wrapper.style.display = 'none';
+      }
+    }
+  });
 </script>

@@ -1,43 +1,45 @@
 {{~
-    shipping_quotes_group = shipping_quotes | group.by @(do; ret $0.type;end)
-    if(shipping_quotes_group)
-        pickUpsStore = shipping_quotes_group | group.get "Retirada"
-    end
+shipping_quotes_group = shipping_quotes | group.by @(do; ret $0.type;end)
+if(shipping_quotes_group)
+pickUpsStore = shipping_quotes_group | group.get "Retirada"
+end
 ~}}
 
 {{ if shipping_quotes?.size > 0}}
-    <h2 class="wake-checkout-title wake-checkout-shipping-title">Formas de envio</h2>
-    <span class="wake-checkout-shipping-subtitle">Escolha a forma de envio</span>
+<h2 class="wake-checkout-title wake-checkout-shipping-title">Formas de envio</h2>
+<span class="wake-checkout-shipping-subtitle">Escolha a forma de envio</span>
 
-    {{~ if pickUpsStore?.size > 0 ~}}
-        <div class="wake-checkout-shipping-item wake-pick-store">
-            <label for="shippingOption-pickUpStore" class="wake-checkout-shipping-label">
-                <input type="radio" name="shippingOption" id="shippingOption-pickUpStore" value="pickUpStore"
-                    class="wake-checkout-shipping-radio" onclick='renderFormPickUpStoreShipping(true)'/>
-                <div class="wake-checkout-shipping-item-content">
-                    <span class="wake-chekout-shipping-item-title">Retirada na loja</span>
-                    <span class="wake-chekout-shipping-item-subtitle">Grátis</span>
-                    <span class="wake-chekout-shipping-item-desc">Em até 1 dia útil</span>
-                </div>
-            </label>
+{{~ if pickUpsStore?.size > 0 ~}}
+<div class="wake-checkout-shipping-item wake-pick-store">
+    <label for="shippingOption-pickUpStore" class="wake-checkout-shipping-label">
+        <input type="radio" name="shippingOption" id="shippingOption-pickUpStore" value="pickUpStore"
+            class="wake-checkout-shipping-radio" onclick='renderFormPickUpStoreShipping(true)' />
+        <div class="wake-checkout-shipping-item-content">
+            <span class="wake-chekout-shipping-item-title">Retirada na loja</span>
+            <span class="wake-chekout-shipping-item-subtitle">Grátis</span>
+            <span class="wake-chekout-shipping-item-desc">Em até 1 dia útil</span>
         </div>
-    {{~ end ~}}
-    {{~ for shipping in shipping_quotes ~}}
-        {{~ if shipping.type != "Retirada" ~}}
-            <div class="wake-checkout-shipping-item">
-                <label for="shippingOption-{{shipping.shipping_quote_id}}" class="wake-checkout-shipping-label">    
-                    <input type="radio" name="shippingOption" id="shippingOption-{{shipping.shipping_quote_id}}" value="{{shipping.shipping_quote_id}}"
-                    class="wake-checkout-shipping-radio" onclick="selectShipping('{{ shipping.shipping_quote_id }}')" />
-                    <div class="wake-checkout-shipping-item-content">
-                        <span class="wake-chekout-shipping-item-title"> {{ shipping.name }}</span>
-                        <span class="wake-chekout-shipping-item-subtitle">{{ shipping.value | math.format "c" "pt-BR" }}</span>
-                        <span class="wake-chekout-shipping-item-desc">Em até {{ shipping.deadline }} dias úteis</span>
-                    </div>
-                </label>
-            </div>
-        {{~ end ~}}
-    {{~ end ~}}
+    </label>
+</div>
+{{~ end ~}}
+{{~ for shipping in shipping_quotes ~}}
+{{~ if shipping.type != "Retirada" ~}}
+<div class="wake-checkout-shipping-item">
+    <label for="shippingOption-{{shipping.shipping_quote_id}}" class="wake-checkout-shipping-label">
+        <input type="radio" name="shippingOption" id="shippingOption-{{shipping.shipping_quote_id}}"
+            value="{{shipping.shipping_quote_id}}" class="wake-checkout-shipping-radio"
+            onclick="selectShipping('{{ shipping.shipping_quote_id }}')" />
+        <div class="wake-checkout-shipping-item-content">
+            <span class="wake-chekout-shipping-item-title"> {{ shipping.name }}</span>
+            <span class="wake-chekout-shipping-item-subtitle">{{ shipping.value | math.format "c" "pt-BR" }}</span>
+            <span class="wake-chekout-shipping-item-desc">Em até {{ shipping.deadline }} dias úteis</span>
+        </div>
+    </label>
+</div>
+{{~ end ~}}
+{{~ end ~}}
 {{ else }}
-    <h2 class="wake-checkout-shipping-title-notfound">Não conseguimos calcular o frete para o endereço selecionado</h2>
-    <span class="wake-checkout-shipping-text-notfound">Por favor, verifique o endereço ou entre em contato conosco para mais informações.</span>
+<h2 class="wake-checkout-shipping-title-notfound">Não conseguimos calcular o frete para o endereço selecionado</h2>
+<span class="wake-checkout-shipping-text-notfound">Por favor, verifique o endereço ou entre em contato conosco para mais
+    informações.</span>
 {{ end }}

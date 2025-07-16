@@ -59,7 +59,13 @@ td, th {
     background-color: #dddddd;
 }
 
-.empty-mini-cart-message{
+.empty-mini-cart-message {
     display: flex;
     justify-content: center;
+    text-align: center;
+}
+
+.empty-mini-cart-message h5 {
+    margin-top: 32px;
+    font-size: 1rem;
 }

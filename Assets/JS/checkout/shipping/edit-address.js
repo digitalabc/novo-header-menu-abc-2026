@@ -20,10 +20,6 @@ const renderFormWithData = async (data) => {
 
           Campos indicados com * são obrigatórios
       </p>
-      <p
-          class="checkout-shipping-new-address--custom-warning"
-          style="display: none"
-      ></p>
       <form class="checkout-shipping-new-address--form">
           <!-- start:CEP -->
           <div
@@ -215,6 +211,18 @@ const renderFormWithData = async (data) => {
           </button>
           </div>
       </form>
+      <div
+          class="checkout-shipping-new-address--custom-warning-container"
+          style="display: none"
+      >
+          <p class="checkout-shipping-new-address--custom-warning"></p>
+          <button
+              type="button"
+              class="checkout-shipping-new-address--clear-data-button"
+          >
+              Limpar Dados
+          </button>
+      </div>
   </section>
   `
 

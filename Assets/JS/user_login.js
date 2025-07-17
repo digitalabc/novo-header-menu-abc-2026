@@ -91,3 +91,28 @@ function userMouseEnter(){
 function userMouseLeave(){
     document.getElementById("user-options").style.visibility = "hidden";
 }
+
+/**
+ * Deletes a customer address.
+ * @param {string} addressId - The ID of the address to delete.
+*/
+async function deleteAddress(addressId) {
+    if (!confirm('Tem certeza que deseja excluir este endereço?')) {
+        return;
+    }
+    
+    try {
+        console.log('Tentando excluir endereço:', addressId);
+        const result = await client.customer.address.delete(addressId);
+        console.log('Resultado da exclusão:', result);
+        
+        // Show success message
+        alert('Endereço excluído com sucesso!');
+        
+        // Reload the page to update the address list
+        window.location.reload();
+    } catch (error) {
+        console.error('Erro ao excluir endereço:', error);
+        alert('Erro ao excluir endereço: ' + (error.message || 'Tente novamente.'));
+    }
+}

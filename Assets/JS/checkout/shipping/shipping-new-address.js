@@ -341,23 +341,26 @@ class ShippingNewAddress {
     return !error;
   }
   dispatchFormWarning(formErrorMessage) {
-    const waningsContainerElement = document.querySelector(
+    const warningContainerElement = document.querySelector(
+      ".checkout-shipping-new-address--custom-warning-container"
+    );
+    const warningTextElement = document.querySelector(
       ".checkout-shipping-new-address--custom-warning"
     );
 
-    if (!waningsContainerElement) {
+    if (!warningContainerElement || !warningTextElement) {
       console.error("Warning container not found");
       return;
     }
 
     if (formErrorMessage === null) {
-      waningsContainerElement.setAttribute("style", "display: none");
-      waningsContainerElement.textContent = "";
+      warningContainerElement.setAttribute("style", "display: none");
+      warningTextElement.textContent = "";
       return;
     }
 
-    waningsContainerElement.setAttribute("style", "display: flex");
-    waningsContainerElement.textContent = formErrorMessage;
+    warningContainerElement.setAttribute("style", "display: flex");
+    warningTextElement.textContent = formErrorMessage;
   }
   dispatchInputError({ inputKey, inputErrorMessage }) {
     this.form.inputs[inputKey].inputError = inputErrorMessage;
@@ -727,9 +730,9 @@ class ShippingNewAddress {
     });
 
     // Listener para o botão de voltar
-    document
-      .querySelector("button.checkout-shipping-new-address--form-back-button")
-      .addEventListener("click", (event) => {
+    const backButton = document.querySelector("button.checkout-shipping-new-address--form-back-button");
+    if (backButton) {
+      backButton.addEventListener("click", (event) => {
         if(this.isEdit) {
           document.getElementById("editFormAddress").remove()
           document.querySelector('.checkout-address-container').style.display = ""
@@ -738,6 +741,31 @@ class ShippingNewAddress {
           window.history.back();
         }
       });
+    }
+
+    // Listener para o botão "Limpar Dados"
+    const clearDataButton = document.querySelector("button.checkout-shipping-new-address--clear-data-button");
+    if (clearDataButton) {
+      clearDataButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        this.clearAllFields();
+        
+        // Limpa também as informações de CEP
+        document.querySelector(".postal-code-shipping-info .postal-code-shipping-info--text").textContent = "";
+        document.querySelector(".postal-code-shipping-info").style.display = "none";
+        
+        // Limpa todos os erros de input
+        for (const [key] of Object.entries(this.form.inputs)) {
+          this.dispatchInputError({ inputKey: key, inputErrorMessage: null });
+        }
+        
+        // Esconde a mensagem de warning
+        this.dispatchFormWarning(null);
+        
+        // Revalida o formulário
+        this.validateForm({ dispatchErrors: false });
+      });
+    }
 
     // Configuração dos listeners individuais para cada input
     for (const [key, value] of Object.entries(this.form.inputs)) {
@@ -1005,6 +1033,12 @@ class ShippingNewAddress {
 
 // DOM load
 document.addEventListener("DOMContentLoaded", () => {
+  // Verifica se o formulário existe antes de instanciar a classe
+  const formElement = document.querySelector("form.checkout-shipping-new-address--form");
+  if (!formElement) {
+    return; // Sai se o formulário não existir
+  }
+  
   new ShippingNewAddress({
     form: {
       formLoading: false,

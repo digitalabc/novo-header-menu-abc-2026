@@ -122,28 +122,53 @@ p.checkout-shipping-new-address--warning::before {
   flex-shrink: 0;
 }
 
+div.checkout-shipping-new-address--custom-warning-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(135deg, #fffde7 0%, #fff8e1 100%);
+  border-left: 4px solid #ffc107;
+  border-radius: 8px;
+  padding: 16px 20px;
+  position: relative;
+  margin-top: 20px;
+}
+
 p.checkout-shipping-new-address--custom-warning {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 14px;
   font-weight: 500;
-  color: #d63384;
+  color: #856404;
   line-height: 20px;
-  background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
-  border-left: 4px solid #d63384;
-  border-radius: 8px;
-  margin-top: -12px;
-  margin-bottom: 32px;
-  padding: 16px 20px;
-  position: relative;
+  margin: 0;
+}
+
+button.checkout-shipping-new-address--clear-data-button {
+  align-self: flex-start;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  color: #856404;
+  padding: 12px 16px;
+  border-radius: 28px;
+  font-size: 14px;
+  line-height: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button.checkout-shipping-new-address--clear-data-button:hover {
+  background-color: #ffc10794;
+  color: #856404;
 }
 
 p.checkout-shipping-new-address--custom-warning::before {
   content: '';
   width: 20px;
   height: 20px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d63384"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>') no-repeat center;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23856404"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>') no-repeat center;
   background-size: contain;
   flex-shrink: 0;
 }
@@ -308,6 +333,7 @@ span.checkout-shipping-new-address--form-error.is--active {
 
 .checkout-shipping-new-address--form-back-button {
   display: flex;
+  width: fit-content;
   justify-content: center;
   align-items: center;
   padding: 12px 12px;

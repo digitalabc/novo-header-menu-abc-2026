@@ -25,32 +25,42 @@
             <div class="checkout-address-wrapper">
                 {{~ for address in addresses ~}}
                     <div class="checkout-address-item">
-                        <h4 class="checkout-address">
-                            {{ if address.address }}{{ address.address }}{{ end }}{{ if address.neighborhood }}, {{ address.neighborhood }}{{ end }}{{ if address.city }} - {{ address.city }}{{ end }}{{ if address.state }} - {{ address.state }}{{ end }}{{ if address.cep }} - {{ address.cep }}{{ end }}
-                        </h4>
+                        <div class="checkout-address-content">
+                            <h4 class="checkout-address">
+                                {{ if address.address }}{{ address.address }}{{ end }}{{ if address.neighborhood }}, {{ address.neighborhood }}{{ end }}{{ if address.city }} - {{ address.city }}{{ end }}{{ if address.state }} - {{ address.state }}{{ end }}{{ if address.cep }} - {{ address.cep }}{{ end }}
+                            </h4>
 
-                        <span class="checkout-address-name">
-                            {{ if address.name }}
-                                {{ address.name }}
-                            {{ else if data.customer.customer_name}}
-                                {{ data.customer.customer_name }}
-                            {{ end }}
-                        </span>
+                            <span class="checkout-address-name">
+                                {{ if address.name }}
+                                    {{ address.name }}
+                                {{ else if data.customer.customer_name}}
+                                    {{ data.customer.customer_name }}
+                                {{ end }}
+                            </span>
+                        </div>
 
-                        <div class="checkout-address-buttons">
-                            <button class="checkout-address-edit" onclick='editAddress({{address | map.to_json}})'>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                                    <path d="M2.35 16C1.91 16 1.53333 15.8435 1.22 15.5306C0.906667 15.2176 0.75 14.8414 0.75 14.402V3.21598C0.75 2.77653 0.906667 2.40033 1.22 2.08739C1.53333 1.77445 1.91 1.61798 2.35 1.61798H9.49L7.89 3.21598H2.35V14.402H13.55V8.84894L15.15 7.25094V14.402C15.15 14.8414 14.9933 15.2176 14.68 15.5306C14.3667 15.8435 13.99 16 13.55 16H2.35ZM5.55 11.206V7.81024L12.89 0.479401C13.05 0.319601 13.23 0.19975 13.43 0.11985C13.63 0.0399501 13.83 0 14.03 0C14.2433 0 14.4467 0.0399501 14.64 0.11985C14.8333 0.19975 15.01 0.319601 15.17 0.479401L16.29 1.61798C16.4367 1.77778 16.55 1.95422 16.63 2.14732C16.71 2.34041 16.75 2.53683 16.75 2.73658C16.75 2.93633 16.7133 3.13275 16.64 3.32584C16.5667 3.51893 16.45 3.69538 16.29 3.85518L8.95 11.206H5.55ZM7.15 9.60799H8.27L12.91 4.97378L12.35 4.41448L11.77 3.85518L7.15 8.46941V9.60799Z" fill="#20A389"/>
-                                </svg>
-                                Editar
-                            </button>
-                            <button class="checkout-address-select" onclick="newSelectAddress('{{address.id}}')">
-                                Usar este
-                            </button>
+                        <div class="checkout-address-buttons-container">
+                            <div class="checkout-address-buttons">
+                                <button class="checkout-address-edit" onclick='editAddress({{address | map.to_json}})'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                        <path d="M2.35 16C1.91 16 1.53333 15.8435 1.22 15.5306C0.906667 15.2176 0.75 14.8414 0.75 14.402V3.21598C0.75 2.77653 0.906667 2.40033 1.22 2.08739C1.53333 1.77445 1.91 1.61798 2.35 1.61798H9.49L7.89 3.21598H2.35V14.402H13.55V8.84894L15.15 7.25094V14.402C15.15 14.8414 14.9933 15.2176 14.68 15.5306C14.3667 15.8435 13.99 16 13.55 16H2.35ZM5.55 11.206V7.81024L12.89 0.479401C13.05 0.319601 13.23 0.19975 13.43 0.11985C13.63 0.0399501 13.83 0 14.03 0C14.2433 0 14.4467 0.0399501 14.64 0.11985C14.8333 0.19975 15.01 0.319601 15.17 0.479401L16.29 1.61798C16.4367 1.77778 16.55 1.95422 16.63 2.14732C16.71 2.34041 16.75 2.53683 16.75 2.73658C16.75 2.93633 16.7133 3.13275 16.64 3.32584C16.5667 3.51893 16.45 3.69538 16.29 3.85518L8.95 11.206H5.55ZM7.15 9.60799H8.27L12.91 4.97378L12.35 4.41448L11.77 3.85518L7.15 8.46941V9.60799Z" fill="#20A389"/>
+                                    </svg>
+                                    Editar
+                                </button>
+                                <button class="checkout-address-select" onclick="newSelectAddress('{{address.id}}')">
+                                    Usar este
+                                </button>
+                            </div>
                         </div>
                     </div>
                 {{~ end ~}}
             </div>
+            <button type="button" class="checkout-shipping-new-address--form-back-button" onclick="history.back()">
+                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.25 10.5L6.475 9.23125L3.36875 6.125H14V4.375H3.36875L6.475 1.26875L5.25 0L0 5.25L5.25 10.5Z" fill="#20A389"/>
+                </svg>
+                Voltar
+            </button>
         </div>
         {{ wake_checkout_scripts }}
         {{ checkout_footer }}

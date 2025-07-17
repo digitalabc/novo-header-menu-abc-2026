@@ -186,10 +186,66 @@
     "url": "checkout",
     "routes": [
       {
-        "name": "home",
+        "name": "Checkout - Home",
         "url": "",
         "path": "checkout/checkout.html",
         "query": "checkout/checkout.graphql"
+      },
+      {
+        "name": "Checkout - Shipping",
+        "url": "shipping",
+        "path": "checkout/shipping/shipping.html",
+        "query": "checkout/shipping.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "Checkout - Shipping Pickup Options",
+        "url": "shipping/pickup",
+        "path": "checkout/shipping/pickup.html",
+        "query": "checkout/shipping.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "Checkout - Shipping Delivery Options",
+        "url": "shipping/delivery",
+        "path": "checkout/shipping/delivery.html",
+        "query": "checkout/shipping.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "Checkout - Shipping (New Address)",
+        "url": "shipping/new-address",
+        "path": "checkout/shipping/shipping-new-address.html",
+        "query": "checkout/shipping/shipping-new-address.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "addresses",
+        "url": "shipping/addresses",
+        "path": "checkout/address.html",
+        "query": "checkout/close.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "shipping",
+        "url": "old-shipping",
+        "path": "checkout/shipping.html",
+        "query": "checkout/close.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "payment",
+        "url": "payment",
+        "path": "checkout/payment.html",
+        "query": "checkout/close.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
       },
       {
         "name": "complete",
@@ -204,6 +260,8 @@
         "url": "confirmation",
         "path": "checkout/confirmation.html",
         "query": "checkout/confirmation.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate",
         "queryStrings": [
           {
             "name": "checkoutId",

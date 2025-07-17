@@ -23,7 +23,7 @@ body.checkout-shipping {
     flex-direction: column;
     min-height: 100vh;
   }
-  
+
   body.checkout-shipping #data-render-pickup {
     padding-bottom: 0;
     flex: 1;
@@ -158,7 +158,7 @@ body.checkout-shipping {
   .checkout-footer-desktop {
     display: flex !important;
   }
-  
+
   body.checkout-shipping .checkout-footer {
     margin-top: 0;
     position: relative;

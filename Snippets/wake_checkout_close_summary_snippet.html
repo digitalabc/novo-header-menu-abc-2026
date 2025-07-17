@@ -1,0 +1,113 @@
+<div class="wake-checkout-summary">
+  <div class="wake-checkout-summary-content">
+    <h3>Resumo do Pedido</h3>
+
+    <!-- Produtos -->
+    <div class="wake-checkout-summary-products">
+      {{ for product in data.checkout.products }}
+      <div class="wake-checkout-summary-item">
+        <div class="wake-checkout-summary-td-img">
+          <img src="{{ product.imageUrl }}" alt="{{ product.name }}" />
+        </div>
+        <div class="wake-checkout-summary-prod">
+          <div class="wake-checkout-summary-prod-name">{{ product.name }}</div>
+          <div class="wake-checkout-summary-prod-qtd">Qtd: {{ product.quantity }}</div>
+          {{ if product.productAttributes }}
+          <div class="wake-checkout-summary-prod-attr">
+            {{ for attr in product.productAttributes }}
+            <span class="wake-checkout-summary-attr-val">{{ attr.name }}: {{ attr.value }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+          <div class="wake-checkout-summary-prod-price">
+            {{ product.totalAdjustedPrice | math.format "c" "pt-BR" }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- Kits -->
+    {{ if data.checkout.kits }}
+    <div class="wake-checkout-summary-kits">
+      {{ for kit in data.checkout.kits }}
+      <div class="wake-checkout-summary-kit">
+        <div class="wake-checkout-summary-kit-container">
+          <div class="wake-checkout-summary-kit-inner">
+            <img src="{{ kit.imageUrl }}" alt="{{ kit.name }}" />
+            <span>{{ kit.name }}</span>
+            <span class="wake-checkout-summary-kit-total">
+              {{ kit.totalAdjustedPrice | math.format "c" "pt-BR" }}
+            </span>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <!-- Endereço de Entrega -->
+    {{ if data.checkout.selectedAddress }}
+    <div class="wake-checkout-summary-address">
+      <h4>Endereço de Entrega</h4>
+      <p>
+        {{ data.checkout.selectedAddress.street }}, {{ data.checkout.selectedAddress.addressNumber }}
+        {{ if data.checkout.selectedAddress.complement }} - {{ data.checkout.selectedAddress.complement }}{{ end }}<br>
+        {{ data.checkout.selectedAddress.neighborhood }} - {{ data.checkout.selectedAddress.city }}/{{
+        data.checkout.selectedAddress.state }}<br>
+        CEP: {{ data.checkout.selectedAddress.cep }}
+      </p>
+      {{ if data.checkout.selectedAddress.receiverName }}
+      <p><strong>Destinatário:</strong> {{ data.checkout.selectedAddress.receiverName }}</p>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <!-- Método de Pagamento -->
+    {{ if data.checkout.selectedPaymentMethod }}
+    <div class="wake-checkout-summary-payment">
+      <h4>Forma de Pagamento</h4>
+      <p>Método ID: {{ data.checkout.selectedPaymentMethod.paymentMethodId }}</p>
+      {{ if data.checkout.selectedPaymentMethod.installments }}
+      {{ for installment in data.checkout.selectedPaymentMethod.installments }}
+      <p>{{ installment.number }}x de {{ installment.value | math.format "c" "pt-BR" }}</p>
+      {{ end }}
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <!-- Resumo de Valores -->
+    <div class="wake-checkout-summary-totals">
+      {{ if data.checkout.discount > 0 }}
+      <div class="price-line">
+        <span>Desconto</span>
+        <span class="discount">-{{ data.checkout.discount | math.format "c" "pt-BR" }}</span>
+      </div>
+      {{ end }}
+
+      {{ if data.checkout.shippingFee > 0 }}
+      <div class="price-line">
+        <span>Frete</span>
+        <span>{{ data.checkout.shippingFee | math.format "c" "pt-BR" }}</span>
+      </div>
+      {{ end }}
+
+      {{ if data.checkout.paymentFees > 0 }}
+      <div class="price-line">
+        <span>Taxa de Pagamento</span>
+        <span>{{ data.checkout.paymentFees | math.format "c" "pt-BR" }}</span>
+      </div>
+      {{ end }}
+
+      <div class="price-line subtotal">
+        <span>Subtotal</span>
+        <span>{{ data.checkout.subtotal | math.format "c" "pt-BR" }}</span>
+      </div>
+
+      <div class="price-line total">
+        <span><strong>Total</strong></span>
+        <span><strong>{{ data.checkout.total | math.format "c" "pt-BR" }}</strong></span>
+      </div>
+    </div>
+  </div>
+</div>

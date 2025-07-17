@@ -26,16 +26,16 @@
           <input type="radio" name="paymentOption" id="paymentOption-{{ payment.id }}" value="{{ payment.id }}"
             onclick="selectPayment('{{ payment.id }}', this)" class="hidden"/>
           <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
-              <img src="{{ payment.image_url }}" width="50">
+                <img src="{{ payment.image_url }}" width="50">
               <div class="payment-details">
                 <h3>{{ payment.name }}</h3>
                 <span>
                   {{ if (payment.name | string.downcase) | string.contains "pix" }}
-                    Pagamento à vista
+                    À vista
                   {{ else if (payment.name | string.downcase) | string.contains "crédito" }}
-                    Cadastrar ou ver formas
+                    Cadastrar | Ver formas
                   {{ else if (payment.name | string.downcase) | string.contains "boleto" }}
-                    1 a 3 dias úteis após pagamento 
+                    1 a 3 dias úteis
                   {{ end }}
                 </span>
               </div>

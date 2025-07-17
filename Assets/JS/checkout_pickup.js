@@ -31,5 +31,4 @@ async function renderPickUpOptions() {
     `;
 
   document.querySelector(".checkout-footer-mobile").appendChild(rightButtons);
-  document.querySelector(".checkout-footer").style.marginTop = "244px";
 }

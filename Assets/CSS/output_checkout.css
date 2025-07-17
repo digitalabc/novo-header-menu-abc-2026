@@ -3888,7 +3888,7 @@
   }
 
   .checkout-footer-left h3 {
-    color: #1f1f1f;
+    color: #333;
     font-family: "Satoshi", sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -3985,7 +3985,7 @@
 
 .selectPickUpWrapper .title,
 .selectDeliveryWrapper .title {
-  color: #1f1f1f;
+  color: #333;
   font-family: "Satoshi", sans-serif;
   font-size: 28px;
   font-style: normal;
@@ -3997,18 +3997,29 @@
 .selectPickUpItems {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+}
+
+.selectPickUpItems.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .selectPickUpItems.grid-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 .selectPickUpItemWrapper {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   border-radius: 20px;
   border: 2px solid #f1f5f9;
   background: #ffffff;
-  padding: 28px 24px;
+  padding: 20px 16px;
   position: relative;
-  max-width: 360px;
   width: 100%;
   transition: all 0.3s ease;
   align-items: flex-start;
@@ -4102,7 +4113,7 @@
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  color: #1f1f1f;
+  color: #333;
   text-overflow: ellipsis;
   font-family: "Satoshi", sans-serif;
   font-size: 17px;
@@ -4138,7 +4149,7 @@
 }
 
 .selectPickUpItemInformations h5 {
-  color: #1f1f1f;
+  color: #333;
   font-family: "Satoshi", sans-serif;
   font-size: 15px;
   font-style: normal;
@@ -4528,7 +4539,7 @@
 .checkout-container .title {
   color: #333;
   font-family: "Satoshi", sans-serif;
-  font-size: 24px;
+  font-size: 28px;
   font-style: normal;
   font-weight: 500;
   line-height: 28px;
@@ -4617,7 +4628,7 @@
 }
 
 .wake-payment-data-options h3 {
-  color: #1f1f1f;
+  color: #333;
   font-family: "Satoshi", sans-serif;
   font-size: 28px;
   font-style: normal;
@@ -4668,15 +4679,16 @@
 .productsItemsWrapper .productInformation .productName {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .productsItemsWrapper .productInformation .productName h4 {
   color: #333;
   font-family: "Satoshi", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 150%;
   margin-bottom: 0;
 }
 
@@ -5134,7 +5146,7 @@
 
 
 .checkout-address-container .title {
-  color: var(--primary-abc, #1f1f1f);
+  color: var(--primary-abc, #333);
   font-family: "Satoshi", sans-serif;
   font-size: 28px;
   font-style: normal;
@@ -5183,7 +5195,7 @@
 }
 
 .checkout-address {
-  color: #1f1f1f;
+  color: #333;
   font-family: "Satoshi", sans-serif;
   font-size: 16px;
   font-style: normal;

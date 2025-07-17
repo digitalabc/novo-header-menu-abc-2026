@@ -7,6 +7,14 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body.checkout-shipping {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 767px) {
@@ -15,10 +23,18 @@ body {
     flex-direction: column;
     min-height: 100vh;
   }
+  
+  body.checkout-shipping #data-render-pickup {
+    padding-bottom: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 180px);
+  }
 
   main.checkout-shipping-wrapper {
     flex: 1;
-    padding-bottom: 220px;
+    padding-bottom: 180px;
   }
 
 
@@ -29,6 +45,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
+    width: 100%;
   }
 
 
@@ -141,10 +158,18 @@ body {
   .checkout-footer-desktop {
     display: flex !important;
   }
+  
+  body.checkout-shipping .checkout-footer {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+  }
 }
 
 /* === CHECKOUT SHIPPING WRAPPER - Layout Simétrico === */
-main.checkout-shipping-wrapper {
+main.checkout-shipping-wrapper,
+#data-render-pickup {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

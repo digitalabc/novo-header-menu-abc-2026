@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Checkout - Endereços</title>
-        {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping/shipping-new-address"]}}
+        {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping/shipping-new-address", "checkout/address"]}}
         {{ data_layer_config }}
     </head>
 
@@ -20,8 +20,9 @@
 
         <div class="checkout-container checkout-address-container">
             <h2 class="title">
-                Endereços salvos
+                1.2 Endereços salvos
             </h2>
+            
             <div class="checkout-address-wrapper">
                 {{~ for address in addresses ~}}
                     <div class="checkout-address-item">
@@ -55,12 +56,16 @@
                     </div>
                 {{~ end ~}}
             </div>
-            <button type="button" class="checkout-shipping-new-address--form-back-button" onclick="history.back()">
-                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.25 10.5L6.475 9.23125L3.36875 6.125H14V4.375H3.36875L6.475 1.26875L5.25 0L0 5.25L5.25 10.5Z" fill="#20A389"/>
-                </svg>
-                Voltar
-            </button>
+            
+            <!-- Botão de voltar -->
+            <div class="checkout-address-back-button-container">
+                <button type="button" class="checkout-address-back-button" onclick="window.history.back()">
+                    <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.25 10.5L6.475 9.23125L3.36875 6.125H14V4.375H3.36875L6.475 1.26875L5.25 0L0 5.25L5.25 10.5Z" fill="#20A389"/>
+                    </svg>
+                    Voltar
+                </button>
+            </div>
         </div>
         {{ wake_checkout_scripts }}
         {{ checkout_footer }}

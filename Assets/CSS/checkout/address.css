@@ -1,0 +1,103 @@
+.checkout-address-back-button {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 12px;
+  background: linear-gradient(to bottom, #fff 50%, #f4f4f4);
+  border: 2px solid #e0e6ed;
+  border-radius: 400px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0092ff;
+  margin: 0;
+  line-height: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Satoshi", sans-serif;
+}
+
+.checkout-address-back-button:hover {
+  border-color: #d3e7ff;
+  background: rgba(0, 146, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.checkout-address-back-button svg {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Melhorias no layout dos cards de endereço */
+.checkout-address-item {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  /* Altura mínima para garantir consistência */
+}
+
+.checkout-address-content {
+  flex: 1;
+  /* Ocupa todo o espaço disponível */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkout-address-buttons-container {
+  margin-top: auto;
+  /* Empurra os botões para o final do card */
+  padding-top: 16px;
+}
+
+.checkout-address-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .checkout-address-back-button-container {
+    margin: 16px 0 24px 0;
+  }
+
+  .checkout-address-back-button {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .checkout-address-item {
+    min-height: 200px;
+  }
+
+  .checkout-address-buttons-container {
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-address-back-button-container {
+    margin: 12px 0 20px 0;
+  }
+
+  .checkout-address-back-button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .checkout-address-item {
+    min-height: 180px;
+  }
+
+  .checkout-address-buttons-container {
+    padding-top: 10px;
+  }
+
+  .checkout-address-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

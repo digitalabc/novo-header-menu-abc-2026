@@ -596,7 +596,6 @@ input[data-form-type] {
   }
 
   main.checkout-shipping-new-address-wrapper {
-    padding: 0 16px;
     gap: 16px;
   }
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Checkout - Resumo</title>
+  <title>1.1 Adicionar um novo endereço</title>
   <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
   <link rel="preload" href="https://fonts.cdnfonts.com/css/satoshi" as="style">
   {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping", "checkout/shipping/shipping-new-address"]}}
@@ -16,7 +16,7 @@
   <main class="checkout-shipping-new-address-wrapper">
     <section class="checkout-shipping-new-address--form-section">
       <h2 class="checkout-shipping-new-address--title">
-        Adicionar um novo endereço
+        1.1 Adicionar um novo endereço
       </h2>
       <p class="checkout-shipping-new-address--warning">
         <svg
@@ -46,7 +46,7 @@
               type="text"
               id="shipping-new-address--postalCode"
               name="shipping-new-address--postalCode"
-              placeholder="Digite seu CEP"
+              placeholder="00000-000"
             />
             <a
               href="https://buscacepinter.correios.com.br/app/endereco/index.php"
@@ -118,7 +118,7 @@
               type="number"
               id="shipping-new-address--number"
               name="shipping-new-address--number"
-              placeholder="Digite seu número"
+              placeholder="Número da casa, apartamento, loja, etc."
             />
             <div class="checkout-shipping-new-address--number-withoutNumber">
               <input
@@ -151,7 +151,7 @@
               type="text"
               id="shipping-new-address--complement"
               name="shipping-new-address--complement"
-              placeholder="Digite seu complemento"
+              placeholder="Ex.: Apto 202, Fundos, Bloco B, Loja"
             />
           </div>
           <span class="checkout-shipping-new-address--form-error"></span>
@@ -171,7 +171,7 @@
               type="text"
               id="shipping-new-address--referencePoint"
               name="shipping-new-address--referencePoint"
-              placeholder="Digite uma referência"
+              placeholder="Ex.: Próximo à praça ou ao mercado"
             />
           </div>
           <span class="checkout-shipping-new-address--form-error"></span>
@@ -191,7 +191,7 @@
               type="text"
               id="shipping-new-address--receiverName"
               name="shipping-new-address--receiverName"
-              placeholder="Digite o nome do destinatário"
+              placeholder="Nome do destinatário"
             />
           </div>
           <span class="checkout-shipping-new-address--form-error"></span>
@@ -226,10 +226,7 @@
           </button>
         </div>
       </form>
-      <div
-        class="checkout-shipping-new-address--custom-warning-container"
-        style="display: none"
-      >
+      <div class="checkout-shipping-new-address--custom-warning-container" style="display: none">
         <p class="checkout-shipping-new-address--custom-warning"></p>
         <button
           type="button"

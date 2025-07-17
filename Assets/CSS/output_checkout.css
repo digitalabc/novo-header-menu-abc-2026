@@ -3750,7 +3750,6 @@
 .checkout-footer {
   position: relative;
   padding-top: 1px;
-  margin-top: 190px;
   display: block;
 }
 
@@ -3867,7 +3866,7 @@
 
   .checkout-footer-desktop {
     display: flex;
-    width: 87%;
+    max-width: 1200px;
     margin: 64px auto;
     justify-content: flex-start;
     flex-direction: column;
@@ -3882,8 +3881,9 @@
 
   .checkout-footer-left {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.75rem;
   }
 
   .checkout-footer-left h3 {
@@ -3911,6 +3911,8 @@
 
   .checkout-footer-right {
     display: flex;
+    width: 100%;
+    justify-content: flex-end;
     gap: 24px;
   }
 
@@ -3927,7 +3929,7 @@
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 150%;
   }
 
   .checkout-footer-bottom {
@@ -4173,7 +4175,7 @@
   border-radius: 12px;
   border: 3px solid #ecf1f7;
   background: #f6f8fa;
-  padding: 20px 24px;
+  padding: 20px 20px;
   gap: 8px;
   align-items: center;
   transition: all 0.6s;

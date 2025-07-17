@@ -1,0 +1,32 @@
+query CheckoutClosePaymentChoice(
+  $checkoutId: String!
+  $checkoutUuid: Uuid!
+  $customerAccessToken: String!
+) {
+  checkout(checkoutId: $checkoutId, customerAccessToken: $customerAccessToken) {
+    selectedPaymentMethod {
+      paymentMethodId
+    }
+
+    products {
+      gift
+      kit
+      price
+      quantity
+      name
+      productVariantId
+      quantity
+      productId
+      imageUrl
+      productAttributes {
+        name
+        value
+      }
+    }
+  }
+  paymentMethods(checkoutId: $checkoutUuid) {
+    id
+    name
+    imageUrl
+  }
+}

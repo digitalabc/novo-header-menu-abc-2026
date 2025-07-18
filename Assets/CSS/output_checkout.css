@@ -4502,6 +4502,10 @@
   order: 3;
 }
 
+.payment-option {
+  order: 4;
+}
+
 .payment-details {
   width: 100%;
   display: flex;

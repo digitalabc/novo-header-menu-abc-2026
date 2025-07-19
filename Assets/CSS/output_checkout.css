@@ -72,7 +72,7 @@
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 150%;
   --tw-shadow: 0 0 #0000;
 }
 
@@ -189,7 +189,7 @@
 .wake-checkout-title {
   margin-bottom: 1rem;
   font-size: 1.25rem;
-  line-height: 1.75rem;
+  line-height: 150%;
   font-weight: 600;
 }
 
@@ -375,7 +375,7 @@
 
 .wake-checkout-modal-title {
   font-size: 1.25rem;
-  line-height: 1.75rem;
+  line-height: 150%;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
@@ -2148,7 +2148,6 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 10px;
-  padding-bottom: 112px;
 }
 
 @media (max-width: 767px) {
@@ -2293,7 +2292,7 @@
 .wake-cart-finish-wrapper {
   display: flex;
   gap: 8px;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -2360,7 +2359,6 @@
 
 
 .wake-cart-continue-button {
-  margin-top: 0.75rem;
   display: flex;
   width: 100%;
   align-items: center;
@@ -3857,8 +3855,7 @@
     border-top: 2px solid #f0f0f0;
     background: #fdfdfd;
     margin: 0;
-    padding-bottom: 1px;
-    padding: 0 20px;
+    padding: 40px 20px;
   }
 
   .checkout-footer-mobile {
@@ -4536,7 +4533,6 @@
 .checkout-container {
   display: flex;
   gap: 24px;
-  display: flex;
   flex-direction: column;
   border-radius: 16px;
   background: #fff;
@@ -4552,7 +4548,7 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
-  line-height: 28px;
+  line-height: 150%;
 }
 
 #inputCardNumber {
@@ -4643,7 +4639,7 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
-  line-height: 36px;
+  line-height: 150%;
   margin-bottom: 24px;
 }
 
@@ -5143,13 +5139,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 32px;
 }
 
 .checkout-address-container {
-  margin: 3rem auto;
-  padding: 3rem 2rem;
+  margin: 3rem 1rem;
+  /* padding: 3rem 2rem; */
   max-width: 1200px;
   width: calc(100% - 48px);
 }
@@ -5564,12 +5560,10 @@
 }
 
 
-/* Estilos específicos para mobile - layout flex wrap */
+
 @media (max-width: 767px) {
   .wake-cart-wrapper-product-snippet {
-    margin: 0 0 1rem 0;
-    box-sizing: border-box;
-    max-width: 100%;
+    padding: 2rem .75rem;
   }
 
   .wake-cart-container {

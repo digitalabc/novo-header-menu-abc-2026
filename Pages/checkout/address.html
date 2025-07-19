@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Checkout - Endereços</title>
-        {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping/shipping-new-address", "checkout/address"]}}
+        {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping/shipping-new-address", "checkout/address", "checkout/payment"]}}
         {{ data_layer_config }}
     </head>
 
@@ -18,7 +18,8 @@
             <div class="spinner"></div>
         </div>
 
-        <div class="checkout-container checkout-address-container">
+        <div class="checkout-section-wrapper">
+            <div class="checkout-container checkout-address-container">
             <h2 class="title">
                 1.2 Endereços salvos
             </h2>
@@ -65,6 +66,7 @@
                     </svg>
                     Voltar
                 </button>
+            </div>
             </div>
         </div>
         {{ wake_checkout_scripts }}

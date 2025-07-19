@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Checkout - Resumo</title>
-  {{ asset type: "css" paths: ["output", "output_checkout"]}}
+  {{ asset type: "css" paths: ["output", "output_checkout", "checkout/payment"]}}
   {{ data_layer_config }}
 </head>
 
@@ -40,8 +40,8 @@
         </div>
       </div>
       <div id="checkout_total_snippet" class="wake-cart-finish-wrapper hide-on-mobile">
-        <a href="/checkout/shipping" class="wake-cart-finish-button">Ir para endereço</a>
-        <a href="/" class="wake-cart-continue-button">Continuar comprando</a>
+        <a href="/checkout/shipping" class="wake-cart-finish-button">AVANÇAR</a>
+        <a href="/" class="wake-cart-continue-button">ADICIONAR +</a>
       </div>
     </div>
     {{~ else ~}}

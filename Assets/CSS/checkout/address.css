@@ -31,17 +31,19 @@
   height: 16px;
 }
 
-/* Melhorias no layout dos cards de endereço */
+/* Melhorias responsivas nos cards de endereço */
 .checkout-address-item {
   display: flex;
   flex-direction: column;
   min-height: 220px;
-  /* Altura mínima para garantir consistência */
+  min-width: 280px !important;
+  max-width: 380px !important;
+  width: 100% !important;
+  flex: 1 1 300px;
 }
 
 .checkout-address-content {
   flex: 1;
-  /* Ocupa todo o espaço disponível */
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -49,7 +51,6 @@
 
 .checkout-address-buttons-container {
   margin-top: auto;
-  /* Empurra os botões para o final do card */
   padding-top: 16px;
 }
 
@@ -58,7 +59,44 @@
   gap: 12px;
 }
 
+/* Wrapper responsivo para os cards */
+.checkout-address-wrapper {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 24px !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+
 /* Responsividade */
+@media (min-width: 1200px) {
+  .checkout-address-item {
+    min-width: 320px !important;
+    max-width: 400px !important;
+    flex: 1 1 350px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .checkout-address-item {
+    min-width: 300px !important;
+    max-width: 360px !important;
+    flex: 1 1 320px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .checkout-address-item {
+    min-width: 280px !important;
+    max-width: 340px !important;
+    flex: 1 1 300px;
+  }
+  
+  .checkout-address-wrapper {
+    gap: 20px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .checkout-address-back-button-container {
     margin: 16px 0 24px 0;
@@ -99,5 +137,55 @@
   .checkout-address-buttons {
     flex-direction: column;
     gap: 10px;
+  }
+}
+
+/* Correções específicas para a página de endereços */
+.checkout-address-container {
+  margin: 0 auto 24px auto !important;
+  max-width: 1200px;
+}
+
+/* Garantir que o body tenha altura mínima e o footer fique no final */
+body.bg-checkout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper para centralizar o conteúdo */
+.checkout-section-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+}
+
+/* Remover espaço extra abaixo do footer */
+.checkout-footer-desktop {
+  margin-top: auto;
+}
+
+@media (max-width: 767px) {
+  .checkout-address-container {
+    margin: 0 auto 16px auto !important;
+    max-width: none;
+    width: calc(100% - 24px);
+  }
+
+  .checkout-section-wrapper {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .checkout-address-item {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100%;
+  }
+  
+  .checkout-address-wrapper {
+    flex-direction: column !important;
+    gap: 16px !important;
   }
 }

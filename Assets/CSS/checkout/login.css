@@ -691,7 +691,7 @@ h3:nth-of-type(2) {
 
 .checkout-footer {
   position: relative;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 .checkout-footer-desktop {
@@ -885,16 +885,7 @@ h3:nth-of-type(2) {
     display: flex;
   }
 
-  .checkout-footer-bottom .payment-methods li {
-    width: 18px;
-    height: 12px;
-  }
-
-  .checkout-footer-bottom img {
-    display: flex;
-    justify-content: center;
-    margin: 10px auto;
-  }
+}
 }
 
 .wake-autenticate-wrapper>div form div div input {

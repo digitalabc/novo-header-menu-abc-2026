@@ -31,7 +31,7 @@
   height: 16px;
 }
 
-/* Melhorias responsivas nos cards de endereço */
+
 .checkout-address-item {
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@
   gap: 12px;
 }
 
-/* Wrapper responsivo para os cards */
+
 .checkout-address-wrapper {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -68,7 +68,7 @@
   align-items: stretch !important;
 }
 
-/* Responsividade */
+
 @media (min-width: 1200px) {
   .checkout-address-item {
     min-width: 320px !important;
@@ -140,20 +140,20 @@
   }
 }
 
-/* Correções específicas para a página de endereços */
+
 .checkout-address-container {
   margin: 0 auto 24px auto !important;
   max-width: 1200px;
 }
 
-/* Garantir que o body tenha altura mínima e o footer fique no final */
+
 body.bg-checkout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Wrapper para centralizar o conteúdo */
+
 .checkout-section-wrapper {
   flex: 1;
   display: flex;
@@ -162,7 +162,7 @@ body.bg-checkout {
   padding: 3rem 1rem;
 }
 
-/* Remover espaço extra abaixo do footer */
+
 .checkout-footer-desktop {
   margin-top: auto;
 }
@@ -189,3 +189,5 @@ body.bg-checkout {
     gap: 16px !important;
   }
 }
+
+

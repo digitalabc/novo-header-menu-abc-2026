@@ -167,7 +167,6 @@ body.checkout-shipping {
   }
 }
 
-/* === CHECKOUT SHIPPING WRAPPER - Layout Simétrico === */
 main.checkout-shipping-wrapper,
 #data-render-pickup {
   display: flex;
@@ -217,7 +216,6 @@ div.shipping-address {
   width: 100%;
 }
 
-/* === TYPOGRAPHY - Melhor Hierarquia === */
 h2.shipping-address--title {
   font-size: 24px;
   font-weight: 500;
@@ -251,7 +249,6 @@ p.shipping-address--user-name {
   letter-spacing: 0.5px;
 }
 
-/* === SHIPPING ADDRESS BUTTONS - Layout Aprimorado === */
 div.shipping-address-buttons {
   display: flex;
   justify-content: space-between;
@@ -298,7 +295,6 @@ div.shipping-address-buttons {
   margin-right: 8px;
 }
 
-/* === HOVER EFFECTS - Versão Azul === */
 .shipping-address--newAddress:hover,
 .shipping-address--savedAddresses:hover {
   border-width: 3px;
@@ -313,3 +309,5 @@ div.shipping-address-buttons {
 .shipping-address--savedAddresses:active {
   transform: scale(0.98);
 }
+
+

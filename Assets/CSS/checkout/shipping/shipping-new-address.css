@@ -3,7 +3,6 @@ body {
   font-family: "Satoshi", sans-serif;
 }
 
-/* ===== FORÇA REMOÇÃO TOTAL DO AUTOFILL AZUL ===== */
 
 /* Regras gerais para TODOS os tipos de input */
 input:-webkit-autofill,
@@ -498,7 +497,6 @@ input#shipping-new-address--number--withoutNumber:checked~label button.checkout-
   transition: 0.2s ease-out;
 }
 
-/* ===== REGRAS FINAIS PARA GARANTIR REMOÇÃO TOTAL DO AUTOFILL ===== */
 
 /* Remove autofill em TODOS os navegadores */
 input:-webkit-autofill,

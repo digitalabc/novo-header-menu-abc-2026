@@ -63,7 +63,6 @@ html {
 
 .headFechamento {
   background: #fff;
-  /* background-color: #1a1a1a; Black Friday */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -96,7 +95,6 @@ html {
   margin: 0;
   max-width: 153px;
   width: 100%;
-  /* image-rendering: -webkit-optimize-contrast;
     filter: brightness(0) saturate(100%) invert(91%) sepia(6%) saturate(0%) hue-rotate(180deg) brightness(103%) contrast(90%); */
 }
 
@@ -1295,6 +1293,7 @@ h2.title-confirmacao {
   margin-top: 20px;
 }
 
-/* ::-webkit-scrollbar {
   width: 10px !important;
 } */
+
+

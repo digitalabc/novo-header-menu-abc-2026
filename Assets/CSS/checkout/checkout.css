@@ -1,13 +1,7 @@
-/* LEIA-ME */
 
-/* login.css >> Definições das páginas de LOGIN do novo Checkout */
-/* minhaconta.css >> Definições das páginas de MINHA CONTA do novo Checkout */
-/* checkout.css >> Definições das páginas de CARRINHO, FECHAMENTO E CONFIRMAÇÃO do novo Checkout */
-/* geral.css >> Definições de Cabeçalho e Rodapé */
 
-/* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
 
-/* Mensagem de aviso da nota fiscal no carrinho e no checkout */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .msg-warning-invoice {
@@ -71,7 +65,7 @@
     line-height: unset;
 }
 
-/* cor da mensagem do cupom */
+
 .fbits-cupom-msg.fbits-fechamento-cupom-sucesso {
     color: #0fa848;
 }
@@ -86,13 +80,13 @@
     }
 }
 
-/* scroll no frete do carrinho */
+
 #div-frete {
     overflow-y: scroll;
     max-height: 350px;   
 }
 
-/* abcprime bar */
+
 
 .prime_bar_wrapper.prime_sticky { 
     position: sticky;
@@ -118,16 +112,14 @@
     padding: 0;   
 }
 
-/* produto encomenda sem retira em loja temporariamente */
+
 [data-frete-item-tipo="Retirada"].produto_encomenda {
     display: none !important;
 }
 
-/* [data-frete-item-tipo="Custom"]:not(.quotes_overview) {
-    display: none;
-} */
 
-/* pde-450 */
+
+
 .warning__message__wrapper {
     display: flex;
     justify-content: center;
@@ -158,3 +150,5 @@
 .warning__message>div>p>strong {
     font-weight: 700;
 }
+
+

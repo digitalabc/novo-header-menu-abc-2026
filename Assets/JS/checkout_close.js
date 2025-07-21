@@ -444,6 +444,7 @@ const addCoupon = async () => {
       true
     );
   } else {
+    showOverlay("Cupom Adicionado", "Cupom adicionado com sucesso!", false);
     const variables = {
       checkoutId: checkoutId,
       coupon: coupon,
@@ -472,6 +473,7 @@ const removeCoupon = async () => {
   const checkoutId = client.cookie.get("carrinho-id");
 
   await client.checkout.removeCoupon();
+  showOverlay("Cupom Removido", "Cupom removido com sucesso!", false);
 
   const variables = {
     checkoutId: checkoutId,

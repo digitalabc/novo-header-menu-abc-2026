@@ -1,3 +1,7 @@
+.checkout-coupon-standalone {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .checkout-footer-desktop {
     display: flex !important;
@@ -98,12 +102,338 @@
     font-weight: 400;
     line-height: 150%;
   }
+
+  .checkout-coupon-standalone {
+    display: block;
+    margin: 20px 20px 0 20px;
+  }
+
+  .coupon-mobile-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px 16px 0px 0px;
+    border-top: 1px solid #F0F0F0;
+    background: #FFF;
+    box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    max-height: 200px;
+    overflow: hidden;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-container {
+    width: 100%;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-label {
+    color: #333;
+    font-family: 'Satoshi Variable', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    margin-bottom: 4px;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-input {
+    height: 48px;
+    padding: 0 16px;
+    border: 1.6px solid #ececec;
+    border-radius: 8px;
+    background-color: #f4f6f8;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Satoshi Variable', sans-serif;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-input:focus {
+    border: 1.6px solid #0092ff;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-input:disabled {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-button {
+    height: 48px;
+    background-color: #0092ff;
+    color: #fff;
+    border: none;
+    border-radius: 400px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Satoshi Variable', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-button:hover {
+    background-color: #30a6ff;
+  }
+
+  .checkout-coupon-standalone .checkout-coupon-button-remove {
+    background-color: #dc3545;
+  }
+
+  .checkout-coupon-standalone .checkout-coupon-button-remove:hover {
+    background-color: #c82333;
+  }
 }
 
 @media (min-width: 768px) {
   .checkout-footer-desktop {
     display: flex !important;
   }
+
+  .checkout-coupon-standalone {
+    display: block;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+
+  .coupon-mobile-container {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #F0F0F0;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 16px;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-label {
+    color: #333;
+    font-family: 'Satoshi Variable', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    margin-bottom: 8px;
+    white-space: nowrap;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-input {
+    flex: 1;
+    height: 48px;
+    padding: 0 16px;
+    border: 1.6px solid #ececec;
+    border-radius: 8px;
+    background-color: #f4f6f8;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Satoshi Variable', sans-serif;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-button {
+    height: 48px;
+    padding: 0 32px;
+    background-color: #0092ff;
+    color: #fff;
+    border: none;
+    border-radius: 400px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Satoshi Variable', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
 }
 
+/* Estrutura do cupom e menu direito */
+.mobile-only {
+  display: block;
+}
 
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* Layout para desktop: cupom + menu direito em coluna */
+@media (min-width: 768px) {
+  .checkout-sidebar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .checkout-coupon-sidebar {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #F0F0F0;
+  }
+
+  .checkout-coupon-sidebar .coupon-container {
+    width: 100%;
+  }
+
+  .checkout-coupon-sidebar .wake-checkout-coupon-container {
+    width: 100%;
+  }
+
+  .checkout-coupon-sidebar .wake-checkout-coupon-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .checkout-coupon-sidebar .wake-checkout-coupon-label {
+    color: #333;
+    font-family: 'Satoshi Variable', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    margin-bottom: 8px;
+  }
+
+  .checkout-coupon-sidebar .wake-checkout-coupon-input {
+    height: 48px;
+    padding: 0 16px;
+    border: 1.6px solid #ececec;
+    border-radius: 8px;
+    background-color: #f4f6f8;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Satoshi Variable', sans-serif;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .checkout-coupon-sidebar .wake-checkout-coupon-input:focus {
+    border: 1.6px solid #0092ff;
+  }
+
+  .checkout-coupon-sidebar .wake-checkout-coupon-button {
+    height: 48px;
+    background-color: #0092ff;
+    color: #fff;
+    border: none;
+    border-radius: 400px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Satoshi Variable', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .checkout-coupon-sidebar .wake-checkout-coupon-button:hover {
+    background-color: #30a6ff;
+  }
+}
+
+/* Layout para mobile: cupom independente */
+@media (max-width: 767px) {
+  .checkout-coupon-standalone {
+    margin: 20px 20px 0 20px;
+  }
+
+  .checkout-coupon-standalone .coupon-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px 16px 0px 0px;
+    border-top: 1px solid #F0F0F0;
+    background: #FFF;
+    box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    max-height: 200px;
+    overflow: hidden;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-container {
+    width: 100%;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-label {
+    color: #333;
+    font-family: 'Satoshi Variable', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    margin-bottom: 4px;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-input {
+    height: 56px;
+    padding: 0 16px;
+    border: 1.6px solid #ececec;
+    border-radius: 8px;
+    background-color: #f4f6f8;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Satoshi Variable', sans-serif;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-input:focus {
+    border: 1.6px solid #0092ff;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-button {
+    height: 48px;
+    background-color: #0092ff;
+    color: #fff;
+    border: none;
+    border-radius: 400px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Satoshi Variable', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .checkout-coupon-standalone .wake-checkout-coupon-button:hover {
+    background-color: #30a6ff;
+  }
+}

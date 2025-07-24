@@ -3928,6 +3928,25 @@
       ]
     },
     {
+      "name": "Presidente Prudente",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Vila Euclides",
+          "adress": "Av. Cel. José Soares Marcondes, 2897 - Vila Euclides, Pres. Prudente - SP, 19013-050",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/presidente-prudente/vila-euclides",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Promissão",
       "state": "São Paulo",
       "stores": [

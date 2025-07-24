@@ -293,6 +293,7 @@ const estados = [
 			"Pindamonhangaba",
 			"Piracaia",
 			"Praia Grande",
+			"Presidente Prudente",
 			"Promissão",
 			"Ribeirão Preto",
 			"Santa Isabel",

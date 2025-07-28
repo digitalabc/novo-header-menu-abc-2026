@@ -34,6 +34,7 @@ const estados = [
 			"Caratinga",
 			"Cataguases",
 			"Caxambú",
+			"Conceição do Rio Verde",
 			"Congonhas", 
 			"Conselheiro Lafaiete",
 			"Contagem",
@@ -121,6 +122,7 @@ const estados = [
 			"Sacramento", 
 			"Salinas",
 			"Santos Dumont",
+			"São Domingos das Dores",
 			"São Francisco", 
 			"São Geraldo",
 			"São Gonçalo do Rio Abaixo",
@@ -191,6 +193,7 @@ const estados = [
 			"Brumado",
 			"Eunápolis",
 			"Guanambi",
+			"Iguaí",
 			"Porto Seguro",
 			"Teixeira de Freitas",
 			"Vitória da Conquista"
@@ -203,6 +206,7 @@ const estados = [
 		"cidades": [
 			"Bonito",
 			"Campo Grande",
+			"Nova Andradina", 
 			"São Gabriel do Oeste",
 			"Três Lagoas"
 		]
@@ -358,6 +362,7 @@ const estados = [
 		"coluna": "4",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Cuiabá",
 			"Paranatinga"
 			
 		]

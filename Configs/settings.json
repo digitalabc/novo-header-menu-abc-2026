@@ -5677,6 +5677,25 @@
       ]
     },
     {
+      "name": "Iguaí",
+      "state": "Bahia",
+      "stores": [
+        {
+          "name": "Rodagem",
+          "adress": "BA-262, s/n - Rodagem, Iguaí - BA, 45280-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/iguai/rodagem",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Porto Seguro",
       "state": "Bahia",
       "stores": [
@@ -6123,6 +6142,25 @@
           "thursday": "8:30 às 18:00",
           "friday": "8:30 às 18:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Nova Andradina",
+      "state": "Mato Grosso do Sul",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. São José, 1364 - Centro, Nova Andradina - MS, 79750-081",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/nova-andradina/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

@@ -6039,6 +6039,44 @@
       ]
     },
     {
+      "name": "Cuiabá",
+      "state": "Mato Grosso",
+      "stores": [
+        {
+          "name": "Santa Marta",
+          "adress": "Av. Miguel Sutil, 6300 - Santa Marta, Cuiabá - MT, 78043-695",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso/cuiaba/santa-marta",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Paranatinga",
+      "state": "Mato Grosso",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Brasil, 2110 - Centro, Paranatinga - MT, 78870-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso/paranatinga/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Bonito",
       "state": "Mato Grosso do Sul",
       "stores": [

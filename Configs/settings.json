@@ -241,14 +241,14 @@
         {
           "name": "São Pedro",
           "adress": "Av. Olindo de Miranda, 1273 - São Pedro, Almenara - MG, 39900-000",
-          "phone": "",
+          "phone": "(33) 99872-2126",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/almenara/sao-pedro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -1086,8 +1086,8 @@
         {
           "name": "Centro",
           "adress": "R. Cel João Viêira, 177 - Centro, Gonçalves - MG, 37680-000",
-          "phone": "",
-          "details_link": "",
+          "phone": "(35)3654-1266",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/goncalves/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -2679,14 +2679,14 @@
         {
           "name": "Fonte do Mato",
           "adress": "Av. Central, 415 - Loja 01 - Fonte do Mato, São Gonçalo do Rio Abaixo - MG, 35935-000",
-          "phone": "",
+          "phone": "(31) 3380-4737",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-goncalo-do-rio-abaixo/fonte-do-mato",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3072,14 +3072,14 @@
         {
           "name": "Liberdade",
           "adress": "Praça do Cruzeiro, 194 - Liberdade, Veredinha - MG, 39663-000",
-          "phone": "",
+          "phone": "(38) 99981-6287",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/veredinha/liberdade",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 17:30",
+          "tuesday": "7:00 às 17:30",
+          "wednesday": "7:00 às 17:30",
+          "thursday": "7:00 às 17:30",
+          "friday": "7:00 às 17:30",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3091,14 +3091,14 @@
         {
           "name": "Centro",
           "adress": "R. João Pinto da Silva, 32 - Centro, Vermelho Novo - MG, 35359-000",
-          "phone": "",
+          "phone": "(33) 99804-2279",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/vermelho-novo/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 19:00",
+          "tuesday": "7:00 às 19:00",
+          "wednesday": "7:00 às 19:00",
+          "thursday": "7:00 às 19:00",
+          "friday": "7:00 às 19:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -5645,14 +5645,14 @@
         {
           "name": "Vicente Pires",
           "adress": "Rua Rua 5 Chácara 231, 29 - Loja A, Setor Habitacional Vicente Pires, Brasília - DF, 72006-120",
-          "phone": "",
-          "details_link": "",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 13:00",
+          "phone": "(61) 99942-7604",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/distrito-federal/brasilia/vicente-pires",
+          "monday": "8:30 às 18:30",
+          "tuesday": "8:30 às 18:30",
+          "wednesday": "8:30 às 18:30",
+          "thursday": "8:30 às 18:30",
+          "friday": "8:30 às 18:30",
+          "saturday": "8:30 às 13:30",
           "sunday": "Fechado"
         }
       ]

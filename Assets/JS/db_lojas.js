@@ -293,6 +293,7 @@ const estados = [
 			"Mogi das Cruzes",
 			"Mogi Guaçu",
 			"Mogi Mirim",
+			"Nova Granada",
 			"Paulínia",
 			"Pindamonhangaba",
 			"Piracaia",

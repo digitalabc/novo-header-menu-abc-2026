@@ -1,30 +1,39 @@
 async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
-    const token = client.cookie.get("sf_customer_access_token");
+  const token = client.cookie.get("sf_customer_access_token");
 
-    const response = await client.snippet.detailed("payment_selected_snippet.html", "payment_select_mutation.graphql",
+  const response = await client.snippet.detailed(
+    "payment_selected_snippet.html",
+    "payment_select_mutation.graphql",
     {
-        checkoutId: checkoutId,
-        paymentMethodId: paymentId,
-        customerAccessToken: token,
-        orderId
-    });
-
-    if(response.queryResponse.errors) {
-        return { errors: response.queryResponse.errors };
+      checkoutId: checkoutId,
+      paymentMethodId: paymentId,
+      customerAccessToken: token,
+      orderId,
     }
+  );
 
-    Fbits.Gateway.ResetPaymentSelection();
+  if (response.queryResponse.errors) {
+    return { errors: response.queryResponse.errors };
+  }
 
-    const div = document.querySelector(`div[data-payment-wrapper="${paymentId}"]`);
-    if(div && response) {
-        div.innerHTML = response.html;
+  Fbits.Gateway.ResetPaymentSelection();
 
-        if(! response.html.includes('paymentCartao')) {
-            document.querySelector("#finish-order .payment-selected-method").style.maxHeight = ''
-            const paymentLabel = document.getElementById(`paymentOption-${paymentId}`).nextElementSibling
-            const paymentImage = paymentLabel.querySelector('img')
-            const paymentDetails = paymentLabel.querySelector('.payment-details')
-            const htmlPaymentSelected = `
+  const div = document.querySelector(
+    `div[data-payment-wrapper="${paymentId}"]`
+  );
+  if (div && response) {
+    div.innerHTML = response.html;
+
+    if (!response.html.includes("paymentCartao")) {
+      document.querySelector(
+        "#finish-order .payment-selected-method"
+      ).style.maxHeight = "";
+      const paymentLabel = document.getElementById(
+        `paymentOption-${paymentId}`
+      ).nextElementSibling;
+      const paymentImage = paymentLabel.querySelector("img");
+      const paymentDetails = paymentLabel.querySelector(".payment-details");
+      const htmlPaymentSelected = `
                 <div class="paymentSelectedWrapper">
                     <img src="${paymentImage.src}" width="40" alt="Método de Pagamento">
                     <div class="payment-details">${paymentDetails.innerHTML}</div>
@@ -35,70 +44,94 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
                         </svg>
                     </button>
                 </div>
-            `
-    
-            document.getElementById('paymentMethodSelected').innerHTML = htmlPaymentSelected
-    
-            
-            const respRight = await client.snippet.render("payment_right_menu_snippet.html", "SnippetQueries/wake_checkout_close_summary.graphql",
-                {
-                    checkoutId: checkoutId
-                });
-        
-            setInnerHtmlById(respRight, "data-render-right-menu");
-    
-            document.querySelector(".checkout-footer").style.marginTop = "320px" 
-            
-            document.querySelector(".checkout-footer-mobile .checkout-whats").style.display = "none"
-            document.querySelector(".checkout-footer-mobile .footer_mobile_bottom").style.display = "none"
-    
-            document.querySelector(".checkout-footer-mobile").innerHTML += respRight
-        } else {
-            document.getElementById('data-render-right-menu').style.display = "none"
-            document.getElementById('finish-order').style.maxWidth = "1200px"
-            document.querySelector("#finish-order .payment-selected-method").style.maxHeight = 'none'
+            `;
+
+      document.getElementById("paymentMethodSelected").innerHTML =
+        htmlPaymentSelected;
+
+      const respRight = await client.snippet.render(
+        "payment_right_menu_snippet.html",
+        "SnippetQueries/wake_checkout_close_summary.graphql",
+        {
+          checkoutId: checkoutId,
         }
+      );
+
+      setInnerHtmlById(respRight, "data-render-right-menu");
+
+      document.querySelector(".checkout-footer").style.marginTop = "320px";
+
+      document.querySelector(
+        ".checkout-footer-mobile .checkout-whats"
+      ).style.display = "none";
+      document.querySelector(
+        ".checkout-footer-mobile .footer_mobile_bottom"
+      ).style.display = "none";
+
+      document.querySelector(".checkout-footer-mobile").innerHTML += respRight;
+    } else {
+      document.getElementById("data-render-right-menu").style.display = "none";
+      document.getElementById("finish-order").style.maxWidth = "1200px";
+      document.querySelector(
+        "#finish-order .payment-selected-method"
+      ).style.maxHeight = "none";
     }
+  }
 
-    const scripts = response.queryResponse.data?.result?.selectedPaymentMethod?.scripts;
+  const scripts =
+    response.queryResponse.data?.result?.selectedPaymentMethod?.scripts;
 
-    if (scripts) {
-        Promise.all(scripts.map(script => loadScript(script)))
-        .then(() => {
-            console.log("Todos os scripts foram carregados com sucesso.");
-            Fbits.Gateway.ExecuteLoadedCallbacks();
+  if (scripts) {
+    Promise.all(
+      scripts.map((script) =>
+        loadScript(script, {
+          v: window.store?.last_modified || Date.now(),
+          pagamento: paymentId,
+          isStorefront: true,
         })
-        .catch(error => {
-            console.error("Erro ao carregar os scripts:", error);
-        });
-            
+      )
+    )
+      .then(() => {
+        console.log("Todos os scripts foram carregados com sucesso.");
+        Fbits.Gateway.ExecuteLoadedCallbacks();
         InitializeJpCardLibrary();
-    }
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar os scripts:", error);
+      });
+  }
 
-    const clearSaleAppID = $("input[name='clearsale-appid']").val();
-    if(clearSaleAppID) {
-        NewCarregaClearSaleFP(clearSaleAppID);
-    }
+  const clearSaleAppID = $("input[name='clearsale-appid']").val();
+  if (clearSaleAppID) {
+    NewCarregaClearSaleFP(clearSaleAppID);
+  }
 
-    return { success: true }
+  return { success: true };
 }
 
 function maskNumber(number) {
-    const numStr = number.toString();
-    const lastFour = numStr.replace(/\D/g, '').slice(-4);  // Últimos 4 números
-    return numStr.replace(/\d(?=\d{4})/g, '*').replace(/\d/g, '*').slice(0, -4) + lastFour;
+  const numStr = number.toString();
+  const lastFour = numStr.replace(/\D/g, "").slice(-4);
+  return (
+    numStr
+      .replace(/\d(?=\d{4})/g, "*")
+      .replace(/\d/g, "*")
+      .slice(0, -4) + lastFour
+  );
 }
 
 async function nextCardScreen(paymentId) {
-    if($("[name='cpf']").length > 1) {
-        $("[name='cpf']").not("#cardDocument").remove();
-    }
+  if ($("[name='cpf']").length > 1) {
+    $("[name='cpf']").not("#cardDocument").remove();
+  }
 
-    const checkoutId = client.cookie.get("carrinho-id");
-    const paymentLabel = document.getElementById(`paymentOption-${paymentId}`).nextElementSibling
-    const paymentImage = paymentLabel.querySelector('img')
-    const paymentDetails = paymentLabel.querySelector('.payment-details')
-    const htmlPaymentSelected = `
+  const checkoutId = client.cookie.get("carrinho-id");
+  const paymentLabel = document.getElementById(
+    `paymentOption-${paymentId}`
+  ).nextElementSibling;
+  const paymentImage = paymentLabel.querySelector("img");
+  const paymentDetails = paymentLabel.querySelector(".payment-details");
+  const htmlPaymentSelected = `
         <div class="paymentSelectedWrapper">
             <img src="${paymentImage.src}" width="40" alt="Método de Pagamento">
             <div class="payment-details">${paymentDetails.innerHTML}</div>
@@ -109,264 +142,299 @@ async function nextCardScreen(paymentId) {
                 </svg>
             </button>
         </div>
-    `
+    `;
 
-    document.getElementById('card-finish').classList.remove('hidden')
-    document.querySelector('.cardWrapper').classList.add('hidden')
-    document.getElementById('paymentMethodSelected').innerHTML = htmlPaymentSelected
+  document.getElementById("card-finish").classList.remove("hidden");
+  document.querySelector(".cardWrapper").classList.add("hidden");
+  document.getElementById("paymentMethodSelected").innerHTML =
+    htmlPaymentSelected;
 
-    const respRight = await client.snippet.render("payment_right_menu_snippet.html", "SnippetQueries/wake_checkout_close_summary.graphql",
-        {
-            checkoutId: checkoutId
-        });
+  const respRight = await client.snippet.render(
+    "payment_right_menu_snippet.html",
+    "SnippetQueries/wake_checkout_close_summary.graphql",
+    {
+      checkoutId: checkoutId,
+    }
+  );
 
-    setInnerHtmlById(respRight, "data-render-right-menu");
+  setInnerHtmlById(respRight, "data-render-right-menu");
 
-    document.getElementById('data-render-right-menu').style.display = ""
+  document.getElementById("data-render-right-menu").style.display = "";
 
-    document.getElementById('finish-order').style.maxWidth = ""
-    document.querySelector("#finish-order .payment-selected-method").style.maxHeight = ''
+  document.getElementById("finish-order").style.maxWidth = "";
+  document.querySelector(
+    "#finish-order .payment-selected-method"
+  ).style.maxHeight = "";
 
-    document.querySelector(".checkout-footer").style.marginTop = "320px" 
+  document.querySelector(".checkout-footer").style.marginTop = "320px";
 
-    document.querySelector(".checkout-footer-mobile .checkout-whats").style.display = "none"
-    document.querySelector(".checkout-footer-mobile .footer_mobile_bottom").style.display = "none"
+  document.querySelector(
+    ".checkout-footer-mobile .checkout-whats"
+  ).style.display = "none";
+  document.querySelector(
+    ".checkout-footer-mobile .footer_mobile_bottom"
+  ).style.display = "none";
 
-    document.querySelector(".checkout-footer-mobile").innerHTML += respRight
-    
-    const cardNumber = maskNumber(document.querySelector(".fake-form input[name=number]").value)
+  document.querySelector(".checkout-footer-mobile").innerHTML += respRight;
 
-    document.querySelector('#paymentMethodSelected .payment-details span').innerHTML = cardNumber
+  const cardNumber = maskNumber(
+    document.querySelector(".fake-form input[name=number]").value
+  );
+
+  document.querySelector(
+    "#paymentMethodSelected .payment-details span"
+  ).innerHTML = cardNumber;
 }
 
 function NewCarregaClearSaleFP(appId) {
-    // Verifica se o script da ClearSale já foi carregado para evitar duplicidade.
-    if(typeof window.csdp !== 'undefined') {
-        return;
+  if (typeof window.csdp !== "undefined") {
+    return;
+  }
+  $("<input>")
+    .attr({
+      type: "hidden",
+      id: "fingerPrint_clearSale",
+      name: "fingerPrint_clearSale",
+    })
+    .appendTo("[data-gateway-cartao]");
+
+  (function (a, b, c, d, e, f, g) {
+    a["CsdpObject"] = e;
+    (a[e] =
+      a[e] ||
+      function () {
+        (a[e].q = a[e].q || []).push(arguments);
+      }),
+      (a[e].l = 1 * new Date());
+    (f = b.createElement(c)), (g = b.getElementsByTagName(c)[0]);
+    f.async = 1;
+    f.src = d;
+    g.parentNode.insertBefore(f, g);
+  })(window, document, "script", "//device.clearsale.com.br/p/fp.js", "csdp");
+
+  $(document).ready(function () {
+    if (typeof csdp === "function") {
+      csdp("app", appId);
+      csdp("outputsessionid", "fingerPrint_clearSale");
+    } else {
+      console.error("csdp function is not defined.");
     }
-    $('<input>').attr({
-        type: 'hidden',
-        id: 'fingerPrint_clearSale',
-        name: 'fingerPrint_clearSale'
-    }).appendTo('[data-gateway-cartao]');
-
-    (function (a, b, c, d, e, f, g) {
-        a['CsdpObject'] = e; a[e] = a[e] || function () {
-            (a[e].q = a[e].q || []).push(arguments);
-        }, a[e].l = 1 * new Date(); f = b.createElement(c),
-        g = b.getElementsByTagName(c)[0]; f.async = 1; f.src = d;
-        g.parentNode.insertBefore(f, g);
-    })(window, document, 'script', '//device.clearsale.com.br/p/fp.js', 'csdp');
-
-    $(document).ready(function() {
-        if(typeof csdp === 'function') {
-            csdp('app', appId);
-            csdp('outputsessionid', 'fingerPrint_clearSale');
-        } else {
-            console.error("csdp function is not defined.");
-        }
-    });
+  });
 }
-
 
 const updateRightMenuPayment = async () => {
-    const checkoutId = client.cookie.get("carrinho-id");
-    const respRight = await client.snippet.render("payment_right_menu_snippet.html", "SnippetQueries/wake_checkout_close_summary.graphql",
-        {
-            checkoutId: checkoutId
-        });
+  const checkoutId = client.cookie.get("carrinho-id");
+  const respRight = await client.snippet.render(
+    "payment_right_menu_snippet.html",
+    "SnippetQueries/wake_checkout_close_summary.graphql",
+    {
+      checkoutId: checkoutId,
+    }
+  );
 
-    setInnerHtmlById(respRight, "data-render-right-menu");
-}
-
+  setInnerHtmlById(respRight, "data-render-right-menu");
+};
 
 function InitializeJpCardLibrary() {
-    if (!document.querySelector('.card-wrapper')) {
-        console.log('.card-wrapper não encontrado');
-        return;
-    }
+  if (!document.querySelector(".card-wrapper")) {
+    console.log(".card-wrapper não encontrado");
+    return;
+  }
 
-    Fbits.Gateway.Framework._card = new Fbits.Gateway.Framework.Identificado({
-        form: '.fake-form',
-        container: '.card-wrapper',
-        formatting: true,
-        messages: {
-            validDate: 'expiração\ndata', // optional - default 'valid\nthru'
-            monthYear: 'mm/yyyy', // optional - default 'month/year'
-        },
-        placeholders: {
-            number: 'xxxx xxxx xxxx xxxx',
-            name: 'Nome do Titular',
-            expiry: '00/00',
-            cvc: 'xxx'
-        },
-        masks: {
-            cardNumber: '•' // optional - mask card number
-        },
-
-        // if true, will log helpful messages for setting up Card
-        // debug: false // optional - default false
-    });
+  Fbits.Gateway.Framework._card = new Fbits.Gateway.Framework.Identificado({
+    form: ".fake-form",
+    container: ".card-wrapper",
+    formatting: true,
+    messages: {
+      validDate: "expiração\ndata",
+      monthYear: "mm/yyyy",
+    },
+    placeholders: {
+      number: "xxxx xxxx xxxx xxxx",
+      name: "Nome do Titular",
+      expiry: "00/00",
+      cvc: "xxx",
+    },
+    masks: {
+      cardNumber: "•",
+    },
+  });
 }
 
 function expiryDateMask(input) {
-    let value = input.value.replace(/\D/g, '');
+  let value = input.value.replace(/\D/g, "");
 
-    if (value.length > 4) value = value.slice(0, 4);
+  if (value.length > 4) value = value.slice(0, 4);
 
-    if (value.length >= 2) {
-        value = value.replace(/^(\d{2})/, '$1/');
-    }
+  if (value.length >= 2) {
+    value = value.replace(/^(\d{2})/, "$1/");
+  }
 
-    input.value = value;
+  input.value = value;
 }
 
-/**
- * Pagamento selecionado.
- * Associa forma de pagamento com carrinho.
- *
- * @param {Boolean} cart - Opção para usar formulario de novo cartao de credito
- * @param {String} paymentId
- */
 const selectPayment = async (paymentId) => {
-    const loading = document.getElementById('payment-loading');
-    loading.classList.remove('hidden');
-    loading.classList.add('flex');
+  const loading = document.getElementById("payment-loading");
+  loading.classList.remove("hidden");
+  loading.classList.add("flex");
 
-    const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
-    wrappers.forEach((element) => element.innerHTML = '');
+  const wrappers = document.querySelectorAll("div[data-payment-wrapper]");
+  wrappers.forEach((element) => (element.innerHTML = ""));
 
-    const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = client.cookie.get("carrinho-id");
 
-    const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
+  const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
 
-    const finishOrder = document.getElementById('finish-order')
+  if (result?.errors) {
+    showOverlay(
+      "Erro ao selecionar o pagamento",
+      result.errors[0].message,
+      true
+    );
+    loading.classList.add("hidden");
+    loading.classList.remove("flex");
+    return;
+  }
 
-    finishOrder.style.display = 'flex';
+  const finishOrder = document.getElementById("finish-order");
 
-    document.getElementById('checkout-payment-options').style.display = 'none';
+  finishOrder.style.display = "flex";
 
-    await renderSummary();
+  document.getElementById("checkout-payment-options").style.display = "none";
 
-    if(result.errors) {
-        showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
-        return;
-    }
-
-    // document.getElementById('btn-sumary-close').disabled = false;
-    loading.classList.add('hidden');
-    loading.classList.remove('flex');
-}
-
+  await renderSummary();
+  loading.classList.add("hidden");
+  loading.classList.remove("flex");
+};
 
 async function renderSummary() {
-    const checkoutId = client.cookie.get("carrinho-id");
-    const response = await client.snippet.render("wake_checkout_close_summary_snippet.html", "SnippetQueries/wake_checkout_close_summary.graphql",
-        {
-            checkoutId: checkoutId
-        });
+  const checkoutId = client.cookie.get("carrinho-id");
+  const response = await client.snippet.render(
+    "wake_checkout_close_summary_snippet.html",
+    "SnippetQueries/wake_checkout_close_summary.graphql",
+    {
+      checkoutId: checkoutId,
+    }
+  );
 
-    setInnerHtmlById(response, "data_summary");
+  setInnerHtmlById(response, "data_summary");
 }
 
 async function backPaymentStep() {
-    Fbits.Gateway.ResetPaymentSelection();
-    const checkoutId = client.cookie.get("carrinho-id");
-    const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
-    wrappers.forEach((element) => element.innerHTML = '');
+  Fbits.Gateway.ResetPaymentSelection();
+  const checkoutId = client.cookie.get("carrinho-id");
+  const wrappers = document.querySelectorAll("div[data-payment-wrapper]");
+  wrappers.forEach((element) => (element.innerHTML = ""));
 
-    document.getElementById('finish-order').style.display = 'none';
+  document.getElementById("finish-order").style.display = "none";
 
-    document.getElementById('checkout-payment-options').style.display = 'flex';
+  document.getElementById("checkout-payment-options").style.display = "flex";
 
-    const respRight = await client.snippet.render("checkout_right_menu_snippet.html", "SnippetQueries/wake_checkout_close_summary.graphql",
-        {
-            checkoutId: checkoutId
-        });
+  const respRight = await client.snippet.render(
+    "checkout_right_menu_snippet.html",
+    "SnippetQueries/wake_checkout_close_summary.graphql",
+    {
+      checkoutId: checkoutId,
+    }
+  );
 
-    setInnerHtmlById(respRight, "data-render-right-menu");
-    document.getElementById('data-render-right-menu').style.display = ""
+  setInnerHtmlById(respRight, "data-render-right-menu");
+  document.getElementById("data-render-right-menu").style.display = "";
 
-    document.querySelector(".checkout-footer").style.marginTop = "" 
+  document.querySelector(".checkout-footer").style.marginTop = "";
 
-    document.querySelector(".checkout-footer-mobile .checkout-right-menu").remove()
-    document.querySelector(".checkout-footer-mobile #finish-loading").remove()
-    
-    document.querySelector(".checkout-footer-mobile .checkout-whats").style.display = ""
-    document.querySelector(".checkout-footer-mobile .footer_mobile_bottom").style.display = ""
-    document.getElementById('finish-order').style.maxWidth = ""
+  document
+    .querySelector(".checkout-footer-mobile .checkout-right-menu")
+    .remove();
+  document.querySelector(".checkout-footer-mobile #finish-loading").remove();
 
-    document.querySelector("#finish-order .payment-selected-method").style.maxHeight = ''
+  document.querySelector(
+    ".checkout-footer-mobile .checkout-whats"
+  ).style.display = "";
+  document.querySelector(
+    ".checkout-footer-mobile .footer_mobile_bottom"
+  ).style.display = "";
+  document.getElementById("finish-order").style.maxWidth = "";
+
+  document.querySelector(
+    "#finish-order .payment-selected-method"
+  ).style.maxHeight = "";
 }
 
 function formCpfMask(input) {
-    let value = input.value.replace(/\D/g, "");
+  let value = input.value.replace(/\D/g, "");
 
-    if (value.length > 11) {
-        value = value.slice(0, 11);
-    }
+  if (value.length > 11) {
+    value = value.slice(0, 11);
+  }
 
-    input.value = value
-        .replace(/^(\d{3})(\d)/, "$1.$2")
-        .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
-        .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
+  input.value = value
+    .replace(/^(\d{3})(\d)/, "$1.$2")
+    .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+    .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
 }
 
-function formComplete (form) {
-    let button = document.getElementById("finish-card-form-button");
+function formComplete(form) {
+  let button = document.getElementById("finish-card-form-button");
 
-    let allFilled = [...form.elements]
-        .filter(el => el.hasAttribute("required"))
-        .every(el => el.value.trim() !== "");
+  let allFilled = [...form.elements]
+    .filter((el) => el.hasAttribute("required"))
+    .every((el) => el.value.trim() !== "");
 
-    let cpfValid = Fbits.Util.ValidaCPF(document.querySelector('.fake-form input[name=cpf]').value.trim());
+  let cpfValid = Fbits.Util.ValidaCPF(
+    document.querySelector(".fake-form input[name=cpf]").value.trim()
+  );
 
-    button.disabled = !allFilled || !cpfValid;
+  button.disabled = !allFilled || !cpfValid;
 }
 
 function validateCpf(input) {
-    let cpfValid = Fbits.Util.ValidaCPF(input.value.replace(/\D/g, ""));
+  let cpfValid = Fbits.Util.ValidaCPF(input.value.replace(/\D/g, ""));
 
-    if (!cpfValid) {
-        input.classList.add("invalid");
-    } else {
-        input.classList.remove("invalid");
-    }
+  if (!cpfValid) {
+    input.classList.add("invalid");
+  } else {
+    input.classList.remove("invalid");
+  }
 }
 
 function cardType(input) {
-    document.getElementById('cloned-card-flag')?.remove()
-    document.querySelectorAll('.jp-card-front .jp-card-logo').forEach(el => {
-        el.style.opacity = "";
-    });
+  document.getElementById("cloned-card-flag")?.remove();
+  document.querySelectorAll(".jp-card-front .jp-card-logo").forEach((el) => {
+    el.style.opacity = "";
+  });
 
-    const cardType = Payment.fns.cardType(input.value)
+  const cardType = Payment.fns.cardType(input.value);
 
-    const cardFlag = document.querySelector(`.jp-card-front .jp-card-${cardType}`)
-    
-    if(cardFlag) {
-        cardFlag.style.opacity = 1
-        const clonedFlag = cardFlag.cloneNode(true);
-        clonedFlag.id = 'cloned-card-flag';
-        document.getElementById('inputCardNumber').appendChild(clonedFlag)
-    }
+  const cardFlag = document.querySelector(
+    `.jp-card-front .jp-card-${cardType}`
+  );
+
+  if (cardFlag) {
+    cardFlag.style.opacity = 1;
+    const clonedFlag = cardFlag.cloneNode(true);
+    clonedFlag.id = "cloned-card-flag";
+    document.getElementById("inputCardNumber").appendChild(clonedFlag);
+  }
 }
 
 function updateExpiryValue() {
-    const expiryInputValue = document.querySelector('input[name="expiryDate"]').value;
+  const expiryInputValue = document.querySelector(
+    'input[name="expiryDate"]'
+  ).value;
 
-    const expiryInput = document.querySelector('input[name="expiry"]');
-    const monthInput = document.querySelector('input[name="month"]');
-    const yearInput = document.querySelector('input[name="year"]');
+  const expiryInput = document.querySelector('input[name="expiry"]');
+  const monthInput = document.querySelector('input[name="month"]');
+  const yearInput = document.querySelector('input[name="year"]');
 
-    const newDate = expiryInputValue.replace(/\/(\d{2})$/, '/20$1');
-    const [ newMonth, newYear ] = newDate.split('/')
+  const newDate = expiryInputValue.replace(/\/(\d{2})$/, "/20$1");
+  const [newMonth, newYear] = newDate.split("/");
 
-    monthInput.value= newMonth
-    yearInput.value = newYear
-    expiryInput.value = newDate
+  monthInput.value = newMonth;
+  yearInput.value = newYear;
+  expiryInput.value = newDate;
 
-    yearInput.dispatchEvent(new Event('change'));
-    monthInput.dispatchEvent(new Event('change'));
-    expiryInput.dispatchEvent(new Event('change'));
+  yearInput.dispatchEvent(new Event("change"));
+  monthInput.dispatchEvent(new Event("change"));
+  expiryInput.dispatchEvent(new Event("change"));
 }

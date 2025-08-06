@@ -227,11 +227,11 @@ h2.shipping-address--title {
 
 p.shipping-address--selected-address {
   font-size: 14px;
-  font-weight: 500;
-  color: #333;
-  line-height: 24px;
+  font-weight: 400;
+  color: #9d9d9d;
+  line-height: 150%;
   font-family: "Satoshi", sans-serif;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   text-transform: uppercase;
 }
 
@@ -309,5 +309,3 @@ div.shipping-address-buttons {
 .shipping-address--savedAddresses:active {
   transform: scale(0.98);
 }
-
-

@@ -4663,6 +4663,148 @@
   margin-bottom: 1rem;
 }
 
+.wake-payment-data-options:not(.hidden) {
+  display: block !important;
+  visibility: visible !important;
+}
+
+#payment-container {
+  display: block !important;
+  visibility: visible !important;
+}
+
+#payment-container span:not(.hidden) {
+  display: inline !important;
+  visibility: visible !important;
+}
+
+#paymentCartao {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  visibility: visible !important;
+}
+
+#paymentCartao .fake-form {
+  display: flex !important;
+  visibility: visible !important;
+}
+
+#paymentCartao .forminline {
+  display: flex !important;
+  visibility: visible !important;
+}
+
+#paymentCartao .forminline input,
+#paymentCartao .forminline select,
+#paymentCartao .forminline label {
+  display: block !important;
+  visibility: visible !important;
+}
+
+#paymentCartao .forminline {
+  flex-direction: column !important;
+}
+
+#paymentCartao .formCol {
+  display: grid !important;
+  grid-template-columns: 1fr 120px !important;
+  gap: 16px !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline,
+#payment-container [class*="gateway"] .forminline,
+#payment-container div[class*="linha"] .forminline {
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 20px !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline label,
+#payment-container [class*="gateway"] .forminline label,
+#payment-container div[class*="linha"] .forminline label {
+  color: #333 !important;
+  font-family: "Satoshi", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 150% !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline input,
+#payment-container [class*="gateway"] .forminline input,
+#payment-container div[class*="linha"] .forminline input,
+#payment-container [class*="fbits-gateway"] .forminline select,
+#payment-container [class*="gateway"] .forminline select,
+#payment-container div[class*="linha"] .forminline select {
+  height: 52px !important;
+  background-color: #f4f6f8 !important;
+  border: 1.6px solid #ececec !important;
+  border-radius: 8px !important;
+  padding: 0 16px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #333 !important;
+  line-height: 150% !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  font-family: "Satoshi", sans-serif !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline input:hover,
+#payment-container [class*="gateway"] .forminline input:hover,
+#payment-container div[class*="linha"] .forminline input:hover,
+#payment-container [class*="fbits-gateway"] .forminline select:hover,
+#payment-container [class*="gateway"] .forminline select:hover,
+#payment-container div[class*="linha"] .forminline select:hover {
+  border-color: #d0deee !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline input:focus,
+#payment-container [class*="gateway"] .forminline input:focus,
+#payment-container div[class*="linha"] .forminline input:focus,
+#payment-container [class*="fbits-gateway"] .forminline select:focus,
+#payment-container [class*="gateway"] .forminline select:focus,
+#payment-container div[class*="linha"] .forminline select:focus {
+  border-color: #0092ff !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 146, 255, 0.1) !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline input::placeholder,
+#payment-container [class*="gateway"] .forminline input::placeholder,
+#payment-container div[class*="linha"] .forminline input::placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+#payment-container [class*="fbits-gateway"] .formCol,
+#payment-container [class*="gateway"] .formCol,
+#payment-container div[class*="linha"] .formCol {
+  display: grid !important;
+  grid-template-columns: 1fr 120px !important;
+  gap: 16px !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline input.invalid,
+#payment-container [class*="gateway"] .forminline input.invalid,
+#payment-container div[class*="linha"] .forminline input.invalid {
+  border-color: #ff4757 !important;
+  background-color: #fff5f5 !important;
+}
+
+#payment-container [class*="fbits-gateway"] .forminline input:-webkit-autofill,
+#payment-container [class*="gateway"] .forminline input:-webkit-autofill,
+#payment-container div[class*="linha"] .forminline input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  -webkit-text-fill-color: #333 !important;
+}
+
 .productsItemsWrapper {
   display: flex;
   flex-direction: column;
@@ -4809,269 +4951,388 @@
   align-items: center;
 }
 
-.cardWrapper .title {
-  color: #333333;
-  font-family: "Satoshi", sans-serif;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 32px;
-  margin-bottom: 24px;
-}
-
-.cardWrapper .requiredWarning {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #0092ff;
-  line-height: 20px;
-  background: linear-gradient(135deg, #f8fbff 0%, #e8f4ff 100%);
-  border-left: 4px solid #0092ff;
-  border-radius: 8px;
-  margin-bottom: 24px;
-  padding: 16px 20px;
-  position: relative;
-  font-family: "Satoshi", sans-serif;
-}
-
-.cardWrapper .requiredWarning::before {
-  content: '';
-  width: 20px;
-  height: 20px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230092ff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>') no-repeat center;
-  background-size: contain;
-  flex-shrink: 0;
-}
-
 .fake-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  max-width: 100%;
+}
+
+.fake-form .title {
+  color: #333;
+  font-family: "Satoshi", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 8px;
+}
+
+.fake-form .requiredWarning {
+  color: #666;
+  font-family: "Satoshi", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 150%;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .fake-form .formCol {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 16px;
 }
 
 .fake-form .forminline {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .fake-form .forminline label {
-  color: #848484;
+  color: #333;
   font-family: "Satoshi", sans-serif;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 150%;
   margin-bottom: 8px;
   display: block;
 }
 
-.fake-form .forminline input {
-  height: 48px;
-  background-color: #f4f6f8 !important;
+.fake-form .forminline input,
+.fake-form .forminline select {
+  height: 52px;
+  background-color: #f4f6f8;
   border: 1.6px solid #ececec;
-  outline: none;
   border-radius: 8px;
-  padding: 0px 16px;
+  padding: 0 16px;
   font-size: 14px;
   font-weight: 400;
-  color: #333 !important;
+  color: #333;
   line-height: 150%;
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease;
   box-sizing: border-box;
-  max-width: 100%;
   width: 100%;
   font-family: "Satoshi", sans-serif;
-  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
-.fake-form .forminline input:disabled {
-  background-color: #efefef !important;
-  color: #999 !important;
-  cursor: not-allowed;
+.fake-form .forminline input:hover,
+.fake-form .forminline select:hover {
+  border-color: #d0deee;
 }
 
-.fake-form .forminline input::-webkit-input-placeholder {
-  color: #b8b8b8 !important;
-  opacity: 1 !important;
-}
-
-.fake-form .forminline input::-moz-placeholder {
-  color: #b8b8b8 !important;
-  opacity: 1 !important;
-}
-
-.fake-form .forminline input:-ms-input-placeholder {
-  color: #b8b8b8 !important;
-  opacity: 1 !important;
-}
-
-.fake-form .forminline input::-ms-input-placeholder {
-  color: #b8b8b8 !important;
-  opacity: 1 !important;
+.fake-form .forminline input:focus,
+.fake-form .forminline select:focus {
+  border-color: #0092ff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 146, 255, 0.1);
 }
 
 .fake-form .forminline input::placeholder {
-  color: #b8b8b8 !important;
-  opacity: 1 !important;
+  color: #999;
+  opacity: 1;
 }
 
-.fake-form .forminline input:hover {
-  border: 1.2px solid #0092ff !important;
+.fake-form .forminline input:disabled {
+  background-color: #f0f0f0;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #e0e0e0;
 }
 
-.fake-form .forminline input:focus {
-  border: 1.4px solid #0092ff !important;
-  outline: none;
-  box-shadow: none;
+.fake-form .forminline input.invalid {
+  border-color: #ff4757;
+  background-color: #fff5f5;
 }
 
-.fake-form .forminline .form-check-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.fake-form .forminline .form-check-input {
-  width: 10px;
-  height: 10px;
-  border: 1px solid #000 !important;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.fake-form .forminline .form-check-input:checked {
-  background: linear-gradient(180deg, #02c1ab 0%, #118d7f 88.5%, #138779 100%);
+.fake-form .forminline input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset;
+  -webkit-text-fill-color: #333;
 }
 
 #installment-selection {
-  height: 48px;
-  background-color: #f4f6f8 !important;
-  border: 1.6px solid #ececec;
-  outline: none;
-  border-radius: 8px;
-  padding: 0px 16px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #333 !important;
-  line-height: 150%;
-  transition: all 0.3s ease-out;
-  box-sizing: border-box;
-  width: 100%;
-  font-family: "Satoshi", sans-serif;
   cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23999' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 16px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 48px;
 }
 
-#installment-selection:hover {
-  border: 1.2px solid #0092ff !important;
+#inputCardNumber {
+  position: relative;
 }
 
-#installment-selection:focus,
-#installment-selection:valid {
-  border: 1.4px solid #0092ff !important;
-  outline: none;
-  box-shadow: none;
+#inputCardNumber .jp-card-logo {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
 }
 
-.fake-form .forminline input.invalid,
-#installment-selection.invalid {
-  border: 1.6px solid #fe5b5b !important;
+#inputCardNumber .jp-card-logo.jp-card-visa {
+  width: 48px;
+  height: auto;
 }
 
-/* Estados de autofill para pagamento */
-.fake-form .forminline input:-webkit-autofill,
-.fake-form .forminline input:-webkit-autofill:hover,
-.fake-form .forminline input:-webkit-autofill:focus,
-.fake-form .forminline input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
-  -webkit-text-fill-color: #333 !important;
-  background-color: #f4f6f8 !important;
+#inputCardNumber .jp-card-logo.jp-card-mastercard {
+  width: 32px;
+  height: auto;
+}
+
+#inputCardNumber .jp-card-logo[style*="opacity: 1"] {
+  opacity: 1;
+}
+
+
+
+.card-wrapper {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 24px;
+}
+
+.jp-card-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.jp-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  width: 100%;
+  height: 200px;
+}
+
+.jp-card-front,
+.jp-card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Satoshi", sans-serif;
+}
+
+.jp-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.jp-card.jp-card-flipped {
+  transform: rotateY(180deg);
 }
 
 .payment-buttons {
   display: flex;
   gap: 16px;
   margin-top: 32px;
+  align-items: center;
+}
+
+.payment-buttons .checkout-back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1.6px solid #ececec;
+  border-radius: 8px;
+  background: #fff;
+  color: #20A389;
+  font-family: "Satoshi", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.payment-buttons .checkout-back-button:hover {
+  border-color: #20A389;
+  background: #f8fffe;
+}
+
+.payment-buttons .checkout-finish-button {
+  flex: 1;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #20A389;
+  color: #fff;
+  font-family: "Satoshi", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.payment-buttons .checkout-finish-button:hover:not(:disabled) {
+  background: #1a8c7a;
+  transform: translateY(-1px);
 }
 
 .payment-buttons .checkout-finish-button:disabled {
-  border-radius: 6px;
-  background: #efefef;
-  color: #cfcfd0;
-  font-family: "Satoshi", sans-serif;
-  text-transform: uppercase;
+  background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
 }
 
 @media (min-width: 768px) {
   #paymentCartao {
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    gap: 32px;
+    display: grid !important;
+    grid-template-columns: 1fr 400px !important;
+    gap: 48px !important;
+    align-items: start !important;
   }
 
-  .fake-form .formCol {
-    width: 100%;
+  #paymentCartao .fake-form {
+    order: 2;
   }
 
-  .fake-form {
-    width: 100%;
+  #paymentCartao .card-wrapper {
+    order: 1;
+    position: sticky;
+    top: 24px;
   }
 
-  .fake-form .forminline {
-    width: 100%;
-    margin-bottom: 16px;
+  #paymentCartao .formCol {
+    grid-template-columns: 1fr 140px !important;
+    gap: 20px !important;
   }
 
-  .payment-buttons .checkout-finish-button {
-    max-width: 200px;
-  }
-
-  .checkout-container .payment-selected-method {
-    max-height: 450px;
-    overflow-x: auto;
-    padding-right: 16px;
-  }
-
-  .checkout-container .payment-selected-method::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .checkout-container .payment-selected-method::-webkit-scrollbar-track {
-    border-radius: 100px;
-    background: #efefef;
-    box-shadow: 0px 4px 4px 0px rgba(155, 155, 155, 0.25) inset;
-  }
-
-  .checkout-container .payment-selected-method::-webkit-scrollbar-thumb {
-    background: #848484;
-    border-radius: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .fake-form .forminline input,
-  #installment-selection {
-    font-size: 13px;
-    padding: 0px 14px;
-  }
-
-  .fake-form .forminline label {
-    font-size: 13px;
-    margin-bottom: 6px;
+  #payment-container [class*="fbits-gateway"] .formCol,
+  #payment-container [class*="gateway"] .formCol,
+  #payment-container div[class*="linha"] .formCol {
+    grid-template-columns: 1fr 140px !important;
+    gap: 20px !important;
   }
 
   .payment-buttons {
-    margin-top: 24px;
+    margin-top: 40px;
+  }
+
+  .payment-buttons .checkout-finish-button {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 767px) {
+  #paymentCartao .fake-form .title {
+    font-size: 20px;
+  }
+
+  #paymentCartao .formCol {
+    grid-template-columns: 1fr 100px !important;
+    gap: 12px !important;
+  }
+
+  #payment-container [class*="fbits-gateway"] .formCol,
+  #payment-container [class*="gateway"] .formCol,
+  #payment-container div[class*="linha"] .formCol {
+    grid-template-columns: 1fr 100px !important;
+    gap: 12px !important;
+  }
+
+  #paymentCartao .forminline input,
+  #paymentCartao .forminline select {
+    height: 48px !important;
+    font-size: 13px !important;
+    padding: 0 14px !important;
+  }
+
+  #paymentCartao .forminline label {
+    font-size: 13px !important;
+    margin-bottom: 6px !important;
+  }
+
+  #payment-container [class*="fbits-gateway"] .forminline input,
+  #payment-container [class*="gateway"] .forminline input,
+  #payment-container div[class*="linha"] .forminline input,
+  #payment-container [class*="fbits-gateway"] .forminline select,
+  #payment-container [class*="gateway"] .forminline select,
+  #payment-container div[class*="linha"] .forminline select {
+    height: 48px !important;
+    font-size: 13px !important;
+    padding: 0 14px !important;
+  }
+
+  #payment-container [class*="fbits-gateway"] .forminline label,
+  #payment-container [class*="gateway"] .forminline label,
+  #payment-container div[class*="linha"] .forminline label {
+    font-size: 13px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .payment-buttons {
+    flex-direction: column;
     gap: 12px;
+    margin-top: 24px;
+  }
+
+  .payment-buttons .checkout-back-button,
+  .payment-buttons .checkout-finish-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #paymentCartao #installment-selection {
+    padding-right: 40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #paymentCartao .formCol {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  #payment-container [class*="fbits-gateway"] .formCol,
+  #payment-container [class*="gateway"] .formCol,
+  #payment-container div[class*="linha"] .formCol {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  #paymentCartao .fake-form .title {
+    font-size: 18px !important;
+  }
+
+  #paymentCartao .fake-form .requiredWarning {
+    font-size: 12px !important;
+  }
+
+  #paymentCartao .card-wrapper {
+    max-width: 300px;
+  }
+
+  .jp-card {
+    height: 180px;
+  }
+
+  .jp-card-front,
+  .jp-card-back {
+    padding: 16px;
   }
 }
 

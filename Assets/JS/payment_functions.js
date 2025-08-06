@@ -21,10 +21,13 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   const div = document.querySelector(
     `div[data-payment-wrapper="${paymentId}"]`
   );
+
   if (div && response) {
     div.innerHTML = response.html;
 
-    if (!response.html.includes("paymentCartao")) {
+    const isCardPayment = response.html.includes("paymentCartao");
+
+    if (!isCardPayment) {
       document.querySelector(
         "#finish-order .payment-selected-method"
       ).style.maxHeight = "";
@@ -70,7 +73,21 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
 
       document.querySelector(".checkout-footer-mobile").innerHTML += respRight;
     } else {
-      document.getElementById("data-render-right-menu").style.display = "none";
+      const paymentContainer = document.getElementById("payment-container");
+      if (paymentContainer) {
+        paymentContainer.style.display = "block";
+        paymentContainer.style.visibility = "visible";
+
+        paymentContainer.classList.remove("hidden");
+
+        const hiddenSpans = paymentContainer.querySelectorAll("span.hidden");
+        hiddenSpans.forEach((span) => span.classList.remove("hidden"));
+      }
+
+      const rightMenu = document.getElementById("data-render-right-menu");
+      if (rightMenu) {
+        rightMenu.style.display = "none";
+      }
       document.getElementById("finish-order").style.maxWidth = "1200px";
       document.querySelector(
         "#finish-order .payment-selected-method"
@@ -145,7 +162,7 @@ async function nextCardScreen(paymentId) {
     `;
 
   document.getElementById("card-finish").classList.remove("hidden");
-  document.querySelector(".cardWrapper").classList.add("hidden");
+  document.querySelector(".fake-form").style.display = "none";
   document.getElementById("paymentMethodSelected").innerHTML =
     htmlPaymentSelected;
 
@@ -158,7 +175,6 @@ async function nextCardScreen(paymentId) {
   );
 
   setInnerHtmlById(respRight, "data-render-right-menu");
-
   document.getElementById("data-render-right-menu").style.display = "";
 
   document.getElementById("finish-order").style.maxWidth = "";
@@ -273,6 +289,36 @@ function expiryDateMask(input) {
   input.value = value;
 }
 
+function ensureCardElementsVisibility() {
+  const paymentContainer = document.getElementById("payment-container");
+  if (paymentContainer) {
+    paymentContainer.style.display = "block";
+    paymentContainer.style.visibility = "visible";
+    paymentContainer.classList.remove("hidden");
+
+    const hiddenElements = paymentContainer.querySelectorAll(".hidden");
+    hiddenElements.forEach((element) => {
+      if (element.tagName.toLowerCase() === "span") {
+        element.classList.remove("hidden");
+      }
+    });
+
+    const gatewayElements = paymentContainer.querySelectorAll(
+      '[class*="fbits-gateway"], [class*="gateway"], [class*="linha"]'
+    );
+    gatewayElements.forEach((element) => {
+      element.style.display = "block";
+      element.style.visibility = "visible";
+
+      const forminlines = element.querySelectorAll(".forminline");
+      forminlines.forEach((forminline) => {
+        forminline.style.display = "flex";
+        forminline.style.visibility = "visible";
+      });
+    });
+  }
+}
+
 const selectPayment = async (paymentId) => {
   const loading = document.getElementById("payment-loading");
   loading.classList.remove("hidden");
@@ -301,6 +347,10 @@ const selectPayment = async (paymentId) => {
   finishOrder.style.display = "flex";
 
   document.getElementById("checkout-payment-options").style.display = "none";
+
+  setTimeout(() => {
+    ensureCardElementsVisibility();
+  }, 100);
 
   await renderSummary();
   loading.classList.add("hidden");
@@ -343,10 +393,19 @@ async function backPaymentStep() {
 
   document.querySelector(".checkout-footer").style.marginTop = "";
 
-  document
-    .querySelector(".checkout-footer-mobile .checkout-right-menu")
-    .remove();
-  document.querySelector(".checkout-footer-mobile #finish-loading").remove();
+  const checkoutRightMenu = document.querySelector(
+    ".checkout-footer-mobile .checkout-right-menu"
+  );
+  if (checkoutRightMenu) {
+    checkoutRightMenu.remove();
+  }
+
+  const finishLoading = document.querySelector(
+    ".checkout-footer-mobile #finish-loading"
+  );
+  if (finishLoading) {
+    finishLoading.remove();
+  }
 
   document.querySelector(
     ".checkout-footer-mobile .checkout-whats"

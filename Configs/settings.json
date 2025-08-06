@@ -3260,16 +3260,16 @@
       "state": "São Paulo",
       "stores": [
         {
-          "name": "ABC da Construção Jardim Paulista",
-          "adress": "Alameda Prof. Lucas Nogueira Garcez, 4004 - Jardim Paulista, Atibaia - SP, 12941-650",
+          "name": "ABC da Construção Jardim Atibaia",
+          "adress": "Av. Atibaia, 105 - Atibaia Jardim, Atibaia - SP, 12942-770",
           "phone": "(11) 3402-3951",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/atibaia/jardim-paulista",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 15:00",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
         },
         {

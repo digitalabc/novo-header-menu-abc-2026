@@ -111,7 +111,7 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
       .then(() => {
         console.log("Todos os scripts foram carregados com sucesso.");
         Fbits.Gateway.ExecuteLoadedCallbacks();
-        InitializeJpCardLibrary();
+        // InitializeJpCardLibrary(); // Comentado pois não estamos usando cardWrapper
       })
       .catch((error) => {
         console.error("Erro ao carregar os scripts:", error);
@@ -345,8 +345,10 @@ const selectPayment = async (paymentId) => {
   const finishOrder = document.getElementById("finish-order");
 
   finishOrder.style.display = "flex";
+  finishOrder.style.maxWidth = "1200px";
 
   document.getElementById("checkout-payment-options").style.display = "none";
+  document.getElementById("data-render-right-menu").style.display = "none";
 
   setTimeout(() => {
     ensureCardElementsVisibility();

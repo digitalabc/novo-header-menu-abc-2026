@@ -3890,6 +3890,25 @@
       ]
     },
     {
+      "name": "Nova Granada",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Jacinto Ruiz Garcia, 598 - Centro, Nova Granada - SP, 15440-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/nova-granada/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Paulínia",
       "state": "São Paulo",
       "stores": [

@@ -1,16 +1,16 @@
-console.log('=== ARQUIVO PAYMENT_FUNCTIONS.JS INICIADO ===');
-console.log('Timestamp:', new Date().toISOString());
-console.log('Document ready state:', document.readyState);
-console.log('Window loaded:', document.readyState === 'complete');
+console.log("=== ARQUIVO PAYMENT_FUNCTIONS.JS INICIADO ===");
+console.log("Timestamp:", new Date().toISOString());
+console.log("Document ready state:", document.readyState);
+console.log("Window loaded:", document.readyState === "complete");
 
 // Executar imediatamente para testar
-(function() {
-  console.log('=== FUNÇÃO IMEDIATA EXECUTADA ===');
-  
+(function () {
+  console.log("=== FUNÇÃO IMEDIATA EXECUTADA ===");
+
   // Aguardar um pouco e tentar novamente
   setTimeout(() => {
-    console.log('=== TIMEOUT 2 SEGUNDOS EXECUTADO ===');
-    console.log('DOM atual:', document.readyState);
+    console.log("=== TIMEOUT 2 SEGUNDOS EXECUTADO ===");
+    console.log("DOM atual:", document.readyState);
   }, 2000);
 })();
 
@@ -369,7 +369,7 @@ const selectPayment = async (paymentId) => {
   setTimeout(() => {
     ensureCardElementsVisibility();
     // Executar funções de reorganização e máscaras
-    console.log('Executando funções de reorganização e máscaras...');
+    console.log("Executando funções de reorganização e máscaras...");
     setTimeout(() => {
       reorganizeExpirationInputs();
       applyInputMasks();
@@ -524,43 +524,81 @@ function updateExpiryValue() {
 
 // Função para reorganizar inputs de validade lado a lado
 function reorganizeExpirationInputs() {
-  console.log('Tentando reorganizar inputs de validade...');
-  
-  const monthInput = document.querySelector('[data-checkout="cardExpirationMonth"]');
-  const yearInput = document.querySelector('[data-checkout="cardExpirationYear"]');
-  
-  console.log('Inputs encontrados:', { monthInput, yearInput });
-  
+  console.log("Tentando reorganizar inputs de validade...");
+
+  const monthInput = document.querySelector(
+    '[data-checkout="cardExpirationMonth"]'
+  );
+  const yearInput = document.querySelector(
+    '[data-checkout="cardExpirationYear"]'
+  );
+  const cardNumberInput = document.querySelector(
+    '[data-checkout="cardNumber"]'
+  );
+
+  console.log("Inputs encontrados:", { monthInput, yearInput });
+
   if (!monthInput || !yearInput) {
-    console.log('Reorganização cancelada: inputs não encontrados ou já reorganizados');
+    console.log(
+      "Reorganização cancelada: inputs não encontrados ou já reorganizados"
+    );
     return;
   }
-  
+
   // Verificar se já foi reorganizado
-  if (monthInput.closest('.expiration-container')) {
-    console.log('Inputs já reorganizados');
+  if (monthInput.closest(".expiration-container")) {
+    console.log("Inputs já reorganizados");
     return;
   }
-  
+
+  // Adicionar título 'Cadastrar cartão' se ainda não existe
+  if (cardNumberInput && !document.querySelector(".card-form-title")) {
+    const cardNumberContainer = cardNumberInput.closest(".forminline");
+    if (cardNumberContainer) {
+      const cardTitle = document.createElement("h3");
+      cardTitle.className = "card-form-title";
+      cardTitle.textContent = "Cadastrar cartão";
+      cardTitle.style.cssText = `
+        color: #333;
+        font-family: "Satoshi", sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 24px;
+        margin-top: 0;
+      `;
+
+      // Inserir o título antes do container do número do cartão
+      cardNumberContainer.parentNode.insertBefore(
+        cardTitle,
+        cardNumberContainer
+      );
+    }
+  }
+
   // Encontrar o container pai
-  const parentContainer = monthInput.closest('.forminline');
+  const parentContainer = monthInput.closest(".forminline");
   if (!parentContainer) {
-    console.log('Container pai não encontrado');
+    console.log("Container pai não encontrado");
     return;
   }
-  
+
   // Encontrar e remover labels existentes
-  const validadeLabel = parentContainer.querySelector('label');
-  const labels = parentContainer.querySelectorAll('label');
-  labels.forEach(label => {
-    if (label.textContent.includes('Validade') || label.textContent.includes('validade')) {
+  const validadeLabel = parentContainer.querySelector("label");
+  const labels = parentContainer.querySelectorAll("label");
+  labels.forEach((label) => {
+    if (
+      label.textContent.includes("Validade") ||
+      label.textContent.includes("validade")
+    ) {
       label.remove();
     }
   });
-  
+
   // Criar nova estrutura
-  const expirationContainer = document.createElement('div');
-  expirationContainer.className = 'expiration-container';
+  const expirationContainer = document.createElement("div");
+  expirationContainer.className = "expiration-container";
   expirationContainer.style.cssText = `
     display: flex;
     flex-direction: column;
@@ -568,60 +606,62 @@ function reorganizeExpirationInputs() {
     margin-top: 15px;
     width: 100%;
   `;
-  
+
   // Label principal
-  const mainLabel = document.createElement('label');
-  mainLabel.textContent = 'Validade';
+  const mainLabel = document.createElement("label");
+  mainLabel.textContent = "Validade";
   mainLabel.style.cssText = `
     font-size: 14px;
     font-weight: 500;
     color: #333;
     margin-bottom: 5px;
   `;
-  
+
   // Container para os inputs
-  const inputsContainer = document.createElement('div');
+  const inputsContainer = document.createElement("div");
   inputsContainer.style.cssText = `
     display: flex;
     gap: 10px;
     align-items: center;
   `;
-  
+
   // Container para mês
-  const monthContainer = document.createElement('div');
+  const monthContainer = document.createElement("div");
   monthContainer.style.cssText = `
     display: flex;
     flex-direction: column;
     flex: 1;
   `;
-  
-  const monthLabel = document.createElement('label');
-  monthLabel.textContent = 'Mês';
+
+  const monthLabel = document.createElement("label");
+  monthLabel.textContent = "Mês";
   monthLabel.style.cssText = `
     font-size: 12px;
     color: #666;
     margin-bottom: 3px;
+    display: none;
   `;
-  
+
   // Container para ano
-  const yearContainer = document.createElement('div');
+  const yearContainer = document.createElement("div");
   yearContainer.style.cssText = `
     display: flex;
     flex-direction: column;
     flex: 1;
   `;
-  
-  const yearLabel = document.createElement('label');
-  yearLabel.textContent = 'Ano';
+
+  const yearLabel = document.createElement("label");
+  yearLabel.textContent = "Ano";
   yearLabel.style.cssText = `
     font-size: 12px;
     color: #666;
     margin-bottom: 3px;
+    display: none;
   `;
-  
+
   // Separador visual
-  const separator = document.createElement('span');
-  separator.textContent = '/';
+  const separator = document.createElement("span");
+  separator.textContent = "/";
   separator.style.cssText = `
     font-size: 18px;
     color: #999;
@@ -629,7 +669,7 @@ function reorganizeExpirationInputs() {
     align-self: flex-end;
     margin-bottom: 8px;
   `;
-  
+
   // Estilizar inputs
   monthInput.style.cssText = `
     width: 100%;
@@ -639,7 +679,7 @@ function reorganizeExpirationInputs() {
     font-size: 14px;
     text-align: center;
   `;
-  
+
   yearInput.style.cssText = `
     width: 100%;
     padding: 8px 12px;
@@ -648,25 +688,25 @@ function reorganizeExpirationInputs() {
     font-size: 14px;
     text-align: center;
   `;
-  
+
   // Montar estrutura
   monthContainer.appendChild(monthLabel);
   monthContainer.appendChild(monthInput);
-  
+
   yearContainer.appendChild(yearLabel);
   yearContainer.appendChild(yearInput);
-  
+
   inputsContainer.appendChild(monthContainer);
   inputsContainer.appendChild(separator);
   inputsContainer.appendChild(yearContainer);
-  
+
   expirationContainer.appendChild(mainLabel);
   expirationContainer.appendChild(inputsContainer);
-  
+
   // Inserir no DOM
   parentContainer.appendChild(expirationContainer);
-  
-  console.log('Inputs de validade reorganizados com sucesso!');
+
+  console.log("Inputs de validade reorganizados com sucesso!");
 }
 
 // Função para detectar bandeira do cartão
@@ -676,45 +716,45 @@ function detectCardBrand(cardNumber) {
     mastercard: /^5[1-5]/,
     amex: /^3[47]/,
     discover: /^6(?:011|5)/,
-    elo: /^(4011|4312|4389|4514|4573|5041|5066|5067|6277|6362|6363|6504|6505|6516)/
+    elo: /^(4011|4312|4389|4514|4573|5041|5066|5067|6277|6362|6363|6504|6505|6516)/,
   };
-  
-  let detectedBrand = '';
+
+  let detectedBrand = "";
   for (const [brand, pattern] of Object.entries(cardBrands)) {
     if (pattern.test(cardNumber)) {
       detectedBrand = brand;
       break;
     }
   }
-  
+
   // Aplicar bandeira ao input
   const cardInput = document.querySelector('[data-checkout="cardNumber"]');
   if (cardInput) {
     // Remover classes de bandeira anteriores
-    cardInput.classList.remove('visa', 'mastercard', 'amex', 'discover', 'elo');
-    
+    cardInput.classList.remove("visa", "mastercard", "amex", "discover", "elo");
+
     if (detectedBrand) {
       cardInput.classList.add(detectedBrand);
-      
+
       // Criar wrapper se não existir
-      if (!cardInput.parentElement.classList.contains('card-input-wrapper')) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'card-input-wrapper';
+      if (!cardInput.parentElement.classList.contains("card-input-wrapper")) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "card-input-wrapper";
         wrapper.style.cssText = `
           position: relative;
           display: inline-block;
           width: 100%;
         `;
-        
+
         cardInput.parentNode.insertBefore(wrapper, cardInput);
         wrapper.appendChild(cardInput);
       }
-      
+
       // Adicionar ícone da bandeira
-      let brandIcon = cardInput.parentElement.querySelector('.card-brand-icon');
+      let brandIcon = cardInput.parentElement.querySelector(".card-brand-icon");
       if (!brandIcon) {
-        brandIcon = document.createElement('div');
-        brandIcon.className = 'card-brand-icon';
+        brandIcon = document.createElement("div");
+        brandIcon.className = "card-brand-icon";
         brandIcon.style.cssText = `
           position: absolute;
           right: 10px;
@@ -729,14 +769,15 @@ function detectCardBrand(cardNumber) {
         `;
         cardInput.parentElement.appendChild(brandIcon);
       }
-      
+
       // Definir ícone baseado na bandeira
       const brandIcons = {
-        visa: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNTFBNSIvPgo8cGF0aCBkPSJNMTYuNzUgMTZIMTQuNUwxNi4yNSA4SDE4LjVMMTYuNzUgMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K',
-        mastercard: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VCMDAxQiIvPgo8Y2lyY2xlIGN4PSIxNSIgY3k9IjEyIiByPSI3IiBmaWxsPSIjRkY1RjAwIi8+CjxjaXJjbGUgY3g9IjI1IiBjeT0iMTIiIHI9IjciIGZpbGw9IiNGRkY1RjAiLz4KPC9zdmc+',
-        amex: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNkZDRiIvPgo8dGV4dCB4PSIyMCIgeT0iMTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QU1FWDwvdGV4dD4KPC9zdmc+'
+        visa: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNTFBNSIvPgo8cGF0aCBkPSJNMTYuNzUgMTZIMTQuNUwxNi4yNSA4SDE4LjVMMTYuNzUgMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K",
+        mastercard:
+          "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VCMDAxQiIvPgo8Y2lyY2xlIGN4PSIxNSIgY3k9IjEyIiByPSI3IiBmaWxsPSIjRkY1RjAwIi8+CjxjaXJjbGUgY3g9IjI1IiBjeT0iMTIiIHI9IjciIGZpbGw9IiNGRkY1RjAiLz4KPC9zdmc+",
+        amex: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNkZDRiIvPgo8dGV4dCB4PSIyMCIgeT0iMTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QU1FWDwvdGV4dD4KPC9zdmc+",
       };
-      
+
       if (brandIcons[detectedBrand]) {
         brandIcon.style.backgroundImage = `url(${brandIcons[detectedBrand]})`;
       }
@@ -746,82 +787,94 @@ function detectCardBrand(cardNumber) {
 
 // Função para aplicar máscaras aos inputs de pagamento
 function applyInputMasks() {
-  console.log('Aplicando máscaras aos inputs...');
-  
+  console.log("Aplicando máscaras aos inputs...");
+
   // Máscara para número do cartão
-  const cardNumberInput = document.querySelector('[data-checkout="cardNumber"]');
+  const cardNumberInput = document.querySelector(
+    '[data-checkout="cardNumber"]'
+  );
   if (cardNumberInput) {
-    cardNumberInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+    cardNumberInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
+      value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
       if (value.length > 19) value = value.substring(0, 19);
       e.target.value = value;
-      
+
       // Detectar bandeira do cartão
-      detectCardBrand(value.replace(/\s/g, ''));
+      detectCardBrand(value.replace(/\s/g, ""));
     });
   }
-  
+
   // Máscara para mês de expiração
-  const monthInput = document.querySelector('[data-checkout="cardExpirationMonth"]');
+  const monthInput = document.querySelector(
+    '[data-checkout="cardExpirationMonth"]'
+  );
   if (monthInput) {
-    monthInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
+    monthInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
       if (value.length > 2) value = value.substring(0, 2);
-      if (parseInt(value) > 12) value = '12';
-      if (parseInt(value) < 1 && value.length === 2) value = '01';
+      if (parseInt(value) > 12) value = "12";
+      if (parseInt(value) < 1 && value.length === 2) value = "01";
       e.target.value = value;
     });
   }
-  
+
   // Máscara para ano de expiração
-  const yearInput = document.querySelector('[data-checkout="cardExpirationYear"]');
+  const yearInput = document.querySelector(
+    '[data-checkout="cardExpirationYear"]'
+  );
   if (yearInput) {
-    yearInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
+    yearInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
       if (value.length > 2) value = value.substring(0, 2);
       e.target.value = value;
     });
   }
-  
+
   // Máscara para nome do titular
-  const cardHolderInput = document.querySelector('[data-checkout="cardholderName"]');
+  const cardHolderInput = document.querySelector(
+    '[data-checkout="cardholderName"]'
+  );
   if (cardHolderInput) {
-    cardHolderInput.addEventListener('input', function(e) {
-      e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').toUpperCase();
+    cardHolderInput.addEventListener("input", function (e) {
+      e.target.value = e.target.value
+        .replace(/[^a-zA-ZÀ-ÿ\s]/g, "")
+        .toUpperCase();
     });
   }
-  
+
   // Máscara para CVV
   const cvvInput = document.querySelector('[data-checkout="securityCode"]');
   if (cvvInput) {
-    cvvInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
+    cvvInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
       if (value.length > 4) value = value.substring(0, 4);
       e.target.value = value;
     });
   }
-  
+
   // Máscara para CPF/CNPJ
-  const cpfCnpjInput = document.querySelector('input[name*="cpf"], input[name*="cnpj"], input[placeholder*="CPF"], input[placeholder*="CNPJ"]');
+  const cpfCnpjInput = document.querySelector(
+    'input[name*="cpf"], input[name*="cnpj"], input[placeholder*="CPF"], input[placeholder*="CNPJ"]'
+  );
   if (cpfCnpjInput) {
-    cpfCnpjInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      
+    cpfCnpjInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
+
       if (value.length <= 11) {
         // CPF: 000.000.000-00
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
       } else {
         // CNPJ: 00.000.000/0001-00
         value = value.substring(0, 14);
-        value = value.replace(/(\d{2})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d)/, '$1/$2');
-        value = value.replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+        value = value.replace(/(\d{2})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d)/, "$1/$2");
+        value = value.replace(/(\d{4})(\d{1,2})$/, "$1-$2");
       }
-      
+
       e.target.value = value;
     });
   }
@@ -829,27 +882,30 @@ function applyInputMasks() {
 
 // MutationObserver para detectar carregamento dos inputs
 function setupPaymentObserver() {
-  console.log('Configurando observer para inputs de pagamento...');
-  
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.type === 'childList') {
+  console.log("Configurando observer para inputs de pagamento...");
+
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.type === "childList") {
         const addedNodes = Array.from(mutation.addedNodes);
-        
+
         // Verificar se inputs de cartão foram adicionados
-        const hasCardInputs = addedNodes.some(node => {
+        const hasCardInputs = addedNodes.some((node) => {
           if (node.nodeType === 1) {
-            return node.querySelector && (
-              node.querySelector('[data-checkout="cardNumber"]') ||
-              node.querySelector('[data-checkout="cardExpirationMonth"]') ||
-              node.querySelector('[data-checkout="cardExpirationYear"]')
+            return (
+              node.querySelector &&
+              (node.querySelector('[data-checkout="cardNumber"]') ||
+                node.querySelector('[data-checkout="cardExpirationMonth"]') ||
+                node.querySelector('[data-checkout="cardExpirationYear"]'))
             );
           }
           return false;
         });
-        
+
         if (hasCardInputs) {
-          console.log('Inputs de cartão detectados, aplicando reorganização...');
+          console.log(
+            "Inputs de cartão detectados, aplicando reorganização..."
+          );
           setTimeout(() => {
             reorganizeExpirationInputs();
             applyInputMasks();
@@ -858,32 +914,42 @@ function setupPaymentObserver() {
       }
     });
   });
-  
+
   // Observar mudanças no body
   observer.observe(document.body, {
     childList: true,
-    subtree: true
+    subtree: true,
   });
-  
+
   // Fallback: verificação periódica
   let attempts = 0;
   const maxAttempts = 60; // 30 segundos (500ms * 60)
-  
+
   const intervalCheck = setInterval(() => {
     attempts++;
-    
-    const monthInput = document.querySelector('[data-checkout="cardExpirationMonth"]');
-    const yearInput = document.querySelector('[data-checkout="cardExpirationYear"]');
-    
-    if (monthInput && yearInput && !monthInput.closest('.expiration-container')) {
-      console.log('Inputs encontrados via fallback, aplicando reorganização...');
+
+    const monthInput = document.querySelector(
+      '[data-checkout="cardExpirationMonth"]'
+    );
+    const yearInput = document.querySelector(
+      '[data-checkout="cardExpirationYear"]'
+    );
+
+    if (
+      monthInput &&
+      yearInput &&
+      !monthInput.closest(".expiration-container")
+    ) {
+      console.log(
+        "Inputs encontrados via fallback, aplicando reorganização..."
+      );
       setTimeout(() => {
         reorganizeExpirationInputs();
         applyInputMasks();
       }, 500);
       clearInterval(intervalCheck);
     } else if (attempts >= maxAttempts) {
-      console.log('Timeout: inputs de cartão não encontrados após 30 segundos');
+      console.log("Timeout: inputs de cartão não encontrados após 30 segundos");
       clearInterval(intervalCheck);
     }
   }, 500);
@@ -891,39 +957,39 @@ function setupPaymentObserver() {
 
 // Função para inicializar as funcionalidades de pagamento
 function initializePaymentFunctions() {
-  console.log('=== INICIALIZANDO FUNÇÕES DE PAGAMENTO ===');
-  console.log('DOM readyState:', document.readyState);
-  
+  console.log("=== INICIALIZANDO FUNÇÕES DE PAGAMENTO ===");
+  console.log("DOM readyState:", document.readyState);
+
   try {
     setupPaymentObserver();
-    console.log('Observer configurado com sucesso');
+    console.log("Observer configurado com sucesso");
   } catch (error) {
-    console.error('Erro ao configurar observer:', error);
+    console.error("Erro ao configurar observer:", error);
   }
-  
+
   // Tentar aplicar imediatamente se os inputs já existirem
   setTimeout(() => {
-    console.log('Executando timeout de inicialização...');
+    console.log("Executando timeout de inicialização...");
     try {
       reorganizeExpirationInputs();
       applyInputMasks();
     } catch (error) {
-      console.error('Erro na execução das funções:', error);
+      console.error("Erro na execução das funções:", error);
     }
   }, 500);
 }
 
 // Executar imediatamente se o DOM já estiver carregado
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializePaymentFunctions);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializePaymentFunctions);
 } else {
   // DOM já carregado, executar imediatamente
   initializePaymentFunctions();
 }
 
 // Também executar quando a janela carregar completamente
-window.addEventListener('load', function() {
-  console.log('Janela carregada, verificando inputs de pagamento...');
+window.addEventListener("load", function () {
+  console.log("Janela carregada, verificando inputs de pagamento...");
   setTimeout(() => {
     reorganizeExpirationInputs();
     applyInputMasks();
@@ -931,24 +997,28 @@ window.addEventListener('load', function() {
 });
 
 // Executar quando o script for carregado (para scripts assíncronos)
-if (typeof window !== 'undefined') {
-  console.log('=== SCRIPT PAYMENT_FUNCTIONS.JS CARREGADO ===');
-  
+if (typeof window !== "undefined") {
+  console.log("=== SCRIPT PAYMENT_FUNCTIONS.JS CARREGADO ===");
+
   // Executar imediatamente
   initializePaymentFunctions();
-  
+
   // Também executar com delay para garantir
   setTimeout(() => {
-    console.log('=== EXECUÇÃO COM DELAY ===');
+    console.log("=== EXECUÇÃO COM DELAY ===");
     initializePaymentFunctions();
   }, 1000);
-  
+
   // Executar quando clicar em qualquer lugar da página (fallback)
-  document.addEventListener('click', function() {
-    console.log('=== CLICK DETECTADO, VERIFICANDO INPUTS ===');
-    setTimeout(() => {
-      reorganizeExpirationInputs();
-      applyInputMasks();
-    }, 100);
-  }, { once: false });
+  document.addEventListener(
+    "click",
+    function () {
+      console.log("=== CLICK DETECTADO, VERIFICANDO INPUTS ===");
+      setTimeout(() => {
+        reorganizeExpirationInputs();
+        applyInputMasks();
+      }, 100);
+    },
+    { once: false }
+  );
 }

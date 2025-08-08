@@ -1341,7 +1341,7 @@
   .wake-checkout-coupon-container {
     display: none !important;
   }
-  
+
   /* Mostrar apenas a versão mobile do cupom */
   .wake-checkout-coupon-container.wake-checkout-coupon-mobile {
     display: flex !important;

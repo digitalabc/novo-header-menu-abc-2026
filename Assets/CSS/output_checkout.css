@@ -4471,6 +4471,13 @@
   padding: 3rem 1rem;
 }
 
+@media (max-width: 768px) {
+  .checkout-section-wrapper {
+    padding: 3rem 1rem 10rem;
+  }
+}
+
+
 .payment-methods-wrapper {
   display: flex;
   flex-direction: column;
@@ -5802,7 +5809,6 @@
 @media (min-width: 768px) {
   .checkout-right-menu {
     display: flex;
-    gap: 20px;
     flex-direction: column;
 
   }

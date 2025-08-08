@@ -36,6 +36,13 @@ const updateCheckout = async () => {
     setInnerHtmlById(el.res, el.el);
   });
 
+  // Força ocultação do span de desconto após atualizar
+  setTimeout(() => {
+    if (typeof forceHideDiscountSpan === "function") {
+      forceHideDiscountSpan();
+    }
+  }, 100);
+
   try {
     const checkout = await client.checkout.get();
 
@@ -446,4 +453,55 @@ const initializeCheckoutFromSharedCheckout = async () => {
   updateCheckout();
 };
 
-window.addEventListener("load", initializeCheckoutFromSharedCheckout);
+// Função para forçar ocultação do span de desconto dinâmico
+const forceHideDiscountSpan = () => {
+  const hideElement = () => {
+    const checkoutTotalSnippet = document.getElementById(
+      "checkout_total_snippet"
+    );
+    if (checkoutTotalSnippet) {
+      const spans = checkoutTotalSnippet.querySelectorAll("span");
+      spans.forEach((span) => {
+        if (span.textContent && span.textContent.trim() === "Desconto:") {
+          const parentDiv = span.closest("div");
+          if (parentDiv && parentDiv.style.display !== "none") {
+            parentDiv.style.display = "none";
+            parentDiv.style.visibility = "hidden";
+            parentDiv.style.height = "0";
+            parentDiv.style.overflow = "hidden";
+          }
+        }
+      });
+    }
+  };
+
+  // Executa imediatamente
+  hideElement();
+
+  // Observer para mudanças no DOM
+  const observer = new MutationObserver(() => {
+    hideElement();
+  });
+
+  // Observa mudanças no checkout_total_snippet
+  const targetNode = document.getElementById("checkout_total_snippet");
+  if (targetNode) {
+    observer.observe(targetNode, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeOldValue: true,
+    });
+  }
+
+  // Executa periodicamente como backup
+  setInterval(hideElement, 500);
+};
+
+window.addEventListener("load", () => {
+  initializeCheckoutFromSharedCheckout();
+  forceHideDiscountSpan();
+});
+
+// Executa também quando o DOM estiver pronto
+document.addEventListener("DOMContentLoaded", forceHideDiscountSpan);

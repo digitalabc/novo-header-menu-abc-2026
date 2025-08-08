@@ -1,7 +1,3 @@
-
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .msg-warning-invoice {
@@ -74,6 +70,7 @@
     .col-lg-6.col-md-6.col-sm-12.col-xs-12.fbits-responsive-carrinho-item-titulo {
         padding-bottom: 5px;
     }
+
     .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency.promo,
     .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency {
         font-size: 12px;
@@ -83,33 +80,33 @@
 
 #div-frete {
     overflow-y: scroll;
-    max-height: 350px;   
+    max-height: 350px;
 }
 
 
 
-.prime_bar_wrapper.prime_sticky { 
+.prime_bar_wrapper.prime_sticky {
     position: sticky;
     top: 0;
     z-index: 999;
 }
-    
+
 .prime_bar {
     display: none;
     background-color: #138779;
     padding: 20px;
     justify-content: center;
 }
-    
+
 .prime_bar {
     color: #ffe2aa;
     font-size: 16px;
     font-weight: 700;
 }
 
-.prime_bar > p {
+.prime_bar>p {
     margin: 0;
-    padding: 0;   
+    padding: 0;
 }
 
 
@@ -124,8 +121,9 @@
     display: flex;
     justify-content: center;
 }
+
 .warning__message {
-    padding: 15px;         
+    padding: 15px;
 }
 
 .warning__message>div {
@@ -151,4 +149,7 @@
     font-weight: 700;
 }
 
-
+/* Ocultar span de desconto no checkout */
+#checkout_total_snippet .wake-cart-total>div:first-child {
+    display: none !important;
+}

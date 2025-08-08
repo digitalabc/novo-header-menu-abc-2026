@@ -364,7 +364,6 @@ const selectPayment = async (paymentId) => {
   finishOrder.style.maxWidth = "1200px";
 
   document.getElementById("checkout-payment-options").style.display = "none";
-  document.getElementById("data-render-right-menu").style.display = "none";
 
   setTimeout(() => {
     ensureCardElementsVisibility();

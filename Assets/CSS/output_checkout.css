@@ -5802,6 +5802,7 @@
 @media (min-width: 768px) {
   .checkout-right-menu {
     display: flex;
+    gap: 20px;
     flex-direction: column;
 
   }

@@ -1336,6 +1336,26 @@
   flex-direction: column;
 }
 
+/* Ocultar em telas mobile */
+@media (max-width: 768px) {
+  .wake-checkout-coupon-container {
+    display: none !important;
+  }
+  
+  /* Mostrar apenas a versão mobile do cupom */
+  .wake-checkout-coupon-container.wake-checkout-coupon-mobile {
+    display: flex !important;
+    margin-top: 20px;
+  }
+}
+
+/* Ocultar a versão mobile em telas maiores */
+@media (min-width: 769px) {
+  .wake-checkout-coupon-container.wake-checkout-coupon-mobile {
+    display: none !important;
+  }
+}
+
 .wake-checkout-coupon-inner {
   position: relative;
   width: 100%;

@@ -79,13 +79,14 @@
       {{ product_view product: product product_hide_pix: product_hide_pix is_pisos: is_pisos }}
     </div>
 
-    <div class="product__buy-together">
-      {{ buy_together product: product }}
-    </div>
-
     <div class="obs mobile">
       Preço válido para o dia {{ date.now | date.to_string '%d/%m/%Y' }}, para compras realizadas exclusivamente pelo
       site. O frete não está incluso. Fotos meramente ilustrativas.
+    </div>
+
+    <div class="product__buy-together">
+      <span>{{product.buy_together}}</span>
+      {{ buy_together product: product }}
     </div>
 
     <!-- Realidade Aumentada -->
@@ -218,6 +219,8 @@
     </button>
   </div>
 
+  {{ asset type: "css" paths: ["buy_together" ] }}
+
   {{ footer products:common.lighbox_products.products.nodes }}
 
   {{ gtm_config gtm_id: common.gtm_id }}
@@ -234,6 +237,7 @@
   {{~ end ~}}
 
   {{ asset type: "js" paths: ["virtual_reality"] }}
+  {{ asset type: "js" paths: ["buy_together"] }}
 </body>
 
 </html>

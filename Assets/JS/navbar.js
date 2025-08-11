@@ -216,6 +216,7 @@ function hideMobileSearch(event){
 
 function onScroll(evt) {
   // Store the scroll value for laterz.
+  /*
   lastScrollY = window.scrollY;
 
   // Prevent multiple rAF callbacks.
@@ -223,6 +224,7 @@ function onScroll(evt) {
 
   scheduledAnimationFrame = true;
   requestAnimationFrame(readAndUpdatePage);
+  */
 }
 
 window.addEventListener("scroll", onScroll);

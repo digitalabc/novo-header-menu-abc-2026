@@ -1,0 +1,222 @@
+.buy-together {
+  padding: 16px;
+  gap: 8px;
+  background: #f6f8fa;
+  border-radius: 12px;
+}
+
+.container-buy-together-row {
+  overflow: auto;
+}
+.container-buy-together-row .buy-together-row-div:not(:empty) {
+  display: flex !important;
+  gap: 8px;
+  width: max-content;
+}
+.container-buy-together-row:not(:last-child) .buy-together-row-div {
+  margin-bottom: 16px !important;
+}
+.container-buy-together-row:last-child .buy-together-row-div {
+  margin-bottom: 0px !important;
+}
+.buy-together-row-div .wrapper {
+  height: auto;
+  display: flex;
+  width: 100%;
+}
+.buy-together-row-div .wrapper .flex img {
+  border: 0;
+}
+.buy-together-row-div .wrapper .flex.add {
+  border-radius: 0 6px 6px 0;
+}
+.buy-together-row-div .wrapper .flex.remove {
+  border-radius: 6px 0 0 6px;
+}
+.buy-together-row-div .wrapper .flex {
+  width: 40px;
+  height: 40px;
+
+  border: 2px solid #f0f0f0;
+  background: #f6f8fa;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product__buy-together .product-buy-together-div {
+  background: #ffffff;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 16px;
+  width: 280px;
+}
+.product__buy-together .buy-together-value-total .value {
+  font-family: "Satoshi Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 20px;
+  color: #0fa848;
+}
+.buy-together .product__login-to-see {
+  margin: auto;
+}
+
+.product__buy-together {
+  margin-bottom: 60px;
+}
+@media (max-width: 860px) {
+  .container-buy-together-row:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  .product__buy-together {
+    margin-bottom: 16px;
+  }
+}
+
+.product__buy-together .buy-together-value-total {
+  font-family: "Satoshi Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #333333;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.product__buy-together .add-to-cart-button {
+  padding: 0px 12px;
+  gap: 8px;
+
+  background: #333333 !important;
+  border-radius: 6px;
+}
+.product__buy-together .product-buy-together-div .buy-together__data {
+  margin-top: 16px;
+  display: flex;
+}
+
+.product__buy-together .product-buy-together-div .addToCard {
+  font-family: "Satoshi Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 12px;
+  text-align: center;
+  color: #0fa848;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 8px;
+  gap: 4px;
+  width: 102px;
+  max-width: 360.4px;
+  height: 40px;
+  background: #f3faf6;
+  border: 2px solid rgba(15, 168, 72, 0.05);
+  border-radius: 6px;
+}
+
+input[type="number"].buy-together-quantity::-webkit-outer-spin-button,
+input[type="number"].buy-together-quantity::-webkit-inner-spin-button,
+input[type="number"].buy-together-quantity {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  padding: 0;
+  text-align: center;
+  border: none;
+  max-width: 50px;
+  width: inherit;
+  border-top: 2px solid #f0f0f0;
+  border-bottom: 2px solid #f0f0f0;
+}
+.product__buy-together .product-buy-together-div .buy-together__list_price {
+  display: flex;
+  gap: 10px;
+}
+.product__buy-together
+  .product-buy-together-div
+  .buy-together__list_price
+  .badge {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 17px;
+
+  color: #ffffff;
+  width: 41px;
+  height: 21px;
+  background: #333333;
+  border-radius: 6px 0px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product__buy-together .product-buy-together-div .buy-together__price {
+  display: flex;
+  gap: 4px;
+  padding-top: 8px;
+
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.product__buy-together .product-buy-together-div .buy-together__price .value {
+  font-family: "Satoshi Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #e3062d;
+}
+.product__buy-together
+  .product-buy-together-div
+  .buy-together__list_price
+  .value {
+  font-family: "Satoshi Variable";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 8px;
+  display: flex;
+  align-items: center;
+  text-decoration-line: line-through;
+  color: #848484;
+}
+.product__buy-together .product-buy-together-div .spot__image-wrapper img {
+  width: 64px !important;
+  border: 1.58025px solid #f0f0f0;
+  border-radius: 4.74074px;
+}
+.product__buy-together .product-buy-together-div .spot__image-wrapper {
+  margin: 0;
+}
+.product__buy-together .product-buy-together-div .buy-together__info {
+  display: flex;
+  gap: 16px;
+}
+.product__buy-together .product-buy-together-div .buy-together__name {
+  font-family: "Satoshi Variable";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #888888;
+  margin-bottom: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 40px;
+}

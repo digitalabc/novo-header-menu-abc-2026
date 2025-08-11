@@ -3,11 +3,9 @@ console.log("Timestamp:", new Date().toISOString());
 console.log("Document ready state:", document.readyState);
 console.log("Window loaded:", document.readyState === "complete");
 
-// Executar imediatamente para testar
 (function () {
   console.log("=== FUNÇÃO IMEDIATA EXECUTADA ===");
 
-  // Aguardar um pouco e tentar novamente
   setTimeout(() => {
     console.log("=== TIMEOUT 2 SEGUNDOS EXECUTADO ===");
     console.log("DOM atual:", document.readyState);
@@ -367,7 +365,7 @@ const selectPayment = async (paymentId) => {
 
   setTimeout(() => {
     ensureCardElementsVisibility();
-    // Executar funções de reorganização e máscaras
+
     console.log("Executando funções de reorganização e máscaras...");
     setTimeout(() => {
       reorganizeExpirationInputs();
@@ -521,7 +519,6 @@ function updateExpiryValue() {
   expiryInput.dispatchEvent(new Event("change"));
 }
 
-// Função para reorganizar inputs de validade lado a lado
 function reorganizeExpirationInputs() {
   console.log("Tentando reorganizar inputs de validade...");
 
@@ -544,13 +541,11 @@ function reorganizeExpirationInputs() {
     return;
   }
 
-  // Verificar se já foi reorganizado
   if (monthInput.closest(".expiration-container")) {
     console.log("Inputs já reorganizados");
     return;
   }
 
-  // Adicionar título 'Cadastrar cartão' se ainda não existe
   if (cardNumberInput && !document.querySelector(".card-form-title")) {
     const cardNumberContainer = cardNumberInput.closest(".forminline");
     if (cardNumberContainer) {
@@ -568,7 +563,6 @@ function reorganizeExpirationInputs() {
         margin-top: 0;
       `;
 
-      // Inserir o título antes do container do número do cartão
       cardNumberContainer.parentNode.insertBefore(
         cardTitle,
         cardNumberContainer
@@ -576,14 +570,12 @@ function reorganizeExpirationInputs() {
     }
   }
 
-  // Encontrar o container pai
   const parentContainer = monthInput.closest(".forminline");
   if (!parentContainer) {
     console.log("Container pai não encontrado");
     return;
   }
 
-  // Encontrar e remover labels existentes
   const validadeLabel = parentContainer.querySelector("label");
   const labels = parentContainer.querySelectorAll("label");
   labels.forEach((label) => {
@@ -595,7 +587,6 @@ function reorganizeExpirationInputs() {
     }
   });
 
-  // Criar nova estrutura
   const expirationContainer = document.createElement("div");
   expirationContainer.className = "expiration-container";
   expirationContainer.style.cssText = `
@@ -606,7 +597,6 @@ function reorganizeExpirationInputs() {
     width: 100%;
   `;
 
-  // Label principal
   const mainLabel = document.createElement("label");
   mainLabel.textContent = "Validade";
   mainLabel.style.cssText = `
@@ -616,7 +606,6 @@ function reorganizeExpirationInputs() {
     margin-bottom: 5px;
   `;
 
-  // Container para os inputs
   const inputsContainer = document.createElement("div");
   inputsContainer.style.cssText = `
     display: flex;
@@ -624,7 +613,6 @@ function reorganizeExpirationInputs() {
     align-items: center;
   `;
 
-  // Container para mês
   const monthContainer = document.createElement("div");
   monthContainer.style.cssText = `
     display: flex;
@@ -641,7 +629,6 @@ function reorganizeExpirationInputs() {
     display: none;
   `;
 
-  // Container para ano
   const yearContainer = document.createElement("div");
   yearContainer.style.cssText = `
     display: flex;
@@ -658,7 +645,6 @@ function reorganizeExpirationInputs() {
     display: none;
   `;
 
-  // Separador visual
   const separator = document.createElement("span");
   separator.textContent = "/";
   separator.style.cssText = `
@@ -669,7 +655,6 @@ function reorganizeExpirationInputs() {
     margin-bottom: 8px;
   `;
 
-  // Estilizar inputs
   monthInput.style.cssText = `
     width: 100%;
     padding: 8px 12px;
@@ -688,7 +673,6 @@ function reorganizeExpirationInputs() {
     text-align: center;
   `;
 
-  // Montar estrutura
   monthContainer.appendChild(monthLabel);
   monthContainer.appendChild(monthInput);
 
@@ -702,13 +686,11 @@ function reorganizeExpirationInputs() {
   expirationContainer.appendChild(mainLabel);
   expirationContainer.appendChild(inputsContainer);
 
-  // Inserir no DOM
   parentContainer.appendChild(expirationContainer);
 
   console.log("Inputs de validade reorganizados com sucesso!");
 }
 
-// Função para detectar bandeira do cartão
 function detectCardBrand(cardNumber) {
   const cardBrands = {
     visa: /^4/,
@@ -726,16 +708,13 @@ function detectCardBrand(cardNumber) {
     }
   }
 
-  // Aplicar bandeira ao input
   const cardInput = document.querySelector('[data-checkout="cardNumber"]');
   if (cardInput) {
-    // Remover classes de bandeira anteriores
     cardInput.classList.remove("visa", "mastercard", "amex", "discover", "elo");
 
     if (detectedBrand) {
       cardInput.classList.add(detectedBrand);
 
-      // Criar wrapper se não existir
       if (!cardInput.parentElement.classList.contains("card-input-wrapper")) {
         const wrapper = document.createElement("div");
         wrapper.className = "card-input-wrapper";
@@ -749,7 +728,6 @@ function detectCardBrand(cardNumber) {
         wrapper.appendChild(cardInput);
       }
 
-      // Adicionar ícone da bandeira
       let brandIcon = cardInput.parentElement.querySelector(".card-brand-icon");
       if (!brandIcon) {
         brandIcon = document.createElement("div");
@@ -769,7 +747,6 @@ function detectCardBrand(cardNumber) {
         cardInput.parentElement.appendChild(brandIcon);
       }
 
-      // Definir ícone baseado na bandeira
       const brandIcons = {
         visa: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNTFBNSIvPgo8cGF0aCBkPSJNMTYuNzUgMTZIMTQuNUwxNi4yNSA4SDE4LjVMMTYuNzUgMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K",
         mastercard:
@@ -784,11 +761,9 @@ function detectCardBrand(cardNumber) {
   }
 }
 
-// Função para aplicar máscaras aos inputs de pagamento
 function applyInputMasks() {
   console.log("Aplicando máscaras aos inputs...");
 
-  // Máscara para número do cartão
   const cardNumberInput = document.querySelector(
     '[data-checkout="cardNumber"]'
   );
@@ -799,12 +774,10 @@ function applyInputMasks() {
       if (value.length > 19) value = value.substring(0, 19);
       e.target.value = value;
 
-      // Detectar bandeira do cartão
       detectCardBrand(value.replace(/\s/g, ""));
     });
   }
 
-  // Máscara para mês de expiração
   const monthInput = document.querySelector(
     '[data-checkout="cardExpirationMonth"]'
   );
@@ -818,7 +791,6 @@ function applyInputMasks() {
     });
   }
 
-  // Máscara para ano de expiração
   const yearInput = document.querySelector(
     '[data-checkout="cardExpirationYear"]'
   );
@@ -830,7 +802,6 @@ function applyInputMasks() {
     });
   }
 
-  // Máscara para nome do titular
   const cardHolderInput = document.querySelector(
     '[data-checkout="cardholderName"]'
   );
@@ -842,7 +813,6 @@ function applyInputMasks() {
     });
   }
 
-  // Máscara para CVV
   const cvvInput = document.querySelector('[data-checkout="securityCode"]');
   if (cvvInput) {
     cvvInput.addEventListener("input", function (e) {
@@ -852,7 +822,6 @@ function applyInputMasks() {
     });
   }
 
-  // Máscara para CPF/CNPJ
   const cpfCnpjInput = document.querySelector(
     'input[name*="cpf"], input[name*="cnpj"], input[placeholder*="CPF"], input[placeholder*="CNPJ"]'
   );
@@ -879,7 +848,6 @@ function applyInputMasks() {
   }
 }
 
-// MutationObserver para detectar carregamento dos inputs
 function setupPaymentObserver() {
   console.log("Configurando observer para inputs de pagamento...");
 
@@ -888,7 +856,6 @@ function setupPaymentObserver() {
       if (mutation.type === "childList") {
         const addedNodes = Array.from(mutation.addedNodes);
 
-        // Verificar se inputs de cartão foram adicionados
         const hasCardInputs = addedNodes.some((node) => {
           if (node.nodeType === 1) {
             return (
@@ -914,15 +881,13 @@ function setupPaymentObserver() {
     });
   });
 
-  // Observar mudanças no body
   observer.observe(document.body, {
     childList: true,
     subtree: true,
   });
 
-  // Fallback: verificação periódica
   let attempts = 0;
-  const maxAttempts = 60; // 30 segundos (500ms * 60)
+  const maxAttempts = 60;
 
   const intervalCheck = setInterval(() => {
     attempts++;
@@ -954,7 +919,6 @@ function setupPaymentObserver() {
   }, 500);
 }
 
-// Função para inicializar as funcionalidades de pagamento
 function initializePaymentFunctions() {
   console.log("=== INICIALIZANDO FUNÇÕES DE PAGAMENTO ===");
   console.log("DOM readyState:", document.readyState);
@@ -966,7 +930,6 @@ function initializePaymentFunctions() {
     console.error("Erro ao configurar observer:", error);
   }
 
-  // Tentar aplicar imediatamente se os inputs já existirem
   setTimeout(() => {
     console.log("Executando timeout de inicialização...");
     try {
@@ -978,15 +941,12 @@ function initializePaymentFunctions() {
   }, 500);
 }
 
-// Executar imediatamente se o DOM já estiver carregado
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initializePaymentFunctions);
 } else {
-  // DOM já carregado, executar imediatamente
   initializePaymentFunctions();
 }
 
-// Também executar quando a janela carregar completamente
 window.addEventListener("load", function () {
   console.log("Janela carregada, verificando inputs de pagamento...");
   setTimeout(() => {
@@ -995,20 +955,16 @@ window.addEventListener("load", function () {
   }, 1000);
 });
 
-// Executar quando o script for carregado (para scripts assíncronos)
 if (typeof window !== "undefined") {
   console.log("=== SCRIPT PAYMENT_FUNCTIONS.JS CARREGADO ===");
 
-  // Executar imediatamente
   initializePaymentFunctions();
 
-  // Também executar com delay para garantir
   setTimeout(() => {
     console.log("=== EXECUÇÃO COM DELAY ===");
     initializePaymentFunctions();
   }, 1000);
 
-  // Executar quando clicar em qualquer lugar da página (fallback)
   document.addEventListener(
     "click",
     function () {

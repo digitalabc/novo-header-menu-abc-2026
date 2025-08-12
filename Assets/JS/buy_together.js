@@ -6,8 +6,8 @@ window.addEventListener("load", buyTogetherSetup, false);
  * @param {string} id - The id used to search for the element in the document
  */
 function replaceInnerHtml2(html, id) {
-  const div = document.getElementById(id);
-  if (div && html !== undefined) div.innerHTML = html;
+    const div = document.getElementById(id);
+    if (div && html !== undefined) div.innerHTML = html;
 }
 /**
  * The page load event triggers the setup for the buy together component,
@@ -239,16 +239,44 @@ async function buyTogetherCalculatePrices(rowDiv) {
 
     pushProductInput(rowDiv, input);
 
+    
     const priceDiv = rowDiv.querySelector('[id^="buy-together-price-"]');
     const price1 = rowDiv.querySelector('.product-buy-together-div-1 .buy-together__price');
     const price2 = rowDiv.querySelector('.product-buy-together-div-2 .buy-together__price');
-
+    
     const list_price1 = rowDiv.querySelector('.product-buy-together-div-1 .buy-together__list_price');
     const list_price2 = rowDiv.querySelector('.product-buy-together-div-2 .buy-together__list_price');
+    
+    console.log("Input for price calculation:", input);
 
     Promise.all([
         await getPricesBuyTogether(input, priceDiv, null, 'à vista no PIX'),
         await getPricesBuyTogether([input[0]], price1, list_price1, 'no pix'),
         await getPricesBuyTogether([input[1]], price2, list_price2, 'no pix'),
     ])
+}
+
+
+async function buy_together_add_product_view(element) {
+    const input = [];
+    
+    const div = element.closest('.buy-together__data').querySelector('.buy-together-quantity');
+    if (!div) {
+        console.error("Buy together quantity input not found.");
+        return;
+    }
+
+    await input.push({
+        productVariantId: +div.getAttribute("product-variant-id"),
+        quantity: +div.value
+    });
+
+    const success = await addOrCreateCheckout(input);
+
+    if (success) {
+        await loadMiniCart();
+        openOffcanvas("#minicart-offcanvas")
+        div.value = 1; // Reset quantity input after adding to cart
+        console.log("Product added to cart successfully.");
+    }
 }

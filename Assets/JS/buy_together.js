@@ -114,8 +114,6 @@ async function buyTogetherQuantityButtonAdd(element) {
     const max = +input.getAttribute("max")
     const value = +input.value + 1
 
-    console.log(value > max, value)
-
     if (value > max) {
         input.value = max
     } else {
@@ -137,8 +135,6 @@ async function buyTogetherQuantityButtonRemove(element) {
     const min = +input.getAttribute("min")
     const value = +input.value - 1
 
-    console.log(value > min, value)
-
     if (value < min) {
         input.value = max
     } else {
@@ -157,8 +153,6 @@ async function buyTogetherQuantityButtonRemove(element) {
 async function buyTogetherQuantityOnChange(element) {
     const max = +element.getAttribute("max")
     const value = +element.value
-
-    console.log(value > max)
 
     if (value > max) {
         element.value = max
@@ -198,7 +192,6 @@ async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
         return;
     }
 
-    const totalQuantity = data[0] ? data[0].quantity : 0 + data[1] ? data[1].quantity : 0
 
     const calculatePrices = json.find(entry => entry.key === "calculate_prices")?.value || [];
     const price = calculatePrices.find(entry => entry.key === "price")?.value;
@@ -206,7 +199,7 @@ async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
     const formattedPrice = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-    }).format(price - (totalQuantity / 100));
+    }).format(price);
 
     if (priceEl) {
         priceEl.innerHTML = `<span class="value">${formattedPrice}</span> ${textPix}`;
@@ -218,7 +211,7 @@ async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
     const list_formattedPrice = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-    }).format(list_price - (totalQuantity / 100));
+    }).format(list_price);
 
     const discount = ((list_price - price) / list_price) * 100;
     const discountPercentage = Math.round(discount);
@@ -235,7 +228,6 @@ async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
  */
 async function buyTogetherCalculatePrices(rowDiv) {
     const input = [];
-    console.log("Calculating prices for row", rowDiv);
 
     pushProductInput(rowDiv, input);
 
@@ -247,8 +239,6 @@ async function buyTogetherCalculatePrices(rowDiv) {
     const list_price1 = rowDiv.querySelector('.product-buy-together-div-1 .buy-together__list_price');
     const list_price2 = rowDiv.querySelector('.product-buy-together-div-2 .buy-together__list_price');
     
-    console.log("Input for price calculation:", input);
-
     Promise.all([
         await getPricesBuyTogether(input, priceDiv, null, 'à vista no PIX'),
         await getPricesBuyTogether([input[0]], price1, list_price1, 'no pix'),

@@ -2169,7 +2169,6 @@ img {
 
 .guide-icon img {
   display: block;
-  /* Garante que a imagem não tenha espaços em branco em torno */
 }
 
 .guide-info {
@@ -2336,11 +2335,10 @@ img {
 .delivery-address,
 .summary-details {
   background-color: #fff;
-  /* Fundo branco para essas seções */
   font-size: 16px;
   color: #000;
   border-bottom: 2px solid #e8e8e8;
-  /* Linha de separação se necessário */
+
 }
 
 .purchase-details td,
@@ -2350,7 +2348,7 @@ img {
   text-align: left;
   color: #848484;
   padding: 16px 0;
-  /* Espaçamento interno */
+
 }
 
 .purchase-details td:last-child,
@@ -2413,7 +2411,7 @@ img {
   overflow: hidden;
 }
 
-/* Melhorias para tabela de produtos */
+
 .section-content table {
   width: 100%;
   border-collapse: collapse;
@@ -2457,7 +2455,7 @@ img {
   font-variant-numeric: tabular-nums;
 }
 
-/* Mobile específico para tabela */
+
 @media (max-width: 768px) {
   .section-content table {
     font-size: 14px;
@@ -2502,7 +2500,7 @@ img {
   }
 }
 
-/* Extra small mobile */
+
 @media (max-width: 480px) {
   .section-content td.quantity {
     width: 40px;
@@ -2515,7 +2513,7 @@ img {
   }
 }
 
-/* Mobile muito pequeno - esconder quantity column */
+
 @media (max-width: 360px) {
   .section-content td.quantity {
     display: none;
@@ -2526,7 +2524,7 @@ img {
   }
 }
 
-/* Desktop - mantém layout padrão */
+
 @media (min-width: 769px) {
   .section-content .products-container {
     padding: clamp(8px, 2vw, 12px) 0;
@@ -2565,7 +2563,6 @@ img {
     content: none !important;
   }
 
-  /* Reset grid styles for desktop */
   .section-content .item-line-order>*:nth-child(1),
   .section-content .item-line-order>*:nth-child(2) {
     grid-column: auto !important;
@@ -2606,7 +2603,6 @@ img {
     margin-bottom: 0;
   }
 
-  /* Nome do produto - destaque principal */
   .section-content .products-container>*:first-child {
     font-size: 16px;
     font-weight: 600;
@@ -2616,7 +2612,7 @@ img {
     padding-right: 0;
   }
 
-  /* Container dos detalhes (quantidade e preços) */
+
   .section-content .item-line-order {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2626,7 +2622,7 @@ img {
     margin-top: 8px;
   }
 
-  /* Quantidade */
+
   .section-content .item-line-order>*:nth-child(1) {
     grid-column: 1;
     font-size: 14px;
@@ -2706,7 +2702,7 @@ img {
   text-align: left;
 }
 
-/* Melhorias adicionais para valores monetários */
+
 .section-content [class*="price"],
 .section-content [class*="value"],
 .section-content .products-container-identificador {
@@ -2717,7 +2713,7 @@ img {
   text-overflow: ellipsis;
 }
 
-/* Garantir que textos longos não quebrem a estrutura */
+
 .section-content .prod-name {
   max-width: 100%;
   overflow-wrap: break-word;
@@ -2731,7 +2727,7 @@ img {
   max-width: 100px;
 }
 
-/* Melhorar responsividade da tabela */
+
 @media (max-width: 640px) {
   .section-content table {
     min-width: 100%;
@@ -4608,7 +4604,7 @@ img {
   line-height: 1.25rem;
 }
 
-/* Ocultar parágrafos específicos conforme design do Figma */
+
 .wake-order-confirmation .pix p:nth-of-type(3),
 .wake-order-confirmation .pix p:nth-of-type(4) {
   display: none;
@@ -4711,7 +4707,7 @@ img {
   margin: 0 auto;
 }
 
-/* Oculta os parágrafos específicos no componente PIX */
+
 .wake-confirmation-max-width p,
 .wake-confirmation-max-width>div>p {
   display: none !important;
@@ -5069,9 +5065,8 @@ img {
   display: flex;
   padding: 37px 25px;
   flex-direction: column;
-
   border-radius: 16px;
-  border: 1px solid #E5E5E5;
+  border: 6px solid #20a3891a;
   background: #EDF6F3;
 }
 
@@ -5115,6 +5110,12 @@ img {
   line-height: normal;
 }
 
+.guideShopHead img {
+  width: 60px;
+  height: 40px;
+}
+
+
 .guideShopName {
   color: #000;
   font-family: "Satoshi", sans-serif;
@@ -5137,13 +5138,12 @@ img {
 
 .guideShopAddress {
   border-radius: 8px;
-  border: 1px solid #E5E5E5;
   background: #FFFCF1;
   padding: 16px;
   margin-top: 14px;
 }
 
-/* Melhorias de responsividade geral */
+
 @media (max-width: 480px) {
   .wake-confirmation-wrapper {
     margin: 8px;
@@ -5175,7 +5175,7 @@ img {
   }
 }
 
-/* Melhorias para tablets em modo retrato */
+
 @media (max-width: 900px) and (min-width: 769px) {
   .section-content .products-container {
     padding: 20px;
@@ -5200,7 +5200,7 @@ img {
   }
 }
 
-/* Mobile pequeno - ajustes finos */
+
 @media (max-width: 480px) {
   .section-content {
     padding: 16px 12px;
@@ -5234,7 +5234,7 @@ img {
   }
 }
 
-/* Extra small devices */
+
 @media (max-width: 360px) {
   .wake-confirmation-order-success-message {
     flex-direction: column;
@@ -5307,7 +5307,6 @@ img {
   }
 }
 
-/* Melhorar acessibilidade e foco */
 .printBoleto:focus,
 #buttonPixCopy:focus,
 .whatsapp-link:focus {
@@ -5315,7 +5314,6 @@ img {
   outline-offset: 2px;
 }
 
-/* Botão Continuar Comprando */
 .continue-shopping-button {
   display: flex;
   justify-content: center;
@@ -5369,7 +5367,7 @@ img {
   outline-offset: 2px;
 }
 
-/* Animações suaves */
+
 .wake-confirmation-wrapper>* {
   animation: fadeInUp 0.6s ease-out;
 }

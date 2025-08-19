@@ -1,9 +1,10 @@
 {{ payment_method = data?.result?.selected_payment_method }}
 {{ is_card = payment_method.html | string.contains "data-gateway-cartao" }}
+{{ is_boleto = payment_method.name | string.downcase | string.contains "boleto" }}
 
 <h3> Resumo do Pedido </h3>
 
-{{ if !is_card }}
+{{ if !is_card && is_boleto }}
 <div class="payment-instructions"
     style="margin: 15px 0; padding: 12px; background-color: #f8f9fa; border-left: 4px solid #007bff; border-radius: 4px;">
     <div style="font-weight: normal; font-size: 14px; color: #495057; line-height: 1.4;">

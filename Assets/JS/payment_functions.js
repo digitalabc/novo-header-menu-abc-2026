@@ -76,8 +76,6 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
 
       setInnerHtmlById(respRight, "data-render-right-menu");
 
-      document.querySelector(".checkout-footer").style.marginTop = "320px";
-
       document.querySelector(
         ".checkout-footer-mobile .checkout-whats"
       ).style.display = "none";

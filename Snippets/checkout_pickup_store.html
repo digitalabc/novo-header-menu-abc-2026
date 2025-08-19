@@ -1,10 +1,10 @@
 {{~
-pickUpStores = data.shipping_quotes | array.filter @(do; ret string.contains($0.name, "RETIRE") || string.contains($0.type, "Retirada"); end);
+pickUpStores = data.shipping_quotes | array.filter @(do; ret string.contains($0.name, "RETIRE"); end);
 ~}}
 
 <div class="selectPickUpWrapper">
     <h2 class="title">
-        3. Selecionar Guide Shop para retirada
+        3. Selecione uma Guide Shop para retirada
     </h2>
     <div class="selectPickUpItems grid-layout">
         {{~ for pickStore in pickUpStores ~}}

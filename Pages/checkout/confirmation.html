@@ -29,7 +29,7 @@
         {{ if isGuideShop }}
         recebido! Programa-se para a retirada na Guide Shop.
         {{ else }}
-        realizado com sucesso!
+        </br>realizado com sucesso!
         {{ end }}
       </h2>
       <!-- Mensagem Introdução ao usuário~~-->
@@ -37,9 +37,10 @@
         <h3 class="welcomeUser">
           Olá, {{ data?.customer?.customer_name ? data.customer.customer_name : '' }}
         </h3>
-        Recebemos a solicitação de pedido em {{ date.parse(first_order.date) | date.to_string('%d/%m/%Y ás %R', 'pt-BR') }}
+        Recebemos a solicitação de pedido em {{ date.parse(first_order.date) | date.to_string('%d/%m/%Y ás %R', 'pt-BR')
+        }}
         seu pedido #{{ first_order.order_id }}.
-        Certifique-se de que os dados são da ABC Prime ao realizar o pagamento.
+        Certifique-se de que os dados são da ABC da Construção ao realizar o pagamento.
         {{ if isGuideShop }}
         <br><br>
         Seu pedido estará disponível para retirada a partir da confirmação do pagamento.
@@ -180,7 +181,7 @@
           <div class="item-line-order">
             <div class="title-item-order">Data do pedido</div>
             <div class="products-container-identificador">{{ date.parse(first_order.date) | date.to_string('%d/%m/%Y -
-              %R', culture:'pt-BR') }}</div>
+              %R', 'pt-BR') }}</div>
           </div>
         </div>
       </div>

@@ -2315,6 +2315,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 12px;
 }
 
 
@@ -3747,12 +3748,14 @@
 .checkout-header-text {
   display: flex;
   justify-content: center;
-  padding: 8px 20px;
-  background: linear-gradient(180deg, #02c1ab 0%, #118d7f 88.5%, #138779 100%);
-  color: #ffe2aa;
+  padding: 16px;
+  background-color: #fff3cd;
+  color: #856404;
   text-align: center;
-  font-family: "Satoshi", sans-serif;
-  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 4px;
+  width: 100%;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;

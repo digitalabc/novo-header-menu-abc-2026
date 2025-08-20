@@ -149,7 +149,7 @@
     font-weight: 700;
 }
 
-/* Ocultar span de desconto no checkout */
+
 #checkout_total_snippet .wake-cart-total>div:first-child {
     display: none !important;
 }

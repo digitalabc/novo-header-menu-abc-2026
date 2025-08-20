@@ -220,3 +220,22 @@ input[type="number"].buy-together-quantity {
   -webkit-box-orient: vertical;
   height: 40px;
 }
+
+@media screen and (max-width: 991px) {
+  .container-buy-together-row .buy-together-row-div:not(:empty) {
+    flex-direction: column;
+    width: 100%;
+  }
+  .product__buy-together .product-buy-together-div {
+    width: 100%;
+  }
+  .product__buy-together h2 {
+    text-align: left;
+  }
+  .product__buy-together .separator {
+    height: 20px;
+  }
+  .container-buy-together-row:not(:last-child) {
+    margin-bottom: 60px;
+  }
+}

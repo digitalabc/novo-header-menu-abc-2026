@@ -105,20 +105,19 @@ isPrime = data.checkout.products | array.filter @(do; ret $0.product_id == 17285
       <div data-payment-wrapper="{{ payment.id }}"></div>
       {{~ end ~}}
     </div>
-    
-    <!-- Cópia do componente de cupom para mobile -->
+
     <div class="wake-checkout-coupon-container wake-checkout-coupon-mobile" id="checkout_coupon_snippet_mobile">
       <div class="wake-checkout-coupon-inner">
         <label class="wake-checkout-coupon-label">Cupom de desconto</label>
         {{~ if !data.checkout.coupon ~}}
         <input type="text" class="wake-checkout-coupon-input" name="cupom de desconto" id="coupon-mobile"
-            placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
+          placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
         <button onclick="addCoupon()" class="wake-checkout-coupon-button">Aplicar</button>
         {{~ else ~}}
         <input type="text" disabled class="wake-checkout-coupon-input" name="cupom de desconto" id="coupon-mobile"
-            placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
+          placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
         <button onclick="removeCoupon()"
-            class="wake-checkout-coupon-button wake-checkout-coupon-button-change checkout-coupon-button-remove">Remover</button>
+          class="wake-checkout-coupon-button wake-checkout-coupon-button-change checkout-coupon-button-remove">Remover</button>
         {{~ end ~}}
       </div>
     </div>

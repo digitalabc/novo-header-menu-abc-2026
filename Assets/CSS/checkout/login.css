@@ -893,8 +893,8 @@ h3:nth-of-type(2) {
 
   .checkout-header-text {
     font-size: 15px;
-    font-weight: 700;
-    line-height: 20px;
+    font-weight: 600;
+    line-height: 150%;
   }
 
   .checkout-footer {

@@ -91,7 +91,7 @@
     max-width: 340px !important;
     flex: 1 1 300px;
   }
-  
+
   .checkout-address-wrapper {
     gap: 20px !important;
   }
@@ -159,7 +159,7 @@ body.bg-checkout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 
 
@@ -177,17 +177,15 @@ body.bg-checkout {
   .checkout-section-wrapper {
     padding: 1.5rem 0.5rem;
   }
-  
+
   .checkout-address-item {
     min-width: 100% !important;
     max-width: 100% !important;
     flex: 1 1 100%;
   }
-  
+
   .checkout-address-wrapper {
     flex-direction: column !important;
     gap: 16px !important;
   }
 }
-
-

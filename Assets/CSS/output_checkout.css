@@ -3748,16 +3748,15 @@
 .checkout-header-text {
   display: flex;
   justify-content: center;
-  padding: 16px;
+  padding: 8px 16px;
   background-color: #fff3cd;
   color: #856404;
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size: 14px;
-  border-radius: 4px;
   width: 100%;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 150%;
 }
 
@@ -3867,8 +3866,8 @@
 
   .checkout-header-text {
     font-size: 15px;
-    font-weight: 700;
-    line-height: 20px;
+    font-weight: 600;
+    line-height: 150%;
   }
 
   .checkout-footer {
@@ -3978,7 +3977,7 @@
 #data-render-delivery {
   display: flex;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   gap: 20px;
 }
 
@@ -4472,12 +4471,12 @@
   justify-content: center;
   background-color: #F0F3F5;
   height: -webkit-fill-available;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 
 @media (max-width: 768px) {
   .checkout-section-wrapper {
-    padding: 3rem 1rem 10rem;
+    padding: 2rem 1rem 10rem;
   }
 }
 
@@ -4901,7 +4900,7 @@
   border-radius: 12px;
   border: 3px solid #ecf1f7;
   background: #f6f8fa;
-  padding: 20px 24px;
+  padding: 16px 12px;
   margin-bottom: 32px;
   gap: 10px;
   transition: all 0.6s;
@@ -4923,7 +4922,7 @@
 .paymentSelectedWrapper .payment-details h3 {
   color: #333;
   font-family: "Satoshi", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   display: flex;
@@ -4935,17 +4934,17 @@
 .paymentSelectedWrapper .payment-details span {
   color: #848484;
   font-family: "Satoshi", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 12px;
+  line-height: 150%;
 }
 
 .changePaymentButton {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 16px;
+  padding: 8px 8px;
   border-radius: 12px;
   background: #e9f0fd;
   color: #2865e8;

@@ -1,5 +1,5 @@
 {{~
-    deliveryStores = data.shipping_quotes | array.filter @(do; ret !string.contains($0.name, "RETIRE"); end);
+    deliveryStores = data.shipping_quotes | array.filter @(do; ret !string.contains($0.name, "RETIRE") && $0.type != "Retirada" && $0.type != "Retirada*"; end);
 
     if(deliveryStores)
         cheapestOption = deliveryStores | array.sort "value" | array.first

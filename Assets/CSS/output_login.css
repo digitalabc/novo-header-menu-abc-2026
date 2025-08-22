@@ -1938,7 +1938,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Estilos adicionais para melhorar a aparência da página de recuperação de senha */
+
 
 /* Placeholders */
 .wake-password-recovery-wrapper>div .step-one form>div input::placeholder,
@@ -1956,7 +1956,7 @@
   }
 }
 
-/* Labels se existirem */
+
 .wake-password-recovery-wrapper>div label {
   font-size: 14px;
   font-weight: 500;
@@ -1965,7 +1965,7 @@
   font-family: 'Satoshi Variable', sans-serif;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 767px) {
 
   .wake-password-recovery-wrapper>div .step-one form>div,

@@ -97,7 +97,7 @@
 </div>
 
 <script>
-  var checkout_pages = {{ store.urls.checkout_pages | map.to_json}};
+  var checkout_pages = JSON.parse('{{ store.urls.checkout_pages | map.to_json }}');
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -110,4 +110,41 @@
       }
     }
   });
+
+
+  function updateFooterMobileValues() {
+    if (window.location.pathname === '/checkout' || window.location.pathname === '/checkout/') {
+      client.checkout.get().then(function (checkout) {
+        if (checkout && checkout.data) {
+          const footerMobileBottom = document.querySelector('.footer_mobile_bottom');
+          if (footerMobileBottom) {
+            const discountElement = footerMobileBottom.querySelector('.discount');
+            const totalElement = footerMobileBottom.querySelector('.total');
+
+            if (discountElement && checkout.data.discount) {
+              discountElement.textContent = new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              }).format(checkout.data.discount);
+            }
+
+            if (totalElement && checkout.data.total) {
+              totalElement.textContent = new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              }).format(checkout.data.total);
+            }
+          }
+        }
+      }).catch(function (error) {
+        console.error('Erro ao atualizar valores do footer mobile:', error);
+      });
+    }
+  }
+
+
+  document.addEventListener('checkout:updated', updateFooterMobileValues);
+
+
+  window.addEventListener('load', updateFooterMobileValues);
 </script>

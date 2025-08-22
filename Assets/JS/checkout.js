@@ -36,6 +36,9 @@ const updateCheckout = async () => {
     setInnerHtmlById(el.res, el.el);
   });
 
+  // Dispara um evento personalizado para notificar que o carrinho foi atualizado
+  document.dispatchEvent(new CustomEvent("checkout:updated"));
+
   // Força ocultação do span de desconto após atualizar
   setTimeout(() => {
     if (typeof forceHideDiscountSpan === "function") {

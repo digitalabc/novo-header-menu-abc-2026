@@ -457,7 +457,16 @@ const addCoupon = async () => {
       variables
     );
 
+    // Atualiza o componente de cupom padrão
     setInnerHtmlById(addCouponResp || "", "checkout_coupon_snippet");
+
+    // Atualiza o componente de cupom mobile
+    const mobileContainer = document.getElementById(
+      "checkout_coupon_snippet_mobile"
+    );
+    if (mobileContainer) {
+      mobileContainer.innerHTML = addCouponResp || "";
+    }
   }
 
   if (document.querySelector(".payment-right-menu")) {
@@ -487,7 +496,16 @@ const removeCoupon = async () => {
     variables
   );
 
+  // Atualiza o componente de cupom padrão
   setInnerHtmlById(addCouponResp || "", "checkout_coupon_snippet");
+
+  // Atualiza o componente de cupom mobile
+  const mobileContainer = document.getElementById(
+    "checkout_coupon_snippet_mobile"
+  );
+  if (mobileContainer) {
+    mobileContainer.innerHTML = addCouponResp || "";
+  }
 
   if (document.querySelector(".payment-right-menu")) {
     updateRightMenuPayment();

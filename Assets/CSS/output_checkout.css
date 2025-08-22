@@ -1338,20 +1338,23 @@
 
 
 @media (max-width: 768px) {
-  .wake-checkout-coupon-container {
+  .wake-checkout-coupon-container:not(.wake-checkout-coupon-mobile) {
     display: none !important;
   }
 
+  .wake-checkout-coupon-mobile {
+    display: flex !important;
+    flex-direction: column;
+  }
 
-  .wake-checkout-coupon-container.wake-checkout-coupon-mobile {
+  .cupom-wake-mobile {
     display: flex !important;
     margin-top: 20px;
   }
 }
 
-
 @media (min-width: 769px) {
-  .wake-checkout-coupon-container.wake-checkout-coupon-mobile {
+  .cupom-wake-mobile {
     display: none !important;
   }
 }
@@ -1502,7 +1505,7 @@
   filter: brightness(0) saturate(100%) invert(32%) sepia(88%) saturate(6238%) hue-rotate(217deg) brightness(103%) contrast(101%);
 }
 
-/* Responsividade para o componente de cupom */
+
 @media (max-width: 768px) {
   .wake-checkout-coupon {
     padding: 1rem;
@@ -1599,7 +1602,7 @@
   margin-top: 1.5rem;
 }
 
-/* Ocultar botão de remoção duplicado em mobile */
+
 @media (max-width: 767px) {
   .wake-checkout-summary-prod-remove-button {
     display: none;
@@ -2040,7 +2043,7 @@
   }
 }
 
-/* Exceções para não afetar o total geral e subtotal */
+
 .wake-cart-total .total span:last-child {
   display: inline !important;
   background: none !important;
@@ -4476,7 +4479,7 @@
 
 @media (max-width: 768px) {
   .checkout-section-wrapper {
-    padding: 2rem 1rem 10rem;
+    padding: 2rem 1rem 16rem
   }
 }
 
@@ -6005,7 +6008,7 @@
   }
 }
 
-/* Ajustes específicos para telas muito pequenas */
+
 @media (max-width: 480px) {
   .wake-cart-product-list-tbody-row {
     gap: 0.5rem;
@@ -6046,7 +6049,7 @@
   }
 }
 
-/* Quebra de linha responsiva em telas médias */
+
 @media (max-width: 600px) {
   .wake-cart-product-list-tbody-row {
     gap: 0.75rem;
@@ -6072,7 +6075,7 @@
   }
 }
 
-/* Container que abraça produtos e botão whats */
+
 .product-and-whats-container {
   display: flex;
   flex-direction: column;

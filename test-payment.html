@@ -89,7 +89,7 @@
             margin-bottom: 15px;
         }
 
-        /* CSS para colocar linha3 e linha5 lado a lado */
+
         .fbits-gateway-mercadopago-container {
             display: flex;
             flex-direction: row;
@@ -103,7 +103,7 @@
             margin: 0;
         }
 
-        /* Responsividade para telas menores */
+
         @media (max-width: 768px) {
             .fbits-gateway-mercadopago-container {
                 flex-direction: column;
@@ -131,7 +131,7 @@
             <strong>Boleto Bancário</strong> - Vencimento em 3 dias
         </div>
 
-        <!-- Formulário de Cartão de Crédito -->
+        <!-- Forms -->
         <div class="card-form" id="card-form">
             <h3>Dados do Cartão de Crédito</h3>
 
@@ -166,7 +166,7 @@
                 <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="18">
             </div>
 
-            <!-- Exemplo dos elementos fbits-gateway-mercadopago-linha3 e linha5 lado a lado -->
+
             <div class="forminline">
                 <label>Campos Lado a Lado</label>
                 <div class="forminline fbits-gateway-mercadopago-linha3"
@@ -186,20 +186,20 @@
         function testSelectPayment(paymentId) {
             console.log('Método de pagamento selecionado:', paymentId);
 
-            // Remover seleção anterior
+
             document.querySelectorAll('.payment-method').forEach(el => {
                 el.classList.remove('selected');
             });
 
-            // Selecionar método atual
+
             document.getElementById('payment-' + paymentId).classList.add('selected');
 
-            // Mostrar/ocultar formulário de cartão
+
             const cardForm = document.getElementById('card-form');
             if (paymentId === '2') {
                 cardForm.classList.add('active');
 
-                // Aguardar um pouco e tentar aplicar as funções
+
                 setTimeout(() => {
                     if (typeof reorganizeExpirationInputs === 'function') {
                         reorganizeExpirationInputs();

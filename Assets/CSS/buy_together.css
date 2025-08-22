@@ -12,6 +12,7 @@
   display: flex !important;
   gap: 8px;
   width: max-content;
+  margin: auto;
 }
 .container-buy-together-row:not(:last-child) .buy-together-row-div {
   margin-bottom: 16px !important;
@@ -219,6 +220,9 @@ input[type="number"].buy-together-quantity {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   height: 40px;
+}
+.product__buy-together h2 {
+  text-align: center;
 }
 
 @media screen and (max-width: 991px) {

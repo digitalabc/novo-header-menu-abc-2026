@@ -1,6 +1,16 @@
-# Projeto da empresa Auaha em para o cliente ABC da Construção, implementado no novo StoreFront da Fbits.
+# E-commerce ABC da Construção
 
-## 💻 Pré-requisitos
+## 💻 Equipe ABC
+
+- Menu Header
+- Política de Privacidade
+- Trabalhe Conosco
+
+## Iniciado
+
+Projeto da empresa Auaha em para o cliente ABC da Construção, implementado no novo StoreFront da Fbits.
+
+## Pré Requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 

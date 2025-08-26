@@ -1,0 +1,18 @@
+{{~ if data.checkout.products.size > 0 ~}}
+    {{~if data.checkout.discount + data.checkout.coupon_discount != 0 ~}}
+        <div class="price-line">
+            <span>Você está economizando</span>
+            <h3 class="discount">
+                {{ if data.checkout.coupon }}
+                {{data.checkout.discount + data.checkout.coupon_discount | math.format "c" "pt-BR"}}
+                {{ else }}
+                {{data.checkout.discount | math.format "c" "pt-BR"}}
+                {{ end }}
+            </h3>
+        </div>
+    {{~end~}}
+    <div class="price-line">
+        <span>Valor total</span>
+        <h3 class="total">{{data.checkout.total | math.format "c" "pt-BR"}}</h3>
+    </div>
+{{~end~}}

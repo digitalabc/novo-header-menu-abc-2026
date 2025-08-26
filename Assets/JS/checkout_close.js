@@ -468,12 +468,12 @@ const addCoupon = async () => {
       mobileContainer.innerHTML = addCouponResp || "";
     }
   }
-
+  updateCheckout();
+  /*
   if (document.querySelector(".payment-right-menu")) {
     updateRightMenuPayment();
   } else {
-    updateCheckout();
-  }
+  }*/
 };
 
 const removeCoupon = async () => {
@@ -507,11 +507,12 @@ const removeCoupon = async () => {
     mobileContainer.innerHTML = addCouponResp || "";
   }
 
+    updateCheckout();
+/*
   if (document.querySelector(".payment-right-menu")) {
     updateRightMenuPayment();
   } else {
-    updateCheckout();
-  }
+  }*/
 };
 
 /**

@@ -1,6 +1,9 @@
 //Update snippets
 const updateCheckout = async () => {
   const checkoutId = await client.cookie.get("carrinho-id");
+  
+  console.log(checkoutId)
+
   let variables = {
     checkoutId: checkoutId,
     hasCheckout: false,
@@ -10,27 +13,31 @@ const updateCheckout = async () => {
     [
       "checkout_products_snippet.html",
       "wake_checkout_subtotal_snippet.html",
-      "wake_checkout_total_snippet.html",
+      "checkout_footer_summary.html",
       "checkout_coupon_snippet.html",
+      "checkout_footer_line.html"
     ],
     "SnippetQueries/wake_checkout.graphql",
     variables
   );
 
-  const [product, total, subtotal, coupon] = [
+  const [product, total, subtotal, coupon, line] = [
     { name: "checkout_products_snippet.html", el: "checkout_product_snippet" },
-    { name: "wake_checkout_total_snippet.html", el: "checkout_total_snippet" },
+    { name: "checkout_footer_summary.html", el: "checkout_total_snippet" },
     {
       name: "wake_checkout_subtotal_snippet.html",
       el: "checkout_subtotal_snippet",
     },
     { name: "checkout_coupon_snippet.html", el: "checkout_coupon_snippet" },
+    { name: "checkout_footer_line.html", el: "footer_mobile_bottom" },
   ].map(({ name, el }) => ({
     res: snippets.find((s) => s.name === name)?.result || "",
     el,
   }));
 
-  const elements = [product, total, subtotal, coupon];
+  const elements = [product, total, subtotal, coupon, line];
+
+  console.log(snippets, elements)
 
   elements.forEach((el) => {
     setInnerHtmlById(el.res, el.el);

@@ -1,0 +1,16 @@
+    <div>
+        <span>Desconto:</span>
+        <span>{{ data.checkout.discount < 0 ? (data.checkout.discount | math.format "c" "pt-BR" ) : '-' }}</span>
+    </div>
+    {{if data.checkout.coupon_discount != 0 }}
+        <div>
+    {{~else~}}
+        <div style="display: none;">
+    {{~end~}}
+        <span>Cupom:</span>
+        <span>{{ data.checkout.coupon ? (data.checkout.coupon_discount | math.format "c" "pt-BR") : '-' }}</span>
+    </div>
+    <div class="total">
+        <span>Total:</span>
+        {{ data.checkout.total | math.format "c" "pt-BR" }}
+    </div>

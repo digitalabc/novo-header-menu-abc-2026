@@ -1336,12 +1336,11 @@
   flex-direction: column;
 }
 
+#overlay-box.hidden {
+  display: none;
+}
 
 @media (max-width: 768px) {
-  .wake-checkout-coupon-container:not(.wake-checkout-coupon-mobile) {
-    display: none !important;
-  }
-
   .wake-checkout-coupon-mobile {
     display: flex !important;
     flex-direction: column;

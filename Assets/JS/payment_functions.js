@@ -15,18 +15,24 @@ console.log("Window loaded:", document.readyState === "complete");
 async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   const token = client.cookie.get("sf_customer_access_token");
 
-  const response = await client.snippet.detailed(
-    "payment_selected_snippet.html",
-    "payment_select_mutation.graphql",
+  console.log({
+    checkoutId: checkoutId,
+    paymentMethodId: paymentId,
+    customerAccessToken: token,
+    orderId,
+  })
+
+  const response = await client.snippet.detailed("payment_selected_snippet.html", "payment_select_mutation.graphql",
     {
       checkoutId: checkoutId,
       paymentMethodId: paymentId,
       customerAccessToken: token,
-      orderId,
-    }
-  );
+      orderId
+    });
+
 
   if (response.queryResponse.errors) {
+    console.log(response.queryResponse)
     return { errors: response.queryResponse.errors };
   }
 
@@ -36,9 +42,10 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
     `div[data-payment-wrapper="${paymentId}"]`
   );
 
-  if (div && response) {
-    div.innerHTML = response.html;
+  console.log(div, response)
+  div.innerHTML = response.html;
 
+  if (div && response) {
     const isCardPayment = response.html.includes("paymentCartao");
 
     if (!isCardPayment) {
@@ -111,7 +118,7 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
     response.queryResponse.data?.result?.selectedPaymentMethod?.scripts;
 
   if (scripts) {
-    Promise.all(
+    await Promise.all(
       scripts.map((script) =>
         loadScript(script, {
           v: window.store?.last_modified || Date.now(),
@@ -123,11 +130,14 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
       .then(() => {
         console.log("Todos os scripts foram carregados com sucesso.");
         Fbits.Gateway.ExecuteLoadedCallbacks();
-        // InitializeJpCardLibrary(); // Comentado pois não estamos usando cardWrapper
+        // InitializeJpCardLibrary();
       })
       .catch((error) => {
         console.error("Erro ao carregar os scripts:", error);
       });
+
+    InitializeJpCardLibrary();
+
   }
 
   const clearSaleAppID = $("input[name='clearsale-appid']").val();
@@ -174,7 +184,7 @@ async function nextCardScreen(paymentId) {
     `;
 
   document.getElementById("card-finish").classList.remove("hidden");
-  document.querySelector(".fake-form").style.display = "none";
+  document.querySelector(".cardWrapper").style.display = "none";
   document.getElementById("paymentMethodSelected").innerHTML =
     htmlPaymentSelected;
 
@@ -332,49 +342,35 @@ function ensureCardElementsVisibility() {
 }
 
 const selectPayment = async (paymentId) => {
-  const loading = document.getElementById("payment-loading");
-  loading.classList.remove("hidden");
-  loading.classList.add("flex");
+  const loading = document.getElementById('payment-loading');
+  loading.classList.remove('hidden');
+  loading.classList.add('flex');
 
-  const wrappers = document.querySelectorAll("div[data-payment-wrapper]");
-  wrappers.forEach((element) => (element.innerHTML = ""));
+  const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
+  wrappers.forEach((element) => element.innerHTML = '');
 
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = await client.cookie.get("carrinho-id");
 
   const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
 
-  if (result?.errors) {
-    showOverlay(
-      "Erro ao selecionar o pagamento",
-      result.errors[0].message,
-      true
-    );
-    loading.classList.add("hidden");
-    loading.classList.remove("flex");
+  const finishOrder = document.getElementById('finish-order')
+
+  finishOrder.style.display = 'flex';
+
+  document.getElementById('checkout-payment-options').style.display = 'none';
+
+  await renderSummary();
+
+  if (result.errors) {
+    showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
     return;
   }
 
-  const finishOrder = document.getElementById("finish-order");
+  // document.getElementById('btn-sumary-close').disabled = false;
+  loading.classList.add('hidden');
+  loading.classList.remove('flex');
+}
 
-  finishOrder.style.display = "flex";
-  finishOrder.style.maxWidth = "1200px";
-
-  document.getElementById("checkout-payment-options").style.display = "none";
-
-  setTimeout(() => {
-    ensureCardElementsVisibility();
-
-    console.log("Executando funções de reorganização e máscaras...");
-    setTimeout(() => {
-      reorganizeExpirationInputs();
-      applyInputMasks();
-    }, 300);
-  }, 100);
-
-  await renderSummary();
-  loading.classList.add("hidden");
-  loading.classList.remove("flex");
-};
 
 async function renderSummary() {
   const checkoutId = client.cookie.get("carrinho-id");
@@ -457,7 +453,8 @@ function formComplete(form) {
 
   let allFilled = [...form.elements]
     .filter((el) => el.hasAttribute("required"))
-    .every((el) => el.value.trim() !== "");
+    .every((el) => el.value.trim() !== "" && el.className.indexOf("jp-card-invalid") === -1)
+
 
   let cpfValid = Fbits.Util.ValidaCPF(
     document.querySelector(".fake-form input[name=cpf]").value.trim()

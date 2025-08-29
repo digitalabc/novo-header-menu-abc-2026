@@ -5229,6 +5229,33 @@
   cursor: not-allowed;
   transform: none;
 }
+/*
+input:focus.jp-card-invalid {
+  box-shadow: 0 0 0 3px rgb(255 71 87 / 10%) !important;
+}
+*/
+input:not(:focus).jp-card-invalid {
+  border-color: #ff4757 !important;
+  background-color: #fff5f5 !important;
+}
+
+#inputCardNumber .jp-card-logo {
+  display: none;
+}
+
+.cardWrapper .requiredWarning {
+    background: #fffcf1;
+    padding: 1rem;
+    color: #848484;
+    font-family: "Satoshi", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 13px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
 
 @media (min-width: 768px) {
   #paymentCartao {
@@ -5239,11 +5266,11 @@
   }
 
   #paymentCartao .fake-form {
-    order: 2;
+    order: 1;
   }
 
   #paymentCartao .card-wrapper {
-    order: 1;
+    order: 2;
     position: sticky;
     top: 24px;
   }

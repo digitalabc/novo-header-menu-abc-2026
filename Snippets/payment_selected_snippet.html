@@ -1,6 +1,7 @@
 {{ payment_method = data?.result?.selected_payment_method }}
+
 {{ if payment_method }}
-  {{ is_card = payment_method.html | string.contains "data-gateway-cartao" }}
+  {{ is_card = payment_method.html | string.contains "gateway-mercadopago" }}
 
   <div class="wake-payment-data-options" data-gateway-pagamento="{{ payment_method.id }}" data-gateway-parcelas='1'>
     <div
@@ -75,10 +76,10 @@
             </button>
           </div>
         </div>
-
-        {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
-        {{ payment_html }}
-
+        <!--
+          {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
+          {{ payment_html }}
+        -->
         <div id="card-finish" class="hidden">
           {{ finish_order data: data}}
         </div>

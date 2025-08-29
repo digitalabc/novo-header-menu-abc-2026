@@ -1,126 +1,69 @@
 {{~
-isPrime = data.checkout.products | array.filter @(do; ret $0.product_id == 172852;end)
+  isPrime = data.checkout.products | array.filter @(do; ret $0.product_id == 172852;end)
 ~}}
 
 {{~ if data.payment_methods?.size > 0 ~}}
-<div class="checkout-container" id="checkout-payment-options">
-  <h2 class="title">4. Qual a forma de pagamento?</h2>
-  <div class="relative payment-methods-wrapper">
-    <div id="payment-loading" class="payment-loading hidden">
-      <div class="spinner"></div>
-    </div>
-    {{~ for payment in data.payment_methods ~}}
-    {{ if (payment.name | string.downcase) | string.contains "pix" }}
-    <div class="payment-option pix">
-      <input type="radio" name="paymentOption" id="paymentOption-{{ payment.id }}" value="{{ payment.id }}"
-        onclick="selectPayment('{{ payment.id }}', this)" class="hidden" />
-      <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
-        <img
-          src="{{- store.urls.static_img}}checkout/payment/payment-pix.svg?theme={{store.theme}}&v={{store.last_modified}}"
-          width="50" alt="Pix">
-        <div class="payment-details">
-          <h3>Pix ABC</h3>
-          <span>À vista</span>
+  <div class="checkout-container" id="checkout-payment-options">
+    <h2 class="title">4. Qual a forma de pagamento?</h2>
+    <div class="relative payment-methods-wrapper">
+      <div id="payment-loading" class="payment-loading hidden">
+        <div class="spinner"></div>
+      </div>
+      {{~ for payment in data.payment_methods ~}}
+        {{ if (payment.name | string.downcase) | string.contains "pix" }}
+          <div class="payment-option pix">
+        {{ else if (payment.name | string.downcase) | string.contains "crédito" }}
+            {{ if isPrime.size > 0}}
+              <div class="hidden">
+            {{ else }}
+              <div class="payment-option credito">
+            {{end}}
+        {{ else if (payment.name | string.downcase) | string.contains "boleto" }}
+          <div class="payment-option boleto">
+        {{ else }}
+          <div class="payment-option">
+        {{ end }}
+          <input type="radio" name="paymentOption" id="paymentOption-{{ payment.id }}" value="{{ payment.id }}"
+            onclick="selectPayment('{{ payment.id }}', this)" class="hidden"/>
+          <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
+              <img src="{{ payment.image_url }}" width="50">
+              <div class="payment-details">
+                <h3>{{ payment.name }}</h3>
+                <span>
+                  {{ if (payment.name | string.downcase) | string.contains "pix" }}
+                    Pagamento à vista
+                  {{ else if (payment.name | string.downcase) | string.contains "crédito" }}
+                    Cadastrar ou ver formas
+                  {{ else if (payment.name | string.downcase) | string.contains "boleto" }}
+                    1 a 3 dias úteis após pagamento 
+                  {{ end }}
+                </span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
+                <path d="M5.73336 7L0.366699 12.3667L2.00003 14L9.00003 7L2.00003 -1.42791e-07L0.366698 1.63333L5.73336 7Z" fill="#333333"/>
+              </svg>
+          </label>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
-          <path d="M5.73336 7L0.366699 12.3667L2.00003 14L9.00003 7L2.00003 -1.42791e-07L0.366698 1.63333L5.73336 7Z"
-            fill="#333333" />
-        </svg>
-      </label>
-    </div>
-    {{ else if (payment.name | string.downcase) | string.contains "crédito" }}
-    {{ if isPrime.size > 0}}
-    <div class="hidden">
-      {{ else }}
-      <div class="payment-option credito">
-        {{end}}
-        <input type="radio" name="paymentOption" id="paymentOption-{{ payment.id }}" value="{{ payment.id }}"
-          onclick="selectPayment('{{ payment.id }}', this)" class="hidden" />
-        <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
-          <img src="https://localhost:5501/localstatic/img/checkout/payment/payment-card.svg?theme=local&v=" width="50"
-            alt="Cartão de Crédito">
-          <div class="payment-details">
-            <h3>Cartão de crédito</h3>
-            <span>Cadastrar | Ver formas</span>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
-            <path d="M5.73336 7L0.366699 12.3667L2.00003 14L9.00003 7L2.00003 -1.42791e-07L0.366698 1.63333L5.73336 7Z"
-              fill="#333333" />
-          </svg>
-        </label>
-      </div>
-      {{ else if (payment.name | string.downcase) | string.contains "boleto" }}
-      <div class="payment-option boleto">
-        <input type="radio" name="paymentOption" id="paymentOption-{{ payment.id }}" value="{{ payment.id }}"
-          onclick="selectPayment('{{ payment.id }}', this)" class="hidden" />
-        <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
-          <img
-            src="{{- store.urls.static_img}}checkout/payment/payment-boleto.svg?theme={{store.theme}}&v={{store.last_modified}}"
-            width="50" alt="Boleto">
-          <div class="payment-details">
-            <h3>Boleto</h3>
-            <span>1 a 3 dias úteis</span>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
-            <path d="M5.73336 7L0.366699 12.3667L2.00003 14L9.00003 7L2.00003 -1.42791e-07L0.366698 1.63333L5.73336 7Z"
-              fill="#333333" />
-          </svg>
-        </label>
-      </div>
-      {{ else }}
-      <div class="payment-option">
-        <input type="radio" name="paymentOption" id="paymentOption-{{ payment.id }}" value="{{ payment.id }}"
-          onclick="selectPayment('{{ payment.id }}', this)" class="hidden" />
-        <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
-          <img src="{{ payment.image_url }}" width="50">
-          <div class="payment-details">
-            <h3>{{ payment.name }}</h3>
-            <span></span>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
-            <path d="M5.73336 7L0.366699 12.3667L2.00003 14L9.00003 7L2.00003 -1.42791e-07L0.366698 1.63333L5.73336 7Z"
-              fill="#333333" />
-          </svg>
-        </label>
-      </div>
-      {{ end }}
       {{~ end ~}}
     </div>
     <button class="checkout-back-button" onclick="goBack('/checkout/shipping')">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M6.25 13.5L7.475 12.2312L4.36875 9.125H15V7.375H4.36875L7.475 4.26875L6.25 3L1 8.25L6.25 13.5Z"
-          fill="#20A389" />
+        <path d="M6.25 13.5L7.475 12.2312L4.36875 9.125H15V7.375H4.36875L7.475 4.26875L6.25 3L1 8.25L6.25 13.5Z" fill="#20A389"/>
       </svg> Voltar
     </button>
   </div>
-  {{~ else ~}}
+{{~ else ~}}
   <h2 class="wake-checkout-title wake-checkout-payment-title">Pagamento</h2>
   <span class="wake-checkout-finish-step-text">Finalize o passo anterior para prosseguir</span>
-  {{~ end ~}}
+{{~ end ~}}
 
-  {{~ if data.payment_methods?.size > 0 ~}}
+{{~ if data.payment_methods?.size > 0 ~}}
   <div class="checkout-container" style="display:none;" id="finish-order">
     <div class="relative payment-selected-method">
       {{~ for payment in data.payment_methods ~}}
-      <div data-payment-wrapper="{{ payment.id }}"></div>
+        <div data-payment-wrapper="{{ payment.id }}"></div>
       {{~ end ~}}
     </div>
-
-    <div class="wake-checkout-coupon-container wake-checkout-coupon-mobile" id="checkout_coupon_snippet_mobile">
-      <div class="wake-checkout-coupon-inner">
-        <label class="wake-checkout-coupon-label">Cupom de desconto</label>
-        {{~ if !data.checkout.coupon ~}}
-        <input type="text" class="wake-checkout-coupon-input" name="cupom de desconto" id="coupon-mobile"
-          placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
-        <button onclick="addCoupon()" class="wake-checkout-coupon-button">Aplicar</button>
-        {{~ else ~}}
-        <input type="text" disabled class="wake-checkout-coupon-input" name="cupom de desconto" id="coupon-mobile"
-          placeholder="Insira seu cupom" value="{{ data.checkout.coupon }}">
-        <button onclick="removeCoupon()"
-          class="wake-checkout-coupon-button wake-checkout-coupon-button-change checkout-coupon-button-remove">Remover</button>
-        {{~ end ~}}
-      </div>
-    </div>
   </div>
-  {{~ end ~}}
-  <div id="data-render-right-menu"></div>
+{{~ end ~}}
+<div id="data-render-right-menu"></div>

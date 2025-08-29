@@ -550,55 +550,42 @@ const authenticateCompletSubmit = async (e) => {
 
 // Conclusão pedido
 const closeCheckout = async () => {
-  const loading = document.getElementById("finish-loading");
-  loading.classList.remove("hidden");
-  loading.classList.add("flex");
-  document.querySelector("#finish-order-button").disabled = true;
+    const loading = document.getElementById('finish-loading');
+    loading.classList.remove('hidden');
+    loading.classList.add('flex');
+    document.querySelector('#finish-order-button').disabled = true
 
-  try {
-    const validateResult = await Fbits.Gateway.ExecuteValidateCallbacks();
-    const allValid = validateResult.every((item) => item === true);
-    if (!allValid) {
-      showOverlay(
-        "Erro ao validar pagamento",
-        "Ocorreu um erro ao validar o pagamento, confira os dados de pagamento e tente novamente!",
-        true
-      );
-      return;
+    try {
+        const validateResult = await Fbits.Gateway.ExecuteValidateCallbacks();
+        const allValid = validateResult.every(item => item === true);
+        if(!allValid) {
+            showOverlay("Erro ao validar pagamento", "Ocorreu um erro ao validar o pagamento, confira os dados de pagamento e tente novamente!", true);
+            return;
+        }
+
+        await Fbits.Gateway.ExecutePayCallbacks();
+
+        const token = client.cookie.get("sf_customer_access_token");
+        const checkoutId = client.cookie.get("carrinho-id");
+
+        const container = document.getElementById('payment-container');
+        const paymetData = getPaymentData(container);
+        const checkoutData = await client.checkout.complete(checkoutId, "", token, paymetData);
+
+        if (checkoutData?.completeResponse?.errors) {
+            showOverlay("Erro ao finalizar o pedido", checkoutData.completeResponse.errors[0].message, true);
+            return;
+        }
+
+        pushDataLayerCheckoutPurchaseEvent(checkoutData);
+
+        window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
+    } finally {
+        loading.classList.add('hidden');
+        loading.classList.remove('flex');
+        document.querySelector('#finish-order-button').disabled = false
     }
-
-    await Fbits.Gateway.ExecutePayCallbacks();
-
-    const token = client.cookie.get("sf_customer_access_token");
-    const checkoutId = client.cookie.get("carrinho-id");
-
-    const container = document.getElementById("payment-container");
-    const paymetData = getPaymentData(container);
-    const checkoutData = await client.checkout.complete(
-      checkoutId,
-      "",
-      token,
-      paymetData
-    );
-
-    if (checkoutData?.completeResponse?.errors) {
-      showOverlay(
-        "Erro ao finalizar o pedido",
-        checkoutData.completeResponse.errors[0].message,
-        true
-      );
-      return;
-    }
-
-    pushDataLayerCheckoutPurchaseEvent(checkoutData);
-
-    window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
-  } finally {
-    loading.classList.add("hidden");
-    loading.classList.remove("flex");
-    document.querySelector("#finish-order-button").disabled = false;
-  }
-};
+}
 
 function pushDataLayerCheckoutPurchaseEvent(checkoutData) {
   if (

@@ -2,8 +2,6 @@
 const updateCheckout = async () => {
   const checkoutId = await client.cookie.get("carrinho-id");
   
-  console.log(checkoutId)
-
   let variables = {
     checkoutId: checkoutId,
     hasCheckout: false,
@@ -36,8 +34,6 @@ const updateCheckout = async () => {
   }));
 
   const elements = [product, total, subtotal, coupon, line];
-
-  console.log(snippets, elements)
 
   elements.forEach((el) => {
     setInnerHtmlById(el.res, el.el);

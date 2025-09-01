@@ -1,0 +1,43 @@
+{{~ list_price = 0 ~}}
+{{~ price = 0 ~}}
+
+{{~ pix_price = null ~}}
+
+{{~ for plan in product ~}}
+    {{~ if plan.key == "prices" ~}}
+        {{~ for price in plan.value ~}}
+            {{~ if price.key == "installment_plans" ~}}
+                {{~ for insta in price.value[0] ~}}
+                    {{~ if insta.key == "installments" ~}}
+                        {{~ for value in insta.value[0] }}
+                            {{~ if insta.key == "installments" ~}}
+                                {{~ pix_price = value.value ~}}
+                            {{~ end ~}}
+                        {{~ end ~}}
+                    {{~ break ~}}
+                    {{~ end ~}}
+                {{~ end ~}}
+                {{~ break ~}}
+            {{~ end ~}}
+        {{~ end ~}}
+        {{~ break ~}}
+    {{~ end ~}}
+{{~ end ~}}
+
+<div class="spot__price-wrapper">
+    {{~ if list_price > price ~}}
+        <span class="spot__list-price" style="text-decoration: line-through; color: #888;">
+            De: R$ {{ list_price  }}
+        </span>
+    {{~ end ~}}
+
+    <span class="spot__price" style="font-weight: bold; color: #d00;">
+        Por: R$ {{ price }}
+    </span>
+
+    {{~ if pix_price ~}}
+        <span class="spot__pix-price" style="color: #0a0;">
+            no Pix: R$ {{ pix_price }}
+        </span>
+    {{~ end ~}}
+</div>

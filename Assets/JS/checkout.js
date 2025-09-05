@@ -1,5 +1,6 @@
 //Update snippets
 const updateCheckout = async () => {
+  console.log("updateCheckout")
   const checkoutId = await client.cookie.get("carrinho-id");
   
   let variables = {

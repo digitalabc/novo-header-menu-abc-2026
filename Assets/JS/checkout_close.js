@@ -437,6 +437,7 @@ const addCoupon = async () => {
   const checkoutId = client.cookie.get("carrinho-id");
 
   const couponResponse = await client.checkout.addCoupon(coupon);
+
   if (couponResponse?.errors?.length > 0) {
     showOverlay(
       "Ocorreu um erro!",

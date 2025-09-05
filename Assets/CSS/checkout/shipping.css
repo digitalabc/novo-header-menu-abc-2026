@@ -150,6 +150,10 @@ body.checkout-shipping {
   }
 }
 
+.checkout-shipping-wrapper .price-line {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .checkout-footer-mobile {
     display: none !important;

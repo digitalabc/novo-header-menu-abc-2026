@@ -271,7 +271,7 @@
   {{ sdk_client }}
   {{ data_layer_confirmation_view checkout: data.checkout }}
   {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
-  {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout/confirmation_checkout"] options: "async"}}
+  {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close", "checkout/confirmation_checkout"] options: "async"}}
 </body>
 
 </html>

@@ -140,7 +140,7 @@
     {{ sdk_client_checkout }}
     {{ data_layer_checkout_complete_view checkout: data.checkout }}
     {{ wake_scripts scripts: ["wake_utils", "wake_checkout_close"] }}
-    {{ asset type: "js" paths: ["checkout_user_login", "event_manager"] options: "async"}}
+    {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close"] options: "async"}}
   </body>
 
 </html>

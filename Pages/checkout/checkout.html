@@ -23,27 +23,35 @@
     <div class="wake-cart-container">
       <div id="checkout_subtotal_snippet" class="wake-cart-subtotal">
         <span>Subtotal:</span>
-        {{ data.checkout.subtotal | math.format "c" "pt-BR" }}
-      </div>
-      {{ checkout_coupon coupon: data.checkout.coupon }}
-      <div id="checkout_total_snippet" class="wake-cart-total">
-        <div>
-          <span>Desconto:</span>
-          <span>{{ data.checkout.discount < 0 ? (data.checkout.discount | math.format "c" "pt-BR" ) : '-' }}</span>
+          {{ data.checkout.subtotal | math.format "c" "pt-BR" }}
         </div>
-        {{if data.checkout.coupon_discount != 0 }}
-          <div>
-        {{~else~}}
-          <div style="display: none;">
-        {{~end~}}
-            <span>Cupom:</span>
-            <span>{{ data.checkout.coupon ? (data.checkout.coupon_discount | math.format "c" "pt-BR") : '-' }}</span>
+        {{ checkout_coupon coupon: data.checkout.coupon }}
+        <div id="checkout_total_snippet" class="wake-cart-total">
+          {{~if data.checkout.shipping_fee ~}} 
+            <div class="price-line">
+              <span>Frete</span>
+              {{ if data.checkout.shipping_fee == 0}}
+              <h3 class="flag">
+                  Grátis
+              </h3>
+              {{ else }}
+              <h3>{{data.checkout.shipping_fee | math.format "c" "pt-BR"}}</h3>
+              {{ end }}
+            </div>
+          {{~end~}}
+          {{if data.checkout.coupon_discount != 0 }}
+            <div>
+          {{~else~}}
+            <div style="display: none;">
+          {{~end~}}
+              <span>Cupom:</span>
+              <span>{{ data.checkout.coupon ? (data.checkout.coupon_discount | math.format "c" "pt-BR") : '-' }}</span>
+            </div>
+          <div class="total">
+            <span>Total:</span>
+            {{ data.checkout.total | math.format "c" "pt-BR" }}
+          </div>
         </div>
-        <div class="total">
-          <span>Total:</span>
-          {{ data.checkout.total | math.format "c" "pt-BR" }}
-        </div>
-      </div>
 
       <div id="checkout_total_snippet" class="wake-cart-finish-wrapper hide-on-mobile">
         <a href="/checkout/shipping" class="wake-cart-finish-button">AVANÇAR</a>

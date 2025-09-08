@@ -21,13 +21,7 @@ var swiper = new Swiper(".banner-grid .swiper:first-child", {
 });
 
 var swiper = new Swiper(".banner-grid div:nth-child(2)", {
-  spaceBetween: 20,
-  slidesPerView: 1,
-  breakpoints: {
-    991: {
-      slidesPerView: 2
-    }
-  }
+  slidesPerView: "auto",
 });
 
 var swiper = new Swiper(".departments .swiper", {

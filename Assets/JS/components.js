@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     new Swiper(".banner-grid div:nth-child(2)", {
       spaceBetween: 20,
-      slidesPerView: 1,
+      slidesPerView: "auto",
       breakpoints: {
         991: {
           slidesPerView: 2,

@@ -4029,13 +4029,7 @@
 
 @media (max-width: 768px) {
   #finish-order[style="display: flex;"]~#data-render-right-menu .checkout-right-menu #checkout_coupon_snippet {
-        position: fixed;
-    top: 155px;
-    max-width: calc(100% - 88px);
-    margin-left: 24px;
-  }
-  #finish-order[style="display: flex;"] .payment-selected-method {
-    margin-top: 90px;
+    display: none !important;
   }
   .bg-checkout:has(#data_payment) #data-render-right-menu {
     display: flex;
@@ -4061,6 +4055,10 @@
     display: flex;
     flex-direction: row;
   }
+}
+
+#data_payment > #checkout_coupon_snippet {
+    display: none !important;
 }
 
 @media (max-width: 616px) {

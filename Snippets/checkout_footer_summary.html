@@ -1,24 +1,24 @@
 {{~if data.checkout.shipping_fee ~}} 
-    <div class="price-line">
-        <span>Frete</span>
-        {{ if data.checkout.shipping_fee == 0}}
-        <h3 class="flag">
-            Grátis
-        </h3>
-        {{ else }}
-        <h3>{{data.checkout.shipping_fee | math.format "c" "pt-BR"}}</h3>
-        {{ end }}
-    </div>
-    {{~end~}}
-    {{if data.checkout.coupon_discount != 0 }}
-    <div>
-    {{~else~}}
-    <div style="display: none;">
-    {{~end~}}
-        <span>Cupom:</span>
-        <span>{{ data.checkout.coupon ? (data.checkout.coupon_discount | math.format "c" "pt-BR") : '-' }}</span>
-    </div>
-    <div class="total">
-    <span>Total:</span>
-    {{ data.checkout.total | math.format "c" "pt-BR" }}
-    </div>
+            <div class="price-line">
+              <span>Frete</span>
+              {{ if data.checkout.shipping_fee == 0}}
+              <h3 class="flag">
+                  Grátis
+              </h3>
+              {{ else }}
+              <h3>{{data.checkout.shipping_fee | math.format "c" "pt-BR"}}</h3>
+              {{ end }}
+            </div>
+          {{~end~}}
+          {{if data.checkout.coupon_discount != 0 }}
+            <div>
+          {{~else~}}
+            <div style="display: none;">
+          {{~end~}}
+              <span>Cupom:</span>
+              <span>{{ data.checkout.coupon ? (data.checkout.coupon_discount | math.format "c" "pt-BR") : '-' }}</span>
+            </div>
+          <div class="total">
+            <span>Total:</span>
+            {{ data.checkout.total | math.format "c" "pt-BR" }}
+          </div>

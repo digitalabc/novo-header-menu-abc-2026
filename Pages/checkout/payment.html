@@ -13,6 +13,8 @@
         {{ checkout_header }}
         {{ wake_overlay }}
         <div id="data_payment" class="checkout-section-wrapper">
+            {{ checkout_coupon coupon: data.checkout.coupon }}
+
             {{~ if data.checkout != null && data.checkout.selected_shipping != null -}}
                 <div data-render-payment></div>
             {{~ else -}}

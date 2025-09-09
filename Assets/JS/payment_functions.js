@@ -145,6 +145,8 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
     NewCarregaClearSaleFP(clearSaleAppID);
   }
 
+  updateCheckout()
+
   return { success: true };
 }
 

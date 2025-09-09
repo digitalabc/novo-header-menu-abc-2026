@@ -153,3 +153,11 @@
 #checkout_total_snippet .wake-cart-total>div:first-child {
     display: none !important;
 }
+
+#checkout_coupon_snippet:not([style*='display']) {
+    display: none !important;
+}
+
+#data_payment > #checkout_coupon_snippet {
+    display: none !important;
+}

@@ -1,5 +1,16 @@
-{{~ if data.checkout.products.size > 0 ~}}
-    {{~if data.checkout.discount + data.checkout.coupon_discount != 0 ~}}
+{{~if data.checkout.shipping_fee ~}} 
+            <div class="price-line">
+              <span>Frete</span>
+              {{ if data.checkout.shipping_fee == 0}}
+              <h3 class="flag">
+                  Grátis
+              </h3>
+              {{ else }}
+              <h3>{{data.checkout.shipping_fee | math.format "c" "pt-BR"}}</h3>
+              {{ end }}
+            </div>
+          {{~end~}}
+            {{~if data.checkout.discount + data.checkout.coupon_discount != 0 ~}}
         <div class="price-line">
             <span>Você está economizando</span>
             <h3 class="discount">
@@ -11,8 +22,7 @@
             </h3>
         </div>
     {{~end~}}
-    <div class="price-line">
+          <div class="price-line total">
         <span>Valor total</span>
         <h3 class="total">{{data.checkout.total | math.format "c" "pt-BR"}}</h3>
     </div>
-{{~end~}}

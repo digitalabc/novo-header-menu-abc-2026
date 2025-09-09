@@ -59,6 +59,7 @@
 
 {{~ if data.payment_methods?.size > 0 ~}}
   <div class="checkout-container" style="display:none;" id="finish-order">
+    {{ checkout_coupon coupon: data.checkout.coupon }}
     <div class="relative payment-selected-method">
       {{~ for payment in data.payment_methods ~}}
         <div data-payment-wrapper="{{ payment.id }}"></div>

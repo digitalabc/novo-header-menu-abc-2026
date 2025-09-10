@@ -321,3 +321,11 @@
     }
   }
 }
+
+.fbits-gateway-mercadopago-bandeira {
+  display: none !important;
+}
+
+div#data_payment:has(#card-finish.hidden) #checkout_coupon_snippet {
+    display: none !important;
+}

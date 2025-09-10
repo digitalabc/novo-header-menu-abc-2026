@@ -5272,6 +5272,7 @@
   gap: 16px;
   margin-top: 32px;
   align-items: center;
+  order: 3;
 }
 
 .payment-buttons .checkout-back-button {
@@ -6274,4 +6275,22 @@ input:not(:focus).jp-card-invalid {
 /* ConFirmation Page */
 * {
   margin: 0;
+}
+
+#fbits-gateway-mercadopago-bandeira {
+  display: none !important;
+}
+
+#payment-container .forminline.fbits-gateway-mercadopago-linha0 {
+  margin-bottom: 0 !important;
+}
+
+div#data_payment:has(#card-finish.hidden) #checkout_coupon_snippet {
+    display: none !important;
+}
+
+@media (min-width: 1024px) {
+  #data_payment .checkout-container > #checkout_coupon_snippet {
+    display: none !important;
+  }
 }

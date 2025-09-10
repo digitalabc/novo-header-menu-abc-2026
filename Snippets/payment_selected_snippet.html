@@ -1,7 +1,6 @@
 {{ payment_method = data?.result?.selected_payment_method }}
-
 {{ if payment_method }}
-  {{ is_card = payment_method.html | string.contains "gateway-mercadopago" }}
+  {{ is_card = payment_method.html | string.contains "0000 0000 0000 0000" }}
 
   <div class="wake-payment-data-options" data-gateway-pagamento="{{ payment_method.id }}" data-gateway-parcelas='1'>
     <div
@@ -10,7 +9,10 @@
       data-payment-method-id="{{ payment_method.payment_method_id }}"
     >
       {{ if is_card }}
-        <div class="cardWrapper">
+      <div id="card-finish" class="hidden">
+          {{ finish_order data: data}}
+        </div>
+      <div class="cardWrapper">
           <div id="paymentCartao" data-gateway-cartao>
             <div class='card-wrapper'></div>
             <form class="fake-form" onchange="formComplete(this)">
@@ -63,7 +65,11 @@
                 </select>
               </div>
             </form>
-          </div>
+            <div class="payment_html hidden">
+              {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
+              {{ payment_html }}
+            </div>
+        </div>
           <div class="payment-buttons">
             <button class="checkout-back-button" onclick="backPaymentStep()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -76,16 +82,12 @@
             </button>
           </div>
         </div>
-        <!--
-          {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
-          {{ payment_html }}
-        -->
-        <div id="card-finish" class="hidden">
-          {{ finish_order data: data}}
-        </div>
+        
       {{ else}}
         {{ finish_order data: data}}
       {{ end }}
+
+      
     </div>
     {{ if data.result.completed }}
       <button onclick="orderChangePayment(this)">

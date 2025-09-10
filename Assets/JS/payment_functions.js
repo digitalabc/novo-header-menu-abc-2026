@@ -12,6 +12,10 @@ console.log("Window loaded:", document.readyState === "complete");
   }, 2000);
 })();
 
+async function setName(el, name) {
+  document.querySelector(el).name = name;
+}
+
 async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   const token = client.cookie.get("sf_customer_access_token");
 
@@ -52,6 +56,7 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
       document.querySelector(
         "#finish-order .payment-selected-method"
       ).style.maxHeight = "";
+
       const paymentLabel = document.getElementById(
         `paymentOption-${paymentId}`
       ).nextElementSibling;
@@ -102,7 +107,6 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
         const hiddenSpans = paymentContainer.querySelectorAll("span.hidden");
         hiddenSpans.forEach((span) => span.classList.remove("hidden"));
       }
-
       const rightMenu = document.getElementById("data-render-right-menu");
       if (rightMenu) {
         rightMenu.style.display = "none";
@@ -114,32 +118,62 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
     }
   }
 
-  const scripts =
-    response.queryResponse.data?.result?.selectedPaymentMethod?.scripts;
+  const e = response.queryResponse.data?.result?.selectedPaymentMethod
+    , u = response.queryResponse.data?.result?.selectedPaymentMethods || (e ? [e] : []);
 
-  if (scripts) {
-    await Promise.all(
-      scripts.map((script) =>
-        loadScript(script, {
-          v: window.store?.last_modified || Date.now(),
-          pagamento: paymentId,
-          isStorefront: true,
-        })
-      )
+
+  const l = u.reduce((n, t) => {
+      const i = t.type;
+      return n[i] || (n[i] = []),
+        n[i].push(t),
+        n
+    }
+      , {})
+
+  const script = Object.values(l).flatMap(n => {
+    const t = n[0]?.scripts;
+    if (!t || t.length === 0)
+      return [];
+    const i = n.map(n => n.id);
+    return t.map(n => {
+      let t = n;
+      return client.cookie.get("wake-scripts-pagamento-hlog") && (t = n.replace("https://pub-gateway.fbits.net/scripts/", "https://static.fbits.net/scripts/checkout/pagamentos/hlog/").replace("/prod/", "/hlog/")),
+        loadScript(`${t}?v=${wake_last_modified}&pagamento=${i.join(",")}&isStorefront=true`)
+    }
     )
-      .then(() => {
-        console.log("Todos os scripts foram carregados com sucesso.");
-        Fbits.Gateway.ExecuteLoadedCallbacks();
-        // InitializeJpCardLibrary();
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar os scripts:", error);
-      });
-
-    InitializeJpCardLibrary();
-
   }
-
+  );
+  script.length > 0 && Promise.all(script).then(() => {
+    console.log("Todos os scripts foram carregados com sucesso."),
+      Fbits.Gateway.ExecuteLoadedCallbacks()
+      InitializeJpCardLibrary();
+  }
+  ).catch(n => {
+    console.error("Erro ao carregar os scripts:", n)
+  }
+  );
+  /*
+    if (scripts) {
+      await Promise.all(
+        scripts.map((script) =>
+          loadScript(script, {
+            v: window.store?.last_modified || Date.now(),
+            pagamento: paymentId,
+            isStorefront: true,
+          })
+        )
+      )
+        .then(() => {
+          console.log("Todos os scripts foram carregados com sucesso.");
+          Fbits.Gateway.ExecuteLoadedCallbacks();
+          // InitializeJpCardLibrary();
+        })
+        .catch((error) => {
+          console.error("Erro ao carregar os scripts:", error);
+        });
+      }
+      */
+  // 
   const clearSaleAppID = $("input[name='clearsale-appid']").val();
   if (clearSaleAppID) {
     NewCarregaClearSaleFP(clearSaleAppID);
@@ -275,7 +309,7 @@ const updateRightMenuPayment = async () => {
   setInnerHtmlById(respRight, "data-render-right-menu");
 };
 
-function InitializeJpCardLibrary() {
+async function InitializeJpCardLibrary() {
   if (!document.querySelector(".card-wrapper")) {
     console.log(".card-wrapper não encontrado");
     return;
@@ -287,7 +321,7 @@ function InitializeJpCardLibrary() {
     formatting: true,
     messages: {
       validDate: "expiração\ndata",
-      monthYear: "mm/yyyy",
+      monthYear: "mm/yy",
     },
     placeholders: {
       number: "xxxx xxxx xxxx xxxx",
@@ -299,6 +333,9 @@ function InitializeJpCardLibrary() {
       cardNumber: "•",
     },
   });
+
+  setName('[data-checkout="cardExpirationMonth"]', "month");
+  setName('[data-checkout="cardExpirationYear"]', "year");
 }
 
 function expiryDateMask(input) {
@@ -450,10 +487,42 @@ function formCpfMask(input) {
     .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
 }
 
+function updateInputValue(name, str) {
+  switch (name) {
+    case "number":
+      $('#form-pagar-mp [data-checkout="cardNumber"]').val(str).trigger('change');
+      document.querySelector('#form-pagar-mp [data-checkout="cardNumber"]').dispatchEvent(new Event('input'))
+      break;
+    case "expiryDate":
+      const data = str.split('/');
+      $('#form-pagar-mp [data-checkout="cardExpirationMonth"]').val(data[0]).trigger('change');
+      $('#form-pagar-mp [data-checkout="cardExpirationYear"]').val(data[1] ? data[1] : "").trigger('change');
+      document.querySelector('#form-pagar-mp [data-checkout="cardExpirationMonth"]').dispatchEvent(new Event('input'))
+      document.querySelector('#form-pagar-mp [data-checkout="cardExpirationYear"]').dispatchEvent(new Event('input'))
+      break;
+    case "cvc":
+      $('#form-pagar-mp [data-checkout="securityCode"]').val(str).trigger('change');
+      document.querySelector('#form-pagar-mp [data-checkout="securityCode"]').dispatchEvent(new Event('input'))
+      break;
+    case "name":
+      $('#form-pagar-mp [data-checkout="cardholderName"]').val(str).trigger('change');
+      document.querySelector('#form-pagar-mp [data-checkout="cardholderName"]').dispatchEvent(new Event('input'))
+      break;
+    case "cpf":
+      $('#form-pagar-mp [data-checkout="docNumber"]').val(str).trigger('change');
+      document.querySelector('#form-pagar-mp [data-checkout="docNumber"]').dispatchEvent(new Event('input'))
+      break;
+  }
+}
+
 function formComplete(form) {
   let button = document.getElementById("finish-card-form-button");
 
   let allFilled = [...form.elements]
+    .map((el)=> {
+      updateInputValue(el.name, el.value);
+      return el
+    })
     .filter((el) => el.hasAttribute("required"))
     .every((el) => el.value.trim() !== "" && el.className.indexOf("jp-card-invalid") === -1)
 

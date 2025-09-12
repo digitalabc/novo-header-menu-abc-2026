@@ -1,8 +1,14 @@
 //Update snippets
+const setAllInnerHtmlById = (n, t) => {
+  if (!n || !t) return;
+  const i = document.querySelectorAll("#" + t);
+  const els = [...i]
+  if (els.length) els.map((e) => { e.innerHTML = n; });
+}
+
 const updateCheckout = async () => {
-  console.log("updateCheckout")
   const checkoutId = await client.cookie.get("carrinho-id");
-  
+
   let variables = {
     checkoutId: checkoutId,
     hasCheckout: false,
@@ -37,7 +43,7 @@ const updateCheckout = async () => {
   const elements = [product, total, subtotal, coupon, line];
 
   elements.forEach((el) => {
-    setInnerHtmlById(el.res, el.el);
+    setAllInnerHtmlById(el.res, el.el);
   });
 
   // Dispara um evento personalizado para notificar que o carrinho foi atualizado

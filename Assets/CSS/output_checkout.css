@@ -6289,7 +6289,7 @@ div#data_payment:has(#card-finish.hidden) #checkout_coupon_snippet {
     display: none !important;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   #data_payment .checkout-container > #checkout_coupon_snippet {
     display: none !important;
   }

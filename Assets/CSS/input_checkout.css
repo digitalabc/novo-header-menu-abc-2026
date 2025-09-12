@@ -1,6 +1,23 @@
 @tailwind components;
 
 @layer components {
+  .empty-cart-icon {
+    display: inline-block;
+    animation: floating 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+  
+  @keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
   .wake-checkout-flex {
     @apply flex;
   }

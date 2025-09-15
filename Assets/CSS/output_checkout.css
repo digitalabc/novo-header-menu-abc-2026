@@ -4533,10 +4533,6 @@
   }
 }
 
-#data_payment .right-menu-buttons {
-  display: none;
-}
-
 .checkout-section-wrapper {
   display: flex;
   justify-content: center;

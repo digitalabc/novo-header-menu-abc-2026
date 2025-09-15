@@ -1,6 +1,5 @@
 <div class="checkout-right-menu">
     {{ checkout_share_cart }}
-    <div id="footer_mobile_bottom" class="footer_mobile_bottom">
         <div id="checkout_total_snippet" class="wake-cart-total">
           {{~if data.checkout.shipping_fee ~}} 
             <div class="price-line">
@@ -27,5 +26,4 @@
             {{ data.checkout.total | math.format "c" "pt-BR" }}
           </div>
         </div>
-    </div>
 </div>

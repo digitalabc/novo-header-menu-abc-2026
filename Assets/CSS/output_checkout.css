@@ -4077,12 +4077,6 @@
   display: none !important;
 }
 
-.checkout-shipping .price-line,
-.wake-cart-wrapper .price-line,
-#data-render-delivery .price-line {
-  display: none;
-}
-
 #data-render-delivery .right-menu-buttons {
   display: none;
 }
@@ -6293,4 +6287,8 @@ div#data_payment:has(#card-finish.hidden) #checkout_coupon_snippet {
   #data_payment .checkout-container > #checkout_coupon_snippet {
     display: none !important;
   }
+}
+
+.free {
+    display: none !important;
 }

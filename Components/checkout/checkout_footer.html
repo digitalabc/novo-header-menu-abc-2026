@@ -1,13 +1,11 @@
 <div class="checkout-footer">
   {{ if data?.checkout }}
   <div class="checkout-footer-mobile">
-    <div id="checkout_total_snippet" class="wake-cart-finish-wrapper">
+    <div id="checkout_total_snippet-wake-cart-finish" class="wake-cart-finish-wrapper">
       <a href="/checkout/shipping" class="wake-cart-finish-button">AVANÇAR</a>
       <a href="/" class="wake-cart-continue-button">ADICIONAR +</a>
     </div>
     {{ checkout_share_cart }}
-
-    <div id="footer_mobile_bottom" class="footer_mobile_bottom">
       <div id="checkout_total_snippet" class="wake-cart-total">
           {{~if data.checkout.shipping_fee ~}} 
             <div class="price-line">
@@ -35,7 +33,6 @@
           </div>
         </div>
     </div>
-  </div>
   {{ end }}
 
   <div class="checkout-footer-desktop">

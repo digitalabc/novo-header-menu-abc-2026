@@ -2,7 +2,11 @@
     {{ checkout_share_cart }}
         <div id="checkout_total_snippet" class="wake-cart-total">
           {{~if data.checkout.shipping_fee ~}} 
+                        {{ if data.checkout.shipping_fee == 0}}
+            <div class="price-line free">
+              {{ else }}
             <div class="price-line">
+          {{~end~}}
               <span>Frete</span>
               {{ if data.checkout.shipping_fee == 0}}
               <h3 class="flag">

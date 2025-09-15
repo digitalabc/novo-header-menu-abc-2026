@@ -2,7 +2,13 @@
 {{ checkout_products_list products: data.checkout.products kits: data.checkout.kits }}
 {{~ else ~}}
 <div class="wake-cart-container-empty">
-  <img src="{{- store.urls.static_img}}icons/empty-orders.svg?theme={{store.theme}}&v={{store.last_modified}}">
+  <div class="empty-cart-icon">
+    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" fill="#A9D6C2" opacity="0.8"/>
+      <path d="M8 10L8 8C8 5.79086 9.79086 4 12 4V4C14.2091 4 16 5.79086 16 8L16 10" stroke="#8BC4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5 10H19L18 21H6L5 10Z" stroke="#8BC4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
   <h3>Carrinho de compras está vazio</h3>
   <p>Você não possui itens no carrinho</p>
   <a href="/" type="button">

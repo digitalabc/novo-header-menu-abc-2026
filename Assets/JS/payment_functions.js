@@ -91,9 +91,12 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
       document.querySelector(
         ".checkout-footer-mobile .checkout-whats"
       ).style.display = "none";
-      document.querySelector(
+      const footer_mobile_bottom = document.querySelector(
         ".checkout-footer-mobile .footer_mobile_bottom"
-      ).style.display = "none";
+      )
+      if (footer_mobile_bottom) {
+        footer_mobile_bottom.style.display = "none";
+      }
 
       document.querySelector(".checkout-footer-mobile").innerHTML += respRight;
     } else {

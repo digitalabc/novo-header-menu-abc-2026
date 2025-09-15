@@ -86,7 +86,11 @@
       {{ end }}
 
       {{ if data.checkout.shippingFee > 0 }}
-      <div class="price-line">
+                  {{ if data.checkout.shipping_fee == 0}}
+            <div class="price-line free">
+              {{ else }}
+            <div class="price-line">
+          {{~end~}}
         <span>Frete</span>
         <span>{{ data.checkout.shippingFee | math.format "c" "pt-BR" }}</span>
       </div>

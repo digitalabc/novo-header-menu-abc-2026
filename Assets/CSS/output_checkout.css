@@ -2031,7 +2031,7 @@
   border-radius: 20px;
   padding: 6px 16px;
   gap: 6px;
-  color: #30a6ff !important;
+  color: #333 !important;
   font-size: 14px;
   line-height: 10px;
   font-weight: 600;
@@ -2049,7 +2049,7 @@
     border-radius: 20px;
     padding: 6px 16px;
     gap: 6px;
-    color: #30a6ff !important;
+    color: #333 !important;
     font-size: 14px;
     line-height: 10px;
     font-weight: 600;
@@ -2063,11 +2063,13 @@
   border: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
-  color: inherit !important;
-  font-size: inherit !important;
-  font-weight: inherit !important;
+  font-weight: 400 !important;
   font-family: inherit !important;
   height: auto !important;
+  font-size: .875rem !important;
+  line-height: 150%;
+  color: #333 !important;
+  text-transform: none;
 }
 
 .wake-cart-subtotal span:last-child {
@@ -2304,8 +2306,12 @@
   font-size: 0.875rem;
   line-height: 150%;
   --tw-text-opacity: 1;
-  color: #0092ff;
+  color: #333;
   padding: 0.5rem 0;
+}
+
+.wake-cart-total div h3 {
+  color: #000;
 }
 
 .wake-cart-total .total {
@@ -6254,4 +6260,20 @@ div#data_payment:has(#card-finish.hidden) #checkout_coupon_snippet {
 
 .free {
     display: none !important;
+}
+
+.discount-price .discount{
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(0, 146, 255, .07);
+    height: 32px;
+    border: 2px solid #d3e7ff;
+    border-radius: 20px;
+    padding: 6px 16px;
+    gap: 6px;
+    color: #30a6ff !important;
+    font-size: 14px;
+    line-height: 10px;
+    font-weight: 600;
+    font-family: "Satoshi", sans-serif;
 }

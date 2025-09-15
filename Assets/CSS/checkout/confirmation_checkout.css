@@ -3353,7 +3353,11 @@ img {
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
-  color: rgb(0 176 255 / var(--tw-text-opacity));
+  color: #333;
+}
+
+.wake-cart-total div h3 {
+  color: #000;
 }
 
 .wake-cart-total .total {

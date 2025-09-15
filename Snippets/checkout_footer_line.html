@@ -14,8 +14,11 @@
               {{ end }}
             </div>
           {{~end~}}
-            {{~if data.checkout.discount + data.checkout.coupon_discount != 0 ~}}
-        <div class="price-line">
+           {{if data.checkout.discount + data.checkout.coupon_discount != 0 }}
+            <div  class="discount-price">
+          {{~else~}}
+            <div style="display: none;">
+          {{~end~}}
             <span>Você está economizando</span>
             <h3 class="discount">
                 {{ if data.checkout.coupon }}

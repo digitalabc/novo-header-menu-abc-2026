@@ -17,16 +17,22 @@
               {{ end }}
             </div>
           {{~end~}}
-          {{if data.checkout.coupon_discount != 0 }}
-            <div>
+          {{if data.checkout.discount + data.checkout.coupon_discount != 0 }}
+            <div class="discount-price">
           {{~else~}}
             <div style="display: none;">
           {{~end~}}
-              <span>Cupom:</span>
-              <span>{{ data.checkout.coupon ? (data.checkout.coupon_discount | math.format "c" "pt-BR") : '-' }}</span>
-            </div>
+            <span>Você está economizando</span>
+            <h3 class="discount">
+                {{ if data.checkout.coupon }}
+                {{data.checkout.discount + data.checkout.coupon_discount | math.format "c" "pt-BR"}}
+                {{ else }}
+                {{data.checkout.discount | math.format "c" "pt-BR"}}
+                {{ end }}
+            </h3>
+        </div>
           <div class="total">
-            <span>Total:</span>
+            <span>Valor Total:</span>
             {{ data.checkout.total | math.format "c" "pt-BR" }}
           </div>
         </div>

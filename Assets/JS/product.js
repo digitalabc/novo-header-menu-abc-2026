@@ -249,7 +249,7 @@ async function addOrCreateCheckout(input) {
       checkoutUrl = checkoutResponse.data.url;
       checkoutId = checkoutResponse.data.checkoutId;
 
-      await client.cookie.set("carrinho-id", checkoutResponse.data.checkoutId, window.location.host)
+      await client.cookie.set("carrinho-id", checkoutResponse.data.checkoutId, window.location.hostname.replace("www", ""))
     }
 
     await checkoutPartnerAssociate(checkoutId);

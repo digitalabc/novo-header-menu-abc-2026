@@ -1,7 +1,7 @@
 window.addEventListener("load", renderPickUpOptions, false);
 
 async function renderPickUpOptions() {
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
 
   const response = await client.snippet.render(
     "checkout_pickup_store.html",

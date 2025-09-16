@@ -203,7 +203,7 @@ async function nextCardScreen(paymentId) {
     $("[name='cpf']").not("#cardDocument").remove();
   }
 
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
   const paymentLabel = document.getElementById(
     `paymentOption-${paymentId}`
   ).nextElementSibling;
@@ -300,7 +300,7 @@ function NewCarregaClearSaleFP(appId) {
 }
 
 const updateRightMenuPayment = async () => {
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
   const respRight = await client.snippet.render(
     "payment_right_menu_snippet.html",
     "SnippetQueries/wake_checkout_close_summary.graphql",
@@ -391,7 +391,7 @@ const selectPayment = async (paymentId) => {
   const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
   wrappers.forEach((element) => element.innerHTML = '');
 
-  const checkoutId = await client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
 
   const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
 
@@ -415,7 +415,7 @@ const selectPayment = async (paymentId) => {
 
 
 async function renderSummary() {
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
   const response = await client.snippet.render(
     "wake_checkout_close_summary_snippet.html",
     "SnippetQueries/wake_checkout_close_summary.graphql",
@@ -429,7 +429,7 @@ async function renderSummary() {
 
 async function backPaymentStep() {
   Fbits.Gateway.ResetPaymentSelection();
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
   const wrappers = document.querySelectorAll("div[data-payment-wrapper]");
   wrappers.forEach((element) => (element.innerHTML = ""));
 

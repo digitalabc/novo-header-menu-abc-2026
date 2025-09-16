@@ -255,7 +255,7 @@ const updateAddress = async (id) => {
  */
 const selectAddress = async (id) => {
   showLoading("loading-address", true);
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
   const token = client.cookie.get("sf_customer_access_token");
   var result = await client.checkout.addressAssociate(id, checkoutId, token);
 
@@ -298,7 +298,7 @@ const selectAddress = async (id) => {
 const newSelectAddress = async (id) => {
   showLoading("address-loading", true);
 
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
   const token = client.cookie.get("sf_customer_access_token");
   await client.checkout.addressAssociate(id, checkoutId, token);
 
@@ -318,7 +318,7 @@ const selectShipping = async (id) => {
   document.getElementsByClassName("wake-checkout-wrapper")[0].style.display =
     "block";
 
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
   const token = client.cookie.get("sf_customer_access_token");
 
   let result = await client.checkout.selectShippingQuote(id, checkoutId);
@@ -370,7 +370,7 @@ const selectPickUpStoreShipping = async (selectElement) => {
 };
 
 const selectPickUpStore = async (value) => {
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
 
   let result = await client.checkout.selectShippingQuote(value, checkoutId);
 
@@ -385,7 +385,7 @@ const selectPickUpStore = async (value) => {
 };
 
 const selectDeliveryStore = async (value) => {
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
 
   let result = await client.checkout.selectShippingQuote(value, checkoutId);
 
@@ -416,7 +416,7 @@ const selectCheckingAccount = async (checkingAccount) => {
     dataLoginConcluded = checkingAccount;
     showModalLogin("modal-autenticate");
   } else {
-    const checkoutId = (await client.checkout.get()).data.checkoutId;
+    const checkoutId = client.cookie.get("carrinho-id");
     const response = await client.snippet.render(
       "wake_checkout_close_summary_snippet.html",
       "SnippetQueries/wake_checkout_close_checking_account_selected.graphql",
@@ -434,7 +434,7 @@ const selectCheckingAccount = async (checkingAccount) => {
 const addCoupon = async (e) => {
   const coupon = e.closest("#checkout_coupon_snippet").querySelector("#coupon").value;
   const token = client.cookie.get("sf_customer_access_token");
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
 
   const couponResponse = await client.checkout.addCoupon(coupon);
 
@@ -480,7 +480,7 @@ const addCoupon = async (e) => {
 const removeCoupon = async () => {
   const coupon = document.getElementById("coupon").value;
   const token = client.cookie.get("sf_customer_access_token");
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
 
   await client.checkout.removeCoupon();
   showOverlay("Cupom Removido", "Cupom removido com sucesso!", false);
@@ -567,7 +567,7 @@ const closeCheckout = async () => {
     await Fbits.Gateway.ExecutePayCallbacks();
 
     const token = client.cookie.get("sf_customer_access_token");
-    const checkoutId = (await client.checkout.get()).data.checkoutId;
+    const checkoutId = client.cookie.get("carrinho-id");
 
     const container = document.getElementById('payment-container');
     const paymetData = getPaymentData(container);
@@ -604,7 +604,7 @@ function pushDataLayerCheckoutPurchaseEvent(checkoutData) {
 }
 
 async function renderUser() {
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
   const token = client.cookie.get("sf_customer_access_token");
 
   await client.checkout.customerAssociate(checkoutId, token);
@@ -675,7 +675,7 @@ async function renderUpdateAddress(addressId) {
 }
 
 async function renderFormPickUpStoreShipping(pickUpStore) {
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
 
   if (pickUpStore) {
     const response = await client.snippet.render(
@@ -707,7 +707,7 @@ async function renderOptionsShipping() {
 }
 
 async function renderOptionsPayment() {
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = client.cookie.get("carrinho-id");
   const token = client.cookie.get("sf_customer_access_token");
   const variables = {
     checkoutId: checkoutId,

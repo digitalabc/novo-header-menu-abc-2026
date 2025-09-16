@@ -7,7 +7,7 @@ const setAllInnerHtmlById = (n, t) => {
 }
 
 const updateCheckout = async () => {
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = await client.cookie.get("carrinho-id");
 
   let variables = {
     checkoutId: checkoutId,
@@ -145,7 +145,7 @@ const selectSubscription = async (productVariantId) => {
     "subscription-group-id"
   );
 
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = await client.cookie.get("carrinho-id");
 
   if (checkoutId && subscriptionId) {
     const input = {
@@ -192,7 +192,7 @@ const selectGiftAttribute = async (element) => {
     element.value.trim()
   );
 
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = await client.cookie.get("carrinho-id");
   let variables = {
     checkoutId,
     hasCheckout: false,
@@ -293,7 +293,7 @@ async function removeKitFromCart(kitId, kitGroupId, quantity) {
 }
 
 async function cartGetKitInput(kitId, kitGroupId, quantity) {
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = await client.cookie.get("carrinho-id");
 
   const input = {
     quantity,
@@ -353,7 +353,7 @@ async function showProductCustomizationsModal(productId) {
 
 async function saveProductCustomization(event, productVariantId) {
   event.preventDefault();
-  const checkoutId = (await client.checkout.get()).data.checkoutId;
+  const checkoutId = await client.cookie.get("carrinho-id");
   const elements = document.querySelectorAll('[id^="customization-"]');
   const informationGroups = [];
 

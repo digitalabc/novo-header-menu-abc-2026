@@ -679,11 +679,12 @@ input[type="search"]::-webkit-search-results-decoration {
   align-items: center;
   width: 100%;
   height: 40px;
-  background: #0fa848;
+  background-color: #0fa848 !important;
   color: #fff;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
+  border-radius: 0 !important;
   transition: all 0.2s ease-in-out;
 }
 
@@ -693,7 +694,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .product__buttons .buy-button:not([disabled]):hover {
-  background: #e30613;
+  background: #e30613 !important;
 }
 
 .product__buttons .buy-button:not([disabled]).hollow {

@@ -1,5 +1,5 @@
 window.addEventListener("load", productLoad, false);
-let checkoutUrl = "";
+let checkoutUrl = "/checkout";
 let alertDiv = "";
 
 /**
@@ -239,14 +239,14 @@ async function addOrCreateCheckout(input) {
     if (checkout) {
       const checkoutResponse = await client.checkout.add(input, checkout);
       if (checkoutUrl == "") {
-        checkoutUrl = checkoutResponse.data.url;
+        checkoutUrl = "/checkout";
       }
 
       checkoutId = checkoutResponse.data.checkoutId;
     }
     else {
       const checkoutResponse = await client.checkout.create(input);
-      checkoutUrl = checkoutResponse.data.url;
+      checkoutUrl = "/checkout";
       checkoutId = checkoutResponse.data.checkoutId;
 
       await client.cookie.set("carrinho-id", checkoutResponse.data.checkoutId, window.location.hostname.replace("www", ""))

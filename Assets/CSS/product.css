@@ -1,0 +1,45 @@
+.first-row-column{
+    width: 23%;
+}
+
+.matrix-column, .matrix-title{
+    text-align: center;
+}
+
+.subscription-div{
+    border-radius: 5%;
+    border-width: 1px;
+    border-color: black;
+    border-style: ridge;
+    width: 70%;
+    text-align: center;
+}
+
+.radio-label{
+    background-color: white;
+    color: black;
+}
+
+.wholesale-div{
+    color: white;
+    background-color: #198754;
+    border: 1px solid white;
+}
+
+.btn-avise-me{
+    margin-top: 10px;
+}
+
+input[type=text], input[type=email]{
+    border: solid 1px #999;
+    margin-top: 4px;
+}
+
+ul.reset{
+    list-style: none;
+    padding: 0;
+}
+
+.btn-avise-me{
+    width: 100%;
+}

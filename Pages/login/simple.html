@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ asset type: "css" paths: ["output","output_login"]}}
+  {{ gtm_config_head gtm_id: common.gtm_id }}
+  {{ header default_title: "Login"}}
+</head>
+<body class="bg-mainBg">
+  <header class="shadow-xl lg:shadow-none bg-lightBg">
+      {{ links }}
+
+  </header>
+  {{ wake_overlay }}
+  <div class="wake-simple-login-wrapper">
+    <div>
+      {{ wake_login_simple }}
+      {{ wake_login_social facebook_app_id: common.facebook_app_id[0]?.value google_client_id: common.google_client_id[0]?.value }}
+    </div>    
+  </div>
+  {{ footer }}
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+      <script type="text/javascript">document.write(JSON.stringify({{data}}, null, 2));</script>
+  </pre>
+  
+  {{ sdk_client_checkout }}
+  {{ wake_scripts scripts: ["wake_utils", "wake_login"] }}
+</body>
+</html>

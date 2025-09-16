@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout - Resumo</title>
+  {{ asset type: "css" paths: ["output", "output_checkout", "checkout/payment"]}}
+  {{ data_layer_config }}
+  <script data-checkout>{{data}}</script>
+</head>
+
+<body class="bg-mainBg wake-cart-page">
+  {{ checkout_header }}
+  {{ wake_overlay }}
+  <div class="wake-cart-wrapper">
+    {{~ if data.checkout.products.size > 0 ~}}
+    <div class="product-and-whats-container">
+      <div id="checkout_product_snippet" class="wake-cart-wrapper-product-snippet">
+        {{ checkout_products_list products: data.checkout.products kits: data.checkout.kits }}
+      </div>
+    </div>
+    <div class="wake-cart-container">
+      <div id="checkout_subtotal_snippet" class="wake-cart-subtotal">
+        <span>Subtotal:</span>
+          {{ data.checkout.subtotal | math.format "c" "pt-BR" }}
+        </div>
+        {{ checkout_coupon coupon: data.checkout.coupon }}
+        <div id="checkout_total_snippet" class="wake-cart-total">
+          {{~if data.checkout.shipping_fee ~}} 
+            {{ if data.checkout.shipping_fee == 0}}
+            <div class="price-line free">
+              {{ else }}
+            <div class="price-line">
+          {{~end~}}
+              <span>Frete</span>
+              {{ if data.checkout.shipping_fee == 0}}
+              <h3 class="flag">
+                  Grátis
+              </h3>
+              {{ else }}
+              <h3>{{data.checkout.shipping_fee | math.format "c" "pt-BR"}}</h3>
+              {{ end }}
+            </div>
+          {{~end~}}
+          {{if data.checkout.discount + data.checkout.coupon_discount != 0 }}
+            <div  class="discount-price">
+          {{~else~}}
+            <div style="display: none;">
+          {{~end~}}
+            <span>Você está economizando</span>
+            <h3 class="discount">
+                {{ if data.checkout.coupon }}
+                {{data.checkout.discount + data.checkout.coupon_discount | math.format "c" "pt-BR"}}
+                {{ else }}
+                {{data.checkout.discount | math.format "c" "pt-BR"}}
+                {{ end }}
+            </h3>
+        </div>
+          <div class="total">
+            <span>Valor Total:</span>
+            {{ data.checkout.total | math.format "c" "pt-BR" }}
+          </div>
+        </div>
+
+      <div id="checkout_total_snippet-wake-cart-finish" class="wake-cart-finish-wrapper hide-on-mobile">
+        <a href="/checkout/shipping" class="wake-cart-finish-button">AVANÇAR</a>
+        <a href="/" class="wake-cart-continue-button">ADICIONAR +</a>
+      </div>
+    </div>
+    {{~ else ~}}
+    <div class="wake-cart-container-empty">
+      <div class="empty-cart-icon">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" fill="#A9D6C2" opacity="0.8"/>
+          <path d="M8 10L8 8C8 5.79086 9.79086 4 12 4V4C14.2091 4 16 5.79086 16 8L16 10" stroke="#8BC4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 10H19L18 21H6L5 10Z" stroke="#8BC4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="wake-cart-empty-title">Seu Carrinho de compras está vazio</h3>
+      <p class="wake-cart-empty-text">Você não possui itens no carrinho</p>
+      <a href="/" type="button" class="wake-cart-empty-continue-button">Continue comprando</a>
+    </div>
+    {{~ end ~}}
+  </div>
+  {{ wake_confirmation_modal }}
+  {{ checkout_footer }}
+  <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+      <script type="text/javascript">document.write(JSON.stringify(data, null, 2));</script>
+  </pre>
+  <input type="hidden" name="checkout_id" value="{{ data.checkout.checkout_id }}">
+  {{ sdk_client_checkout }}
+  {{ data_layer_checkout_view checkout: data.checkout}}
+  {{ wake_scripts scripts: ["wake_utils"] }}
+  {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close"] options: "async"}}
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+{{ ##
+    Description: Re-renders the product view
+    Params:
+        - Uses product.graphql
+    Usage:
+        await client.snippet.render("kit_product_snippet.html", ...);
+## }}
+{{ buy_list_product_view product: data.product is_kit: true }}

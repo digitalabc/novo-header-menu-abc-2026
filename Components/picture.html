@@ -1,0 +1,22 @@
+{{## 
+    Description: Renders a responsive image
+    Params:
+      - banners: list of banners
+      - position: banner position to use
+    Usage:
+      picture banner_by_name: [banners] default: "b.jpg" class: "string" alt: "string"
+##}}
+{{ current_sources = [] }}
+{{~ for cb in banner_by_name ~}}
+    {{ current_media = "(max-width: " + (cb.width+20) + "px)" }} 
+    {{ if for.last }}
+    {{ default = cb.banner_url }}
+    {{ end }}
+    {{ current_sources = current_sources | array.add {src:cb.banner_url, w:cb.width, media: current_media} }}
+{{~ end ~}}
+<picture>
+    {{~ for source in sources ~}}
+        <source media="{{source.media}}" srcset="{{source.src}}?w={{source.w}}&h={{source.h}}">   
+    {{~ end ~}}
+    <img src="{{default}}" alt="{{alt}}" class="{{class}}">
+</picture>

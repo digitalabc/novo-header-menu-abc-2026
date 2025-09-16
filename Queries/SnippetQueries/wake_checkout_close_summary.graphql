@@ -1,0 +1,85 @@
+query CheckoutSummary($checkoutId: String!, $customerAccessToken: String) {
+  checkout(checkoutId: $checkoutId, customerAccessToken: $customerAccessToken) {
+    checkoutId
+    url
+    coupon
+    couponDiscount
+    customizationValue
+    discount
+    paymentFees
+    totalDiscount
+    products {
+      listPrice
+      totalListPrice
+      price
+      ajustedPrice
+      totalAdjustedPrice
+      adjustments {
+        observation
+        type
+        value
+      }
+      productId
+      productVariantId
+      imageUrl
+      quantity
+      name
+      gift
+      kit
+      productAttributes {
+        name
+        type
+        value
+      }
+    }
+    kits {
+      kitId
+      kitGroupId
+      alias
+      imageUrl
+      listPrice
+      price
+      totalListPrice
+      totalAdjustedPrice
+      name
+      quantity
+      products {
+        productId
+        productVariantId
+        imageUrl
+        name
+        url
+        quantity
+        productAttributes {
+          name
+          value
+        }
+      }
+    }
+    selectedPaymentMethod {
+      id
+      html
+      scripts
+      paymentMethodId
+      installments {
+        adjustment
+        number
+        total
+        value
+      }
+    }
+    selectedAddress {
+      cep
+      city
+      complement
+      neighborhood
+      state
+      street
+      addressNumber
+      receiverName
+    }
+    shippingFee
+    subtotal
+    total
+  }
+}

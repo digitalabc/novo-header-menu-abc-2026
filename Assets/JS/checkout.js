@@ -121,7 +121,8 @@ const cartAddQuantity = async (productVariantId, customizationId) => {
 
 const cartSubtractQuantity = async (productVariantId, customizationId) => {
   const input = getCartAddOrSubtractInput(productVariantId, 1, customizationId);
-  await client.checkout.remove(input);
+  const checkout = await client.cookie.get("carrinho-id")
+  await client.checkout.remove(input, checkout);
   updateCheckout();
 };
 
@@ -168,7 +169,9 @@ const selectSubscription = async (productVariantId) => {
 async function removeProductFromCart(id, qty, customizationId) {
   try {
     const input = getCartAddOrSubtractInput(id, Number(qty), customizationId);
-    await client.checkout.remove(input);
+    const checkout = await client.cookie.get("carrinho-id")
+
+    await client.checkout.remove(input, checkout);
 
     showOverlay("Produto removido!", "Produto removido do carrinho");
     hideConfirmationModal();
@@ -276,19 +279,23 @@ function getSelectedAttributes(
  */
 async function cartAddKitQuantity(kitId, kitGroupId) {
   const input = await cartGetKitInput(kitId, kitGroupId, 1);
-  const response = await client.checkout.addKit(input);
+  const checkout = await client.cookie.get("carrinho-id")
+  
+  const response = await client.checkout.addKit(input, checkout);
   if (kitOperationIsSuccess(response)) await updateCheckout();
 }
 
 async function cartSubtractKitQuantity(kitId, kitGroupId) {
   const input = await cartGetKitInput(kitId, kitGroupId, 1);
-  const response = await client.checkout.removeKit(input);
+    const checkout = await client.cookie.get("carrinho-id")
+  const response = await client.checkout.removeKit(input, checkout);
   if (kitOperationIsSuccess(response)) await updateCheckout();
 }
 
 async function removeKitFromCart(kitId, kitGroupId, quantity) {
   const input = await cartGetKitInput(kitId, kitGroupId, Number(quantity));
-  const response = await client.checkout.removeKit(input);
+    const checkout = await client.cookie.get("carrinho-id")
+  const response = await client.checkout.removeKit(input, checkout);
   if (kitOperationIsSuccess(response)) await updateCheckout();
   hideConfirmationModal();
 }
@@ -436,6 +443,7 @@ async function shippingQuoteCheckoutSubmit(e, checkoutId) {
 const initializeCheckoutFromSharedCheckout = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const sharedCheckout = urlParams.get("shared_checkout");
+  const checkout = await client.cookie.get("carrinho-id")
 
   if (sharedCheckout) {
     try {
@@ -447,7 +455,7 @@ const initializeCheckoutFromSharedCheckout = async () => {
       }));
 
       if (items.length > 0) {
-        const response = await client.checkout.add(items);
+        const response = await client.checkout.add(items, checkout);
 
         if (response) {
           window.history.replaceState(

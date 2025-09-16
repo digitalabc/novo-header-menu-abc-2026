@@ -237,7 +237,7 @@ async function addOrCreateCheckout(input) {
     console.log(checkout, input);
     
     if (checkout) {
-      const checkoutResponse = await client.checkout.add(input);
+      const checkoutResponse = await client.checkout.add(input, checkout);
       if (checkoutUrl == "") {
         checkoutUrl = checkoutResponse.data.url;
       }

@@ -1,0 +1,32 @@
+{{ ##
+    Description: Renders a brands carousel from a list of brands
+    Params:
+      - brands: list of banners
+    Usage:
+      brands_carousel brands: brands
+## }}
+{{~ if brands ~}}
+  <div class="flex flex-col my-4 w-full lg:flex-row lg:justify-center bg-mainBg">
+    <div class="flex flex-col items-start w-full lg:max-w-[1330px] px-2 relative">
+      <h2 class="w-full text-lg lg:text-2xl uppercase mb-4 pb-4 border-b">{{ "Marcas" | lang }}</h2>
+      <div class="swiffy-slider slider-nav-dark slider-nav-visible slider-nav-autoplay slider-nav-autopause slider-indicators-round 
+      slider-indicators-dark slider-indicators-highlight slider-indicators-sm slider-item-show4 slider-item-show2-sm" data-slider-nav-autoplay-interval="5000">
+          <div class="slider-container">
+            {{~ for brand in brands ~}}
+              <div class="flex justify-center items-center"><img src="{{brand.full_url_logo}}" alt="{{brand.name}}" width="240px" height="135px" class="m-10 w-60" loading="lazy"/></div>
+            {{~ end ~}}
+          </div>
+          <div class="absolute bg-inherit shadow-none rounded-none outline-none p-0 z-10 text-4xl left-auto -top-12 right-16">
+            <button type="button" class="slider-nav">
+              <img src="{{- store.urls.static_img}}icons/arrow-left.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="arrow-left"  class="w-6 h-6 m-2" loading="lazy"/>
+            </button>
+          </div>
+          <div class="absolute bg-inherit shadow-none rounded-none outline-none p-0 z-10 text-4xl left-auto -top-12 right-0">
+            <button type="button" class="slider-nav slider-nav-next">
+              <img src="{{- store.urls.static_img}}icons/arrow-right.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="arrow-right" class="w-6 h-6 m-2" loading="lazy" />
+            </button>
+          </div>
+      </div>
+    </div>
+  </div>
+{{~ end ~}}

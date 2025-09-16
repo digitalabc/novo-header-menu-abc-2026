@@ -1,0 +1,55 @@
+{{ ##
+    Description: Renders the product view
+    Params:
+        - offer: product data
+    Usage:
+        product_view offer: offer
+## }}
+<div div-buy-box class="flex mb-4 w-full lg:w-2/4 mr-2 last:mr-0">
+    <div class="flex flex-col w-full">
+        <div class="flex text-lg uppercase mb-2 bg-gray-1000 w-full p-1 text-white">
+            {{ offer.name }}
+        </div> 
+        
+        <div class="flex justify-between items-center w-full">
+            <div class="flex flex-col w-full">
+                <div class="line-through text-base text-secondary-500">De {{ offer.prices.list_price | math.format "c" "pt-BR" }}</div>
+                <div class="text-lg">por {{ offer.prices.price | math.format "c" "pt-BR" }}</div>
+                {{ installment_plans = offer.prices.installment_plans | group.by @(do; ret $0.display_name;end) }}
+                {{ boleto = installment_plans | group.get "Boleto"}}
+                {{ if boleto && boleto.size > 0}}
+                    <div class="text-lg">
+                        {{ boleto[0].installments[0].value | math.format "c" "pt-BR" }} no Boleto.
+                    </div>
+                    <br>
+                {{ end }}
+
+                {{
+                    cartao = installment_plans | group.get "Cartão - Desconto"
+                    if cartao.size == 0
+                        cartao = installment_plans | group.get "Cartão Sem Desconto"
+                    end
+                }}
+                {{ if cartao.size > 0 }}
+                    {{ cartao = cartao[0].installments | array.last }}
+                    <br>
+                    <div class="buy-box-cartao">
+                        Em {{ cartao.number }}x 
+                        de {{ cartao.value | math.format "c" "pt-BR" }} no cartão.
+                    </div>
+                {{ end }}
+                <div>
+                    <input product-quantity type="number" class="w-20" value="1" min="1" aria-label="Quantidade">
+                </div>
+
+                <div>
+                    <button class="buy-button flex items-center justify-center mt-2 p-2 bg-primary-500 hover:bg-primary-900 text-white w-full" 
+                        onclick="buyBoxBuyClick(this);" value="{{offer.product_variant_id}}">
+                        <img src="{{- store.urls.static_img}}icons/cart.svg?theme={{store.theme}}&v={{store.last_modified}}" alt="cart" class="w-6 h-6 mr-2">
+                        COMPRAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

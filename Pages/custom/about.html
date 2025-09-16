@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        {{ header title: data.hotsite.name store: store }}
+        {{ data_layer_config }}
+        {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+        {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "spot", "product", "output_base"]}}
+        {{ meta_tags seo: data.hotsite.seo }}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <input hidden id="data-layer-page-type" value="ABOUT"/>
+    </head>
+    <body class="bg-mainBg">
+        <header class="shadow-xl lg:shadow-none">
+            {{ links }}
+            {{ head }}
+            {{ navbar store: store menu_groups: common.menu_groups position: "Topo Header" }}            
+        </header>
+        {{ side_cart }}
+        {{ wake_overlay }}
+        <div class="flex flex-col my-4 w-full lg:flex-row lg:justify-center">
+            {{content position: "Lateral Esquerda" contents: data.hotsite.contents}}
+            {{content position: "Centro" contents: data.hotsite.contents}}
+        </div>
+        {{ footer is_preview: is_preview store: store }}
+        {{ sdk_client }}
+        {{ wake_scripts scripts: ["wake_utils"] }}
+        {{ asset type: "js" paths: ["navbar", "product", "mini_cart", "user_login"]}}
+    </body>
+</html>

@@ -1,0 +1,25 @@
+query CalcPrices($prodVar: Long!, $quantity: Int!, $query: String!, $partnerAccessToken: String) {
+  original: calculatePrices(products:[{productVariantId:$prodVar, quantity: 1}]) {
+    ...priceFields
+  }
+  wholesale: calculatePrices(products:[{productVariantId:$prodVar, quantity: $quantity}]) {
+    ...priceFields
+  }
+  autocomplete(query: $query, limit: 5, partnerAccessToken: $partnerAccessToken){
+    suggestions
+    products{
+      productName
+      alias: aliasComplete
+      images{
+        url
+      }
+      prices{
+        price
+      }
+    }
+  }
+}
+
+fragment priceFields on Prices {
+  price
+}

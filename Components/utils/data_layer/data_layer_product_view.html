@@ -1,0 +1,48 @@
+{{ ##
+    Description: The product data layer view event component, saves the info of the 
+                product to pushing the view event to the datalayer
+    Params:
+        - product: the product data to save in the data layer
+    Usage:
+        data_layer_product_view product: data.product
+## }}
+{{
+    item = {
+        item_id: product.product_id,
+        item_name: product.product_name | string.escape,
+        quantity: 1
+    }
+    
+    if product.prices
+        if product.prices.list_price > 0 && product.prices.list_price > product.prices.price
+            item.discount = product.prices.list_price - product.prices.price
+            item.price = product.prices.list_price
+        else
+            item.discount = 0
+            item.price = product.prices.price
+        end
+    end
+
+    if product.product_brand
+        item.item_brand = product.product_brand.name
+    end
+
+    for category in product.product_categories
+        i = for.index + 1
+        category_key = "item_category" | string.append (i > 1 ? i : '')
+        item[category_key] = category.name
+    end
+
+    if product.attribute_selections.selected_variant
+        item.item_variant = product.attribute_selections.selected_variant.alias
+    end
+
+    data_layer_product_details = {
+        currency: "BRL",
+        value: product.prices.price,
+        items: [item]
+    }
+}}
+<script>
+    const data_layer_product_details = {{ data_layer_product_details | map.to_json }};
+</script>

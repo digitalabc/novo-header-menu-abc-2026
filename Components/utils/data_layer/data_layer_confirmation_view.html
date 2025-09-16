@@ -1,0 +1,55 @@
+{{ ##
+    Description: Data layer hotsite component, saves the info of products
+                to use when pushing the data to the datalayer
+    Params:
+        - product: the product data to save in tag manager
+    Usage:
+        data_layer_hotsite_view product: data.product
+## }}
+{{  
+    orders_list = []
+    for order in checkout.orders
+        items = []
+        for product_in_list in order.products
+            product = product_in_list.node ?? product_in_list
+
+            item = {
+                item_variant: product.product_variant_id,
+                item_name: product.name | string.escape,
+                item_category: product.category,
+                index: for.index,
+                quantity: product.quantity
+            }
+
+            if product.prices
+                if product.prices.list_price > 0 && product.prices.list_price > product.prices.price
+                    item.discount = product.prices.list_price - product.prices.price
+                    item.price = product.prices.list_price
+                else
+                    item.discount = 0
+                    item.price = product.prices.price
+                end
+            end
+
+            if product.product_brand
+                item.item_brand = product.product_brand.name
+            end
+
+            items = items | array.add item
+        end
+
+        order_item = {
+            items: items,
+            value: order.total_value
+        }
+
+        orders_list = orders_list | array.add order_item
+    end
+
+    data_layer_confirmation_details = {
+        orders: orders_list
+    }
+}}
+<script>
+    const data_layer_confirmation_details = {{ data_layer_confirmation_details | map.to_json }}
+</script>

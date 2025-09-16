@@ -1,0 +1,42 @@
+{{ ##
+    Description: Data layer cart component, saves the info of product
+                    to use later on the events
+    Params:
+        - checkout: the checkout object to save product data in data layer
+    Usage:
+        data_layer_cart_view checkout: data.checkout
+## }}
+{{ if checkout != null}}
+    {{
+        items = []
+        
+        for product in checkout.products
+            item = {
+                item_id: product.product_id,
+                item_name: product.name | string.escape,
+                index: for.index,
+                quantity: product.quantity
+            }
+
+            if product.prices
+                if product.prices.list_price > 0 && product.prices.list_price > product.prices.price
+                    item.discount = product.prices.list_price - product.prices.price
+                    item.price = product.prices.list_price
+                else
+                    item.discount = 0
+                    item.price = product.prices.price
+                end
+            end
+
+            items = items | array.add item
+        end
+
+        data_layer_cart_details = {
+            currency: "BRL",
+            value: checkout.subtotal,
+            items: items
+        }
+    }}
+
+    <input type="hidden" id="data_layer_cart_details" value='{{ data_layer_cart_details | map.to_json }}'>
+{{ end }}

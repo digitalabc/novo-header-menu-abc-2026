@@ -1,13 +1,3 @@
-/* LEIA-ME */
-
-/* login.css >> Definições das páginas de LOGIN do novo Checkout */
-/* minhaconta.css >> Definições das páginas de MINHA CONTA do novo Checkout */
-/* checkout.css >> Definições das páginas de CARRINHO, FECHAMENTO E CONFIRMAÇÃO do novo Checkout */
-/* geral.css >> Definições de Cabeçalho e Rodapé */
-
-/* adicione/edite este arquivo para sobrescrever as definições padrão da loja */
-
-/* Mensagem de aviso da nota fiscal no carrinho e no checkout */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .msg-warning-invoice {
@@ -71,7 +61,7 @@
     line-height: unset;
 }
 
-/* cor da mensagem do cupom */
+
 .fbits-cupom-msg.fbits-fechamento-cupom-sucesso {
     color: #0fa848;
 }
@@ -80,60 +70,60 @@
     .col-lg-6.col-md-6.col-sm-12.col-xs-12.fbits-responsive-carrinho-item-titulo {
         padding-bottom: 5px;
     }
+
     .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency.promo,
     .fbits-carrinho .fbits-responsive-carrinho .fbits-responsive-carrinho-items .fbits-responsive-carrinho-produtos .fbits-responsive-carrinho-item-valor-unitario .currency {
         font-size: 12px;
     }
 }
 
-/* scroll no frete do carrinho */
+
 #div-frete {
     overflow-y: scroll;
-    max-height: 350px;   
+    max-height: 350px;
 }
 
-/* abcprime bar */
 
-.prime_bar_wrapper.prime_sticky { 
+
+.prime_bar_wrapper.prime_sticky {
     position: sticky;
     top: 0;
     z-index: 999;
 }
-    
+
 .prime_bar {
     display: none;
     background-color: #138779;
     padding: 20px;
     justify-content: center;
 }
-    
+
 .prime_bar {
     color: #ffe2aa;
     font-size: 16px;
     font-weight: 700;
 }
 
-.prime_bar > p {
+.prime_bar>p {
     margin: 0;
-    padding: 0;   
+    padding: 0;
 }
 
-/* produto encomenda sem retira em loja temporariamente */
+
 [data-frete-item-tipo="Retirada"].produto_encomenda {
     display: none !important;
 }
 
-/* [data-frete-item-tipo="Custom"]:not(.quotes_overview) {
-    display: none;
-} */
 
-/* pde-450 */
+
+
 .warning__message__wrapper {
     display: flex;
     justify-content: center;
 }
+
 .warning__message {
-    padding: 15px;         
+    padding: 15px;
 }
 
 .warning__message>div {
@@ -157,4 +147,17 @@
 
 .warning__message>div>p>strong {
     font-weight: 700;
+}
+
+
+#checkout_total_snippet .wake-cart-total>div:first-child {
+    display: none !important;
+}
+
+#checkout_coupon_snippet:not([style*='display']) {
+    display: none !important;
+}
+
+#data_payment > #checkout_coupon_snippet {
+    display: none !important;
 }

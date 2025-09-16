@@ -1,0 +1,75 @@
+{{ ##
+    Description: Renders the product view
+    Params:
+        - product: product data
+    Usage:
+        product_view product: product
+## }}
+{{~ selected_variant = product.attribute_selections?.selected_variant ~}}
+<div id="add-cart-alert"></div>
+<div class="flex flex-col relative sm:flex-row justify-start w-full">
+    <div class="flex mr-5 lg:min-w-[40%]">
+        {{~ 
+            if selected_variant && selected_variant.images && selected_variant.images.size > 0
+                product_image images: product.attribute_selections.selected_variant.images
+            else
+                product_image images: product.images
+            end 
+        ~}}
+    </div>
+    <div class="flex flex-col md:min-w-[55%]">
+        <div class="flex justify-between items-center w-full p-1 mb-4">
+            {{~ if product.product_brand ~}}
+                {{~ product_brand brand: product.product_brand ~}}
+            {{~ end ~}}
+            {{~ if product.product_id ~}}
+                {{~ wishlist_button product_id: product.product_id ~}}
+            {{~ end ~}}
+        </div>
+        <h5 class="text-2xl mb-4">{{ product.product_name }}</h5>
+        {{~
+            promotionsTypes = product.promotions | group.by @(do; ret $0.disclosure_type;end)
+            promotionsPagProduto = promotionsTypes | group.get "Página produto"
+            stamps promotions: promotionsPagProduto
+            installment_plans = product.prices.installment_plans 
+        ~}}
+        <div class="flex">
+            {{~ discount_percentage = 0 ~}}
+            <div id="product-prices-div" class="flex flex-col w-full">
+                {{~ 
+                    if selected_variant
+                        installment_plans = selected_variant.prices.installment_plans
+                        product_price prices: selected_variant.prices
+                        discount_percentage = selected_variant.prices.discount_percentage
+                        product_wholesale_price prices : selected_variant.prices
+                    else
+                        product_price prices: product.prices
+                        discount_percentage = product.prices.discount_percentage
+                    end
+                        product_installments installments: installment_plans 
+                ~}}
+            </div>
+            <div>
+                {{ product_discount discount_percentage: discount_percentage }}
+            </div>
+        </div>
+        <div>
+            {{ buy_box_product_attribute product: product }}
+            {{~ if product.customizations ~}}
+                {{~ product_customizations customizations: product.customizations ~}}
+            {{~ end ~}}
+        </div>
+        <div>
+            {{~ if selected_variant ~}}
+                {{ if selected_variant.offers }}
+                    <div class="flex flex-col lg:flex-row lg:justify-between w-full">
+                        {{ for offer in selected_variant.offers }}
+                            {{ buy_box_product_offer offer: offer }}
+                        {{ end }}
+                    </div>
+                {{ end }}
+                {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
+            {{~ end ~}}
+        </div>
+    </div>
+</div>

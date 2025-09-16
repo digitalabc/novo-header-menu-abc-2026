@@ -1,0 +1,1990 @@
+.\!container {
+  width: 100% !important;
+}
+
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .\!container {
+    max-width: 640px !important;
+  }
+
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .\!container {
+    max-width: 768px !important;
+  }
+
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .\!container {
+    max-width: 1024px !important;
+  }
+
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .\!container {
+    max-width: 1280px !important;
+  }
+
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\!container {
+    max-width: 1536px !important;
+  }
+
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.form-input,
+.form-textarea,
+.form-select,
+.form-multiselect {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border-color: #6b7280;
+  border-width: 1px;
+  border-radius: 0px;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  --tw-shadow: 0 0 #0000;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+.form-multiselect:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-inset: var(--tw-empty,
+      /*!*/
+      /*!*/
+    );
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: #2563eb;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  border-color: #2563eb;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* authenticate */
+
+.wake-autenticate-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .wake-autenticate-wrapper {
+    width: 1330px;
+  }
+}
+
+.wake-autenticate-wrapper>div {
+  display: flex;
+  width: 20rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .wake-autenticate-wrapper>div {
+    min-width: 600px;
+  }
+}
+
+.wake-autenticate-wrapper>div>h3:first-of-type {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 400;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-autenticate-wrapper>div>span:first-of-type {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-autenticate-wrapper>div form {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wake-autenticate-wrapper>div form>div:nth-of-type(1),
+.wake-autenticate-wrapper>div form div:nth-of-type(2) {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  min-width: 350px;
+  align-items: center;
+}
+
+.wake-autenticate-wrapper>div form>div:first-child>div {
+  position: relative;
+  display: flex;
+}
+
+.wake-autenticate-wrapper>div form div div input {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-autenticate-wrapper>div form div div input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-autenticate-wrapper>div form div div label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.25rem;
+  z-index: 10;
+  transform-origin: 0;
+  --tw-translate-y: -1rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+}
+
+.wake-autenticate-wrapper>div form .hide-show-password {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wake-autenticate-wrapper>div form .input-error {
+  margin-left: 0.75rem;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.wake-autenticate-wrapper>div form .forgot-password {
+  margin-bottom: 1rem;
+  min-width: 350px;
+}
+
+.wake-autenticate-wrapper>div form .forgot-password span {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.wake-autenticate-wrapper>div form .forgot-password a {
+  color: #00000099;
+  text-decoration-line: underline;
+}
+
+.wake-autenticate-wrapper>div .button-login,
+.wake-autenticate-wrapper>div .button-register {
+  margin-bottom: 0.5rem;
+  display: flex;
+  height: 42px;
+  min-width: 350px;
+  justify-content: center;
+  border-radius: 4px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+/* login-social */
+
+.wake-login-social {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wake-login-social span {
+  margin-bottom: 1rem;
+  display: flex;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-login-social>div {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.wake-login-social button {
+  display: flex;
+}
+
+.wake-login-social button:nth-of-type(1) {
+  margin-right: 1rem;
+}
+
+.wake-login-social button img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.wake-autenticate-wrapper .register {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wake-autenticate-wrapper .register h3 {
+  display: flex;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.wake-autenticate-wrapper .register span {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+/* password-recovery */
+
+.wake-password-recovery-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background: #fff;
+}
+
+
+@media (max-width: 767px) {
+  .wake-password-recovery-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 30px 20px;
+  }
+
+  .wake-password-recovery-wrapper>div {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.wake-password-recovery-wrapper>div {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .wake-password-recovery-wrapper>div {
+    min-width: 600px;
+  }
+}
+
+.wake-password-recovery-wrapper>div h3 {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(31 31 31 / var(--tw-text-opacity));
+  font-family: 'Satoshi Variable', sans-serif;
+}
+
+.wake-password-recovery-wrapper>div .step-one span {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  --tw-text-opacity: 1;
+  color: rgb(132 132 132 / var(--tw-text-opacity));
+  margin-bottom: 1rem;
+  font-family: 'Satoshi Variable', sans-serif;
+}
+
+.wake-password-recovery-wrapper>div .step-one form {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div {
+  position: relative;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  width: 350px;
+  align-items: center;
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div input {
+  margin-bottom: 1rem;
+  display: flex;
+  height: 48px;
+  width: 350px;
+  border-radius: 8px;
+  border: 1.6px solid #ececec;
+  padding: 0 16px;
+  text-align: left;
+  background-color: #f4f6f8;
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Satoshi Variable', sans-serif;
+  transition: all 0.3s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 767px) {
+  .wake-password-recovery-wrapper>div .step-one form>div input {
+    height: 56px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div input:hover {
+  border: 1.2px solid #0092ff;
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div input:focus {
+  border: 1.2px solid #0092ff;
+  outline: none;
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div button {
+  position: relative;
+  margin-bottom: 0.5rem;
+  display: flex;
+  height: 48px;
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 400px;
+  background-color: #0092ff;
+  padding: 0;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Satoshi Variable', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.4s ease-in-out, font-size 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .wake-password-recovery-wrapper>div .step-one form>div button {
+    width: 100%;
+    max-width: 350px;
+    height: 56px;
+  }
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.4s ease-in-out;
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div button:hover {
+  background-color: #30a6ff;
+  font-size: 16.2px;
+  font-weight: bold;
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div button:hover::before {
+  left: 100%;
+}
+
+.wake-password-recovery-wrapper>div .step-one form>div button:active {
+  transform: scale(0.98);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+.wake-password-recovery-wrapper>div .step-two span {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  --tw-text-opacity: 1;
+  color: rgb(132 132 132 / var(--tw-text-opacity));
+  margin-bottom: 1rem;
+  font-family: 'Satoshi Variable', sans-serif;
+}
+
+.wake-password-recovery-wrapper>div .step-two form {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div {
+  position: relative;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div input {
+  margin-bottom: 1rem;
+  display: flex;
+  height: 48px;
+  width: 350px;
+  border-radius: 8px;
+  border: 1.6px solid #ececec;
+  padding: 0 16px;
+  text-align: left;
+  background-color: #f4f6f8;
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Satoshi Variable', sans-serif;
+  transition: all 0.3s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 767px) {
+  .wake-password-recovery-wrapper>div .step-two form>div input {
+    height: 56px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div input:hover {
+  border: 1.2px solid #0092ff;
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div input:focus {
+  border: 1.2px solid #0092ff;
+  outline: none;
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div button {
+  position: relative;
+  margin-bottom: 0.5rem;
+  display: flex;
+  height: 48px;
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 400px;
+  background-color: #0092ff;
+  padding: 0;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Satoshi Variable', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.4s ease-in-out, font-size 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .wake-password-recovery-wrapper>div .step-two form>div button {
+    width: 100%;
+    max-width: 350px;
+    height: 56px;
+  }
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.4s ease-in-out;
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div button:hover {
+  background-color: #30a6ff;
+  font-size: 16.2px;
+  font-weight: bold;
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div button:hover::before {
+  left: 100%;
+}
+
+.wake-password-recovery-wrapper>div .step-two form>div button:active {
+  transform: scale(0.98);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* wake-signup */
+
+.wake-signup-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper {
+    padding: 0px;
+  }
+}
+
+.wake-signup-wrapper>h3 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 400;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>p {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form {
+    max-width: 56rem;
+    border-radius: 0.375rem;
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+}
+
+.wake-signup-wrapper>form>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper>form>div> :not([hidden])~ :not([hidden]) {
+  --tw-divide-x-reverse: 0;
+  border-right-width: calc(1px * var(--tw-divide-x-reverse));
+  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div {
+    flex-direction: row;
+  }
+}
+
+/* registration */
+
+.wake-signup-wrapper>form>div .registration .error {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration .error-absolute {
+  position: absolute;
+  top: 2.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.wake-signup-wrapper>form>div .registration {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration {
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div {
+  position: relative;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(2)) {
+  width: 100%;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8)) {
+  margin-bottom: 2rem;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(9), :nth-child(10)) {
+  margin-bottom: 1rem;
+}
+
+.wake-signup-wrapper>form>div .registration div:not(:first-child):not(:nth-child(2)) {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration div:not(:first-child):not(:nth-child(2)) {
+    flex-direction: row;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(2), :nth-child(3))>div {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 100%;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(4))>div {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(5))>div:first-child {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration>div:is(:nth-child(5))>div:first-child {
+    margin-bottom: 0px;
+    margin-right: 1rem;
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(5))>div:last-child {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration>div:is(:nth-child(5))>div:last-child {
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6))>div:first-child {
+  margin-right: 1rem;
+  width: 75%;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6))>div:last-child {
+  display: flex;
+  width: 50%;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7))>div:first-child {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration>div:is(:nth-child(7))>div:first-child {
+    margin-bottom: 0px;
+    margin-right: 1rem;
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7))>div:last-child {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration>div:is(:nth-child(7))>div:last-child {
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(8))>div:first-child {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration>div:is(:nth-child(8))>div:first-child {
+    margin-bottom: 0px;
+    margin-right: 1rem;
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(8))>div:last-child {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration>div:is(:nth-child(8))>div:last-child {
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration>div>h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div .custom-cpf-cnpj {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.wake-signup-wrapper>form>div .registration .custom-cpf-cnpj>label {
+  display: flex;
+  width: 20rem;
+  cursor: pointer;
+  justify-content: center;
+  border-width: 2px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.wake-signup-wrapper>form>div .registration .custom-cpf-cnpj>label span {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+}
+
+.wake-signup-wrapper>form>div .registration .custom-cpf-cnpj>label:first-child {
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding: 0.5rem;
+}
+
+.wake-signup-wrapper>form>div .registration .custom-cpf-cnpj>label:last-child {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.wake-signup-wrapper>form>div .registration .custom-cpf-cnpj input {
+  margin-right: 0.5rem;
+  display: none;
+  cursor: pointer;
+}
+
+.wake-signup-wrapper>form>div .registration .custom-cpf-cnpj input:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-signup-wrapper>form>div .registration .custom-cpf-cnpj span {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+}
+
+.wake-signup-wrapper>form>div .registration .birthdate {
+  display: flex;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper>form>div .registration .exemptStateRegistrationFree {
+  display: flex;
+  align-items: center;
+}
+
+.wake-signup-wrapper>form>div .registration .phones {
+  display: flex;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper>form>div .registration .phones .numbers {
+  position: relative;
+  width: 100%;
+}
+
+.wake-signup-wrapper>form>div .registration .passwords {
+  display: flex;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(2))>div:first-child {
+  align-items: center;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(2), :nth-child(3), :nth-child(4), :nth-child(7)) input[type="text"],
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(5)) input[type="date"],
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(5)) select {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(2), :nth-child(3), :nth-child(4), :nth-child(7)) input[type="text"]:focus,
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(5)) input[type="date"]:focus,
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(5)) select:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6)) input[type="text"] {
+  display: flex;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6)) input[type="text"]:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6)) input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6)) input[type="checkbox"]:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) input[name="primaryPhoneAreaCode"],
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) input[name="secondaryPhoneAreaCode"] {
+  margin-right: 0.5rem;
+  display: block;
+  width: 3rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) input[name="primaryPhoneAreaCode"]:focus,
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) input[name="secondaryPhoneAreaCode"]:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(2), :nth-child(3), :nth-child(4), :nth-child(8)) label {
+  position: absolute;
+  left: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(5)) label {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.25rem;
+  inset-inline-start: 0.25rem;
+  z-index: 10;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6)) label:first-child {
+  position: absolute;
+  inset-inline-start: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.peer:focus~.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6)) label:first-child:where([dir="rtl"], [dir="rtl"] *) {
+  left: auto;
+  --tw-translate-x: 25%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(6)) label:last-child {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) label {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  inset-inline-start: 0.25rem;
+  z-index: 10;
+  transform-origin: 0;
+  --tw-translate-y: -0.75rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+}
+
+.peer:-moz-placeholder-shown~.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) label {
+  top: 50%;
+  --tw-translate-y: -50%;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.peer:placeholder-shown~.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) label {
+  top: 50%;
+  --tw-translate-y: -50%;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.peer:focus~.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) label {
+  top: 0.25rem;
+  --tw-translate-y: -0.75rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.peer:focus~.wake-signup-wrapper>form>div .registration>div:is(:nth-child(7)) label:where([dir="rtl"], [dir="rtl"] *) {
+  left: auto;
+  --tw-translate-x: 25%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(9), :nth-child(10)) label {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration>div:is(:nth-child(8)) img {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* registration_address */
+
+.wake-signup-wrapper>form>div .registration_address {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration_address {
+    width: 50%;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration_address h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:first-child {
+  margin-bottom: 0px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper>form>div .registration_address>div>div:first-child {
+    flex-direction: row;
+  }
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:first-child>div {
+  position: relative;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:first-child>div input {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:first-child>div input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:first-child>div label {
+  position: absolute;
+  left: 0.25rem;
+  inset-inline-start: 0.25rem;
+  z-index: 10;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:last-child span {
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:last-child a {
+  display: flex;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.wake-signup-wrapper>form>div .registration_address>div>div:last-child a:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+
+.wake-signup-wrapper>form>div:last-child {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.75rem;
+}
+
+.wake-signup-wrapper>form>div:last-child button {
+  margin-bottom: 1.75rem;
+  display: flex;
+  width: 16rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper .wake-address-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper .wake-address-form .zipcode input {
+  margin-left: 0.25rem;
+  width: 6rem;
+  border-radius: 4px;
+  border-style: none;
+  padding: 0px;
+}
+
+.wake-signup-wrapper .wake-address-form .zipcode a {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(14 165 233 / var(--tw-text-opacity));
+  text-decoration-line: underline;
+}
+
+.wake-signup-wrapper .wake-address-form .address-complete input {
+  width: 100%;
+  border-style: none;
+  padding: 0px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.wake-signup-wrapper .address {
+  position: relative;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.wake-signup-wrapper .address label {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  z-index: 10;
+  transform-origin: 0;
+  --tw-translate-y: -0.75rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+}
+
+.wake-signup-wrapper .address input {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper .address input:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.wake-signup-wrapper .address-autocomplete {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.wake-signup-wrapper .address-autocomplete> :not([hidden])~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper .address-autocomplete {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.wake-signup-wrapper .address-autocomplete label {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  z-index: 10;
+  transform-origin: 0;
+  --tw-translate-y: -0.75rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+}
+
+.wake-signup-wrapper .address-autocomplete input {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper .address-autocomplete input:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.wake-signup-wrapper .address-autocomplete .neighborhood {
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .wake-signup-wrapper .address-autocomplete .neighborhood {
+    margin-right: 1rem;
+  }
+}
+
+.wake-signup-wrapper .address-autocomplete .city,
+.wake-signup-wrapper .address-autocomplete .state {
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+
+  .wake-signup-wrapper .address-autocomplete .city,
+  .wake-signup-wrapper .address-autocomplete .state {
+    margin-top: 0px;
+  }
+}
+
+.wake-signup-wrapper .address-complement {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper .address-complement> :not([hidden])~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.wake-signup-wrapper .address-complement div {
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+}
+
+.wake-signup-wrapper .address-complement div input {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-signup-wrapper .address-complement div label {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  z-index: 10;
+  transform-origin: 0;
+  --tw-translate-y: -0.75rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+}
+
+.wake-signup-wrapper .address-complement div>span,
+.wake-signup-wrapper .error {
+  position: absolute;
+  top: 2.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+/* wake-simple-login */
+
+.wake-simple-login-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .wake-simple-login-wrapper {
+    width: 1330px;
+  }
+}
+
+.wake-simple-login-wrapper>div {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin>h3 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 400;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin>span {
+  display: flex;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin>form {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin form>div {
+  position: relative;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin form>div>input {
+  display: flex;
+  height: 40px;
+  width: 350px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  background-color: transparent;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin form>div>input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin form>div>label {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  z-index: 10;
+  transform-origin: 0;
+  --tw-translate-y: -0.75rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin form>div>.error {
+  margin-bottom: 0px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.wake-simple-login-wrapper>div .mainSimpleLogin form>button {
+  margin-bottom: 0.5rem;
+  display: flex;
+  height: 42px;
+  width: 350px;
+  justify-content: center;
+  border-radius: 4px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.wake-simple-login-wrapper form:not(.mainSimpleLogin form) {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wake-simple-login-wrapper form:not(.mainSimpleLogin form)>div:first-child {
+  margin-bottom: 2rem;
+  display: flex;
+  width: 350px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.wake-simple-login-wrapper form:not(.mainSimpleLogin form)>div:first-child p:first-child {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.wake-simple-login-wrapper form:not(.mainSimpleLogin form)>div:first-child p:last-child {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.wake-simple-login-wrapper form:not(.mainSimpleLogin form)>div:nth-of-type(2) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  width: 350px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wake-simple-login-wrapper form:not(.mainSimpleLogin form) button {
+  margin-bottom: 0.5rem;
+  display: flex;
+  height: 42px;
+  width: 350px;
+  justify-content: center;
+  border-radius: 4px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.wake-simple-login-wrapper form:not(.mainSimpleLogin form) a {
+  display: flex;
+  height: 42px;
+  width: 350px;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.wake-simple-login-wrapper .wake-authenticate-simple-questions {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.wake-simple-login-wrapper .wake-authenticate-simple-questions h3 {
+  margin-bottom: 1rem;
+}
+
+.wake-simple-login-wrapper .wake-authenticate-simple-questions label {
+  margin-bottom: 0.5rem;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border-width: 1px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 15px;
+}
+
+.wake-simple-login-wrapper .wake-authenticate-simple-questions .wake-authenticate-simple-answer-selected {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  font-weight: 600;
+}
+
+.wake-simple-login-wrapper .wake-authenticate-simple-questions div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* impersonate */
+
+.wake-impersonate-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .wake-impersonate-wrapper {
+    width: 1330px;
+  }
+}
+
+.wake-impersonate-wrapper>div {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .wake-impersonate-wrapper>div {
+    min-width: 600px;
+  }
+}
+
+.wake-impersonate-wrapper>div h3 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.wake-impersonate-wrapper>div button {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.75rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 14 239 / var(--tw-bg-opacity));
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wake-impersonate-wrapper>div button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 7 181 / var(--tw-bg-opacity));
+}
+
+.wake-impersonate-wrapper>div>button {
+  margin-top: 0.5rem;
+}
+
+.wake-impersonate-wrapper>div>h4 {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.wake-impersonate-wrapper>div>form {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.wake-impersonate-wrapper>div>form input {
+  margin-bottom: 1rem;
+  display: flex;
+  border-radius: 0.75rem;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+  padding: 0.5rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* Placeholders */
+.wake-password-recovery-wrapper>div .step-one form>div input::placeholder,
+.wake-password-recovery-wrapper>div .step-two form>div input::placeholder {
+  color: #848484;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+
+  .wake-password-recovery-wrapper>div .step-one form>div input::placeholder,
+  .wake-password-recovery-wrapper>div .step-two form>div input::placeholder {
+    font-size: 16px;
+  }
+}
+
+
+.wake-password-recovery-wrapper>div label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #848484;
+  margin-bottom: 6px;
+  font-family: 'Satoshi Variable', sans-serif;
+}
+
+
+@media (max-width: 767px) {
+
+  .wake-password-recovery-wrapper>div .step-one form>div,
+  .wake-password-recovery-wrapper>div .step-two form>div {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+/* Remove autofill styling */
+.wake-password-recovery-wrapper input:-webkit-autofill,
+.wake-password-recovery-wrapper input:-webkit-autofill:hover,
+.wake-password-recovery-wrapper input:-webkit-autofill:focus,
+.wake-password-recovery-wrapper input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  background: #f4f6f8 !important;
+  background-color: #f4f6f8 !important;
+  -webkit-text-fill-color: #333 !important;
+  color: #333 !important;
+  border: 1.6px solid #ececec !important;
+}

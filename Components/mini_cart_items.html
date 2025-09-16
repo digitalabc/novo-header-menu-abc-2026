@@ -1,0 +1,44 @@
+{{ if checkout.products.size > 0 }}
+    {{~ for product in checkout.products ~}}
+        {{~ if !product.kit ~}}
+            {{ mini_cart_item item:product}}
+        {{~ end ~}}
+    {{~ end ~}}
+{{~ end -}}
+
+{{- if checkout.kits.size > 0 ~}}
+    {{~ for kit in checkout.kits ~}}
+        <details class="flex flex-col w-full h-min group cursor-pointer" close>
+            <summary class="flex flex-row justify-between">
+                {{ mini_cart_item item: kit is_kit: true }}
+                <div class="flex justify-end items-center">
+                    <img src="{{- store.urls.static_img}}icons/chevron-down.svg?theme={{store.theme}}&v={{store.last_modified}}" class="h-6 w-6 group-open:rotate-180 transition-transform">
+                </div>
+            </summary>
+            <div class="flex mb-4 hidden group-open:flex w-full flex-col">
+                {{~ for kit_product in kit.products ~}}   
+                    <li class="flex py-2">
+                        <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-secondary-200">
+                            <img src="{{ kit_product.image_url ? kit_product.image_url : noImage }}" width="80px">
+                        </div>                                
+                        <div class="ml-4 flex flex-1 flex-col">
+                            <div class="flex justify-between text-base font-medium text-secondary-900">
+                                <h3>
+                                <a href="#">{{ kit_product.name }}</a>
+                                </h3>
+                            </div>
+                            <p class="mt-1 text-sm text-secondary-500">
+                                {{~ for attr in kit_product.product_attributes ~}}
+                                    {{ attr.name }}: <b>{{ attr.value }}</b> {{type}}
+                                {{~ end ~}}
+                            </p>
+                            <p class="mt-1 text-sm text-secondary-500">
+                                Quantidade: <b>{{ kit_product.quantity }}</b>
+                            </p>
+                        </div>
+                    </li>
+                {{~ end ~}}
+            </div>
+        </details>
+    {{ end }}
+{{~ end ~}}

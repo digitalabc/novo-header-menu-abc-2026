@@ -1,0 +1,47 @@
+.spot_container {
+    position: relative;
+  }
+
+  .spot_overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .3s ease;
+  }
+  
+  .spot_container:hover .spot_overlay {
+    opacity: 1;
+  }
+  
+  .spot-image {
+      max-height: 275px;
+  }
+
+  .zoom {
+    transition: transform .2s;
+    margin: 0 auto;
+  }
+  
+  .spot-similar-product-div {
+      border-color: lightgrey;
+      border-width: 1px;
+      border-style: ridge;
+      margin: 1px;
+  }
+  
+  .zoom:hover > .spot-similar-products {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .zoom:hover {
+    transform: scale(1.05);
+  }    
+  
+  .spot-similar-products {
+    display: none;
+  } 

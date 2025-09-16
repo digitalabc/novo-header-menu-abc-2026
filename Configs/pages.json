@@ -1,184 +1,394 @@
 [
-    {
-        "type": "search",
-        "path": "search.html",
-        "query": "search_with_cursor.graphql"
-    },
-    {
-        "type": "hotsite",
-        "path": "hotsite.html",
-        "query": "hotsite.graphql",
-        "customs": [
-            {
-                "urlMatch": "",
-                "path": "home.html",
-                "query": "home.graphql"
-            },
-            {
-                "urlMatch": "listadedesejos",
-                "path": "Custom/wishlist.html"
-            },
-            {
-                "urlMatch": "*",
-                "subtype": "brand",
-                "path": "Custom/brands.html",
-                "priority": 10
-            },
-            {
-                "urlMatch": "realidade-aumentada",
-                "path": "custom/realidade-aumentada.html",
-                "priority": 20
-            },
-            {
-                "urlMatch": "pisos-e-revestimentos",
-                "subtype": "category",
-                "path": "custom/main_category.html",
-                "query": "category.graphql"
-            },
-            {
-                "urlMatch": "diretorio-de-lojas",
-                "path": "custom/diretorio_de_lojas/diretorio.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "diretorio-de-lojas/*",
-                "path": "custom/diretorio_de_lojas/cidade_franquia.html",
-                "query": "generic.graphql",
-                "priority": 1
-            },
-            {
-                "urlMatch": "barra-da-tijuca-rj",
-                "path": "Custom/old_se/barra_tijuca.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "copacabana",
-                "path": "Custom/old_se/copacabana.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "livelo",
-                "path": "Custom/old_se/livelo.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "selecao-livelo",
-                "path": "custom/selecao-livelo.html",
-                "query": "hotsite.graphql"
-            },
-            {
-                "urlMatch": "indicacao-store-store",
-                "path": "Custom/indicacao-store-store.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "localizacao",
-                "path": "Custom/old_se/localizacao.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "flamengo",
-                "path": "Custom/old_se/flamengo.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "atletico",
-                "path": "Custom/old_se/atletico.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "saopaulofc",
-                "path": "Custom/old_se/saopaulofc.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "auaha-template-lojas",
-                "path": "Custom/old_se/lojas.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "novaslojas",
-                "path": "Custom/old_se/novaslojas.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "ponto-abc",
-                "path": "Custom/old_se/ponto_abc.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "quemsomos",
-                "path": "custom/old_se/quemsomos.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "semana-do-cliente",
-                "path": "Custom/old_se/semana_do_consumidor.html",
-                "query": "semana_do_consumidor.graphql"
-            },
-            {
-                "urlMatch": "auaha-loja-por-cidade",
-                "path": "Custom/diretorio_de_lojas/franquia.html",
-                "query": "generic.graphql"
-            },
-            {
-                "urlMatch": "central-de-atendimento/*",
-                "path": "attendance.html"
-            },
-            {
-                "urlMatch": "black-friday|blackfriday",
-                "path": "custom/black-friday.html"
-            },
-            {
-                "urlMatch": "aniversario-abc",
-                "path": "custom/aniversario-abc.html"
-            },
-            {
-                "urlMatch": "guideshop-experience",
-                "path": "custom/guideshop_experience/lista-produtos.html"
-            },
-            {
-                "urlMatch": "guideshop-experience/*",
-                "path": "custom/guideshop_experience/produto.html"
-            },
-            {
-                "urlMatch": "cupom-abc-da-construcao",
-                "path": "custom/cupom-abc-da-construcao.html"
-            },
-            {
-                "urlMatch": "liquida-abc",
-                "path": "custom/liquida-abc.html"
-            },
-            {
-                "urlMatch": "prime",
-                "path": "custom/abc-prime.html",
-                "query": "abcPrime.graphql"
-            },
-            {
-                "urlMatch": "lp-abc-prime",
-                "path": "custom/lp-abc-prime.html",
-                "query": "abcPrime.graphql"
-            },
-            {
-                "urlMatch": "pisos-e-revestimentos/cidade/*",
-                "path": "custom/pisos_por_cidade.html",
-                "query": "category.graphql"
-            }
+  {
+    "type": "search",
+    "path": "search.html",
+    "query": "search_with_cursor.graphql"
+  },
+  {
+    "type": "hotsite",
+    "path": "hotsite.html",
+    "query": "hotsite.graphql",
+    "customs": [
+      {
+        "urlMatch": "",
+        "path": "home.html",
+        "query": "home.graphql"
+      },
+      {
+        "urlMatch": "listadedesejos",
+        "path": "Custom/wishlist.html"
+      },
+      {
+        "urlMatch": "*",
+        "subtype": "brand",
+        "path": "Custom/brands.html",
+        "priority": 10
+      },
+      {
+        "urlMatch": "realidade-aumentada",
+        "path": "custom/realidade-aumentada.html",
+        "priority": 20
+      },
+      {
+        "urlMatch": "pisos-e-revestimentos",
+        "subtype": "category",
+        "path": "custom/main_category.html",
+        "query": "category.graphql"
+      },
+      {
+        "urlMatch": "diretorio-de-lojas",
+        "path": "custom/diretorio_de_lojas/diretorio.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "diretorio-de-lojas/*",
+        "path": "custom/diretorio_de_lojas/cidade_franquia.html",
+        "query": "generic.graphql",
+        "priority": 1
+      },
+      {
+        "urlMatch": "barra-da-tijuca-rj",
+        "path": "Custom/old_se/barra_tijuca.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "copacabana",
+        "path": "Custom/old_se/copacabana.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "livelo",
+        "path": "Custom/old_se/livelo.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "selecao-livelo",
+        "path": "custom/selecao-livelo.html",
+        "query": "hotsite.graphql"
+      },
+      {
+        "urlMatch": "indicacao-store-store",
+        "path": "Custom/indicacao-store-store.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "localizacao",
+        "path": "Custom/old_se/localizacao.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "flamengo",
+        "path": "Custom/old_se/flamengo.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "atletico",
+        "path": "Custom/old_se/atletico.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "saopaulofc",
+        "path": "Custom/old_se/saopaulofc.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "auaha-template-lojas",
+        "path": "Custom/old_se/lojas.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "novaslojas",
+        "path": "Custom/old_se/novaslojas.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "ponto-abc",
+        "path": "Custom/old_se/ponto_abc.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "quemsomos",
+        "path": "custom/old_se/quemsomos.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "semana-do-cliente",
+        "path": "Custom/old_se/semana_do_consumidor.html",
+        "query": "semana_do_consumidor.graphql"
+      },
+      {
+        "urlMatch": "auaha-loja-por-cidade",
+        "path": "Custom/diretorio_de_lojas/franquia.html",
+        "query": "generic.graphql"
+      },
+      {
+        "urlMatch": "central-de-atendimento/*",
+        "path": "attendance.html"
+      },
+      {
+        "urlMatch": "black-friday|blackfriday",
+        "path": "custom/black-friday.html"
+      },
+      {
+        "urlMatch": "aniversario-abc",
+        "path": "custom/aniversario-abc.html"
+      },
+      {
+        "urlMatch": "guideshop-experience",
+        "path": "custom/guideshop_experience/lista-produtos.html"
+      },
+      {
+        "urlMatch": "guideshop-experience/*",
+        "path": "custom/guideshop_experience/produto.html"
+      },
+      {
+        "urlMatch": "cupom-abc-da-construcao",
+        "path": "custom/cupom-abc-da-construcao.html"
+      },
+      {
+        "urlMatch": "liquida-abc",
+        "path": "custom/liquida-abc.html"
+      },
+      {
+        "urlMatch": "prime",
+        "path": "custom/abc-prime.html",
+        "query": "abcPrime.graphql"
+      },
+      {
+        "urlMatch": "lp-abc-prime",
+        "path": "custom/lp-abc-prime.html",
+        "query": "abcPrime.graphql"
+      },
+      {
+        "urlMatch": "pisos-e-revestimentos/cidade/*",
+        "path": "custom/pisos_por_cidade.html",
+        "query": "category.graphql"
+      }
+    ]
+  },
+  {
+    "type": "product",
+    "path": "product.html",
+    "query": "product.graphql"
+  },
+  {
+    "type": "buy_list",
+    "path": "buy_list.html",
+    "query": "buy_list.graphql"
+  },
+  {
+    "type": "not_found",
+    "path": "not_found.html",
+    "query": "not_found.graphql"
+  },
+  {
+    "type": "checkout",
+    "url": "checkout",
+    "routes": [
+      {
+        "name": "Checkout - Home",
+        "url": "",
+        "path": "checkout/checkout.html",
+        "query": "checkout/checkout.graphql"
+      },
+      {
+        "name": "Checkout - Shipping",
+        "url": "shipping",
+        "path": "checkout/shipping/shipping.html",
+        "query": "checkout/shipping.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "Checkout - Shipping Pickup Options",
+        "url": "shipping/pickup",
+        "path": "checkout/shipping/pickup.html",
+        "query": "checkout/shipping.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "Checkout - Shipping Delivery Options",
+        "url": "shipping/delivery",
+        "path": "checkout/shipping/delivery.html",
+        "query": "checkout/shipping.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "Checkout - Shipping (New Address)",
+        "url": "shipping/new-address",
+        "path": "checkout/shipping/shipping-new-address.html",
+        "query": "checkout/shipping/shipping-new-address.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "addresses",
+        "url": "shipping/addresses",
+        "path": "checkout/address.html",
+        "query": "checkout/close.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "shipping",
+        "url": "old-shipping",
+        "path": "checkout/shipping.html",
+        "query": "checkout/close.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "payment",
+        "url": "payment",
+        "path": "checkout/payment.html",
+        "query": "checkout/close.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "complete",
+        "url": "complete",
+        "path": "checkout/close.html",
+        "query": "checkout/close.graphql",
+        "authLevel": "New",
+        "authFallback": "login"
+      },
+      {
+        "name": "confirmation",
+        "url": "confirmation",
+        "path": "checkout/confirmation.html",
+        "query": "checkout/confirmation.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate",
+        "queryStrings": [
+          {
+            "name": "checkoutId",
+            "type": "Uuid"
+          }
         ]
-    },
-    {
-        "type": "product",
-        "path": "product.html",
-        "query": "product.graphql"
-    },
-    {
-        "type": "buy_list",
-        "path": "buy_list.html",
-        "query": "buy_list.graphql"
-    },
-    {
-        "type": "not_found",
-        "path": "not_found.html",
-        "query": "not_found.graphql"
-    }
+      }
+    ]
+  },
+  {
+    "type": "login",
+    "url": "login",
+    "routes": [
+      {
+        "name": "simple",
+        "url": "",
+        "path": "login/simple.html",
+        "query": "login/simple.graphql"
+      },
+      {
+        "name": "authenticate",
+        "url": "authenticate",
+        "path": "login/authenticate.html",
+        "query": "login/authenticate.graphql"
+      },
+      {
+        "name": "password_recovery",
+        "url": "password/recovery",
+        "path": "login/password_recovery.html"
+      },
+      {
+        "name": "signup",
+        "url": "signup",
+        "path": "login/signup.html",
+        "query": "login/signup.graphql"
+      },
+      {
+        "name": "impersonate",
+        "url": "impersonate",
+        "path": "login/impersonate.html",
+        "query": "login/impersonate.graphql"
+      },
+      {
+        "name": "access_key",
+        "url": "access-key",
+        "path": "login/access_key.html",
+        "query": "login/access_key.graphql"
+      }
+    ]
+  },
+  {
+    "type": "account",
+    "url": "account",
+    "routes": [
+      {
+        "name": "orders",
+        "url": "",
+        "path": "account/orders.html",
+        "query": "account/orders.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate",
+        "queryStrings": [
+          {
+            "name": "orderId",
+            "type": "Long"
+          }
+        ]
+      },
+      {
+        "name": "data",
+        "url": "my-data",
+        "path": "account/account.html",
+        "query": "account/account.graphql",
+        "authLevel": "Simple",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "password",
+        "url": "password",
+        "path": "account/password_change.html",
+        "query": "account/password_change.graphql",
+        "authLevel": "Authenticated",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "addresses",
+        "url": "addresses",
+        "path": "account/addresses.html",
+        "query": "account/addresses.graphql",
+        "authLevel": "Simple",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "checking_account",
+        "url": "checking_account",
+        "path": "account/checking_account.html",
+        "query": "account/checking_account.graphql",
+        "authLevel": "Simple",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "subscriptions",
+        "url": "subscriptions",
+        "path": "account/subscriptions.html",
+        "query": "account/subscriptions.graphql",
+        "authLevel": "Simple",
+        "authFallback": "login/authenticate"
+      }
+    ]
+  },
+  {
+    "type": "partner",
+    "url": "partner",
+    "routes": [
+      {
+        "name": "client",
+        "url": "list",
+        "path": "partner/list_client.html",
+        "query": "partner/list_client.graphql",
+        "authLevel": "Simple",
+        "authFallback": "login/authenticate"
+      },
+      {
+        "name": "closed",
+        "url": "closed",
+        "path": "partner/closed.html"
+      }
+    ]
+  }
 ]

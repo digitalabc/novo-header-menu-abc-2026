@@ -1,0 +1,27 @@
+{{ ##
+    Description: Renders the window to view a product when clicking a buy button in the spot
+    Params:
+        - Uses cart_from_spot.graphql
+    Usage:
+        await client.snippet.render("modal_cart_from_spot.html", ...);
+## }}
+{{~ product = data.product ~}}
+<div product-view-row
+  class="relative transform overflow-hidden rounded-lg bg-mainBg 
+  px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6">
+
+  <div class="flex justify-between items-center w-full py-1 mb-4 border-b">
+    <h5 class="text-xl">{{product.product_name}}</h5>  
+    <button type="button" onclick="closeSpotModal()" class="rounded-md bg-mainBg text-secondary-400 hover:text-secondary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+      <span class="sr-only">Close</span>
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <input type="hidden" id="product-id" name="product-id" value="{{ product.product_id }}">
+  <div product-view-div id="product-view-div-{{product.product_id}}" class="sm:flex sm:items-start">
+    {{ product_view product: product }}
+  </div>
+  
+</div>

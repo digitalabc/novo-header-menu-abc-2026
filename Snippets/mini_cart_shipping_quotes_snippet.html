@@ -1,0 +1,68 @@
+{{ ##
+Description: Renders the minicart shipping quotes, the list of available shipping options with informations
+regarding prices and deadlines.
+Params:
+- Uses shipping_quotes.graphql
+Usage:
+await client.snippet.render("minicart_shipping_quotes_snippet.html", ...);
+## }}
+{{ quotes = data.shipping_quotes }}
+
+{{~ retirada_com_maior_prazo = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" |
+array.first ~}}
+{{~ retirada = quotes | group.by @(do; ret $0.type;end) | group.get "Retirada" | array.sort "deadline" ~}}
+
+{{~ custom_quotes = quotes | group.by @(do; ret $0.type;end) | group.get "Custom" ~}}
+
+{{~ entrega_com_menor_preco = custom_quotes | array.sort "value" | array.first ~}}
+{{~ entrega_com_menor_prazo = custom_quotes | array.sort "deadline" | array.first ~}}
+
+{{~ if quotes ~}}
+<div class="minicart-shipping__list">
+  {{~ if retirada_com_maior_prazo ~}}
+  <div class="minicart-shipping__quote free-shipping">
+    <span>Retirar na Guide Shop</span>
+    <span class="free-shipping">
+      Grátis
+    </span>
+    <small>em até {{ retirada_com_maior_prazo.deadline }} dias úteis</small>
+  </div>
+  {{ end }}
+  {{~ if entrega_com_menor_preco ~}}
+  <div class="minicart-shipping__quote">
+    <span>Entrega econômica</span>
+    <span>
+      {{~ if entrega_com_menor_preco.value == 0}}
+      <span class="free-shipping">
+        Grátis
+      </span>
+      {{~ else}}
+      {{ entrega_com_menor_preco.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }}
+      {{ end }}
+    </span>
+    <small>Em até {{ entrega_com_menor_preco.deadline }} dias úteis</small>
+  </div>
+  {{ end }}
+  {{~ if entrega_com_menor_preco?.name != entrega_com_menor_prazo?.name ~}}
+  <div class="minicart-shipping__quote">
+    <span>Entrega expressa</span>
+    <span>
+      {{ entrega_com_menor_prazo.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }}
+    </span>
+    <small>Em até {{ entrega_com_menor_prazo.deadline }} dias úteis</small>
+  </div>
+  {{ end }}
+
+  {{~ for shipping in custom_quotes ~}}
+  {{ if shipping?.name != entrega_com_menor_prazo?.name && shipping?.name != entrega_com_menor_preco?.name}}
+  <div class="minicart-shipping__quote">
+    <span>{{ shipping.name }} </span>
+    <span>
+      {{ shipping.value | math.format "c" "pt-BR" | string.replace "R$" "R$ " }}
+    </span>
+    <small>Em até {{ shipping.deadline }} dias úteis</small>
+  </div>
+  {{ end }}
+  {{ end }}
+</div>
+{{~ end ~}}

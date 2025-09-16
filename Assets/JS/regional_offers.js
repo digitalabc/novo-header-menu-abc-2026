@@ -59,7 +59,8 @@ async function setRegionalOffers() {
   const cep = document.getElementById('cep_input')?.value;
   if (!cep) return;
 
-  const checkout = await client.checkout.get();
+  const checkoutId = await client.cookie.get("carrinho-id")
+  const checkout = await client.checkout.get(checkoutId);
 
   if (checkout && checkout.data.checkoutId) {
     const hasPartnerByRegion = client.partner.hasPartnerByRegion();
@@ -84,7 +85,8 @@ async function setRegionalOffers() {
 async function changeRegionalOffers(cep) {
   if (!cep) return;
 
-  const checkout = await client.checkout.get();
+  const checkoutId = await client.cookie.get("carrinho-id")
+  const checkout = await client.checkout.get(checkoutId);
 
   if (checkout && checkout.data.checkoutId) {
     const hasPartnerByRegion = client.partner.hasPartnerByRegion();

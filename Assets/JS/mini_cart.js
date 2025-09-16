@@ -68,10 +68,11 @@ async function loadMiniCart(shouldOpenCart = false) {
     }
   }
   try {
-    const checkout = await client.checkout.get();
+    const carrinhoId = await client.cookie.get("carrinho-id")
+    const checkout = await client.checkout.get(carrinhoId);
 
     let variables = {
-      checkoutId: "",
+      checkoutId: carrinhoId,
       hasCheckout: false,
     };
 
@@ -143,10 +144,11 @@ async function miniCartPartnerAssociate(checkoutUrl) {
 
 async function checkoutRemoveProduct(id, qty) {
   try {
-    const rcheckout = await client.checkout.get();
+    const carrinhoId = await client.cookie.get("carrinho-id")
+    const rcheckout = await client.checkout.get(carrinhoId);
 
     let rvariables = {
-      checkoutId: "",
+      checkoutId: carrinhoId,
       hasCheckout: true,
     };
 

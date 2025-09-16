@@ -1,7 +1,7 @@
 window.addEventListener("load", renderDeliveryOptions, false);
 
 async function renderDeliveryOptions() {
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
 
   const response = await client.snippet.render(
     "checkout_delivery_store.html",

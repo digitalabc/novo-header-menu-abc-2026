@@ -13,7 +13,7 @@ async function shippingMethods() {
   );
 
   if (renderShippingMethods) {
-    const checkoutId = client.cookie.get("carrinho-id");
+    const checkoutId = (await client.checkout.get()).data.checkoutId;
     const response = await client.snippet.render(
       "checkout_shipping_methods_snippet.html",
       "SnippetQueries/wake_checkout_close_shipping_choice.graphql",
@@ -27,7 +27,7 @@ async function shippingMethods() {
 }
 
 async function renderRightMenu() {
-  const checkoutId = client.cookie.get("carrinho-id");
+  const checkoutId = (await client.checkout.get()).data.checkoutId;
   const respRight = await client.snippet.render(
     "checkout_right_menu_snippet.html",
     "SnippetQueries/wake_checkout_close_summary.graphql",

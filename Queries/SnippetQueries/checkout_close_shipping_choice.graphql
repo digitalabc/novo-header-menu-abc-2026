@@ -1,9 +1,0 @@
-query CheckoutCloseShippingChoice($checkoutId: Uuid!) {
-  shippingQuotes(useSelectedAddress: true, checkoutId: $checkoutId) {
-    shippingQuoteId
-    name
-    type
-    value
-    deadline
-  }
-}

@@ -1,9 +1,5 @@
-query Common(
-  $url: String!
-  $scriptPageTypes: [ScriptPageType!]
-  $partnerAccessToken: String
-) {
-  menuGroups(url: $url, partnerAccessToken: $partnerAccessToken) {
+query Common($url: String!, $scriptPageTypes: [ScriptPageType!], $partnerAccessToken: String) {
+  menuGroups(url:$url, partnerAccessToken: $partnerAccessToken) {
     menuGroupId
     position
     imageUrl
@@ -26,18 +22,15 @@ query Common(
     priority
     content
   }
-  lighboxProducts: hotsite(
-    hotsiteId: 98669
-    partnerAccessToken: $partnerAccessToken
-  ) {
+  lighboxProducts: hotsite(hotsiteId: 98669, partnerAccessToken: $partnerAccessToken) {
     ...lighboxProducts
   }
 
-  kits: hotsite(hotsiteId: 183759) {
+    kits: hotsite(hotsiteId: 183759) {
     ...produtos
   }
 
-  categories(first: 50, onlyRoot: true) {
+  categories(first: 50) {
     nodes {
       hotsiteAlias
       hotsiteUrl
@@ -59,15 +52,6 @@ query Common(
     }
   }
   gtm_id: shopSettings(settingNames: "GoogleTagManagerId") {
-    name
-    value
-  }
-  facebook_app_id: shopSettings(settingNames: "Facebook_Login_AppId") {
-    name
-    value
-  }
-
-  google_client_id: shopSettings(settingNames: "Google_Plus_Client_Id") {
     name
     value
   }
@@ -140,7 +124,7 @@ fragment productsCon on ProductsConnection {
       name
       value
     }
-    promotions {
+    promotions{
       fullStampUrl
       content
       id

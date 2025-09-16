@@ -417,6 +417,8 @@ async function checkoutOperations(element, className) {
   const div = element.closest('.' + className);
   pushProductInput(div, input);
 
+  console.log(input);
+
   const success = await addOrCreateCheckout(input);
   return success;
 }

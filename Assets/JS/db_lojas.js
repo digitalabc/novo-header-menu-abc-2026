@@ -34,6 +34,8 @@ const estados = [
 			"Caratinga",
 			"Cataguases",
 			"Caxambú",
+			"Conceição do Mato Dentro",
+			"Conceição do Rio Verde",
 			"Congonhas", 
 			"Conselheiro Lafaiete",
 			"Contagem",
@@ -97,8 +99,7 @@ const estados = [
 			"Ouro Branco",
 			"Ouro Fino",
 			"Ouro Preto",
-			"Pará de Minas",
-			"Paracatu", 
+			"Pará de Minas", 
 			"Passa Quatro",
 			"Passos",
 			"Patos de Minas",
@@ -121,6 +122,7 @@ const estados = [
 			"Sacramento", 
 			"Salinas",
 			"Santos Dumont",
+			"São Domingos das Dores",
 			"São Francisco", 
 			"São Geraldo",
 			"São Gonçalo do Rio Abaixo",
@@ -191,6 +193,7 @@ const estados = [
 			"Brumado",
 			"Eunápolis",
 			"Guanambi",
+			"Iguaí",
 			"Porto Seguro",
 			"Teixeira de Freitas",
 			"Vitória da Conquista"
@@ -203,6 +206,7 @@ const estados = [
 		"cidades": [
 			"Bonito",
 			"Campo Grande",
+			"Nova Andradina", 
 			"São Gabriel do Oeste",
 			"Três Lagoas"
 		]
@@ -289,10 +293,12 @@ const estados = [
 			"Mogi das Cruzes",
 			"Mogi Guaçu",
 			"Mogi Mirim",
+			"Nova Granada",
 			"Paulínia",
 			"Pindamonhangaba",
 			"Piracaia",
 			"Praia Grande",
+			"Presidente Prudente",
 			"Promissão",
 			"Ribeirão Preto",
 			"Santa Isabel",
@@ -357,6 +363,7 @@ const estados = [
 		"coluna": "4",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Cuiabá",
 			"Paranatinga"
 			
 		]

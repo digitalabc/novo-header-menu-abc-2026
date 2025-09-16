@@ -60,10 +60,22 @@ html {
 .btn:focus {
   outline: none;
 }
-
+.container.tyc_container::before {
+  content: "⚠️ Produtos no carrinho não ficam reservados. Finalize sua compra antes que acabem.";
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 16px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+  width: -webkit-fill-available;
+}
 .headFechamento {
   background: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16);
 }
 
 .headFechamento .fbits-center-responsivo {
@@ -86,18 +98,27 @@ html {
     padding: 0 15px;
   }
 }
-
+.headFechamento .head-carrinho-text {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 16px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+.headFechamento .head-carrinho-text:before {
+  content: '⚠️';
+}
 .headerLogo {
   float: none;
 }
-
 .headerLogo img {
   margin: 0;
   max-width: 153px;
   width: 100%;
-    filter: brightness(0) saturate(100%) invert(91%) sepia(6%) saturate(0%) hue-rotate(180deg) brightness(103%) contrast(90%); */
+  image-rendering: -webkit-optimize-contrast;
 }
-
 .fechamento-checkout .copyright-footer {
   float: none;
   margin: auto;
@@ -1292,8 +1313,3 @@ html {
 h2.title-confirmacao {
   margin-top: 20px;
 }
-
-  width: 10px !important;
-} */
-
-

@@ -241,14 +241,14 @@
         {
           "name": "São Pedro",
           "adress": "Av. Olindo de Miranda, 1273 - São Pedro, Almenara - MG, 39900-000",
-          "phone": "",
+          "phone": "(33) 99872-2126",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/almenara/sao-pedro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -693,7 +693,7 @@
         {
           "name": "Jardim Europa",
           "adress": "R. Padre Alberto Fuger, 50 - Jardim Europa, Campo Belo - MG, 37270-000",
-          "phone": "(035) 98471-3955",
+          "phone": "(35) 98471-3955",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/campo-belo/jardim-europa",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -712,7 +712,7 @@
         {
           "name": "Centro",
           "adress": "Rua Rio Branco, 645 - Centro, Capelinha - MG, 39680-000",
-          "phone": "(33) 99135-9669",
+          "phone": "(33) 99801-3001",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/capelinha/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -801,13 +801,51 @@
       ]
     },
     {
+      "name": "Conceição do Mato Dentro",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Bandeirinha",
+          "adress": "Av. Marechal Floriano, 355, Bandeirinha - Conceição do Mato Dentro, MG - 35860-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/conceicao-do-mato-dentro/bandeirinha",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Conceição do Rio Verde",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Vale do Sol",
+          "adress": "R. Papa João XXIII, 35 - Vale do Sol, Conceição do Rio Verde - MG, 37430-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/conceicao-do-rio-verde/vale-do-sol",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Congonhas",
       "state": "Minas Gerais",
       "stores": [
         {
           "name": "Centro",
           "adress": "Av. Júlia Kubitscheck, 830 - Centro, Congonhas - MG, 36410-084",
-          "phone": "(35) 99217-0928",
+          "phone": "(31) 99614-0755",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/congonhas/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -1067,8 +1105,8 @@
         {
           "name": "Centro",
           "adress": "R. Cel João Viêira, 177 - Centro, Gonçalves - MG, 37680-000",
-          "phone": "",
-          "details_link": "",
+          "phone": "(35)3654-1266",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/goncalves/centro",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -2128,14 +2166,14 @@
       ]
     },
     {
-      "name": "Paracatu",
+      "name": "Pará de Minas",
       "state": "Minas Gerais",
       "stores": [
         {
-          "name": "Av. Alto Córrego",
-          "adress": "Rua Lindolfo Garcia Adjuto, Av. Alto Córrego, 660, Paracatu - MG, 38606-026",
-          "phone": "(38) 3408 1434",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/paracatu/alto-corrego",
+          "name": "São Francisco",
+          "adress": "Av. Presidente Vargas, 819 - São Francisco, Pará de Minas - MG, 35661-664",
+          "phone": "(37) 99971-3410",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/para-de-minas/sao-francisco",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
@@ -2143,37 +2181,18 @@
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
-        }
-      ]
-    },
-    {
-      "name": "Pará de Minas",
-      "state": "Minas Gerais",
-      "stores": [
-        {
-          "name": "São Francisco",
-          "adress": "Av. Presidente Vargas, 819 - São Francisco, Pará de Minas - MG, 35661-664",
-          "phone": "",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/para-de-minas/sao-francisco",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": "Fechado"
         },
         {
           "name": "Vila Sinho",
-          "adress": "Av. Prof. Mello Cançado, 981 - Vila Sinho, Pará de Minas - MG, 35660-084",
-          "phone": "(37) 3231-3330",
+          "adress": "Av. Prof. Mello Cançado, 993 - Vila Sinho, Pará de Minas - MG, 35660-084",
+          "phone": "(37) 99929-4089",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/para-de-minas/vila-sinho",
-          "monday": "8:00 às 19:00",
-          "tuesday": "8:00 às 19:00",
-          "wednesday": "8:00 às 19:00",
-          "thursday": "8:00 às 19:00",
-          "friday": "8:00 às 19:00",
-          "saturday": "8:00 às 13:00",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -2356,7 +2375,7 @@
         {
           "name": "Centro",
           "adress": "Av. Custodio Silva, 1084 - Centro, Ponte Nova - MG, 35430-026",
-          "phone": "(31) 98315-9215",
+          "phone": "(31) 3817-6601",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/ponte-nova/guarapiranga",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
@@ -2597,6 +2616,25 @@
       ]
     },
     {
+      "name": "São Domingos das Dores",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Jardim das Oliveiras",
+          "adress": "Av. João Barbosa dos Santos, 1397 - Jardim das Oliveiras, São Domingos das Dores - MG, 35335-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-domingo-das-dores/jardim-das-oliveiras",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "São Francisco",
       "state": "Minas Gerais",
       "stores": [
@@ -2641,14 +2679,14 @@
         {
           "name": "Fonte do Mato",
           "adress": "Av. Central, 415 - Loja 01 - Fonte do Mato, São Gonçalo do Rio Abaixo - MG, 35935-000",
-          "phone": "",
+          "phone": "(31) 3380-4737",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-goncalo-do-rio-abaixo/fonte-do-mato",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3034,14 +3072,14 @@
         {
           "name": "Liberdade",
           "adress": "Praça do Cruzeiro, 194 - Liberdade, Veredinha - MG, 39663-000",
-          "phone": "",
+          "phone": "(38) 99981-6287",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/veredinha/liberdade",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 17:30",
+          "tuesday": "7:00 às 17:30",
+          "wednesday": "7:00 às 17:30",
+          "thursday": "7:00 às 17:30",
+          "friday": "7:00 às 17:30",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3053,14 +3091,14 @@
         {
           "name": "Centro",
           "adress": "R. João Pinto da Silva, 32 - Centro, Vermelho Novo - MG, 35359-000",
-          "phone": "",
+          "phone": "(33) 99804-2279",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/vermelho-novo/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 19:00",
+          "tuesday": "7:00 às 19:00",
+          "wednesday": "7:00 às 19:00",
+          "thursday": "7:00 às 19:00",
+          "friday": "7:00 às 19:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3205,7 +3243,7 @@
         {
           "name": "Vila Claudia",
           "adress": "Av. Valter Antônio Fontana, 1155 - Vila Claudia, Assis - SP, 19815-340",
-          "phone": "(43) 99972-9631",
+          "phone": " (18) 3325-1515",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/assis/vila-claudia",
           "monday": "9:00 às 18:00",
           "tuesday": "9:00 às 18:00",
@@ -3222,16 +3260,16 @@
       "state": "São Paulo",
       "stores": [
         {
-          "name": "ABC da Construção Jardim Paulista",
-          "adress": "Alameda Prof. Lucas Nogueira Garcez, 4004 - Jardim Paulista, Atibaia - SP, 12941-650",
+          "name": "ABC da Construção Jardim Atibaia",
+          "adress": "Av. Atibaia, 105 - Atibaia Jardim, Atibaia - SP, 12942-770",
           "phone": "(11) 3402-3951",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/atibaia/jardim-paulista",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 15:00",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "9:00 às 14:00",
           "sunday": "Fechado"
         },
         {
@@ -3656,7 +3694,7 @@
           "wednesday": "8:00 às 18:00",
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 13:00",
+          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]
@@ -3852,6 +3890,25 @@
       ]
     },
     {
+      "name": "Nova Granada",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Rua Jacinto Ruiz Garcia, 598 - Centro, Nova Granada - SP, 15440-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/nova-granada/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Paulínia",
       "state": "São Paulo",
       "stores": [
@@ -3923,6 +3980,25 @@
           "thursday": "9:00 às 18:00",
           "friday": "9:00 às 18:00",
           "saturday": "9:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Presidente Prudente",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Vila Euclides",
+          "adress": "Av. Cel. José Soares Marcondes, 2897 - Vila Euclides, Pres. Prudente - SP, 19013-050",
+          "phone": "(18) 3222-7297",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/presidente-prudente/vila-euclides",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -4154,8 +4230,8 @@
           "sunday": "Fechado"
         },
         {
-          "name": "Vila Ema",
-          "adress": "R. Me. Paula de São José, 162 - Vila Ema, São José dos Campos - SP, 12243-010",
+          "name": "Jardim Esplanada II",
+          "adress": " Av. Barão do Rio Branco, 1148 - Jardim Esplanada II, São José dos Campos - SP, 12242-800",
           "phone": "(12) 3600-0384",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/sao-jose-dos-campos/vila-ema",
           "monday": "9:00 às 18:00",
@@ -4429,7 +4505,7 @@
         {
           "name": "Aeroporto",
           "adress": "Av. Padre José Anchieta, 3116 - Loja 03 - Aeroporto, Guarapari - ES, 29216-705",
-          "phone": "(27) 98106-7182",
+          "phone": "(27) 3125-4990",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/espirito-santo/guarapari/aeroporto",
           "monday": "8:00 às 17:30",
           "tuesday": "8:00 às 17:30",
@@ -4782,16 +4858,16 @@
       "state": "Rio de Janeiro",
       "stores": [
         {
-          "name": "ABC da Construção Japuíba",
-          "adress": "RJ-116, Km 28 - Loja 01 - Japuíba Cachoeiras de Macacu - RJ, 28685-000",
+          "name": "ABC da Construção Papucaia",
+          "adress": "RJ-116, Km 20 - 601 - Papucaia Cachoeiras de Macacu - RJ, 28691-200",
           "phone": "(21) 99532-2762",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/cachoeiras-de-macacu/japuiba",
-          "monday": "8:30 às 17:30",
-          "tuesday": "8:30 às 17:30",
-          "wednesday": "8:30 às 17:30",
-          "thursday": "8:30 às 17:30",
-          "friday": "8:30 às 17:30",
-          "saturday": "8:30 às 12:30",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/cachoeiras-de-macacu/papucaia",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -5588,14 +5664,14 @@
         {
           "name": "Vicente Pires",
           "adress": "Rua Rua 5 Chácara 231, 29 - Loja A, Setor Habitacional Vicente Pires, Brasília - DF, 72006-120",
-          "phone": "",
-          "details_link": "",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 13:00",
+          "phone": "(61) 99942-7604",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/distrito-federal/brasilia/vicente-pires",
+          "monday": "8:30 às 18:30",
+          "tuesday": "8:30 às 18:30",
+          "wednesday": "8:30 às 18:30",
+          "thursday": "8:30 às 18:30",
+          "friday": "8:30 às 18:30",
+          "saturday": "8:30 às 13:30",
           "sunday": "Fechado"
         }
       ]
@@ -5653,6 +5729,25 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Iguaí",
+      "state": "Bahia",
+      "stores": [
+        {
+          "name": "Rodagem",
+          "adress": "BA-262, s/n - Rodagem, Iguaí - BA, 45280-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/iguai/rodagem",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]
@@ -6020,6 +6115,44 @@
       ]
     },
     {
+      "name": "Cuiabá",
+      "state": "Mato Grosso",
+      "stores": [
+        {
+          "name": "Santa Marta",
+          "adress": "Av. Miguel Sutil, 6300 - Santa Marta, Cuiabá - MT, 78043-695",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso/cuiaba/santa-marta",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Paranatinga",
+      "state": "Mato Grosso",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Brasil, 2110 - Centro, Paranatinga - MT, 78870-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso/paranatinga/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Bonito",
       "state": "Mato Grosso do Sul",
       "stores": [
@@ -6060,12 +6193,31 @@
           "adress": "Av. Eduardo Elias Zahran, 455 - Jardim Paulista, Campo Grande - MS, 79050-000",
           "phone": "(67) 99894-0709",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/campo-grande/vila-santa-dorotheia",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
+          "monday": "8:30 às 18:00",
+          "tuesday": "8:30 às 18:00",
+          "wednesday": "8:30 às 18:00",
+          "thursday": "8:30 às 18:00",
+          "friday": "8:30 às 18:00",
           "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Nova Andradina",
+      "state": "Mato Grosso do Sul",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. São José, 1364 - Centro, Nova Andradina - MS, 79750-081",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/nova-andradina/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
           "sunday": "Fechado"
         }
       ]

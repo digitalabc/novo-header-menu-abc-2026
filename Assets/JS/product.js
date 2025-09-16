@@ -230,10 +230,13 @@ function getQuantity() {
  */
 async function addOrCreateCheckout(input) {
   try {
-    const checkout = await client.checkout.get();
+    const checkout = await client.cookie.get("carrinho-id")
+
     let checkoutId = null;
 
-    if (checkout && checkout.data.checkoutId) {
+    console.log(checkout, input);
+    
+    if (checkout) {
       const checkoutResponse = await client.checkout.add(input);
       if (checkoutUrl == "") {
         checkoutUrl = checkoutResponse.data.url;

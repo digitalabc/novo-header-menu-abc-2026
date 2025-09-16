@@ -57,7 +57,8 @@ const updateCheckout = async () => {
   }, 100);
 
   try {
-    const checkout = await client.checkout.get();
+    const carrinhoId = await client.cookie.get("carrinho-id")
+    const checkout = await client.checkout.get(carrinhoId);
 
     if (
       !checkout ||

@@ -20,10 +20,12 @@ async function validateWishlist() {
   const wishlistButton = document.getElementById("wishlist-button-" + productId);
   if (!wishlistButton) return;
 
-  let user = await client.user.get();
+  const user = await client.customer.get();
   if (!user) return;
+  
+  const token = client.cookie.get("sf_customer_access_token");
 
-  const isIn = await isInTheWishlist(productId, user.customerAccessToken);
+  const isIn = await isInTheWishlist(productId, token);
   if (!isIn) return;
 
   c.className = "btn btn-sm btn-danger";

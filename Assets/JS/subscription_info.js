@@ -5,13 +5,14 @@ async function subscriptionInfoLoad(){
 }
 
 async function subscriptionInfo() {
-    let user = await client.user.get();    
+    const user = await client.customer.get();
     if (!user) return;   
+    const token = client.cookie.get("sf_customer_access_token");
     
     let response = await client.snippet.render(
         "subscription_info_snippet.html",
         "SnippetQueries/subscription_info.graphql",
-        { customerAccessToken: user.customerAccessToken }
+        { customerAccessToken: token }
     );
     response = JSON.parse(response);
     let descontoPrime = document.querySelectorAll('.spot-price .desconto_prime');

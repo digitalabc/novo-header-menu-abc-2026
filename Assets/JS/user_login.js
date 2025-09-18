@@ -36,16 +36,20 @@ async function checkUserLogin() {
         e.classList.add('active')
       })
     } else {
-      document.querySelectorAll(".user-href").forEach((div) => {
-        div.href += window.location.href;
+      document.querySelectorAll(".user-href:not(.user-register)").forEach((element) => {
+        element.href = "/login/authenticate?returnUrl=" + window.location.pathname;
+      });
+      document.querySelectorAll(".user-href.user-register").forEach((element) => {
+        element.href = "/login/signup?returnUrl=" + window.location.pathname;
       });
 
       document.querySelectorAll(".not-authenticated").forEach((div) => {
         div.style.display = "block";
       });
     }
+    
     window.dispatchEvent(
-      new CustomEvent("userChecked", { email: user?.email })
+      new CustomEvent("userChecked", { email: user?.data.email })
     );
   } catch (error) {
     console.error(error);

@@ -1,3 +1,5 @@
+// window.addEventListener("load", checkUserLogin, false);
+
 /**
  * Autenticação padrão
  * Busca formulario com id 'authenticateForm'
@@ -381,4 +383,16 @@ function toggleTypePassword() {
     };
 
     togglePasswordVisibility(senhaInput, ocultar, mostrar, "password");
+}
+
+async function checkUserLogin() {
+  try {
+    const user = await client.customer.get();
+    if (user != null) {
+        window.location = new URLSearchParams(window.location.search).get('returnUrl') || "/"
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
 }

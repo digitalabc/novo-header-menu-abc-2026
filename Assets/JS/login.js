@@ -40,12 +40,12 @@ const authenticateSubmit = async (e) => {
             return;
         }
 
-        window.location = new URLSearchParams(window.location.search).get('returnUrl') || checkout_pages.account.orders
+        window.location = new URLSearchParams(window.location.search).get('returnUrl') || "/account/my-data"
     }
     else {
-        if(response.errors[0]?.extensions.code === "LOG100") {
+        if (response.errors[0]?.extensions.code === "LOG100") {
             showOverlay("Erro ao autenticar usuário", "A senha ou email estão incorretos", true);
-        } 
+        }
         else showOverlay("Erro ao autenticar usuário", response.errors[0]?.message, true);
     }
 }
@@ -109,7 +109,7 @@ const authenticateWithAccessKeySubmit = async (e) => {
     const response = await client.customer.authenticateAccessKey(input.accessKeyEmail, input.accessKey);
 
     if (response?.data?.token) {
-        window.location = new URLSearchParams(window.location.search).get('returnUrl') || checkout_pages.account.orders
+        window.location = new URLSearchParams(window.location.search).get('returnUrl') || "/account/my-data"
     }
     else showOverlay("Erro ao enviar o e-mail", response.errors[0]?.message, true);
 }
@@ -257,11 +257,11 @@ const authFacebook = async (facebookAccessToken) => {
     const response = await client.customer.socialLoginFacebook(facebookAccessToken);
 
     if (response?.data?.token) {
-        const returnUrl = new URLSearchParams(window.location.search).get('returnUrl');
         if (response.data.type === "AUTHENTICATED") {
-            window.location = returnUrl || checkout_pages.account.orders;
+            const returnUrl = new URLSearchParams(window.location.search).get('returnUrl');
+            window.location = returnUrl || "/account/my-data";
         } else {
-            window.location = returnUrl || checkout_pages.login.signup;
+            window.location = "/login/signup" + window.location.search
         }
     } else if (response?.errors?.length > 0)
         showOverlay("Erro ao autenticar usuário", response.errors[0].message, true);
@@ -292,12 +292,11 @@ const authGoogle = async (credentials) => {
     const response = await client.customer.socialLoginGoogle(credentials.credential);
 
     if (response?.data?.token) {
-        const returnUrl = new URLSearchParams(window.location.search).get('returnUrl');
-
         if (response.data.type === "AUTHENTICATED") {
-            window.location = returnUrl || checkout_pages.account.orders;
+            const returnUrl = new URLSearchParams(window.location.search).get('returnUrl');
+            window.location = returnUrl || "/account/my-data";
         } else {
-            window.location = returnUrl || checkout_pages.login.signup;
+            window.location = "/login/signup" + window.location.search
         }
     } else if (response?.errors?.length > 0)
         showOverlay("Erro ao autenticar usuário", response.errors[0].message, true);
@@ -386,17 +385,17 @@ function toggleTypePassword() {
 }
 
 async function checkUserLogin() {
-  try {
-    const user = await client.customer.get();
-    if (user != null) {
-        window.location = new URLSearchParams(window.location.search).get('returnUrl') || "/"
-    } else {
-        document.querySelectorAll(".login__register-link").forEach((element) => {
-            element.href = "/login/signup" + window.location.search;
-        });
-    }
+    try {
+        const user = await client.customer.get();
+        if (user != null) {
+            window.location = new URLSearchParams(window.location.search).get('returnUrl') || "/"
+        } else {
+            document.querySelectorAll(".login__register-link").forEach((element) => {
+                element.href = "/login/signup" + window.location.search;
+            });
+        }
 
-  } catch (error) {
-    console.error(error);
-  }
+    } catch (error) {
+        console.error(error);
+    }
 }

@@ -47,6 +47,10 @@ async function checkUserLogin() {
         div.style.display = "block";
       });
     }
+
+    if(user?.errors) {
+      await client.cookie.remove('sf_customer_access_token');
+    }
     
     window.dispatchEvent(
       new CustomEvent("userChecked", { email: user?.data.email })

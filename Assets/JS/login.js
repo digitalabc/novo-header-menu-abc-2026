@@ -1,4 +1,4 @@
-// window.addEventListener("load", checkUserLogin, false);
+window.addEventListener("load", checkUserLogin, false);
 
 /**
  * Autenticação padrão
@@ -390,6 +390,10 @@ async function checkUserLogin() {
     const user = await client.customer.get();
     if (user != null) {
         window.location = new URLSearchParams(window.location.search).get('returnUrl') || "/"
+    } else {
+        document.querySelectorAll(".login__register-link").forEach((element) => {
+            element.href = "/login/signup" + window.location.search;
+        });
     }
 
   } catch (error) {

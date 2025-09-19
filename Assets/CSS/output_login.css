@@ -691,6 +691,7 @@
   margin-bottom: 2.5rem;
   width: 100%;
   justify-content: space-between;
+  background-color: #FFF;
 }
 
 @media (min-width: 768px) {

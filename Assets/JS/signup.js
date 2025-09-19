@@ -142,6 +142,7 @@ const accountCreateSubmit = async (e) => {
         input.state = document.getElementById('state')?.value;
         input.neighborhood = document.getElementById('neighborhood')?.value;
         input.city = document.getElementById('city')?.value;
+        input.email = document.querySelector('[id="email"]')?.value
         if (input?.secondaryPhoneAreaCode === '' && input?.secondaryPhoneNumber === '') {
             input.secondaryPhoneAreaCode = null;
             input.secondaryPhoneNumber = null;

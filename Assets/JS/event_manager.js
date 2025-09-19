@@ -1,5 +1,5 @@
 // Event dispatched in user_login.js
-window.addEventListener("userChecked",  () => { setTimeout(setUserIdGTM, 2000); }, false);
+window.addEventListener("userChecked", () => { setTimeout(setUserIdGTM, 2000); }, false);
 
 // Events dispatched in mini_cart.js
 window.addEventListener("cartViewed", viewCartEvent, false);
@@ -19,34 +19,34 @@ window.addEventListener("productRemovedFromWishlist", removeFromWishlistEvent, f
 window.addEventListener("tagManagerConfigured", triggerViewEvents, false);
 /***********************************************************************/
 
-function setUserIdGTM(eventInput){
-    gtmSetup(eventInput?.email);
+function setUserIdGTM(eventInput) {
+    if (eventInput) gtmSetup(eventInput?.email);
 }
 
-async function triggerViewEvents(){
-  const productIdDiv = document.getElementById("product-id");
-  const buylistIdDiv = document.getElementById("buy-list-id")
-  if (productIdDiv) {
-      window.dispatchEvent(new CustomEvent("productPageViewed", {
-          detail: {type: "product", productId: productIdDiv.value}
-      }));
-  }
-  else if (buylistIdDiv) {
-      window.dispatchEvent(new CustomEvent("productPageViewed", {
-          detail: {type: "buylist", buylistId: buylistIdDiv.value}
-      }));
-  }
-  else if (queryStringParams.has("busca")) {
-      window.dispatchEvent(new CustomEvent("searchPageViewed", {
-          detail: {term: queryStringParams.get("busca")}
-      }));
-  }
-  else {
-      const alias = window.location.pathname != "/" ? window.location.pathname.slice(1) : "home"
-      window.dispatchEvent(new CustomEvent("hotsitePageViewed", {
-          detail: {hotsite: alias}
-      }));
-  }
+async function triggerViewEvents() {
+    const productIdDiv = document.getElementById("product-id");
+    const buylistIdDiv = document.getElementById("buy-list-id")
+    if (productIdDiv) {
+        window.dispatchEvent(new CustomEvent("productPageViewed", {
+            detail: { type: "product", productId: productIdDiv.value }
+        }));
+    }
+    else if (buylistIdDiv) {
+        window.dispatchEvent(new CustomEvent("productPageViewed", {
+            detail: { type: "buylist", buylistId: buylistIdDiv.value }
+        }));
+    }
+    else if (queryStringParams.has("busca")) {
+        window.dispatchEvent(new CustomEvent("searchPageViewed", {
+            detail: { term: queryStringParams.get("busca") }
+        }));
+    }
+    else {
+        const alias = window.location.pathname != "/" ? window.location.pathname.slice(1) : "home"
+        window.dispatchEvent(new CustomEvent("hotsitePageViewed", {
+            detail: { hotsite: alias }
+        }));
+    }
 }
 
 // Functions called by custom events
@@ -72,15 +72,15 @@ function addToCartEvent(eventInput) {
     getUserInfo().then((user_info) => {
         let productData = getProductData(eventInput.detail.products);
         let cartData = getCartData(eventInput.detail.cart);
-        gtag("event", "add_to_cart", {...productData, user: user_info});
-        gtag("event", "view_item_list", {...cartData, user: user_info});
+        gtag("event", "add_to_cart", { ...productData, user: user_info });
+        gtag("event", "view_item_list", { ...cartData, user: user_info });
     });
 }
 
 function productPageEvent(eventInput) {
     if (eventInput.detail.type == "product") {
         getUserInfo().then((user_info) => {
-            gtag("event", "view_item", {...gtm_product_details, user: user_info});
+            gtag("event", "view_item", { ...gtm_product_details, user: user_info });
         });
     }
 }
@@ -123,7 +123,7 @@ function getCartData(checkoutData) {
 }
 
 async function getUserInfo() {
-    let user = await client.user.get();
+    const user = await client.customer.get();
     if (!user) { return []; }
     // let response = await client.snippet.render(
     //     "subscription_info_snippet.html",
@@ -131,12 +131,5 @@ async function getUserInfo() {
     //     { customerAccessToken: user.customerAccessToken }
     // );
     // response = JSON.parse(response);
-
-    return {
-        id: user.id,
-        email: user.email,
-        // user_type: response ? 'assinante' : 'não assinante',
-        user_type: 'não assinante',
-        phoneNumber: user.phoneNumber
-    };
+    return user.data;
 }

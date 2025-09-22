@@ -82,14 +82,15 @@
 .form-multiselect:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-  --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+  --tw-ring-inset: var(--tw-empty,
+      /*!*/
+      /*!*/
+    );
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: #2563eb;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
-    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
-    calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
     var(--tw-shadow);
   border-color: #2563eb;
@@ -143,7 +144,8 @@
   height: min-content;
   width: 100%;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
   background: #FFF;
 }
 
@@ -277,14 +279,15 @@
 }
 
 .wake-account .actions div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
   .wake-account .actions div {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -293,12 +296,66 @@
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  margin: 0;
   justify-content: center;
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
   padding: 0.75rem;
+}
+
+.wake-account .actions div button:nth-child(1),
+.wake-account .actions div button:nth-child(2) {
+  border-radius: 400px;
+}
+
+.wake-account .actions div button:nth-child(3) {
+  position: relative;
+  height: 48px;
+  border-radius: 400px;
+  background-color: #0092ff;
+  padding: 0;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.4s ease-in-out, font-size 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-transform: uppercase;
+}
+
+.wake-account .actions div button:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.4s ease-in-out;
+}
+
+.wake-account .actions div button:nth-child(3):hover {
+  background-color: #30a6ff;
+  font-size: 16.2px;
+  font-weight: bold;
+}
+
+.wake-account .actions div button:nth-child(3):hover::before {
+  left: 100%;
+}
+
+.wake-account .actions div button:nth-child(3):active {
+  transform: scale(0.98);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.wake-account .actions div button:nth-child(3) {
+  grid-column: 1 / -1;
 }
 
 .wake-account .actions div button:hover {
@@ -479,7 +536,7 @@
   }
 }
 
-.wake-account-modal .change-password > div {
+.wake-account-modal .change-password>div {
   margin-bottom: 1rem;
   display: flex;
   width: 100%;
@@ -487,7 +544,7 @@
 }
 
 @media (min-width: 768px) {
-  .wake-account-modal .change-password > div {
+  .wake-account-modal .change-password>div {
     width: auto;
     flex-direction: row;
   }
@@ -659,10 +716,7 @@
   flex-direction: column;
 }
 
-.wake-account-modal
-  .wake-change-email-with-access-key
-  > :not([hidden])
-  ~ :not([hidden]) {
+.wake-account-modal .wake-change-email-with-access-key> :not([hidden])~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
@@ -706,17 +760,52 @@
 }
 
 .wake-account .actions div button.save {
+  position: relative;
   display: flex;
   justify-content: center;
-  border-radius: 0.375rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+  align-items: center;
+  margin: 0;
+  height: 48px;
+  width: 100%;
+  border-radius: 400px;
+  background-color: #0092ff;
+  padding: 0;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.4s ease-in-out, font-size 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-transform: uppercase;
+}
+
+.wake-account .actions div button.save::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.4s ease-in-out;
+}
+
+.wake-account .actions div button.save:hover {
+  background-color: #30a6ff;
+  font-size: 16.2px;
+  font-weight: bold;
+}
+
+.wake-account .actions div button.save:hover::before {
+  left: 100%;
+}
+
+.wake-account .actions div button.save:active {
+  transform: scale(0.98);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .wake-account .actions div .autenticate {
@@ -747,6 +836,7 @@
   background: #fff;
   border-radius: 0.375rem;
   margin-bottom: 16px;
+  border-radius: 16px;
 }
 
 @media (min-width: 768px) {
@@ -764,7 +854,8 @@
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
-  padding: 0.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
 }
 
 .wake-account-sidebar-summary div {
@@ -783,6 +874,7 @@
 
 .wake-account-sidebar-summary .avatar {
   margin-right: 0.5rem;
+  display: none;
   height: 3rem;
   width: 3rem;
   border-radius: 9999px;
@@ -792,6 +884,7 @@
 
 .wake-account-sidebar-summary .customer {
   display: flex;
+  font-weight: 600;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
@@ -803,7 +896,7 @@
   padding: 1rem;
 }
 
-.wake-account-sidebar-summary .arrow > img {
+.wake-account-sidebar-summary .arrow>img {
   height: 1.5rem;
   width: 1.5rem;
   transition-property: transform;
@@ -811,11 +904,9 @@
   transition-duration: 150ms;
 }
 
-.group[open] .wake-account-sidebar-summary .arrow > img {
+.group[open] .wake-account-sidebar-summary .arrow>img {
   --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .wake-account-sidebar-nav {
@@ -823,7 +914,7 @@
   flex-direction: column;
 }
 
-.wake-account-sidebar-nav > a {
+.wake-account-sidebar-nav>a {
   display: flex;
   cursor: pointer;
   align-items: center;
@@ -834,7 +925,7 @@
   padding: 1rem;
 }
 
-.wake-account-sidebar-nav > a:hover {
+.wake-account-sidebar-nav>a:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -843,7 +934,7 @@
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.wake-account-sidebar-nav > a > img {
+.wake-account-sidebar-nav>a>img {
   margin-right: 0.5rem;
   height: 1.5rem;
   width: 1.5rem;
@@ -901,6 +992,7 @@
 .wake-account-orders details {
   margin-bottom: 1rem;
   display: flex;
+  border-radius: 16px;
   cursor: pointer;
   flex-direction: column;
   justify-content: flex-start;
@@ -918,60 +1010,63 @@
 .wake-account-orders summary {
   display: flex;
   width: 100%;
+  border-radius: 16px;
   justify-content: space-between;
   background: #fff;
 }
 
-.wake-account-orders summary > div {
+.wake-account-orders summary>div {
   display: flex;
+  border-radius: 16px;
   flex-direction: column;
   padding: 1rem;
 }
 
-.wake-account-orders summary > div:first-child {
+.wake-account-orders summary>div:first-child {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-.wake-account-orders summary > div:last-child {
+.wake-account-orders summary>div:last-child {
   align-items: flex-end;
   justify-content: center;
 }
 
 @media (min-width: 768px) {
-  .wake-account-orders summary > div {
-    width: 16.666667%;
+  .wake-account-orders summary>div {
+    /* width: 16.666667%; */
   }
 }
 
-.wake-account-orders summary > div.hide-mobile {
+.wake-account-orders summary>div.hide-mobile {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .wake-account-orders summary > div.hide-mobile {
+  .wake-account-orders summary>div.hide-mobile {
     display: flex;
+    width: 25%;
   }
 }
 
-.wake-account-orders summary > div.center {
+.wake-account-orders summary>div.center {
   align-items: center;
 }
 
-.wake-account-orders summary > div > span {
+.wake-account-orders summary>div>span {
   margin-bottom: 0.5rem;
   display: flex;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
-.wake-account-orders summary > div > span.order {
+.wake-account-orders summary>div>span.order {
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
 }
 
-.wake-account-orders summary > div > span.status {
+.wake-account-orders summary>div>span.status {
   display: flex;
   width: -moz-max-content;
   width: max-content;
@@ -984,11 +1079,11 @@
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.wake-account-orders summary > div > b {
+.wake-account-orders summary>div>b {
   font-weight: 600;
 }
 
-.wake-account-orders summary > div img {
+.wake-account-orders summary>div img {
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -996,11 +1091,13 @@
 .wake-account-order-details {
   display: flex;
   width: 100%;
+  background-color: #fff;
   flex-direction: column;
+  border-radius: 0 0 16px 16px;
   border-top-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
-  padding: 0.5rem;
+  padding: 1.5rem;
 }
 
 .wake-account-order-details h4 {
@@ -1061,7 +1158,7 @@
   display: flex;
 }
 
-.wake-account-order-details .kits .items > :not([hidden]) ~ :not([hidden]) {
+.wake-account-order-details .kits .items> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -1073,7 +1170,7 @@
   display: flex;
 }
 
-.wake-account-order-details .kits .\!items > :not([hidden]) ~ :not([hidden]) {
+.wake-account-order-details .kits .\!items> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -1480,10 +1577,7 @@
   flex-direction: column;
 }
 
-.wake-account-full-order-details
-  .order-payment-details
-  > :not([hidden])
-  ~ :not([hidden]) {
+.wake-account-full-order-details .order-payment-details> :not([hidden])~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
@@ -1638,13 +1732,7 @@
   justify-content: flex-start;
 }
 
-.wake-account-full-order-details
-  .payment
-  .order-payment
-  .print
-  a
-  > :not([hidden])
-  ~ :not([hidden]) {
+.wake-account-full-order-details .payment .order-payment .print a> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -1854,6 +1942,13 @@
   flex-direction: column;
 }
 
+/* Correção de typo e responsividade */
+.wake-account-product .attributes {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
 @media (min-width: 768px) {
   .wake-account-product .attibutes {
     margin-right: 1rem;
@@ -1866,6 +1961,15 @@
   min-width: 280px;
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .wake-account-product h3 {
+    min-width: 0;
+    width: 100%;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
 }
 
 .wake-account-product .attibutes span {
@@ -1911,13 +2015,13 @@
   }
 }
 
-.wake-payment-list > h2 {
+.wake-payment-list>h2 {
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 600;
 }
 
-.wake-payment-list > span {
+.wake-payment-list>span {
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
   font-size: 0.875rem;
@@ -1948,10 +2052,8 @@
 }
 
 .wake-payment-list .payment-option input:focus {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
-    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
-    calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
     var(--tw-shadow, 0 0 #0000);
 }
@@ -2069,9 +2171,7 @@
 
 .group[open] .wake-subscription summary div:last-child img {
   --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .wake-subscription summary div:first-child {
@@ -2079,7 +2179,7 @@
   flex-direction: column;
 }
 
-.wake-subscription summary div:first-child > :not([hidden]) ~ :not([hidden]) {
+.wake-subscription summary div:first-child> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -2130,13 +2230,13 @@
   justify-content: space-between;
 }
 
-.wake-subscription-content .status > :not([hidden]) ~ :not([hidden]) {
+.wake-subscription-content .status> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.wake-subscription-content .status > button {
+.wake-subscription-content .status>button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -2151,14 +2251,14 @@
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.wake-subscription-content .status > button:hover {
+.wake-subscription-content .status>button:hover {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.wake-subscription-content .status > button > img {
+.wake-subscription-content .status>button>img {
   margin-right: 0.25rem;
   height: 1.25rem;
   width: 1.25rem;
@@ -2279,7 +2379,7 @@
   justify-content: flex-start;
 }
 
-.wake-subscription-content .product-view > :not([hidden]) ~ :not([hidden]) {
+.wake-subscription-content .product-view> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
@@ -2437,13 +2537,7 @@
   justify-content: flex-start;
 }
 
-.wake-subscription-content
-  .product-view
-  .product
-  .actions
-  div
-  > :not([hidden])
-  ~ :not([hidden]) {
+.wake-subscription-content .product-view .product .actions div> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -2461,13 +2555,7 @@
   justify-content: flex-start;
 }
 
-.wake-subscription-content
-  .product-view
-  .\!product
-  .actions
-  div
-  > :not([hidden])
-  ~ :not([hidden]) {
+.wake-subscription-content .product-view .\!product .actions div> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -2499,7 +2587,7 @@
   flex-direction: column;
 }
 
-.wake-subscription-content .address > :not([hidden]) ~ :not([hidden]) {
+.wake-subscription-content .address> :not([hidden])~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
@@ -2695,10 +2783,7 @@
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.wake-subscription-modal
-  .content
-  .subscription-products
-  .subscription-product:hover {
+.wake-subscription-modal .content .subscription-products .subscription-product:hover {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
@@ -2706,37 +2791,22 @@
 }
 
 @media (min-width: 768px) {
-  .wake-subscription-modal
-    .content
-    .subscription-products
-    .subscription-product {
+  .wake-subscription-modal .content .subscription-products .subscription-product {
     width: 16rem;
   }
 }
 
-.wake-subscription-modal
-  .content
-  .subscription-products
-  .subscription-product
-  img {
+.wake-subscription-modal .content .subscription-products .subscription-product img {
   margin-right: 1rem;
   height: 6rem;
   width: 6rem;
 }
 
-.wake-subscription-modal
-  .content
-  .subscription-products
-  .subscription-product
-  b {
+.wake-subscription-modal .content .subscription-products .subscription-product b {
   font-weight: 600;
 }
 
-.wake-subscription-modal
-  .content
-  .subscription-products
-  .subscription-product
-  label {
+.wake-subscription-modal .content .subscription-products .subscription-product label {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   width: 100%;
@@ -2745,11 +2815,7 @@
   line-height: 1rem;
 }
 
-.wake-subscription-modal
-  .content
-  .subscription-products
-  .subscription-product
-  input {
+.wake-subscription-modal .content .subscription-products .subscription-product input {
   margin-top: 0.25rem;
   display: flex;
   width: 100%;
@@ -2760,22 +2826,12 @@
   text-align: center;
 }
 
-.wake-subscription-modal
-  .content
-  .subscription-products
-  .subscription-product
-  div {
+.wake-subscription-modal .content .subscription-products .subscription-product div {
   display: flex;
   width: 100%;
 }
 
-.wake-subscription-modal
-  .content
-  .subscription-products
-  .subscription-product
-  div
-  > :not([hidden])
-  ~ :not([hidden]) {
+.wake-subscription-modal .content .subscription-products .subscription-product div> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -2867,7 +2923,7 @@
   align-items: center;
 }
 
-.wake-current-account h3 .balance div > img {
+.wake-current-account h3 .balance div>img {
   margin-right: 0.5rem;
   height: 1.25rem;
   width: 1.25rem;
@@ -2929,7 +2985,7 @@
   height: min-content;
   width: 100%;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 1.5rem;
   background: #FFF;
 }
 
@@ -2950,6 +3006,7 @@
 .wake-account-address .addresses {
   box-sizing: content-box;
   display: flex;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -2981,29 +3038,52 @@
 }
 
 .wake-account-address .add-address button {
+  position: relative;
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.375rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
-  --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
-  padding: 0.75rem;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+  height: 48px;
+  border-radius: 400px;
+  background-color: #0092ff;
+  padding: 0 16px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.4s ease-in-out, font-size 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-transform: uppercase;
 }
 
 .wake-account-address .add-address button:hover {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
-    0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  background-color: #007acc;
+  font-size: 17px;
+  transform: translateY(-1px);
+}
+
+.wake-account-address .add-address button:hover::before {
+  left: 100%;
+}
+
+.wake-account-address .add-address button:active {
+  transform: scale(0.98);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wake-account-address .add-address button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .3), transparent);
+  transition: left 0.5s ease-in-out;
 }
 
 @media (min-width: 768px) {
@@ -3025,6 +3105,8 @@
   position: relative;
   display: flex;
   width: 100%;
+  background-color: #f0f3f5;
+  border-radius: 16px;
   flex-direction: column;
   --tw-border-opacity: 1;
   border-color: rgb(249 250 251 / var(--tw-border-opacity, 1));
@@ -3032,8 +3114,8 @@
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),
     0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  /* box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); */
 }
 
 .wake-account-address .address:hover {
@@ -3063,8 +3145,8 @@
 
 .wake-account-address .address .actions {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 6.2rem;
+  right: .75rem;
   display: flex;
   align-items: center;
 }
@@ -3177,22 +3259,12 @@
   color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
-.wake-address-modal
-  .modal-content
-  .wrapper
-  .wrapper-content
-  .header
-  button:hover {
+.wake-address-modal .modal-content .wrapper .wrapper-content .header button:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 
-.wake-address-modal
-  .modal-content
-  .wrapper
-  .wrapper-content
-  .header
-  button:focus {
+.wake-address-modal .modal-content .wrapper .wrapper-content .header button:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
@@ -3208,12 +3280,7 @@
   text-align: left;
 }
 
-.wake-address-modal
-  .modal-content
-  .wrapper
-  .wrapper-content
-  .content
-  span.confirm-text {
+.wake-address-modal .modal-content .wrapper .wrapper-content .content span.confirm-text {
   margin-bottom: 1rem;
 }
 
@@ -3224,23 +3291,12 @@
 }
 
 @media (min-width: 768px) {
-  .wake-address-modal
-    .modal-content
-    .wrapper
-    .wrapper-content
-    .content
-    .actions {
+  .wake-address-modal .modal-content .wrapper .wrapper-content .content .actions {
     flex-direction: row;
   }
 }
 
-.wake-address-modal
-  .modal-content
-  .wrapper
-  .wrapper-content
-  .content
-  .actions
-  button {
+.wake-address-modal .modal-content .wrapper .wrapper-content .content .actions button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3251,24 +3307,12 @@
   padding: 0.75rem;
 }
 
-.wake-address-modal
-  .modal-content
-  .wrapper
-  .wrapper-content
-  .content
-  .actions
-  button:last-child {
+.wake-address-modal .modal-content .wrapper .wrapper-content .content .actions button:last-child {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.wake-address-modal
-  .modal-content
-  .wrapper
-  .wrapper-content
-  .content
-  .actions
-  button:hover {
+.wake-address-modal .modal-content .wrapper .wrapper-content .content .actions button:hover {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
@@ -3278,13 +3322,7 @@
 }
 
 @media (min-width: 768px) {
-  .wake-address-modal
-    .modal-content
-    .wrapper
-    .wrapper-content
-    .content
-    .actions
-    button:last-child {
+  .wake-address-modal .modal-content .wrapper .wrapper-content .content .actions button:last-child {
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 1rem;
@@ -3292,14 +3330,7 @@
   }
 }
 
-.wake-address-modal
-  .modal-content
-  .wrapper
-  .wrapper-content
-  .content
-  .actions
-  button
-  img {
+.wake-address-modal .modal-content .wrapper .wrapper-content .content .actions button img {
   margin-right: 0.5rem;
   height: 1.25rem;
   width: 1.25rem;
@@ -3318,7 +3349,7 @@
   flex-direction: column;
 }
 
-.wake-add-address-form .group-form > :not([hidden]) ~ :not([hidden]) {
+.wake-add-address-form .group-form> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
@@ -3341,7 +3372,7 @@
   }
 }
 
-.wake-add-address-form > button {
+.wake-add-address-form>button {
   display: flex;
   width: 100%;
   align-items: center;
@@ -3354,7 +3385,7 @@
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.wake-add-address-form > button:hover {
+.wake-add-address-form>button:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
 }
@@ -3613,7 +3644,7 @@
   padding-bottom: 1rem;
 }
 
-.wake-checkout-header > div {
+.wake-checkout-header>div {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: auto;
@@ -3626,22 +3657,22 @@
 }
 
 @media (min-width: 768px) {
-  .wake-checkout-header > div {
+  .wake-checkout-header>div {
     width: 87%;
   }
 }
 
-.wake-checkout-header > div a img {
+.wake-checkout-header>div a img {
   width: 8rem;
 }
 
 @media (min-width: 768px) {
-  .wake-checkout-header > div a img {
+  .wake-checkout-header>div a img {
     width: auto;
   }
 }
 
-.wake-checkout-header > div .security {
+.wake-checkout-header>div .security {
   display: flex;
   align-items: center;
   justify-content: flex-start;

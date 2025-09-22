@@ -1030,6 +1030,30 @@ h3:nth-of-type(2) {
   box-shadow: inset 0 0 0 1.1px #769dcd !important;
 }
 
+
+#authenticateForm input::-webkit-input-placeholder {
+  color: #b8b8b8;
+  opacity: 1;
+}
+
+#authenticateForm input::-ms-input-placeholder {
+  color: #b8b8b8;
+  opacity: 1;
+}
+
+#authenticateForm input::placeholder {
+  color: #b8b8b8;
+  opacity: 1;
+}
+
+.signup-container-wrapper h3 {
+  display: none;
+}
+
+.signup-container-wrapper h3+p {
+  display: none;
+}
+
 .login__field {
   display: flex;
   flex-direction: column;

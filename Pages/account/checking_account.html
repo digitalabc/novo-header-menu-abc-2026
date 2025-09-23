@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KT3C7T');</script>
+  <!-- End Google Tag Manager -->
+
   {{ asset type: "css" paths: ["output","output_account", "output_checkout"]}}
   <title>Meus Créditos</title>
 </head>
+
 <body class="bg-mainBg">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT3C7T" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   {{ checkout_header }}
   <div class="wake-account-wrapper">
     {{ wake_account_sidebar customer: data.customer }}
-    {{ wake_account_checking_account account: data.customer }}  
+    {{ wake_account_checking_account account: data.customer }}
   </div>
   {{ checkout_footer }}
   <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
-      <script type="text/javascript">document.write(JSON.stringify({{data}}, null, 2));</script>
+      <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
   </pre>
   {{ sdk_client }}
   {{ wake_scripts scripts: ["wake_utils", "wake_account"] }}
 </body>
+
 </html>

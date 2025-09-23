@@ -4,12 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KT3C7T');</script>
+  <!-- End Google Tag Manager -->
+
   {{ asset type: "css" paths: ["output", "output_checkout", "checkout/confirmation_checkout"]}}
   <title>Pedido confirmado</title>
   {{ data_layer_config }}
 </head>
 
 <body class="bg-mainBg wake-confirmation">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT3C7T" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   {{ checkout_header }}
   {{ wake_overlay }}
   {{~ first_order = data.checkout.orders | array.first ~}}
@@ -95,7 +112,8 @@
       {{ if isGuideShop }}
       <div class="guideShopWrapper">
         <div class="guideShopHead">
-          <img src="{{- store.urls.static_img}}checkout/mini-franquia-abc.png?theme={{store.theme -}}&v={{store.last_modified}}"
+          <img
+            src="{{- store.urls.static_img}}checkout/mini-franquia-abc.png?theme={{store.theme -}}&v={{store.last_modified}}"
             alt="Guide Shop">
           <div class="guideShopText">
             <h3 class="title">
@@ -271,7 +289,8 @@
   {{ sdk_client }}
   {{ data_layer_confirmation_view checkout: data.checkout }}
   {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
-  {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close", "checkout/confirmation_checkout"] options: "async"}}
+  {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close",
+  "checkout/confirmation_checkout"] options: "async"}}
 </body>
 
 </html>

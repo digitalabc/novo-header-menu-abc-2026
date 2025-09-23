@@ -1,82 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Checkout - Endereços</title>
-        {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping/shipping-new-address", "checkout/address", "checkout/payment"]}}
-        {{ data_layer_config }}
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{ addresses = data.customer.addresses }}
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KT3C7T');</script>
+    <!-- End Google Tag Manager -->
 
-    <body class="bg-checkout">
-        {{ checkout_header }}
-        {{ wake_overlay }}
-        <div id="address-loading" class="payment-loading hidden">
-            <div class="spinner"></div>
-        </div>
+    <title>Checkout - Endereços</title>
+    {{ asset type: "css" paths: ["output", "output_checkout", "checkout/shipping/shipping-new-address", "checkout/address", "checkout/payment"]}}
+    {{ data_layer_config }}
+</head>
 
-        <div class="checkout-section-wrapper">
-            <div class="checkout-container checkout-address-container">
+{{ addresses = data.customer.addresses }}
+
+<body class="bg-checkout">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT3C7T" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {{ checkout_header }}
+    {{ wake_overlay }}
+    <div id="address-loading" class="payment-loading hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="checkout-section-wrapper">
+        <div class="checkout-container checkout-address-container">
             <h2 class="title">
                 1.2 Endereços salvos
             </h2>
-            
+
             <div class="checkout-address-wrapper">
                 {{~ for address in addresses ~}}
-                    <div class="checkout-address-item">
-                        <div class="checkout-address-content">
-                            <h4 class="checkout-address">
-                                {{ if address.address }}{{ address.address }}{{ end }}{{ if address.neighborhood }}, {{ address.neighborhood }}{{ end }}{{ if address.city }} - {{ address.city }}{{ end }}{{ if address.state }} - {{ address.state }}{{ end }}{{ if address.cep }} - {{ address.cep }}{{ end }}
-                            </h4>
+                <div class="checkout-address-item">
+                    <div class="checkout-address-content">
+                        <h4 class="checkout-address">{{ address.address }}{{ if address.neighborhood }}, {{ address.neighborhood }}{{ end }}{{ if address.city }} - {{ address.city }}{{ end }}{{ if address.state }} - {{ address.state }}{{ end }}{{ if address.cep }} - {{ address.cep }}{{ end }}</h4>
 
-                            <span class="checkout-address-name">
-                                {{ if address.name }}
-                                    {{ address.name }}
-                                {{ else if data.customer.customer_name}}
-                                    {{ data.customer.customer_name }}
-                                {{ end }}
-                            </span>
-                        </div>
+                        <span class="checkout-address-name">
+                            {{ if address.name }}
+                            {{ address.name }}
+                            {{ else if data.customer.customer_name}}
+                            {{ data.customer.customer_name }}
+                            {{ end }}
+                        </span>
+                    </div>
 
-                        <div class="checkout-address-buttons-container">
-                            <div class="checkout-address-buttons">
-                                <button class="checkout-address-edit" onclick='editAddress({{address | map.to_json}})'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                                        <path d="M2.35 16C1.91 16 1.53333 15.8435 1.22 15.5306C0.906667 15.2176 0.75 14.8414 0.75 14.402V3.21598C0.75 2.77653 0.906667 2.40033 1.22 2.08739C1.53333 1.77445 1.91 1.61798 2.35 1.61798H9.49L7.89 3.21598H2.35V14.402H13.55V8.84894L15.15 7.25094V14.402C15.15 14.8414 14.9933 15.2176 14.68 15.5306C14.3667 15.8435 13.99 16 13.55 16H2.35ZM5.55 11.206V7.81024L12.89 0.479401C13.05 0.319601 13.23 0.19975 13.43 0.11985C13.63 0.0399501 13.83 0 14.03 0C14.2433 0 14.4467 0.0399501 14.64 0.11985C14.8333 0.19975 15.01 0.319601 15.17 0.479401L16.29 1.61798C16.4367 1.77778 16.55 1.95422 16.63 2.14732C16.71 2.34041 16.75 2.53683 16.75 2.73658C16.75 2.93633 16.7133 3.13275 16.64 3.32584C16.5667 3.51893 16.45 3.69538 16.29 3.85518L8.95 11.206H5.55ZM7.15 9.60799H8.27L12.91 4.97378L12.35 4.41448L11.77 3.85518L7.15 8.46941V9.60799Z" fill="#20A389"/>
-                                    </svg>
-                                    Editar
-                                </button>
-                                <button class="checkout-address-select" onclick="newSelectAddress('{{address.id}}')">
-                                    Usar este
-                                </button>
-                            </div>
+                    <div class="checkout-address-buttons-container">
+                        <div class="checkout-address-buttons">
+                            <button class="checkout-address-edit" onclick='editAddress({{address | map.to_json}})'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16"
+                                    fill="none">
+                                    <path
+                                        d="M2.35 16C1.91 16 1.53333 15.8435 1.22 15.5306C0.906667 15.2176 0.75 14.8414 0.75 14.402V3.21598C0.75 2.77653 0.906667 2.40033 1.22 2.08739C1.53333 1.77445 1.91 1.61798 2.35 1.61798H9.49L7.89 3.21598H2.35V14.402H13.55V8.84894L15.15 7.25094V14.402C15.15 14.8414 14.9933 15.2176 14.68 15.5306C14.3667 15.8435 13.99 16 13.55 16H2.35ZM5.55 11.206V7.81024L12.89 0.479401C13.05 0.319601 13.23 0.19975 13.43 0.11985C13.63 0.0399501 13.83 0 14.03 0C14.2433 0 14.4467 0.0399501 14.64 0.11985C14.8333 0.19975 15.01 0.319601 15.17 0.479401L16.29 1.61798C16.4367 1.77778 16.55 1.95422 16.63 2.14732C16.71 2.34041 16.75 2.53683 16.75 2.73658C16.75 2.93633 16.7133 3.13275 16.64 3.32584C16.5667 3.51893 16.45 3.69538 16.29 3.85518L8.95 11.206H5.55ZM7.15 9.60799H8.27L12.91 4.97378L12.35 4.41448L11.77 3.85518L7.15 8.46941V9.60799Z"
+                                        fill="#20A389" />
+                                </svg>
+                                Editar
+                            </button>
+                            <button class="checkout-address-select" onclick="newSelectAddress('{{address.id}}')">
+                                Usar este
+                            </button>
                         </div>
                     </div>
+                </div>
                 {{~ end ~}}
             </div>
-            
+
             <!-- Botão de voltar -->
             <div class="checkout-address-back-button-container">
                 <button type="button" class="checkout-address-back-button" onclick="window.history.back()">
                     <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.25 10.5L6.475 9.23125L3.36875 6.125H14V4.375H3.36875L6.475 1.26875L5.25 0L0 5.25L5.25 10.5Z" fill="#20A389"/>
+                        <path
+                            d="M5.25 10.5L6.475 9.23125L3.36875 6.125H14V4.375H3.36875L6.475 1.26875L5.25 0L0 5.25L5.25 10.5Z"
+                            fill="#20A389" />
                     </svg>
                     Voltar
                 </button>
             </div>
-            </div>
         </div>
-        {{ wake_checkout_scripts }}
-        {{ checkout_footer }}
-        <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+    </div>
+    {{ wake_checkout_scripts }}
+    {{ checkout_footer }}
+    <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
             <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
         </pre>
-        {{ sdk_client_checkout }}
-        {{ data_layer_checkout_complete_view checkout: data.checkout }}
-        {{ wake_scripts scripts: ["wake_utils"] }}
-        {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close", "checkout/shipping/shipping-new-address", "checkout/shipping/edit-address"] options: "async"}}
-    </body>
+    {{ sdk_client_checkout }}
+    {{ data_layer_checkout_complete_view checkout: data.checkout }}
+    {{ wake_scripts scripts: ["wake_utils"] }}
+    {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close", "checkout/shipping/shipping-new-address", "checkout/shipping/edit-address"] options: "async"}}
+</body>
+
 </html>

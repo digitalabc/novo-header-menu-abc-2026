@@ -1,10 +1,8 @@
 {{ gtm_id = gtm_id != null ? gtm_id[0]?.value : null }}
 {{ if gtm_id }}
 <script>
-    // Inicialização do data layer
     window.dataLayer = window.dataLayer || [];
     
-    // Função para enviar eventos para o GTM
     function gtmEvent(eventName, eventData) {
         window.dataLayer.push({
             'event': eventName,
@@ -12,7 +10,6 @@
         });
     }
     
-    // Função para configurar o user ID no GTM
     function setUserIdGTM(userId) {
         if (userId) {
             window.dataLayer.push({
@@ -22,10 +19,6 @@
         }
     }
     
-    // Dispara evento quando o GTM estiver carregado
-    window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-    
-    // Notifica que o data layer está pronto
     window.addEventListener("load", function() {
         window.dispatchEvent(new CustomEvent("dataLayerReady"));
     });

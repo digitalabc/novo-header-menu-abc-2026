@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
   {{ asset type: "css" paths: ["output_login", "checkout/login", "output","output_checkout"]}}
   <title>Entrar ABC Construção</title>
+  {{ data_layer_config }}
 </head>
 
 <body>
+  
   {{ checkout_header }}
   {{ wake_overlay }}
   <div class="login">
@@ -34,11 +37,8 @@
             <div class="login__divider-line"></div>
           </div>
 
-
             {{ login_authenticate }}
             {{wake_login_password_recovery}}
-
-            
 
           <div class="login__register">
             <span>Não tem uma conta? </span>

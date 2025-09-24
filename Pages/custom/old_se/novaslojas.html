@@ -89,8 +89,7 @@
       //         },
       //     });
       // });
-  
-  
+
       $(document).on("click", "#btnFormulario", function () {
   
           var nome = $("#nome").val().toUpperCase();
@@ -101,8 +100,7 @@
   
           //se nao foi escolhido/undefined entao true
           cliente_especificadorValid = (typeof cliente_especificador == 'undefined') ? false : true;
-  
-  
+
           if (
               valid(nome, "nome", "Nome completo") ||
               validaEmail(email) ||
@@ -157,9 +155,7 @@
                           css({
                               "display": "block", "overflow": "hidden", "border": "3px solid rgb(255 255 255)", "text-align": "center", "padding": "30px 15px"
                           });
-  
-  
-  
+
                       dito.identify({
                           id: dito.generateID(email),
                           name: nome,
@@ -180,8 +176,7 @@
                               loja: loja,
                           },
                       });
-  
-  
+
                   } else {
                       $("#EnviaFormulario").show();
   
@@ -191,8 +186,7 @@
                   }
               },
           });
-  
-  
+
       });
   </script>
 

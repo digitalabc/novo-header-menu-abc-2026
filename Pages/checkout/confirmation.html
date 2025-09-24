@@ -282,37 +282,6 @@
   </pre>
   <script>
     const orderInfo = {{ data.checkout.orders | array.first | map.to_json }}
-    
-    // Garantir que o evento purchase seja disparado para o GTM
-    window.dataLayer = window.dataLayer || [];
-    
-    // Aguardar que os dados estejam carregados
-    if (typeof data_layer_confirmation_details !== 'undefined') {
-      // Disparar evento de purchase para cada pedido
-      {{~ for order in data.checkout.orders ~}}
-      window.dataLayer.push({
-        'event': 'purchase',
-        'ecommerce': {
-          'transaction_id': '{{ order.order_id }}',
-          'value': {{ order.total_value }},
-          'currency': 'BRL',
-          'items': [
-            {{~ for product in order.products ~}}
-            {
-              'item_id': '{{ product.product_id }}',
-              'item_name': '{{ product.name | string.escape }}',
-              'category': '{{ product.category }}',
-              'quantity': {{ product.quantity }},
-              'price': {{ product.prices.price }}
-            }{{ unless for.last }},{{ end }}
-            {{~ end ~}}
-          ]
-        }
-      });
-      {{~ end ~}}
-      
-      console.log('GTM Purchase event dispatched for orders:', {{ data.checkout.orders | map: "order_id" | map.to_json }});
-    }
   </script>
   {{ sdk_client }}
   {{ data_layer_confirmation_view checkout: data.checkout }}

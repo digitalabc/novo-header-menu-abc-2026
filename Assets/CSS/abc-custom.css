@@ -608,3 +608,15 @@ filter: brightness(0) invert(1);
     font-size: 16px;
   }
 }
+
+
+@media (max-width: 991px) {
+  .banner-grid div:nth-child(2) .swiper-slide {
+    width: 80% !important;
+    margin: 0 !important;
+  }
+
+  .banner-grid div:nth-child(2) .swiper-slide:not(:last-child) {
+            margin-right: 20px !important;
+  }
+}

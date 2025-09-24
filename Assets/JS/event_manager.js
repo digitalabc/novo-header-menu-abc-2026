@@ -1,5 +1,5 @@
 // Event dispatched in user_login.js
-window.addEventListener("userChecked", () => { setTimeout(setUserIdGTM, 2000); }, false);
+window.addEventListener("userChecked", (event) => { setTimeout(() => setUserIdGTM(event?.detail?.email), 500); }, false);
 
 // Events dispatched in mini_cart.js
 window.addEventListener("cartViewed", viewCartEvent, false);
@@ -15,12 +15,18 @@ window.addEventListener("productPageViewed", productPageEvent, false);
 window.addEventListener("productAddedToWishlist", addToWishlistEvent, false);
 window.addEventListener("productRemovedFromWishlist", removeFromWishlistEvent, false);
 
-// Event dispatched when gtm is set
-window.addEventListener("tagManagerConfigured", triggerViewEvents, false);
+// Event dispatched when data layer is ready
+window.addEventListener("dataLayerReady", triggerViewEvents, false);
 /***********************************************************************/
 
-function setUserIdGTM(eventInput) {
-    if (eventInput) gtmSetup(eventInput?.email);
+// Função para enviar eventos para o GTM
+function gtmEvent(eventName, eventData) {
+    if (window.dataLayer) {
+        window.dataLayer.push({
+            'event': eventName,
+            ...eventData
+        });
+    }
 }
 
 async function triggerViewEvents() {
@@ -51,46 +57,54 @@ async function triggerViewEvents() {
 
 // Functions called by custom events
 function viewCartEvent() {
-    //gtag("event", "view_cart", gtm_cart_details);
+    if (window.dataLayer_cart_details) {
+        gtmEvent("view_cart", window.dataLayer_cart_details);
+    }
 }
 
 function removeFromCartEvent(eventInput) {
-    gtag("event", "remove_from_cart", getProductData(eventInput.detail.products));
-    gtag("event", "view_item_list", getCartData(eventInput.detail.cart));
+    gtmEvent("remove_from_cart", getProductData(eventInput.detail.products));
+    gtmEvent("view_item_list", getCartData(eventInput.detail.cart));
 }
 
 function searchPageEvent(eventInput) {
-    gtag("event", "search", { search_term: eventInput.detail.term });
-    gtag("event", "view_item_list", gtm_search_details);
+    gtmEvent("search", { search_term: eventInput.detail.term });
+    if (window.dataLayer_search_details) {
+        gtmEvent("view_item_list", window.dataLayer_search_details);
+    }
 }
 
 function hotsitePageEvent(eventInput) {
-    gtag("event", "view_item_list", gtm_hotsite_details);
+    if (window.dataLayer_hotsite_details) {
+        gtmEvent("view_item_list", window.dataLayer_hotsite_details);
+    }
 }
 
 function addToCartEvent(eventInput) {
     getUserInfo().then((user_info) => {
         let productData = getProductData(eventInput.detail.products);
         let cartData = getCartData(eventInput.detail.cart);
-        gtag("event", "add_to_cart", { ...productData, user: user_info });
-        gtag("event", "view_item_list", { ...cartData, user: user_info });
+        gtmEvent("add_to_cart", { ...productData, user: user_info });
+        gtmEvent("view_item_list", { ...cartData, user: user_info });
     });
 }
 
 function productPageEvent(eventInput) {
     if (eventInput.detail.type == "product") {
         getUserInfo().then((user_info) => {
-            gtag("event", "view_item", { ...gtm_product_details, user: user_info });
+            if (window.dataLayer_product_details) {
+                gtmEvent("view_item", { ...window.dataLayer_product_details, user: user_info });
+            }
         });
     }
 }
 
 function addToWishlistEvent(eventInput) {
-    gtag("event", "add_to_wishlist", getProductData(eventInput.detail.products));
+    gtmEvent("add_to_wishlist", getProductData(eventInput.detail.products));
 }
 
 function removeFromWishlistEvent(eventInput) {
-    gtag("event", "remove_from_wishlist", getProductData(eventInput.detail.products));
+    gtmEvent("remove_from_wishlist", getProductData(eventInput.detail.products));
 }
 
 function getProductData(productData) {
@@ -125,11 +139,5 @@ function getCartData(checkoutData) {
 async function getUserInfo() {
     const user = await client.customer.get();
     if (!user) { return []; }
-    // let response = await client.snippet.render(
-    //     "subscription_info_snippet.html",
-    //     "SnippetQueries/subscription_info.graphql",
-    //     { customerAccessToken: user.customerAccessToken }
-    // );
-    // response = JSON.parse(response);
     return user.data;
 }

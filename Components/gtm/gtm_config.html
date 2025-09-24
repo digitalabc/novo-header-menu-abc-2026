@@ -1,40 +1,33 @@
-{{ ##
-	Description: Component for configuring the google tag manager
-    Params:
-        - shop_settings : the store settings from the admin, to get the google id
-    Usage:
-        gtm_config shop_settings: common.shop_settings
-## }}
 {{ gtm_id = gtm_id != null ? gtm_id[0]?.value : null }}
 {{ if gtm_id }}
 <script>
-	let gtag = [];
-
-	function gtmSetup(userId) {
-		if (window.gtmDidInit) return false;
-		window.gtmDidInit = true;
-		const script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.onload = () => {
-			window.dataLayer = window.dataLayer || [];
-			gtag = function () {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-			if (userId)
-				gtag('config', "{{ gtm_id }}", {
-					'user_id': userId
-				});
-			else
-				gtag('config', "{{ gtm_id }}");
-
-			window.dispatchEvent(new CustomEvent("tagManagerConfigured"));
-		}
-		script.src = 'https://www.googletagmanager.com/gtag/js?id={{~gtm_id~}}';
-		script.defer = true;
-		document.getElementsByTagName('body')[0].appendChild(script);
-	}
+    // Inicialização do data layer
+    window.dataLayer = window.dataLayer || [];
+    
+    // Função para enviar eventos para o GTM
+    function gtmEvent(eventName, eventData) {
+        window.dataLayer.push({
+            'event': eventName,
+            ...eventData
+        });
+    }
+    
+    // Função para configurar o user ID no GTM
+    function setUserIdGTM(userId) {
+        if (userId) {
+            window.dataLayer.push({
+                'userId': userId
+            });
+            window.dispatchEvent(new CustomEvent("userIdSet"));
+        }
+    }
+    
+    // Dispara evento quando o GTM estiver carregado
+    window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    
+    // Notifica que o data layer está pronto
+    window.addEventListener("load", function() {
+        window.dispatchEvent(new CustomEvent("dataLayerReady"));
+    });
 </script>
-
-<!-- /Google tag (gtag.js) -->
 {{end}}

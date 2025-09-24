@@ -9,7 +9,6 @@
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
-
 {{ isFranquia = data.hotsite.name | string.contains "Franquia" }}
 
 <body class="{{~ if isFranquia ~}}franquia{{~ else ~}}cidade{{~ end ~}}">

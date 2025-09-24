@@ -137,10 +137,12 @@ async function addToCartClick(productVariantId) {
     const input = getAttributeProductAndQuantity(productVariantId);
     const success = await addOrCreateCheckout(input);
     if (success) {
-      R2U.analytics.send({
-        event: 'add_to_cart',
-        data: {}
-      })
+      window.dispatchEvent(new CustomEvent("productAddedToCart", {
+        detail: { 
+          products: [{ productId: productVariantId }],
+          cart: { total: 0, products: [] }
+        }
+      }));
       showAlert('Produto adicionado ao carrinho!');
       await loadMiniCart();
       openOffcanvas("#minicart-offcanvas")
@@ -157,10 +159,12 @@ async function buyClick(productVariantId) {
     const input = getAttributeProductAndQuantity(productVariantId);
     const success = await addOrCreateCheckout(input);
     if (success && checkoutUrl != "") {
-      R2U.analytics.send({
-        event: 'add_to_cart',
-        data: {}
-      })
+      window.dispatchEvent(new CustomEvent("productAddedToCart", {
+        detail: { 
+          products: [{ productId: productVariantId }],
+          cart: { total: 0, products: [] }
+        }
+      }));
       window.location = checkoutUrl;
     }
   }

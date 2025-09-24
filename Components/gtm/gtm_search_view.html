@@ -8,23 +8,24 @@
 ## }}
 <script>
     window.dataLayer_search_details = {
+        item_list_id: "search_results",
         item_list_name: "Search results",
         items: [
             {{~ for product in products ~}}
                 {
                     item_id: {{product.product_id}},
-                    item_name: "{{product.product_name}}",
+                    item_name: "{{product.product_name | string.escape}}",
                     {{~ if product.prices ~}}
                         discount: {{product.prices.list_price - product.prices.price}},
                         price: {{product.prices.list_price}},
                     {{ end }}
-                    index: 0,
+                    index: {{for.index}},
                     {{ if product.product_brand}}
-                        item_brand: {{product.product_brand.name}},
+                        item_brand: "{{product.product_brand.name | string.escape}}",
                     {{ end }}
                     {{ i = 1 }}
                     {{ for category in product.product_categories }}
-                        item_category{{if i > 1}}{{i}}{{end}}:{{category.name}},
+                        item_category{{if i > 1}}{{i}}{{end}}: "{{category.name | string.escape}}",
                         {{i = i + 1}}
                     {{ end }}
                     quantity: 1

@@ -906,12 +906,45 @@
     "availableInAllPages": true
   },
   {
-    "name": "gtm_cart_view",
-    "path": "gtm/gtm_cart_view.html",
+    "name": "gtm_checkout_view",
+    "path": "gtm/gtm_checkout_view.html",
     "params": [
       {
-        "name": "checkout",
-        "required": true
+        "name": "checkout_id",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true
+  },
+  {
+    "name": "gtm_purchase_view",
+    "path": "gtm/gtm_purchase_view.html",
+    "params": [
+      {
+        "name": "purchase_id",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true
+  },
+  {
+    "name": "gtm_shipping_view",
+    "path": "gtm/gtm_shipping_view.html",
+    "params": [
+      {
+        "name": "shipping_id",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true
+  },
+  {
+    "name": "gtm_payment_view",
+    "path": "gtm/gtm_payment_view.html",
+    "params": [
+      {
+        "name": "payment_id",
+        "required": false
       }
     ],
     "availableInAllPages": true

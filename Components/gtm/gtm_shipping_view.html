@@ -1,0 +1,49 @@
+{{ shipping_id = shipping_id != null ? shipping_id[0]?.value : null }}
+{{ if shipping_id }}
+<script>
+    // Função para disparar o evento add_shipping_info quando o usuário seleciona uma opção de frete
+    function sendShippingInfoEvent(shippingMethod, shippingPrice) {
+        if (window.dataLayer && window.Fbits && window.Fbits.Carrinho) {
+            const products = [];
+            for (let p = 0; p < window.Fbits.Carrinho.Produtos.length; p++) {
+                products.push({
+                    item_id: window.Fbits.Carrinho.Produtos[p].ProdutoId.toString(),
+                    item_name: window.Fbits.Carrinho.Produtos[p].Nome,
+                    price: window.Fbits.Carrinho.Produtos[p].PrecoPor,
+                    quantity: window.Fbits.Carrinho.Produtos[p].Quantidade
+                });
+            }
+            
+            window.dataLayer.push({
+                'event': 'add_shipping_info',
+                'ecommerce': {
+                    'shipping_tier': shippingMethod,
+                    'currency': 'BRL',
+                    'value': window.Fbits.Carrinho.ValorTotal,
+                    'items': products
+                }
+            });
+        }
+    }
+
+    // Adiciona listener para capturar a seleção do frete
+    document.addEventListener('DOMContentLoaded', function() {
+        // Observa mudanças no DOM para detectar quando os elementos de frete são carregados
+        const observer = new MutationObserver(function(mutations) {
+            const shippingOptions = document.querySelectorAll('[data-shipping-option]');
+            if (shippingOptions.length > 0) {
+                shippingOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        const shippingMethod = this.querySelector('.wake-checkout-shipping-option-title')?.textContent.trim() || 'Frete padrão';
+                        const shippingPrice = this.querySelector('.wake-checkout-shipping-option-price')?.textContent.trim() || '0';
+                        sendShippingInfoEvent(shippingMethod, shippingPrice);
+                    });
+                });
+                observer.disconnect();
+            }
+        });
+        
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
+</script>
+{{end}}

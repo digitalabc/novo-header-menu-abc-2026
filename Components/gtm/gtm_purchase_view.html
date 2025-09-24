@@ -1,0 +1,30 @@
+{{ purchase_id = purchase_id != null ? purchase_id[0]?.value : null }}
+{{ if purchase_id }}
+<script>
+    // Dispara evento purchase quando a página de confirmação é carregada
+    window.addEventListener("load", function() {
+        if (window.Fbits && window.Fbits.Carrinho) {
+            const products = [];
+            for (let p = 0; p < window.Fbits.Carrinho.Produtos.length; p++) {
+                products.push({
+                    item_id: window.Fbits.Carrinho.Produtos[p].ProdutoId.toString(),
+                    item_name: window.Fbits.Carrinho.Produtos[p].Nome,
+                    price: window.Fbits.Carrinho.Produtos[p].PrecoPor,
+                    quantity: window.Fbits.Carrinho.Produtos[p].Quantidade
+                });
+            }
+            
+            window.dispatchEvent(new CustomEvent("purchaseComplete", {
+                detail: {
+                    purchase: {
+                        order_id: window.Fbits.Carrinho.PedidoId,
+                        total: window.Fbits.Carrinho.ValorTotal,
+                        shipping: window.Fbits.Carrinho.Frete?.Valor || 0,
+                        products: products
+                    }
+                }
+            }));
+        }
+    });
+</script>
+{{end}}

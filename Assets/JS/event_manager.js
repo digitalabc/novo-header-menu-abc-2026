@@ -10,10 +10,15 @@ window.addEventListener("searchPageViewed", searchPageEvent, false);
 window.addEventListener("hotsitePageViewed", hotsitePageEvent, false);
 window.addEventListener("productAddedToCart", addToCartEvent, false);
 window.addEventListener("productPageViewed", productPageEvent, false);
+window.addEventListener("productSelected", selectItemEvent, false);
 
 // Event dispatched in wishlist.js
 window.addEventListener("productAddedToWishlist", addToWishlistEvent, false);
 window.addEventListener("productRemovedFromWishlist", removeFromWishlistEvent, false);
+
+// Events dispatched in checkout
+window.addEventListener("beginCheckout", beginCheckoutEvent, false);
+window.addEventListener("purchaseComplete", purchaseEvent, false);
 
 // Event dispatched when data layer is ready
 window.addEventListener("dataLayerReady", triggerViewEvents, false);
@@ -105,6 +110,55 @@ function addToWishlistEvent(eventInput) {
 
 function removeFromWishlistEvent(eventInput) {
     gtmEvent("remove_from_wishlist", getProductData(eventInput.detail.products));
+}
+
+function selectItemEvent(eventInput) {
+    if (eventInput.detail && eventInput.detail.product) {
+        gtmEvent("select_item", {
+            item_list_id: eventInput.detail.listId || "",
+            item_list_name: eventInput.detail.listName || "Product List",
+            items: [{
+                item_id: eventInput.detail.product.productId || eventInput.detail.product.id,
+                item_name: eventInput.detail.product.name || "",
+                price: eventInput.detail.product.price || 0,
+                item_brand: eventInput.detail.product.brand || "",
+                item_category: eventInput.detail.product.category || "",
+                index: eventInput.detail.index || 0
+            }]
+        });
+    }
+}
+
+function beginCheckoutEvent(eventInput) {
+    if (eventInput.detail.checkout) {
+        gtmEvent("begin_checkout", {
+            currency: "BRL",
+            value: eventInput.detail.checkout.total,
+            items: eventInput.detail.checkout.products.map(product => ({
+                item_id: product.product_id,
+                item_name: product.name,
+                price: product.price,
+                quantity: product.quantity
+            }))
+        });
+    }
+}
+
+function purchaseEvent(eventInput) {
+    if (eventInput.detail.purchase) {
+        gtmEvent("purchase", {
+            transaction_id: eventInput.detail.purchase.order_id,
+            currency: "BRL",
+            value: eventInput.detail.purchase.total,
+            shipping: eventInput.detail.purchase.shipping || 0,
+            items: eventInput.detail.purchase.products.map(product => ({
+                item_id: product.product_id,
+                item_name: product.name,
+                price: product.price,
+                quantity: product.quantity
+            }))
+        });
+    }
 }
 
 function getProductData(productData) {

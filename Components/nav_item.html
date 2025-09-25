@@ -64,7 +64,7 @@
           </ul>
           <figure class="nav-banner">
             {{~ if current_menu.full_image_url ~}}
-              <img src="https://abcdaconstrucao.fbitsstatic.net/sf/img/media-tintas.jpg alt= Tintas" width="320" height="200">
+              <img src={{current_menu.full_image_url}} alt="{{current_menu.name | string.downcase | string.capitalize}}" width="320" height="200">
             {{~ end ~}}
           </figure>
         </div>

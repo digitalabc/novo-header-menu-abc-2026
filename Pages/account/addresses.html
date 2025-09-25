@@ -15,8 +15,7 @@
   {{ wake_overlay }}
   <div class="wake-account-wrapper">
     {{ wake_account_sidebar customer: data.customer }}
-    {{ wake_account_addresses addresses: data.customer.addresses
-    customer_access_token_details:data.customer_access_token_details}}
+    {{ wake_account_addresses addresses: data.customer.addresses customer_access_token_details:data.customer_access_token_details}}
   </div>
   {{ checkout_footer }}
   <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">

@@ -254,6 +254,9 @@
   <input type="hidden" name="checkout_id" value="{{ data.checkout.checkout_id }}">
   {{ sdk_client_checkout }}
   {{ data_layer_checkout_view checkout: data.checkout}}
+
+  {{ gtm_config gtm_id: common.gtm_id }}
+
   {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
   {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout/shipping/shipping-new-address"] options: "async"}}
 </body>

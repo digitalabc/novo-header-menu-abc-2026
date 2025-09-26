@@ -91,11 +91,15 @@
     </div>
     {{ wake_checkout_scripts }}
     {{ checkout_footer }}
+
     <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
             <script type="text/javascript">document.write(JSON.stringify({{ data }}, null, 2));</script>
         </pre>
     {{ sdk_client_checkout }}
     {{ data_layer_checkout_complete_view checkout: data.checkout }}
+    
+    {{ gtm_config gtm_id: common.gtm_id }}
+
     {{ wake_scripts scripts: ["wake_utils"] }}
     {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close" ] options:
     "async"}}

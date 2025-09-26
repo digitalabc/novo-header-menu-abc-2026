@@ -1,26 +1,34 @@
 {{ gtm_id = gtm_id != null ? gtm_id[0]?.value : null }}
 {{ if gtm_id }}
 <script>
-    window.dataLayer = window.dataLayer || [];
-    
-    function gtmEvent(eventName, eventData) {
-        window.dataLayer.push({
-            'event': eventName,
-            ...eventData
-        });
-    }
-    
-    function setUserIdGTM(userId) {
-        if (userId) {
-            window.dataLayer.push({
-                'userId': userId
-            });
-            window.dispatchEvent(new CustomEvent("userIdSet"));
-        }
-    }
-    
-    window.addEventListener("load", function() {
-        window.dispatchEvent(new CustomEvent("dataLayerReady"));
-    });
+	let gtag = [];
+
+	function gtmSetup(userId) {
+		if (window.gtmDidInit) return false;
+		window.gtmDidInit = true;
+		const script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.onload = () => {
+			window.dataLayer = window.dataLayer || [];
+			gtag = function () {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			if (userId){
+				gtag('config', "{{ gtm_id }}", {
+					'user_id': userId
+				});}
+			else{
+				gtag('config', "{{ gtm_id }}");}
+
+			
+
+			window.dispatchEvent(new CustomEvent("tagManagerConfigured"));
+		}
+		script.src = 'https://www.googletagmanager.com/gtag/js?id={{~gtm_id~}}';
+		script.defer = true;
+		document.getElementsByTagName('body')[0].appendChild(script);
+	}
 </script>
 {{end}}

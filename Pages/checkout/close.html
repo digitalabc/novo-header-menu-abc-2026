@@ -167,6 +167,9 @@
     <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">{{ data | map.to_json }}</pre>
     {{ sdk_client_checkout }}
     {{ data_layer_checkout_complete_view checkout: data.checkout }}
+
+    {{ gtm_config gtm_id: common.gtm_id }}
+  
     {{ wake_scripts scripts: ["wake_utils", "wake_checkout_close"] }}
     {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close"] options: "async"}}
 </body>

@@ -115,14 +115,28 @@ function getCartAddOrSubtractInput(
 
 const cartAddQuantity = async (productVariantId, customizationId) => {
   const input = getCartAddOrSubtractInput(productVariantId, 1, customizationId);
-  await client.checkout.add(input);
+  const checkoutResponse = await client.checkout.add(input);
+
+  window.dispatchEvent(new CustomEvent("productAddedToCart", {
+    detail: {
+      cart: checkoutResponse.data,
+      products: input
+    }
+  }));
   updateCheckout();
 };
 
 const cartSubtractQuantity = async (productVariantId, customizationId) => {
   const input = getCartAddOrSubtractInput(productVariantId, 1, customizationId);
   const checkout = await client.cookie.get("carrinho-id")
-  await client.checkout.remove(input, checkout);
+  const checkoutResponse = await client.checkout.remove(input, checkout);
+
+  window.dispatchEvent(new CustomEvent("productRemovedFromCart", {
+    detail: {
+      cart: checkoutResponse.data,
+      products: input
+    }
+  }));
   updateCheckout();
 };
 
@@ -171,9 +185,18 @@ async function removeProductFromCart(id, qty, customizationId) {
     const input = getCartAddOrSubtractInput(id, Number(qty), customizationId);
     const checkout = await client.cookie.get("carrinho-id")
 
-    await client.checkout.remove(input, checkout);
+    const checkoutData = await client.checkout.remove(input, checkout);
 
     showOverlay("Produto removido!", "Produto removido do carrinho");
+    window.dispatchEvent(new CustomEvent("productRemovedFromCart", {
+      detail: {
+        cart: checkoutData.data,
+        products: [{
+          productVariantId: Number(id),
+          quantity: Number(qty)
+        }]
+      }
+    }));
     hideConfirmationModal();
     updateCheckout();
   } catch (error) {
@@ -280,21 +303,21 @@ function getSelectedAttributes(
 async function cartAddKitQuantity(kitId, kitGroupId) {
   const input = await cartGetKitInput(kitId, kitGroupId, 1);
   const checkout = await client.cookie.get("carrinho-id")
-  
+
   const response = await client.checkout.addKit(input, checkout);
   if (kitOperationIsSuccess(response)) await updateCheckout();
 }
 
 async function cartSubtractKitQuantity(kitId, kitGroupId) {
   const input = await cartGetKitInput(kitId, kitGroupId, 1);
-    const checkout = await client.cookie.get("carrinho-id")
+  const checkout = await client.cookie.get("carrinho-id")
   const response = await client.checkout.removeKit(input, checkout);
   if (kitOperationIsSuccess(response)) await updateCheckout();
 }
 
 async function removeKitFromCart(kitId, kitGroupId, quantity) {
   const input = await cartGetKitInput(kitId, kitGroupId, Number(quantity));
-    const checkout = await client.cookie.get("carrinho-id")
+  const checkout = await client.cookie.get("carrinho-id")
   const response = await client.checkout.removeKit(input, checkout);
   if (kitOperationIsSuccess(response)) await updateCheckout();
   hideConfirmationModal();

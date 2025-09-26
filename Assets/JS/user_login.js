@@ -51,9 +51,9 @@ async function checkUserLogin() {
     if(user?.errors) {
       await client.cookie.remove('sf_customer_access_token');
     }
-    
+
     window.dispatchEvent(
-      new CustomEvent("userChecked", { email: user?.data.email })
+      new CustomEvent("userChecked", { email: user ? user.data.email : false })
     );
   } catch (error) {
     console.error(error);

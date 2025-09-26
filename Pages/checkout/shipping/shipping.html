@@ -40,6 +40,9 @@
   </pre>
   {{ sdk_client_checkout }}
   {{ data_layer_checkout_view checkout: data.checkout}}
+
+  {{ gtm_config gtm_id: common.gtm_id }}
+
   {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
   {{ asset type: "js" paths: ["checkout_user_login", "checkout_shipping"] options: "async"}}
 </body>

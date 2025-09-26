@@ -906,6 +906,17 @@
     "availableInAllPages": true
   },
   {
+    "name": "gtm_cart_view",
+    "path": "gtm/gtm_cart_view.html",
+    "params": [
+      {
+        "name": "checkout_id",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true
+  },
+  {
     "name": "gtm_checkout_view",
     "path": "gtm/gtm_checkout_view.html",
     "params": [

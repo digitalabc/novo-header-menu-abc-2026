@@ -40,6 +40,7 @@ const estados = [
 			"Conselheiro Lafaiete",
 			"Contagem",
 			"Coronel Fabriciano",
+			"Coronel Murta",
 			"Curvelo",
 			"Diamantina",
 			"Divino",
@@ -351,6 +352,7 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Balneário Camboriú",
+			"Blumenau",
 			"Florianópolis",
 			"Jaraguá do Sul",
 			"Joinville",

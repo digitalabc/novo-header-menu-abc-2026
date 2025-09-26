@@ -92,7 +92,7 @@ function autocomplete(inp) {
         } else if (e.keyCode == 13) {
             e.preventDefault();
             if (currentFocus < 0 || !x) return;
-            
+
             const selectedDiv = x[currentFocus];
             if (!selectedDiv.classList.value.includes("product-suggestion"))
                 search(null, selectedDiv.innerHTML.trim());
@@ -115,8 +115,8 @@ function autocomplete(inp) {
     }
 
     function removeActive(items) {
-        for (let i = 0; i < items.length; i++) 
-        items[i].classList.remove("autocomplete-active");
+        for (let i = 0; i < items.length; i++)
+            items[i].classList.remove("autocomplete-active");
     }
 }
 
@@ -169,62 +169,62 @@ async function loadPartnerLogo() {
 /**
  * Setups the mobile menu navigation from click event
  */
-async function menuMobileLoad(){
-  const menuMobileLinks = document.querySelectorAll(".nav-mobile__link");
-  const menuMobileBackButtons = document.querySelectorAll(".nav-mobile__back");
-  if (menuMobileLinks){
-    menuMobileLinks.forEach(button => {
-      button.addEventListener('click', (event) => { handleMenuLinkClick(event); }) 
-    });
-  }
-  if (menuMobileBackButtons){
-    menuMobileBackButtons.forEach(button => {
-      button.addEventListener('click', (event) => { handleBackButtonClick(event); }) 
-    });
-  }
+async function menuMobileLoad() {
+    const menuMobileLinks = document.querySelectorAll(".nav-mobile__link");
+    const menuMobileBackButtons = document.querySelectorAll(".nav-mobile__back");
+    if (menuMobileLinks) {
+        menuMobileLinks.forEach(button => {
+            button.addEventListener('click', (event) => { handleMenuLinkClick(event); })
+        });
+    }
+    if (menuMobileBackButtons) {
+        menuMobileBackButtons.forEach(button => {
+            button.addEventListener('click', (event) => { handleBackButtonClick(event); })
+        });
+    }
 }
 
 /**
  * Mobile menu navigation
  */
 function handleMenuLinkClick(event) {
-  if (event.target.tagName == "BUTTON") {
-    event.preventDefault()
-    var button = event.target
-    var anchor = button.parentElement
-    var dropdown = anchor.nextElementSibling
+    if (event.target.tagName == "BUTTON") {
+        event.preventDefault()
+        var button = event.target
+        var anchor = button.parentElement
+        var dropdown = anchor.nextElementSibling
 
-    dropdown.classList.add("open")
-  }
+        dropdown.classList.add("open")
+    }
 }
 function handleBackButtonClick(event) {
-  var button = event.target
-  var dropdown = button.parentElement
+    var button = event.target
+    var dropdown = button.parentElement
 
-  dropdown.classList.remove("open")
+    dropdown.classList.remove("open")
 }
 
-function showMobileSearch(){
-  const body = document.body
-  body.classList.add("show-search")
+function showMobileSearch() {
+    const body = document.body
+    body.classList.add("show-search")
 }
 
-function hideMobileSearch(event){
-  const body = document.body
-  body.classList.remove("show-search")
+function hideMobileSearch(event) {
+    const body = document.body
+    body.classList.remove("show-search")
 }
 
 function onScroll(evt) {
-  // Store the scroll value for laterz.
-  /*
-  lastScrollY = window.scrollY;
-
-  // Prevent multiple rAF callbacks.
-  if (scheduledAnimationFrame) return;
-
-  scheduledAnimationFrame = true;
-  requestAnimationFrame(readAndUpdatePage);
-  */
+    // Store the scroll value for laterz.
+    /*
+    lastScrollY = window.scrollY;
+  
+    // Prevent multiple rAF callbacks.
+    if (scheduledAnimationFrame) return;
+  
+    scheduledAnimationFrame = true;
+    requestAnimationFrame(readAndUpdatePage);
+    */
 }
 
 window.addEventListener("scroll", onScroll);

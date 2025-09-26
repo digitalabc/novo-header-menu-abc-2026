@@ -7,35 +7,5 @@
         gtm_hotsite_view product: data.product
 ## }}
 <script>
-    window.dataLayer_hotsite_details = {
-        item_list_id: "hotsite_products",
-        item_list_name: "Hotsite products",
-        items: [
-            {{~ for items in product_lists ~}}
-                {{~ products = items?.edges && !items.edges.empty? ? items.edges : items ~}}
-                {{~ for item in products ~}}
-                    {{~ product = item.node ?? item }}
-                    {
-                        item_id: {{product.product_id}},
-                        item_name: "{{product.product_name | string.escape}}",
-                        {{~ if product.prices ~}}
-                        discount: {{ product.prices.list_price - product.prices.price }},
-                        price: {{ product.prices.list_price }},
-                        {{~ end ~}}
-                        index: {{for.index}},
-                        {{ if product.product_brand?.name}}
-                        item_brand: "{{product.product_brand.name | string.escape}}",
-                        {{ end }}
-                        {{ i = 1 }}
-                        {{ for category in product.product_categories }}
-                        item_category{{if i > 1}}{{i}}{{end}}: "{{category.name | string.escape}}",
-                        {{i = i + 1}}
-                        {{ end }}
-                        quantity: 1
-                    }{{if !for.last}},{{end}}
-                {{~ end ~}}
-                {{if !for.last}},{{end}}
-            {{~ end ~}}
-        ]
-    };
+    const gtm_hotsite_details = { item_list_id: "hotsite_products", item_list_name: "Hotsite products",items: [{{~ for items in product_lists ~}}    {{~ products = items?.edges && !items.edges.empty? ? items.edges : items ~}}    {{~ for item in products ~}}        {{~ product = item.node ?? item ~}}        {item_id: {{product.product_id}},{{~ if product.product_name ~}}    item_name: "{{product.product_name | string.escape}}",{{~ else ~}}     {{~ if product.name ~}}        item_name: "{{product.name | string.escape}}",    {{~ end ~}}{{~ end ~}}{{~ if product.prices ~}}    discount: {{ product.prices.list_price - product.prices.price }},    price: {{ product.prices.list_price }},{{~ else ~}}    {{~ if product.price ~}}        discount: {{ product.list_price - product.price }},        price: {{ product.list_price }},    {{~ end ~}}{{~ end ~}}index: 0,{{~ if product.product_brand?.name ~}}    item_brand: "{{product.product_brand.name | string.escape}}",{{~ end ~}}{{~ i = 1 ~}}{{~ for category in product.product_categories ~}}item_category{{if i > 1}}{{i}}{{end}}:{{category.name}},{{~i = i + 1~}}{{~end ~}}{{~ if product.quantity ~}}    quantity: {{product.quantity}} ,{{~ end ~}}        }{{~if !for.last~}},{{~end~}}    {{~ end ~}}    {{~if !for.last~}},{{~end~}}{{~ end ~}}]};
 </script>

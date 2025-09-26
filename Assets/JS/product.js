@@ -22,7 +22,7 @@ async function validateWishlist() {
 
   const user = await client.customer.get();
   if (!user) return;
-  
+
   const token = client.cookie.get("sf_customer_access_token");
 
   const isIn = await isInTheWishlist(productId, token);
@@ -240,8 +240,6 @@ async function addOrCreateCheckout(input) {
 
     let checkoutId = null;
 
-    console.log(checkout, input);
-    
     if (checkout) {
       const checkoutResponse = await client.checkout.add(input, checkout);
       if (checkoutUrl == "") {
@@ -249,6 +247,13 @@ async function addOrCreateCheckout(input) {
       }
 
       checkoutId = checkoutResponse.data.checkoutId;
+
+      window.dispatchEvent(new CustomEvent("productAddedToCart", {
+        detail: {
+          cart: checkoutResponse.data,
+          products: input
+        }
+      }));
     }
     else {
       const checkoutResponse = await client.checkout.create(input);
@@ -256,9 +261,19 @@ async function addOrCreateCheckout(input) {
       checkoutId = checkoutResponse.data.checkoutId;
 
       await client.cookie.set("carrinho-id", checkoutResponse.data.checkoutId, window.location.hostname.replace("www", ""))
+
+      window.dispatchEvent(new CustomEvent("productAddedToCart", {
+        detail: {
+          cart: checkoutResponse.data,
+          products: input
+        }
+      }));
     }
 
     await checkoutPartnerAssociate(checkoutId);
+
+
+
 
     return true;
   } catch (error) {
@@ -516,14 +531,14 @@ function togglePayment(button) {
 }
 function showPaymentInstallment(input) {
   if (!input.value) { return; }
-  
+
   document.querySelectorAll('.payment__options__installments ul').forEach((ul) => {
     if (ul.classList.contains('show__installments')) {
       ul.classList.remove('show__installments');
     }
   });
 
-  document.querySelector(`.${input.value}`).classList.add('show__installments');    
+  document.querySelector(`.${input.value}`).classList.add('show__installments');
 }
 
 function createWarning(div) {
@@ -554,10 +569,10 @@ function quantityChange(inputId, action) {
   }
   let livelo_pontos = document.querySelector('.livelo_pontos');
   if (livelo_pontos) {
-    let pontos  = Number(livelo_pontos.dataset.liveloPontos);
+    let pontos = Number(livelo_pontos.dataset.liveloPontos);
     livelo_pontos.querySelector('strong').innerText = Math.floor(pontos * input.value);
   }
-  
+
 }
 
 function verifyQuantity(input, warningQuery) {

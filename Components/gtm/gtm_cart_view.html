@@ -10,24 +10,6 @@
     const gtm_cart_details = {
         currency: "BRL",
         value: {{ checkout.subtotal }},
-        items: [
-            {{~ for product in checkout.products ~}}
-                {
-                item_id: {{product.product_id}},
-                item_name: "{{product.name}}",
-                {{~ if product.prices ~}}
-                    discount: {{ product.prices.list_price - product.prices.price }},
-                    price: {{ product.prices.list_price }},
-                {{~ end ~}}
-                index: 0,
-                {{ i = 1 }}
-                {{ for category in product.product_categories }}
-                    item_category{{if i > 1}}i{{end}}:{{category.name}},
-                    {{i = i + 1}}
-                {{ end }}
-                quantity: 1
-                }{{if !for.last}},{{end}}
-            {{end}}
-        ]
+        items: [{{~ for product in checkout.products ~}}    {    item_id: {{product.product_id}},    item_name: "{{product.name}}",    {{~ if product.prices ~}}        discount: {{ product.prices.list_price - product.prices.price }},        price: {{ product.prices.list_price }},    {{~ end ~}}    index: 0,    {{ i = 1 }}    {{ for category in product.product_categories }}        item_category{{if i > 1}}i{{end}}:{{category.name}},        {{i = i + 1}}    {{ end }}    quantity: {{product.quantity}}    }{{if !for.last}},{{end}}{{end}}]
     };
 </script>

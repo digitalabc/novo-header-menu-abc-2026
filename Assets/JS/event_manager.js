@@ -52,7 +52,7 @@ async function triggerViewEvents() {
                     detail: { page: "begin_checkout" }
                 }));
                 break;
-        
+
             default:
                 break;
         }
@@ -89,16 +89,27 @@ function selectItemEvent(eventInput) {
 }
 
 function beginCheckoutEvent(eventInput) {
+
+    const itens = []
+
+    eventInput.detail.checkout.orders.map((e) => {
+        return e.products.map(product => {
+            return itens.push({
+                item_id: product.productVariantId,
+                item_name: product.name,
+                price: product.value,
+                quantity: product.quantity,
+                attributes: product.attributes
+            })
+        })
+    })
+
     if (eventInput.detail.checkout) {
         gtag("event", "begin_checkout", {
+            ...eventInput.detail.checkout,
             currency: "BRL",
             value: eventInput.detail.checkout.total,
-            items: eventInput.detail.checkout.products.map(product => ({
-                item_id: product.product_id,
-                item_name: product.name,
-                price: product.price,
-                quantity: product.quantity
-            }))
+            itens
         });
     }
 }
@@ -145,9 +156,9 @@ function addToCartEvent(eventInput) {
 
 
 function checkoutPageEvent(eventInput) {
-        getUserInfo().then((user_info) => {
-            gtag("event", eventInput.detail.page, { ...gtm_cart_details, user: user_info });
-        });
+    getUserInfo().then((user_info) => {
+        gtag("event", eventInput.detail.page, { ...gtm_cart_details, user: user_info });
+    });
 }
 
 

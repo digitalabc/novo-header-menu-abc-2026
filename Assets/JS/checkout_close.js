@@ -578,7 +578,9 @@ const closeCheckout = async () => {
       return;
     }
 
-    pushDataLayerCheckoutPurchaseEvent(checkoutData);
+    console.log("checkoutData", checkoutData)
+
+    await pushDataLayerCheckoutPurchaseEvent(checkoutData);
 
     window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
   } finally {
@@ -588,19 +590,14 @@ const closeCheckout = async () => {
   }
 }
 
-function pushDataLayerCheckoutPurchaseEvent(checkoutData) {
-  if (
-    checkoutData?.completeResponse?.data?.completed &&
-    checkoutData.newCheckout == null
-  ) {
-    window.dispatchEvent(
-      new CustomEvent("checkoutPurchaseEvent", {
-        detail: {
-          checkout: checkoutData.completeResponse.data,
-        },
-      })
-    );
-  }
+async function pushDataLayerCheckoutPurchaseEvent(checkoutData) {
+  return await window.dispatchEvent(
+    new CustomEvent('beginCheckout', {
+      detail: {
+        checkout: checkoutData.completeResponse.data
+      }
+    })
+  );
 }
 
 async function renderUser() {

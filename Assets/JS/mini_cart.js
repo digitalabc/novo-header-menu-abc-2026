@@ -166,9 +166,12 @@ async function checkoutRemoveProduct(id, qty) {
 
     const r = await client.checkout.remove(input, rvariables.id);
 
-    window.dispatchEvent(new CustomEvent("searchPageViewed", {
-            detail: { term: queryStringParams.get("busca") }
-        }));
+    window.dispatchEvent(new CustomEvent("productRemovedFromCart", {
+      detail: {
+        cart: checkoutData.data,
+        products: input
+      }
+    }));
 
     loadMiniCart();
   } catch (error) {

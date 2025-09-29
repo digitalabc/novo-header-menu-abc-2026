@@ -592,7 +592,7 @@ const closeCheckout = async () => {
 
 async function pushDataLayerCheckoutPurchaseEvent(checkoutData) {
   return await window.dispatchEvent(
-    new CustomEvent('beginCheckout', {
+    new CustomEvent('PurchaseCheckout', {
       detail: {
         checkout: checkoutData.completeResponse.data
       }

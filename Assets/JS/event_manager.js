@@ -24,9 +24,6 @@ window.addEventListener("purchaseComplete", purchaseEvent, false);
 window.addEventListener("tagManagerConfigured", triggerViewEvents, false);
 
 
-
-window.addEventListener("load", setUserIdGTM, false);
-
 /***********************************************************************/
 function setUserIdGTM() {
     triggerViewEvents();

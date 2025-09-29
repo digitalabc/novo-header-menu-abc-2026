@@ -3,6 +3,7 @@
 
 <head>
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
   {{ gtm_config_head gtm_id: common.gtm_id }}

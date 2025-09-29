@@ -22,9 +22,14 @@ window.addEventListener("beginCheckout", beginCheckoutEvent, false);
 window.addEventListener("purchaseComplete", purchaseEvent, false);
 // Event dispatched when gtm is set
 window.addEventListener("tagManagerConfigured", triggerViewEvents, false);
+
+
+
+window.addEventListener("load", setUserIdGTM, false);
+
 /***********************************************************************/
-function setUserIdGTM(eventInput) {
-    gtmSetup(eventInput.email ? eventInput.email : false);
+function setUserIdGTM() {
+    triggerViewEvents();
 }
 
 async function triggerViewEvents() {
@@ -67,24 +72,26 @@ async function triggerViewEvents() {
 
 // Functions called by custom events
 function viewCartEvent() {
-    gtag("event", "view_cart", gtm_cart_details);
+    window.dataLayer.push({ event: "view_cart", ecommerce: { ...gtm_cart_details } })
 }
 
 
 function selectItemEvent(eventInput) {
     if (eventInput.detail && eventInput.detail.product) {
-        gtag("event", "select_item", {
-            item_list_id: eventInput.detail.listId || "",
-            item_list_name: eventInput.detail.listName || "Product List",
-            items: [{
-                item_id: eventInput.detail.product.productId || eventInput.detail.product.id,
-                item_name: eventInput.detail.product.name || "",
-                price: eventInput.detail.product.price || 0,
-                item_brand: eventInput.detail.product.brand || "",
-                item_category: eventInput.detail.product.category || "",
-                index: eventInput.detail.index || 0
-            }]
-        });
+        window.dataLayer.push({
+            event: "select_item", ecommerce: {
+                item_list_id: eventInput.detail.listId || "",
+                item_list_name: eventInput.detail.listName || "Product List",
+                items: [{
+                    item_id: eventInput.detail.product.productId || eventInput.detail.product.id,
+                    item_name: eventInput.detail.product.name || "",
+                    price: eventInput.detail.product.price || 0,
+                    item_brand: eventInput.detail.product.brand || "",
+                    item_category: eventInput.detail.product.category || "",
+                    index: eventInput.detail.index || 0
+                }]
+            }
+        })
     }
 }
 
@@ -105,59 +112,63 @@ function beginCheckoutEvent(eventInput) {
     })
 
     if (eventInput.detail.checkout) {
-        gtag("event", "begin_checkout", {
-            ...eventInput.detail.checkout,
-            currency: "BRL",
-            value: eventInput.detail.checkout.total,
-            itens
-        });
+        window.dataLayer.push({
+            event: "begin_checkout", ecommerce: {
+                ...eventInput.detail.checkout,
+                currency: "BRL",
+                value: eventInput.detail.checkout.total,
+                itens
+            }
+        })
     }
 }
 
 function purchaseEvent(eventInput) {
     if (eventInput.detail.purchase) {
-        gtag("event", "purchase", {
-            transaction_id: eventInput.detail.purchase.order_id,
-            currency: "BRL",
-            value: eventInput.detail.purchase.total,
-            shipping: eventInput.detail.purchase.shipping || 0,
-            items: eventInput.detail.purchase.products.map(product => ({
-                item_id: product.product_id,
-                item_name: product.name,
-                price: product.price,
-                quantity: product.quantity
-            }))
-        });
+        window.dataLayer.push({
+            event: "purchase", ecommerce: {
+                transaction_id: eventInput.detail.purchase.order_id,
+                currency: "BRL",
+                value: eventInput.detail.purchase.total,
+                shipping: eventInput.detail.purchase.shipping || 0,
+                items: eventInput.detail.purchase.products.map(product => ({
+                    item_id: product.product_id,
+                    item_name: product.name,
+                    price: product.price,
+                    quantity: product.quantity
+                }))
+            }
+        })
     }
 }
 
 function removeFromCartEvent(eventInput) {
-    gtag("event", "remove_from_cart", getProductData(eventInput.detail.products));
-    gtag("event", "view_item_list", getCartData(eventInput.detail.cart));
+    window.dataLayer.push({ event: "remove_from_cart", ecommerce: { ...getProductData(eventInput.detail.products) } })
+    window.dataLayer.push({ event: "view_item_list", ecommerce: { ...getCartData(eventInput.detail.cart) } })
 }
 
 function searchPageEvent(eventInput) {
-    gtag("event", "search", { search_term: eventInput.detail.term });
-    gtag("event", "view_item_list", gtm_search_details);
+    window.dataLayer.push({ event: "search", ecommerce: { search_term: eventInput.detail.term } })
+    window.dataLayer.push({ event: "view_item_list", ecommerce: { ...gtm_search_details } })
 }
 
 function hotsitePageEvent(eventInput) {
-    gtag("event", "view_item_list", gtm_hotsite_details);
+    window.dataLayer.push({ event: "view_item_list", ecommerce: { ...gtm_hotsite_details } })
 }
 
 function addToCartEvent(eventInput) {
     getUserInfo().then((user_info) => {
         let productData = getProductData(eventInput.detail.products);
         let cartData = getCartData(eventInput.detail.cart);
-        gtag("event", "add_to_cart", { ...productData, user: user_info });
-        gtag("event", "view_item_list", { ...cartData, user: user_info });
+        window.dataLayer.push({ event: "add_to_cart", ecommerce: { ...productData, user: user_info } })
+        window.dataLayer.push({ event: "view_item_list", ecommerce: { ...cartData, user: user_info } })
     });
 }
 
 
 function checkoutPageEvent(eventInput) {
     getUserInfo().then((user_info) => {
-        gtag("event", eventInput.detail.page, { ...gtm_cart_details, user: user_info });
+        window.dataLayer.push({ event: eventInput.detail.page, ecommerce: { ...gtm_cart_details, user: user_info } })
     });
 }
 
@@ -165,17 +176,17 @@ function checkoutPageEvent(eventInput) {
 function productPageEvent(eventInput) {
     if (eventInput.detail.type == "product") {
         getUserInfo().then((user_info) => {
-            gtag("event", "view_item", { ...gtm_product_details, user: user_info });
+            window.dataLayer.push({ event: "view_item", ecommerce: { ...gtm_product_details, user: user_info } })
         });
     }
 }
 
 function addToWishlistEvent(eventInput) {
-    gtag("event", "add_to_wishlist", getProductData(eventInput.detail.products));
+    window.dataLayer.push({ event: "add_to_wishlist", ecommerce: { ...getProductData(eventInput.detail.products) } })
 }
 
 function removeFromWishlistEvent(eventInput) {
-    gtag("event", "remove_from_wishlist", getProductData(eventInput.detail.products));
+    window.dataLayer.push({ event: "remove_from_wishlist", ecommerce: { ...getProductData(eventInput.detail.products) } })
 }
 
 function getProductData(productData) {

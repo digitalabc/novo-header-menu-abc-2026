@@ -2,6 +2,7 @@
 <html lang="pt-BR">
     <head>
         {{ header title: data.hotsite.name store: store }}
+        {{ gtm_config_head gtm_id: common.gtm_id }}
         {{ data_layer_config }}
         {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
         {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "spot", "product", "output_base"]}}

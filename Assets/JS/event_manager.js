@@ -94,11 +94,11 @@ function selectItemEvent(eventInput) {
 
 function beginCheckoutEvent(eventInput) {
 
-    const itens = []
+    const items = []
 
     eventInput.detail.checkout.orders.map((e) => {
         return e.products.map(product => {
-            return itens.push({
+            return items.push({
                 item_id: product.productVariantId,
                 item_name: product.name,
                 price: product.value,
@@ -114,7 +114,7 @@ function beginCheckoutEvent(eventInput) {
                 ...eventInput.detail.checkout,
                 currency: "BRL",
                 value: eventInput.detail.checkout.total,
-                itens
+                items
             }
         })
     }

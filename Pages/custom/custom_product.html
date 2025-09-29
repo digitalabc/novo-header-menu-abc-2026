@@ -2,6 +2,7 @@
 <html lang="pt-BR">
     <head>
         {{ header title: data.product.product_name store: store }}
+        {{ gtm_config_head gtm_id: common.gtm_id }}
         {{ data_layer_config }}
         {{ product_structured_data product: data.product current_url: store.urls.current }}
         {{ asset type: "css" paths: ["navbar", "footer", "mini_cart", "user_login", "swiffy-slider"]}}

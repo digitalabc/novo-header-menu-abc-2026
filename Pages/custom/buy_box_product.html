@@ -5,6 +5,7 @@
         {{ data_layer_config }}
         {{ product_structured_data product: data.product current_url: store.urls.current }}
         {{ asset type: "css" paths: ["navbar", "buy_box", "footer", "mini_cart", "product", "user_login", "spot", "output_base", "swiffy-slider"]}}
+        {{ gtm_config_head gtm_id: common.gtm_id }}
         {{ meta_tags seo: data.product.seo }} 
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>

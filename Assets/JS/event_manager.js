@@ -19,7 +19,7 @@ window.addEventListener("productAddedToWishlist", addToWishlistEvent, false);
 window.addEventListener("productRemovedFromWishlist", removeFromWishlistEvent, false);
 
 window.addEventListener("beginCheckout", beginCheckoutEvent, false);
-window.addEventListener("purchaseComplete", purchaseEvent, false);
+window.addEventListener("PurchaseCheckout", purchaseCheckoutEvent, false);
 // Event dispatched when gtm is set
 window.addEventListener("tagManagerConfigured", triggerViewEvents, false);
 
@@ -87,6 +87,34 @@ function selectItemEvent(eventInput) {
                     item_category: eventInput.detail.product.category || "",
                     index: eventInput.detail.index || 0
                 }]
+            }
+        })
+    }
+}
+
+function purchaseCheckoutEvent(eventInput) {
+
+    const items = []
+
+    eventInput.detail.checkout.orders.map((e) => {
+        return e.products.map(product => {
+            return items.push({
+                item_id: product.productVariantId,
+                item_name: product.name,
+                price: product.value,
+                quantity: product.quantity,
+                attributes: product.attributes
+            })
+        })
+    })
+
+    if (eventInput.detail.checkout) {
+        window.dataLayer.push({
+            event: "purchase", ecommerce: {
+                ...eventInput.detail.checkout,
+                currency: "BRL",
+                value: eventInput.detail.checkout.total,
+                items
             }
         })
     }

@@ -9,9 +9,10 @@
 
   {{ asset type: "css" paths: ["output", "output_checkout", "checkout/confirmation_checkout"]}}
   <title>Pedido confirmado</title>
-  {{ gtm_config gtm_id: common.gtm_id }}
   {{ gtm_purchase_view }}
 </head>
+
+
 
 <body class="bg-mainBg wake-confirmation">
   {{ gtm_config_body gtm_id: common.gtm_id }}
@@ -26,6 +27,10 @@
   cityAndDistrict = storeParts[0]
   address = storeParts.size > 1 ? storeParts[1] : ""
   ~}}
+
+  <script>
+    const dataElement = {{data}}
+  </script>
   {{~ if first_order ~}}
   <div class="wake-confirmation-wrapper">
     <div class="wake-confirmation-max-width">
@@ -281,8 +286,11 @@
   {{ gtm_config gtm_id: common.gtm_id }}
 
   {{ wake_scripts scripts: ["wake_utils", "wake_checkout"] }}
-  {{ asset type: "js" paths: ["checkout_user_login", "event_manager", "checkout", "checkout_close",
-  "checkout/confirmation_checkout"] options: "async"}}
+
+  {{ asset type: "js" paths: ["event_manager", "checkout_user_login"] options: "async"}}
+  {{ asset type: "js" paths: ["checkout"] options: "async"}}
+  {{ asset type: "js" paths: ["checkout_close"] options: "async"}}
+  {{ asset type: "js" paths: ["checkout/confirmation_checkout"] options: "async"}}
 </body>
 
 </html>

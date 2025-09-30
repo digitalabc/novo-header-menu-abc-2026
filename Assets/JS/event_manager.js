@@ -55,6 +55,10 @@ async function triggerViewEvents() {
                 }));
                 break;
 
+            case "/checkout/confirmation":
+                parseCustomData(dataElement)
+                parseCustomDataToUA(dataElement)
+                break
             default:
                 break;
         }
@@ -241,6 +245,101 @@ function getCartData(checkoutData) {
         items: cartProducts
     };
     return formated;
+}
+
+function parseCustomData(data) {
+    // helper pra achar valor de uma chave
+    function findValue(arr, key) {
+        if (!Array.isArray(arr)) return null; // só procura se for array
+        const obj = arr.find((i) => i.key === key);
+        return obj ? obj.value : null;
+    }
+
+    const checkout = findValue(data, "checkout");
+    const customer = findValue(data, "customer");
+
+    const orders = findValue(checkout, "orders");
+    const firstOrder = orders?.[0] || [];
+
+    const transaction_id = String(findValue(firstOrder, "order_id"));
+    const value = findValue(firstOrder, "total_value");
+    const shipping = findValue(firstOrder, "shipping_value");
+    const discount = findValue(firstOrder, "discount_value");
+    const cep = findValue(checkout, "cep");
+    const nome = findValue(customer, "customer_name");
+
+    // Produtos
+    const products = findValue(firstOrder, "products") || [];
+    const items = products.map((p) => ({
+        item_name: findValue(p, "name"),
+        item_id: String(findValue(p, "product_variant_id")),
+        price: findValue(p, "value"),
+        quantity: findValue(p, "quantity"),
+    }));
+
+    window.dataLayer.push({
+        event: "purchase",
+        ecommerce: {
+            transaction_id,
+            value,
+            shipping,
+            currency: "BRL",
+            coupon: discount > 0 ? String(discount) : "",
+            items,
+            cep,
+            nome,
+        },
+    })
+}
+
+function parseCustomDataToUA(data) {
+    // helper para achar valor de uma chave
+    function findValue(arr, key) {
+        if (!Array.isArray(arr)) return null; // só procura se for array
+        const obj = arr.find((i) => i.key === key);
+        return obj ? obj.value : null;
+    }
+
+    const checkout = findValue(data, "checkout");
+    const customer = findValue(data, "customer");
+
+    const orders = findValue(checkout, "orders");
+    const firstOrder = orders?.[0] || [];
+
+    const transaction_id = findValue(firstOrder, "order_id");
+    const revenue = findValue(firstOrder, "total_value");
+    const shipping = findValue(firstOrder, "shipping_value");
+    const discount = findValue(firstOrder, "discount_value");
+    const email = findValue(customer, "email");
+
+    // Produtos
+    const products = findValue(firstOrder, "products") || [];
+    const mappedProducts = products.map((p) => ({
+        name: findValue(p, "name"),
+        id: String(findValue(p, "product_variant_id")),
+        price: findValue(p, "value"),
+        brand: findValue(p, "brand") || "", // se existir
+        variant: String(findValue(p, "product_variant_id")), // aqui usei variant igual ao id, ajuste se tiver outro campo
+        quantity: findValue(p, "quantity"),
+    }));
+
+    window.dataLayer.push({
+        event: "purchase",
+        ecommerce: {
+            purchase: {
+                actionField: {
+                    id: transaction_id,
+                    affiliation: "adias", // valor fixo, pode parametrizar
+                    revenue: revenue,
+                    shipping: shipping,
+                    coupon: discount > 0 ? String(discount) : "",
+                    action: "purchase",
+                },
+                products: mappedProducts,
+            },
+        },
+        email,
+    });
 }
 
 async function getUserInfo() {

@@ -578,26 +578,12 @@ const closeCheckout = async () => {
       return;
     }
 
-    console.log("checkoutData", checkoutData)
-
-    await pushDataLayerCheckoutPurchaseEvent(checkoutData);
-
     window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
   } finally {
     loading.classList.add('hidden');
     loading.classList.remove('flex');
     document.querySelector('#finish-order-button').disabled = false
   }
-}
-
-async function pushDataLayerCheckoutPurchaseEvent(checkoutData) {
-  return await window.dispatchEvent(
-    new CustomEvent('PurchaseCheckout', {
-      detail: {
-        checkout: checkoutData.completeResponse.data
-      }
-    })
-  );
 }
 
 async function renderUser() {

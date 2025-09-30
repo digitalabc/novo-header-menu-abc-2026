@@ -126,12 +126,12 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
 
 
   const l = u.reduce((n, t) => {
-      const i = t.type;
-      return n[i] || (n[i] = []),
-        n[i].push(t),
-        n
-    }
-      , {})
+    const i = t.type;
+    return n[i] || (n[i] = []),
+      n[i].push(t),
+      n
+  }
+    , {})
 
   const script = Object.values(l).flatMap(n => {
     const t = n[0]?.scripts;
@@ -149,7 +149,7 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   script.length > 0 && Promise.all(script).then(() => {
     console.log("Todos os scripts foram carregados com sucesso."),
       Fbits.Gateway.ExecuteLoadedCallbacks()
-      InitializeJpCardLibrary();
+    InitializeJpCardLibrary();
   }
   ).catch(n => {
     console.error("Erro ao carregar os scripts:", n)
@@ -381,36 +381,6 @@ function ensureCardElementsVisibility() {
   }
 }
 
-const selectPayment = async (paymentId) => {
-  const loading = document.getElementById('payment-loading');
-  loading.classList.remove('hidden');
-  loading.classList.add('flex');
-
-  const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
-  wrappers.forEach((element) => element.innerHTML = '');
-
-  const checkoutId = await client.cookie.get("carrinho-id");
-
-  const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
-
-  const finishOrder = document.getElementById('finish-order')
-
-  finishOrder.style.display = 'flex';
-
-  document.getElementById('checkout-payment-options').style.display = 'none';
-
-  await renderSummary();
-
-  if (result.errors) {
-    showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
-    return;
-  }
-
-  // document.getElementById('btn-sumary-close').disabled = false;
-  loading.classList.add('hidden');
-  loading.classList.remove('flex');
-}
-
 
 async function renderSummary() {
   const checkoutId = client.cookie.get("carrinho-id");
@@ -423,6 +393,64 @@ async function renderSummary() {
   );
 
   setInnerHtmlById(response, "data_summary");
+}
+
+const selectPaymentPushElement = async (checkoutId, paymentName) => {
+  const { data } = await client.checkout.get(checkoutId);
+  try {
+    const items = await data.products.map((e) => {
+      return {
+        item_id: e.productId,
+        item_name: e.name,
+        discount: e.price == 0 ? 0 : e.listPrice - e.price,
+        price: e.price == 0 ? e.price : e.price,
+        quantity: e.quantity
+      }
+    })
+
+    window.dataLayer.push({
+      event: "add_payment_info",
+      ecommerce: {
+        payment_type: paymentName,
+        currency: "BRL",
+        value: data.total,
+        items
+      }
+    })
+  } catch {
+    console.log("Ocorreu um erro na montagem do evento de 'add_payment_info'")
+  }
+
+}
+
+const selectPayment = async (paymentId, paymentName) => {
+  const loading = document.getElementById('payment-loading');
+  loading.classList.remove('hidden');
+  loading.classList.add('flex');
+
+  const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
+  wrappers.forEach((element) => element.innerHTML = '');
+
+  const checkoutId = await client.cookie.get("carrinho-id");
+
+  const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
+
+  await selectPaymentPushElement(checkoutId, paymentName)
+
+  const finishOrder = document.getElementById('finish-order');
+
+  finishOrder.style.display = 'flex';
+
+  document.getElementById('checkout-payment-options').style.display = 'none';
+
+  await renderSummary();
+
+  if (result.errors) {
+    showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
+  } else {
+    loading.classList.add('hidden');
+    loading.classList.remove('flex');
+  }
 }
 
 async function backPaymentStep() {
@@ -520,7 +548,7 @@ function formComplete(form) {
   let button = document.getElementById("finish-card-form-button");
 
   let allFilled = [...form.elements]
-    .map((el)=> {
+    .map((el) => {
       updateInputValue(el.name, el.value);
       return el
     })

@@ -389,16 +389,26 @@ const selectDeliveryStore = async (value) => {
 
   let result = await client.checkout.selectShippingQuote(value, checkoutId);
 
-  if (result.errors) {
-    showOverlay(
-      "Erro ao escolher o método de envio",
-      result.errors[0].message,
-      true
-    );
-    return;
-  } else {
-    window.location = "/checkout/payment";
-  }
+  window.dataLayer.push({
+    event: "form_change",
+    form_field: "forma-envio",
+    form_value: result.data.selectedShipping.name
+  })
+
+  window.dataLayer.push({
+    event: "add_shipping_info",
+    ecommerce: {
+      currency: "BRL",
+      shipping_tier: result.data.selectedShipping.name
+    }
+  })
+
+  if (result.errors) showOverlay(
+    "Erro ao escolher o método de envio",
+    result.errors[0].message,
+    true
+  )
+  else window.location = "/checkout/payment";
 };
 
 /**

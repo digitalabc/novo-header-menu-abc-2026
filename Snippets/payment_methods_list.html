@@ -24,7 +24,7 @@
           <div class="payment-option">
         {{ end }}
           <input type="radio" name="paymentOption" id="paymentOption-{{ payment.id }}" value="{{ payment.id }}"
-            onclick="selectPayment('{{ payment.id }}', this)" class="hidden"/>
+            onclick="selectPayment('{{ payment.id }}', '{{ payment.name }}', this)" class="hidden"/>
           <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
               <img src="{{ payment.image_url }}" width="50">
               <div class="payment-details">

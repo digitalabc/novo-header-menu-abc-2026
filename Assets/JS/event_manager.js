@@ -140,16 +140,28 @@ function beginCheckoutEvent(eventInput) {
         })
     })
 
-    if (eventInput.detail.checkout) {
+    window.dataLayer.push({
+        event: "begin_checkout", ecommerce: {
+            ...eventInput.detail.checkout,
+            currency: "BRL",
+            value: eventInput.detail.checkout.total,
+            items
+        }
+    })
+    getUserInfo().then((user_info) => {
         window.dataLayer.push({
-            event: "begin_checkout", ecommerce: {
+            event: "checkout", ecommerce: {
                 ...eventInput.detail.checkout,
-                currency: "BRL",
-                value: eventInput.detail.checkout.total,
-                items
+                checkout: {
+                    currency: "BRL",
+                    value: eventInput.detail.checkout.total,
+                    products: items
+                },
+                user: user_info
             }
         })
-    }
+    });
+
 }
 
 function purchaseEvent(eventInput) {
@@ -228,16 +240,16 @@ function getProductData(productData) {
 }
 
 function getCartData(checkoutData) {
-    const cartProducts = [];
-    for (productToAdd of checkoutData.products)
-        cartProducts.push({
+    const cartProducts = checkoutData.products.map((productToAdd, i) => {
+        return {
             item_id: productToAdd.productId,
             item_name: productToAdd.name,
             discount: productToAdd.price == 0 ? 0 : productToAdd.listPrice - productToAdd.price,
-            index: 0,
+            index: i,
             price: productToAdd.price == 0 ? productToAdd.price : productToAdd.price,
             quantity: 1
-        });
+        }
+    })
     const formated = {
         item_list_name: "Cart List",
         currency: "BRL",

@@ -15,7 +15,15 @@
   {{ comprePorUnidade = true }}
 {{~ end ~}}
 
-<div class="spot">
+<script>
+  const dataProduct{{product.product_id}} = {{product}}
+
+  var click= ()=> {
+    console.log("ola")
+  }
+</script>
+
+<div class="spot" onclick="click()">
     <div class="spot__image">
         {{ stamps promotions: product.promotions discount_percentage: product.prices.discount_percentage }}
         {{ product_discount_spot discount_percentage: product.prices.discount_percentage virtual_reality: virtual_reality }}

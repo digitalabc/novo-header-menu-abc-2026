@@ -7,6 +7,7 @@
   {{ header default_title: default_title_product seo: data.product.seo}}
   <meta name="robots" content="index, follow" http-equiv="">
   {{ product_structured_data product: data.product current_url: store.urls.current }}
+  {{ gtm_product_view product: data.product  }}
 </head>
 
 <body class="product">
@@ -222,7 +223,6 @@
 
   {{ footer products:common.lighbox_products.products.nodes }}
 
-  {{ gtm_product_view product: data.product  }}
   
   {{ gtm_config gtm_id: common.gtm_id }}
 

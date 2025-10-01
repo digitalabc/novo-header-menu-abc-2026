@@ -17,6 +17,7 @@ function openOffcanvas(offcanvasId){
   if (offcanvas) {
     body.classList.add("ah-offcanvas-container")
     offcanvas.style.display = "block";
+    window.dispatchEvent(new CustomEvent("cartViewed"))
     setTimeout(() => { //Delay class add to prevent visual bug due to display toggle
       offcanvas.classList.add("ah-offcanvas-open")
     }, 10);

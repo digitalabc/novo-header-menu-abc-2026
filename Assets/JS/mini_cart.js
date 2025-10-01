@@ -164,12 +164,12 @@ async function checkoutRemoveProduct(id, qty) {
       console.warn(rcheckout.data.checkoutId);
     }
 
-    const r = await client.checkout.remove(input, rvariables.id);
+    const checkoutData = await client.checkout.remove(input, rvariables.id);
 
     window.dispatchEvent(new CustomEvent("productRemovedFromCart", {
       detail: {
         cart: checkoutData.data,
-        products: input
+        items: input
       }
     }));
 

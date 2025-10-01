@@ -259,45 +259,53 @@ function showWhatsAppForm() {
     });
 }
 
-// replace float icon
-var wppIconButtons = document.querySelector("#whatsapp");
-var mmWppIcon = wppIconButtons.cloneNode(true);
-mmWppIcon.setAttribute("id", "mm-whatsapp");
-mmWppIcon.style.cursor = "pointer";
-mmWppIcon.style.position = "fixed";
-mmWppIcon.style.bottom = "40px";
-mmWppIcon.style.right = "10px";
-mmWppIcon.style.zIndex = "998";
-mmWppIcon.style.filter = "drop-shadow(2px 4px 6px #999)";
+window.addEventListener("load", onLoadWppIcon, false);
 
-wppIconButtons.remove();
-document.body.appendChild(mmWppIcon);
+function onLoadWppIcon() {
+  try {
+    // replace float icon
+    var wppIconButtons = document.querySelector("#whatsapp");
+    var mmWppIcon = wppIconButtons.cloneNode(true);
+    mmWppIcon.setAttribute("id", "mm-whatsapp");
+    mmWppIcon.style.cursor = "pointer";
+    mmWppIcon.style.position = "fixed";
+    mmWppIcon.style.bottom = "40px";
+    mmWppIcon.style.right = "10px";
+    mmWppIcon.style.zIndex = "998";
+    mmWppIcon.style.filter = "drop-shadow(2px 4px 6px #999)";
 
-var wppApiButtons = document.querySelectorAll('a[href*="api.whatsapp"]');
-var wameButtons = document.querySelectorAll('a[href*="wa.me"]');
-var wppIconButton = document.querySelector("#mm-whatsapp");
-var wppButtons = Array.prototype.slice
-  .call(wppApiButtons)
-  .concat(Array.prototype.slice.call(wameButtons))
-  .concat(wppIconButton);
+    wppIconButtons.remove();
+    document.body.appendChild(mmWppIcon);
 
-for (var i = 0; i < wppButtons.length; i++) {
-  wppButtons[i].addEventListener("click", function (e) {
-    var wppUrl = this.getAttribute("href");
-    var wppDefault =
-      "https://api.whatsapp.com/send?phone=553191055920&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es";
-    e.preventDefault();
-    wppIconButton.style.display = "none";
-    showWhatsAppForm();
+    var wppApiButtons = document.querySelectorAll('a[href*="api.whatsapp"]');
+    var wameButtons = document.querySelectorAll('a[href*="wa.me"]');
+    var wppIconButton = document.querySelector("#mm-whatsapp");
+    var wppButtons = Array.prototype.slice
+      .call(wppApiButtons)
+      .concat(Array.prototype.slice.call(wameButtons))
+      .concat(wppIconButton);
 
-    dataLayer.push({
-      event: "whatsapp_form_click",
-    });
+    for (var i = 0; i < wppButtons.length; i++) {
+      wppButtons[i].addEventListener("click", function (e) {
+        var wppUrl = this.getAttribute("href");
+        var wppDefault =
+          "https://api.whatsapp.com/send?phone=553191055920&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es";
+        e.preventDefault();
+        wppIconButton.style.display = "none";
+        showWhatsAppForm();
 
-    if (wppUrl) {
-      preWhatsappHandler(wppUrl);
-    } else {
-      preWhatsappHandler(wppDefault);
+        dataLayer.push({
+          event: "whatsapp_form_click",
+        });
+
+        if (wppUrl) {
+          preWhatsappHandler(wppUrl);
+        } else {
+          preWhatsappHandler(wppDefault);
+        }
+      });
     }
-  });
-}
+  } catch {
+    console.log("Erro ao carregar icone de WhatsApp")
+  }
+} 

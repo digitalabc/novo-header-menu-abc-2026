@@ -72,8 +72,22 @@ async function triggerViewEvents() {
 }
 
 // Functions called by custom events
-function viewCartEvent() {
-    window.dataLayer.push({ event: "view_cart", ecommerce: { ...gtm_cart_details } })
+async function viewCartEvent() {
+    const checkout = await client.cookie.get("carrinho-id");
+
+    const checkoutData = await client.checkout.get(checkout);
+
+    const items = checkoutData.data.products.map((product)=> {
+        return {
+            item_id: product.productVariantId,
+            item_name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+          }
+    })
+    getUserInfo().then((user_info) => {
+        window.dataLayer.push({ event: "view_cart", ecommerce: { items, cart: checkoutData.data }, user: user_info})
+    })
 }
 
 
@@ -184,8 +198,10 @@ function purchaseEvent(eventInput) {
 }
 
 function removeFromCartEvent(eventInput) {
-    window.dataLayer.push({ event: "remove_from_cart", ecommerce: { ...getProductData(eventInput.detail.products) } })
-    window.dataLayer.push({ event: "view_item_list", ecommerce: { ...getCartData(eventInput.detail.cart) } })
+    getUserInfo().then((user_info) => {
+    window.dataLayer.push({ event: "remove_from_cart", ecommerce: { ...eventInput.detail, user: user_info } })
+    window.dataLayer.push({ event: "view_item_list", ecommerce: { ...getCartData(eventInput.detail.cart), user: user_info } })
+    })
 }
 
 function searchPageEvent(eventInput) {
@@ -199,9 +215,8 @@ function hotsitePageEvent(eventInput) {
 
 function addToCartEvent(eventInput) {
     getUserInfo().then((user_info) => {
-        let productData = getProductData(eventInput.detail.products);
         let cartData = getCartData(eventInput.detail.cart);
-        window.dataLayer.push({ event: "add_to_cart", ecommerce: { ...productData, user: user_info } })
+        window.dataLayer.push({ event: "add_to_cart", ecommerce: { ...eventInput.detail, user: user_info } })
         window.dataLayer.push({ event: "view_item_list", ecommerce: { ...cartData, user: user_info } })
     });
 }
@@ -217,7 +232,7 @@ function checkoutPageEvent(eventInput) {
 function productPageEvent(eventInput) {
     if (eventInput.detail.type == "product") {
         getUserInfo().then((user_info) => {
-            window.dataLayer.push({ event: "view_item", ecommerce: { ...gtm_product_details, user: user_info } })
+            window.dataLayer.push({ event: "view_item", ecommerce: { ...window.dataLayer_product_details, user: user_info } })
         });
     }
 }

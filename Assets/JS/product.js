@@ -137,12 +137,6 @@ async function addToCartClick(productVariantId) {
     const input = getAttributeProductAndQuantity(productVariantId);
     const success = await addOrCreateCheckout(input);
     if (success) {
-      window.dispatchEvent(new CustomEvent("productAddedToCart", {
-        detail: { 
-          products: [{ productId: productVariantId }],
-          cart: { total: 0, products: [] }
-        }
-      }));
       showAlert('Produto adicionado ao carrinho!');
       await loadMiniCart();
       openOffcanvas("#minicart-offcanvas")
@@ -159,12 +153,6 @@ async function buyClick(productVariantId) {
     const input = getAttributeProductAndQuantity(productVariantId);
     const success = await addOrCreateCheckout(input);
     if (success && checkoutUrl != "") {
-      window.dispatchEvent(new CustomEvent("productAddedToCart", {
-        detail: { 
-          products: [{ productId: productVariantId }],
-          cart: { total: 0, products: [] }
-        }
-      }));
       window.location = checkoutUrl;
     }
   }
@@ -248,10 +236,23 @@ async function addOrCreateCheckout(input) {
 
       checkoutId = checkoutResponse.data.checkoutId;
 
+      const items = []
+      checkoutResponse.data.products.map(product => {
+        const valid = input.findIndex((e) => e.productVariantId === product.productVariantId)
+        if (valid) {
+          items.push({
+            item_id: product.productVariantId,
+            item_name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+          })
+        }
+      })
+
       window.dispatchEvent(new CustomEvent("productAddedToCart", {
         detail: {
           cart: checkoutResponse.data,
-          products: input
+          items
         }
       }));
     }
@@ -262,10 +263,23 @@ async function addOrCreateCheckout(input) {
 
       await client.cookie.set("carrinho-id", checkoutResponse.data.checkoutId, window.location.hostname.replace("www", ""))
 
+      const items = []
+      checkoutResponse.data.products.map(product => {
+        const valid = input.findIndex((e) => e.productVariantId === product.productVariantId)
+        if (valid) {
+          items.push({
+            item_id: product.productVariantId,
+            item_name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+          })
+        }
+      })
+
       window.dispatchEvent(new CustomEvent("productAddedToCart", {
         detail: {
           cart: checkoutResponse.data,
-          products: input
+          items
         }
       }));
     }

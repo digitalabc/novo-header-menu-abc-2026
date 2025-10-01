@@ -117,10 +117,23 @@ const cartAddQuantity = async (productVariantId, customizationId) => {
   const input = getCartAddOrSubtractInput(productVariantId, 1, customizationId);
   const checkoutResponse = await client.checkout.add(input);
 
+  const items = []
+  checkoutResponse.data.products.map(product => {
+    const valid = input.findIndex((e) => e.productVariantId === product.productVariantId)
+    if (valid) {
+      items.push({
+        item_id: product.productVariantId,
+        item_name: product.name,
+        price: product.price,
+        quantity: product.quantity,
+      })
+    }
+  })
+
   window.dispatchEvent(new CustomEvent("productAddedToCart", {
     detail: {
       cart: checkoutResponse.data,
-      products: input
+      items
     }
   }));
   updateCheckout();
@@ -134,7 +147,7 @@ const cartSubtractQuantity = async (productVariantId, customizationId) => {
   window.dispatchEvent(new CustomEvent("productRemovedFromCart", {
     detail: {
       cart: checkoutResponse.data,
-      products: input
+      items: input
     }
   }));
   updateCheckout();
@@ -191,7 +204,7 @@ async function removeProductFromCart(id, qty, customizationId) {
     window.dispatchEvent(new CustomEvent("productRemovedFromCart", {
       detail: {
         cart: checkoutData.data,
-        products: [{
+        items: [{
           productVariantId: Number(id),
           quantity: Number(qty)
         }]

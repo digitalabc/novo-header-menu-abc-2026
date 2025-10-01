@@ -57,7 +57,7 @@ async function triggerViewEvents() {
 
             case "/checkout/confirmation":
                 parseCustomData(dataElement)
-                parseCustomDataToUA(dataElement)
+                // parseCustomDataToUA(dataElement)
                 break
             default:
                 break;

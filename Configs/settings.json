@@ -598,14 +598,14 @@
         {
           "name": "Centro",
           "adress": "Av. Luiz Antônio Monteiro, 1507 - Centro, Bocaiúva - MG, 39390-000",
-          "phone": "",
+          "phone": "(38) 3241-2741",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/bocaiuva/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
           "sunday": "Fechado"
         }
       ]
@@ -809,12 +809,12 @@
           "adress": "Av. Marechal Floriano, 355, Bandeirinha - Conceição do Mato Dentro, MG - 35860-000",
           "phone": "(31) 971049100",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/conceicao-do-mato-dentro/bandeirinha",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -826,14 +826,14 @@
         {
           "name": "Vale do Sol",
           "adress": "R. Papa João XXIII, 35 - Vale do Sol, Conceição do Rio Verde - MG, 37430-000",
-          "phone": "",
+          "phone": " (35) 3335-1311",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/conceicao-do-rio-verde/vale-do-sol",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "7:00 às 13:00",
           "sunday": "Fechado"
         }
       ]
@@ -1905,14 +1905,14 @@
         {
           "name": "Centro",
           "adress": "Av. Antônio Pereira Lima, 261 - Letra A - Centro, Monte Santo de Minas - MG, 37958-000",
-          "phone": "",
+          "phone": "(35) 99899-6020",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/monte-santo-de-minas/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -2622,14 +2622,14 @@
         {
           "name": "Jardim das Oliveiras",
           "adress": "Av. João Barbosa dos Santos, 1397 - Jardim das Oliveiras, São Domingos das Dores - MG, 35335-000",
-          "phone": "",
+          "phone": "(33) 99957-2727",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/sao-domingo-das-dores/jardim-das-oliveiras",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 18:00",
+          "tuesday": "7:00 às 18:00",
+          "wednesday": "7:00 às 18:00",
+          "thursday": "7:00 às 18:00",
+          "friday": "7:00 às 18:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

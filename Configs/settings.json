@@ -915,6 +915,25 @@
       ]
     },
     {
+      "name": "Coronel Murta",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. José Ferreira Freire Murta, 55 - Centro, Cel. Murta - MG, 31195-000",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/coronel-murta/centro",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Curvelo",
       "state": "Minas Gerais",
       "stores": [

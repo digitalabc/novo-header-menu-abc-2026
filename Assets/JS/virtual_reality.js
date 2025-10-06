@@ -8,27 +8,30 @@
 
     const sku = skuCode;
 
-    const arButton = document.getElementById('ar-button')
-    if (arButton) {
-      await R2U.ar.attach({
-        element: arButton,
-        sku
-      })
-    }
+    // Funcionalidade de realidade aumentada desativada
+    // const arButton = document.getElementById('ar-button')
+    // if (arButton) {
+    //   await R2U.ar.attach({
+    //     element: arButton,
+    //     sku
+    //   })
+    // }
 
     const viewer = document.getElementById('viewer-3d');
     await R2U.viewer.create({ element: viewer, sku, viewerProps: {activeShadow: !isMobileR2U(), shadowRadius: 20, shadowOpacity: 0.2}, });
     viewer.style.display = "block"
 
-    const element = document.getElementById('qrCode');
-    if (element) {
-      await R2U.qrCode.create({ element, sku });
-      element.parentElement.style.display = "block"
-    }
+    // QR Code de realidade aumentada desativado
+    // const element = document.getElementById('qrCode');
+    // if (element) {
+    //   await R2U.qrCode.create({ element, sku });
+    //   element.parentElement.style.display = "block"
+    // }
 
-    document.getElementById("virtual_reality-thumb").style.display = "block"
-    document.getElementById("virtual_reality-icons").style.display = "flex"
-    if (window.innerWidth < 991) document.querySelector(".virtual_reality__banner.mobile").style.display = "block"
+    // Banner de realidade virtual desativado
+    // document.getElementById("virtual_reality-thumb").style.display = "block"
+    // document.getElementById("virtual_reality-icons").style.display = "flex"
+    // if (window.innerWidth < 991) document.querySelector(".virtual_reality__banner.mobile").style.display = "block"
   } else {
     document.getElementById("virtual_reality-slide").style.display = "none"
     document.querySelector(".gallery .swiper-pagination-bullet:last-child").style.display = "none"

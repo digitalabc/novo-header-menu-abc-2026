@@ -5880,6 +5880,25 @@
       ]
     },
     {
+      "name": "Blumenau",
+      "state": "Santa Catarina",
+      "stores": [
+        {
+          "name": "Velha Cabral",
+          "adress": "R. Gov. Jorge Lacerda, 3030 - Velha Cabral, Blumenau - SC, 89045-337",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/santa-catarina/blumenau/velha-cabral",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Florianópolis",
       "state": "Santa Catarina",
       "stores": [

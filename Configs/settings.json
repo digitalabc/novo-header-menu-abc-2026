@@ -1019,6 +1019,19 @@
           "friday": "8:30 às 17:30",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
+        },
+        {
+          "name": "ABC da Construção R. Goiás",
+          "adress": "R. Goiás, 1044 - Centro, Divinópolis - MG, 35500-617",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/divinopolis/centro",
+          "monday": "8:30 às 17:30",
+          "tuesday": "8:30 às 17:30",
+          "wednesday": "8:30 às 17:30",
+          "thursday": "8:30 às 17:30",
+          "friday": "8:30 às 17:30",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },

@@ -873,6 +873,19 @@
           "friday": "8:00 às 19:00",
           "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
+        },
+        {
+          "name": "Santa Efigênia",
+          "adress": "Rua Santa Efigênia, 313 - Santa Efigênia, Conselheiro Lafaiete - MG, 36400-146",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/conselheiro-lafaiete/santa-efigenia",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
         }
       ]
     },

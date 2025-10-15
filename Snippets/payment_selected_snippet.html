@@ -55,7 +55,7 @@
               <div class="forminline">
                 <label>Parcelamento</label>
                 <select data-gateway-parcelamento onchange="selectPaymentInstallment('{{ payment_method.id }}', this)" id="installment-selection" required>
-                  <option value="" disabled selected>Digite aqui</option>
+                  <option value="" disabled selected>Selecione o parcelamento</option>
                   {{ for installment in payment_method.installments }}
                     <option value="{{ installment.number }}">
                       {{ if installment.number == 1 }} À vista {{ else }}
@@ -71,12 +71,7 @@
             </div>
         </div>
           <div class="payment-buttons">
-            <button class="checkout-back-button" onclick="backPaymentStep()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6.25 13.5L7.475 12.2312L4.36875 9.125H15V7.375H4.36875L7.475 4.26875L6.25 3L1 8.25L6.25 13.5Z" fill="#20A389"/>
-              </svg>
-              Voltar
-            </button>
+            <button class="checkout-back-button" onclick="backPaymentStep()">Voltar</button>
             <button class="checkout-finish-button" id="finish-card-form-button" disabled onclick="nextCardScreen('{{ payment_method.payment_method_id }}')">
               Salvar e usar
             </button>

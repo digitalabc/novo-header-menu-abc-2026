@@ -214,17 +214,36 @@ function hideMobileSearch(event) {
     body.classList.remove("show-search")
 }
 
-function onScroll(evt) {
-    // Store the scroll value for laterz.
-    /*
-    lastScrollY = window.scrollY;
-  
-    // Prevent multiple rAF callbacks.
-    if (scheduledAnimationFrame) return;
-  
-    scheduledAnimationFrame = true;
-    requestAnimationFrame(readAndUpdatePage);
-    */
+let __lastScrollY = 0;
+let __scrollTicking = false;
+
+function handleScrollDirection() {
+    const currentY = window.pageYOffset || document.documentElement.scrollTop;
+    const body = document.body;
+
+    const minDelta = 5; // evita tremulação
+    if (Math.abs(currentY - __lastScrollY) < minDelta) {
+        __scrollTicking = false;
+        return;
+    }
+
+    if (currentY > __lastScrollY && currentY > 60) {
+        body.classList.add("scroll-down");
+        body.classList.remove("scroll-up");
+    } else {
+        body.classList.add("scroll-up");
+        body.classList.remove("scroll-down");
+    }
+
+    __lastScrollY = currentY <= 0 ? 0 : currentY;
+    __scrollTicking = false;
+}
+
+function onScroll() {
+    if (!__scrollTicking) {
+        window.requestAnimationFrame(handleScrollDirection);
+        __scrollTicking = true;
+    }
 }
 
 window.addEventListener("scroll", onScroll);

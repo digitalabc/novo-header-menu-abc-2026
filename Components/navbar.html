@@ -7,7 +7,7 @@
         navbar menu_groups: data...menu_group position: "Topo Header"
 ## }}
 {{~ capture logo_source ~}}
-  {{- store.urls.static_img}}{{settings.logo_path}}?theme={{store.theme -}}&v={{store.last_modified-}}
+  {{- store.urls.static_img}}header/logo-abc.svg?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 {{~ menu_group = menu_groups | group.by @(do; ret $0.position;end) | group.get position | array.first ~}}
 {{~ menus = menu_group.menus | group.by @(do; ret $0.parent_menu_id;end) ~}}

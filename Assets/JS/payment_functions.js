@@ -503,17 +503,60 @@ async function backPaymentStep() {
   ).style.maxHeight = "";
 }
 
+function validaCNPJ(cnpj) {
+  cnpj = cnpj.replace(/\D/g, "");
+  
+  if (cnpj.length !== 14) return false;
+  
+  if (/^(\d)\1+$/.test(cnpj)) return false;
+  
+  let tamanho = cnpj.length - 2;
+  let numeros = cnpj.substring(0, tamanho);
+  let digitos = cnpj.substring(tamanho);
+  let soma = 0;
+  let pos = tamanho - 7;
+  
+  for (let i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  
+  let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado != digitos.charAt(0)) return false;
+  
+  tamanho = tamanho + 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+  
+  for (let i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  
+  resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado != digitos.charAt(1)) return false;
+  
+  return true;
+}
+
 function formCpfMask(input) {
   let value = input.value.replace(/\D/g, "");
 
-  if (value.length > 11) {
-    value = value.slice(0, 11);
+  if (value.length <= 11) {
+    if (value.length > 11) value = value.slice(0, 11);
+    input.value = value
+      .replace(/^(\d{3})(\d)/, "$1.$2")
+      .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+      .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
+  } else {
+    if (value.length > 14) value = value.slice(0, 14);
+    input.value = value
+      .replace(/^(\d{2})(\d)/, "$1.$2")
+      .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+      .replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3/$4")
+      .replace(/^(\d{2})\.(\d{3})\.(\d{3})\/(\d{4})(\d)/, "$1.$2.$3/$4-$5");
   }
-
-  input.value = value
-    .replace(/^(\d{3})(\d)/, "$1.$2")
-    .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
-    .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
 }
 
 function updateInputValue(name, str) {
@@ -555,18 +598,29 @@ function formComplete(form) {
     .filter((el) => el.hasAttribute("required"))
     .every((el) => el.value.trim() !== "" && el.className.indexOf("jp-card-invalid") === -1)
 
+  let docValue = document.querySelector(".fake-form input[name=cpf]").value.replace(/\D/g, "");
+  let docValid = false;
+  
+  if (docValue.length === 11) {
+    docValid = Fbits.Util.ValidaCPF(docValue);
+  } else if (docValue.length === 14) {
+    docValid = validaCNPJ(docValue);
+  }
 
-  let cpfValid = Fbits.Util.ValidaCPF(
-    document.querySelector(".fake-form input[name=cpf]").value.trim()
-  );
-
-  button.disabled = !allFilled || !cpfValid;
+  button.disabled = !allFilled || !docValid;
 }
 
 function validateCpf(input) {
-  let cpfValid = Fbits.Util.ValidaCPF(input.value.replace(/\D/g, ""));
+  let value = input.value.replace(/\D/g, "");
+  let isValid = false;
+  
+  if (value.length === 11) {
+    isValid = Fbits.Util.ValidaCPF(value);
+  } else if (value.length === 14) {
+    isValid = validaCNPJ(value);
+  }
 
-  if (!cpfValid) {
+  if (!isValid) {
     input.classList.add("invalid");
   } else {
     input.classList.remove("invalid");

@@ -42,9 +42,9 @@
               <input type="hidden" name="expiry" value="01/1954" />
               <div class="forminline">
                 <label>
-                  CPF do Titular *
+                  CPF/CNPJ do Titular *
                 </label>
-                <input type="text" name="cpf" id="cardDocument" placeholder="Digite o CPF" required oninput="formCpfMask(this)" onblur="validateCpf(this)"/>
+                <input type="text" name="cpf" id="cardDocument" placeholder="Digite o CPF ou CNPJ" required oninput="formCpfMask(this)" onblur="validateCpf(this)" maxlength="18"/>
               </div>
               <div class="forminline">
                 <label>

@@ -30,8 +30,8 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   /* Box-shadow gigante para sobrescrever QUALQUER cor */
-  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
   box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
 
   /* Background forçado */
   background: #f4f6f8 !important;
@@ -43,8 +43,8 @@ select:-webkit-autofill:focus {
   color: #333 !important;
 
   /* Remove qualquer transição que possa interferir */
-  -webkit-transition: none !important;
   transition: none !important;
+  -webkit-transition: none !important;
 
   /* Força bordas */
   border: 1.6px solid #ececec !important;
@@ -57,6 +57,14 @@ select:-webkit-autofill:focus {
 input:-webkit-autofill {
   -webkit-animation-name: autofill !important;
   -webkit-animation-fill-mode: both !important;
+}
+
+@keyframes autofill {
+  to {
+    color: #333 !important;
+    background: #f4f6f8 !important;
+    background-color: #f4f6f8 !important;
+  }
 }
 
 @-webkit-keyframes autofill {
@@ -74,7 +82,7 @@ main.checkout-shipping-new-address-wrapper {
   width: 100%;
   gap: 32px;
   margin: auto;
-  padding: 3rem 1rem;
+  padding: 1rem 1rem;
 }
 
 section.checkout-shipping-new-address--form-section {
@@ -97,7 +105,7 @@ h2.checkout-shipping-new-address--title {
 }
 
 p.checkout-shipping-new-address--warning {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 12px;
   font-size: 14px;
@@ -507,25 +515,25 @@ input:-webkit-autofill:active {
   animation: autofill-fix 0s forwards !important;
 }
 
-@-webkit-keyframes autofill-fix {
-
-  from,
-  to {
-    background-color: #f4f6f8 !important;
-    color: #333 !important;
-    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
-    box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
-  }
-}
-
 @keyframes autofill-fix {
 
   from,
   to {
     background-color: #f4f6f8 !important;
     color: #333 !important;
-    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
     box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  }
+}
+
+@-webkit-keyframes autofill-fix {
+
+  from,
+  to {
+    background-color: #f4f6f8 !important;
+    color: #333 !important;
+    box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
   }
 }
 
@@ -596,4 +604,175 @@ input[data-form-type] {
   main.checkout-shipping-new-address-wrapper {
     gap: 16px;
   }
+}
+
+.checkout-shipping-new-address--manual-fields {
+  background-color: #FFF3E0;
+  border: 1px solid #FFB74D;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.checkout-shipping-new-address--manual-fields-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #E65100;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.checkout-shipping-new-address--form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.checkout-shipping-new-address--form-state {
+  flex: 0 0 30%;
+}
+
+.checkout-shipping-new-address--form-city {
+  flex: 1;
+}
+
+.checkout-shipping-new-address--form-subgroup {
+  margin-bottom: 16px;
+}
+
+.checkout-shipping-new-address--form-subgroup:last-of-type {
+  margin-bottom: 0;
+}
+
+.checkout-shipping-new-address--form-subgroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.checkout-shipping-new-address--form-subgroup input,
+.checkout-shipping-new-address--form-subgroup select {
+  width: 100%;
+  height: 48px;
+  background-color: #fff !important;
+  border: 1.6px solid #ececec;
+  outline: none;
+  border-radius: 8px;
+  padding: 0px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333 !important;
+  line-height: 16px;
+  transition: all 0.3s ease-out;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+}
+
+@media (max-width: 768px) {
+
+  .checkout-shipping-new-address--form-subgroup input,
+  .checkout-shipping-new-address--form-subgroup select {
+    height: 56px;
+  }
+}
+
+.checkout-shipping-new-address--form-state {
+  position: relative;
+}
+
+.checkout-shipping-new-address--form-state select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-color: #fff !important;
+  /* seta desenhada no background, sem posição absoluta */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23acb5bb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 14px) 50%;
+  background-size: 14px;
+  padding-right: 44px !important;
+  cursor: pointer;
+}
+
+
+
+.checkout-shipping-new-address--form-state select:focus {
+  border: 1.4px solid #0092ff !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.checkout-shipping-new-address--form-state select option {
+  background-color: #fff;
+  color: #333;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.checkout-shipping-new-address--form-state select option:hover {
+  background-color: #f0f8ff;
+  color: #0092ff;
+}
+
+.checkout-shipping-new-address--form-state select option:checked {
+  background-color: #0092ff;
+  color: #fff;
+}
+
+.checkout-shipping-new-address--form-subgroup input:hover {
+  border: 1.2px solid #0092ff !important;
+}
+
+.checkout-shipping-new-address--form-subgroup input:focus {
+  border: 1.4px solid #0092ff !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.checkout-shipping-new-address--form-subgroup .checkout-shipping-new-address--form-error {
+  display: none;
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.checkout-shipping-new-address--form-subgroup .checkout-shipping-new-address--form-error.is--active {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .checkout-shipping-new-address--form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .checkout-shipping-new-address--form-state,
+  .checkout-shipping-new-address--form-city {
+    flex: 1 1 100%;
+  }
+}
+
+.checkout-shipping-new-address--manual-fields .checkout-shipping-new-address--form-subgroup input,
+.checkout-shipping-new-address--manual-fields .checkout-shipping-new-address--form-subgroup select {
+  background-color: #fff !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+}
+
+.checkout-shipping-new-address--manual-fields input:-webkit-autofill,
+.checkout-shipping-new-address--manual-fields input:-webkit-autofill:hover,
+.checkout-shipping-new-address--manual-fields input:-webkit-autofill:focus,
+.checkout-shipping-new-address--manual-fields input:-webkit-autofill:active,
+.checkout-shipping-new-address--manual-fields select:-webkit-autofill,
+.checkout-shipping-new-address--manual-fields select:-webkit-autofill:hover,
+.checkout-shipping-new-address--manual-fields select:-webkit-autofill:focus,
+.checkout-shipping-new-address--manual-fields select:-webkit-autofill:active {
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  background: #fff !important;
+  background-color: #fff !important;
 }

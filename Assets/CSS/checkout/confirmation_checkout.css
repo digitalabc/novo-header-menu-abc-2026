@@ -2378,9 +2378,10 @@ img {
 }
 
 .adress-total {
-  display: flex;
+  display: block;
   width: 100%;
   word-wrap: break-word;
+  text-align: right;
 }
 
 .section-content-text-list {
@@ -5389,5 +5390,5 @@ img {
 }
 
 .wake-confirmation .checkout-footer-mobile {
-    display: none !important;
+  display: none !important;
 }

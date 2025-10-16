@@ -172,16 +172,15 @@ class ShippingNewAddress {
       customerAccessToken,
     };
 
-    try {
-      const result = await client.query(mutation, variables);
-      const newAddressId = result?.data?.customerAddressCreate?.id ?? null;
+      try {
+        const result = await client.query(mutation, variables);
+        const newAddressId = result?.data?.customerAddressCreate?.id ?? null;
 
-      if (!newAddressId) {
-        this.dispatchFormWarning(
-          "Erro ao criar endereço, tente novamente mais tarde"
-        );
-        throw new Error("Erro ao criar endereço");
-      }
+        if (!newAddressId) {
+          const apiError = result?.errors?.[0]?.message || "Erro ao criar endereço, tente novamente mais tarde";
+          this.dispatchFormWarning(apiError);
+          throw new Error(apiError);
+        }
 
       if (!(await this.checkoutAddressAssociate(newAddressId))) {
         this.dispatchFormWarning(
@@ -215,11 +214,27 @@ class ShippingNewAddress {
   }
 
   // Validação do CEP: considera válido se tiver exatamente 8 dígitos (ignorando quaisquer caracteres não numéricos)
+  // Verifica se o padrão do CEP é válido (8 dígitos)
+  isValidCepPattern(cepDigits) {
+    return cepDigits.length === 8;
+  }
+
   validatePostalCode({
     postalCode,
     required: required = false,
     dispatchError: dispatchError = false,
   }) {
+    // Se o campo estiver vazio e não for obrigatório, considera válido
+    if (!postalCode.trim() && !required) {
+      if (dispatchError) {
+        this.dispatchInputError({
+          inputKey: "postalCode",
+          inputErrorMessage: null,
+        });
+      }
+      return true;
+    }
+    
     const requiredError = required
       ? this.validateRequired({
           value: postalCode,
@@ -260,6 +275,17 @@ class ShippingNewAddress {
     required: required = false,
     dispatchError: dispatchError = false,
   }) {
+    // Se o campo estiver vazio e não for obrigatório, considera válido
+    if (!number.trim() && !required) {
+      if (dispatchError) {
+        this.dispatchInputError({
+          inputKey: "number",
+          inputErrorMessage: null,
+        });
+      }
+      return true;
+    }
+    
     const requiredError = required
       ? this.validateRequired({
           value: number,
@@ -287,6 +313,17 @@ class ShippingNewAddress {
     required: required = false,
     dispatchError: dispatchError = false,
   }) {
+    // Se o campo estiver vazio e não for obrigatório, considera válido
+    if (!complement.trim() && !required) {
+      if (dispatchError) {
+        this.dispatchInputError({
+          inputKey: "complement",
+          inputErrorMessage: null,
+        });
+      }
+      return true;
+    }
+    
     const error = required
       ? this.validateRequired({
           value: complement,
@@ -326,6 +363,17 @@ class ShippingNewAddress {
     required: required = false,
     dispatchError: dispatchError = false,
   }) {
+    // Se o campo estiver vazio e não for obrigatório, considera válido
+    if (!receiverName.trim() && !required) {
+      if (dispatchError) {
+        this.dispatchInputError({
+          inputKey: "receiverName",
+          inputErrorMessage: null,
+        });
+      }
+      return true;
+    }
+    
     const error = required
       ? this.validateRequired({
           value: receiverName,
@@ -437,16 +485,69 @@ class ShippingNewAddress {
     }
   }
 
+  toggleManualAddressFields(show) {
+    const manualFieldsGroup = document.querySelector('[data-group="manual-address-fields"]');
+    
+    if (!manualFieldsGroup) return;
+    
+    if (show) {
+      manualFieldsGroup.style.display = 'block';
+      ['state', 'city', 'neighborhood', 'street'].forEach(key => {
+        if (this.form.inputs[key]) {
+          this.form.inputs[key].manualMode = true;
+        }
+      });
+    } else {
+      manualFieldsGroup.style.display = 'none';
+      ['state', 'city', 'neighborhood', 'street'].forEach(key => {
+        if (this.form.inputs[key]) {
+          this.form.inputs[key].manualMode = false;
+        }
+      });
+    }
+  }
+
   // Busca os dados de endereço via ViaCEP e preenche os inputs correspondentes.
   async fetchAddressByCEP(postalCode) {
     const digits = postalCode.replace(/\D/g, "");
     const postalGroup = document.querySelector('[data-group="postalCode"]');
+    
+    // Limpa os campos e prepara para nova consulta
+    this.clearAddressFields();
+    
+    // Esconde a informação de CEP
+    document.querySelector(".postal-code-shipping-info .postal-code-shipping-info--text").textContent = "";
+    document.querySelector(".postal-code-shipping-info").style.display = "none";
+    
+    // Se o CEP estiver vazio, não faz nada
+    if (digits.length === 0) {
+      this.toggleManualAddressFields(false);
+      return;
+    }
+    
+    // Verifica se o CEP tem 8 dígitos antes de prosseguir
+    if (digits.length !== 8) {
+      // CEP incompleto, não mostra os campos manuais durante a digitação
+      // Apenas quando o usuário terminar de digitar (evento blur) ou tentar consultar
+      return;
+    }
+    
+    // Mostra o indicador de carregamento
     if (postalGroup) {
       postalGroup.classList.add("is--loading");
     }
+    
+    // Define um timeout para a requisição
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Tempo esgotado')), 2000);
+    });
+    
     try {
-      const response = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
+      // Usa Promise.race para competir entre a requisição e o timeout
+      const fetchPromise = fetch(`https://viacep.com.br/ws/${digits}/json/`);
+      const response = await Promise.race([fetchPromise, timeoutPromise]);
       const data = await response.json();
+      
       if (
         data.erro ||
         !data.uf?.trim().length ||
@@ -459,8 +560,7 @@ class ShippingNewAddress {
       // street, neighborhood, city, state, postalCode
       let postalCodeShippingInfo = "";
 
-      // Preenche os inputs ocultos
-
+      // Preenche os inputs
       if (this.form.inputs.street && this.form.inputs.street.inputElement) {
         this.form.inputs.street.inputElement.value = data.logradouro || "";
         postalCodeShippingInfo += data.logradouro || "";
@@ -480,7 +580,18 @@ class ShippingNewAddress {
         postalCodeShippingInfo += postalCodeShippingInfo.length ? " - " : "";
       }
       if (this.form.inputs.state && this.form.inputs.state.inputElement) {
-        this.form.inputs.state.inputElement.value = data.uf || "";
+        // Para o select de estado, seleciona a opção correta
+        const stateSelect = this.form.inputs.state.inputElement;
+        const uf = data.uf || "";
+        
+        // Encontra a opção com o valor correspondente ao UF
+        for (let i = 0; i < stateSelect.options.length; i++) {
+          if (stateSelect.options[i].value === uf) {
+            stateSelect.selectedIndex = i;
+            break;
+          }
+        }
+        
         postalCodeShippingInfo += data.uf || "";
         postalCodeShippingInfo += postalCodeShippingInfo.length ? " - " : "";
       }
@@ -497,6 +608,9 @@ class ShippingNewAddress {
 
       document.querySelector(".postal-code-shipping-info").style.display =
         "flex";
+        
+      // Esconde os campos manuais
+      this.toggleManualAddressFields(false);
 
       // Remove erro se houver
       this.dispatchInputError({
@@ -504,11 +618,13 @@ class ShippingNewAddress {
         inputErrorMessage: null,
       });
     } catch (error) {
-      // Em caso de erro, limpa os inputs e dispara mensagem no CEP
-      this.clearAddressFields();
+      // Mostra os campos manuais para preenchimento
+      this.toggleManualAddressFields(true);
+      
+      // Remove erro do CEP para permitir preenchimento manual
       this.dispatchInputError({
         inputKey: "postalCode",
-        inputErrorMessage: error.message,
+        inputErrorMessage: null,
       });
     } finally {
       if (postalGroup) {
@@ -531,6 +647,7 @@ class ShippingNewAddress {
         value.inputElement.value = "";
       }
     }
+    this.toggleManualAddressFields(false);
   }
   async fetchCustomerAddresses() {
     const query = `
@@ -585,15 +702,35 @@ class ShippingNewAddress {
   validateForm({ dispatchErrors: dispatchErrors = false }) {
     let isValid = true;
     const inputs = this.form.inputs;
+    
+    // Verifica se os campos manuais estão visíveis
+    const manualFieldsVisible = document.querySelector('[data-group="manual-address-fields"]').style.display !== 'none';
 
-    // Validação do CEP
-    if (
-      !this.validatePostalCode({
-        postalCode: inputs.postalCode.inputElement.value,
-        required: inputs.postalCode.required,
-      })
-    ) {
-      isValid = false;
+    if (!manualFieldsVisible) {
+      if (
+        !this.validatePostalCode({
+          postalCode: inputs.postalCode.inputElement.value,
+          required: inputs.postalCode.required,
+        })
+      ) {
+        isValid = false;
+      }
+    } else {
+      const cepDigits = inputs.postalCode.inputElement.value.replace(/\D/g, "");
+      if (cepDigits.length > 0 && cepDigits.length < 8) {
+        if (dispatchErrors) {
+          this.dispatchInputError({
+            inputKey: "postalCode",
+            inputErrorMessage: "CEP deve ter 8 dígitos",
+          });
+        }
+        isValid = false;
+      } else {
+        this.dispatchInputError({
+          inputKey: "postalCode",
+          inputErrorMessage: null,
+        });
+      }
     }
 
     // Validação do número (ou se o checkbox "withoutNumber" estiver ativo, não valida)
@@ -608,42 +745,64 @@ class ShippingNewAddress {
       }
     }
 
-    // Validação de campos de endereço preenchidos via CEP (estado, cidade, bairro e país)
-    if (!inputs.state.inputElement.value.trim().length) {
-      if (dispatchErrors) {
+    // Validação de campos de endereço (estado, cidade, bairro e país)
+    // Se os campos manuais estiverem visíveis, valida esses campos
+    if (manualFieldsVisible) {
+      // Validação do estado
+      if (!inputs.state.inputElement.value.trim().length) {
+        if (dispatchErrors) {
+          this.dispatchInputError({
+            inputKey: "state",
+            inputErrorMessage: "Estado é obrigatório",
+          });
+        }
+        isValid = false;
+      } else {
         this.dispatchInputError({
-          inputKey: "postalCode",
-          inputErrorMessage: "CEP inválido",
+          inputKey: "state",
+          inputErrorMessage: null,
         });
       }
-      isValid = false;
-    }
-    if (!inputs.city.inputElement.value.trim().length) {
-      if (dispatchErrors) {
+
+      // Validação da cidade
+      if (!inputs.city.inputElement.value.trim().length) {
+        if (dispatchErrors) {
+          this.dispatchInputError({
+            inputKey: "city",
+            inputErrorMessage: "Cidade é obrigatória",
+          });
+        }
+        isValid = false;
+      } else {
         this.dispatchInputError({
-          inputKey: "postalCode",
-          inputErrorMessage: "CEP inválido",
+          inputKey: "city",
+          inputErrorMessage: null,
         });
       }
-      isValid = false;
-    }
-    if (!inputs.neighborhood.inputElement.value.trim().length) {
-      if (dispatchErrors) {
+
+      // Validação do bairro
+      if (!inputs.neighborhood.inputElement.value.trim().length) {
+        if (dispatchErrors) {
+          this.dispatchInputError({
+            inputKey: "neighborhood",
+            inputErrorMessage: "Bairro é obrigatório",
+          });
+        }
+        isValid = false;
+      } else {
         this.dispatchInputError({
-          inputKey: "postalCode",
-          inputErrorMessage: "CEP inválido",
+          inputKey: "neighborhood",
+          inputErrorMessage: null,
         });
       }
-      isValid = false;
-    }
-    if (!inputs.country.inputElement.value.trim().length) {
-      if (dispatchErrors) {
-        this.dispatchInputError({
-          inputKey: "postalCode",
-          inputErrorMessage: "CEP inválido",
-        });
+    } else {
+      // Se os campos manuais não estiverem visíveis, verifica se os campos foram preenchidos pelo CEP
+      if (!inputs.state.inputElement.value.trim().length ||
+          !inputs.city.inputElement.value.trim().length ||
+          !inputs.neighborhood.inputElement.value.trim().length ||
+          !inputs.country.inputElement.value.trim().length) {
+        isValid = false;
       }
-      isValid = false;
     }
 
     // Validação dos demais campos
@@ -655,10 +814,21 @@ class ShippingNewAddress {
     ) {
       isValid = false;
     }
+    
     if (
       !this.validateReceiverName({
         receiverName: inputs.receiverName.inputElement.value,
         required: inputs.receiverName.required,
+      })
+    ) {
+      isValid = false;
+    }
+
+    // Validação do complemento
+    if (
+      !this.validateComplement({
+        complement: inputs.complement.inputElement.value,
+        required: inputs.complement.required,
       })
     ) {
       isValid = false;
@@ -715,6 +885,22 @@ class ShippingNewAddress {
           addressData[addressMapping[key]] = dataObj[key] || "";
         }
       });
+
+      if (addressData.cep) {
+        addressData.cep = String(addressData.cep).replace(/\D/g, "");
+      }
+
+      const manualFieldsVisible = (document.querySelector('[data-group="manual-address-fields"]').style.display !== 'none');
+      if (manualFieldsVisible) {
+        const cepDigits = (addressData.cep || "");
+        if (cepDigits.length !== 8) {
+          delete addressData.cep;
+        }
+      }
+      
+      if (!addressData.country) {
+        addressData.country = "BR";
+      }
 
       if (await this.validateExistingAddress(addressData.cep) && !this.isEdit) {
         this.dispatchFormWarning("Um endereço com este CEP já foi cadastrado!");
@@ -792,53 +978,88 @@ class ShippingNewAddress {
 
       if (key === "postalCode") {
         const postalCodeRegex = /(\d{5})(\d{3})/;
-        this.form.inputs[key].listeners.input = async (event) => {
+        
+        // Variável para controlar o timeout de digitação
+        let cepInputTimeout;
+        
+        this.form.inputs[key].listeners.input = (event) => {
           const target = event.currentTarget;
           const value = target.value
             .slice(0, 9)
             .replace(/\D/g, "")
             .replace(postalCodeRegex, "$1-$2");
 
+          // Aplica máscara para CEP
+          target.value = value;
+          
+          // Limpa o timeout anterior se existir
+          if (cepInputTimeout) {
+            clearTimeout(cepInputTimeout);
+          }
+          
+          // Se o CEP estiver incompleto
           if (value.length < 9) {
             document.querySelector(
               ".postal-code-shipping-info .postal-code-shipping-info--text"
             ).textContent = "";
-
-            document.querySelector(".postal-code-shipping-info").style.display =
-              "none";
-          }
-          // Aplica máscara para CEP
-          target.value = value;
-
-          if (target.value.length !== 9) {
+            document.querySelector(".postal-code-shipping-info").style.display = "none";
+            
+            // Não mostra os campos manuais durante a digitação
+            // Apenas esconde se o campo estiver vazio
+            const digits = value.replace(/\D/g, "");
+            if (digits.length === 0) {
+              // Se o campo estiver vazio, esconde os campos manuais
+              this.toggleManualAddressFields(false);
+            }
             return;
           }
 
-          // Valida o CEP; se válido, consulta o ViaCEP para preencher os outros campos
-          const isValid = this.validatePostalCode({
-            postalCode: value,
-            required: required ?? false,
-            dispatchError: true,
-          });
-          if (isValid) {
-            await this.fetchAddressByCEP(value);
-            this.validateForm({
-              dispatchErrors: false,
+          // Se o CEP estiver completo (9 caracteres com hífen), valida imediatamente
+          if (value.length === 9) {
+            // Limpa o timeout anterior se existir
+            if (cepInputTimeout) {
+              clearTimeout(cepInputTimeout);
+            }
+            
+            // Valida imediatamente para CEPs completos
+            const isValid = this.validatePostalCode({
+              postalCode: value,
+              required: required ?? false,
+              dispatchError: true,
             });
-          } else {
-            this.clearAddressFields();
-            this.validateForm({
-              dispatchErrors: false,
-            });
-
-            document.querySelector(
-              ".postal-code-shipping-info .postal-code-shipping-info--text"
-            ).textContent = "";
-
-            document.querySelector(".postal-code-shipping-info").style.display =
-              "none";
+            
+            if (isValid) {
+              this.fetchAddressByCEP(value);
+            } else {
+              this.toggleManualAddressFields(true);
+            }
+            return;
           }
+
+          // Define um pequeno timeout para não disparar a cada tecla digitada
+          cepInputTimeout = setTimeout(async () => {
+            // Valida o CEP; se válido, consulta o ViaCEP para preencher os outros campos
+            const isValid = this.validatePostalCode({
+              postalCode: value,
+              required: required ?? false,
+              dispatchError: true,
+            });
+            
+            if (isValid) {
+              await this.fetchAddressByCEP(value);
+              this.validateForm({
+                dispatchErrors: false,
+              });
+            } else {
+              // Mostra os campos manuais imediatamente se o CEP for inválido
+              this.toggleManualAddressFields(true);
+              this.validateForm({
+                dispatchErrors: false,
+              });
+            }
+          }, 200); // Reduzido para 200ms para resposta mais rápida
         };
+        
         inputElement.addEventListener(
           "input",
           this.form.inputs[key].listeners.input
@@ -847,31 +1068,49 @@ class ShippingNewAddress {
         this.form.inputs[key].listeners.blur = async (event) => {
           const target = event.currentTarget;
           const value = target.value;
-          // Valida o CEP; se válido, consulta o ViaCEP para preencher os outros campos
-          const isValid = this.validatePostalCode({
-            postalCode: value,
-            required: required ?? false,
-            dispatchError: true,
-          });
-          if (isValid) {
-            await this.fetchAddressByCEP(value);
-            this.validateForm({
-              dispatchErrors: false,
+          
+          // Limpa o timeout se existir
+          if (cepInputTimeout) {
+            clearTimeout(cepInputTimeout);
+          }
+          
+          // Se o campo estiver vazio, não faz nada
+          if (!value.trim()) {
+            return;
+          }
+          
+          // Valida o CEP apenas se o usuário tiver digitado algo
+          const digits = value.replace(/\D/g, "");
+          if (digits.length > 0) {
+            const isValid = this.validatePostalCode({
+              postalCode: value,
+              required: required ?? false,
+              dispatchError: true,
             });
-          } else {
-            this.clearAddressFields();
-            this.validateForm({
-              dispatchErrors: false,
-            });
-
-            document.querySelector(
-              ".postal-code-shipping-info .postal-code-shipping-info--text"
-            ).textContent = "";
-
-            document.querySelector(".postal-code-shipping-info").style.display =
-              "none";
+            
+            if (isValid && digits.length === 8) {
+              // CEP válido e completo, busca o endereço
+              await this.fetchAddressByCEP(value);
+              this.validateForm({
+                dispatchErrors: false,
+              });
+            } else if (digits.length === 8) {
+              // CEP com 8 dígitos mas inválido (não encontrado)
+              this.toggleManualAddressFields(true);
+              this.validateForm({
+                dispatchErrors: false,
+              });
+            } else if (digits.length < 8) {
+              // CEP incompleto após perder o foco
+              // Mostra os campos manuais apenas se o usuário já terminou de digitar (saiu do campo)
+              this.toggleManualAddressFields(true);
+              this.validateForm({
+                dispatchErrors: false,
+              });
+            }
           }
         };
+        
         inputElement.addEventListener(
           "blur",
           this.form.inputs[key].listeners.blur
@@ -892,6 +1131,15 @@ class ShippingNewAddress {
         this.form.inputs[key].listeners.blur = (event) => {
           const target = event.currentTarget;
           const value = target.value;
+          
+          // Se o campo estiver vazio e o usuário apenas clicou e saiu, não mostra erro
+          if (!value.trim()) {
+            this.dispatchInputError({
+              inputKey: "number",
+              inputErrorMessage: null,
+            });
+            return;
+          }
 
           this.validateForm({
             dispatchErrors: false,
@@ -949,12 +1197,23 @@ class ShippingNewAddress {
         );
 
         this.form.inputs[key].listeners.blur = (event) => {
+          const value = event.currentTarget.value;
+          
+          // Se o campo estiver vazio e o usuário apenas clicou e saiu, não mostra erro
+          if (!value.trim()) {
+            this.dispatchInputError({
+              inputKey: "complement",
+              inputErrorMessage: null,
+            });
+            return;
+          }
+          
           this.validateForm({
             dispatchErrors: false,
           });
 
           this.validateComplement({
-            complement: event.currentTarget.value,
+            complement: value,
             required: required ?? false,
             dispatchError: true,
           });
@@ -996,6 +1255,110 @@ class ShippingNewAddress {
         );
         continue;
       }
+      
+      if (key === "state") {
+        this.form.inputs[key].listeners.change = (event) => {
+          try {
+            this.validateForm({
+              dispatchErrors: false,
+            });
+            this.dispatchInputError({
+              inputKey: "state",
+              inputErrorMessage: this.form.inputs.state.inputElement.value.trim().length ? null : "Estado é obrigatório",
+            });
+          } catch (error) {
+            console.warn("Erro na validação do estado:", error);
+          }
+        };
+        
+        this.form.inputs[key].listeners.focus = (event) => {
+          try {
+            event.stopPropagation();
+          } catch (error) {
+            console.warn("Erro no evento focus do estado:", error);
+          }
+        };
+        
+        inputElement.addEventListener(
+          "change",
+          this.form.inputs[key].listeners.change
+        );
+        inputElement.addEventListener(
+          "focus",
+          this.form.inputs[key].listeners.focus
+        );
+        continue;
+      }
+      
+      if (key === "city" || key === "neighborhood" || key === "street") {
+        this.form.inputs[key].listeners.input = (event) => {
+          try {
+            const target = event.currentTarget;
+            target.value = target.value.slice(0, 100);
+          } catch (error) {
+            console.warn(`Erro no evento input do campo ${key}:`, error);
+          }
+        };
+        inputElement.addEventListener(
+          "input",
+          this.form.inputs[key].listeners.input
+        );
+
+        this.form.inputs[key].listeners.blur = (event) => {
+          try {
+            const value = event.currentTarget.value;
+            
+            if (!value.trim()) {
+              this.dispatchInputError({
+                inputKey: key,
+                inputErrorMessage: null,
+              });
+              return;
+            }
+            
+            if (key === "city") {
+              this.dispatchInputError({
+                inputKey: "city",
+                inputErrorMessage: value.trim().length ? null : "Cidade é obrigatória",
+              });
+            } else if (key === "neighborhood") {
+              this.dispatchInputError({
+                inputKey: "neighborhood",
+                inputErrorMessage: value.trim().length ? null : "Bairro é obrigatório",
+              });
+            } else if (key === "street") {
+              this.dispatchInputError({
+                inputKey: "street",
+                inputErrorMessage: null,
+              });
+            }
+            
+            this.validateForm({
+              dispatchErrors: false,
+            });
+          } catch (error) {
+            console.warn(`Erro no evento blur do campo ${key}:`, error);
+          }
+        };
+        
+        this.form.inputs[key].listeners.focus = (event) => {
+          try {
+            event.stopPropagation();
+          } catch (error) {
+            console.warn(`Erro no evento focus do campo ${key}:`, error);
+          }
+        };
+        
+        inputElement.addEventListener(
+          "blur",
+          this.form.inputs[key].listeners.blur
+        );
+        inputElement.addEventListener(
+          "focus",
+          this.form.inputs[key].listeners.focus
+        );
+        continue;
+      }
 
       if (key === "receiverName") {
         this.form.inputs[key].listeners.input = (event) => {
@@ -1010,6 +1373,15 @@ class ShippingNewAddress {
         this.form.inputs[key].listeners.blur = (event) => {
           const target = event.currentTarget;
           const value = target.value;
+          
+          // Se o campo estiver vazio e o usuário apenas clicou e saiu, não mostra erro
+          if (!value.trim()) {
+            this.dispatchInputError({
+              inputKey: "receiverName",
+              inputErrorMessage: null,
+            });
+            return;
+          }
 
           this.validateForm({
             dispatchErrors: false,
@@ -1056,34 +1428,38 @@ document.addEventListener("DOMContentLoaded", () => {
           required: true,
         },
         state: {
-          formGroup: "hidden-inputs",
+          formGroup: "manual-address-fields",
           inputElement: document.querySelector("#shipping-new-address--state"),
           inputError: null,
           listeners: {},
           required: true,
+          manualMode: false,
         },
         city: {
-          formGroup: "hidden-inputs",
+          formGroup: "manual-address-fields",
           inputElement: document.querySelector("#shipping-new-address--city"),
           inputError: null,
           listeners: {},
           required: true,
+          manualMode: false,
         },
         neighborhood: {
-          formGroup: "hidden-inputs",
+          formGroup: "manual-address-fields",
           inputElement: document.querySelector(
             "#shipping-new-address--neighborhood"
           ),
           inputError: null,
           listeners: {},
           required: true,
+          manualMode: false,
         },
         street: {
-          formGroup: "hidden-inputs",
+          formGroup: "manual-address-fields",
           inputElement: document.querySelector("#shipping-new-address--street"),
           inputError: null,
           listeners: {},
           required: false,
+          manualMode: false,
         },
         country: {
           formGroup: "hidden-inputs",

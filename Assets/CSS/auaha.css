@@ -7083,17 +7083,11 @@ header {
   transition: all 0.2s ease-in-out;
 }
 
-/* Esconde a área do topbar movendo o header inteiro */
-.scroll-down header {
-  transform: translateY(-30px);
-}
-
-.scroll-up header {
-  transform: translateY(0);
-}
 
 .topbar {
-  transition: transform .2s ease;
+  background: #392f2d;
+  color: #000;
+  font-size: 13px;
 }
 
 .navbar__container {

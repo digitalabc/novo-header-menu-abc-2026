@@ -1,0 +1,27 @@
+.product .product-shipping__quote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  font-size: 13px;
+}
+
+.product .product-shipping__info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.product .product-shipping__quote span {
+  color: #e30613;
+  font-weight: 500;
+}
+
+.product .product-shipping__quote span.free-shipping {
+  color: #0fa848;
+}
+
+.product .product-shipping__quote small {
+  color: #5d5d5d;
+  font-size: 12px;
+}

@@ -20,29 +20,47 @@
 <div class="product-shipping__list">
     {{~ if retirada_com_menor_prazo ~}}
       <div class="product-shipping__quote free-shipping">
-          <span>Retirada em loja</span>
-          <span class="free-shipping" >
+          <div class="product-shipping__info" style="display: flex; flex-direction: column; gap: 8px;">
+              <span>Retirada em loja</span>
+              <small>Em até {{ retirada_com_menor_prazo.deadline }} dias úteis</small>
+          </div>
+          <span class="free-shipping" style=" display: flex; align-items: center; justify-content: center;">
             Frete grátis
           </span>
-          <small>Em até {{ retirada_com_menor_prazo.deadline }} dias úteis</small>
       </div>
     {{ end }}
     {{~ if entrega_com_menor_preco ~}}
       <div class="product-shipping__quote">
-          <span>Entrega econômica</span>
-          <span>
-            {{ entrega_com_menor_preco.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
-          </span>
-          <small>Em até {{ entrega_com_menor_preco.deadline }} dias úteis</small>
+          <div class="product-shipping__info" style="display: flex; flex-direction: column; gap: 8px;">
+              <span>Entrega econômica</span>
+              <small>Em até {{ entrega_com_menor_preco.deadline }} dias úteis</small>
+          </div>
+          {{~ if entrega_com_menor_preco.value == 0 ~}}
+            <span class="free-shipping" style=" display: flex; align-items: center; justify-content: center;">
+              Frete grátis
+            </span>
+          {{~ else ~}}
+            <span style=" display: flex; align-items: center; justify-content: center;">
+              {{ entrega_com_menor_preco.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
+            </span>
+          {{~ end ~}}
       </div>
     {{ end }}
     {{~ if entrega_com_menor_preco?.name != entrega_com_menor_prazo?.name ~}}
       <div class="product-shipping__quote">
-          <span>Entrega expressa</span>
-          <span>
-            {{ entrega_com_menor_prazo.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
-          </span>
-          <small>Em até {{ entrega_com_menor_prazo.deadline }} dias úteis</small>
+          <div class="product-shipping__info" style="display: flex; flex-direction: column; gap: 8px;">
+              <span>Entrega expressa</span>
+              <small>Em até {{ entrega_com_menor_prazo.deadline }} dias úteis</small>
+          </div>
+          {{~ if entrega_com_menor_prazo.value == 0 ~}}
+            <span class="free-shipping" style=" display: flex; align-items: center; justify-content: center;">
+              Frete grátis
+            </span>
+          {{~ else ~}}
+            <span style=" display: flex; align-items: center; justify-content: center;">
+              {{ entrega_com_menor_prazo.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
+            </span>
+          {{~ end ~}}
       </div>
     {{ end }}
 </div>

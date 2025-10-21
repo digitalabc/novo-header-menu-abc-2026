@@ -1,11 +1,82 @@
+// Função global para ocultar erro de um campo específico
+function hideFieldError(field) {
+    if (field.value.trim() !== '') {
+        // Procurar mensagem de erro em diferentes posições
+        const errorElement = field.parentElement.querySelector('.error') || 
+                            field.nextElementSibling?.classList.contains('error') ? field.nextElementSibling : null ||
+                            field.parentElement.parentElement.querySelector('.error');
+        
+        if (errorElement) {
+            errorElement.classList.add('hidden');
+        }
+        field.classList.remove('border-red-500');
+    }
+}
+
+// Função para configurar validação instantânea do CEP
+function setupCepValidation() {
+    const cepInput = document.getElementById('zipcode');
+    if (!cepInput) return;
+    
+    let timeoutId;
+    
+    // Função para validar CEP com debounce
+    function validateCepWithDebounce() {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(async () => {
+            const cepValue = cepInput.value.trim();
+            
+            // Validar apenas se o CEP tem 8 dígitos
+            if (cepValue.length === 8 && /^\d{8}$/.test(cepValue)) {
+                // Usar a função getAddress para manter consistência
+                await getAddress();
+            } else if (cepValue.length > 0 && cepValue.length < 8) {
+                // CEP incompleto - não mostrar erro ainda
+                return;
+            } else if (cepValue.length > 8) {
+                // CEP muito longo - mostrar erro
+                cepInput.classList.add('border-red-500');
+                const invalidCep = document.getElementById('invalidCep');
+                const msgZipCode = document.getElementById('MsgZipCode');
+                
+                if (invalidCep) {
+                    invalidCep.classList.remove('hidden');
+                    invalidCep.classList.add('text-red-500');
+                }
+                if (msgZipCode) {
+                    msgZipCode.classList.add('text-red-500');
+                }
+            }
+        }, 500); // Debounce de 500ms
+    }
+    
+    // Adicionar eventos para validação instantânea
+    cepInput.addEventListener('input', validateCepWithDebounce);
+    cepInput.addEventListener('paste', () => {
+        setTimeout(validateCepWithDebounce, 100);
+    });
+    
+    // Validar CEP quando o usuário pressionar Enter
+    cepInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Evitar envio do formulário
+            
+            // Validar o CEP imediatamente
+            clearTimeout(timeoutId);
+            
+            // Usar getAddress diretamente para validação imediata
+            const cepValue = this.value.trim();
+            if (cepValue.length === 8 && /^\d{8}$/.test(cepValue)) {
+                getAddress(e);
+            } else {
+                validateCepWithDebounce();
+            }
+        }
+    });
+}
+
 window.addEventListener("load", signupSetup, false);
 
-/**
- * Configura o formulário de registro.
- * Verifica se há um token de acesso do cliente. Se houver, preenche o campo de e-mail com o
- * identificador do usuário associado ao token, se aplicável. 
- * Trata a lógica do checkbox "isento" para o registro estadual.
- */
 async function signupSetup() {
     const emailInput = document.querySelector('[id="email"]');
     const token = await client.cookie.get("sf_customer_access_token");
@@ -23,6 +94,40 @@ async function signupSetup() {
             showOverlay("Erro ao acessar informações do usuário", "Não foi possivel acessar email social", true);
         }
     }
+    
+    // Adicionar evento para ocultar mensagens de erro quando o usuário começar a digitar
+    const allInputs = document.querySelectorAll('.wake-signup-wrapper input, .wake-signup-wrapper select');
+    allInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            hideFieldError(this);
+        });
+        
+        input.addEventListener('change', function() {
+            hideFieldError(this);
+        });
+        
+        // Verificar campos já preenchidos ao carregar a página
+        if (input.value.trim() !== '') {
+            hideFieldError(input);
+        }
+    });
+    
+    // Função para inicializar validação de campos já preenchidos
+    function initializeFieldValidation() {
+        const allFields = document.querySelectorAll('.wake-signup-wrapper input, .wake-signup-wrapper select');
+        allFields.forEach(field => {
+            if (field.value.trim() !== '') {
+                hideFieldError(field);
+            }
+        });
+    }
+    
+    // Inicializar verificação de campos já preenchidos
+    initializeFieldValidation();
+    
+    // Configurar validação instantânea do CEP
+    setupCepValidation();
+    
     const isentoCheckbox = document.getElementById('exemptStateRegistrationFree');
     const stateRegistrationInput = document.getElementById('stateRegistration');
     const stateRegistrationError = document.getElementById('stateregistration-error')
@@ -42,18 +147,15 @@ async function signupSetup() {
     }
 }
 
-/**
- * Verifica se os campos de entrada estão em branco e exibe mensagens de erro correspondentes.
- * Itera sobre os elementos de entrada marcados com o atributo 'data-id="valid"' e verifica se estão em branco.
- * Também verifica se um elemento de seleção 'gender' tem uma opção selecionada e atualiza a classe CSS
- * e exibe mensagens de erro, se necessário.
- */
+// Esta função só será chamada no envio do formulário
 function inputValidblank() {
     const inputs = document.querySelectorAll('input[data-id="valid"]');
     var select = document.getElementById('gender');
 
+    // Validar campo de gênero
     if (select && select.selectedIndex !== 0) {
         select.classList.remove('border-red-500');
+        hideFieldError(select);
     } else if (select) {
         select.classList.add('border-red-500');
         const errorSpan = select.parentElement.querySelector('.error');
@@ -62,11 +164,16 @@ function inputValidblank() {
         }
     }
 
+    // Verificar apenas campos vazios no momento do envio
     inputs.forEach(function (input) {
         const fieldValue = input.value.trim();
-        const errorSpan = input.parentElement.querySelector('.error');
+        const errorSpan = input.parentElement.querySelector('.error') || 
+                         input.nextElementSibling?.classList.contains('error') ? input.nextElementSibling : null ||
+                         input.parentElement.parentElement.querySelector('.error');
         const MsgZipCode = document.getElementById('MsgZipCode');
+        
         if (fieldValue === '') {
+            input.classList.add('border-red-500');
             if (errorSpan) {
                 errorSpan.classList.remove('hidden');
             }
@@ -77,18 +184,20 @@ function inputValidblank() {
             if (invalidCep) {
                 invalidCep.classList.add('text-red-500');
             }
+        } else {
+            input.classList.remove('border-red-500');
+            if (errorSpan) {
+                errorSpan.classList.add('hidden');
+            }
         }
     });
 }
 
-/**
- * Formulario para criar novo cliente
- * Busca formulario com id 'accountCreateForm'
- *
- * @param {CustomerCreateInput} input
- */
 const accountCreateSubmit = async (e) => {
     e.preventDefault();
+    
+    // Adicionar classe para indicar que o formulário foi enviado
+    document.querySelector('.wake-signup-wrapper').classList.add('form-submitted');
 
     const input = convertFormInObject(e.target);
     const inputs = document.querySelectorAll('input[data-id="valid"]');
@@ -101,31 +210,25 @@ const accountCreateSubmit = async (e) => {
         if (input.value === '') {
             input.classList.add('border-red-500');
             document.getElementById('invalidCep').classList.remove('hidden');
-
-
             valid = false;
         } else if (input.id === "password") {
             if(input.value.length < 6 ) {
                 showOverlay("Erro no formulário", "A senha precisa conter no mínimo 6 caracteres.", true);
-    
                 input.classList.add('border-red-500');
-    
                 valid = false;
             } else if (input.value !== document.querySelector('input[id=passwordConfirmation]').value) {
                 showOverlay("Erro no formulário", "A senha e a confirmação de senha não são iguais.", true);
-    
                 input.classList.add('border-red-500');
-    
-                valid =  false
+                valid = false;
+            } else {
+                hideFieldError(input);
             }
         } else if (input.id === "receiverName" && !/^\S+\s+\S+/.test(input.value.trim())) {
             showOverlay("Erro no formulário", "Informe o nome e o sobrenome do destinatário.", true);
-
             input.classList.add('border-red-500');
-
-            valid = false
+            valid = false;
         } else {
-            input.classList.remove('border-red-500');
+            hideFieldError(input);
         }
     });
 
@@ -158,10 +261,23 @@ const accountCreateSubmit = async (e) => {
         const createResponse = await client.customer.create(input);
 
         if (createResponse.errors) {
-            if(createResponse?.errors?.[0]?.message == ('CPF already exists')) {
-                showOverlay("Erro no formulário", 'CPF já cadastrado', true);
+            const errorMessage = createResponse.errors[0].message;
+            const linkRecuperar = '<a href="/login/password/recovery" style="color: #0092ff; text-decoration: underline;">Clique aqui para recuperar</a>';
+            
+            if (errorMessage.includes('CPF already exists') || errorMessage.includes('CPF já cadastrado')) {
+                showOverlay("Erro no formulário", `CPF já cadastrado. Você esqueceu a senha? ${linkRecuperar}`, true);
+            } else if (errorMessage.includes('Email already exists') || errorMessage.includes('Email já cadastrado') || errorMessage.includes('email already exists')) {
+                showOverlay("Erro no formulário", `Usuário já cadastrado. Você esqueceu a senha? ${linkRecuperar}`, true);
+            } else if (errorMessage.includes('CNPJ already exists') || errorMessage.includes('CNPJ já cadastrado')) {
+                showOverlay("Erro no formulário", `CNPJ já cadastrado. Você esqueceu a senha? ${linkRecuperar}`, true);
+            } else if (errorMessage.includes('already exists') || errorMessage.includes('já cadastrado')) {
+                showOverlay("Erro no formulário", `Usuário já cadastrado. Você esqueceu a senha? ${linkRecuperar}`, true);
+            } else if (errorMessage.includes('password') || errorMessage.includes('Password')) {
+                showOverlay("Erro no formulário", "Erro na senha. Verifique se sua senha atende aos requisitos de segurança.", true);
+            } else if (errorMessage.includes('email') || errorMessage.includes('Email')) {
+                showOverlay("Erro no formulário", `Email inválido ou já cadastrado. Você esqueceu a senha? ${linkRecuperar}`, true);
             } else {
-                showOverlay("Erro no formulário", createResponse.errors[0].message, true);
+                showOverlay("Erro no formulário", "Ocorreu um erro ao processar seu cadastro. Por favor, verifique os dados e tente novamente.", true);
             }
         } else {
             const loginResponse = await client.customer.authenticate(input.email, input.password);
@@ -169,7 +285,7 @@ const accountCreateSubmit = async (e) => {
             if (loginResponse?.data?.token) {
                 window.location = new URLSearchParams(window.location.search).get('returnUrl') || checkout_pages.account.orders;
             } else if (response?.errors?.length > 0) {
-                showOverlay("Erro ao autenticar usuário", response.errors[0].message, true);
+                showOverlay("Erro ao autenticar usuário", "Não foi possível autenticar o usuário. Por favor, tente novamente.", true);
             } else {
                 window.location = new URLSearchParams(window.location.search).get('returnUrl') || checkout_pages.login.authenticate;
             }
@@ -177,11 +293,12 @@ const accountCreateSubmit = async (e) => {
     }
 };
 
-/**
- * Obtém informações de endereço com base em um CEP fornecido.
- * @returns {Promise<void>} Uma promessa que representa a operação assíncrona.
- */
-async function getAddress() {
+async function getAddress(event) {
+    // Se o evento foi passado e é um evento de tecla Enter, prevenir comportamento padrão
+    if (event && event.key === 'Enter') {
+        event.preventDefault();
+    }
+    
     try {
         const cepInput = document.getElementById('zipcode');
         const cepValue = cepInput.value.trim();
@@ -189,6 +306,19 @@ async function getAddress() {
         if (cepValue === '') {
             console.log('Campo vazio. Por favor, preencha o CEP.');
             return;
+        }
+
+        // Limpar estados anteriores de erro
+        cepInput.classList.remove('border-red-500');
+        const invalidCep = document.getElementById('invalidCep');
+        const msgZipCode = document.getElementById('MsgZipCode');
+        
+        if (invalidCep) {
+            invalidCep.classList.add('hidden');
+            invalidCep.classList.remove('text-red-500');
+        }
+        if (msgZipCode) {
+            msgZipCode.classList.remove('text-red-500');
         }
 
         const variables = {
@@ -199,16 +329,39 @@ async function getAddress() {
         setInnerHtmlById(addressResponse, 'resultGetAddress');
 
         const cepElement = document.getElementById('CepElement');
-        cepElement.value = cepValue;
-        document.getElementById('InputCep').classList.add('hidden');
+        if (cepElement) {
+            cepElement.value = cepValue;
+        }
+        
+        const inputCep = document.getElementById('InputCep');
+        if (inputCep) {
+            inputCep.classList.add('hidden');
+        }
+        
+        // Remover foco do campo para evitar múltiplos envios
+        cepInput.blur();
+        
+        return true; // Indica sucesso
     } catch (error) {
-        console.log("Failure");
+        console.log("Falha na validação do CEP:", error);
 
-        document.getElementById('zipcode').classList.add('border-red-500');
-        document.getElementById('MsgZipCode').classList.add('text-red-500');
-        document.getElementById('invalidCep').classList.add('text-red-500');
-        document.getElementById('invalidCep').classList.remove('hidden');
+        const cepInput = document.getElementById('zipcode');
+        const invalidCep = document.getElementById('invalidCep');
+        const msgZipCode = document.getElementById('MsgZipCode');
+        
+        if (cepInput) {
+            cepInput.classList.add('border-red-500');
+        }
+        
+        if (msgZipCode) {
+            msgZipCode.classList.add('text-red-500');
+        }
+        
+        if (invalidCep) {
+            invalidCep.classList.add('text-red-500');
+            invalidCep.classList.remove('hidden');
+        }
 
-        console.log(error);
+        return false; // Indica falha
     }
 };

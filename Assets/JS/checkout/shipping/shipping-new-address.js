@@ -1326,11 +1326,11 @@ class ShippingNewAddress {
                 inputKey: "neighborhood",
                 inputErrorMessage: value.trim().length ? null : "Bairro é obrigatório",
               });
-            } else if (key === "street") {
-              this.dispatchInputError({
-                inputKey: "street",
-                inputErrorMessage: null,
-              });
+             } else if (key === "street") {
+               this.dispatchInputError({
+                 inputKey: "street",
+                 inputErrorMessage: value.trim().length ? null : "Rua/Logradouro é obrigatório",
+               });
             }
             
             this.validateForm({
@@ -1453,14 +1453,14 @@ document.addEventListener("DOMContentLoaded", () => {
           required: true,
           manualMode: false,
         },
-        street: {
-          formGroup: "manual-address-fields",
-          inputElement: document.querySelector("#shipping-new-address--street"),
-          inputError: null,
-          listeners: {},
-          required: false,
-          manualMode: false,
-        },
+         street: {
+           formGroup: "manual-address-fields",
+           inputElement: document.querySelector("#shipping-new-address--street"),
+           inputError: null,
+           listeners: {},
+           required: true,
+           manualMode: false,
+         },
         country: {
           formGroup: "hidden-inputs",
           inputElement: document.querySelector(

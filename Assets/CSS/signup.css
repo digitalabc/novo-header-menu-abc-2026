@@ -1,0 +1,323 @@
+/* Container principal com estilo similar ao wake-cart-wrapper-product-snippet */
+.signup-container-wrapper {
+  margin-bottom: 0px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  height: min-content;
+  width: 100%;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .signup-container-wrapper {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+}
+
+/* Ocultar informationGroups que está ocupando espaço vazio acima dos inputs de senha */
+.wake-signup-wrapper .informationGroups,
+.wake-signup-wrapper div[class*="informationGroups"],
+.wake-signup-wrapper div[id*="informationGroups"] {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Ocultar mensagens de erro por padrão */
+.wake-signup-wrapper .error {
+  display: none !important;
+}
+
+/* Mostrar mensagens de erro apenas quando explicitamente removida a classe hidden */
+.wake-signup-wrapper .error:not(.hidden) {
+  display: block !important;
+}
+
+/* Garantir que mensagens de erro sejam ocultadas quando campos estão preenchidos */
+.wake-signup-wrapper input:not([value=""]):not(:placeholder-shown)+.error,
+.wake-signup-wrapper input:not([value=""]):not(:placeholder-shown)~.error,
+.wake-signup-wrapper select:not([value=""]):not(:placeholder-shown)+.error,
+.wake-signup-wrapper select:not([value=""]):not(:placeholder-shown)~.error {
+  display: none !important;
+}
+
+/* Estilos base aplicados do login.css */
+.wake-signup-wrapper .border-red-500 {
+  border-color: red !important;
+}
+
+/* Estilos de inputs baseados no login.css */
+.wake-signup-wrapper input[type="text"],
+.wake-signup-wrapper input[type="email"],
+.wake-signup-wrapper input[type="password"],
+.wake-signup-wrapper input[type="tel"],
+.wake-signup-wrapper input[type="date"],
+.wake-signup-wrapper select {
+  display: flex;
+  height: 48px;
+  padding: 0px 24px;
+  align-items: center;
+  margin: 0;
+  border: 1.6px solid #ececec;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f4f6f8 !important;
+  color: #333 !important;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 12px;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 1px #F6F8FA;
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  font-family: var(--font-primary, "Satoshi Variable", sans-serif);
+}
+
+.wake-signup-wrapper input[type="text"]:hover,
+.wake-signup-wrapper input[type="email"]:hover,
+.wake-signup-wrapper input[type="password"]:hover,
+.wake-signup-wrapper input[type="tel"]:hover,
+.wake-signup-wrapper input[type="date"]:hover,
+.wake-signup-wrapper select:hover {
+  border: 1.2px solid #0092ff !important;
+}
+
+.wake-signup-wrapper input[type="text"]:focus,
+.wake-signup-wrapper input[type="email"]:focus,
+.wake-signup-wrapper input[type="password"]:focus,
+.wake-signup-wrapper input[type="tel"]:focus,
+.wake-signup-wrapper input[type="date"]:focus,
+.wake-signup-wrapper select:focus {
+  border: 1.2px solid #0092ff !important;
+  outline: none;
+}
+
+.wake-signup-wrapper input[type="text"]:focus-visible,
+.wake-signup-wrapper input[type="email"]:focus-visible,
+.wake-signup-wrapper input[type="password"]:focus-visible,
+.wake-signup-wrapper input[type="tel"]:focus-visible,
+.wake-signup-wrapper input[type="date"]:focus-visible,
+.wake-signup-wrapper select:focus-visible {
+  border: 1.2px solid #0092ff !important;
+  outline: none;
+}
+
+/* Estilos de autofill aplicados do login.css */
+.wake-signup-wrapper input:-webkit-autofill,
+.wake-signup-wrapper input:-webkit-autofill:hover,
+.wake-signup-wrapper input:-webkit-autofill:focus,
+.wake-signup-wrapper input:-webkit-autofill:active,
+.wake-signup-wrapper input:-webkit-autofill:valid,
+.wake-signup-wrapper input:-webkit-autofill:invalid,
+.wake-signup-wrapper input:-moz-autofill,
+.wake-signup-wrapper input:-moz-autofill:hover,
+.wake-signup-wrapper input:-moz-autofill:focus,
+.wake-signup-wrapper input[type="email"]:-webkit-autofill,
+.wake-signup-wrapper input[type="email"]:-webkit-autofill:hover,
+.wake-signup-wrapper input[type="email"]:-webkit-autofill:focus,
+.wake-signup-wrapper input[type="password"]:-webkit-autofill,
+.wake-signup-wrapper input[type="password"]:-webkit-autofill:hover,
+.wake-signup-wrapper input[type="password"]:-webkit-autofill:focus,
+.wake-signup-wrapper input[type="text"]:-webkit-autofill,
+.wake-signup-wrapper input[type="text"]:-webkit-autofill:hover,
+.wake-signup-wrapper input[type="text"]:-webkit-autofill:focus,
+.wake-signup-wrapper input[type="tel"]:-webkit-autofill,
+.wake-signup-wrapper input[type="tel"]:-webkit-autofill:hover,
+.wake-signup-wrapper input[type="tel"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  background: #f4f6f8 !important;
+  background-color: #f4f6f8 !important;
+  background-image: none !important;
+  -webkit-text-fill-color: #333 !important;
+  color: #333 !important;
+  -webkit-transition: none !important;
+  transition: none !important;
+  border: 1.6px solid #ececec !important;
+  caret-color: #333 !important;
+}
+
+.wake-signup-wrapper input:-webkit-autofill {
+  -webkit-animation-name: autofill !important;
+  -webkit-animation-fill-mode: both !important;
+}
+
+@-webkit-keyframes autofill {
+  to {
+    color: #333 !important;
+    background: #f4f6f8 !important;
+    background-color: #f4f6f8 !important;
+  }
+}
+
+.wake-signup-wrapper input:-webkit-autofill,
+.wake-signup-wrapper input:-webkit-autofill:hover,
+.wake-signup-wrapper input:-webkit-autofill:focus,
+.wake-signup-wrapper input:-webkit-autofill:active {
+  -webkit-animation: autofill-fix 0s forwards !important;
+  animation: autofill-fix 0s forwards !important;
+}
+
+@-webkit-keyframes autofill-fix {
+
+  from,
+  to {
+    background-color: #f4f6f8 !important;
+    color: #333 !important;
+    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  }
+}
+
+@keyframes autofill-fix {
+
+  from,
+  to {
+    background-color: #f4f6f8 !important;
+    color: #333 !important;
+    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  }
+}
+
+.wake-signup-wrapper input:-moz-autofill {
+  background: #f4f6f8 !important;
+  color: #333 !important;
+  border: 1.6px solid #ececec !important;
+}
+
+.wake-signup-wrapper input[data-com-onepassword-filled],
+.wake-signup-wrapper input[data-lpignore],
+.wake-signup-wrapper input[data-form-type] {
+  background-color: #f4f6f8 !important;
+  color: #333 !important;
+  -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+  box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+}
+
+/* Estilo para botões similar ao login.css */
+.wake-signup-wrapper button[type="submit"],
+.wake-signup-wrapper .button-signup,
+.wake-signup-wrapper button {
+  position: relative;
+  height: 38px;
+  width: 100%;
+  background-color: #0092ff;
+  font-size: 16px;
+  color: #fff;
+  line-height: 16px;
+  border-radius: 400px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  border: none;
+  font-weight: 600;
+  font-family: var(--font-primary, "Satoshi Variable", sans-serif);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.4s ease-in-out,
+    font-size 0.2s ease-in-out,
+    transform 0.1s ease-in-out;
+}
+
+.wake-signup-wrapper button[type="submit"]::before,
+.wake-signup-wrapper .button-signup::before,
+.wake-signup-wrapper button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.4s ease-in-out;
+}
+
+.wake-signup-wrapper button[type="submit"]:hover,
+.wake-signup-wrapper .button-signup:hover,
+.wake-signup-wrapper button:hover {
+  background-color: #30a6ff;
+  font-size: 16.2px;
+  font-weight: bold;
+}
+
+.wake-signup-wrapper button[type="submit"]:hover::before,
+.wake-signup-wrapper .button-signup:hover::before,
+.wake-signup-wrapper button:hover::before {
+  left: 100%;
+}
+
+.wake-signup-wrapper button[type="submit"]:active,
+.wake-signup-wrapper .button-signup:active,
+.wake-signup-wrapper button:active {
+  transform: scale(0.98);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* Estilos para labels */
+.wake-signup-wrapper label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #838383;
+  margin-bottom: 4px;
+  display: block;
+  font-family: var(--font-primary, "Satoshi Variable", sans-serif);
+}
+
+/* Fazer o fundo dos labels ter a mesma cor do background dos inputs, exceto labelCpf e labelCnpj */
+.wake-signup-wrapper label:not(#labelCpf):not(#labelCnpj) {
+  background-color: #f4f6f8 !important;
+  padding: 0 5px !important;
+}
+
+/* Estilos para títulos */
+.wake-signup-wrapper h3 {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 8px 0;
+  padding: 0;
+  color: #333;
+  font-family: var(--font-primary, "Satoshi Variable", sans-serif);
+}
+
+.wake-signup-wrapper>p {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  color: #838383;
+  opacity: 0.75;
+  margin-bottom: 24px;
+  font-family: var(--font-primary, "Satoshi Variable", sans-serif);
+}
+
+/* Responsividade para mobile */
+@media (max-width: 767px) {
+
+  .wake-signup-wrapper input[type="text"],
+  .wake-signup-wrapper input[type="email"],
+  .wake-signup-wrapper input[type="password"],
+  .wake-signup-wrapper input[type="tel"],
+  .wake-signup-wrapper input[type="date"],
+  .wake-signup-wrapper select {
+    height: 48px !important;
+    font-size: 16px;
+  }
+
+  .wake-signup-wrapper button[type="submit"],
+  .wake-signup-wrapper .button-signup,
+  .wake-signup-wrapper button {
+    height: 48px;
+    font-size: 16px;
+  }
+}

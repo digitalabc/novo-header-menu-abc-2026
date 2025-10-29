@@ -182,13 +182,13 @@
 
   .abc-newsletter-popup-modal .abc-popup-btn {
     position: relative;
-    height: 38px;
+    height: 40px;
     width: 100%;
     background-color: #333;
     font-size: 16px;
     color: #fff;
     line-height: 16px;
-    border-radius: 8px;
+    border-radius: 40px;
     text-transform: uppercase;
     cursor: pointer;
     overflow: hidden;
@@ -234,6 +234,7 @@
   }
 
   .abc-popup-msg {
+    display: none;
     margin-top: 16px;
     padding: 12px;
     border-radius: 8px;
@@ -366,18 +367,18 @@
             <input class="input" id="abc-popup-input-email" maxlength="70" placeholder="Email" type="text" value="" />
             <a class="abc-popup-btn">Enviar</a>
             <div class="accept-checkbox">
-            <!-- <input type="hidden" id="inp-firstsession" name="firstsession">
+              <!-- <input type="hidden" id="inp-firstsession" name="firstsession">
             <input type="hidden" id="inp-lastsession" name="lastsession">
             <input type="hidden" name="id_submit" id="id_submit"> -->
-            <input type="checkbox" name="aceito" id="inp-aceito">
-            <span>
-              Concordo em receber e-mails, sms e whatsapp da ABC da Construção.
-            </span>
-        </div>
+              <input type="checkbox" name="aceito" id="inp-aceito">
+              <span>
+                Concordo em receber e-mails, sms e whatsapp da ABC da Construção.
+              </span>
+            </div>
           </div>
 
 
-          <div class="abc-popup-msg">&nbsp;</div>
+          <div class="abc-popup-msg"></div>
 
         </div>
 
@@ -449,7 +450,8 @@
     //VALIDAÇÕES - FIM
 
     if (!valido) {
-      elementoErro.style.color = "red"
+      elementoErro.style.color = "red";
+      elementoErro.style.display = "block";
     }
     return valido;
   }
@@ -457,7 +459,7 @@
   function verificaEmail(email) {
     return (
       /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i
-      .test(email));
+        .test(email));
   };
 
   async function abcNewsletterEnviar() {
@@ -479,26 +481,28 @@
         name: nameValue,
         email: emailValue
       };
-      
+
 
       let response = await client.newsletter.create(input);
 
       if (response) {
         abcPopupMsg.innerHTML = "Cadastro realizado com sucesso!";
         abcPopupMsg.setAttribute('style', "color:green;");
+        abcPopupMsg.style.display = 'block';
 
         sendSharpSpring({
           nome: nameValue,
           email: emailValue,
           telefone: ''
         }, "primeira-compra");
-        
+
         setTimeout(() => {
           document.getElementById('abc-newsletter-popup').classList.remove("abc-newsletter-popup-open");
         }, 3000);
       } else {
         abcPopupMsg.innerHTML = "Falha ao realizar cadastro";
         abcPopupMsg.setAttribute('style', "color:red;");
+        abcPopupMsg.style.display = 'block';
       }
     }
   }

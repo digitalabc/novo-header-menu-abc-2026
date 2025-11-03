@@ -7,8 +7,11 @@
 ## }}
 {{~ 
     productsCount = 0 
-    if data.checkout 
+    if data.checkout && data.checkout.products 
       productsCount = data.checkout.products.size
     end 
+    if productsCount == null
+      productsCount = 0
+    end
 ~}}
 {{productsCount}}

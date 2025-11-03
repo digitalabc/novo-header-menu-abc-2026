@@ -95,20 +95,24 @@ async function loadMiniCart(shouldOpenCart = false) {
 
     document.getElementById("mini-cart-core").innerHTML = response;
 
+    const cartCount = response_count != null && response_count !== "" && response_count !== "undefined" 
+      ? parseInt(response_count) || 0 
+      : 0;
+
     document.querySelectorAll(".label-cart-count").forEach((div) => {
-      div.innerHTML = response_count;
+      div.innerHTML = cartCount;
     });
 
     let response_count_formatted;
 
-    if (response_count == 0) {
+    if (cartCount == 0) {
       response_count_formatted = "00 itens";
-    } else if (response_count == 1) {
+    } else if (cartCount == 1) {
       response_count_formatted = "01 item";
-    } else if (response_count < 10) {
-      response_count_formatted = "0" + response_count.trim() + " itens";
+    } else if (cartCount < 10) {
+      response_count_formatted = "0" + cartCount + " itens";
     } else {
-      response_count_formatted = response_count.trim() + " itens";
+      response_count_formatted = cartCount + " itens";
     }
 
     document.querySelectorAll(".label-cart-count-formatted").forEach((div) => {

@@ -870,3 +870,20 @@ filter: brightness(0) invert(1);
     margin-right: 20px !important;
   }
 }
+
+#minicart-offcanvas .minicart__offcanvas-header .ah-close,
+.minicart__offcanvas-header .ah-close {
+  position: static !important;
+  right: auto !important;
+  top: auto !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+#menu-offcanvas .ah-offcanvas-bar .ah-close {
+  position: absolute;
+  right: -42px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+}

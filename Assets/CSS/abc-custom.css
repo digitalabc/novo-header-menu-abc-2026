@@ -2,6 +2,256 @@
   padding-top: 5px;
 }
 
+/* ===== INÍCIO: Sobrescrições Header Black Friday 2025 ===== */
+body header,
+.navbar {
+  background-color: #141111 !important;
+  color: #a8a8a8 !important;
+}
+
+body header a,
+body header span,
+body header p,
+body header .nav-link,
+body header .navbar__lojas,
+body header .user,
+body header .user__links,
+body header .minicart__title {
+  color: #a8a8a8 !important;
+}
+
+body header a:hover,
+body header a:focus,
+body header a:active,
+body header .nav-link:hover,
+body header .nav-link:focus,
+body header .nav-link:active {
+  color: #fff !important;
+}
+
+/* body header svg path,
+body header svg rect {
+  fill: #e30613 !important;
+} */
+#menu-offcanvas .nav-mobile__others ul li {
+  border: none !important;
+}
+
+
+body header .dropdown-menu,
+body header .nav-all__dropdown,
+body header .user__dropdown,
+body header .navbar__wrapper .nav-item--nv1>.dropdown-menu {
+  background: #141111 !important;
+  color: #a8a8a8 !important;
+  border: none !important;
+}
+
+body header .user__dropdown {
+  border: 2px solid #664547 !important;
+}
+
+body header .dropdown-menu a,
+body header .nav-all__dropdown a,
+body header .user__dropdown a,
+body header .navbar__wrapper .dropdown-menu a {
+  color: #a8a8a8 !important;
+}
+
+body header .dropdown-menu a:hover,
+body header .nav-all__dropdown a:hover,
+body header .user__dropdown a:hover,
+body header .navbar__wrapper .dropdown-menu a:hover {
+  color: #fff !important;
+}
+
+body header .navbar__search {
+  background-color: transparent !important;
+}
+
+body header .navbar__search .search__form {
+  background-color: #000 !important;
+  border: 2px solid #664547 !important;
+}
+
+body header .navbar__search .search__form input {
+  color: #a8a8a8 !important;
+  caret-color: #f0f0f0 !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+#menu-offcanvas .nav-mobile__item--nv2 {
+  border: none !important;
+}
+
+#menu-offcanvas .nav-mobile__back {
+  border: none !important;
+}
+
+body header .navbar__search .search__form input::placeholder {
+  color: #d0d0d0 !important;
+}
+
+body header .navbar__search .search__form input:focus {
+  border-bottom-color: transparent !important;
+}
+
+body header .navbar__search .search__submit {
+  color: #664547 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+body header .navbar__search .search__submit svg path,
+body header .navbar__search .search__submit svg rect,
+body header .navbar__search .search__submit svg circle {
+  fill: #664547 !important;
+}
+
+.autocomplete #autocomplete-list {
+  background: #000 !important;
+  border: 2px solid #664547 !important;
+  box-shadow: none !important;
+  color: #a8a8a8 !important;
+}
+
+body header .navbar__search .autocomplete #autocomplete-list a,
+body header .navbar__search .autocomplete #autocomplete-list li,
+body header .navbar__search .autocomplete #autocomplete-list div {
+  color: #a8a8a8 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+body header .navbar__search .autocomplete #autocomplete-list a:hover,
+body header .navbar__search .autocomplete #autocomplete-list li:hover,
+body header .navbar__search .autocomplete #autocomplete-list div:hover {
+  color: #fff !important;
+  background: #150102 !important;
+}
+
+body header .user__dropdown #user-href {
+  color: #e30613 !important;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+body header .user__dropdown #user-href:hover,
+body header .user__dropdown #user-href:focus,
+body header .user__dropdown #user-href:active {
+  color: #e30613 !important;
+  background-color: #e30613 !important;
+}
+
+/* Força o texto interno (span) dos botões do dropdown do usuário a branco */
+body header .user__dropdown #user-href span,
+body header .user__dropdown #register-href span {
+  color: #fff !important;
+}
+
+body header .user__dropdown #user-href:hover span,
+body header .user__dropdown #user-href:focus span,
+body header .user__dropdown #user-href:active span,
+body header .user__dropdown #register-href:hover span,
+body header .user__dropdown #register-href:focus span {
+  color: #fff !important;
+}
+
+body header .user__dropdown #register-href {
+  color: #e30613 !important;
+  transition: color .2s ease;
+}
+
+body header .user__dropdown #register-href:hover,
+body header .user__dropdown #register-href:focus {
+  color: #ff515f !important;
+}
+
+body header .user__dropdown p a {
+  color: #e30613 !important;
+  transition: color .2s ease;
+}
+
+body header .user__dropdown p a:hover,
+body header .user__dropdown p a:focus {
+  color: #ff515f !important;
+}
+
+/* Cart count text must stay white */
+.label-cart-count,
+.minicart__button .label-cart-count,
+.minicart__count.label-cart-count-formatted {
+  color: #fff !important;
+}
+
+/* Correções de cores do minicart (fora do escopo do header) */
+.minicart__offcanvas-title {
+  color: inherit !important;
+}
+
+.minicart__offcanvas-whats p {
+  color: #15aa30 !important;
+}
+
+.minicart__offcanvas-body .gotocheckout,
+.minicart__offcanvas-body .gotocheckout a,
+.minicart__offcanvas-body .gotocheckout span,
+.minicart__offcanvas-body .gotocheckout strong,
+.minicart__offcanvas-body .gotocheckout * {
+  color: #fff !important;
+}
+
+#menu-offcanvas .nav-mobile__header,
+#menu-offcanvas .nav-mobile__others,
+#menu-offcanvas .nav-mobile__dropdown--nv1,
+#menu-offcanvas .nav-mobile__dropdown--nv2,
+#menu-offcanvas .nav-mobile__item--nv1,
+#menu-offcanvas .nav-mobile__item--nv2 {
+  background: #141111 !important;
+}
+
+#menu-offcanvas .nav-mobile__link,
+#menu-offcanvas .nav-mobile__others ul li a {
+  color: #e5e5e5 !important;
+}
+
+.login__container {
+  background: #141111 !important;
+}
+
+#authenticateForm>div:nth-child(1)>div.relative input {
+  background: #000 !important;
+  border: 2px solid #664547 !important;
+}
+
+.login__title {
+  color: #fff !important;
+}
+
+.login__subtitle {
+  color: #fff !important;
+}
+
+.login__register span {
+  color: #fff !important;
+}
+
+/* ===== FIM: Sobrescrições Header Black Friday 2025 ===== */
+
+
+
+/* .nav-mobile__open svg path,
+.nav-mobile__back svg path,
+.navbar__lojas svg,
+.user__header svg path,
+.user__dropdown svg path {
+  fill: #e30613 !important;
+} */
+
 #dialog_input_cep {
   z-index: 100;
 }
@@ -125,34 +375,34 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
   }
 }
 
-/* NÃO APAGAR! Header Menu BLACK FRIDAY ABC 2024 */
+/* NÃO APAGAR! Header Menu BLACK FRIDAY ABC 2025 */
 
 /* .navbar-brand svg rect {
-fill: #e5e5e5; 
+fill: #e30613; 
 }
 
 .nav-all__item svg rect {
-fill: #D88730; 
+fill: #e30613; 
 }
 
 .minicart__icon svg path {
-fill: #d4d4d4 !important;
+fill: #e30613 !important;
 
 }
 
 a:hover {
-  color: #d88730;
+  color: #e30613;
   text-decoration: none;
 }
 
 .navbar-brand img {
-filter: brightness(0) invert(1);
+filter: none;
 } */
 
 
 /* Barra superior do site */
 /* .topbar {
-  background: #4D4D4D;
+  background: #150102;
 }
 
 .topbar__container li {
@@ -162,16 +412,16 @@ filter: brightness(0) invert(1);
 
 /*Tirar o Span do HTML "Compre pelo Whatsapp*/
 /* .topbar__container li a:hover {
-  color: #D88730;
+  color: #e30613;
 } */
 
 /* Fundo do Header */
 /* .navbar {
-background-color: #232323;
+background-color: #150102;
 }
 
 .user__dropdown svg path {
-fill: #e5e5e5 !important;
+fill: #e30613 !important;
 }
 
 .nav-item.nav-item--nv1[style="order:10"] {
@@ -181,170 +431,170 @@ display: none;
 
 /* Componente de Pesquisar produtos */
 /* .search__form input {
-  color: #E5E5E5;
-  border-bottom: 1px solid #E5E5E5;
+  color: #e30613;
+  border-bottom: 1px solid #e30613;
 }
 
 .search__submit {
-  color: #E5E5E5;
+  color: #e30613;
 }
 
 .search__submit:hover {
-  color: #D88730;
+  color: #e30613;
 }
 
 .search__form input::placeholder {
-  color: #676767;
+  color: #e30613;
 } */
 
 
 /* Nossas Lojas */
 /* .navbar__lojas {
-  color: #E5E5E5;
+  color: #e30613;
 }
 
 .navbar__lojas:hover {
-  color: #D88730;
+  color: #e30613;
 } */
 
 /* Entre ou cadastre-se */
 /* .user {
-  color: #fff;
+  color: #e30613;
 }
 
 .user:hover .user__links {
-  color: #D88730;
+  color: #e30613;
 }
 
 .user__dropdown {
   z-index: 1;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-  background: #232323;
+  background: #150102;
   border-radius: 0px 0px 8px 8px;
 }
 
 .user__content.not-authenticated i + p a {
-  color: #D88730;
+  color: #e30613;
   font-weight: 600;
 }
 
 .user__dropdown #register-href:hover {
-  color: #d88730;
+  color: #e30613;
 }
 
 .user__dropdown #user-href:hover {
-  background: #d88730;
+  background: #150102;
 }
 
 .user__dropdown #user-href {
   border-radius: 6px;
-  background: #4D4D4D;
+  background: #150102;
 } */
 
 /* Meu carrinho */
 /* .minicart__button:hover {
-  color: #d88730;
+  color: #e30613;
 }
 
 .minicart__title {
-  color: #fff;
+  color: #e30613;
 }
 
 
 .minicart__button .label-cart-count {
-  background: #d88730;
+  background: #e30613;
 }
 
 .navbar__wrapper .nav-item--nv1 > .dropdown-menu {
-  background: #232323;
+  background: #150102;
 }
 
 .navbar__wrapper .nav-item--nv1 > .nav-link {
-  color: #E5E5E5;
+  color: #e30613;
 }
 
 .nav-all__dropdown {
-  background: #232323;
+  background: #150102;
 }
 
 .navbar__lojas svg {
-  fill: #808080;
+  fill: #e30613;
 } */
 
 /* Login */
 /* .user__header svg {
-  fill: #808080;
+  fill: #e30613;
 }
 
 .user__dropdown #register-href {
-  color: #d88730;
+  color: #e30613;
 }
 
 .user {
   position: relative;
-  color: #fff;
+  color: #e30613;
 } */
 
 /* Minicart */
 /* .minicart__button:hover {
-  color: #D88730;
+  color: #e30613;
 }
 
 .minicart__count.label-cart-count-formatted {
 font-size: 14px;
-color: #e5e5e5;
+color: #e30613;
 } */
 
 
 /* "Todas as categorias" */
 /* .nav-all__item--root {
-  color: #E5E5E5
+  color: #e30613
 }
 
 .navbar__wrapper .nav-item--sub > a.nav-link {
-  color: #E5E5E5;
+  color: #e30613;
 }
 
 .nav-all__item--nv1:hover {
-  background: #4D4D4D;
+  background: #150102;
 }
 
 .nav-all__dropdown {
-  background: #232323;
+  background: #150102;
 }
 
 .nav-all__item--nv1 {
-  color: #e5e5e5;
+  color: #e30613;
 }
 
 .nav-all__item--nv1:hover {
-  background: #4D4D4D;
-  color: #fff;
+  background: #150102;
+  color: #e30613;
 }
 
 .nav-all__title {
-  color: #d88730;
+  color: #e30613;
 }
 
 .nav-all__link--nv2 {
-  color: #e5e5e5;
+  color: #e30613;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d88730;
+  background-color: #e30613;
 }
 
 .navbar__wrapper .nav-item--nv1 > .nav-link {
-  color: #e5e5e5;
+  color: #e30613;
 }
 
 .navbar__wrapper .nav-item--nv1:hover > .nav-link {
-  color: #CD7A20;
+  color: #e30613;
   font-weight: 600;
 }
 
 .navbar__wrapper .nav-item--sub > a.nav-link:hover {
-  color: #CD7A20;
+  color: #e30613;
   font-weight: 600;
 }
 
@@ -353,12 +603,12 @@ color: #e5e5e5;
 }
 
 .navbar__wrapper .nav-item--nv1 > .dropdown-menu {
-  background: #232323;
+  background: #150102;
   border-radius: 0px 0px 8px 8px;
 }
 
 .navbar__wrapper .nav-item--sub > a.nav-link {
-  color: #e5e5e5;
+  color: #e30613;
 } */
 
 /*banner oportunidades*/
@@ -427,30 +677,30 @@ filter: brightness(0) invert(1);
 
 /*Minicart lateral*/
 /* .minicart__offcanvas-top {
-  background: #1a1a1a;
+  background: #150102;
 }
 
 .ah-offcanvas-bar .ah-close {
-  background: #4d4d4d;
+  background: #150102;
 
 }
  */
 /*MOBILE*/
 
 /* .menu__button svg path {
-    fill: #d88730;
+    fill: #e30613;
 }
 
 .ah-offcanvas-bar .ah-close {
-    background: #4d4d4d;
+    background: #150102;
 }
 
 #menu-offcanvas .nav-mobile__header {
-    background: #1a1a1a;
+    background: #150102;
 }
 
 .nav-mobile__others {
-    background-color: #1a1a1a;
+    background-color: #150102;
 }
 
 .nav-mobile__others,
@@ -462,25 +712,25 @@ filter: brightness(0) invert(1);
 }
 
 .nav-mobile__dropdown--nv1 {
-    background-color: #4d4d4d;
+    background-color: #150102;
 }
 
 .nav-mobile__dropdown--nv2 {
-    background-color: #4d4d4d;
+    background-color: #150102;
 }
 
 #menu-offcanvas .nav-mobile__item--nv1 {
-    background: #282828;
+    background: #150102;
 }
 
 .nav-mobile__item--nv2,
 .nav-mobile__dropdown--nv2 {
-    background-color: #282828;
+    background-color: #150102;
 }
 
 
 #menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2  {
-    background: #282828;
+    background: #150102;
 }
 
 #menu-offcanvas .nav-mobile__item--nv2 {
@@ -488,45 +738,45 @@ filter: brightness(0) invert(1);
 }
 
 #menu-offcanvas .nav-mobile__others ul li a {
-    color: #e5e5e5;
+    color: #e30613;
 }
 
 #menu-offcanvas .nav-mobile__header .info__links {
-    color: #e5e5e5;
+    color: #e30613;
 }
 
 #menu-offcanvas .nav-mobile__header .info__links a {
-    color: #e5e5e5;
+    color: #e30613;
 }
 
 #menu-offcanvas .nav-mobile__link {
-    color: #e5e5e5;
+    color: #e30613;
 }
 
 .nav-mobile__open svg path {
-    fill: #d88730 !important;
+    fill: #e30613 !important;
 }
 
 .nav-mobile__header p {
-    color: #D88730 !important;
+    color: #e30613 !important;
 }
 
 .nav-mobile__header svg path {
-    fill: #D88730 !important;
+    fill: #e30613 !important;
 }
 
 #menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2 {
-    background: #282828;
+    background: #150102;
 
 }
 
 #menu-offcanvas .nav-mobile__back {
-    color: #d88730;
+    color: #e30613;
     border: none;
 }
 
 .nav-mobile__back svg path {
-    fill: #d88730 !important;
+    fill: #e30613 !important;
 } */
 
 /* fim black friday */
@@ -617,6 +867,6 @@ filter: brightness(0) invert(1);
   }
 
   .banner-grid div:nth-child(2) .swiper-slide:not(:last-child) {
-            margin-right: 20px !important;
+    margin-right: 20px !important;
   }
 }

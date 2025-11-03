@@ -7426,6 +7426,7 @@ header {
 }
 
 .ah-offcanvas-bar .ah-close {
+  position: absolute;
   width: 56px;
   background: transparent;
   cursor: pointer;

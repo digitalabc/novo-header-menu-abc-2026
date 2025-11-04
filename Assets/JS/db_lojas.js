@@ -62,6 +62,7 @@ const estados = [
 			"Itajubá",
 			"Itamarandiba",
 			"Itamonte",
+			"Itaúna",
 			"Jacutinga",
 			"Jaíba",
 			"Janaúba",
@@ -179,6 +180,7 @@ const estados = [
 			"Resende",
 			"Rio das Ostras",
 			"Rio de Janeiro",
+			"São Gonçalo",
 			"Teresópolis",
 			"Três Rios",
 			"Valença",
@@ -194,6 +196,7 @@ const estados = [
 			"Eunápolis",
 			"Guanambi",
 			"Iguaí",
+			"Itabuna",
 			"Porto Seguro",
 			"Teixeira de Freitas",
 			"Vitória da Conquista"
@@ -365,7 +368,9 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Cuiabá",
-			"Paranatinga"
+			"Paranatinga",
+			"Primavera do Leste",
+			"Várzea Grande"
 			
 		]
 	},

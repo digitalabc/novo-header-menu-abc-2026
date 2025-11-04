@@ -84,7 +84,7 @@ const updateCheckout = async () => {
     if (shareButton) {
       const canonicalBase = `${window.location.origin}/checkout`;
       const shareLink = `${canonicalBase}?shared_checkout=${encoded}`;
-      const title = "*Dá uma olhadinha nisso!*";
+      const title = "*ABC: Dá uma olhadinha nisso!*";
       const body = "Pra não perder tempo: já deixei tudo separadinho na ABC da Construção. É só conferir.";
       const composed = encodeURIComponent(`${title}\n\n${body}\n\n_${shareLink}_`);
       shareButton.setAttribute("href", `https://wa.me/?text=${composed}`);

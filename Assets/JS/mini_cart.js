@@ -22,7 +22,7 @@ function generateCartShareLink(checkout) {
 
   const param = encodeURIComponent(btoa(JSON.stringify(cartItems)));
 
-  const title = "*Dá uma olhadinha nisso!*";
+  const title = "*ABC: Dá uma olhadinha nisso!*";
   const body = "Pra não perder tempo: já deixei tudo separadinho na ABC da Construção. É só conferir.";
   const shareLink = `${canonicalBase}?shared_checkout=${param}`;
   const composed = encodeURIComponent(`${title}\n\n${body}\n\n_${shareLink}_`);

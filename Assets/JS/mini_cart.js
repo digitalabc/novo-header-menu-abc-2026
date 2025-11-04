@@ -1,32 +1,55 @@
 window.addEventListener("load", loadMiniCart, false);
 
 function generateCartShareLink(checkout) {
+  const whatsAppButton = document.getElementById("whatsAppShare");
+  if (!whatsAppButton) return null;
+
   if (
     !checkout ||
     !checkout.products ||
     !Array.isArray(checkout.products) ||
     checkout.products.length === 0
   ) {
-    console.warn("Carrinho vazio ou estrutura inválida.");
+    whatsAppButton.style.display = "none";
     return null;
   }
 
-  const baseUrl = window.location.origin + window.location.pathname;
+  const canonicalBase = `${window.location.origin}/checkout`;
   const cartItems = checkout.products.map((product) => ({
     id: product.productVariantId,
     quantity: product.quantity,
   }));
 
-  const cartParam = encodeURIComponent(btoa(JSON.stringify(cartItems)));
+  const param = encodeURIComponent(btoa(JSON.stringify(cartItems)));
 
-  const whatsAppButton = document.getElementById("whatsAppShare");
-  whatsAppButton.setAttribute(
-    "href",
-    `https://api.whatsapp.com/send?text=${baseUrl}?shared_cart=${cartParam}`
-  );
+  const title = "*Dá uma olhadinha nisso!*";
+  const body = "Pra não perder tempo: já deixei tudo separadinho na ABC da Construção. É só conferir.";
+  const shareLink = `${canonicalBase}?shared_checkout=${param}`;
+  const composed = encodeURIComponent(`${title}\n\n${body}\n\n_${shareLink}_`);
+  whatsAppButton.setAttribute("href", `https://wa.me/?text=${composed}`);
+
+  if (!whatsAppButton.dataset.shareHandler) {
+    whatsAppButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        const carrinhoId = await client.cookie.get("carrinho-id");
+        const checkoutNow = await client.checkout.get(carrinhoId);
+        const productsNow = checkoutNow?.data?.products || [];
+        if (!productsNow.length) return;
+        const itemsNow = productsNow.map((p) => ({ id: p.productVariantId, quantity: p.quantity }));
+        const encodedNow = encodeURIComponent(btoa(JSON.stringify(itemsNow)));
+        const linkNow = `${canonicalBase}?shared_checkout=${encodedNow}`;
+        const textNow = encodeURIComponent(`${title}\n\n${body}\n\n_${linkNow}_`);
+        const urlNow = `https://wa.me/?text=${textNow}`;
+        window.open(urlNow, "_blank", "noopener,noreferrer");
+      } catch (_) {}
+    });
+    whatsAppButton.dataset.shareHandler = "1";
+  }
+
   whatsAppButton.style.display = "flex";
 
-  return `${baseUrl}?shared_cart=${cartParam}`;
+  return shareLink;
 }
 
 /**

@@ -46,10 +46,10 @@ const updateCheckout = async () => {
     setAllInnerHtmlById(el.res, el.el);
   });
 
-  // Dispara um evento personalizado para notificar que o carrinho foi atualizado
+
   document.dispatchEvent(new CustomEvent("checkout:updated"));
 
-  // Força ocultação do span de desconto após atualizar
+
   setTimeout(() => {
     if (typeof forceHideDiscountSpan === "function") {
       forceHideDiscountSpan();
@@ -82,11 +82,30 @@ const updateCheckout = async () => {
 
     const shareButton = document.getElementById("whatsAppShare");
     if (shareButton) {
-      shareButton.setAttribute(
-        "href",
-        `https://api.whatsapp.com/send?text=${baseUrl}?shared_checkout=${encoded}`
-      );
-
+      const canonicalBase = `${window.location.origin}/checkout`;
+      const shareLink = `${canonicalBase}?shared_checkout=${encoded}`;
+      const title = "*Dá uma olhadinha nisso!*";
+      const body = "Pra não perder tempo: já deixei tudo separadinho na ABC da Construção. É só conferir.";
+      const composed = encodeURIComponent(`${title}\n\n${body}\n\n_${shareLink}_`);
+      shareButton.setAttribute("href", `https://wa.me/?text=${composed}`);
+      if (!shareButton.dataset.shareHandler) {
+        shareButton.addEventListener("click", async (e) => {
+          e.preventDefault();
+          try {
+            const carrinhoId2 = await client.cookie.get("carrinho-id");
+            const checkout2 = await client.checkout.get(carrinhoId2);
+            const products2 = checkout2?.data?.products || [];
+            if (!products2.length) return;
+            const items2 = products2.map((p) => ({ id: p.productVariantId, quantity: p.quantity }));
+            const encoded2 = encodeURIComponent(btoa(JSON.stringify(items2)));
+            const link2 = `${canonicalBase}?shared_checkout=${encoded2}`;
+            const text2 = encodeURIComponent(`${title}\n\n${body}\n\n_${link2}_`);
+            const url2 = `https://wa.me/?text=${text2}`;
+            window.open(url2, "_blank", "noopener,noreferrer");
+          } catch (_) {}
+        });
+        shareButton.dataset.shareHandler = "1";
+      }
       shareButton.style.display = "flex";
     }
   } catch (error) {

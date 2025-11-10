@@ -240,6 +240,18 @@ body header .user__dropdown p a:focus {
   color: #fff !important;
 }
 
+.minicart__offcanvas-body .item__details #remove {
+  background: #333 !important;
+}
+
+.minicart__offcanvas-body .item__list .product-container {
+  border-bottom: 1px solid #545454;
+}
+
+.minicart__offcanvas-header {
+  border-bottom: 1px solid #545454;
+}
+
 /* ===== FIM: Sobrescrições Header Black Friday 2025 ===== */
 
 
@@ -359,6 +371,132 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
   font-weight: 300;
 }
 
+.ah-offcanvas-bar {
+  background: #141111 !important;
+  color: #a8a8a8 !important;
+}
+
+.ah-offcanvas-bar a,
+.ah-offcanvas-bar span,
+.ah-offcanvas-bar p,
+.ah-offcanvas-bar li,
+.ah-offcanvas-bar button,
+.ah-offcanvas-bar label,
+.ah-offcanvas-bar strong,
+.ah-offcanvas-bar small,
+.ah-offcanvas-bar s,
+.ah-offcanvas-bar del,
+.ah-offcanvas-bar h1,
+.ah-offcanvas-bar h2,
+.ah-offcanvas-bar h3,
+.ah-offcanvas-bar h4,
+.ah-offcanvas-bar h5,
+.ah-offcanvas-bar h6 {
+  color: #a8a8a8 !important;
+}
+
+.ah-offcanvas-bar a:hover,
+.ah-offcanvas-bar a:focus,
+.ah-offcanvas-bar a:active,
+.ah-offcanvas-bar button:hover,
+.ah-offcanvas-bar button:focus,
+.ah-offcanvas-bar button:active {
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar .ah-close {
+  background: transparent !important;
+  color: #e30613 !important;
+}
+
+.ah-offcanvas-bar .ah-close svg path,
+.ah-offcanvas-bar .ah-close svg rect,
+.ah-offcanvas-bar .ah-close svg circle {
+  fill: #e30613 !important;
+}
+
+.ah-offcanvas-bar .minicart__offcanvas-top,
+.ah-offcanvas-bar .minicart__offcanvas-header,
+.ah-offcanvas-bar .minicart__offcanvas-body,
+.ah-offcanvas-bar .minicart__offcanvas-footer {
+  background: #231e1e !important;
+}
+
+.ah-offcanvas-bar .minicart__offcanvas-title,
+.ah-offcanvas-bar .minicart__product-name a,
+.ah-offcanvas-bar .minicart__product-price,
+.ah-offcanvas-bar .minicart__product-remove,
+.ah-offcanvas-bar .minicart__resume span,
+.ah-offcanvas-bar .minicart__resume strong,
+.ah-offcanvas-bar .minicart__resume p,
+.ah-offcanvas-bar .minicart__resume li {
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar .minicart__product-remove svg path,
+.ah-offcanvas-bar .minicart__product-remove svg rect,
+.ah-offcanvas-bar .minicart__product-remove svg circle {
+  fill: #fff !important;
+}
+
+.ah-offcanvas-bar .minicart__resume,
+.ah-offcanvas-bar .minicart__product {
+  border-color: #664547 !important;
+}
+
+.ah-offcanvas-bar .minicart__offcanvas-whats button,
+.ah-offcanvas-bar .minicart__offcanvas-whats a {
+  background: #141111 !important;
+  border: 2px solid #664547 !important;
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar .minicart__offcanvas-whats button:hover,
+.ah-offcanvas-bar .minicart__offcanvas-whats button:focus,
+.ah-offcanvas-bar .minicart__offcanvas-whats a:hover,
+.ah-offcanvas-bar .minicart__offcanvas-whats a:focus {
+  background: #e30613 !important;
+  border-color: #e30613 !important;
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar .minicart__product-qty,
+.ah-offcanvas-bar .minicart__product-qty button,
+.ah-offcanvas-bar .minicart__product-qty a,
+.ah-offcanvas-bar .minicart__product-qty span {
+  background: #000 !important;
+  border: 1px solid #664547 !important;
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar .gotocheckout,
+.ah-offcanvas-bar .gotocheckout a {
+  background: #e30613 !important;
+  border: 0 !important;
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar .gotocheckout a:hover,
+.ah-offcanvas-bar .gotocheckout a:focus {
+  background: #ff515f !important;
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar input,
+.ah-offcanvas-bar select {
+  background: #000 !important;
+  border: 2px solid #664547 !important;
+  color: #fff !important;
+}
+
+.ah-offcanvas-bar input::placeholder {
+  color: #d0d0d0 !important;
+}
+
+.ah-offcanvas-bar hr {
+  border-color: #664547 !important;
+}
+
 .topbar {
   background: #000;
 }
@@ -375,411 +513,7 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
   }
 }
 
-/* NÃO APAGAR! Header Menu BLACK FRIDAY ABC 2025 */
 
-/* .navbar-brand svg rect {
-fill: #e30613; 
-}
-
-.nav-all__item svg rect {
-fill: #e30613; 
-}
-
-.minicart__icon svg path {
-fill: #e30613 !important;
-
-}
-
-a:hover {
-  color: #e30613;
-  text-decoration: none;
-}
-
-.navbar-brand img {
-filter: none;
-} */
-
-
-/* Barra superior do site */
-/* .topbar {
-  background: #150102;
-}
-
-.topbar__container li {
-  height: 32px;
-  font-weight: 600;
-} */
-
-/*Tirar o Span do HTML "Compre pelo Whatsapp*/
-/* .topbar__container li a:hover {
-  color: #e30613;
-} */
-
-/* Fundo do Header */
-/* .navbar {
-background-color: #150102;
-}
-
-.user__dropdown svg path {
-fill: #e30613 !important;
-}
-
-.nav-item.nav-item--nv1[style="order:10"] {
-display: none;
-} */
-
-
-/* Componente de Pesquisar produtos */
-/* .search__form input {
-  color: #e30613;
-  border-bottom: 1px solid #e30613;
-}
-
-.search__submit {
-  color: #e30613;
-}
-
-.search__submit:hover {
-  color: #e30613;
-}
-
-.search__form input::placeholder {
-  color: #e30613;
-} */
-
-
-/* Nossas Lojas */
-/* .navbar__lojas {
-  color: #e30613;
-}
-
-.navbar__lojas:hover {
-  color: #e30613;
-} */
-
-/* Entre ou cadastre-se */
-/* .user {
-  color: #e30613;
-}
-
-.user:hover .user__links {
-  color: #e30613;
-}
-
-.user__dropdown {
-  z-index: 1;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-  background: #150102;
-  border-radius: 0px 0px 8px 8px;
-}
-
-.user__content.not-authenticated i + p a {
-  color: #e30613;
-  font-weight: 600;
-}
-
-.user__dropdown #register-href:hover {
-  color: #e30613;
-}
-
-.user__dropdown #user-href:hover {
-  background: #150102;
-}
-
-.user__dropdown #user-href {
-  border-radius: 6px;
-  background: #150102;
-} */
-
-/* Meu carrinho */
-/* .minicart__button:hover {
-  color: #e30613;
-}
-
-.minicart__title {
-  color: #e30613;
-}
-
-
-.minicart__button .label-cart-count {
-  background: #e30613;
-}
-
-.navbar__wrapper .nav-item--nv1 > .dropdown-menu {
-  background: #150102;
-}
-
-.navbar__wrapper .nav-item--nv1 > .nav-link {
-  color: #e30613;
-}
-
-.nav-all__dropdown {
-  background: #150102;
-}
-
-.navbar__lojas svg {
-  fill: #e30613;
-} */
-
-/* Login */
-/* .user__header svg {
-  fill: #e30613;
-}
-
-.user__dropdown #register-href {
-  color: #e30613;
-}
-
-.user {
-  position: relative;
-  color: #e30613;
-} */
-
-/* Minicart */
-/* .minicart__button:hover {
-  color: #e30613;
-}
-
-.minicart__count.label-cart-count-formatted {
-font-size: 14px;
-color: #e30613;
-} */
-
-
-/* "Todas as categorias" */
-/* .nav-all__item--root {
-  color: #e30613
-}
-
-.navbar__wrapper .nav-item--sub > a.nav-link {
-  color: #e30613;
-}
-
-.nav-all__item--nv1:hover {
-  background: #150102;
-}
-
-.nav-all__dropdown {
-  background: #150102;
-}
-
-.nav-all__item--nv1 {
-  color: #e30613;
-}
-
-.nav-all__item--nv1:hover {
-  background: #150102;
-  color: #e30613;
-}
-
-.nav-all__title {
-  color: #e30613;
-}
-
-.nav-all__link--nv2 {
-  color: #e30613;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #e30613;
-}
-
-.navbar__wrapper .nav-item--nv1 > .nav-link {
-  color: #e30613;
-}
-
-.navbar__wrapper .nav-item--nv1:hover > .nav-link {
-  color: #e30613;
-  font-weight: 600;
-}
-
-.navbar__wrapper .nav-item--sub > a.nav-link:hover {
-  color: #e30613;
-  font-weight: 600;
-}
-
-.navbar__wrapper .nav-item--nv1:hover > .dropdown-menu {
-  border-radius: 0px 0px 8px 8px;
-}
-
-.navbar__wrapper .nav-item--nv1 > .dropdown-menu {
-  background: #150102;
-  border-radius: 0px 0px 8px 8px;
-}
-
-.navbar__wrapper .nav-item--sub > a.nav-link {
-  color: #e30613;
-} */
-
-/*banner oportunidades*/
-/* .banner-oportunidades ul li {
-    border-radius: 8px;
-}
- */
-/*banner promoções*/
-/* .swiper-backface-hidden .swiper-slide {
-    border-radius: 8px;
-} */
-
-/*vantagens*/
-/* .ruler__list .ruler__item svg path {
-  fill: #1a1a1a !important;
-}
-
-.ruler__list .ruler__item svg {
-  fill: #1a1a1a !important;
-}
-
-.ruler__text strong {
-  color: #4d4d4d !important;
-}
-*/
-/* Controla o peso dos textos que não são strong */
-/* .ruler__text {
-  font-weight: 300 !important; 
-} */
-
-/*News Letter*/
-/* section.newsletter--home {
-  background-color: #1a1a1a;
-  border-radius: 8px;
-
-}
-
-section.newsletter--home .newsletter__button {
-    background-color: #0FA848;
-    color: #FFF;
-    border-radius: 6px;
-}
-
-section.newsletter--home .newsletter__input {
-    border-radius: 6px;
-}
-
-section.newsletter--home .newsletter__button:hover {
-    background-color: #0DE05B;
-    color: #1a1a1a;
-}
-
-.newsletter--home {
-  background-image: none !important;
-}
- */
-
-/*CHECKOUT*/
-/* .headFechamento {
-background: #1a1a1a;
-}
-
-.logoHome {
-filter: brightness(0) invert(1);
-} */
-
-/*Minicart lateral*/
-/* .minicart__offcanvas-top {
-  background: #150102;
-}
-
-.ah-offcanvas-bar .ah-close {
-  background: #150102;
-
-}
- */
-/*MOBILE*/
-
-/* .menu__button svg path {
-    fill: #e30613;
-}
-
-.ah-offcanvas-bar .ah-close {
-    background: #150102;
-}
-
-#menu-offcanvas .nav-mobile__header {
-    background: #150102;
-}
-
-.nav-mobile__others {
-    background-color: #150102;
-}
-
-.nav-mobile__others,
-.nav-mobile__others ul,
-.nav-mobile__others li,
-.nav-mobile__others a {
-    border: none !important;
-    outline: none !important;
-}
-
-.nav-mobile__dropdown--nv1 {
-    background-color: #150102;
-}
-
-.nav-mobile__dropdown--nv2 {
-    background-color: #150102;
-}
-
-#menu-offcanvas .nav-mobile__item--nv1 {
-    background: #150102;
-}
-
-.nav-mobile__item--nv2,
-.nav-mobile__dropdown--nv2 {
-    background-color: #150102;
-}
-
-
-#menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2  {
-    background: #150102;
-}
-
-#menu-offcanvas .nav-mobile__item--nv2 {
-    border: none;
-}
-
-#menu-offcanvas .nav-mobile__others ul li a {
-    color: #e30613;
-}
-
-#menu-offcanvas .nav-mobile__header .info__links {
-    color: #e30613;
-}
-
-#menu-offcanvas .nav-mobile__header .info__links a {
-    color: #e30613;
-}
-
-#menu-offcanvas .nav-mobile__link {
-    color: #e30613;
-}
-
-.nav-mobile__open svg path {
-    fill: #e30613 !important;
-}
-
-.nav-mobile__header p {
-    color: #e30613 !important;
-}
-
-.nav-mobile__header svg path {
-    fill: #e30613 !important;
-}
-
-#menu-offcanvas .nav-mobile__dropdown--nv1, #menu-offcanvas .nav-mobile__dropdown--nv2 {
-    background: #150102;
-
-}
-
-#menu-offcanvas .nav-mobile__back {
-    color: #e30613;
-    border: none;
-}
-
-.nav-mobile__back svg path {
-    fill: #e30613 !important;
-} */
-
-/* fim black friday */
 
 /*5% DE DESCONTO NO PIX*/
 .ruler__item:nth-child(2) .ruler__text-wrapper {

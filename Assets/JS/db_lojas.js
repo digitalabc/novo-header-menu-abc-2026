@@ -228,7 +228,6 @@ const estados = [
 		"coluna_mobile": "2",
 		"cidades": [
 			"Anápolis",
-			"Aparecida de Goiânia",
 			"Caldas Novas",
 			"Catalão",
 			"Formosa",

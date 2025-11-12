@@ -131,7 +131,6 @@ const estados = [
 			"São Gotardo",
 			"São João Del Rei",
 			"São João Nepomuceno",
-			"São Joaquim de Bicas",
 			"São Lourenço",
 			"Sete Lagoas",
 			"Taiobeiras",

@@ -147,7 +147,6 @@ const estados = [
 			"Varginha",
 			"Veredinha",
 			"Vermelho Novo",
-			"Vespasiano",
 			"Viçosa",
 			"Visconde do Rio Branco"
 		]

@@ -252,6 +252,10 @@ body header .user__dropdown p a:focus {
   border-bottom: 1px solid #545454;
 }
 
+.minicart__offcanvas-body .unit_price {
+  color: #fff !important;
+}
+
 /* ===== FIM: Sobrescrições Header Black Friday 2025 ===== */
 
 

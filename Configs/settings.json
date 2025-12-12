@@ -6218,6 +6218,25 @@
       ]
     },
     {
+      "name": "Primavera do Leste",
+      "state": "Mato Grosso",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "Av. Minas Gerais, 523 - Centro, Primavera do Leste - MT, 78850-000",
+          "phone": "(66) 3016-4908",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso/primavera-do-leste/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Bonito",
       "state": "Mato Grosso do Sul",
       "stores": [

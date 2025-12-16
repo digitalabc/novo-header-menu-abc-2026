@@ -26,10 +26,14 @@
 
     <div class="checkout-section-wrapper">
         <div class="checkout-container checkout-address-container">
-            <h2 class="title">
-                1.2 Endereços salvos
-            </h2>
-
+             <div class="checkout-address-header">
+                <h2 class="title">
+                     1.2 Endereços salvos
+                </h2>
+                <button class="button-novo-endereco" onclick="window.location.href='/checkout/shipping/new-address'">
+                    +Novo
+                </button>
+            </div>
             <div class="checkout-address-wrapper">
                 {{~ for address in addresses ~}}
                 <div class="checkout-address-item">

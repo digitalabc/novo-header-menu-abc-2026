@@ -34,6 +34,9 @@
                 {{~ for address in addresses ~}}
                 <div class="checkout-address-item">
                     <div class="checkout-address-content">
+                        <button class="ml-6 remove" type="button" onclick="removeSelectAddress('{{address.id}}')">
+                            <img src="{{- store.urls.static_img}}icons/trash-can.svg?theme={{store.theme}}&v={{store.last_modified}}">
+                        </button>
                         <h4 class="checkout-address">{{ address.address }}{{ if address.neighborhood }}, {{ address.neighborhood }}{{ end }}{{ if address.city }} - {{ address.city }}{{ end }}{{ if address.state }} - {{ address.state }}{{ end }}{{ if address.cep }} - {{ address.cep }}{{ end }}</h4>
 
                         <span class="checkout-address-name">

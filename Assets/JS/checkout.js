@@ -132,6 +132,37 @@ function getCartAddOrSubtractInput(
   return input;
 }
 
+const cartChangeQuantity = async (element) => {
+  const previousQuantity = element.getAttribute("value");
+  const currentQuantity = (element.value).replace(/\D+/g, '');
+
+  // Se não houve alteração, não faz nada
+  if (previousQuantity === currentQuantity || currentQuantity === "") {
+    updateCheckout()
+    return;
+  }
+  const quantityDifference = Number(currentQuantity) - Number(previousQuantity);
+  const productVariantId = Number(element.getAttribute("data-product_variant_id"));
+
+  if (quantityDifference > 0) {
+    await client.checkout.add([
+      {
+        productVariantId,
+        quantity: Math.abs(quantityDifference),
+      }
+    ]);
+  } else {
+    await client.checkout.remove([
+      {
+        productVariantId,
+        quantity: Math.abs(quantityDifference),
+      }
+    ]);
+  }
+
+  updateCheckout();
+};
+
 const cartAddQuantity = async (productVariantId, customizationId) => {
   const input = getCartAddOrSubtractInput(productVariantId, 1, customizationId);
   const checkoutResponse = await client.checkout.add(input);

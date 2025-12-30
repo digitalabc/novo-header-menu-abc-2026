@@ -2804,6 +2804,22 @@
   display: flex;
 }
 
+input[type="number"].cart_change_quantity::-webkit-outer-spin-button,
+input[type="number"].cart_change_quantity::-webkit-inner-spin-button,
+input[type="number"].cart_change_quantity {
+  font-size: 18px;
+  background: #f8f8f8;
+  border: none !important;
+  outline-offset: 0px;
+  outline: none;
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  padding: 0;
+  text-align: center;
+  max-width: 40px;
+  box-shadow: none;
+}
+
 .wake-cart-product-list-tbody-row td.details .text-person {
   margin-top: 0.25rem;
   font-size: 0.875rem;

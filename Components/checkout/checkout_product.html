@@ -23,6 +23,7 @@
         {{~
             cart_subtract_quantity = "cartSubtractQuantity('" + product.product_variant_id + "', '" + customization_id + "')"
             cart_add_quantity = "cartAddQuantity('" + product.product_variant_id + "', '" + customization_id + "')"
+            cart_change_quantity = "cartChangeQuantity(this)"
             
             if is_kit
                 cart_subtract_quantity = "cartSubtractKitQuantity('" + product.kit_id + "', '" + product.kit_group_id + "')"
@@ -37,7 +38,7 @@
             <button onclick="{{ cart_subtract_quantity }}" class="qtd-button minus">
                 <img src="{{- store.urls.static_img}}icons/minus-small.svg?theme={{store.theme}}&v={{store.last_modified}}">
             </button>
-            {{ product.quantity }}
+            <input class="cart_change_quantity" type="number" value="{{ product.quantity }}" data-product_variant_id="{{product.product_variant_id}}" data-customization_id="{{ customization_id }}"  onchange="{{ cart_change_quantity }}">
             <button onclick="{{ cart_add_quantity }}" class="qtd-button plus">
                 <img src="{{- store.urls.static_img}}icons/plus-small.svg?theme={{store.theme}}&v={{store.last_modified}}">
             </button>
@@ -108,7 +109,7 @@
           <button onclick="{{ cart_subtract_quantity }}" class="flex">
               <img src="{{- store.urls.static_img}}icons/minus-small.svg?theme={{store.theme}}&v={{store.last_modified}}">
           </button>
-          {{ product.quantity }}
+          <input class="cart_change_quantity" type="number" value="{{ product.quantity }}" data-product_variant_id="{{product.product_variant_id}}" data-customization_id="{{ customization_id }}"  onchange="{{ cart_change_quantity }}">
           <button onclick="{{ cart_add_quantity }}" class="flex">
               <img src="{{- store.urls.static_img}}icons/plus-small.svg?theme={{store.theme}}&v={{store.last_modified}}">
           </button>

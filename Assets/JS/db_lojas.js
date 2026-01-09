@@ -196,6 +196,7 @@ const estados = [
 			"Itabuna",
 			"Porto Seguro",
 			"Teixeira de Freitas",
+			"Urandi",
 			"Vitória da Conquista"
 		]
 	},

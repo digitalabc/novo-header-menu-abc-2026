@@ -305,6 +305,24 @@ const newSelectAddress = async (id) => {
   window.location = `/checkout/shipping`;
 };
 
+const removeSelectAddress = async (id) => {
+  const adressItem = document.querySelectorAll('.checkout-address-item')
+  
+  if (adressItem.length <= 1) {
+    showOverlay(
+      "Erro ao remover endereço",
+      "Você deve ter pelo menos um endereço cadastrado para prosseguir com a compra.",
+      true
+    );
+    return;
+  }
+
+  const token = client.cookie.get("sf_customer_access_token");
+
+  await client.customer.removeAddress(id, token);
+  window.location.reload()
+};
+
 /**
  * Envio selecionado.
  * Associa forma de envio com carrinho.
@@ -392,22 +410,23 @@ const selectDeliveryStore = async (value) => {
   window.dataLayer.push({
     event: "form_change",
     form_field: "forma-envio",
-    form_value: result.data.selectedShipping.name
-  })
+    form_value: result.data.selectedShipping.name,
+  });
 
   window.dataLayer.push({
     event: "add_shipping_info",
     ecommerce: {
       currency: "BRL",
-      shipping_tier: result.data.selectedShipping.name
-    }
-  })
+      shipping_tier: result.data.selectedShipping.name,
+    },
+  });
 
-  if (result.errors) showOverlay(
-    "Erro ao escolher o método de envio",
-    result.errors[0].message,
-    true
-  )
+  if (result.errors)
+    showOverlay(
+      "Erro ao escolher o método de envio",
+      result.errors[0].message,
+      true
+    );
   else window.location = "/checkout/payment";
 };
 
@@ -442,7 +461,9 @@ const selectCheckingAccount = async (checkingAccount) => {
 };
 
 const addCoupon = async (e) => {
-  const coupon = e.closest("#checkout_coupon_snippet").querySelector("#coupon").value;
+  const coupon = e
+    .closest("#checkout_coupon_snippet")
+    .querySelector("#coupon").value;
   const token = client.cookie.get("sf_customer_access_token");
   const checkoutId = client.cookie.get("carrinho-id");
 
@@ -561,16 +582,20 @@ const authenticateCompletSubmit = async (e) => {
 
 // Conclusão pedido
 const closeCheckout = async () => {
-  const loading = document.getElementById('finish-loading');
-  loading.classList.remove('hidden');
-  loading.classList.add('flex');
-  document.querySelector('#finish-order-button').disabled = true
+  const loading = document.getElementById("finish-loading");
+  loading.classList.remove("hidden");
+  loading.classList.add("flex");
+  document.querySelector("#finish-order-button").disabled = true;
 
   try {
     const validateResult = await Fbits.Gateway.ExecuteValidateCallbacks();
-    const allValid = validateResult.every(item => item === true);
+    const allValid = validateResult.every((item) => item === true);
     if (!allValid) {
-      showOverlay("Erro ao validar pagamento", "Ocorreu um erro ao validar o pagamento, confira os dados de pagamento e tente novamente!", true);
+      showOverlay(
+        "Erro ao validar pagamento",
+        "Ocorreu um erro ao validar o pagamento, confira os dados de pagamento e tente novamente!",
+        true
+      );
       return;
     }
 
@@ -579,22 +604,31 @@ const closeCheckout = async () => {
     const token = client.cookie.get("sf_customer_access_token");
     const checkoutId = client.cookie.get("carrinho-id");
 
-    const container = document.getElementById('payment-container');
+    const container = document.getElementById("payment-container");
     const paymetData = getPaymentData(container);
-    const checkoutData = await client.checkout.complete(checkoutId, "", token, paymetData);
+    const checkoutData = await client.checkout.complete(
+      checkoutId,
+      "",
+      token,
+      paymetData
+    );
 
     if (checkoutData?.completeResponse?.errors) {
-      showOverlay("Erro ao finalizar o pedido", checkoutData.completeResponse.errors[0].message, true);
+      showOverlay(
+        "Erro ao finalizar o pedido",
+        checkoutData.completeResponse.errors[0].message,
+        true
+      );
       return;
     }
 
     window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
   } finally {
-    loading.classList.add('hidden');
-    loading.classList.remove('flex');
-    document.querySelector('#finish-order-button').disabled = false
+    loading.classList.add("hidden");
+    loading.classList.remove("flex");
+    document.querySelector("#finish-order-button").disabled = false;
   }
-}
+};
 
 async function renderUser() {
   const checkoutId = client.cookie.get("carrinho-id");

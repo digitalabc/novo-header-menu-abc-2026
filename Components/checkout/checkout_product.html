@@ -10,11 +10,13 @@
 {{~ else ~}}
   <tr class="wake-cart-product-list-tbody-row">
     <td class="details">
-      <a href="{{product.url}}">
+      <a href="{{product.url}}" data-product-link data-product-url="{{product.url}}">
         <img src="{{product.image_url}}" alt="{{ product.name }}" title="{{ product.name }}" class="prod-img" loading="lazy" />
       </a>
       <div class="wrapper">
-        <h3 class="prod-name">{{product.name}}</h3>
+        <h3 class="prod-name">
+          <a href="{{product.url}}" data-product-link data-product-url="{{product.url}}">{{product.name}}</a>
+        </h3>
         <p class="prod-text">
           {{~ for attr in product.product_attributes ~}}
             {{ attr.name }}: <b class="prod-value">{{ attr.value }}</b> {{type}}

@@ -1,5 +1,36 @@
 @media (max-width: 1330px) {}
 
+[data-product-link] {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+[data-product-link]:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.wake-cart-product-list-tbody-row [data-product-link] img {
+  transition: transform 0.2s ease;
+}
+
+.wake-cart-product-list-tbody-row [data-product-link]:hover img {
+  transform: scale(1.05);
+}
+
+.wake-cart-product-list-tbody-row .prod-name a {
+  display: inline;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.wake-cart-product-list-tbody-row .prod-name {
+  max-width: none;
+  width: 100%;
+}
+
 .fbits-login .questao,
 .fbits-login .cadastroUsuario .btn-primary,
 .fbits-login .fbits-box-login .btn.btn-success,

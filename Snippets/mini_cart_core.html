@@ -55,10 +55,10 @@
 
           <div class="product-container">
             <li class="item__item item_product">
-                <div class="item_img_product">
+                <a href="{{ product.url }}" class="item_img_product" data-product-link data-product-url="{{ product.url }}">
                   <img src={{product.image_url | string.replace "w=70&h=70" "w=90&h=90"}} alt="">
                     <h2>{{ product.name }}</h2>
-                </div>
+                </a>
                   <div class="item__details">
                       <button id="remove"
                         onclick="checkoutRemoveProduct('{{product.product_variant_id}}', '{{product.quantity}}')">

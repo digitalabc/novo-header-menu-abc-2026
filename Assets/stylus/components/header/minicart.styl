@@ -3,6 +3,22 @@
   flex-direction: column;
   height: calc(100% - 55px);
 
+  [data-product-link]
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    
+    &:hover
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+      
+    img
+      transition: transform 0.2s ease;
+      
+    &:hover img
+      transform: scale(1.05);
+
 .minicart
   &__icon
     flex-shrink 0

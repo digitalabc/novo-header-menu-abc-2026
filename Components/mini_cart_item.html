@@ -1,11 +1,11 @@
 <li class="flex py-6">
-    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-secondary-200">
+    <a class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-secondary-200" data-product-link data-product-url="{{ item.url }}" href="{{ item.url }}">
         <img src="{{ item.image_url ? item.image_url : noImage }}" width="80px">
-    </div>                                
+    </a>                                
     <div class="ml-4 flex flex-1 flex-col">
         <div class="flex justify-between text-base font-medium text-secondary-900">
             <h3>
-            <a href="#">{{ item.name }}</a>
+            <a href="{{ item.url }}" data-product-link data-product-url="{{ item.url }}">{{ item.name }}</a>
             </h3>
             {{~ if item.gift ~}}
                 <p class="ml-4">BRINDE</p>

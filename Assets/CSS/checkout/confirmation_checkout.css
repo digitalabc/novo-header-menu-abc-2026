@@ -236,7 +236,7 @@
 }
 
 .buy-more-button {
-  background-color: #0092ff;
+  background-color: rgb(32, 163, 137);
   color: white;
   padding: 12px 20px;
   border-radius: 400px;
@@ -269,7 +269,7 @@
 }
 
 .buy-more-button:hover {
-  background-color: #30a6ff;
+  background: rgb(26, 156, 130);
   font-size: 16.2px;
   font-weight: bold;
 }

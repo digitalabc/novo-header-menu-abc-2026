@@ -355,8 +355,7 @@ const estados = [
 			"Blumenau",
 			"Florianópolis",
 			"Jaraguá do Sul",
-			"Joinville",
-			"São Francisco do Sul"
+			"Joinville"
 			
 		]
 	},

@@ -8878,7 +8878,7 @@ header {
   top: calc(100% + 20px);
   left: 50%;
   transform: translateX(-50%);
-  padding: 0 24px 20px;
+  padding: 24px 20px;
   width: 280px;
   border-radius: 16px;
   height: auto;

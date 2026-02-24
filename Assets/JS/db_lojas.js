@@ -84,6 +84,7 @@ const estados = [
 			"Mateus Leme",
 			"Matias Barbosa",
 			"Mato Verde",
+			"Matozinhos",
 			"Minas Novas",
 			"Miraí",
 			"Montalvânia",
@@ -364,6 +365,7 @@ const estados = [
 		"coluna": "4",
 		"coluna_mobile": "2",
 		"cidades": [
+			"Água Boa",
 			"Cuiabá",
 			"Paranatinga",
 			"Primavera do Leste",

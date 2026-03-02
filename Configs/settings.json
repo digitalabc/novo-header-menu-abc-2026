@@ -4376,6 +4376,19 @@
           "friday": "9:00 às 18:30",
           "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
+        },
+        {
+          "name": "Barra do Sahy",
+          "adress": "Av. Adelino Tavares, 51 - Praia Barra do Sahy, São Sebastião - SP, 11622-100",
+          "phone": "(12) 99724-6516",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/sao-sebastiao/barra-sahy",
+          "monday": "8:00 às 17:00",
+          "tuesday": "8:00 às 17:00",
+          "wednesday": "8:00 às 17:00",
+          "thursday": "8:00 às 17:00",
+          "friday": "8:00 às 17:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
         }
       ]
     },

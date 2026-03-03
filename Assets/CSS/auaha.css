@@ -10286,7 +10286,8 @@ section.newsletter--home .newsletter__alert {
   border-bottom: 1px solid #d5d5d5;
 }
 
-.filter__item.open .filter__options {
+.filter__item.open .filter__options,
+.filter__item.open .color-list {
   margin-top: 15px;
 }
 
@@ -10312,7 +10313,8 @@ section.newsletter--home .newsletter__alert {
   transition: all 0.2s ease-in-out;
 }
 
-.filter__options {
+.filter__options,
+.color-list {
   overflow: hidden;
   height: 0;
   transition: all 0.2s ease-in-out;

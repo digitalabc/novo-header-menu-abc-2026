@@ -1862,6 +1862,25 @@
       ]
     },
     {
+      "name": "Matozinhos",
+      "state": "Minas Gerais",
+      "stores": [
+        {
+          "name": "Floresta",
+          "adress": "Av. Caio Martins, 1454 - Floresta, Matozinhos - MG, 35720-000",
+          "phone": "(31) 2233-0242",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/matozinhos/floresta",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Minas Novas",
       "state": "Minas Gerais",
       "stores": [

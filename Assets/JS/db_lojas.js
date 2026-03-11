@@ -122,6 +122,7 @@ const estados = [
 			"Sabará",
 			"Sacramento", 
 			"Salinas",
+			"Santana do Riacho",
 			"Santos Dumont",
 			"São Domingos das Dores",
 			"São Francisco", 

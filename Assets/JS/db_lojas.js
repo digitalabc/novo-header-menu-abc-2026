@@ -296,6 +296,7 @@ const estados = [
 			"Mogi Mirim",
 			"Nova Granada",
 			"Paulínia",
+			"Penápolis",
 			"Pindamonhangaba",
 			"Piracaia",
 			"Praia Grande",

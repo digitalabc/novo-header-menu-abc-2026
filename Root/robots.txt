@@ -122,4 +122,4 @@ Disallow: /groups
 Allow: /*.css
 Allow: /*.js
 
-Sitemap: https://www.gregory.com.br/sitemap.xml
+Sitemap: https://www.abcdaconstrucao.com.br/sitemap.xml

@@ -22,20 +22,36 @@ const DESKTOP = window.matchMedia("(min-width: 992px)");
 /**
  * Defer background images
  */
-function moveSpotDiscounts() {
-  document.querySelectorAll(".spot__content").forEach((content) => {
-    const discount = content.querySelector(":scope > .discount");
-    const contentPrice = content.querySelector(".spot__content-price");
-    const spotPrice = contentPrice?.querySelector(".spot-price");
-    if (!discount || !contentPrice || !spotPrice) return;
-    const valueMatch = discount.textContent.match(/R\$\s*[\d\.,]+/);
-    if (valueMatch) {
-      discount.innerHTML = `Você economiza: <span class="discount__value">${valueMatch[0]}</span>`;
-    }
-    discount.style.removeProperty("width");
-    if (discount.parentElement === spotPrice) return;
-    spotPrice.insertBefore(discount, spotPrice.firstChild);
+function parseReais(text) {
+  const clean = text.trim().replace(/R\$\s*/g, "").replace(/\./g, "").replace(",", ".");
+  const val = parseFloat(clean);
+  return isNaN(val) ? null : val;
+}
+
+function processSpotPrice(spotPrice) {
+  if (spotPrice.querySelector(".discount")) return;
+
+  const precoDeEl = spotPrice.querySelector(".precoDe s");
+  const precoPorEl = spotPrice.querySelector(".precoPor > span");
+  if (!precoDeEl || !precoPorEl) return;
+
+  const listPrice = parseReais(precoDeEl.textContent);
+  const currentPrice = parseReais(precoPorEl.textContent);
+  if (listPrice === null || currentPrice === null || listPrice <= currentPrice) return;
+
+  const savings = (listPrice - currentPrice).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
   });
+
+  const discountEl = document.createElement("div");
+  discountEl.className = "discount";
+  discountEl.innerHTML = `Você economiza: <span class="discount__value">${savings}</span>`;
+  spotPrice.insertBefore(discountEl, spotPrice.firstChild);
+}
+
+function moveSpotDiscounts() {
+  document.querySelectorAll(".spot .spot-price").forEach(processSpotPrice);
 }
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -296,7 +312,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function replaceRulerIcons() {
     replaceRulerItemIcon({
       itemSelector: ".ruler__list .ruler__item:first-child",
-      imageSrc: "https://abcdaconstrucao.fbitsstatic.net/media/top-bar__icon-whatsapp.png?v=202603120803",
+      imageSrc:
+        "https://abcdaconstrucao.fbitsstatic.net/sf/img/svg/wpp-abc.svg?theme=main&v=202603120832",
       imageAlt: "Whatsapp",
       imageWidth: 24,
       imageHeight: 24,

@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function replaceRulerIcons() {
     replaceRulerItemIcon({
       itemSelector: ".ruler__list .ruler__item:first-child",
-      imageSrc: "/localstatic/img/svg/wpp-abc.svg?theme=local&v=",
+      imageSrc: "https://abcdaconstrucao.fbitsstatic.net/media/top-bar__icon-whatsapp.png?v=202603120803",
       imageAlt: "Whatsapp",
       imageWidth: 24,
       imageHeight: 24,

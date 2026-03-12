@@ -29,6 +29,10 @@ function parseReais(text) {
 }
 
 function processSpotPrice(spotPrice) {
+  const spotContent = spotPrice.closest(".spot__content");
+  const platformDiscount = spotContent?.querySelector(":scope > .discount");
+  if (platformDiscount) platformDiscount.remove();
+
   if (spotPrice.querySelector(".discount")) return;
 
   const precoDeEl = spotPrice.querySelector(".precoDe s");

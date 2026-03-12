@@ -22,8 +22,27 @@ const DESKTOP = window.matchMedia("(min-width: 992px)");
 /**
  * Defer background images
  */
+function moveSpotDiscounts() {
+  document.querySelectorAll(".spot__content").forEach((content) => {
+    const discount = content.querySelector(":scope > .discount");
+    const contentPrice = content.querySelector(".spot__content-price");
+    const spotPrice = contentPrice?.querySelector(".spot-price");
+    if (!discount || !contentPrice || !spotPrice) return;
+    const valueMatch = discount.textContent.match(/R\$\s*[\d\.,]+/);
+    if (valueMatch) {
+      discount.innerHTML = `Você economiza: <span class="discount__value">${valueMatch[0]}</span>`;
+    }
+    discount.style.removeProperty("width");
+    if (discount.parentElement === spotPrice) return;
+    spotPrice.insertBefore(discount, spotPrice.firstChild);
+  });
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   document.getElementById("no-bg-img").remove();
+  moveSpotDiscounts();
+  const observer = new MutationObserver(() => moveSpotDiscounts());
+  observer.observe(document.body, { childList: true, subtree: true });
 });
 
 /**
@@ -209,11 +228,193 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    reorderHomepageSections();
+    replaceRulerIcons();
+    updateRulerTexts();
     window.removeEventListener("scroll", removeNoscript);
   }
 
+  function replaceRulerItemIcon({
+    itemSelector,
+    imageSrc,
+    imageAlt,
+    imageWidth,
+    imageHeight,
+    imageClass,
+    wrapperClass,
+  }) {
+    const rulerItem = document.querySelector(itemSelector);
+    const iconWrapper = rulerItem?.querySelector(".ruler__text-wrapper");
+    const svgIcon = iconWrapper?.querySelector("svg");
+    if (!iconWrapper || !svgIcon) return;
+
+    const iconImage = document.createElement("img");
+    iconImage.src = imageSrc;
+    iconImage.alt = imageAlt;
+    if (Number.isFinite(imageWidth)) {
+      iconImage.width = imageWidth;
+    }
+    if (Number.isFinite(imageHeight)) {
+      iconImage.height = imageHeight;
+    }
+    iconImage.loading = "lazy";
+    iconImage.decoding = "async";
+    iconImage.className = imageClass;
+
+    iconWrapper.classList.add(wrapperClass);
+    svgIcon.replaceWith(iconImage);
+  }
+
+  function updateRulerItemText(itemSelector, text) {
+    const rulerItem = document.querySelector(itemSelector);
+    const textElement = rulerItem?.querySelector(".ruler__text");
+    if (!textElement) return;
+
+    const textAnchor = textElement.querySelector("a");
+    if (textAnchor) {
+      textAnchor.textContent = text;
+      return;
+    }
+
+    textElement.textContent = text;
+  }
+
+  function updateRulerItemHtml(itemSelector, htmlContent) {
+    const rulerItem = document.querySelector(itemSelector);
+    const textElement = rulerItem?.querySelector(".ruler__text");
+    if (!textElement) return;
+
+    const textAnchor = textElement.querySelector("a");
+    if (textAnchor) {
+      textAnchor.innerHTML = htmlContent;
+      return;
+    }
+
+    textElement.innerHTML = htmlContent;
+  }
+
+  function replaceRulerIcons() {
+    replaceRulerItemIcon({
+      itemSelector: ".ruler__list .ruler__item:first-child",
+      imageSrc: "/localstatic/img/svg/wpp-abc.svg?theme=local&v=",
+      imageAlt: "Whatsapp",
+      imageWidth: 24,
+      imageHeight: 24,
+      imageClass: "ruler__icon-whatsapp",
+      wrapperClass: "ruler__text-wrapper--icon-replaced",
+    });
+
+    replaceRulerItemIcon({
+      itemSelector: ".ruler__list .ruler__item:nth-child(2)",
+      imageSrc:
+        "https://abcdaconstrucao.fbitsstatic.net/media/payment-pix.png?v=202603112019",
+      imageAlt: "Pix",
+      imageHeight: 24,
+      imageClass: "ruler__icon-pix",
+      wrapperClass: "ruler__text-wrapper--pix-icon-replaced",
+    });
+
+    replaceRulerItemIcon({
+      itemSelector: ".ruler__list .ruler__item:nth-child(3)",
+      imageSrc:
+        "https://abcdaconstrucao.fbitsstatic.net/media/mini-franquia-abc.png?v=202603112009",
+      imageAlt: "Compre online",
+      imageHeight: 40,
+      imageClass: "ruler__icon-online",
+      wrapperClass: "ruler__text-wrapper--online-icon-replaced",
+    });
+
+    replaceRulerItemIcon({
+      itemSelector: ".ruler__list .ruler__item:nth-child(4)",
+      imageSrc:
+        "https://abcdaconstrucao.fbitsstatic.net/media/encarte-forms.png?v=202603112016",
+      imageAlt: "Ofertas lojas físicas",
+      imageHeight: 40,
+      imageClass: "ruler__icon-store-offers",
+      wrapperClass: "ruler__text-wrapper--store-offers-icon-replaced",
+    });
+  }
+
+  function updateRulerTexts() {
+    updateRulerItemHtml(
+      ".ruler__list .ruler__item:nth-child(4)",
+      "<strong>Ofertas Lojas Físicas</strong><span class=\"ruler__subtitle\">mais perto de você</span>"
+    );
+  }
+
+  function reorderHomepageSections() {
+    if (!document.body.classList.contains("home")) return;
+
+    const topContainer = document.querySelector("body.home > .container");
+    const opportunitiesSection = topContainer?.querySelector(".banner-oportunidades");
+    if (!topContainer || !opportunitiesSection) return;
+
+    const normalizeText = (value) =>
+      (value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    const desktopEnvironments = document.querySelector(
+      ".gray-bg.desktop .container > .environments"
+    );
+    const mobileEnvironments = document.querySelector(
+      ".gray-bg.mobile .container > .environments"
+    );
+
+    if (mobileEnvironments) {
+      mobileEnvironments.classList.add("mobile");
+      opportunitiesSection.insertAdjacentElement("afterend", mobileEnvironments);
+    }
+
+    if (desktopEnvironments) {
+      desktopEnvironments.classList.add("desktop");
+      opportunitiesSection.insertAdjacentElement("afterend", desktopEnvironments);
+    }
+
+    const hasTitle = (section, title) =>
+      normalizeText(section?.textContent).includes(normalizeText(title));
+
+    const allSections = Array.from(document.querySelectorAll("body.home section"));
+    const exclusiveSections = allSections.filter((section) =>
+      hasTitle(section, "Ofertas exclusivas para voce")
+    );
+
+    const moveAfterEnvironment = (environmentSection, deviceClass) => {
+      if (!environmentSection) return;
+
+      const targetSection = exclusiveSections.find((section) =>
+        section.classList.contains(deviceClass)
+      );
+      const fallbackSection = exclusiveSections.find(
+        (section) =>
+          !section.classList.contains("mobile") &&
+          !section.classList.contains("desktop")
+      );
+
+      const sectionToMove = targetSection || fallbackSection;
+      if (sectionToMove) {
+        environmentSection.insertAdjacentElement("afterend", sectionToMove);
+      }
+    };
+
+    moveAfterEnvironment(mobileEnvironments, "mobile");
+    moveAfterEnvironment(desktopEnvironments, "desktop");
+  }
+
   function initSwipers() {
-    new Swiper(".fullbanner .swiper", {
+    new Swiper(".fullbanner.desktop .swiper", {
+      loop: true,
+      navigation: {
+        nextEl: ".fullbanner.desktop .swiper-button-next",
+        prevEl: ".fullbanner.desktop .swiper-button-prev",
+      },
+      autoplay: {
+        delay: 5000,
+      },
+    });
+
+    new Swiper(".fullbanner.mobile .swiper", {
       loop: true,
       autoplay: {
         delay: 5000,
@@ -401,6 +602,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", removeNoscript, { once: true });
 
   initSwipers();
+  reorderHomepageSections();
+  replaceRulerIcons();
+  updateRulerTexts();
 });
 
 /**

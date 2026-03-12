@@ -74,7 +74,7 @@
             </svg>
             <span class="ruler__text">
               <strong>Compre online</strong> <br>
-              e retire na loja
+              Retire rápido na Loja
             </span>
           </div>
         </li>
@@ -96,6 +96,15 @@
       </ul>
     </section>
 
+    <!-- Vitrine 1 -->
+    <section class="showcase">
+      <h2 class="home-title--hot">
+        <span class="home-title__main">Descontos Relâmpago: <span class="home-title__lightning" aria-hidden="true">⚡</span></span>
+        <span class="home-title__sub">Só enquanto durar o estoque!</span>
+      </h2>
+      {{ spot_carousel class: "showcase-1" products: data.vitrine1.products.nodes show_buy_mobile: true }}
+    </section>
+
     <!-- Banners Oportunidades -->
     <section class="banner-oportunidades">
       <h2>{{ "Seleção de oportunidades" | lang }}</h2>
@@ -106,12 +115,6 @@
       <div class="mobile">
         {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
       </div>
-    </section>
-
-    <!-- Vitrine 1 -->
-    <section class="showcase">
-      <h2>{{ "Ofertas para você economizar" | lang }}</h2>
-      {{ spot_carousel class: "showcase-1" products: data.vitrine1.products.nodes show_buy_mobile: true }}
     </section>
 
     <!-- Grid de banners -->

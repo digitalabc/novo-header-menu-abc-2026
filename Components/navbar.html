@@ -91,7 +91,7 @@
                   <rect id="Rectangle_822" data-name="Rectangle 822" width="12" height="2" transform="translate(2349 185)" fill="#e30613"/>
                 </g>
               </svg>
-              Todas as categorias
+              Ver tudo
               <div class="nav-all__dropdown nav-all__dropdown--root">
                 <ul class="nav-all__list nav-all__list--root">
                   {{~ for category in all_categories ~}}
@@ -101,8 +101,18 @@
               </div>
             </li>
             {{~ if top_level ~}}
+              {{~ campaign_links_inserted = false ~}}
               {{~ for top_menu in top_level ~}}
                 {{ nav_item menus: menu_group.menus current_menu: top_menu }}
+                {{~ if !campaign_links_inserted && top_menu.name && ((top_menu.name | string.downcase) | string.contains "ambiente") ~}}
+                  {{~ campaign_links_inserted = true ~}}
+                  <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1}}">
+                    <a class="nav-link nav-link--campaign" href="/chance-unica"><strong>Chance Única🔥</strong></a>
+                  </li>
+                  <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 2}}">
+                    <a class="nav-link nav-link--campaign" href="/destaque-semana-consumidor-2026"><strong>Semana do Consumidor🛍️</strong></a>
+                  </li>
+                {{~ end ~}}
               {{~ end ~}}
             {{~ end ~}}
         </ul>

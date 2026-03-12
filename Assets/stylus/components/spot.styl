@@ -33,6 +33,10 @@
       @media mobile
         display: none;
 
+.swiper.swiper-initialized.swiper-horizontal
+  .spot
+    border-radius: 16px;
+
 .spot
   border: 1px solid #EAEAEA;
   transition: $transition;
@@ -101,6 +105,9 @@
       font-weight: 500;
       cursor: pointer;
       gap: 6px;
+
+      @media mobile
+        border-radius: 8px;
 
       @media desktop
         position: absolute;
@@ -252,4 +259,31 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 80px;
+    min-height: 80px;
+
+    .discount
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0;
+      box-sizing: border-box;
+      padding: 5px;
+      margin-bottom: 8px;
+      background-color: #e8f8f5 !important;
+      border-radius: 8px;
+      color: #20a389 !important;
+      font-weight: 400 !important;
+      font-size: 12px !important;
+      text-align: center !important;
+      white-space: nowrap;
+      margin-top: 0 !important;
+
+      .discount__value
+        display: inline;
+        font-weight: 700;
+
+      @media mobile
+        white-space: normal;
+
+        .discount__value
+          display: block;

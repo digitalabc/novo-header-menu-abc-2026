@@ -1,4 +1,15 @@
-var swiper = new Swiper(".fullbanner .swiper", {
+var swiper = new Swiper(".fullbanner.desktop .swiper", {
+  navigation: {
+    nextEl: ".fullbanner.desktop .swiper-button-next",
+    prevEl: ".fullbanner.desktop .swiper-button-prev",
+  },
+  loop: true,
+  autoplay: {
+    delay: 5000,
+  },
+});
+
+var swiper = new Swiper(".fullbanner.mobile .swiper", {
   loop: true,
   autoplay: {
     delay: 5000,

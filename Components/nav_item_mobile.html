@@ -8,11 +8,15 @@
 ## ~}}
 
 {{~ nextLevel = level + 1 ~}}
+{{~ category_name = category.name | string.downcase | string.capitalize ~}}
+{{~ if category.name && (category.name | string.downcase) == "pisos e revestimentos" ~}}
+  {{~ category_name = "Pisos | Revestimentos" ~}}
+{{~ end ~}}
 
 <div class="nav-mobile__item nav-mobile__item--nv{{level}}">
 
   <a href="/{{ category.hotsite_url }}" class="nav-mobile__link nav-mobile__link--nv{{ level }}" >
-    {{ category.name | string.downcase | string.capitalize }}
+    {{ category_name }}
     {{~ if category.children ~}}
       <button type="button" class="nav-mobile__open">
         <svg xmlns="http://www.w3.org/2000/svg" width="5" height="7.75" viewBox="0 0 5 7.75">

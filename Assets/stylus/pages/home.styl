@@ -1,14 +1,70 @@
 .home
   section
-    padding-bottom: 30px;
+    padding-bottom: 0;
+
+  .container
+    > section
+      margin-bottom: 30px;
+
+      @media mobile
+        margin-bottom: 22px;
+
+    > section:last-child
+      margin-bottom: 0;
+
+  .fullbanner
+    padding-bottom: 0 !important;
+    margin-bottom: 18px;
 
     @media mobile
-      padding-bottom: 20px;
+      margin-bottom: 14px;
 
   h2
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     font-weight: 500;
     font-size: 20px;
+
+    @media mobile
+      margin-bottom: 14px;
+
+  .home-title--hot
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+
+  .home-title__main
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+  .home-title__sub
+    font-size: 12px;
+    line-height: 1.2;
+    color: #5D5D5D;
+    font-weight: 400;
+
+  .home-title__lightning
+    display: inline-block;
+    font-size: 1.5em;
+    line-height: 1;
+    transform-origin: 50% 70%;
+    animation: home-lightning 0.75s ease-in-out infinite;
+
+  @keyframes home-lightning
+    0%, 100%
+      transform: translateY(0) rotate(-8deg) scale(1);
+      filter: brightness(1) saturate(1);
+    40%
+      transform: translateY(-2px) rotate(8deg) scale(1.2);
+      filter: brightness(1.25) saturate(1.3);
+    70%
+      transform: translateY(1px) rotate(-5deg) scale(0.95);
+      filter: brightness(1.05) saturate(1.05);
+
+  @media (prefers-reduced-motion: reduce)
+    .home-title__lightning
+      animation: none;
 
 
   .gray-bg

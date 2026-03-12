@@ -22,75 +22,26 @@ const DESKTOP = window.matchMedia("(min-width: 992px)");
 /**
  * Defer background images
  */
-let pendingSpotContents = new Set();
-let moveSpotDiscountsFrame = null;
-
-function processSpotDiscount(content) {
-  if (!(content instanceof Element)) return;
-
-  const contentPrice = content.querySelector(".spot__content-price");
-  const spotPrice = contentPrice?.querySelector(".spot-price");
-  if (!contentPrice || !spotPrice) return;
-
-  const discount =
-    content.querySelector(":scope > .discount") || content.querySelector(".discount");
-  if (!discount) return;
-
-  const valueMatch = discount.textContent.match(/R\$\s*[\d\.,]+/);
-  if (valueMatch) {
-    discount.innerHTML = `Você economiza: <span class="discount__value">${valueMatch[0]}</span>`;
-  }
-
-  discount.style.removeProperty("width");
-  if (discount.parentElement === spotPrice) return;
-  spotPrice.insertBefore(discount, spotPrice.firstChild);
-}
-
-function flushSpotDiscountsQueue() {
-  moveSpotDiscountsFrame = null;
-  pendingSpotContents.forEach((content) => processSpotDiscount(content));
-  pendingSpotContents.clear();
-}
-
-function scheduleSpotDiscounts() {
-  if (moveSpotDiscountsFrame !== null) return;
-  moveSpotDiscountsFrame = window.requestAnimationFrame(flushSpotDiscountsQueue);
-}
-
-function moveSpotDiscounts(root = document) {
-  root
-    .querySelectorAll(".spot__content")
-    .forEach((content) => pendingSpotContents.add(content));
-  scheduleSpotDiscounts();
+function moveSpotDiscounts() {
+  document.querySelectorAll(".spot__content").forEach((content) => {
+    const discount = content.querySelector(":scope > .discount");
+    const contentPrice = content.querySelector(".spot__content-price");
+    const spotPrice = contentPrice?.querySelector(".spot-price");
+    if (!discount || !contentPrice || !spotPrice) return;
+    const valueMatch = discount.textContent.match(/R\$\s*[\d\.,]+/);
+    if (valueMatch) {
+      discount.innerHTML = `Você economiza: <span class="discount__value">${valueMatch[0]}</span>`;
+    }
+    discount.style.removeProperty("width");
+    if (discount.parentElement === spotPrice) return;
+    spotPrice.insertBefore(discount, spotPrice.firstChild);
+  });
 }
 
 window.addEventListener("DOMContentLoaded", function () {
   document.getElementById("no-bg-img").remove();
   moveSpotDiscounts();
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        if (!(node instanceof Element)) return;
-
-        if (node.matches(".spot__content")) {
-          pendingSpotContents.add(node);
-        }
-
-        const closestSpotContent = node.closest(".spot__content");
-        if (closestSpotContent) {
-          pendingSpotContents.add(closestSpotContent);
-        }
-
-        node
-          .querySelectorAll(".spot__content")
-          .forEach((content) => pendingSpotContents.add(content));
-      });
-    });
-
-    if (pendingSpotContents.size > 0) {
-      scheduleSpotDiscounts();
-    }
-  });
+  const observer = new MutationObserver(() => moveSpotDiscounts());
   observer.observe(document.body, { childList: true, subtree: true });
 });
 

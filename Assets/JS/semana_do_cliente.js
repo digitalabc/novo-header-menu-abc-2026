@@ -118,7 +118,7 @@ function animateAvailableStockCounter(counterNode, finalValue, available) {
     return;
   }
 
-  const duration = 900;
+  const duration = 550;
   const startTime = performance.now();
 
   const step = function (currentTime) {
@@ -426,11 +426,19 @@ function syncCenteredCarouselState(swiper) {
   }
 
   const slideCount = swiper.slides ? swiper.slides.length : 0;
-  const shouldCenter = slideCount > 0 && slideCount < 5;
-  const hasManyProducts = slideCount >= 5;
+  const slidesPerView = Number(swiper.params && swiper.params.slidesPerView) || 1;
+  const hasManyProducts = slideCount > Math.floor(slidesPerView);
+  const shouldCenter = slideCount > 0 && !hasManyProducts;
 
   swiper.el.classList.toggle("is-centered-products", shouldCenter);
   swiper.el.classList.toggle("has-many-products", hasManyProducts);
+
+  if (shouldCenter) {
+    swiper.slideTo(0, 0, false);
+    if (swiper.wrapperEl) {
+      swiper.wrapperEl.style.transform = "translate3d(0px, 0px, 0px)";
+    }
+  }
 }
 
 function buildCarouselOptions(selector) {
@@ -447,6 +455,7 @@ function buildCarouselOptions(selector) {
       init: syncCenteredCarouselState,
       resize: syncCenteredCarouselState,
       update: syncCenteredCarouselState,
+      breakpoint: syncCenteredCarouselState,
     },
     breakpoints: {
       768: {
@@ -555,13 +564,15 @@ function scheduleWhenIdle(callback, timeout) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  normalizeSavingsLabels();
+  mountPromotionOverlays();
+  initLandingSwipers();
   startCountdown();
 
-  scheduleAfterPaint(function () {
-    mountPromotionOverlays();
+  window.requestAnimationFrame(function () {
     normalizeSavingsLabels();
-    initLandingSwipers();
-    window.setTimeout(normalizeSavingsLabels, 120);
+    syncSpotFooterPosition();
+    syncMobileStockBadgeLabels();
   });
 
   scheduleWhenIdle(function () {

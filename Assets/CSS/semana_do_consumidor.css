@@ -334,8 +334,16 @@
   overflow: hidden;
 }
 
+.semana-do-consumidor .showcase__carousel .swiper-wrapper {
+  justify-content: center;
+}
+
 .semana-do-consumidor .showcase__carousel .swiper.is-centered-products .swiper-wrapper {
   justify-content: center;
+}
+
+.semana-do-consumidor .showcase__carousel .swiper.has-many-products .swiper-wrapper {
+  justify-content: flex-start;
 }
 
 .semana-do-consumidor .showcase__carousel .swiper.has-many-products .swiper-button-lock {
@@ -917,7 +925,13 @@
 }
 
 .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__carousel {
+  display: flex;
+  justify-content: center;
   margin-top: 4px;
+}
+
+.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__carousel .swiper-container {
+  width: 100%;
 }
 
 .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__actions {

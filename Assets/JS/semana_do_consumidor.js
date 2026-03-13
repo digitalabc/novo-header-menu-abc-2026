@@ -47,13 +47,74 @@ function renderCountdownNode(node, countdownParts) {
   if (seconds) seconds.textContent = formatUnit(countdownParts.seconds);
 }
 
-function animateSoldCounter(counterNode, finalValue) {
+function getStockBadgeState(stock, available) {
+  const getStockProgress = function (value) {
+    if (!available || value <= 0) {
+      return 0;
+    }
+
+    return Math.max(12, Math.min(100, Math.round((Math.min(value, 30) * 100) / 30)));
+  };
+
+  if (!available || stock <= 0) {
+    return {
+      label: "Estoque indisponível",
+      progress: 0,
+      tone: "is-unavailable",
+      animated: false,
+    };
+  }
+
+  if (stock <= 4) {
+    return {
+      label: `Últimas ${stock} unidades`,
+      progress: getStockProgress(stock),
+      tone: "is-critical",
+      animated: true,
+      prefix: "Últimas ",
+      suffix: stock === 1 ? " unidade" : " unidades",
+      count: stock,
+    };
+  }
+
+  if (stock <= 10) {
+    return {
+      label: `Estoque baixo: ${stock} un.`,
+      progress: getStockProgress(stock),
+      tone: "is-low",
+      animated: true,
+      prefix: "Estoque baixo: ",
+      suffix: " un.",
+      count: stock,
+    };
+  }
+
+  if (stock <= 20) {
+    return {
+      label: "Disponibilidade limitada",
+      progress: getStockProgress(stock),
+      tone: "is-limited",
+      animated: false,
+    };
+  }
+
+  return {
+    label: "Estoque disponível",
+    progress: getStockProgress(stock),
+    tone: "is-available",
+    animated: false,
+  };
+}
+
+function animateAvailableStockCounter(counterNode, finalValue, available) {
   if (!counterNode) {
     return;
   }
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || finalValue <= 0) {
-    counterNode.textContent = `${finalValue} vendidos`;
+  const badgeState = getStockBadgeState(finalValue, available);
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !badgeState.animated) {
+    counterNode.textContent = badgeState.label;
     return;
   }
 
@@ -63,16 +124,60 @@ function animateSoldCounter(counterNode, finalValue) {
   const step = function (currentTime) {
     const elapsed = Math.min((currentTime - startTime) / duration, 1);
     const eased = 1 - Math.pow(1 - elapsed, 3);
-    const currentValue = Math.round(finalValue * eased);
+    const currentValue = Math.max(1, Math.round(badgeState.count * eased));
 
-    counterNode.textContent = `${currentValue} vendidos`;
+    counterNode.textContent = `${badgeState.prefix}${currentValue}${badgeState.suffix}`;
 
     if (elapsed < 1) {
       window.requestAnimationFrame(step);
+      return;
     }
+
+    counterNode.textContent = badgeState.label;
   };
 
   window.requestAnimationFrame(step);
+}
+
+function getCompactStockLabel(tone) {
+  switch (tone) {
+    case "is-critical":
+      return "Últimas";
+    case "is-low":
+      return "Baixo";
+    case "is-limited":
+      return "Limitado";
+    case "is-available":
+      return "Disponível";
+    default:
+      return "Indisponível";
+  }
+}
+
+function syncMobileStockBadgeLabels() {
+  const isMobile = window.innerWidth <= 767;
+
+  document.querySelectorAll(".showcase-oferta-relampago .oferta-relampago__sold").forEach(function (badgeNode) {
+    const textNode = badgeNode.querySelector(".oferta-relampago__sold-text");
+
+    if (!textNode) {
+      return;
+    }
+
+    if (!textNode.dataset.fullLabel) {
+      textNode.dataset.fullLabel = textNode.textContent.trim();
+    }
+
+    if (!textNode.dataset.mobileLabel) {
+      const toneClass = Array.from(badgeNode.classList).find(function (className) {
+        return className.indexOf("is-") === 0;
+      });
+
+      textNode.dataset.mobileLabel = getCompactStockLabel(toneClass);
+    }
+
+    textNode.textContent = isMobile ? textNode.dataset.mobileLabel : textNode.dataset.fullLabel;
+  });
 }
 
 function normalizeSavingsLabels() {
@@ -83,14 +188,14 @@ function normalizeSavingsLabels() {
       return;
     }
 
-    discountNode.innerHTML = `Você economiza: <span class="discount__value">${valueNode.textContent}</span>`;
+    discountNode.innerHTML = `Economize: <span class="discount__value">${valueNode.textContent}</span>`;
   });
 }
 
 function buildSpotCountdownMarkup() {
   return `
     <div class="cronometro cronometro--spot oferta-relampago__spot-countdown">
-      <span class="cronometro__label">Termina em</span>
+      <span class="cronometro__label">Desconto termina em</span>
       <div class="cron">
         <div class="cron__item">
           <span class="cronometro__days">00</span>
@@ -176,32 +281,56 @@ function startRotatingBadges() {
 
 function mountPromotionOverlays() {
   document.querySelectorAll(".showcase-oferta-relampago .spot").forEach(function (spot, index) {
-    const soldInput = document.querySelector(`#promotion-sold-${index}`);
-    const totalInput = document.querySelector(`#promotion-total-${index}`);
-    const spotContent = spot.querySelector(".spot__content");
-    const priceContainer = spot.querySelector(".spot__content-price");
+    const stockInput = document.querySelector(`#promotion-stock-${index}`);
+    const availableInput = document.querySelector(`#promotion-available-${index}`);
+    const spotImage = spot.querySelector(".spot__image");
 
-    if (!soldInput || !totalInput || !spotContent || !priceContainer || spotContent.querySelector(".oferta-relampago__spot-footer")) {
+    if (!spotImage || spot.querySelector(".oferta-relampago__spot-footer")) {
       return;
     }
 
-    const sold = Number(soldInput.value) || 0;
-    const total = Number(totalInput.value) || 0;
-    const progress = total > 0 ? Math.min(100, Math.round((sold * 100) / total)) : 0;
+    const parsedStock = Number(stockInput && stockInput.value);
+    const available = !availableInput || availableInput.value !== "false";
+    const stock = Number.isFinite(parsedStock) ? Math.max(0, Math.round(parsedStock)) : 0;
+    const badgeState = getStockBadgeState(stock, available);
     const overlay = document.createElement("div");
 
     overlay.className = "oferta-relampago__spot-footer";
     overlay.innerHTML = `
-      <div class="oferta-relampago__sold" aria-hidden="true">
-        <span class="oferta-relampago__sold-progress" style="width:${progress}%"></span>
-        <span class="oferta-relampago__sold-text" data-sold="${sold}">0 vendidos</span>
+      <div class="oferta-relampago__sold ${badgeState.tone}" aria-hidden="true">
+        <span class="oferta-relampago__sold-progress" style="width:${badgeState.progress}%"></span>
+        <span class="oferta-relampago__sold-text" data-stock="${stock}" data-full-label="${badgeState.label}" data-mobile-label="${getCompactStockLabel(badgeState.tone)}">${badgeState.animated ? `${badgeState.prefix}0${badgeState.suffix}` : badgeState.label}</span>
       </div>
-      ${buildRotatingBadgeMarkup()}
       ${buildSpotCountdownMarkup()}
     `;
 
-    priceContainer.insertAdjacentElement("afterend", overlay);
-    animateSoldCounter(overlay.querySelector(".oferta-relampago__sold-text"), sold);
+    spot.insertBefore(overlay, spotImage);
+    animateAvailableStockCounter(overlay.querySelector(".oferta-relampago__sold-text"), stock, available);
+  });
+
+  syncSpotFooterPosition();
+  syncMobileStockBadgeLabels();
+}
+
+function syncSpotFooterPosition() {
+  const isMobile = window.innerWidth <= 767;
+
+  document.querySelectorAll(".showcase-oferta-relampago .spot").forEach(function (spot) {
+    const overlay = spot.querySelector(".oferta-relampago__spot-footer");
+    const spotImage = spot.querySelector(".spot__image");
+    const spotContent = spot.querySelector(".spot__content");
+    const spotTitle = spot.querySelector(".spot__content-title");
+
+    if (!overlay || !spotImage || !spotContent || !spotTitle) {
+      return;
+    }
+
+    if (isMobile) {
+      spotContent.insertBefore(overlay, spotTitle.nextSibling);
+      return;
+    }
+
+    spot.insertBefore(overlay, spotImage);
   });
 }
 
@@ -215,13 +344,23 @@ function startCountdown() {
   const campaignTargetDate = resolveCountdownTarget(countdownRoot.getAttribute("data-promotion"));
   const spotTargetDate = resolveDailySpotTarget();
   const note = countdownRoot.querySelector(".cronometro__note");
-  const originalNote = note ? note.textContent : "";
-  const spotCountdownNodes = Array.from(document.querySelectorAll(".cronometro--spot"));
+  const heroSubtitle = document.querySelector(".showcase__subtitle--hero");
   let timerId = null;
+
+  if (heroSubtitle) {
+    heroSubtitle.textContent = "Aproveite condições especiais para renovar seus ambientes com mais economia durante a campanha.";
+  }
+
+  if (note) {
+    note.textContent = "Preços e estoque sujeitos à atualização durante a campanha.";
+  }
+
+  const originalNote = note ? note.textContent : "";
 
   const tick = function () {
     const campaignCountdownParts = getCountdownParts(campaignTargetDate);
     const spotCountdownParts = getCountdownParts(spotTargetDate);
+    const spotCountdownNodes = Array.from(document.querySelectorAll(".cronometro--spot"));
 
     renderCountdownNode(countdownRoot, campaignCountdownParts);
 
@@ -281,6 +420,19 @@ function initSwiperIfNeeded(selector, options) {
   return new Swiper(`${selector} .swiper`, options);
 }
 
+function syncCenteredCarouselState(swiper) {
+  if (!swiper || !swiper.el) {
+    return;
+  }
+
+  const slideCount = swiper.slides ? swiper.slides.length : 0;
+  const shouldCenter = slideCount > 0 && slideCount < 5;
+  const hasManyProducts = slideCount >= 5;
+
+  swiper.el.classList.toggle("is-centered-products", shouldCenter);
+  swiper.el.classList.toggle("has-many-products", hasManyProducts);
+}
+
 function buildCarouselOptions(selector) {
   return {
     navigation: {
@@ -288,8 +440,14 @@ function buildCarouselOptions(selector) {
       prevEl: `${selector} .swiper-button-prev`,
     },
     watchOverflow: true,
+    centerInsufficientSlides: true,
     slidesPerView: 2.15,
     spaceBetween: 8,
+    on: {
+      init: syncCenteredCarouselState,
+      resize: syncCenteredCarouselState,
+      update: syncCenteredCarouselState,
+    },
     breakpoints: {
       768: {
         slidesPerView: 3.1,
@@ -356,6 +514,10 @@ function initDeferredSwipers(selectors) {
 }
 
 function initLandingSwipers() {
+  initSwiperIfNeeded(".showcase-oferta-relampago__carousel", buildCarouselOptions(".showcase-oferta-relampago__carousel"));
+}
+
+function initBannerSwipers() {
   initSwiperIfNeeded(".fullbanner.desktop", {
     navigation: {
       nextEl: ".fullbanner.desktop .swiper-button-next",
@@ -375,25 +537,39 @@ function initLandingSwipers() {
       disableOnInteraction: false,
     },
   });
+}
 
-  initSwiperIfNeeded(".showcase-oferta-relampago__carousel", buildCarouselOptions(".showcase-oferta-relampago__carousel"));
+function scheduleAfterPaint(callback) {
+  window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(callback);
+  });
+}
 
-  initDeferredSwipers([
-    ".showcase-frete-gratis__carousel",
-    ".showcase-melhores-ofertas__carousel",
-    ".showcase-metais__carousel",
-    ".showcase-banho-e-aquecimento__carousel",
-    ".showcase-moveis__carousel",
-    ".showcase-ferramentas__carousel",
-    ".showcase-chance-unica__carousel",
-  ]);
+function scheduleWhenIdle(callback, timeout) {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout: timeout || 1200 });
+    return;
+  }
+
+  window.setTimeout(callback, timeout || 180);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  mountPromotionOverlays();
-  startRotatingBadges();
   startCountdown();
-  initLandingSwipers();
-  normalizeSavingsLabels();
-  window.setTimeout(normalizeSavingsLabels, 120);
+
+  scheduleAfterPaint(function () {
+    mountPromotionOverlays();
+    normalizeSavingsLabels();
+    initLandingSwipers();
+    window.setTimeout(normalizeSavingsLabels, 120);
+  });
+
+  scheduleWhenIdle(function () {
+    initBannerSwipers();
+  }, 240);
+
+  window.addEventListener("resize", function () {
+    syncSpotFooterPosition();
+    syncMobileStockBadgeLabels();
+  }, { passive: true });
 });

@@ -15,6 +15,7 @@
   </header>
 
   <div class="semana-do-consumidor">
+    <!-- Hotsite principal da LP /semana-do-consumidor: hotsiteId 98563 -->
     <div class="fullbanner desktop">
       {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
     </div>
@@ -26,20 +27,17 @@
       <div class="container">
         <div class="showcase__hero">
           <div class="showcase__copy">
-            <div class="showcase__brandmark">
-              <span>Corra e aproveite a</span>
-              <strong>Semana do Consumidor</strong>
-            </div>
             <h1 class="showcase__title showcase__title--hero">Semana do Consumidor com <span class="showcase__title-word">oferta<span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">&#9889;</span></span> todo dia</h1>
-            <p class="showcase__subtitle showcase__subtitle--hero">Aproveite condições especiais até 31/03 em metais, chuveiros, móveis, ferramentas e itens para renovar seus ambientes.</p>
+            <p class="showcase__subtitle showcase__subtitle--hero">Aproveite condições especiais para renovar seus ambientes com mais economia durante a campanha.</p>
           </div>
 
-          <div id="cronometro" class="cronometro oferta-relampago__cronometro" data-promotion="2026-03-31T23:59:59-03:00">
+          <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-03-15T23:59:59-03:00">
+            <span class="countdown-principal-da-campanha__ribbon">Prorrogação</span>
             <span class="oferta-relampago__countdown-eyebrow">
               <span class="oferta-relampago__lightning" aria-hidden="true">&#9889;</span>
               Oferta relâmpago
             </span>
-            <span class="cronometro__label">Termina em</span>
+            <span class="cronometro__label">Campanha termina em</span>
             <div class="cron" aria-live="polite">
               <div class="cron__item">
                 <span class="cronometro__days">00</span>
@@ -58,31 +56,15 @@
                 <small>Seg</small>
               </div>
             </div>
-            <span class="cronometro__note">Campanha válida até 31/03. Preços e estoque sujeitos à atualização durante a campanha.</span>
+            <span class="cronometro__note">Preços e estoque sujeitos à atualização durante a campanha.</span>
           </div>
         </div>
 
-        <div class="showcase__actions">
-          <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-oferta-relampago">
-            <span>Aproveitar agora</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-
         <div class="showcase__carousel">
-          <input id="promotion-sold-0" type="hidden" value="120">
-          <input id="promotion-total-0" type="hidden" value="207">
-          <input id="promotion-sold-1" type="hidden" value="140">
-          <input id="promotion-total-1" type="hidden" value="111">
-          <input id="promotion-sold-2" type="hidden" value="152">
-          <input id="promotion-total-2" type="hidden" value="260">
-          <input id="promotion-sold-3" type="hidden" value="26">
-          <input id="promotion-total-3" type="hidden" value="50">
-          <input id="promotion-sold-4" type="hidden" value="104">
-          <input id="promotion-total-4" type="hidden" value="113">
+          {{~ for product in data.vitrine_cronometro.products.nodes ~}}
+          <input id="promotion-stock-{{for.index}}" type="hidden" value="{{product.stock}}">
+          <input id="promotion-available-{{for.index}}" type="hidden" value="{{if product.available}}true{{else}}false{{end}}">
+          {{~ end ~}}
           {{ spot_carousel class: "showcase-oferta-relampago__carousel" products: data.vitrine_cronometro.products.nodes }}
         </div>
       </div>
@@ -248,27 +230,27 @@
         <div class="seo-content__intro">
           <span class="seo-content__eyebrow">Semana do Consumidor</span>
           <h2 id="seo-content-title" class="seo-content__title">Ofertas especiais para renovar seus ambientes com mais economia</h2>
-          <p>A Semana do Consumidor da ABC da Construção reúne ofertas especiais em produtos para banheiro, cozinha, organização e obra. Ao longo da campanha, você encontra oportunidades em metais, chuveiros, móveis e ferramentas para renovar seus ambientes com mais praticidade e economia.</p>
-          <p>Além das vitrines com ofertas por categoria, a campanha destaca condições especiais por tempo limitado e seleções atualizadas ao longo do período promocional. Os preços e estoques podem variar durante a ação, por isso vale acompanhar as vitrines e aproveitar as oportunidades disponíveis.</p>
-          <p>Se você procura materiais de construção, itens de acabamento ou soluções para o dia a dia da casa, esta página concentra algumas das principais ofertas da Semana do Consumidor da ABC da Construção.</p>
+          <p>A Semana do Consumidor da ABC da Construção reúne oportunidades especiais para quem quer aproveitar boas ofertas e renovar diferentes ambientes com mais praticidade.</p>
+          <p>Ao longo da campanha, a seleção principal destaca produtos com condições por tempo limitado, atualização dinâmica de preços e disponibilidade sujeita ao estoque do momento.</p>
+          <p>Se você busca uma oportunidade para comprar com mais economia, esta página concentra a vitrine principal da campanha em um só lugar, com acesso rápido às ofertas do dia.</p>
         </div>
 
         <div class="seo-content__faq" aria-labelledby="seo-faq-title">
           <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre a campanha</h2>
 
           <details class="seo-content__faq-item">
-            <summary>Até quando vai a Semana do Consumidor?</summary>
-            <p>A campanha é válida até 31/03/2026, com preços e estoques sujeitos a atualização durante o período.</p>
-          </details>
-
-          <details class="seo-content__faq-item">
-            <summary>Quais categorias participam da campanha?</summary>
-            <p>A página reúne ofertas em frete grátis, metais, banho e aquecimento, móveis e ferramentas, além de outras vitrines promocionais.</p>
+            <summary>Como funciona a Semana do Consumidor?</summary>
+            <p>A página reúne a vitrine principal da campanha, com ofertas em destaque e condições válidas por tempo limitado.</p>
           </details>
 
           <details class="seo-content__faq-item">
             <summary>Os produtos da campanha podem mudar?</summary>
             <p>Sim. A disponibilidade, os preços e as condições podem ser atualizados ao longo da campanha.</p>
+          </details>
+
+          <details class="seo-content__faq-item">
+            <summary>Os preços e estoques são atualizados?</summary>
+            <p>Sim. Os preços e estoques podem ser atualizados durante a campanha, de acordo com a disponibilidade do momento.</p>
           </details>
         </div>
       </section>
@@ -282,18 +264,10 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Até quando vai a Semana do Consumidor?",
+          "name": "Como funciona a Semana do Consumidor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A campanha é válida até 31/03/2026, com preços e estoques sujeitos a atualização durante o período."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quais categorias participam da campanha?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A página reúne ofertas em frete grátis, metais, banho e aquecimento, móveis e ferramentas, além de outras vitrines promocionais."
+            "text": "A página reúne a vitrine principal da campanha, com ofertas em destaque e condições válidas por tempo limitado."
           }
         },
         {
@@ -302,6 +276,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sim. A disponibilidade, os preços e as condições podem ser atualizados ao longo da campanha."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os preços e estoques são atualizados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Os preços e estoques podem ser atualizados durante a campanha, de acordo com a disponibilidade do momento."
           }
         }
       ]

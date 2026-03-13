@@ -1,4 +1,7 @@
 query Hotsite($url: String!, $partnerAccessToken: String) {
+  # Hotsite principal da LP /semana-do-consumidor:
+  # hotsiteId: 98563
+  # A consulta permanece por URL para acompanhar a rota publicada da landing.
   hotsite(url:$url) {
     name
     seo {
@@ -20,7 +23,7 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
       urlOnClick
     }
   }
-  vitrineCronometro: hotsite(hotsiteId: 98562, partnerAccessToken: $partnerAccessToken) {
+  vitrineCronometro: hotsite(hotsiteId: 102011, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
   vitrine1: hotsite(hotsiteId: 98543, partnerAccessToken: $partnerAccessToken) {
@@ -75,6 +78,7 @@ fragment productsCon on ProductsConnection {
       print
     }
     available
+    stock
     prices {
       listPrice
       price

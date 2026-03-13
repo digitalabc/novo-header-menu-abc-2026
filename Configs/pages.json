@@ -113,6 +113,11 @@
       },
       {
         "urlMatch": "semana-do-cliente",
+        "path": "Custom/old_se/semana_do_cliente.html",
+        "query": "semana_do_cliente.graphql"
+      },
+      {
+        "urlMatch": "semana-do-consumidor",
         "path": "Custom/old_se/semana_do_consumidor.html",
         "query": "semana_do_consumidor.graphql"
       },

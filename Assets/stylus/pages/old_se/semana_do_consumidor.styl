@@ -1,166 +1,705 @@
+campaignAccent = #7543FF
+campaignAccentDark = #4C24C8
+campaignInk = #231B46
+campaignMuted = #6E6390
+campaignBorder = rgba(117, 67, 255, .14)
+
+@keyframes relampagoPulse
+  0%
+    transform translateY(0) scale(1)
+    box-shadow 0 0 0 0 rgba(117, 67, 255, .34)
+  50%
+    transform translateY(-3px) scale(1.05)
+    box-shadow 0 0 0 12px rgba(117, 67, 255, 0)
+  100%
+    transform translateY(0) scale(1)
+    box-shadow 0 0 0 0 rgba(117, 67, 255, 0)
+
+@keyframes relampagoGlow
+  0%
+    filter drop-shadow(0 0 0 rgba(117, 67, 255, 0))
+  50%
+    filter drop-shadow(0 14px 26px rgba(117, 67, 255, .28))
+  100%
+    filter drop-shadow(0 0 0 rgba(117, 67, 255, 0))
+
 .semana-do-consumidor
-  background #FFFFFF
+  position relative
+  overflow hidden
+  background #fff
   margin-top -10px
-  padding-bottom 30px
-  .fullbanner 
-    &.desktop
-      @media mobile
-        display none
-    &.mobile
-      @media desktop
-        display none
-    img
-      display block
-      margin 0 auto
+  padding-bottom 72px
+
+  &:before
+    content ''
+    position absolute
+    top 130px
+    left 50%
+    width 1120px
+    height 1120px
+    background radial-gradient(circle, rgba(117, 67, 255, .08) 0%, rgba(117, 67, 255, 0) 64%)
+    transform translateX(-50%)
+    pointer-events none
 
   .container
-    width: 100%
-    margin: 0 auto;
+    position relative
+    z-index 1
+    width 100%
+    margin 0 auto
     max-width 1300px
+
     @media mobile
       padding-inline 15px !important
 
-  #cronometro
+  .fullbanner
+    position relative
+
+    &.desktop
+      @media mobile
+        display none
+
+    &.mobile
+      @media desktop
+        display none
+
+    .swiper
+      overflow hidden
+      border-radius 0 0 34px 34px
+      box-shadow 0 24px 48px rgba(35, 27, 70, .12)
+
+    img
+      display block
+      margin 0 auto
+      border-radius 0 0 34px 34px
+
+      @media mobile
+        border-radius 0 0 20px 20px
+
+  .showcase-sections
+    margin-top 42px
+
+  .showcase-stack
     display flex
-    align-items center
-    justify-content center
-    svg
-      margin-right 8px
-      @media mobile
-        margin-right 6px
-    >span
-      margin-right 20px
-      color #fff
-      font-weight 500
-      font-size 25px
-      @media mobile
-        margin-right 15px
-        font-size 20px
-    .cron
-      opacity 0
+    flex-direction column
+    gap 28px
+
+  .showcase
+    position relative
+    margin-bottom 0
+    padding 30px
+    border 1px solid campaignBorder
+    border-radius 32px
+    background linear-gradient(180deg, rgba(255, 255, 255, .98) 0%, rgba(117, 67, 255, .03) 100%)
+    box-shadow 0 24px 60px rgba(34, 24, 68, .08)
+
+    &:before
+      content ''
+      position absolute
+      top 0
+      left 30px
+      width 72px
+      height 4px
+      border-radius 0 0 999px 999px
+      background linear-gradient(90deg, campaignAccent 0%, #BCA7FF 100%)
+
+    &__hero
       display flex
-      gap 5px
-      @media mobile
-        gap 4px
+      justify-content space-between
+      align-items flex-end
+      gap 32px
+      margin-bottom 22px
+
+    &__copy
+      max-width 620px
+
+    &__heading
+      max-width 560px
+
+    &__header
+      display flex
+      align-items flex-end
+      justify-content space-between
+      gap 24px
+      margin-bottom 20px
+
+    &__eyebrow
+      display inline-flex
+      align-items center
+      gap 10px
+      margin-bottom 12px
+      color campaignAccentDark
+      text-transform uppercase
+      letter-spacing .14em
+      font-weight 700
+      font-size 11px
+
+    &__eyebrow-icon
+      display inline-flex
+      justify-content center
+      align-items center
+      width 38px
+      height 38px
+      border-radius 14px
+      background linear-gradient(135deg, campaignAccent 0%, #916CFF 100%)
+      color #fff
+      animation relampagoPulse 2.2s ease-in-out infinite, relampagoGlow 3.2s ease-in-out infinite
+
+      svg
+        display block
+
+    &__brandmark
+      display flex
+      flex-direction column
+      gap 6px
+      margin-bottom 18px
+
+      span
+        color campaignMuted
+        text-transform uppercase
+        letter-spacing .16em
+        font-weight 700
+        font-size 12px
+
+      strong
+        color campaignInk
+        font-weight 800
+        font-size 36px
+        line-height 1
+
+    &__title
+      color campaignInk
+      font-weight 800
+      font-size 30px
+      line-height 1.05
+
+      &--hero
+        max-width 560px
+        font-size 48px
+
+    &__subtitle
+      margin-top 12px
+      color campaignMuted
+      font-size 15px
+      line-height 1.6
+
+      &--hero
+        max-width 540px
+        font-size 16px
+
+    &__actions
+      display flex
+      justify-content flex-end
+      margin-bottom 20px
+
+    &__link
+      display inline-flex
+      align-items center
+      gap 10px
+      padding 14px 18px
+      border 1px solid rgba(117, 67, 255, .18)
+      border-radius 999px
+      background #fff
+      color campaignInk
+      text-decoration none
+      font-weight 700
+      font-size 13px
+      letter-spacing .02em
+      box-shadow 0 12px 26px rgba(34, 24, 68, .08)
+      transition all .2s ease-in-out
+
+      svg
+        transition transform .2s ease-in-out
+
+      &:hover
+        background campaignAccent
+        border-color campaignAccent
+        color #fff
+
+        svg
+          transform translateX(3px)
+
+    &__carousel
+      .swiper-container
+        margin 0
+
+    &.showcase-oferta-relampago
+      overflow hidden
+      margin-top 28px
+      padding 44px 0 52px
+      border none
+      border-radius 0
+      background linear-gradient(135deg, #f2ebe1 0%, #efe4da 48%, rgba(117, 67, 255, .26) 100%)
+      box-shadow none
+
+      &:before
+        top 0
+        left 0
+        width 100%
+        height 100%
+        border-radius 0
+        background radial-gradient(circle at top right, rgba(117, 67, 255, .20), rgba(117, 67, 255, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 38%)
+
+      .showcase__copy
+        position relative
+        z-index 1
+
+      .showcase__actions
+        position relative
+        z-index 1
+
+      .showcase__link
+        background rgba(255, 255, 255, .88)
+
+      .showcase__subtitle
+        color rgba(35, 27, 70, .78)
+
+  #cronometro
+    position relative
+    z-index 1
+    flex-shrink 0
+    display flex
+    flex-direction column
+    justify-content space-between
+    gap 18px
+    padding 28px 26px 24px
+    min-width 470px
+    min-height 220px
+    border 1px solid rgba(255, 255, 255, .28)
+    border-radius 32px
+    background linear-gradient(180deg, rgba(77, 53, 142, .94) 0%, rgba(43, 24, 92, .98) 100%)
+    box-shadow 0 28px 60px rgba(66, 35, 153, .22)
+    color #fff
+
+    &:before
+      content ''
+      position absolute
+      inset 0
+      border-radius inherit
+      background linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0))
+      pointer-events none
+
+    .cronometro__label
+      position relative
+      z-index 1
+      text-align center
+      color rgba(255, 255, 255, .76)
+      text-transform uppercase
+      letter-spacing .16em
+      font-weight 700
+      font-size 15px
+
+    .cronometro__note
+      position relative
+      z-index 1
+      margin-top auto
+      color rgba(255, 255, 255, .80)
+      font-size 14px
+      line-height 1.5
+
+    .cron
+      position relative
+      z-index 1
+      display grid
+      grid-template-columns repeat(4, minmax(0, 1fr))
+      align-self center
+      width 100%
+      max-width 370px
+      gap 12px
+
+    .cron__item
+      display flex
+      flex-direction column
+      align-items center
+      gap 7px
+      padding 14px 10px
+      border 1px solid rgba(255, 255, 255, .14)
+      border-radius 20px
+      background rgba(255, 255, 255, .06)
+      backdrop-filter blur(12px)
+
+    .days
+    .hours
+    .minutes
+    .seconds
+      font-variant-numeric tabular-nums
+      color #fff
+      font-weight 800
+      font-size 38px
+      line-height 1
+
+    small
+      color rgba(255, 255, 255, .6)
+      text-transform uppercase
+      letter-spacing .10em
+      font-size 10px
+
+    .sep
+      display none
+
+  .cronometro--spot
+    display flex
+    flex-direction column
+    gap 8px
+    padding 12px
+    border 1px solid rgba(117, 67, 255, .10)
+    border-radius 16px
+    background rgba(255, 255, 255, .88)
+    box-shadow none
+
+    &:before
+      content none
+
+    .cronometro__label
+      color campaignMuted
+      text-transform uppercase
+      letter-spacing .08em
+      font-weight 700
+      font-size 10px
+
+    .cron
+      display grid
+      grid-template-columns repeat(4, minmax(0, 1fr))
+      gap 6px
+
+    .cron__item
+      display flex
+      flex-direction column
+      align-items center
+      gap 3px
+      padding 8px 4px
+      border 1px solid rgba(117, 67, 255, .12)
+      border-radius 12px
+      background linear-gradient(180deg, #fff 0%, rgba(117, 67, 255, .06) 100%)
+
+    .days
+    .hours
+    .minutes
+    .seconds
+      color campaignAccentDark
+      font-variant-numeric tabular-nums
+      font-weight 800
+      font-size 15px
+      line-height 1
+
+    small
+      color campaignMuted
+      text-transform uppercase
+      letter-spacing .08em
+      font-size 8px
+
+  .showcase .spot
+    transition transform .2s ease, box-shadow .2s ease
+
+    &__content
+      display flex
+      flex-direction column
+      height 100%
+
+    &__content-price
+      margin-top auto
+
+    &:hover
+      transform translateY(-4px)
+      box-shadow 0 22px 40px rgba(117, 67, 255, .18)
+
+      .spot__title h3
+        color campaignAccentDark
+
+    &__content-price
+      position relative
+
+    .oferta-relampago__spot-footer
+      display flex
+      flex-direction column
+      gap 10px
+      margin-top 12px
+      padding 12px
+      width 100%
+      border 1px solid rgba(117, 67, 255, .10)
+      border-radius 18px
+      background linear-gradient(180deg, rgba(255, 255, 255, .98) 0%, rgba(245, 240, 255, .98) 100%)
+
+    .oferta-relampago__sold
+      isolation isolate
+      position relative
+      width 100%
+      height 24px
+      border-radius 999px
+      background linear-gradient(90deg, rgba(117, 67, 255, .20) 0%, rgba(117, 67, 255, .08) 100%)
+      color #fff
+      text-align center
+      font-size 10px
+      line-height 24px
+      font-weight 700
+      text-shadow 0 1px 2px rgba(0, 0, 0, .16)
+      overflow hidden
+
+    .oferta-relampago__sold-progress
+      position absolute
+      left 0
+      height 100%
+      border-radius inherit
+      background linear-gradient(90deg, campaignAccent 0%, campaignAccentDark 100%)
+      z-index -1
+
+    .oferta-relampago__sold-text
+      position relative
+      z-index 1
+
+  @media mobile
+    padding-bottom 52px
+
+    &:before
+      top 220px
+      width 680px
+      height 680px
+
+    .showcase-sections
+      margin-top 30px
+
+    .showcase-stack
+      gap 20px
+
+    .showcase
+      padding 22px 18px 24px
+      border-radius 24px
+
+      &:before
+        left 18px
+
+      &__hero
+        flex-direction column
+        align-items stretch
+        gap 20px
+        margin-bottom 18px
+
+      &__header
+        flex-direction column
+        align-items stretch
+        gap 16px
+        margin-bottom 16px
+
+      &__actions
+        margin-bottom 16px
+
+      &__title
+        font-size 26px
+
+        &--hero
+          font-size 34px
+
+      &__subtitle
+        font-size 14px
+
+      &__brandmark
+        strong
+          font-size 28px
+
+      &__link
+        justify-content space-between
+        width 100%
+
+      &.showcase-oferta-relampago
+        padding 30px 0 36px
+
+    #cronometro
+      min-width 0
+      width 100%
+      min-height 0
+      padding 20px 18px 18px
+      border-radius 28px
+
+      .cron
+        gap 8px
+
+      .cron__item
+        padding 10px 6px
+        border-radius 16px
+
       .days
       .hours
       .minutes
       .seconds
-        display flex
+        font-size 28px
+
+      small
+        font-size 9px
+
+    .showcase .spot
+      &:hover
+        transform none
+
+      .oferta-relampago__spot-footer
+        padding 10px
+
+      .oferta-relampago__sold
+        height 22px
+        line-height 22px
+
+@keyframes home-lightning
+  0%, 100%
+    transform translateY(0) rotate(-8deg) scale(1)
+    filter brightness(1) saturate(1)
+  40%
+    transform translateY(-2px) rotate(8deg) scale(1.2)
+    filter brightness(1.25) saturate(1.3)
+  70%
+    transform translateY(1px) rotate(-5deg) scale(.95)
+    filter brightness(1.05) saturate(1.05)
+
+@keyframes soldBarGrow
+  0%
+    transform scaleX(0)
+  100%
+    transform scaleX(1)
+
+@keyframes soldTextIn
+  0%
+    opacity 0
+    transform translateY(6px)
+  100%
+    opacity 1
+    transform translateY(0)
+
+.semana-do-consumidor
+  font-family 'Inter', sans-serif
+
+  .showcase--panel
+    background radial-gradient(circle at top right, rgba(117, 67, 255, .2), rgba(117, 67, 255, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, .98) 0%, rgba(247, 242, 255, .94) 100%)
+
+  .showcase__eyebrow
+  .showcase__subtitle
+  .showcase__link
+  .showcase__brandmark span
+  #cronometro .cronometro__label
+  #cronometro .cronometro__note
+  .cronometro--spot .cronometro__label
+  .showcase .spot .spot-price .discount
+  .showcase .spot .spot-price .precoPor small
+  .showcase .spot .best-installment
+  .showcase .spot .oferta-relampago__sold-text
+    font-family 'Inter', sans-serif
+
+  .showcase__title
+  .showcase__brandmark strong
+  #cronometro .cronometro__days
+  #cronometro .cronometro__hours
+  #cronometro .cronometro__minutes
+  #cronometro .cronometro__seconds
+  .cronometro--spot .cronometro__days
+  .cronometro--spot .cronometro__hours
+  .cronometro--spot .cronometro__minutes
+  .cronometro--spot .cronometro__seconds
+  .showcase .spot .spot-price .precoPor span
+    font-family 'Montserrat', sans-serif
+
+  .showcase__title
+    font-weight 800
+    letter-spacing -.03em
+
+    &--hero
+      font-weight 900
+      letter-spacing -.04em
+
+  .showcase__brandmark strong
+    font-weight 900
+    letter-spacing -.04em
+
+  .oferta-relampago__lightning
+    display inline-block
+    font-size 1.5em
+    line-height 1
+    color campaignAccent
+    transform-origin 50% 70%
+    animation home-lightning .75s ease-in-out infinite
+
+  #cronometro
+    .cronometro__days
+    .cronometro__hours
+    .cronometro__minutes
+    .cronometro__seconds
+      display block
+      font-variant-numeric tabular-nums
+      color #fff
+      font-weight 900
+      font-size 38px
+      line-height 1
+
+    .cronometro__note
+      max-width 320px
+
+  .cronometro--spot
+    .cronometro__days
+    .cronometro__hours
+    .cronometro__minutes
+    .cronometro__seconds
+      display block
+      color campaignAccentDark
+      font-variant-numeric tabular-nums
+      font-weight 800
+      font-size 15px
+      line-height 1
+
+  .showcase .spot
+    .spot-price
+      .precoDe
+        s
+          color rgba(76, 36, 200, .42)
+
+      .precoPor
+        color campaignAccentDark
+
+        span
+          color campaignAccentDark
+          font-weight 900
+
+        small
+          color rgba(35, 27, 70, .65)
+
+      .discount
+        display inline-flex
         align-items center
-        justify-content center
-        padding 0 4px
-        background #fff
-        min-width 40px
-        height 26px
-        font-size 25px
-        font-weight bold
-        color: #363636;
-        @media mobile
-          padding 0 2px
-          min-width 25px
-          height 16px
-          font-size 16px
-
-      .sep
-        position relative
-        width 3px
-        display flex
-        flex-direction column
-        gap 5px
-        justify-content center
-        @media mobile
-          gap 4px
-        &:before
-        &:after
-          content ''
-          background #fff
-          border-radius 50%
-          width 3px
-          height 3px
-
-  .showcase
-    margin-bottom 10px
-    &__header
-      display flex
-      align-items center
-      justify-content space-between
-      margin-bottom 7px
-    &__title
-      font-size 26px
-      color #333333
-      font-weight 700
-      @media mobile
-        max-width 210px
-    &__link
-      text-decoration underline
-      color #000000
-      font-size 12px
-      transition $transition
-      &:hover
-        color $primary
-    &[data-showcase="cronometer"]
-      background #f2ebe1
-      padding 40px 0
-      @media mobile
-        padding 15px 0
-      .showcase
-        &__header
-          @media desktop
-            width 80%
-          @media mobile
-            display block
-            margin-bottom 15px
-            >svg
-              max-width 235px
-              display block
-              margin 0 auto 5px
-        &__link
-          display block
-          width fit-content
-          margin-left auto
-          margin-bottom 5px
-          color #fff
-          &:hover
-            color $primary
-    .spot
-      &__content-price
-        position relative
-      &:hover
-        .overlay
-          display none
-
-      .overlay
-        position absolute
-        background #fff
-        inset 0
-        padding-top: 30px;
-        @media mobile
-          display none
-
-      .products-sold
-        isolation: isolate;
-        position relative
-        width 100%
-        height 20px
-        border-radius 8px
-        background #94a9a5
-        color #fff
-        text-align center
+        width fit-content
+        margin-bottom 8px
+        padding 6px 10px
+        border 1px solid rgba(117, 67, 255, .18)
+        border-radius 999px
+        background linear-gradient(180deg, rgba(117, 67, 255, .14) 0%, rgba(117, 67, 255, .08) 100%)
+        color campaignAccentDark
         font-size 10px
-        line-height 20px
-        font-weight bold
-        overflow hidden
-        margin-bottom 10px
-        &__progress
-          position absolute
-          left 0
-          height 100%
-          background #114037
-          z-index -1
-      .cronometro
-        bottom 10px
-        width 100%
-        color: #8D8D8D;
-        text-align center
-        font-size 8px
+        font-weight 600
+
+      .discount__value
+        color campaignAccentDark
+        font-weight 800
+
+    .best-installment
+      color campaignAccentDark
+
+    .oferta-relampago__sold-progress
+      transform-origin left center
+      animation soldBarGrow .95s cubic-bezier(.22, 1, .36, 1) .08s both
+
+    .oferta-relampago__sold-text
+      animation soldTextIn .45s ease-out both
+
+  @media (prefers-reduced-motion: reduce)
+    .oferta-relampago__lightning
+    .showcase .spot .oferta-relampago__sold-progress
+    .showcase .spot .oferta-relampago__sold-text
+      animation none
+
+  @media mobile
+    #cronometro
+      .cronometro__days
+      .cronometro__hours
+      .cronometro__minutes
+      .cronometro__seconds
+        font-size 28px
+
+    .cronometro--spot
+      .cronometro__days
+      .cronometro__hours
+      .cronometro__minutes
+      .cronometro__seconds
+        font-size 13px

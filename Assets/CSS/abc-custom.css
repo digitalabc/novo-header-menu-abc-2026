@@ -32,6 +32,10 @@ body header .nav-link:active {
   color: #fff !important;
 }
 
+body header .navbar__wrapper .nav-item--nv1 > .nav-link {
+  font-size: 13px !important;
+}
+
 /* Ícones do header (lojas, usuário, carrinho, menu) */
 /* body header svg path,
 body header svg rect {

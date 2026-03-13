@@ -53,7 +53,7 @@
         {{ ## Logo ## }}
         <div class="navbar__logo">
             <a class="navbar-brand" href="/">
-              <img src="{{ logo_source }}" alt="ABC da Construção" title="ABC da Construção" >
+              <img src="{{ logo_source }}" alt="ABC da ConstruÃ§Ã£o" title="ABC da ConstruÃ§Ã£o" >
             </a>
         </div>
 
@@ -103,14 +103,20 @@
             {{~ if top_level ~}}
               {{~ campaign_links_inserted = false ~}}
               {{~ for top_menu in top_level ~}}
-                {{ nav_item menus: menu_group.menus current_menu: top_menu }}
-                {{~ if !campaign_links_inserted && top_menu.name && ((top_menu.name | string.downcase) | string.contains "ambiente") ~}}
+                {{~ is_ambientes_item = top_menu.name && ((top_menu.name | string.downcase) | string.contains "ambiente") ~}}
+                {{~ if !is_ambientes_item ~}}
+                  {{ nav_item menus: menu_group.menus current_menu: top_menu }}
+                {{~ end ~}}
+                {{~ if !campaign_links_inserted && is_ambientes_item ~}}
                   {{~ campaign_links_inserted = true ~}}
+                  <li class="nav-item nav-item--nv1" style="order: {{top_menu.order}}">
+                    <a class="nav-link nav-link--campaign" href="https://www.abcdaconstrucao.com.br/lancamentos-marco-2026"><strong>Lan&ccedil;amentos 2026&#10024;</strong></a>
+                  </li>
                   <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1}}">
-                    <a class="nav-link nav-link--campaign" href="/chance-unica"><strong>Chance Única🔥</strong></a>
+                    <a class="nav-link nav-link--campaign" href="/semana-do-consumidor"><strong>Semana do Consumidor&#128717;&#65039;</strong></a>
                   </li>
                   <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 2}}">
-                    <a class="nav-link nav-link--campaign" href="/destaque-semana-consumidor-2026"><strong>Semana do Consumidor🛍️</strong></a>
+                    <a class="nav-link nav-link--campaign" href="/chance-unica"><strong>Chance &Uacute;nica&#128293;</strong></a>
                   </li>
                 {{~ end ~}}
               {{~ end ~}}

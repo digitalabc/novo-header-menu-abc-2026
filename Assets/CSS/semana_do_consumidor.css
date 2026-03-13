@@ -1556,7 +1556,7 @@
 @media only screen and (max-width: 767px) {
   .semana-do-consumidor {
     margin-top: 0;
-    padding-top: 6px;
+    padding-top: 0;
   }
 
   .semana-do-consumidor .countdown-principal-da-campanha__ribbon {

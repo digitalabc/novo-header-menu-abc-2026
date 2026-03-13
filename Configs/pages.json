@@ -122,6 +122,16 @@
         "query": "semana_do_consumidor.graphql"
       },
       {
+        "urlMatch": "chance-unica",
+        "path": "Custom/old_se/chance_unica.html",
+        "query": "chance_unica.graphql"
+      },
+      {
+        "urlMatch": "lancamentos-2026",
+        "path": "Custom/old_se/lancamentos_2026.html",
+        "query": "lancamentos_2026.graphql"
+      },
+      {
         "urlMatch": "auaha-loja-por-cidade",
         "path": "Custom/diretorio_de_lojas/franquia.html",
         "query": "generic.graphql"

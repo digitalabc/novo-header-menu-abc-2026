@@ -342,7 +342,7 @@ function startCountdown() {
   }
 
   const campaignTargetDate = resolveCountdownTarget(countdownRoot.getAttribute("data-promotion"));
-  const spotTargetDate = resolveDailySpotTarget();
+  const spotTargetDate = campaignTargetDate;
   const note = countdownRoot.querySelector(".cronometro__note");
   const heroSubtitle = document.querySelector(".showcase__subtitle--hero");
   let timerId = null;
@@ -564,20 +564,28 @@ function scheduleWhenIdle(callback, timeout) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  normalizeSavingsLabels();
-  mountPromotionOverlays();
-  initLandingSwipers();
   startCountdown();
 
-  window.requestAnimationFrame(function () {
+  requestAnimationFrame(function () {
     normalizeSavingsLabels();
+    mountPromotionOverlays();
+    initLandingSwipers();
     syncSpotFooterPosition();
     syncMobileStockBadgeLabels();
   });
 
   scheduleWhenIdle(function () {
     initBannerSwipers();
-  }, 240);
+    initDeferredSwipers([
+      ".showcase-frete-gratis__carousel",
+      ".showcase-melhores-ofertas__carousel",
+      ".showcase-metais__carousel",
+      ".showcase-banho-e-aquecimento__carousel",
+      ".showcase-moveis__carousel",
+      ".showcase-ferramentas__carousel",
+      ".showcase-chance-unica__carousel",
+    ]);
+  }, 120);
 
   window.addEventListener("resize", function () {
     syncSpotFooterPosition();

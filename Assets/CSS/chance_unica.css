@@ -46,15 +46,15 @@
   min-width: 104px;
   height: 22px;
   padding: 0 10px;
-  background: linear-gradient(180deg, #ffd55c 0%, #f2ba1b 100%);
-  color: #231b46 !important;
+  background: linear-gradient(180deg, #e0e0e0 0%, #bdbdbd 100%);
+  color: #0d0d0d !important;
   font-family: "Montserrat ExtraBold", "Montserrat", sans-serif;
   font-size: 8px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: 999px;
-  box-shadow: 0 10px 18px rgba(92, 65, 10, 0.18);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
   transform: rotate(18deg);
   text-shadow: none;
 }
@@ -82,7 +82,7 @@
   left: 50%;
   width: 1120px;
   height: 1120px;
-  background: radial-gradient(circle, rgba(117, 67, 255, 0.08) 0%, rgba(117, 67, 255, 0) 64%);
+  background: radial-gradient(circle, rgba(80, 80, 80, 0.06) 0%, rgba(80, 80, 80, 0) 64%);
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -95,7 +95,7 @@
 .semana-do-consumidor .fullbanner .swiper {
   overflow: hidden;
   border-radius: 0 0 34px 34px;
-  box-shadow: 0 24px 48px rgba(35, 27, 70, 0.12);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
 }
 
 .semana-do-consumidor .fullbanner img {
@@ -119,10 +119,10 @@
   margin-bottom: 0;
   padding: 30px;
   overflow: visible;
-  border: 1px solid rgba(117, 67, 255, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 32px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(117, 67, 255, 0.03) 100%);
-  box-shadow: 0 24px 60px rgba(34, 24, 68, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(80, 80, 80, 0.02) 100%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
 }
 
 .semana-do-consumidor .showcase:before {
@@ -133,7 +133,7 @@
   width: 72px;
   height: 4px;
   border-radius: 0 0 999px 999px;
-  background: linear-gradient(90deg, #7543ff 0%, #bca7ff 100%);
+  background: linear-gradient(90deg, #4a4a4a 0%, #8a8a8a 100%);
 }
 
 .semana-do-consumidor .showcase__hero {
@@ -173,7 +173,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
-  color: #4c24c8;
+  color: #2d2d2d;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-weight: 700;
@@ -187,7 +187,7 @@
   width: 38px;
   height: 38px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #7543ff 0%, #916cff 100%);
+  background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
   color: #fff;
   animation: relampagoPulse 2.2s ease-in-out infinite, relampagoGlow 3.2s ease-in-out infinite;
 }
@@ -200,7 +200,7 @@
 }
 
 .semana-do-consumidor .showcase__brandmark span {
-  color: #6e6390;
+  color: #5a5a5a;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-family: "Montserrat Bold", "Montserrat", sans-serif;
@@ -217,7 +217,7 @@
 }
 
 .semana-do-consumidor .showcase__title {
-  color: #231b46;
+  color: #111;
   font-weight: 800;
   font-size: 30px;
   line-height: 1.05;
@@ -227,9 +227,8 @@
   max-width: 520px;
   font-size: clamp(46px, 6.6vw, 62px);
   text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(18px) rotate(-2deg);
-  animation: heroTitleEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
+  opacity: 1;
+  transform: none;
 }
 
 .semana-do-consumidor .showcase__title-word {
@@ -240,17 +239,18 @@
 
 .semana-do-consumidor .oferta-relampago__lightning--hero {
   position: absolute;
-  right: 0.6em;
+  right: -0.4em;
   top: 0.5em;
   margin-left: 0;
-  font-size: 0.9em;
+  font-size: 0.78em;
   line-height: 1;
-  transform: rotate(25deg);
+  -webkit-text-stroke: 10px #0d0d0d;
+  paint-order: stroke fill;
 }
 
 .semana-do-consumidor .showcase__subtitle {
   margin-top: 12px;
-  color: #6e6390;
+  color: #5a5a5a;
   font-size: 15px;
   line-height: 1.6;
 }
@@ -267,23 +267,23 @@
   justify-content: center;
   margin-top: 0;
   padding: 12px 18px;
-  border: 1px solid rgba(117, 67, 255, 0.18);
+  border: 2px solid rgba(0, 0, 0, 0.18);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #231b46;
+  background: linear-gradient(180deg, #ffd43f 0%, #ffb800 100%);
+  color: #0d0d0d;
   text-decoration: none;
   font-family: "Montserrat Bold", "Montserrat", sans-serif;
   font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
-  box-shadow: 0 12px 26px rgba(34, 24, 68, 0.08);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
   transition: all 0.2s ease-in-out;
 }
 
 .semana-do-consumidor .showcase__hero-whatsapp:hover {
-  background: rgba(245, 240, 255, 0.96);
-  border-color: rgba(117, 67, 255, 0.28);
-  color: #7543ff;
+  background: linear-gradient(180deg, #ffe15b 0%, #ffc800 100%);
+  border-color: rgba(0, 0, 0, 0.25);
+  color: #0d0d0d;
 }
 
 .semana-do-consumidor .showcase__actions {
@@ -297,7 +297,7 @@
   align-items: center;
   gap: 10px;
   padding: 14px 18px;
-  border: 1px solid rgba(117, 67, 255, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 999px;
   background: #fff;
   color: #231b46;
@@ -305,7 +305,7 @@
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.02em;
-  box-shadow: 0 12px 26px rgba(34, 24, 68, 0.08);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease-in-out;
 }
 
@@ -314,9 +314,9 @@
 }
 
 .semana-do-consumidor .showcase__link:hover {
-  background: rgba(245, 240, 255, 0.96);
-  border-color: rgba(117, 67, 255, 0.28);
-  color: #7543ff;
+  background: rgba(245, 245, 245, 0.96);
+  border-color: rgba(0, 0, 0, 0.18);
+  color: #0d0d0d;
 }
 
 .semana-do-consumidor .showcase__link:hover svg {
@@ -356,15 +356,15 @@
   width: 38px;
   height: 38px;
   border-radius: 999px;
-  background: rgba(117, 67, 255, 0.16);
-  color: #7543ff;
-  box-shadow: 0 8px 18px rgba(80, 47, 168, 0.16);
+  background: rgba(0, 0, 0, 0.08);
+  color: #2d2d2d;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
 .semana-do-consumidor .showcase__carousel .swiper-button-prev:hover,
 .semana-do-consumidor .showcase__carousel .swiper-button-next:hover {
-  background: #cbbaff;
-  color: #7543ff;
+  background: rgba(0, 0, 0, 0.12);
+  color: #0d0d0d;
 }
 
 .semana-do-consumidor .showcase__carousel .swiper-button-prev svg,
@@ -383,7 +383,7 @@
   padding: 44px 0 52px;
   border: none;
   border-radius: 0;
-  background: linear-gradient(135deg, #f2ebe1 0%, #efe4da 48%, rgba(117, 67, 255, 0.26) 100%);
+  background: linear-gradient(135deg, #f5f5f5 0%, #ebebeb 48%, #e0e0e0 100%);
   box-shadow: none;
 }
 
@@ -393,7 +393,7 @@
   width: 100%;
   height: 100%;
   border-radius: 0;
-  background: radial-gradient(circle at top right, rgba(117, 67, 255, 0.2), rgba(117, 67, 255, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%);
+  background: radial-gradient(circle at top right, rgba(80, 80, 80, 0.1), rgba(80, 80, 80, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%);
 }
 
 .semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__copy,
@@ -424,10 +424,10 @@
   gap: 14px;
   padding: 24px;
   min-width: 360px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(38, 24, 84, 0.94) 0%, rgba(24, 14, 58, 0.98) 100%);
-  box-shadow: 0 24px 60px rgba(66, 35, 153, 0.24);
+  background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 50%, #0a0a0a 100%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
   color: #fff;
 }
 
@@ -436,7 +436,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 54%);
   pointer-events: none;
 }
 
@@ -462,7 +462,7 @@
   justify-content: center;
   gap: 4px;
   width: 100%;
-  color: #fff2a8;
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-weight: 700;
@@ -497,9 +497,9 @@
   align-items: center;
   gap: 7px;
   padding: 14px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
 }
 
@@ -530,7 +530,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 12px;
-  border: 1px solid rgba(117, 67, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: none;
@@ -541,7 +541,7 @@
 }
 
 .semana-do-consumidor .cronometro--spot .cronometro__label {
-  color: #6e6390;
+  color: #2d2d2d;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 700;
@@ -560,16 +560,16 @@
   align-items: center;
   gap: 3px;
   padding: 8px 4px;
-  border: 1px solid rgba(117, 67, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
-  background: linear-gradient(180deg, #fff 0%, rgba(117, 67, 255, 0.06) 100%);
+  background: linear-gradient(180deg, #fff 0%, rgba(0, 0, 0, 0.03) 100%);
 }
 
 .semana-do-consumidor .cronometro--spot .days,
 .semana-do-consumidor .cronometro--spot .hours,
 .semana-do-consumidor .cronometro--spot .minutes,
 .semana-do-consumidor .cronometro--spot .seconds {
-  color: #4c24c8;
+  color: #0d0d0d;
   font-variant-numeric: tabular-nums;
   font-weight: 800;
   font-size: 15px;
@@ -577,7 +577,7 @@
 }
 
 .semana-do-consumidor .cronometro--spot small {
-  color: #6e6390;
+  color: #4a4a4a;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 8px;
@@ -601,7 +601,7 @@
   padding: 16px 14px;
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 240, 255, 0.98) 100%);
-  box-shadow: inset 0 0 0 1px rgba(117, 67, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
 .semana-do-consumidor .showcase .spot .products-sold {
@@ -610,7 +610,7 @@
   width: 100%;
   height: 24px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(117, 67, 255, 0.2) 0%, rgba(117, 67, 255, 0.08) 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.06) 100%);
   color: #fff;
   text-align: center;
   font-size: 10px;
@@ -625,7 +625,7 @@
   left: 0;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #7543ff 0%, #4c24c8 100%);
+  background: linear-gradient(90deg, #2d2d2d 0%, #1a1a1a 100%);
   z-index: -1;
 }
 
@@ -714,8 +714,8 @@
   }
 
   .semana-do-consumidor .oferta-relampago__lightning--hero {
-    font-size: 0.82em;
-    right: 0.6em;
+    font-size: 0.75em;
+    right: -0.4em;
   }
 
   .semana-do-consumidor .showcase__subtitle {
@@ -796,16 +796,16 @@
 .semana-do-consumidor .seo-content__faq {
   min-width: 0;
   padding: 28px 30px;
-  border: 1px solid rgba(117, 67, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 30px;
-  background: radial-gradient(circle at top right, rgba(242, 235, 225, 0.82), rgba(242, 235, 225, 0) 42%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0) 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(245, 238, 230, 0.94) 100%);
-  box-shadow: 0 10px 24px rgba(34, 24, 68, 0.04);
+  background: radial-gradient(circle at top right, rgba(242, 242, 242, 0.82), rgba(242, 242, 242, 0) 42%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0) 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 248, 248, 0.94) 100%);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
 }
 
 .semana-do-consumidor .seo-content__eyebrow {
   display: inline-block;
   margin-bottom: 12px;
-  color: #4c24c8;
+  color: #2d2d2d;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-family: "Montserrat Bold", "Montserrat", sans-serif;
@@ -828,7 +828,7 @@
 .semana-do-consumidor .seo-content__intro p,
 .semana-do-consumidor .seo-content__faq p {
   margin: 0;
-  color: #5d537d;
+  color: #5a5a5a;
   font-family: "Montserrat Light", "Montserrat", sans-serif;
   font-size: 15px;
   line-height: 1.7;
@@ -841,7 +841,7 @@
 
 .semana-do-consumidor .seo-content__faq-item {
   padding: 16px 0;
-  border-top: 1px solid rgba(117, 67, 255, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .semana-do-consumidor .seo-content__faq-item:first-of-type {
@@ -871,8 +871,8 @@
   right: 2px;
   width: 10px;
   height: 10px;
-  border-right: 2px solid #7543ff;
-  border-bottom: 2px solid #7543ff;
+  border-right: 2px solid #2d2d2d;
+  border-bottom: 2px solid #2d2d2d;
   transform: translateY(-60%) rotate(45deg);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
@@ -891,8 +891,7 @@
   padding: 44px 0 52px;
   border: none;
   border-radius: 0;
-  background-color: #efe4da;
-  background-image: linear-gradient(135deg, #f2ebe1 0%, #efe4da 48%, rgba(117, 67, 255, 0.22) 100%);
+  background: linear-gradient(135deg, #f5f5f5 0%, #ebebeb 48%, #e0e0e0 100%);
   box-shadow: none;
 }
 
@@ -911,17 +910,17 @@
 }
 
 .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__link:hover {
-  background: rgba(245, 240, 255, 0.96);
-  border-color: rgba(117, 67, 255, 0.28);
-  color: #7543ff;
+  background: rgba(245, 245, 245, 0.96);
+  border-color: rgba(0, 0, 0, 0.18);
+  color: #0d0d0d;
 }
 
 .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__link:hover svg {
-  color: #7543ff;
+  color: #0d0d0d;
 }
 
 .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__subtitle {
-  color: rgba(35, 27, 70, 0.78);
+  color: rgba(45, 45, 45, 0.85);
 }
 
 .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__carousel {
@@ -945,11 +944,10 @@
   padding: 20px 20px 18px;
   min-width: 410px;
   min-height: 0;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
-  background-color: #3f2a84;
-  background-image: linear-gradient(180deg, rgba(96, 70, 173, 0.72) 0%, rgba(63, 42, 132, 0.96) 58%, rgba(45, 28, 99, 1) 100%);
-  box-shadow: 0 14px 28px rgba(66, 35, 153, 0.14);
+  background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 50%, #0a0a0a 100%);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
 }
 
 .semana-do-consumidor #cronometro:before {
@@ -982,8 +980,8 @@
 }
 
 .semana-do-consumidor #cronometro .cron__item {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   padding: 11px 8px;
   border-radius: 17px;
@@ -1005,11 +1003,11 @@
 
 .semana-do-consumidor .showcase .spot:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(117, 67, 255, 0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .semana-do-consumidor .showcase .spot:hover .spot__title h3 {
-  color: #4c24c8;
+  color: #0d0d0d;
 }
 
 .semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer {
@@ -1020,7 +1018,7 @@
   margin: 0;
   padding: 10px 10px 8px;
   border-radius: 16px 16px 0 0;
-  background: linear-gradient(180deg, rgba(247, 242, 255, 0.98) 0%, rgba(255, 255, 255, 0.995) 100%);
+  background: linear-gradient(180deg, rgba(250, 250, 250, 0.98) 0%, rgba(255, 255, 255, 0.995) 100%);
 }
 
 .semana-do-consumidor .showcase .spot .spot__image-wrapper {
@@ -1118,13 +1116,13 @@
 }
 
 .semana-do-consumidor .spot__buttons .add-to-cart-button {
-  background: #7543ff;
+  background: #2d2d2d;
   color: #fff;
 }
 
 .semana-do-consumidor .spot__buttons .add-to-cart-button:hover,
 .semana-do-consumidor .spot:hover .spot__buttons .add-to-cart-button:hover {
-  background: #8f6bff;
+  background: #0d0d0d;
   color: #fff;
 }
 
@@ -1218,19 +1216,19 @@
 }
 
 .semana-do-consumidor .showcase--panel {
-  background: radial-gradient(circle at top right, rgba(117, 67, 255, 0.2), rgba(117, 67, 255, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 242, 255, 0.94) 100%);
+  background: radial-gradient(circle at top right, rgba(80, 80, 80, 0.08), rgba(80, 80, 80, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 248, 0.94) 100%);
 }
 
 .semana-do-consumidor .showcase-frete-gratis,
 .semana-do-consumidor .showcase-metais,
 .semana-do-consumidor .showcase-moveis {
-  background: radial-gradient(circle at top right, rgba(117, 67, 255, 0.2), rgba(117, 67, 255, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 242, 255, 0.94) 100%);
+  background: radial-gradient(circle at top right, rgba(80, 80, 80, 0.08), rgba(80, 80, 80, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 248, 0.94) 100%);
 }
 
 .semana-do-consumidor .showcase-melhores-ofertas,
 .semana-do-consumidor .showcase-banho-e-aquecimento,
 .semana-do-consumidor .showcase-ferramentas {
-  background: radial-gradient(circle at top right, rgba(242, 235, 225, 0.92), rgba(242, 235, 225, 0) 42%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.985) 0%, rgba(245, 238, 230, 0.95) 100%);
+  background: radial-gradient(circle at top right, rgba(242, 242, 242, 0.92), rgba(242, 242, 242, 0) 42%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.985) 0%, rgba(248, 248, 248, 0.95) 100%);
 }
 
 .semana-do-consumidor .showcase__eyebrow,
@@ -1281,9 +1279,9 @@
 
 .semana-do-consumidor .oferta-relampago__lightning {
   display: inline-block;
-  font-size: 1.45em;
+  font-size: 1.2em;
   line-height: 1;
-  color: #7543ff;
+  color: #f2ba1b;
   transform-origin: 50% 70%;
   animation: home-lightning 1.2s ease-in-out infinite;
 }
@@ -1455,7 +1453,7 @@
 .semana-do-consumidor .cronometro--spot .cronometro__minutes,
 .semana-do-consumidor .cronometro--spot .cronometro__seconds {
   display: block;
-  color: #4c24c8;
+  color: #0d0d0d;
   font-variant-numeric: tabular-nums;
   font-weight: 800;
   font-size: 15px;
@@ -1463,7 +1461,7 @@
 }
 
 .semana-do-consumidor .showcase .spot .spot-price .precoDe s {
-  color: rgba(76, 36, 200, 0.42);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .semana-do-consumidor .showcase .spot .spot-price .precoPor,
@@ -1545,7 +1543,6 @@
 @media (prefers-reduced-motion: reduce) {
 
   .semana-do-consumidor .oferta-relampago__lightning,
-  .semana-do-consumidor .showcase__title--hero,
   .semana-do-consumidor .showcase .spot .oferta-relampago__sold-progress,
   .semana-do-consumidor .showcase .spot .oferta-relampago__sold-text,
   .semana-do-consumidor .showcase .spot .oferta-relampago__badge-rotativo-text {

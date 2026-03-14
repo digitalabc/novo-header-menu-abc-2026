@@ -11,7 +11,7 @@
     <ul class="swiper-wrapper">
       {{~ for product in products ~}}
       <li class="swiper-slide">
-        {{ spot product: product show_buy_mobile: show_buy_mobile }}
+        {{ spot product: product index: for.index show_buy_mobile: show_buy_mobile }}
       </li>
       {{~ end ~}}
     </ul>
@@ -35,7 +35,7 @@
     <ul class="swiper-wrapper">
       {{ for item in products?.items }}
       <li class="swiper-slide">
-        {{ spot product: item virtual_reality: virtual_reality }}
+        {{ spot product: item index: for.index virtual_reality: virtual_reality }}
       </li>
       {{ end }}
     </ul>

@@ -1479,6 +1479,60 @@
   font-size: 9px;
 }
 
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado small {
+  font-size: 13px;
+  color: #000;
+  font-weight: 400;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado--piso-revestimento small {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 3px 8px;
+  background: #ffeb3b;
+  color: #b8860b;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado--piso-revestimento::after {
+  content: none;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado {
+  width: fit-content;
+  position: relative;
+  padding-right: 52px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado::after {
+  content: "m²";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 10px;
+  background: #f5e066;
+  color: #8b6914;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+}
+
 .semana-do-consumidor .showcase .spot .spot__image .stamps-discount {
   background: #2f2937;
   color: #fff;
@@ -1551,6 +1605,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__copy {
+    display: none !important;
+  }
+
   .semana-do-consumidor {
     margin-top: 0;
     padding-top: 0;
@@ -1674,6 +1732,7 @@
 
   .semana-do-consumidor .showcase .spot .spot-price .precoDe,
   .semana-do-consumidor .showcase .spot .spot-price .precoPor,
+  .semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
   .semana-do-consumidor .showcase .spot .spot-price .best-installment {
     order: 2;
   }

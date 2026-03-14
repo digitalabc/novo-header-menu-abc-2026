@@ -1483,6 +1483,35 @@
   font-size: 9px;
 }
 
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado small {
+  font-size: 13px;
+  color: #000;
+  font-weight: 400;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado--piso-revestimento small {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 3px 8px;
+  background: #ffeb3b;
+  color: #b8860b;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoCalculado {
+  width: fit-content;
+}
+
 .semana-do-consumidor .showcase .spot .spot__image .stamps-discount {
   background: #2f2937;
   color: #fff;
@@ -1679,6 +1708,7 @@
 
   .semana-do-consumidor .showcase .spot .spot-price .precoDe,
   .semana-do-consumidor .showcase .spot .spot-price .precoPor,
+  .semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
   .semana-do-consumidor .showcase .spot .spot-price .best-installment {
     order: 2;
   }

@@ -14,7 +14,7 @@
   if product_is_box 
     unidade_ = (settings.lista_por_unidade | array.filter @(do; ret $0.abreviatura == attribute ;end) | array.first) | object.values
     
-    if attribute_ == 'm2'
+    if attribute == 'm2' || is_piso_revestimento
       unidade_abreviatura =  "m²"
     else 
       unidade_abreviatura =  unidade_ | array.first | string.downcase
@@ -40,9 +40,9 @@
           {{~ end ~}}
         </h3>
         {{~ if product_is_box && !page_product ~}}
-          <p class="precoCalculado">
+          <p class="precoCalculado{{ if is_piso_revestimento }} precoCalculado--piso-revestimento{{ end }}">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
-            <small>/{{ unidade_abreviatura }}</small>            
+            <small>/{{ unidade_abreviatura }}</small>
           </p>
         {{~ end ~}}
         {{~ if page_product ~}}
@@ -60,7 +60,7 @@
           {{~ end ~}}
         </h3>
         {{~ if product_is_box && !page_product ~}}
-          <p class="precoCalculado">
+          <p class="precoCalculado{{ if is_piso_revestimento }} precoCalculado--piso-revestimento{{ end }}">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
             <small>/{{ unidade_abreviatura }}</small>
           </p>

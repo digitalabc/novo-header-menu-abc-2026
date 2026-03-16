@@ -739,9 +739,12 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 }
 
 @keyframes mm-whatsapp-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
@@ -869,10 +872,13 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 }
 
 @keyframes form-pre-whatsapp-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
   }
+
   50% {
     opacity: 0.9;
     box-shadow: 0 0 0 6px rgba(37, 211, 102, 0);

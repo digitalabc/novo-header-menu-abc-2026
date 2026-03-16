@@ -7782,7 +7782,7 @@ header {
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 1;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8303,10 +8303,18 @@ header {
   z-index: 9;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: flex-start;
   max-height: 112px;
   pointer-events: none;
   gap: 4px;
+}
+
+.stamps .stamp-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .stamps-vr {
@@ -8314,6 +8322,18 @@ header {
   top: 50px;
   right: 10px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.stamps-vr .stamp-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .stamps-vr--no_discount {

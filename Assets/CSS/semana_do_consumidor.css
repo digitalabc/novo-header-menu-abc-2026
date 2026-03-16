@@ -30,6 +30,10 @@
   font-display: swap;
 }
 
+.semana-do-consumidor .showcase[data-showcase="melhores-ofertas"] {
+  display: none;
+}
+
 .semana-do-consumidor .countdown-principal-da-campanha {
   justify-content: flex-start;
   align-self: flex-start;

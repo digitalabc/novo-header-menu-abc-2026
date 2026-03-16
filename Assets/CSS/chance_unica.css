@@ -30,6 +30,15 @@
   font-display: swap;
 }
 
+.semana-do-consumidor .showcase[data-showcase="frete-gratis"],
+.semana-do-consumidor .showcase[data-showcase="melhores-ofertas"],
+.semana-do-consumidor .showcase[data-showcase="metais"],
+.semana-do-consumidor .showcase[data-showcase="banho-e-aquecimento"],
+.semana-do-consumidor .showcase[data-showcase="moveis"],
+.semana-do-consumidor .showcase[data-showcase="ferramentas"] {
+  display: none;
+}
+
 .semana-do-consumidor .countdown-principal-da-campanha {
   justify-content: flex-start;
   align-self: flex-start;

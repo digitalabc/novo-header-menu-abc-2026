@@ -577,6 +577,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   scheduleWhenIdle(function () {
     initBannerSwipers();
+    initDeferredSwipers([
+      ".showcase-frete-gratis__carousel",
+      ".showcase-melhores-ofertas__carousel",
+      ".showcase-metais__carousel",
+      ".showcase-banho-e-aquecimento__carousel",
+      ".showcase-moveis__carousel",
+      ".showcase-ferramentas__carousel",
+      ".showcase-chance-unica__carousel",
+    ]);
   }, 240);
 
   window.addEventListener("resize", function () {

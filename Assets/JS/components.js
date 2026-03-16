@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function replaceRulerIcons() {
     replaceRulerItemIcon({
-      itemSelector: ".ruler__list .ruler__item:first-child",
+      itemSelector: ".ruler__list .ruler__item:nth-child(4)",
       imageSrc:
         "https://abcdaconstrucao.fbitsstatic.net/sf/img/svg/wpp-abc.svg?theme=main&v=202603120832",
       imageAlt: "Whatsapp",
@@ -326,17 +326,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     replaceRulerItemIcon({
-      itemSelector: ".ruler__list .ruler__item:nth-child(2)",
+      itemSelector: ".ruler__list .ruler__item:nth-child(5)",
       imageSrc:
-        "https://abcdaconstrucao.fbitsstatic.net/media/payment-pix.png?v=202603112019",
-      imageAlt: "Pix",
-      imageHeight: 24,
-      imageClass: "ruler__icon-pix",
-      wrapperClass: "ruler__text-wrapper--pix-icon-replaced",
+        "https://abcdaconstrucao.fbitsstatic.net/media/encarte-forms.png?v=202603112016",
+      imageAlt: "Ofertas lojas físicas",
+      imageHeight: 40,
+      imageClass: "ruler__icon-store-offers",
+      wrapperClass: "ruler__text-wrapper--store-offers-icon-replaced",
     });
 
     replaceRulerItemIcon({
-      itemSelector: ".ruler__list .ruler__item:nth-child(3)",
+      itemSelector: ".ruler__list .ruler__item:nth-child(6)",
       imageSrc:
         "https://abcdaconstrucao.fbitsstatic.net/media/mini-franquia-abc.png?v=202603112009",
       imageAlt: "Compre online",
@@ -346,19 +346,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     replaceRulerItemIcon({
-      itemSelector: ".ruler__list .ruler__item:nth-child(4)",
+      itemSelector: ".ruler__list .ruler__item:nth-child(7)",
       imageSrc:
-        "https://abcdaconstrucao.fbitsstatic.net/media/encarte-forms.png?v=202603112016",
-      imageAlt: "Ofertas lojas físicas",
-      imageHeight: 40,
-      imageClass: "ruler__icon-store-offers",
-      wrapperClass: "ruler__text-wrapper--store-offers-icon-replaced",
+        "https://abcdaconstrucao.fbitsstatic.net/media/payment-pix.png?v=202603112019",
+      imageAlt: "Pix",
+      imageHeight: 24,
+      imageClass: "ruler__icon-pix",
+      wrapperClass: "ruler__text-wrapper--pix-icon-replaced",
     });
   }
 
   function updateRulerTexts() {
     updateRulerItemHtml(
-      ".ruler__list .ruler__item:nth-child(4)",
+      ".ruler__list .ruler__item:nth-child(5)",
       "<strong>Ofertas Lojas Físicas</strong><span class=\"ruler__subtitle\">mais perto de você</span>"
     );
   }

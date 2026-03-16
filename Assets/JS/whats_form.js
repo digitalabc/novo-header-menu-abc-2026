@@ -1,84 +1,82 @@
-//variables
-var logo_url =
-  "https://yata-apix-93d012ec-4c75-4f53-98f2-f493481f90de.s3-object.locaweb.com.br/d91dde17b04b4287ab4443e3eee9f856.png";
 var site_title = "ABC da Construção";
 var hello_message =
   "Olá! Tudo bem? Fale com nosso time de consultores via whatsapp e faça seu orçamento.";
 
+var wppPendingUrl = "";
+
 function preWhatsappHandler(url) {
-  formWpp = document.querySelector("#form-pre-whatsapp");
-  dataFormWpp = [];
+  wppPendingUrl = url || "https://api.whatsapp.com/send?phone=553191055920&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es";
+  var formWpp = document.querySelector("#form-pre-whatsapp");
+  if (!formWpp) return;
+  formWpp.dataset.pendingUrl = wppPendingUrl;
+}
 
-  if (formWpp) {
-    formWppSubmit = formWpp.querySelector(".form-wpp-submit");
+function handleFormWppSubmit(e) {
+  e.preventDefault();
+  var formWpp = document.querySelector("#form-pre-whatsapp");
+  if (!formWpp) return;
+  var url = formWpp.dataset.pendingUrl || wppPendingUrl;
+  var formWppSubmit = formWpp.querySelector(".form-wpp-submit");
+  var dataFormWpp = [];
 
-    formWppSubmit.addEventListener("click", function () {
-      formWppName = formWpp.querySelector(".form-wpp-name").value;
-      formWppEmail = formWpp.querySelector(".form-wpp-email").value;
-      formWppPhone = formWpp.querySelector(".form-wpp-phone").value;
-      formWppPhoneEmail = formWppPhone
-        .replace("(", "")
-        .replace(")", "")
-        .replace(" ", "")
-        .replace("-", "");
-      formWppPhone = formWpp.querySelector(".form-wpp-phone").value;
-      /*if(formWppName != '' && formWppPhone != '' && formWppPhone.length == 15) {*/
-      if (
-        formWppName != "" &&
-        formWppPhone != "" &&
-        formWppPhone.length >= 11
-      ) {
-        dataFormWpp = {
-          event_name: "whatsapp_form_send",
-          event_params: {
-            name: formWppName,
-            email: formWppEmail,
-            phone: formWppPhone,
-            current_url: location.href,
-            cookies: getCookie("mm_tracker"),
-          },
-        };
+  var formWppName = (formWpp.querySelector(".form-wpp-name").value || "").trim();
+  var formWppEmail = (formWpp.querySelector(".form-wpp-email").value || "").trim();
+  var formWppPhone = formWpp.querySelector(".form-wpp-phone").value;
+  var phoneDigits = getPhoneDigits(formWppPhone);
+  if (
+    formWppName.length >= 2 &&
+    isValidEmail(formWppEmail) &&
+    phoneDigits.length >= 11
+  ) {
+    dataFormWpp = {
+      event_name: "whatsapp_form_send",
+      event_params: {
+        name: formWppName,
+        email: formWppEmail,
+        phone: formWppPhone,
+        current_url: location.href,
+        cookies: getCookie("mm_tracker"),
+      },
+    };
 
-        sendSharpSpring(
-          {
-            nome: formWppName,
-            email: formWppEmail,
-            telefone: formWppPhone,
-            current_url: location.href,
-            cookies: getCookie("mm_tracker"),
-            telefone: formWppPhone,
-            firstSession: getCookie("FirstSession"),
-            lastSession: getCookie("LastSession"),
-          },
-          "whats_form"
-        );
+    sendSharpSpring(
+      {
+        nome: formWppName,
+        email: formWppEmail,
+        telefone: formWppPhone,
+        current_url: location.href,
+        cookies: getCookie("mm_tracker"),
+        telefone: formWppPhone,
+        firstSession: getCookie("FirstSession"),
+        lastSession: getCookie("LastSession"),
+      },
+      "whats_form"
+    );
 
-        var dataFormWpp = JSON.stringify(dataFormWpp);
+    var dataFormWppStr = JSON.stringify(dataFormWpp);
 
-        var response = jQuery.ajax({
-          type: "POST",
-          url: "https://gtm-mplx5hr-ntywn.uc.r.appspot.com",
-          data: dataFormWpp,
-          dataType: "json",
-          async: false,
-          headers: {
-            "X-Gtm-Server-Preview":
-              "ZW52LTV8aG96Yjd6WHAyTTl1VFNZb1dCaUktQXwxOGExOWJlYjBlZjY3MGNiMjU0MjM=",
-          },
-        }).responseText;
-
-        dataLayer.push({
-          event: "whatsapp_form_send",
-        });
-
-        window.open(url, "_blank");
-        //location.href = url;
-        formWpp.style.display = "none";
-      } else {
-        formWpp.querySelector(".form-wpp-error").style.display = "block";
-        formWpp.style.height = "500px";
-      }
+    jQuery.ajax({
+      type: "POST",
+      url: "https://gtm-mplx5hr-ntywn.uc.r.appspot.com",
+      data: dataFormWppStr,
+      dataType: "json",
+      async: false,
+      headers: {
+        "X-Gtm-Server-Preview":
+          "ZW52LTV8aG96Yjd6WHAyTTl1VFNZb1dCaUktQXwxOGExOWJlYjBlZjY3MGNiMjU0MjM=",
+      },
     });
+
+    dataLayer.push({
+      event: "whatsapp_form_send",
+    });
+
+    window.open(url, "_blank");
+    formWpp.style.display = "none";
+    var wrapper = document.querySelector("#mm-whatsapp-wrapper");
+    if (wrapper) wrapper.style.display = "flex";
+  } else {
+    formWpp.querySelector(".form-wpp-error").style.display = "block";
   }
 }
 
@@ -94,6 +92,9 @@ function mask(o, f) {
 function mphone(v) {
   var r = v.replace(/\D/g, "");
   r = r.replace(/^0/, "");
+  if (r.length > 11) {
+    r = r.substring(0, 11);
+  }
   if (r.length > 10) {
     r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
   } else if (r.length > 5) {
@@ -106,135 +107,109 @@ function mphone(v) {
   return r;
 }
 
+function getPhoneDigits(phone) {
+  return (phone || "").replace(/\D/g, "");
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || "");
+}
+
+function isValidForm(formWpp) {
+  var name = (formWpp.querySelector(".form-wpp-name").value || "").trim();
+  var email = formWpp.querySelector(".form-wpp-email").value || "";
+  var phone = getPhoneDigits(formWpp.querySelector(".form-wpp-phone").value);
+  return name.length >= 2 && isValidEmail(email) && phone.length >= 11;
+}
+
+function updateSubmitState(formWpp) {
+  var btn = formWpp.querySelector(".form-wpp-submit");
+  if (btn) {
+    btn.disabled = !isValidForm(formWpp);
+  }
+}
+
 function generateChildInput(parent, type, className, placeholder) {
   var input = document.createElement("input");
   input.setAttribute("type", type);
-  input.setAttribute("class", className);
+  input.setAttribute("class", "form-wpp-input " + className);
   input.setAttribute("placeholder", placeholder);
-  input.style.display = "flex";
-  input.style.backgroundColor = "#e7ffe7";
-  input.style.height = "40px";
-  input.style.fontSize = "14px";
-  input.style.marginBottom = "4px";
-  input.style.width = "80%";
-  input.style.border = "unset";
-  input.style.borderRadius = "5px";
-  input.style.boxShadow = "0px 1px #b1b1b1";
 
   if (type == "submit") {
     input.setAttribute("value", "Iniciar conversa");
-    input.style.backgroundColor = "#0b6156";
-    input.style.width = "40%";
-    input.style.justifyContent = "center";
-    input.style.color = "#fff";
   }
 
   if (type == "phone") {
     input.setAttribute("onkeypress", "mask(this, mphone)");
     input.setAttribute("onkeyup", "mask(this, mphone)");
+    input.setAttribute("oninput", "mask(this, mphone)");
   }
 
   parent.appendChild(input);
 }
 
 function showWhatsAppForm() {
+  var existingForm = document.querySelector("#form-pre-whatsapp");
+  if (existingForm) {
+    existingForm.style.display = "block";
+    updateSubmitState(existingForm);
+    return;
+  }
+
   var formBox = document.createElement("div");
   formBox.setAttribute("id", "form-pre-whatsapp");
-  formBox.style.position = "fixed";
-  formBox.style.bottom = "10px";
-  formBox.style.right = "10px";
-  formBox.style.fontFamily = '"Montserrat", sans-serif';
-  formBox.style.width = "370px";
-  formBox.style.height = "410px";
-  formBox.style.backgroundColor = "#e3d9d9";
-  formBox.style.zIndex = "99999";
-  formBox.style.maxWidth = "95%";
+  formBox.setAttribute("class", "form-pre-whatsapp");
 
   var formHeader = document.createElement("div");
-  formHeader.style.display = "flex";
-  formHeader.style.backgroundColor = "#0b6156";
-  formHeader.style.color = "#fff";
-  formHeader.style.padding = "20px";
-  formHeader.style.gap = "25px";
-  formHeader.style.alignItems = "center";
+  formHeader.setAttribute("class", "form-pre-whatsapp__header");
 
-  var formHeaderClose = document.createElement("div");
-  formHeaderClose.innerHTML = "✖";
-  formHeaderClose.style.position = "absolute";
-  formHeaderClose.style.top = "5px";
-  formHeaderClose.style.right = "15px";
-  formHeaderClose.style.cursor = "pointer";
+  var formHeaderClose = document.createElement("button");
+  formHeaderClose.setAttribute("type", "button");
+  formHeaderClose.setAttribute("class", "form-pre-whatsapp__close");
+  formHeaderClose.setAttribute("aria-label", "Fechar");
+  formHeaderClose.innerHTML = "×";
   formHeaderClose.addEventListener("click", function () {
     formBox.style.display = "none";
-    document.querySelector("#mm-whatsapp").style.display = "block";
+    var wrapper = document.querySelector("#mm-whatsapp-wrapper");
+    if (wrapper) wrapper.style.display = "flex";
   });
 
+  var logoImg = document.querySelector(".navbar-brand img, .navbar__logo img");
+  var logoUrl = logoImg ? logoImg.src : "https://abcdaconstrucao.fbitsstatic.net/sf/img/header/logo-abc.svg";
+
   var formHeaderLeft = document.createElement("div");
-  formHeaderLeft.style.display = "flex";
-  formHeaderLeft.style.backgroundImage = 'url("' + logo_url + '")';
-  formHeaderLeft.style.backgroundSize = "cover";
-  formHeaderLeft.style.width = "60px";
-  formHeaderLeft.style.height = "60px";
-  formHeaderLeft.style.borderRadius = "36px";
+  formHeaderLeft.setAttribute("class", "form-pre-whatsapp__avatar");
+  var logoEl = document.createElement("img");
+  logoEl.src = logoUrl;
+  logoEl.alt = site_title;
+  logoEl.setAttribute("class", "form-pre-whatsapp__avatar-img");
+  formHeaderLeft.appendChild(logoEl);
 
   var formHeaderRight = document.createElement("div");
-  formHeaderRight.style.display = "flex";
-  formHeaderRight.style.flexDirection = "column";
+  formHeaderRight.setAttribute("class", "form-pre-whatsapp__header-info");
   formHeaderRight.innerHTML =
-    site_title +
-    '<div style="display: flex; font-size: 13px; font-weight: 400">online</div>';
-  formHeaderRight.style.fontSize = "18px";
-  formHeaderRight.style.fontWeight = "bolder";
+    '<span class="form-pre-whatsapp__title">' + site_title + '</span>' +
+    '<span class="form-pre-whatsapp__status">online</span>';
 
   var formContent = document.createElement("div");
-  formContent.style.display = "flex";
-  formContent.style.flexDirection = "column";
-  formContent.style.maxWidth = "370px";
-  formContent.style.padding = "0px 10px 0px 0px";
+  formContent.setAttribute("class", "form-pre-whatsapp__body");
 
   var formHello = document.createElement("div");
-  formHello.style.display = "flex";
+  formHello.setAttribute("class", "form-pre-whatsapp__message");
   formHello.innerHTML = hello_message;
-  formHello.style.fontSize = "14px";
-  formHello.style.fontFamily = '"Montserrat", sans-serif';
-  formHello.style.color = "rgb(74, 74, 74)";
-  formHello.style.backgroundColor = "#fff";
-  formHello.style.padding = "10px";
-  formHello.style.margin = "10px 0px 0px 10px";
-  formHello.style.maxWidth = "80%";
-  formHello.style.borderRadius = "5px";
-  formHello.style.boxShadow = "0px 1px #b1b1b1";
+
+  var formError = document.createElement("div");
+  formError.setAttribute("class", "form-pre-whatsapp__error form-wpp-error");
+  formError.innerHTML =
+    "Por favor, precisamos de seu <strong>Nome</strong>, <strong>E-mail</strong> e <strong>Telefone com DDD</strong> para prosseguir. 🙂";
 
   var form = document.createElement("form");
   form.setAttribute("id", "form-wpp");
-  form.style.display = "flex";
-  form.style.flexDirection = "column";
-  form.style.alignItems = "flex-end";
-  form.style.marginTop = "10px";
-
-  var formError = document.createElement("div");
-  formError.setAttribute("class", "form-wpp-error");
-  formError.innerHTML =
-    "Por favor, precisamos de seu <b>Nome</b>, <b>E-mail</b> e <b>Telefone com DDD</b> para prosseguir. 🙂";
-  formError.style.fontSize = "14px";
-  formError.style.fontFamily = '"Montserrat", sans-serif';
-  formError.style.color = "rgb(74, 74, 74)";
-  formError.style.backgroundColor = "#fff";
-  formError.style.padding = "10px";
-  formError.style.margin = "10px 0px 0px 10px";
-  formError.style.maxWidth = "80%";
-  formError.style.borderRadius = "5px";
-  formError.style.boxShadow = "0px 1px #b1b1b1";
-  formError.style.display = "none";
+  form.setAttribute("class", "form-pre-whatsapp__form");
 
   generateChildInput(form, "text", "form-wpp-name", "Seu Nome*");
   generateChildInput(form, "email", "form-wpp-email", "Seu Melhor E-mail*");
-  generateChildInput(
-    form,
-    "phone",
-    "form-wpp-phone",
-    "   Seu Telefone com DDD*"
-  );
+  generateChildInput(form, "phone", "form-wpp-phone", "Seu Telefone com DDD*");
   generateChildInput(form, "submit", "form-wpp-submit", "Iniciar Conversa");
 
   formHeader.appendChild(formHeaderLeft);
@@ -248,42 +223,58 @@ function showWhatsAppForm() {
 
   document.body.appendChild(formBox);
 
-  document
-    .querySelector("#form-wpp > .form-wpp-submit")
-    .addEventListener("click", function (e) {
-      e.preventDefault();
+  var formWpp = document.querySelector("#form-pre-whatsapp");
+  var submitBtn = formWpp.querySelector(".form-wpp-submit");
+  submitBtn.disabled = true;
 
-      var name = document.querySelector("#form-wpp > .form-wpp-name").value;
-      var email = document.querySelector("#form-wpp > .form-wpp-email").value;
-      var phone = document.querySelector("#form-wpp > .form-wpp-phone").value;
+  ["input", "keyup", "change"].forEach(function (evt) {
+    formWpp.addEventListener(evt, function () {
+      updateSubmitState(formWpp);
     });
+  });
+
+  var phoneInput = formWpp.querySelector(".form-wpp-phone");
+  if (phoneInput) {
+    phoneInput.setAttribute("inputmode", "numeric");
+    phoneInput.setAttribute("pattern", "[0-9]*");
+  }
+
+  formWpp.querySelector("#form-wpp").addEventListener("submit", handleFormWppSubmit);
 }
 
 window.addEventListener("load", onLoadWppIcon, false);
 
 function onLoadWppIcon() {
   try {
-    // replace float icon
     var wppIconButtons = document.querySelector("#whatsapp");
     var mmWppIcon = wppIconButtons.cloneNode(true);
     mmWppIcon.setAttribute("id", "mm-whatsapp");
     mmWppIcon.style.cursor = "pointer";
-    mmWppIcon.style.position = "fixed";
-    mmWppIcon.style.bottom = "40px";
-    mmWppIcon.style.right = "10px";
-    mmWppIcon.style.zIndex = "998";
-    mmWppIcon.style.filter = "drop-shadow(2px 4px 6px #999)";
+    mmWppIcon.style.filter = "none";
+
+    var wrapper = document.createElement("div");
+    wrapper.setAttribute("id", "mm-whatsapp-wrapper");
+    wrapper.setAttribute("class", "mm-whatsapp-wrapper");
+    wrapper.setAttribute("aria-label", "Falar com especialista via WhatsApp");
+
+    var label = document.createElement("span");
+    label.setAttribute("class", "mm-whatsapp-label");
+    label.textContent = "Falar com especialista";
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(mmWppIcon);
 
     wppIconButtons.remove();
-    document.body.appendChild(mmWppIcon);
+    document.body.appendChild(wrapper);
 
     var wppApiButtons = document.querySelectorAll('a[href*="api.whatsapp"]');
     var wameButtons = document.querySelectorAll('a[href*="wa.me"]');
+    var wppIconWrapper = document.querySelector("#mm-whatsapp-wrapper");
     var wppIconButton = document.querySelector("#mm-whatsapp");
     var wppButtons = Array.prototype.slice
       .call(wppApiButtons)
       .concat(Array.prototype.slice.call(wameButtons))
-      .concat(wppIconButton);
+      .concat(wppIconWrapper);
 
     for (var i = 0; i < wppButtons.length; i++) {
       wppButtons[i].addEventListener("click", function (e) {
@@ -291,7 +282,7 @@ function onLoadWppIcon() {
         var wppDefault =
           "https://api.whatsapp.com/send?phone=553191055920&text=%5BABCZAP%5D%20Ol%C3%A1!%20Acessei%20o%20site%20da%20ABC%20da%20Constru%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es";
         e.preventDefault();
-        wppIconButton.style.display = "none";
+        wppIconWrapper.style.display = "none";
         showWhatsAppForm();
 
         dataLayer.push({

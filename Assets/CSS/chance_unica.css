@@ -111,6 +111,12 @@
 }
 
 .semana-do-consumidor .showcase-sections .showcase-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.semana-do-consumidor .showcase-sections .showcase-stack .showcase__link {
   display: none;
 }
 
@@ -267,10 +273,10 @@
   justify-content: center;
   margin-top: 0;
   padding: 12px 18px;
-  border: 2px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 999px;
-  background: linear-gradient(180deg, #ffd43f 0%, #ffb800 100%);
-  color: #0d0d0d;
+  background: linear-gradient(180deg, #ffd966 0%, #ffb800 100%);
+  color: #000;
   text-decoration: none;
   font-family: "Montserrat Bold", "Montserrat", sans-serif;
   font-size: 13px;
@@ -282,8 +288,8 @@
 
 .semana-do-consumidor .showcase__hero-whatsapp:hover {
   background: linear-gradient(180deg, #ffe15b 0%, #ffc800 100%);
-  border-color: rgba(0, 0, 0, 0.25);
-  color: #0d0d0d;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #000;
 }
 
 .semana-do-consumidor .showcase__actions {

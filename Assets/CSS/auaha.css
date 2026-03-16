@@ -10256,176 +10256,452 @@ header {
   flex-shrink: 0;
 }
 
-.ruler__item:first-child {
-  order: 1;
-}
-
-.ruler__item:nth-child(2) {
-  order: 4;
-}
-
-.ruler__item:nth-child(3) {
-  order: 3;
-}
-
-.ruler__item:nth-child(4) {
-  order: 2;
-}
-
-.ruler__item:first-child .ruler__text-wrapper {
-  padding: 8px 12px;
-  border: 1px solid #25d366;
-  border-radius: 8px;
-  background-color: #25d3661a;
-  gap: 5px;
-}
-
-.ruler__item:first-child .ruler__text-wrapper:before {
-  content: "";
-  display: block;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  background: transparent;
-}
-
-.ruler__item:first-child .ruler__text-wrapper.ruler__text-wrapper--icon-replaced:before {
+.ruler__item--mobile-only {
   display: none;
 }
 
-.ruler__item:first-child .ruler__text-wrapper.ruler__text-wrapper--icon-replaced .ruler__icon-whatsapp {
-  display: block;
-  width: auto;
-  height: 40px;
-  flex-shrink: 0;
+@media (min-width: 992px) {
+
+  .ruler__item:nth-child(4) {
+    order: 1;
+  }
+
+  .ruler__item:nth-child(5) {
+    order: 2;
+  }
+
+  .ruler__item:nth-child(6) {
+    order: 3;
+  }
+
+  .ruler__item:nth-child(7) {
+    order: 4;
+  }
+
+  .ruler__item:nth-child(4) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #25d366;
+    border-radius: 8px;
+    background-color: #25d3661a;
+    gap: 5px;
+  }
+
+  .ruler__item:nth-child(4) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background: transparent;
+  }
+
+  .ruler__item:nth-child(4) .ruler__text-wrapper.ruler__text-wrapper--icon-replaced:before {
+    display: none;
+  }
+
+  .ruler__item:nth-child(4) .ruler__text-wrapper.ruler__text-wrapper--icon-replaced .ruler__icon-whatsapp {
+    display: block;
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .ruler__item:nth-child(4) .ruler__text-wrapper svg {
+    display: none;
+  }
+
+  .ruler__item:nth-child(4) .ruler__text {
+    color: #00ad14;
+    font-weight: 500;
+  }
+
+  .ruler__item:nth-child(4) .ruler__text strong {
+    color: #00ad14;
+    font-weight: 700;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #8cbfea;
+    border-radius: 8px;
+    background-color: #eaf4ff;
+    gap: 5px;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: url("https://abcdaconstrucao.fbitsstatic.net/media/encarte-forms.png?v=202603112016") center/contain no-repeat;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text-wrapper.ruler__text-wrapper--store-offers-icon-replaced:before {
+    display: none;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text-wrapper.ruler__text-wrapper--store-offers-icon-replaced .ruler__icon-store-offers {
+    display: block;
+    width: 72px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text-wrapper svg {
+    display: none;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text {
+    color: #2d79c8;
+    font-weight: 400;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text strong {
+    color: #2d79c8;
+    font-weight: 700;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text .ruler__subtitle {
+    display: block;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    gap: 5px;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: url("https://abcdaconstrucao.fbitsstatic.net/media/mini-franquia-abc.png?v=202603112009") center/contain no-repeat;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper.ruler__text-wrapper--online-icon-replaced:before {
+    display: none;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper.ruler__text-wrapper--online-icon-replaced .ruler__icon-online {
+    display: block;
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper svg {
+    display: none;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text {
+    color: #5d5d5d;
+    font-weight: 500;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text strong {
+    color: #392f2d;
+    font-weight: 700;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #38BEB0;
+    border-radius: 8px;
+    background-color: #38BEB01A;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background: url("https://abcdaconstrucao.fbitsstatic.net/media/payment-pix.png?v=202603112019") center/contain no-repeat;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper.ruler__text-wrapper--pix-icon-replaced:before {
+    display: none;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper.ruler__text-wrapper--pix-icon-replaced .ruler__icon-pix {
+    display: block;
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper svg {
+    display: none;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text_pix,
+  .ruler__item:nth-child(7) .ruler__text {
+    color: #38BEB0;
+    margin-left: 8px;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text a {
+    text-decoration: none;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text a strong,
+  .ruler__item:nth-child(7) .ruler__text_pix strong {
+    color: #38BEB0;
+    font-weight: bold;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper svg path {
+    fill: #38BEB0;
+  }
 }
 
-.ruler__item:first-child .ruler__text-wrapper svg {
-  display: none;
-}
+@media (max-width: 991px) {
+  .ruler__item:nth-child(1) .ruler__text-wrapper,
+  .ruler__item:nth-child(2) .ruler__text-wrapper,
+  .ruler__item:nth-child(3) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border-radius: 8px;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+  }
 
-.ruler__item:first-child .ruler__text {
-  color: #00ad14;
-  font-weight: 500;
-}
+  .ruler__item:nth-child(1) .ruler__text-wrapper {
+    border: 1px solid #e30613;
+    background-color: #e306131a;
+  }
 
-.ruler__item:first-child .ruler__text strong {
-  color: #00ad14;
-  font-weight: 700;
-}
+  .ruler__item:nth-child(1) .ruler__text,
+  .ruler__item:nth-child(1) .ruler__text strong {
+    color: #e30613;
+  }
 
-.ruler__item:nth-child(3) .ruler__text-wrapper {
-  padding: 8px 12px;
-  border: 1px solid #cfcfcf;
-  border-radius: 8px;
-  background-color: #f2f2f2;
-  gap: 5px;
-}
+  .ruler__item:nth-child(2) .ruler__text-wrapper {
+    border: 1px solid #2d79c8;
+    background-color: #2d79c81a;
+  }
 
-.ruler__item:nth-child(3) .ruler__text-wrapper:before {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  background: url("https://abcdaconstrucao.fbitsstatic.net/media/mini-franquia-abc.png?v=202603112009") center/contain no-repeat;
-}
+  .ruler__item:nth-child(2) .ruler__text,
+  .ruler__item:nth-child(2) .ruler__text strong {
+    color: #2d79c8;
+  }
 
-.ruler__item:nth-child(3) .ruler__text-wrapper.ruler__text-wrapper--online-icon-replaced:before {
-  display: none;
-}
+  .ruler__item:nth-child(3) .ruler__text-wrapper {
+    border: 1px solid #38BEB0;
+    background-color: #38BEB01a;
+  }
 
-.ruler__item:nth-child(3) .ruler__text-wrapper.ruler__text-wrapper--online-icon-replaced .ruler__icon-online {
-  display: block;
-  width: auto;
-  height: 40px;
-  flex-shrink: 0;
-}
+  .ruler__item:nth-child(3) .ruler__text,
+  .ruler__item:nth-child(3) .ruler__text strong {
+    color: #38BEB0;
+  }
 
-.ruler__item:nth-child(3) .ruler__text-wrapper svg {
-  display: none;
-}
+  .ruler__item:nth-child(1) .ruler__icon-placeholder,
+  .ruler__item:nth-child(2) .ruler__icon-placeholder,
+  .ruler__item:nth-child(3) .ruler__icon-placeholder {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background-color: currentColor;
+    border-radius: 4px;
+    opacity: 0.6;
+  }
 
-.ruler__item:nth-child(3) .ruler__text {
-  color: #5d5d5d;
-  font-weight: 500;
-}
+  .ruler__item:nth-child(4) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #25d366;
+    border-radius: 8px;
+    background-color: #25d3661a;
+    gap: 5px;
+  }
 
-.ruler__item:nth-child(3) .ruler__text strong {
-  color: #392f2d;
-  font-weight: 700;
-}
+  .ruler__item:nth-child(4) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background: transparent;
+  }
 
-.ruler__item:nth-child(4) .ruler__text-wrapper {
-  padding: 8px 12px;
-  border: 1px solid #8cbfea;
-  border-radius: 8px;
-  background-color: #eaf4ff;
-  gap: 5px;
-}
+  .ruler__item:nth-child(4) .ruler__text-wrapper.ruler__text-wrapper--icon-replaced:before {
+    display: none;
+  }
 
-.ruler__item:nth-child(4) .ruler__text-wrapper:before {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  background: url("https://abcdaconstrucao.fbitsstatic.net/media/encarte-forms.png?v=202603112016") center/contain no-repeat;
-}
+  .ruler__item:nth-child(4) .ruler__text-wrapper.ruler__text-wrapper--icon-replaced .ruler__icon-whatsapp {
+    display: block;
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+  }
 
-.ruler__item:nth-child(4) .ruler__text-wrapper.ruler__text-wrapper--store-offers-icon-replaced:before {
-  display: none;
-}
+  .ruler__item:nth-child(4) .ruler__text-wrapper svg {
+    display: none;
+  }
 
-.ruler__item:nth-child(4) .ruler__text-wrapper.ruler__text-wrapper--store-offers-icon-replaced .ruler__icon-store-offers {
-  display: block;
-  width: 72px;
-  height: 40px;
-  flex-shrink: 0;
-}
+  .ruler__item:nth-child(4) .ruler__text {
+    color: #00ad14;
+    font-weight: 500;
+  }
 
-.ruler__item:nth-child(4) .ruler__text-wrapper svg {
-  display: none;
-}
+  .ruler__item:nth-child(4) .ruler__text strong {
+    color: #00ad14;
+    font-weight: 700;
+  }
 
-.ruler__item:nth-child(4) .ruler__text {
-  color: #2d79c8;
-  font-weight: 400;
-}
+  .ruler__item:nth-child(5) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #8cbfea;
+    border-radius: 8px;
+    background-color: #eaf4ff;
+    gap: 5px;
+  }
 
-.ruler__item:nth-child(4) .ruler__text strong {
-  color: #2d79c8;
-  font-weight: 700;
-}
+  .ruler__item:nth-child(5) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: url("https://abcdaconstrucao.fbitsstatic.net/media/encarte-forms.png?v=202603112016") center/contain no-repeat;
+  }
 
-.ruler__item:nth-child(4) .ruler__text .ruler__subtitle {
-  display: block;
-  font-weight: 400;
-  line-height: 1.3;
-}
+  .ruler__item:nth-child(5) .ruler__text-wrapper.ruler__text-wrapper--store-offers-icon-replaced:before {
+    display: none;
+  }
 
-.ruler__item:nth-child(2) .ruler__text-wrapper:before {
-  content: "";
-  display: block;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  background: url("https://abcdaconstrucao.fbitsstatic.net/media/payment-pix.png?v=202603112019") center/contain no-repeat;
-}
+  .ruler__item:nth-child(5) .ruler__text-wrapper.ruler__text-wrapper--store-offers-icon-replaced .ruler__icon-store-offers {
+    display: block;
+    width: 72px;
+    height: 40px;
+    flex-shrink: 0;
+  }
 
-.ruler__item:nth-child(2) .ruler__text-wrapper.ruler__text-wrapper--pix-icon-replaced:before {
-  display: none;
-}
+  .ruler__item:nth-child(5) .ruler__text-wrapper svg {
+    display: none;
+  }
 
-.ruler__item:nth-child(2) .ruler__text-wrapper.ruler__text-wrapper--pix-icon-replaced .ruler__icon-pix {
-  display: block;
-  width: auto;
-  height: 40px;
-  flex-shrink: 0;
-}
+  .ruler__item:nth-child(5) .ruler__text {
+    color: #2d79c8;
+    font-weight: 400;
+  }
 
-.ruler__item:nth-child(2) .ruler__text-wrapper svg {
-  display: none;
+  .ruler__item:nth-child(5) .ruler__text strong {
+    color: #2d79c8;
+    font-weight: 700;
+  }
+
+  .ruler__item:nth-child(5) .ruler__text .ruler__subtitle {
+    display: block;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    gap: 5px;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: url("https://abcdaconstrucao.fbitsstatic.net/media/mini-franquia-abc.png?v=202603112009") center/contain no-repeat;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper.ruler__text-wrapper--online-icon-replaced:before {
+    display: none;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper.ruler__text-wrapper--online-icon-replaced .ruler__icon-online {
+    display: block;
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text-wrapper svg {
+    display: none;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text {
+    color: #5d5d5d;
+    font-weight: 500;
+  }
+
+  .ruler__item:nth-child(6) .ruler__text strong {
+    color: #392f2d;
+    font-weight: 700;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper {
+    padding: 8px 12px;
+    border: 1px solid #38BEB0;
+    border-radius: 8px;
+    background-color: #38BEB01A;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper:before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background: url("https://abcdaconstrucao.fbitsstatic.net/media/payment-pix.png?v=202603112019") center/contain no-repeat;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper.ruler__text-wrapper--pix-icon-replaced:before {
+    display: none;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper.ruler__text-wrapper--pix-icon-replaced .ruler__icon-pix {
+    display: block;
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper svg {
+    display: none;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text_pix,
+  .ruler__item:nth-child(7) .ruler__text {
+    color: #38BEB0;
+    margin-left: 8px;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text a {
+    text-decoration: none;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text a strong,
+  .ruler__item:nth-child(7) .ruler__text_pix strong {
+    color: #38BEB0;
+    font-weight: bold;
+  }
+
+  .ruler__item:nth-child(7) .ruler__text-wrapper svg path {
+    fill: #38BEB0;
+  }
 }
 
 .ruler__text {

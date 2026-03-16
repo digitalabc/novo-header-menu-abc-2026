@@ -89,6 +89,46 @@ function mask(o, f) {
   }, 1);
 }
 
+function handlePhoneKeydown(e) {
+  var input = e.target;
+  var key = e.key;
+  var val = input.value;
+  var start = input.selectionStart;
+  var end = input.selectionEnd;
+  var formWpp = document.querySelector("#form-pre-whatsapp");
+
+  if (key === "Backspace" && start === end && start > 0) {
+    var charBefore = val.charAt(start - 1);
+    if (charBefore === "-" || charBefore === " " || charBefore === ")") {
+      e.preventDefault();
+      var digits = val.replace(/\D/g, "");
+      if (digits.length > 0) {
+        digits = digits.substring(0, digits.length - 1);
+        input.value = mphone(digits);
+        input.setSelectionRange(input.value.length, input.value.length);
+        if (formWpp) updateSubmitState(formWpp);
+      }
+    }
+  } else if (key === "Delete" && start === end && start < val.length) {
+    var charAt = val.charAt(start);
+    if (charAt === "-" || charAt === " " || charAt === "(") {
+      e.preventDefault();
+      var digits = val.replace(/\D/g, "");
+      var digitIndex = 0;
+      for (var i = 0; i < val.length && digitIndex < digits.length; i++) {
+        if (i === start) break;
+        if (/\d/.test(val.charAt(i))) digitIndex++;
+      }
+      if (digitIndex < digits.length) {
+        digits = digits.substring(0, digitIndex) + digits.substring(digitIndex + 1);
+        input.value = mphone(digits);
+        input.setSelectionRange(start, start);
+        if (formWpp) updateSubmitState(formWpp);
+      }
+    }
+  }
+}
+
 function mphone(v) {
   var r = v.replace(/\D/g, "");
   r = r.replace(/^0/, "");
@@ -236,7 +276,7 @@ function showWhatsAppForm() {
   var phoneInput = formWpp.querySelector(".form-wpp-phone");
   if (phoneInput) {
     phoneInput.setAttribute("inputmode", "numeric");
-    phoneInput.setAttribute("pattern", "[0-9]*");
+    phoneInput.addEventListener("keydown", handlePhoneKeydown);
   }
 
   formWpp.querySelector("#form-wpp").addEventListener("submit", handleFormWppSubmit);

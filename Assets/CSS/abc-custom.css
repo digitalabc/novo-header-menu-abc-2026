@@ -134,7 +134,7 @@ body header svg rect {
 
   body header .navbar__search .search__form {
     background-color: #000 !important;
-    border: 2px solid #a68b5f70 !important;
+    border: 2px solid #cbced27d !important;
   }
 
   body header .navbar__search .search__form input {
@@ -297,10 +297,8 @@ body header svg rect {
     fill: #d4af87 !important;
   }
 
-  #menu-offcanvas .nav-mobile__header svg path,
-  #menu-offcanvas .nav-mobile__header svg rect,
-  #menu-offcanvas .nav-mobile__header svg circle {
-    fill: #d4af87 !important;
+  #menu-offcanvas .nav-mobile__header .nav-mobile__header-icon {
+    color: #d4af87 !important;
   }
 
   #menu-offcanvas .nav-mobile__open svg path,

@@ -449,8 +449,8 @@ function buildCarouselOptions(selector) {
     },
     watchOverflow: true,
     centerInsufficientSlides: true,
-    slidesPerView: 2.15,
-    spaceBetween: 8,
+    slidesPerView: 1.5,
+    spaceBetween: 12,
     on: {
       init: syncCenteredCarouselState,
       resize: syncCenteredCarouselState,

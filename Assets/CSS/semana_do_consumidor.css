@@ -1139,6 +1139,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .semana-do-consumidor .showcase .spot .spot__image-wrapper {
+    max-width: 100%;
+  }
+
   .semana-do-consumidor .showcase-sections {
     margin-top: 30px;
   }

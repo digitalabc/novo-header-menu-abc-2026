@@ -242,8 +242,9 @@
   max-width: 520px;
   font-size: clamp(46px, 6.6vw, 62px);
   text-transform: uppercase;
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(18px) rotate(-2deg);
+  animation: heroTitleEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
 }
 
 .semana-do-consumidor .showcase__title-word {
@@ -1142,6 +1143,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .semana-do-consumidor .showcase .spot .spot__image-wrapper {
+    max-width: 100%;
+  }
+
   .semana-do-consumidor .showcase-sections {
     margin-top: 30px;
   }

@@ -31,7 +31,10 @@ function search(e, term) {
  * @param {string} val - The input text to search for autocompletion
  */
 async function renderAutocompleteSnippet(val) {
-    if (!val) return false;
+    if (!val) {
+        replaceInnerHtml("", "autocomplete-list");
+        return false;
+    }
 
     const response = await client.snippet.render(
         "autocomplete_snippet.html",
@@ -66,6 +69,12 @@ function autocomplete(inp) {
     inp.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             search(e, null);
+        }
+    });
+
+    inp.addEventListener("input", function () {
+        if (!this.value.trim()) {
+            replaceInnerHtml("", "autocomplete-list");
         }
     });
 
@@ -205,13 +214,13 @@ function handleBackButtonClick(event) {
 }
 
 function showMobileSearch() {
-    const body = document.body
-    body.classList.add("show-search")
+  const body = document.body
+  body.classList.add("show-mobile-nav", "show-search")
 }
 
 function hideMobileSearch(event) {
-    const body = document.body
-    body.classList.remove("show-search")
+  const body = document.body
+  body.classList.remove("show-search")
 }
 
 function onScroll(evt) {

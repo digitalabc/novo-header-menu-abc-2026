@@ -29,17 +29,19 @@
         {{ ## Search ## }}
         <div class="navbar__search">
           <form class="search__form" onsubmit="search(event, null)">
-              <div class="autocomplete">
-                  <input id="search-bar" type="search" placeholder='{{ "Digite aqui sua busca" | lang }}'
-                      autocomplete="off">
-                  <div id="autocomplete-list"></div>
-              </div>
-              <button class="search__submit" aria-label="search-button" type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14.626" height="14.608" viewBox="0 0 14.626 14.608">
-                  <path id="Path_23304" data-name="Path 23304" d="M0,6.567A6.437,6.437,0,0,1,12.787,5.38a6.119,6.119,0,0,1-1.054,4.667c-.144.208-.137.318.044.5.858.838,1.7,1.691,2.547,2.542a.84.84,0,0,1,.244.926.854.854,0,0,1-.691.58.918.918,0,0,1-.84-.34c-.832-.832-1.671-1.658-2.491-2.5-.171-.176-.271-.175-.467-.04A6.422,6.422,0,0,1,.262,8.234,6.933,6.933,0,0,1,0,6.567Zm11.126-.123a4.7,4.7,0,1,0-4.7,4.667,4.69,4.69,0,0,0,4.7-4.667Z" transform="translate(0.005 0.005)"/>
-                </svg>
-              </button>
               <button class="search__close" aria-label="search-close-button" type="button" onclick="hideMobileSearch(event)"></button>
+              <div class="search__card">
+                <div class="autocomplete">
+                    <input id="search-bar" type="search" placeholder='{{ "Digite aqui sua busca" | lang }}'
+                        autocomplete="off">
+                    <div id="autocomplete-list"></div>
+                </div>
+                <button class="search__submit" aria-label="search-button" type="submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14.626" height="14.608" viewBox="0 0 14.626 14.608">
+                    <path id="Path_23304" data-name="Path 23304" d="M0,6.567A6.437,6.437,0,0,1,12.787,5.38a6.119,6.119,0,0,1-1.054,4.667c-.144.208-.137.318.044.5.858.838,1.7,1.691,2.547,2.542a.84.84,0,0,1,.244.926.854.854,0,0,1-.691.58.918.918,0,0,1-.84-.34c-.832-.832-1.671-1.658-2.491-2.5-.171-.176-.271-.175-.467-.04A6.422,6.422,0,0,1,.262,8.234,6.933,6.933,0,0,1,0,6.567Zm11.126-.123a4.7,4.7,0,1,0-4.7,4.667,4.69,4.69,0,0,0,4.7-4.667Z" transform="translate(0.005 0.005)"/>
+                  </svg>
+                </button>
+              </div>
           </form>
           {{## regional_offers ##}}
           </div>

@@ -19,14 +19,12 @@
 {{~ if quotes ~}}
 <div class="product-shipping__list">
     {{~ if retirada_com_menor_prazo ~}}
-      <div class="product-shipping__quote free-shipping">
+      <div class="product-shipping__quote product-shipping__quote--pickup">
           <div class="product-shipping__info" style="display: flex; flex-direction: column; gap: 8px;">
               <span>Retirada em loja</span>
               <small>Em até {{ retirada_com_menor_prazo.deadline }} dias úteis</small>
           </div>
-          <span class="free-shipping" style=" display: flex; align-items: center; justify-content: center;">
-            Frete grátis
-          </span>
+          <span class="product-shipping__badge">Frete grátis</span>
       </div>
     {{ end }}
     {{~ if entrega_com_menor_preco ~}}
@@ -36,11 +34,9 @@
               <small>Em até {{ entrega_com_menor_preco.deadline }} dias úteis</small>
           </div>
           {{~ if entrega_com_menor_preco.value == 0 ~}}
-            <span class="free-shipping" style=" display: flex; align-items: center; justify-content: center;">
-              Frete grátis
-            </span>
+            <span class="product-shipping__badge">Frete grátis</span>
           {{~ else ~}}
-            <span style=" display: flex; align-items: center; justify-content: center;">
+            <span class="product-shipping__value">
               {{ entrega_com_menor_preco.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
             </span>
           {{~ end ~}}
@@ -53,11 +49,9 @@
               <small>Em até {{ entrega_com_menor_prazo.deadline }} dias úteis</small>
           </div>
           {{~ if entrega_com_menor_prazo.value == 0 ~}}
-            <span class="free-shipping" style=" display: flex; align-items: center; justify-content: center;">
-              Frete grátis
-            </span>
+            <span class="product-shipping__badge">Frete grátis</span>
           {{~ else ~}}
-            <span style=" display: flex; align-items: center; justify-content: center;">
+            <span class="product-shipping__value">
               {{ entrega_com_menor_prazo.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
             </span>
           {{~ end ~}}
@@ -65,3 +59,4 @@
     {{ end }}
 </div>
 {{~ end ~}}
+

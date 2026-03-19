@@ -48,7 +48,7 @@ end~}}
     'wght' (range from 300.0 to 900.0
     */
 
-    @font-face {
+@font-face {
   font-family: "Satoshi Variable";
   src: url("https://abcprime.fbitsstatic.net/sf/fonts/prime/Satoshi-Variable.woff2")
       format("woff2"),
@@ -63,30 +63,34 @@ end~}}
 .payment__dialog {
   box-sizing: border-box;
   position: fixed;
-  max-width: 360px;
-  left: max(calc(50vw - 360px / 2), 4vw);
-  top: 5vh;
-  z-index: 9999;
-  border-radius: 16px;  
+  width: min(94vw, 520px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.payment__dialog::backdrop {
+  background: rgba(6, 10, 18, 0.4);
 }
 
 .payment__dialog__wrapper {
-  box-shadow: 0px 8px 8px 0px rgba(123, 123, 123, 0.10);
-  border: 2px solid #E8E8E8;  
-  border-radius: 16px;
-  padding: 20px 12px;  
-  background: #FFF;  
+  box-shadow: 0 22px 50px rgba(5, 12, 24, 0.22);
+  border: 1px solid #E6E9EE;
+  border-radius: 20px;
+  background: #FFF;
+  position: relative;
+  z-index: 10001;
+  max-height: 85vh;
+  overflow: hidden;
 }
 
 .payment__dialog:after {
-  position: fixed;
-  content: "";
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -2;
+  display: none;
 }
 
 .payment__dialog:before {
@@ -96,69 +100,76 @@ end~}}
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: -1;
+  display: none;
 }
 
-.payment__dialog__wrapper > a  {
-    position: absolute;
-    top: 0;
-    right: 0px;
-}
-
-.payment__dialog__wrapper > div  {
-  display: grid;
-  justify-items: center;
-  gap: 16px;
-}
-.payment__dialog__list  {
-  display: flex;  
-  gap: 8px;
-}
-
-.product__installments .payment .option:not(:last-child) {
-    margin-bottom: unset;
-}
-
-.payment__dialog__body p {
-  color: #040A17;
-  text-align: center;
-  font-family: "Satoshi Variable";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0.48px;
-}
-
-.payment__dialog__body .payment__dialog__list .option button {
+.payment__dialog__header {
   display: flex;
-  /* min-width: 80px;
-  max-width: 90px; */
-  padding: 12px;
-  justify-content: center;
   align-items: center;
-  
-  
-  color: #040A17;  
-  font-family: "Satoshi Variable";
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-
-  border-radius: 6px;
-  border: 1.5px solid #20A389;
-  background: #EEFAF9;
+  justify-content: center;
+  padding: 18px 56px 12px;
+  border-bottom: 1px solid #EEF1F4;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 100%);
+  border-radius: 20px 20px 0 0;
+  position: relative;
 }
 
-.payment__dialog__body .payment__dialog__list .option_list {
-  color: #20A389;
-  text-align: center;
+.payment__dialog__title {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #0B1320;
   font-family: "Satoshi Variable";
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  line-height: 14px; 
+  line-height: 22px;
+}
+
+.payment__dialog__close {
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  color: #2F2F2F;
+}
+
+.payment__dialog__close:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  transform: translateY(-1px);
+}
+
+.payment__dialog__close svg {
+  width: 15px;
+  height: 15px;
+}
+
+.payment__dialog__close svg path {
+  fill: currentColor !important;
+}
+
+.payment__dialog__body {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  padding: 16px 20px 20px;
+  overflow: auto;
+}
+
+.product__installments .payment .option:not(:last-child) {
+    margin-bottom: unset;
 }
 
 .option__list__message1,
@@ -166,21 +177,21 @@ end~}}
   font-family: "Satoshi Variable";
   font-style: normal;
   background: unset !important;
-  padding-top: 16px !important;
+  padding-top: 14px !important;
 }
 
 .option__list__message2 {
-  color: #848484;
-  font-size: 12px;
+  color: #A1A7B3;
+  font-size: 11px;
   font-weight: 500;
-  line-height: normal;
+  line-height: 1.3;
 }
 
 .option__list__message1 {
-  color: #040A17;
+  color: #0B1320;
   font-size: 16px;
   font-weight: 700;
-  line-height: 14px;  
+  line-height: 18px;
 }
 
 input[name="installment_dialog"] {
@@ -188,41 +199,60 @@ input[name="installment_dialog"] {
 }
 
 input[name="installment_dialog"]:checked + label {  
-  border: 1.5px solid #E3062D !important;
-  background: #EEFAF9 !important;
+  border: 1.5px solid #20A389 !important;
+  background: #E7FAF5 !important;
+  color: #148F79 !important;
+  box-shadow: 0 8px 18px rgba(32, 163, 137, 0.18);
 }
 
 .payment__options {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
-  gap: 8px;
-  align-self: stretch;
   flex-wrap: wrap;
+  gap: 12px;
+  align-self: stretch;
 }
 .payment__options label {
   cursor: pointer;
   display: flex;
-  min-width: 90px;
-  padding: 12px;
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: 0 12px;
+  min-height: 46px;
   justify-content: center;
   align-items: center;
   gap: 6px;
-  flex: 1 0 0;
-  border-radius: 6px;
-  border: 1px solid #E8E8E8;
-  background: #F6F8FA;
-  color: #040A17;
+  border-radius: 14px;
+  border: 1px solid #E3E7EC;
+  background: #F7F9FB;
+  color: #0B1320;
   font-family: "Satoshi Variable";
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.payment__options label:hover {
+  border-color: #20A389;
+  background: #EDFBF7;
+  transform: translateY(-1px);
 }
 .payment__options label > svg {
   width: 20px;
   height: 18px;  
+}
+
+.payment__dialog__title svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+input[name="installment_dialog"]:checked + label,
+input[name="installment_dialog"]:not(:checked) + label {
+  box-shadow: none;
 }
 
 .payment__options__installments > ul:not(.show__installments) {
@@ -231,11 +261,37 @@ input[name="installment_dialog"]:checked + label {
 .payment__options__installments ul {
   display: grid;
   justify-items: center;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #E7EBF0;
+  background: #FFFFFF;
+  box-shadow: 0 10px 24px rgba(10, 20, 34, 0.08);
+  max-height: 44vh;
+  overflow: auto;
+}
+.payment__options__installments ul::-webkit-scrollbar {
+  width: 8px;
+}
+.payment__options__installments ul::-webkit-scrollbar-thumb {
+  background: #D9DEE6;
+  border-radius: 999px;
+}
+.payment__options__installments ul::-webkit-scrollbar-track {
+  background: transparent;
 }
 .payment__options__installments li {
-  padding-block: 8px;
+  padding: 11px 14px;
   justify-self: stretch;
   text-align: center;
+  font-family: "Satoshi Variable";
+  font-size: 13px;
+  line-height: 18px;
+  color: #1A2232;
+  border-bottom: 1px solid #EEF1F4;
+}
+.payment__options__installments li:last-child {
+  border-bottom: none;
 }
 
 .payment__options__installments ul:not(.installment__credito) > li:first-child,
@@ -244,14 +300,36 @@ input[name="installment_dialog"]:checked + label {
 }
 
 .payment__options__installments ul:not(.installment__credito) > li:first-child {
-  color: #E3062D;
+  color: #148F79;
   text-align: center;
-  font-family: "Satoshi Variable";
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
-  line-height: 14px;
+  line-height: 20px;
   }
+
+@media (max-width: 560px) {
+  .payment__dialog {
+    width: 94vw;
+  }
+
+  .payment__dialog__wrapper {
+    max-height: 88vh;
+  }
+
+  .payment__options {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .payment__dialog__header {
+    padding: 16px 16px 10px;
+  }
+
+  .payment__dialog__body {
+    padding: 14px 16px 16px;
+  }
+}
 .product__installments {
   justify-content: center;
 }
@@ -260,19 +338,33 @@ input[name="installment_dialog"]:checked + label {
 <section class="product__installments" id="installments-modal" tabindex="-1" aria-labelledby="installments-modal-label">
   <div class="payment">
     <button class="payment__button" id="installments-modal-label" onclick="togglePayment('open')">
-      Ver formas de pagamento
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true">
+        <path d="M2.5 3.5C2.5 2.67157 3.17157 2 4 2H20C20.8284 2 21.5 2.67157 21.5 3.5V6.2H2.5V3.5Z" fill="currentColor"/>
+        <path d="M2.5 7.4H21.5V14.5C21.5 15.3284 20.8284 16 20 16H4C3.17157 16 2.5 15.3284 2.5 14.5V7.4Z" fill="currentColor" opacity="0.9"/>
+        <path d="M5.2 11.2H10.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Formas de pagamento</span>
     </button>
     
     <dialog class="payment__dialog">
       <div class="payment__dialog__wrapper">
-        <a onclick="togglePayment('close')"">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <path d="M0 0H40V40H12C5.37258 40 0 34.6274 0 28V0Z" fill="#E3062D"/>
-            <path d="M16.4 26L15 24.6L20.6 19L15 13.4L16.4 12L22 17.6L27.6 12L29 13.4L23.4 19L29 24.6L27.6 26L22 20.4L16.4 26Z" fill="white"/>
-          </svg>
-        </a>
+        <div class="payment__dialog__header">
+          <h3 class="payment__dialog__title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true">
+              <path d="M2.5 3.5C2.5 2.67157 3.17157 2 4 2H20C20.8284 2 21.5 2.67157 21.5 3.5V6.2H2.5V3.5Z" fill="currentColor"/>
+              <path d="M2.5 7.4H21.5V14.5C21.5 15.3284 20.8284 16 20 16H4C3.17157 16 2.5 15.3284 2.5 14.5V7.4Z" fill="currentColor" opacity="0.9"/>
+              <path d="M5.2 11.2H10.3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Formas de Pagamento</span>
+          </h3>
+          <button type="button" class="payment__dialog__close" onclick="togglePayment('close')" aria-label="Fechar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 40 40" fill="none">
+              <path d="M0 0H40V40H12C5.37258 40 0 34.6274 0 28V0Z" fill="currentColor"/>
+              <path d="M16.4 26L15 24.6L20.6 19L15 13.4L16.4 12L22 17.6L27.6 12L29 13.4L23.4 19L29 24.6L27.6 26L22 20.4L16.4 26Z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
         <div class="payment__dialog__body">
-          <p>Formas de Pagamento</p>
  
           <div class="payment__options">
             

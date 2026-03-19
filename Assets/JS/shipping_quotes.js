@@ -6,19 +6,33 @@
 async function ShippingQuoteSubmit(e, productVariantId = null, checkoutId) {
   e.preventDefault();
   if (productVariantId) {
-    document.getElementById(
+    const responseEl = document.getElementById(
       "shipping-quotes-snippet-div-" + productVariantId
-    ).innerHTML = `<img style="display: block; margin: auto;" src="/localstatic/img/my-loader.svg?theme=local&v=" alt="">`;
+    );
+    if (!responseEl) return;
+    responseEl.innerHTML = `<img style="display: block; margin: auto;" src="/localstatic/img/my-loader.svg?theme=local&v=" alt="">`;
 
     // if (validateShippingAddress()) {
     try {
-      const cep = document.getElementById("shipping-quote-cep").value;
-      let quantity = document.getElementById("selected-quantity").value;
+      const cepEl = document.getElementById("shipping-quote-cep");
+      if (!cepEl) {
+        responseEl.innerHTML =
+          '<span class="product-shipping__error">Campo de CEP nÃ£o encontrado.</span>';
+        return;
+      }
+      const cep = cepEl.value;
+      const quantityEl = document.getElementById("selected-quantity");
+      const quantity = quantityEl ? Number(quantityEl.value || 1) : 1;
+      if (typeof client === "undefined" || !client?.snippet?.render) {
+        responseEl.innerHTML =
+          '<span class="product-shipping__error">ServiÃ§o indisponÃ­vel no momento.</span>';
+        return;
+      }
 
       let variables = {
         cep,
         productVariantId: Number(productVariantId),
-        quantity: Number(quantity),
+        quantity,
       };
 
       let snippetResponse = await client.snippet.render(
@@ -30,9 +44,7 @@ async function ShippingQuoteSubmit(e, productVariantId = null, checkoutId) {
       snippetResponse ??=
         '<span class="product-shipping__error">CEP inválido!</span>';
 
-      document.getElementById(
-        "shipping-quotes-snippet-div-" + productVariantId
-      ).innerHTML = snippetResponse;
+      responseEl.innerHTML = snippetResponse;
     } catch (error) {
       console.error(error);
     }

@@ -95,11 +95,7 @@ function setFloatingNavMobile(
   offsetToShowMobileNav,
   offsetToHideMobileNav
 ) {
-  if (
-    scrollTop > offsetToShowMobileNav &&
-    window.innerHeight + scrollTop + offsetToHideMobileNav <=
-      document.body.offsetHeight
-  ) {
+  if (scrollTop > offsetToShowMobileNav) {
     body.classList.add("show-mobile-nav");
   } else {
     body.classList.remove("show-mobile-nav");

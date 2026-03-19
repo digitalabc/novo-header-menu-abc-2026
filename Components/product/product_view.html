@@ -24,6 +24,29 @@
   {{~ end ~}}
 {{~ end ~}}
 
+<div class="product__header">
+  <h1 class="product__title">{{ product.product_name }}</h1>
+  <span class="product__info">
+    {{ if product.sku }}<span class="product__sku">SKU:<span id="productSku">{{ product.sku }}</span></span><span class="pipe">|</span>{{ end }}
+    {{ if product.product_brand }}{{ product_brand brand: product.product_brand }}<span class="pipe">|</span>{{ end }}
+    {{
+      ## ponto para todos os produtos não livelo ##
+      pontos_calculados = (product.prices.price * 1) | math.ceil
+      listas = [settings.livelo]
+      
+      for lista in listas
+        if (lista | array.contains product.product_id)
+          pontos_calculados = (product.prices.price * settings.livelo_calculo_padrao) | math.ceil
+          break
+        end
+      end
+    }}
+    {{~ if (product.prices.price_tables | array.filter @(do; ret $0.id == 82 ;end)).empty? ~}} 
+      <span class="livelo_pontos" data-livelo-pontos="{{ pontos_calculados }}">Até <strong>{{ pontos_calculados }}</strong> ponto(s) Livelo</span>
+    {{~ end ~}}
+  </span>
+</div>
+
 <section class="product__image">
   {{ stamps promotions: product.promotions }}
   {{~ if selected_variant && selected_variant.images && selected_variant.images.size > 0 ~}}
@@ -39,29 +62,6 @@
 </section>
 
 <div class="product__details">
-    <h1 class="product__title">{{ product.product_name }}</h1>
-    <span class="product__info">
-      {{ if product.sku }}<span class="product__sku">SKU:<span id="productSku">{{ product.sku }}</span></span><span class="pipe">|</span>{{ end }}
-      {{ if product.product_brand }}{{ product_brand brand: product.product_brand }}<span class="pipe">|</span>{{ end }}
-      {{
-        ## ponto para todos os produtos não livelo ##
-        pontos_calculados = (product.prices.price * 1) | math.ceil
-        listas = [settings.livelo]
-        
-        for lista in listas
-          if (lista | array.contains product.product_id)
-            pontos_calculados = (product.prices.price * settings.livelo_calculo_padrao) | math.ceil
-            break
-          end
-        end
-      }}
-     
-      <!-- <span>### Estrelas Opiniões Verificadas ###</span> -->
-      {{# se produto esta na tabela para produtos que nao deven mostrar pontos livelo entao retorna true #}}
-      {{~ if (product.prices.price_tables | array.filter @(do; ret $0.id == 82 ;end)).empty? ~}} 
-        <span class="livelo_pontos" data-livelo-pontos="{{ pontos_calculados }}">Até <strong>{{ pontos_calculados }}</strong> ponto(s) Livelo</span>
-      {{~ end ~}}
-    </span>
     {{~ installment_plans = product.prices.installment_plans ~}}
     {{~ discount_percentage = 0 ~}}
     

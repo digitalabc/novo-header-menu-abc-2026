@@ -88,17 +88,13 @@ Allow: /
 
 User-agent: *
 
-Disallow: /busca*
+Disallow: /busca
 Disallow: /login*
 Disallow: /*category&path
-Disallow: /&sort=
-Disallow: /&limit=
 Disallow: /*?limit=
 Disallow: /&q=
 Disallow: /?q=
-Disallow: /&filter=
 Disallow: /?filter=
-Disallow: /&size=
 Disallow: /?size=
 Disallow: /cache/
 Disallow: /_profiler/
@@ -110,7 +106,6 @@ Disallow: /minha-conta
 Disallow: /atendimento
 Disallow: /rastreamento/
 Disallow: /search
-Disallow: /groups
 Disallow: /*errorPath=
 Disallow: /*ec=
 Disallow: /*utm_source=

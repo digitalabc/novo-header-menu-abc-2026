@@ -90,7 +90,6 @@ User-agent: *
 
 Disallow: /busca
 Disallow: /search
-Disallow: /*&sort=
 Disallow: /*filtro=
 Disallow: /*ordenacao=
 Disallow: /*ec=

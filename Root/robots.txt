@@ -89,14 +89,7 @@ Allow: /
 User-agent: *
 
 Disallow: /busca*
-Disallow: *errorPath=*
 Disallow: /login*
-Disallow: *ec=*
-Disallow: *utm_source*
-Disallow: *busca=*
-Disallow: *ordenacao=*
-Disallow: *porcentagemDesconto*
-Disallow: *filtro=*
 Disallow: /*category&path
 Disallow: /&sort=
 Disallow: /&limit=
@@ -118,6 +111,12 @@ Disallow: /atendimento
 Disallow: /rastreamento/
 Disallow: /search
 Disallow: /groups
+Disallow: /*errorPath=
+Disallow: /*ec=
+Disallow: /*utm_source=
+Disallow: /*ordenacao=
+Disallow: /*porcentagemDesconto
+Disallow: /*filtro=
 
 Allow: /*.css
 Allow: /*.js

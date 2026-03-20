@@ -88,7 +88,6 @@ Allow: /
 
 User-agent: *
 
-# Busca
 Disallow: /busca
 Disallow: /search
 Disallow: /*?q=

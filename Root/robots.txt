@@ -1,6 +1,6 @@
 # -- - OPENAI-- -
 # Search(shows my webpages as links inside ChatGPT search).NOT used for model training.
-User-agent: OAI - SearchBot
+User-agent: OAI-SearchBot
 Allow: /
 
 # User - driven browsing from ChatGPT and Custom GPTs.Acts after a human click.

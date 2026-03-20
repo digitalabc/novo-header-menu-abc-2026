@@ -90,15 +90,6 @@ User-agent: *
 
 Disallow: /busca
 Disallow: /search
-Disallow: /*?q=
-Disallow: /*&q=
-Disallow: /*?filter=
-Disallow: /*&filter=
-Disallow: /*?size=
-Disallow: /*&size=
-Disallow: /*?limit=
-Disallow: /*&limit=
-Disallow: /*?sort=
 Disallow: /*&sort=
 Disallow: /*filtro=
 Disallow: /*ordenacao=

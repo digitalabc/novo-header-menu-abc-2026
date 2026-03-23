@@ -5863,6 +5863,25 @@
       ]
     },
     {
+      "name": "Itabuna",
+      "state": "Bahia",
+      "stores": [
+        {
+          "name": "Alto Maron",
+          "adress": "Av. Juracy Magalhães, 565 - Alto Maron, Itabuna - BA, 45603-231",
+          "phone": "(73) 3215-8490",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/itabuna/alto-maron",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:30 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Porto Seguro",
       "state": "Bahia",
       "stores": [
@@ -5896,6 +5915,25 @@
           "thursday": "8:00 às 18:30",
           "friday": "8:00 às 18:30",
           "saturday": "8:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "Urandi",
+      "state": "Bahia",
+      "stores": [
+        {
+          "name": "Xavier",
+          "adress": "Av. Abelardo Nina Rocha, 99998 - Xavier, Urandi - BA, 46350-000",
+          "phone": "(73) 2011-9471",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/bahia/teixeira-de-freitas/sao-lourenco",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:30 às 12:00",
           "sunday": "Fechado"
         }
       ]

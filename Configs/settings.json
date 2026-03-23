@@ -947,14 +947,14 @@
         {
           "name": "Centro",
           "adress": "Av. José Ferreira Freire Murta, 55 - Centro, Cel. Murta - MG, 31195-000",
-          "phone": "",
+          "phone": "(33) 98850-3704",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/coronel-murta/centro",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "7:00 às 17:00",
+          "tuesday": "7:00 às 17:00",
+          "wednesday": "7:00 às 17:00",
+          "thursday": "7:00 às 17:00",
+          "friday": "7:00 às 17:00",
+          "saturday": "7:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

@@ -10,7 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     
-    <body class="bg-mainBg">
+    {{ is_pisos = (data.product.product_categories | array.filter @(do; ret $0.name | string.downcase | string.contains "pisos e revestimentos" ;end) | array.size > 0) || (data.product.breadcrumbs | array.filter @(do; ret $0.text | string.downcase | string.contains "pisos e revestimentos" ;end) | array.size > 0) }}
+    <body class="bg-mainBg"{{~ if is_pisos ~}} data-specialist-popup="true"{{~ end ~}}>
         <header class="shadow-xl lg:shadow-none bg-mainBg">
             {{ links }}
             {{ head }}
@@ -43,6 +44,7 @@
                 </div>
             </div>
         </div>
+        {{ product_popup }}
         {{ footer is_preview: is_preview store: store }}
         {{ data_layer_product_view product: data.product  }}
         {{ sdk_client }}

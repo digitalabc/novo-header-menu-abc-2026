@@ -210,7 +210,7 @@
   margin-bottom: 1rem;
   font-size: 1.25rem;
   line-height: 150%;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .wake-checkout-finish-step-text {
@@ -729,7 +729,7 @@
 .wake-checkout-shipping-title-notfound {
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-weight: 600;
+  font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
@@ -1393,7 +1393,7 @@
   color: #333333cc;
   font-weight: 400;
   font-size: 14px;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-checkout-coupon-input {
@@ -1410,7 +1410,7 @@
   border: 2px solid #e1e5e9;
   border-right: none;
   transition: all 0.2s ease-in-out;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-checkout-coupon-input:focus {
@@ -1450,7 +1450,7 @@
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   white-space: nowrap;
@@ -1500,7 +1500,7 @@
   color: #30a6ff;
   font-size: 14px;
   font-weight: 500;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-checkout-coupon-discount-value {
@@ -1515,7 +1515,7 @@
   color: #30a6ff;
   font-size: 14px;
   font-weight: 600;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-checkout-coupon-img-apply {
@@ -2019,7 +2019,7 @@
   color: #15aa30;
   font-size: 14px;
   font-weight: 600;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-cart-total div:has(span:nth-child(2):last-child) span:last-child {
@@ -2035,7 +2035,7 @@
   font-size: 14px;
   line-height: 10px;
   font-weight: 600;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 /* Fallback :has() */
@@ -2053,7 +2053,7 @@
     font-size: 14px;
     line-height: 10px;
     font-weight: 600;
-    font-family: "Satoshi", sans-serif;
+    font-family: var(--font-brand);
   }
 }
 
@@ -2285,7 +2285,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 400;
+  font-weight: 500;
   padding: 0 0 1rem 0;
   border-radius: 8px;
   min-height: auto;
@@ -2294,9 +2294,9 @@
 .wake-cart-subtotal span {
   color: #333;
   text-align: left;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 28px;
-  line-height: 1.2;
+  line-height: 150%;
 }
 
 .wake-cart-total div {
@@ -2564,9 +2564,9 @@
   background: none;
   color: #333;
   text-align: left;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 28px;
-  line-height: 1.2;
+  line-height: 150%;
   padding: 0 0 0.75rem 0;
 }
 
@@ -3776,7 +3776,7 @@ input[type="number"].cart_change_quantity {
   background-color: #fff3cd;
   color: #856404;
   text-align: center;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   width: 100%;
   font-style: normal;
@@ -3825,7 +3825,7 @@ input[type="number"].cart_change_quantity {
   background: #f6f8fa;
   padding: 14px 20px;
   color: #0fa848;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -3848,7 +3848,7 @@ input[type="number"].cart_change_quantity {
 
 .footer_mobile_bottom .price-line span {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -3865,7 +3865,7 @@ input[type="number"].cart_change_quantity {
   padding: 4px 12px;
   gap: 4px;
   color: #30a6ff;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -3874,7 +3874,7 @@ input[type="number"].cart_change_quantity {
 
 .footer_mobile_bottom .price-line .total {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -3932,7 +3932,7 @@ input[type="number"].cart_change_quantity {
 
   .checkout-footer-left h3 {
     color: #333;
-    font-family: "Satoshi", sans-serif;
+    font-family: var(--font-brand);
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -3941,7 +3941,7 @@ input[type="number"].cart_change_quantity {
 
   .checkout-footer-left span {
     color: #848484;
-    font-family: "Satoshi", sans-serif;
+    font-family: var(--font-brand);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -3969,7 +3969,7 @@ input[type="number"].cart_change_quantity {
   .checkout-copyright {
     color: #848484;
     text-align: center;
-    font-family: "Satoshi", sans-serif;
+    font-family: var(--font-brand);
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -4093,7 +4093,7 @@ input[type="number"].cart_change_quantity {
 .selectPickUpWrapper .title,
 .selectDeliveryWrapper .title {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
@@ -4222,7 +4222,7 @@ input[type="number"].cart_change_quantity {
   overflow: hidden;
   color: #333;
   text-overflow: ellipsis;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 17px;
   font-style: normal;
   font-weight: 600;
@@ -4234,7 +4234,7 @@ input[type="number"].cart_change_quantity {
 .selectPickUpItemInformations h4 {
   color: #0092ff;
   border: 2px solid #0092ff33;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
@@ -4249,7 +4249,7 @@ input[type="number"].cart_change_quantity {
 
 .selectPickUpItemInformations span {
   color: #64748b;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -4258,7 +4258,7 @@ input[type="number"].cart_change_quantity {
 
 .selectPickUpItemInformations h5 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 15px;
   font-style: normal;
   font-weight: 600;
@@ -4272,7 +4272,7 @@ input[type="number"].cart_change_quantity {
   background: #f1f9f3;
   border: 1px solid rgba(15, 168, 72, 0.15);
   color: #0fa848;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
@@ -4311,16 +4311,49 @@ input[type="number"].cart_change_quantity {
   min-width: 40px;
 }
 
-.selectDeliveryItemWrapper span {
+.checkout-continue-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 14px;
+  border: 2px solid #ecf1f7;
+  border-radius: 400px;
+  background: linear-gradient(to bottom, #fff 50%, #f4f4f4);
+  color: #0092ff;
+  font-family: var(--font-brand);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.6s;
+  pointer-events: auto;
+}
+
+.checkout-continue-pill:hover {
+  border-color: #d3e7ff;
+  background: rgba(0, 146, 255, 0.07);
+  transition: 0.2s ease-in-out;
+}
+
+.selectDeliveryItemWrapper .selectDeliveryItemValue {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
   color: #30a6ff;
   text-align: right;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
   letter-spacing: 0.28px;
   min-width: fit-content;
+}
+
+.selectDeliveryItemWrapper .checkout-continue-pill {
+  margin-left: 8px;
 }
 
 .deliveryInformation {
@@ -4333,7 +4366,7 @@ input[type="number"].cart_change_quantity {
 
 .deliveryInformation h4 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -4344,7 +4377,7 @@ input[type="number"].cart_change_quantity {
 
 .deliveryInformation span {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -4372,7 +4405,7 @@ input[type="number"].cart_change_quantity {
   font-weight: 500;
   color: #0092ff;
   line-height: 20px;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   text-decoration: none;
   cursor: pointer;
   transition: all 0.6s;
@@ -4402,7 +4435,7 @@ input[type="number"].cart_change_quantity {
   width: 100%;
   background: #0092ff;
   color: #fff;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
@@ -4625,7 +4658,7 @@ input[type="number"].cart_change_quantity {
 
 .payment-details h3 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -4636,11 +4669,15 @@ input[type="number"].cart_change_quantity {
 
 .payment-details span {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+}
+
+.payment-infos-wrapper .checkout-continue-pill {
+  margin-left: auto;
 }
 
 .checkout-container {
@@ -4657,10 +4694,10 @@ input[type="number"].cart_change_quantity {
 
 .checkout-container .title {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 28px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 150%;
 }
 
@@ -4746,7 +4783,7 @@ input[type="number"].cart_change_quantity {
 
 .wake-payment-data-options h3 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
@@ -4756,7 +4793,7 @@ input[type="number"].cart_change_quantity {
 
 .wake-payment-data-options h4 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -4766,7 +4803,7 @@ input[type="number"].cart_change_quantity {
 
 .wake-payment-data-options h5 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -4835,7 +4872,7 @@ input[type="number"].cart_change_quantity {
 #payment-container [class*="gateway"] .forminline label,
 #payment-container div[class*="linha"] .forminline label {
   color: #333 !important;
-  font-family: "Satoshi", sans-serif !important;
+  font-family: var(--font-brand) !important;
   font-size: 14px !important;
   font-weight: 500 !important;
   line-height: 150% !important;
@@ -4861,7 +4898,7 @@ input[type="number"].cart_change_quantity {
   transition: all 0.2s ease !important;
   box-sizing: border-box !important;
   width: 100% !important;
-  font-family: "Satoshi", sans-serif !important;
+  font-family: var(--font-brand) !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
   appearance: none !important;
@@ -4943,7 +4980,7 @@ input[type="number"].cart_change_quantity {
 
 .productsItemsWrapper .productInformation .productName h4 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -4953,7 +4990,7 @@ input[type="number"].cart_change_quantity {
 
 .productsItemsWrapper .productInformation .productName span {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -4968,7 +5005,7 @@ input[type="number"].cart_change_quantity {
 
 .adrressInformations span {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -5002,7 +5039,7 @@ input[type="number"].cart_change_quantity {
 
 .paymentSelectedWrapper .payment-details h3 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -5014,7 +5051,7 @@ input[type="number"].cart_change_quantity {
 
 .paymentSelectedWrapper .payment-details span {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -5030,7 +5067,7 @@ input[type="number"].cart_change_quantity {
   background: #e9f0fd;
   color: #2865e8;
   text-align: center;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -5071,16 +5108,16 @@ input[type="number"].cart_change_quantity {
 
 .fake-form .title {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 140%;
   margin-bottom: 8px;
 }
 
 .fake-form .requiredWarning {
   color: #666;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 13px;
   font-weight: 400;
   line-height: 150%;
@@ -5104,7 +5141,7 @@ input[type="number"].cart_change_quantity {
 
 .fake-form .forminline label {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-weight: 500;
   line-height: 150%;
@@ -5126,7 +5163,7 @@ input[type="number"].cart_change_quantity {
   transition: all 0.2s ease;
   box-sizing: border-box;
   width: 100%;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -5251,7 +5288,7 @@ input[type="number"].cart_change_quantity {
   padding: 20px;
   box-sizing: border-box;
   color: #fff;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .jp-card-back {
@@ -5357,7 +5394,7 @@ input:not(:focus).jp-card-invalid {
   background: #fffcf1;
   padding: 1rem;
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -5593,10 +5630,10 @@ input:not(:focus).jp-card-invalid {
 
 .checkout-address-container .title {
   color: var(--primary-abc, #333);
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 28px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 36px;
   margin-bottom: 32px;
 }
@@ -5664,7 +5701,7 @@ input:not(:focus).jp-card-invalid {
 
 .checkout-address {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -5673,7 +5710,7 @@ input:not(:focus).jp-card-invalid {
 
 .checkout-address-name {
   color: #475569;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
@@ -5744,7 +5781,7 @@ input:not(:focus).jp-card-invalid {
   border: 2px solid #e0e6ed;
   background: linear-gradient(to bottom, #fff 50%, #f4f4f4);
   color: #0092ff;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
@@ -5768,7 +5805,7 @@ input:not(:focus).jp-card-invalid {
   background-color: #0092ff;
   border: none;
   padding: 10px 14px;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
@@ -5884,11 +5921,11 @@ input:not(:focus).jp-card-invalid {
 
 .checkout-shipping-methods-wrapper .title {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 150%;
   margin-bottom: 24px;
 }
 
@@ -5917,18 +5954,20 @@ input:not(:focus).jp-card-invalid {
 }
 
 .checkout-shipping-method-item div {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0;
   gap: 3px;
 }
 
 .checkout-shipping-method-item h4 {
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 18px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -5943,7 +5982,7 @@ input:not(:focus).jp-card-invalid {
 
 .checkout-shipping-method-item .flag {
   color: #0fa848;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -5962,11 +6001,40 @@ input:not(:focus).jp-card-invalid {
 
 .checkout-shipping-method-item span {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 12px;
+}
+
+.checkout-shipping-method-item .checkout-shipping-method-item-cta {
+  position: absolute;
+  right: -12px;
+  top: calc(100% + -32px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 14px;
+  border: 2px solid #ecf1f7;
+  border-radius: 400px;
+  background: linear-gradient(to bottom, #fff 50%, #f4f4f4);
+  color: #0092ff;
+  font-family: var(--font-brand);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.6s;
+  pointer-events: auto;
+}
+
+.checkout-shipping-method-item .checkout-shipping-method-item-cta:hover {
+  border-color: #d3e7ff;
+  background: rgba(0, 146, 255, 0.07);
+  transition: 0.2s ease-in-out;
 }
 
 .checkout-right-menu {
@@ -6352,5 +6420,5 @@ div#data_payment:has(#card-finish.hidden) #checkout_coupon_snippet {
   font-size: 14px;
   line-height: 10px;
   font-weight: 600;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }

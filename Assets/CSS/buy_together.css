@@ -54,7 +54,7 @@
   width: 280px;
 }
 .product__buy-together .buy-together-value-total .value {
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -78,7 +78,7 @@
 }
 
 .product__buy-together .buy-together-value-total {
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -103,7 +103,7 @@
 }
 
 .product__buy-together .product-buy-together-div .addToCard {
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -146,7 +146,7 @@ input[type="number"].buy-together-quantity {
   .product-buy-together-div
   .buy-together__list_price
   .badge {
-  font-family: "Montserrat";
+  font-family: var(--font-brand);
   font-style: normal;
   font-weight: 700;
   font-size: 13px;
@@ -171,7 +171,7 @@ input[type="number"].buy-together-quantity {
   justify-content: flex-start;
 }
 .product__buy-together .product-buy-together-div .buy-together__price .value {
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -184,7 +184,7 @@ input[type="number"].buy-together-quantity {
   .product-buy-together-div
   .buy-together__list_price
   .value {
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -207,7 +207,7 @@ input[type="number"].buy-together-quantity {
   gap: 16px;
 }
 .product__buy-together .product-buy-together-div .buy-together__name {
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

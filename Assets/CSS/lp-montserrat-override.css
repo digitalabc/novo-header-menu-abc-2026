@@ -1,0 +1,44 @@
+html body.lp-campanha .semana-do-consumidor,
+html body.lp-campanha .semana-do-consumidor * {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+html body.lp-campanha .semana-do-consumidor .showcase__hero h1.showcase__title.showcase__title--hero,
+html body.lp-campanha .semana-do-consumidor .showcase__hero h1.showcase__title.showcase__title--hero * {
+  font-weight: 800 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor .showcase__hero p.showcase__subtitle.showcase__subtitle--hero {
+  font-weight: 400 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor section.seo-content .seo-content__intro p,
+html body.lp-campanha .semana-do-consumidor section.seo-content .seo-content__faq p {
+  font-weight: 300 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor section.seo-content .seo-content__eyebrow {
+  font-weight: 700 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor section.seo-content h2.seo-content__title {
+  font-weight: 800 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor section.seo-content .seo-content__faq-item summary {
+  font-weight: 700 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor .showcase-chance-unica .showcase__title,
+html body.lp-campanha .semana-do-consumidor .showcase-chance-unica__title {
+  font-weight: 800 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor .showcase-chance-unica .showcase__subtitle {
+  font-weight: 400 !important;
+}
+
+html body.lp-campanha .semana-do-consumidor .showcase-chance-unica__kicker,
+html body.lp-campanha .semana-do-consumidor .showcase-chance-unica__seal {
+  font-weight: 900 !important;
+}

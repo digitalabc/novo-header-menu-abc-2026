@@ -8,9 +8,7 @@
 ## }}
 {{ quotes = data.shipping_quotes }}
 
-{{~ retirada_com_menor_prazo = quotes | array.filter @(do; ret $0.name | string.downcase | string.contains "retire";end) | array.sort "deadline" | array.first ~}}
-{{~ retirada = quotes | array.filter @(do; ret ($0.name | string.downcase | string.contains "retire");end) | array.sort "deadline" ~}}
-
+{{~ pickup_quotes = quotes | array.filter @(do; ret ($0.name | string.downcase | string.contains "retire");end) | array.sort "deadline" ~}}
 {{~ custom_quotes = quotes | array.filter @(do; ret $0.name | string.downcase | !string.contains "retire" && $0.type == "Custom";end) ~}}
 
 {{~ entrega_com_menor_preco = custom_quotes | array.sort "value" | array.first ~}}
@@ -18,45 +16,200 @@
 
 {{~ if quotes ~}}
 <div class="product-shipping__list">
-    {{~ if retirada_com_menor_prazo ~}}
-      <div class="product-shipping__quote product-shipping__quote--pickup">
-          <div class="product-shipping__info" style="display: flex; flex-direction: column; gap: 8px;">
-              <span>Retirada em loja</span>
-              <small>Em até {{ retirada_com_menor_prazo.deadline }} dias úteis</small>
+  {{~ if entrega_com_menor_preco ~}}
+    <div class="product-shipping__quote">
+      <div class="product-shipping__info">
+        <div class="product-shipping__quote-title">
+          <span class="product-shipping__quote-icon product-shipping__quote-icon--economica" aria-hidden="true">🪙</span>
+          <div class="product-shipping__quote-title-row">
+            <strong>Entrega Econômica</strong>
+            <small class="product-shipping__quote-subtitle">Em até {{ entrega_com_menor_preco.deadline }} dias úteis</small>
           </div>
-          <span class="product-shipping__badge">Frete grátis</span>
+        </div>
       </div>
-    {{ end }}
-    {{~ if entrega_com_menor_preco ~}}
-      <div class="product-shipping__quote">
-          <div class="product-shipping__info" style="display: flex; flex-direction: column; gap: 8px;">
-              <span>Entrega econômica</span>
-              <small>Em até {{ entrega_com_menor_preco.deadline }} dias úteis</small>
+      {{~ if entrega_com_menor_preco.value == 0 ~}}
+        <span class="product-shipping__badge">Frete grátis</span>
+      {{~ else ~}}
+        <span class="product-shipping__value">
+          {{ entrega_com_menor_preco.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
+        </span>
+      {{~ end ~}}
+    </div>
+  {{~ end ~}}
+
+  {{~ if entrega_com_menor_prazo && entrega_com_menor_preco && entrega_com_menor_preco.name != entrega_com_menor_prazo.name ~}}
+    <div class="product-shipping__quote">
+      <div class="product-shipping__info">
+        <div class="product-shipping__quote-title">
+          <span class="product-shipping__quote-icon product-shipping__quote-icon--expressa" aria-hidden="true">⚡</span>
+          <div class="product-shipping__quote-title-row">
+            <strong>Entrega Expressa</strong>
+            <small class="product-shipping__quote-subtitle">Em até {{ entrega_com_menor_prazo.deadline }} dias úteis</small>
           </div>
-          {{~ if entrega_com_menor_preco.value == 0 ~}}
-            <span class="product-shipping__badge">Frete grátis</span>
+        </div>
+      </div>
+      {{~ if entrega_com_menor_prazo.value == 0 ~}}
+        <span class="product-shipping__badge">Frete grátis</span>
+      {{~ else ~}}
+        <span class="product-shipping__value">
+          {{ entrega_com_menor_prazo.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
+        </span>
+      {{~ end ~}}
+    </div>
+  {{~ end ~}}
+
+  {{~ if pickup_quotes.size > 0 ~}}
+    <div class="product-shipping__pickup">
+      <div class="product-shipping__pickup-summary">
+        <img
+          class="product-shipping__pickup-icon"
+          src="https://abcdaconstrucao.fbitsstatic.net/media/mini-franquia-abc.png?v=202603112009"
+          alt="Guide Shop"
+        >
+        <div class="product-shipping__pickup-copy">
+          <span class="product-shipping__pickup-title">Retirar na Guide Shop</span>
+          {{~ if pickup_quotes.size == 1 ~}}
+            <span class="product-shipping__pickup-subtitle">1 loja próxima de você</span>
           {{~ else ~}}
-            <span class="product-shipping__value">
-              {{ entrega_com_menor_preco.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
-            </span>
+            <span class="product-shipping__pickup-subtitle">{{ pickup_quotes.size }} lojas próximas de você</span>
           {{~ end ~}}
+        </div>
+        <span class="product-shipping__badge">Grátis</span>
       </div>
-    {{ end }}
-    {{~ if entrega_com_menor_preco?.name != entrega_com_menor_prazo?.name ~}}
-      <div class="product-shipping__quote">
-          <div class="product-shipping__info" style="display: flex; flex-direction: column; gap: 8px;">
-              <span>Entrega expressa</span>
-              <small>Em até {{ entrega_com_menor_prazo.deadline }} dias úteis</small>
+
+      <div class="product-shipping__pickup-options">
+        {{~ for pickUp in pickup_quotes ~}}
+          {{~ storeName = pickUp.name | string.replace "RETIRE EM - " ""
+              storeParts = storeName | string.split "|"
+              cityAndDistrict = storeParts[0]
+              address = storeParts.size > 1 ? storeParts[1] : ""
+              pickupLocationParts = cityAndDistrict | string.split ", "
+              pickupCity = pickupLocationParts[0]
+              pickupStore = pickupLocationParts.size > 1 ? pickupLocationParts[1] : cityAndDistrict
+              pickupCityHandle = pickupCity | string.handleize
+              pickupStoreHandle = pickupStore | string.handleize
+              matched_state = null
+              matched_store = null
+          ~}}
+          {{~ for state in settings.cidades ~}}
+            {{~ if !matched_store && pickupCityHandle && (state.name | string.handleize) == pickupCityHandle ~}}
+              {{~ matched_state = state ~}}
+              {{~ for store in state.stores ~}}
+                {{~ storeNameHandle = store.name | string.handleize
+                    storeAddressHandle = store.adress | string.handleize
+                    storeDetailsHandle = store.details_link | string.handleize
+                ~}}
+                {{~ if storeNameHandle == pickupStoreHandle || (storeNameHandle | string.contains pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle) ~}}
+                  {{~ matched_store = store ~}}
+                  {{~ break ~}}
+                {{~ end ~}}
+              {{~ end ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+          {{~ if !matched_store ~}}
+            {{~ for state in settings.cidades ~}}
+            {{~ if !matched_store && pickupCityHandle ~}}
+              {{~ for store in state.stores ~}}
+                {{~ storeAddressHandle = store.adress | string.handleize
+                    storeDetailsHandle = store.details_link | string.handleize
+                ~}}
+                {{~ if ((storeDetailsHandle == pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle)) && (storeAddressHandle | string.contains pickupCityHandle) ~}}
+                  {{~ matched_state = state ~}}
+                  {{~ matched_store = store ~}}
+                  {{~ break ~}}
+                {{~ end ~}}
+              {{~ end ~}}
+              {{~ end ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+          {{~ if !matched_store ~}}
+            {{~ for state in settings.cidades ~}}
+              {{~ if !matched_store ~}}
+                {{~ stateHandle = state.name | string.handleize ~}}
+                {{~ for store in state.stores ~}}
+                  {{~ storeNameHandle = store.name | string.handleize
+                      storeAddressHandle = store.adress | string.handleize
+                      storeDetailsHandle = store.details_link | string.handleize
+                  ~}}
+                  {{~ if (storeNameHandle | string.contains pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupCityHandle) || (stateHandle | string.contains pickupCityHandle) ~}}
+                    {{~ matched_state = state ~}}
+                    {{~ matched_store = store ~}}
+                    {{~ break ~}}
+                  {{~ end ~}}
+                {{~ end ~}}
+              {{~ end ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+          {{~ mondayHours = matched_store ? matched_store.monday : "" ~}}
+          {{~ tuesdayHours = matched_store ? matched_store.tuesday : "" ~}}
+          {{~ wednesdayHours = matched_store ? matched_store.wednesday : "" ~}}
+          {{~ thursdayHours = matched_store ? matched_store.thursday : "" ~}}
+          {{~ fridayHours = matched_store ? matched_store.friday : "" ~}}
+          {{~ saturdayHours = matched_store ? matched_store.saturday : "" ~}}
+          {{~ sundayHours = matched_store ? matched_store.sunday : "" ~}}
+          {{~ storeAddress = matched_store && matched_store.adress ? matched_store.adress : address ~}}
+          {{~ storeCep = "" ~}}
+          {{~ if matched_store && matched_store.adress ~}}
+            {{~ storeAddressParts = storeAddress | string.split ", " ~}}
+            {{~ storeCep = storeAddressParts | array.last ~}}
+          {{~ end ~}}
+          <div
+            class="product-shipping__pickup-option"
+            data-monday="{{ mondayHours }}"
+            data-tuesday="{{ tuesdayHours }}"
+            data-wednesday="{{ wednesdayHours }}"
+            data-thursday="{{ thursdayHours }}"
+            data-friday="{{ fridayHours }}"
+            data-saturday="{{ saturdayHours }}"
+            data-sunday="{{ sundayHours }}"
+          >
+            <div class="product-shipping__pickup-option-header">
+              <strong>{{ matched_state ? matched_state.name : pickupCity }}, {{ matched_store ? matched_store.name : pickupStore }}</strong>
+              <small>Em até {{ pickUp.deadline }} dias úteis</small>
+            </div>
+            <div class="product-shipping__pickup-option-meta">
+              <div class="product-shipping__pickup-option-line product-shipping__pickup-option-line--badges">
+                <span class="product-shipping__pickup-status" data-pickup-status>
+                  <span class="product-shipping__pickup-status-dot"></span>
+                  <span class="product-shipping__pickup-status-label" data-pickup-status-label>Carregando status</span>
+                </span>
+                <span class="product-shipping__pickup-status-note" data-pickup-status-note></span>
+              </div>
+              <div class="product-shipping__pickup-option-line product-shipping__pickup-option-line--hours">
+                <span class="product-shipping__pickup-option-hours" data-pickup-hours>
+                  <svg class="product-shipping__pickup-meta-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <circle cx="8" cy="8" r="5.5"></circle>
+                    <path d="M8 4.5V8l2 1.5"></path>
+                  </svg>
+                  <span data-pickup-hours-value></span>
+                </span>
+              </div>
+              {{~ if address || storeCep || storeAddress ~}}
+                <div class="product-shipping__pickup-option-line product-shipping__pickup-option-line--address">
+                  <span class="product-shipping__pickup-option-address">
+                    <svg class="product-shipping__pickup-meta-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                      <path d="M8 14.5s4.5-3.25 4.5-7a4.5 4.5 0 10-9 0c0 3.75 4.5 7 4.5 7z"></path>
+                      <circle cx="8" cy="7.5" r="1.5"></circle>
+                    </svg>
+                    <span class="product-shipping__pickup-option-address-copy">
+                      {{~ if storeAddress ~}}
+                        <span>{{ storeAddress }}</span>
+                      {{~ end ~}}
+                      {{~ if !storeAddress && address ~}}
+                        <span>{{ address }}</span>
+                      {{~ end ~}}
+                      {{~ if storeCep ~}}
+                        <small>CEP {{ storeCep }}</small>
+                      {{~ end ~}}
+                    </span>
+                  </span>
+                </div>
+              {{~ end ~}}
+            </div>
           </div>
-          {{~ if entrega_com_menor_prazo.value == 0 ~}}
-            <span class="product-shipping__badge">Frete grátis</span>
-          {{~ else ~}}
-            <span class="product-shipping__value">
-              {{ entrega_com_menor_prazo.value | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}
-            </span>
-          {{~ end ~}}
+        {{~ end ~}}
       </div>
-    {{ end }}
+    </div>
+  {{~ end ~}}
 </div>
 {{~ end ~}}
-

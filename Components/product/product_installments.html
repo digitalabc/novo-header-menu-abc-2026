@@ -27,39 +27,6 @@ end~}}
 ~}}
 
 <style>
-/**
-    * @license
-    *
-    * Font Family: Satoshi
-    * Designed by: Deni Anggara
-    * URL: https://www.fontshare.com/fonts/satoshi
-    * © 2024 Indian Type Foundry
-    *
-    * Satoshi Variable (Variable font)
-    *
-    */
-
-/**
-    * This is a variable font
-    * You can control variable axes as shown below:
-    * font-variation-settings: wght 900.0;
-    *
-    * available axes:
-    'wght' (range from 300.0 to 900.0
-    */
-
-@font-face {
-  font-family: "Satoshi Variable";
-  src: url("https://abcprime.fbitsstatic.net/sf/fonts/prime/Satoshi-Variable.woff2")
-      format("woff2"),
-    url("https://abcprime.fbitsstatic.net/sf/fonts/prime/Satoshi-Variable.woff")
-      format("woff"),
-    url("https://abcprime.fbitsstatic.net/sf/fonts/prime/Satoshi-Variable.ttf")
-      format("truetype");
-  font-weight: 300 900;
-  font-style: normal;
-}
-
 .payment__dialog {
   box-sizing: border-box;
   position: fixed;
@@ -121,7 +88,7 @@ end~}}
   justify-content: center;
   gap: 10px;
   color: #0B1320;
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -174,7 +141,7 @@ end~}}
 
 .option__list__message1,
 .option__list__message2 {
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-style: normal;
   background: unset !important;
   padding-top: 14px !important;
@@ -226,7 +193,7 @@ input[name="installment_dialog"]:checked + label {
   border: 1px solid #E3E7EC;
   background: #F7F9FB;
   color: #0B1320;
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -284,7 +251,7 @@ input[name="installment_dialog"]:not(:checked) + label {
   padding: 11px 14px;
   justify-self: stretch;
   text-align: center;
-  font-family: "Satoshi Variable";
+  font-family: var(--font-brand);
   font-size: 13px;
   line-height: 18px;
   color: #1A2232;

@@ -7,7 +7,8 @@
 
   {{ gtm_config_head gtm_id: common.gtm_id }}
 
-  {{ asset type: "css" paths: ["output", "output_checkout", "checkout/confirmation_checkout"]}}
+{{ asset type: "css" paths: ["font-brand"] }}
+  {{ asset type: "css" paths: ["output", "checkout/checkout_typeface", "output_checkout", "checkout/confirmation_checkout"]}}
   <title>Pedido confirmado</title>
   {{ gtm_purchase_view }}
 </head>

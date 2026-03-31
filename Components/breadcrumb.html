@@ -1,8 +1,8 @@
-<div class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
     {{~ if settings.breadcrumb?.home_text ~}}
-        <a href="/" class="breadcrumb__link">{{ settings.breadcrumb.home_text }}</a>
+        <a href="/" class="breadcrumb__badge">{{ settings.breadcrumb.home_text }}</a>
         {{~ if breadcrumbs.size > 0 ~}}
-            >
+            <span class="breadcrumb__sep" aria-hidden="true"></span>
         {{~ end ~}}
     {{~ end ~}}
     {{~ for breadcrumb in breadcrumbs ~}}
@@ -12,7 +12,9 @@
         {{~ else ~}}
             {{~ breadcrumbLink = "/" | string.append breadcrumb.link ~}}
         {{~ end ~}}
-    <a href="{{ breadcrumbLink }}" class="breadcrumb__link" >{{ breadcrumb.text | string.downcase | string.capitalize }}</a>
-        {{~ if !for.last ~}} > {{ end }}
-    {{~ end ~}}    
-</div>
+        <a href="{{ breadcrumbLink }}" class="breadcrumb__badge">{{ breadcrumb.text | string.downcase | string.capitalize }}</a>
+        {{~ if !for.last ~}}
+            <span class="breadcrumb__sep" aria-hidden="true"></span>
+        {{~ end ~}}
+    {{~ end ~}}
+</nav>

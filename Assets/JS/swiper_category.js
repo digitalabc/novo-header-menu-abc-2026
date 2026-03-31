@@ -65,8 +65,8 @@ var swiper = new Swiper(".showcase-2 .swiper", {
       slidesPerView: 4
     },
     1090: {
-      spaceBetween: 20,
-      slidesPerView: 5
+      spaceBetween: 16,
+      slidesPerView: 6
     }
   }
 });
@@ -88,8 +88,8 @@ var swiper = new Swiper(".showcase-3 .swiper", {
       slidesPerView: 4
     },
     1090: {
-      spaceBetween: 20,
-      slidesPerView: 5
+      spaceBetween: 16,
+      slidesPerView: 6
     }
   }
 });

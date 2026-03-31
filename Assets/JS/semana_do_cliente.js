@@ -413,11 +413,53 @@ function startCountdown() {
 function initSwiperIfNeeded(selector, options) {
   const swiperElement = document.querySelector(`${selector} .swiper`);
 
-  if (!swiperElement || swiperElement.classList.contains("swiper-initialized")) {
+  if (!swiperElement) {
     return null;
   }
 
-  return new Swiper(`${selector} .swiper`, options);
+  const existingInstance = swiperElement.swiper;
+
+  if (existingInstance && swiperElement.dataset.lpSwiperManaged === "true") {
+    syncCenteredCarouselState(existingInstance);
+    existingInstance.update();
+    return existingInstance;
+  }
+
+  if (existingInstance) {
+    const nextParams = Object.assign({}, options);
+    delete nextParams.on;
+
+    existingInstance.params = Object.assign(existingInstance.params, nextParams);
+    existingInstance.originalParams = Object.assign(existingInstance.originalParams || {}, nextParams);
+
+    if (options.navigation) {
+      existingInstance.params.navigation = Object.assign(
+        {},
+        existingInstance.params.navigation || {},
+        options.navigation
+      );
+      existingInstance.originalParams.navigation = Object.assign(
+        {},
+        existingInstance.originalParams.navigation || {},
+        options.navigation
+      );
+    }
+
+    if (existingInstance.navigation) {
+      existingInstance.navigation.destroy();
+      existingInstance.navigation.init();
+      existingInstance.navigation.update();
+    }
+
+    existingInstance.update();
+    swiperElement.dataset.lpSwiperManaged = "true";
+    syncCenteredCarouselState(existingInstance);
+    return existingInstance;
+  }
+
+  const instance = new Swiper(swiperElement, options);
+  swiperElement.dataset.lpSwiperManaged = "true";
+  return instance;
 }
 
 function syncCenteredCarouselState(swiper) {
@@ -466,8 +508,12 @@ function buildCarouselOptions(selector) {
         slidesPerView: 4,
         spaceBetween: 18,
       },
+      1090: {
+        slidesPerView: 6,
+        spaceBetween: 16,
+      },
       1200: {
-        slidesPerView: 5,
+        slidesPerView: 6,
         spaceBetween: 20,
       },
     },
@@ -477,7 +523,7 @@ function buildCarouselOptions(selector) {
 function initDeferredSwipers(selectors) {
   const pendingSelectors = selectors.filter(function (selector) {
     const swiperElement = document.querySelector(`${selector} .swiper`);
-    return swiperElement && !swiperElement.classList.contains("swiper-initialized");
+    return swiperElement && swiperElement.dataset.lpSwiperManaged !== "true";
   });
 
   if (!pendingSelectors.length) {
@@ -506,7 +552,7 @@ function initDeferredSwipers(selectors) {
       observer.unobserve(entry.target);
     });
   }, {
-    rootMargin: "300px 0px",
+    rootMargin: "900px 0px",
     threshold: 0.01,
   });
 
@@ -520,10 +566,26 @@ function initDeferredSwipers(selectors) {
     carouselRoot.setAttribute("data-swiper-selector", selector);
     observer.observe(carouselRoot);
   });
+
 }
 
 function initLandingSwipers() {
   initSwiperIfNeeded(".showcase-oferta-relampago__carousel", buildCarouselOptions(".showcase-oferta-relampago__carousel"));
+}
+
+function initAllShowcaseSwipers() {
+  [
+    ".showcase-oferta-relampago__carousel",
+    ".showcase-frete-gratis__carousel",
+    ".showcase-melhores-ofertas__carousel",
+    ".showcase-metais__carousel",
+    ".showcase-banho-e-aquecimento__carousel",
+    ".showcase-moveis__carousel",
+    ".showcase-ferramentas__carousel",
+    ".showcase-chance-unica__carousel",
+  ].forEach(function (selector) {
+    initSwiperIfNeeded(selector, buildCarouselOptions(selector));
+  });
 }
 
 function initBannerSwipers() {
@@ -566,7 +628,7 @@ function scheduleWhenIdle(callback, timeout) {
 document.addEventListener("DOMContentLoaded", function () {
   normalizeSavingsLabels();
   mountPromotionOverlays();
-  initLandingSwipers();
+  initAllShowcaseSwipers();
   startCountdown();
 
   window.requestAnimationFrame(function () {
@@ -575,9 +637,9 @@ document.addEventListener("DOMContentLoaded", function () {
     syncMobileStockBadgeLabels();
   });
 
-  scheduleWhenIdle(function () {
+  scheduleAfterPaint(function () {
     initBannerSwipers();
-  }, 240);
+  });
 
   window.addEventListener("resize", function () {
     syncSpotFooterPosition();

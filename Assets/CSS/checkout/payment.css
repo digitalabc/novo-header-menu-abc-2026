@@ -35,7 +35,7 @@
 
   .checkout-footer-left h3 {
     color: #1F1F1F;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 18px;
     font-style: normal;
     text-align: center;
@@ -45,7 +45,7 @@
 
   .checkout-footer-left span {
     color: #848484;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -96,7 +96,7 @@
   .checkout-copyright {
     color: #848484;
     text-align: center;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -148,7 +148,7 @@
 
   .checkout-footer-left h3 {
     color: #1F1F1F;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -157,7 +157,7 @@
 
   .checkout-footer-left span {
     color: #848484;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -183,7 +183,7 @@
   .checkout-copyright {
     color: #848484;
     text-align: center;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -262,7 +262,7 @@
 
     .checkout-coupon-sidebar .wake-checkout-coupon-label {
       color: #333;
-      font-family: 'Satoshi Variable', sans-serif;
+      font-family: var(--font-brand);
       font-size: 16px;
       font-weight: 600;
       line-height: 150%;
@@ -278,7 +278,7 @@
       color: #333;
       font-size: 14px;
       font-weight: 400;
-      font-family: 'Satoshi Variable', sans-serif;
+      font-family: var(--font-brand);
       transition: all 0.3s ease-in-out;
       outline: none;
       width: 100%;
@@ -297,7 +297,7 @@
       border-radius: 400px;
       font-size: 16px;
       font-weight: 600;
-      font-family: 'Satoshi Variable', sans-serif;
+      font-family: var(--font-brand);
       cursor: pointer;
       transition: all 0.3s ease-in-out;
       text-transform: uppercase;

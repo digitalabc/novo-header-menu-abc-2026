@@ -1,14 +1,52 @@
 .breadcrumb
+  display flex
+  flex-wrap wrap
+  align-items center
+  gap 10px
   margin 20px 0
   @media mobile
     margin-top 10px
-  &__link
-    color: $black
-    font-weight: 300;
-    transition: $transition;
-
+  &__badge
+    display inline-flex
+    align-items center
+    padding 6px 12px
+    border-radius 999px
+    background #f0f3f5
+    color $black
+    font-size var(--fonte-texto-auxiliar)
+    font-weight $peso-fonte-light
+    text-decoration none
+    transition $transition
     &:last-child
-      font-weight: 500;
+      font-weight $peso-fonte-medium
+      background #0fa8481a
+      border 1px solid $buy-btn
+      color $buy-btn
+    &:hover
+      color $primary
+      background #e8eaec
+    &:last-child:hover
+      background #0fa8481a
+      border-color $buy-btn
+      color $buy-btn
+  &__sep
+    display none
+
+  .breadcrumb__link
+    display inline-flex
+    align-items center
+    padding 6px 12px
+    border-radius 999px
+    background #f0f3f5
+    color $black
+    font-size $fonte-paragrafo
+    font-weight $peso-fonte-light
+    transition $transition
+
+    &.last
+      font-weight $peso-fonte-medium
+      background #e8eaec
 
     &:hover
-      color: $primary;
+      color $primary
+      background #e8eaec

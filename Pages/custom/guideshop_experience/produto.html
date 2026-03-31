@@ -5,14 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Produto - Prateleira Infinita</title>
-    <script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
+    <!-- SDK da R2U desativado: recurso de AR não utilizado atualmente -->
     {{ gtm_config_head gtm_id: common.gtm_id }}
+{{ asset type: "css" paths: ["font-brand"] }}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
         :root {
             --ChumboABC: #454040;
@@ -48,7 +47,7 @@
             margin: 0;
             padding: 0;
             color: #212529;
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-brand);
             font-size: 17.911px;
             font-style: normal;
         }
@@ -89,7 +88,7 @@
 
         .card-body .card-text {
             color: #212529;
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-brand);
             font-size: 17.911px;
             font-style: normal;
         }
@@ -111,7 +110,7 @@
             border-radius: 39.18px;
             color: #FFF;
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-brand);
             font-size: 17.911px;
             font-style: normal;
             font-weight: 600;
@@ -133,7 +132,7 @@
             border: 0.723px solid #909090;
             color: #909090;
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-brand);
             font-size: 13.433px;
             font-style: normal;
             font-weight: 600;

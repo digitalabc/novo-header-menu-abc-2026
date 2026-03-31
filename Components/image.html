@@ -18,4 +18,10 @@
             {{s.w}}px
         {{- end -}}
     {{- end ~}}"
-    width="{{sizes[0].w}}" height="{{sizes[0].h}}" src="{{source}}" alt="{{alt}}" {{ if class }}class="{{class}}"{{ end }}>    
+    width="{{sizes[0].w}}" height="{{sizes[0].h}}"
+    src="{{source}}{{qs_var}}w={{~sizes[0].w~}}&h={{~sizes[0].h~}}&v=no-change"
+    alt="{{alt}}"
+    {{ if class }}class="{{class}}"{{ end }}
+    {{ if loading }}loading="{{loading}}"{{ end }}
+    {{ if decoding }}decoding="{{decoding}}"{{ end }}
+    {{ if fetchpriority }}fetchpriority="{{fetchpriority}}"{{ end }}>

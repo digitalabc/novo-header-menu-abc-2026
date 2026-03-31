@@ -2,6 +2,8 @@ var site_title = "ABC da Construção";
 var hello_message =
   "Olá! Tudo bem? Fale com nosso time de consultores via whatsapp e faça seu orçamento.";
 
+var FORM_CLOSE_ANIMATION_MS = 260;
+
 var wppPendingUrl = "";
 
 function preWhatsappHandler(url) {
@@ -39,19 +41,21 @@ function handleFormWppSubmit(e) {
       },
     };
 
-    sendSharpSpring(
-      {
-        nome: formWppName,
-        email: formWppEmail,
-        telefone: formWppPhone,
-        current_url: location.href,
-        cookies: getCookie("mm_tracker"),
-        telefone: formWppPhone,
-        firstSession: getCookie("FirstSession"),
-        lastSession: getCookie("LastSession"),
-      },
-      "whats_form"
-    );
+    if (typeof sendSharpSpring === "function") {
+      sendSharpSpring(
+        {
+          nome: formWppName,
+          email: formWppEmail,
+          telefone: formWppPhone,
+          current_url: location.href,
+          cookies: getCookie("mm_tracker"),
+          telefone: formWppPhone,
+          firstSession: getCookie("FirstSession"),
+          lastSession: getCookie("LastSession"),
+        },
+        "whats_form"
+      );
+    }
 
     var dataFormWppStr = JSON.stringify(dataFormWpp);
 
@@ -72,9 +76,10 @@ function handleFormWppSubmit(e) {
     });
 
     window.open(url, "_blank");
-    formWpp.style.display = "none";
-    var wrapper = document.querySelector("#mm-whatsapp-wrapper");
-    if (wrapper) wrapper.style.display = "flex";
+    animateWhatsAppFormOut(formWpp, function () {
+      var wrapper = document.querySelector("#mm-whatsapp-wrapper");
+      if (wrapper) wrapper.style.display = "flex";
+    });
   } else {
     formWpp.querySelector(".form-wpp-error").style.display = "block";
   }
@@ -169,6 +174,49 @@ function updateSubmitState(formWpp) {
   }
 }
 
+function animateWhatsAppFormIn(formWpp) {
+  if (!formWpp) return;
+
+  if (formWpp._hideTimer) {
+    window.clearTimeout(formWpp._hideTimer);
+    formWpp._hideTimer = null;
+  }
+
+  formWpp.style.display = "flex";
+  formWpp.classList.remove("form-pre-whatsapp--closing");
+  formWpp.classList.remove("form-pre-whatsapp--visible");
+  formWpp.getBoundingClientRect();
+
+  window.requestAnimationFrame(function () {
+    formWpp.classList.add("form-pre-whatsapp--visible");
+  });
+
+  updateSubmitState(formWpp);
+}
+
+function animateWhatsAppFormOut(formWpp, onHidden) {
+  if (!formWpp) {
+    if (typeof onHidden === "function") onHidden();
+    return;
+  }
+
+  if (formWpp._hideTimer) {
+    window.clearTimeout(formWpp._hideTimer);
+  }
+
+  formWpp.classList.remove("form-pre-whatsapp--visible");
+  formWpp.classList.add("form-pre-whatsapp--closing");
+  formWpp._hideTimer = window.setTimeout(function () {
+    formWpp.classList.remove("form-pre-whatsapp--closing");
+    formWpp.style.display = "none";
+    formWpp._hideTimer = null;
+
+    if (typeof onHidden === "function") {
+      onHidden();
+    }
+  }, FORM_CLOSE_ANIMATION_MS);
+}
+
 function generateChildInput(parent, type, className, placeholder) {
   var input = document.createElement("input");
   input.setAttribute("type", type);
@@ -191,8 +239,7 @@ function generateChildInput(parent, type, className, placeholder) {
 function showWhatsAppForm() {
   var existingForm = document.querySelector("#form-pre-whatsapp");
   if (existingForm) {
-    existingForm.style.display = "block";
-    updateSubmitState(existingForm);
+    animateWhatsAppFormIn(existingForm);
     return;
   }
 
@@ -209,9 +256,10 @@ function showWhatsAppForm() {
   formHeaderClose.setAttribute("aria-label", "Fechar");
   formHeaderClose.innerHTML = "×";
   formHeaderClose.addEventListener("click", function () {
-    formBox.style.display = "none";
-    var wrapper = document.querySelector("#mm-whatsapp-wrapper");
-    if (wrapper) wrapper.style.display = "flex";
+    animateWhatsAppFormOut(formBox, function () {
+      var wrapper = document.querySelector("#mm-whatsapp-wrapper");
+      if (wrapper) wrapper.style.display = "flex";
+    });
   });
 
   var logoImg = document.querySelector(".navbar-brand img, .navbar__logo img");
@@ -280,13 +328,18 @@ function showWhatsAppForm() {
   }
 
   formWpp.querySelector("#form-wpp").addEventListener("submit", handleFormWppSubmit);
-}
 
-window.addEventListener("load", onLoadWppIcon, false);
+  animateWhatsAppFormIn(formBox);
+}
 
 function onLoadWppIcon() {
   try {
+    if (document.getElementById("mm-whatsapp-wrapper")) {
+      return;
+    }
+
     var wppIconButtons = document.querySelector("#whatsapp");
+    if (!wppIconButtons) return;
     var mmWppIcon = wppIconButtons.cloneNode(true);
     mmWppIcon.setAttribute("id", "mm-whatsapp");
     mmWppIcon.style.cursor = "pointer";
@@ -339,4 +392,10 @@ function onLoadWppIcon() {
   } catch {
     console.log("Erro ao carregar icone de WhatsApp")
   }
-} 
+}
+
+if (document.readyState === "complete") {
+  onLoadWppIcon();
+} else {
+  window.addEventListener("load", onLoadWppIcon, false);
+}

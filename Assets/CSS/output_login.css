@@ -400,7 +400,7 @@
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(31 31 31 / var(--tw-text-opacity));
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-password-recovery-wrapper>div .step-one span {
@@ -413,7 +413,7 @@
   --tw-text-opacity: 1;
   color: rgb(132 132 132 / var(--tw-text-opacity));
   margin-bottom: 1rem;
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-password-recovery-wrapper>div .step-one form {
@@ -446,7 +446,7 @@
   color: #333;
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
   transition: all 0.3s ease-in-out;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -487,7 +487,7 @@
   line-height: 16px;
   font-weight: 600;
   color: #fff;
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
   cursor: pointer;
   overflow: hidden;
   transition: background-color 0.4s ease-in-out, font-size 0.2s ease-in-out, transform 0.1s ease-in-out;
@@ -538,7 +538,7 @@
   --tw-text-opacity: 1;
   color: rgb(132 132 132 / var(--tw-text-opacity));
   margin-bottom: 1rem;
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
 }
 
 .wake-password-recovery-wrapper>div .step-two form {
@@ -569,7 +569,7 @@
   color: #333;
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
   transition: all 0.3s ease-in-out;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -610,7 +610,7 @@
   line-height: 16px;
   font-weight: 600;
   color: #fff;
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
   cursor: pointer;
   overflow: hidden;
   transition: background-color 0.4s ease-in-out, font-size 0.2s ease-in-out, transform 0.1s ease-in-out;
@@ -2016,7 +2016,7 @@
   font-weight: 500;
   color: #848484;
   margin-bottom: 6px;
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
 }
 
 

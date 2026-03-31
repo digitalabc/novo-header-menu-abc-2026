@@ -1,6 +1,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add("material-icons-wait");</script>
 <meta name="author" content="Agência Auaha">
 <meta name="adopt-website-id" content="5116c68f-2055-4add-99c3-41f216482e8c" />
           
@@ -16,26 +17,41 @@
 <link rel="icon" type="image/x-icon" href="{{ favicon_source }}">
 <link rel="canonical" href="{{ store.urls.current }}" />
 
-<script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
-<script src="//tag.goadopt.io/injector.js?website_code=5116c68f-2055-4add-99c3-41f216482e8c" class="adopt-injector"></script>
-<style>html{display: none;}</style>
+<link rel="preconnect" href="https://abcdaconstrucao.fbitsstatic.net" crossorigin>
+<link rel="preconnect" href="https://static.fbits.net" crossorigin>
+
+<script>
+  window.addEventListener('load', function () {
+    function loadGoAdopt() {
+      if (window.__abcGoAdoptLoaded) return;
+      window.__abcGoAdoptLoaded = true;
+
+      var script = document.createElement('script');
+      script.src = '//tag.goadopt.io/injector.js?website_code=5116c68f-2055-4add-99c3-41f216482e8c';
+      script.async = true;
+      script.className = 'adopt-injector';
+      document.head.appendChild(script);
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGoAdopt, { timeout: 4000 });
+      return;
+    }
+
+    setTimeout(loadGoAdopt, 1200);
+  }, { once: true });
+</script>
 
 {{# CSS Customizado #}}
+{{ asset type: "css" paths: ["font-brand" ] }}
+{{ asset type: "css" paths: ["material-icons" ] }}
+<script>
+(function(){var r=document.documentElement;function c(){r.classList.add("material-icons-font-ready")}if(!document.fonts||!document.fonts.load){c();return}document.fonts.load('400 24px "Material Icons"').then(c,c);setTimeout(c,2500)})();
+</script>
 {{ asset type: "css" paths: ["swiper-bundle.min" ] }}
 {{ asset type: "css" paths: ["auaha" ] }}
 {{ asset type: "css" paths: ["abc-custom" ] }}
 {{ asset type: "css" paths: ["buy_together" ] }}
-
-{{# Google Fonts #}}
-{{ font_url = "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="{{ font_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<noscript>
-  <link href="{{ font_url }}" rel="stylesheet" type="text/css" />
-</noscript>
 
 {{# Defer background images #}}
 <style id="no-bg-img">

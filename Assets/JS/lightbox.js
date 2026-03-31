@@ -1,11 +1,12 @@
 const STORE_TOKEN = "abc"
 const LIGHTBOX_EXPIRATION_DAYS = 3
 
-if(DESKTOP.matches){
-  window.addEventListener("load", lightboxLoad, false)
-}
-
 function lightboxLoad() {
+  if (window.__abcLightboxInitialized) {
+    return;
+  }
+
+  window.__abcLightboxInitialized = true;
   var newsletterLightboxId = "newsletter-lightbox"
   var exitIntentLightboxId = "exit-intent-lightbox"
 
@@ -30,6 +31,14 @@ function lightboxLoad() {
   }, 3000);
   
 
+}
+
+if (DESKTOP.matches) {
+  if (document.readyState === "complete") {
+    lightboxLoad();
+  } else {
+    window.addEventListener("load", lightboxLoad, false);
+  }
 }
 
 function setLocalStorageWithExpiration(key, expirationDays) {
@@ -71,11 +80,26 @@ function showLightbox(lightboxId) {
   }
 }
 
-var swiper = new Swiper(".showcase-lightbox .swiper", {
-  navigation: {
-    nextEl: '.showcase-lightbox .swiper-button-next',
-    prevEl: '.showcase-lightbox .swiper-button-prev'
-  },
-  slidesPerView: 3,
-  spaceBetween: 20,
-});
+function initShowcaseLightboxSwiper() {
+  const showcaseSwiper = document.querySelector(".showcase-lightbox .swiper");
+
+  if (!showcaseSwiper || showcaseSwiper.dataset.swiperInitialized === "true") {
+    return;
+  }
+
+  const section = showcaseSwiper.closest(".showcase-lightbox");
+
+  new Swiper(showcaseSwiper, {
+    navigation: {
+      nextEl: section?.querySelector(".swiper-button-next"),
+      prevEl: section?.querySelector(".swiper-button-prev")
+    },
+    slidesPerView: 3,
+    spaceBetween: 20,
+  });
+
+  showcaseSwiper.dataset.swiperInitialized = "true";
+}
+
+initShowcaseLightboxSwiper();
+window.addEventListener("lazyContentHydrated", initShowcaseLightboxSwiper);

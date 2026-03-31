@@ -14,7 +14,7 @@
   if product_is_box 
     unidade_ = (settings.lista_por_unidade | array.filter @(do; ret $0.abreviatura == attribute ;end) | array.first) | object.values
     
-    if attribute == 'm2' || is_piso_revestimento
+    if attribute == 'm2' || is_piso_revestimento || (spot_mostrar_so_m2 ?? false)
       unidade_abreviatura =  "m²"
     else 
       unidade_abreviatura =  unidade_ | array.first | string.downcase
@@ -22,9 +22,22 @@
     
     unidade_display = unidade_| array.last | string.downcase
   end
+  
+  spot_piso_somente_m2 = product_is_box && !page_product && (spot_mostrar_so_m2 ?? false) && prices.multiplication_factor > 1
 ~}}
 
 <div class="spot-price">
+    {{ if spot_piso_somente_m2 }}
+        {{ if prices.list_price }}
+            {{~ if prices.price != prices.list_price ~}}
+                <p class="precoDe"><s>{{ prices.list_price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</s></p>
+            {{~ end ~}}
+        {{ end }}
+        <h3 class="precoPor precoPor--somente-m2-piso">
+          <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
+          <small>/{{ unidade_abreviatura }}</small>
+        </h3>
+    {{ else }}
     {{ if prices.list_price }}
         {{~ if prices.price != prices.list_price ~}}
             <p class="precoDe"><s>{{ prices.list_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</s></p>
@@ -39,7 +52,7 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
-        {{~ if product_is_box && !page_product ~}}
+        {{~ if product_is_box && !page_product && prices.multiplication_factor > 1 ~}}
           <p class="precoCalculado{{ if is_piso_revestimento }} precoCalculado--piso-revestimento{{ end }}">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
             <small>/{{ unidade_abreviatura }}</small>
@@ -59,12 +72,13 @@
             <small>cada</small>
           {{~ end ~}}
         </h3>
-        {{~ if product_is_box && !page_product ~}}
+        {{~ if product_is_box && !page_product && prices.multiplication_factor > 1 ~}}
           <p class="precoCalculado{{ if is_piso_revestimento }} precoCalculado--piso-revestimento{{ end }}">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
             <small>/{{ unidade_abreviatura }}</small>
           </p>
         {{~ end ~}}
+    {{ end }}
     {{ end }}
 </div>
 
@@ -83,7 +97,7 @@
         <path id="Path_23337" data-name="Path 23337" d="M143.666,3.281l.047-.05L146.307.638a2.075,2.075,0,0,1,1.2-.613,2.055,2.055,0,0,1,1.763.548c.334.312.649.643.973.966l1.7,1.7a.454.454,0,0,0,.049.038l-.008.017h-.069a2.482,2.482,0,0,0-.7.068,2.08,2.08,0,0,0-.948.553q-1.029,1.031-2.059,2.06a.383.383,0,0,1-.428.11.476.476,0,0,1-.165-.111q-1.038-1.033-2.071-2.07a2.059,2.059,0,0,0-.994-.563,2.187,2.187,0,0,0-.507-.057h-.38" transform="translate(477.172 160)" fill="currentColor"/>
       </g>
     </svg>
-    <span>Compre com Pix e tenha <strong>5%</strong> de desconto</span>
+    <span>Ganhe <strong>5%</strong> de desconto no Pix</span>
   </div>
 {{~ end ~}}
 

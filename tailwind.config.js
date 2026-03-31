@@ -12,6 +12,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        brand: ['var(--font-brand)'],
+        display: ['var(--font-display)'],
+        legacy: ['var(--font-ui-legacy)'],
+      },
       colors: {
         primary: {
           100: '#F0BEFC',

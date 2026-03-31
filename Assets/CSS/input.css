@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Satoshi";
+  src:
+    url("../Fonts/prime/Satoshi-Variable.woff2") format("woff2"),
+    url("../Fonts/prime/Satoshi-Variable.woff") format("woff");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../Fonts/bebas-neue/BebasNeue-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-brand: "Satoshi", sans-serif;
+    --font-display: "Bebas Neue", sans-serif;
+    --font-ui-legacy: "Open Sans", arial, sans-serif;
+    --font-primary: var(--font-brand);
+    --font-secondary: var(--font-brand);
+  }
+
+  html,
+  body,
+  input,
+  textarea,
+  button,
+  select,
+  option {
+    font-family: var(--font-brand);
+  }
+}
+
 /* Globals */
 .text-size-sm {
   @apply text-sm;

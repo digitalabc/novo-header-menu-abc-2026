@@ -1,35 +1,3 @@
-@font-face {
-  font-family: "Montserrat Black";
-  src: url("../Fonts/montserrat-family/Montserrat-Black.woff") format("woff");
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat ExtraBold";
-  src: url("../Fonts/montserrat-family/Montserrat-ExtraBold.woff") format("woff");
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat Bold";
-  src: url("../Fonts/montserrat-family/Montserrat-Bold.woff") format("woff");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat Light";
-  src: url("../Fonts/montserrat-family/Montserrat-Light.woff") format("woff");
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-}
-
 .semana-do-consumidor .showcase[data-showcase="frete-gratis"],
 .semana-do-consumidor .showcase[data-showcase="melhores-ofertas"],
 .semana-do-consumidor .showcase[data-showcase="metais"],
@@ -57,7 +25,7 @@
   padding: 0 10px;
   background: linear-gradient(180deg, #e0e0e0 0%, #bdbdbd 100%);
   color: #0d0d0d !important;
-  font-family: "Montserrat ExtraBold", "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-size: 8px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -68,13 +36,6 @@
   text-shadow: none;
 }
 
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("../Fonts/bebas-neue/BebasNeue-Regular.woff") format("woff");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
 
 .semana-do-consumidor {
   position: relative;
@@ -218,14 +179,14 @@
   color: #5a5a5a;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-family: "Montserrat Bold", "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 700;
   font-size: 13px;
 }
 
 .semana-do-consumidor .showcase__brandmark strong {
   color: #231b46;
-  font-family: "Montserrat Bold", "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 700;
   font-size: 26px;
   line-height: 1.08;
@@ -273,6 +234,7 @@
 
 .semana-do-consumidor .showcase__subtitle--hero {
   max-width: 430px;
+  font-family: "Montserrat", sans-serif !important;
   font-size: 14px;
   line-height: 1.55;
 }
@@ -288,7 +250,7 @@
   background: linear-gradient(180deg, #ffd966 0%, #ffb800 100%);
   color: #000;
   text-decoration: none;
-  font-family: "Montserrat Bold", "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
@@ -800,6 +762,7 @@
 }
 
 .semana-do-consumidor .seo-content {
+  font-family: "Montserrat", sans-serif !important;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
   gap: 24px;
@@ -824,14 +787,16 @@
   color: #2d2d2d;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-family: "Montserrat Bold", "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700;
   font-size: 11px;
 }
 
 .semana-do-consumidor .seo-content__title {
   margin: 0 0 14px;
   color: #231b46;
-  font-family: "Montserrat ExtraBold", "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 800;
   font-size: 30px;
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -845,7 +810,8 @@
 .semana-do-consumidor .seo-content__faq p {
   margin: 0;
   color: #5a5a5a;
-  font-family: "Montserrat Light", "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
   font-size: 15px;
   line-height: 1.7;
 }
@@ -871,7 +837,8 @@
   position: relative;
   padding-right: 28px;
   color: #231b46;
-  font-family: "Montserrat Bold", "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700;
   font-size: 15px;
   line-height: 1.5;
 }
@@ -1058,7 +1025,6 @@
   text-align: center;
   font-size: 9px;
   line-height: 1.2;
-  font-family: "Montserrat ExtraBold", "Montserrat", sans-serif;
   font-weight: 800;
   overflow: hidden;
 }
@@ -1231,10 +1197,6 @@
   }
 }
 
-.semana-do-consumidor {
-  font-family: "Inter", sans-serif;
-}
-
 .semana-do-consumidor .showcase--panel {
   background: radial-gradient(circle at top right, rgba(80, 80, 80, 0.08), rgba(80, 80, 80, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 248, 0.94) 100%);
 }
@@ -1262,7 +1224,8 @@
 .semana-do-consumidor .showcase .spot .spot-price .precoPor small,
 .semana-do-consumidor .showcase .spot .best-installment,
 .semana-do-consumidor .showcase .spot .oferta-relampago__sold-text {
-  font-family: "Montserrat Light", "Montserrat", sans-serif;
+  font-family: var(--font-brand);
+  font-weight: 300;
 }
 
 .semana-do-consumidor .showcase__title,
@@ -1276,7 +1239,8 @@
 .semana-do-consumidor .cronometro--spot .cronometro__minutes,
 .semana-do-consumidor .cronometro--spot .cronometro__seconds,
 .semana-do-consumidor .showcase .spot .spot-price .precoPor span {
-  font-family: "Montserrat ExtraBold", "Montserrat", sans-serif;
+  font-family: var(--font-brand);
+  font-weight: 800;
 }
 
 .semana-do-consumidor .showcase__title {
@@ -1285,14 +1249,14 @@
 }
 
 .semana-do-consumidor .showcase__title--hero {
-  font-family: "Montserrat ExtraBold", "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.9;
 }
 
 .semana-do-consumidor .showcase__brandmark strong {
-  font-family: "Montserrat Bold", "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 700;
   letter-spacing: -0.03em;
 }
@@ -1308,8 +1272,8 @@
 
 .semana-do-consumidor .showcase-chance-unica .showcase__title {
   text-transform: uppercase;
-  font-family: "Bebas Neue", "Montserrat", sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 800;
   letter-spacing: 0.03em;
 }
 
@@ -1387,7 +1351,7 @@
   color: #161111;
   text-align: center;
   text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 900;
   font-size: 15px;
   line-height: 1.08;
@@ -1410,7 +1374,7 @@
   background: linear-gradient(180deg, #ffd43f 0%, #ffb000 100%);
   color: #7f090f;
   text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 900;
   font-size: 14px;
   letter-spacing: 0.08em;
@@ -1425,8 +1389,8 @@
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1);
   color: #fff;
   text-transform: uppercase;
-  font-family: "Bebas Neue", "Montserrat", sans-serif;
-  font-weight: 700;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 800;
   font-size: 52px;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -1436,7 +1400,7 @@
   justify-self: end;
   color: #fff;
   text-align: right;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 800;
   font-size: 18px;
   line-height: 1.2;
@@ -1457,7 +1421,7 @@
 .semana-do-consumidor .showcase-chance-unica__empty strong {
   display: block;
   margin-bottom: 6px;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-brand);
   font-weight: 800;
   font-size: 18px;
 }
@@ -1501,7 +1465,6 @@
 
 .semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
 .semana-do-consumidor .showcase .spot .spot-price .precoCalculado span {
-  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   color: #000;
   font-size: 16px;
@@ -1522,6 +1485,22 @@
   color: #b8860b;
   font-weight: 600;
   border-radius: 4px;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoPor--somente-m2-piso span {
+  font-weight: 900;
+  color: #c4472d;
+}
+
+.semana-do-consumidor .showcase .spot .spot-price .precoPor--somente-m2-piso small {
+  display: inline;
+  margin-left: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  color: rgba(35, 27, 70, 0.65);
+  font-size: 9px;
+  font-weight: 300;
 }
 
 .semana-do-consumidor .showcase .spot .spot-price .precoCalculado--piso-revestimento::after {
@@ -1550,7 +1529,6 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
 }
 
 .semana-do-consumidor .showcase .spot .spot__image .stamps-discount {
@@ -1571,7 +1549,6 @@
   background: linear-gradient(180deg, rgba(17, 126, 138, 0.14) 0%, rgba(17, 126, 138, 0.08) 100%);
   color: #117e8a;
   font-size: 10px !important;
-  font-family: "Montserrat Bold", "Montserrat", sans-serif;
   font-weight: 700;
   text-align: center;
 }
@@ -1583,7 +1560,6 @@
 
 .semana-do-consumidor .showcase .spot .spot-price .discount__value {
   color: #117e8a;
-  font-family: "Montserrat ExtraBold", "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 9px !important;
 }

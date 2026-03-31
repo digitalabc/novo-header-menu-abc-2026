@@ -50,7 +50,7 @@ function processSpotPrice(spotPrice) {
 
   const discountEl = document.createElement("div");
   discountEl.className = "discount";
-  discountEl.innerHTML = `Você economiza: <span class="discount__value">${savings}</span>`;
+  discountEl.innerHTML = `Economize: <span class="discount__value">${savings}</span>`;
   spotPrice.insertBefore(discountEl, spotPrice.firstChild);
 }
 
@@ -217,37 +217,71 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbarCollapse = document.querySelector(".navbar__collapse.desktop");
     if (fullbannerDesktop) {
       fullbannerDesktop.remove();
+    }
+    if (navbarCollapse) {
       navbarCollapse.remove();
     }
   }
 
-  function removeNoscript() {
-    if (isDesktop) {
-      document.querySelectorAll('[data-lazy="true"]').forEach((element) => {
-        const noscriptTag = element.querySelector("noscript");
-        if (noscriptTag) {
-          element.innerHTML = noscriptTag.innerHTML;
-
-          initSwipers();
-        }
-      });
-
-      window.removeEventListener("scroll", removeNoscript);
-    }
-
-    document.querySelectorAll('[data-lazy="false"]').forEach((element) => {
-      const noscriptTag = element.querySelector("noscript");
-      if (noscriptTag) {
-        element.innerHTML = noscriptTag.innerHTML;
-
-        initSwipers();
-      }
-    });
-
+  const refreshDynamicSections = () => {
+    initSwipers();
     reorderHomepageSections();
     replaceRulerIcons();
     updateRulerTexts();
-    window.removeEventListener("scroll", removeNoscript);
+  };
+
+  function hydrateLazyElement(element) {
+    if (!element || element.dataset.lazyHydrated === "true") {
+      return;
+    }
+
+    const noscriptTag = element.querySelector("noscript");
+
+    if (noscriptTag) {
+      element.innerHTML = noscriptTag.innerHTML;
+    }
+
+    element.dataset.lazyHydrated = "true";
+    refreshDynamicSections();
+    window.dispatchEvent(
+      new CustomEvent("lazyContentHydrated", {
+        detail: { element },
+      })
+    );
+  }
+
+  function observeLazySections() {
+    const lazyElements = Array.from(document.querySelectorAll("[data-lazy]")).filter(
+      (element) => element.dataset.lazyHydrated !== "true"
+    );
+
+    if (!lazyElements.length) {
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      lazyElements.forEach(hydrateLazyElement);
+      return;
+    }
+
+    const lazyObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          hydrateLazyElement(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: isDesktop ? "280px 0px" : "160px 0px",
+        threshold: 0.01,
+      }
+    );
+
+    lazyElements.forEach((element) => lazyObserver.observe(element));
   }
 
   function replaceRulerItemIcon({
@@ -419,31 +453,49 @@ document.addEventListener("DOMContentLoaded", () => {
     moveAfterEnvironment(desktopEnvironments, "desktop");
   }
 
+  function initSwiperInstance(swiperElement, options) {
+    if (!swiperElement || swiperElement.dataset.swiperInitialized === "true") {
+      return;
+    }
+
+    new Swiper(swiperElement, options);
+    swiperElement.dataset.swiperInitialized = "true";
+  }
+
   function initSwipers() {
-    new Swiper(".fullbanner.desktop .swiper", {
+    const fullbannerDesktop = document.querySelector(".fullbanner.desktop .swiper");
+    if (fullbannerDesktop) {
+      const section = fullbannerDesktop.closest(".fullbanner.desktop");
+      initSwiperInstance(fullbannerDesktop, {
+        loop: true,
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
+        },
+        autoplay: {
+          delay: 5000,
+        },
+      });
+    }
+
+    const fullbannerMobile = document.querySelector(".fullbanner.mobile .swiper");
+    initSwiperInstance(fullbannerMobile, {
       loop: true,
-      navigation: {
-        nextEl: ".fullbanner.desktop .swiper-button-next",
-        prevEl: ".fullbanner.desktop .swiper-button-prev",
-      },
       autoplay: {
         delay: 5000,
       },
     });
 
-    new Swiper(".fullbanner.mobile .swiper", {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-      },
-    });
-
-    new Swiper(".banner-oportunidades .mobile .swiper:first-child", {
+    const opportunitiesMobile = document.querySelector(
+      ".banner-oportunidades .mobile .swiper:first-child"
+    );
+    initSwiperInstance(opportunitiesMobile, {
       spaceBetween: 10,
       slidesPerView: 2.1,
     });
 
-    new Swiper(".banner-grid .swiper:first-child", {
+    const bannerGridPrimary = document.querySelector(".banner-grid .swiper:first-child");
+    initSwiperInstance(bannerGridPrimary, {
       spaceBetween: 20,
       slidesPerView: 1.2,
       breakpoints: {
@@ -453,7 +505,8 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    new Swiper(".banner-grid div:nth-child(2)", {
+    const bannerGridSecondary = document.querySelector(".banner-grid div:nth-child(2)");
+    initSwiperInstance(bannerGridSecondary, {
       spaceBetween: 20,
       slidesPerView: "auto",
       breakpoints: {
@@ -463,126 +516,149 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    new Swiper(".departments .swiper", {
-      navigation: {
-        nextEl: ".departments .swiper-button-next",
-        prevEl: ".departments .swiper-button-prev",
-      },
-      spaceBetween: 10,
-      slidesPerView: "auto",
-      breakpoints: {
-        991: {
-          spaceBetween: 20,
-          slidesPerView: 8,
+    const departmentsSwiper = document.querySelector(".departments .swiper");
+    if (departmentsSwiper) {
+      const section = departmentsSwiper.closest(".departments");
+      initSwiperInstance(departmentsSwiper, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
         },
-      },
-    });
+        spaceBetween: 10,
+        slidesPerView: "auto",
+        breakpoints: {
+          991: {
+            spaceBetween: 20,
+            slidesPerView: 8,
+          },
+        },
+      });
+    }
 
-    new Swiper(".showcase-1 .swiper", {
-      navigation: {
-        nextEl: ".showcase-1 .swiper-button-next",
-        prevEl: ".showcase-1 .swiper-button-prev",
-      },
-      slidesPerView: 2.1,
-      spaceBetween: 5,
-      breakpoints: {
-        768: {
-          slidesPerView: 3.1,
-          spaceBetween: 5,
+    const showcaseOne = document.querySelector(".showcase-1 .swiper");
+    if (showcaseOne) {
+      const section = showcaseOne.closest(".showcase-1");
+      initSwiperInstance(showcaseOne, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        1090: {
-          slidesPerView: 4,
-          spaceBetween: 20,
+        slidesPerView: 2.1,
+        spaceBetween: 5,
+        breakpoints: {
+          768: {
+            slidesPerView: 3.1,
+            spaceBetween: 5,
+          },
+          1090: {
+            slidesPerView: 6,
+            spaceBetween: 16,
+          },
         },
-        1090: {
-          slidesPerView: 5,
-          spaceBetween: 20,
-        },
-      },
-    });
+      });
+    }
 
-    new Swiper(".showcase-2 .swiper", {
-      navigation: {
-        nextEl: ".showcase-2 .swiper-button-next",
-        prevEl: ".showcase-2 .swiper-button-prev",
-      },
-      spaceBetween: 5,
-      slidesPerView: 2.1,
-      breakpoints: {
-        768: {
-          slidesPerView: 3.1,
+    const showcaseTwo = document.querySelector(".showcase-2 .swiper");
+    if (showcaseTwo) {
+      const section = showcaseTwo.closest(".showcase-2");
+      initSwiperInstance(showcaseTwo, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        991: {
-          slidesPerView: 4,
-          spaceBetween: 20,
+        spaceBetween: 5,
+        slidesPerView: 2.1,
+        breakpoints: {
+          768: {
+            slidesPerView: 3.1,
+          },
+          991: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1090: {
+            slidesPerView: 6,
+            spaceBetween: 16,
+          },
         },
-        1090: {
-          slidesPerView: 5,
-          spaceBetween: 20,
-        },
-      },
-    });
+      });
+    }
 
-    new Swiper(".environments .swiper", {
-      navigation: {
-        nextEl: ".environments .swiper-button-next",
-        prevEl: ".environments .swiper-button-prev",
-      },
-      spaceBetween: 10,
-      slidesPerView: "auto",
-      breakpoints: {
-        991: {
-          spaceBetween: 20,
-          slidesPerView: 4,
+    const environmentsSwiper = document.querySelector(".environments .swiper");
+    if (environmentsSwiper) {
+      const section = environmentsSwiper.closest(".environments");
+      initSwiperInstance(environmentsSwiper, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
         },
-      },
-    });
+        spaceBetween: 10,
+        slidesPerView: "auto",
+        breakpoints: {
+          991: {
+            spaceBetween: 20,
+            slidesPerView: 4,
+          },
+        },
+      });
+    }
 
-    new Swiper(".banner-centro.desktop .swiper", {
+    const bannerCentroDesktop = document.querySelector(".banner-centro.desktop .swiper");
+    initSwiperInstance(bannerCentroDesktop, {
       spaceBetween: 20,
       slidesPerView: 3,
     });
 
-    new Swiper(".brands .swiper", {
-      slidesPerView: 2,
-      navigation: {
-        nextEl: ".brands .swiper-button-next",
-        prevEl: ".brands .swiper-button-prev",
-      },
-      autoplay: {
-        delay: 3000,
-      },
-      breakpoints: {
-        991: {
-          spaceBetween: 20,
-          slidesPerView: 7,
+    const brandsSwiper = document.querySelector(".brands .swiper");
+    if (brandsSwiper) {
+      const section = brandsSwiper.closest(".brands");
+      initSwiperInstance(brandsSwiper, {
+        slidesPerView: 2,
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
         },
-      },
-    });
+        autoplay: {
+          delay: 3000,
+        },
+        breakpoints: {
+          991: {
+            spaceBetween: 20,
+            slidesPerView: 7,
+          },
+        },
+      });
+    }
 
-    new Swiper(".stores .swiper", {
-      navigation: {
-        nextEl: ".stores .swiper-button-next",
-        prevEl: ".stores .swiper-button-prev",
-      },
-      spaceBetween: 10,
-      slidesPerView: "auto",
-      breakpoints: {
-        991: {
-          spaceBetween: 20,
-          slidesPerView: 6.2,
+    const storesSwiper = document.querySelector(".stores .swiper");
+    if (storesSwiper) {
+      const section = storesSwiper.closest(".stores");
+      initSwiperInstance(storesSwiper, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
         },
-      },
-    });
+        spaceBetween: 10,
+        slidesPerView: "auto",
+        breakpoints: {
+          991: {
+            spaceBetween: 20,
+            slidesPerView: 6.2,
+          },
+        },
+      });
+    }
 
     if (MOBILE.matches) {
-      new Swiper(".blog .swiper", {
+      const blogSwiper = document.querySelector(".blog .swiper");
+      initSwiperInstance(blogSwiper, {
         slidesPerView: "auto",
         spaceBetween: 20,
       });
     }
 
-    new Swiper(".banner-instagram .swiper", {
+    const instagramSwiper = document.querySelector(".banner-instagram .swiper");
+    initSwiperInstance(instagramSwiper, {
       spaceBetween: 10,
       slidesPerView: "auto",
       breakpoints: {
@@ -593,35 +669,35 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    new Swiper(".related-products .swiper", {
-      navigation: {
-        nextEl: ".related-products .swiper-button-next",
-        prevEl: ".related-products .swiper-button-prev",
-      },
-      spaceBetween: 5,
-      slidesPerView: 2.1,
-      breakpoints: {
-        768: {
-          slidesPerView: 3.1,
+    const relatedProductsSwiper = document.querySelector(".related-products .swiper");
+    if (relatedProductsSwiper) {
+      const section = relatedProductsSwiper.closest(".related-products");
+      initSwiperInstance(relatedProductsSwiper, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        991: {
-          spaceBetween: 20,
-          slidesPerView: 4,
+        spaceBetween: 5,
+        slidesPerView: 2.1,
+        breakpoints: {
+          768: {
+            slidesPerView: 3.1,
+          },
+          991: {
+            spaceBetween: 20,
+            slidesPerView: 4,
+          },
+          1090: {
+            spaceBetween: 16,
+            slidesPerView: 6,
+          },
         },
-        1090: {
-          spaceBetween: 20,
-          slidesPerView: 5,
-        },
-      },
-    });
+      });
+    }
   }
 
-  window.addEventListener("scroll", removeNoscript, { once: true });
-
-  initSwipers();
-  reorderHomepageSections();
-  replaceRulerIcons();
-  updateRulerTexts();
+  refreshDynamicSections();
+  observeLazySections();
 });
 
 /**

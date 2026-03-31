@@ -44,10 +44,15 @@ const btnMostrarMais_lojas = document.querySelector(".lojas__top--button");
 
 if (btnMostrarMais_lojas) {
   btnMostrarMais_lojas.addEventListener("click", () => {
-    let areaText = document.querySelector(".lojas__top--text")
+    const areaText = document.querySelector(".lojas__top--text")
+    const label = btnMostrarMais_lojas.querySelector(".lojas__top--button-text")
     areaText.classList.toggle("show-text")
-    let iconLojas = document.querySelector(".lojas__top--button")
-    iconLojas.classList.toggle("rotate")
+    btnMostrarMais_lojas.classList.toggle("rotate")
+    const expanded = areaText.classList.contains("show-text")
+    btnMostrarMais_lojas.setAttribute("aria-expanded", expanded ? "true" : "false")
+    if (label) {
+      label.textContent = expanded ? "Recolher" : "Continuar lendo"
+    }
   })
 }
 

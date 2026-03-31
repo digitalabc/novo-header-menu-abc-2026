@@ -2,11 +2,18 @@
   <h2 class="product-shipping__title">Consulte seu Frete</h2>
   <form class="product-shipping__form" onsubmit='ShippingQuoteSubmit(event, "{{ product_variant_id }}")'>
     <input class="product-shipping__input" type="text" id="shipping-quote-cep" name="shipping-quote-cep"
-      placeholder="CEP" maxlength="9" onkeypress="cepMask(this)" autocomplete="off" inputmode="numeric">
+      placeholder="CEP" maxlength="9" onkeypress="cepMask(this, event)" autocomplete="off" inputmode="numeric">
     <input class="product-shipping__submit" type="submit" value="OK">
   </form>
   <div class="product-shipping__help">
-    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">Não sei meu CEP</a>
+    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" rel="noopener noreferrer" class="product-shipping__help-link">
+      <span>Não sei meu CEP</span>
+      <svg class="product-shipping__help-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M9 6.5V9.5C9 9.77614 8.77614 10 8.5 10H2.5C2.22386 10 2 9.77614 2 9.5V3.5C2 3.22386 2.22386 3 2.5 3H5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 2H10V5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 5.5L10 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
   </div>
   <div class="product-shipping__response" id="shipping-quotes-snippet-div-{{ product_variant_id }}"></div>
   <div class="product-shipping__invalid" id="shipping-invalid" onclick="closeShippingModal(event, this)">

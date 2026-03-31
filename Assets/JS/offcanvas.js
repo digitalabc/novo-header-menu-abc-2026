@@ -42,9 +42,16 @@ function closeOffcanvas(offcanvasId){
 }
 // pde-477
 function handleCanvasUserPage() {
-  let url = 'https://checkout.abcdaconstrucao.com.br/Login/Authenticate?returnUrl=https://www.abcdaconstrucao.com.br/'
-  if (document.querySelector('.user__links.authenticated').style.length) {
-    url = 'https://checkout.abcdaconstrucao.com.br/MinhaConta/Pedido/';
+  const authenticatedLinks = document.querySelector(".user__links.authenticated");
+  const hasCustomerToken = document.cookie.includes("sf_customer_access_token=");
+  const isAuthenticated =
+    hasCustomerToken ||
+    (authenticatedLinks && window.getComputedStyle(authenticatedLinks).display !== "none");
+
+  let url = `/login/authenticate?returnUrl=${encodeURIComponent(window.location.pathname)}`;
+  if (isAuthenticated) {
+    url = "/account/my-data";
   }
+
   window.location.href = url;
 }

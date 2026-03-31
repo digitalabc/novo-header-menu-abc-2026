@@ -1,23 +1,32 @@
-let test;
 (() => {
-  setTimeout(() => {
-      document
-          .getElementById("abc-fale-especialista")
-          .classList.toggle("abc-fale-especialista-open");
-  }, 2000);
+    const popup = document.getElementById("abc-fale-especialista");
 
-  document
-      .querySelector(".abc-fale-especialista-whatsapp > a ")
-      .addEventListener("click", function () {
-          document
-              .getElementById("abc-fale-especialista")
-              .classList.toggle("abc-fale-especialista-open");
-      });
-  document
-      .querySelector("#abc-fale-especialista")
-      .addEventListener("click", function () {
-          document
-              .getElementById("abc-fale-especialista")
-              .classList.toggle("abc-fale-especialista-open");
-      });
+    if (!popup) {
+        return;
+    }
+
+    const AUTO_OPEN_DELAY_MS = 12000;
+    const shouldShowPopup = document.body.dataset.specialistPopup === "true";
+
+    if (!shouldShowPopup) {
+        return;
+    }
+
+    const openPopup = () => popup.classList.add("abc-fale-especialista-open");
+    const closePopup = () => popup.classList.remove("abc-fale-especialista-open");
+    const dismissButton = popup.querySelector("[data-specialist-dismiss]");
+
+    const scheduleOpen = () => {
+        window.setTimeout(openPopup, AUTO_OPEN_DELAY_MS);
+    };
+
+    if (document.readyState === "complete") {
+        scheduleOpen();
+    } else {
+        window.addEventListener("load", scheduleOpen, { once: true });
+    }
+
+    if (dismissButton) {
+        dismissButton.addEventListener("click", closePopup);
+    }
 })();

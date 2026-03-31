@@ -68,6 +68,42 @@ body {
   /* 2 */
 }
 
+@font-face {
+  font-family: "Satoshi";
+  src:
+    url("../Fonts/prime/Satoshi-Variable.woff2") format("woff2"),
+    url("../Fonts/prime/Satoshi-Variable.woff") format("woff");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../Fonts/bebas-neue/BebasNeue-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --font-brand: "Satoshi", sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-ui-legacy: "Open Sans", arial, sans-serif;
+  --font-primary: var(--font-brand);
+  --font-secondary: var(--font-brand);
+}
+
+html,
+body,
+input,
+textarea,
+button,
+select,
+option {
+  font-family: var(--font-brand);
+}
+
 /*
 1. Add the correct height in Firefox.
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)

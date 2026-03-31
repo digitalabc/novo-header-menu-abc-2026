@@ -9,7 +9,7 @@ pickUpStores = data.shipping_quotes | array.filter @(do; ret string.contains($0.
     <div class="selectPickUpItems grid-layout">
         {{~ for pickStore in pickUpStores ~}}
         {{~ storeName = pickStore.name | string.replace "RETIRE EM - " ""
-        storeParts = storeName | string.split " | "
+        storeParts = storeName | string.split "|"
         cityAndDistrict = storeParts[0]
         address = storeParts.size > 1 ? storeParts[1] : ""
         ~}}

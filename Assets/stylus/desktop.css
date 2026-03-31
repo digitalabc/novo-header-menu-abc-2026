@@ -316,7 +316,7 @@
       float: right;
   }
   .carrinho.carrinhoHead a {
-      font-family: "Open Sans", arial, sans-serif;
+      font-family: var(--font-ui-legacy);
       font-weight: 400;
       width: auto;
   }
@@ -378,7 +378,7 @@
       width: 100%;
   }
   .top-icons > div {
-      font-family: "Open Sans", arial, sans-serif;
+      font-family: var(--font-ui-legacy);
   }
   .cartItem {
       clear: both;
@@ -892,7 +892,7 @@
   }
   a.voltarTopo:after {
       content: "TOPO";
-      font-family: Arial;
+      font-family: var(--font-ui-legacy);
       padding: 0;
       float: left;
       width: 100%;

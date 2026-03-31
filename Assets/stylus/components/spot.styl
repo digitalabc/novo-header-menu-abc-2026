@@ -37,7 +37,10 @@
 
 .spot
   border: 1px solid #EAEAEA;
+  font-family var(--font-brand)
   transition: $transition;
+  overflow hidden
+  border-radius 16px
 
   @media desktop
     &:hover
@@ -65,11 +68,22 @@
     &-wrapper
       position: relative;
       margin: 0 auto;
-      max-width: 245px;
+      width 100%
+      max-width: 200px;
+      aspect-ratio 1 / 1
+      overflow hidden
       border-bottom: 1px solid #EAEAEA;
 
       a
-        display: flex;
+        display block
+        width 100%
+        height 100%
+
+      img
+        width 100%
+        height 100%
+        object-fit cover
+        object-position center
 
     .stamps-discount
       position: absolute;
@@ -84,7 +98,7 @@
       border-radius: 50%;
       background: #392F2D;
       color: #ffffff;
-      font-weight: 600;
+      font-weight var(--peso-fonte-semibold)
       font-size: 12px;
 
   &__buttons
@@ -138,8 +152,8 @@
       height: 60px;
       color: $black;
       text-overflow: ellipsis;
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: $peso-fonte-medium;
+      font-size: $fonte-paragrafo;
       line-height: 20px;
       transition: $transition;
       -webkit-line-clamp: 3;
@@ -148,7 +162,7 @@
       @media mobile
         margin-bottom: 15px;
         height: 57px;
-        font-size: 12px;
+        font-size: $fonte-paragrafo;
         line-height: 19px;
 
       &:hover
@@ -166,7 +180,7 @@
 
     p
       margin-bottom: 10px;
-      font-size: 12px;
+      font-size: $fonte-paragrafo;
 
     .bis
       @media mobile
@@ -191,13 +205,13 @@
       display: block;
       margin-bottom: 5px;
       color: #B4B4B4;
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: $peso-fonte-medium;
+      font-size: $fonte-subtitulo;
       line-height: 18px;
 
       @media mobile
         margin-bottom: 3px;
-        font-size: 12px;
+        font-size: $fonte-paragrafo;
         line-height: 15px;
 
     .precoPor
@@ -209,45 +223,45 @@
 
       span
         color: $primary;
-        font-weight: 700;
-        font-size: 20px;
+        font-weight: $peso-fonte-bold;
+        font-size: $fonte-titulo-grande;
         line-height: 24px;
 
         @media mobile
-          font-size: 16px;
+          font-size: $fonte-titulo;
           line-height: 19px;
 
       small
         color: #000000;
-        font-weight: 400;
-        font-size: 12px;
+        font-weight: $peso-fonte-regular;
+        font-size: $fonte-paragrafo;
 
     .precoCalculado
       margin-top: 5px;
       color: #000;
 
       span
-        font-weight: 700;
-        font-size: 20px;
+        font-weight: $peso-fonte-bold;
+        font-size: $fonte-titulo-grande;
         line-height: 24px;
 
         @media mobile
-          font-size: 16px;
+          font-size: $fonte-titulo;
           line-height: 19px;
 
       small
-        font-weight: 400;
-        font-size: 12px;
+        font-weight: $peso-fonte-regular;
+        font-size: $fonte-paragrafo;
 
   .best-installment
-    font-size: 12px;
+    font-size: $fonte-paragrafo;
     line-height: 15px;
 
     @media mobile
       min-height: 30px;
 
     strong
-      font-weight: 400;
+      font-weight: $peso-fonte-regular;
 
     span
       @media mobile
@@ -270,15 +284,15 @@
       background-color: #e8f8f5 !important;
       border-radius: 8px;
       color: #20a389 !important;
-      font-weight: 400 !important;
-      font-size: 12px !important;
+      font-weight: $peso-fonte-regular !important;
+      font-size: $fonte-paragrafo !important;
       text-align: center !important;
       white-space: nowrap;
       margin-top: 0 !important;
 
       .discount__value
         display: inline;
-        font-weight: 700;
+        font-weight: $peso-fonte-bold;
 
       @media mobile
         white-space: normal;

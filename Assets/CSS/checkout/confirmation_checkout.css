@@ -2003,7 +2003,7 @@ img {
   display: flex;
   flex-direction: column;
   color: #333;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: clamp(14px, 3.5vw, 16px);
   font-style: normal;
   font-weight: 400;
@@ -2035,7 +2035,7 @@ img {
   background: #f8f9fa;
   color: #333;
   text-align: center;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: clamp(16px, 4vw, 20px);
   font-style: normal;
   font-weight: 500;
@@ -2117,7 +2117,7 @@ img {
 
 .whatsapp-text {
   color: #176E5F;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: clamp(14px, 3.5vw, 16px);
   text-align: left;
   font-style: normal;
@@ -2181,7 +2181,7 @@ img {
   color: #20A389;
   margin: 0;
   line-height: 1.2;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .guide-subtitle {
@@ -2189,7 +2189,7 @@ img {
   color: #848484;
   margin: clamp(4px, 1vw, 8px) 0 clamp(8px, 2vw, 12px) 0;
   line-height: 1.3;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
 }
 
 .guide-badge {
@@ -2312,7 +2312,7 @@ img {
   color: #333;
   border-radius: 8px;
   margin-bottom: clamp(8px, 2vw, 16px);
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   line-height: 1.2;
   padding: clamp(8px, 2vw, 12px) 0;
 }
@@ -3644,9 +3644,9 @@ img {
 
 .wake-cart-product-list h3 {
   display: flex;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 700;
+  font-size: 28px;
+  line-height: 150%;
+  font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
@@ -4945,7 +4945,7 @@ img {
   padding: 8px 24px;
   gap: 14px;
   color: #939598;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -4964,7 +4964,7 @@ img {
   padding: 8px 24px;
   gap: 14px;
   color: #000;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -5004,7 +5004,7 @@ img {
   background: #20A389;
   padding: clamp(16px, 4vw, 20px) clamp(20px, 5vw, 24px);
   color: #FFF;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: clamp(16px, 4vw, 20px);
   font-style: normal;
   font-weight: 600;
@@ -5031,7 +5031,7 @@ img {
 #codePix .pixText {
   color: #20A389;
   text-align: center;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: clamp(14px, 3.5vw, 16px);
   font-style: normal;
   font-weight: 500;
@@ -5087,7 +5087,7 @@ img {
 
 .guideShopText .title {
   color: #20A389;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -5096,7 +5096,7 @@ img {
 
 .guideShopText .subTitle {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -5108,7 +5108,7 @@ img {
   border-radius: 6px;
   background: #D2EDE7;
   color: #20A389;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -5123,7 +5123,7 @@ img {
 
 .guideShopName {
   color: #000;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -5133,7 +5133,7 @@ img {
 
 .guideShopPickUpTime {
   color: #848484;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -5333,7 +5333,7 @@ img {
   border-radius: 10px;
 
   color: #fff;
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-brand);
   font-size: clamp(16px, 4vw, 18px);
   font-weight: 600;
   text-decoration: none;

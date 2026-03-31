@@ -1,8 +1,6 @@
 .subcategories, .subTopo
-  margin-bottom: 30px;
-
-  @media mobile
-    margin-bottom: 20px;
+  margin-bottom: 24px;
+  font-family: var(--font-brand);
 
   &__item
     text-align: center;
@@ -23,14 +21,17 @@
           color: $primary;
 
   &__title
-    font-weight: 500;
-    font-size: 14px;
+    font-weight var(--peso-fonte-medium)
+    font-size var(--fonte-12)
     transition: $transition;
 
   &__img
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 
     img
+      display block
+      max-width 100%
+      height auto
       outline: 3px solid transparent;
       outline-offset: -3px;
       transition: $transition;

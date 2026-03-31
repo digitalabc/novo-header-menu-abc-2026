@@ -1,26 +1,32 @@
-<div class="gallery">                
+<div class="gallery">
   <div class="gallery-slider swiper">
-      <div class="swiper-wrapper">
-        {{ for image in images }}
-          <div class="swiper-slide"><img src="{{ image.url }}" alt="{{product.product_name}} - Imagem principal - {{ math.uuid }}"></div>
-        {{ end }}
-        <div class="swiper-slide swiper-no-swiping" id="virtual_reality-slide">
-          <div id="viewer-3d"></div>
+    <div class="swiper-wrapper">
+      {{ for image in images }}
+        <div
+          class="swiper-slide"
+          data-gallery-zoom-src="{{ image.url }}"
+          data-gallery-zoom-alt="{{product.product_name}} - Imagem principal - {{ math.uuid }}"
+        >
+          <img src="{{ image.url }}" alt="{{product.product_name}} - Imagem principal - {{ math.uuid }}">
         </div>
+      {{ end }}
+      <div class="swiper-slide swiper-no-swiping" id="virtual_reality-slide">
+        <div id="viewer-3d"></div>
       </div>
+    </div>
     <div class="swiper-pagination"></div>
   </div>
 
   <div class="swiper-container">
     <div class="gallery-thumbs swiper">
-        <ul class="swiper-wrapper">
-            {{ for image in images }}
-              <li class="swiper-slide"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="{{product.product_name}} - {{ math.uuid }}"></li>
-            {{ end }}
-            <li class="swiper-slide" id="virtual_reality-thumb" style="display: none;">
-              <img src="{{- store.urls.static_img }}realidade_aumentada-icon.png?theme={{store.theme}}&v={{store.last_modified}}" alt="">
-            </li>
-        </ul>
+      <ul class="swiper-wrapper">
+        {{ for image in images }}
+          <li class="swiper-slide"><img src="{{ image.url | string.replace "?w=530&h=530" "?w=80&h=80" }}" alt="{{product.product_name}} - {{ math.uuid }}"></li>
+        {{ end }}
+        <li class="swiper-slide" id="virtual_reality-thumb" style="display: none;">
+          <img src="{{- store.urls.static_img }}realidade_aumentada-icon.png?theme={{store.theme}}&v={{store.last_modified}}" alt="">
+        </li>
+      </ul>
     </div>
     <button class="swiper-button-prev">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
@@ -32,5 +38,33 @@
         <path id="Path_151" data-name="Path 151" d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z"/>
       </svg>
     </button>
+  </div>
+
+  <div class="gallery-zoom-modal" data-gallery-zoom-modal aria-hidden="true">
+    <div class="gallery-zoom-modal__panel" role="dialog" aria-modal="true" aria-label="Imagem ampliada do produto">
+      <div class="gallery-zoom-modal__toolbar">
+        <button type="button" class="gallery-zoom-modal__close" data-gallery-zoom-close aria-label="Fechar zoom">
+          Fechar
+        </button>
+      </div>
+      <div class="gallery-zoom-modal__viewport" data-gallery-zoom-viewport>
+        <img class="gallery-zoom-modal__image" data-gallery-zoom-image alt="">
+      </div>
+      <div class="gallery-zoom-modal__footer">
+        <div class="gallery-zoom-modal__nav-group" aria-label="Navegar fotos">
+          <button type="button" class="gallery-zoom-modal__nav gallery-zoom-modal__nav--prev" data-gallery-zoom-prev aria-label="Imagem anterior">
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+              <path d="M13.5 16.5L8 11l5.5-5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" />
+            </svg>
+          </button>
+          <span class="gallery-zoom-modal__counter" data-gallery-zoom-counter>1 / 1</span>
+          <button type="button" class="gallery-zoom-modal__nav gallery-zoom-modal__nav--next" data-gallery-zoom-next aria-label="Próxima imagem">
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+              <path d="M8.5 5.5L14 11l-5.5 5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

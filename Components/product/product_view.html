@@ -61,6 +61,7 @@
   </div>
 </section>
 
+<div class="product__details-column">
 <div class="product__details">
     {{~ installment_plans = product.prices.installment_plans ~}}
     {{~ discount_percentage = 0 ~}}
@@ -125,17 +126,17 @@
       
     </div>
 
-    <!-- Shippng -->
-    {{~ if available && !product_is_kit ~}}
-      {{~ if selected_variant ~}}
-          {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
-      {{ else }}
-        {{ product_shipping_quotes product_variant_id: product.product_variant_id }}
-      {{~ end ~}}
-    {{~ end ~}}
-
     <!-- Pick up -->
     <div class="product__pick-up" id="product-pick-up">
       {{~ product_pick_up ~}}
     </div>
+</div>
+
+{{~ if available && !product_is_kit ~}}
+  {{~ if selected_variant ~}}
+    {{ product_shipping_quotes product_variant_id: selected_variant.product_variant_id }}
+  {{ else }}
+    {{ product_shipping_quotes product_variant_id: product.product_variant_id }}
+  {{~ end ~}}
+{{~ end ~}}
 </div>

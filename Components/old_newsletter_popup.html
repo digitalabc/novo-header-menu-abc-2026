@@ -1,538 +1,2059 @@
+{{~ capture abc_logo_source ~}}
+  {{- store.urls.static_img}}header/logo-abc.svg?theme={{store.theme -}}&v={{store.last_modified-}}
+{{~ end ~}}
+
 <style>
-  /*inputs autofill*/
-  input:-webkit-autofill,
-  select:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    -webkit-text-fill-color: #333 !important;
-    background-color: white !important;
-    caret-color: #333 !important;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  html.abc-newsletter-popup-lock,
+  body.abc-newsletter-popup-lock {
+    overflow: hidden;
   }
 
-  input:-webkit-autofill:hover,
-  select:-webkit-autofill:hover,
-  input:-webkit-autofill:active,
-  select:-webkit-autofill:active,
-  input:-webkit-autofill:focus,
-  select:-webkit-autofill:focus,
-  input:-webkit-autofill:valid,
-  select:-webkit-autofill:valid {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    -webkit-text-fill-color: #333 !important;
-    background-color: white !important;
-    caret-color: #333 !important;
-  }
-
-  .abc-newsletter-popup-open {
-    display: block !important;
-  }
-
-  .abc-newsletter-popup-overlay {
-    display: none;
+  #abc-newsletter-popup {
+    --abc-popup-red: #e30613;
+    --abc-popup-red-dark: #c90f1a;
+    --abc-popup-green: #0fa848;
+    --abc-popup-green-dark: #0e9d44;
+    --abc-popup-copy: #475569;
+    --abc-popup-blue: #0092ff;
+    --abc-popup-surface: #f7f8fb;
+    --abc-popup-border: rgba(15, 23, 42, 0.08);
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     position: fixed;
+    inset: 0;
     z-index: 999999999;
-    padding: 0;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
     overflow: auto;
-    background-color: black;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  #abc-newsletter-popup,
+  #abc-newsletter-popup * {
+    box-sizing: border-box;
+    font-family: var(--font-brand);
+  }
+
+  #abc-newsletter-popup.abc-newsletter-popup-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.25s ease;
   }
 
   .abc-newsletter-popup-modal {
-    font-family: Montserrat, sans-serif;
     position: relative;
-    margin: 100px auto;
-    border: 1px solid #888;
-    max-width: 90%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-animation-name: anime_top;
-    -webkit-animation-duration: 0.4s;
-    animation-name: anime_top;
-    animation-duration: 0.4s;
-  }
-
-  @-webkit-keyframes anime_top {
-    from {
-      top: -300px;
-      opacity: 0;
-    }
-
-    to {
-      top: 0;
-      opacity: 1;
-    }
-  }
-
-  @keyframes anime_top {
-    from {
-      top: -300px;
-      opacity: 0;
-    }
-
-    to {
-      top: 0;
-      opacity: 1;
-    }
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-content {
-    display: grid;
-    position: relative;
-  }
-
-  .abc-newsletter-popup-footer {
-    background-color: #fff;
-    padding: 24px 20px 20px;
-    border-radius: 0 0 16px 16px;
-  }
-
-  .abc-newsletter-popup-footer>p {
-    text-align: center;
-    color: #4b4c4e;
-    font-size: 10px;
-  }
-
-  .abc-newsletter-popup-footer>p>a,
-  .abc-newsletter-popup-footer>p>a:visited {
-    color: #4b4c4e;
-    text-decoration: none;
-  }
-
-  .abc-newsletter-popup-footer>p>a:hover {
-    text-decoration: underline;
-    color: #4b4c4e;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body {
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px 16px 0 0;
-    align-items: center;
-    gap: 24px;
-    padding: 28px 20px 0;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body>p {
-    text-align: center;
-    color: #333;
-    margin: 0;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body>p:nth-child(1) {
-    font-size: 36px;
-    line-height: 1;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body>p:nth-child(2) {
-    font-size: 14px;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body>p:nth-child(1)>strong {
-    color: #df1738ff;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-form {
-    width: 100%;
-    display: grid;
-    justify-items: center;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs>input,
-  .abc-cep-container input {
-    all: unset;
-    display: flex;
-    height: 48px;
-    padding: 0px 16px;
-    align-items: center;
-    width: 100%;
-    border-radius: 6px;
-    background: #FFF;
-    border: 1px solid #E0E0E0;
-    color: #333333;
-    font-size: 14px;
-    font-weight: 400;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: min(400px, 100%);
+    max-width: 400px;
+    min-width: 0;
     box-sizing: border-box;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs>input::placeholder,
-  .abc-cep-container input::placeholder {
-    color: #999;
-    font-size: 14px;
-  }
-
-  .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs>input:focus,
-  .abc-cep-container input:focus {
-    outline: none;
-    border: 1px solid #a1a1a1;
-    box-shadow: 0 0 3px rgba(135, 135, 135, 0.4);
-  }
-
-  .abc-newsletter-popup-modal .abc-popup-btn {
-    position: relative;
-    height: 40px;
-    width: 100%;
-    background-color: #333;
-    font-size: 16px;
-    color: #fff;
-    line-height: 16px;
-    border-radius: 40px;
-    text-transform: uppercase;
-    cursor: pointer;
+    flex: 0 0 auto;
+    margin: 0 auto;
+    align-self: center;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition:
-      background-color 0.4s ease-in-out,
-      font-size 0.2s ease-in-out,
-      transform 0.1s ease-in-out;
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at top right, rgba(255, 240, 188, 0.72), transparent 26%),
+      radial-gradient(circle at 12% 0%, rgba(255, 214, 214, 0.58), transparent 30%),
+      linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+    box-shadow: 0 24px 52px rgba(2, 6, 23, 0.24);
+    color: #0f172a;
+    transform: translateY(-24px);
+    opacity: 0;
+    transition: transform 0.28s linear, opacity 0.28s linear;
   }
 
-  .abc-newsletter-popup-modal .abc-popup-btn::before {
+  #abc-newsletter-popup.abc-newsletter-popup-open .abc-newsletter-popup-modal {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #abc-newsletter-popup.abc-newsletter-popup-feedback-open .abc-newsletter-popup-modal {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #abc-newsletter-popup.abc-newsletter-popup-feedback-open {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(10px) saturate(1.03);
+    -webkit-backdrop-filter: blur(10px) saturate(1.03);
+  }
+
+  #abc-newsletter-popup.abc-newsletter-popup-feedback-open .abc-newsletter-popup-shell > :not(.abc-newsletter-popup-feedback) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  #abc-newsletter-popup.abc-newsletter-popup-feedback-open .abc-newsletter-popup-modal::before,
+  #abc-newsletter-popup.abc-newsletter-popup-feedback-open .abc-newsletter-popup-modal::after {
+    opacity: 0;
+  }
+
+  .abc-newsletter-popup-modal::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.4s ease-in-out;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(15, 168, 72, 0.08), transparent 38%),
+      linear-gradient(315deg, rgba(227, 6, 19, 0.08), transparent 32%);
+    pointer-events: none;
   }
 
-  .abc-newsletter-popup-modal .abc-popup-btn:hover {
-    background-color: #000;
-    font-size: 16.2px;
-    font-weight: bold;
+  .abc-newsletter-popup-modal::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(15, 23, 42, 0.08), rgba(227, 6, 19, 0.18), rgba(15, 168, 72, 0.14), rgba(15, 23, 42, 0.08));
+    pointer-events: none;
   }
 
-  .abc-newsletter-popup-modal .abc-popup-btn:hover::before {
-    left: 100%;
-  }
-
-  .abc-newsletter-popup-modal .abc-popup-btn:active {
-    transform: scale(0.98);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) inset;
-  }
-
-  @media (max-width: 600px) {
-    .abc-newsletter-popup-modal .abc-popup-btn {
-      height: 48px;
+  @media screen and (max-width: 767px) {
+    #abc-newsletter-popup {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
+
+    #abc-newsletter-popup.abc-newsletter-popup-feedback-open {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .abc-newsletter-popup-modal {
+      box-shadow: 0 18px 38px rgba(2, 6, 23, 0.2);
+    }
+
+    .abc-newsletter-popup-ribbon {
+      animation: none;
+      transform: rotate(-4deg) scale(0.9);
+    }
+  }
+
+  .abc-newsletter-popup-shell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .abc-newsletter-popup-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .abc-newsletter-popup-brandmark {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .abc-newsletter-popup-brandmark-logo {
+    display: block;
+    width: 50px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .abc-newsletter-popup-headline {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .abc-newsletter-popup-ribbon {
+    display: inline-flex;
+    position: absolute;
+    top: 6px;
+    right: 4px;
+    justify-self: end;
+    align-self: start;
+    flex: 0 0 132px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 92px;
+    padding: 9px 10px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(214, 167, 47, 0.18), rgba(214, 167, 47, 0.08));
+    border: 2px dashed rgba(191, 145, 27, 0.3);
+    color: #8b6508;
+    text-align: center;
+    box-shadow: none;
+    transform-origin: 78% 18%;
+    transform: rotate(-7deg) scale(0.88);
+    will-change: transform;
+    animation: abcNewsletterCouponWiggle 3.2s ease-in-out infinite;
+  }
+
+  .abc-newsletter-popup-ribbon::before,
+  .abc-newsletter-popup-ribbon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--abc-popup-surface);
+    border: 1px solid rgba(191, 145, 27, 0.18);
+    transform: translateY(-50%);
+  }
+
+  .abc-newsletter-popup-ribbon::before {
+    left: -7px;
+  }
+
+  .abc-newsletter-popup-ribbon::after {
+    right: -7px;
+  }
+
+  .abc-newsletter-popup-ribbon span {
+    display: block;
+    color: #8b6508;
+    font-size: var(--fonte-11);
+    line-height: 1;
+    letter-spacing: 0.14em;
+    font-weight: var(--peso-fonte-extrabold);
+  }
+
+  .abc-newsletter-popup-ribbon small {
+    display: block;
+    color: #a67812;
+    font-size: var(--fonte-16);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    font-weight: var(--peso-fonte-extrabold);
+  }
+
+  .abc-newsletter-popup-ribbon-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker {
+    width: auto;
+    padding: 5px 10px;
+    gap: 16px;
+    background: #e7f8eb;
+    border-color: #c6ebd0;
+    color: #1d8a46;
+    animation-duration: 2.8s;
+  }
+
+  .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker > span {
+    font-size: 0.6rem;
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    color: #1d8a46;
+    text-shadow: none;
+  }
+
+    @keyframes abcNewsletterCouponWiggle {
+    0%,
+    28%,
+    100% {
+        transform: rotate(-7deg) scale(0.88);
+      }
+
+      34% {
+        transform: rotate(-1deg) scale(0.91);
+      }
+
+      40% {
+        transform: rotate(-12deg) scale(0.87);
+      }
+
+      46% {
+        transform: rotate(-3deg) scale(0.9);
+      }
+
+      52% {
+        transform: rotate(-9deg) scale(0.87);
+      }
+
+      60% {
+        transform: rotate(-7deg) scale(0.88);
+      }
+    }
+
+  .abc-newsletter-popup-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .abc-newsletter-popup-kicker {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 8px 12px;
+    gap: 16px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(15, 168, 72, 0.16), rgba(15, 168, 72, 0.08));
+    border: 1px solid rgba(15, 168, 72, 0.22);
+    color: #0b7f37;
+    font-weight: var(--peso-fonte-extrabold);
+    line-height: 1.02;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transform-origin: center;
+    animation: abcNewsletterBadgePulse 2.8s ease-in-out infinite;
+  }
+
+  .abc-newsletter-popup-kicker > span {
+    font-size: var(--fonte-11);
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  .abc-newsletter-popup-kicker > small {
+    display: block;
+    font-size: var(--fonte-8);
+    font-weight: var(--peso-fonte-extrabold);
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  @keyframes abcNewsletterBadgePulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(15, 168, 72, 0.12);
+    }
+
+    50% {
+      transform: scale(1.04);
+      box-shadow: 0 0 0 6px rgba(15, 168, 72, 0);
+    }
+  }
+
+  #abc-newsletter-popup .abc-newsletter-popup-title {
+    margin: 0;
+    max-width: 14ch;
+    color: #0f172a;
+    font-size: clamp(var(--fonte-20), 3.05vw, 2.2rem);
+    font-weight: var(--peso-fonte-extrabold);
+    line-height: 1;
+    overflow-wrap: anywhere;
+    z-index: 1;
+  }
+
+  .abc-newsletter-popup-title strong {
+    color: #0f172a;
+  }
+
+  .abc-newsletter-popup-copy {
+    margin: 0;
+    max-width: 40ch;
+    color: var(--abc-popup-copy);
+    font-size: var(--fonte-12);
+    line-height: 1.42;
+    overflow-wrap: anywhere;
+  }
+
+  .abc-newsletter-popup-points {
+    display: none;
+  }
+
+  .abc-newsletter-popup-point {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 9px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+    color: #0f172a;
+    font-size: var(--fonte-11);
+    font-weight: var(--peso-fonte-semibold);
+  }
+
+  .abc-newsletter-popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .abc-newsletter-popup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .abc-newsletter-popup-inputs-row {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .abc-newsletter-popup-inputs-row .abc-newsletter-popup-field {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .abc-newsletter-popup-inputs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .abc-newsletter-popup-input--full {
+    width: 100%;
+  }
+
+  .abc-newsletter-popup-field {
+    display: flex;
+  }
+
+  .abc-newsletter-popup-field input {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    padding: 0 16px;
+    align-items: center;
+    margin: 0;
+    border: 2px solid #d9dde1 !important;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f4f6f8 !important;
+    color: #333;
+    font-size: var(--fonte-12);
+    font-weight: var(--peso-fonte-regular);
+    line-height: 12px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0 0 0 1px #f6f8fa;
+  }
+
+  .abc-newsletter-popup-field input:-webkit-autofill,
+  .abc-newsletter-popup-field input:-webkit-autofill:hover,
+  .abc-newsletter-popup-field input:-webkit-autofill:focus,
+  .abc-newsletter-popup-field input:-webkit-autofill:active,
+  .abc-newsletter-popup-field input:autofill,
+  .abc-newsletter-popup-field input:autofill:hover,
+  .abc-newsletter-popup-field input:autofill:focus,
+  .abc-newsletter-popup-field input:autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    -webkit-text-fill-color: #333 !important;
+    caret-color: #333 !important;
+    background-color: #f4f6f8 !important;
+    background-clip: padding-box !important;
+    transition: background-color 9999s ease-out 0s, color 9999s ease-out 0s;
+    animation: abc-newsletter-autofill-fix 0.01s forwards;
+  }
+
+  @keyframes abc-newsletter-autofill-fix {
+    to {
+      background-color: #f4f6f8 !important;
+      -webkit-text-fill-color: #333 !important;
+    }
+  }
+
+  .abc-newsletter-popup-field input.is-complete:-webkit-autofill,
+  .abc-newsletter-popup-field input.is-complete:-webkit-autofill:hover,
+  .abc-newsletter-popup-field input.is-complete:-webkit-autofill:focus,
+  .abc-newsletter-popup-field input.is-complete:-webkit-autofill:active,
+  .abc-newsletter-popup-field input.is-complete:autofill,
+  .abc-newsletter-popup-field input.is-complete:autofill:hover,
+  .abc-newsletter-popup-field input.is-complete:autofill:focus,
+  .abc-newsletter-popup-field input.is-complete:autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    box-shadow: 0 0 0 1000px #f4f6f8 inset !important;
+    background-color: #f4f6f8 !important;
+  }
+
+  .abc-newsletter-popup-field input::placeholder {
+    color: #b8b8b8;
+    opacity: 1;
+  }
+
+  .abc-newsletter-popup-field input:hover {
+    border: 1.2px solid #0092ff !important;
+  }
+
+  .abc-newsletter-popup-field input:focus,
+  .abc-newsletter-popup-field input:focus-visible {
+    border: 1.2px solid #0092ff !important;
+    outline: none;
+  }
+
+  .abc-newsletter-popup-field input.is-complete {
+    border-color: rgba(163, 230, 181, 0.92);
+    background-color: #f4f6f8;
+    box-shadow: none;
+  }
+
+  .abc-newsletter-popup-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+  }
+
+  .abc-newsletter-popup-consent > input {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .abc-newsletter-popup-consent > span {
+    color: var(--abc-popup-copy);
+    font-size: var(--fonte-8);
+    line-height: 1.35;
+  }
+
+  .abc-newsletter-popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .abc-newsletter-popup-consent-row {
+    display: flex;
+    width: 100%;
+  }
+
+  .abc-newsletter-popup-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .abc-popup-btn,
+  .abc-newsletter-popup-dismiss {
+    min-height: 40px;
+    flex: 1 1 150px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 0;
+    font-size: var(--fonte-11);
+    font-weight: var(--peso-fonte-bold);
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .abc-popup-btn {
+    position: relative;
+    background: var(--abc-popup-green);
+    color: #fff;
+  }
+
+  .abc-popup-btn:not([disabled]):hover {
+    animation-play-state: paused;
+    background: #8eefa9;
+  }
+
+  .abc-popup-btn[disabled] {
+    background: #e2e8f0;
+    border-color: #d7dee8;
+    color: #a0acbc;
+    opacity: 0.72;
+    cursor: not-allowed !important;
+    pointer-events: auto;
+    box-shadow: none;
+  }
+
+  .abc-popup-btn:not([disabled]) {
+    animation: abcNewsletterPrimaryPulse 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes abcNewsletterPrimaryPulse {
+    0%,
+    100% {
+      background: var(--abc-popup-green);
+      box-shadow: 0 0 0 0 rgba(15, 168, 72, 0.28);
+    }
+
+    50% {
+      background: var(--abc-popup-green);
+      box-shadow: 0 0 0 7px rgba(15, 168, 72, 0);
+    }
+  }
+
+  .abc-newsletter-popup-dismiss {
+    background: rgba(227, 6, 19, 0.08);
+    color: var(--abc-popup-red);
+    border: 1px solid rgba(227, 6, 19, 0.22);
+  }
+
+  .abc-newsletter-popup-dismiss:hover {
+    background: rgba(227, 6, 19, 0.12);
+    border-color: rgba(227, 6, 19, 0.34);
   }
 
   .abc-popup-msg {
     display: none;
-    margin-top: 16px;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: var(--fonte-11);
+    font-weight: var(--peso-fonte-semibold);
     text-align: center;
-    min-height: 20px;
-    transition: all 0.3s ease;
-    background: transparent;
-    border: none;
-  }
-
-  .abc-popup-msg:not(:empty):not([style*="&nbsp;"]) {
-    padding: 4px;
-    margin: 4px 0;
+    line-height: 1.4;
   }
 
   .abc-popup-msg[style*="color:green"] {
-    background: #f0f9f4;
-    border: 1px solid #00A859;
-    color: #00A859;
+    background: rgba(15, 168, 72, 0.08);
+    border: 1px solid rgba(15, 168, 72, 0.24);
+    color: #0f8f3d;
   }
 
   .abc-popup-msg[style*="color:red"] {
-    background: #fef2f2;
-    border: 1px solid #E3062D;
-    color: #E3062D;
+    background: rgba(227, 6, 19, 0.08);
+    border: 1px solid rgba(227, 6, 19, 0.24);
+    color: #b70e1a;
   }
 
-  .abc-newsletter-popup-modal .abc-newsletter-popup-close {
-    background-color: #f9f9f9;
-    border: 1px solid gray;
-    color: #e21937;
-    position: absolute;
-    font-size: 26px;
-    right: -15px;
-    top: -15px;
-    font-weight: bold;
-    padding: 0 10px;
-    border-radius: 50%;
-    z-index: 2;
+  .abc-newsletter-popup-footer {
+    padding: 0;
   }
 
-  .abc-newsletter-popup-modal .abc-newsletter-popup-close:hover,
-  .abc-newsletter-popup-modal .abc-newsletter-popup-close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  @media (min-width: 768px) {
-    .abc-newsletter-popup-modal {
-      max-width: 480px;
-    }
-
-    .abc-newsletter-popup-modal .abc-newsletter-popup-body .abc-popup-inputs {
-      display: flex;
-    }
-  }
-
-  body:not(.home) #abc-newsletter-popup {
-    display: none !important;
-  }
-
-  /* aceite */
-  .accept-checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin: 20px 0 12px;
-  }
-
-  .accept-checkbox>span {
-    color: #333;
-    font-size: 11px;
-    font-weight: 400;
-  }
-
-  #inp-aceito {
+  .abc-newsletter-popup-footer > p {
     margin: 0;
+    color: #64748b;
+    font-size: var(--fonte-8);
+    line-height: 1.45;
+    text-align: center;
   }
 
-  .abc-cep-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-  }
-
-  .abc-cep-container input {
-    flex: 1;
-  }
-
-  .abc-cep-link {
-    font-size: 12px;
-    color: #007bff;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .abc-cep-link:hover {
+  .abc-newsletter-popup-footer > p > a,
+  .abc-newsletter-popup-footer > p > a:visited {
+    color: inherit;
     text-decoration: underline;
   }
 
-  @media (min-width: 768px) {
-    .abc-cep-link {
-      font-size: 13px;
+  .abc-newsletter-popup-feedback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 3;
+  }
+
+  .abc-newsletter-popup-feedback.is-visible {
+    display: flex;
+  }
+
+  .abc-newsletter-popup-feedback-card {
+    width: min(100%, 344px);
+    padding: 20px 18px 18px;
+    border-radius: 22px;
+    background: linear-gradient(165deg, #ffffff 0%, #f8fafc 55%, #f1f5f9 100%);
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    box-shadow: 0 20px 48px rgba(2, 6, 23, 0.26);
+    text-align: center;
+    color: #0f172a;
+    position: relative;
+    transform-origin: center center;
+    overflow: hidden;
+  }
+
+  .abc-newsletter-popup-feedback[data-tone="success"] .abc-newsletter-popup-feedback-card {
+    animation: abcFeedbackCelebracaoCard 760ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+    box-shadow: 0 24px 56px rgba(15, 168, 72, 0.22), 0 18px 36px rgba(2, 6, 23, 0.22);
+  }
+
+  .abc-newsletter-popup-feedback-confetes {
+    position: absolute;
+    inset: -10px;
+    pointer-events: none;
+    z-index: 2;
+    display: none;
+  }
+
+  .abc-newsletter-popup-feedback[data-tone="success"] .abc-newsletter-popup-feedback-confetes {
+    display: block;
+  }
+
+  .abc-newsletter-popup-feedback-confete {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    width: 8px;
+    height: 14px;
+    border-radius: 2px;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.65);
+    background: var(--confete-cor, #0fa848);
+    animation: abcFeedbackConfete 1180ms cubic-bezier(0.05, 0.88, 0.3, 1) forwards;
+    animation-delay: var(--confete-delay, 0ms);
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(1) {
+    --confete-cor: #0fa848;
+    --confete-x: -112px;
+    --confete-y: -76px;
+    --confete-rot: -230deg;
+    --confete-delay: 0ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(2) {
+    --confete-cor: #e30613;
+    --confete-x: -88px;
+    --confete-y: -102px;
+    --confete-rot: -180deg;
+    --confete-delay: 45ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(3) {
+    --confete-cor: #0092ff;
+    --confete-x: -58px;
+    --confete-y: -110px;
+    --confete-rot: -150deg;
+    --confete-delay: 80ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(4) {
+    --confete-cor: #f59e0b;
+    --confete-x: -24px;
+    --confete-y: -122px;
+    --confete-rot: -95deg;
+    --confete-delay: 30ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(5) {
+    --confete-cor: #14b8a6;
+    --confete-x: 18px;
+    --confete-y: -118px;
+    --confete-rot: 70deg;
+    --confete-delay: 55ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(6) {
+    --confete-cor: #8b5cf6;
+    --confete-x: 55px;
+    --confete-y: -104px;
+    --confete-rot: 130deg;
+    --confete-delay: 95ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(7) {
+    --confete-cor: #22c55e;
+    --confete-x: 90px;
+    --confete-y: -84px;
+    --confete-rot: 168deg;
+    --confete-delay: 25ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(8) {
+    --confete-cor: #ef4444;
+    --confete-x: 112px;
+    --confete-y: -66px;
+    --confete-rot: 220deg;
+    --confete-delay: 65ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(9) {
+    --confete-cor: #f97316;
+    --confete-x: -94px;
+    --confete-y: -28px;
+    --confete-rot: -185deg;
+    --confete-delay: 75ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(10) {
+    --confete-cor: #06b6d4;
+    --confete-x: 94px;
+    --confete-y: -24px;
+    --confete-rot: 172deg;
+    --confete-delay: 50ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(11) {
+    --confete-cor: #84cc16;
+    --confete-x: -44px;
+    --confete-y: -138px;
+    --confete-rot: -110deg;
+    --confete-delay: 120ms;
+  }
+
+  .abc-newsletter-popup-feedback-confete:nth-child(12) {
+    --confete-cor: #d946ef;
+    --confete-x: 40px;
+    --confete-y: -136px;
+    --confete-rot: 108deg;
+    --confete-delay: 140ms;
+  }
+
+  @keyframes abcFeedbackCelebracaoCard {
+    0% {
+      transform: scale(0.88) translateZ(0);
+      filter: saturate(0.94);
+    }
+
+    62% {
+      transform: scale(1.06) translateZ(0);
+      filter: saturate(1.06);
+    }
+
+    100% {
+      transform: scale(1) translateZ(0);
+      filter: saturate(1);
     }
   }
 
-  /* * */
+  @keyframes abcFeedbackConfete {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+    }
+
+    14% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(35deg) scale(1);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(calc(-50% + var(--confete-x)), calc(-50% + var(--confete-y))) rotate(var(--confete-rot)) scale(0.9);
+    }
+  }
+
+  @keyframes abcFeedbackEmailEnvelope {
+    0% {
+      left: 14%;
+      transform: translate(-50%, -50%) scale(0.92);
+      opacity: 0.85;
+    }
+
+    55% {
+      left: 84%;
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    100% {
+      left: 14%;
+      transform: translate(-50%, -50%) scale(0.92);
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes abcFeedbackEmailTrackShine {
+    0% {
+      transform: translateX(-120%);
+    }
+
+    100% {
+      transform: translateX(140%);
+    }
+  }
+
+  .abc-newsletter-popup-feedback-kicker {
+    display: inline-flex;
+    margin-bottom: 6px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(227, 6, 19, 0.08);
+    color: var(--abc-popup-red);
+    font-size: var(--fonte-11);
+    font-weight: var(--peso-fonte-extrabold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .abc-newsletter-popup-feedback-title {
+    margin: 0;
+    font-size: var(--fonte-16);
+    font-weight: var(--peso-fonte-extrabold);
+    line-height: 1.25;
+  }
+
+  .abc-newsletter-popup-feedback-copy {
+    margin: 8px 0 0;
+    color: #475569;
+    font-size: var(--fonte-12);
+    line-height: 1.45;
+  }
+
+  .abc-newsletter-popup-feedback-email-flow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10px auto 0;
+    width: 100%;
+    max-width: 250px;
+    height: 24px;
+  }
+
+  .abc-newsletter-popup-feedback[data-tone="success"] .abc-newsletter-popup-feedback-email-flow {
+    display: flex;
+  }
+
+  .abc-newsletter-popup-feedback-email-track {
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(15, 168, 72, 0.08), rgba(15, 168, 72, 0.4), rgba(15, 168, 72, 0.08));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .abc-newsletter-popup-feedback-email-track::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+    transform: translateX(-120%);
+    animation: abcFeedbackEmailTrackShine 1.5s ease-in-out infinite;
+  }
+
+  .abc-newsletter-popup-feedback-email-envelope {
+    position: absolute;
+    left: 14%;
+    top: 50%;
+    width: 22px;
+    height: 14px;
+    border: 2px solid #0fa848;
+    border-radius: 3px;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+    animation: abcFeedbackEmailEnvelope 1.8s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+    box-shadow: 0 4px 10px rgba(15, 168, 72, 0.24);
+  }
+
+  .abc-newsletter-popup-feedback-email-envelope::before,
+  .abc-newsletter-popup-feedback-email-envelope::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    width: 9px;
+    height: 2px;
+    background: #0fa848;
+  }
+
+  .abc-newsletter-popup-feedback-email-envelope::before {
+    left: 1px;
+    transform: rotate(30deg);
+    transform-origin: left center;
+  }
+
+  .abc-newsletter-popup-feedback-email-envelope::after {
+    right: 1px;
+    transform: rotate(-30deg);
+    transform-origin: right center;
+  }
+
+  .abc-newsletter-popup-feedback-email-status {
+    display: none;
+    margin: 8px 0 0;
+    color: #0f8f3d;
+    font-size: var(--fonte-11);
+    font-weight: var(--peso-fonte-semibold);
+    line-height: 1.35;
+  }
+
+  .abc-newsletter-popup-feedback[data-tone="success"] .abc-newsletter-popup-feedback-email-status {
+    display: block;
+  }
+
+  .abc-newsletter-popup-feedback-button {
+    margin-top: 14px;
+    min-height: 38px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--abc-popup-red);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .abc-newsletter-widget {
+    position: fixed;
+    left: 0;
+    bottom: 100px;
+    z-index: 999999998;
+    display: flex;
+    align-items: stretch;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(calc(-100% + 34px));
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  .abc-newsletter-widget.abc-newsletter-widget-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .abc-newsletter-widget.abc-newsletter-widget-expanded {
+    transform: translateX(0);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .abc-newsletter-widget.abc-newsletter-widget-collapsed {
+    transform: translateX(calc(-100% + 34px));
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .abc-newsletter-widget-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 200px;
+    min-height: 98px;
+    padding: 12px 12px 12px 14px;
+    border-radius: 0 18px 18px 0;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-left: 4px solid var(--abc-popup-red);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    color: #0f172a;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .abc-newsletter-widget-toggle {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+    color: #334155;
+    font-size: 0;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+  }
+
+  .abc-newsletter-widget-toggle svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .abc-newsletter-widget-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 26px;
+  }
+
+  .abc-newsletter-widget-copy {
+    margin: 0;
+    color: #0f172a;
+    font-size: var(--fonte-16);
+    font-weight: var(--peso-fonte-black);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .abc-newsletter-widget-copy .abc-widget-value {
+    color: #0fa848;
+  }
+
+  .abc-newsletter-widget-sub {
+    color: #475569;
+    font-size: var(--fonte-11);
+    font-weight: var(--peso-fonte-bold);
+    line-height: 1.2;
+  }
+
+  .abc-newsletter-widget-cta-btn {
+    margin-top: 4px;
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 999px;
+    background: #0fa848;
+    color: #fff;
+    font-size: var(--fonte-12);
+    font-weight: var(--peso-fonte-extrabold);
+    line-height: 1;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .abc-newsletter-widget-cta-btn:hover {
+    background: #0e9d44;
+    transform: translateY(-1px);
+  }
+
+  .abc-newsletter-widget-collapsed .abc-newsletter-widget-panel {
+    width: 34px;
+    padding: 12px 6px;
+  }
+
+  .abc-newsletter-widget-collapsed .abc-newsletter-widget-body {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(8px);
+  }
+
+  .abc-newsletter-widget-collapsed .abc-newsletter-widget-toggle {
+    right: 4px;
+  }
+
+  .abc-newsletter-widget-label-vertical {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(15, 168, 72, 0.12);
+    font-size: var(--fonte-12);
+    font-weight: var(--peso-fonte-extrabold);
+    color: #0fa848;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .abc-newsletter-widget-collapsed .abc-newsletter-widget-label-vertical {
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    #abc-newsletter-popup {
+      padding: 24px;
+    }
+
+    .abc-newsletter-popup-shell {
+      padding: 24px 24px;
+      gap: 16px;
+    }
+
+    .abc-newsletter-popup-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .abc-newsletter-popup-brandmark {
+      min-width: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .abc-newsletter-popup-brandmark-logo {
+      width: 52px;
+    }
+
+    .abc-newsletter-popup-headline {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      padding-top: 0;
+      padding-right: 0;
+    }
+
+    .abc-newsletter-popup-title {
+      min-width: 0;
+    }
+
+  
+    .abc-newsletter-popup-ribbon {
+      position: absolute;
+      top: -90px;
+      right: -18px;
+      width: max-content;
+      min-width: 126px;
+      min-height: 68px;
+      padding: 8px 10px;
+      justify-content: center;
+      flex-basis: auto;
+      margin-top: 0;
+      z-index: 1;
+    }
+
+    .abc-newsletter-popup-ribbon span {
+      font-size: var(--fonte-11);
+    }
+
+    .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker {
+      width: max-content;
+      min-width: 126px;
+    }
+
+    .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker > span {
+      white-space: nowrap;
+    }
+
+    #abc-newsletter-popup .abc-newsletter-popup-title {
+      max-width: 100%;
+      max-width: 11ch;
+      font-size: clamp(1.8rem, 9vw, 2.25rem);
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .abc-newsletter-popup-copy {
+      font-size: var(--fonte-11);
+      line-height: 1.35;
+    }
+
+    .abc-newsletter-popup-point {
+      font-size: var(--fonte-8);
+      padding: 5px 7px;
+    }
+
+    .abc-newsletter-popup-form {
+      gap: 8px;
+    }
+
+    .abc-newsletter-popup-buttons {
+      flex-direction: column;
+    }
+
+    .abc-newsletter-popup-field input {
+      height: 48px;
+      font-size: var(--fonte-12);
+      padding: 0 16px;
+    }
+
+    .abc-newsletter-popup-consent {
+      padding: 8px 10px;
+    }
+
+    .abc-newsletter-popup-consent > span {
+      font-size: var(--fonte-8);
+    }
+
+    .abc-newsletter-popup-footer > p {
+      font-size: var(--fonte-8);
+      line-height: 1.35;
+    }
+
+    .abc-newsletter-popup-actions {
+      gap: 8px;
+    }
+
+    .abc-popup-btn,
+    .abc-newsletter-popup-dismiss {
+      width: 100%;
+      flex: 0 0 auto;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 14px;
+      font-size: var(--fonte-11);
+    }
+
+    .abc-newsletter-widget {
+      top: auto;
+      bottom: 72px;
+      transform: translateX(calc(-100% + 30px));
+    }
+
+    .abc-newsletter-widget.abc-newsletter-widget-expanded {
+      transform: translateX(0);
+    }
+
+    .abc-newsletter-widget.abc-newsletter-widget-collapsed {
+      transform: translateX(calc(-100% + 30px));
+    }
+
+    .abc-newsletter-widget-panel {
+      width: 134px;
+      min-height: 92px;
+      padding: 10px 10px 10px 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    }
+
+    .abc-newsletter-widget-body {
+      padding-right: 22px;
+    }
+
+    .abc-newsletter-widget-copy {
+      font-size: var(--fonte-14);
+    }
+
+    .abc-newsletter-widget-sub {
+      font-size: var(--fonte-11);
+    }
+
+    .abc-newsletter-widget-cta-btn {
+      padding: 6px 12px;
+      font-size: var(--fonte-11);
+    }
+
+    .abc-newsletter-widget-collapsed .abc-newsletter-widget-panel {
+      width: 30px;
+      padding: 10px 5px;
+    }
+
+    .abc-newsletter-widget-label-vertical {
+      font-size: var(--fonte-8);
+      padding: 4px 8px;
+    }
+  }
+
+  body.bg-checkout #abc-newsletter-popup,
+  body.checkout-shipping #abc-newsletter-popup,
+  body.wake-cart-page #abc-newsletter-popup,
+  body.wake-confirmation #abc-newsletter-popup {
+    display: none !important;
+  }
+
+  body.bg-checkout .abc-newsletter-widget,
+  body.checkout-shipping .abc-newsletter-widget,
+  body.wake-cart-page .abc-newsletter-widget,
+  body.wake-confirmation .abc-newsletter-widget {
+    display: none !important;
+  }
 </style>
 
-<div id="abc-newsletter-popup" class="abc-newsletter-popup-overlay">
+<div
+  id="abc-newsletter-popup"
+  class="abc-newsletter-popup-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-labelledby="abc-newsletter-popup-title"
+  aria-describedby="abc-newsletter-popup-desc"
+>
   <div class="abc-newsletter-popup-modal">
-    <span class="abc-newsletter-popup-close">&times;</span>
-    <div class="abc-newsletter-popup-content">
-      <div class="abc-newsletter-popup-body">
-        <p>Quer ganhar <strong>R$100,00</strong><br>de desconto?</p>
-        <p>
-          Entre com seu nome e e-mail, ganhe um cupom exclusivo para primeira compra e receba informações
-          privilegiadas sobre promoções e ofertas direto no seu email.*
-        </p>
-        <div class="abc-popup-form">
+    <div class="abc-newsletter-popup-shell">
+      <div class="abc-newsletter-popup-top">
+        <div class="abc-newsletter-popup-brandmark" aria-hidden="true">
+          <img
+            class="abc-newsletter-popup-brandmark-logo"
+            src="{{ abc_logo_source }}"
+            alt="ABC da Construção"
+            width="76"
+            height="14"
+          >
+        </div>
+      </div>
 
-          <div class="abc-popup-inputs">
-            <input class="input" id="abc-popup-input-nome" maxlength="50" placeholder="Nome" type="text" value="" />
-            <input class="input" id="abc-popup-input-email" maxlength="70" placeholder="Email" type="text" value="" />
-            <a class="abc-popup-btn">Enviar</a>
-            <div class="accept-checkbox">
-              <!-- <input type="hidden" id="inp-firstsession" name="firstsession">
-            <input type="hidden" id="inp-lastsession" name="lastsession">
-            <input type="hidden" name="id_submit" id="id_submit"> -->
-              <input type="checkbox" name="aceito" id="inp-aceito">
-              <span>
-                Concordo em receber e-mails, sms e whatsapp da ABC da Construção.
-              </span>
+      <div class="abc-newsletter-popup-hero">
+        <div class="abc-newsletter-popup-headline">
+          <h2 id="abc-newsletter-popup-title" class="abc-newsletter-popup-title">
+            Quer ganhar <strong>R$100,00</strong> de desconto?
+          </h2>
+          <div class="abc-newsletter-popup-ribbon" aria-hidden="true">
+            <span class="abc-newsletter-popup-kicker">
+              <span>Oferta de boas-vindas</span>
+            </span>
+            <div class="abc-newsletter-popup-ribbon-texto">
+              <span>ANTES DE SEGUIR</span>
+              <small>ATIVE SEU BENEFÍCIO</small>
+            </div>
+          </div>
+        </div>
+        <p id="abc-newsletter-popup-desc" class="abc-newsletter-popup-copy">
+          Cadastre-se para receber seu cupom e comprar com mais economia na sua primeira compra online.
+        </p>
+      </div>
+
+      <form class="abc-newsletter-popup-form" id="abc-newsletter-form">
+        <div class="abc-newsletter-popup-inputs">
+          <div class="abc-newsletter-popup-inputs-row">
+            <div class="abc-newsletter-popup-field">
+              <input
+                class="input"
+                id="abc-popup-input-nome"
+                name="nome"
+                maxlength="50"
+                placeholder="ex: Maria"
+                type="text"
+                value=""
+                autocomplete="name"
+                enterkeyhint="next"
+                required
+              />
+            </div>
+            <div class="abc-newsletter-popup-field">
+              <input
+                class="input"
+                id="abc-popup-input-sobrenome"
+                name="sobrenome"
+                maxlength="50"
+                placeholder="ex: Silva"
+                type="text"
+                value=""
+                autocomplete="family-name"
+                enterkeyhint="next"
+                required
+              />
+            </div>
+          </div>
+          <div class="abc-newsletter-popup-inputs-col">
+            <div class="abc-newsletter-popup-field">
+              <input
+                class="input"
+                id="abc-popup-input-email"
+                name="email"
+                maxlength="70"
+                placeholder="ex: nome@exemplo.com.br"
+                type="email"
+                value=""
+                autocomplete="email"
+                inputmode="email"
+                pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}"
+                spellcheck="false"
+                autocapitalize="off"
+                required
+              />
+            </div>
+            <div class="abc-newsletter-popup-field">
+              <input
+                class="input"
+                id="abc-popup-input-telefone"
+                name="telefone"
+                maxlength="15"
+                placeholder="ex: (XX) XXXXX-XXXX"
+                type="tel"
+                value=""
+                autocomplete="tel"
+                inputmode="tel"
+                enterkeyhint="next"
+              />
             </div>
           </div>
 
-
-          <div class="abc-popup-msg"></div>
-
+          <div class="abc-popup-msg abc-newsletter-popup-input--full" role="status" aria-live="polite"></div>
         </div>
 
-      </div>
+        <div class="abc-newsletter-popup-actions">
+          <div class="abc-newsletter-popup-consent-row">
+            <div class="abc-newsletter-popup-consent">
+              <input type="checkbox" name="aceito" id="inp-aceito" checked>
+              <span>
+                Quero receber ofertas, novidades e benefícios da ABC por E-mail, SMS e WhatsApp.
+              </span>
+            </div>
+          </div>
+          <div class="abc-newsletter-popup-buttons">
+            <button class="abc-popup-btn" type="submit" disabled>Quero meu cupom</button>
+            <button class="abc-newsletter-popup-dismiss" type="button" data-newsletter-dismiss>
+              Continuar sem desconto
+            </button>
+          </div>
+        </div>
+      </form>
+
       <div class="abc-newsletter-popup-footer">
         <p>
-          *válido somente para e-commerce e para pedidos acima de R$700,00 limitados a uma compra por CPF.
-          As
-          regras de uso do cupom desconto pode ser acessadas aqui:
-          <br>
-          <a href="https://abcdaconstrucao.com.br/central-de-atendimento/como-comprar" target="_blank">
-            https://abcdaconstrucao.com.br/central-de-atendimento/como-comprar
+          *Válido para a primeira compra no e-commerce, em pedidos acima de R$700. Limitado a 1 uso por CPF.
+          <a href="https://abcdaconstrucao.com.br/central-de-atendimento/como-comprar" target="_blank" rel="noopener noreferrer">
+            Consulte regras e produtos elegíveis.
           </a>
         </p>
+      </div>
+
+      <div class="abc-newsletter-popup-feedback" data-feedback-popup aria-hidden="true">
+        <div class="abc-newsletter-popup-feedback-card" role="status" aria-live="polite">
+          <div class="abc-newsletter-popup-feedback-confetes" aria-hidden="true">
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+            <span class="abc-newsletter-popup-feedback-confete"></span>
+          </div>
+          <span class="abc-newsletter-popup-feedback-kicker" data-feedback-kicker>Enviar</span>
+          <h3 class="abc-newsletter-popup-feedback-title" data-feedback-title>Mensagem</h3>
+          <div class="abc-newsletter-popup-feedback-email-flow" aria-hidden="true">
+            <span class="abc-newsletter-popup-feedback-email-track"></span>
+            <span class="abc-newsletter-popup-feedback-email-envelope"></span>
+          </div>
+          <p class="abc-newsletter-popup-feedback-copy" data-feedback-copy></p>
+          <p class="abc-newsletter-popup-feedback-email-status" data-feedback-email-status></p>
+          <button class="abc-newsletter-popup-feedback-button" type="button" data-feedback-close>Fechar</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<div id="abc-newsletter-widget" class="abc-newsletter-widget" aria-hidden="true">
+  <div class="abc-newsletter-widget-panel" data-widget-panel>
+    <span class="abc-newsletter-widget-label-vertical">PRIMEIRA COMPRA</span>
+    <button class="abc-newsletter-widget-toggle" type="button" aria-label="Recolher lembrete" aria-expanded="true" data-widget-toggle>
+      <svg data-arrow-expanded viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      <svg data-arrow-collapsed viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="abc-newsletter-widget-body">
+      <p class="abc-newsletter-widget-copy">Garanta agora mesmo seus <span class="abc-widget-value">R$100,00</span></p>
+      <small class="abc-newsletter-widget-sub">na primeira compra</small>
+      <button class="abc-newsletter-widget-cta-btn" type="button" data-widget-open>Quero meu cupom</button>
+    </div>
+  </div>
+</div>
+
 <script>
-  function validarCadastroNewsletterModal(elementoErro, elementoNome, elementoEmail) {
-    var valido = true;
-    var nomeValue = elementoNome.value;
-    var emailValue = elementoEmail.value;
+  (() => {
+    const popup = document.getElementById('abc-newsletter-popup');
+    const widget = document.getElementById('abc-newsletter-widget');
 
-    if (nomeValue != undefined) {
-      if (nomeValue == "" || nomeValue == "Nome") {
+    if (!popup || !widget) return;
+
+    const isCheckout = document.body.classList.contains('bg-checkout') ||
+      document.body.classList.contains('checkout-shipping') ||
+      document.body.classList.contains('wake-cart-page') ||
+      document.body.classList.contains('wake-confirmation');
+    if (isCheckout) return;
+
+    const isHome = document.body.classList.contains('home');
+
+    const form = popup.querySelector('#abc-newsletter-form');
+    const dismissButton = popup.querySelector('[data-newsletter-dismiss]');
+    const abcPopupMsg = popup.querySelector('.abc-popup-msg');
+    const feedbackPopup = popup.querySelector('[data-feedback-popup]');
+    const feedbackKicker = popup.querySelector('[data-feedback-kicker]');
+    const feedbackTitle = popup.querySelector('[data-feedback-title]');
+    const feedbackCopy = popup.querySelector('[data-feedback-copy]');
+    const feedbackEmailStatus = popup.querySelector('[data-feedback-email-status]');
+    const feedbackCloseButton = popup.querySelector('[data-feedback-close]');
+    const nameElement = popup.querySelector('#abc-popup-input-nome');
+    const surnameElement = popup.querySelector('#abc-popup-input-sobrenome');
+    const emailElement = popup.querySelector('#abc-popup-input-email');
+    const phoneElement = popup.querySelector('#abc-popup-input-telefone');
+    const submitButton = popup.querySelector('.abc-popup-btn');
+    const widgetOpenButton = widget?.querySelector('[data-widget-open]');
+    const widgetToggleButton = widget?.querySelector('[data-widget-toggle]');
+    const STORAGE_KEY = 'abc-newsletter-popup-state';
+    const POPUP_OPEN_DELAY_MS = 2000;
+    const FEEDBACK_AUTO_CLOSE_MS = 25000;
+    const REGISTERED_STATE = 'registered';
+    const WIDGET_STATE_EXPANDED = 'widget-expanded';
+    const WIDGET_STATE_COLLAPSED = 'widget-collapsed';
+    const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let popupState = '';
+    let feedbackAutoCloseTimeoutId = null;
+
+    const setScrollLock = (locked) => {
+      document.documentElement.classList.toggle('abc-newsletter-popup-lock', locked);
+      document.body.classList.toggle('abc-newsletter-popup-lock', locked);
+    };
+
+    const readPopupState = () => {
+      try {
+        return window.localStorage.getItem(STORAGE_KEY) || '';
+      } catch (error) {
+        return popupState;
+      }
+    };
+
+    const writePopupState = (state) => {
+      popupState = state;
+
+      try {
+        window.localStorage.setItem(STORAGE_KEY, state);
+      } catch (error) {
+        // Keep working even when storage is blocked.
+      }
+    };
+
+    const getPopupState = () => popupState || readPopupState();
+
+    const getWidgetState = () => {
+      const state = getPopupState();
+
+      if (state === WIDGET_STATE_COLLAPSED || state === WIDGET_STATE_EXPANDED) {
+        return state;
+      }
+
+      return WIDGET_STATE_EXPANDED;
+    };
+
+    const syncWidgetToggle = (state) => {
+      if (!widgetToggleButton) {
+        return;
+      }
+
+      const isExpanded = state === WIDGET_STATE_EXPANDED;
+      widgetToggleButton.setAttribute('aria-expanded', String(isExpanded));
+      widgetToggleButton.setAttribute('aria-label', isExpanded ? 'Recolher lembrete' : 'Expandir lembrete');
+      const arrExp = widgetToggleButton.querySelector('[data-arrow-expanded]');
+      const arrCol = widgetToggleButton.querySelector('[data-arrow-collapsed]');
+      if (arrExp) arrExp.style.display = isExpanded ? '' : 'none';
+      if (arrCol) arrCol.style.display = isExpanded ? 'none' : '';
+    };
+
+    const clearFeedbackAutoClose = () => {
+      if (feedbackAutoCloseTimeoutId !== null) {
+        window.clearTimeout(feedbackAutoCloseTimeoutId);
+        feedbackAutoCloseTimeoutId = null;
+      }
+    };
+
+    const hideFeedback = () => {
+      if (!feedbackPopup) {
+        return;
+      }
+
+      clearFeedbackAutoClose();
+      feedbackPopup.classList.remove('is-visible');
+      feedbackPopup.setAttribute('aria-hidden', 'true');
+      feedbackPopup.dataset.tone = '';
+      popup.classList.remove('abc-newsletter-popup-feedback-open');
+    };
+
+    const showFeedback = ({ kicker, title, copy, tone = 'success', email = '' }) => {
+      if (!feedbackPopup) {
+        return;
+      }
+
+      clearFeedbackAutoClose();
+      feedbackPopup.dataset.tone = tone;
+      popup.classList.add('abc-newsletter-popup-feedback-open');
+
+      if (feedbackKicker) {
+        feedbackKicker.textContent = kicker;
+        feedbackKicker.style.background = tone === 'success' ? 'rgba(15, 168, 72, 0.08)' : 'rgba(227, 6, 19, 0.08)';
+        feedbackKicker.style.color = tone === 'success' ? '#0f8f3d' : 'var(--abc-popup-red)';
+      }
+
+      if (feedbackTitle) {
+        feedbackTitle.textContent = title;
+      }
+
+      if (feedbackCopy) {
+        feedbackCopy.textContent = copy;
+      }
+
+      if (feedbackEmailStatus) {
+        feedbackEmailStatus.textContent = tone === 'success' && email
+          ? `Estamos enviando agora para ${email}`
+          : '';
+      }
+
+      feedbackPopup.classList.add('is-visible');
+      feedbackPopup.setAttribute('aria-hidden', 'false');
+    };
+
+    const showWidget = (state = getWidgetState()) => {
+      if (!widget) {
+        return;
+      }
+
+      widget.classList.add('abc-newsletter-widget-open');
+      widget.classList.toggle('abc-newsletter-widget-expanded', state === WIDGET_STATE_EXPANDED);
+      widget.classList.toggle('abc-newsletter-widget-collapsed', state === WIDGET_STATE_COLLAPSED);
+      widget.setAttribute('aria-hidden', 'false');
+      syncWidgetToggle(state);
+    };
+
+    const hideWidget = () => {
+      if (!widget) {
+        return;
+      }
+
+      widget.classList.remove('abc-newsletter-widget-open');
+      widget.classList.remove('abc-newsletter-widget-expanded');
+      widget.classList.remove('abc-newsletter-widget-collapsed');
+      widget.setAttribute('aria-hidden', 'true');
+    };
+
+    const normalizeName = (value) => value.replace(/\s+/g, ' ').trim();
+    const normalizeEmail = (value) => value.replace(/\s+/g, '').trim();
+    const normalizePhone = (value) => value.replace(/\D/g, '').trim().slice(0, 11);
+    const formatBrazilianMobilePhone = (value) => {
+      const digits = normalizePhone(value);
+
+      if (!digits) {
+        return '';
+      }
+
+      if (digits.length <= 2) {
+        return `(${digits}`;
+      }
+
+      if (digits.length <= 7) {
+        return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+      }
+
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+    };
+    const hasText = (value) => normalizeName(value).length >= 2;
+    const hasValidEmail = (value) => emailPattern.test(normalizeEmail(value));
+    const isPhoneComplete = (value) => normalizePhone(value).length === 11;
+    const syncFieldCompleteState = (field) => {
+      if (!field) {
+        return;
+      }
+
+      const isComplete = field === emailElement
+        ? hasValidEmail(field.value)
+        : field === phoneElement
+          ? isPhoneComplete(field.value)
+          : hasText(field.value);
+
+      field.classList.toggle('is-complete', isComplete);
+    };
+    const syncAllFieldCompleteStates = () => {
+      syncFieldCompleteState(nameElement);
+      syncFieldCompleteState(surnameElement);
+      syncFieldCompleteState(emailElement);
+      syncFieldCompleteState(phoneElement);
+    };
+    const updateSubmitState = () => {
+      if (!submitButton) {
+        return;
+      }
+
+      syncAllFieldCompleteStates();
+      submitButton.disabled = !(hasText(nameElement.value) && hasText(surnameElement.value) && hasValidEmail(emailElement.value));
+    };
+
+    const closePopup = (nextState = WIDGET_STATE_EXPANDED) => {
+      popup.classList.remove('abc-newsletter-popup-open');
+      popup.setAttribute('aria-hidden', 'true');
+      setScrollLock(false);
+      hideFeedback();
+
+      if (abcPopupMsg) {
+        abcPopupMsg.innerHTML = '';
+        abcPopupMsg.removeAttribute('style');
+      }
+
+      if (nextState === REGISTERED_STATE) {
+        hideWidget();
+      } else {
+        showWidget(nextState);
+      }
+    };
+
+    const openPopup = () => {
+      if (getPopupState() === REGISTERED_STATE) {
+        return;
+      }
+
+      hideWidget();
+      popup.classList.add('abc-newsletter-popup-open');
+      popup.setAttribute('aria-hidden', 'false');
+      setScrollLock(true);
+      updateSubmitState();
+      window.setTimeout(syncAllFieldCompleteStates, 250);
+    };
+
+    function validarCadastroNewsletterModal(elementoErro, elementoNome, elementoSobrenome, elementoEmail) {
+      var valido = true;
+      var nomeValue = normalizeName(elementoNome.value);
+      var sobrenomeValue = normalizeName(elementoSobrenome.value);
+      var emailValue = normalizeEmail(elementoEmail.value);
+
+      if (!nomeValue || nomeValue === 'Seu nome') {
         valido = false;
-        elementoErro.innerHTML = "Favor digitar o Nome."
+        elementoErro.innerHTML = 'Favor digitar o nome.';
+        elementoNome.focus();
+      } else if (nomeValue.length < 2) {
+        valido = false;
+        elementoErro.innerHTML = 'Nome deve conter pelo menos 2 caracteres.';
+        elementoNome.focus();
+      } else if (nomeValue.length > 50) {
+        valido = false;
+        elementoErro.innerHTML = 'Nome deve conter menos que 50 caracteres.';
         elementoNome.focus();
       }
-      if (valido == true && nomeValue.length < 3) {
-        valido = false;
-        elementoErro.innerHTML = "Nome deve conter mais que 3 caracteres."
-        elementoNome.focus();
-      }
-      if (valido == true && nomeValue.length > 50) {
-        valido = false;
-        elementoErro.innerHTML = "Nome deve conter menos que 50 caracteres."
-        elementoNome.focus();
-      }
-    } else {
-      valido = false;
-      elementoErro.innerHTML = "Favor digitar o Nome."
-      elementoNome.focus();
-    }
 
-    if (emailValue != undefined) {
-      if (valido == true && emailValue == "") {
+      if (valido == true) {
+        if (!sobrenomeValue || sobrenomeValue === 'Seu sobrenome') {
+          valido = false;
+          elementoErro.innerHTML = 'Favor digitar o sobrenome.';
+          elementoSobrenome.focus();
+        } else if (sobrenomeValue.length < 2) {
+          valido = false;
+          elementoErro.innerHTML = 'Sobrenome deve conter pelo menos 2 caracteres.';
+          elementoSobrenome.focus();
+        } else if (sobrenomeValue.length > 50) {
+          valido = false;
+          elementoErro.innerHTML = 'Sobrenome deve conter menos que 50 caracteres.';
+          elementoSobrenome.focus();
+        }
+      }
+
+      if (emailValue != undefined) {
+        if (valido == true && emailValue == '') {
+          valido = false;
+          elementoErro.innerHTML = 'Favor digitar o E-mail.';
+          elementoEmail.focus();
+        }
+
+        if (valido == true && emailValue.length > 70) {
+          valido = false;
+          elementoErro.innerHTML = 'E-mail deve conter menos que 70 caracteres.';
+          elementoEmail.focus();
+        }
+
+        if (valido == true && !verificaEmail(emailValue)) {
+          valido = false;
+          elementoErro.innerHTML = 'E-mail inválido.';
+          elementoEmail.focus();
+        }
+      } else {
         valido = false;
-        elementoErro.innerHTML = "Favor digitar o E-mail."
+        elementoErro.innerHTML = 'Favor digitar o E-mail.';
         elementoEmail.focus();
       }
-      if (valido == true && emailValue.length > 70) {
-        valido = false;
-        elementoErro.innerHTML = "E-mail deve conter menos que 70 caracteres."
-        elementoEmail.focus();
+
+      if (!valido) {
+        elementoErro.style.color = 'red';
+        elementoErro.style.display = 'block';
       }
-      if (valido == true && !verificaEmail(emailValue)) {
-        valido = false;
-        elementoErro.innerHTML = "E-mail inválido."
-        elementoEmail.focus();
+
+      return valido;
+    }
+
+    function verificaEmail(email) {
+      return emailPattern.test(normalizeEmail(email));
+    }
+
+    async function abcNewsletterEnviar() {
+      const nameValue = normalizeName(nameElement.value);
+      const surnameValue = normalizeName(surnameElement.value);
+      const fullNameValue = normalizeName([nameValue, surnameValue].filter(Boolean).join(' '));
+      const emailValue = normalizeEmail(emailElement.value);
+      const phoneDigits = normalizePhone(phoneElement?.value || '');
+      const phoneValue = phoneDigits.length === 11 ? formatBrazilianMobilePhone(phoneElement.value) : '';
+
+      if (abcPopupMsg) {
+        abcPopupMsg.innerHTML = '';
+        abcPopupMsg.removeAttribute('style');
       }
-    } else {
-      valido = false;
-      elementoErro.innerHTML = "Favor digitar o E-mail."
-      elementoEmail.focus();
-    }
-    //VALIDAÇÕES - FIM
 
-    if (!valido) {
-      elementoErro.style.color = "red";
-      elementoErro.style.display = "block";
-    }
-    return valido;
-  }
+      const validar = validarCadastroNewsletterModal(abcPopupMsg, nameElement, surnameElement, emailElement);
 
-  function verificaEmail(email) {
-    return (
-      /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i
-        .test(email));
-  };
+      if (!validar) {
+        return;
+      }
 
-  async function abcNewsletterEnviar() {
-    const abcPopupMsg = document.querySelector('.abc-popup-msg');
-
-    const nameElement = document.querySelector('#abc-popup-input-nome');
-    const emailElement = document.querySelector('#abc-popup-input-email');
-    const nameValue = nameElement.value;
-    const emailValue = emailElement.value;
-    const aceito = document.querySelector('#inp-aceito').checked ? 'Sim' : 'Não';
-    // const firstsession = document.querySelector("#inp-firstsession").value;
-    // const lastsession = document.querySelector("#inp-lastsession").value;
-    // const id_submit = document.querySelector("#id_submit").value;
-
-    const validar = validarCadastroNewsletterModal(abcPopupMsg, nameElement, emailElement, '', false);
-
-    if (validar) {
       const input = {
-        name: nameValue,
+        name: fullNameValue,
         email: emailValue
       };
 
+      try {
+        let sdkClient = typeof client !== 'undefined' ? client : window.client;
 
-      let response = await client.newsletter.create(input);
+        if (!sdkClient?.newsletter?.create) {
+          for (let attempt = 0; attempt < 6; attempt += 1) {
+            await new Promise((resolve) => window.setTimeout(resolve, 300));
+            sdkClient = typeof client !== 'undefined' ? client : window.client;
+            if (sdkClient?.newsletter?.create) {
+              break;
+            }
+          }
+        }
 
-      if (response) {
-        abcPopupMsg.innerHTML = "Cadastro realizado com sucesso!";
-        abcPopupMsg.setAttribute('style', "color:green;");
-        abcPopupMsg.style.display = 'block';
+        if (!sdkClient?.newsletter?.create) {
+          showFeedback({
+            kicker: 'Atenção',
+            title: 'Estamos preparando seu cadastro',
+            copy: 'Tente novamente em alguns segundos.',
+            tone: 'error'
+          });
+          return;
+        }
 
-        sendSharpSpring({
-          nome: nameValue,
-          email: emailValue,
-          telefone: ''
-        }, "primeira-compra");
+        const response = await sdkClient.newsletter.create(input);
 
-        setTimeout(() => {
-          document.getElementById('abc-newsletter-popup').classList.remove("abc-newsletter-popup-open");
-        }, 3000);
-      } else {
-        abcPopupMsg.innerHTML = "Falha ao realizar cadastro";
-        abcPopupMsg.setAttribute('style', "color:red;");
-        abcPopupMsg.style.display = 'block';
+        if (response) {
+          writePopupState(REGISTERED_STATE);
+          showFeedback({
+            kicker: 'Cupom no seu e-mail',
+            title: 'Cadastro realizado com sucesso!',
+            copy: `Seu cupom chegará em instantes no e-mail ${emailValue}. Confira também a caixa de spam e promoções.`,
+            tone: 'success',
+            email: emailValue
+          });
+
+          if (typeof sendSharpSpring === 'function') {
+            sendSharpSpring({
+              nome: fullNameValue,
+              email: emailValue,
+              telefone: phoneValue
+            }, 'primeira-compra');
+          }
+
+          feedbackAutoCloseTimeoutId = window.setTimeout(() => closePopup(REGISTERED_STATE), FEEDBACK_AUTO_CLOSE_MS);
+        } else {
+          showFeedback({
+            kicker: 'Atenção',
+            title: 'Falha ao realizar cadastro',
+            copy: 'Tente novamente em alguns instantes.',
+            tone: 'error'
+          });
+        }
+      } catch (error) {
+        showFeedback({
+          kicker: 'Atenção',
+          title: 'Falha ao realizar cadastro',
+          copy: 'Tente novamente em alguns instantes.',
+          tone: 'error'
+        });
       }
     }
-  }
 
-  function abcNewsletterPopup() {
+    nameElement.addEventListener('input', function () {
+      const normalizedValue = this.value.replace(/\s{2,}/g, ' ').replace(/^\s+/, '');
 
-    let expiresDate = new Date();
-    expiresDate.setDate(expiresDate.getDate() + 2);
+      if (this.value !== normalizedValue) {
+        this.value = normalizedValue;
+      }
 
-    let abc_newsletter_popup = document.getElementById('abc-newsletter-popup');
-    document.cookie = `abcPopup=popup-newsletter-abc-home; expires=${expiresDate.toUTCString()}`;
-
-    abc_newsletter_popup.classList.add("abc-newsletter-popup-open");
-
-    document.querySelector('.abc-newsletter-popup-close').addEventListener('click', function () {
-      abc_newsletter_popup.classList.remove("abc-newsletter-popup-open");
+      updateSubmitState();
     });
 
-    document.querySelector(".abc-popup-btn").addEventListener('click', function (e) {
-      e.preventDefault();
+    surnameElement.addEventListener('input', function () {
+      const normalizedValue = this.value.replace(/\s{2,}/g, ' ').replace(/^\s+/, '');
+
+      if (this.value !== normalizedValue) {
+        this.value = normalizedValue;
+      }
+
+      updateSubmitState();
+    });
+
+    emailElement.addEventListener('input', function () {
+      const normalizedValue = normalizeEmail(this.value);
+
+      if (this.value !== normalizedValue) {
+        this.value = normalizedValue;
+      }
+
+      updateSubmitState();
+    });
+
+    if (phoneElement) {
+      phoneElement.addEventListener('input', function () {
+        const normalizedValue = formatBrazilianMobilePhone(this.value);
+
+        if (this.value !== normalizedValue) {
+          this.value = normalizedValue;
+        }
+
+        syncFieldCompleteState(this);
+      });
+    }
+
+    window.addEventListener('pageshow', syncAllFieldCompleteStates);
+    window.setTimeout(syncAllFieldCompleteStates, 250);
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      updateSubmitState();
+
+      if (submitButton && submitButton.disabled) {
+        return;
+      }
+
       abcNewsletterEnviar();
     });
 
-    window.removeEventListener('scroll', abcNewsletterPopup);
-  }
+    dismissButton.addEventListener('click', function () {
+      writePopupState(WIDGET_STATE_EXPANDED);
+      closePopup(WIDGET_STATE_EXPANDED);
+    });
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // if (document.cookie.indexOf('popup-newsletter-abc-home') < 0 && getCookie("sf_regional_cep")) {
-    if (document.cookie.indexOf('popup-newsletter-abc-home')) {
-      window.addEventListener("scroll", abcNewsletterPopup);
+    if (feedbackCloseButton) {
+      feedbackCloseButton.addEventListener('click', function () {
+        if (feedbackPopup?.dataset.tone === 'success') {
+          closePopup(REGISTERED_STATE);
+          return;
+        }
+
+        hideFeedback();
+      });
     }
-  });
+
+    if (widgetOpenButton) {
+      widgetOpenButton.addEventListener('click', function () {
+        openPopup();
+      });
+    }
+
+    const widgetPanel = widget?.querySelector('[data-widget-panel]');
+
+    function handleWidgetToggle() {
+      const nextState = getWidgetState() === WIDGET_STATE_COLLAPSED ? WIDGET_STATE_EXPANDED : WIDGET_STATE_COLLAPSED;
+      writePopupState(nextState);
+      showWidget(nextState);
+    }
+
+    if (widgetPanel) {
+      widgetPanel.addEventListener('click', function (event) {
+        if (event.target.closest('[data-widget-open]')) return;
+        event.stopPropagation();
+        handleWidgetToggle();
+      });
+    }
+
+    if (widgetToggleButton) {
+      widgetToggleButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        handleWidgetToggle();
+      });
+    }
+
+    updateSubmitState();
+
+    const currentState = getPopupState();
+
+    if (currentState === REGISTERED_STATE) {
+      hideWidget();
+      return;
+    }
+
+    if (currentState === WIDGET_STATE_COLLAPSED || currentState === WIDGET_STATE_EXPANDED) {
+      showWidget(currentState);
+      return;
+    }
+
+    if (isHome) {
+      window.setTimeout(openPopup, POPUP_OPEN_DELAY_MS);
+    } else {
+      showWidget(WIDGET_STATE_EXPANDED);
+    }
+  })();
 </script>

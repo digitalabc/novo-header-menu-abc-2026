@@ -6,10 +6,15 @@
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construcao" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ asset type: "css" paths: ["semana_do_cliente"] }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  {{ asset type: "css" paths: ["lp-montserrat-fonts"] }}
+  {{ asset type: "css" paths: ["lp-montserrat-override"] }}
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
-<body>
+<body class="lp-campanha">
   {{ gtm_config_body gtm_id: common.gtm_id }}
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
@@ -297,8 +302,6 @@
   {{ footer products:common.lighbox_products.products.nodes }}
 
   {{ sdk_client }}
-
-  {{ old_newsletter_popup }}
 
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "semana_do_cliente", "whats_form"] }}
 </body>

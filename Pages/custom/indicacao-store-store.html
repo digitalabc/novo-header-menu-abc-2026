@@ -6,15 +6,12 @@
     {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
     {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
     {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+    {{ asset type: "css" paths: ["indicacao-store"] }}
 </head>
-{{ asset type: "css" paths: ["indicacao-store"] }}
 
 <body class="hotsite">
     {{ gtm_config_body gtm_id: common.gtm_id }}
     <div class="container">
-
-        <!-- SEO -->
-        {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true}}
 
         <div class="indicacao-store">
             <div class="block-title">
@@ -208,6 +205,8 @@
         </div>
 
         <p class="roda-form">&nbsp;</p>
+
+        {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true}}
     </div>
 
     {{ gtm_config gtm_id: common.gtm_id }}

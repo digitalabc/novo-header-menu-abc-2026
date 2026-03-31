@@ -10,7 +10,21 @@
   {{ gtm_product_view product: data.product  }}
 </head>
 
-<body class="product">
+{{~
+    product = data.product
+    product_has_specialist_popup = false
+    is_pisos = false
+    lista_categoria_popup = ["ARGAMASSAS/REJUNTES", "PISOS E REVESTIMENTOS", "ACESSORIOS/LOUCA", "ASSENTO ALMOFADADO", "ASSENTO ESPECIAL", "ASSENTO INFANTIL", "ASSENTO LINHA ESPECIFICA", "ASSENTO SOFT CLOSE", "ASSENTO TPJ", "ASSENTO TPK", "ASSENTOS MDF", "ASSENTOS POLYESTER", "BANCA GRANITO", "BANCA SINTETICO", "BANCA VIDRO", "BIDE LOUCA", "COLUNA LOUÃ‡A", "COLUNA SINTETICA", "CUBA POLYESTER APOIO", "CUBAS LOUÃ‡A APOIO", "CUBAS LOUÃ‡A EMBUTIR", "CUBAS LOUÃ‡A OUTROS", "CUBAS LOUÃ‡A SEMI ENCAIXE", "CUBAS LOUÃ‡A SOBREPOR", "CUBAS MARMORE/GRANITO", "CUBAS QUARTZO", "CUBAS VIDRO APOIO", "ECONOMICO", "ESPECIAIS", "KIT LOUÃ‡AS", "LAVATORIOS LOUÃ‡A COLUNA", "LAVATORIOS LOUÃ‡A DE PISO", "LAVATORIOS LOUÃ‡A OUTROS", "LAVATORIOS LOUÃ‡A SUSPENSO", "LUXO", "MEDIO LUXO", "MICTORIO LOUCA", "OUTROS/LOUCA", "RETANGULAR", "SUPER LUXO", "TANQUE LOUCA", "TANQUE SIMPLES", "TANQUE/PLASTICO"]
+~}}
+{{~ for category in product.product_categories ~}}
+  {{~ if (lista_categoria_popup | array.contains category.name) ~}}
+    {{ product_has_specialist_popup = true }}
+  {{~ end ~}}
+{{~ end ~}}
+{{ is_pisos = (product.product_categories | array.filter @(do; ret $0.name | string.downcase | string.contains "pisos e revestimentos" ;end) | array.size > 0) || (product.breadcrumbs | array.filter @(do; ret $0.text | string.downcase | string.contains "pisos e revestimentos" ;end) | array.size > 0) }}
+{{ product_has_specialist_popup = product_has_specialist_popup || is_pisos }}
+
+<body class="product"{{~ if product_has_specialist_popup ~}} data-specialist-popup="true"{{~ end ~}}>
   {{ gtm_config_body gtm_id: common.gtm_id }}
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
@@ -19,7 +33,6 @@
   {{~ 
       product = data.product
       shop = data.shop
-      product_has_specialist_popup = false
       product_hide_pix = false
       product_show_coupon = false
       
@@ -36,6 +49,9 @@
       {{ product_has_specialist_popup = true }}
     {{~ end ~}}
   {{~ end ~}}
+
+  {{ is_pisos = (product.product_categories | array.filter @(do; ret $0.name | string.downcase | string.contains "pisos e revestimentos" ;end) | array.size > 0) || (product.breadcrumbs | array.filter @(do; ret $0.text | string.downcase | string.contains "pisos e revestimentos" ;end) | array.size > 0) }}
+  {{ product_has_specialist_popup = product_has_specialist_popup || is_pisos }}
 
   {{ skusEspeciais = ["10826", "29512", "50073", "31624", "31266", "46936", "51252", "47379", "39082", "65266", "56914", "00661", "28149", "58812", "64995", "62360", "29457", "64954", "47745", "34647"] }}
   {{~ if (product.product_brand?.name | string.downcase | string.contains "deca") || (skusEspeciais | array.contains product.sku ) ~}}
@@ -141,9 +157,7 @@
 
   {{ product_floating product: product }}
 
-  {{~ if product_has_specialist_popup ~}}
   {{ product_popup }}
-  {{~ end ~}}
 
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden;"></div>
 
@@ -228,7 +242,7 @@
 
   {{ sdk_client }}
 
-  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "elevate-zoom", "whats_form", "product_navigation"]}}
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "topbar", "product", "mini_cart", "navbar", "cart_from_spot", "user_login", "wishlist", "buy_together", "shipping_quotes", "swiper_product", "newsletter", "lightbox", "offcanvas", "event_manager", "sharpspring", "elevate-zoom", "product_navigation"]}}
 
   {{ asset type: "js" paths: ["whats_form"] options:"async"}}
 
@@ -236,7 +250,7 @@
     {{ asset type: "js" paths: ["product_cupom"]}}
   {{~ end ~}}
 
-  {{ asset type: "js" paths: ["virtual_reality"] }}
+  <!-- SDK e viewer da R2U desativados: recurso de AR não utilizado atualmente -->
   {{ asset type: "js" paths: ["buy_together"] }}
 </body>
 

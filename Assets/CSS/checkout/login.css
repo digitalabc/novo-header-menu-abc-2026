@@ -1,6 +1,31 @@
 :root {
-  --font-primary: "Satoshi Variable", sans-serif;
-  --font-secondary: "Inter", sans-serif;
+  /* Pesos */
+  --peso-fonte-black: 900;
+  --peso-fonte-extrabold: 800;
+  --peso-fonte-bold: 700;
+  --peso-fonte-semibold: 600;
+  --peso-fonte-medium: 500;
+  --peso-fonte-regular: 400;
+  --peso-fonte-light: 300;
+
+  /* Escala */
+  --fonte-24: 24px;
+  --fonte-20: 20px;
+  --fonte-16: 16px;
+  --fonte-14: 14px;
+  --fonte-12: 12px;
+  --fonte-11: 11px;
+  --fonte-8: 8px;
+
+  /* Uso semântico */
+  --fonte-titulo-grande: 20px;
+  --fonte-titulo: 16px;
+  --fonte-subtitulo: 14px;
+  --fonte-paragrafo: 12px;
+  --fonte-texto-auxiliar: 8px;
+
+  --font-primary: var(--font-brand);
+  --font-secondary: var(--font-brand);
   --color-primary: #333;
   --color-secondary: #838383;
   --color-accent: #0092ff;
@@ -17,7 +42,7 @@
 
 body {
   margin: 0;
-  font-family: var(--font-primary);
+  font-family: var(--font-brand);
   background: var(--color-bg);
   font-size: 16px;
   line-height: 1.5;
@@ -136,7 +161,7 @@ input:-webkit-autofill {
 
   .checkout-footer-left h3 {
     color: #1F1F1F;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 18px;
     font-style: normal;
     text-align: center;
@@ -146,7 +171,7 @@ input:-webkit-autofill {
 
   .checkout-footer-left span {
     color: #848484;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -197,7 +222,7 @@ input:-webkit-autofill {
   .checkout-copyright {
     color: #848484;
     text-align: center;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -698,7 +723,7 @@ h3:nth-of-type(2) {
   position: relative;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  font-family: 'Satoshi Variable', sans-serif;
+  font-family: var(--font-brand);
 }
 
 .login__social .wake-login-social>div button:hover {
@@ -826,7 +851,7 @@ h3:nth-of-type(2) {
   padding: 14px 20px;
   color: #0FA848;
 
-  font-family: Satoshi Variable;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -849,7 +874,7 @@ h3:nth-of-type(2) {
 
 .footer_mobile_bottom .price-line span {
   color: #848484;
-  font-family: Satoshi Variable;
+  font-family: var(--font-brand);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -858,7 +883,7 @@ h3:nth-of-type(2) {
 
 .footer_mobile_bottom .price-line .discount {
   color: #0FA848;
-  font-family: Satoshi Variable;
+  font-family: var(--font-brand);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -867,7 +892,7 @@ h3:nth-of-type(2) {
 
 .footer_mobile_bottom .price-line .total {
   color: #333;
-  font-family: Satoshi Variable;
+  font-family: var(--font-brand);
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -934,7 +959,7 @@ h3:nth-of-type(2) {
 
   .checkout-footer-left h3 {
     color: #1F1F1F;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -943,7 +968,7 @@ h3:nth-of-type(2) {
 
   .checkout-footer-left span {
     color: #848484;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -969,7 +994,7 @@ h3:nth-of-type(2) {
   .checkout-copyright {
     color: #848484;
     text-align: center;
-    font-family: Satoshi Variable;
+    font-family: var(--font-brand);
     font-size: 11px;
     font-style: normal;
     font-weight: 400;

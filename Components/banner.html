@@ -25,9 +25,19 @@
           <ul class="swiper-wrapper">
             {{~ for banner in banners ~}}
               {{~ banner_title = banner.alt_text ?? "banner" ~}}
+              {{~ banner_loading = null ~}}
+              {{~ banner_decoding = null ~}}
+              {{~ banner_fetchpriority = null ~}}
+              {{~ if type == "fullbanner" ~}}
+                {{~ banner_decoding = "async" ~}}
+                {{~ if !for.first ~}}
+                  {{~ banner_loading = "lazy" ~}}
+                  {{~ banner_fetchpriority = "low" ~}}
+                {{~ end ~}}
+              {{~ end ~}}
               <li class="swiper-slide">
                 <a {{ if blank }} target="_blank" {{ end }} href="{{banner.url_on_click}}" >
-                  {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title ~}}
+                  {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title loading: banner_loading decoding: banner_decoding fetchpriority: banner_fetchpriority ~}}
                 </a>
               </li>
             {{~ end ~}}

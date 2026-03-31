@@ -95,7 +95,7 @@
 }
 
 .indicacao-store form.atendimento-form .form-alert p {
-  font-family: "Montserrat";
+  font-family: var(--font-brand);
   font-size: 12px;
   font-weight: 300;
   line-height: 14.63px;

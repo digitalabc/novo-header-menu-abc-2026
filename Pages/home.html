@@ -13,6 +13,7 @@
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
   </header>
+
   <!-- Fullbanner -->
   <section class="fullbanner desktop">
     {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
@@ -1276,11 +1277,10 @@
 
   {{ sdk_client }}
 
-  {{ old_newsletter_popup }}
-
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "sharpspring", "components", "navbar", "product",
-  "cart_from_spot", "mini_cart", "user_login", "newsletter", "wishlist", "shipping_quotes", "topbar", "swiper_home",
-  "lightbox", "offcanvas", "event_manager", "whats_form"]}}
+  "cart_from_spot", "mini_cart", "user_login", "shipping_quotes", "topbar",
+  "offcanvas", "event_manager"]}}
+  {{ asset type: "js" paths: ["newsletter", "lightbox", "whats_form"] options:"async"}}
 </body>
 
 </html>

@@ -11,8 +11,9 @@
 
 {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
 {{ page_size = data.hotsite.page_size }}
+{{ show_specialist_popup = data.hotsite.breadcrumbs | array.filter @(do; ret $0.text | string.downcase | string.contains "pisos e revestimentos" ;end) | array.size > 0 }}
 
-<body class="hotsite{{ if products.total_count == 0 }} empty{{ end }}">
+<body class="hotsite{{ if products.total_count == 0 }} empty{{ end }}"{{~ if show_specialist_popup ~}} data-specialist-popup="true"{{~ end ~}}>
   {{ gtm_config_body gtm_id: common.gtm_id }}          
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes }}
@@ -20,8 +21,6 @@
 
   <div class="container">
     {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
-
-    <!-- SEO -->
     {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true}}
 
     <!-- O que você procura hoje -->
@@ -79,6 +78,7 @@
   {{ livelo_popup }}
 
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>
+  {{ product_popup }}
 
   {{ footer products:common.lighbox_products.products.nodes }}
 

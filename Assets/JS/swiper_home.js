@@ -133,12 +133,8 @@ var swiper = new Swiper(".showcase-1 .swiper", {
       spaceBetween: 5,
     },
     1090: {
-      slidesPerView: 4,
-      spaceBetween: 20
-    },
-    1090: {
-      slidesPerView: 5,
-      spaceBetween: 20
+      slidesPerView: 6,
+      spaceBetween: 16
     }
   }
 });
@@ -159,8 +155,8 @@ var swiper = new Swiper(".showcase-2 .swiper", {
       spaceBetween: 20
     },
     1090: {
-      slidesPerView: 5,
-      spaceBetween: 20
+      slidesPerView: 6,
+      spaceBetween: 16
     }
   }
 });

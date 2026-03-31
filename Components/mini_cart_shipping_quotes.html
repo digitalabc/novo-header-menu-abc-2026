@@ -1,7 +1,7 @@
 <div class="minicart-shipping">
   <form class="minicart__form" onsubmit='ShippingQuoteSubmit(event, "", "{{checkout_id}}")'>
     <input class="minicart__input" type="text" id="minicart-shipping-quote-cep" name="shipping-quote-cep"
-      placeholder="Digite seu CEP" maxlength="9" onkeypress="cepMask(this)" autocomplete="off" inputmode="numeric">
+      placeholder="Digite seu CEP" maxlength="9" onkeypress="cepMask(this, event)" autocomplete="off" inputmode="numeric">
     <input class="minicart__submit" type="submit" value="Consultar">
   </form>
   <div class="minicart__help">

@@ -1,7 +1,8 @@
 .topbar
-  background: $black
-  color: #000000;
-  font-size: 13px;
+  background #0D3547
+  color #fff
+  font-size var(--fonte-11)
+  font-family var(--font-brand)
 
   &__container
     @extends $container
@@ -28,12 +29,17 @@
         color #fff
         transition $transition
         &:hover
-          color $primary
+          color #D4AF37
         svg
           margin-right 5px
+        &:not(.topbar__prime-logo)
+          svg
+            path
+              fill currentColor
       
       strong
-        font-weight 600
+        font-weight var(--peso-fonte-semibold)
+        color inherit
 
   &__left
   &__right

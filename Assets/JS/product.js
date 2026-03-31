@@ -88,24 +88,7 @@ async function renderAttributes(attributeList, productId) {
   const response = await client.snippet.render("product_view_snippet.html", "product.graphql", variables);
   replaceInnerHtml(response, elementId);
 
-  var thumbs = new Swiper('.gallery-thumbs', {
-    spaceBetween: 30,
-    slidesPerView: 4,
-    slidesPerGroup: 4,
-    freeMode: true,
-    watchSlidesProgress: true,
-    navigation: {
-      nextEl: '.gallery .swiper-button-next',
-      prevEl: '.gallery .swiper-button-prev',
-    },
-  });
-
-  var slider = new Swiper('.gallery-slider', {
-    thumbs: {
-      swiper: thumbs,
-    },
-    noSwiping: true
-  });
+  window.initializeProductGallerySwipers?.();
 
 }
 
@@ -485,7 +468,9 @@ async function backInStockOnClick(e) {
   const success = await client.product.createRestockAlert(bisInput);
 
   if (success) {
-    sendSharpSpring({ email: email, productVariantId, nome: `${productSku}#${(new Date()).toLocaleString('pt-BR').replace(/\D+/g, '')}` }, 'aviseme');
+    if (typeof sendSharpSpring === "function") {
+      sendSharpSpring({ email: email, productVariantId, nome: `${productSku}#${(new Date()).toLocaleString('pt-BR').replace(/\D+/g, '')}` }, 'aviseme');
+    }
 
     alert.innerHTML = 'Email cadastrado com sucesso!';
     setTimeout(function () {
@@ -521,7 +506,9 @@ async function spotBackInStockOnClick(e) {
   }
   const success = await client.product.createRestockAlert(bisInput);
   if (success) {
-    sendSharpSpring({ email: email, productVariantId, nome: `${productSku}#${(new Date()).toLocaleString('pt-BR').replace(/\D+/g, '')}` }, 'aviseme');
+    if (typeof sendSharpSpring === "function") {
+      sendSharpSpring({ email: email, productVariantId, nome: `${productSku}#${(new Date()).toLocaleString('pt-BR').replace(/\D+/g, '')}` }, 'aviseme');
+    }
     alert.innerHTML = 'Email cadastrado com sucesso!';
     setTimeout(function () {
       alert.innerHTML = '';

@@ -19,7 +19,9 @@ async function newsletterSubmit(form) {
 
   if (response) {
     showNewsletterAlert(newsletterAlert);
-    sendSharpSpring({nome: nameElement.value, email: emailElement.value, telefone: ''}, "newsletter");
+    if (typeof sendSharpSpring === "function") {
+      sendSharpSpring({nome: nameElement.value, email: emailElement.value, telefone: ''}, "newsletter");
+    }
   }
   else {
     showNewsletterError(newsletterAlert);
@@ -59,9 +61,26 @@ function showNewsletterAlert(newsletterAlert) {
 /**
  * Newsletter checkbox toggle
  */
-const newsletterCheckbox = document.querySelector("#newsletter-lightbox .checkbox__input");
-const newsletterButton = document.querySelector("#newsletter-lightbox .newsletter__button");
+function initNewsletterLightboxControls() {
+  const newsletterLightbox = document.getElementById("newsletter-lightbox");
 
-newsletterCheckbox.addEventListener('change', function (e) {
-  newsletterButton.disabled = newsletterButton.disabled ? false : true;
-})
+  if (!newsletterLightbox || newsletterLightbox.dataset.newsletterInitialized === "true") {
+    return;
+  }
+
+  const newsletterCheckbox = newsletterLightbox.querySelector(".checkbox__input");
+  const newsletterButton = newsletterLightbox.querySelector(".newsletter__button");
+
+  if (!newsletterCheckbox || !newsletterButton) {
+    return;
+  }
+
+  newsletterCheckbox.addEventListener("change", function () {
+    newsletterButton.disabled = newsletterButton.disabled ? false : true;
+  });
+
+  newsletterLightbox.dataset.newsletterInitialized = "true";
+}
+
+initNewsletterLightboxControls();
+window.addEventListener("lazyContentHydrated", initNewsletterLightboxControls);

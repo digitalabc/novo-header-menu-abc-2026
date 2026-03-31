@@ -3,6 +3,28 @@ $secondary = #E4FF72;
 $black = #392F2D;
 $buy-btn = #0FA848
 
+$peso-fonte-light = 300
+$peso-fonte-regular = 400
+$peso-fonte-medium = 500
+$peso-fonte-semibold = 600
+$peso-fonte-bold = 700
+$peso-fonte-extrabold = 800
+$peso-fonte-black = 900
+
+$fonte-8 = 8px
+$fonte-11 = 11px
+$fonte-12 = 12px
+$fonte-14 = 14px
+$fonte-16 = 16px
+$fonte-20 = 20px
+$fonte-24 = 24px
+
+$fonte-titulo-grande = $fonte-20
+$fonte-titulo = $fonte-16
+$fonte-subtitulo = $fonte-14
+$fonte-paragrafo = $fonte-12
+$fonte-texto-auxiliar = $fonte-8
+
 $container
   max-width 1300px
   margin 0 auto
@@ -25,7 +47,7 @@ $default-button
   color #fff
   text-transform uppercase
   font-weight bold
-  font-size 16px
+  font-size $fonte-titulo
   transition $transition
 
   &:hover
@@ -34,3 +56,46 @@ $default-button
 desktop = unquote("screen and (min-width: 992px)");
 mobile = unquote("screen and (max-width: 991px)");
 tablet = unquote("screen and (min-width: 991px) and (max-width: 1330px)");
+
+@font-face
+  font-family "Satoshi"
+  src url("../Fonts/prime/Satoshi-Variable.woff2") format("woff2"), url("../Fonts/prime/Satoshi-Variable.woff") format("woff")
+  font-style normal
+  font-weight 100 900
+  font-display swap
+
+@font-face
+  font-family "Bebas Neue"
+  src url("../Fonts/bebas-neue/BebasNeue-Regular.woff") format("woff")
+  font-style normal
+  font-weight 400
+  font-display swap
+
+:root
+  --font-brand "Satoshi", sans-serif
+  --font-display "Bebas Neue", sans-serif
+  --font-ui-legacy "Open Sans", arial, sans-serif
+  --font-primary var(--font-brand)
+  --font-secondary var(--font-brand)
+
+  --peso-fonte-black 900
+  --peso-fonte-extrabold 800
+  --peso-fonte-bold 700
+  --peso-fonte-semibold 600
+  --peso-fonte-medium 500
+  --peso-fonte-regular 400
+  --peso-fonte-light 300
+
+  --fonte-24 24px
+  --fonte-20 20px
+  --fonte-16 16px
+  --fonte-14 14px
+  --fonte-12 12px
+  --fonte-11 11px
+  --fonte-8 8px
+
+  --fonte-titulo-grande var(--fonte-20)
+  --fonte-titulo var(--fonte-16)
+  --fonte-subtitulo var(--fonte-14)
+  --fonte-paragrafo var(--fonte-12)
+  --fonte-texto-auxiliar var(--fonte-8)

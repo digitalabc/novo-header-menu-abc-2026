@@ -3587,14 +3587,14 @@
         {
           "name": "Taquaral",
           "adress": "Av. Dr. Armando Sales de Oliveira, 175 - Taquaral, Campinas - SP, 13076-015",
-          "phone": "",
+          "phone": "(19) 97105-6079",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/campinas/taquaral",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
       ]

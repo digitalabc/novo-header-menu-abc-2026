@@ -7,7 +7,7 @@
     {{ default_title_buy_list = data.buy_list.product_name | string.append " | ABC da Construção" }}
     {{ header default_title: default_title_buy_list seo: buy_list.seo }}
 </head>
-
+{{data | debug.log}}
 <body class="product buy_list">
     {{ gtm_config_body gtm_id: common.gtm_id }}          
     <header>

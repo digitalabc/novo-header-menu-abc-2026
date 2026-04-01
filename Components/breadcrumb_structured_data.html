@@ -1,0 +1,24 @@
+{{# breadcrumbs | debug.log}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.abcdaconstrucao.com.br/"
+    },
+    {{for item in breadcrumbs}}
+    {{name = item.text | string.split "/"}}
+    {
+      "@type": "ListItem",
+      "position": {{for.index + 2}},
+      "name": "{{name[0]}}",
+      "item": "https://www.abcdaconstrucao.com.br{{item.link}}"
+    }{{if ( breadcrumbs.size - for.index) != 1 }},{{end}}
+    {{end}}
+  ]
+}
+</script>

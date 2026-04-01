@@ -637,6 +637,14 @@
     "availableInAllComponents": true
   },
   {
+    "name": "breadcrumb_structured_data",
+    "path": "breadcrumb_structured_data.html",
+    "params": [],
+    "inheritVariables": false,
+    "availableInAllPages": true,
+    "availableInAllComponents": true
+  },
+  {
     "name": "product_structured_data",
     "path": "product_structured_data.html",
     "params": [

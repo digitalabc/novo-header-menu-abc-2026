@@ -8,6 +8,7 @@
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+  {{ breadcrumb_structured_data breadcrumbs: data.hotsite.breadcrumbs }}
 </head>
 
 <body class="category">

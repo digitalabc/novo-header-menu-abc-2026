@@ -1,5 +1,5 @@
 {{~ capture abc_logo_source ~}}
-  {{- store.urls.static_img}}header/logo-abc.svg?theme={{store.theme -}}&v={{store.last_modified-}}
+{{- store.urls.static_img}}header/logo-abc.svg?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 
 <style>
@@ -85,7 +85,7 @@
     -webkit-backdrop-filter: blur(10px) saturate(1.03);
   }
 
-  #abc-newsletter-popup.abc-newsletter-popup-feedback-open .abc-newsletter-popup-shell > :not(.abc-newsletter-popup-feedback) {
+  #abc-newsletter-popup.abc-newsletter-popup-feedback-open .abc-newsletter-popup-shell> :not(.abc-newsletter-popup-feedback) {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -126,6 +126,10 @@
       background: rgba(15, 23, 42, 0.78);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
+    }
+
+    .abc-newsletter-widget {
+      z-index: 999;
     }
 
     .abc-newsletter-popup-modal {
@@ -264,7 +268,7 @@
     animation-duration: 2.8s;
   }
 
-  .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker > span {
+  .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker>span {
     font-size: 0.6rem;
     line-height: 1.05;
     letter-spacing: 0.03em;
@@ -272,33 +276,34 @@
     text-shadow: none;
   }
 
-    @keyframes abcNewsletterCouponWiggle {
+  @keyframes abcNewsletterCouponWiggle {
+
     0%,
     28%,
     100% {
-        transform: rotate(-7deg) scale(0.88);
-      }
-
-      34% {
-        transform: rotate(-1deg) scale(0.91);
-      }
-
-      40% {
-        transform: rotate(-12deg) scale(0.87);
-      }
-
-      46% {
-        transform: rotate(-3deg) scale(0.9);
-      }
-
-      52% {
-        transform: rotate(-9deg) scale(0.87);
-      }
-
-      60% {
-        transform: rotate(-7deg) scale(0.88);
-      }
+      transform: rotate(-7deg) scale(0.88);
     }
+
+    34% {
+      transform: rotate(-1deg) scale(0.91);
+    }
+
+    40% {
+      transform: rotate(-12deg) scale(0.87);
+    }
+
+    46% {
+      transform: rotate(-3deg) scale(0.9);
+    }
+
+    52% {
+      transform: rotate(-9deg) scale(0.87);
+    }
+
+    60% {
+      transform: rotate(-7deg) scale(0.88);
+    }
+  }
 
   .abc-newsletter-popup-hero {
     display: flex;
@@ -328,13 +333,13 @@
     animation: abcNewsletterBadgePulse 2.8s ease-in-out infinite;
   }
 
-  .abc-newsletter-popup-kicker > span {
+  .abc-newsletter-popup-kicker>span {
     font-size: var(--fonte-11);
     text-align: center;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
   }
 
-  .abc-newsletter-popup-kicker > small {
+  .abc-newsletter-popup-kicker>small {
     display: block;
     font-size: var(--fonte-8);
     font-weight: var(--peso-fonte-extrabold);
@@ -344,6 +349,7 @@
   }
 
   @keyframes abcNewsletterBadgePulse {
+
     0%,
     100% {
       transform: scale(1);
@@ -521,12 +527,12 @@
     border: 1px solid rgba(15, 23, 42, 0.06);
   }
 
-  .abc-newsletter-popup-consent > input {
+  .abc-newsletter-popup-consent>input {
     margin-top: 2px;
     flex-shrink: 0;
   }
 
-  .abc-newsletter-popup-consent > span {
+  .abc-newsletter-popup-consent>span {
     color: var(--abc-popup-copy);
     font-size: var(--fonte-8);
     line-height: 1.35;
@@ -591,6 +597,7 @@
   }
 
   @keyframes abcNewsletterPrimaryPulse {
+
     0%,
     100% {
       background: var(--abc-popup-green);
@@ -640,7 +647,7 @@
     padding: 0;
   }
 
-  .abc-newsletter-popup-footer > p {
+  .abc-newsletter-popup-footer>p {
     margin: 0;
     color: #64748b;
     font-size: var(--fonte-8);
@@ -648,8 +655,8 @@
     text-align: center;
   }
 
-  .abc-newsletter-popup-footer > p > a,
-  .abc-newsletter-popup-footer > p > a:visited {
+  .abc-newsletter-popup-footer>p>a,
+  .abc-newsletter-popup-footer>p>a:visited {
     color: inherit;
     text-decoration: underline;
   }
@@ -1002,7 +1009,7 @@
     position: fixed;
     left: 0;
     bottom: 100px;
-    z-index: 999;
+    z-index: 995;
     display: flex;
     align-items: stretch;
     opacity: 0;
@@ -1193,7 +1200,7 @@
       min-width: 0;
     }
 
-  
+
     .abc-newsletter-popup-ribbon {
       position: absolute;
       top: -90px;
@@ -1217,7 +1224,7 @@
       min-width: 126px;
     }
 
-    .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker > span {
+    .abc-newsletter-popup-ribbon .abc-newsletter-popup-kicker>span {
       white-space: nowrap;
     }
 
@@ -1257,11 +1264,11 @@
       padding: 8px 10px;
     }
 
-    .abc-newsletter-popup-consent > span {
+    .abc-newsletter-popup-consent>span {
       font-size: var(--fonte-8);
     }
 
-    .abc-newsletter-popup-footer > p {
+    .abc-newsletter-popup-footer>p {
       font-size: var(--fonte-8);
       line-height: 1.35;
     }
@@ -1344,26 +1351,14 @@
   }
 </style>
 
-<div
-  id="abc-newsletter-popup"
-  class="abc-newsletter-popup-overlay"
-  role="dialog"
-  aria-modal="true"
-  aria-hidden="true"
-  aria-labelledby="abc-newsletter-popup-title"
-  aria-describedby="abc-newsletter-popup-desc"
->
+<div id="abc-newsletter-popup" class="abc-newsletter-popup-overlay" role="dialog" aria-modal="true" aria-hidden="true"
+  aria-labelledby="abc-newsletter-popup-title" aria-describedby="abc-newsletter-popup-desc">
   <div class="abc-newsletter-popup-modal">
     <div class="abc-newsletter-popup-shell">
       <div class="abc-newsletter-popup-top">
         <div class="abc-newsletter-popup-brandmark" aria-hidden="true">
-          <img
-            class="abc-newsletter-popup-brandmark-logo"
-            src="{{ abc_logo_source }}"
-            alt="ABC da Construção"
-            width="76"
-            height="14"
-          >
+          <img class="abc-newsletter-popup-brandmark-logo" src="{{ abc_logo_source }}" alt="ABC da Construção"
+            width="76" height="14">
         </div>
       </div>
 
@@ -1391,65 +1386,24 @@
         <div class="abc-newsletter-popup-inputs">
           <div class="abc-newsletter-popup-inputs-row">
             <div class="abc-newsletter-popup-field">
-              <input
-                class="input"
-                id="abc-popup-input-nome"
-                name="nome"
-                maxlength="50"
-                placeholder="ex: Maria"
-                type="text"
-                value=""
-                autocomplete="name"
-                enterkeyhint="next"
-                required
-              />
+              <input class="input" id="abc-popup-input-nome" name="nome" maxlength="50" placeholder="ex: Maria"
+                type="text" value="" autocomplete="name" enterkeyhint="next" required />
             </div>
             <div class="abc-newsletter-popup-field">
-              <input
-                class="input"
-                id="abc-popup-input-sobrenome"
-                name="sobrenome"
-                maxlength="50"
-                placeholder="ex: Silva"
-                type="text"
-                value=""
-                autocomplete="family-name"
-                enterkeyhint="next"
-                required
-              />
+              <input class="input" id="abc-popup-input-sobrenome" name="sobrenome" maxlength="50"
+                placeholder="ex: Silva" type="text" value="" autocomplete="family-name" enterkeyhint="next" required />
             </div>
           </div>
           <div class="abc-newsletter-popup-inputs-col">
             <div class="abc-newsletter-popup-field">
-              <input
-                class="input"
-                id="abc-popup-input-email"
-                name="email"
-                maxlength="70"
-                placeholder="ex: nome@exemplo.com.br"
-                type="email"
-                value=""
-                autocomplete="email"
-                inputmode="email"
-                pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}"
-                spellcheck="false"
-                autocapitalize="off"
-                required
-              />
+              <input class="input" id="abc-popup-input-email" name="email" maxlength="70"
+                placeholder="ex: nome@exemplo.com.br" type="email" value="" autocomplete="email" inputmode="email"
+                pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" spellcheck="false" autocapitalize="off" required />
             </div>
             <div class="abc-newsletter-popup-field">
-              <input
-                class="input"
-                id="abc-popup-input-telefone"
-                name="telefone"
-                maxlength="15"
-                placeholder="ex: (XX) XXXXX-XXXX"
-                type="tel"
-                value=""
-                autocomplete="tel"
-                inputmode="tel"
-                enterkeyhint="next"
-              />
+              <input class="input" id="abc-popup-input-telefone" name="telefone" maxlength="15"
+                placeholder="ex: (XX) XXXXX-XXXX" type="tel" value="" autocomplete="tel" inputmode="tel"
+                enterkeyhint="next" />
             </div>
           </div>
 
@@ -1477,7 +1431,8 @@
       <div class="abc-newsletter-popup-footer">
         <p>
           *Válido para a primeira compra no e-commerce, em pedidos acima de R$700. Limitado a 1 uso por CPF.
-          <a href="https://abcdaconstrucao.com.br/central-de-atendimento/como-comprar" target="_blank" rel="noopener noreferrer">
+          <a href="https://abcdaconstrucao.com.br/central-de-atendimento/como-comprar" target="_blank"
+            rel="noopener noreferrer">
             Consulte regras e produtos elegíveis.
           </a>
         </p>
@@ -1514,12 +1469,18 @@
   </div>
 </div>
 
-<div id="abc-newsletter-widget" class="abc-newsletter-widget" aria-hidden="true">
+<div id="abc-newsletter-widget" class="abc-newsletter-widget" aria-hidden="true" data-widget-state="widget-expanded">
   <div class="abc-newsletter-widget-panel" data-widget-panel>
     <span class="abc-newsletter-widget-label-vertical">PRIMEIRA COMPRA</span>
-    <button class="abc-newsletter-widget-toggle" type="button" aria-label="Recolher lembrete" aria-expanded="true" data-widget-toggle>
-      <svg data-arrow-expanded viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-      <svg data-arrow-collapsed viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M9 18l6-6-6-6"/></svg>
+    <button class="abc-newsletter-widget-toggle" type="button" aria-label="Recolher lembrete" aria-expanded="true"
+      data-widget-toggle>
+      <svg data-arrow-expanded viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+      <svg data-arrow-collapsed viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        style="display:none">
+        <path d="M9 18l6-6-6-6" />
+      </svg>
     </button>
     <div class="abc-newsletter-widget-body">
       <p class="abc-newsletter-widget-copy">Garanta agora mesmo seus <span class="abc-widget-value">R$100,00</span></p>
@@ -1561,10 +1522,9 @@
     const widgetOpenButton = widget?.querySelector('[data-widget-open]');
     const widgetToggleButton = widget?.querySelector('[data-widget-toggle]');
 
-    if (!form || !nameElement || !surnameElement || !emailElement || !dismissButton) return;
-
     if (window.__abcNewsletterPopupScriptBound) return;
     window.__abcNewsletterPopupScriptBound = true;
+    const hasPopupForm = Boolean(form && nameElement && surnameElement && emailElement && dismissButton);
 
     const STORAGE_KEY = 'abc-newsletter-popup-state';
     const POPUP_OPEN_DELAY_MS = 2000;
@@ -1682,6 +1642,7 @@
         return;
       }
 
+      widget.dataset.widgetState = state;
       widget.classList.add('abc-newsletter-widget-open');
       widget.classList.toggle('abc-newsletter-widget-expanded', state === WIDGET_STATE_EXPANDED);
       widget.classList.toggle('abc-newsletter-widget-collapsed', state === WIDGET_STATE_COLLAPSED);
@@ -1697,6 +1658,7 @@
       widget.classList.remove('abc-newsletter-widget-open');
       widget.classList.remove('abc-newsletter-widget-expanded');
       widget.classList.remove('abc-newsletter-widget-collapsed');
+      widget.dataset.widgetState = 'hidden';
       widget.setAttribute('aria-hidden', 'true');
     };
 
@@ -1743,7 +1705,7 @@
       syncFieldCompleteState(phoneElement);
     };
     const updateSubmitState = () => {
-      if (!submitButton) {
+      if (!submitButton || !nameElement || !surnameElement || !emailElement) {
         return;
       }
 
@@ -1778,8 +1740,10 @@
       popup.classList.add('abc-newsletter-popup-open');
       popup.setAttribute('aria-hidden', 'false');
       setScrollLock(true);
-      updateSubmitState();
-      window.setTimeout(syncAllFieldCompleteStates, 250);
+      if (hasPopupForm) {
+        updateSubmitState();
+        window.setTimeout(syncAllFieldCompleteStates, 250);
+      }
     };
 
     function validarCadastroNewsletterModal(elementoErro, elementoNome, elementoSobrenome, elementoEmail) {
@@ -1940,83 +1904,85 @@
       }
     }
 
-    nameElement.addEventListener('input', function () {
-      const normalizedValue = this.value.replace(/\s{2,}/g, ' ').replace(/^\s+/, '');
-
-      if (this.value !== normalizedValue) {
-        this.value = normalizedValue;
-      }
-
-      updateSubmitState();
-    });
-
-    surnameElement.addEventListener('input', function () {
-      const normalizedValue = this.value.replace(/\s{2,}/g, ' ').replace(/^\s+/, '');
-
-      if (this.value !== normalizedValue) {
-        this.value = normalizedValue;
-      }
-
-      updateSubmitState();
-    });
-
-    emailElement.addEventListener('input', function () {
-      const normalizedValue = normalizeEmail(this.value);
-
-      if (this.value !== normalizedValue) {
-        this.value = normalizedValue;
-      }
-
-      updateSubmitState();
-    });
-
-    if (phoneElement) {
-      phoneElement.addEventListener('input', function () {
-        const normalizedValue = formatBrazilianMobilePhone(this.value);
+    if (hasPopupForm) {
+      nameElement.addEventListener('input', function () {
+        const normalizedValue = this.value.replace(/\s{2,}/g, ' ').replace(/^\s+/, '');
 
         if (this.value !== normalizedValue) {
           this.value = normalizedValue;
         }
 
-        syncFieldCompleteState(this);
+        updateSubmitState();
       });
-    }
 
-    window.addEventListener('pageshow', syncAllFieldCompleteStates);
-    window.setTimeout(syncAllFieldCompleteStates, 250);
+      surnameElement.addEventListener('input', function () {
+        const normalizedValue = this.value.replace(/\s{2,}/g, ' ').replace(/^\s+/, '');
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
+        if (this.value !== normalizedValue) {
+          this.value = normalizedValue;
+        }
 
-      updateSubmitState();
+        updateSubmitState();
+      });
 
-      if (submitButton && submitButton.disabled) {
-        return;
+      emailElement.addEventListener('input', function () {
+        const normalizedValue = normalizeEmail(this.value);
+
+        if (this.value !== normalizedValue) {
+          this.value = normalizedValue;
+        }
+
+        updateSubmitState();
+      });
+
+      if (phoneElement) {
+        phoneElement.addEventListener('input', function () {
+          const normalizedValue = formatBrazilianMobilePhone(this.value);
+
+          if (this.value !== normalizedValue) {
+            this.value = normalizedValue;
+          }
+
+          syncFieldCompleteState(this);
+        });
       }
 
-      abcNewsletterEnviar();
-    });
+      window.addEventListener('pageshow', syncAllFieldCompleteStates);
+      window.setTimeout(syncAllFieldCompleteStates, 250);
 
-    dismissButton.addEventListener('click', function () {
-      writePopupState(WIDGET_STATE_EXPANDED);
-      closePopup(WIDGET_STATE_EXPANDED);
-    });
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    if (feedbackCloseButton) {
-      feedbackCloseButton.addEventListener('click', function () {
-        if (feedbackPopup?.dataset.tone === 'success') {
-          closePopup(REGISTERED_STATE);
+        updateSubmitState();
+
+        if (submitButton && submitButton.disabled) {
           return;
         }
 
-        hideFeedback();
+        abcNewsletterEnviar();
       });
-    }
 
-    if (widgetOpenButton) {
-      widgetOpenButton.addEventListener('click', function () {
-        openPopup();
+      dismissButton.addEventListener('click', function () {
+        writePopupState(WIDGET_STATE_EXPANDED);
+        closePopup(WIDGET_STATE_EXPANDED);
       });
+
+      if (feedbackCloseButton) {
+        feedbackCloseButton.addEventListener('click', function () {
+          if (feedbackPopup?.dataset.tone === 'success') {
+            closePopup(REGISTERED_STATE);
+            return;
+          }
+
+          hideFeedback();
+        });
+      }
+
+      if (widgetOpenButton) {
+        widgetOpenButton.addEventListener('click', function () {
+          openPopup();
+        });
+      }
     }
 
     const widgetPanel = widget?.querySelector('[data-widget-panel]');

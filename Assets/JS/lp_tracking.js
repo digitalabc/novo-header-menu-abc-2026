@@ -2,7 +2,8 @@
   var LP_CONFIG = {
     "/semana-do-consumidor": { name: "Semana do Consumidor" },
     "/semana-do-cliente": { name: "Semana do Cliente" },
-    "/chance-unica": { name: "Chance Única" },
+    "/super-chance-unica": { name: "Super Chance Única" },
+    "/chance-unica": { name: "Super Chance Única" },
     "/lancamentos-2026": { name: "Lançamentos 2026" },
   };
 

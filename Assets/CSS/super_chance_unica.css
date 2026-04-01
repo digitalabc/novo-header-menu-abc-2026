@@ -767,6 +767,7 @@
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
   gap: 24px;
   margin-top: 32px;
+  color: #333;
   content-visibility: auto;
   contain-intrinsic-size: 620px;
 }
@@ -784,7 +785,7 @@
 .semana-do-consumidor .seo-content__eyebrow {
   display: inline-block;
   margin-bottom: 12px;
-  color: #2d2d2d;
+  color: #333;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-family: "Montserrat", sans-serif !important;
@@ -794,7 +795,7 @@
 
 .semana-do-consumidor .seo-content__title {
   margin: 0 0 14px;
-  color: #231b46;
+  color: #333;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 800;
   font-size: 30px;
@@ -809,7 +810,7 @@
 .semana-do-consumidor .seo-content__intro p,
 .semana-do-consumidor .seo-content__faq p {
   margin: 0;
-  color: #5a5a5a;
+  color: #333;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
   font-size: 15px;
@@ -836,7 +837,7 @@
   list-style: none;
   position: relative;
   padding-right: 28px;
-  color: #231b46;
+  color: #333;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 700;
   font-size: 15px;

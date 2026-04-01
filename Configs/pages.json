@@ -122,9 +122,14 @@
         "query": "semana_do_consumidor.graphql"
       },
       {
+        "urlMatch": "super-chance-unica",
+        "path": "Custom/old_se/super_chance_unica.html",
+        "query": "super_chance_unica.graphql"
+      },
+      {
         "urlMatch": "chance-unica",
-        "path": "Custom/old_se/chance_unica.html",
-        "query": "chance_unica.graphql"
+        "path": "Custom/old_se/super_chance_unica.html",
+        "query": "super_chance_unica.graphql"
       },
       {
         "urlMatch": "lancamentos-2026",

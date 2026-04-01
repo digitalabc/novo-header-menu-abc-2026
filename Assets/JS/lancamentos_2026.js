@@ -1,11 +1,11 @@
 function resolveCountdownTarget(rawDate) {
   const parsedDate = rawDate ? new Date(rawDate) : null;
 
-  if (parsedDate && !Number.isNaN(parsedDate.getTime()) && parsedDate.getTime() > Date.now()) {
+  if (parsedDate && !Number.isNaN(parsedDate.getTime())) {
     return parsedDate;
   }
 
-  return new Date(Date.now() + 72 * 60 * 60 * 1000);
+  return new Date();
 }
 
 function resolveDailySpotTarget() {

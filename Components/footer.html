@@ -353,3 +353,8 @@
 {{ newsletter_lightbox }}
 
 {{ old_newsletter_popup }}
+
+{{~ capture old_newsletter_popup_source ~}}
+  {{- store.urls.static_bundle}}?type=js&paths=old_newsletter_popup&theme={{store.theme -}}&v={{- store.last_modified -}}
+{{~ end ~}}
+<script src="{{ old_newsletter_popup_source }}" defer></script>

@@ -32,37 +32,13 @@ var swiper = new Swiper(".banner-grid .swiper:first-child", {
 });
 
 var swiper = new Swiper(".banner-grid div:nth-child(2)", {
+  spaceBetween: 20,
   slidesPerView: "auto",
-});
-
-var swiper = new Swiper(".departments .swiper", {
-  navigation: {
-    nextEl: '.departments .swiper-button-next',
-    prevEl: '.departments .swiper-button-prev'
-  },
-  spaceBetween: 10,
-  slidesPerView: 'auto',
   breakpoints: {
     991: {
-      spaceBetween: 20,
-      slidesPerView: 8
-    }
-  }
-});
-
-var swiper = new Swiper(".environments .swiper", {
-  navigation: {
-    nextEl: '.environments .swiper-button-next',
-    prevEl: '.environments .swiper-button-prev'
+      slidesPerView: 2,
+    },
   },
-  spaceBetween: 10,
-  slidesPerView: 'auto',
-  breakpoints: {
-    991: {
-      spaceBetween: 20,
-      slidesPerView: 4
-    }
-  }
 });
 
 var swiper = new Swiper(".banner-centro.desktop .swiper", {

@@ -1,0 +1,290 @@
+.seo-wrap {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.seo-wrap .seo__button {
+  position: absolute;
+  z-index: 3;
+  top: 19px;
+  right: 8px;
+  left: auto;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px 6px 14px;
+  border: 1px solid #0fa848;
+  border-radius: 999px;
+  background: rgba(223, 245, 231, 0.99);
+  color: #0fa848;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  gap: 6px;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  line-height: 1.25;
+  min-height: 34px;
+  min-width: 158px;
+  box-sizing: border-box;
+}
+
+.seo-wrap .seo__button:hover {
+  background: #0fa848;
+  color: #fff;
+}
+
+.seo-wrap .seo__button svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .seo-wrap .seo__button {
+    top: 19px;
+    right: 8px;
+    padding: 6px 11px 6px 13px;
+    gap: 5px;
+    min-height: 32px;
+    min-width: 140px;
+  }
+
+  .seo-wrap .seo__button svg {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+.seo-wrap .seo__button-label--fechado {
+  display: none;
+}
+
+.seo-wrap.expand .seo__button-label--aberto {
+  display: none;
+}
+
+.seo-wrap.expand .seo__button-label--fechado {
+  display: inline;
+}
+
+.seo-wrap.expand .seo__button svg {
+  transform: rotate(180deg);
+}
+
+.seo {
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  padding: 12px 16px 40px;
+  border: 1px solid #d5d5d5;
+  border-radius: 24px;
+  font-family: var(--font-brand);
+}
+
+.seo:empty {
+  display: none;
+}
+
+@media screen and (max-width: 991px) {
+  .seo {
+    margin-bottom: 16px;
+    padding: 10px 12px 36px;
+  }
+}
+
+.seo__body {
+  display: block;
+  min-height: 0;
+}
+
+.seo__body>* {
+  display: none;
+}
+
+.seo__body>h1 {
+  display: block;
+  margin: 0 0 6px 0;
+  padding-right: 0;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 991px) {
+  .seo__body>h1 {
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+}
+
+.seo__body>h1+* {
+  display: -webkit-box !important;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.seo__body>h2 {
+  margin-bottom: 0;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.seo__body>p {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.seo__body>p+h2,
+.seo__body>p+h3,
+.seo__body>p+h4,
+.seo__body>p+h5 {
+  margin-top: 12px;
+}
+
+.seo__body>img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.seo.expand .seo__body {
+  max-height: min(60vh, 480px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.seo.expand .seo__body>* {
+  display: block;
+}
+
+.seo.expand>* {
+  display: block;
+}
+
+.seo.expand .seo__button {
+  font-size: 0;
+  gap: 6px;
+}
+
+@media screen and (max-width: 991px) {
+  .seo.expand .seo__button {
+    gap: 4px;
+  }
+}
+
+.seo.expand .seo__button:before {
+  content: "Ver menos";
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 991px) {
+  .seo.expand .seo__button:before {
+    font-size: 12px;
+  }
+}
+
+.seo.expand .seo__button svg {
+  transform: rotate(180deg);
+}
+
+.seo>h2 {
+  display: none;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.seo.expand>h2 {
+  display: block;
+}
+
+.seo>h1 {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 991px) {
+  .seo>h1 {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+}
+
+.seo>h1+* {
+  display: -webkit-box !important;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.seo>p {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.seo>p+h2,
+.seo>p+h3,
+.seo>p+h4,
+.seo>p+h5 {
+  margin-top: 12px;
+}
+
+.seo>* {
+  display: none;
+}
+
+.seo>img {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.seo__button {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  display: flex !important;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid #0fa848;
+  border-radius: 999px;
+  background: rgba(15, 168, 72, 0.102);
+  color: #0fa848;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  gap: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.seo__button:hover {
+  background: #0fa848;
+  color: #fff;
+}
+
+.seo__button svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .seo__button {
+    left: 12px;
+    bottom: 10px;
+    padding: 5px 10px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .seo__button svg {
+    width: 11px;
+    height: 11px;
+  }
+}

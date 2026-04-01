@@ -1,36 +1,3 @@
-// window.addEventListener("load", generateRABanner())
-
-var swiper = new Swiper(".subcategories .swiper", {
-  navigation: {
-    nextEl: '.subcategories .swiper-button-next',
-    prevEl: '.subcategories .swiper-button-prev'
-  },
-  spaceBetween: 15,
-  slidesPerView: 'auto',
-  breakpoints: {
-    991: {
-      spaceBetween: 20,
-      slidesPerView: 11
-    }
-  }
-});
-
-var swiper = new Swiper(".subTopo .swiper", {
-  navigation: {
-    nextEl: '.subTopo .swiper-button-next',
-    prevEl: '.subTopo .swiper-button-prev'
-  },
-  spaceBetween: 15,
-  slidesPerView: 'auto',
-  breakpoints: {
-    991: {
-      spaceBetween: 20,
-      slidesPerView: 11
-    }
-  }
-});
-
-
 function generateRABanner() {
   let link = document.createElement("a"), image = document.createElement("img"), vitrine = document.querySelector(".spots.d-flex.row");
 

@@ -1,32 +1,3 @@
-var swiper = new Swiper(".subcategories .swiper", {
-  navigation: {
-    nextEl: '.subcategories .swiper-button-next',
-    prevEl: '.subcategories .swiper-button-prev'
-  },
-  spaceBetween: 20,
-  slidesPerView: "auto",
-  breakpoints: {
-    991: {
-      slidesPerView: 6
-    }
-  }
-});
-
-var swiper = new Swiper(".subTopo .swiper", {
-  navigation: {
-    nextEl: '.subTopo .swiper-button-next',
-    prevEl: '.subTopo .swiper-button-prev'
-  },
-  spaceBetween: 15,
-  slidesPerView: 'auto',
-  breakpoints: {
-    991: {
-      spaceBetween: 20,
-      slidesPerView: 11
-    }
-  }
-});
-
 var swiper = new Swiper(".showcase-1 .swiper", {
   navigation: {
     nextEl: '.showcase-1 .swiper-button-next',

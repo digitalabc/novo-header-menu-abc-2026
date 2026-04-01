@@ -1002,7 +1002,7 @@
     position: fixed;
     left: 0;
     bottom: 100px;
-    z-index: 999999998;
+    z-index: 999;
     display: flex;
     align-items: stretch;
     opacity: 0;
@@ -1560,6 +1560,12 @@
     const submitButton = popup.querySelector('.abc-popup-btn');
     const widgetOpenButton = widget?.querySelector('[data-widget-open]');
     const widgetToggleButton = widget?.querySelector('[data-widget-toggle]');
+
+    if (!form || !nameElement || !surnameElement || !emailElement || !dismissButton) return;
+
+    if (window.__abcNewsletterPopupScriptBound) return;
+    window.__abcNewsletterPopupScriptBound = true;
+
     const STORAGE_KEY = 'abc-newsletter-popup-state';
     const POPUP_OPEN_DELAY_MS = 2000;
     const FEEDBACK_AUTO_CLOSE_MS = 25000;
@@ -2024,6 +2030,7 @@
     if (widgetPanel) {
       widgetPanel.addEventListener('click', function (event) {
         if (event.target.closest('[data-widget-open]')) return;
+        if (event.target.closest('[data-widget-toggle]')) return;
         event.stopPropagation();
         handleWidgetToggle();
       });

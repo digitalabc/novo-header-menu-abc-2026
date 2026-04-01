@@ -53,3 +53,146 @@
 
       @media (max-width: 1330px)
         right: 0;
+
+.subcategories .swiper-wrapper,
+.subTopo .swiper-wrapper,
+.departments .swiper-wrapper,
+.environments .swiper-wrapper,
+.swiper:has(.swiper-slide.subcategories__item) .swiper-wrapper,
+.swiper:has(.swiper-slide.subTopo__item) .swiper-wrapper
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  box-sizing: border-box;
+
+.subcategories .swiper-slide,
+.subTopo .swiper-slide,
+.departments .swiper-slide,
+.environments .swiper-slide,
+.swiper:has(.swiper-slide.subcategories__item) .swiper-slide,
+.swiper:has(.swiper-slide.subTopo__item) .swiper-slide
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin: 0;
+
+.subcategories .swiper-slide img,
+.subTopo .swiper-slide img,
+.swiper:has(.swiper-slide.subcategories__item) .swiper-slide img,
+.swiper:has(.swiper-slide.subTopo__item) .swiper-slide img
+  -webkit-user-drag: none;
+  user-select: none;
+
+.subcategories .swiper,
+.subTopo .swiper,
+.departments .swiper,
+.environments .swiper,
+.swiper:has(.swiper-slide.subcategories__item),
+.swiper:has(.swiper-slide.subTopo__item)
+  touch-action: pan-x;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+
+  &::-webkit-scrollbar
+    display: none;
+
+  &:active
+    cursor: grabbing;
+
+body.home
+  .departments .swiper.swiper-initialized:not([data-carrossel-arrasto="1"])
+    touch-action: manipulation
+    overflow: hidden !important
+    overflow-x: hidden !important
+    overflow-y: hidden !important
+    cursor: default
+    -webkit-overflow-scrolling: auto
+    overscroll-behavior: auto
+    scrollbar-width: auto
+    -ms-overflow-style: auto
+
+    &::-webkit-scrollbar
+      display: none
+
+    &:active
+      cursor: default
+
+  .departments .swiper[data-carrossel-arrasto="1"]
+    scroll-behavior: smooth
+    scroll-snap-type: x proximity
+
+    .swiper-slide
+      scroll-snap-align: start
+      width: 120px
+
+  .environments .swiper[data-carrossel-arrasto="1"]
+    scroll-behavior: smooth
+    scroll-snap-type: x mandatory
+
+    .swiper-slide
+      scroll-snap-align: start
+      width: auto
+
+@media desktop
+  body.home
+    .departments .swiper[data-carrossel-arrasto="1"] .swiper-slide
+      width: 132px
+
+@media desktop
+  .carrossel-arrasto-nativo
+    .swiper-button-prev,
+    .swiper-button-next
+      display: none !important
+
+  .carrossel-arrasto-nativo.carrossel-arrasto-nativo--overflow
+    .swiper-button-prev.carrossel-seta-nativa,
+    .swiper-button-next.carrossel-seta-nativa
+      display: flex !important
+      align-items: center
+      justify-content: center
+      -webkit-appearance: none
+      appearance: none
+      position: absolute
+      top: 50%
+      margin-top: 0
+      padding: 0
+      border: 0
+      background: transparent
+      color: transparent
+      overflow: visible
+      transform: translateY(-50%)
+
+      svg
+        display: none !important
+
+    .swiper-button-prev.carrossel-seta-nativa:after,
+    .swiper-button-next.carrossel-seta-nativa:after
+      content: ""
+      position: absolute
+      left: 50%
+      top: 50%
+      width: 10px
+      height: 10px
+      margin: 0
+      border: 0
+      box-sizing: border-box
+      transition: border-color 0.2s ease-in-out
+
+    .swiper-button-prev.carrossel-seta-nativa:after
+      border-left: 3px solid #5d5d5d
+      border-top: 3px solid #5d5d5d
+      transform: translate(-35%, -50%) rotate(-45deg)
+
+    .swiper-button-next.carrossel-seta-nativa:after
+      border-right: 3px solid #5d5d5d
+      border-top: 3px solid #5d5d5d
+      transform: translate(-65%, -50%) rotate(45deg)
+
+    .swiper-button-prev.carrossel-seta-nativa:hover:after,
+    .swiper-button-next.carrossel-seta-nativa:hover:after
+      border-color: $primary

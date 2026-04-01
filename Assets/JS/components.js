@@ -23,7 +23,11 @@ const DESKTOP = window.matchMedia("(min-width: 992px)");
  * Defer background images
  */
 function parseReais(text) {
-  const clean = text.trim().replace(/R\$\s*/g, "").replace(/\./g, "").replace(",", ".");
+  const clean = text
+    .trim()
+    .replace(/R\$\s*/g, "")
+    .replace(/\./g, "")
+    .replace(",", ".");
   const val = parseFloat(clean);
   return isNaN(val) ? null : val;
 }
@@ -41,7 +45,8 @@ function processSpotPrice(spotPrice) {
 
   const listPrice = parseReais(precoDeEl.textContent);
   const currentPrice = parseReais(precoPorEl.textContent);
-  if (listPrice === null || currentPrice === null || listPrice <= currentPrice) return;
+  if (listPrice === null || currentPrice === null || listPrice <= currentPrice)
+    return;
 
   const savings = (listPrice - currentPrice).toLocaleString("pt-BR", {
     style: "currency",
@@ -93,7 +98,7 @@ function setScroll(scrollTop, lastScrollTop) {
 function setFloatingNavMobile(
   scrollTop,
   offsetToShowMobileNav,
-  offsetToHideMobileNav
+  offsetToHideMobileNav,
 ) {
   if (scrollTop > offsetToShowMobileNav) {
     body.classList.add("show-mobile-nav");
@@ -225,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const refreshDynamicSections = () => {
     initSwipers();
+    initCarrosselArrastoNativo();
     reorderHomepageSections();
     replaceRulerIcons();
     updateRulerTexts();
@@ -246,14 +252,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.dispatchEvent(
       new CustomEvent("lazyContentHydrated", {
         detail: { element },
-      })
+      }),
     );
   }
 
   function observeLazySections() {
-    const lazyElements = Array.from(document.querySelectorAll("[data-lazy]")).filter(
-      (element) => element.dataset.lazyHydrated !== "true"
-    );
+    const lazyElements = Array.from(
+      document.querySelectorAll("[data-lazy]"),
+    ).filter((element) => element.dataset.lazyHydrated !== "true");
 
     if (!lazyElements.length) {
       return;
@@ -278,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         rootMargin: isDesktop ? "280px 0px" : "160px 0px",
         threshold: 0.01,
-      }
+      },
     );
 
     lazyElements.forEach((element) => lazyObserver.observe(element));
@@ -389,7 +395,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateRulerTexts() {
     updateRulerItemHtml(
       ".ruler__list .ruler__item:nth-child(5)",
-      "<strong>Ofertas Lojas Físicas</strong><span class=\"ruler__subtitle\">mais perto de você</span>"
+      '<strong>Ofertas Lojas Físicas</strong><span class="ruler__subtitle">mais perto de você</span>',
     );
   }
 
@@ -397,7 +403,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!document.body.classList.contains("home")) return;
 
     const topContainer = document.querySelector("body.home > .container");
-    const opportunitiesSection = topContainer?.querySelector(".banner-oportunidades");
+    const opportunitiesSection = topContainer?.querySelector(
+      ".banner-oportunidades",
+    );
     if (!topContainer || !opportunitiesSection) return;
 
     const normalizeText = (value) =>
@@ -407,40 +415,48 @@ document.addEventListener("DOMContentLoaded", () => {
         .replace(/[\u0300-\u036f]/g, "");
 
     const desktopEnvironments = document.querySelector(
-      ".gray-bg.desktop .container > .environments"
+      ".gray-bg.desktop .container > .environments",
     );
     const mobileEnvironments = document.querySelector(
-      ".gray-bg.mobile .container > .environments"
+      ".gray-bg.mobile .container > .environments",
     );
 
     if (mobileEnvironments) {
       mobileEnvironments.classList.add("mobile");
-      opportunitiesSection.insertAdjacentElement("afterend", mobileEnvironments);
+      opportunitiesSection.insertAdjacentElement(
+        "afterend",
+        mobileEnvironments,
+      );
     }
 
     if (desktopEnvironments) {
       desktopEnvironments.classList.add("desktop");
-      opportunitiesSection.insertAdjacentElement("afterend", desktopEnvironments);
+      opportunitiesSection.insertAdjacentElement(
+        "afterend",
+        desktopEnvironments,
+      );
     }
 
     const hasTitle = (section, title) =>
       normalizeText(section?.textContent).includes(normalizeText(title));
 
-    const allSections = Array.from(document.querySelectorAll("body.home section"));
+    const allSections = Array.from(
+      document.querySelectorAll("body.home section"),
+    );
     const exclusiveSections = allSections.filter((section) =>
-      hasTitle(section, "Ofertas exclusivas para voce")
+      hasTitle(section, "Ofertas exclusivas para voce"),
     );
 
     const moveAfterEnvironment = (environmentSection, deviceClass) => {
       if (!environmentSection) return;
 
       const targetSection = exclusiveSections.find((section) =>
-        section.classList.contains(deviceClass)
+        section.classList.contains(deviceClass),
       );
       const fallbackSection = exclusiveSections.find(
         (section) =>
           !section.classList.contains("mobile") &&
-          !section.classList.contains("desktop")
+          !section.classList.contains("desktop"),
       );
 
       const sectionToMove = targetSection || fallbackSection;
@@ -463,7 +479,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function initSwipers() {
-    const fullbannerDesktop = document.querySelector(".fullbanner.desktop .swiper");
+    const fullbannerDesktop = document.querySelector(
+      ".fullbanner.desktop .swiper",
+    );
     if (fullbannerDesktop) {
       const section = fullbannerDesktop.closest(".fullbanner.desktop");
       initSwiperInstance(fullbannerDesktop, {
@@ -478,7 +496,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    const fullbannerMobile = document.querySelector(".fullbanner.mobile .swiper");
+    const fullbannerMobile = document.querySelector(
+      ".fullbanner.mobile .swiper",
+    );
     initSwiperInstance(fullbannerMobile, {
       loop: true,
       autoplay: {
@@ -487,14 +507,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const opportunitiesMobile = document.querySelector(
-      ".banner-oportunidades .mobile .swiper:first-child"
+      ".banner-oportunidades .mobile .swiper:first-child",
     );
     initSwiperInstance(opportunitiesMobile, {
       spaceBetween: 10,
       slidesPerView: 2.1,
     });
 
-    const bannerGridPrimary = document.querySelector(".banner-grid .swiper:first-child");
+    const bannerGridPrimary = document.querySelector(
+      ".banner-grid .swiper:first-child",
+    );
     initSwiperInstance(bannerGridPrimary, {
       spaceBetween: 20,
       slidesPerView: 1.2,
@@ -505,7 +527,9 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    const bannerGridSecondary = document.querySelector(".banner-grid div:nth-child(2)");
+    const bannerGridSecondary = document.querySelector(
+      ".banner-grid div:nth-child(2)",
+    );
     initSwiperInstance(bannerGridSecondary, {
       spaceBetween: 20,
       slidesPerView: "auto",
@@ -515,25 +539,6 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       },
     });
-
-    const departmentsSwiper = document.querySelector(".departments .swiper");
-    if (departmentsSwiper) {
-      const section = departmentsSwiper.closest(".departments");
-      initSwiperInstance(departmentsSwiper, {
-        navigation: {
-          nextEl: section?.querySelector(".swiper-button-next"),
-          prevEl: section?.querySelector(".swiper-button-prev"),
-        },
-        spaceBetween: 10,
-        slidesPerView: "auto",
-        breakpoints: {
-          991: {
-            spaceBetween: 20,
-            slidesPerView: 8,
-          },
-        },
-      });
-    }
 
     const showcaseOne = document.querySelector(".showcase-1 .swiper");
     if (showcaseOne) {
@@ -584,26 +589,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    const environmentsSwiper = document.querySelector(".environments .swiper");
-    if (environmentsSwiper) {
-      const section = environmentsSwiper.closest(".environments");
-      initSwiperInstance(environmentsSwiper, {
-        navigation: {
-          nextEl: section?.querySelector(".swiper-button-next"),
-          prevEl: section?.querySelector(".swiper-button-prev"),
-        },
-        spaceBetween: 10,
-        slidesPerView: "auto",
-        breakpoints: {
-          991: {
-            spaceBetween: 20,
-            slidesPerView: 4,
-          },
-        },
-      });
-    }
-
-    const bannerCentroDesktop = document.querySelector(".banner-centro.desktop .swiper");
+    const bannerCentroDesktop = document.querySelector(
+      ".banner-centro.desktop .swiper",
+    );
     initSwiperInstance(bannerCentroDesktop, {
       spaceBetween: 20,
       slidesPerView: 3,
@@ -630,8 +618,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    const storesSwiper = document.querySelector(".stores .swiper");
-    if (storesSwiper) {
+    document.querySelectorAll(".stores .swiper").forEach((storesSwiper) => {
       const section = storesSwiper.closest(".stores");
       initSwiperInstance(storesSwiper, {
         navigation: {
@@ -640,6 +627,10 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         spaceBetween: 10,
         slidesPerView: "auto",
+        speed: 450,
+        grabCursor: true,
+        watchOverflow: true,
+        resistanceRatio: 0.65,
         breakpoints: {
           991: {
             spaceBetween: 20,
@@ -647,7 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         },
       });
-    }
+    });
 
     if (MOBILE.matches) {
       const blogSwiper = document.querySelector(".blog .swiper");
@@ -669,7 +660,9 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    const relatedProductsSwiper = document.querySelector(".related-products .swiper");
+    const relatedProductsSwiper = document.querySelector(
+      ".related-products .swiper",
+    );
     if (relatedProductsSwiper) {
       const section = relatedProductsSwiper.closest(".related-products");
       initSwiperInstance(relatedProductsSwiper, {
@@ -695,6 +688,281 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+  function injetarSetasCarrosselCatalogo(hostNav, viewport) {
+    if (!hostNav || !viewport) return;
+    if (!hostNav.querySelector(".swiper-button-prev")) {
+      var btnPrev = document.createElement("button");
+      btnPrev.type = "button";
+      btnPrev.className = "swiper-button-prev carrossel-seta-nativa";
+      btnPrev.setAttribute("aria-label", "Anterior");
+      hostNav.appendChild(btnPrev);
+    }
+    if (!hostNav.querySelector(".swiper-button-next")) {
+      var btnNext = document.createElement("button");
+      btnNext.type = "button";
+      btnNext.className = "swiper-button-next carrossel-seta-nativa";
+      btnNext.setAttribute("aria-label", "Próximo");
+      hostNav.appendChild(btnNext);
+    }
+    [".swiper-button-prev", ".swiper-button-next"].forEach(function (sel) {
+      var b = hostNav.querySelector(sel);
+      if (!b) return;
+      b.classList.add("carrossel-seta-nativa");
+      while (b.firstChild) {
+        b.removeChild(b.firstChild);
+      }
+    });
+  }
+
+  function alinharSetasCarrosselAoCentroImagem(
+    hostNav,
+    viewport,
+    prevBtn,
+    nextBtn,
+  ) {
+    if (!hostNav || !viewport || !prevBtn || !nextBtn) return;
+    if (!window.matchMedia("(min-width: 992px)").matches) {
+      prevBtn.style.removeProperty("top");
+      nextBtn.style.removeProperty("top");
+      return;
+    }
+    var slide = viewport.querySelector(".swiper-slide");
+    if (!slide) return;
+    var alvo =
+      slide.querySelector(
+        ".subcategories__img, .subTopo__img, .environments__img, .departments__icon",
+      ) ||
+      slide.querySelector("img") ||
+      slide;
+    var navRect = hostNav.getBoundingClientRect();
+    var alvoRect = alvo.getBoundingClientRect();
+    if (navRect.height < 1) return;
+    var centroY = alvoRect.top + alvoRect.height / 2 - navRect.top;
+    if (!isFinite(centroY)) return;
+    prevBtn.style.top = centroY + "px";
+    nextBtn.style.top = centroY + "px";
+  }
+
+  function initCarrosselArrastoNativo() {
+    if (!initCarrosselArrastoNativo._resizeNav) {
+      initCarrosselArrastoNativo._resizeNav = true;
+      var carrosselResizeNavT;
+      window.addEventListener("resize", function () {
+        clearTimeout(carrosselResizeNavT);
+        carrosselResizeNavT = setTimeout(function () {
+          document
+            .querySelectorAll("[data-carrossel-arrasto='1']")
+            .forEach(function (vp) {
+              if (typeof vp._carrosselNavAtualizar === "function") {
+                vp._carrosselNavAtualizar();
+              }
+            });
+        }, 120);
+      });
+    }
+    var seletores = [
+      ".departments .swiper",
+      ".environments .swiper",
+      ".subcategories .swiper",
+      ".subTopo .swiper",
+      ".swiper:has(.swiper-slide.subcategories__item)",
+      ".swiper:has(.swiper-slide.subTopo__item)",
+    ];
+    seletores.forEach(function (sel) {
+      var nodes;
+      try {
+        nodes = document.querySelectorAll(sel);
+      } catch (errSel) {
+        return;
+      }
+      nodes.forEach(function (viewport) {
+        if (!viewport || viewport.dataset.carrosselArrasto === "1") return;
+        var wrapper = viewport.querySelector(".swiper-wrapper");
+        if (!wrapper) return;
+        viewport.dataset.carrosselArrasto = "1";
+        viewport.classList.add("swiper-initialized");
+        var hostNav =
+          viewport.closest(".swiper-container") || viewport.parentElement;
+        injetarSetasCarrosselCatalogo(hostNav, viewport);
+        var prevBtn = hostNav.querySelector(".swiper-button-prev");
+        var nextBtn = hostNav.querySelector(".swiper-button-next");
+        var navRoot = hostNav;
+        function atualizarSetasOverflowNav() {
+          var mqDesk = window.matchMedia("(min-width: 992px)");
+          if (!navRoot) return;
+          if (!mqDesk.matches) {
+            navRoot.classList.remove("carrossel-arrasto-nativo--overflow");
+            if (prevBtn) prevBtn.style.removeProperty("top");
+            if (nextBtn) nextBtn.style.removeProperty("top");
+            return;
+          }
+          var tol = 3;
+          var precisa = viewport.scrollWidth > viewport.clientWidth + tol;
+          navRoot.classList.toggle(
+            "carrossel-arrasto-nativo--overflow",
+            precisa,
+          );
+          alinharSetasCarrosselAoCentroImagem(
+            hostNav,
+            viewport,
+            prevBtn,
+            nextBtn,
+          );
+        }
+        if (navRoot) {
+          navRoot.classList.add("carrossel-arrasto-nativo");
+        }
+        viewport._carrosselNavAtualizar = atualizarSetasOverflowNav;
+        atualizarSetasOverflowNav();
+        requestAnimationFrame(function () {
+          requestAnimationFrame(atualizarSetasOverflowNav);
+        });
+        if (typeof ResizeObserver !== "undefined") {
+          var roNav = new ResizeObserver(function () {
+            atualizarSetasOverflowNav();
+          });
+          roNav.observe(viewport);
+          roNav.observe(wrapper);
+          roNav.observe(hostNav);
+        }
+        wrapper.querySelectorAll("img").forEach(function (imagem) {
+          imagem.draggable = false;
+          if (!imagem.complete) {
+            imagem.addEventListener("load", atualizarSetasOverflowNav, {
+              once: true,
+            });
+          }
+        });
+        Object.assign(wrapper.style, {
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "nowrap",
+          gap: "16px",
+          width: "max-content",
+          margin: "0",
+          padding: "0",
+          transform: "none",
+          transition: "none",
+        });
+        wrapper.querySelectorAll(".swiper-slide").forEach(function (slide) {
+          slide.style.flexShrink = "0";
+          slide.style.marginLeft = "0";
+          slide.style.marginRight = "0";
+        });
+        var dragging = false;
+        var pointerId = null;
+        var lastX = 0;
+        var totalMove = 0;
+        var blockLinkClick = false;
+        function onPointerDown(e) {
+          if (e.pointerType === "mouse" && e.button !== 0) return;
+          var t = e.target;
+          if (t.closest(".swiper-button-prev, .swiper-button-next")) return;
+          if (t.closest("button, input, select, textarea, [role='button']"))
+            return;
+          dragging = true;
+          pointerId = e.pointerId;
+          lastX = e.clientX;
+          totalMove = 0;
+          try {
+            viewport.setPointerCapture(e.pointerId);
+          } catch (err) {}
+        }
+        function onPointerMove(e) {
+          if (!dragging || e.pointerId !== pointerId) return;
+          var dx = e.clientX - lastX;
+          lastX = e.clientX;
+          totalMove += Math.abs(dx);
+          if (totalMove > 3) e.preventDefault();
+          viewport.scrollLeft -= dx;
+        }
+        function endDrag(e) {
+          if (!dragging) return;
+          if (pointerId !== null && e.pointerId !== pointerId) return;
+          var pid = pointerId;
+          dragging = false;
+          pointerId = null;
+          blockLinkClick = totalMove > 10;
+          if (pid !== null) {
+            try {
+              viewport.releasePointerCapture(pid);
+            } catch (err2) {}
+          }
+        }
+        viewport.addEventListener("pointerdown", onPointerDown);
+        viewport.addEventListener("pointermove", onPointerMove, {
+          passive: false,
+        });
+        viewport.addEventListener("pointerup", endDrag);
+        viewport.addEventListener("pointercancel", endDrag);
+        viewport.addEventListener("pointerleave", function (e) {
+          if (e.pointerType === "mouse") endDrag(e);
+        });
+        viewport.addEventListener(
+          "click",
+          function (e) {
+            if (!blockLinkClick) return;
+            var link = e.target.closest("a, button");
+            if (link) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+            blockLinkClick = false;
+          },
+          true,
+        );
+        function scrollStep(dir) {
+          var amount = Math.max(120, viewport.clientWidth * 0.72) * dir;
+          viewport.scrollBy({ left: amount, behavior: "smooth" });
+        }
+        if (prevBtn) {
+          prevBtn.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            scrollStep(-1);
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            scrollStep(1);
+          });
+        }
+        viewport.addEventListener(
+          "wheel",
+          function (ev) {
+            var dx = ev.deltaX;
+            var dy = ev.deltaY;
+            if (Math.abs(dy) > Math.abs(dx) && !ev.shiftKey) return;
+            var delta = dx !== 0 ? dx : ev.shiftKey ? dy : 0;
+            if (delta === 0) return;
+            viewport.scrollLeft += delta;
+            ev.preventDefault();
+          },
+          { passive: false },
+        );
+      });
+    });
+  }
+
+  var carrosselArrastoMoTimer;
+  var carrosselArrastoMo = new MutationObserver(function () {
+    clearTimeout(carrosselArrastoMoTimer);
+    carrosselArrastoMoTimer = setTimeout(function () {
+      initCarrosselArrastoNativo();
+      document
+        .querySelectorAll("[data-carrossel-arrasto='1']")
+        .forEach(function (vp) {
+          if (typeof vp._carrosselNavAtualizar === "function") {
+            vp._carrosselNavAtualizar();
+          }
+        });
+    }, 120);
+  });
+  carrosselArrastoMo.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
 
   refreshDynamicSections();
   observeLazySections();

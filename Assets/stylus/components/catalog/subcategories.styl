@@ -1,37 +1,65 @@
+h2.subcategories__title,
+.subcategories__title
+  font-weight var(--peso-fonte-semibold)
+  font-size var(--fonte-16)
+  line-height 1.3
+  margin 0 0 12px 0
+  transition: $transition;
+
 .subcategories, .subTopo
   margin-bottom: 24px;
   font-family: var(--font-brand);
 
-  &__item
+  .subcategories__item,
+  .subTopo__item
     text-align: center;
+    box-sizing: border-box;
+    width: 104px;
 
     @media mobile
-      width: 130px;
-
-    .category &
-      width: 200px;
+      width: 104px;
 
     &:hover
-      .subcategories
-        &__img
-          img
-            outline: 3px solid $primary;
+      .subcategories__img img,
+      .subTopo__img img
+        outline: 3px solid $primary;
 
-        &__title
-          color: $primary;
+      .subcategories__title,
+      .subTopo__title
+        color: $primary;
 
-  &__title
+  .subcategories__item .subcategories__title,
+  .subTopo__item .subcategories__title,
+  a.subcategories__item .subcategories__title,
+  .subcategories a.subcategories__item .subcategories__title,
+  .subTopo a.subcategories__item .subcategories__title
     font-weight var(--peso-fonte-medium)
     font-size var(--fonte-12)
+    line-height 1.35
+    margin 0
     transition: $transition;
 
-  &__img
+  .subTopo__title
+    font-weight var(--peso-fonte-medium)
+    font-size var(--fonte-14)
+    line-height 1.35
+    transition: $transition;
+
+  .subcategories__img,
+  .subTopo__img
     margin-bottom: 6px;
+    display flex
+    align-items center
+    justify-content center
+    min-height 0
 
     img
       display block
-      max-width 100%
-      height auto
+      width 104px
+      height 104px
+      max-width 104px
+      max-height 104px
+      object-fit contain
       outline: 3px solid transparent;
       outline-offset: -3px;
       transition: $transition;
@@ -45,10 +73,13 @@
         &-next, &-prev
           display: none;
 
-.subTopo
-  li.subcategories__item
-    .category &
-      width: 110px;
+.swiper-container:has(.swiper-slide.subcategories__item),
+.swiper-container:has(.swiper-slide.subTopo__item)
+  @media mobile
+    .swiper
+      margin: 0 -15px;
+      padding: 0 15px;
 
-      @media mobile
-        width: 90px;
+    .swiper-button-next,
+    .swiper-button-prev
+      display: none;

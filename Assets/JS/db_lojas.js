@@ -316,7 +316,6 @@ const estados = [
 			"São Paulo",
 			"São Roque",
 			"São Sebastião",
-			"Sertãozinho",
 			"Sorocaba",
 			"Taguaí",
 			"Taubaté",

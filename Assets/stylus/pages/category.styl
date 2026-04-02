@@ -85,6 +85,46 @@
       margin-bottom: 40px;
       gap: 10px;
 
+      @media mobile
+        justify-content: flex-start
+        align-items: center
+        gap: 8px
+        margin-bottom: 20px
+        padding: 10px 12px
+        border: 1px solid #EAEAEA
+        border-radius: 16px
+        background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%)
+        box-shadow: 0 10px 25px rgba(#000000, .06)
+        overflow-x: auto
+        -webkit-overflow-scrolling: touch
+        scrollbar-width: none
+
+        &::-webkit-scrollbar
+          display: none
+
+        > *
+          flex: 0 0 auto
+          min-width: 0
+
+        > *:last-child
+          margin-left: auto
+
+        .filter__button
+          width: auto
+          min-width: 132px
+          height: 38px
+          padding: 0 14px
+          border: 1px solid #EAEAEA
+          border-radius: 12px
+          background: #FFFFFF
+          color: $black
+          font-size: 14px
+          font-weight: 600
+          box-shadow: 0 4px 12px rgba(#000000, .04)
+
+          svg
+            fill: $primary
+
       @media desktop
         margin-bottom: 30px;
         padding-bottom: 10px;

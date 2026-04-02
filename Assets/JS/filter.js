@@ -23,32 +23,35 @@ function filterSetup() {
         });
     }
 
+    setupPriceFilterControls();
+
     const priceFilterQueryStringValue = queryStringParams.getAll("precoPor");
-    if (priceFilterQueryStringValue.length <= 0) return;
-    priceFilterQueryStringValue.forEach((price) => {
-        const minPriceFilter = document.getElementById("minimum-price-filter");
-        const maxPriceFilter = document.getElementById("maximum-price-filter");
-        const minPriceSlider = document.getElementById("price-slider-min");
-        const maxPriceSlider = document.getElementById("price-slider-max");
+    if (priceFilterQueryStringValue.length > 0) {
+        priceFilterQueryStringValue.forEach((price) => {
+            const minPriceFilter = document.getElementById("minimum-price-filter");
+            const maxPriceFilter = document.getElementById("maximum-price-filter");
+            const minPriceSlider = document.getElementById("price-slider-min");
+            const maxPriceSlider = document.getElementById("price-slider-max");
 
-        const splitedPrice = price.split(";");
-        const min = Number(splitedPrice[0]);
-        const max = Number(splitedPrice[1])
+            const splitedPrice = price.split(";");
+            const min = parsePriceInput(splitedPrice[0], NaN);
+            const max = parsePriceInput(splitedPrice[1], NaN);
 
-        if (minPriceFilter != null && maxPriceFilter != null) {
-            minPriceFilter.value = min.toFixed(2);
-            maxPriceFilter.value = max.toFixed(2);
+            if (minPriceFilter != null && maxPriceFilter != null) {
+                minPriceFilter.value = formatPriceDisplay(min);
+                maxPriceFilter.value = formatPriceDisplay(max);
 
-        } else {
-            const elementId = price.replace(";", "-");
-            const elementFilter = document.getElementById(elementId);
-            if (elementFilter != null) elementFilter.checked = true;
-        }
-        if (minPriceSlider != null && maxPriceSlider != null && min != max) {
-            refreshMin(minPriceSlider, min);
-            refreshMax(maxPriceSlider, max);
-        }
-    });
+            } else {
+                const elementId = price.replace(";", "-");
+                const elementFilter = document.getElementById(elementId);
+                if (elementFilter != null) elementFilter.checked = true;
+            }
+            if (minPriceSlider != null && maxPriceSlider != null && min != max) {
+                refreshMin(minPriceSlider, min);
+                refreshMax(maxPriceSlider, max);
+            }
+        });
+    }
 }
 
 
@@ -84,10 +87,55 @@ function clearFilters() {
  * Takes the price range informations and pass it to the query
  */
 function setFieldPriceFilter() {
-    const minPrice = document.getElementById("minimum-price-filter").value;
-    const maxPrice = document.getElementById("maximum-price-filter").value;
-    const filter = minPrice + ";" + maxPrice;
+    const minFallback = Number(document.getElementById("price-range-min-value").value);
+    const maxFallback = Number(document.getElementById("price-range-max-value").value);
+    const minInput = document.getElementById("minimum-price-filter").value;
+    const maxInput = document.getElementById("maximum-price-filter").value;
+    let minPrice = clampPriceValue(parsePriceInput(minInput, minFallback), minFallback, maxFallback);
+    let maxPrice = clampPriceValue(parsePriceInput(maxInput, maxFallback), minFallback, maxFallback);
+
+    if (!Number.isFinite(minPrice) || !Number.isFinite(maxPrice)) return;
+
+    if (minPrice > maxPrice) {
+        const temp = minPrice;
+        minPrice = maxPrice;
+        maxPrice = temp;
+    }
+
+    const filter = minPrice.toFixed(2) + ";" + maxPrice.toFixed(2);
     applyPriceFilterUrl(filter);
+}
+
+function setupPriceFilterControls() {
+    const priceInputs = document.querySelectorAll(".price-filter__input");
+    priceInputs.forEach(function (input) {
+        input.addEventListener("blur", function () {
+            const fallbackId = input.id === "minimum-price-filter"
+                ? "price-range-min-value"
+                : "price-range-max-value";
+            const fallbackInput = document.getElementById(fallbackId);
+            const fallbackValue = fallbackInput ? Number(fallbackInput.value) : 0;
+            const rangeMinInput = document.getElementById("price-range-min-value");
+            const rangeMaxInput = document.getElementById("price-range-max-value");
+            const rangeMin = rangeMinInput ? Number(rangeMinInput.value) : fallbackValue;
+            const rangeMax = rangeMaxInput ? Number(rangeMaxInput.value) : fallbackValue;
+            input.value = formatPriceDisplay(clampPriceValue(parsePriceInput(input.value, fallbackValue), rangeMin, rangeMax));
+        });
+
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                setFieldPriceFilter();
+            }
+        });
+    });
+
+    const priceSteppers = document.querySelectorAll("[data-price-step]");
+    priceSteppers.forEach(function (button) {
+        button.addEventListener("click", function () {
+            adjustPriceField(button.dataset.priceTarget, Number(button.dataset.priceStep));
+        });
+    });
 }
 
 /**
@@ -121,6 +169,72 @@ function applyPriceFilterUrl(filter) {
     window.location.search = queryStringParams.toString();
 }
 
+function parsePriceInput(value, fallback) {
+    if (value == null) return fallback;
+
+    const normalizedValue = normalizePriceInputValue(value);
+    if (normalizedValue === "") return fallback;
+
+    const parsedValue = Number(normalizedValue);
+    return Number.isFinite(parsedValue) ? parsedValue : fallback;
+}
+
+function normalizePriceInputValue(value) {
+    const cleanedValue = String(value).trim().replace(/[^\d,.-]/g, "");
+    if (cleanedValue === "") return "";
+
+    if (cleanedValue.includes(",")) {
+        return cleanedValue.replace(/\./g, "").replace(",", ".");
+    }
+
+    const dotParts = cleanedValue.split(".");
+    if (dotParts.length > 2) {
+        const decimalPart = dotParts.pop();
+        return dotParts.join("") + "." + decimalPart;
+    }
+
+    return cleanedValue;
+}
+
+function formatPriceDisplay(value) {
+    const numberValue = Number(value);
+    if (!Number.isFinite(numberValue)) return "";
+
+    return numberValue.toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+}
+
+function adjustPriceField(inputId, step) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+
+    const fallbackId = inputId === "minimum-price-filter"
+        ? "price-range-min-value"
+        : "price-range-max-value";
+    const fallbackInput = document.getElementById(fallbackId);
+    const fallbackValue = fallbackInput ? Number(fallbackInput.value) : 0;
+    const rangeMinInput = document.getElementById("price-range-min-value");
+    const rangeMaxInput = document.getElementById("price-range-max-value");
+    const rangeMin = rangeMinInput ? Number(rangeMinInput.value) : fallbackValue;
+    const rangeMax = rangeMaxInput ? Number(rangeMaxInput.value) : fallbackValue;
+    const currentValue = parsePriceInput(input.value, fallbackValue);
+    const nextValue = clampPriceValue(currentValue + step, rangeMin, rangeMax);
+
+    input.value = formatPriceDisplay(nextValue);
+}
+
+function clampPriceValue(value, min, max) {
+    const lowerBound = Number.isFinite(min) ? min : value;
+    const upperBound = Number.isFinite(max) ? max : value;
+
+    if (value < lowerBound) return lowerBound;
+    if (value > upperBound) return upperBound;
+
+    return value;
+}
+
 /**
  * Collapse filters
  */
@@ -137,6 +251,8 @@ function toggleSlide(elem) {
 const filterTitles = document.querySelectorAll(".filter__title");
 
 filterTitles.forEach(function (title) {
+    if (title.classList.contains("filter__price-title")) return;
+
     title.addEventListener("click", function () {
         const filterItem = title.parentElement,
             filterList = title.nextElementSibling

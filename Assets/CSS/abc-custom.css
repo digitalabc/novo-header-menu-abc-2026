@@ -53,12 +53,6 @@ body header svg rect {
   body header .minicart__button svg path,
   body header .minicart__button svg rect,
   body header .minicart__button svg circle,
-  body header .menu__button svg path,
-  body header .menu__button svg rect,
-  body header .menu__button svg circle,
-  body header .nav-mobile__open svg path,
-  body header .nav-mobile__open svg rect,
-  body header .nav-mobile__open svg circle,
   body header .nav-all__item--root svg path,
   body header .nav-all__item--root svg rect,
   body header .nav-all__item--root svg circle,
@@ -278,57 +272,6 @@ body header svg rect {
   }
 
   /* Menu mobile */
-  #menu-offcanvas .nav-mobile__others ul li {
-    border: none !important;
-  }
-
-  #menu-offcanvas .nav-mobile__item--nv2 {
-    border: none !important;
-  }
-
-  #menu-offcanvas .nav-mobile__back {
-    border: none !important;
-    color: #d4af87 !important;
-  }
-
-  #menu-offcanvas .nav-mobile__back svg path,
-  #menu-offcanvas .nav-mobile__back svg rect,
-  #menu-offcanvas .nav-mobile__back svg circle {
-    fill: #d4af87 !important;
-  }
-
-  #menu-offcanvas .nav-mobile__header .nav-mobile__header-icon {
-    color: #d4af87 !important;
-  }
-
-  #menu-offcanvas .nav-mobile__open svg path,
-  #menu-offcanvas .nav-mobile__open svg rect,
-  #menu-offcanvas .nav-mobile__open svg circle {
-    fill: #d4af87 !important;
-  }
-
-  #menu-offcanvas .nav-mobile__header,
-  #menu-offcanvas .nav-mobile__others,
-  #menu-offcanvas .nav-mobile__dropdown--nv1,
-  #menu-offcanvas .nav-mobile__dropdown--nv2,
-  #menu-offcanvas .nav-mobile__item--nv1,
-  #menu-offcanvas .nav-mobile__item--nv2 {
-    background: #141111 !important;
-  }
-
-  #menu-offcanvas .nav-mobile__link,
-  #menu-offcanvas .nav-mobile__others ul li a {
-    color: #e5e5e5 !important;
-  }
-
-  #menu-offcanvas .ah-offcanvas-bar .ah-close {
-    position: absolute;
-    right: -42px;
-    top: 5px;
-    width: 24px;
-    height: 24px;
-  }
-
   .navbar__wrapper .nav-item--nv1:last-child>.nav-link {
     color: #5d5d5d;
     font-weight: 300;

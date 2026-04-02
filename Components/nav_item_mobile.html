@@ -8,9 +8,16 @@
 ## ~}}
 
 {{~ nextLevel = level + 1 ~}}
-{{~ category_name = category.name | string.downcase | string.capitalize ~}}
-{{~ if category.name && (category.name | string.downcase) == "pisos e revestimentos" ~}}
+{{~ category_name_raw = category.name | string.downcase ~}}
+{{~ category_name = category_name_raw | string.capitalize ~}}
+{{~ if category_name_raw == "banho e aquecimento" ~}}
+  {{~ category_name = "Banho Quente" ~}}
+{{~ else if category_name_raw == "pisos e revestimentos" ~}}
   {{~ category_name = "Pisos | Revestimentos" ~}}
+{{~ else if category_name_raw == "louças" || category_name_raw == "loucas" ~}}
+  {{~ category_name = "Louças" ~}}
+{{~ else if category_name_raw == "metais sanitários" || category_name_raw == "metais sanitarios" ~}}
+  {{~ category_name = "Metais" ~}}
 {{~ end ~}}
 
 <div class="nav-mobile__item nav-mobile__item--nv{{level}}">

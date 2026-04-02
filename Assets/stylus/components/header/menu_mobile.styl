@@ -39,6 +39,7 @@
 
     &__others
       ul
+        padding 0 8px
         li
           display flex
           align-items center
@@ -47,8 +48,83 @@
           padding-left 15px
           margin-bottom: -1px;
           a
+            display flex
+            align-items center
+            width 100%
+            height 100%
             color $black
             font-weight 600
+
+          &.nav-mobile__others-item--launches,
+          &.nav-mobile__others-item--consumer,
+          &.nav-mobile__others-item--chance,
+          &.nav-mobile__others-item--specialist,
+          &.nav-mobile__others-item--store-offers,
+          &.nav-mobile__others-item--franqueado,
+          &.nav-mobile__others-item--stores
+            height auto
+            min-height 34px
+            padding 6px 10px
+            padding-left 10px
+            border 1px solid #D8D8D8
+            border-radius 8px
+            background-color #F7F7F7
+            overflow hidden
+            margin-bottom 6px
+            box-shadow none
+            a
+              display flex
+              align-items center
+              gap 6px
+              width 100%
+              height auto
+              padding 0
+              font-weight 600
+              line-height 1.1
+              color $black
+
+            .nav-mobile__others-icon
+              display inline-flex
+              align-items center
+              justify-content center
+              margin-left auto
+              width 15px
+              height 15px
+              flex-shrink 0
+
+          &.nav-mobile__others-item--launches
+            a
+              color $black
+
+          &.nav-mobile__others-item--chance
+            a
+              color $black
+
+          &.nav-mobile__others-item--specialist
+            border-color #25D366
+            background-color #25D3661A
+            a
+              color #00AD14
+              font-weight 500
+              strong
+                color #00AD14
+
+            .nav-mobile__others-icon--whatsapp
+              svg
+                width 15px
+                height 15px
+              svg path
+                fill #25D366
+
+          &.nav-mobile__others-item--store-offers
+            .nav-mobile__others-icon--store-offers
+              img
+                display block
+                width 15px
+                height 15px
+                object-fit contain
+            a
+              color $black
 
     &__link
       color $black
@@ -57,10 +133,15 @@
       display flex
       align-items center
       height 40px
-      padding-left 15px
+      padding 0 16px
+      &--root-priority
+        font-weight 700
 
     &__item
-      padding-right 40px
+      padding-right 0
+      &--root-priority
+        > .nav-mobile__link
+          font-weight 700
       &--nv1
         background #F7F7F7
       &--nv2
@@ -71,11 +152,12 @@
     &__open
       background none
       position absolute
-      right -40px
+      right 0
       display flex
       align-items center
-      justify-content center
-      width 40px
+      justify-content flex-end
+      padding-right 14px
+      width 200px
       height 40px
       z-index 1
       svg

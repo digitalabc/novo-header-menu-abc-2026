@@ -176,9 +176,115 @@ async function loadPartnerLogo() {
 }
 
 /**
+ * Reorders the root mobile categories, removes duplicates, and highlights the
+ * priority set that should appear first.
+ */
+function reorderRootMobileCategories() {
+    const rootList = document.querySelector(
+        "#menu-offcanvas .nav-mobile__list--root",
+    );
+    if (!rootList) return;
+
+    const priorityOrder = [
+        "pisos | revestimentos",
+        "loucas",
+        "metais",
+        "banho quente",
+        "moveis",
+        "tintas",
+    ];
+    const priorityMap = new Map(
+        priorityOrder.map((label, index) => [label, index]),
+    );
+
+    const normalizeText = (value) =>
+        (value || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/-/g, " ")
+            .replace(/\s*\|\s*/g, " | ")
+            .replace(/\s+/g, " ")
+            .trim();
+
+    const createSyntheticRootItem = (label, href) => {
+        const item = document.createElement("div");
+        item.className = "nav-mobile__item nav-mobile__item--nv1";
+
+        const link = document.createElement("a");
+        link.className = "nav-mobile__link nav-mobile__link--nv1";
+        link.href = href;
+        link.textContent = label;
+
+        item.appendChild(link);
+        return item;
+    };
+
+    const rootItems = Array.from(rootList.children).filter(
+        (node) => node.classList && node.classList.contains("nav-mobile__item"),
+    );
+
+    const orderedItems = rootItems
+        .map((item, index) => {
+            const link = item.querySelector(".nav-mobile__link");
+            const label = normalizeText(link ? link.textContent : "");
+            return {
+                index,
+                item,
+                label,
+                priority: priorityMap.has(label)
+                    ? priorityMap.get(label)
+                    : Number.POSITIVE_INFINITY,
+            };
+        });
+
+    if (!orderedItems.some(({ label }) => label === "loucas")) {
+        orderedItems.push({
+            index: orderedItems.length,
+            item: createSyntheticRootItem("Louças", "/loucas/inox/sintetico"),
+            label: "loucas",
+            priority: priorityMap.get("loucas"),
+        });
+    }
+
+    orderedItems.sort((a, b) => {
+        if (a.priority !== b.priority) return a.priority - b.priority;
+        if (a.priority !== Number.POSITIVE_INFINITY) return a.index - b.index;
+        const labelComparison = a.label.localeCompare(b.label, "pt-BR", {
+            sensitivity: "base",
+        });
+        return labelComparison || a.index - b.index;
+    });
+
+    const seenLabels = new Set();
+    const fragment = document.createDocumentFragment();
+
+    orderedItems.forEach(({ item, label }) => {
+        if (seenLabels.has(label)) {
+            item.remove();
+            return;
+        }
+
+        seenLabels.add(label);
+        const link = item.querySelector(".nav-mobile__link");
+        if (priorityMap.has(label)) {
+            item.classList.add("nav-mobile__item--root-priority");
+            if (link) {
+                link.classList.add("nav-mobile__link--root-priority");
+            }
+        }
+        fragment.appendChild(item);
+    });
+
+    rootList.appendChild(fragment);
+}
+
+/**
  * Setups the mobile menu navigation from click event
  */
 async function menuMobileLoad() {
+    reorderRootMobileCategories();
+
     const menuMobileLinks = document.querySelectorAll(".nav-mobile__link");
     const menuMobileBackButtons = document.querySelectorAll(".nav-mobile__back");
     if (menuMobileLinks) {

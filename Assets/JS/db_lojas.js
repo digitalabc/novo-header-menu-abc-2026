@@ -275,7 +275,6 @@ const estados = [
 			"Cafelândia",
 			"Campinas",
 			"Caraguatatuba",
-			"Cruzeiro",
 			"Divinolândia",
 			"Hortolândia",
 			"Ibitinga",

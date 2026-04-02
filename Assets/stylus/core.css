@@ -1088,7 +1088,7 @@ body.home .environments .swiper.swiper-initialized:active {
   width: 200px;
   height: 40px;
   border: 1px solid #d5d5d5;
-  border-radius: 0;
+  border-radius: 12px;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAABHNCSVQICAgIfAhkiAAAAG9JREFUCFtjjImJecDAwJCwZMmSA0AaDmJjYxOAnABGEOP///8T/v3757Bs2bILIBXIYowgAaApDUDKn4WFxfHXr18KzMzM+4GaAkGmghVAFS0A0vqMjIwKQLpw8eLFID4DXAFUEciKC0CdIPvBAAB98DALc2GrVAAAAABJRU5ErkJggg==");
   background-position: right 10px center;
   background-repeat: no-repeat;
@@ -13228,7 +13228,7 @@ section.newsletter--home .newsletter__alert {
   width: 200px;
   height: 40px;
   border: 1px solid #d5d5d5;
-  border-radius: 0;
+  border-radius: 12px;
   padding: 0 7px;
   font-size: 12px;
   font-weight: 500;

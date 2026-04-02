@@ -51,6 +51,17 @@ function filterSetup() {
                 refreshMax(maxPriceSlider, max);
             }
         });
+    } else {
+        const minPriceFilter = document.getElementById("minimum-price-filter");
+        const maxPriceFilter = document.getElementById("maximum-price-filter");
+
+        if (minPriceFilter != null) {
+            minPriceFilter.value = formatPriceDisplay(0);
+        }
+
+        if (maxPriceFilter != null) {
+            maxPriceFilter.value = formatPriceDisplay(0);
+        }
     }
 }
 

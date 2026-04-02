@@ -5,6 +5,7 @@
     "/super-chance-unica": { name: "Super Chance Única" },
     "/chance-unica": { name: "Super Chance Única" },
     "/lancamentos-2026": { name: "Lançamentos 2026" },
+    "/ofertas-mensais": { name: "Ofertas Mensais" },
   };
 
   function getLpContext() {

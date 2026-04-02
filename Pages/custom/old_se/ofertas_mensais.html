@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ gtm_config_head gtm_id: common.gtm_id }}
+  {{ default_title_hotsite = data.hotsite.name | string.append " | 04.04 ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ asset type: "css" paths: ["lancamentos_2026"] }}
+  {{ asset type: "css" paths: ["ofertas_mensais"] }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  {{ asset type: "css" paths: ["lp-montserrat-fonts"] }}
+  {{ asset type: "css" paths: ["lp-montserrat-override"] }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body class="lp-campanha">
+  {{ gtm_config_body gtm_id: common.gtm_id }}
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+
+  <div class="semana-do-consumidor ofertas-mensais">
+    <!-- Hotsite principal da LP /ofertas-mensais: hotsiteId 102017 -->
+    <div class="fullbanner desktop">
+      {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
+    </div>
+    <div class="fullbanner mobile">
+      {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" }}
+    </div>
+
+    <section class="showcase showcase-oferta-relampago showcase-ofertas-mensais-principal" data-showcase="cronometer">
+      <div class="container">
+        <div class="showcase__hero">
+          <div class="showcase__copy">
+            <span class="showcase__hero-badge">Oferta mensal ABC da Constru&ccedil;&atilde;o</span>
+            <h1 class="showcase__title showcase__title--hero">
+              <span class="showcase__title-line">Ofertas</span>
+              <span class="showcase__title-date-row">
+                <span class="showcase__title-date">04.04</span>
+                <span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">&#9889;</span>
+              </span>
+              <span class="showcase__title-word">imperd&iacute;veis</span>
+            </h1>
+            <p class="showcase__subtitle showcase__subtitle--hero">Ofertas selecionadas para decidir com rapidez e clareza.</p>
+          </div>
+
+          <div class="showcase__countdown-column">
+            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-04-04T23:59:59-03:00">
+            <span class="countdown-principal-da-campanha__ribbon">Datas duplas 04.04</span>
+            <span class="oferta-relampago__countdown-eyebrow">
+              NÃO PERCA! ESTÁ QUASE ACABANDO
+            </span>
+            <span class="cronometro__label">Campanha termina em</span>
+            <div class="cron" aria-live="polite">
+              <div class="cron__item">
+                <span class="cronometro__days">00</span>
+                <small>Dias</small>
+              </div>
+              <div class="cron__item">
+                <span class="cronometro__hours">00</span>
+                <small>Horas</small>
+              </div>
+              <div class="cron__item">
+                <span class="cronometro__minutes">00</span>
+                <small>Min</small>
+              </div>
+              <div class="cron__item">
+                <span class="cronometro__seconds">00</span>
+                <small>Seg</small>
+              </div>
+            </div>
+            <span class="cronometro__note">Pre&ccedil;os e estoque sujeitos &agrave; atualiza&ccedil;&atilde;o ao longo da campanha.</span>
+            </div>
+            <a class="showcase__hero-whatsapp" href="#mm-whatsapp" onclick="event.preventDefault(); var mmWhatsapp = document.getElementById('mm-whatsapp'); if (mmWhatsapp) { mmWhatsapp.click(); }">Falar com especialista</a>
+          </div>
+        </div>
+
+        <div class="showcase__carousel">
+          {{ cronometro_products = (data.vitrineCronometro && data.vitrineCronometro.products && data.vitrineCronometro.products.nodes) || [] }}
+          {{~ if cronometro_products.size > 0 ~}}
+          {{~ for product in cronometro_products ~}}
+          <input id="promotion-stock-{{for.index}}" type="hidden" value="{{product.stock}}">
+          <input id="promotion-available-{{for.index}}" type="hidden" value="{{if product.available}}true{{else}}false{{end}}">
+          {{~ end ~}}
+          {{ spot_carousel class: "showcase-oferta-relampago__carousel showcase-ofertas-mensais-principal__carousel" products: cronometro_products }}
+          {{~ else ~}}
+          <div class="showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+          {{~ end ~}}
+        </div>
+      </div>
+    </section>
+
+    <div class="showcase-sections container">
+      <div class="showcase-stack">
+        <section class="showcase showcase--panel showcase-frete-gratis" data-showcase="frete-gratis">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Entrega facilitada</span>
+              <h2 class="showcase__title">Frete Gr&aacute;tis</h2>
+              <p class="showcase__subtitle">Produtos selecionados com frete gr&aacute;tis para renovar banheiro, cozinha e outros ambientes com mais economia.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-frete-gratis">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-melhores-ofertas showcase-produtos-deca" data-showcase="produtos-deca">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Linha premium da campanha</span>
+              <h2 class="showcase__title">Produtos Deca</h2>
+              <p class="showcase__subtitle">Linha Deca selecionada para banheiro e cozinha com condi&ccedil;&otilde;es especiais e curadoria pensada para a campanha.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-melhores-ofertas">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-metais" data-showcase="metais">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Banheiro e cozinha</span>
+              <h2 class="showcase__title">Metais</h2>
+              <p class="showcase__subtitle">Torneiras, misturadores e acess&oacute;rios para banheiro e cozinha com condi&ccedil;&otilde;es especiais na campanha.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-metais">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-banho-e-aquecimento" data-showcase="banho-e-aquecimento">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Conforto para o dia a dia</span>
+              <h2 class="showcase__title">Banho e Aquecimento</h2>
+              <p class="showcase__subtitle">Chuveiros, duchas e solu&ccedil;&otilde;es para banho com conforto, economia e ofertas por tempo limitado.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-banho-e-aquecimento">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-moveis" data-showcase="moveis">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Organiza&ccedil;&atilde;o do lar</span>
+              <h2 class="showcase__title">M&oacute;veis</h2>
+              <p class="showcase__subtitle">Arm&aacute;rios, racks e solu&ccedil;&otilde;es para organizar a casa com mais praticidade durante a campanha.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-moveis">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-ferramentas" data-showcase="ferramentas">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Execu&ccedil;&atilde;o e acabamento</span>
+              <h2 class="showcase__title">Ferramentas</h2>
+              <p class="showcase__subtitle">Ferramentas e acess&oacute;rios para instala&ccedil;&atilde;o, acabamento e obra com ofertas especiais durante a campanha.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-chance-unica" data-showcase="chance-unica">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Top 5 ofertas do m&ecirc;s</span>
+              <h2 class="showcase__title">Chance &Uacute;nica</h2>
+              <p class="showcase__subtitle">Uma vitrine especial para destacar oportunidades de alto impacto e convers&atilde;o imediata.</p>
+            </div>
+            <a class="showcase__link" href="/chance-unica">
+              <span>Economize agora</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="showcase-chance-unica__hero">
+            <span class="showcase-chance-unica__seal">O melhor pre&ccedil;o do Brasil</span>
+            <div class="showcase-chance-unica__title-group">
+              <span class="showcase-chance-unica__kicker">Super</span>
+              <strong class="showcase-chance-unica__title">Chance &Uacute;nica</strong>
+            </div>
+            <span class="showcase-chance-unica__highlight">Top 5 ofertas do m&ecirc;s</span>
+          </div>
+
+          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="seo-content" aria-labelledby="seo-content-title">
+        <div class="seo-content__intro">
+          <span class="seo-content__eyebrow">Campanha 04.04 ABC da Construção</span>
+          <h2 id="seo-content-title" class="seo-content__title">Campanha 04.04 ABC da Construção</h2>
+          <p>A página organiza as ofertas da campanha 04.04 ABC da Construção para quem quer encontrar rapidamente os produtos em destaque.</p>
+          <p>O hero, o countdown e as vitrines de apoio priorizam leitura rápida, comparação simples e acesso direto aos itens mais relevantes.</p>
+          <p>Assim, a LP reduz ruído visual e ajuda a tomar decisão antes do fim da campanha.</p>
+        </div>
+
+        <div class="seo-content__faq" aria-labelledby="seo-faq-title">
+          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre 04.04 ABC da Construção</h2>
+
+          <details class="seo-content__faq-item">
+            <summary>O que muda na campanha 04.04 ABC da Construção?</summary>
+            <p>As ofertas ficam concentradas em uma janela curta, com foco em leitura rápida, urgência e decisão mais simples.</p>
+          </details>
+
+          <details class="seo-content__faq-item">
+            <summary>Como esta LP ajuda na leitura das ofertas da campanha 04.04 ABC da Construção?</summary>
+            <p>A estrutura prioriza hero, countdown e vitrines para apontar rapidamente o que importa sem poluir a navegação.</p>
+          </details>
+
+          <details class="seo-content__faq-item">
+            <summary>Preços e estoques podem mudar durante a campanha 04.04 ABC da Construção?</summary>
+            <p>Sim. Os preços e estoques podem variar ao longo da campanha conforme a disponibilidade do momento.</p>
+          </details>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que muda na campanha 04.04 ABC da Construção?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As ofertas ficam concentradas em uma janela curta, com foco em leitura rapida, urgencia e decisao mais simples."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como esta LP ajuda na leitura das ofertas da campanha 04.04 ABC da Construção?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A estrutura prioriza hero, countdown e vitrines para apontar rapidamente o que importa sem poluir a navegacao."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Precos e estoques podem mudar durante a campanha 04.04 ABC da Construção?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Os precos e estoques podem variar ao longo da campanha conforme a disponibilidade do momento."
+          }
+        }
+      ]
+    }
+  </script>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "lancamentos_2026", "ofertas_mensais", "whats_form"] }}
+
+</body>
+
+</html>

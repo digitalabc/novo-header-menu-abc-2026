@@ -3,6 +3,7 @@
 
   const STORAGE_KEY = 'abc-newsletter-popup-state';
   const POPUP_OPEN_DELAY_MS = 2000;
+  const WIDGET_AUTO_COLLAPSE_DELAY_MS = 2000;
   const FEEDBACK_AUTO_CLOSE_MS = 25000;
   const REGISTERED_STATE = 'registered';
   const WIDGET_STATE_EXPANDED = 'widget-expanded';
@@ -58,6 +59,7 @@
 
   let popupOpenTimeoutId = null;
   let autoCloseTimeoutId = null;
+  let widgetCollapseTimeoutId = null;
 
   const readPopupState = () => {
     try {
@@ -88,10 +90,15 @@
   };
 
   const persistedState = readPopupState();
+  const hasSavedWidgetPreference =
+    persistedState === REGISTERED_STATE ||
+    persistedState === WIDGET_STATE_COLLAPSED ||
+    persistedState === WIDGET_STATE_EXPANDED;
 
   const state = {
     popupPhase: POPUP_STATE_CLOSED,
     widgetState: getInitialWidgetState(persistedState),
+    widgetVisible: !isHome || persistedState !== '',
     registered: persistedState === REGISTERED_STATE,
     submitting: false,
     inlineMessage: '',
@@ -110,6 +117,13 @@
     if (autoCloseTimeoutId !== null) {
       window.clearTimeout(autoCloseTimeoutId);
       autoCloseTimeoutId = null;
+    }
+  };
+
+  const clearWidgetCollapseTimeout = () => {
+    if (widgetCollapseTimeoutId !== null) {
+      window.clearTimeout(widgetCollapseTimeoutId);
+      widgetCollapseTimeoutId = null;
     }
   };
 
@@ -377,7 +391,10 @@
   };
 
   const renderWidget = () => {
-    const shouldShowWidget = !state.registered && state.popupPhase === POPUP_STATE_CLOSED;
+    const shouldShowWidget =
+      !state.registered &&
+      state.widgetVisible &&
+      state.popupPhase === POPUP_STATE_CLOSED;
 
     if (!shouldShowWidget) {
       hideWidget();
@@ -454,6 +471,7 @@
 
     clearPopupOpenTimeout();
     clearAutoCloseTimeout();
+    clearWidgetCollapseTimeout();
     state.popupPhase = POPUP_STATE_OPEN;
     state.feedback = null;
     state.submitting = false;
@@ -483,6 +501,7 @@
   const closePopupAfterSuccess = () => {
     clearPopupOpenTimeout();
     clearAutoCloseTimeout();
+    clearWidgetCollapseTimeout();
     state.popupPhase = POPUP_STATE_CLOSED;
     state.feedback = null;
     state.submitting = false;
@@ -494,6 +513,7 @@
   const showFeedback = (tone, extra = {}) => {
     clearPopupOpenTimeout();
     clearAutoCloseTimeout();
+    clearWidgetCollapseTimeout();
     state.popupPhase = tone === 'success' ? POPUP_STATE_FEEDBACK_SUCCESS : POPUP_STATE_FEEDBACK_ERROR;
     state.submitting = false;
     state.feedback = {
@@ -622,9 +642,23 @@
   };
 
   const handleDismiss = () => {
+    clearWidgetCollapseTimeout();
+    state.widgetVisible = true;
+    state.widgetState = WIDGET_STATE_EXPANDED;
     writePopupState(WIDGET_STATE_COLLAPSED);
-    state.widgetState = WIDGET_STATE_COLLAPSED;
-    closePopupToWidgetState(WIDGET_STATE_COLLAPSED);
+    closePopupToWidgetState(WIDGET_STATE_EXPANDED);
+
+    widgetCollapseTimeoutId = window.setTimeout(() => {
+      widgetCollapseTimeoutId = null;
+
+      if (state.registered || state.popupPhase !== POPUP_STATE_CLOSED || !state.widgetVisible) {
+        return;
+      }
+
+      state.widgetState = WIDGET_STATE_COLLAPSED;
+      writePopupState(WIDGET_STATE_COLLAPSED);
+      render();
+    }, WIDGET_AUTO_COLLAPSE_DELAY_MS);
   };
 
   const handleFeedbackClose = () => {
@@ -647,6 +681,8 @@
     if (state.popupPhase !== POPUP_STATE_CLOSED || state.registered) {
       return;
     }
+
+    clearWidgetCollapseTimeout();
 
     const nextWidgetState = state.widgetState === WIDGET_STATE_COLLAPSED
       ? WIDGET_STATE_EXPANDED
@@ -761,11 +797,6 @@
   });
 
   render();
-
-  const hasSavedWidgetPreference =
-    persistedState === WIDGET_STATE_COLLAPSED ||
-    persistedState === WIDGET_STATE_EXPANDED ||
-    persistedState === REGISTERED_STATE;
 
   if (isHome && !state.registered && !hasSavedWidgetPreference) {
     popupOpenTimeoutId = window.setTimeout(() => {

@@ -1,0 +1,786 @@
+/* Campaign-specific orange + blue overrides for the Ofertas Mensais LP. */
+.ofertas-mensais {
+  --ofertas-mensais-primary: #c97a42;
+  --ofertas-mensais-primary-dark: #425f8f;
+  --ofertas-mensais-primary-soft: #f4e6d6;
+  --ofertas-mensais-ink: #233242;
+  --ofertas-mensais-muted: #687281;
+  --ofertas-mensais-surface: #fffaf5;
+  --ofertas-mensais-surface-alt: #f4f7fb;
+  --ofertas-mensais-border: rgba(66, 95, 143, 0.16);
+  --ofertas-mensais-border-strong: rgba(201, 122, 66, 0.26);
+  --ofertas-mensais-shadow: rgba(38, 49, 67, 0.08);
+  --ofertas-mensais-warm: rgba(201, 122, 66, 0.12);
+  --ofertas-mensais-cool: rgba(66, 95, 143, 0.12);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(201, 122, 66, 0.12) 0%, rgba(201, 122, 66, 0) 34%),
+    radial-gradient(circle at 88% 8%, rgba(66, 95, 143, 0.12) 0%, rgba(66, 95, 143, 0) 30%),
+    linear-gradient(180deg, #fbf7f2 0%, #f7f9fc 100%);
+}
+
+.ofertas-mensais:before {
+  background: radial-gradient(circle, rgba(66, 95, 143, 0.08) 0%, rgba(66, 95, 143, 0) 68%);
+}
+
+.ofertas-mensais .fullbanner .swiper {
+  box-shadow: 0 24px 48px rgba(39, 51, 69, 0.12);
+}
+
+.ofertas-mensais .showcase {
+  border-color: var(--ofertas-mensais-border);
+  background: linear-gradient(180deg, rgba(255, 250, 245, 0.99) 0%, rgba(244, 247, 252, 0.96) 100%);
+  box-shadow: 0 24px 60px var(--ofertas-mensais-shadow);
+}
+
+.ofertas-mensais .showcase:before {
+  background: linear-gradient(90deg, var(--ofertas-mensais-primary) 0%, rgba(66, 95, 143, 0.9) 100%);
+}
+
+.ofertas-mensais .showcase__eyebrow,
+.ofertas-mensais .showcase__subtitle,
+.ofertas-mensais .showcase__link,
+.ofertas-mensais .seo-content__eyebrow {
+  color: var(--ofertas-mensais-muted);
+}
+
+.ofertas-mensais .showcase__brandmark strong,
+.ofertas-mensais .showcase__title,
+.ofertas-mensais .seo-content__title {
+  color: var(--ofertas-mensais-ink);
+}
+
+.ofertas-mensais .showcase__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 9px 14px;
+  border: 1px solid rgba(66, 95, 143, 0.16);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(244, 230, 214, 0.94) 0%, rgba(239, 243, 250, 0.94) 100%);
+  box-shadow: 0 12px 24px rgba(38, 49, 67, 0.08);
+  color: var(--ofertas-mensais-primary-dark);
+  font-family: var(--font-brand);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: none;
+  backdrop-filter: blur(10px);
+}
+
+.ofertas-mensais .showcase__title-word {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.04em;
+  padding-right: 0.62em;
+  color: var(--ofertas-mensais-ink);
+}
+
+.ofertas-mensais .showcase__title-line {
+  display: block;
+  white-space: nowrap;
+  line-height: 0.92;
+}
+
+.ofertas-mensais .showcase__title-date-row {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.06em;
+  white-space: nowrap;
+}
+
+.ofertas-mensais .showcase__title-date {
+  display: block;
+  color: #fe9d47;
+  font-weight: 900;
+  font-size: 1.44em;
+  letter-spacing: -.11em;
+  line-height: .92;
+  white-space: nowrap;
+  text-shadow: -2px 1px 0 rgb(82 39 39 / 68%), -6px 11px 0px rgba(15, 25, 38, .12), -8px 18px 1px rgba(255, 160, 72, .22);
+  filter: none;
+  transform: translateY(-.02em);
+}
+
+.ofertas-mensais .showcase[data-showcase="cronometer"] .showcase__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 580px;
+}
+
+.ofertas-mensais .oferta-relampago__lightning--hero {
+  position: static;
+  margin-left: 0.02em;
+  font-size: 1.18em;
+  line-height: 1;
+  transform: rotate(18deg) translateY(-0.02em);
+  filter: drop-shadow(0 6px 10px rgba(242, 141, 53, 0.28));
+}
+
+.ofertas-mensais .showcase__title--hero {
+  max-width: 520px;
+  margin: 0;
+  color: var(--ofertas-mensais-ink);
+  text-transform: none;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  font-size: clamp(46px, 6.6vw, 62px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.02em;
+}
+
+.ofertas-mensais .showcase__subtitle--hero {
+  max-width: 430px;
+  margin-top: 0;
+  color: var(--ofertas-mensais-muted);
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.ofertas-mensais .showcase__eyebrow-icon {
+  background: linear-gradient(135deg, var(--ofertas-mensais-primary-dark) 0%, var(--ofertas-mensais-primary) 100%);
+}
+
+.ofertas-mensais .showcase__link {
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .showcase__link:hover {
+  color: var(--ofertas-mensais-primary);
+}
+
+.ofertas-mensais .showcase__link:hover svg {
+  color: var(--ofertas-mensais-primary);
+}
+
+.ofertas-mensais .oferta-relampago__lightning,
+.ofertas-mensais .oferta-relampago__clock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .oferta-relampago__clock {
+  width: 1.08em;
+  height: 1.08em;
+  line-height: 0;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.ofertas-mensais .oferta-relampago__clock--hero {
+  width: 1.18em;
+  height: 1.18em;
+}
+
+.ofertas-mensais .oferta-relampago__clock--eyebrow {
+  width: 0.96em;
+  height: 0.96em;
+}
+
+.ofertas-mensais .oferta-relampago__clock img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: 50% 64%;
+  animation: ofertas-mensais-clock-sway 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 8px 14px rgba(35, 50, 66, 0.18));
+}
+
+.ofertas-mensais .showcase[data-showcase="cronometer"] {
+  overflow: hidden;
+  padding: 44px 0 52px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background:
+    radial-gradient(circle at 16% 16%, rgba(201, 122, 66, 0.12) 0%, rgba(201, 122, 66, 0) 36%),
+    radial-gradient(circle at 84% 22%, rgba(66, 95, 143, 0.14) 0%, rgba(66, 95, 143, 0) 34%),
+    linear-gradient(135deg, #faf4ec 0%, #eef5fb 48%, rgba(66, 95, 143, 0.14) 100%);
+}
+
+.ofertas-mensais .showcase[data-showcase="cronometer"]:before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at top left, rgba(201, 122, 66, 0.18), rgba(201, 122, 66, 0) 34%),
+    radial-gradient(circle at top right, rgba(66, 95, 143, 0.18), rgba(66, 95, 143, 0) 30%);
+}
+
+.ofertas-mensais .showcase[data-showcase="cronometer"] .showcase__copy,
+.ofertas-mensais .showcase[data-showcase="cronometer"] .showcase__actions {
+  position: relative;
+  z-index: 1;
+}
+
+.ofertas-mensais .showcase[data-showcase="cronometer"] .showcase__subtitle {
+  color: rgba(35, 50, 66, 0.76);
+}
+
+.ofertas-mensais .showcase[data-showcase="cronometer"] .showcase__link {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ofertas-mensais-ink);
+}
+
+.ofertas-mensais .showcase[data-showcase="cronometer"] .showcase__link:hover {
+  background: rgba(66, 95, 143, 0.12);
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais #cronometro {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  min-width: 360px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(40, 54, 79, 0.96) 0%, rgba(29, 39, 57, 0.98) 100%);
+  box-shadow: 0 24px 60px rgba(38, 49, 67, 0.24);
+  color: #fff;
+}
+
+.ofertas-mensais #cronometro:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.ofertas-mensais #cronometro .cronometro__label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.74);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.ofertas-mensais #cronometro .oferta-relampago__countdown-eyebrow {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  color: #f4e7db;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+}
+
+.ofertas-mensais #cronometro .cronometro__note {
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.ofertas-mensais #cronometro .cron {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ofertas-mensais #cronometro .cron__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+}
+
+.ofertas-mensais #cronometro .cronometro__days,
+.ofertas-mensais #cronometro .cronometro__hours,
+.ofertas-mensais #cronometro .cronometro__minutes,
+.ofertas-mensais #cronometro .cronometro__seconds {
+  display: block;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.ofertas-mensais #cronometro small {
+  color: rgba(255, 255, 255, 0.62);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+}
+
+.ofertas-mensais #cronometro .sep {
+  display: none;
+}
+
+.ofertas-mensais .showcase__hero-whatsapp {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, #f5cf67 0%, #e2b23a 100%);
+  color: var(--ofertas-mensais-primary-dark);
+  box-shadow: 0 14px 30px rgba(201, 122, 66, 0.18);
+}
+
+.ofertas-mensais .showcase__hero-whatsapp:hover {
+  background: linear-gradient(135deg, #ffe07c 0%, #efc54d 100%);
+  color: var(--ofertas-mensais-primary-dark);
+  box-shadow: 0 18px 34px rgba(66, 95, 143, 0.18);
+}
+
+.ofertas-mensais .countdown-principal-da-campanha__ribbon {
+  background: linear-gradient(180deg, #f4e2d3 0%, #d4844c 100%);
+  color: #2b3d54 !important;
+  box-shadow: 0 10px 18px rgba(66, 95, 143, 0.14);
+}
+
+.ofertas-mensais .cronometro--spot .cronometro__label,
+.ofertas-mensais .cronometro--spot .cronometro__note {
+  color: var(--ofertas-mensais-muted);
+}
+
+.ofertas-mensais .cronometro--spot .cron__item {
+  border-color: var(--ofertas-mensais-border);
+  background: linear-gradient(180deg, #fff 0%, rgba(66, 95, 143, 0.05) 100%);
+}
+
+.ofertas-mensais .cronometro--spot .days,
+.ofertas-mensais .cronometro--spot .hours,
+.ofertas-mensais .cronometro--spot .minutes,
+.ofertas-mensais .cronometro--spot .seconds {
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .showcase .spot {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border-color: rgba(66, 95, 143, 0.14);
+}
+
+.ofertas-mensais .showcase .spot .overlay {
+  background: linear-gradient(180deg, rgba(255, 250, 245, 0.98) 0%, rgba(242, 246, 251, 0.98) 100%);
+  box-shadow: inset 0 0 0 1px rgba(66, 95, 143, 0.08);
+}
+
+.ofertas-mensais .showcase .spot .products-sold {
+  color: var(--ofertas-mensais-ink);
+  background: linear-gradient(90deg, rgba(201, 122, 66, 0.12) 0%, rgba(66, 95, 143, 0.1) 100%);
+}
+
+.ofertas-mensais .showcase .spot .products-sold__progress {
+  background: linear-gradient(90deg, #d88b52 0%, #4c6797 100%);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__spot-footer {
+  background: linear-gradient(180deg, rgba(255, 250, 245, 0.98) 0%, rgba(247, 250, 254, 0.98) 100%);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold {
+  border-color: rgba(66, 95, 143, 0.16);
+  background: linear-gradient(180deg, rgba(237, 243, 251, 0.96) 0%, rgba(248, 238, 227, 0.96) 100%);
+  color: var(--ofertas-mensais-ink);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-critical {
+  border-color: rgba(66, 95, 143, 0.2);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-low {
+  border-color: rgba(201, 122, 66, 0.24);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-limited {
+  border-color: rgba(66, 95, 143, 0.24);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-available {
+  border-color: rgba(201, 122, 66, 0.24);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-unavailable {
+  border-color: rgba(108, 114, 128, 0.24);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold-progress {
+  background: linear-gradient(90deg, #c97a42 0%, #4a6693 100%);
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold-text {
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .showcase .spot .spot-price .discount {
+  background: rgba(66, 95, 143, 0.1);
+  border-color: rgba(66, 95, 143, 0.22);
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .showcase .spot .spot-price .discount__value {
+  color: var(--ofertas-mensais-primary);
+}
+
+.ofertas-mensais .showcase .spot .spot-price .precoPor span,
+.ofertas-mensais .showcase .spot .spot-price .precoCalculado span,
+.ofertas-mensais .showcase .spot .spot-price .best-installment {
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .showcase .spot .spot-price .precoDe s,
+.ofertas-mensais .showcase .spot .spot-price .precoPor small,
+.ofertas-mensais .showcase .spot .spot-price .precoCalculado small {
+  color: var(--ofertas-mensais-muted);
+}
+
+.ofertas-mensais .spot__buttons .add-to-cart-button {
+  background: linear-gradient(135deg, var(--ofertas-mensais-primary) 0%, #de8a4f 100%);
+  box-shadow: 0 12px 24px rgba(201, 122, 66, 0.16);
+}
+
+.ofertas-mensais .spot__buttons .add-to-cart-button:hover,
+.ofertas-mensais .showcase .spot:hover .spot__buttons .add-to-cart-button:hover {
+  background: linear-gradient(135deg, #d87632 0%, #cb6d33 100%);
+  box-shadow: 0 14px 26px rgba(66, 95, 143, 0.18);
+}
+
+.ofertas-mensais .showcase .spot:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(38, 49, 67, 0.16);
+}
+
+.ofertas-mensais .showcase .spot:hover .spot__title h3 {
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .showcase__carousel .swiper-button-prev,
+.ofertas-mensais .showcase__carousel .swiper-button-next {
+  z-index: 20;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(66, 95, 143, 0.2);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #eef4fb 0%, #dfe7f3 100%);
+  color: var(--ofertas-mensais-primary-dark);
+  box-shadow: 0 8px 18px rgba(38, 49, 67, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.ofertas-mensais .showcase__carousel .swiper-button-prev:hover,
+.ofertas-mensais .showcase__carousel .swiper-button-next:hover {
+  background: linear-gradient(180deg, #fff5ea 0%, #f6dcc3 100%);
+  color: var(--ofertas-mensais-primary);
+}
+
+.ofertas-mensais .showcase__carousel .swiper-button-prev svg,
+.ofertas-mensais .showcase__carousel .swiper-button-next svg {
+  width: 38px;
+  height: 38px;
+}
+
+.ofertas-mensais .showcase__carousel .swiper-button-prev svg path,
+.ofertas-mensais .showcase__carousel .swiper-button-next svg path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.ofertas-mensais .showcase-chance-unica {
+  display: none !important;
+}
+
+.ofertas-mensais .showcase-ofertas-mensais__placeholder {
+  padding: 12px 0 0;
+  border-top: 1px dashed rgba(66, 95, 143, 0.22);
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.ofertas-mensais .showcase-ofertas-mensais__empty strong {
+  display: block;
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.ofertas-mensais .showcase-ofertas-mensais__empty strong {
+  color: var(--ofertas-mensais-ink);
+}
+
+.ofertas-mensais .showcase-ofertas-mensais__empty p {
+  display: none;
+}
+
+.ofertas-mensais .showcase.showcase-oferta-relampago .showcase__subtitle {
+  color: var(--ofertas-mensais-muted);
+}
+
+.ofertas-mensais .seo-content {
+  font-family: "Montserrat", sans-serif !important;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
+  gap: 24px;
+  margin-top: 32px;
+  content-visibility: auto;
+  contain-intrinsic-size: 620px;
+}
+
+.ofertas-mensais .seo-content__intro,
+.ofertas-mensais .seo-content__faq {
+  min-width: 0;
+  padding: 28px 30px;
+  border: 1px solid rgba(66, 95, 143, 0.16);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at top right, rgba(201, 122, 66, 0.12), rgba(201, 122, 66, 0) 42%),
+    radial-gradient(circle at bottom left, rgba(66, 95, 143, 0.1), rgba(66, 95, 143, 0) 36%),
+    linear-gradient(180deg, rgba(255, 250, 245, 0.99) 0%, rgba(244, 247, 252, 0.96) 100%);
+  box-shadow: 0 10px 24px rgba(38, 49, 67, 0.04);
+}
+
+.ofertas-mensais .seo-content__eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--ofertas-mensais-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.ofertas-mensais .seo-content__title {
+  margin: 0 0 14px;
+  color: var(--ofertas-mensais-ink);
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.ofertas-mensais .seo-content__title--faq {
+  font-size: 24px;
+}
+
+.ofertas-mensais .seo-content__intro p,
+.ofertas-mensais .seo-content__faq p {
+  margin: 0;
+  color: #5b6776;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.ofertas-mensais .seo-content__intro p+p,
+.ofertas-mensais .seo-content__faq-item+.seo-content__faq-item {
+  margin-top: 16px;
+}
+
+.ofertas-mensais .seo-content__faq-item {
+  padding: 16px 0;
+  border-top: 1px solid rgba(66, 95, 143, 0.12);
+}
+
+.ofertas-mensais .seo-content__faq-item:first-of-type {
+  padding-top: 6px;
+  border-top: 0;
+}
+
+.ofertas-mensais .seo-content__faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 28px;
+  color: var(--ofertas-mensais-ink);
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.ofertas-mensais .seo-content__faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.ofertas-mensais .seo-content__faq-item summary:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--ofertas-mensais-primary-dark);
+  border-bottom: 2px solid var(--ofertas-mensais-primary-dark);
+  transform: translateY(-60%) rotate(45deg);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ofertas-mensais .seo-content__faq-item[open] summary:after {
+  transform: translateY(-30%) rotate(225deg);
+}
+
+.ofertas-mensais .seo-content__faq-item p {
+  margin-top: 10px;
+}
+
+.ofertas-mensais .seo-content__faq-item summary:hover {
+  color: var(--ofertas-mensais-primary);
+}
+
+.ofertas-mensais .showcase.showcase-oferta-relampago .showcase__link {
+  color: var(--ofertas-mensais-primary-dark);
+}
+
+.ofertas-mensais .showcase.showcase-oferta-relampago .showcase__link:hover,
+.ofertas-mensais .showcase.showcase-oferta-relampago .showcase__link:hover svg {
+  color: var(--ofertas-mensais-primary);
+}
+
+.ofertas-mensais .showcase.showcase-oferta-relampago .showcase__subtitle {
+  color: var(--ofertas-mensais-muted);
+}
+
+@keyframes ofertas-mensais-clock-sway {
+
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(4deg) translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ofertas-mensais .oferta-relampago__clock img {
+    animation: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .ofertas-mensais .seo-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ofertas-mensais #cronometro {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .ofertas-mensais .showcase[data-showcase="cronometer"] {
+    padding: 36px 0 40px;
+  }
+
+  .ofertas-mensais .showcase[data-showcase="cronometer"] .showcase__copy {
+    gap: 14px;
+  }
+
+  .ofertas-mensais .showcase__hero-badge {
+    padding: 8px 12px;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .ofertas-mensais .showcase__title--hero {
+    font-size: clamp(30px, 8vw, 44px);
+  }
+
+  .ofertas-mensais .showcase__title-line {
+    line-height: 0.94;
+  }
+
+  .ofertas-mensais .showcase__title-date-row {
+    gap: 0.04em;
+  }
+
+  .ofertas-mensais .showcase__title-date {
+    font-size: 1.2em;
+    letter-spacing: -0.09em;
+  }
+
+  .ofertas-mensais .oferta-relampago__lightning--hero {
+    font-size: 1.08em;
+    transform: rotate(18deg) translateY(-0.01em);
+  }
+
+  .ofertas-mensais .showcase__subtitle--hero {
+    font-size: 14px;
+  }
+
+  .ofertas-mensais #cronometro {
+    padding: 20px;
+  }
+
+  .ofertas-mensais #cronometro .cron {
+    gap: 8px;
+  }
+
+  .ofertas-mensais #cronometro .cron__item {
+    padding: 12px 8px;
+    border-radius: 18px;
+  }
+
+  .ofertas-mensais #cronometro .cronometro__days,
+  .ofertas-mensais #cronometro .cronometro__hours,
+  .ofertas-mensais #cronometro .cronometro__minutes,
+  .ofertas-mensais #cronometro .cronometro__seconds {
+    font-size: 30px;
+  }
+
+  .ofertas-mensais .seo-content__intro,
+  .ofertas-mensais .seo-content__faq {
+    padding: 22px 20px;
+    border-radius: 24px;
+  }
+
+  .ofertas-mensais .seo-content__title {
+    font-size: 24px;
+  }
+
+  .ofertas-mensais .seo-content__title--faq {
+    font-size: 20px;
+  }
+
+  .ofertas-mensais .showcase__hero-whatsapp {
+    width: 100%;
+  }
+}

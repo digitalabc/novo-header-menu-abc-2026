@@ -137,6 +137,11 @@
         "query": "lancamentos_2026.graphql"
       },
       {
+        "urlMatch": "ofertas-mensais",
+        "path": "Custom/old_se/ofertas_mensais.html",
+        "query": "ofertas_mensais.graphql"
+      },
+      {
         "urlMatch": "auaha-loja-por-cidade",
         "path": "Custom/diretorio_de_lojas/franquia.html",
         "query": "generic.graphql"

@@ -283,8 +283,8 @@ function parseCustomData(data) {
     }
 
     const checkout = findValue(data, "checkout");
-    const customer = findValue(data, "customer");
-
+    // const customer = findValue(data, "customer");
+    
     const orders = findValue(checkout, "orders");
     const firstOrder = orders?.[0] || [];
 
@@ -292,8 +292,8 @@ function parseCustomData(data) {
     const value = findValue(firstOrder, "total_value");
     const shipping = findValue(firstOrder, "shipping_value");
     const discount = findValue(firstOrder, "discount_value");
-    const cep = findValue(checkout, "cep");
-    const nome = findValue(customer, "customer_name");
+    // const cep = findValue(checkout, "cep");
+    // const nome = findValue(customer, "customer_name"); 
 
     // Produtos
     const products = findValue(firstOrder, "products") || [];
@@ -303,20 +303,22 @@ function parseCustomData(data) {
         price: findValue(p, "value"),
         quantity: findValue(p, "quantity"),
     }));
-
-    window.dataLayer.push({
-        event: "purchase",
-        ecommerce: {
-            transaction_id,
-            value,
-            shipping,
-            currency: "BRL",
-            coupon: discount > 0 ? String(discount) : "",
-            items,
-            cep,
-            nome,
-        },
-    })
+    
+    getUserInfo().then((user_info) => { 
+        window.dataLayer.push({
+            event: "purchase",
+            ecommerce: {
+                transaction_id,
+                value,
+                shipping,
+                currency: "BRL",
+                coupon: discount > 0 ? String(discount) : "",
+                items,            
+                email: user_info.email,
+                phoneNumber: user_info.phoneNumber
+            },
+        });
+    });
 }
 
 function parseCustomDataToUA(data) {

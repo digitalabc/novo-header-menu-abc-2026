@@ -854,41 +854,53 @@ document.addEventListener("DOMContentLoaded", () => {
         var pointerId = null;
         var lastX = 0;
         var totalMove = 0;
+        var dragThreshold = 8;
         var blockLinkClick = false;
+        var hasPointerCapture = false;
         function onPointerDown(e) {
           if (e.pointerType === "mouse" && e.button !== 0) return;
           var t = e.target;
           if (t.closest(".swiper-button-prev, .swiper-button-next")) return;
           if (t.closest("button, input, select, textarea, [role='button']"))
             return;
-          dragging = true;
           pointerId = e.pointerId;
           lastX = e.clientX;
           totalMove = 0;
-          try {
-            viewport.setPointerCapture(e.pointerId);
-          } catch (err) {}
+          dragging = false;
+          blockLinkClick = false;
+          hasPointerCapture = false;
         }
         function onPointerMove(e) {
-          if (!dragging || e.pointerId !== pointerId) return;
+          if (pointerId === null || e.pointerId !== pointerId) return;
           var dx = e.clientX - lastX;
           lastX = e.clientX;
           totalMove += Math.abs(dx);
-          if (totalMove > 3) e.preventDefault();
+          if (!dragging && totalMove >= dragThreshold) {
+            dragging = true;
+            blockLinkClick = true;
+            if (!hasPointerCapture) {
+              try {
+                viewport.setPointerCapture(e.pointerId);
+                hasPointerCapture = true;
+              } catch (err) {}
+            }
+          }
+          if (!dragging) return;
+          e.preventDefault();
           viewport.scrollLeft -= dx;
         }
         function endDrag(e) {
-          if (!dragging) return;
+          if (pointerId === null) return;
           if (pointerId !== null && e.pointerId !== pointerId) return;
           var pid = pointerId;
           dragging = false;
           pointerId = null;
-          blockLinkClick = totalMove > 10;
-          if (pid !== null) {
+          if (pid !== null && hasPointerCapture) {
             try {
               viewport.releasePointerCapture(pid);
             } catch (err2) {}
           }
+          hasPointerCapture = false;
         }
         viewport.addEventListener("pointerdown", onPointerDown);
         viewport.addEventListener("pointermove", onPointerMove, {

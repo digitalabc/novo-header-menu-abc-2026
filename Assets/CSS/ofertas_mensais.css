@@ -293,6 +293,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
 }
 
 .ofertas-mensais .showcase[data-showcase="cronometer"]:before {
+  content: "";
   top: 0;
   left: 0;
   width: 100%;
@@ -896,7 +897,19 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
     background: var(--ofertas-mensais-primary);
   }
 
-  .ofertas-mensais .showcase[data-showcase="cronometer"]:before,
+  .ofertas-mensais .showcase[data-showcase="cronometer"]:before {
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 56%);
+    opacity: 1;
+    pointer-events: none;
+  }
+
   .ofertas-mensais .showcase[data-showcase="cronometer"]:after {
     display: none;
   }

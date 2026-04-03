@@ -59,7 +59,7 @@
 
 .semana-do-consumidor .fullbanner .swiper {
   overflow: hidden;
-  border-radius: 0 0 34px 34px;
+  /* border-radius: 0 0 34px 34px; */
   box-shadow: 0 24px 48px rgba(35, 27, 70, 0.12);
 }
 
@@ -623,7 +623,7 @@
 
   .semana-do-consumidor .fullbanner img,
   .semana-do-consumidor .fullbanner .swiper {
-    border-radius: 0 0 20px 20px;
+    /* border-radius: 0 0 20px 20px; */
   }
 
   .semana-do-consumidor .showcase-stack {

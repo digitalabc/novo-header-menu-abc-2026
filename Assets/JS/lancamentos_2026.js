@@ -14,6 +14,16 @@ function resolveDailySpotTarget() {
   return targetDate;
 }
 
+function resolveSpotCountdownTarget(countdownRoot, campaignTargetDate) {
+  const spotTargetMode = countdownRoot.getAttribute("data-spot-countdown-target");
+
+  if (spotTargetMode === "campaign") {
+    return campaignTargetDate;
+  }
+
+  return resolveDailySpotTarget();
+}
+
 function getCountdownParts(targetDate) {
   const distance = Math.max(targetDate.getTime() - Date.now(), 0);
   const totalSeconds = Math.floor(distance / 1000);
@@ -342,7 +352,7 @@ function startCountdown() {
   }
 
   const campaignTargetDate = resolveCountdownTarget(countdownRoot.getAttribute("data-promotion"));
-  const spotTargetDate = resolveDailySpotTarget();
+  const spotTargetDate = resolveSpotCountdownTarget(countdownRoot, campaignTargetDate);
   const note = countdownRoot.querySelector(".cronometro__note");
   const heroSubtitle = document.querySelector(".showcase__subtitle--hero");
   let timerId = null;

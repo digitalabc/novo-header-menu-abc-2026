@@ -138,7 +138,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(172px, 24vw, 280px);
+  width: 280px;
   aspect-ratio: 2.12 / 1;
   flex: 0 0 auto;
 }
@@ -149,7 +149,7 @@
   display: block;
   color: #fff;
   font-weight: 900;
-  font-size: clamp(3.25rem, 6.9vw, 5.85rem);
+  font-size: 5.85rem;
   letter-spacing: -0.12em;
   line-height: 0.88;
   white-space: nowrap;
@@ -188,7 +188,8 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  padding-top: 20px;
   max-width: 580px;
 }
 
@@ -199,18 +200,33 @@
   text-transform: none;
   letter-spacing: -0.05em;
   text-wrap: balance;
-  font-size: clamp(48px, 6.8vw, 74px);
+  font-size: 1px;
+  line-height: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.06em;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
   text-shadow: 0 12px 24px rgba(74, 16, 26, 0.22);
 }
 
-.ofertas-mensais .showcase__title--hero .showcase__title-line,
-.ofertas-mensais .showcase__title--hero .showcase__title-date-row,
-.ofertas-mensais .showcase__title--hero .showcase__title-word {
+.ofertas-mensais .showcase__title--hero .showcase__title-line {
+  display: none;
+}
+
+.ofertas-mensais .showcase__title-date-row--poster {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+  transform: scale(1.5);
+  transform-origin: left center;
   color: #fff;
+}
+
+.ofertas-mensais .showcase__title-word {
+  display: none;
 }
 
 html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.showcase__title.showcase__title--hero,
@@ -923,7 +939,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   }
 
   .ofertas-mensais .showcase__title--hero {
-    font-size: clamp(30px, 9vw, 46px);
+    font-size: 1px;
   }
 
   .ofertas-mensais .showcase__title-line {
@@ -934,12 +950,18 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
     gap: 0.12em;
   }
 
+  .ofertas-mensais .showcase__title-date-row--poster {
+    margin-bottom: 1.5rem;
+    transform: scale(1.18);
+    transform-origin: center;
+  }
+
   .ofertas-mensais .showcase__title-date-wrap {
-    width: clamp(120px, 38vw, 176px);
+    width: 176px;
   }
 
   .ofertas-mensais .showcase__title-date {
-    font-size: clamp(2.15rem, 9vw, 3.45rem);
+    font-size: 3.45rem;
     letter-spacing: -0.1em;
   }
 

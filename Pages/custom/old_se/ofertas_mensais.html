@@ -3,7 +3,7 @@
 
 <head>
   {{ gtm_config_head gtm_id: common.gtm_id }}
-  {{ default_title_hotsite = data.hotsite.name | string.append " | 04.04 ABC da Construção" }}
+  {{ default_title_hotsite = data.hotsite.name | string.append " | 4.4 ABC da Construção" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ asset type: "css" paths: ["lancamentos_2026"] }}
   {{ asset type: "css" paths: ["ofertas_mensais"] }}
@@ -34,16 +34,23 @@
       <div class="container">
         <div class="showcase__hero">
           <div class="showcase__copy">
-            <span class="showcase__hero-badge">Oferta mensal ABC da Constru&ccedil;&atilde;o</span>
             <h1 class="showcase__title showcase__title--hero">
               <span class="showcase__title-line">Ofertas</span>
-              <span class="showcase__title-date-row">
-                <span class="showcase__title-date">04.04</span>
-                <span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">&#9889;</span>
+              <span class="showcase__title-date-row showcase__title-date-row--poster">
+                <span class="showcase__title-date-wrap">
+                  <span class="showcase__title-date">4.4</span>
+                  <img
+                    class="showcase__title-seal"
+                    src="https://abcdaconstrucao.fbitsstatic.net/media/3d-4.4-abc.png?v=202604021800"
+                    alt=""
+                    aria-hidden="true"
+                    decoding="async"
+                  >
+                </span>
+                <span class="showcase__title-word">imperd&iacute;veis</span>
               </span>
-              <span class="showcase__title-word">imperd&iacute;veis</span>
             </h1>
-            <p class="showcase__subtitle showcase__subtitle--hero">Ofertas selecionadas para decidir com rapidez e clareza.</p>
+            <p class="showcase__subtitle showcase__subtitle--hero">Aproveite condi&ccedil;&otilde;es especiais para renovar seus ambientes com mais economia durante a campanha.</p>
           </div>
 
           <div class="showcase__countdown-column">
@@ -76,15 +83,14 @@
         </div>
 
         <div class="showcase__carousel">
-          {{ cronometro_products = data.vitrineCronometro?.products?.nodes ?? [] }}
+          {{ cronometro_products = data.vitrine_cronometro?.products?.nodes ?? [] }}
           {{~ if cronometro_products.size > 0 ~}}
           {{~ for product in cronometro_products ~}}
           <input id="promotion-stock-{{for.index}}" type="hidden" value="{{product.stock}}">
           <input id="promotion-available-{{for.index}}" type="hidden"
             value="{{if product.available}}true{{else}}false{{end}}">
           {{~ end ~}}
-          {{ spot_carousel class: "showcase-oferta-relampago__carousel showcase-ofertas-mensais-principal__carousel"
-          products: cronometro_products }}
+          {{ spot_carousel class: "showcase-oferta-relampago__carousel showcase-ofertas-mensais-principal__carousel" products: cronometro_products }}
           {{~ else ~}}
           <div class="showcase-ofertas-mensais__placeholder">
             <div class="showcase-ofertas-mensais__empty">
@@ -98,13 +104,12 @@
 
     <div class="showcase-sections container">
       <div class="showcase-stack">
-        <section class="showcase showcase--panel showcase-frete-gratis" data-showcase="frete-gratis">
+        <section class="showcase showcase--panel showcase-produtos-deca" data-showcase="produtos-deca">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Entrega facilitada</span>
-              <h2 class="showcase__title">Frete Gr&aacute;tis</h2>
-              <p class="showcase__subtitle">Produtos selecionados com frete gr&aacute;tis para renovar banheiro, cozinha
-                e outros ambientes com mais economia.</p>
+              <span class="showcase__eyebrow">Linha premium da campanha</span>
+              <h2 class="showcase__title">Produtos Deca</h2>
+              <p class="showcase__subtitle">Lou&ccedil;as e acabamentos premium para renovar com mais qualidade.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-frete-gratis">
               <span>Ver mais ofertas</span>
@@ -116,21 +121,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
+          <div class="showcase__carousel showcase-produtos-deca__carousel">
+            {{ spot_carousel class: "showcase-produtos-deca__carousel" products: data.vitrine1.products.nodes }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-melhores-ofertas showcase-produtos-deca"
-          data-showcase="produtos-deca">
+        <section class="showcase showcase--panel showcase-metais" data-showcase="metais">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Linha premium da campanha</span>
-              <h2 class="showcase__title">Produtos Deca</h2>
-              <p class="showcase__subtitle">Linha Deca selecionada para banheiro e cozinha com condi&ccedil;&otilde;es
-                especiais e curadoria pensada para a campanha.</p>
+              <span class="showcase__eyebrow">Banheiro e cozinha</span>
+              <h2 class="showcase__title">Metais</h2>
+              <p class="showcase__subtitle">Torneiras, misturadores e acabamentos com pre&ccedil;o de campanha.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-melhores-ofertas">
               <span>Ver mais ofertas</span>
@@ -142,20 +143,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
+          <div class="showcase__carousel showcase-metais__carousel">
+            {{ spot_carousel class: "showcase-metais__carousel" products: data.vitrine2.products.nodes }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-metais" data-showcase="metais">
+        <section class="showcase showcase--panel showcase-banho-quente" data-showcase="banho-quente">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Banheiro e cozinha</span>
-              <h2 class="showcase__title">Metais</h2>
-              <p class="showcase__subtitle">Torneiras, misturadores e acess&oacute;rios para banheiro e cozinha com
-                condi&ccedil;&otilde;es especiais na campanha.</p>
+              <span class="showcase__eyebrow">Conforto para o dia a dia</span>
+              <h2 class="showcase__title">Banho Quente</h2>
+              <p class="showcase__subtitle">Chuveiros e duchas para banho confort&aacute;vel e mais economia.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-metais">
               <span>Ver mais ofertas</span>
@@ -167,20 +165,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
+          <div class="showcase__carousel showcase-banho-quente__carousel">
+            {{ spot_carousel class: "showcase-banho-quente__carousel" products: data.vitrine3.products.nodes }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-banho-e-aquecimento" data-showcase="banho-e-aquecimento">
+        <section class="showcase showcase--panel showcase-tintas" data-showcase="tintas">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Conforto para o dia a dia</span>
-              <h2 class="showcase__title">Banho e Aquecimento</h2>
-              <p class="showcase__subtitle">Chuveiros, duchas e solu&ccedil;&otilde;es para banho com conforto, economia
-                e ofertas por tempo limitado.</p>
+              <span class="showcase__eyebrow">Acabamento e pintura</span>
+              <h2 class="showcase__title">Tintas</h2>
+              <p class="showcase__subtitle">Cores, prote&ccedil;&atilde;o e acabamento para renovar ambientes com rapidez.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-banho-e-aquecimento">
               <span>Ver mais ofertas</span>
@@ -192,20 +187,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
+          <div class="showcase__carousel showcase-tintas__carousel">
+            {{ spot_carousel class: "showcase-tintas__carousel" products: data.vitrine4.products.nodes }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-moveis" data-showcase="moveis">
+        <section class="showcase showcase--panel showcase-materiais-hidraulicos" data-showcase="materiais-hidraulicos">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Organiza&ccedil;&atilde;o do lar</span>
-              <h2 class="showcase__title">M&oacute;veis</h2>
-              <p class="showcase__subtitle">Arm&aacute;rios, racks e solu&ccedil;&otilde;es para organizar a casa com
-                mais praticidade durante a campanha.</p>
+              <span class="showcase__eyebrow">Tubos, conex&otilde;es e registros</span>
+              <h2 class="showcase__title">Materiais Hidr&aacute;ulicos</h2>
+              <p class="showcase__subtitle">Tubos, conex&otilde;es e registros para uma instala&ccedil;&atilde;o segura.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-moveis">
               <span>Ver mais ofertas</span>
@@ -217,20 +209,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
+          <div class="showcase__carousel showcase-materiais-hidraulicos__carousel">
+            {{ spot_carousel class: "showcase-materiais-hidraulicos__carousel" products: data.vitrine5.products.nodes }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-ferramentas" data-showcase="ferramentas">
+        <section class="showcase showcase--panel showcase-moveis" data-showcase="moveis">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Execu&ccedil;&atilde;o e acabamento</span>
-              <h2 class="showcase__title">Ferramentas</h2>
-              <p class="showcase__subtitle">Ferramentas e acess&oacute;rios para instala&ccedil;&atilde;o, acabamento e
-                obra com ofertas especiais durante a campanha.</p>
+              <span class="showcase__eyebrow">Organiza&ccedil;&atilde;o do lar</span>
+              <h2 class="showcase__title">M&oacute;veis</h2>
+              <p class="showcase__subtitle">Pe&ccedil;as funcionais para organizar banheiro, cozinha e casa.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
               <span>Ver mais ofertas</span>
@@ -242,45 +231,8 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
-          </div>
-        </section>
-
-        <section class="showcase showcase--panel showcase-chance-unica" data-showcase="chance-unica">
-          <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Top 5 ofertas do m&ecirc;s</span>
-              <h2 class="showcase__title">Chance &Uacute;nica</h2>
-              <p class="showcase__subtitle">Uma vitrine especial para destacar oportunidades de alto impacto e
-                convers&atilde;o imediata.</p>
-            </div>
-            <a class="showcase__link" href="/chance-unica">
-              <span>Economize agora</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </div>
-
-          <div class="showcase-chance-unica__hero">
-            <span class="showcase-chance-unica__seal">O melhor pre&ccedil;o do Brasil</span>
-            <div class="showcase-chance-unica__title-group">
-              <span class="showcase-chance-unica__kicker">Super</span>
-              <strong class="showcase-chance-unica__title">Chance &Uacute;nica</strong>
-            </div>
-            <span class="showcase-chance-unica__highlight">Top 5 ofertas do m&ecirc;s</span>
-          </div>
-
-          <div class="showcase__carousel showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
+          <div class="showcase__carousel showcase-moveis__carousel">
+            {{ spot_carousel class: "showcase-moveis__carousel" products: data.vitrine6.products.nodes }}
           </div>
         </section>
       </div>

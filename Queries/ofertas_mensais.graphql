@@ -26,6 +26,24 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
   vitrineCronometro: hotsite(hotsiteId: 102017, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
+  vitrine1: hotsite(hotsiteId: 102018, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine2: hotsite(hotsiteId: 102019, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine3: hotsite(hotsiteId: 102020, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine4: hotsite(hotsiteId: 102021, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine5: hotsite(hotsiteId: 102022, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine6: hotsite(hotsiteId: 102023, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
 }
 
 fragment produtos on SingleHotsite {

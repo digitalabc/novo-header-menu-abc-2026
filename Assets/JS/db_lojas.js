@@ -233,6 +233,7 @@ const estados = [
 			"Formosa",
 			"Goianésia",
 			"Goiânia",
+			"Mineiros",
 			"Rio Verde",
 			"Trindade"
 		]

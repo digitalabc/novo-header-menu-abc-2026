@@ -291,7 +291,6 @@ const estados = [
 			"Lorena",
 			"Louveira",
 			"Marília",
-			"Matão",
 			"Mogi das Cruzes",
 			"Mogi Guaçu",
 			"Mogi Mirim",

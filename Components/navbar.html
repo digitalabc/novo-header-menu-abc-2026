@@ -1,13 +1,13 @@
 {{ ##
-    Description: Renders navbar with links from menuGroup query
-    Params:
-        - menu_groups: menu groups list
-        - position: the menu group position to use
-    Usage:
-        navbar menu_groups: data...menu_group position: "Topo Header"
+Description: Renders navbar with links from menuGroup query
+Params:
+- menu_groups: menu groups list
+- position: the menu group position to use
+Usage:
+navbar menu_groups: data...menu_group position: "Topo Header"
 ## }}
 {{~ capture logo_source ~}}
-  {{- store.urls.static_img}}header/logo-abc.svg?theme={{store.theme -}}&v={{store.last_modified-}}
+{{- store.urls.static_img}}header/logo-abc.svg?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 {{~ menu_group = menu_groups | group.by @(do; ret $0.position;end) | group.get position | array.first ~}}
 {{~ menus = menu_group.menus | group.by @(do; ret $0.parent_menu_id;end) ~}}
@@ -17,102 +17,114 @@
 {{~ grouped_categories = categories | group.by @(do; ret $0.parent_category_id;end) ~}}
 
 {{~ if grouped_categories ~}}
-  {{~ all_categories = grouped_categories | group.get 0  ~}}
+{{~ all_categories = grouped_categories | group.get 0 ~}}
 {{~ end ~}}
 
 {{~ if !isFranquia ~}}
-  {{ topbar }}
+{{ topbar }}
 {{~ end ~}}
 
 <nav class="navbar">
-    <div class="navbar__container ">
-        {{ ## Search ## }}
-        <div class="navbar__search">
-          <form class="search__form" onsubmit="search(event, null)">
-              <button class="search__close" aria-label="search-close-button" type="button" onclick="hideMobileSearch(event)"></button>
-              <div class="search__card">
-                <div class="autocomplete">
-                    <input id="search-bar" type="search" placeholder='{{ "Digite sua busca" | lang }}'
-                        autocomplete="off">
-                    <div id="autocomplete-list"></div>
-                </div>
-                <button class="search__submit" aria-label="search-button" type="submit">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14.626" height="14.608" viewBox="0 0 14.626 14.608">
-                    <path id="Path_23304" data-name="Path 23304" d="M0,6.567A6.437,6.437,0,0,1,12.787,5.38a6.119,6.119,0,0,1-1.054,4.667c-.144.208-.137.318.044.5.858.838,1.7,1.691,2.547,2.542a.84.84,0,0,1,.244.926.854.854,0,0,1-.691.58.918.918,0,0,1-.84-.34c-.832-.832-1.671-1.658-2.491-2.5-.171-.176-.271-.175-.467-.04A6.422,6.422,0,0,1,.262,8.234,6.933,6.933,0,0,1,0,6.567Zm11.126-.123a4.7,4.7,0,1,0-4.7,4.667,4.69,4.69,0,0,0,4.7-4.667Z" transform="translate(0.005 0.005)"/>
-                  </svg>
-                </button>
-              </div>
-          </form>
-          {{## regional_offers ##}}
+  <div class="navbar__container ">
+    {{ ## Search ## }}
+    <div class="navbar__search">
+      <form class="search__form" onsubmit="search(event, null)">
+        <button class="search__close" aria-label="search-close-button" type="button"
+          onclick="hideMobileSearch(event)"></button>
+        <div class="search__card">
+          <div class="autocomplete">
+            <input id="search-bar" type="search" placeholder='{{ "Digite sua busca" | lang }}' autocomplete="off">
+            <div id="autocomplete-list"></div>
           </div>
-        {{## modal_regional_offers ##}}
-
-        {{##  Menu mobile ##}}
-        <div class="navbar__menu-mobile mobile">
-          {{ menu_mobile main_categories: all_categories checkout_url: store.urls.checkout }}
+          <button class="search__submit" aria-label="search-button" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14.626" height="14.608" viewBox="0 0 14.626 14.608">
+              <path id="Path_23304" data-name="Path 23304"
+                d="M0,6.567A6.437,6.437,0,0,1,12.787,5.38a6.119,6.119,0,0,1-1.054,4.667c-.144.208-.137.318.044.5.858.838,1.7,1.691,2.547,2.542a.84.84,0,0,1,.244.926.854.854,0,0,1-.691.58.918.918,0,0,1-.84-.34c-.832-.832-1.671-1.658-2.491-2.5-.171-.176-.271-.175-.467-.04A6.422,6.422,0,0,1,.262,8.234,6.933,6.933,0,0,1,0,6.567Zm11.126-.123a4.7,4.7,0,1,0-4.7,4.667,4.69,4.69,0,0,0,4.7-4.667Z"
+                transform="translate(0.005 0.005)" />
+            </svg>
+          </button>
         </div>
-
-        {{ ## Logo ## }}
-        <div class="navbar__logo">
-            <a class="navbar-brand" href="/">
-              <img src="{{ logo_source }}" alt="ABC da ConstruÃ§Ã£o" title="ABC da ConstruÃ§Ã£o" >
-            </a>
-        </div>
-
-        <div class="navbar__right">
-            {{ ## Nossas Lojas ## }}
-            <a class="navbar__lojas" href="/diretorio-de-lojas">
-                <span class="material-icons material-icons--navbar">store</span>
-                Nossas Lojas
-            </a>
-
-            {{ ## User menu ## }}
-            {{ user_login checkout_url: store.urls.checkout }}
-
-            {{ ## Minicart ## }}
-            {{ mini_cart }}
-            {{ mini_cart_ah }}
-        </div>
+      </form>
+      {{## regional_offers ##}}
     </div>
-    
-    {{ ## Menu desktop ## }}
-    <div class="navbar__collapse desktop" id="navbarSupportedContent">
-        <ul class="navbar__wrapper">
-            <li class="nav-all__item nav-all__item--root">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10">
-                <g id="Group_3451" data-name="Group 3451" transform="translate(-2349 -177)">
-                  <rect id="Rectangle_820" data-name="Rectangle 820" width="12" height="2" transform="translate(2349 177)" fill="#e30613"/>
-                  <rect id="Rectangle_821" data-name="Rectangle 821" width="12" height="2" transform="translate(2349 181)" fill="#e30613"/>
-                  <rect id="Rectangle_822" data-name="Rectangle 822" width="12" height="2" transform="translate(2349 185)" fill="#e30613"/>
-                </g>
-              </svg>
-              Ver tudo
-              <div class="nav-all__dropdown nav-all__dropdown--root">
-                <ul class="nav-all__list nav-all__list--root">
-                  {{~ for category in all_categories ~}}
-                    {{ nav_item_all category: category level: 1 max_level: 2}}
-                  {{~ end ~}}
-                </ul>
-              </div>
-            </li>
-            {{~ if top_level ~}}
-              {{~ campaign_links_inserted = false ~}}
-              {{~ for top_menu in top_level ~}}
-                {{~ is_ambientes_item = top_menu.name && ((top_menu.name | string.downcase) | string.contains "ambiente") ~}}
-                {{~ if !is_ambientes_item ~}}
-                  {{ nav_item menus: menu_group.menus current_menu: top_menu }}
-                {{~ end ~}}
-                {{~ if !campaign_links_inserted && is_ambientes_item ~}}
-                  {{~ campaign_links_inserted = true ~}}
-                  <!-- <li class="nav-item nav-item--nv1" style="order: {{top_menu.order}}">
+    {{## modal_regional_offers ##}}
+
+    {{## Menu mobile ##}}
+    <div class="navbar__menu-mobile mobile">
+      {{ menu_mobile main_categories: all_categories checkout_url: store.urls.checkout }}
+    </div>
+
+    {{ ## Logo ## }}
+    <div class="navbar__logo">
+      <a class="navbar-brand" href="/">
+        <img src="{{ logo_source }}" alt="ABC da ConstruÃ§Ã£o" title="ABC da ConstruÃ§Ã£o">
+      </a>
+    </div>
+
+    <div class="navbar__right">
+      {{ ## Nossas Lojas ## }}
+      <a class="navbar__lojas" href="/diretorio-de-lojas">
+        <span class="material-icons material-icons--navbar">store</span>
+        Nossas Lojas
+      </a>
+
+      {{ ## User menu ## }}
+      {{ user_login checkout_url: store.urls.checkout }}
+
+      {{ ## Minicart ## }}
+      {{ mini_cart }}
+      {{ mini_cart_ah }}
+    </div>
+  </div>
+
+  {{ ## Menu desktop ## }}
+  <div class="navbar__collapse desktop" id="navbarSupportedContent">
+    <ul class="navbar__wrapper">
+      <li class="nav-all__item nav-all__item--root">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10">
+          <g id="Group_3451" data-name="Group 3451" transform="translate(-2349 -177)">
+            <rect id="Rectangle_820" data-name="Rectangle 820" width="12" height="2" transform="translate(2349 177)"
+              fill="#e30613" />
+            <rect id="Rectangle_821" data-name="Rectangle 821" width="12" height="2" transform="translate(2349 181)"
+              fill="#e30613" />
+            <rect id="Rectangle_822" data-name="Rectangle 822" width="12" height="2" transform="translate(2349 185)"
+              fill="#e30613" />
+          </g>
+        </svg>
+        Ver tudo
+        <div class="nav-all__dropdown nav-all__dropdown--root">
+          <ul class="nav-all__list nav-all__list--root">
+            {{~ for category in all_categories ~}}
+            {{ nav_item_all category: category level: 1 max_level: 2}}
+            {{~ end ~}}
+          </ul>
+        </div>
+      </li>
+      {{~ if top_level ~}}
+      {{~ campaign_links_inserted = false ~}}
+      {{~ for top_menu in top_level ~}}
+      {{~ is_ambientes_item = top_menu.name && ((top_menu.name | string.downcase) | string.contains "ambiente") ~}}
+      {{~ if !is_ambientes_item ~}}
+      {{ nav_item menus: menu_group.menus current_menu: top_menu }}
+      {{~ end ~}}
+      {{~ if !campaign_links_inserted && is_ambientes_item ~}}
+      {{~ campaign_links_inserted = true ~}}
+      <!-- <li class="nav-item nav-item--nv1" style="order: {{top_menu.order}}">
                     <a class="nav-link nav-link--campaign" href="https://www.abcdaconstrucao.com.br/lancamentos-marco-2026"><strong>Lan&ccedil;amentos 2026&#10024;</strong></a>
                   </li> -->
-                  <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1}}">
-                    <a class="nav-link nav-link--campaign" href="/super-chance-unica"><strong>Super Chance &Uacute;nica &#128293;</strong></a>
-                  </li>
-                {{~ end ~}}
-              {{~ end ~}}
-            {{~ end ~}}
-        </ul>
-    </div>
+      <!--<li class="nav-item nav-item--nv1 nav-item--cupons" style="order: {{top_menu.order + 1000}}">
+                    <a class="nav-link nav-link--campaign nav-link--cupons" href="/cupom-abc-da-construcao">
+                      <span class="material-icons material-icons--navbar" aria-hidden="true">confirmation_number</span>
+                      <span>Cupons</span>
+                    </a>
+                  </li>-->
+      <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1001}}">
+        <a class="nav-link nav-link--campaign" href="/super-chance-unica"><strong>Super Chance &Uacute;nica
+            &#128293;</strong></a>
+      </li>
+      {{~ end ~}}
+      {{~ end ~}}
+      {{~ end ~}}
+    </ul>
+  </div>
 </nav>

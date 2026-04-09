@@ -22,15 +22,7 @@
 {{~ end ~}}
 
 {{~ if children.size == 0 && !is_submenu ~}}
-    {{~ if current_menu.name | string.downcase == "ofertas" ~}}
-        <li class="nav-item nav-item--nv1" style="order: {{current_menu.order}}">
-            <a class="nav-link nav-link--campaign" href="/cupom-abc-da-construcao">Cupons</a>
-        </li>
-
-        <li class="nav-item nav-item--nv1" style="order: {{current_menu.order + 1}}">
-            <a class="nav-link" href="/ofertas">Ofertas</a>
-        </li>
-    {{~ else if current_menu.css_class | string.downcase != "menu-abcprime" ~}}
+    {{~ if current_menu.css_class | string.downcase != "menu-abcprime" ~}}
         <li class="nav-item nav-item--nv1" style="order: {{current_menu.order}}">
             <a class="nav-link" href="{{link}}">{{display_name}}</a>
         </li>

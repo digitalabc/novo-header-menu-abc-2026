@@ -6535,7 +6535,7 @@ div[class^="como-chegar"]>span+i {
     fill: #d4af87 !important;
   }
 
-  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) {
+  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) {
     border: none !important;
   }
 
@@ -6585,7 +6585,7 @@ div[class^="como-chegar"]>span+i {
   }
 
   #menu-offcanvas .nav-mobile__link,
-  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) a {
+  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) a {
     color: #e5e5e5 !important;
   }
 
@@ -6596,6 +6596,7 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado,
@@ -6614,6 +6615,7 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado a,
@@ -6630,6 +6632,7 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
     color: #392f2d;
     font-weight: 600;
@@ -8751,7 +8754,7 @@ header {
   height: 40px;
 }
 
-.navbar__wrapper .nav-item--nv1:last-child>.nav-link {
+.navbar__wrapper .nav-item--nv1:last-child:not(.nav-item--cupons)>.nav-link {
   color: #392f2d;
   font-weight: var(--peso-fonte-medium);
 }
@@ -8771,7 +8774,7 @@ header {
   left: unset;
 }
 
-.navbar__wrapper .nav-item--nv1:last-child>.dropdown-menu {
+.navbar__wrapper .nav-item--nv1:last-child:not(.nav-item--cupons)>.dropdown-menu {
   right: 0;
 }
 
@@ -8825,6 +8828,22 @@ header {
 
 .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--campaign strong {
   font-weight: inherit;
+}
+
+.navbar__wrapper .nav-item--nv1.nav-item--cupons {
+  order: 1;
+}
+
+.navbar__wrapper .nav-item--nv1.nav-item--cupons>.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar__wrapper .nav-item--nv1.nav-item--cupons>.nav-link .material-icons--navbar {
+  color: #e30613;
+  font-size: var(--fonte-14);
+  line-height: 1;
 }
 
 .navbar__wrapper .nav-item--sub {
@@ -10114,7 +10133,7 @@ header {
 .navbar__collapse.desktop .nav-all__item--root svg path,
 .navbar__collapse.desktop .nav-all__item--root svg rect,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1>.nav-link,
-.navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:last-child>.nav-link,
+.navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:last-child:not(.nav-item--cupons)>.nav-link,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--campaign,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--campaign strong {
   color: #000;
@@ -10131,7 +10150,7 @@ header {
 }
 
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:hover>.nav-link,
-.navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:last-child:hover>.nav-link,
+.navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:last-child:not(.nav-item--cupons):hover>.nav-link,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:hover>.nav-link.nav-link--campaign,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:hover>.nav-link.nav-link--campaign strong,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--sub>a.nav-link:hover {
@@ -10383,6 +10402,7 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado a,
@@ -10399,6 +10419,7 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
   color: #392f2d;
 }
@@ -10406,13 +10427,38 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
   font-weight: 600;
+}
+
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons {
+  border-color: #E30613;
+  background-color: #FDEDEE;
+}
+
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong {
+  color: #E30613;
+}
+
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons .nav-mobile__others-icon--cupons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #E30613;
+  font-size: 18px;
+  line-height: 1;
 }
 
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores {
   background-color: #f7f7f7;
@@ -15210,7 +15256,7 @@ a.subcategories__item .subcategories__title,
     padding: 0 15px;
   }
 
-  .navbar__wrapper .nav-item--nv1:last-child>.dropdown-menu {
+  .navbar__wrapper .nav-item--nv1:last-child:not(.nav-item--cupons)>.dropdown-menu {
     right: -15px;
   }
 }

@@ -88,7 +88,7 @@
         align-items: center;
         height: 40px;
 
-        &:last-child
+        &:last-child:not(.nav-item--cupons)
           > .nav-link
             color: #392F2D;
             font-weight: 500;
@@ -108,7 +108,7 @@
             right: -60px;
             left: unset;
 
-        &:last-child
+        &:last-child:not(.nav-item--cupons)
           > .dropdown-menu
             right: 0;
 
@@ -156,6 +156,19 @@
 
             strong
               font-weight: inherit;
+
+        &.nav-item--cupons
+          order: 1;
+
+          > .nav-link
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+
+          > .nav-link .material-icons--navbar
+            color: $primary;
+            font-size: var(--fonte-14);
+            line-height: 1;
 
         @media desktop
           &:hover

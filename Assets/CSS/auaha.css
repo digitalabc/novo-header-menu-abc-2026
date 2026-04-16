@@ -6536,7 +6536,7 @@ div[class^="como-chegar"]>span+i {
     fill: #d4af87 !important;
   }
 
-  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) {
+  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--abcprime):not(.nav-mobile__others-item--outlet):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) {
     border: none !important;
   }
 
@@ -6586,18 +6586,23 @@ div[class^="como-chegar"]>span+i {
   }
 
   #menu-offcanvas .nav-mobile__link,
-  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) a {
+  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--abcprime):not(.nav-mobile__others-item--outlet):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) a {
     color: #e5e5e5 !important;
   }
 
   #menu-offcanvas .nav-mobile__others ul {
-    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 8px;
   }
 
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado,
@@ -6610,13 +6615,15 @@ div[class^="como-chegar"]>span+i {
     border-radius: 8px;
     background-color: #f7f7f7;
     overflow: hidden;
-    margin-bottom: 6px;
+    margin-bottom: 0;
   }
 
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado a,
@@ -6633,7 +6640,9 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
     color: #392f2d;
     font-weight: 600;
@@ -10369,7 +10378,7 @@ header {
   height: 41px;
   border: 1px solid #f7f7f7;
   padding-left: 15px;
-  margin-bottom: -1px;
+  margin-bottom: 0;
 }
 
 #menu-offcanvas .nav-mobile__others ul li a {
@@ -10379,12 +10388,17 @@ header {
 }
 
 #menu-offcanvas .nav-mobile__others ul {
-  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 8px;
 }
 
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado,
@@ -10397,12 +10411,14 @@ header {
   border-radius: 8px;
   background-color: #f7f7f7;
   overflow: hidden;
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a,
@@ -10420,6 +10436,8 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a strong,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
   color: #392f2d;
@@ -10429,6 +10447,7 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
   font-weight: 600;
 }
@@ -10537,7 +10556,7 @@ header {
 }
 
 #menu-offcanvas .nav-mobile__item--nv1 {
-  background: #f7f7f7;
+  background: #f0f3f5;
 }
 
 #menu-offcanvas .nav-mobile__item--nv2 {

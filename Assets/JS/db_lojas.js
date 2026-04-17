@@ -334,7 +334,6 @@ const estados = [
 			"Colatina",
 			"Guarapari",
 			"Iconha",
-			"Iúna",
 			"Jaguaré", 
 			"Linhares",
 			"Mimoso do Sul",

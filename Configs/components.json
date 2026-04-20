@@ -1522,5 +1522,11 @@
     "path": "sdk_full_client.html",
     "availableInAllComponents": true,
     "availableInAllPages": true
+  },
+  {
+    "name": "modalerrata",
+    "path": "modal_errata.html",
+    "availableInAllPages": true,
+    "availableInAllComponents": true
   }
 ]

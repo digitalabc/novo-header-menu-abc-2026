@@ -1,0 +1,251 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f5f5;
+        min-height: 100vh;
+    }
+
+    /* Overlay escuro */
+    .modal-errata-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        backdrop-filter: blur(4px);
+        animation: fadeIn 0.3s ease;
+    }
+
+    /* Container do modal */
+    .modal-errata-container {
+        background: #ffffff;
+        border-radius: 12px;
+        max-width: 600px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: slideUp 0.4s ease;
+        position: relative;
+    }
+
+    /* Cabeçalho */
+    .modal-errata-header {
+        background: #1a365d;
+        color: white;
+        padding: 24px 30px;
+        border-radius: 12px 12px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-errata-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .modal-errata-date {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        margin-top: 4px;
+    }
+
+    /* Botão fechar */
+    .close-btn-errata {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+
+    .close-btn-errata:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Corpo do modal */
+    .modal-errata-body {
+        padding: 30px;
+        color: #2d3748;
+        line-height: 1.7;
+    }
+
+    .modal-errata-body p {
+        margin-bottom: 16px;
+        font-size: 1rem;
+    }
+
+    .modal-errata-body p:last-of-type {
+        margin-bottom: 0;
+    }
+
+    /* Destaque para informação importante */
+    .highlight-box-errata {
+        background: #fff8e1;
+        border-left: 4px solid #f59e0b;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .highlight-box-errata p {
+        margin: 0;
+        color: #92400e;
+        font-weight: 500;
+    }
+
+    /* Assinatura */
+    .modal-errata-footer {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid #e2e8f0;
+        text-align: right;
+    }
+
+    .team-name {
+        font-weight: 600;
+        color: #1a365d;
+        font-size: 0.95rem;
+    }
+
+    .team-role {
+        color: #718096;
+        font-size: 0.875rem;
+        margin-top: 2px;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsivo */
+    @media (max-width: 480px) {
+        .modal-errata-container {
+            width: 95%;
+            margin: 10px;
+        }
+
+        .modal-errata-header {
+            padding: 20px;
+        }
+
+        .modal-errata-body {
+            padding: 20px;
+        }
+    }
+
+    .hidden-errata {
+        display: none !important;
+    }
+</style>
+
+
+    <!-- Modal -->
+    <div id="errataModal" class="modal-errata-overlay hidden-errata">
+        <div class="modal-errata-container">
+            <div class="modal-errata-header">
+                <div>
+                    <div class="modal-errata-title">Errata</div>
+                    <div class="modal-errata-date">20/04/2026</div>
+                </div>
+                <button class="close-btn-errata" onclick="closeModal()" aria-label="Fechar">×</button>
+            </div>
+
+            <div class="modal-errata-body">
+                <p>
+                    A <strong>ABC da Construção</strong> informa que, no dia 19/04/2026, às 23h, uma falha técnica
+                    resultou na exibição de preços incorretos em alguns produtos do site, em desacordo com os valores
+                    reais de mercado.
+                </p>
+
+                <p>
+                    <strong>O erro já foi identificado e corrigido.</strong>
+                </p>
+                
+                <p>
+                    Os pedidos realizados nessas condições foram cancelados, e os valores pagos estão em processo de
+                    reembolso, conforme os prazos das operadoras de cartão e instituições financeiras.
+                </p>
+                
+
+                <p>
+                    Lamentamos o ocorrido e seguimos comprometidos com a transparência e o respeito aos nossos clientes.
+                </p>
+
+                <div class="modal-errata-footer">
+                    <div class="team-name">Equipe E-Commerce</div>
+                    <div class="team-role">ABC da Construção</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Abrir modal automaticamente ao carregar a página
+        window.addEventListener('load', function () {
+            // Pequeno delay para garantir que tudo carregou
+            setTimeout(function () {
+                document.getElementById('errataModal').classList.remove('hidden-errata');
+                document.body.style.overflow = 'hidden-errata';
+            }, 300);
+        });
+
+        // Fechar modal
+        function closeModal() {
+            document.getElementById('errataModal').classList.add('hidden-errata');
+            document.body.style.overflow = '';
+        }
+
+        // Fechar ao clicar fora do modal
+        document.getElementById('errataModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Fechar com a tecla ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>

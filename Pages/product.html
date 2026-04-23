@@ -8,6 +8,7 @@
   <meta name="robots" content="index, follow" http-equiv="">
   {{ product_structured_data product: data.product current_url: store.urls.current }}
   {{ gtm_product_view product: data.product  }}
+  {{ breadcrumb_structured_data breadcrumbs: data.product.breadcrumbs }}
 </head>
 
 {{~

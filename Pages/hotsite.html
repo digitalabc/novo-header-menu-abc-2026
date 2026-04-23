@@ -7,6 +7,7 @@
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   <meta name="robots" content="index, follow" http-equiv="">
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+  {{ breadcrumb_structured_data breadcrumbs: data.hotsite.breadcrumbs }}
 </head>
 
 {{ products = data.hotsite.products ?? data.hotsite.products_by_offset }}
@@ -20,6 +21,7 @@
   </header>
 
   <div class="container">
+    {{data.hotsite.breadcrumbs | debug.log"teste"}}
     {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
     {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true}}
 

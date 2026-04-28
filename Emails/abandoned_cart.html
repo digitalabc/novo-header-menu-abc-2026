@@ -7,6 +7,28 @@
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
     <title>Carrinho Abandonado</title>
+    <style type="text/css">
+      @media only screen and (max-width: 480px) {
+        .cart-layout-table {
+          width: 100% !important;
+        }
+
+        .cart-layout-cell {
+          display: block !important;
+          width: 100% !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        .cart-layout-left {
+          padding-bottom: 14px !important;
+        }
+
+        .cart-layout-left table {
+          margin: 0 auto !important;
+        }
+      }
+    </style>
     <!--[if mso]>
       <style type="text/css">
         body, table, td, a { font-family: Arial, Helvetica, sans-serif !important; }
@@ -36,64 +58,68 @@
                   </tr>
                   <tr>
                     <td align="center" style="padding: 34px 0 24px 0;">
-                      <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="cart-layout-table" style="border-collapse: collapse;">
                         <tr>
-                          <td align="center" style="padding: 0 0 2px 0;">
+                          <td width="92" valign="top" align="center" class="cart-layout-cell cart-layout-left" style="padding: 10px 0 0 0;">
                             <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
                               <tr>
-                                <td align="right" style="padding: 0 12px 0 0;">
-                                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                                <td align="center" style="padding: 0 0 2px 0;">
+                                  <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
                                     <tr>
-                                      <td align="center" style="width: 34px; height: 34px; background-color: #12B6AD; border: 3px solid #FFFFFF; border-radius: 999px; color: #FFFFFF; font-size: 16px; line-height: 28px; font-weight: 700; text-align: center;">
-                                        1
+                                      <td align="right" style="padding: 0 12px 0 0;">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                                          <tr>
+                                            <td align="center" style="width: 34px; height: 34px; background-color: #12B6AD; border: 3px solid #FAFAFA; border-radius: 999px; color: #FFFFFF; font-size: 16px; line-height: 28px; font-weight: 700; text-align: center;">
+                                              1
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="center">
+                                        <img data-assetid="29406" src="https://image.mkt.abcdaconstrucao.com.br/lib/fe2a1174736404747d1475/m/1/feafa15f-6270-4b07-9427-b1114aff9b45.jpg" alt="Carrinho" width="112" style="display: block; border: 0; width: 112px; height: auto;">
                                       </td>
                                     </tr>
                                   </table>
                                 </td>
                               </tr>
-                              <tr>
-                                <td align="center">
-                                  <img data-assetid="29406" src="https://image.mkt.abcdaconstrucao.com.br/lib/fe2a1174736404747d1475/m/1/feafa15f-6270-4b07-9427-b1114aff9b45.jpg" alt="Carrinho" width="112" style="display: block; border: 0; width: 112px; height: auto;">
-                                </td>
-                              </tr>
                             </table>
                           </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 0;">
-                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F6F8FA" style="border-collapse: separate; border-spacing: 0; background-color: #F6F8FA; border-radius: 24px;">
-                        <tr>
-                          <td bgcolor="#F6F8FA" style="padding: 24px 24px 26px 24px; background-color: #F6F8FA; color: #353535;">
-                            <p style="margin: 0; font-size: 58px; line-height: 58px; font-weight: 900; color: #E61E3D; letter-spacing: -1px; mso-line-height-rule: exactly;">
-                              5% off
-                            </p>
-                            <p style="margin: 10px 0 0 0; font-size: 22px; line-height: 26px; font-weight: 700; color: #0E1720; mso-line-height-rule: exactly;">
-                              para economizar hoje!
-                            </p>
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 18px;">
+                          <td valign="top" class="cart-layout-cell" style="padding: 0 0 0 12px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F6F8FA" style="border-collapse: separate; border-spacing: 0; background-color: #F6F8FA; border-radius: 24px;">
                               <tr>
-                                <td width="72" valign="top" style="padding: 0;">
-                                  <img src="{{carrinho.produto.imagem}}" alt="{{carrinho.produto.nome}}" width="68" height="68" style="display: block; border: 1px solid #E1E5EB; border-radius: 4px; background-color: #FFFFFF;">
-                                </td>
-                                <td valign="top" style="padding: 2px 0 0 10px;">
-                                  <p style="margin: 0; font-size: 15px; line-height: 19px; color: #8B909A;">
-                                    {{carrinho.produto.nome}}
+                                <td bgcolor="#F6F8FA" style="padding: 24px 24px 26px 24px; background-color: #F6F8FA; color: #353535;">
+                                  <p style="margin: 0; font-size: 58px; line-height: 58px; font-weight: 900; color: #E61E3D; letter-spacing: -1px; mso-line-height-rule: exactly;">
+                                    5% off
                                   </p>
-                                  <p style="margin: 6px 0 0 0; font-size: 14px; line-height: 18px; color: #8B909A;">
-                                    Quantidade: {{carrinho.quantidade}}
+                                  <p style="margin: 10px 0 0 0; font-size: 22px; line-height: 26px; font-weight: 700; color: #0E1720; mso-line-height-rule: exactly;">
+                                    para economizar hoje!
                                   </p>
-                                </td>
-                              </tr>
-                            </table>
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 18px;">
-                              <tr>
-                                <td align="center" bgcolor="#0E3C53" style="border-radius: 999px; background-color: #0E3C53;">
-                                  <a href="{{carrinho.url_carrinho}}" style="display: block; padding: 18px 20px; font-size: 18px; line-height: 22px; font-weight: 700; color: #FDFDFD; text-decoration: none; mso-line-height-rule: exactly;">
-                                    Ir para carrinho
-                                  </a>
+                                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 18px;">
+                                    <tr>
+                                      <td width="72" valign="top" style="padding: 0;">
+                                        <img src="{{carrinho.produto.imagem}}" alt="{{carrinho.produto.nome}}" width="68" height="68" style="display: block; border: 1px solid #E1E5EB; border-radius: 4px; background-color: #FFFFFF;">
+                                      </td>
+                                      <td valign="top" style="padding: 2px 0 0 10px;">
+                                        <p style="margin: 0; font-size: 15px; line-height: 19px; color: #8B909A;">
+                                          {{carrinho.produto.nome}}
+                                        </p>
+                                        <p style="margin: 6px 0 0 0; font-size: 14px; line-height: 18px; color: #8B909A;">
+                                          Quantidade: {{carrinho.quantidade}}
+                                        </p>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 18px;">
+                                    <tr>
+                                      <td align="center" bgcolor="#0E3C53" style="border-radius: 999px; background-color: #0E3C53;">
+                                        <a href="{{carrinho.url_carrinho}}" style="display: block; padding: 18px 20px; font-size: 18px; line-height: 22px; font-weight: 700; color: #FDFDFD; text-decoration: none; mso-line-height-rule: exactly;">
+                                          Ir para carrinho
+                                        </a>
+                                      </td>
+                                    </tr>
+                                  </table>
                                 </td>
                               </tr>
                             </table>

@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "type": "AgradecimentoNews",
     "path": "news_thank.html",
@@ -74,7 +74,7 @@
   {
     "type": "CarrinhoAbandonadoNovoCheckout",
     "path": "abandoned_cart.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {

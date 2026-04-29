@@ -299,8 +299,8 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   border: none;
   border-radius: 0;
   box-shadow: none;
-  background-color: #f53d45;
-  background-image: linear-gradient(180deg, #f53d45 0%, #e53240 100%);
+  background-color: #892428;
+  background-image: linear-gradient(180deg, #892428 0%, #6f1b22 100%);
   color: #fff;
   isolation: isolate;
   contain: layout style;
@@ -316,8 +316,13 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   width: 100%;
   height: 100%;
   border-radius: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 56%);
-  opacity: 1;
+  background-image: url("https://abcdaconstrucao.fbitsstatic.net/media/background-blend30percent.png?v=202604291451");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  outline: 16px solid #fff;
   pointer-events: none;
   will-change: transform;
   transform: translateZ(0);
@@ -380,11 +385,11 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   gap: 14px;
   padding: 24px;
   min-width: 360px;
-  border: 1px solid rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(137, 36, 40, 0.16);
   border-radius: 28px;
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f7f9 100%);
   box-shadow: 0 16px 34px rgba(85, 13, 29, 0.16);
-  color: #333;
+  color: #111;
 }
 
 .ofertas-mensais #cronometro:before {
@@ -402,7 +407,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   display: block;
   width: 100%;
   text-align: center;
-  color: #333;
+  color: #111;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-weight: 700;
@@ -418,7 +423,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   justify-content: center;
   gap: 4px;
   width: 100%;
-  color: #333;
+  color: #111;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-weight: 700;
@@ -433,7 +438,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   width: 100%;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #111;
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
@@ -466,14 +471,14 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
 .ofertas-mensais #cronometro .cronometro__seconds {
   display: block;
   font-variant-numeric: tabular-nums;
-  color: var(--ofertas-mensais-primary-dark);
+  color: #111;
   font-weight: 900;
   font-size: 38px;
   line-height: 1;
 }
 
 .ofertas-mensais #cronometro small {
-  color: #333;
+  color: #111;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 10px;
@@ -649,11 +654,25 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   font-size: 13px;
 }
 
-.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-critical .oferta-relampago__sold-text { color: #b91c1c; }
-.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-low .oferta-relampago__sold-text { color: #c2410c; }
-.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-limited .oferta-relampago__sold-text { color: #92400e; }
-.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-available .oferta-relampago__sold-text { color: #166534; }
-.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-unavailable .oferta-relampago__sold-text { color: #4b5563; }
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-critical .oferta-relampago__sold-text {
+  color: #b91c1c;
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-low .oferta-relampago__sold-text {
+  color: #c2410c;
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-limited .oferta-relampago__sold-text {
+  color: #92400e;
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-available .oferta-relampago__sold-text {
+  color: #166534;
+}
+
+.ofertas-mensais .showcase .spot .oferta-relampago__sold.is-unavailable .oferta-relampago__sold-text {
+  color: #4b5563;
+}
 
 .ofertas-mensais .showcase .spot .spot-price .discount {
   background: rgba(245, 61, 69, 0.1);
@@ -979,7 +998,8 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   .ofertas-mensais .showcase[data-showcase="cronometer"] {
     padding: 56px 0 38px;
     overflow: visible;
-    background: var(--ofertas-mensais-primary);
+    background-color: #892428;
+    background-image: linear-gradient(180deg, #892428 0%, #6f1b22 100%);
   }
 
   .ofertas-mensais .showcase[data-showcase="cronometer"]:before {
@@ -990,8 +1010,13 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
     width: 100%;
     height: 100%;
     border-radius: 0;
-    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 56%);
-    opacity: 1;
+    background-image: url("https://abcdaconstrucao.fbitsstatic.net/media/background-blend30percent.png?v=202604291451");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+    outline: 16px solid #fff;
     pointer-events: none;
   }
 
@@ -1045,7 +1070,8 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
 
   .ofertas-mensais #cronometro {
     padding: 20px;
-    background: #fff;
+    border-color: rgba(137, 36, 40, 0.16);
+    background: linear-gradient(180deg, #ffffff 0%, #f6f7f9 100%);
     box-shadow: 0 12px 24px rgba(85, 13, 29, 0.14);
   }
 
@@ -1060,7 +1086,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   .ofertas-mensais #cronometro .cron__item {
     padding: 12px 8px;
     border-radius: 18px;
-    background: #fff;
+    background: linear-gradient(180deg, #ffffff 0%, #f3f5f8 100%);
     box-shadow: none;
     backdrop-filter: none;
   }

@@ -381,6 +381,15 @@
     transition: 0.2s ease-in-out;
   }
 
+  .checkout-shipping-method-item-cta--pickup {
+    display: none !important;
+  }
+
+  .selectDeliveryItemWrapper .checkout-continue-pill,
+  .payment-infos-wrapper .checkout-continue-pill {
+    display: none !important;
+  }
+
   .wake-checkout-data-address {
     @apply flex w-full;
   }

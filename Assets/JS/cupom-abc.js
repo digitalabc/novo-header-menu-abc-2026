@@ -15,6 +15,7 @@ const newsletterWidgetOpenButton = document.querySelector(
 const firstPurchaseCupomCard = document.querySelector(
   ".cupom-abc-cupoms > div > .cupom:first-child",
 );
+const hiddenCupomCodes = new Set(["GERAL10", "METAIS10"]);
 
 let copyPopupTimer = null;
 
@@ -244,6 +245,99 @@ const setupCupomCards = () => {
   });
 };
 
+const normalizeCupomText = (value) =>
+  (value || "")
+    .toUpperCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^A-Z0-9]/g, "");
+
+const extractCupomCode = (card) => {
+  const cupomName = card.querySelector(".cupom-name")?.textContent?.trim();
+  const normalizedCupomName = normalizeCupomText(cupomName);
+
+  if (normalizedCupomName) {
+    return normalizedCupomName;
+  }
+
+  const normalizedCardText = normalizeCupomText(card.textContent);
+
+  for (const cupomCode of hiddenCupomCodes) {
+    if (normalizedCardText.includes(cupomCode)) {
+      return cupomCode;
+    }
+  }
+
+  return "";
+};
+
+const cardHasMultipleActions = (card) => {
+  const actionsInsideWrap = card.querySelectorAll(".cupom-actions .cupom-action");
+
+  if (actionsInsideWrap.length) {
+    return actionsInsideWrap.length > 1;
+  }
+
+  const directActions = Array.from(card.children).filter((element) =>
+    element.matches?.("button, a"),
+  );
+
+  return directActions.length > 1;
+};
+
+const hideSpecificCupoms = () => {
+  document.querySelectorAll(".cupom").forEach((card) => {
+    const cupomCode = extractCupomCode(card);
+    const shouldHide =
+      hiddenCupomCodes.has(cupomCode) && cardHasMultipleActions(card);
+
+    if (shouldHide) {
+      card.style.display = "none";
+      card.dataset.cupomHidden = "true";
+      return;
+    }
+
+    if (card.dataset.cupomHidden === "true") {
+      card.style.removeProperty("display");
+      card.removeAttribute("data-cupom-hidden");
+    }
+  });
+};
+
+const refreshCupomCards = () => {
+  setupCupomCards();
+  hideSpecificCupoms();
+};
+
+const setupCupomObserver = () => {
+  const cupomContainer =
+    document.getElementById("cupom-abc-cupons") ||
+    document.querySelector(".cupom-abc-cms-stack");
+
+  if (!cupomContainer || cupomContainer.dataset.cupomObserverReady === "true") {
+    return;
+  }
+
+  const observer = new MutationObserver((mutations) => {
+    const hasNewCupom = mutations.some((mutation) =>
+      Array.from(mutation.addedNodes).some((node) => {
+        if (!(node instanceof Element)) {
+          return false;
+        }
+
+        return node.matches(".cupom") || Boolean(node.querySelector(".cupom"));
+      }),
+    );
+
+    if (hasNewCupom) {
+      refreshCupomCards();
+    }
+  });
+
+  observer.observe(cupomContainer, { childList: true, subtree: true });
+  cupomContainer.dataset.cupomObserverReady = "true";
+};
+
 if (copyPopup) {
   copyPopup.addEventListener("click", (event) => {
     if (
@@ -302,7 +396,20 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-setupCupomCards();
+const initializeCupomCards = () => {
+  refreshCupomCards();
+  setupCupomObserver();
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeCupomCards, {
+    once: true,
+  });
+} else {
+  initializeCupomCards();
+}
+
+window.addEventListener("load", refreshCupomCards);
 
 function copyCupom(e) {
   e?.preventDefault?.();

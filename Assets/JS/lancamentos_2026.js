@@ -501,8 +501,10 @@ function buildCarouselOptions(selector) {
     },
     watchOverflow: true,
     centerInsufficientSlides: true,
-    slidesPerView: 1.5,
-    spaceBetween: 12,
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    slidesPerView: 1.45,
+    spaceBetween: 14,
     on: {
       init: syncCenteredCarouselState,
       resize: syncCenteredCarouselState,
@@ -511,19 +513,27 @@ function buildCarouselOptions(selector) {
     },
     breakpoints: {
       768: {
+        centeredSlides: false,
+        centeredSlidesBounds: false,
         slidesPerView: 3.1,
         spaceBetween: 12,
       },
       992: {
+        centeredSlides: false,
+        centeredSlidesBounds: false,
         slidesPerView: 4,
         spaceBetween: 18,
       },
       1090: {
-        slidesPerView: 6,
+        centeredSlides: false,
+        centeredSlidesBounds: false,
+        slidesPerView: 5,
         spaceBetween: 16,
       },
       1200: {
-        slidesPerView: 6,
+        centeredSlides: false,
+        centeredSlidesBounds: false,
+        slidesPerView: 5,
         spaceBetween: 20,
       },
     },
@@ -589,12 +599,16 @@ function initAllShowcaseSwipers() {
     ".showcase-frete-gratis__carousel",
     ".showcase-melhores-ofertas__carousel",
     ".showcase-metais__carousel",
+    ".showcase-metais-sanitarios__carousel",
     ".showcase-produtos-deca__carousel",
     ".showcase-banho-quente__carousel",
+    ".showcase-banho-aquecimento__carousel",
+    ".showcase-loucas-inox-sintetico__carousel",
     ".showcase-tintas__carousel",
     ".showcase-materiais-hidraulicos__carousel",
     ".showcase-banho-e-aquecimento__carousel",
     ".showcase-moveis__carousel",
+    ".showcase-iluminacao__carousel",
     ".showcase-ferramentas__carousel",
     ".showcase-chance-unica__carousel",
   ].forEach(function (selector) {
@@ -647,7 +661,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.requestAnimationFrame(function () {
     normalizeSavingsLabels();
-    syncSpotFooterPosition();
     syncMobileStockBadgeLabels();
   });
 

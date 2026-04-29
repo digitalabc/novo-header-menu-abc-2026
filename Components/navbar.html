@@ -112,18 +112,20 @@ navbar menu_groups: data...menu_group position: "Topo Header"
       <!-- <li class="nav-item nav-item--nv1" style="order: {{top_menu.order}}">
                     <a class="nav-link nav-link--campaign" href="https://www.abcdaconstrucao.com.br/lancamentos-marco-2026"><strong>Lan&ccedil;amentos 2026&#10024;</strong></a>
                   </li> -->
-      <!--<li class="nav-item nav-item--nv1 nav-item--cupons" style="order: {{top_menu.order + 1000}}">
-                    <a class="nav-link nav-link--campaign nav-link--cupons" href="/cupom-abc-da-construcao">
-                      <span class="material-icons material-icons--navbar" aria-hidden="true">confirmation_number</span>
-                      <span>Cupons</span>
-                    </a>
-                  </li>-->
+      <li class="nav-item nav-item--nv1 nav-item--cupons" style="order: {{top_menu.order + 999}}">
+        <a class="nav-link nav-link--campaign nav-link--cupons" href="/cupom-abc-da-construcao">
+          <span class="material-icons material-icons--navbar" aria-hidden="true">confirmation_number</span>
+          <span>Cupons</span>
+        </a>
+      </li>
       <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1000}}">
         <a class="nav-link nav-link--campaign" href="/abc-outlet"><strong>Outlet ABC &#127991;&#65039;</strong></a>
       </li>
-      <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1001}}">
-        <a class="nav-link nav-link--campaign" href="/super-chance-unica"><strong>Super Chance &Uacute;nica
-            &#128293;</strong></a>
+      <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1001}}; display: none;">
+        <a class="nav-link nav-link--campaign nav-link--badge nav-link--badge-ofertas" href="/ofertas-mensais"><strong>Ofertas 5.5 <span class="badge-emoji">⚡</span></strong></a>
+      </li>
+      <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1002}}">
+        <a class="nav-link nav-link--campaign nav-link--badge nav-link--badge-chance" href="/super-chance-unica"><strong>Super Chance &Uacute;nica <span class="badge-emoji">&#128293;</span></strong></a>
       </li>
       {{~ end ~}}
       {{~ end ~}}

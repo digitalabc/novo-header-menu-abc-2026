@@ -107,6 +107,7 @@ main.cupom-abc-page {
 
 .cupom-abc-hero__cta:hover {
     transform: translateY(-1px);
+    color: #FFF;
 }
 
 

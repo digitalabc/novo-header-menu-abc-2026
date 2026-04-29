@@ -3,7 +3,7 @@
 
 <head>
   {{ gtm_config_head gtm_id: common.gtm_id }}
-  {{ default_title_hotsite = data.hotsite.name | string.append " | 4.4 ABC da Construção" }}
+  {{ default_title_hotsite = data.hotsite.name | string.append " | 5.5 ABC da Construção" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ asset type: "css" paths: ["lancamentos_2026"] }}
   {{ asset type: "css" paths: ["ofertas_mensais"] }}
@@ -12,6 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   {{ asset type: "css" paths: ["lp-montserrat-fonts"] }}
   {{ asset type: "css" paths: ["lp-montserrat-override"] }}
+  <style>
+    .cronometro.cronometro--spot.oferta-relampago__spot-countdown {
+      display: none !important;
+    }
+  </style>
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
@@ -38,10 +43,10 @@
               <span class="showcase__title-line">Ofertas</span>
               <span class="showcase__title-date-row showcase__title-date-row--poster">
                 <span class="showcase__title-date-wrap">
-                  <span class="showcase__title-date">4.4</span>
+                  <!-- <span class="showcase__title-date">5.5</span> -->
                   <img
                     class="showcase__title-seal"
-                    src="https://abcdaconstrucao.fbitsstatic.net/media/3d-4.4-abc.png?v=202604021800"
+                    src="https://abcdaconstrucao.fbitsstatic.net/media/logo-5.5.png?v=202604281813"
                     alt=""
                     aria-hidden="true"
                     decoding="async"
@@ -54,7 +59,7 @@
           </div>
 
           <div class="showcase__countdown-column">
-            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-04-04T23:59:00-03:00" data-spot-countdown-target="campaign">
+            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-05-05T23:59:00-03:00" data-spot-countdown-target="campaign">
               <span class="cronometro__label">Campanha termina em</span>
               <div class="cron" aria-live="polite">
                 <div class="cron__item">
@@ -104,12 +109,12 @@
 
     <div class="showcase-sections container">
       <div class="showcase-stack">
-        <section class="showcase showcase--panel showcase-produtos-deca" data-showcase="produtos-deca">
+        <section class="showcase showcase--panel showcase-metais-sanitarios" data-showcase="metais-sanitarios">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Linha premium da campanha</span>
-              <h2 class="showcase__title">Produtos Deca</h2>
-              <p class="showcase__subtitle">Lou&ccedil;as e acabamentos premium para renovar com mais qualidade.</p>
+              <span class="showcase__eyebrow">Banheiro e cozinha</span>
+              <h2 class="showcase__title">Metais</h2>
+              <p class="showcase__subtitle">Torneiras, misturadores e acabamentos com pre&ccedil;o de campanha.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-frete-gratis">
               <span>Ver mais ofertas</span>
@@ -121,17 +126,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-produtos-deca__carousel">
-            {{ spot_carousel class: "showcase-produtos-deca__carousel" products: data.vitrine1.products.nodes }}
+          <div class="showcase__carousel showcase-metais-sanitarios__carousel">
+            {{ spot_carousel class: "showcase-metais-sanitarios__carousel" products: data.vitrine1.products.nodes hide_countdown: true }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-metais" data-showcase="metais">
+        <section class="showcase showcase--panel showcase-banho-aquecimento" data-showcase="banho-aquecimento">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Banheiro e cozinha</span>
-              <h2 class="showcase__title">Metais</h2>
-              <p class="showcase__subtitle">Torneiras, misturadores e acabamentos com pre&ccedil;o de campanha.</p>
+              <span class="showcase__eyebrow">Conforto para o dia a dia</span>
+              <h2 class="showcase__title">Banho Quente</h2>
+              <p class="showcase__subtitle">Chuveiros e duchas para banho confort&aacute;vel e mais economia.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-melhores-ofertas">
               <span>Ver mais ofertas</span>
@@ -143,17 +148,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-metais__carousel">
-            {{ spot_carousel class: "showcase-metais__carousel" products: data.vitrine2.products.nodes }}
+          <div class="showcase__carousel showcase-banho-aquecimento__carousel">
+            {{ spot_carousel class: "showcase-banho-aquecimento__carousel" products: data.vitrine2.products.nodes hide_countdown: true }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-banho-quente" data-showcase="banho-quente">
+        <section class="showcase showcase--panel showcase-loucas-inox-sintetico" data-showcase="loucas-inox-sintetico">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Conforto para o dia a dia</span>
-              <h2 class="showcase__title">Banho Quente</h2>
-              <p class="showcase__subtitle">Chuveiros e duchas para banho confort&aacute;vel e mais economia.</p>
+              <span class="showcase__eyebrow">Banheiro e cozinha</span>
+              <h2 class="showcase__title">Lou&ccedil;as e Cubas</h2>
+              <p class="showcase__subtitle">Cubas, pias, tanques e lou&ccedil;as sanit&aacute;rias para renovar seus ambientes.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-metais">
               <span>Ver mais ofertas</span>
@@ -165,17 +170,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-banho-quente__carousel">
-            {{ spot_carousel class: "showcase-banho-quente__carousel" products: data.vitrine3.products.nodes }}
+          <div class="showcase__carousel showcase-loucas-inox-sintetico__carousel">
+            {{ spot_carousel class: "showcase-loucas-inox-sintetico__carousel" products: data.vitrine3.products.nodes hide_countdown: true }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-tintas" data-showcase="tintas">
+        <section class="showcase showcase--panel showcase-materiais-hidraulicos" data-showcase="materiais-hidraulicos">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Acabamento e pintura</span>
-              <h2 class="showcase__title">Tintas</h2>
-              <p class="showcase__subtitle">Cores, prote&ccedil;&atilde;o e acabamento para renovar ambientes com rapidez.</p>
+              <span class="showcase__eyebrow">Tubos, conex&otilde;es e registros</span>
+              <h2 class="showcase__title">Materiais Hidr&aacute;ulicos</h2>
+              <p class="showcase__subtitle">Tubos, conex&otilde;es e registros para instala&ccedil;&atilde;o segura e durabilidade.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-banho-e-aquecimento">
               <span>Ver mais ofertas</span>
@@ -187,17 +192,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-tintas__carousel">
-            {{ spot_carousel class: "showcase-tintas__carousel" products: data.vitrine4.products.nodes }}
+          <div class="showcase__carousel showcase-materiais-hidraulicos__carousel">
+            {{ spot_carousel class: "showcase-materiais-hidraulicos__carousel" products: data.vitrine4.products.nodes hide_countdown: true }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-materiais-hidraulicos" data-showcase="materiais-hidraulicos">
+        <section class="showcase showcase--panel showcase-tintas" data-showcase="tintas">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Tubos, conex&otilde;es e registros</span>
-              <h2 class="showcase__title">Materiais Hidr&aacute;ulicos</h2>
-              <p class="showcase__subtitle">Tubos, conex&otilde;es e registros para uma instala&ccedil;&atilde;o segura.</p>
+              <span class="showcase__eyebrow">Acabamento e pintura</span>
+              <h2 class="showcase__title">Tintas</h2>
+              <p class="showcase__subtitle">Cores, prote&ccedil;&atilde;o e acabamento para renovar ambientes com rapidez.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-moveis">
               <span>Ver mais ofertas</span>
@@ -209,17 +214,17 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-materiais-hidraulicos__carousel">
-            {{ spot_carousel class: "showcase-materiais-hidraulicos__carousel" products: data.vitrine5.products.nodes }}
+          <div class="showcase__carousel showcase-tintas__carousel">
+            {{ spot_carousel class: "showcase-tintas__carousel" products: data.vitrine5.products.nodes hide_countdown: true }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-moveis" data-showcase="moveis">
+        <section class="showcase showcase--panel showcase-iluminacao" data-showcase="iluminacao">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Organiza&ccedil;&atilde;o do lar</span>
-              <h2 class="showcase__title">M&oacute;veis</h2>
-              <p class="showcase__subtitle">Pe&ccedil;as funcionais para organizar banheiro, cozinha e casa.</p>
+              <span class="showcase__eyebrow">Ambientes bem iluminados</span>
+              <h2 class="showcase__title">Ilumina&ccedil;&atilde;o</h2>
+              <p class="showcase__subtitle">L&acirc;mpadas, lumin&aacute;rias e solu&ccedil;&otilde;es para criar ambientes aconchegantes.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
               <span>Ver mais ofertas</span>
@@ -231,41 +236,47 @@
               </svg>
             </a>
           </div>
-          <div class="showcase__carousel showcase-moveis__carousel">
-            {{ spot_carousel class: "showcase-moveis__carousel" products: data.vitrine6.products.nodes }}
+          <div class="showcase__carousel showcase-iluminacao__carousel">
+            {{ spot_carousel class: "showcase-iluminacao__carousel" products: data.vitrine6.products.nodes hide_countdown: true }}
           </div>
         </section>
       </div>
 
       <section class="seo-content" aria-labelledby="seo-content-title">
         <div class="seo-content__intro">
-          <span class="seo-content__eyebrow">Campanha 04.04 ABC da Construção</span>
-          <h2 id="seo-content-title" class="seo-content__title">Campanha 04.04 ABC da Construção</h2>
-          <p>A página organiza as ofertas da campanha 04.04 ABC da Construção para quem quer encontrar rapidamente os
-            produtos em destaque.</p>
-          <p>O hero, o countdown e as vitrines de apoio priorizam leitura rápida, comparação simples e acesso direto aos
-            itens mais relevantes.</p>
-          <p>Assim, a LP reduz ruído visual e ajuda a tomar decisão antes do fim da campanha.</p>
+          <span class="seo-content__eyebrow">Campanha 5.5 ABC da Construção</span>
+          <h2 id="seo-content-title" class="seo-content__title">Ofertas 5.5 na ABC da Construção: preços especiais para renovar sua obra</h2>
+          <p>A campanha 5.5 da ABC da Construção reúne ofertas por tempo limitado para quem busca economia em materiais de construção, reforma e acabamento em um só lugar.</p>
+          <p>Nesta LP, você encontra condições especiais em metais, banho quente, louças e cubas, materiais hidráulicos, tintas e iluminação, com vitrines organizadas para comparar produtos com rapidez e comprar com mais confiança.</p>
+          <p>Com destaque para ofertas imperdíveis e atualização constante de preços e estoque, a página ajuda você a aproveitar as melhores oportunidades da campanha 5.5 antes do encerramento.</p>
         </div>
 
         <div class="seo-content__faq" aria-labelledby="seo-faq-title">
-          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre 04.04 ABC
+          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre 5.5 ABC
             da Construção</h2>
 
           <details class="seo-content__faq-item">
-            <summary>O que muda na campanha 04.04 ABC da Construção?</summary>
-            <p>As ofertas ficam concentradas em uma janela curta, com foco em leitura rápida, urgência e decisão mais
-              simples.</p>
+            <summary>O que é a campanha 5.5 da ABC da Construção?</summary>
+            <p>A campanha 5.5 é uma ação promocional com ofertas especiais em produtos para construção, reforma e acabamento, válida por tempo limitado.</p>
           </details>
 
           <details class="seo-content__faq-item">
-            <summary>Como esta LP ajuda na leitura das ofertas da campanha 04.04 ABC da Construção?</summary>
-            <p>A estrutura prioriza hero, countdown e vitrines para apontar rapidamente o que importa sem poluir a
-              navegação.</p>
+            <summary>Quais categorias estão em oferta na LP 5.5?</summary>
+            <p>As vitrines da campanha incluem metais, banho quente, louças e cubas, materiais hidráulicos, tintas e iluminação, com produtos selecionados para diferentes etapas da obra.</p>
           </details>
 
           <details class="seo-content__faq-item">
-            <summary>Preços e estoques podem mudar durante a campanha 04.04 ABC da Construção?</summary>
+            <summary>Como encontrar as melhores ofertas da campanha 5.5?</summary>
+            <p>Use as seções por categoria e acompanhe o countdown principal da página para identificar as oportunidades antes do fim da campanha.</p>
+          </details>
+
+          <details class="seo-content__faq-item">
+            <summary>Posso comprar metais, tintas e materiais hidráulicos na mesma campanha?</summary>
+            <p>Sim. A LP 5.5 da ABC da Construção reúne ofertas em várias categorias para facilitar a compra completa da sua reforma em uma única página.</p>
+          </details>
+
+          <details class="seo-content__faq-item">
+            <summary>Preços e estoques podem mudar durante a campanha 5.5 ABC da Construção?</summary>
             <p>Sim. Os preços e estoques podem variar ao longo da campanha conforme a disponibilidade do momento.</p>
           </details>
         </div>
@@ -280,23 +291,39 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "O que muda na campanha 04.04 ABC da Construção?",
+          "name": "O que e a campanha 5.5 da ABC da Construcao?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "As ofertas ficam concentradas em uma janela curta, com foco em leitura rapida, urgencia e decisao mais simples."
+            "text": "A campanha 5.5 e uma acao promocional com ofertas especiais em produtos para construcao, reforma e acabamento, valida por tempo limitado."
           }
         },
         {
           "@type": "Question",
-          "name": "Como esta LP ajuda na leitura das ofertas da campanha 04.04 ABC da Construção?",
+          "name": "Quais categorias estao em oferta na LP 5.5?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A estrutura prioriza hero, countdown e vitrines para apontar rapidamente o que importa sem poluir a navegacao."
+            "text": "As vitrines da campanha incluem metais, banho quente, loucas e cubas, materiais hidraulicos, tintas e iluminacao, com produtos selecionados para diferentes etapas da obra."
           }
         },
         {
           "@type": "Question",
-          "name": "Precos e estoques podem mudar durante a campanha 04.04 ABC da Construção?",
+          "name": "Como encontrar as melhores ofertas da campanha 5.5?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use as secoes por categoria e acompanhe o countdown principal da pagina para identificar as oportunidades antes do fim da campanha."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso comprar metais, tintas e materiais hidraulicos na mesma campanha?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A LP 5.5 da ABC da Construcao reune ofertas em varias categorias para facilitar a compra completa da sua reforma em uma unica pagina."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Precos e estoques podem mudar durante a campanha 5.5 ABC da Construção?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sim. Os precos e estoques podem variar ao longo da campanha conforme a disponibilidade do momento."

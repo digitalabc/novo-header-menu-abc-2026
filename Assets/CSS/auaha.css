@@ -6536,7 +6536,7 @@ div[class^="como-chegar"]>span+i {
     fill: #d4af87 !important;
   }
 
-  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--abcprime):not(.nav-mobile__others-item--outlet):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) {
+  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--abcprime):not(.nav-mobile__others-item--outlet):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores):not(.nav-mobile__others-item--ofertas) {
     border: none !important;
   }
 
@@ -6586,7 +6586,7 @@ div[class^="como-chegar"]>span+i {
   }
 
   #menu-offcanvas .nav-mobile__link,
-  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--abcprime):not(.nav-mobile__others-item--outlet):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores) a {
+  #menu-offcanvas .nav-mobile__others ul li:not(.nav-mobile__others-item--launches):not(.nav-mobile__others-item--consumer):not(.nav-mobile__others-item--chance):not(.nav-mobile__others-item--cupons):not(.nav-mobile__others-item--abcprime):not(.nav-mobile__others-item--outlet):not(.nav-mobile__others-item--specialist):not(.nav-mobile__others-item--store-offers):not(.nav-mobile__others-item--stores):not(.nav-mobile__others-item--ofertas) a {
     color: #e5e5e5 !important;
   }
 
@@ -6606,7 +6606,8 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado,
-  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores {
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas {
     height: auto;
     min-height: 34px;
     padding: 6px 10px;
@@ -6627,7 +6628,8 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado a,
-  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores a {
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores a,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -6643,9 +6645,36 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a strong,
-  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a strong {
     color: #392f2d;
     font-weight: 600;
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas {
+    border-color: #f5b3b9;
+    background-color: #fde8ea;
+    position: relative;
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a strong {
+    color: #c11b26 !important;
+    font-weight: var(--peso-fonte-bold);
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 42%;
+    height: 120%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.56) 50%, transparent 100%);
+    transform: skewX(-18deg) translateX(-180%);
+    animation: navBadgeShimmer 3.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
   }
 
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist {
@@ -8840,6 +8869,102 @@ header {
   font-weight: inherit;
 }
 
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+  padding: 5px 11px;
+  position: relative;
+  overflow: hidden;
+  border-width: 1.5px;
+  border-style: solid;
+  border-radius: 999px;
+  line-height: 1;
+  font-weight: var(--peso-fonte-bold) !important;
+  transition: background-color 0.2s ease;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge>* {
+  position: relative;
+  z-index: 1;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 42%;
+  height: 120%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.56) 50%, transparent 100%);
+  transform: skewX(-18deg) translateX(-180%);
+  animation: navBadgeShimmer 3.6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-ofertas {
+  background: #fde8ea;
+  border-color: #f5b3b9;
+  color: #c11b26;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-ofertas::after {
+  animation-delay: 0s;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-ofertas:hover {
+  background: #fbdde1;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance {
+  background: #fdeae4;
+  border-color: #f4a88e;
+  color: #be3618;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance::after {
+  animation-delay: 2.7s;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance:hover {
+  background: #f8e3dc;
+}
+
+@keyframes navBadgeShimmer {
+
+  0%,
+  60% {
+    transform: skewX(-18deg) translateX(-180%);
+  }
+
+  100% {
+    transform: skewX(-18deg) translateX(400%);
+  }
+}
+
+.badge-emoji {
+  display: inline-block;
+  animation: badgeEmojiFloat 2s ease-in-out infinite;
+}
+
+.nav-link--badge-chance .badge-emoji {
+  animation-delay: 0.4s;
+}
+
+@keyframes badgeEmojiFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
 .navbar__wrapper .nav-item--nv1.nav-item--cupons {
   order: 1;
 }
@@ -10402,7 +10527,8 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado,
-#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores {
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas {
   height: auto;
   min-height: 34px;
   padding: 6px 10px;
@@ -10423,7 +10549,8 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--franqueado a,
-#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores a {
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--stores a,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -10439,7 +10566,8 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
-#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a strong {
   color: #392f2d;
 }
 
@@ -10448,8 +10576,35 @@ header {
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a strong,
-#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong {
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--store-offers a strong,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a strong {
   font-weight: 600;
+}
+
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas {
+  border-color: #f5b3b9;
+  background-color: #fde8ea;
+  position: relative;
+}
+
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas a strong {
+  color: #c11b26 !important;
+  font-weight: var(--peso-fonte-bold);
+}
+
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--ofertas::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 42%;
+  height: 120%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.56) 50%, transparent 100%);
+  transform: skewX(-18deg) translateX(-180%);
+  animation: navBadgeShimmer 3.6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
 }
 
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons {
@@ -11039,7 +11194,7 @@ header {
 }
 
 .user__dropdown {
-  z-index: 1;
+  z-index: 2;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   background: #fff;
   opacity: 0;

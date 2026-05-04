@@ -52,7 +52,7 @@
                   <tr>
                     <td style="padding: 24px 0 0 0;">
                       <p style="margin: 0; font-size: 48px; line-height: 52px; font-weight: 700; color: #353535; letter-spacing: -0.5px; mso-line-height-rule: exactly;">
-                        Um dos produtos que você gostou está quase acabando!
+                        O produto que você gostou está quase acabando!
                       </p>
                     </td>
                   </tr>
@@ -124,6 +124,29 @@
                                     </tr>
                                   </table>
                                   {{ end }}
+                                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; border-spacing: 0; margin-top: 18px; border: 1px dashed #0E3C53; border-radius: 14px; background-color: #FFFFFF;">
+                                    <tr>
+                                      <td style="padding: 12px 14px;">
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                                          <tr>
+                                            <td valign="middle" style="text-align: left;">
+                                              <p style="margin: 0; font-size: 14px; line-height: 18px; color: #0E3C53; font-weight: 700; mso-line-height-rule: exactly;">
+                                                Use o codigo:
+                                              </p>
+                                              <p style="margin: 2px 0 0 0; font-size: 24px; line-height: 28px; color: #0E3C53; font-weight: 900; letter-spacing: 1px; mso-line-height-rule: exactly;">
+                                                5AGORA
+                                              </p>
+                                            </td>
+                                            <td width="44" valign="middle" align="right">
+                                              <a href="#" aria-label="Copiar cupom 5AGORA" onclick="if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText('5AGORA'); } else { var campo = document.createElement('textarea'); campo.value = '5AGORA'; campo.style.position = 'fixed'; campo.style.left = '-9999px'; document.body.appendChild(campo); campo.focus(); campo.select(); document.execCommand('copy'); document.body.removeChild(campo); } this.style.backgroundColor = '#CFEDE7'; return false;" style="display: inline-block; width: 36px; height: 36px; border-radius: 8px; background-color: #E8F6F3; text-align: center; line-height: 36px; text-decoration: none;">
+                                                <img src="https://img.icons8.com/ios-glyphs/30/0E3C53/copy.png" alt="Copiar cupom" width="18" height="18" style="display: inline-block; vertical-align: middle; border: 0;">
+                                              </a>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </table>
                                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 18px;">
                                     <tr>
                                       <td align="center" bgcolor="#0E3C53" style="background-color: #0E3C53; border-radius: 999px;">
@@ -244,7 +267,7 @@
                   <tr>
                     <td align="center" style="padding: 18px 0 0 0;">
                       <p style="margin: 0; font-size: 12px; line-height: 18px; color: #6F757D; text-align: center; mso-line-height-rule: exactly;">
-                        Se você prefere não receber este tipo de e-mail, você pode <a href="" style="color: #848484; text-decoration: underline;">cancelar a inscrição</a> ou gerenciar suas preferências de e-mail.
+                        Se você prefere não receber este tipo de e-mail, você pode <a href="{{store.urls.checkout_pages.account.data}}" style="color: #848484; text-decoration: underline;">cancelar a inscrição</a> ou gerenciar suas preferências de e-mail.
                       </p>
                     </td>
                   </tr>

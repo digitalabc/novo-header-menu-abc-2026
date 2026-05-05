@@ -47,7 +47,7 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
 }
 
 fragment produtos on SingleHotsite {
-  products(first: 20, sortKey: SALES, sortDirection: DESC) {
+  products(first: 20) {
     ...productsCon
   }
 }

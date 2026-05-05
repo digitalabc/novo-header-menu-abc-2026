@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ gtm_config_head gtm_id: common.gtm_id }}
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construcao" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ asset type: "css" paths: ["lancamentos_2026"] }}
+  {{ asset type: "css" paths: ["super_chance_unica"] }}
+  {{ asset type: "css" paths: ["super_chance_unica_abc"] }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  {{ asset type: "css" paths: ["lp-montserrat-fonts"] }}
+  {{ asset type: "css" paths: ["lp-montserrat-override"] }}
+  <style>
+    .cronometro.cronometro--spot.oferta-relampago__spot-countdown {
+      display: none !important;
+    }
+  </style>
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body class="lp-campanha lp-oculta-header">
+  {{ gtm_config_body gtm_id: common.gtm_id }}
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+
+  <div class="semana-do-consumidor super-chance-unica-abc">
+    <div class="fullbanner desktop">
+      {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
+    </div>
+    <div class="fullbanner mobile">
+      {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" }}
+    </div>
+
+    <section class="showcase showcase-oferta-relampago showcase-ofertas-mensais-principal" data-showcase="cronometer">
+      <div class="container">
+        <div class="showcase__hero">
+          <div class="showcase__copy">
+            <h1 class="showcase__title showcase__title--hero">&Uacute;ltimas unidades com <span class="showcase__title-word">desconto<span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">%</span></span> exclusivo</h1>
+            <p class="showcase__subtitle showcase__subtitle--hero">Estoque limitado e pre&ccedil;os que n&atilde;o se repetem. Quando acabar, acabou.</p>
+          </div>
+
+          <div class="showcase__countdown-column">
+            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-05-31T23:59:00-03:00">
+            <span class="countdown-principal-da-campanha__ribbon">Prorroga&ccedil;&atilde;o</span>
+            <span class="oferta-relampago__countdown-eyebrow">
+              <span class="oferta-relampago__lightning" aria-hidden="true">&#9889;</span>
+              Oferta rel&acirc;mpago
+            </span>
+            <span class="cronometro__label">Campanha termina em</span>
+            <div class="cron" aria-live="polite">
+              <div class="cron__item">
+                <span class="cronometro__days">00</span>
+                <small>Dias</small>
+              </div>
+              <div class="cron__item">
+                <span class="cronometro__hours">00</span>
+                <small>Horas</small>
+              </div>
+              <div class="cron__item">
+                <span class="cronometro__minutes">00</span>
+                <small>Min</small>
+              </div>
+              <div class="cron__item">
+                <span class="cronometro__seconds">00</span>
+                <small>Seg</small>
+              </div>
+            </div>
+            <span class="cronometro__note">Pre&ccedil;os e estoque sujeitos &agrave; atualiza&ccedil;&atilde;o durante a campanha.</span>
+            </div>
+            <a class="showcase__hero-whatsapp" href="#mm-whatsapp" onclick="event.preventDefault(); var mmWhatsapp = document.getElementById('mm-whatsapp'); if (mmWhatsapp) { mmWhatsapp.click(); }">Falar com um especialista</a>
+          </div>
+        </div>
+
+        <div class="showcase__carousel">
+          {{ cronometro_products = data.vitrine_cronometro?.products?.nodes ?? [] }}
+          {{~ if cronometro_products.size > 0 ~}}
+          {{~ for product in cronometro_products ~}}
+          <input id="promotion-stock-{{for.index}}" type="hidden" value="{{product.stock}}">
+          <input id="promotion-available-{{for.index}}" type="hidden"
+            value="{{if product.available}}true{{else}}false{{end}}">
+          {{~ end ~}}
+          {{ spot_carousel class: "showcase-oferta-relampago__carousel showcase-ofertas-mensais-principal__carousel" products: cronometro_products }}
+          {{~ else ~}}
+          <div class="showcase-ofertas-mensais__placeholder">
+            <div class="showcase-ofertas-mensais__empty">
+              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
+            </div>
+          </div>
+          {{~ end ~}}
+        </div>
+      </div>
+    </section>
+
+    <div class="showcase-sections container">
+      <div class="showcase-stack">
+        <section class="showcase showcase--panel showcase-metais-sanitarios" data-showcase="metais-sanitarios">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Banheiro e cozinha</span>
+              <h2 class="showcase__title">Metais</h2>
+              <p class="showcase__subtitle">Torneiras, misturadores e acabamentos com pre&ccedil;o de campanha.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-frete-gratis">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-metais-sanitarios__carousel">
+            {{ spot_carousel class: "showcase-metais-sanitarios__carousel" products: data.vitrine1.products.nodes hide_countdown: true }}
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-banho-aquecimento" data-showcase="banho-aquecimento">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Conforto para o dia a dia</span>
+              <h2 class="showcase__title">Banho Quente</h2>
+              <p class="showcase__subtitle">Chuveiros e duchas para banho confort&aacute;vel e mais economia.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-melhores-ofertas">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-banho-aquecimento__carousel">
+            {{ spot_carousel class: "showcase-banho-aquecimento__carousel" products: data.vitrine2.products.nodes hide_countdown: true }}
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-loucas-inox-sintetico" data-showcase="loucas-inox-sintetico">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Banheiro e cozinha</span>
+              <h2 class="showcase__title">Lou&ccedil;as e Cubas</h2>
+              <p class="showcase__subtitle">Cubas, pias, tanques e lou&ccedil;as sanit&aacute;rias para renovar seus ambientes.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-metais">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-loucas-inox-sintetico__carousel">
+            {{ spot_carousel class: "showcase-loucas-inox-sintetico__carousel" products: data.vitrine3.products.nodes hide_countdown: true }}
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-materiais-hidraulicos" data-showcase="materiais-hidraulicos">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Tubos, conex&otilde;es e registros</span>
+              <h2 class="showcase__title">Materiais Hidr&aacute;ulicos</h2>
+              <p class="showcase__subtitle">Tubos, conex&otilde;es e registros para instala&ccedil;&atilde;o segura e durabilidade.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-banho-e-aquecimento">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-materiais-hidraulicos__carousel">
+            {{ spot_carousel class: "showcase-materiais-hidraulicos__carousel" products: data.vitrine4.products.nodes hide_countdown: true }}
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-tintas" data-showcase="tintas">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Acabamento e pintura</span>
+              <h2 class="showcase__title">Tintas</h2>
+              <p class="showcase__subtitle">Cores, prote&ccedil;&atilde;o e acabamento para renovar ambientes com rapidez.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-moveis">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-tintas__carousel">
+            {{ spot_carousel class: "showcase-tintas__carousel" products: data.vitrine5.products.nodes hide_countdown: true }}
+          </div>
+        </section>
+
+        <section class="showcase showcase--panel showcase-iluminacao" data-showcase="iluminacao">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Ambientes bem iluminados</span>
+              <h2 class="showcase__title">Ilumina&ccedil;&atilde;o</h2>
+              <p class="showcase__subtitle">L&acirc;mpadas, lumin&aacute;rias e solu&ccedil;&otilde;es para criar ambientes aconchegantes.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-iluminacao__carousel">
+            {{ spot_carousel class: "showcase-iluminacao__carousel" products: data.vitrine6.products.nodes hide_countdown: true }}
+          </div>
+        </section>
+      </div>
+
+      <section class="seo-content" aria-labelledby="seo-content-title">
+        <div class="seo-content__intro">
+          <span class="seo-content__eyebrow">Super Chance &Uacute;nica</span>
+          <h2 id="seo-content-title" class="seo-content__title">At&eacute; 55% OFF nas top ofertas do m&ecirc;s para sua obra e reforma</h2>
+          <p>A p&aacute;gina Super Chance &Uacute;nica da ABC da Constru&ccedil;&atilde;o re&uacute;ne as melhores oportunidades do m&ecirc;s com descontos de at&eacute; 55% em materiais de constru&ccedil;&atilde;o, acabamento e itens para o dia a dia da obra.</p>
+          <p>Aqui voc&ecirc; encontra uma sele&ccedil;&atilde;o exclusiva com o melhor pre&ccedil;o do Brasil em produtos para banheiro, cozinha, ferramentas, m&oacute;veis e muito mais &mdash; com condi&ccedil;&otilde;es v&aacute;lidas por tempo limitado.</p>
+          <p>Economize agora: navegue pelas vitrines, compare pre&ccedil;os e aproveite antes que o estoque acabe.</p>
+        </div>
+
+        <div class="seo-content__faq" aria-labelledby="seo-faq-title">
+          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre a Super Chance &Uacute;nica</h2>
+
+          <details class="seo-content__faq-item">
+            <summary>O que &eacute; a Super Chance &Uacute;nica?</summary>
+            <p>&Eacute; uma sele&ccedil;&atilde;o especial com as top ofertas do m&ecirc;s, reunindo os melhores descontos da ABC da Constru&ccedil;&atilde;o em uma &uacute;nica p&aacute;gina.</p>
+          </details>
+
+          <details class="seo-content__faq-item">
+            <summary>Os descontos de at&eacute; 55% valem para todos os produtos?</summary>
+            <p>Os descontos variam por produto. O percentual de at&eacute; 55% OFF se aplica a itens selecionados e est&aacute; sujeito &agrave; disponibilidade de estoque.</p>
+          </details>
+
+          <details class="seo-content__faq-item">
+            <summary>Os pre&ccedil;os e estoques podem mudar?</summary>
+            <p>Sim. Os pre&ccedil;os e a disponibilidade s&atilde;o atualizados ao longo da campanha, de acordo com o estoque do momento.</p>
+          </details>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que e a Super Chance Unica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "E uma selecao especial com as top ofertas do mes, reunindo os melhores descontos da ABC da Construcao em uma unica pagina."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os descontos de ate 55% valem para todos os produtos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os descontos variam por produto. O percentual de ate 55% OFF se aplica a itens selecionados e esta sujeito a disponibilidade de estoque."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os precos e estoques podem mudar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Os precos e a disponibilidade sao atualizados ao longo da campanha, de acordo com o estoque do momento."
+          }
+        }
+      ]
+    }
+  </script>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login",
+  "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "lancamentos_2026",
+  "super_chance_unica_abc", "whats_form"] }}
+
+</body>
+
+</html>

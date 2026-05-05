@@ -123,13 +123,13 @@
       },
       {
         "urlMatch": "super-chance-unica",
-        "path": "Custom/old_se/super_chance_unica.html",
-        "query": "super_chance_unica.graphql"
+        "path": "Custom/old_se/super_chance_unica_abc.html",
+        "query": "super_chance_unica_abc.graphql"
       },
       {
         "urlMatch": "chance-unica",
-        "path": "Custom/old_se/super_chance_unica.html",
-        "query": "super_chance_unica.graphql"
+        "path": "Custom/old_se/super_chance_unica_abc.html",
+        "query": "super_chance_unica_abc.graphql"
       },
       {
         "urlMatch": "lancamentos-2026",

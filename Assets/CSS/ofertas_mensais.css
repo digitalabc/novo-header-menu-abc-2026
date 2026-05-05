@@ -1186,3 +1186,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
     font-size: 20px;
   }
 }
+
+body.lp-campanha.lp-oculta-header > header {
+  display: none !important;
+}

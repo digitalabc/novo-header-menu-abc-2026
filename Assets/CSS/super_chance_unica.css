@@ -71,7 +71,7 @@
 .semana-do-consumidor .fullbanner img {
   display: block;
   margin: 0 auto;
-  border-radius: 0 0 34px 34px;
+  /* border-radius: 0 0 34px 34px; */
 }
 
 .semana-do-consumidor .showcase-stack {

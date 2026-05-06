@@ -233,9 +233,7 @@ const estados = [
 			"Formosa",
 			"Goianésia",
 			"Goiânia",
-			"Mineiros",
-			"Rio Verde",
-			"Trindade"
+			"Mineiros"
 		]
 	},
 	{
@@ -306,7 +304,6 @@ const estados = [
 			"Santa Isabel",
 			"Santo Antônio de Posse",
 			"Santos",
-			"São Bernardo do Campo",
 			"São Caetano do Sul",
 			"São Carlos",
 			"São João da Boa Vista",

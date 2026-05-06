@@ -6193,44 +6193,6 @@
       ]
     },
     {
-      "name": "Rio Verde",
-      "state": "Goiás",
-      "stores": [
-        {
-          "name": "Jardim Presidente",
-          "adress": "Av. Pres. Vargas, Quadra, 49, Lote 09 - Jardim Pres., Rio Verde - GO, 75908-420",
-          "phone": "(64)  99613-3036",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/rio-verde/jardim-presidente",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
-      "name": "Trindade",
-      "state": "Goiás",
-      "stores": [
-        {
-          "name": "Setor Morada do Bosque",
-          "adress": "Av. José Fernandes Alves, 119 - St. Morada do Bosque, Trindade - GO, 75384-030",
-          "phone": "(62) 99215-8222",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/trindade/setor-morada-do-bosque",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "9:00 às 13:00",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
       "name": "Água Boa",
       "state": "Mato Grosso",
       "stores": [

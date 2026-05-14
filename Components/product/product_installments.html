@@ -375,7 +375,9 @@ input[name="installment_dialog"]:not(:checked) + label {
                   </li>
                   {{~ end ~}}
                 {{~ if plan.name | string.downcase | string.contains "pix" ~}}
-                  <li class="option__list__message1">À vista no Pix com 5% de desconto</li>
+                  {{~ if (!product.product_brand | string.downcase | string.contains "deca") }}
+                    <li class="option__list__message1">À vista no Pix com 5% de desconto</li>
+                  {{~ end ~}}
                   <li class="option__list__message2">*Certifique-se de concluir o pagamento no prazo indicado para garantir a confirmação do pedido.</li>
                   {{~ else if plan.name | string.downcase | string.contains "cartão" ~}}
                     <li class="option__list__message2">*O limite do cartão deve cobrir o valor total da compra, mesmo em compras parceladas.</li>

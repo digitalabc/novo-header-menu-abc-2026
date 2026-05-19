@@ -301,6 +301,7 @@ const estados = [
 			"Promissão",
 			"Ribeirão Preto",
 			"Santa Isabel",
+			"Santo André",
 			"Santo Antônio de Posse",
 			"Santos",
 			"São Caetano do Sul",

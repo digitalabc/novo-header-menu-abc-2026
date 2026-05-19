@@ -261,7 +261,6 @@ const estados = [
 			"Amparo",
 			"Andradina",
 			"Artur Nogueira",
-			"Arujá",
 			"Assis",
 			"Atibaia",
 			"Bariri",

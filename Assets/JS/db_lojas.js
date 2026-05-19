@@ -270,7 +270,6 @@ const estados = [
 			"Bauru", 
 			"Borborema",
 			"Botucatu",
-			"Bragança Paulista",
 			"Caçapava",
 			"Cafelândia",
 			"Campinas",

@@ -16,11 +16,18 @@
     .cronometro.cronometro--spot.oferta-relampago__spot-countdown {
       display: none !important;
     }
-  </style>
+    section.ofertas-mensais .showcase[data-showcase="cronometer"] {
+	    background-color: #c9c9c9 !important;	    
+    }
+    section.ofertas-mensais .showcase[data-showcase="cronometer"]::after {      
+      background-color: #9c002d !important;      
+    }
+  </style>  
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
-<body class="lp-campanha lp-oculta-header">
+<!-- <body class="lp-campanha lp-oculta-header"> -->
+<body class="lp-campanha">
   {{ gtm_config_body gtm_id: common.gtm_id }}
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
@@ -46,7 +53,7 @@
                   <!-- <span class="showcase__title-date">5.5</span> -->
                   <img
                     class="showcase__title-seal"
-                    src="https://abcdaconstrucao.fbitsstatic.net/media/logo-5.5.png?v=202604281813"
+                    src="https://abcdaconstrucao.fbitsstatic.net/media/logo-6.6.png?v=202606051602"
                     alt=""
                     aria-hidden="true"
                     decoding="async"
@@ -59,7 +66,7 @@
           </div>
 
           <div class="showcase__countdown-column">
-            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-05-05T23:59:00-03:00" data-spot-countdown-target="campaign">
+            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-06-06T23:59:00-03:00" data-spot-countdown-target="campaign">
               <span class="cronometro__label">Campanha termina em</span>
               <div class="cron" aria-live="polite">
                 <div class="cron__item">

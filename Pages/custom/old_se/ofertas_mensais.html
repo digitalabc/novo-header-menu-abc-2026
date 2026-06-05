@@ -16,12 +16,6 @@
     .cronometro.cronometro--spot.oferta-relampago__spot-countdown {
       display: none !important;
     }
-    section.ofertas-mensais .showcase[data-showcase="cronometer"] {
-	    background-color: #c9c9c9 !important;	    
-    }
-    section.ofertas-mensais .showcase[data-showcase="cronometer"]::after {      
-      background-color: #9c002d !important;      
-    }
   </style>  
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
@@ -41,7 +35,14 @@
     <div class="fullbanner mobile">
       {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" }}
     </div>
-
+    <style>      
+      section.ofertas-mensais .showcase[data-showcase="cronometer"] {
+        background-color: #c9c9c9 !important;	    
+      }
+      section.ofertas-mensais .showcase[data-showcase="cronometer"]::after {      
+        background-color: #9c002d !important;      
+      }
+    </style>
     <section class="showcase showcase-oferta-relampago showcase-ofertas-mensais-principal" data-showcase="cronometer">
       <div class="container">
         <div class="showcase__hero">

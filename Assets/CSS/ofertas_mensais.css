@@ -301,6 +301,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   box-shadow: none;
   /* background-color: #892428; */
   background-color: #c9c9c9;
+  background-image: unset !important;
   /* background-image: linear-gradient(180deg, #892428 0%, #6f1b22 100%); */
   color: #fff;
   isolation: isolate;

@@ -301,7 +301,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   box-shadow: none;
   /* background-color: #892428; */
   background-color: #c9c9c9;
-  background-image: linear-gradient(180deg, #892428 0%, #6f1b22 100%);
+  /* background-image: linear-gradient(180deg, #892428 0%, #6f1b22 100%); */
   color: #fff;
   isolation: isolate;
   contain: layout style;
@@ -340,7 +340,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   border-top-right-radius: 60% 100%;
   /* background-color: #b10032; */
   background-color: #9c002d;
-  background-image: linear-gradient(180deg, #b10032 0%, #7d001f 100%);
+  /* background-image: linear-gradient(180deg, #b10032 0%, #7d001f 100%); */
   box-shadow: none;
   pointer-events: none;
   will-change: transform;

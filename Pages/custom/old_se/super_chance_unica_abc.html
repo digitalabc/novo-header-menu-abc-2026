@@ -21,7 +21,8 @@
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
-<body class="lp-campanha lp-oculta-header">
+<!-- <body class="lp-campanha lp-oculta-header"> -->
+<body class="lp-campanha">
   {{ gtm_config_body gtm_id: common.gtm_id }}
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
@@ -44,6 +45,7 @@
           </div>
 
           <div class="showcase__countdown-column">
+            <!--
             <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-06-30T23:59:00-03:00">
             <span class="countdown-principal-da-campanha__ribbon">Prorroga&ccedil;&atilde;o</span>
             <span class="oferta-relampago__countdown-eyebrow">
@@ -71,6 +73,7 @@
             </div>
             <span class="cronometro__note">Pre&ccedil;os e estoque sujeitos &agrave; atualiza&ccedil;&atilde;o durante a campanha.</span>
             </div>
+            -->
             <a class="showcase__hero-whatsapp" href="#mm-whatsapp" onclick="event.preventDefault(); var mmWhatsapp = document.getElementById('mm-whatsapp'); if (mmWhatsapp) { mmWhatsapp.click(); }">Falar com um especialista</a>
           </div>
         </div>

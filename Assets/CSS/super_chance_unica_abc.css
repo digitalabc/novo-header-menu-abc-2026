@@ -63,7 +63,7 @@
   z-index: 2;
   display: flex;
   /* align-items: flex-start; */
-  align-items: center;
+  align-items: center !important;
   justify-content: space-between;  
   gap: 28px;
   margin-bottom: 24px;

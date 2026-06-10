@@ -3460,6 +3460,25 @@
       ]
     },
     {
+      "name": "Boituva",
+      "state": "São Paulo",
+      "stores": [
+        {
+          "name": "Portal Ville Azaleia",
+          "adress": "R. Zélia de Lima Rosa, 1208 - Portal Ville Azaleia, Boituva - SP, 18552-320",
+          "phone": "",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/boituva/portal-azaleia",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": "",
+          "saturday": "",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Botucatu",
       "state": "São Paulo",
       "stores": [

@@ -267,6 +267,7 @@ const estados = [
 			"Barretos",
 			"Bertioga",
 			"Bauru", 
+			"Boituva",
 			"Borborema",
 			"Botucatu",
 			"Caçapava",

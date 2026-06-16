@@ -213,12 +213,47 @@ function hotsitePageEvent(eventInput) {
     window.dataLayer.push({ event: "view_item_list", ecommerce: { ...gtm_hotsite_details } })
 }
 
+// function addToCartEvent(eventInput) {
+//      console.log("add_to_cart detail:", eventInput.detail); // 👈 adiciona isso
+//     getUserInfo().then((user_info) => {
+         
+//         let cartData = getCartData(eventInput.detail.cart);
+//         window.dataLayer.push({ event: "add_to_cart", ecommerce: { ...eventInput.detail, user: user_info } })
+//         window.dataLayer.push({ event: "view_item_list", ecommerce: { ...cartData, user: user_info } })
+//     });
+// }
+
+let previousCartIds = [];
+
 function addToCartEvent(eventInput) {
     getUserInfo().then((user_info) => {
         let cartData = getCartData(eventInput.detail.cart);
-        window.dataLayer.push({ event: "add_to_cart", ecommerce: { ...eventInput.detail, user: user_info } })
+        const currentProducts = eventInput.detail.cart.products;
+
+        const newProduct = currentProducts.find(p => !previousCartIds.includes(p.productVariantId))
+                        ?? currentProducts[currentProducts.length - 1];
+
+        previousCartIds = currentProducts.map(p => p.productVariantId);
+
+        let addedProduct = getAddedProductData(newProduct);
+
+        window.dataLayer.push({ event: "add_to_cart", ecommerce: { ...addedProduct, user: user_info } })
         window.dataLayer.push({ event: "view_item_list", ecommerce: { ...cartData, user: user_info } })
     });
+}
+
+function getAddedProductData(product) {
+    return {
+        currency: "BRL",
+        value: product.price * product.quantity,
+        items: [{
+            item_id: product.productVariantId ?? product.productId,
+            item_name: product.name,
+            discount: product.listPrice - product.price,
+            price: product.price,
+            quantity: product.quantity
+        }]
+    };
 }
 
 

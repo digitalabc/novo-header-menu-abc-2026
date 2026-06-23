@@ -8,7 +8,8 @@
     for (p = 0; p < Fbits.Carrinho.Produtos.length; p++) {
       dlp.push({
         name: Fbits.Carrinho.Produtos[p].Nome.toString(),
-        id: Fbits.Carrinho.Produtos[p].ProdutoId.toString(),
+        //id: Fbits.Carrinho.Produtos[p].ProdutoId.toString(),
+        id: Fbits.Carrinho.Produtos[p].ProdutoVarianteId.toString(),
         price: Fbits.Carrinho.Produtos[p].PrecoPor,
         brand: Fbits.Carrinho.Produtos[p].Fabricante.toString(),
         variant: Fbits.Carrinho.Produtos[p].ProdutoVarianteId.toString(),

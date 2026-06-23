@@ -281,6 +281,39 @@
   <script>
     const orderInfo = {{ data.checkout.orders | array.first | map.to_json }}
   </script>
+  <script>
+    (function(){
+    try{
+    var o = window.orderInfo;
+    if(!o || !o.products) return;
+    var items = o.products.map(function(p){
+    var variant = p.product_variant_id || p.variant_id || p.sku || p.ProdutoVarianteId;
+    var prod    = p.product_id || p.id || p.ProdutoId;
+    return {
+    item_id: String(variant || prod),
+    item_name: p.name,
+    price: p.quantity ? (p.value/p.quantity) : p.value,
+    quantity: p.quantity
+    };
+    });
+    console.log('[MM] product[0] cru =', o.products[0]);
+    console.log('[MM] items montados =', items);
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ecommerce:null});
+    dataLayer.push({
+    event:'mm_purchase',
+    ecommerce:{
+    transaction_id:String(o.order_id),
+    value:o.total_value,
+    shipping:o.shipping_value,
+    currency:'BRL',
+    items:items
+    }
+    });
+    }catch(e){console.error('[MM] erro purchase custom',e);}
+    })();
+  </script>
+  
   {{ sdk_client }}
   {{ data_layer_confirmation_view checkout: data.checkout }}
 

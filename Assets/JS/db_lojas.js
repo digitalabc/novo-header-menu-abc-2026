@@ -230,6 +230,7 @@ const estados = [
 			"Anápolis",
 			"Caldas Novas",
 			"Catalão",
+			"Cristalina",
 			"Formosa",
 			"Goianésia",
 			"Goiânia",

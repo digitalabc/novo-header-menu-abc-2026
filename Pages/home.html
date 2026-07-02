@@ -129,6 +129,16 @@
       </ul>
     </section>
 
+    <!-- Ofertas diárias -->
+    <section class="home-offers-banner">
+      <h2>Ofertas diárias, para você economizar:</h2>
+      <div class="home-offers-banner__content">
+        <div class="home-offers-banner__banner home-offers-banner__banner--desktop desktop">{{- banner carousel: false banners: data.hotsite.banners position: "Rodape" -}}</div>
+        <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: data.hotsite.banners position: "Mobile Rodape" -}}</div>
+        <div class="home-offers-banner__spot">{{- spot_carousel class: "home-offers-banner__carousel" products: data.vitrine3.products.nodes show_buy_mobile: true -}}</div>
+      </div>
+    </section>
+
     <!-- Vitrine 1 -->
     <section class="showcase">
       <h2 class="home-title--hot">
@@ -1272,7 +1282,7 @@
 
   {{ footer products:common.lighbox_products.products.nodes }}
 
-  {{ gtm_hotsite_view product_lists: [data.vitrine1.products.nodes, data.vitrine2.products.nodes]}}
+  {{ gtm_hotsite_view product_lists: [data.vitrine1.products.nodes, data.vitrine2.products.nodes, data.vitrine3.products.nodes]}}
 
   {{ gtm_config gtm_id: common.gtm_id }}
 

@@ -589,6 +589,32 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    const homeOffersSwiper = document.querySelector(
+      ".home-offers-banner__carousel .swiper",
+    );
+    if (homeOffersSwiper) {
+      const section = homeOffersSwiper.closest(".home-offers-banner__carousel");
+      initSwiperInstance(homeOffersSwiper, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
+        },
+        spaceBetween: 5,
+        slidesPerView: 2.1,
+        watchOverflow: true,
+        breakpoints: {
+          768: {
+            slidesPerView: 3.1,
+            spaceBetween: 5,
+          },
+          980: {
+            slidesPerView: "auto",
+            spaceBetween: 16,
+          },
+        },
+      });
+    }
+
     const bannerCentroDesktop = document.querySelector(
       ".banner-centro.desktop .swiper",
     );

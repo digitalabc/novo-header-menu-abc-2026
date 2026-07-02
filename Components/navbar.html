@@ -7,7 +7,7 @@ Usage:
 navbar menu_groups: data...menu_group position: "Topo Header"
 ## }}
 {{~ capture logo_source ~}}
-{{- store.urls.static_img}}header/logo-abc.svg?theme={{store.theme -}}&v={{store.last_modified-}}
+{{- store.urls.static_img}}header/balao-niver-abc.png?theme={{store.theme -}}&v={{store.last_modified-}}
 {{~ end ~}}
 {{~ menu_group = menu_groups | group.by @(do; ret $0.position;end) | group.get position | array.first ~}}
 {{~ menus = menu_group.menus | group.by @(do; ret $0.parent_menu_id;end) ~}}
@@ -55,9 +55,10 @@ navbar menu_groups: data...menu_group position: "Topo Header"
     </div>
 
     {{ ## Logo ## }}
-    <div class="navbar__logo">
-      <a class="navbar-brand" href="/">
-        <img src="{{ logo_source }}" alt="ABC da ConstruÃ§Ã£o" title="ABC da ConstruÃ§Ã£o">
+    <div class="navbar__logo" style="max-width: none;">
+      <a class="navbar-brand" href="/" style="display: block; max-width: none;">
+        <img src="{{ logo_source }}" alt="ABC da ConstruÃ§Ã£o" title="ABC da ConstruÃ§Ã£o"
+          style="display: block; height: 70px; width: auto; max-width: none;">
       </a>
     </div>
 
@@ -122,7 +123,9 @@ navbar menu_groups: data...menu_group position: "Topo Header"
         <a class="nav-link nav-link--campaign" href="/abc-outlet"><strong>Outlet ABC &#127991;&#65039;</strong></a>
       </li>
       <li class="nav-item nav-item--nv1" style="order: {{top_menu.order + 1002}}">
-        <a class="nav-link nav-link--campaign nav-link--badge nav-link--badge-chance" href="/super-chance-unica"><strong>Super Chance &Uacute;nica <span class="badge-emoji">&#128293;</span></strong></a>
+        <a class="nav-link nav-link--campaign nav-link--badge nav-link--badge-chance"
+          href="/super-chance-unica"><strong>Super Chance &Uacute;nica <span
+              class="badge-emoji">&#128293;</span></strong></a>
       </li>
       {{~ end ~}}
       {{~ end ~}}

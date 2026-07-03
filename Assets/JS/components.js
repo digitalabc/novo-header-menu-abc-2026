@@ -63,9 +63,90 @@ function moveSpotDiscounts() {
   document.querySelectorAll(".spot .spot-price").forEach(processSpotPrice);
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("no-bg-img").remove();
+function formatCountdownNumber(value) {
+  return String(value).padStart(2, "0");
+}
+
+function getEndOfCurrentDay(now) {
+  return new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    23,
+    59,
+    59,
+    999,
+  );
+}
+
+let homeOffersCountdownTimerId = null;
+
+function renderHomeOffersCountdown(root, now) {
+  if (!root) return;
+  const hours = root.querySelector("[data-home-offers-hours]");
+  const minutes = root.querySelector("[data-home-offers-minutes]");
+  const seconds = root.querySelector("[data-home-offers-seconds]");
+  if (!hours || !minutes || !seconds) return;
+
+  const target = getEndOfCurrentDay(now);
+  const diffMs = Math.max(0, target.getTime() - now.getTime());
+  const totalSeconds = Math.floor(diffMs / 1000);
+  const countdownHours = Math.floor(totalSeconds / 3600);
+  const countdownMinutes = Math.floor((totalSeconds % 3600) / 60);
+  const countdownSeconds = totalSeconds % 60;
+
+  hours.textContent = formatCountdownNumber(countdownHours);
+  minutes.textContent = formatCountdownNumber(countdownMinutes);
+  seconds.textContent = formatCountdownNumber(countdownSeconds);
+}
+
+function updateHomeOffersCountdowns() {
+  const countdownRoots = document.querySelectorAll("[data-home-offers-countdown]");
+  if (!countdownRoots.length) return;
+
+  const now = new Date();
+  countdownRoots.forEach((countdownRoot) =>
+    renderHomeOffersCountdown(countdownRoot, now),
+  );
+}
+
+function scheduleHomeOffersCountdownTick() {
+  updateHomeOffersCountdowns();
+  const delay = 1000 - (Date.now() % 1000);
+  homeOffersCountdownTimerId = window.setTimeout(
+    scheduleHomeOffersCountdownTick,
+    delay,
+  );
+}
+
+function initHomeOffersCountdown() {
+  if (homeOffersCountdownTimerId !== null) return;
+  scheduleHomeOffersCountdownTick();
+}
+
+function syncHomeOffersLayout() {
+  const section = document.querySelector(".home-offers-banner");
+  const wrapper = section?.querySelector(".home-offers-banner__carousel .swiper-wrapper");
+  if (!section || !wrapper) return;
+
+  const productCount = Array.from(wrapper.children).filter((slide) =>
+    slide.classList.contains("swiper-slide"),
+  ).length;
+
+  if (!productCount) {
+    delete section.dataset.homeOffersVisible;
+    return;
+  }
+
+  section.dataset.homeOffersVisible = String(Math.min(productCount, 3));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const noBgImg = document.getElementById("no-bg-img");
+  if (noBgImg) noBgImg.remove();
   moveSpotDiscounts();
+  initHomeOffersCountdown();
+  syncHomeOffersLayout();
   const observer = new MutationObserver(() => moveSpotDiscounts());
   observer.observe(document.body, { childList: true, subtree: true });
 });
@@ -230,6 +311,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const refreshDynamicSections = () => {
     initSwipers();
+    initHomeOffersCountdown();
+    syncHomeOffersLayout();
     initCarrosselArrastoNativo();
     reorderHomepageSections();
     replaceRulerIcons();
@@ -583,6 +666,32 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           1090: {
             slidesPerView: 6,
+            spaceBetween: 16,
+          },
+        },
+      });
+    }
+
+    const homeOffersSwiper = document.querySelector(
+      ".home-offers-banner__carousel .swiper",
+    );
+    if (homeOffersSwiper) {
+      const section = homeOffersSwiper.closest(".home-offers-banner__carousel");
+      initSwiperInstance(homeOffersSwiper, {
+        navigation: {
+          nextEl: section?.querySelector(".swiper-button-next"),
+          prevEl: section?.querySelector(".swiper-button-prev"),
+        },
+        spaceBetween: 5,
+        slidesPerView: 2.1,
+        watchOverflow: true,
+        breakpoints: {
+          768: {
+            slidesPerView: 3.1,
+            spaceBetween: 5,
+          },
+          980: {
+            slidesPerView: "auto",
             spaceBetween: 16,
           },
         },

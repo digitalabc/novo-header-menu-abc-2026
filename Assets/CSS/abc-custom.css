@@ -71,7 +71,7 @@ body header svg rect {
     color: #fff !important;
   }
 
-  /* Dropdowns do header */
+  /* Dropdowns do header*/
   body header .dropdown-menu,
   body header .nav-all__dropdown,
   body header .user__dropdown,

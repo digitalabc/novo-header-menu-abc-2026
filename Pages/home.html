@@ -131,7 +131,20 @@
 
     <!-- Ofertas diárias -->
     <section class="home-offers-banner">
-      <h2>Ofertas diárias, para você economizar:</h2>
+      <div class="home-offers-banner__header">
+        <h2>Ofertas diárias, para você economizar:</h2>
+        <div class="home-offers-banner__countdown" data-home-offers-countdown role="timer" aria-live="polite" aria-label="Ofertas diárias terminam em">
+          <span class="home-offers-banner__countdown-item">
+            <span class="home-offers-banner__countdown-value" data-home-offers-hours>24</span>
+          </span>
+          <span class="home-offers-banner__countdown-item">
+            <span class="home-offers-banner__countdown-value" data-home-offers-minutes>00</span>
+          </span>
+          <span class="home-offers-banner__countdown-item">
+            <span class="home-offers-banner__countdown-value" data-home-offers-seconds>00</span>
+          </span>
+        </div>
+      </div>
       <div class="home-offers-banner__content">
         <div class="home-offers-banner__banner home-offers-banner__banner--desktop desktop">{{- banner carousel: false banners: data.hotsite.banners position: "Rodape" -}}</div>
         <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: data.hotsite.banners position: "Mobile Rodape" -}}</div>

@@ -53,8 +53,8 @@
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   gap: 28px;
   margin-bottom: 24px;
 }
@@ -64,10 +64,10 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 14px;
   flex: 0 0 auto;
-  min-width: 360px;
+  min-width: 0;
 }
 
 .ofertas-mensais .showcase__carousel {
@@ -189,14 +189,17 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
   padding-top: 20px;
-  max-width: 580px;
+  width: 100%;
+  max-width: none;
+  text-align: center;
 }
 
 .ofertas-mensais .showcase__title--hero {
   max-width: 540px;
-  margin: 0;
+  margin: 0 auto;
   color: #fff;
   text-transform: none;
   letter-spacing: -0.05em;
@@ -205,7 +208,7 @@
   line-height: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0;
   position: relative;
   z-index: 1;
@@ -220,9 +223,10 @@
 .ofertas-mensais .showcase__title-date-row--poster {
   position: relative;
   z-index: 2;
+  align-items: center;
   margin-bottom: 2rem;
   transform: scale(1.5);
-  transform-origin: left center;
+  transform-origin: center;
   color: #fff;
 }
 
@@ -230,8 +234,8 @@
   display: none;
 }
 
-html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.showcase__title.showcase__title--hero,
-html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.showcase__title.showcase__title--hero * {
+html body.lp-campanha .lp-ofertas-mensais.ofertas-mensais .showcase__hero h1.showcase__title.showcase__title--hero,
+html body.lp-campanha .lp-ofertas-mensais.ofertas-mensais .showcase__hero h1.showcase__title.showcase__title--hero * {
   font-weight: 900 !important;
 }
 
@@ -299,10 +303,8 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   border: none;
   border-radius: 0;
   box-shadow: none;
-  /* background-color: #892428; */
-  background-color: #c9c9c9;
+  background-color: #f1eee2;
   background-image: unset !important;
-  /* background-image: linear-gradient(180deg, #892428 0%, #6f1b22 100%); */
   color: #fff;
   isolation: isolate;
   contain: layout style;
@@ -311,23 +313,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
 }
 
 .ofertas-mensais .showcase[data-showcase="cronometer"]:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  background-image: url("https://abcdaconstrucao.fbitsstatic.net/media/background-blend30percent.png?v=202604291451");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  opacity: 0.3;
-  mix-blend-mode: multiply;
-  outline: 16px solid #fff;
-  pointer-events: none;
-  will-change: transform;
-  transform: translateZ(0);
+  content: none;
 }
 
 .ofertas-mensais .showcase[data-showcase="cronometer"]:after {
@@ -383,7 +369,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   position: relative;
   z-index: 2;
   flex-shrink: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 14px;
   padding: 24px;
@@ -499,6 +485,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   justify-content: center;
   width: fit-content;
   min-width: 0;
+  margin: 24px auto 0;
   padding: 14px 22px;
   border: 1px solid rgba(167, 124, 20, 0.35);
   border-radius: 999px;
@@ -967,6 +954,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
 
   .ofertas-mensais .showcase__hero-whatsapp {
     align-self: center;
+    margin-top: 20px;
   }
 
   .ofertas-mensais .showcase__carousel .swiper-button-prev,
@@ -1002,25 +990,11 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
     padding: 56px 0 38px;
     overflow: visible;
     background-color: #892428;
-    background-image: linear-gradient(180deg, #892428 0%, #6f1b22 100%);
+    background-image: none !important;
   }
 
   .ofertas-mensais .showcase[data-showcase="cronometer"]:before {
-    content: "";
-    display: block;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    background-image: url("https://abcdaconstrucao.fbitsstatic.net/media/background-blend30percent.png?v=202604291451");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    opacity: 0.3;
-    mix-blend-mode: multiply;
-    outline: 16px solid #fff;
-    pointer-events: none;
+    content: none;
   }
 
   .ofertas-mensais .showcase[data-showcase="cronometer"]:after {
@@ -1109,6 +1083,7 @@ html body.lp-campanha .semana-do-consumidor.ofertas-mensais .showcase__hero h1.s
   .ofertas-mensais .showcase__hero-whatsapp {
     width: fit-content;
     margin-inline: auto;
+    margin-top: 18px;
     padding: 12px 20px;
   }
 

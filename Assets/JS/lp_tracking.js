@@ -241,7 +241,7 @@
     var ctx = getLpContext();
     if (!ctx) return;
 
-    var container = document.querySelector(".semana-do-consumidor");
+    var container = document.querySelector(".lp-ofertas-mensais, .semana-do-consumidor");
     if (!container) return;
 
     // Page view

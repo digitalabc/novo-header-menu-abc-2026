@@ -6513,6 +6513,9 @@ div[class^="como-chegar"]>span+i {
 }
 
 .semana-do-consumidor .container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   width: 100%;
   margin: 0 auto;
   max-width: 1300px;

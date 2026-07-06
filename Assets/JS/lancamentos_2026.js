@@ -191,7 +191,7 @@ function syncMobileStockBadgeLabels() {
 }
 
 function normalizeSavingsLabels() {
-  document.querySelectorAll(".semana-do-consumidor .spot-price .discount").forEach(function (discountNode) {
+  document.querySelectorAll(".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount").forEach(function (discountNode) {
     const valueNode = discountNode.querySelector(".discount__value");
 
     if (!valueNode) {

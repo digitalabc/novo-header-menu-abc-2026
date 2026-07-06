@@ -218,7 +218,7 @@
 
   // ── Countdown expiry tracking ────────────────────────────────────
   function initCountdownExpiryTracking(ctx) {
-    var countdownRoot = document.getElementById("cronometro");
+    var countdownRoot = document.getElementById("cronometro") || document.querySelector("[data-sticky-campaign-countdown]");
     if (!countdownRoot) return;
 
     var rawDate = countdownRoot.getAttribute("data-promotion");

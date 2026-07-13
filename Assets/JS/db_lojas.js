@@ -40,7 +40,6 @@ const estados = [
 			"Congonhas", 
 			"Conselheiro Lafaiete",
 			"Contagem",
-			"Coronel Fabriciano",
 			"Coronel Murta",
 			"Curvelo",
 			"Diamantina",

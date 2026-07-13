@@ -263,7 +263,6 @@ const estados = [
 			"Artur Nogueira",
 			"Assis",
 			"Atibaia",
-			"Bariri",
 			"Barretos",
 			"Bertioga",
 			"Bauru", 

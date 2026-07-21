@@ -249,7 +249,6 @@ const estados = [
 			"Maringá",
 			"Ponta Grossa",
 			"São José dos Pinhais",
-			"Telêmaco Borba",
 			"União da Vitória"
 		]
 	},

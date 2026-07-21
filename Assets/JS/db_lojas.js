@@ -81,7 +81,6 @@ const estados = [
 			"Manhuaçu",
 			"Mariana",
 			"Mateus Leme",
-			"Matias Barbosa",
 			"Mato Verde",
 			"Matozinhos",
 			"Minas Novas",
@@ -259,7 +258,6 @@ const estados = [
 		"cidades": [
 			"Amparo",
 			"Andradina",
-			"Artur Nogueira",
 			"Assis",
 			"Atibaia",
 			"Barretos",

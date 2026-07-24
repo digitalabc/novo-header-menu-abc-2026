@@ -5505,6 +5505,25 @@
       ]
     },
     {
+      "name": "União da Vitória",
+      "state": "Paraná",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Carlos Cavalcante, 5 - Sala 1 - Centro, União da Vitória - PR, 84600-130",
+          "phone": "(42) 3529-0512",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/uniao-da-vitoria/centro",
+          "monday": "9:00 às 18:30",
+          "tuesday": "9:00 às 18:30",
+          "wednesday": "9:00 às 18:30",
+          "thursday": "9:00 às 18:30",
+          "friday": "9:00 às 18:30",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Telêmaco Borba",
       "state": "Paraná",
       "stores": [

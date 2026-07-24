@@ -5976,6 +5976,25 @@
       ]
     },
     {
+      "name": "Cristalina",
+      "state": "Goiás",
+      "stores": [
+        {
+          "name": "Santa Rita",
+          "adress": "R. Goiás, 0 - Quadra D, Lote 17 A - Setor Centro, Cristalina - GO, 73850-000",
+          "phone": "(61) 99625-7960",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/cristalina/centro",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Formosa",
       "state": "Goiás",
       "stores": [

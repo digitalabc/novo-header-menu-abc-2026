@@ -24,7 +24,58 @@
     {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" }}
   </section>
 
+  <!-- Faixa de informações importantes abaixo do fullbanner principal -->
+  <section class="topbar home-info-bar" aria-label="Informações importantes da homepage">
+    <div class="topbar__container home-info-bar__container">
+      <div class="home-info-bar__rotator" data-home-info-rotator>
+        <ul class="home-info-bar__track" data-home-info-track>
+          <!-- Para cadastrar novas mensagens no rotador, replique um li.home-info-bar__item mantendo a ordem desejada. -->
+          <li class="home-info-bar__item home-info-bar__item--delivery" data-home-info-item>
+            <span class="home-info-bar__content">
+              <span class="home-info-bar__headline">FRETE GRÁTIS SUL E SUDESTE</span>
+              <span class="home-info-bar__motion" aria-hidden="true">
+                <span class="home-info-bar__truck-track">
+                  <span class="home-info-bar__truck-carriage">
+                    <span class="home-info-bar__truck">🚚</span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <div class="container">
+    <!-- Vitrine 1 -->
+    <section class="showcase">
+      <h2 class="home-title--hot">
+        <span class="home-title__row">
+          <span class="home-title__main">Ofertas da Semana</span>
+          <span class="home-title__meta">
+            <span class="home-title__lightning" aria-hidden="true">⚡</span>
+            <span class="home-title__countdown home-offers-banner__countdown" data-home-weekly-countdown role="timer" aria-live="polite" aria-label="Ofertas da Semana reiniciam em">
+              <span class="home-offers-banner__countdown-item">
+                <span class="home-offers-banner__countdown-value" data-home-weekly-days>7D</span>
+              </span>
+              <span class="home-offers-banner__countdown-item">
+                <span class="home-offers-banner__countdown-value" data-home-weekly-hours>00</span>
+              </span>
+              <span class="home-offers-banner__countdown-item">
+                <span class="home-offers-banner__countdown-value" data-home-weekly-minutes>00</span>
+              </span>
+              <span class="home-offers-banner__countdown-item">
+                <span class="home-offers-banner__countdown-value" data-home-weekly-seconds>00</span>
+              </span>
+            </span>
+          </span>
+        </span>
+        <span class="home-title__sub">Só enquanto durar o estoque!</span>
+      </h2>
+      {{ spot_carousel class: "showcase-1" products: data.vitrine1.products.nodes show_buy_mobile: true }}
+    </section>
+
     <!-- Régua de vantagens -->
     <section class="ruler">
       <ul class="ruler__list">
@@ -129,19 +180,20 @@
       </ul>
     </section>
 
-    <!-- Ofertas diárias -->
-    <section class="home-offers-banner">
+    <!-- Estrutura original da seção de ofertas diárias preservada no código para futura reativação. -->
+    <!-- Banner desktop, banner mobile, countdown e vitrine abaixo pertencem à seção home-offers-banner. -->
+    <section class="home-offers-banner home-offers-banner--is-hidden" hidden aria-hidden="true">
       <div class="home-offers-banner__header">
         <h2>Ofertas diárias, para você economizar:</h2>
-        <div class="home-offers-banner__countdown" data-home-offers-countdown role="timer" aria-live="polite" aria-label="Ofertas diárias terminam em">
+        <div class="home-offers-banner__countdown" data-home-daily-offers-countdown role="timer" aria-live="polite" aria-label="Ofertas diárias terminam em">
           <span class="home-offers-banner__countdown-item">
-            <span class="home-offers-banner__countdown-value" data-home-offers-hours>24</span>
+            <span class="home-offers-banner__countdown-value" data-home-daily-offers-hours>24</span>
           </span>
           <span class="home-offers-banner__countdown-item">
-            <span class="home-offers-banner__countdown-value" data-home-offers-minutes>00</span>
+            <span class="home-offers-banner__countdown-value" data-home-daily-offers-minutes>00</span>
           </span>
           <span class="home-offers-banner__countdown-item">
-            <span class="home-offers-banner__countdown-value" data-home-offers-seconds>00</span>
+            <span class="home-offers-banner__countdown-value" data-home-daily-offers-seconds>00</span>
           </span>
         </div>
       </div>
@@ -150,15 +202,6 @@
         <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: data.hotsite.banners position: "Mobile Rodape" -}}</div>
         <div class="home-offers-banner__spot">{{- spot_carousel class: "home-offers-banner__carousel" products: data.vitrine3.products.nodes show_buy_mobile: true -}}</div>
       </div>
-    </section>
-
-    <!-- Vitrine 1 -->
-    <section class="showcase">
-      <h2 class="home-title--hot">
-        <span class="home-title__main">Descontos Relâmpago: <span class="home-title__lightning" aria-hidden="true">⚡</span></span>
-        <span class="home-title__sub">Só enquanto durar o estoque!</span>
-      </h2>
-      {{ spot_carousel class: "showcase-1" products: data.vitrine1.products.nodes show_buy_mobile: true }}
     </section>
 
     <!-- Banners Oportunidades -->
@@ -1295,7 +1338,7 @@
 
   {{ footer products:common.lighbox_products.products.nodes }}
 
-  {{ gtm_hotsite_view product_lists: [data.vitrine1.products.nodes, data.vitrine2.products.nodes, data.vitrine3.products.nodes]}}
+  {{ gtm_hotsite_view product_lists: [data.vitrine1.products.nodes, data.vitrine2.products.nodes]}}
 
   {{ gtm_config gtm_id: common.gtm_id }}
 

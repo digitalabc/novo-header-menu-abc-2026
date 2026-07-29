@@ -79,13 +79,39 @@ function getEndOfCurrentDay(now) {
   );
 }
 
-let homeOffersCountdownTimerId = null;
+const HOME_WEEKLY_OFFERS_CYCLE_DAYS = 7;
+const HOME_WEEKLY_OFFERS_CYCLE_MS =
+  HOME_WEEKLY_OFFERS_CYCLE_DAYS * 24 * 60 * 60 * 1000;
+const HOME_INFO_ROTATOR_INTERVAL_MS = 4200;
+const HOME_INFO_ROTATOR_TRANSITION_MS = 650;
+// Ajuste esta ancora caso o reset semanal precise acontecer em outro dia/hora.
+const HOME_WEEKLY_OFFERS_ANCHOR = new Date(2026, 6, 27, 0, 0, 0, 0);
 
-function renderHomeOffersCountdown(root, now) {
+let dailyHomeOffersCountdownTimerId = null;
+let weeklyHomeOffersCountdownTimerId = null;
+
+function getNextWeeklyOffersReset(now) {
+  const anchorTime = HOME_WEEKLY_OFFERS_ANCHOR.getTime();
+  const nowTime = now.getTime();
+
+  if (nowTime < anchorTime) {
+    return new Date(anchorTime);
+  }
+
+  const cyclesElapsed = Math.floor(
+    (nowTime - anchorTime) / HOME_WEEKLY_OFFERS_CYCLE_MS,
+  );
+
+  return new Date(
+    anchorTime + (cyclesElapsed + 1) * HOME_WEEKLY_OFFERS_CYCLE_MS,
+  );
+}
+
+function renderDailyHomeOffersCountdown(root, now) {
   if (!root) return;
-  const hours = root.querySelector("[data-home-offers-hours]");
-  const minutes = root.querySelector("[data-home-offers-minutes]");
-  const seconds = root.querySelector("[data-home-offers-seconds]");
+  const hours = root.querySelector("[data-home-daily-offers-hours]");
+  const minutes = root.querySelector("[data-home-daily-offers-minutes]");
+  const seconds = root.querySelector("[data-home-daily-offers-seconds]");
   if (!hours || !minutes || !seconds) return;
 
   const target = getEndOfCurrentDay(now);
@@ -100,33 +126,44 @@ function renderHomeOffersCountdown(root, now) {
   seconds.textContent = formatCountdownNumber(countdownSeconds);
 }
 
-function updateHomeOffersCountdowns() {
-  const countdownRoots = document.querySelectorAll("[data-home-offers-countdown]");
+function updateDailyHomeOffersCountdowns() {
+  const countdownRoots = document.querySelectorAll(
+    ".home-offers-banner:not([hidden]) [data-home-daily-offers-countdown]",
+  );
   if (!countdownRoots.length) return;
 
   const now = new Date();
   countdownRoots.forEach((countdownRoot) =>
-    renderHomeOffersCountdown(countdownRoot, now),
+    renderDailyHomeOffersCountdown(countdownRoot, now),
   );
 }
 
-function scheduleHomeOffersCountdownTick() {
-  updateHomeOffersCountdowns();
+function scheduleDailyHomeOffersCountdownTick() {
+  updateDailyHomeOffersCountdowns();
   const delay = 1000 - (Date.now() % 1000);
-  homeOffersCountdownTimerId = window.setTimeout(
-    scheduleHomeOffersCountdownTick,
+  dailyHomeOffersCountdownTimerId = window.setTimeout(
+    scheduleDailyHomeOffersCountdownTick,
     delay,
   );
 }
 
-function initHomeOffersCountdown() {
-  if (homeOffersCountdownTimerId !== null) return;
-  scheduleHomeOffersCountdownTick();
+function initDailyHomeOffersCountdown() {
+  if (dailyHomeOffersCountdownTimerId !== null) return;
+  if (
+    !document.querySelector(
+      ".home-offers-banner:not([hidden]) [data-home-daily-offers-countdown]",
+    )
+  ) {
+    return;
+  }
+  scheduleDailyHomeOffersCountdownTick();
 }
 
-function syncHomeOffersLayout() {
-  const section = document.querySelector(".home-offers-banner");
-  const wrapper = section?.querySelector(".home-offers-banner__carousel .swiper-wrapper");
+function syncDailyHomeOffersLayout() {
+  const section = document.querySelector(".home-offers-banner:not([hidden])");
+  const wrapper = section?.querySelector(
+    ".home-offers-banner__carousel .swiper-wrapper",
+  );
   if (!section || !wrapper) return;
 
   const productCount = Array.from(wrapper.children).filter((slide) =>
@@ -141,12 +178,161 @@ function syncHomeOffersLayout() {
   section.dataset.homeOffersVisible = String(Math.min(productCount, 3));
 }
 
+function renderWeeklyHomeOffersCountdown(root, now) {
+  if (!root) return;
+  const days = root.querySelector("[data-home-weekly-days]");
+  const hours = root.querySelector("[data-home-weekly-hours]");
+  const minutes = root.querySelector("[data-home-weekly-minutes]");
+  const seconds = root.querySelector("[data-home-weekly-seconds]");
+  if (!days || !hours || !minutes || !seconds) return;
+
+  const target = getNextWeeklyOffersReset(now);
+  const diffMs = Math.max(0, target.getTime() - now.getTime());
+  const totalSeconds = Math.floor(diffMs / 1000);
+  const countdownDays = Math.floor(totalSeconds / 86400);
+  const countdownHours = Math.floor((totalSeconds % 86400) / 3600);
+  const countdownMinutes = Math.floor((totalSeconds % 3600) / 60);
+  const countdownSeconds = totalSeconds % 60;
+
+  days.textContent = `${countdownDays}D`;
+  hours.textContent = formatCountdownNumber(countdownHours);
+  minutes.textContent = formatCountdownNumber(countdownMinutes);
+  seconds.textContent = formatCountdownNumber(countdownSeconds);
+}
+
+function updateWeeklyHomeOffersCountdowns() {
+  const countdownRoots = document.querySelectorAll("[data-home-weekly-countdown]");
+  if (!countdownRoots.length) return;
+
+  const now = new Date();
+  countdownRoots.forEach((countdownRoot) =>
+    renderWeeklyHomeOffersCountdown(countdownRoot, now),
+  );
+}
+
+function scheduleWeeklyHomeOffersCountdownTick() {
+  updateWeeklyHomeOffersCountdowns();
+  const delay = 1000 - (Date.now() % 1000);
+  weeklyHomeOffersCountdownTimerId = window.setTimeout(
+    scheduleWeeklyHomeOffersCountdownTick,
+    delay,
+  );
+}
+
+function initWeeklyHomeOffersCountdown() {
+  if (weeklyHomeOffersCountdownTimerId !== null) return;
+  if (!document.querySelector("[data-home-weekly-countdown]")) return;
+  scheduleWeeklyHomeOffersCountdownTick();
+}
+
+function syncHomeInfoRotatorHeight(rotator) {
+  const track = rotator?.querySelector("[data-home-info-track]");
+  const currentIndex = Number(rotator?.dataset.currentIndex || 0);
+  const currentItem =
+    track?.children[Math.max(currentIndex, 0)] ||
+    track?.querySelector("[data-home-info-item]");
+  if (!currentItem) return;
+
+  const itemHeight = currentItem.offsetHeight;
+  rotator.style.setProperty("--home-info-bar-item-height", `${itemHeight}px`);
+}
+
+function initHomeInfoRotator() {
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  document.querySelectorAll("[data-home-info-rotator]").forEach((rotator) => {
+    const track = rotator.querySelector("[data-home-info-track]");
+    const items = Array.from(
+      track?.querySelectorAll("[data-home-info-item]") || [],
+    );
+
+    if (!track || !items.length) return;
+
+    if (rotator.dataset.rotatorInitialized === "true") {
+      syncHomeInfoRotatorHeight(rotator);
+      return;
+    }
+
+    rotator.dataset.rotatorInitialized = "true";
+    rotator.dataset.currentIndex = "0";
+    syncHomeInfoRotatorHeight(rotator);
+
+    const applyTransform = (index, instant = false) => {
+      const itemHeight =
+        items[Math.min(index, items.length - 1)]?.offsetHeight ||
+        items[0].offsetHeight;
+
+      rotator.style.setProperty(
+        "--home-info-bar-item-height",
+        `${itemHeight}px`,
+      );
+      track.style.transition = instant
+        ? "none"
+        : `transform ${HOME_INFO_ROTATOR_TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+      track.style.transform = `translate3d(0, -${index * itemHeight}px, 0)`;
+      rotator.dataset.currentIndex = String(index);
+
+      if (instant) {
+        track.offsetHeight;
+      }
+    };
+
+    const handleResize = () => {
+      const currentIndex = Number(rotator.dataset.currentIndex || 0);
+      applyTransform(currentIndex, true);
+      if (rotator.dataset.rotatorStatic !== "true") {
+        track.style.transition = `transform ${HOME_INFO_ROTATOR_TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    if (items.length <= 1 || prefersReducedMotion) {
+      rotator.dataset.rotatorStatic = "true";
+      rotator.classList.add("home-info-bar__rotator--static");
+      return;
+    }
+
+    const firstItemClone = items[0].cloneNode(true);
+    firstItemClone.classList.add("home-info-bar__item--clone");
+    firstItemClone.setAttribute("aria-hidden", "true");
+    track.appendChild(firstItemClone);
+
+    let currentIndex = 0;
+
+    const scheduleNextStep = () => {
+      const timerId = window.setTimeout(() => {
+        currentIndex += 1;
+        applyTransform(currentIndex);
+
+        if (currentIndex === items.length) {
+          window.setTimeout(() => {
+            currentIndex = 0;
+            applyTransform(currentIndex, true);
+            track.style.transition = `transform ${HOME_INFO_ROTATOR_TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+          }, HOME_INFO_ROTATOR_TRANSITION_MS + 30);
+        }
+
+        scheduleNextStep();
+      }, HOME_INFO_ROTATOR_INTERVAL_MS);
+
+      rotator.dataset.rotatorTimerId = String(timerId);
+    };
+
+    scheduleNextStep();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const noBgImg = document.getElementById("no-bg-img");
   if (noBgImg) noBgImg.remove();
   moveSpotDiscounts();
-  initHomeOffersCountdown();
-  syncHomeOffersLayout();
+  initHomeInfoRotator();
+  initDailyHomeOffersCountdown();
+  initWeeklyHomeOffersCountdown();
+  syncDailyHomeOffersLayout();
   const observer = new MutationObserver(() => moveSpotDiscounts());
   observer.observe(document.body, { childList: true, subtree: true });
 });
@@ -311,8 +497,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const refreshDynamicSections = () => {
     initSwipers();
-    initHomeOffersCountdown();
-    syncHomeOffersLayout();
+    initHomeInfoRotator();
+    initDailyHomeOffersCountdown();
+    initWeeklyHomeOffersCountdown();
+    syncDailyHomeOffersLayout();
     initCarrosselArrastoNativo();
     reorderHomepageSections();
     replaceRulerIcons();
@@ -672,7 +860,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    const homeOffersSwiper = document.querySelector(
+    const homeOffersSection = document.querySelector(
+      ".home-offers-banner:not([hidden])",
+    );
+    const homeOffersSwiper = homeOffersSection?.querySelector(
       ".home-offers-banner__carousel .swiper",
     );
     if (homeOffersSwiper) {

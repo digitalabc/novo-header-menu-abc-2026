@@ -1090,9 +1090,15 @@ document.addEventListener("DOMContentLoaded", () => {
         var navRoot = hostNav;
         function atualizarSetasOverflowNav() {
           var mqDesk = window.matchMedia("(min-width: 992px)");
+          var isHomeSubcategories =
+            document.body.classList.contains("home") &&
+            !!viewport.closest(".subcategories, .subTopo");
           if (!navRoot) return;
           if (!mqDesk.matches) {
             navRoot.classList.remove("carrossel-arrasto-nativo--overflow");
+            navRoot.classList.remove("carrossel-arrasto-nativo--centered");
+            wrapper.style.marginLeft = "0";
+            wrapper.style.marginRight = "0";
             if (prevBtn) prevBtn.style.removeProperty("top");
             if (nextBtn) nextBtn.style.removeProperty("top");
             return;
@@ -1103,6 +1109,18 @@ document.addEventListener("DOMContentLoaded", () => {
             "carrossel-arrasto-nativo--overflow",
             precisa,
           );
+          navRoot.classList.toggle(
+            "carrossel-arrasto-nativo--centered",
+            isHomeSubcategories && !precisa,
+          );
+          if (isHomeSubcategories && !precisa) {
+            wrapper.style.marginLeft = "auto";
+            wrapper.style.marginRight = "auto";
+            viewport.scrollLeft = 0;
+          } else {
+            wrapper.style.marginLeft = "0";
+            wrapper.style.marginRight = "0";
+          }
           alinharSetasCarrosselAoCentroImagem(
             hostNav,
             viewport,

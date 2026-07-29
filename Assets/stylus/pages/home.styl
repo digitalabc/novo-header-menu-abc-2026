@@ -346,6 +346,25 @@
     .home-title__countdown .home-offers-banner__countdown-value
       font-size: 16px;
 
+  .subcategories,
+  .subTopo
+    width: 100%;
+    max-width: 100%;
+
+    .swiper-container,
+    .swiper
+      width: 100%;
+      max-width: 100%;
+
+  @media desktop
+    .subcategories .swiper[data-carrossel-arrasto="1"],
+    .subTopo .swiper[data-carrossel-arrasto="1"]
+      width: 100%;
+
+    .subcategories .swiper[data-carrossel-arrasto="1"] .swiper-wrapper,
+    .subTopo .swiper[data-carrossel-arrasto="1"] .swiper-wrapper
+      min-width: fit-content;
+
 
   .gray-bg
     margin-bottom: 20px;

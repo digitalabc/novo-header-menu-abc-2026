@@ -854,6 +854,32 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
   }
 }
 
+body.home .subcategories,
+body.home .subTopo {
+  width: 100%;
+  max-width: 100%;
+}
+
+body.home .subcategories .swiper-container,
+body.home .subcategories .swiper,
+body.home .subTopo .swiper-container,
+body.home .subTopo .swiper {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 992px) {
+  body.home .subcategories .swiper[data-carrossel-arrasto="1"],
+  body.home .subTopo .swiper[data-carrossel-arrasto="1"] {
+    width: 100%;
+  }
+
+  body.home .subcategories .swiper[data-carrossel-arrasto="1"] .swiper-wrapper,
+  body.home .subTopo .swiper[data-carrossel-arrasto="1"] .swiper-wrapper {
+    min-width: fit-content;
+  }
+}
+
 @media (min-width: 992px) {
   .home .home-info-bar__item {
     padding-inline: 32px;
@@ -14472,6 +14498,48 @@ h2.subcategories__title,
 .subTopo {
   margin-bottom: 24px;
   font-family: var(--font-brand);
+}
+
+.subcategories .subcategories__link,
+.subTopo .subcategories__link,
+.subcategories .subTopo__link,
+.subTopo .subTopo__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.subcategories .subcategories__link:focus-visible,
+.subTopo .subcategories__link:focus-visible,
+.subcategories .subTopo__link:focus-visible,
+.subTopo .subTopo__link:focus-visible {
+  outline: 2px solid #e30613;
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.subcategories .subcategories__link:focus-visible .subcategories__img img,
+.subTopo .subcategories__link:focus-visible .subcategories__img img,
+.subcategories .subTopo__link:focus-visible .subcategories__img img,
+.subTopo .subTopo__link:focus-visible .subcategories__img img,
+.subcategories .subcategories__link:focus-visible .subTopo__img img,
+.subTopo .subcategories__link:focus-visible .subTopo__img img,
+.subcategories .subTopo__link:focus-visible .subTopo__img img,
+.subTopo .subTopo__link:focus-visible .subTopo__img img {
+  outline: 3px solid #e30613;
+}
+
+.subcategories .subcategories__link:focus-visible .subcategories__title,
+.subTopo .subcategories__link:focus-visible .subcategories__title,
+.subcategories .subTopo__link:focus-visible .subcategories__title,
+.subTopo .subTopo__link:focus-visible .subcategories__title,
+.subcategories .subcategories__link:focus-visible .subTopo__title,
+.subTopo .subcategories__link:focus-visible .subTopo__title,
+.subcategories .subTopo__link:focus-visible .subTopo__title,
+.subTopo .subTopo__link:focus-visible .subTopo__title {
+  color: #e30613;
 }
 
 .subcategories .subcategories__item,

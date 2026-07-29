@@ -2,10 +2,34 @@
 <html lang="pt-BR">
 
 <head>
+  {{~
+    home_fullbanner_desktop_first = null
+    home_fullbanner_mobile_first = null
+    if data.hotsite && data.hotsite.banners
+      home_banners = data.hotsite.banners | array.sort "order"
+      home_banners_by_position = home_banners | group.by @(do; ret $0.position;end)
+      home_fullbanner_desktop = home_banners_by_position | group.get "Topo"
+      home_fullbanner_mobile = home_banners_by_position | group.get "Mobile Topo"
+      if home_fullbanner_desktop && home_fullbanner_desktop.size > 0
+        home_fullbanner_desktop_first = home_fullbanner_desktop[0]
+      end
+      if home_fullbanner_mobile && home_fullbanner_mobile.size > 0
+        home_fullbanner_mobile_first = home_fullbanner_mobile[0]
+      end
+    end
+  ~}}
   {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ header default_title: "ABC da Construção" seo: data.hotsite.seo}}
   <meta name="robots" content="index, follow" http-equiv="">
   <meta property="og:image" content="https://abcdaconstrucao.fbitsstatic.net/sf/img/logo-abc.jpg">
+  <link rel="preconnect" href="https://abcdaconstrucao.fbitsstatic.net" crossorigin>
+  <link rel="dns-prefetch" href="//abcdaconstrucao.fbitsstatic.net">
+  {{~ if home_fullbanner_desktop_first && home_fullbanner_desktop_first.banner_url ~}}
+  <link rel="preload" as="image" href="{{ home_fullbanner_desktop_first.banner_url }}" media="(min-width: 768px)">
+  {{~ end ~}}
+  {{~ if home_fullbanner_mobile_first && home_fullbanner_mobile_first.banner_url ~}}
+  <link rel="preload" as="image" href="{{ home_fullbanner_mobile_first.banner_url }}" media="(max-width: 767px)">
+  {{~ end ~}}
 </head>
 
 <body class="home">
@@ -16,12 +40,12 @@
 
   <!-- Fullbanner -->
   <section class="fullbanner desktop">
-    {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
+    {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" defer_image_loading: true high_priority_first_image: true }}
   </section>
 
   <!-- Fullbanner mobile -->
   <section class="fullbanner mobile">
-    {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" }}
+    {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" defer_image_loading: true high_priority_first_image: true }}
   </section>
 
   <!-- Faixa de informações importantes abaixo do fullbanner principal -->
@@ -201,8 +225,8 @@
         </div>
       </div>
       <div class="home-offers-banner__content">
-        <div class="home-offers-banner__banner home-offers-banner__banner--desktop desktop">{{- banner carousel: false banners: data.hotsite.banners position: "Rodape" -}}</div>
-        <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: data.hotsite.banners position: "Mobile Rodape" -}}</div>
+        <div class="home-offers-banner__banner home-offers-banner__banner--desktop desktop">{{- banner carousel: false banners: data.hotsite.banners position: "Rodape" defer_image_loading: true -}}</div>
+        <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: data.hotsite.banners position: "Mobile Rodape" defer_image_loading: true -}}</div>
         <div class="home-offers-banner__spot">{{- spot_carousel class: "home-offers-banner__carousel" products: data.vitrine3.products.nodes show_buy_mobile: true -}}</div>
       </div>
     </section>
@@ -211,11 +235,11 @@
     <section class="banner-oportunidades banner-oportunidades--metais">
       <h2>Seleção de Metais</h2>
       <div class="desktop">
-        {{ banner carousel: false banners: data.hotsite.banners position: "Seleção de Metais" }}
+        {{ banner carousel: false banners: data.hotsite.banners position: "Seleção de Metais" defer_image_loading: true }}
       </div>
 
       <div class="mobile">
-        {{ banner carousel: false banners: data.hotsite.banners position: "Mobile Seleção de Metais" }}
+        {{ banner carousel: false banners: data.hotsite.banners position: "Mobile Seleção de Metais" defer_image_loading: true }}
       </div>
     </section>
 
@@ -223,25 +247,25 @@
     <section class="banner-oportunidades banner-oportunidades--is-hidden" hidden aria-hidden="true">
       <h2>{{ "Seleção de oportunidades" | lang }}</h2>
       <div class="desktop">
-        {{ banner carousel: false banners: data.hotsite.banners position: "Centro" }}
+        {{ banner carousel: false banners: data.hotsite.banners position: "Centro" defer_image_loading: true }}
       </div>
 
       <div class="mobile">
-        {{ banner carousel: true banners: data.hotsite.banners position: "Centro" }}
+        {{ banner carousel: true banners: data.hotsite.banners position: "Centro" defer_image_loading: true }}
       </div>
     </section>
 
     <!-- Grid de banners -->
     <section class="banner-grid desktop" data-lazy="true">
       <noscript>
-        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Topo" }}
-        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Bottom" }}
+        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Topo" defer_image_loading: true }}
+        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Bottom" defer_image_loading: true }}
       </noscript>
     </section>
     <section class="banner-grid mobile" data-lazy="false">
       <noscript>
-        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Topo" }}
-        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Bottom" }}
+        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Topo" defer_image_loading: true }}
+        {{ banner carousel: true banners: data.hotsite.banners position: "Filtros Bottom" defer_image_loading: true }}
       </noscript>
     </section>
 
@@ -625,16 +649,16 @@
 
         <!-- Banners centro -->
         <section class="banner-centro desktop">
-          {{ banner carousel: true banners: data.hotsite.banners position: "Centro Lower" }}
+          {{ banner carousel: true banners: data.hotsite.banners position: "Centro Lower" defer_image_loading: true }}
         </section>
 
         <!-- Banners centro -->
         <section class="banner-centro mobile">
-          {{ banner carousel: false banners: data.hotsite.banners position: "Lateral Esquerda" }}
+          {{ banner carousel: false banners: data.hotsite.banners position: "Lateral Esquerda" defer_image_loading: true }}
         </section>
 
-        <!-- Carrossel de marcas -->
-        <section class="brands">
+        <!-- Estrutura original da seção As melhores marcas preservada no código para futura reativação. -->
+        <section class="brands brands--is-hidden" hidden aria-hidden="true">
           <h2 class="brands__title">As melhores marcas</h2>
           {{ brands_list brands: data.brands.nodes }}
         </section>
@@ -642,7 +666,7 @@
         <!-- Nossas lojas -->
         <section class="stores">
           <h2 class="stores__title">Nossas lojas</h2>
-          {{ banner carousel: true banners: data.hotsite.banners position: "Lateral Direita" }}
+          {{ banner carousel: true banners: data.hotsite.banners position: "Lateral Direita" defer_image_loading: true show_navigation: true }}
         </section>
       </div>
     </noscript>
@@ -820,16 +844,16 @@
 
         <!-- Banners centro -->
         <section class="banner-centro desktop">
-          {{ banner carousel: true banners: data.hotsite.banners position: "Centro Lower" }}
+          {{ banner carousel: true banners: data.hotsite.banners position: "Centro Lower" defer_image_loading: true }}
         </section>
 
         <!-- Banners centro -->
         <section class="banner-centro mobile">
-          {{ banner carousel: false banners: data.hotsite.banners position: "Lateral Esquerda" }}
+          {{ banner carousel: false banners: data.hotsite.banners position: "Lateral Esquerda" defer_image_loading: true }}
         </section>
 
-        <!-- Carrossel de marcas -->
-        <section class="brands">
+        <!-- Estrutura original da seção As melhores marcas preservada no código para futura reativação. -->
+        <section class="brands brands--is-hidden" hidden aria-hidden="true">
           <h2 class="brands__title">As melhores marcas</h2>
           {{ brands_list brands: data.brands.nodes }}
         </section>
@@ -837,7 +861,7 @@
         <!-- Nossas lojas -->
         <section class="stores">
           <h2 class="stores__title">Nossas lojas</h2>
-          {{ banner carousel: true banners: data.hotsite.banners position: "Lateral Direita" }}
+          {{ banner carousel: true banners: data.hotsite.banners position: "Lateral Direita" defer_image_loading: true show_navigation: true }}
         </section>
       </div>
     </noscript>

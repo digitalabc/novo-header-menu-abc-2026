@@ -1,4 +1,33 @@
 .stores
+  .swiper-container
+    position relative
+
+  .swiper-button-prev,
+  .swiper-button-next
+    @media desktop
+      display flex
+      align-items center
+      justify-content center
+      top 50%
+      width 36px
+      height 36px
+      z-index 2
+      transform translateY(-50%)
+
+      svg
+        display block
+
+      &.swiper-button-lock
+        display none !important
+
+  .swiper-button-prev
+    @media desktop
+      left 8px
+
+  .swiper-button-next
+    @media desktop
+      right 8px
+
   li
     @media mobile
       width 193px

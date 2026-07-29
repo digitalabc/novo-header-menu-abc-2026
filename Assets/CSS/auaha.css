@@ -289,6 +289,20 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
 }
 
 @media screen and (min-width: 992px) {
+  body.home .subcategories .swiper-wrapper,
+  body.home .subTopo .swiper-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body.home .subcategories .carrossel-arrasto-nativo--overflow .swiper-wrapper,
+  body.home .subTopo .carrossel-arrasto-nativo--overflow .swiper-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
 
   .carrossel-arrasto-nativo .swiper-button-prev,
   .carrossel-arrasto-nativo .swiper-button-next {
@@ -13180,6 +13194,42 @@ header {
 
 .stores li a:hover:after {
   opacity: 0.2;
+}
+
+.stores .swiper-container {
+  position: relative;
+}
+
+@media screen and (min-width: 992px) {
+  .stores .swiper-button-prev,
+  .stores .swiper-button-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    z-index: 2;
+    transform: translateY(-50%);
+  }
+
+  .stores .swiper-button-prev svg,
+  .stores .swiper-button-next svg {
+    display: block;
+  }
+
+  .stores .swiper-button-prev.swiper-button-lock,
+  .stores .swiper-button-next.swiper-button-lock {
+    display: none !important;
+  }
+
+  .stores .swiper-button-prev {
+    left: 8px;
+  }
+
+  .stores .swiper-button-next {
+    right: 8px;
+  }
 }
 
 .ruler {

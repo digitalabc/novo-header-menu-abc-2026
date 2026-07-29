@@ -90,6 +90,15 @@ const HOME_WEEKLY_OFFERS_ANCHOR = new Date(2026, 6, 27, 0, 0, 0, 0);
 let dailyHomeOffersCountdownTimerId = null;
 let weeklyHomeOffersCountdownTimerId = null;
 
+function runWhenBrowserIsIdle(callback, timeout = 1200) {
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(callback, { timeout });
+    return;
+  }
+
+  window.setTimeout(callback, 250);
+}
+
 function getNextWeeklyOffersReset(now) {
   const anchorTime = HOME_WEEKLY_OFFERS_ANCHOR.getTime();
   const nowTime = now.getTime();
@@ -329,10 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const noBgImg = document.getElementById("no-bg-img");
   if (noBgImg) noBgImg.remove();
   moveSpotDiscounts();
-  initHomeInfoRotator();
-  initDailyHomeOffersCountdown();
-  initWeeklyHomeOffersCountdown();
-  syncDailyHomeOffersLayout();
   const observer = new MutationObserver(() => moveSpotDiscounts());
   observer.observe(document.body, { childList: true, subtree: true });
 });
@@ -495,16 +500,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const refreshDynamicSections = () => {
+  let deferredDynamicSectionsScheduled = false;
+
+  const initCriticalDynamicSections = () => {
     initSwipers();
     initHomeInfoRotator();
     initDailyHomeOffersCountdown();
     initWeeklyHomeOffersCountdown();
     syncDailyHomeOffersLayout();
+  };
+
+  const runDeferredDynamicSections = () => {
+    ensureNativeCarouselObserver();
     initCarrosselArrastoNativo();
     reorderHomepageSections();
     replaceRulerIcons();
     updateRulerTexts();
+  };
+
+  const scheduleDeferredDynamicSections = () => {
+    if (deferredDynamicSectionsScheduled) {
+      return;
+    }
+
+    deferredDynamicSectionsScheduled = true;
+    runWhenBrowserIsIdle(() => {
+      deferredDynamicSectionsScheduled = false;
+      runDeferredDynamicSections();
+    }, 1500);
+  };
+
+  const refreshDynamicSections = ({ deferNonCritical = true } = {}) => {
+    initCriticalDynamicSections();
+
+    if (deferNonCritical) {
+      scheduleDeferredDynamicSections();
+      return;
+    }
+
+    runDeferredDynamicSections();
   };
 
   function hydrateLazyElement(element) {
@@ -528,8 +562,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function observeLazySections() {
+    const eagerElements = Array.from(
+      document.querySelectorAll("[data-lazy='false']"),
+    ).filter((element) => element.dataset.lazyHydrated !== "true");
+
+    eagerElements.forEach(hydrateLazyElement);
+
     const lazyElements = Array.from(
-      document.querySelectorAll("[data-lazy]"),
+      document.querySelectorAll("[data-lazy='true']"),
     ).filter((element) => element.dataset.lazyHydrated !== "true");
 
     if (!lazyElements.length) {
@@ -1275,26 +1315,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  var carrosselArrastoMoTimer;
-  var carrosselArrastoMo = new MutationObserver(function () {
-    clearTimeout(carrosselArrastoMoTimer);
-    carrosselArrastoMoTimer = setTimeout(function () {
-      initCarrosselArrastoNativo();
-      document
-        .querySelectorAll("[data-carrossel-arrasto='1']")
-        .forEach(function (vp) {
-          if (typeof vp._carrosselNavAtualizar === "function") {
-            vp._carrosselNavAtualizar();
-          }
-        });
-    }, 120);
-  });
-  carrosselArrastoMo.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-  });
+  function ensureNativeCarouselObserver() {
+    if (ensureNativeCarouselObserver._initialized) {
+      return;
+    }
 
-  refreshDynamicSections();
+    ensureNativeCarouselObserver._initialized = true;
+
+    var carrosselArrastoMoTimer;
+    var carrosselArrastoMo = new MutationObserver(function () {
+      clearTimeout(carrosselArrastoMoTimer);
+      carrosselArrastoMoTimer = setTimeout(function () {
+        initCarrosselArrastoNativo();
+        document
+          .querySelectorAll("[data-carrossel-arrasto='1']")
+          .forEach(function (vp) {
+            if (typeof vp._carrosselNavAtualizar === "function") {
+              vp._carrosselNavAtualizar();
+            }
+          });
+      }, 120);
+    });
+
+    carrosselArrastoMo.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  refreshDynamicSections({ deferNonCritical: true });
   observeLazySections();
 });
 

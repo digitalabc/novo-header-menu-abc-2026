@@ -1126,7 +1126,9 @@
 
   .abc-newsletter-widget-collapsed .abc-newsletter-widget-panel {
     width: 34px;
-    padding: 12px 6px;
+    height: 64px;
+    padding: 0;
+    border-radius: 0 16px 16px 0;
   }
 
   .abc-newsletter-widget-collapsed .abc-newsletter-widget-body {
@@ -1136,7 +1138,7 @@
   }
 
   .abc-newsletter-widget-collapsed .abc-newsletter-widget-toggle {
-    right: 4px;
+    display: none;
   }
 
   .abc-newsletter-widget-label-vertical {
@@ -1144,20 +1146,25 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    white-space: nowrap;
-    padding: 5px 10px;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 26px;
+    padding: 0;
     border-radius: 999px;
     background: rgba(15, 168, 72, 0.12);
-    font-size: var(--fonte-12);
-    font-weight: var(--peso-fonte-extrabold);
     color: #0fa848;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .abc-newsletter-widget-label-vertical img {
+    width: 18px;
+    height: 18px;
+    display: block;
   }
 
   .abc-newsletter-widget-collapsed .abc-newsletter-widget-label-vertical {
-    display: block;
+    display: flex;
   }
 
   @media (max-width: 640px) {
@@ -1327,12 +1334,19 @@
 
     .abc-newsletter-widget-collapsed .abc-newsletter-widget-panel {
       width: 30px;
-      padding: 10px 5px;
+      height: 64px;
+      padding: 0;
+      border-radius: 0 14px 14px 0;
     }
 
     .abc-newsletter-widget-label-vertical {
-      font-size: var(--fonte-8);
-      padding: 4px 8px;
+      width: 22px;
+      height: 22px;
+    }
+
+    .abc-newsletter-widget-label-vertical img {
+      width: 16px;
+      height: 16px;
     }
   }
 
@@ -1471,7 +1485,9 @@
 
 <div id="abc-newsletter-widget" class="abc-newsletter-widget" aria-hidden="true" data-widget-state="widget-expanded">
   <div class="abc-newsletter-widget-panel" data-widget-panel>
-    <span class="abc-newsletter-widget-label-vertical">PRIMEIRA COMPRA</span>
+    <span class="abc-newsletter-widget-label-vertical" aria-hidden="true">
+      <img src="{{- store.urls.static_img}}homepage/gitf-100.svg?theme={{store.theme -}}&v={{store.last_modified-}}" alt="" width="18" height="18" />
+    </span>
     <button class="abc-newsletter-widget-toggle" type="button" aria-label="Recolher lembrete" aria-expanded="true"
       data-widget-toggle>
       <svg data-arrow-expanded viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

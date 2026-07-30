@@ -82,7 +82,7 @@ function getEndOfCurrentDay(now) {
 const HOME_WEEKLY_OFFERS_CYCLE_DAYS = 7;
 const HOME_WEEKLY_OFFERS_CYCLE_MS =
   HOME_WEEKLY_OFFERS_CYCLE_DAYS * 24 * 60 * 60 * 1000;
-const HOME_INFO_ROTATOR_INTERVAL_MS = 4200;
+const HOME_INFO_ROTATOR_INTERVAL_MS = 2800;
 const HOME_INFO_ROTATOR_TRANSITION_MS = 650;
 // Ajuste esta ancora caso o reset semanal precise acontecer em outro dia/hora.
 const HOME_WEEKLY_OFFERS_ANCHOR = new Date(2026, 6, 27, 0, 0, 0, 0);
@@ -334,10 +334,70 @@ function initHomeInfoRotator() {
   });
 }
 
+function initHomeInfoBarSticky() {
+  const body = document.body;
+  const infoBar = body.classList.contains("home")
+    ? document.querySelector(".home .home-info-bar")
+    : null;
+
+  if (!infoBar || infoBar.dataset.stickyInitialized === "true") {
+    return;
+  }
+
+  infoBar.dataset.stickyInitialized = "true";
+
+  const header = document.querySelector("body.home > header");
+
+  if (!header) {
+    return;
+  }
+
+  let rafId = null;
+
+  const updateStickyState = () => {
+    const headerRect = header.getBoundingClientRect();
+    const headerBottom = Math.max(0, Math.round(headerRect.bottom));
+    const infoBarRect = infoBar.getBoundingClientRect();
+    const isSticky =
+      infoBarRect.top <= headerBottom + 1 && infoBarRect.bottom > headerBottom;
+
+    body.style.setProperty(
+      "--home-info-bar-sticky-offset",
+      `${headerBottom}px`,
+    );
+    body.classList.toggle("home-info-bar-is-sticky", isSticky);
+  };
+
+  const scheduleStickyStateUpdate = () => {
+    if (rafId !== null) {
+      return;
+    }
+
+    rafId = window.requestAnimationFrame(() => {
+      rafId = null;
+      updateStickyState();
+    });
+  };
+
+  updateStickyState();
+
+  window.addEventListener("scroll", scheduleStickyStateUpdate, {
+    passive: true,
+  });
+  window.addEventListener("resize", scheduleStickyStateUpdate);
+
+  if (typeof ResizeObserver !== "undefined") {
+    const stickyResizeObserver = new ResizeObserver(scheduleStickyStateUpdate);
+    stickyResizeObserver.observe(header);
+    stickyResizeObserver.observe(infoBar);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const noBgImg = document.getElementById("no-bg-img");
   if (noBgImg) noBgImg.remove();
   moveSpotDiscounts();
+  initHomeInfoRotator();
   const observer = new MutationObserver(() => moveSpotDiscounts());
   observer.observe(document.body, { childList: true, subtree: true });
 });
@@ -505,6 +565,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const initCriticalDynamicSections = () => {
     initSwipers();
     initHomeInfoRotator();
+    initHomeInfoBarSticky();
     initDailyHomeOffersCountdown();
     initWeeklyHomeOffersCountdown();
     syncDailyHomeOffersLayout();

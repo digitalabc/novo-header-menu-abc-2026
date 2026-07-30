@@ -9194,47 +9194,47 @@ div[class^=como-chegar]>span+i {
 }
 
 @media screen and (min-width:992px) {
-  .topbar__container ul {
+  .topbar__container > ul {
     display: flex;
     justify-content: space-between;
     align-items: center
   }
 }
 
-.topbar__container li {
+.topbar__container > ul > li {
   height: 30px;
   display: flex;
   align-items: center
 }
 
 @media screen and (max-width:991px) {
-  .topbar__container li {
+  .topbar__container > ul > li {
     justify-content: center
   }
 }
 
 @media screen and (min-width:992px) {
-  .topbar__container li {
+  .topbar__container > ul > li {
     width: auto
   }
 }
 
-.topbar__container li a {
+.topbar__container > ul > li a {
   display: flex;
   align-items: center;
   color: #fff;
   transition: all .2s ease-in-out
 }
 
-.topbar__container li a:hover {
+.topbar__container > ul > li a:hover {
   color: #e30613
 }
 
-.topbar__container li a svg {
+.topbar__container > ul > li a svg {
   margin-right: 5px
 }
 
-.topbar__container li strong {
+.topbar__container > ul > li strong {
   font-weight: 600
 }
 

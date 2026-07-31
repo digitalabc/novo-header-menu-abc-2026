@@ -18001,6 +18001,20 @@ a.subcategories__item .subcategories__title,
     gap: 10px;
   }
 
+.banner-oportunidades.banner-oportunidades--metais ul {
+  width: 100%;
+}
+
+.banner-oportunidades.banner-oportunidades--metais ul li {
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+.banner-oportunidades.banner-oportunidades--metais ul li img {
+  width: 100%;
+  height: auto;
+}
+
   .fullbanner {
     padding-bottom: 0 !important;
   }

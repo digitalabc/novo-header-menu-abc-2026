@@ -33,16 +33,16 @@
                 <p class="precoDe"><s>{{ prices.list_price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</s></p>
             {{~ end ~}}
         {{ end }}
-        <h3 class="precoPor precoPor--somente-m2-piso">
+        <p class="precoPor precoPor--somente-m2-piso">
           <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
           <small>/{{ unidade_abreviatura }}</small>
-        </h3>
+        </p>
     {{ else }}
     {{ if prices.list_price }}
         {{~ if prices.price != prices.list_price ~}}
             <p class="precoDe"><s>{{ prices.list_price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</s></p>
         {{~ end ~}}
-        <h3 class="precoPor">
+        <p class="precoPor">
           <span>{{ prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
@@ -51,7 +51,7 @@
           {{~ else ~}}
             <small>cada</small>
           {{~ end ~}}
-        </h3>
+        </p>
         {{~ if product_is_box && !page_product && prices.multiplication_factor > 1 ~}}
           <p class="precoCalculado{{ if is_piso_revestimento }} precoCalculado--piso-revestimento{{ end }}">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
@@ -62,7 +62,7 @@
           {{ product_discount discount_percentage: prices.discount_percentage }}
         {{~ end ~}}
     {{ else }}
-        <h3 class="precoPor">
+        <p class="precoPor">
           <span>{{ prices.price | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>
           {{~ if product_is_box ~}}
             <small>caixa</small>
@@ -71,7 +71,7 @@
           {{~ else ~}}
             <small>cada</small>
           {{~ end ~}}
-        </h3>
+        </p>
         {{~ if product_is_box && !page_product && prices.multiplication_factor > 1 ~}}
           <p class="precoCalculado{{ if is_piso_revestimento }} precoCalculado--piso-revestimento{{ end }}">
             <span>{{ prices.price / prices.multiplication_factor | math.format "c" "pt-BR" | string.replace "R$" "R$ "  }}</span>

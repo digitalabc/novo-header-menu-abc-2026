@@ -10891,7 +10891,7 @@ header {
   color: #e30613
 }
 
-.livelo h2.livelo__title {
+.livelo .livelo__title {
   margin-bottom: 16px;
   color: #e30613;
   text-align: center;
@@ -12849,6 +12849,7 @@ section.newsletter--home .newsletter__alert {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
   color: #392f2d;
   font-weight: 500;
   cursor: pointer

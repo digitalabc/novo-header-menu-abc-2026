@@ -36,9 +36,12 @@
 
         {{~ end ~}}
 
+        {{## Bloco de reviews inativado (SEO/heading) — reativar trocando false por true ##}}
+        {{~ if false ~}}
         <div style="display: none;" class="product__reviews">
           <h2>### Avaliaçoes Opniões Verificadas ###</h2>
         </div>
+        {{~ end ~}}
 
         {{~ if  buy_list.product_recommendations ~}}
           <section class="product__recommendation showcase">

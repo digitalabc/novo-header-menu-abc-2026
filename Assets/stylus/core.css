@@ -12144,6 +12144,7 @@ header {
 
 @media screen and (max-width:991px) {
   .departments {
+    align-items: stretch;
     margin-top: 20px;
     margin-bottom: 44px;
   }
@@ -12153,8 +12154,23 @@ header {
     margin-bottom: 30px;
   }
 
+  .departments .swiper-container {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+
   .departments .swiper-wrapper {
     gap: 18px;
+    padding-inline: 15px;
+    box-sizing: border-box;
+  }
+
+  .departments .swiper {
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+    padding: 0;
   }
 
   .departments__item {

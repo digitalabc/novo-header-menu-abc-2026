@@ -16443,11 +16443,19 @@ a.subcategories__item .subcategories__title,
 }
 
 .banner-oportunidades.banner-oportunidades--metais ul li {
+  border-radius: 12px;
   width: 100%;
   flex: 0 0 100%;
 }
 
+.banner-oportunidades.banner-oportunidades--metais ul li a {
+  display: block;
+  border-radius: inherit;
+}
+
 .banner-oportunidades.banner-oportunidades--metais ul li img {
+  border-radius: inherit;
+  display: block;
   width: 100%;
   height: auto;
 }

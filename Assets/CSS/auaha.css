@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
   font-family: "Satoshi";
   src: url("../Fonts/prime/Satoshi-Variable.woff2") format("woff2"), url("../Fonts/prime/Satoshi-Variable.woff") format("woff");
   font-style: normal;
@@ -18006,11 +18006,19 @@ a.subcategories__item .subcategories__title,
 }
 
 .banner-oportunidades.banner-oportunidades--metais ul li {
+  border-radius: 12px;
   width: 100%;
   flex: 0 0 100%;
 }
 
+.banner-oportunidades.banner-oportunidades--metais ul li a {
+  display: block;
+  border-radius: inherit;
+}
+
 .banner-oportunidades.banner-oportunidades--metais ul li img {
+  border-radius: inherit;
+  display: block;
   width: 100%;
   height: auto;
 }

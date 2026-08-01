@@ -16068,7 +16068,8 @@ a.subcategories__item .subcategories__title,
 
   .departments .swiper-wrapper {
     gap: 18px;
-    padding-inline: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
     box-sizing: border-box;
   }
 

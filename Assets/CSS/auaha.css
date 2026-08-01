@@ -13426,6 +13426,11 @@ header {
   gap: 24px;
 }
 
+.departments .swiper-wrapper .swiper-slide {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .departments__item > a {
   display: flex;
   flex-direction: column;

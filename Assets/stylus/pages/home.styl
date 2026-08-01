@@ -371,8 +371,7 @@
     width: 100%;
     max-width: 100%;
 
-    .swiper-container,
-    .swiper
+    .swiper-container
       width: 100%;
       max-width: 100%;
 
@@ -381,8 +380,12 @@
     .subTopo .swiper-container
       overflow visible
 
-    .subcategories .swiper.swiper-initialized,
-    .subTopo .swiper.swiper-initialized
+    .subcategories .swiper,
+    .subTopo .swiper
+      width auto
+      max-width none
+      margin 0 -15px
+      padding 0 15px
       overflow visible
       overflow-x auto
       overflow-y visible

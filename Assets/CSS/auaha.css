@@ -908,8 +908,12 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
     overflow: visible;
   }
 
-  body.home .subcategories .swiper.swiper-initialized,
-  body.home .subTopo .swiper.swiper-initialized {
+  body.home .subcategories .swiper,
+  body.home .subTopo .swiper {
+    width: auto;
+    max-width: none;
+    margin: 0 -15px;
+    padding: 0 15px;
     overflow: visible;
     overflow-x: auto;
     overflow-y: visible;
@@ -923,9 +927,7 @@ body.home .subTopo {
 }
 
 body.home .subcategories .swiper-container,
-body.home .subcategories .swiper,
-body.home .subTopo .swiper-container,
-body.home .subTopo .swiper {
+body.home .subTopo .swiper-container {
   width: 100%;
   max-width: 100%;
 
@@ -18006,11 +18008,19 @@ a.subcategories__item .subcategories__title,
 }
 
 .banner-oportunidades.banner-oportunidades--metais ul li {
+  border-radius: 12px;
   width: 100%;
   flex: 0 0 100%;
 }
 
+.banner-oportunidades.banner-oportunidades--metais ul li a {
+  display: block;
+  border-radius: inherit;
+}
+
 .banner-oportunidades.banner-oportunidades--metais ul li img {
+  display: block;
+  border-radius: inherit;
   width: 100%;
   height: auto;
 }

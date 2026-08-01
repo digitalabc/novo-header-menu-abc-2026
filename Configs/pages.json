@@ -142,6 +142,11 @@
         "query": "ofertas_mensais.graphql"
       },
       {
+        "urlMatch": "cada-ambiente-a-melhor-escolha",
+        "path": "Custom/old_se/cada_ambiente_a_melhor_escolha.html",
+        "query": "cada_ambiente_a_melhor_escolha.graphql"
+      },
+      {
         "urlMatch": "auaha-loja-por-cidade",
         "path": "Custom/diretorio_de_lojas/franquia.html",
         "query": "generic.graphql"

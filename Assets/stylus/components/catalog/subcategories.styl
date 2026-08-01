@@ -10,6 +10,27 @@ h2.subcategories__title,
   margin-bottom: 24px;
   font-family: var(--font-brand);
 
+  .subcategories__link,
+  .subTopo__link
+    display flex
+    flex-direction column
+    align-items center
+    color inherit
+    text-decoration none
+
+    &:focus-visible
+      outline: 2px solid $primary;
+      outline-offset: 4px;
+      border-radius: 10px;
+
+      .subcategories__img img,
+      .subTopo__img img
+        outline: 3px solid $primary;
+
+      .subcategories__title,
+      .subTopo__title
+        color: $primary;
+
   .subcategories__item,
   .subTopo__item
     text-align: center;
@@ -83,3 +104,15 @@ h2.subcategories__title,
     .swiper-button-next,
     .swiper-button-prev
       display: none;
+
+@media screen and (min-width: 992px)
+  body.home
+    .subcategories .swiper-wrapper,
+    .subTopo .swiper-wrapper
+      margin-left auto
+      margin-right auto
+
+    .subcategories .carrossel-arrasto-nativo--overflow .swiper-wrapper,
+    .subTopo .carrossel-arrasto-nativo--overflow .swiper-wrapper
+      margin-left 0
+      margin-right 0

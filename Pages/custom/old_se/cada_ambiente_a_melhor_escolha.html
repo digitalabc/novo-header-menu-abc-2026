@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  {{ gtm_config_head gtm_id: common.gtm_id }}
+  {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
+  {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
+  {{ asset type: "css" paths: ["lancamentos_2026"] }}
+  {{ asset type: "css" paths: ["cada_ambiente_a_melhor_escolha"] }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  {{ asset type: "css" paths: ["lp-montserrat-fonts"] }}
+  {{ asset type: "css" paths: ["lp-montserrat-override"] }}
+  {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
+</head>
+
+<body class="lp-campanha">
+  {{ gtm_config_body gtm_id: common.gtm_id }}
+  <header>
+    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+  </header>
+
+  <div class="lp-cada-ambiente cada-ambiente-escolha semana-do-consumidor">
+    <!-- Hotsite principal da LP /cada-ambiente-a-melhor-escolha: hotsiteId 102118 -->
+    <div class="fullbanner desktop">
+      {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
+    </div>
+    <div class="fullbanner mobile">
+      {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" }}
+    </div>
+
+    <div class="showcase-sections container">
+      <div class="showcase-stack">
+        <section class="showcase showcase--panel showcase-cada-ambiente" data-showcase="cada-ambiente">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Seleção especial ABC da Construção</span>
+              <h1 class="showcase__title">Cada ambiente, a melhor escolha</h1>
+              <p class="showcase__subtitle">Produtos selecionados para compor seus espaços com mais aconchego, funcionalidade e um visual acolhedor.</p>
+            </div>
+          </div>
+
+          <div class="showcase__carousel showcase-cada-ambiente__carousel">
+            {{ showcase_products = data.vitrine1?.products?.nodes ?? [] }}
+            {{~ if showcase_products.size > 0 ~}}
+              {{ spot_carousel class: "showcase-cada-ambiente__carousel" products: showcase_products hide_countdown: true }}
+            {{~ else ~}}
+              <div class="showcase-cada-ambiente__placeholder">
+                <div class="showcase-cada-ambiente__empty">
+                  <strong>&Aacute;rea dedicada ao ID do hotsite 102119.</strong>
+                </div>
+              </div>
+            {{~ end ~}}
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  {{ footer products:common.lighbox_products.products.nodes }}
+
+  {{ sdk_client }}
+
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login",
+  "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "lancamentos_2026",
+  "whats_form"] }}
+
+</body>
+
+</html>

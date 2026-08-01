@@ -20,9 +20,6 @@
   <div class="container">
     {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
 
-    <!-- SEO -->
-    {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true }}
-
     <!--Qual tipo de piso você está procurando? -->
     {{ content position: "Topo" contents: data.hotsite.contents show_title: false }}
 
@@ -65,6 +62,9 @@
       <h2>Confira também estas ofertas</h2>
       {{ spot_carousel class: "showcase-3" products: data.vitrine3.products.nodes }}
     </section>
+
+    <!-- SEO -->
+    {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true }}
   </div>
 
   <div id="add-cart-alert" style="display: flex; justify-content: center; visibility: hidden; z-index: 99;"></div>

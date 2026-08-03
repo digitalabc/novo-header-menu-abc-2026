@@ -5,7 +5,6 @@
   {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construção" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-  {{ asset type: "css" paths: ["lancamentos_2026"] }}
   {{ asset type: "css" paths: ["cada_ambiente_a_melhor_escolha"] }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +20,7 @@
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
   </header>
 
-  <div class="lp-cada-ambiente cada-ambiente-escolha semana-do-consumidor">
+  <div class="lp-cada-ambiente cada-ambiente-escolha">
     <!-- Hotsite principal da LP /cada-ambiente-a-melhor-escolha: hotsiteId 102118 -->
     <div class="fullbanner desktop">
       {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
@@ -35,9 +34,9 @@
         <section class="showcase showcase--panel showcase-cada-ambiente" data-showcase="cada-ambiente">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Seleção especial ABC da Construção</span>
-              <h1 class="showcase__title">Cada ambiente, a melhor escolha</h1>
-              <p class="showcase__subtitle">Produtos selecionados para compor seus espaços com mais aconchego, funcionalidade e um visual acolhedor.</p>
+              <span class="showcase__eyebrow">SELEÇÃO ESPECIAL DO MÊS</span>
+              <h1 class="showcase__title">Tudo para transformar seus espaços</h1>
+              <p class="showcase__subtitle">Encontre pisos, revestimentos, metais e acabamentos selecionados para deixar seu projeto mais completo.</p>
             </div>
           </div>
 

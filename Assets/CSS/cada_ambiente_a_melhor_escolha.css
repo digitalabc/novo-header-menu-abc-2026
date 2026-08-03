@@ -3,8 +3,8 @@
   --cada-ambiente-primary: #c9a768;
   --cada-ambiente-primary-dark: #8f7241;
   --cada-ambiente-primary-soft: #f7edd6;
-  --cada-ambiente-ink: #5c4726;
-  --cada-ambiente-muted: #8e7850;
+  --cada-ambiente-ink: #111111;
+  --cada-ambiente-muted: #111111;
   --cada-ambiente-surface: #fffaf0;
   --cada-ambiente-surface-alt: #fdf4e3;
   --cada-ambiente-border: rgba(143, 114, 65, 0.18);
@@ -95,7 +95,7 @@
   display: inline-flex;
   align-items: center;
   margin-bottom: 12px;
-  color: var(--cada-ambiente-primary-dark);
+  color: var(--cada-ambiente-ink);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-family: "Montserrat", sans-serif !important;
@@ -144,7 +144,7 @@
   border: 1px solid var(--cada-ambiente-border-strong);
   border-radius: 999px;
   background: linear-gradient(180deg, #fffdf8 0%, #f6ead0 100%);
-  color: var(--cada-ambiente-primary-dark);
+  color: var(--cada-ambiente-ink);
   box-shadow: none;
   touch-action: manipulation;
   cursor: pointer;
@@ -173,7 +173,11 @@
 }
 
 .cada-ambiente-escolha .showcase .spot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   border-color: var(--cada-ambiente-border);
+  background: #fffdfa;
   box-shadow: none;
 }
 
@@ -188,12 +192,65 @@
 .cada-ambiente-escolha .showcase .spot .spot-price .precoPor span,
 .cada-ambiente-escolha .showcase .spot .precoCalculado span,
 .cada-ambiente-escolha .showcase .spot .best-installment {
-  color: var(--cada-ambiente-primary-dark);
+  color: var(--cada-ambiente-ink);
+}
+
+.cada-ambiente-escolha .showcase .spot .overlay,
+.cada-ambiente-escolha .showcase .spot .products-sold,
+.cada-ambiente-escolha .showcase .spot .oferta-relampago__spot-footer {
+  display: none !important;
+}
+
+.cada-ambiente-escolha .showcase .spot__image-wrapper {
+  max-width: 100%;
+  border-bottom-color: var(--cada-ambiente-border);
+  background: #fff;
+}
+
+.cada-ambiente-escolha .showcase .spot__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 16px 14px 18px;
+}
+
+.cada-ambiente-escolha .showcase .spot__content-price {
+  margin-top: auto;
+}
+
+.cada-ambiente-escolha .showcase .spot__title h3 {
+  color: var(--cada-ambiente-ink);
 }
 
 .cada-ambiente-escolha .showcase .spot .spot-price .precoDe s,
 .cada-ambiente-escolha .showcase .spot .spot-price .precoPor small,
 .cada-ambiente-escolha .showcase .spot .spot-price .precoCalculado small {
+  color: var(--cada-ambiente-muted);
+}
+
+.cada-ambiente-escolha .showcase .spot .spot-price .precoCalculado {
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.cada-ambiente-escolha .showcase .spot .spot-price .precoCalculado--piso-revestimento small {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0;
+  color: var(--cada-ambiente-muted);
+  font-size: 12px;
+  line-height: 1.2;
+  vertical-align: baseline;
+}
+
+.cada-ambiente-escolha .showcase .spot .spot-price .precoPor--somente-m2-piso {
+  white-space: nowrap;
+}
+
+.cada-ambiente-escolha .showcase .spot .spot-price .precoPor--somente-m2-piso small {
+  display: inline;
+  margin-left: 0;
+  padding: 0;
   color: var(--cada-ambiente-muted);
 }
 

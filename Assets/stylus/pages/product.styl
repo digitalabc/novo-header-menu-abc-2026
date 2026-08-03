@@ -771,27 +771,27 @@
           fill: currentColor;
 
       &-panel
-      width: 100%;
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-2px);
-      color: #334155;
-      font-size: 13px;
-      line-height: 1.65;
-      transition: max-height 0.28s linear, opacity 0.2s linear, transform 0.2s linear, visibility 0.2s linear;
-
-      &.show
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        margin-bottom: 6px;
-
-      &__content
         width: 100%;
-        box-sizing: border-box;
-        padding: 2px 0 0;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-2px);
+        color: #334155;
+        font-size: 13px;
+        line-height: 1.65;
+        transition: max-height 0.28s linear, opacity 0.2s linear, transform 0.2s linear, visibility 0.2s linear;
+
+        &.show
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+          margin-bottom: 6px;
+
+        &__content
+          width: 100%;
+          box-sizing: border-box;
+          padding: 2px 0 0;
 
     #information-1 > .product__information-panel__content
       display: block;

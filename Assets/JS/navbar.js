@@ -65,14 +65,14 @@ function closeMenuOffcanvasFallback(event) {
     if (!offcanvas) return;
 
     offcanvas.classList.remove("ah-offcanvas-open");
-    document.body.classList.remove("ah-offcanvas-container");
 
     const closeTimer = setTimeout(() => {
         if (!offcanvas.classList.contains("ah-offcanvas-open")) {
             offcanvas.style.display = "none";
+            document.body.classList.remove("ah-offcanvas-container");
         }
         menuOffcanvasCloseTimers.delete(offcanvas);
-    }, 300);
+    }, 250);
 
     menuOffcanvasCloseTimers.set(offcanvas, closeTimer);
 }

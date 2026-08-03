@@ -42,7 +42,8 @@ $offcanvas-width-mobile = 320px
 .ah-offcanvas-bar
   position absolute
   top 0
-  left "calc(-1 * (%s + %s))" % ($offcanvas-width $offcanvas-button-size)
+  left 0
+  transform "translateX(calc(-100% - %s))" % $offcanvas-button-size
   bottom 0
   box-sizing border-box
   z-index 2
@@ -53,10 +54,10 @@ $offcanvas-width-mobile = 320px
   overscroll-behavior contain
   -webkit-overflow-scrolling touch
   background #fff
-  transition left 0.3s ease-out
+  transition transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)
+  will-change transform
   @media mobile
     width $offcanvas-width-mobile
-    left "calc(-1 * (%s + %s))" % ($offcanvas-width-mobile $offcanvas-button-size)
 
   .ah-close
     position absolute
@@ -72,9 +73,10 @@ $offcanvas-width-mobile = 320px
       pointer-events none
 
   .ah-right &
-    transition-property right
+    transition-property transform
     left unset !important
-    right "calc(-1 * (%s + %s))" % ($offcanvas-width $offcanvas-button-size)
+    right 0
+    transform "translateX(calc(100% + %s))" % $offcanvas-button-size
 
     .ah-close
       right 100%
@@ -86,10 +88,10 @@ $offcanvas-width-mobile = 320px
     cursor pointer
 
   .ah-offcanvas-bar
-    left 0
+    transform translateX(0)
 
     .ah-right&
-      right 0
+      transform translateX(0)
 
 .ah-offcanvas-close
   svg

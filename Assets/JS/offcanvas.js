@@ -92,14 +92,14 @@ function closeOffcanvas(offcanvasId){
   if (!offcanvas) return;
 
   offcanvas.classList.remove("ah-offcanvas-open")
-  document.body.classList.remove("ah-offcanvas-container")
 
   const closeTimer = setTimeout(() => {
     if (!offcanvas.classList.contains("ah-offcanvas-open")) {
       offcanvas.style.display = "none";
+      document.body.classList.remove("ah-offcanvas-container")
     }
     offcanvasCloseTimers.delete(offcanvas);
-  }, 300);
+  }, 250);
   offcanvasCloseTimers.set(offcanvas, closeTimer);
 }
 // pde-477

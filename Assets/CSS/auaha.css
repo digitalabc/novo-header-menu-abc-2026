@@ -10264,7 +10264,8 @@ header {
 .ah-offcanvas-bar {
   position: absolute;
   top: 0;
-  left: calc(-1 * (475px + 55px));
+  left: 0;
+  transform: translateX(calc(-100% - 55px));
   bottom: 0;
   box-sizing: border-box;
   z-index: 2;
@@ -10275,7 +10276,8 @@ header {
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   background: #fff;
-  transition: left 0.3s ease-out;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .ah-offcanvas-bar .ah-close {
@@ -10295,9 +10297,10 @@ header {
 }
 
 .ah-right .ah-offcanvas-bar {
-  transition-property: right;
+  transition-property: transform;
   left: unset !important;
-  right: calc(-1 * (475px + 55px));
+  right: 0;
+  transform: translateX(calc(100% + 55px));
 }
 
 .ah-right .ah-offcanvas-bar .ah-close {
@@ -10311,11 +10314,11 @@ header {
 }
 
 .ah-offcanvas-open .ah-offcanvas-bar {
-  left: 0;
+  transform: translateX(0);
 }
 
 .ah-right.ah-offcanvas-open .ah-offcanvas-bar {
-  right: 0;
+  transform: translateX(0);
 }
 
 .ah-offcanvas-close svg {
@@ -11505,7 +11508,7 @@ header {
 }
 
 #menu-offcanvas.ah-offcanvas-open>.ah-offcanvas-bar {
-  left: 0;
+  transform: translateX(0);
 }
 
 #menu-offcanvas::before {
@@ -11518,10 +11521,10 @@ header {
   max-width: calc(100vw - 55px);
   height: 100vh;
   height: 100dvh;
-  left: calc(-270px - 55px);
+  left: 0;
   overflow: visible;
   overscroll-behavior: contain;
-  transform: translateZ(0);
+  transform: translateX(calc(-100% - 55px));
   z-index: 2147483002 !important;
 }
 

@@ -8927,12 +8927,14 @@ header {
 .ah-offcanvas-bar {
   position: absolute;
   top: 0;
-  left: calc(-1 * (475px + 55px));
+  left: 0;
+  transform: translateX(calc(-100% - 55px));
   bottom: 0;
   box-sizing: border-box;
   width: 390px;
   background: #fff;
-  transition: left 0.3s ease-out;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .ah-offcanvas-bar .ah-close {
@@ -8951,9 +8953,10 @@ header {
 }
 
 .ah-right .ah-offcanvas-bar {
-  transition-property: right;
+  transition-property: transform;
   left: unset !important;
-  right: calc(-1 * (475px + 55px));
+  right: 0;
+  transform: translateX(calc(100% + 55px));
 }
 
 .ah-right .ah-offcanvas-bar .ah-close {
@@ -8967,11 +8970,11 @@ header {
 }
 
 .ah-offcanvas-open .ah-offcanvas-bar {
-  left: 0;
+  transform: translateX(0);
 }
 
 .ah-right.ah-offcanvas-open .ah-offcanvas-bar {
-  right: 0;
+  transform: translateX(0);
 }
 
 .ah-offcanvas-close svg {
@@ -10137,12 +10140,13 @@ header {
 }
 
 #menu-offcanvas.ah-offcanvas-open>.ah-offcanvas-bar {
-  left: 0;
+  transform: translateX(0);
 }
 
 #menu-offcanvas .ah-offcanvas-bar {
   width: 270px;
-  left: calc(-270px - 55px);
+  left: 0;
+  transform: translateX(calc(-100% - 55px));
 }
 
 #menu-offcanvas .ah-offcanvas-bar .ah-close {

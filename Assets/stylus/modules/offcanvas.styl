@@ -8,6 +8,11 @@ $offcanvas-width-mobile = 320px
   @media desktop
     padding-right 5px
 
+  .home-info-bar
+  .abc-newsletter-widget
+    z-index 1 !important
+    pointer-events none
+
 .ah-offcanvas
   position fixed
   top 0
@@ -16,6 +21,10 @@ $offcanvas-width-mobile = 320px
   z-index 1000
   display none
   width 100vw
+  height 100vh
+  height 100dvh
+  overflow hidden
+  background transparent
 
   &::before
     position absolute
@@ -27,25 +36,34 @@ $offcanvas-width-mobile = 320px
     content ''
     opacity 0
     transition opacity 0.15s linear
+    pointer-events auto
+    z-index 1
 
 .ah-offcanvas-bar
   position absolute
   top 0
-  left "calc(-1 * (%s + %s))" % ($offcanvas-width $offcanvas-button-size)
+  left 0
+  transform "translateX(calc(-100% - %s))" % $offcanvas-button-size
   bottom 0
   box-sizing border-box
+  z-index 2
   width $offcanvas-width
+  max-height 100vh
+  max-height 100dvh
+  overflow-y auto
+  overscroll-behavior contain
+  -webkit-overflow-scrolling touch
   background #fff
-  transition left 0.3s ease-out
-  // -webkit-overflow-scrolling touch
+  transition transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)
+  will-change transform
   @media mobile
     width $offcanvas-width-mobile
-    left "calc(-1 * (%s + %s))" % ($offcanvas-width-mobile $offcanvas-button-size)
 
   .ah-close
     position absolute
     top 0
     left 100%
+    z-index 3
     width $offcanvas-button-size
     height $offcanvas-button-size
     background $primary
@@ -55,9 +73,10 @@ $offcanvas-width-mobile = 320px
       pointer-events none
 
   .ah-right &
-    transition-property right
+    transition-property transform
     left unset !important
-    right "calc(-1 * (%s + %s))" % ($offcanvas-width $offcanvas-button-size)
+    right 0
+    transform "translateX(calc(100% + %s))" % $offcanvas-button-size
 
     .ah-close
       right 100%
@@ -69,10 +88,10 @@ $offcanvas-width-mobile = 320px
     cursor pointer
 
   .ah-offcanvas-bar
-    left 0
+    transform translateX(0)
 
     .ah-right&
-      right 0
+      transform translateX(0)
 
 .ah-offcanvas-close
   svg

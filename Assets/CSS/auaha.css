@@ -471,7 +471,7 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
   position: sticky;
   top: var(--home-info-bar-sticky-offset);
   z-index: 998;
-  background: linear-gradient(90deg, #0d3547 0%, #12475b 52%, #0d3547 100%);
+  background: #e30613;
   overflow: hidden;
   transition: box-shadow 180ms ease, transform 180ms ease;
 }
@@ -485,7 +485,7 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
 }
 
 .home .home-info-bar__rotator {
-  --home-info-bar-item-height: 52px;
+  --home-info-bar-item-height: 36px;
   position: relative;
   height: var(--home-info-bar-item-height);
   overflow: hidden;
@@ -507,7 +507,7 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
 .home .home-info-bar__item {
   position: relative;
   width: 100%;
-  min-height: 52px;
+  min-height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -609,12 +609,12 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
   }
 
   55% {
-    color: #FFE07A;
+    color: #FFFFFF;
     transform: translateZ(0) scale(1.014);
   }
 
   100% {
-    color: #FFD54A;
+    color: #FFFFFF;
     transform: translateZ(0) scale(1.026);
   }
 }

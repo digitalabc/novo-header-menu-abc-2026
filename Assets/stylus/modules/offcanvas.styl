@@ -78,6 +78,10 @@ $offcanvas-width-mobile = 320px
     right 0
     transform "translateX(calc(100% + %s))" % $offcanvas-button-size
 
+    @media mobile
+      width 100vw
+      max-width none
+
     .ah-close
       right 100%
       left unset

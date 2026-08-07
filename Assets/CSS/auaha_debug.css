@@ -11388,10 +11388,8 @@ header {
 
   .ah-right .ah-offcanvas-bar {
     width: 100vw;
-    /* 100% da largura da viewport */
-    right: calc(-1 * (100vw + 55px));
+    /* 100% da largura da viewport — hide/show continua via transform */
     max-width: none;
-    /* Remove limite mÃƒÆ’Ã‚Â¡ximo */
   }
 
   .minicart__offcanvas-body {

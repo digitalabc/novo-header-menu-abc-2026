@@ -1,106 +1,44 @@
-const offcanvasCloseTimers = new WeakMap();
+const openCanvasButtons = document.querySelectorAll("[ah-toggle]") 
 
-function getOffcanvas(offcanvasId) {
-  if (!offcanvasId || offcanvasId === "user-page") return null;
-
-  try {
-    return document.querySelector(offcanvasId);
-  } catch (err) {
-    return null;
+openCanvasButtons.forEach((element) => {
+  const offcanvasId = element.getAttribute("ah-toggle");
+  
+  if (offcanvasId !== 'user-page') {
+    const offcanvas = document.querySelector(offcanvasId)
+    element.addEventListener("click", () => openOffcanvas(offcanvasId));
+    offcanvas.addEventListener("click", (evt) => handleCanvasClick(offcanvasId, evt));
+  } else {
+    element.addEventListener("click", () => openOffcanvas(offcanvasId));
   }
-}
-
-function closestElement(target, selector) {
-  if (!target) return null;
-
-  const element = target.nodeType === 1 ? target : target.parentElement;
-  return element ? element.closest(selector) : null;
-}
-
-function bindOffcanvasClickHandler(offcanvasId, offcanvas) {
-  if (!offcanvas || offcanvas.dataset.ahCanvasReady === "true") return;
-
-  offcanvas.dataset.ahCanvasReady = "true";
-  offcanvas.addEventListener("click", (evt) => handleCanvasClick(offcanvasId, evt));
-}
-
-function initOffcanvasToggles() {
-  const openCanvasButtons = document.querySelectorAll("[ah-toggle]");
-
-  openCanvasButtons.forEach((element) => {
-    if (element.dataset.ahToggleReady === "true") return;
-
-    const offcanvasId = element.getAttribute("ah-toggle");
-    const offcanvas = getOffcanvas(offcanvasId);
-
-    element.dataset.ahToggleReady = "true";
-    element.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      openOffcanvas(offcanvasId);
-    });
-
-    bindOffcanvasClickHandler(offcanvasId, offcanvas);
-  });
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initOffcanvasToggles, { once: true });
-} else {
-  initOffcanvasToggles();
-}
+});
 
 function openOffcanvas(offcanvasId){
-  if (offcanvasId === "user-page") {
-    handleCanvasUserPage();
-    return;
-  }
-
-  const offcanvas = getOffcanvas(offcanvasId);
+  const offcanvas = document.querySelector(offcanvasId);
   if (offcanvas) {
-    const body = document.body;
-    const closeTimer = offcanvasCloseTimers.get(offcanvas);
-
-    bindOffcanvasClickHandler(offcanvasId, offcanvas);
-
-    if (closeTimer) {
-      clearTimeout(closeTimer);
-      offcanvasCloseTimers.delete(offcanvas);
-    }
-
     body.classList.add("ah-offcanvas-container")
     offcanvas.style.display = "block";
     window.dispatchEvent(new CustomEvent("cartViewed"))
-    const scheduleOpen = window.requestAnimationFrame || ((callback) => setTimeout(callback, 10));
-
-    scheduleOpen(() => {
+    setTimeout(() => { //Delay class add to prevent visual bug due to display toggle
       offcanvas.classList.add("ah-offcanvas-open")
-    });
+    }, 10);
+  } else {
+    handleCanvasUserPage();
   }
 }
 
 function handleCanvasClick(offcanvasId, evt){
-  const closeButton = closestElement(evt.target, ".ah-close");
-
-  if (evt.target == evt.currentTarget || closeButton) {
-    evt.preventDefault();
+  if (evt.target == evt.currentTarget || evt.target.classList.contains("ah-close")) {
     closeOffcanvas(offcanvasId)
   }
 }
 
 function closeOffcanvas(offcanvasId){
-  const offcanvas = getOffcanvas(offcanvasId)
-  if (!offcanvas) return;
-
+  const offcanvas = document.querySelector(offcanvasId)
   offcanvas.classList.remove("ah-offcanvas-open")
-
-  const closeTimer = setTimeout(() => {
-    if (!offcanvas.classList.contains("ah-offcanvas-open")) {
-      offcanvas.style.display = "none";
-      document.body.classList.remove("ah-offcanvas-container")
-    }
-    offcanvasCloseTimers.delete(offcanvas);
-  }, 250);
-  offcanvasCloseTimers.set(offcanvas, closeTimer);
+  body.classList.remove("ah-offcanvas-container")
+  setTimeout(() => {
+    offcanvas.style.display = "none";
+  }, 300);
 }
 // pde-477
 function handleCanvasUserPage() {

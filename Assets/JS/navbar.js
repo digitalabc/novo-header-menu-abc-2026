@@ -1,133 +1,6 @@
-const menuOffcanvasCloseTimers = new WeakMap();
-let menuOffcanvasFallbackReady = false;
-let lastMenuOffcanvasActivationAt = 0;
-
-function runNavbarWhenDomReady(callback) {
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", callback, { once: true });
-        return;
-    }
-
-    callback();
-}
-
-runNavbarWhenDomReady(() => {
-    const searchBar = document.getElementById("search-bar");
-    if (searchBar) autocomplete(searchBar);
-    menuMobileLoad();
-});
-
-window.addEventListener("load", () => {
-    loadPartnerLogo().catch((err) => console.error(err));
-}, false);
-
-function closestNavbarElement(target, selector) {
-    if (!target) return null;
-
-    const element = target.nodeType === 1 ? target : target.parentElement;
-    return element ? element.closest(selector) : null;
-}
-
-function getMenuOffcanvas() {
-    return document.getElementById("menu-offcanvas");
-}
-
-function preventNavbarDefault(event) {
-    if (event && event.cancelable) event.preventDefault();
-}
-
-function openMenuOffcanvasFallback(event) {
-    preventNavbarDefault(event);
-
-    const offcanvas = getMenuOffcanvas();
-    const body = document.body;
-    if (!offcanvas || !body) return;
-
-    const closeTimer = menuOffcanvasCloseTimers.get(offcanvas);
-    if (closeTimer) {
-        clearTimeout(closeTimer);
-        menuOffcanvasCloseTimers.delete(offcanvas);
-    }
-
-    body.classList.add("ah-offcanvas-container");
-    offcanvas.style.display = "block";
-
-    const scheduleOpen = window.requestAnimationFrame || ((callback) => setTimeout(callback, 10));
-    scheduleOpen(() => {
-        offcanvas.classList.add("ah-offcanvas-open");
-    });
-}
-
-function closeMenuOffcanvasFallback(event) {
-    preventNavbarDefault(event);
-
-    const offcanvas = getMenuOffcanvas();
-    if (!offcanvas) return;
-
-    offcanvas.classList.remove("ah-offcanvas-open");
-
-    const closeTimer = setTimeout(() => {
-        if (!offcanvas.classList.contains("ah-offcanvas-open")) {
-            offcanvas.style.display = "none";
-            document.body.classList.remove("ah-offcanvas-container");
-        }
-        menuOffcanvasCloseTimers.delete(offcanvas);
-    }, 250);
-
-    menuOffcanvasCloseTimers.set(offcanvas, closeTimer);
-}
-
-function handleMenuOffcanvasTriggerFallback(event) {
-    const trigger = closestNavbarElement(event.target, '[ah-toggle="#menu-offcanvas"]');
-    if (!trigger) return;
-
-    if (event.type === "pointerup" && event.pointerType === "mouse") return;
-
-    const now = Date.now();
-    if (event.type === "click" && now - lastMenuOffcanvasActivationAt < 600) {
-        preventNavbarDefault(event);
-        return;
-    }
-
-    lastMenuOffcanvasActivationAt = now;
-    openMenuOffcanvasFallback(event);
-    event.stopPropagation();
-}
-
-function handleMenuOffcanvasCloseFallback(event) {
-    const offcanvas = getMenuOffcanvas();
-    if (!offcanvas) return;
-
-    const closeButton = closestNavbarElement(event.target, ".ah-close");
-    if (event.target === offcanvas || (closeButton && offcanvas.contains(closeButton))) {
-        if (Date.now() - lastMenuOffcanvasActivationAt < 650) {
-            preventNavbarDefault(event);
-            event.stopPropagation();
-            return;
-        }
-
-        closeMenuOffcanvasFallback(event);
-        event.stopPropagation();
-    }
-}
-
-function initMenuOffcanvasFallback() {
-    if (menuOffcanvasFallbackReady || window.__abcMenuOffcanvasFallbackReady) return;
-
-    menuOffcanvasFallbackReady = true;
-    window.__abcMenuOffcanvasFallbackReady = true;
-
-    if (window.PointerEvent) {
-        document.addEventListener("pointerup", handleMenuOffcanvasTriggerFallback, true);
-    } else {
-        document.addEventListener("touchend", handleMenuOffcanvasTriggerFallback, true);
-    }
-
-    document.addEventListener("click", handleMenuOffcanvasTriggerFallback, true);
-    document.addEventListener("click", handleMenuOffcanvasCloseFallback, true);
-}
-
-initMenuOffcanvasFallback();
+autocomplete(document.getElementById("search-bar"));
+window.addEventListener("load", loadPartnerLogo());
+window.addEventListener("load", menuMobileLoad, false);
 
 /**
  * Redirects to the search page with the given term, or searching for 
@@ -409,22 +282,18 @@ function reorderRootMobileCategories() {
 /**
  * Setups the mobile menu navigation from click event
  */
-function menuMobileLoad() {
+async function menuMobileLoad() {
     reorderRootMobileCategories();
 
     const menuMobileLinks = document.querySelectorAll(".nav-mobile__link");
     const menuMobileBackButtons = document.querySelectorAll(".nav-mobile__back");
     if (menuMobileLinks) {
         menuMobileLinks.forEach(button => {
-            if (button.dataset.navMobileReady === "true") return;
-            button.dataset.navMobileReady = "true";
             button.addEventListener('click', (event) => { handleMenuLinkClick(event); })
         });
     }
     if (menuMobileBackButtons) {
         menuMobileBackButtons.forEach(button => {
-            if (button.dataset.navMobileReady === "true") return;
-            button.dataset.navMobileReady = "true";
             button.addEventListener('click', (event) => { handleBackButtonClick(event); })
         });
     }
@@ -434,18 +303,17 @@ function menuMobileLoad() {
  * Mobile menu navigation
  */
 function handleMenuLinkClick(event) {
-    var button = closestNavbarElement(event.target, ".nav-mobile__open")
-    if (button) {
+    if (event.target.tagName == "BUTTON") {
         event.preventDefault()
-        var anchor = closestNavbarElement(button, ".nav-mobile__link")
-        var dropdown = anchor ? anchor.nextElementSibling : null
-        if (!dropdown) return
+        var button = event.target
+        var anchor = button.parentElement
+        var dropdown = anchor.nextElementSibling
+
         dropdown.classList.add("open")
     }
 }
 function handleBackButtonClick(event) {
-    var button = closestNavbarElement(event.target, ".nav-mobile__back")
-    if (!button) return
+    var button = event.target
     var dropdown = button.parentElement
 
     dropdown.classList.remove("open")

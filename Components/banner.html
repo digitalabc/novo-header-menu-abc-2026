@@ -3,10 +3,6 @@
     Params:
       - banners: list of banners
       - position: banner position to use
-      - type: banner context such as "fullbanner"
-      - defer_image_loading: set lazy/async loading strategy
-      - high_priority_first_image: prioritize the first image
-      - show_navigation: render swiper navigation buttons
     Usage:
       carousel banners: banners position: "Topo"
 ## }}
@@ -22,7 +18,7 @@
 
 {{~ if banners && banners.size > 0 ~}}
   {{~ if carousel ~}}
-    {{~ if type == "fullbanner" || show_navigation ~}}
+    {{~ if type == "fullbanner" ~}}
       <div class="swiper-container">
     {{~ end ~}}
         <div class="swiper">
@@ -32,13 +28,12 @@
               {{~ banner_loading = null ~}}
               {{~ banner_decoding = null ~}}
               {{~ banner_fetchpriority = null ~}}
-              {{~ if defer_image_loading ~}}
-                {{~ banner_loading = "lazy" ~}}
+              {{~ if type == "fullbanner" ~}}
                 {{~ banner_decoding = "async" ~}}
-                {{~ banner_fetchpriority = "low" ~}}
-              {{~ end ~}}
-              {{~ if high_priority_first_image && for.first ~}}
-                {{~ banner_fetchpriority = "high" ~}}
+                {{~ if !for.first ~}}
+                  {{~ banner_loading = "lazy" ~}}
+                  {{~ banner_fetchpriority = "low" ~}}
+                {{~ end ~}}
               {{~ end ~}}
               <li class="swiper-slide">
                 <a {{ if blank }} target="_blank" {{ end }} href="{{banner.url_on_click}}" >
@@ -48,7 +43,7 @@
             {{~ end ~}}
           </ul>
         </div>
-    {{~ if type == "fullbanner" || show_navigation ~}}
+    {{~ if type == "fullbanner" ~}}
         <button class="swiper-button-prev">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
             <path id="Path_151" data-name="Path 151"
@@ -69,10 +64,7 @@
         {{~ banner_title = banner.alt_text ?? "banner" ~}}
         <li>
           <a {{ if blank }} target="_blank" {{ end }} href="{{banner.url_on_click}}">
-            {{~ banner_loading = defer_image_loading ? "lazy" : null ~}}
-            {{~ banner_decoding = defer_image_loading ? "async" : null ~}}
-            {{~ banner_fetchpriority = defer_image_loading ? "low" : null ~}}
-            {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title loading: banner_loading decoding: banner_decoding fetchpriority: banner_fetchpriority ~}}
+            {{~ image source: banner.banner_url sizes: [{w:banner.width, h:banner.height}] alt: banner_title ~}}
           </a>
         </li>
       {{~ end ~}}

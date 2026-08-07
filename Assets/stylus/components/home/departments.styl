@@ -1,33 +1,8 @@
 .departments
-  display flex
-  flex-direction column
-  align-items center
-  margin-top 28px
-  margin-bottom 56px
-
-  > .departments__title
-    display flex
-    align-items center
-    justify-content center
-    gap 10px
-    width 100%
-    text-align center
-    margin-inline auto
-    margin-bottom 40px
-
-  .swiper-wrapper
-    gap 24px
-    .swiper-slide
-      border-radius 12px
-      overflow hidden
-
 
   &__item
-    > a
-      align-items center
-      width 100%
     @media mobile
-      width 104px
+      width 120px
     @media desktop
       &:hover 
         .departments__icon
@@ -42,78 +17,24 @@
     place-items center
     background #F7F7F7
     border 1px solid #F7F7F7
-    width 104px
-    height 104px
-    margin-bottom 6px
+    margin-bottom 15px
     position relative
     aspect-ratio 1
     transition $transition
     svg
       fill #5D5D5D
       transition $transition
-    img
-      display block
-      width 100%
-      height 100%
-      object-fit cover
 
-  &__item &__title
+  &__title
     font-weight 500
-    font-size var(--fonte-12)
-    line-height 1.35
-    margin 0
     color #5D5D5D
-    text-align center
     transition $transition
 
   @media mobile
-    align-items stretch
-
-    margin-top 20px
-    margin-bottom 44px
-
-    > .departments__title
-      gap 8px
-      margin-bottom 30px
-
-    .swiper-container
-      width 100%
-      max-width 100%
-      margin-inline 0
-
-    .swiper-wrapper
-      gap 18px
-      margin-left 15px
-      margin-right 15px
-      box-sizing border-box
-      .swiper-slide
-        border-radius 12px
-        overflow hidden
-
     .swiper
-      width auto
-      max-width none
-      margin-inline 0
       margin 0 -15px
-      padding 0
+      padding 0 15px
       &-button
         &-next
         &-prev
           display none
-
-  @media desktop
-    .swiper-container
-      width fit-content
-      max-width 100%
-      margin-inline auto
-
-    .swiper
-      width fit-content
-      max-width 100%
-      margin-inline auto
-
-    .swiper-wrapper
-      width fit-content
-      min-width fit-content
-      margin-inline auto
-      justify-content center

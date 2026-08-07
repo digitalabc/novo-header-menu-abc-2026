@@ -665,7 +665,6 @@ function initAllShowcaseSwipers() {
     ".showcase-oferta-relampago__carousel",
     ".showcase-frete-gratis__carousel",
     ".showcase-melhores-ofertas__carousel",
-    ".showcase-cada-ambiente__carousel",
     ".showcase-metais__carousel",
     ".showcase-metais-sanitarios__carousel",
     ".showcase-produtos-deca__carousel",

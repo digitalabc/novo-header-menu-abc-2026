@@ -3,7 +3,7 @@
 
 <head>
   {{ gtm_config_head gtm_id: common.gtm_id }}
-  {{ default_title_hotsite = data.hotsite.name | string.append " | 7.7 ABC da Construção" }}
+  {{ default_title_hotsite = data.hotsite.name | string.append " | 8.8 ABC da Construção" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
   {{ asset type: "css" paths: ["lancamentos_2026"] }}
   {{ asset type: "css" paths: ["ofertas_mensais"] }}
@@ -29,9 +29,9 @@
 
   <div class="lp-ofertas-mensais ofertas-mensais semana-do-consumidor">
     <!-- Hotsite principal da LP /ofertas-mensais: hotsiteId 102017 -->
-    <div class="ofertas-mensais-sticky-countdown" data-sticky-campaign-countdown data-promotion="2026-07-07T23:59:59-03:00">
+    <div class="ofertas-mensais-sticky-countdown" data-sticky-campaign-countdown data-promotion="2026-08-08T23:59:59-03:00">
       <span class="ofertas-mensais-sticky-countdown__label">TERMINA EM:</span>
-      <div class="home-offers-banner__countdown ofertas-mensais-sticky-countdown__timer" role="timer" aria-live="polite" aria-label="Campanha 7.7 termina em">
+      <div class="home-offers-banner__countdown ofertas-mensais-sticky-countdown__timer" role="timer" aria-live="polite" aria-label="Campanha 8.8 termina em">
         <span class="home-offers-banner__countdown-item">
           <span class="home-offers-banner__countdown-value" data-sticky-campaign-hours>48</span>
         </span>
@@ -98,6 +98,28 @@
 
     <div class="showcase-sections container">
       <div class="showcase-stack">
+        <section class="showcase showcase--panel showcase-ferramentas" data-showcase="ferramentas">
+          <div class="showcase__header">
+            <div class="showcase__heading">
+              <span class="showcase__eyebrow">Reforma e instala&ccedil;&atilde;o</span>
+              <h2 class="showcase__title">Ferramentas</h2>
+              <p class="showcase__subtitle">Ferramentas para agilizar a obra e o dia a dia com mais praticidade.</p>
+            </div>
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
+              <span>Ver mais ofertas</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="showcase__carousel showcase-ferramentas__carousel">
+            {{ spot_carousel class: "showcase-ferramentas__carousel" products: data.vitrine6.products.nodes hide_countdown: true }}
+          </div>
+        </section>
+
         <section class="showcase showcase--panel showcase-metais-sanitarios" data-showcase="metais-sanitarios">
           <div class="showcase__header">
             <div class="showcase__heading">
@@ -105,7 +127,7 @@
               <h2 class="showcase__title">Metais</h2>
               <p class="showcase__subtitle">Torneiras, misturadores e acabamentos com pre&ccedil;o de campanha.</p>
             </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-frete-gratis">
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-metais">
               <span>Ver mais ofertas</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -127,7 +149,7 @@
               <h2 class="showcase__title">Banho Quente</h2>
               <p class="showcase__subtitle">Chuveiros e duchas para banho confort&aacute;vel e mais economia.</p>
             </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-melhores-ofertas">
+            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-banho-e-aquecimento">
               <span>Ver mais ofertas</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -207,65 +229,43 @@
             {{ spot_carousel class: "showcase-tintas__carousel" products: data.vitrine5.products.nodes hide_countdown: true }}
           </div>
         </section>
-
-        <section class="showcase showcase--panel showcase-iluminacao" data-showcase="iluminacao">
-          <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Conforto e relaxamento</span>
-              <h2 class="showcase__title">Banheiras</h2>
-              <p class="showcase__subtitle">Modelos para transformar o banheiro em um espa&ccedil;o de bem-estar com mais conforto.</p>
-            </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
-              <span>Ver mais ofertas</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </div>
-          <div class="showcase__carousel showcase-iluminacao__carousel">
-            {{ spot_carousel class: "showcase-iluminacao__carousel" products: data.vitrine6.products.nodes hide_countdown: true }}
-          </div>
-        </section>
       </div>
 
       <section class="seo-content" aria-labelledby="seo-content-title">
         <div class="seo-content__intro">
-          <span class="seo-content__eyebrow">Campanha 7.7 ABC da Construção</span>
-          <h2 id="seo-content-title" class="seo-content__title">Ofertas 7.7 na ABC da Construção: preços especiais para renovar sua obra</h2>
-          <p>A campanha 7.7 da ABC da Construção reúne ofertas por tempo limitado para quem busca economia em materiais de construção, reforma e acabamento em um só lugar.</p>
-          <p>Nesta LP, você encontra condições especiais em metais, banho quente, louças e cubas, materiais hidráulicos, tintas e banheiras, com vitrines organizadas para comparar produtos com rapidez e comprar com mais confiança.</p>
-          <p>Com destaque para ofertas imperdíveis e atualização constante de preços e estoque, a página ajuda você a aproveitar as melhores oportunidades da campanha 7.7 antes do encerramento.</p>
+          <span class="seo-content__eyebrow">Campanha 8.8 ABC da Construção</span>
+          <h2 id="seo-content-title" class="seo-content__title">Ofertas 8.8 na ABC da Construção: preços especiais para renovar sua obra</h2>
+          <p>A campanha 8.8 da ABC da Construção reúne ofertas por tempo limitado para quem busca economia em materiais de construção, reforma e acabamento em um só lugar.</p>
+          <p>Nesta LP, você encontra condições especiais em ferramentas, metais, banho quente, louças e cubas, materiais hidráulicos e tintas, com vitrines organizadas para comparar produtos com rapidez e comprar com mais confiança.</p>
+          <p>Com destaque para ofertas imperdíveis e atualização constante de preços e estoque, a página ajuda você a aproveitar as melhores oportunidades da campanha 8.8 antes do encerramento.</p>
         </div>
 
         <div class="seo-content__faq" aria-labelledby="seo-faq-title">
-          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre 7.7 ABC
+          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre 8.8 ABC
             da Construção</h2>
 
           <details class="seo-content__faq-item">
-            <summary>O que é a campanha 7.7 da ABC da Construção?</summary>
-            <p>A campanha 7.7 é uma ação promocional com ofertas especiais em produtos para construção, reforma e acabamento, válida por tempo limitado.</p>
+            <summary>O que é a campanha 8.8 da ABC da Construção?</summary>
+            <p>A campanha 8.8 é uma ação promocional com ofertas especiais em produtos para construção, reforma e acabamento, válida por tempo limitado.</p>
           </details>
 
           <details class="seo-content__faq-item">
-            <summary>Quais categorias estão em oferta na LP 7.7?</summary>
-            <p>As vitrines da campanha incluem metais, banho quente, louças e cubas, materiais hidráulicos, tintas e banheiras, com produtos selecionados para diferentes etapas da obra.</p>
+            <summary>Quais categorias estão em oferta na LP 8.8?</summary>
+            <p>As vitrines da campanha incluem ferramentas, metais, banho quente, louças e cubas, materiais hidráulicos e tintas, com produtos selecionados para diferentes etapas da obra.</p>
           </details>
 
           <details class="seo-content__faq-item">
-            <summary>Como encontrar as melhores ofertas da campanha 7.7?</summary>
+            <summary>Como encontrar as melhores ofertas da campanha 8.8?</summary>
             <p>Use as seções por categoria e acompanhe o countdown principal da página para identificar as oportunidades antes do fim da campanha.</p>
           </details>
 
           <details class="seo-content__faq-item">
             <summary>Posso comprar metais, tintas e materiais hidráulicos na mesma campanha?</summary>
-            <p>Sim. A LP 7.7 da ABC da Construção reúne ofertas em várias categorias para facilitar a compra completa da sua reforma em uma única página.</p>
+            <p>Sim. A LP 8.8 da ABC da Construção reúne ofertas em várias categorias para facilitar a compra completa da sua reforma em uma única página.</p>
           </details>
 
           <details class="seo-content__faq-item">
-            <summary>Preços e estoques podem mudar durante a campanha 7.7 ABC da Construção?</summary>
+            <summary>Preços e estoques podem mudar durante a campanha 8.8 ABC da Construção?</summary>
             <p>Sim. Os preços e estoques podem variar ao longo da campanha conforme a disponibilidade do momento.</p>
           </details>
         </div>
@@ -280,23 +280,23 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "O que e a campanha 7.7 da ABC da Construcao?",
+          "name": "O que e a campanha 8.8 da ABC da Construcao?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A campanha 7.7 e uma acao promocional com ofertas especiais em produtos para construcao, reforma e acabamento, valida por tempo limitado."
+            "text": "A campanha 8.8 e uma acao promocional com ofertas especiais em produtos para construcao, reforma e acabamento, valida por tempo limitado."
           }
         },
         {
           "@type": "Question",
-          "name": "Quais categorias estao em oferta na LP 7.7?",
+          "name": "Quais categorias estao em oferta na LP 8.8?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "As vitrines da campanha incluem metais, banho quente, loucas e cubas, materiais hidraulicos, tintas e banheiras, com produtos selecionados para diferentes etapas da obra."
+            "text": "As vitrines da campanha incluem ferramentas, metais, banho quente, loucas e cubas, materiais hidraulicos e tintas, com produtos selecionados para diferentes etapas da obra."
           }
         },
         {
           "@type": "Question",
-          "name": "Como encontrar as melhores ofertas da campanha 7.7?",
+          "name": "Como encontrar as melhores ofertas da campanha 8.8?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Use as secoes por categoria e acompanhe o countdown principal da pagina para identificar as oportunidades antes do fim da campanha."
@@ -307,12 +307,12 @@
           "name": "Posso comprar metais, tintas e materiais hidraulicos na mesma campanha?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. A LP 7.7 da ABC da Construcao reune ofertas em varias categorias para facilitar a compra completa da sua reforma em uma unica pagina."
+            "text": "Sim. A LP 8.8 da ABC da Construcao reune ofertas em varias categorias para facilitar a compra completa da sua reforma em uma unica pagina."
           }
         },
         {
           "@type": "Question",
-          "name": "Precos e estoques podem mudar durante a campanha 7.7 ABC da Construção?",
+          "name": "Precos e estoques podem mudar durante a campanha 8.8 ABC da Construção?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sim. Os precos e estoques podem variar ao longo da campanha conforme a disponibilidade do momento."

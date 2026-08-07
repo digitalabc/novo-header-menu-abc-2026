@@ -163,6 +163,8 @@
     {{ sdk_client_checkout }}
     {{ data_layer_checkout_complete_view checkout: data.checkout }}
 
+    {{ page_scripts position: "FOOTER_END" scripts: common.scripts }}
+
     {{ gtm_config gtm_id: common.gtm_id }}
   
     {{ wake_scripts scripts: ["wake_utils", "wake_checkout_close"] }}

@@ -6,6 +6,7 @@
     "/chance-unica": { name: "Super Chance Única" },
     "/lancamentos-2026": { name: "Lançamentos 2026" },
     "/ofertas-mensais": { name: "Ofertas Mensais" },
+    "/cada-ambiente-a-melhor-escolha": { name: "Cada Ambiente, a Melhor Escolha" },
   };
 
   function getLpContext() {

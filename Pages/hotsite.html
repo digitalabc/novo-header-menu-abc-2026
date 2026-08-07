@@ -23,7 +23,6 @@
   <div class="container">
     {{data.hotsite.breadcrumbs | debug.log"teste"}}
     {{~ breadcrumb breadcrumbs: data.hotsite.breadcrumbs ~}}
-    {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true}}
 
     <!-- O que você procura hoje -->
     {{ content position: "Centro" contents: data.hotsite.contents show_title: false}}
@@ -75,6 +74,8 @@
         {{ pagination products: products page_size: page_size current_page: current_page }}
       </div>
     </div>
+
+    {{ content position: "Rodapé" contents: data.hotsite.contents show_title: false seo: true}}
   </div>
 
   {{ livelo_popup }}

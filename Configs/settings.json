@@ -1125,7 +1125,7 @@
       ]
     },
     {
-      "name": "Gocalves",
+      "name": "Gonçalves",
       "state": "Minas Gerais",
       "stores": [
         {
@@ -2089,6 +2089,7 @@
         },
         {
           "name": "ABC da Construção Jardim Canadá",
+          "shipping_name": "F - JARDIM CANADA",
           "adress": "Av. Canadá, 63 - Jardim Canada, Nova Lima - MG, 34007-654",
           "phone": "(31) 3340-3812",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/jardim-canada",

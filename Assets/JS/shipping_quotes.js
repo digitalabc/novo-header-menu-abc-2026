@@ -185,6 +185,17 @@ function updatePickupStoreStatus(card) {
   const currentRange = getPickupDayRange(card, currentDay);
   const parsedRange = parsePickupOpeningRange(currentRange);
 
+  if (!currentRange) {
+    statusEl.style.display = "none";
+    statusNoteEl.style.display = "none";
+    if (hoursValueEl) hoursValueEl.textContent = "Horário não informado";
+    if (hoursEl) hoursEl.hidden = false;
+    return;
+  }
+
+  statusEl.style.removeProperty("display");
+  statusNoteEl.style.removeProperty("display");
+
   let isOpen = false;
   let statusNote = "😓 Fechado";
   statusNoteEl.classList.remove("phase-green", "phase-gold", "phase-red");

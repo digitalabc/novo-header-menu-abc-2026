@@ -6,3 +6,6 @@ template-franquias
 awake/
 abcprime-referencia/
 .sfdx/
+
+# wake-skills (generated folders)
+.cursor

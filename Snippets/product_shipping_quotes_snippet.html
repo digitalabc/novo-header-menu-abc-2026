@@ -85,10 +85,9 @@
               address = storeParts.size > 1 ? storeParts[1] : ""
               pickupLocationParts = cityAndDistrict | string.split ", "
               pickupCity = pickupLocationParts[0]
-              pickupStore = pickupLocationParts.size > 1 ? pickupLocationParts[1] : ""
+              pickupStore = pickupLocationParts.size > 1 ? pickupLocationParts[1] : cityAndDistrict
               pickupCityHandle = pickupCity | string.handleize
               pickupStoreHandle = pickupStore | string.handleize
-              pickupRawHandle = pickUp.name | string.handleize
               matched_state = null
               matched_store = null
           ~}}
@@ -96,15 +95,11 @@
             {{~ if !matched_store && pickupCityHandle && (state.name | string.handleize) == pickupCityHandle ~}}
               {{~ matched_state = state ~}}
               {{~ for store in state.stores ~}}
-                {{~ stateHandle = state.name | string.handleize
-                    storeNameHandle = store.name | string.handleize
-                    storeShortNameHandle = store.name | string.replace "ABC da Construção " "" | string.handleize
-                    storeShippingNameHandle = store.shipping_name ? (store.shipping_name | string.handleize) : ""
+                {{~ storeNameHandle = store.name | string.handleize
                     storeAddressHandle = store.adress | string.handleize
                     storeDetailsHandle = store.details_link | string.handleize
                 ~}}
-                {{~ storeAliasMatch = storeShippingNameHandle && (pickupRawHandle | string.contains storeShippingNameHandle) ~}}
-                {{~ if storeAliasMatch || storeNameHandle == pickupStoreHandle || (pickupStoreHandle && (storeNameHandle | string.contains pickupStoreHandle)) || (pickupStoreHandle && pickupStoreHandle != stateHandle && (storeDetailsHandle | string.contains pickupStoreHandle)) || (pickupStoreHandle && pickupStoreHandle != stateHandle && (storeAddressHandle | string.contains pickupStoreHandle)) || (storeNameHandle != storeShortNameHandle && storeShortNameHandle && (pickupRawHandle | string.contains storeShortNameHandle)) ~}}
+                {{~ if storeNameHandle == pickupStoreHandle || (storeNameHandle | string.contains pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle) ~}}
                   {{~ matched_store = store ~}}
                   {{~ break ~}}
                 {{~ end ~}}
@@ -115,22 +110,33 @@
             {{~ for state in settings.cidades ~}}
             {{~ if !matched_store && pickupCityHandle ~}}
               {{~ for store in state.stores ~}}
-                {{~ stateHandle = state.name | string.handleize
-                    storeNameHandle = store.name | string.handleize
-                    storeShortNameHandle = store.name | string.replace "ABC da Construção " "" | string.handleize
-                    storeShippingNameHandle = store.shipping_name ? (store.shipping_name | string.handleize) : ""
-                    storeAddressHandle = store.adress | string.handleize
+                {{~ storeAddressHandle = store.adress | string.handleize
                     storeDetailsHandle = store.details_link | string.handleize
                 ~}}
-                {{~ storeAliasMatch = storeShippingNameHandle && (pickupRawHandle | string.contains storeShippingNameHandle) ~}}
-                {{~ storeIdentityMatch = (pickupStoreHandle && storeNameHandle == pickupStoreHandle) || (pickupStoreHandle && (storeNameHandle | string.contains pickupStoreHandle)) || (pickupStoreHandle && pickupStoreHandle != stateHandle && (storeDetailsHandle | string.contains pickupStoreHandle)) || (pickupStoreHandle && pickupStoreHandle != stateHandle && (storeAddressHandle | string.contains pickupStoreHandle)) || (storeNameHandle != storeShortNameHandle && storeShortNameHandle && (pickupRawHandle | string.contains storeShortNameHandle)) ~}}
-                {{~ storeLocationMatch = (stateHandle && (pickupRawHandle | string.contains stateHandle)) || (storeAddressHandle | string.contains pickupCityHandle) ~}}
-                {{~ if storeAliasMatch || (storeIdentityMatch && storeLocationMatch) ~}}
+                {{~ if ((storeDetailsHandle == pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle)) && (storeAddressHandle | string.contains pickupCityHandle) ~}}
                   {{~ matched_state = state ~}}
                   {{~ matched_store = store ~}}
                   {{~ break ~}}
                 {{~ end ~}}
               {{~ end ~}}
+              {{~ end ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+          {{~ if !matched_store ~}}
+            {{~ for state in settings.cidades ~}}
+              {{~ if !matched_store ~}}
+                {{~ stateHandle = state.name | string.handleize ~}}
+                {{~ for store in state.stores ~}}
+                  {{~ storeNameHandle = store.name | string.handleize
+                      storeAddressHandle = store.adress | string.handleize
+                      storeDetailsHandle = store.details_link | string.handleize
+                  ~}}
+                  {{~ if (storeNameHandle | string.contains pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupCityHandle) || (stateHandle | string.contains pickupCityHandle) ~}}
+                    {{~ matched_state = state ~}}
+                    {{~ matched_store = store ~}}
+                    {{~ break ~}}
+                  {{~ end ~}}
+                {{~ end ~}}
               {{~ end ~}}
             {{~ end ~}}
           {{~ end ~}}
@@ -158,7 +164,7 @@
             data-sunday="{{ sundayHours }}"
           >
             <div class="product-shipping__pickup-option-header">
-              <strong>{{ matched_state ? matched_state.name : pickupCity }}{{ if matched_store || pickupStore }}, {{ matched_store ? matched_store.name : pickupStore }}{{ end }}</strong>
+              <strong>{{ matched_state ? matched_state.name : pickupCity }}, {{ matched_store ? matched_store.name : pickupStore }}</strong>
               <small>Em até {{ pickUp.deadline }} dias úteis</small>
             </div>
             <div class="product-shipping__pickup-option-meta">

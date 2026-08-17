@@ -609,7 +609,7 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
     fill: #e30613;
   }
 }
-}
+
 
 .hotsite .category__main,
 .category .category__main,
@@ -2236,7 +2236,6 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
   display: flex;
   justify-content: space-between;
   margin-bottom: 60px;
-  max-width: 935px;
 }
 
 .product__buy-together .buy-together-row-div img {

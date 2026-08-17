@@ -53,6 +53,7 @@ fragment AttributeSelectionsData on AttributeSelection{
         prices {
           listPrice
           price
+          discountPercentage
           installmentPlans{
             displayName
             name
@@ -98,6 +99,8 @@ fragment SingleProductData on SingleProduct {
   prices {
     listPrice
     price
+    discountPercentage
+    multiplicationFactor
     installmentPlans{
         displayName
         name
@@ -108,5 +111,9 @@ fragment SingleProductData on SingleProduct {
           value
         }
     }
-  }  
+  }
+  attributes {
+    name
+    value
+  }
 }

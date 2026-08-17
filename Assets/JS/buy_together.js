@@ -17,23 +17,27 @@ function replaceInnerHtml2(html, id) {
  */
 async function buyTogetherSetup() {
     const rows = document.querySelectorAll('[id^="buy-together-row-"]');
-    if (rows == null || rows.size < 1) return;
+    if (rows == null || rows.length < 1) return;
 
-    for (let row of rows) {
-        const buyTogetherProductId = row.getAttribute("buy-together-product-id");
-        const pageProductId = row.getAttribute("page-product-id");
+    for (const row of rows) {
+        const products = row.querySelectorAll('.product-buy-together-div-complementary[buy-together-product-id]');
+        for (const product of products) {
+            const buyTogetherProductId = product.getAttribute("buy-together-product-id");
+            if (!buyTogetherProductId) continue;
 
-        const response = await client.snippet.render(
-            "buy_together_row_snippet.html",
-            "SnippetQueries/buy_together.graphql",
-            {
-                pageProductId: Number(pageProductId),
-                buyTogetherProductId: Number(buyTogetherProductId)
-            });
+            const response = await client.snippet.render(
+                "buy_together_selectable_spot_snippet.html",
+                "SnippetQueries/buy_together_spot.graphql",
+                {
+                    id: Number(buyTogetherProductId)
+                });
 
-        replaceInnerHtml2(response, row.id);
+            replaceInnerHtml2(response, product.id);
+        }
+
+        buyTogetherSyncSelectionState(row);
         await buyTogetherCalculatePrices(row);
-        setButtonsEnabledByAvailability(row);
+        buyTogetherSetButtonsEnabledByAvailability(row);
     }
 }
 
@@ -56,7 +60,7 @@ async function buyTogetherSelectAttribute(element) {
 
     await buyTogetherRenderAttributes(productId, selections, spotDiv);
     await buyTogetherCalculatePrices(rowDiv);
-    setButtonsEnabledByAvailability(rowDiv);
+    buyTogetherSetButtonsEnabledByAvailability(rowDiv);
 }
 
 /**
@@ -72,9 +76,14 @@ async function buyTogetherRenderAttributes(productId, selections, spotDiv) {
         id: Number(productId),
         selections
     };
+    const snippet = spotDiv.classList.contains('is-main')
+        ? "buy_together_main_spot_snippet.html"
+        : spotDiv.classList.contains('is-selectable')
+        ? "buy_together_selectable_spot_snippet.html"
+        : "buy_together_spot_snippet.html";
 
     const response = await client.snippet.render(
-        "buy_together_spot_snippet.html",
+        snippet,
         "SnippetQueries/buy_together_spot.graphql",
         variables);
     spotDiv.innerHTML = response;
@@ -85,9 +94,14 @@ async function buyTogetherRenderAttributes(productId, selections, spotDiv) {
  * @param {HTMLInputElement} element - The button originating the operation, for context.
  */
 async function buyTogetherAddToCartClick(element) {
-    const success = await checkoutOperations(element, 'buy-together-row-div');
+    const rowDiv = element.closest('.buy-together-row-div');
+    const input = buyTogetherGetProductsAndQuantities(rowDiv);
+    console.log('[buyTogether] click add to cart, input:', input);
+
+    const success = input.length > 0 && await addOrCreateCheckout(input);
+    console.log('[buyTogether] success:', success);
+
     if (success) {
-        // showAlert("Produtos adicionado ao carrinho!");
         await loadMiniCart();
         openOffcanvas("#minicart-offcanvas")
     }
@@ -98,10 +112,18 @@ async function buyTogetherAddToCartClick(element) {
  * @param {HTMLInputElement} element - The button originating the operation, for context.
  */
 async function buyTogetherBuyClick(element) {
-    const success = await checkoutOperations(element, 'buy-together-row-div');
+    const input = buyTogetherGetProductsAndQuantities(element.closest('.buy-together-row-div'));
+    const success = input.length > 0 && await addOrCreateCheckout(input);
     if (success && checkoutUrl != "") {
         window.location = checkoutUrl;
     }
+}
+
+async function buyTogetherSelectionOnChange(element) {
+    const rowDiv = element.closest('.buy-together-row-div');
+    buyTogetherSyncSelectionState(rowDiv);
+    await buyTogetherCalculatePrices(rowDiv);
+    buyTogetherSetButtonsEnabledByAvailability(rowDiv);
 }
 
 /**
@@ -122,7 +144,7 @@ async function buyTogetherQuantityButtonAdd(element) {
 
     const rowDiv = element.closest('.buy-together-row-div');
     await buyTogetherCalculatePrices(rowDiv);
-    setButtonsEnabledByAvailability(rowDiv);
+    buyTogetherSetButtonsEnabledByAvailability(rowDiv);
 }
 
 /**
@@ -136,14 +158,14 @@ async function buyTogetherQuantityButtonRemove(element) {
     const value = +input.value - 1
 
     if (value < min) {
-        input.value = max
+        input.value = min
     } else {
         input.value = value
     }
 
     const rowDiv = element.closest('.buy-together-row-div');
     await buyTogetherCalculatePrices(rowDiv);
-    setButtonsEnabledByAvailability(rowDiv);
+    buyTogetherSetButtonsEnabledByAvailability(rowDiv);
 }
 
 /**
@@ -152,18 +174,28 @@ async function buyTogetherQuantityButtonRemove(element) {
  */
 async function buyTogetherQuantityOnChange(element) {
     const max = +element.getAttribute("max")
+    const min = +element.getAttribute("min")
     const value = +element.value
 
     if (value > max) {
         element.value = max
     }
+    if (value < min) {
+        element.value = min
+    }
 
     const rowDiv = element.closest('.buy-together-row-div');
     await buyTogetherCalculatePrices(rowDiv);
-    setButtonsEnabledByAvailability(rowDiv);
+    buyTogetherSetButtonsEnabledByAvailability(rowDiv);
 }
 
 async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
+    if (!data || data.length === 0) {
+        if (priceEl) priceEl.innerHTML = "";
+        if (list_priceEl) list_priceEl.innerHTML = "";
+        return;
+    }
+
     const raw = await client.snippet.render(
         "buy_together_price_data.html",
         "SnippetQueries/calculate_prices.graphql",
@@ -193,8 +225,11 @@ async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
     }
 
 
-    const calculatePrices = json.find(entry => entry.key === "calculate_prices")?.value || [];
-    const price = calculatePrices.find(entry => entry.key === "price")?.value;
+    const calculatePrices = normalizeBuyTogetherPriceData(json);
+    const findValue = (key) => getBuyTogetherPriceValue(calculatePrices, key);
+    const price = Number(findValue("price") || 0);
+    const list_price = Number(findValue("listPrice") || findValue("list_price") || 0);
+    const discountFromPrice = Number(findValue("discountPercentage") || findValue("discount_percentage") || 0);
 
     const formattedPrice = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
@@ -202,24 +237,113 @@ async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
     }).format(price);
 
     if (priceEl) {
+        const unit = priceEl.getAttribute("data-unit");
+        const unitText = unit ? `<span class="unit">${unit}</span>` : "";
         priceEl.innerHTML = `<span class="value">${formattedPrice}</span> ${textPix}`;
     }
-
-    const list_calculatePrices = json.find(entry => entry.key === "calculate_prices")?.value || [];
-    const list_price = list_calculatePrices.find(entry => entry.key === "list_price")?.value;
 
     const list_formattedPrice = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL'
     }).format(list_price);
 
-    const discount = ((list_price - price) / list_price) * 100;
-    const discountPercentage = Math.round(discount);
     if (list_priceEl) {
-        list_priceEl.innerHTML = `<span class="value">${list_formattedPrice}</span><span class="badge">${discountPercentage}%</span>`;
+        const discount = list_price > price ? ((list_price - price) / list_price) * 100 : 0;
+        const discountPercentage = Math.round(discount);
+        list_priceEl.innerHTML = list_price > price
+            ? `<span class="value">${list_formattedPrice}</span>
+            <span class="badge">
+             <svg class="badgeArrow" xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
+             <path d="M0 5.83333L0.845833 5.01667L2.91667 7.0875V0L4.08333 0V7.0875L6.15417 5.01667L7 5.83333L3.5 9.33333L0 5.83333Z" fill="white"/>
+             </svg> ${discountPercentage}% OFF
+            </span>`
+            : "";
     }
 
     return
+}
+
+function buyTogetherGetProductsAndQuantities(rowDiv) {
+    const input = [];
+    if (!rowDiv) return input;
+
+    const products = rowDiv.querySelectorAll('.product-buy-together-div');
+    console.log('[buyTogether] products encontrados:', products.length, products);
+
+    products.forEach(productDiv => {
+        const selection = productDiv.querySelector('.buy-together-product-selected');
+        if (selection && !selection.checked) return;
+        pushProductInput(productDiv, input);
+    });
+
+    console.log('[buyTogether] input final:', input);
+    return input;
+}
+
+function normalizeBuyTogetherPriceData(json) {
+    if (Array.isArray(json)) {
+        const entry = json.find(item => item.key === "calculate_prices" || item.key === "calculatePrices");
+        return entry?.value || json;
+    }
+
+    return json?.calculate_prices || json?.calculatePrices || json || {};
+}
+
+function getBuyTogetherPriceValue(data, key) {
+    const snakeKey = key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+
+    if (Array.isArray(data)) {
+        return data.find(entry => entry.key === key || entry.key === snakeKey)?.value;
+    }
+
+    return data?.[key] ?? data?.[snakeKey];
+}
+
+function buyTogetherGetProductQuantity(productDiv) {
+    const input = [];
+    if (productDiv) pushProductInput(productDiv, input);
+    return input;
+}
+
+function buyTogetherSyncSelectionState(rowDiv) {
+    rowDiv.querySelectorAll('.product-buy-together-div').forEach(productDiv => {
+        const selection = productDiv.querySelector('.buy-together-product-selected');
+        productDiv.classList.toggle('is-unselected', Boolean(selection && !selection.checked));
+    });
+}
+
+function buyTogetherValidateAvailability(rowDiv) {
+    if (!rowDiv) return false;
+
+    const selectedProducts = Array.from(rowDiv.querySelectorAll('.product-buy-together-div')).filter(productDiv => {
+        const selection = productDiv.querySelector('.buy-together-product-selected');
+        return !selection || selection.checked;
+    });
+
+    console.log('[buyTogether] selectedProducts:', selectedProducts.length);
+
+    const available = selectedProducts.length > 0 && selectedProducts.every(productDiv => {
+        const qty = buyTogetherGetProductQuantity(productDiv);
+        console.log('[buyTogether] quantity para produto:', productDiv.id, qty);
+        return qty.length > 0;
+    });
+
+    console.log('[buyTogether] available:', available);
+    return available;
+}
+
+function buyTogetherSetButtonsEnabledByAvailability(rowDiv) {
+    if (!rowDiv) return;
+
+    const available = buyTogetherValidateAvailability(rowDiv);
+    rowDiv.querySelectorAll('.add-to-cart-button, .buy-button').forEach(button => {
+        button.disabled = !available;
+        if (available) {
+            button.removeAttribute('disabled');
+        } else {
+            button.setAttribute('disabled', 'disabled');
+        }
+    });
 }
 
 /**
@@ -227,22 +351,20 @@ async function getPricesBuyTogether(data, priceEl, list_priceEl, textPix = "") {
  * @param {HTMLDivElement} rowDiv - The button originating the operation, for context.
  */
 async function buyTogetherCalculatePrices(rowDiv) {
-    const input = [];
-
-    pushProductInput(rowDiv, input);
+    const input = buyTogetherGetProductsAndQuantities(rowDiv);
 
     
     const priceDiv = rowDiv.querySelector('[id^="buy-together-price-"]');
-    const price1 = rowDiv.querySelector('.product-buy-together-div-1 .buy-together__price');
-    const price2 = rowDiv.querySelector('.product-buy-together-div-2 .buy-together__price');
+    const products = rowDiv.querySelectorAll('.product-buy-together-div');
+    const pricePromises = Array.from(products).map(product => {
+        const price = product.querySelector('.buy-together__price');
+        const listPrice = product.querySelector('.buy-together__list_price');
+        return getPricesBuyTogether(buyTogetherGetProductQuantity(product), price, listPrice, );
+    });
     
-    const list_price1 = rowDiv.querySelector('.product-buy-together-div-1 .buy-together__list_price');
-    const list_price2 = rowDiv.querySelector('.product-buy-together-div-2 .buy-together__list_price');
-    
-    Promise.all([
-        await getPricesBuyTogether(input, priceDiv, null, 'à vista no PIX'),
-        await getPricesBuyTogether([input[0]], price1, list_price1, 'no pix'),
-        await getPricesBuyTogether([input[1]], price2, list_price2, 'no pix'),
+    await Promise.all([
+        getPricesBuyTogether(input, priceDiv, null, 'à vista no PIX'),
+        ...pricePromises,
     ])
 }
 

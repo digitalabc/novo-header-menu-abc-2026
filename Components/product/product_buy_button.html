@@ -1,4 +1,7 @@
-<button type="button" class="buy-button" value="{{ btn_value }}" onclick="{{ buy_click }}" {{~ if disabled ~}} disabled {{~ end ~}}>
+{{~
+  is_disabled = disabled == true || disabled == "true" || disabled == "disabled"
+~}}
+<button type="button" class="buy-button" value="{{ btn_value }}" onclick="{{ buy_click }}" {{~ if is_disabled ~}} disabled {{~ end ~}}>
   {{ buy_text }}
 </button>
 {{ if floating }}
@@ -27,7 +30,7 @@
   </a>
 {{~ else ~}}
   {{~## retirado a classe secondary-button para sempre mostrar o botao do adicionar ao carrinho. Regra de negocio referente a retire em loja esta na FreteRapido ##~}}
-  <button type="button" class="add-to-cart-button" value="{{ btn_value }}" onclick="{{ add_to_cart_click }}" {{~ if disabled ~}} disabled {{~ end ~}}>
+  <button type="button" class="add-to-cart-button" value="{{ btn_value }}" onclick="{{ add_to_cart_click }}" {{~ if is_disabled ~}} disabled {{~ end ~}}>
     {{~ if add_to_cart_click == spot_add_to_cart_click ~}}
       <svg xmlns="http://www.w3.org/2000/svg" width="20.48" height="18" viewBox="0 0 20.48 18">
         <g id="Group_3564" data-name="Group 3564" transform="translate(0 0)">

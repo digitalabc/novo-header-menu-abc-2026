@@ -1025,6 +1025,14 @@
       {
         "name": "product",
         "required": true
+      },
+      {
+        "name": "is_main",
+        "required": false
+      },
+      {
+        "name": "selectable",
+        "required": false
       }
     ],
     "inheritVariables": false,

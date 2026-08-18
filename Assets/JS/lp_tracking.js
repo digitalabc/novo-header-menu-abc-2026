@@ -6,6 +6,7 @@
     "/chance-unica": { name: "Super Chance Única" },
     "/lancamentos-2026": { name: "Lançamentos 2026" },
     "/ofertas-mensais": { name: "Ofertas Mensais" },
+    "/cada-ambiente-a-melhor-escolha": { name: "Cada Ambiente, a Melhor Escolha" },
   };
 
   function getLpContext() {
@@ -218,7 +219,7 @@
 
   // ── Countdown expiry tracking ────────────────────────────────────
   function initCountdownExpiryTracking(ctx) {
-    var countdownRoot = document.getElementById("cronometro");
+    var countdownRoot = document.getElementById("cronometro") || document.querySelector("[data-sticky-campaign-countdown]");
     if (!countdownRoot) return;
 
     var rawDate = countdownRoot.getAttribute("data-promotion");
@@ -241,7 +242,7 @@
     var ctx = getLpContext();
     if (!ctx) return;
 
-    var container = document.querySelector(".semana-do-consumidor");
+    var container = document.querySelector(".lp-ofertas-mensais, .semana-do-consumidor");
     if (!container) return;
 
     // Page view

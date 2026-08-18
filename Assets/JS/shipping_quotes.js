@@ -178,6 +178,31 @@ function updatePickupStoreStatus(card) {
 
   if (!statusEl || !statusLabelEl || !statusNoteEl) return;
 
+  const hasOpeningHours = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ].some((dayKey) => (card.dataset[dayKey] || "").trim());
+
+  if (!hasOpeningHours) {
+    statusEl.hidden = true;
+    statusEl.style.display = "none";
+    statusNoteEl.hidden = true;
+    statusNoteEl.style.display = "none";
+    if (hoursValueEl) hoursValueEl.textContent = "Horário não informado";
+    if (hoursEl) hoursEl.hidden = false;
+    return;
+  }
+
+  statusEl.hidden = false;
+  statusEl.style.removeProperty("display");
+  statusNoteEl.hidden = false;
+  statusNoteEl.style.removeProperty("display");
+
   const currentTime = new Date();
   const currentDay = currentTime.getDay();
   const currentHour = currentTime.getHours();
@@ -245,10 +270,37 @@ function updatePickupStoreStatus(card) {
   }
 }
 
+function formatPickupDisplayName(displayName) {
+  const lowercaseWords = new Set(["da", "das", "de", "do", "dos", "e", "em"]);
+  const preservedAcronyms = new Set(["abc", "br", "mg"]);
+  const romanNumeralPattern = /^(?=[ivxlcdm]+$)m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})$/i;
+  let wordIndex = 0;
+
+  return String(displayName || "")
+    .trim()
+    .toLocaleLowerCase("pt-BR")
+    .replace(/[A-Za-zÀ-ÖØ-öø-ÿ]+/g, (word) => {
+      const isFirstWord = wordIndex === 0;
+      wordIndex += 1;
+
+      if (romanNumeralPattern.test(word) || preservedAcronyms.has(word)) {
+        return word.toLocaleUpperCase("pt-BR");
+      }
+
+      if (!isFirstWord && lowercaseWords.has(word)) {
+        return word;
+      }
+
+      return word.charAt(0).toLocaleUpperCase("pt-BR") + word.slice(1);
+    });
+}
+
 function initializePickupStoreStatuses(container = document) {
   if (!container?.querySelectorAll) return;
 
   container.querySelectorAll(".product-shipping__pickup-option").forEach((card) => {
+    const titleEl = card.querySelector(".product-shipping__pickup-option-header strong");
+    if (titleEl) titleEl.textContent = formatPickupDisplayName(titleEl.textContent);
     updatePickupStoreStatus(card);
   });
 }

@@ -423,7 +423,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Amo Casa",
+          "name": "Amo Casa",
           "adress": "Av. Amazonas, 8121 - Gameleira, Belo Horizonte - MG, 30510-000",
           "phone": "",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/amo-casa",
@@ -436,7 +436,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Barreiro",
+          "name": "Barreiro",
           "adress": "Avenida Waldyr Soeiro Emrich 2318, Loja 12 Pav 3 - Milionários (Barreiro) Belo Horizonte - MG, 30.620-000",
           "phone": "(31) 98423-4111",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/barreiro",
@@ -449,7 +449,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Castelo",
+          "name": "Castelo",
           "adress": "Av. Pres. Tancredo Neves, 4.510 - Paquetá,Belo Horizonte - MG, 31330-472",
           "phone": "(31) 2342-0730",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/castelo",
@@ -462,7 +462,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Cristiano Machado",
+          "name": "Cristiano Machado",
           "adress": "Av. Cristiano Machado, 3411 - 72/73 - Ipiranga, Belo Horizonte - MG, 31160-413",
           "phone": "(31) 3582-8666",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/cidade-nova",
@@ -475,7 +475,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Nossa Senhora do Carmo",
+          "name": "Nossa Senhora do Carmo",
           "adress": "Av. Nossa Sra. do Carmo, 2800 - Santa Lúcia, Belo Horizonte - MG, 30320-000",
           "phone": "(31) 3656-0000",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/nossa-senhora-do-carmo",
@@ -488,7 +488,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Pedro II",
+          "name": "Pedro II",
           "adress": "Av. Dom Pedro II, 1275, Carlos Prates Belo Horizonte, MG, 30710-010",
           "phone": "(31) 3047-8878",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/pedro-ii",
@@ -501,7 +501,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Santa Branca",
+          "name": "Santa Branca",
           "adress": "Rua Dr. Álvaro Camargos, 1803, Santa Branca - Belo Horizonte - MG, 31565-413",
           "phone": "(31) 2537-3993",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/belo-horizonte/venda-nova",
@@ -539,7 +539,7 @@
       "state": "Minas Gerais",
       "stores": [
         {
-          "name": "ABC da Construção Betim",
+          "name": "Betim",
           "adress": "Av. Edmeia Matos Lazzarotti, 3289 Angola, Betim - MG, 32604-155",
           "phone": "(31) 3787-3146",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/betim/angola",
@@ -909,25 +909,6 @@
       ]
     },
     {
-      "name": "Coronel Fabriciano",
-      "state": "Minas Gerais",
-      "stores": [
-        {
-          "name": "Giovanini",
-          "adress": "Av. Gov. José de Magalhães Pinto, 85 - Loja 02 - Giovanini, Coronel Fabriciano - MG, 35170-096",
-          "phone": "(31) 3367-9800",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/coronel-fabriciano/giovanini",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
       "name": "Coronel Murta",
       "state": "Minas Gerais",
       "stores": [
@@ -1008,7 +989,7 @@
       "state": "Minas Gerais",
       "stores": [
         {
-          "name": "ABC da Construção Getúlio Vargas",
+          "name": "Getúlio Vargas",
           "adress": "Av. Getúlio Vargas, 120 - Centro, Divinópolis - MG, 35500-024",
           "phone": "(37) 3512-1308",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/divinopolis/21-de-abril",
@@ -1021,7 +1002,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção R. Goiás",
+          "name": "R. Goiás",
           "adress": "R. Goiás, 1596 - Centro, Divinópolis - MG, 35500-617",
           "phone": "(37) 3016-2802",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/divinopolis/goias",
@@ -1034,7 +1015,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção R. Goiás",
+          "name": "R. Goiás",
           "adress": "R. Goiás, 1044 - Centro, Divinópolis - MG, 35500-617",
           "phone": "",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/divinopolis/centro",
@@ -1415,7 +1396,7 @@
       "stores": [
         {
           "name": "Centro",
-          "adress": "Av. Cel. Moacir José da Silva, 10 - Centro, Jaíba - MG, 39508-000",
+          "adress": "Av. João Teixeira Filho, 86 - Centro, Jaíba - MG, 39508-000",
           "phone": "(38) 3860-0660",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/jaiba/centro",
           "monday": "8:00 às 18:00",
@@ -1528,7 +1509,7 @@
       "state": "Minas Gerais",
       "stores": [
         {
-          "name": "ABC da Construção Bom Clima",
+          "name": "Bom Clima",
           "adress": "R. Paracatu, 705 - Santa Terezinha, Juiz de Fora - MG, 36046-040",
           "phone": "(32) 3223-5622",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/bom-clima",
@@ -1541,7 +1522,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Costa Carvalho",
+          "name": "Costa Carvalho",
           "adress": "Av. Brasil, 1.100 - Costa Carvalho, Juiz de Fora - MG, 36070-000",
           "phone": "(32) 3239-2577",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/costa-carvalho",
@@ -1554,7 +1535,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Jóquei Clube",
+          "name": "Jóquei Clube",
           "adress": "Av. Doardino Longo, 669 - Jóquei Clube, Juiz de Fora - MG, 36085-050",
           "phone": "(32) 3223-5861",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/joquei-clube",
@@ -1567,7 +1548,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Matriz",
+          "name": "Matriz",
           "adress": "Av. Francisco Bernardino, 115 - Centro, Juiz de Fora - MG, 36013-100",
           "phone": "(32) 2102-2553",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/matriz",
@@ -1580,7 +1561,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Nova Era",
+          "name": "Nova Era",
           "adress": "Av. Presidente Juscelino Kubitschek, 5301/5321 - Nova Era, Juiz de Fora - MG, 36087-000",
           "phone": "(32) 3214-6686",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/nova-era",
@@ -1593,7 +1574,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção São Pedro",
+          "name": "São Pedro",
           "adress": "Rua José Lourenço, 710 - São Pedro, Juiz de Fora - MG, 36036-230",
           "phone": "(32) 3233-1908",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/sao-pedro",
@@ -1606,7 +1587,7 @@
           "sunday": "8:00 às 18:00"
         },
         {
-          "name": "ABC da Construção Spazio",
+          "name": "Spazio",
           "adress": "Ladeira Alexandre Leonel, 111 - Cascatinha, Juiz de Fora - MG, 36033-240",
           "phone": "(32) 3231-2113",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/juiz-de-fora/spazio",
@@ -2081,7 +2062,7 @@
       "state": "Minas Gerais",
       "stores": [
         {
-          "name": "ABC da Construção Alphaville - Lagoa dos Ingleses",
+          "name": "Alphaville - Lagoa dos Ingleses",
           "adress": "Av. Picadilly, 55 - Alphaville - Lagoa dos Ingleses, Nova Lima - MG, 34018-004",
           "phone": "(31) 99646-1637",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/alphaville-lagoa-dos-ingleses",
@@ -2094,8 +2075,8 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Chácara Bom Retiro",
-          "adress": "Rod. José Francisco da Silva, 490 - Chácara Bom Retiro, Nova Lima - MG, 34002-000",
+          "name": "Cascalho",
+          "adress": "Av. José Bernardo de Barros, 1337 - Cascalho, Nova Lima - MG, 34000-000",
           "phone": "(31) 99062-3143",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/chacara-bom-retiro",
           "monday": "8:00 às 18:00",
@@ -2107,7 +2088,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Jardim Canadá",
+          "name": "Jardim Canadá",
           "adress": "Av. Canadá, 63 - Jardim Canada, Nova Lima - MG, 34007-654",
           "phone": "(31) 3340-3812",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/nova-lima/jardim-canada",
@@ -2680,14 +2661,14 @@
         {
           "name": "Serra do Cipó",
           "adress": "MG-010, 1367 - Serra do Cipó, Santana do Riacho - MG, 35847-000",
-          "phone": "",
+          "phone": "(31) 98292-2132",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/minas-gerais/santana-do-riacho/serra-do-cipo",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3337,7 +3318,7 @@
       "state": "São Paulo",
       "stores": [
         {
-          "name": "ABC da Construção Jardim Atibaia",
+          "name": "Jardim Atibaia",
           "adress": "Av. Atibaia, 105 - Atibaia Jardim, Atibaia - SP, 12942-770",
           "phone": "(11) 3402-3951",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/atibaia/jardim-paulista",
@@ -3350,9 +3331,9 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Jardim Brasil",
+          "name": "Jardim Brasil",
           "adress": "R. Alfredo André, 515 - Jardim Brasil, Atibaia - SP, 12940-130",
-          "phone": "(11) 91025-3047",
+          "phone": "(11) 98977-5579",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/atibaia/jardim-brasil",
           "monday": "07:45 às 17:45",
           "tuesday": "07:45 às 17:45",
@@ -3360,25 +3341,6 @@
           "thursday": "07:45 às 17:45",
           "friday": "07:45 às 17:45",
           "saturday": "08:00 às 12:00",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
-      "name": "Bariri",
-      "state": "São Paulo",
-      "stores": [
-        {
-          "name": "Vila São José",
-          "adress": "Av. Amazonas, 480 - Vila São José, Bariri - SP, 17257-062",
-          "phone": "(14) 98127-6991",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/bariri/vila-sao-jose",
-          "monday": "8:00 às 18:00",
-          "tuesday": "8:00 às 18:00",
-          "wednesday": "8:00 às 18:00",
-          "thursday": "8:00 às 18:00",
-          "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -3466,33 +3428,14 @@
         {
           "name": "Portal Ville Azaleia",
           "adress": "R. Zélia de Lima Rosa, 1208 - Portal Ville Azaleia, Boituva - SP, 18552-320",
-          "phone": "",
+          "phone": "(15) 99871-5260",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/boituva/portal-azaleia",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
-          "sunday": "Fechado"
-        }
-      ]
-    },
-    {
-      "name": "Botucatu",
-      "state": "São Paulo",
-      "stores": [
-        {
-          "name": "Vila Padovan",
-          "adress": "R. Visc. do Rio Branco, 1267 - Vila Padovan, Botucatu - SP, 18607-740",
-          "phone": "(14) 3815-8700",
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/botucatu/vila-padovan",
           "monday": "8:00 às 18:00",
           "tuesday": "8:00 às 18:00",
           "wednesday": "8:00 às 18:00",
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
-          "saturday": "8:00 às 13:00",
+          "saturday": "8:30 às 18:00",
           "sunday": "Fechado"
         }
       ]
@@ -3743,7 +3686,7 @@
       "state": "São Paulo",
       "stores": [
         {
-          "name": "ABC da Construção Jardim California 1",
+          "name": "Jardim California 1",
           "adress": "Av. Getúlio Dorneles Vargas, 1600 - Jardim California, Jacareí - SP, 12305-000",
           "phone": "(12) 3951-8969",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/jacarei/jardim-california-1",
@@ -3756,7 +3699,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Jardim Califórnia 2",
+          "name": "Jardim Califórnia 2",
           "adress": "Av. Getúlio Dorneles Vargas, 2451 - Jardim California, Jacareí - SP, 12305-010",
           "phone": "(12) 3951-8969",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/sao-paulo/jacarei/jardim-california-2",
@@ -4885,7 +4828,7 @@
       "state": "Rio de Janeiro",
       "stores": [
         {
-          "name": "ABC da Construção Papucaia",
+          "name": "Papucaia",
           "adress": "RJ-116, Km 20 - 601 - Papucaia Cachoeiras de Macacu - RJ, 28691-200",
           "phone": "(21) 99532-2762",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/cachoeiras-de-macacu/papucaia",
@@ -5139,7 +5082,7 @@
       "state": "Rio de Janeiro",
       "stores": [
         {
-          "name": "ABC da Construção Itaipava",
+          "name": "Itaipava",
           "adress": "Estr. União e Indústria, 9785 - Itaipava Petrópolis - RJ, 25730-736",
           "phone": "(24) 2244-7498",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/petropolis/itaipava",
@@ -5152,7 +5095,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Centro",
+          "name": "Centro",
           "adress": "Rua Raul de Leoni, 168 - Centro Petrópolis - RJ, 25730-736",
           "phone": "(24) 2235-6595",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/petropolis/centro",
@@ -5228,7 +5171,7 @@
       "state": "Rio de Janeiro",
       "stores": [
         {
-          "name": "ABC da Construção Barra da Tijuca",
+          "name": "Barra da Tijuca",
           "adress": "Condomínio Barra Express - Av. Ayrton Senna, 3383 - Loja 102 - Barra da Tijuca Rio de Janeiro - RJ, 22775-004",
           "phone": "(21) 3268-7665",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/barra-da-tijuca",
@@ -5241,20 +5184,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Campo Grande",
-          "adress": "Estrada do Monteiro, 549 - Campo Grande Rio de Janeiro - RJ, 23045-831",
-          "phone": "(21) 3269-1179" ,
-          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/campo-grande",
-          "monday": "9:00 às 18:00",
-          "tuesday": "9:00 às 18:00",
-          "wednesday": "9:00 às 18:00",
-          "thursday": "9:00 às 18:00",
-          "friday": "9:00 às 18:00",
-          "saturday": "9:00 às 13:00",
-          "sunday": "Fechado"
-        },
-        {
-          "name": "ABC da Construção Centro",
+          "name": "Centro",
           "adress": "R. Frei Caneca, 77 - Centro Rio de Janeiro - RJ, 20211-030",
           "phone": "(21) 2252-2112",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/centro",
@@ -5267,7 +5197,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Copacabana",
+          "name": "Copacabana",
           "adress": "R. Barata Ribeiro, 70 - Copacabana Rio de Janeiro - RJ, 22011-002",
           "phone": "(21) 3496-8008",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/copacabana",
@@ -5280,7 +5210,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Freguesia",
+          "name": "Freguesia",
           "adress": "Rua Edgard Werneck, 755 - Freguesia (Jacarepaguá), Rio de Janeiro - RJ, 22763-197",
           "phone": "(21) 3342-7551",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/freguesia",
@@ -5293,7 +5223,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Ilha do Governador",
+          "name": "Ilha do Governador",
           "adress": "Ilha do Governador, Estrada do Galeão, 1290 - Jardim Carioca Rio de Janeiro - RJ, 21931-522",
           "phone": "(21) 3393-0348",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/ilha-do-governador",
@@ -5306,7 +5236,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Ipanema",
+          "name": "Ipanema",
           "adress": "R. Farme de Amoedo, 122 - Ipanema Rio de Janeiro - RJ, 22420-020",
           "phone": "(21) 3268-1796",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/ipanema",
@@ -5319,7 +5249,7 @@
           "sunday": "Fechado"
         },
         {
-          "name": "ABC da Construção Recreio dos Bandeirantes",
+          "name": "Recreio dos Bandeirantes",
           "adress": "Av. das Américas, 16579 - Recreio dos Bandeirantes Rio de Janeiro - RJ, 22790-701",
           "phone": "(21) 3496-4401",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/rio-de-janeiro/rio-de-janeiro/recreio-dos-bandeirantes",
@@ -5569,6 +5499,25 @@
           "wednesday": "9:00 às 18:00",
           "thursday": "9:00 às 18:00",
           "friday": "9:00 às 18:00",
+          "saturday": "9:00 às 13:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
+      "name": "União da Vitória",
+      "state": "Paraná",
+      "stores": [
+        {
+          "name": "Centro",
+          "adress": "R. Carlos Cavalcante, 5 - Sala 1 - Centro, União da Vitória - PR, 84600-130",
+          "phone": "(42) 3529-0512",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/parana/uniao-da-vitoria/centro",
+          "monday": "9:00 às 18:30",
+          "tuesday": "9:00 às 18:30",
+          "wednesday": "9:00 às 18:30",
+          "thursday": "9:00 às 18:30",
+          "friday": "9:00 às 18:30",
           "saturday": "9:00 às 13:00",
           "sunday": "Fechado"
         }
@@ -6046,6 +5995,25 @@
       ]
     },
     {
+      "name": "Cristalina",
+      "state": "Goiás",
+      "stores": [
+        {
+          "name": "Santa Rita",
+          "adress": "R. Goiás, 0 - Quadra D, Lote 17 A - Setor Centro, Cristalina - GO, 73850-000",
+          "phone": "(61) 99625-7960",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/cristalina/centro",
+          "monday": "9:00 às 18:00",
+          "tuesday": "9:00 às 18:00",
+          "wednesday": "9:00 às 18:00",
+          "thursday": "9:00 às 18:00",
+          "friday": "9:00 às 18:00",
+          "saturday": "8:00 às 12:00",
+          "sunday": "Fechado"
+        }
+      ]
+    },
+    {
       "name": "Formosa",
       "state": "Goiás",
       "stores": [
@@ -6135,14 +6103,14 @@
         {
           "name": "Vila Santa Izabel",
           "adress": "Rua 16, 158 - Quadra 11 - Lote 01 A - Vila Santa Izabel, Mineiros - GO, 75833-103",
-          "phone": "",
+          "phone": "(64) 3162-0001",
           "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/goias/mineiros/vila-santa-izabel",
-          "monday": "",
-          "tuesday": "",
-          "wednesday": "",
-          "thursday": "",
-          "friday": "",
-          "saturday": "",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]
@@ -6181,6 +6149,19 @@
           "thursday": "8:00 às 18:00",
           "friday": "8:00 às 18:00",
           "saturday": "9:00 às 12:00",
+          "sunday": "Fechado"
+        },
+        {
+          "name": "Centro Sul",
+          "adress": "Av. Dom Bosco, 1404 - Centro Sul, Cuiabá - MT, 78020-050",
+          "phone": "(65) 2127-1705",
+          "details_link": "https://www.abcdaconstrucao.com.br/diretorio-de-lojas/mato-grosso-do-sul/cuiaba/centro",
+          "monday": "8:00 às 18:00",
+          "tuesday": "8:00 às 18:00",
+          "wednesday": "8:00 às 18:00",
+          "thursday": "8:00 às 18:00",
+          "friday": "8:00 às 18:00",
+          "saturday": "8:00 às 12:00",
           "sunday": "Fechado"
         }
       ]

@@ -1,4 +1,6 @@
 .home
+  --home-info-bar-sticky-offset: 0px;
+
   section
     padding-bottom: 0;
 
@@ -14,10 +16,263 @@
 
   .fullbanner
     padding-bottom: 0 !important;
+    margin-bottom: 0;
+
+    .swiper-slide
+      a
+        display: block;
+        line-height: 0;
+
+      img
+        display: block;
+
+  .home-info-bar
+    --home-info-bar-motion-duration: 4.8s;
+    margin-top: -1px;
     margin-bottom: 18px;
+    padding-bottom: 0 !important;
+    position: sticky;
+    top: var(--home-info-bar-sticky-offset);
+    z-index: 998;
+    background: #e30613;
+    overflow: hidden;
+    transition: box-shadow 180ms ease, transform 180ms ease;
 
     @media mobile
       margin-bottom: 14px;
+
+  &.home-info-bar-is-sticky
+    .home-info-bar
+      box-shadow: 0 10px 22px rgba(13, 53, 71, 0.18);
+
+  .home-info-bar__container
+    position: relative;
+
+  .home-info-bar__rotator
+    --home-info-bar-item-height: 36px;
+    position: relative;
+    height: var(--home-info-bar-item-height);
+    overflow: hidden;
+
+  .home-info-bar__track
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    will-change: transform;
+
+  .home-info-bar__rotator--static .home-info-bar__track
+    transition: none !important;
+
+  .home-info-bar__item
+    position: relative;
+    width: 100%;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    overflow: hidden;
+
+  .home-info-bar__content
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    width: fit-content;
+    max-width: min(100%, 560px);
+    min-height: 100%;
+    padding: 0 24px;
+    overflow: hidden;
+
+  .home-info-bar__headline
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.15;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+    will-change: transform;
+    transform: translateZ(0) scale(1);
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+    animation: home-info-bar-copy-shift 1.85s cubic-bezier(0.37, 0, 0.22, 1) infinite alternate;
+
+  .home-info-bar__motion
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+
+  .home-info-bar__truck-track
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 18px;
+    overflow: hidden;
+    transform: translateY(-50%);
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.78) 7%, #000 14%, #000 84%, rgba(0, 0, 0, 0.72) 92%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.78) 7%, #000 14%, #000 84%, rgba(0, 0, 0, 0.72) 92%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    &:before
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.32), rgba(212, 175, 55, 0));
+      transform: translateY(-50%);
+
+  .home-info-bar__truck-carriage
+    position: absolute;
+    inset: 0;
+    animation: home-info-bar-truck-run var(--home-info-bar-motion-duration) linear infinite, home-info-bar-truck-fade var(--home-info-bar-motion-duration) linear infinite;
+    will-change: transform;
+
+  .home-info-bar__truck
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 19px;
+    line-height: 1;
+    transform-origin: 50% 100%;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+    animation: home-info-bar-truck-bounce var(--home-info-bar-motion-duration) ease-in-out infinite;
+
+  @keyframes home-info-bar-copy-shift
+    0%
+      color: #FFFFFF;
+      transform: translateZ(0) scale(1);
+    55%
+      color: #FFFFFF;
+      transform: translateZ(0) scale(1.014);
+    100%
+      color: #FFFFFF;
+      transform: translateZ(0) scale(1.026);
+
+  @keyframes home-info-bar-truck-run
+    0%
+      transform: translate3d(-100%, 0, 0);
+    8%
+      transform: translate3d(-92%, 0, 0);
+    13%
+      transform: translate3d(-98%, 0, 0);
+    20%
+      transform: translate3d(-82%, 0, 0);
+    34%
+      transform: translate3d(-46%, 0, 0);
+    52%
+      transform: translate3d(2%, 0, 0);
+    68%
+      transform: translate3d(42%, 0, 0);
+    82%
+      transform: translate3d(74%, 0, 0);
+    92%
+      transform: translate3d(90%, 0, 0);
+    100%
+      transform: translate3d(100%, 0, 0);
+
+  @keyframes home-info-bar-truck-fade
+    0%
+      opacity: 0;
+    6%
+      opacity: 0.78;
+    12%
+      opacity: 1;
+    84%
+      opacity: 1;
+    90%
+      opacity: 0.88;
+    95%
+      opacity: 0.52;
+    98%
+      opacity: 0.22;
+    100%
+      opacity: 0;
+
+  @keyframes home-info-bar-truck-bounce
+    0%
+      transform: translate3d(0, 0, 0) scaleX(-1) scale(0.96);
+    7%
+      transform: translate3d(0, -3px, 0) scaleX(-1) scale(1);
+    13%
+      transform: translate3d(0, 0, 0) scaleX(-1) scale(0.98);
+    22%
+      transform: translate3d(0, -1px, 0) scaleX(-1) scale(1);
+    52%
+      transform: translate3d(0, 0, 0) scaleX(-1) scale(1);
+    82%
+      transform: translate3d(0, 0, 0) scaleX(-1) scale(0.99);
+    92%
+      transform: translate3d(0, 1px, 0) scaleX(-1) scale(0.98);
+    100%
+      transform: translate3d(0, 0, 0) scaleX(-1) scale(0.97);
+
+  @media (prefers-reduced-motion: reduce)
+    .home-info-bar__track
+      transition: none !important;
+
+    .home-info-bar__headline
+      color: #fff;
+      filter: none;
+      animation: none;
+
+    .home-info-bar__truck-carriage
+    .home-info-bar__truck
+      animation: none;
+
+  @media mobile
+    .fullbanner
+      margin-bottom: 0;
+
+    .fullbanner.mobile + .home-info-bar
+      margin-top: -3px;
+
+    .home-info-bar__rotator
+      --home-info-bar-item-height: 54px;
+
+    .home-info-bar__item
+      min-height: 54px;
+      padding: 0 16px;
+
+    .home-info-bar__content
+      padding: 0 18px;
+      max-width: 100%;
+
+    .home-info-bar
+      --home-info-bar-motion-duration: 4.1s;
+      margin-bottom: 12px;
+
+    .home-info-bar__headline
+      font-size: 14px;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      animation-duration: 1.55s;
+
+    .home-info-bar__truck-track
+      height: 16px;
+
+    .home-info-bar__truck
+      font-size: 17px;
+
+  @media desktop
+    .home-info-bar__item
+      padding-inline: 32px;
 
   h2
     margin-bottom: 18px;
@@ -32,11 +287,38 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
+    width: 100%;
+
+  .home-title__row
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
 
   .home-title__main
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    flex: 0 1 auto;
+    min-width: auto;
+
+  .home-title__meta
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+
+  .home-title__countdown
+    justify-content: flex-end;
+
+  .home-title__countdown .home-offers-banner__countdown-item
+    min-width: 38px;
+    min-height: 36px;
+    padding: 6px 8px;
+
+  .home-title__countdown .home-offers-banner__countdown-value
+    font-size: 18px;
 
   .home-title__sub
     font-size: 12px;
@@ -45,7 +327,7 @@
     font-weight: 400;
 
   .home-title__lightning
-    display: inline-block;
+    display: none;
     font-size: 1.5em;
     line-height: 1;
     transform-origin: 50% 70%;
@@ -66,10 +348,62 @@
     .home-title__lightning
       animation: none;
 
+  @media mobile
+    .home-title__row
+      gap: 4px;
+
+    .home-title__meta
+      gap: 4px;
+
+    .home-title__countdown
+      gap: 4px;
+
+    .home-title__countdown .home-offers-banner__countdown-item
+      min-width: 34px;
+      min-height: 34px;
+      padding: 4px 6px;
+
+    .home-title__countdown .home-offers-banner__countdown-value
+      font-size: 16px;
+
+  .subcategories,
+  .subTopo
+    width: 100%;
+    max-width: 100%;
+
+    .swiper-container
+      width: 100%;
+      max-width: 100%;
+
+  @media mobile
+    .subcategories .swiper-container,
+    .subTopo .swiper-container
+      overflow visible
+
+    .subcategories .swiper,
+    .subTopo .swiper
+      width auto
+      max-width none
+      margin 0 -15px
+      padding 0 15px
+      overflow visible
+      overflow-x auto
+      overflow-y visible
+
+  @media desktop
+    .subcategories .swiper[data-carrossel-arrasto="1"],
+    .subTopo .swiper[data-carrossel-arrasto="1"]
+      width: 100%;
+
+    .subcategories .swiper[data-carrossel-arrasto="1"] .swiper-wrapper,
+    .subTopo .swiper[data-carrossel-arrasto="1"] .swiper-wrapper
+      min-width: fit-content;
+
 
   .gray-bg
     margin-bottom: 20px;
     padding-top: 70px;
+    padding-bottom: 70px;
     background: #f0f3f5;
     background-position: bottom center;
     background-repeat: no-repeat;

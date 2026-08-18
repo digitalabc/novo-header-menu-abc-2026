@@ -57,6 +57,22 @@ function renderCountdownNode(node, countdownParts) {
   if (seconds) seconds.textContent = formatUnit(countdownParts.seconds);
 }
 
+function renderStickyCampaignCountdown(root, countdownParts) {
+  const hours = root.querySelector("[data-sticky-campaign-hours]");
+  const minutes = root.querySelector("[data-sticky-campaign-minutes]");
+  const seconds = root.querySelector("[data-sticky-campaign-seconds]");
+
+  if (!hours || !minutes || !seconds) {
+    return;
+  }
+
+  const totalHours = Math.floor(countdownParts.distance / 3600000);
+
+  hours.textContent = String(totalHours).padStart(2, "0");
+  minutes.textContent = formatUnit(countdownParts.minutes);
+  seconds.textContent = formatUnit(countdownParts.seconds);
+}
+
 function getStockBadgeState(stock, available) {
   const getStockProgress = function (value) {
     if (!available || value <= 0) {
@@ -191,7 +207,7 @@ function syncMobileStockBadgeLabels() {
 }
 
 function normalizeSavingsLabels() {
-  document.querySelectorAll(".semana-do-consumidor .spot-price .discount").forEach(function (discountNode) {
+  document.querySelectorAll(".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount").forEach(function (discountNode) {
     const valueNode = discountNode.querySelector(".discount__value");
 
     if (!valueNode) {
@@ -420,6 +436,57 @@ function startCountdown() {
   startTimer();
 }
 
+function startStickyCampaignCountdown() {
+  const stickyCountdownRoot = document.querySelector("[data-sticky-campaign-countdown]");
+
+  if (!stickyCountdownRoot) {
+    return;
+  }
+
+  const campaignTargetDate = resolveCountdownTarget(stickyCountdownRoot.getAttribute("data-promotion"));
+  let timerId = null;
+
+  const tick = function () {
+    const countdownParts = getCountdownParts(campaignTargetDate);
+
+    renderStickyCampaignCountdown(stickyCountdownRoot, countdownParts);
+
+    if (countdownParts.distance <= 0 && timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    }
+  };
+
+  const startTimer = function () {
+    if (timerId) {
+      return;
+    }
+
+    tick();
+    timerId = window.setInterval(tick, 1000);
+  };
+
+  const stopTimer = function () {
+    if (!timerId) {
+      return;
+    }
+
+    clearInterval(timerId);
+    timerId = null;
+  };
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      stopTimer();
+      return;
+    }
+
+    startTimer();
+  });
+
+  startTimer();
+}
+
 function initSwiperIfNeeded(selector, options) {
   const swiperElement = document.querySelector(`${selector} .swiper`);
 
@@ -598,6 +665,7 @@ function initAllShowcaseSwipers() {
     ".showcase-oferta-relampago__carousel",
     ".showcase-frete-gratis__carousel",
     ".showcase-melhores-ofertas__carousel",
+    ".showcase-cada-ambiente__carousel",
     ".showcase-metais__carousel",
     ".showcase-metais-sanitarios__carousel",
     ".showcase-produtos-deca__carousel",
@@ -658,6 +726,7 @@ document.addEventListener("DOMContentLoaded", function () {
   mountPromotionOverlays();
   initAllShowcaseSwipers();
   startCountdown();
+  startStickyCampaignCountdown();
 
   window.requestAnimationFrame(function () {
     normalizeSavingsLabels();

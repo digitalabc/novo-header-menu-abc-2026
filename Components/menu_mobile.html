@@ -80,3 +80,111 @@
     </div>
   </div>
 </aside>
+
+<script>
+  (function () {
+    if (window.__abcMenuOffcanvasFallbackReady) return;
+
+    window.__abcMenuOffcanvasFallbackReady = true;
+
+    var closeTimer = null;
+    var lastActivationAt = 0;
+
+    function closestElement(target, selector) {
+      var element = target && target.nodeType === 1 ? target : target && target.parentElement;
+      return element && element.closest ? element.closest(selector) : null;
+    }
+
+    function getMenuOffcanvas() {
+      return document.getElementById("menu-offcanvas");
+    }
+
+    function preventDefault(event) {
+      if (event && event.cancelable) event.preventDefault();
+    }
+
+    function openMenu(event) {
+      preventDefault(event);
+
+      var offcanvas = getMenuOffcanvas();
+      var body = document.body;
+      if (!offcanvas || !body) return;
+
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+
+      body.classList.add("ah-offcanvas-container");
+      offcanvas.style.display = "block";
+
+      var scheduleOpen = window.requestAnimationFrame || function (callback) {
+        return setTimeout(callback, 10);
+      };
+
+      scheduleOpen(function () {
+        offcanvas.classList.add("ah-offcanvas-open");
+      });
+    }
+
+    function closeMenu(event) {
+      preventDefault(event);
+
+      var offcanvas = getMenuOffcanvas();
+      if (!offcanvas) return;
+
+      offcanvas.classList.remove("ah-offcanvas-open");
+      document.body.classList.remove("ah-offcanvas-container");
+
+      closeTimer = setTimeout(function () {
+        if (!offcanvas.classList.contains("ah-offcanvas-open")) {
+          offcanvas.style.display = "none";
+        }
+        closeTimer = null;
+      }, 300);
+    }
+
+    function handleTrigger(event) {
+      var trigger = closestElement(event.target, '[ah-toggle="#menu-offcanvas"]');
+      if (!trigger) return;
+
+      if (event.type === "pointerup" && event.pointerType === "mouse") return;
+
+      var now = Date.now();
+      if (event.type === "click" && now - lastActivationAt < 600) {
+        preventDefault(event);
+        return;
+      }
+
+      lastActivationAt = now;
+      openMenu(event);
+      event.stopPropagation();
+    }
+
+    function handleClose(event) {
+      var offcanvas = getMenuOffcanvas();
+      if (!offcanvas) return;
+
+      var closeButton = closestElement(event.target, ".ah-close");
+      if (event.target === offcanvas || (closeButton && offcanvas.contains(closeButton))) {
+        if (Date.now() - lastActivationAt < 650) {
+          preventDefault(event);
+          event.stopPropagation();
+          return;
+        }
+
+        closeMenu(event);
+        event.stopPropagation();
+      }
+    }
+
+    if (window.PointerEvent) {
+      document.addEventListener("pointerup", handleTrigger, true);
+    } else {
+      document.addEventListener("touchend", handleTrigger, true);
+    }
+
+    document.addEventListener("click", handleTrigger, true);
+    document.addEventListener("click", handleClose, true);
+  })();
+</script>

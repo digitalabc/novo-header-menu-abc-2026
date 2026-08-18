@@ -11,19 +11,39 @@
     product_variant_id = ""
     product_stock = 0 
     product_product_name = product.product_name
+    unit_name = "cada"
+    discount_percentage = product.prices.discount_percentage ?? 0
+    attribute_unit = product.attributes | array.filter @(do; ret $0.name == 'Unidade' ;end) | array.first
 ~}}
+{{~ if attribute_unit ~}}
+    {{~ unit_name = attribute_unit.value | string.downcase ~}}
+{{~ end ~}}
 {{~ if product.attribute_selections.selected_variant ~}}
     {{~ product_variant_id = product.attribute_selections.selected_variant.product_variant_id ~}}
     {{~ product_available = product.attribute_selections.selected_variant.available ~}}
     {{~ product_stock = product.attribute_selections.selected_variant.stock ~}}
+    {{~ discount_percentage = product.attribute_selections.selected_variant.prices.discount_percentage ?? discount_percentage ~}}
 {{~ else if product.attribute_selections.selections.size == 0 ~}}
     {{~ product_variant_id = product.product_variant_id ~}}
     {{~ product_available = product.available ~}}
     {{~ product_stock = product.stock ~}}
 {{~ else ~}}
     {{~ product_variant_id = product.product_variant_id ~}}
+    {{~ product_available = product.available ~}}
+    {{~ product_stock = product.stock ~}}
 {{~ end ~}}
-<div  class="buy-together__info">
+<div class="product-view-div buy-together-product-view{{~ if is_main ~}} is-main{{~ end ~}}{{~ if selectable ~}} is-selectable{{~ end ~}}" data-product-id="{{ product_id }}">
+    <input type="hidden" class="product-available" value="{{~ if product_available ~}}true{{~ else ~}}false{{~ end ~}}">
+    {{~ if is_main ~}}
+        <span class="buy-together__main-label">ESTE ITEM</span>
+    {{~ end ~}}
+    {{~ if selectable ~}}
+        <label class="buy-together__select" aria-label="Selecionar produto complementar">
+            <input type="checkbox" class="buy-together-product-selected" checked onchange="buyTogetherSelectionOnChange(this)">
+            <span></span>
+        </label>
+    {{~ end ~}}
+<div class="buy-together__info">
     <div class="buy-together__image">
         {{ spot_image product: product }}
     </div>
@@ -32,7 +52,7 @@
             {{ product_product_name }}
         </div>
         <div class="buy-together__list_price"></div>
-        <div class="buy-together__price"></div>
+        <div class="buy-together__price" data-unit="{{ unit_name }}" data-discount-percentage="{{ discount_percentage }}"></div>
     </div>
 </div>
 {{~ attribute_selections = product.attribute_selections ~}}
@@ -62,3 +82,4 @@
         </button>
     </div>
 {{~ end ~}}
+</div>

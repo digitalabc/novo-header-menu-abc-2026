@@ -15,7 +15,9 @@
       <div class="cardWrapper">
           <div id="paymentCartao" data-gateway-cartao>
             <div class='card-wrapper'></div>
-            <form class="fake-form" onchange="formComplete(this)">
+            {{## Classe NAO pode conter "fake-form": o cartao.js do gateway (MercadoPago)
+                desabilita os inputs de cartao dentro de [class*="fake-form"] ##}}
+            <form class="wc-card-form" onchange="formComplete(this)">
               <h3 class="title">Cadastrar cartão de crédito</h3>
               <h4 class="requiredWarning">
                 <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">

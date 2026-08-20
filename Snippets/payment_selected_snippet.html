@@ -1,6 +1,12 @@
 {{ payment_method = data?.result?.selected_payment_method }}
 {{ if payment_method }}
-  {{ is_card = payment_method.html | string.contains "0000 0000 0000 0000" }}
+  {{~ # "0000 0000 0000 0000" identifica o gateway MercadoPago (placeholder do input de número do cartão)
+  # "data-gateway-cartao" identifica o gateway PagSeguro/Custom
+  # Ambos são checks por assinatura de HTML — não existe hoje um campo estrutural
+  # confiável na API (ex: um "type") que diferencie cartão de outros métodos.
+  # Ao adicionar um novo gateway de cartão, verificar a assinatura do HTML dele
+  # e incluir aqui. ~}}
+  {{ is_card = (payment_method.html | string.contains "data-gateway-cartao") || (payment_method.html | string.contains "0000 0000 0000 0000") }}
 
   <div class="wake-payment-data-options" data-gateway-pagamento="{{ payment_method.id }}" data-gateway-parcelas='1'>
     <div
@@ -15,8 +21,10 @@
       <div class="cardWrapper">
           <div id="paymentCartao" data-gateway-cartao>
             <div class='card-wrapper'></div>
-            {{## Classe NAO pode conter "fake-form": o cartao.js do gateway (MercadoPago)
-                desabilita os inputs de cartao dentro de [class*="fake-form"] ##}}
+            {{## Classe NÃO pode conter "fake-form": o cartao.js do gateway MercadoPago
+                desabilita/esconde ativamente qualquer elemento com classe contendo
+                "fake-form" (busca por [class*="fake-form"]) e os campos com
+                name em ['number','name','month','year','expiry','cvc'] dentro dele. ##}}
             <form class="wc-card-form" onchange="formComplete(this)">
               <h3 class="title">Cadastrar cartão de crédito</h3>
               <h4 class="requiredWarning">
@@ -27,7 +35,7 @@
               </h4>
               <div class="forminline" id="inputCardNumber">
                 <label>Número do cartão *</label>
-                <input type="tel" name="number" placeholder="Digite o número do cartão" required onblur="cardType(this)" data-card-number/>
+                <input type="tel" id="number" name="number" placeholder="Digite o número do cartão" required onblur="cardType(this)" data-card-number/>
               </div>
               <div class="formCol">
                 <div class="forminline">
@@ -36,11 +44,11 @@
                 </div>
                 <div class="forminline">
                   <label>CVV *</label>
-                  <input type="tel" name="cvc" required/>
+                  <input type="tel" id="cvc" name="cvc" required/>
                 </div>
               </div>
-              <input type="hidden" name="year" value="01/1954" />
-              <input type="hidden" name="month" value="01/1954" />
+              <input type="hidden" id="year" name="year" value="01/1954" />
+              <input type="hidden" id="month" name="month" value="01/1954" />
               <input type="hidden" name="expiry" value="01/1954" />
               <div class="forminline">
                 <label>
@@ -52,7 +60,7 @@
                 <label>
                   Nome do titular *
                 </label>
-                <input type="text" name="name"  placeholder="Digite o nome" required/>
+                <input type="text" id="name" name="name"  placeholder="Digite o nome" required/>
               </div>
               <div class="forminline">
                 <label>Parcelamento</label>
@@ -67,10 +75,6 @@
                 </select>
               </div>
             </form>
-            <div class="payment_html hidden">
-              {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
-              {{ payment_html }}
-            </div>
         </div>
           <div class="payment-buttons">
             <button class="checkout-back-button" onclick="backPaymentStep()">Voltar</button>
@@ -78,6 +82,18 @@
               Salvar e usar
             </button>
           </div>
+        </div>
+
+        <div class="payment_html hidden">
+          {{~ # payment_method.html do gateway fica fora de #paymentCartao para evitar
+          # aninhamento de [data-gateway-cartao] (o próprio HTML do gateway PagSeguro/Custom
+          # já traz esse atributo internamente). Mantido "hidden": com o form renomeado
+          # para wc-card-form, o cartao.js do MercadoPago não desabilita mais nossos
+          # campos, então o form nativo dele (aqui dentro) não precisa ficar visível —
+          # o campo usado pelo usuário volta a ser o wc-card-form acima, com os valores
+          # espelhados via updateInputValue() para estes campos nativos escondidos. ~}}
+          {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
+          {{ payment_html }}
         </div>
         
       {{ else}}

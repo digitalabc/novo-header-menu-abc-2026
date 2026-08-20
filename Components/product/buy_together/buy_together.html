@@ -1,17 +1,32 @@
 {{~ if product.buy_together ~}}
   {{~ if product.buy_together.size > 0 ~}}
-    <h2>Compre Junto</h2>
-    <div class="buy-together">
+    <div class="buy-together" aria-label="Combinações Sugeridas">
+      <h2>Combinações Sugeridas</h2>
       <div class="buy-together-content">
-        {{~ for bt_product in product.buy_together ~}}
-          <div class="container-buy-together-row">
-            <div id="buy-together-row-{{ product.product_id }}-{{ bt_product.product_id }}"
-                class="buy-together-row-div" 
-                style="display: none;"
-                buy-together-product-id = "{{ bt_product.product_id }}"       
-                page-product-id = "{{ product.product_id }}"></div>
+        <div class="container-buy-together-row">
+          <div id="buy-together-row-{{ product.product_id }}" class="buy-together-row-div">
+            <div class="buy-together-row-products">
+              <div class="product-buy-together-div product-buy-together-div-main">
+                {{ buy_together_product_view product: product is_main: true }}
+              </div>
+              {{~ for bt_product in product.buy_together ~}}
+                <div class="separator">
+                  <h3>+</h3>
+                </div>
+                <div id="buy-together-product-{{ product.product_id }}-{{ bt_product.product_id }}"
+                    class="product-buy-together-div product-buy-together-div-complementary"
+                    buy-together-product-id="{{ bt_product.product_id }}"></div>
+              {{~ end ~}}
+            </div>
+            <div class="buy-together__price buy-together__summary">
+              <div id="buy-together-price-{{ product.product_id }}" class="buy-together-value-total">
+              </div>
+              <div>
+                {{ product_buy_button add_to_cart_text: "ADICIONAR AO CARRINHO" buy_text: "Comprar Junto" add_to_cart_click: "buyTogetherAddToCartClick(this)" buy_click: "buyTogetherBuyClick(this)" }}
+              </div>
+            </div>
           </div>
-        {{~ end ~}}
+        </div>
       </div>
     </div>
   {{~ end ~}}

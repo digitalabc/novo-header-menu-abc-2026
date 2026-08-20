@@ -79,66 +79,149 @@
 
       <div class="product-shipping__pickup-options">
         {{~ for pickUp in pickup_quotes ~}}
-          {{~ storeName = pickUp.name | string.replace "RETIRE EM - " ""
+          {{~ storeName = pickUp.name | string.replace "RETIRE EM - " "" | string.replace "Retire em - " "" | string.replace "retire em - " ""
               storeParts = storeName | string.split "|"
               cityAndDistrict = storeParts[0]
               address = storeParts.size > 1 ? storeParts[1] : ""
               pickupLocationParts = cityAndDistrict | string.split ", "
+              hasStructuredLocation = pickupLocationParts.size > 1
               pickupCity = pickupLocationParts[0]
-              pickupStore = pickupLocationParts.size > 1 ? pickupLocationParts[1] : cityAndDistrict
+              pickupStore = hasStructuredLocation ? pickupLocationParts[1] : cityAndDistrict
+              pickupStoreWithoutOperationalPrefix = pickupStore | string.replace "F - " "" | string.replace "f - " ""
+              pickupCityWithoutSequence = pickupCity | regex.replace `\s+[0-9]+\s*$` ""
+              pickupStoreWithoutSequence = pickupStoreWithoutOperationalPrefix | regex.replace `\s+[0-9]+\s*$` ""
               pickupCityHandle = pickupCity | string.handleize
-              pickupStoreHandle = pickupStore | string.handleize
+              pickupStoreHandle = pickupStoreWithoutOperationalPrefix | string.handleize
+              pickupCityWithoutSequenceHandle = pickupCityWithoutSequence | string.handleize
+              pickupStoreWithoutSequenceHandle = pickupStoreWithoutSequence | string.handleize
+              hasSequenceSuffix = pickupCityHandle != pickupCityWithoutSequenceHandle || pickupStoreHandle != pickupStoreWithoutSequenceHandle
               matched_state = null
               matched_store = null
+              matchedBySequenceFallback = false
+              candidate_state = null
+              candidate_store = null
+              matchCount = 0
           ~}}
           {{~ for state in settings.cidades ~}}
-            {{~ if !matched_store && pickupCityHandle && (state.name | string.handleize) == pickupCityHandle ~}}
-              {{~ matched_state = state ~}}
-              {{~ for store in state.stores ~}}
-                {{~ storeNameHandle = store.name | string.handleize
-                    storeAddressHandle = store.adress | string.handleize
-                    storeDetailsHandle = store.details_link | string.handleize
+            {{~ stateHandle = state.name | string.handleize ~}}
+            {{~ for store in state.stores ~}}
+              {{~ storeNameHandle = store.name | string.handleize ~}}
+              {{~ cityMatches = !hasStructuredLocation || stateHandle == pickupCityHandle ~}}
+              {{~ if pickupStoreHandle && cityMatches && storeNameHandle == pickupStoreHandle ~}}
+                {{~ matchCount = matchCount + 1
+                    candidate_state = state
+                    candidate_store = store
                 ~}}
-                {{~ if storeNameHandle == pickupStoreHandle || (storeNameHandle | string.contains pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle) ~}}
-                  {{~ matched_store = store ~}}
-                  {{~ break ~}}
-                {{~ end ~}}
               {{~ end ~}}
             {{~ end ~}}
           {{~ end ~}}
-          {{~ if !matched_store ~}}
-            {{~ for state in settings.cidades ~}}
-            {{~ if !matched_store && pickupCityHandle ~}}
-              {{~ for store in state.stores ~}}
-                {{~ storeAddressHandle = store.adress | string.handleize
-                    storeDetailsHandle = store.details_link | string.handleize
-                ~}}
-                {{~ if ((storeDetailsHandle == pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle)) && (storeAddressHandle | string.contains pickupCityHandle) ~}}
-                  {{~ matched_state = state ~}}
-                  {{~ matched_store = store ~}}
-                  {{~ break ~}}
-                {{~ end ~}}
-              {{~ end ~}}
-              {{~ end ~}}
-            {{~ end ~}}
+          {{~ if matchCount == 1 ~}}
+            {{~ matched_state = candidate_state
+                matched_store = candidate_store
+            ~}}
           {{~ end ~}}
           {{~ if !matched_store ~}}
+            {{~ candidate_state = null
+                candidate_store = null
+                matchCount = 0
+            ~}}
             {{~ for state in settings.cidades ~}}
-              {{~ if !matched_store ~}}
-                {{~ stateHandle = state.name | string.handleize ~}}
-                {{~ for store in state.stores ~}}
-                  {{~ storeNameHandle = store.name | string.handleize
-                      storeAddressHandle = store.adress | string.handleize
-                      storeDetailsHandle = store.details_link | string.handleize
+              {{~ stateHandle = state.name | string.handleize
+                  cityMatches = !hasStructuredLocation || stateHandle == pickupCityHandle
+              ~}}
+              {{~ for store in state.stores ~}}
+                {{~ storeDetailsHandle = "" ~}}
+                {{~ if store.details_link != null && store.details_link != "" ~}}
+                  {{~ storeDetailsHandle = store.details_link | string.handleize ~}}
+                {{~ end ~}}
+                {{~ if pickupStoreHandle && cityMatches && storeDetailsHandle && (storeDetailsHandle | string.contains pickupStoreHandle) ~}}
+                  {{~ matchCount = matchCount + 1
+                      candidate_state = state
+                      candidate_store = store
                   ~}}
-                  {{~ if (storeNameHandle | string.contains pickupStoreHandle) || (storeDetailsHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupStoreHandle) || (storeAddressHandle | string.contains pickupCityHandle) || (stateHandle | string.contains pickupCityHandle) ~}}
-                    {{~ matched_state = state ~}}
-                    {{~ matched_store = store ~}}
-                    {{~ break ~}}
+                {{~ end ~}}
+              {{~ end ~}}
+            {{~ end ~}}
+            {{~ if matchCount == 1 ~}}
+              {{~ matched_state = candidate_state
+                  matched_store = candidate_store
+              ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+          {{~ if !matched_store && hasStructuredLocation ~}}
+            {{~ candidate_state = null
+                candidate_store = null
+                matchCount = 0
+            ~}}
+            {{~ for state in settings.cidades ~}}
+              {{~ stateHandle = state.name | string.handleize ~}}
+              {{~ if stateHandle == pickupCityHandle ~}}
+                {{~ for store in state.stores ~}}
+                  {{~ storeAddressHandle = store.adress | string.handleize ~}}
+                  {{~ if pickupStoreHandle && (storeAddressHandle | string.contains pickupStoreHandle) ~}}
+                    {{~ matchCount = matchCount + 1
+                        candidate_state = state
+                        candidate_store = store
+                    ~}}
                   {{~ end ~}}
                 {{~ end ~}}
               {{~ end ~}}
             {{~ end ~}}
+            {{~ if matchCount == 1 ~}}
+              {{~ matched_state = candidate_state
+                  matched_store = candidate_store
+              ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+          {{~ if !matched_store && hasSequenceSuffix ~}}
+            {{~ candidate_state = null
+                candidate_store = null
+                matchCount = 0
+            ~}}
+            {{~ for state in settings.cidades ~}}
+              {{~ stateHandle = state.name | string.handleize
+                  cityMatches = !hasStructuredLocation || stateHandle == pickupCityWithoutSequenceHandle
+              ~}}
+              {{~ for store in state.stores ~}}
+                {{~ storeNameHandle = store.name | string.handleize
+                    storeAddressHandle = store.adress | string.handleize
+                    storeDetailsHandle = ""
+                ~}}
+                {{~ if store.details_link != null && store.details_link != "" ~}}
+                  {{~ storeDetailsHandle = store.details_link | string.handleize ~}}
+                {{~ end ~}}
+                {{~ storeNameMatches = storeNameHandle == pickupStoreWithoutSequenceHandle
+                    storeDetailsMatches = storeDetailsHandle && (storeDetailsHandle | string.contains pickupStoreWithoutSequenceHandle)
+                    storeAddressMatches = hasStructuredLocation && (storeAddressHandle | string.contains pickupStoreWithoutSequenceHandle)
+                    storeMatches = storeNameMatches || storeDetailsMatches || storeAddressMatches
+                ~}}
+                {{~ if pickupStoreWithoutSequenceHandle && cityMatches && storeMatches ~}}
+                  {{~ matchCount = matchCount + 1
+                      candidate_state = state
+                      candidate_store = store
+                  ~}}
+                {{~ end ~}}
+              {{~ end ~}}
+            {{~ end ~}}
+            {{~ if matchCount == 1 ~}}
+              {{~ matched_state = candidate_state
+                  matched_store = candidate_store
+                  matchedBySequenceFallback = true
+              ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+          {{~ if hasStructuredLocation ~}}
+            {{~ if matchedBySequenceFallback ~}}
+              {{~ pickupDisplayName = pickupCityWithoutSequence + ", " + pickupStoreWithoutSequence ~}}
+            {{~ else ~}}
+              {{~ pickupDisplayName = cityAndDistrict ~}}
+            {{~ end ~}}
+          {{~ else if matched_state ~}}
+            {{~ pickupStoreDisplayName = matchedBySequenceFallback ? pickupStoreWithoutSequence : pickupStoreWithoutOperationalPrefix
+                pickupDisplayName = matched_state.name + ", " + pickupStoreDisplayName
+            ~}}
+          {{~ else ~}}
+            {{~ pickupDisplayName = cityAndDistrict ~}}
           {{~ end ~}}
           {{~ mondayHours = matched_store ? matched_store.monday : "" ~}}
           {{~ tuesdayHours = matched_store ? matched_store.tuesday : "" ~}}
@@ -164,7 +247,7 @@
             data-sunday="{{ sundayHours }}"
           >
             <div class="product-shipping__pickup-option-header">
-              <strong>{{ matched_state ? matched_state.name : pickupCity }}, {{ matched_store ? matched_store.name : pickupStore }}</strong>
+              <strong>{{ pickupDisplayName }}</strong>
               <small>Em até {{ pickUp.deadline }} dias úteis</small>
             </div>
             <div class="product-shipping__pickup-option-meta">

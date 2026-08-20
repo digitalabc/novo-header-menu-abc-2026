@@ -1,0 +1,8 @@
+{{ ##
+    Description: Re-renders the main buy together product card.
+    Params:
+        - Uses buy_together_spot.graphql
+    Usage:
+        await client.snippet.render("buy_together_main_spot_snippet.html", ...);
+## }}
+{{ buy_together_product_view product: data.product is_main: true }}

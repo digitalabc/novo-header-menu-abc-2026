@@ -1,0 +1,8 @@
+{{ ##
+    Description: Re-renders a selectable buy together complementary product card.
+    Params:
+        - Uses buy_together_spot.graphql
+    Usage:
+        await client.snippet.render("buy_together_selectable_spot_snippet.html", ...);
+## }}
+{{ buy_together_product_view product: data.product selectable: true }}

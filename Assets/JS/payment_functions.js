@@ -13,7 +13,12 @@ console.log("Window loaded:", document.readyState === "complete");
 })();
 
 async function setName(el, name) {
-  document.querySelector(el).name = name;
+  const element = document.querySelector(el);
+  if (!element) {
+    console.warn(`[setName] Elemento não encontrado para o seletor "${el}" (gateway atual provavelmente não é MercadoPago).`);
+    return;
+  }
+  element.name = name;
 }
 
 async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
@@ -223,7 +228,12 @@ async function nextCardScreen(paymentId) {
     `;
 
   document.getElementById("card-finish").classList.remove("hidden");
-  document.querySelector(".cardWrapper").style.display = "none";
+  const cardWrapperEl = document.querySelector(".cardWrapper");
+  if (cardWrapperEl) {
+    cardWrapperEl.style.display = "none";
+  } else {
+    console.warn('[nextCardScreen] .cardWrapper não encontrado no DOM no momento da chamada — possível re-renderização em andamento.');
+  }
   document.getElementById("paymentMethodSelected").innerHTML =
     htmlPaymentSelected;
 
@@ -435,33 +445,50 @@ const selectPaymentPushElement = async (checkoutId, paymentName) => {
 
 }
 
+let selectPaymentInProgress = false;
+
 const selectPayment = async (paymentId, paymentName) => {
-  const loading = document.getElementById('payment-loading');
-  loading.classList.remove('hidden');
-  loading.classList.add('flex');
+  // Guard contra chamadas duplicadas (ex: clique duplo, ou disparo repetido do
+  // evento) — sem isso, newSelectPaymentWhenRendering() pode rodar mais de uma
+  // vez para a mesma seleção, fazendo o script do gateway (ex: custom.js) ser
+  // carregado e registrar seu callback de validação duas vezes, o que corrompe
+  // o resultado de Fbits.Gateway.ExecuteValidateCallbacks().
+  if (selectPaymentInProgress) {
+    console.warn('[selectPayment] Chamada ignorada — já existe uma seleção de pagamento em andamento.');
+    return;
+  }
+  selectPaymentInProgress = true;
 
-  const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
-  wrappers.forEach((element) => element.innerHTML = '');
+  try {
+    const loading = document.getElementById('payment-loading');
+    loading.classList.remove('hidden');
+    loading.classList.add('flex');
 
-  const checkoutId = await client.cookie.get("carrinho-id");
+    const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
+    wrappers.forEach((element) => element.innerHTML = '');
 
-  const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
+    const checkoutId = await client.cookie.get("carrinho-id");
 
-  await selectPaymentPushElement(checkoutId, paymentName)
+    const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
 
-  const finishOrder = document.getElementById('finish-order');
+    await selectPaymentPushElement(checkoutId, paymentName)
 
-  finishOrder.style.display = 'flex';
+    const finishOrder = document.getElementById('finish-order');
 
-  document.getElementById('checkout-payment-options').style.display = 'none';
+    finishOrder.style.display = 'flex';
 
-  await renderSummary();
+    document.getElementById('checkout-payment-options').style.display = 'none';
 
-  if (result.errors) {
-    showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
-  } else {
-    loading.classList.add('hidden');
-    loading.classList.remove('flex');
+    await renderSummary();
+
+    if (result.errors) {
+      showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
+    } else {
+      loading.classList.add('hidden');
+      loading.classList.remove('flex');
+    }
+  } finally {
+    selectPaymentInProgress = false;
   }
 }
 
@@ -565,31 +592,58 @@ function formCpfMask(input) {
 }
 
 function updateInputValue(name, str) {
-  switch (name) {
-    case "number":
-      $('#form-pagar-mp [data-checkout="cardNumber"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="cardNumber"]').dispatchEvent(new Event('input'))
-      break;
-    case "expiryDate":
-      const data = str.split('/');
-      $('#form-pagar-mp [data-checkout="cardExpirationMonth"]').val(data[0]).trigger('change');
-      $('#form-pagar-mp [data-checkout="cardExpirationYear"]').val(data[1] ? data[1] : "").trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="cardExpirationMonth"]').dispatchEvent(new Event('input'))
-      document.querySelector('#form-pagar-mp [data-checkout="cardExpirationYear"]').dispatchEvent(new Event('input'))
-      break;
-    case "cvc":
-      $('#form-pagar-mp [data-checkout="securityCode"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="securityCode"]').dispatchEvent(new Event('input'))
-      break;
-    case "name":
-      $('#form-pagar-mp [data-checkout="cardholderName"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="cardholderName"]').dispatchEvent(new Event('input'))
-      break;
-    case "cpf":
-      $('#form-pagar-mp [data-checkout="docNumber"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="docNumber"]').dispatchEvent(new Event('input'))
-      break;
+  const targets = {
+    number: '[data-checkout="cardNumber"]',
+    cvc: '[data-checkout="securityCode"]',
+    name: '[data-checkout="cardholderName"]',
+    cpf: '[data-checkout="docNumber"]',
+  };
+
+  // #form-pagar-mp só existe na estrutura do gateway MercadoPago.
+  // Em outros gateways (ex: PagSeguro/Custom), esses campos não existem
+  // no DOM — presume-se que o próprio SDK do gateway lê o .wc-card-form.
+  // TEMP DEBUG: remover este console.warn após validar o fluxo PagSeguro
+  // em homologação (confirmar se o SDK deles captura os valores sozinho).
+  const form = document.querySelector('#form-pagar-mp');
+  if (!form) {
+    console.warn(
+      `[updateInputValue] #form-pagar-mp não encontrado no DOM (campo: "${name}"). ` +
+      `Gateway atual provavelmente não é MercadoPago — verificar se o valor precisa ` +
+      `ser espelhado manualmente para este gateway ou se o SDK dele já captura sozinho.`
+    );
+    return;
   }
+
+  if (name === "expiryDate") {
+    const data = str.split('/');
+    const monthEl = form.querySelector('[data-checkout="cardExpirationMonth"]');
+    const yearEl = form.querySelector('[data-checkout="cardExpirationYear"]');
+    if (monthEl) {
+      $(monthEl).val(data[0] || "").trigger('change');
+      monthEl.dispatchEvent(new Event('input'));
+    } else {
+      console.warn('[updateInputValue] [data-checkout="cardExpirationMonth"] não encontrado dentro de #form-pagar-mp.');
+    }
+    if (yearEl) {
+      $(yearEl).val(data[1] ? data[1] : "").trigger('change');
+      yearEl.dispatchEvent(new Event('input'));
+    } else {
+      console.warn('[updateInputValue] [data-checkout="cardExpirationYear"] não encontrado dentro de #form-pagar-mp.');
+    }
+    return;
+  }
+
+  const selector = targets[name];
+  if (!selector) return;
+
+  const el = form.querySelector(selector);
+  if (!el) {
+    console.warn(`[updateInputValue] ${selector} não encontrado dentro de #form-pagar-mp (campo: "${name}").`);
+    return;
+  }
+
+  $(el).val(str).trigger('change');
+  el.dispatchEvent(new Event('input'));
 }
 
 function formComplete(form) {

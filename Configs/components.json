@@ -28,6 +28,30 @@
     "availableInAllComponents": true
   },
   {
+    "name": "spot_ab",
+    "path": "spot_ab.html",
+    "params": [
+      {
+        "name": "product",
+        "required": true
+      },
+      {
+        "name": "product_is_box",
+        "required": false
+      },
+      {
+        "name": "spot_mostrar_so_m2",
+        "required": false
+      },
+      {
+        "name": "index",
+        "required": false
+      }
+    ],
+    "availableInAllPages": true,
+    "availableInAllComponents": true
+  },
+  {
     "name": "filter",
     "path": "filter.html",
     "params": [

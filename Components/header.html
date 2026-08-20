@@ -2,6 +2,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>document.documentElement.classList.add("material-icons-wait");</script>
+<script>
+/* Empíria A/B — spots PLP/vitrine
+   Default = variante A (spot atual). A variante B só liga se:
+   1) a Empíria adicionar a classe no <html>, ou
+   2) QA usar ?empiria_spot=b
+   JS da variante B na Empíria:
+   document.documentElement.classList.add('empiria-ab-spot-b');
+*/
+(function () {
+  try {
+    if (new URLSearchParams(window.location.search).get("empiria_spot") === "b") {
+      document.documentElement.classList.add("empiria-ab-spot-b");
+    }
+  } catch (e) {}
+})();
+</script>
 <meta name="author" content="Agência Auaha">
 <meta name="adopt-website-id" content="5116c68f-2055-4add-99c3-41f216482e8c" />
           
@@ -52,6 +68,7 @@
 {{ asset type: "css" paths: ["auaha" ] }}
 {{ asset type: "css" paths: ["seo" ] }}
 {{ asset type: "css" paths: ["abc-custom" ] }}
+{{ asset type: "css" paths: ["spot_ab" ] }}
 {{ asset type: "css" paths: ["buy_together" ] }}
 
 {{# Defer background images #}}

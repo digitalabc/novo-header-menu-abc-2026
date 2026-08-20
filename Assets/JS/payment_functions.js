@@ -253,7 +253,7 @@ async function nextCardScreen(paymentId) {
   document.querySelector(".checkout-footer-mobile").innerHTML += respRight;
 
   const cardNumber = maskNumber(
-    document.querySelector(".fake-form input[name=number]").value
+    document.querySelector(".wc-card-form input[name=number]").value
   );
 
   document.querySelector(
@@ -317,7 +317,7 @@ async function InitializeJpCardLibrary() {
   }
 
   Fbits.Gateway.Framework._card = new Fbits.Gateway.Framework.Identificado({
-    form: ".fake-form",
+    form: ".wc-card-form",
     container: ".card-wrapper",
     formatting: true,
     messages: {
@@ -598,7 +598,7 @@ function formComplete(form) {
     .filter((el) => el.hasAttribute("required"))
     .every((el) => el.value.trim() !== "" && el.className.indexOf("jp-card-invalid") === -1)
 
-  let docValue = document.querySelector(".fake-form input[name=cpf]").value.replace(/\D/g, "");
+  let docValue = document.querySelector(".wc-card-form input[name=cpf]").value.replace(/\D/g, "");
   let docValid = false;
   
   if (docValue.length === 11) {

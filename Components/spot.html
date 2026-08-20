@@ -56,6 +56,7 @@
           <div class="spot__content-price">
               {{ product_price prices: product.prices product_is_box: product_is_box is_piso_revestimento: is_piso_revestimento spot_mostrar_so_m2: spot_mostrar_so_m2 }}
           </div>
+          {{ spot_ab product: product product_is_box: product_is_box spot_mostrar_so_m2: spot_mostrar_so_m2 index: index }}
           {{ end }}
           {{~ if show_buy_mobile ~}}
             <div class="spot__buttons mobile">

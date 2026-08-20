@@ -32,7 +32,39 @@ function parseReais(text) {
   return isNaN(val) ? null : val;
 }
 
+const EMPIRIA_SPOT_B_CLASS = "empiria-ab-spot-b";
+
+function isEmpiriaSpotB() {
+  return document.documentElement.classList.contains(EMPIRIA_SPOT_B_CLASS);
+}
+
+function logEmpiriaSpotVariant() {
+  try {
+    if (!isEmpiriaSpotB() || window.__empiriaSpotBLogged) return;
+    window.__empiriaSpotBLogged = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "empiria_ab_view",
+      empiria_experiment: "spot_plp_vitrine",
+      empiria_variant: "B",
+    });
+  } catch (e) {}
+}
+
+function initEmpiriaSpotAb() {
+  try {
+    logEmpiriaSpotVariant();
+    const observer = new MutationObserver(() => logEmpiriaSpotVariant());
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  } catch (e) {}
+}
+
 function processSpotPrice(spotPrice) {
+  if (spotPrice.closest(".spot-ab")) return;
+
   const spotContent = spotPrice.closest(".spot__content");
   const platformDiscount = spotContent?.querySelector(":scope > .discount");
   if (platformDiscount) platformDiscount.remove();
@@ -396,6 +428,7 @@ function initHomeInfoBarSticky() {
 document.addEventListener("DOMContentLoaded", function () {
   const noBgImg = document.getElementById("no-bg-img");
   if (noBgImg) noBgImg.remove();
+  initEmpiriaSpotAb();
   moveSpotDiscounts();
   initHomeInfoRotator();
   const observer = new MutationObserver(() => moveSpotDiscounts());

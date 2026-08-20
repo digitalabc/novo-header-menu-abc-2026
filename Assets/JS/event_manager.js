@@ -91,10 +91,21 @@ async function viewCartEvent() {
 }
 
 
+function getEmpiriaSpotVariant() {
+    try {
+        return document.documentElement.classList.contains("empiria-ab-spot-b") ? "B" : "A";
+    } catch (e) {
+        return "A";
+    }
+}
+
 function selectItemEvent(eventInput) {
     if (eventInput.detail && eventInput.detail.product) {
         window.dataLayer.push({
-            event: "select_item", ecommerce: {
+            event: "select_item",
+            empiria_experiment: "spot_plp_vitrine",
+            empiria_variant: getEmpiriaSpotVariant(),
+            ecommerce: {
                 item_list_id: eventInput.detail.listId || "",
                 item_list_name: eventInput.detail.listName || "Product List",
                 items: [{
@@ -128,7 +139,10 @@ function purchaseCheckoutEvent(eventInput) {
 
     if (eventInput.detail.checkout) {
         window.dataLayer.push({
-            event: "purchase", ecommerce: {
+            event: "purchase",
+            empiria_experiment: "spot_plp_vitrine",
+            empiria_variant: getEmpiriaSpotVariant(),
+            ecommerce: {
                 ...eventInput.detail.checkout,
                 currency: "BRL",
                 value: eventInput.detail.checkout.total,
@@ -155,7 +169,10 @@ function beginCheckoutEvent(eventInput) {
     })
 
     window.dataLayer.push({
-        event: "begin_checkout", ecommerce: {
+        event: "begin_checkout",
+        empiria_experiment: "spot_plp_vitrine",
+        empiria_variant: getEmpiriaSpotVariant(),
+        ecommerce: {
             ...eventInput.detail.checkout,
             currency: "BRL",
             value: eventInput.detail.checkout.total,
@@ -237,7 +254,7 @@ function addToCartEvent(eventInput) {
 
         let addedProduct = getAddedProductData(newProduct);
 
-        window.dataLayer.push({ event: "add_to_cart", ecommerce: { ...addedProduct, user: user_info } })
+        window.dataLayer.push({ event: "add_to_cart", empiria_experiment: "spot_plp_vitrine", empiria_variant: getEmpiriaSpotVariant(), ecommerce: { ...addedProduct, user: user_info } })
         window.dataLayer.push({ event: "view_item_list", ecommerce: { ...cartData, user: user_info } })
     });
 }

@@ -1,19 +1,389 @@
-<h4>PedidoCancelado - Loja {{ configuracao.url_carrinho }}</h4>
-<h4>E-mail gerado pelo storefront</h4>
+<!DOCTYPE html>
+<html lang="pt">
 
-<p>Olá!</p>
-<p>Seu pedido {{pedido.id}} feito em {{pedido.data}} às {{pedido.hora}} foi cancelado.</p>
-<p>Segue link para efertuar a recompra: <a href={{recompra.link_externo}}>Recompra</a></p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Pedido Cancelado!</title>
+</head>
 
-<h5>Resumo Pedido</h5>
-<p>Valor : {{pedido.valor_total}}</p>
+<body
+  style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background-color: #F0F3F5 !important;">
 
-<h5>Produtos</h5>
-{{for p in pedido.produtos}}
-<p>{{p.nome}}</p>
-<p>{{p.quantidade}}</p>
-{{end}}
+  <table
+    bgcolor="#F0F3F5"
+    width="100%"
+    style="border-collapse: collapse; background-color: #F0F3F5 !important;"
+    cellpadding="0"
+    cellspacing="0">
 
-{{ if pedido.valor_total > 100 }}
-    <h1> Parabéns! Você ganhou um desconto de 5%, utilize o cupom AAZ123 </h1>
-{{ end }}
+    <tr>
+      <td style="text-align: center;">
+
+        <!-- Corpo largura máxima 600px -->
+        <table
+          bgcolor="#FFFFFF"
+          width="600"
+          style="border-collapse: collapse; background-color: #FFFFFF !important; margin: 0 auto; padding: 20px;"
+          cellpadding="0"
+          cellspacing="0">
+
+          <!-- Cabeçalho + Logo + título -->
+          <tr>
+            <td
+              style="padding-left: 20px; padding-right: 20px; padding-top: 20px; text-align: left;">
+                <img
+                     src="https://abcdaconstrucao.fbitsstatic.net/media/logo-abc.png?v=202608211402"
+                        alt="Logo ABC da Construção"
+                             style="max-width: 80px; height: auto;">
+
+              <h1
+                style="font-size: 48px; color: #000000 !important;">
+                Pedido #{{ pedido?.pedido_id }} cancelado!
+              </h1>
+
+            </td>
+          </tr>
+
+          <!-- Ícone cancelado -->
+          <tr>
+            <td
+              style="text-align: center; background-color: #FFFFFF;">
+
+              <img
+                src="https://abcprime.fbitsstatic.net/media/icon-canceled.png?v=202412171703"
+                alt="Ícone Cancelado"
+                style="height: 150px; margin: 0 auto; margin-bottom: 10px;">
+
+            </td>
+          </tr>
+
+          <!-- CTAs -->
+          <tr>
+            <td style="padding: 0 16px; max-width: 420px;">
+
+              <!-- CTA para usar outro cartão -->
+              <table
+                width="100%"
+                style="background-color: #F6F8FA; padding: 24px 24px 12px 24px; box-sizing: border-box; border-radius: 8px;">
+
+                <tr>
+                  <td>
+
+                    <a
+                      href="https://checkout.abcdaconstrucao.com.br/"
+                      style="background-color: #333; color: #FFFFFF; padding: 12px 24px; text-decoration: none; display: block; border-radius: 8px; width: calc(100% - 48px); font-size: 18px; font-weight: 700;">
+                      Usar outro cartão
+                    </a>
+
+                  </td>
+                </tr>
+
+              </table>
+
+              <!-- CTA para gerar um novo boleto -->
+              <table
+                width="100%"
+                style="background-color: #F6F8FA; padding: 0 24px 12px 24px; box-sizing: border-box; border-radius: 8px;">
+
+                <tr>
+                  <td>
+
+                    <a
+                      href="https://checkout.abcdaconstrucao.com.br/"
+                      style="background-color: #333; color: #FFFFFF; padding: 12px 24px; text-decoration: none; display: block; border-radius: 8px; width: calc(100% - 48px); font-size: 18px; font-weight: 700;">
+                      Gerar um novo boleto
+                    </a>
+
+                  </td>
+                </tr>
+
+              </table>
+
+              <!-- CTA para gerar um novo PIX -->
+              <table
+                width="100%"
+                style="background-color: #F6F8FA; padding: 0 24px 24px 24px; box-sizing: border-box; border-radius: 8px;">
+
+                <tr>
+                  <td>
+
+                    <a
+                      href="https://checkout.abcdaconstrucao.com.br/"
+                      style="background-color: #333; color: #FFFFFF; padding: 12px 24px; text-decoration: none; display: block; border-radius: 8px; width: calc(100% - 48px); font-size: 18px; font-weight: 700;">
+                      Gerar um novo PIX
+                    </a>
+
+                  </td>
+                </tr>
+
+              </table>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td style="height: 24px;"></td>
+          </tr>
+
+          <!-- Mensagem de contato -->
+          <tr>
+            <td
+              align="center"
+              style="text-align: center;">
+
+              <a
+                href="https://wa.me/5531991055920?text=Olá! Tire suas dúvidas com nosso time de atendimento."
+                style="text-decoration: none; display: inline-block; max-width: 560px; width: 100%;">
+
+                <table
+                  width="100%"
+                  style="border-collapse: collapse; background-color: #EDF6F3 !important; margin: 0 auto; border-radius: 8px; text-align: center;"
+                  cellpadding="0"
+                  cellspacing="0">
+
+                  <tr>
+
+                    <td
+                      style="width: 100px; text-align: center; vertical-align: middle; padding: 12px 0;">
+
+                      <img
+                        src="https://abcprime.fbitsstatic.net/media/whatsapp-email.png?v=202412101717"
+                        alt="Atendimento ABC da Construção"
+                        width="80"
+                        height="80"
+                        style="display: block; margin: 0 auto; padding: 0;">
+
+                    </td>
+
+                    <td
+                      style="text-align: left; font-size: 16px; color: #176E5F !important; padding: 0 8px;">
+
+                      Precisa de ajuda?
+                      <strong>CLIQUE AQUI</strong>
+                      para falar com nosso time de atendimento.
+
+                      Estamos disponíveis de segunda a sexta-feira, das 8h às 18h.
+
+                      <br>
+
+                      <strong>
+                        WhatsApp: (31) 99105-5920
+                      </strong>
+
+                    </td>
+
+                  </tr>
+
+                </table>
+
+              </a>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td
+              style="padding: 20px; text-align: left; background-color: #FFFFFF !important; color: #000000 !important; padding-bottom: 0; padding-top: 0;">
+
+              <img
+                src="https://abcdaconstrucao.fbitsstatic.net/media/logo-abc.png?v=202608211402"
+                alt="Logo ABC da Construção"
+                style="height: 40px; margin-bottom: 20px; margin-top: 40px;">
+
+              <p
+                style="font-size: 16px; margin-top: 0; margin-bottom: 20px; color: #848484 !important;">
+                Siga-nos nas redes sociais e fique por dentro das novidades!
+              </p>
+
+              <!-- Redes sociais -->
+              <table>
+
+                <tr>
+
+                  <!-- WhatsApp -->
+                  <td style="padding-right: 32px;">
+
+                    <a
+                      href="https://wa.me/5531991055920">
+
+                      <img
+                        src="https://abcprime.fbitsstatic.net/media/whatsapp-icon-ca-footer.png?v=202409282101"
+                        alt="WhatsApp"
+                        style="height: 14px;">
+
+                    </a>
+
+                  </td>
+
+                  <!-- Instagram -->
+                  <td style="padding-right: 32px;">
+
+                    <a
+                      href="https://www.instagram.com/abcdaconstrucao/">
+
+                      <img
+                        src="https://abcprime.fbitsstatic.net/media/instagram-iconfooter.png?v=202409282101"
+                        alt="Instagram"
+                        style="height: 14px;">
+
+                    </a>
+
+                  </td>
+
+                  <!-- LinkedIn -->
+                  <td style="padding-right: 32px;">
+
+                    <a
+                      href="https://www.linkedin.com/company/abc-da-construcao/mycompany/">
+
+                      <img
+                        src="https://abcprime.fbitsstatic.net/media/linkedin-icon-footer.png?v=202409282101"
+                        alt="LinkedIn"
+                        style="height: 14px;">
+
+                    </a>
+
+                  </td>
+
+                  <!-- Facebook -->
+                  <td style="padding-right: 32px;">
+
+                    <a
+                      href="https://www.facebook.com/novaabcdaconstrucao/">
+
+                      <img
+                        src="https://abcprime.fbitsstatic.net/media/facebook-icon-footer.png?v=202409282101"
+                        alt="Facebook"
+                        style="height: 14px;">
+
+                    </a>
+
+                  </td>
+
+                  <!-- X / Twitter -->
+                  <td style="padding-right: 32px;">
+
+                    <a
+                      href="https://twitter.com/abcdaconstrucao">
+
+                      <img
+                        src="https://abcprime.fbitsstatic.net/media/x-twitter-icon-footer.png?v=202409301718"
+                        alt="X"
+                        style="height: 14px;">
+
+                    </a>
+
+                  </td>
+
+                  <!-- YouTube -->
+                  <td>
+
+                    <a
+                      href="https://www.youtube.com/user/ABCdaConstrucao">
+
+                      <img
+                        src="https://abcprime.fbitsstatic.net/media/youtube-iconfooter.png?v=202409301620"
+                        alt="YouTube"
+                        style="height: 14px;">
+
+                    </a>
+
+                  </td>
+
+                </tr>
+
+              </table>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td style="height: 16px;"></td>
+          </tr>
+
+          <!-- Aviso e-mail automático -->
+          <tr>
+            <td
+              style="padding: 24px; background-color: #FFFFFF !important; padding-top: 0;">
+
+              <table
+                width="100%"
+                style="border-radius: 8px; padding: 8px; padding-top: 32px; padding-bottom: 32px; background-color: #F6F8FA !important;">
+
+                <tr>
+
+                  <td
+                    style="padding-right: 10px; vertical-align: middle; width: 48px;">
+
+                    <img
+                      src="https://abcprime.fbitsstatic.net/media/atencao-icon.png?v=202409282047"
+                      alt="Atenção"
+                      style="height: 24px; width: 24px;">
+
+                  </td>
+
+                  <td
+                    style="font-size: 20px; vertical-align: middle; color: #000000 !important; text-align: left;">
+
+                    <p
+                      style="font-size: 18px; line-height: 20px; color: #000000 !important; font-weight: bold; margin-top: 0; margin-bottom: 10px; padding-top: 0; padding-bottom: 0;">
+                      Atenção!
+                    </p>
+
+                    <p
+                      style="color: #848484 !important; font-size: 14px; font-style: normal; font-weight: 400; line-height: 20px; white-space: normal; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0;">
+
+                      Este e-mail foi enviado automaticamente, portanto, não é necessário respondê-lo.
+
+                      Se precisar de mais informações ou assistência, acesse agora o nosso site:
+
+                      <a
+                        href="https://www.abcdaconstrucao.com.br/"
+                        style="text-decoration: none; font-weight: bolder; color: #20A389 !important;">
+                        ABC DA CONSTRUÇÃO
+                      </a>.
+
+                      Estamos sempre prontos para ajudá-lo.
+
+                      Agradecemos pela sua compreensão.
+
+                    </p>
+
+                  </td>
+
+                </tr>
+
+              </table>
+
+            </td>
+          </tr>
+
+        </table>
+
+        <!-- Opção de cancelamento de inscrição -->
+        <p
+          style="font-size: 14px; background-color: #FFFFFF !important; color: #848484 !important; text-align: center;">
+
+          Se você preferir não receber este tipo de e-mail, você pode
+
+          <a
+            href="https://checkout.abcdaconstrucao.com.br/Carrinho/CarrinhoAbandonado?"
+            style="font-weight: bold; color: #848484 !important; text-decoration: none;">
+            cancelar a inscrição
+          </a>
+
+          ou gerenciar suas preferências de e-mail.
+
+        </p>
+
+      </td>
+    </tr>
+
+  </table>
+
+</body>
+
+</html>

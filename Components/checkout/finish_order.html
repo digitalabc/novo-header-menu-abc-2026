@@ -4,7 +4,14 @@
 
 <h3> Resumo do Pedido </h3>
 
-{{ if !is_card && is_boleto }}
+{{~ # payment_method.html traz os campos ocultos (ex: name="paymentMethod",
+# name="homologado", pixFormContainer, código de barras do boleto) que
+# getPaymentData() precisa encontrar no DOM ao finalizar a compra. Antes,
+# isso só era injetado para boleto (is_boleto) — Pix (e qualquer outro
+# método não-cartão) nunca tinha esse HTML no DOM, então o backend recebia
+# "paymentMethod: null" e o pedido era cancelado. Cartão é tratado à parte
+# (payment_selected_snippet.html), então aqui basta checar "não é cartão". ~}}
+{{ if !is_card }}
 <div class="payment-instructions"
     style="margin: 15px 0; padding: 12px; background-color: #f8f9fa; border-left: 4px solid #007bff; border-radius: 4px;">
     <div style="font-weight: normal; font-size: 14px; color: #495057; line-height: 1.4;">

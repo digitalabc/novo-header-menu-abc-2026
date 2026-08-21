@@ -15,7 +15,7 @@ console.log("Window loaded:", document.readyState === "complete");
 async function setName(el, name) {
   const element = document.querySelector(el);
   if (!element) {
-    console.warn(`[setName] Elemento não encontrado para o seletor "${el}" (gateway atual provavelmente não é MercadoPago).`);
+    // console.warn(`[setName] Elemento não encontrado para o seletor "${el}" (gateway atual provavelmente não é MercadoPago).`);
     return;
   }
   element.name = name;
@@ -251,7 +251,7 @@ async function nextCardScreen(paymentId) {
   if (cardWrapperEl) {
     cardWrapperEl.style.display = "none";
   } else {
-    console.warn('[nextCardScreen] .cardWrapper não encontrado no DOM no momento da chamada — possível re-renderização em andamento.');
+    // console.warn('[nextCardScreen] .cardWrapper não encontrado no DOM no momento da chamada — possível re-renderização em andamento.');
   }
   document.getElementById("paymentMethodSelected").innerHTML =
     htmlPaymentSelected;
@@ -304,10 +304,10 @@ async function nextCardScreen(paymentId) {
     if (selectedSpanEl) {
       selectedSpanEl.innerHTML = cardNumber;
     } else {
-      console.warn('[nextCardScreen] "#paymentMethodSelected .payment-details span" não encontrado.');
+      // console.warn('[nextCardScreen] "#paymentMethodSelected .payment-details span" não encontrado.');
     }
   } else {
-    console.warn('[nextCardScreen] Campo de número do cartão (.wc-card-form input[name=number]) não encontrado.');
+    // console.warn('[nextCardScreen] Campo de número do cartão (.wc-card-form input[name=number]) não encontrado.');
   }
 }
 
@@ -482,7 +482,7 @@ const selectPayment = async (paymentId, paymentName) => {
   // carregado e registrar seu callback de validação duas vezes, o que corrompe
   // o resultado de Fbits.Gateway.ExecuteValidateCallbacks().
   if (selectPaymentInProgress) {
-    console.warn('[selectPayment] Chamada ignorada — já existe uma seleção de pagamento em andamento.');
+    // console.warn('[selectPayment] Chamada ignorada — já existe uma seleção de pagamento em andamento.');
     return;
   }
   selectPaymentInProgress = true;
@@ -637,15 +637,13 @@ function updateInputValue(name, str) {
   // #form-pagar-mp só existe na estrutura do gateway MercadoPago.
   // Em outros gateways (ex: PagSeguro/Custom), esses campos não existem
   // no DOM — presume-se que o próprio SDK do gateway lê o .wc-card-form.
-  // TEMP DEBUG: remover este console.warn após validar o fluxo PagSeguro
-  // em homologação (confirmar se o SDK deles captura os valores sozinho).
   const form = document.querySelector('#form-pagar-mp');
   if (!form) {
-    console.warn(
-      `[updateInputValue] #form-pagar-mp não encontrado no DOM (campo: "${name}"). ` +
-      `Gateway atual provavelmente não é MercadoPago — verificar se o valor precisa ` +
-      `ser espelhado manualmente para este gateway ou se o SDK dele já captura sozinho.`
-    );
+    // console.warn(
+    //   `[updateInputValue] #form-pagar-mp não encontrado no DOM (campo: "${name}"). ` +
+    //   `Gateway atual provavelmente não é MercadoPago — verificar se o valor precisa ` +
+    //   `ser espelhado manualmente para este gateway ou se o SDK dele já captura sozinho.`
+    // );
     return;
   }
 
@@ -657,13 +655,13 @@ function updateInputValue(name, str) {
       $(monthEl).val(data[0] || "").trigger('change');
       monthEl.dispatchEvent(new Event('input'));
     } else {
-      console.warn('[updateInputValue] [data-checkout="cardExpirationMonth"] não encontrado dentro de #form-pagar-mp.');
+      // console.warn('[updateInputValue] [data-checkout="cardExpirationMonth"] não encontrado dentro de #form-pagar-mp.');
     }
     if (yearEl) {
       $(yearEl).val(data[1] ? data[1] : "").trigger('change');
       yearEl.dispatchEvent(new Event('input'));
     } else {
-      console.warn('[updateInputValue] [data-checkout="cardExpirationYear"] não encontrado dentro de #form-pagar-mp.');
+      // console.warn('[updateInputValue] [data-checkout="cardExpirationYear"] não encontrado dentro de #form-pagar-mp.');
     }
     return;
   }
@@ -673,7 +671,7 @@ function updateInputValue(name, str) {
 
   const el = form.querySelector(selector);
   if (!el) {
-    console.warn(`[updateInputValue] ${selector} não encontrado dentro de #form-pagar-mp (campo: "${name}").`);
+    // console.warn(`[updateInputValue] ${selector} não encontrado dentro de #form-pagar-mp (campo: "${name}").`);
     return;
   }
 

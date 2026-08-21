@@ -21,6 +21,20 @@ async function setName(el, name) {
   element.name = name;
 }
 
+// Detecta se o método de pagamento selecionado é o Pix do PagBank (gateway
+// "Custom", sem SDK do MercadoPago/PagSeguro cartão) — assinatura observada:
+// html contém "Pix" e os scripts carregados são só do Custom/custom.js.
+// Usado para setar o cookie "isPBPix" no momento de finalizar a compra,
+// permitindo à página de confirmação saber se deve buscar o QR Code do PagBank.
+function isPagBankPixSelection(selectedPaymentMethod) {
+  if (!selectedPaymentMethod) return false;
+  const html = selectedPaymentMethod.html || "";
+  const scripts = selectedPaymentMethod.scripts || [];
+  const isPix = /pix/i.test(html);
+  const isCustomOnly = scripts.length > 0 && scripts.every((s) => s.includes("/Custom/"));
+  return isPix && isCustomOnly;
+}
+
 async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   const token = client.cookie.get("sf_customer_access_token");
 
@@ -128,6 +142,11 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
 
   const e = response.queryResponse.data?.result?.selectedPaymentMethod
     , u = response.queryResponse.data?.result?.selectedPaymentMethods || (e ? [e] : []);
+
+  // Guarda em variável global (não em cookie ainda): o cookie "isPBPix" só é
+  // gravado de fato em closeCheckout() (checkout_close.js), no momento de
+  // finalizar a compra — aqui só marcamos qual foi a última seleção de pagamento.
+  window.isPBPixSelected = isPagBankPixSelection(e);
 
 
   const l = u.reduce((n, t) => {

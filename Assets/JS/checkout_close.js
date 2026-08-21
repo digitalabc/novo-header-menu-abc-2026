@@ -622,6 +622,15 @@ const closeCheckout = async () => {
       return;
     }
 
+    // window.isPBPixSelected é setado em newSelectPaymentWhenRendering()
+    // (payment_functions.js) no momento em que o usuário escolhe a forma de
+    // pagamento. Gravamos o cookie só aqui, na finalização bem-sucedida, para
+    // a página de confirmação (/checkout/confirmation) usar como sinal extra
+    // de que deve buscar o QR Code/Pix do PagBank via pagbank.js.
+    if (window.isPBPixSelected) {
+      client.cookie.set("isPBPix", "true");
+    }
+
     window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
   } finally {
     loading.classList.add("hidden");

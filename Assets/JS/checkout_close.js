@@ -700,6 +700,8 @@ const closeCheckout = async () => {
 
   try {
     const validateResult = await Fbits.Gateway.ExecuteValidateCallbacks();
+    // TEMP DEBUG: remover após diagnosticar o motivo da reprovação no gateway de cartão
+    // console.log('DEBUG validateResult:', validateResult);
     const allValid = validateResult.every((item) => item === true);
 
     if (!allValid) {

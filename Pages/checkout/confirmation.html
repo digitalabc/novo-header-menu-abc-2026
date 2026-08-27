@@ -76,7 +76,7 @@
           </div>
         </a>
       </div>
-
+{{ first_order.payment.name == "Pix ABC" | debug.log'teste' }}
       {{ if first_order.order_status == "AWAITING_PAYMENT" }}
       {{ if first_order.payment.name == "Pix ABC" }}
       {{ wake_checkout_order_confirmation order: first_order.payment }}
@@ -345,8 +345,6 @@
   {{ asset type: "js" paths: ["checkout"] options: "async"}}
   {{ asset type: "js" paths: ["checkout_close"] options: "async"}}
   {{ asset type: "js" paths: ["checkout/confirmation_checkout"] options: "async"}}
-
-  {{ page_scripts position: "FOOTER_END" scripts: common.scripts }}
 </body>
 
 </html>

@@ -1,7 +1,3 @@
-{{~
-  isPrime = data.checkout.products | array.filter @(do; ret $0.product_id == 172852;end)
-~}}
-
 {{~ if data.payment_methods?.size > 0 ~}}
   <div class="checkout-container" id="checkout-payment-options">
     <h2 class="title">4. Qual a forma de pagamento?</h2>
@@ -13,9 +9,6 @@
         {{ if (payment.name | string.downcase) | string.contains "pix" }}
           <div class="payment-option pix">
         {{ else if (payment.name | string.downcase) | string.contains "crédito" }}
-            {{ if isPrime.size > 0}}
-              <div class="hidden">
-            {{ else }}
               <div class="payment-option credito">
             {{end}}
         {{ else if (payment.name | string.downcase) | string.contains "boleto" }}
@@ -28,7 +21,11 @@
           <label class="payment-infos-wrapper" for="paymentOption-{{payment.id}}">
               <img src="{{ payment.image_url }}" width="50">
               <div class="payment-details">
-                <h3>{{ payment.name }}</h3>
+                {{ if payment.name | string.downcase | string.contains "pix abc" }}
+                  <h3>{{ payment.name | string.downcase | string.remove_last "abc" | string.capitalize }}</h3>
+                {{ else }}
+                  <h3>{{ payment.name }}</h3>
+                {{ end }}
                 <span>
                   {{ if (payment.name | string.downcase) | string.contains "pix" }}
                     Pagamento à vista

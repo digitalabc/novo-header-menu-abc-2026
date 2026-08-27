@@ -20,14 +20,13 @@ const whatsLink = () => {
     const pedidoPagemento = document.querySelector('.codePixWrapper');
 
     pedidoPagemento.insertAdjacentHTML('beforeend', `
-        <h4 class="pixError">Não foi possível gerar o Pix. <a target="_blank" href="https://api.whatsapp.com/send?phone=5531991055920&text=Eu%20tive%20problemas%20com%20o%20pix,%20preciso%20de%20ajuda." target="_blank">Por favor, clique aqui e entre em contato com o nosso SAC <img style="width: 25px;vertical-align: bottom;" src="https://recursos.abcdaconstrucao.com.br/i/whatsapp-icon-abc-contato.png" alt="SAC"></a></h4>
+        <h4 class="pixError">Não foi possível gerar o Pix. <a target="_blank" href="https://api.whatsapp.com/send?phone=553221028262&text=Eu%20tive%20problemas%20com%20o%20pix,%20preciso%20de%20ajuda." target="_blank">Por favor, clique aqui e entre em contato com o nosso SAC <img style="width: 25px;vertical-align: bottom;" src="https://recursos.abcdaconstrucao.com.br/i/whatsapp-icon-abc-contato.png" alt="SAC"></a></h4>
         `);
 };
 
 function pixCode() {
-  console.log('pixCode enter');
     if (orderInfo.payment.name.toLowerCase().includes('pix') && orderInfo.order_status === "AWAITING_PAYMENT") {
-        fetch(`https://pagamento.digitalabc.com.br/tray/buscar-pix/${orderInfo.order_id}?prime=true&t=${Date.now()}`, {
+        fetch(`https://pagamento.digitalabc.com.br/tray/buscar-pix/${orderInfo.order_id}?abc=true&t=${Date.now()}`, {
             method: 'GET',
             headers: {
                 Accept: 'application/json'

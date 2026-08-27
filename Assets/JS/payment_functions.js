@@ -149,7 +149,7 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   script.length > 0 && Promise.all(script).then(() => {
     console.log("Todos os scripts foram carregados com sucesso."),
       Fbits.Gateway.ExecuteLoadedCallbacks()
-    InitializeJpCardLibrary();
+    initAbcCardPreview();
   }
   ).catch(n => {
     console.error("Erro ao carregar os scripts:", n)
@@ -310,7 +310,11 @@ const updateRightMenuPayment = async () => {
   setInnerHtmlById(respRight, "data-render-right-menu");
 };
 
-async function InitializeJpCardLibrary() {
+// Nome proprio de proposito: wake_payment_functions.js tambem define um
+// InitializeJpCardLibrary global, apontando para ".fake-form". Como o nosso bundle
+// carrega com async, quem ganha o nome e uma corrida -- e quando a versao da Wake
+// ganhava, o jp-card nao achava ".fake-form" e o cartao visual nao era montado.
+async function initAbcCardPreview() {
   if (!document.querySelector(".card-wrapper")) {
     console.log(".card-wrapper não encontrado");
     return;
@@ -335,8 +339,11 @@ async function InitializeJpCardLibrary() {
     },
   });
 
-  setName('[data-checkout="cardExpirationMonth"]', "month");
-  setName('[data-checkout="cardExpirationYear"]', "year");
+  // A Wake nao nomeia os campos do gateway: quem serializa month/year sao os hidden
+  // do proprio formulario (wc-card-form), preenchidos por updateExpiryValue().
+  // Nomear os campos [data-checkout] criava month=01,01 / year=2028,28 no payload.
+  // A tokenizacao do Mercado Pago le [data-checkout], nao [name] -- nao e afetada.
+  // Para reverter: setName('[data-checkout="cardExpirationMonth"]', "month") + idem Year.
 }
 
 function expiryDateMask(input) {

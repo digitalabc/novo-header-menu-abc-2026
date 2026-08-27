@@ -10,7 +10,6 @@
           <div class="payment-option pix">
         {{ else if (payment.name | string.downcase) | string.contains "crédito" }}
               <div class="payment-option credito">
-            {{end}}
         {{ else if (payment.name | string.downcase) | string.contains "boleto" }}
           <div class="payment-option boleto">
         {{ else }}

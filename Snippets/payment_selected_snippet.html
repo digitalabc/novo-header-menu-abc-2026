@@ -1,6 +1,7 @@
 {{ payment_method = data?.result?.selected_payment_method }}
 {{ if payment_method }}
-  {{ is_card = payment_method.html | string.contains "0000 0000 0000 0000" }}
+  {{## Wake detecta o cartao pelo placeholder do gateway, nao por texto do campo ##}}
+  {{ is_card = payment_method.html | string.contains "data-gateway-cartao" }}
 
   <div class="wake-payment-data-options" data-gateway-pagamento="{{ payment_method.id }}" data-gateway-parcelas='1'>
     <div
@@ -14,7 +15,10 @@
         </div>
       <div class="cardWrapper">
           <div id="paymentCartao" data-gateway-cartao>
-            <div class='card-wrapper'></div>
+            {{## NAO adicionar data-card-form aqui: e o SELETOR_CARTAO_VISUAL_WAKE do
+                cartao.js do gateway (linha 24). Com ele presente, neutralizarFormularioWake()
+                passa da guarda e roda $visual.hide() -> o cartao visual some. ##}}
+            <div class="card-wrapper"></div>
             {{## Classe NAO pode conter "fake-form": o cartao.js do gateway (MercadoPago)
                 desabilita os inputs de cartao dentro de [class*="fake-form"] ##}}
             <form class="wc-card-form" onchange="formComplete(this)">
@@ -30,17 +34,17 @@
                 <input type="tel" name="number" placeholder="Digite o número do cartão" required onblur="cardType(this)" data-card-number/>
               </div>
               <div class="formCol">
-                <div class="forminline">
+                <div class="forminline field-card-exp">
                   <label>Vencimento *</label>
-                  <input type="text" name="expiryDate" placeholder="Digite o vencimento" oninput="expiryDateMask(this)" onchange="updateExpiryValue()" required/>
+                  <input type="text" name="expiryDate" placeholder="Digite o vencimento" oninput="expiryDateMask(this)" onchange="updateAbcExpiryValue()" required/>
                 </div>
-                <div class="forminline">
+                <div class="forminline field-card-cvv">
                   <label>CVV *</label>
                   <input type="tel" name="cvc" required/>
                 </div>
               </div>
-              <input type="hidden" name="year" value="01/1954" />
-              <input type="hidden" name="month" value="01/1954" />
+              <input type="hidden" name="year" value="" />
+              <input type="hidden" name="month" value="" />
               <input type="hidden" name="expiry" value="01/1954" />
               <div class="forminline">
                 <label>
@@ -67,8 +71,18 @@
                 </select>
               </div>
             </form>
+            {{## Pipeline identico ao wake_payment_selected_snippet.html:
+                1. remove o placeholder vazio do gateway;
+                2. neutraliza QUALQUER data-gateway-cartao remanescente -> data-removed-attr,
+                   senao ficam dois [data-gateway-cartao] no DOM e o ClearSale/gateway
+                   injetam no elemento errado;
+                3. injeta os query params que o secure-gateway.fbits.net exige. ##}}
+            {{~ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" | string.replace "data-gateway-cartao" "data-removed-attr" ~}}
+            {{~ if payment_html | string.contains "secure-gateway.fbits.net" ~}}
+              {{~ gateway_query_params = "?branch=" + store.theme + "&version=" + store.wake_last_modified + "&isStorefront=true&pagamento=" ~}}
+              {{~ payment_html = payment_html | string.replace "?pagamento=" gateway_query_params ~}}
+            {{~ end ~}}
             <div class="payment_html hidden">
-              {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
               {{ payment_html }}
             </div>
         </div>

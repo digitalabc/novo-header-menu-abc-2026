@@ -581,39 +581,101 @@ const authenticateCompletSubmit = async (e) => {
 };
 
 // Conclusão pedido
+// Alinhado com o closeCheckout do wake_checkout_close.js. As diferencas que este
+// fork tinha e que foram trazidas de volta:
+//   - montagem do payload por wakeGetPaymentDataFromContainers (nao getPaymentData,
+//     que esta @deprecated: serializa todo elemento com name, sem filtrar tipo nem disabled);
+//   - catch de verdade -- antes so havia try/finally, entao erro nao tratado deixava
+//     o cliente sem resposta nenhuma;
+//   - verifyCheckoutWasClosed: o pedido pode ter sido criado mesmo com falha no front.
+//     Sem essa checagem o cliente ve erro num pedido que de fato entrou;
+//   - checkoutData.newCheckout: pagamento recusado recria o checkout, o id antigo morre.
+const verifyCheckoutWasClosed = async (originalCheckoutId) => {
+  try {
+    const query = `
+      query CheckoutLite($checkoutId: Uuid!) {
+        checkout: checkoutLite(checkoutId: $checkoutId) {
+          completed
+        }
+      }
+    `;
+    const response = await client.query(query, { checkoutId: originalCheckoutId });
+    if (response?.errors?.length > 0) return false;
+    return response?.data?.checkout?.completed === true;
+  } catch (_) {
+    return false;
+  }
+};
+
+const goToConfirmation = (checkoutId) => {
+  window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
+};
+
 const closeCheckout = async () => {
   const loading = document.getElementById("finish-loading");
+  const button = document.querySelector("#finish-order-button");
+
   loading.classList.remove("hidden");
   loading.classList.add("flex");
-  document.querySelector("#finish-order-button").disabled = true;
+  button.disabled = true;
+
+  let checkoutId;
+  let checkoutCompleteStarted = false;
 
   try {
     const validateResult = await Fbits.Gateway.ExecuteValidateCallbacks();
     const allValid = validateResult.every((item) => item === true);
+
     if (!allValid) {
-      showOverlay(
-        "Erro ao validar pagamento",
-        "Ocorreu um erro ao validar o pagamento, confira os dados de pagamento e tente novamente!",
-        true
-      );
+      // o proprio gateway ja pode ter mostrado o erro (alert do cartao.js)
+      const jaNotificado =
+        typeof Fbits.Gateway.IsValidationErrorAlreadyNotified === "function" &&
+        Fbits.Gateway.IsValidationErrorAlreadyNotified();
+
+      if (!jaNotificado) {
+        showOverlay(
+          "Erro ao validar pagamento",
+          "Ocorreu um erro ao validar o pagamento, confira os dados de pagamento e tente novamente!",
+          true
+        );
+      }
       return;
     }
 
     await Fbits.Gateway.ExecutePayCallbacks();
 
     const token = client.cookie.get("sf_customer_access_token");
-    const checkoutId = client.cookie.get("carrinho-id");
+    checkoutId = client.cookie.get("carrinho-id");
 
-    const container = document.getElementById("payment-container");
-    const paymetData = getPaymentData(container);
+    const paymentContainers = document.querySelectorAll("[data-payment-transaction-id]");
+    const paymentData = wakeGetPaymentDataFromContainers(paymentContainers);
+
+    checkoutCompleteStarted = true;
     const checkoutData = await client.checkout.complete(
       checkoutId,
       "",
       token,
-      paymetData
+      paymentData
     );
 
+    if (checkoutData?.newCheckout) {
+      // Pagamento recusado pelo emissor: a Wake recria o checkout e o id antigo morre,
+      // entao o reload e obrigatorio. A Wake mostra o wake_checkout_payment_rejected_modal
+      // depois do reload; nosso tema nao tem esse componente, entao avisamos antes.
+      showOverlay(
+        "Pagamento não autorizado",
+        "O pagamento foi recusado. Confira os dados do cartão ou tente outra forma de pagamento.",
+        true
+      );
+      setTimeout(() => window.location.reload(), 4000);
+      return;
+    }
+
     if (checkoutData?.completeResponse?.errors) {
+      if (await verifyCheckoutWasClosed(checkoutId)) {
+        goToConfirmation(checkoutId);
+        return;
+      }
       showOverlay(
         "Erro ao finalizar o pedido",
         checkoutData.completeResponse.errors[0].message,
@@ -622,11 +684,24 @@ const closeCheckout = async () => {
       return;
     }
 
-    window.location = `${checkout_pages.checkout.confirmation}?checkoutId=${checkoutId}`;
+    goToConfirmation(checkoutId);
+  } catch (err) {
+    console.error("closeCheckout:", err);
+
+    if (checkoutCompleteStarted && checkoutId && (await verifyCheckoutWasClosed(checkoutId))) {
+      goToConfirmation(checkoutId);
+      return;
+    }
+
+    showOverlay(
+      "Erro ao finalizar o pedido",
+      "Não foi possível concluir o pedido. Confira os dados de pagamento e tente novamente.",
+      true
+    );
   } finally {
     loading.classList.add("hidden");
     loading.classList.remove("flex");
-    document.querySelector("#finish-order-button").disabled = false;
+    button.disabled = false;
   }
 };
 

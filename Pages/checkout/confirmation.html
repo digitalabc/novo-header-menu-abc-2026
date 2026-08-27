@@ -75,10 +75,14 @@
           </div>
         </a>
       </div>
-{{ first_order.payment.name == "Pix ABC" | debug.log'teste' }}
+{{ first_order.payment | debug.log'teste' }}
       {{ if first_order.order_status == "AWAITING_PAYMENT" }}
       {{ if first_order.payment.name == "Pix ABC" }}
-      {{ wake_checkout_order_confirmation order: first_order.payment }}
+        <div class="if-pix">
+            <div id="qrPix"></div>
+            <div class="codePixWrapper"></div>
+          </div>
+      {{## wake_checkout_order_confirmation order: first_order.payment ##}}
       {{ else if (first_order.payment.name | string.downcase) | string.contains "boleto"}}
       <a class="printBoleto" target="_blank" href="{{first_order.payment.invoice.payment_link}}">
         Imprimir Boleto

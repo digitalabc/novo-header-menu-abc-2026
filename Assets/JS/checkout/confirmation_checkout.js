@@ -25,6 +25,7 @@ const whatsLink = () => {
 };
 
 function pixCode() {
+  console.log('pixCode enter');
     if (orderInfo.payment.name.toLowerCase().includes('pix') && orderInfo.order_status === "AWAITING_PAYMENT") {
         fetch(`https://pagamento.digitalabc.com.br/tray/buscar-pix/${orderInfo.order_id}?prime=true&t=${Date.now()}`, {
             method: 'GET',

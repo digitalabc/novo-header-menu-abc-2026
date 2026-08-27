@@ -236,29 +236,34 @@ async function nextCardScreen(paymentId) {
   );
 
   setInnerHtmlById(respRight, "data-render-right-menu");
-  document.getElementById("data-render-right-menu").style.display = "";
 
-  document.getElementById("finish-order").style.maxWidth = "";
-  document.querySelector(
-    "#finish-order .payment-selected-method"
-  ).style.maxHeight = "";
+  // Daqui pra baixo os alvos sao condicionais: o rodape mobile so existe em telas
+  // pequenas e .footer_mobile_bottom nao existe em markup nenhum do tema (so em
+  // querySelector). Sem guarda, o primeiro null lancava TypeError -- e como esta
+  // funcao e async, a rejeicao ficava sem tratamento e TUDO abaixo era pulado,
+  // inclusive o numero mascarado do cartao no resumo.
+  // Mesmo padrao ja usado em Components/checkout/checkout_footer.html:141.
+  setStyleIfPresent("#data-render-right-menu", "display", "");
+  setStyleIfPresent("#finish-order", "maxWidth", "");
+  setStyleIfPresent("#finish-order .payment-selected-method", "maxHeight", "");
+  setStyleIfPresent(".checkout-footer-mobile .checkout-whats", "display", "none");
+  setStyleIfPresent(".checkout-footer-mobile .footer_mobile_bottom", "display", "none");
 
-  document.querySelector(
-    ".checkout-footer-mobile .checkout-whats"
-  ).style.display = "none";
-  document.querySelector(
-    ".checkout-footer-mobile .footer_mobile_bottom"
-  ).style.display = "none";
+  const footerMobile = document.querySelector(".checkout-footer-mobile");
+  if (footerMobile) footerMobile.innerHTML += respRight;
 
-  document.querySelector(".checkout-footer-mobile").innerHTML += respRight;
-
-  const cardNumber = maskNumber(
-    document.querySelector(".wc-card-form input[name=number]").value
-  );
-
-  document.querySelector(
+  const numberInput = document.querySelector(".wc-card-form input[name=number]");
+  const selectedNumber = document.querySelector(
     "#paymentMethodSelected .payment-details span"
-  ).innerHTML = cardNumber;
+  );
+  if (numberInput && selectedNumber) {
+    selectedNumber.innerHTML = maskNumber(numberInput.value);
+  }
+}
+
+function setStyleIfPresent(selector, prop, value) {
+  const el = document.querySelector(selector);
+  if (el) el.style[prop] = value;
 }
 
 function NewCarregaClearSaleFP(appId) {
@@ -340,7 +345,7 @@ async function initAbcCardPreview() {
   });
 
   // A Wake nao nomeia os campos do gateway: quem serializa month/year sao os hidden
-  // do proprio formulario (wc-card-form), preenchidos por updateExpiryValue().
+  // do proprio formulario (wc-card-form), preenchidos por updateAbcExpiryValue().
   // Nomear os campos [data-checkout] criava month=01,01 / year=2028,28 no payload.
   // A tokenizacao do Mercado Pago le [data-checkout], nao [name] -- nao e afetada.
   // Para reverter: setName('[data-checkout="cardExpirationMonth"]', "month") + idem Year.
@@ -479,9 +484,8 @@ async function backPaymentStep() {
   );
 
   setInnerHtmlById(respRight, "data-render-right-menu");
-  document.getElementById("data-render-right-menu").style.display = "";
-
-  document.querySelector(".checkout-footer").style.marginTop = "";
+  setStyleIfPresent("#data-render-right-menu", "display", "");
+  setStyleIfPresent(".checkout-footer", "marginTop", "");
 
   const checkoutRightMenu = document.querySelector(
     ".checkout-footer-mobile .checkout-right-menu"
@@ -497,17 +501,11 @@ async function backPaymentStep() {
     finishLoading.remove();
   }
 
-  document.querySelector(
-    ".checkout-footer-mobile .checkout-whats"
-  ).style.display = "";
-  document.querySelector(
-    ".checkout-footer-mobile .footer_mobile_bottom"
-  ).style.display = "";
-  document.getElementById("finish-order").style.maxWidth = "";
-
-  document.querySelector(
-    "#finish-order .payment-selected-method"
-  ).style.maxHeight = "";
+  // Espelho do nextCardScreen: mesmos alvos condicionais, mesma guarda.
+  setStyleIfPresent(".checkout-footer-mobile .checkout-whats", "display", "");
+  setStyleIfPresent(".checkout-footer-mobile .footer_mobile_bottom", "display", "");
+  setStyleIfPresent("#finish-order", "maxWidth", "");
+  setStyleIfPresent("#finish-order .payment-selected-method", "maxHeight", "");
 }
 
 function validaCNPJ(cnpj) {
@@ -654,7 +652,10 @@ function cardType(input) {
   }
 }
 
-function updateExpiryValue() {
+// Nome proprio: wake_payment_functions.js tambem define updateExpiryValue, e a versao
+// dela le por id (#month, #year, #expiry). Nossos hidden so tem name, sem id -- se a
+// dela vencesse a sobrescrita, o onchange lancaria TypeError e os campos ficariam vazios.
+function updateAbcExpiryValue() {
   const expiryInputValue = document.querySelector(
     'input[name="expiryDate"]'
   ).value;

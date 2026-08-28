@@ -1,12 +1,7 @@
 {{ payment_method = data?.result?.selected_payment_method }}
 {{ if payment_method }}
-  {{~ # "0000 0000 0000 0000" identifica o gateway MercadoPago (placeholder do input de número do cartão)
-  # "data-gateway-cartao" identifica o gateway PagSeguro/Custom
-  # Ambos são checks por assinatura de HTML — não existe hoje um campo estrutural
-  # confiável na API (ex: um "type") que diferencie cartão de outros métodos.
-  # Ao adicionar um novo gateway de cartão, verificar a assinatura do HTML dele
-  # e incluir aqui. ~}}
-  {{ is_card = (payment_method.html | string.contains "data-gateway-cartao") || (payment_method.html | string.contains "0000 0000 0000 0000") }}
+  {{## Wake detecta o cartao pelo placeholder do gateway, nao por texto do campo ##}}
+  {{ is_card = payment_method.html | string.contains "data-gateway-cartao" }}
 
   <div class="wake-payment-data-options" data-gateway-pagamento="{{ payment_method.id }}" data-gateway-parcelas='1'>
     <div
@@ -24,10 +19,8 @@
                 cartao.js do gateway (linha 24). Com ele presente, neutralizarFormularioWake()
                 passa da guarda e roda $visual.hide() -> o cartao visual some. ##}}
             <div class="card-wrapper"></div>
-            {{## Classe NAO pode conter "fake-form": o cartao.js do gateway MercadoPago
-                desabilita/esconde ativamente qualquer elemento com classe contendo
-                "fake-form" (busca por [class*="fake-form"]) e os campos com
-                name em ['number','name','month','year','expiry','cvc'] dentro dele. ##}}
+            {{## Classe NAO pode conter "fake-form": o cartao.js do gateway (MercadoPago)
+                desabilita os inputs de cartao dentro de [class*="fake-form"] ##}}
             <form class="wc-card-form" onchange="formComplete(this)">
               <h3 class="title">Cadastrar cartão de crédito</h3>
               <h4 class="requiredWarning">

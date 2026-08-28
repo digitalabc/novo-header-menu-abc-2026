@@ -13,12 +13,7 @@ console.log("Window loaded:", document.readyState === "complete");
 })();
 
 async function setName(el, name) {
-  const element = document.querySelector(el);
-  if (!element) {
-    // console.warn(`[setName] Elemento não encontrado para o seletor "${el}" (gateway atual provavelmente não é MercadoPago).`);
-    return;
-  }
-  element.name = name;
+  document.querySelector(el).name = name;
 }
 
 // Detecta se o método de pagamento selecionado é o Pix do PagBank (gateway
@@ -247,12 +242,15 @@ async function nextCardScreen(paymentId) {
     `;
 
   document.getElementById("card-finish").classList.remove("hidden");
+
+  // .cardWrapper pode não estar presente no momento exato desta chamada em
+  // certos re-renders — guard evita que a função pare no meio, deixando o
+  // resto (menu direito, botão "Finalizar compra") sem executar.
   const cardWrapperEl = document.querySelector(".cardWrapper");
   if (cardWrapperEl) {
     cardWrapperEl.style.display = "none";
-  } else {
-    // console.warn('[nextCardScreen] .cardWrapper não encontrado no DOM no momento da chamada — possível re-renderização em andamento.');
   }
+
   document.getElementById("paymentMethodSelected").innerHTML =
     htmlPaymentSelected;
 
@@ -470,10 +468,8 @@ const selectPayment = async (paymentId, paymentName) => {
   // Guard contra chamadas duplicadas (ex: clique duplo, ou disparo repetido do
   // evento) — sem isso, newSelectPaymentWhenRendering() pode rodar mais de uma
   // vez para a mesma seleção, fazendo o script do gateway (ex: custom.js) ser
-  // carregado e registrar seu callback de validação duas vezes, o que corrompe
-  // o resultado de Fbits.Gateway.ExecuteValidateCallbacks().
+  // carregado e registrar seu callback de validação duas vezes.
   if (selectPaymentInProgress) {
-    // console.warn('[selectPayment] Chamada ignorada — já existe uma seleção de pagamento em andamento.');
     return;
   }
   selectPaymentInProgress = true;
@@ -611,56 +607,58 @@ function formCpfMask(input) {
 }
 
 function updateInputValue(name, str) {
-  const targets = {
-    number: '[data-checkout="cardNumber"]',
-    cvc: '[data-checkout="securityCode"]',
-    name: '[data-checkout="cardholderName"]',
-    cpf: '[data-checkout="docNumber"]',
-  };
-
-  // #form-pagar-mp só existe na estrutura do gateway MercadoPago.
-  // Em outros gateways (ex: PagSeguro/Custom), esses campos não existem
-  // no DOM — presume-se que o próprio SDK do gateway lê o .wc-card-form.
+  // #form-pagar-mp só existe na estrutura do gateway MercadoPago. Em outros
+  // gateways (ex: PagSeguro/Custom), esses campos não existem no DOM —
+  // sem este guard, o querySelector abaixo retorna null e o .dispatchEvent
+  // seguinte lança TypeError, interrompendo o .map() de formComplete() antes
+  // de chegar em "button.disabled = ...".
   const form = document.querySelector('#form-pagar-mp');
-  if (!form) {
-    // console.warn(
-    //   `[updateInputValue] #form-pagar-mp não encontrado no DOM (campo: "${name}"). ` +
-    //   `Gateway atual provavelmente não é MercadoPago — verificar se o valor precisa ` +
-    //   `ser espelhado manualmente para este gateway ou se o SDK dele já captura sozinho.`
-    // );
-    return;
-  }
+  if (!form) return;
 
-  if (name === "expiryDate") {
-    const data = str.split('/');
-    const monthEl = form.querySelector('[data-checkout="cardExpirationMonth"]');
-    const yearEl = form.querySelector('[data-checkout="cardExpirationYear"]');
-    if (monthEl) {
-      $(monthEl).val(data[0] || "").trigger('change');
-      monthEl.dispatchEvent(new Event('input'));
-    } else {
-      // console.warn('[updateInputValue] [data-checkout="cardExpirationMonth"] não encontrado dentro de #form-pagar-mp.');
+  switch (name) {
+    case "number": {
+      const el = form.querySelector('[data-checkout="cardNumber"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
     }
-    if (yearEl) {
-      $(yearEl).val(data[1] ? data[1] : "").trigger('change');
-      yearEl.dispatchEvent(new Event('input'));
-    } else {
-      // console.warn('[updateInputValue] [data-checkout="cardExpirationYear"] não encontrado dentro de #form-pagar-mp.');
+    case "expiryDate": {
+      const data = str.split('/');
+      const monthEl = form.querySelector('[data-checkout="cardExpirationMonth"]');
+      const yearEl = form.querySelector('[data-checkout="cardExpirationYear"]');
+      if (monthEl) {
+        $(monthEl).val(data[0] || "").trigger('change');
+        monthEl.dispatchEvent(new Event('input'));
+      }
+      if (yearEl) {
+        $(yearEl).val(data[1] ? data[1] : "").trigger('change');
+        yearEl.dispatchEvent(new Event('input'));
+      }
+      break;
     }
-    return;
+    case "cvc": {
+      const el = form.querySelector('[data-checkout="securityCode"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
+    }
+    case "name": {
+      const el = form.querySelector('[data-checkout="cardholderName"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
+    }
+    case "cpf": {
+      const el = form.querySelector('[data-checkout="docNumber"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
+    }
   }
-
-  const selector = targets[name];
-  if (!selector) return;
-
-  const el = form.querySelector(selector);
-  if (!el) {
-    // console.warn(`[updateInputValue] ${selector} não encontrado dentro de #form-pagar-mp (campo: "${name}").`);
-    return;
-  }
-
-  $(el).val(str).trigger('change');
-  el.dispatchEvent(new Event('input'));
 }
 
 function formComplete(form) {

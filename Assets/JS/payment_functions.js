@@ -13,12 +13,7 @@ console.log("Window loaded:", document.readyState === "complete");
 })();
 
 async function setName(el, name) {
-  const element = document.querySelector(el);
-  if (!element) {
-    // console.warn(`[setName] Elemento não encontrado para o seletor "${el}" (gateway atual provavelmente não é MercadoPago).`);
-    return;
-  }
-  element.name = name;
+  document.querySelector(el).name = name;
 }
 
 // Detecta se o método de pagamento selecionado é o Pix do PagBank (gateway
@@ -173,7 +168,7 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   script.length > 0 && Promise.all(script).then(() => {
     console.log("Todos os scripts foram carregados com sucesso."),
       Fbits.Gateway.ExecuteLoadedCallbacks()
-    InitializeJpCardLibrary();
+    initAbcCardPreview();
   }
   ).catch(n => {
     console.error("Erro ao carregar os scripts:", n)
@@ -247,12 +242,15 @@ async function nextCardScreen(paymentId) {
     `;
 
   document.getElementById("card-finish").classList.remove("hidden");
+
+  // .cardWrapper pode não estar presente no momento exato desta chamada em
+  // certos re-renders — guard evita que a função pare no meio, deixando o
+  // resto (menu direito, botão "Finalizar compra") sem executar.
   const cardWrapperEl = document.querySelector(".cardWrapper");
   if (cardWrapperEl) {
     cardWrapperEl.style.display = "none";
-  } else {
-    // console.warn('[nextCardScreen] .cardWrapper não encontrado no DOM no momento da chamada — possível re-renderização em andamento.');
   }
+
   document.getElementById("paymentMethodSelected").innerHTML =
     htmlPaymentSelected;
 
@@ -265,50 +263,34 @@ async function nextCardScreen(paymentId) {
   );
 
   setInnerHtmlById(respRight, "data-render-right-menu");
-  const rightMenuEl = document.getElementById("data-render-right-menu");
-  if (rightMenuEl) {
-    rightMenuEl.style.display = "";
-  }
 
-  const finishOrderEl = document.getElementById("finish-order");
-  if (finishOrderEl) {
-    finishOrderEl.style.maxWidth = "";
-  }
-  const paymentSelectedMethodEl = document.querySelector(
-    "#finish-order .payment-selected-method"
+  // Daqui pra baixo os alvos sao condicionais: o rodape mobile so existe em telas
+  // pequenas e .footer_mobile_bottom nao existe em markup nenhum do tema (so em
+  // querySelector). Sem guarda, o primeiro null lancava TypeError -- e como esta
+  // funcao e async, a rejeicao ficava sem tratamento e TUDO abaixo era pulado,
+  // inclusive o numero mascarado do cartao no resumo.
+  // Mesmo padrao ja usado em Components/checkout/checkout_footer.html:141.
+  setStyleIfPresent("#data-render-right-menu", "display", "");
+  setStyleIfPresent("#finish-order", "maxWidth", "");
+  setStyleIfPresent("#finish-order .payment-selected-method", "maxHeight", "");
+  setStyleIfPresent(".checkout-footer-mobile .checkout-whats", "display", "none");
+  setStyleIfPresent(".checkout-footer-mobile .footer_mobile_bottom", "display", "none");
+
+  const footerMobile = document.querySelector(".checkout-footer-mobile");
+  if (footerMobile) footerMobile.innerHTML += respRight;
+
+  const numberInput = document.querySelector(".wc-card-form input[name=number]");
+  const selectedNumber = document.querySelector(
+    "#paymentMethodSelected .payment-details span"
   );
-  if (paymentSelectedMethodEl) {
-    paymentSelectedMethodEl.style.maxHeight = "";
+  if (numberInput && selectedNumber) {
+    selectedNumber.innerHTML = maskNumber(numberInput.value);
   }
+}
 
-  const checkoutWhatsEl = document.querySelector(".checkout-footer-mobile .checkout-whats");
-  if (checkoutWhatsEl) {
-    checkoutWhatsEl.style.display = "none";
-  }
-  const footerMobileBottomEl = document.querySelector(".checkout-footer-mobile .footer_mobile_bottom");
-  if (footerMobileBottomEl) {
-    footerMobileBottomEl.style.display = "none";
-  }
-
-  const footerMobileEl = document.querySelector(".checkout-footer-mobile");
-  if (footerMobileEl) {
-    footerMobileEl.innerHTML += respRight;
-  }
-
-  const numberFieldEl = document.querySelector(".wc-card-form input[name=number]");
-  if (numberFieldEl) {
-    const cardNumber = maskNumber(numberFieldEl.value);
-    const selectedSpanEl = document.querySelector(
-      "#paymentMethodSelected .payment-details span"
-    );
-    if (selectedSpanEl) {
-      selectedSpanEl.innerHTML = cardNumber;
-    } else {
-      // console.warn('[nextCardScreen] "#paymentMethodSelected .payment-details span" não encontrado.');
-    }
-  } else {
-    // console.warn('[nextCardScreen] Campo de número do cartão (.wc-card-form input[name=number]) não encontrado.');
-  }
+function setStyleIfPresent(selector, prop, value) {
+  const el = document.querySelector(selector);
+  if (el) el.style[prop] = value;
 }
 
 function NewCarregaClearSaleFP(appId) {
@@ -360,7 +342,11 @@ const updateRightMenuPayment = async () => {
   setInnerHtmlById(respRight, "data-render-right-menu");
 };
 
-async function InitializeJpCardLibrary() {
+// Nome proprio de proposito: wake_payment_functions.js tambem define um
+// InitializeJpCardLibrary global, apontando para ".fake-form". Como o nosso bundle
+// carrega com async, quem ganha o nome e uma corrida -- e quando a versao da Wake
+// ganhava, o jp-card nao achava ".fake-form" e o cartao visual nao era montado.
+async function initAbcCardPreview() {
   if (!document.querySelector(".card-wrapper")) {
     console.log(".card-wrapper não encontrado");
     return;
@@ -385,8 +371,11 @@ async function InitializeJpCardLibrary() {
     },
   });
 
-  setName('[data-checkout="cardExpirationMonth"]', "month");
-  setName('[data-checkout="cardExpirationYear"]', "year");
+  // A Wake nao nomeia os campos do gateway: quem serializa month/year sao os hidden
+  // do proprio formulario (wc-card-form), preenchidos por updateAbcExpiryValue().
+  // Nomear os campos [data-checkout] criava month=01,01 / year=2028,28 no payload.
+  // A tokenizacao do Mercado Pago le [data-checkout], nao [name] -- nao e afetada.
+  // Para reverter: setName('[data-checkout="cardExpirationMonth"]', "month") + idem Year.
 }
 
 function expiryDateMask(input) {
@@ -479,10 +468,8 @@ const selectPayment = async (paymentId, paymentName) => {
   // Guard contra chamadas duplicadas (ex: clique duplo, ou disparo repetido do
   // evento) — sem isso, newSelectPaymentWhenRendering() pode rodar mais de uma
   // vez para a mesma seleção, fazendo o script do gateway (ex: custom.js) ser
-  // carregado e registrar seu callback de validação duas vezes, o que corrompe
-  // o resultado de Fbits.Gateway.ExecuteValidateCallbacks().
+  // carregado e registrar seu callback de validação duas vezes.
   if (selectPaymentInProgress) {
-    // console.warn('[selectPayment] Chamada ignorada — já existe uma seleção de pagamento em andamento.');
     return;
   }
   selectPaymentInProgress = true;
@@ -539,9 +526,8 @@ async function backPaymentStep() {
   );
 
   setInnerHtmlById(respRight, "data-render-right-menu");
-  document.getElementById("data-render-right-menu").style.display = "";
-
-  document.querySelector(".checkout-footer").style.marginTop = "";
+  setStyleIfPresent("#data-render-right-menu", "display", "");
+  setStyleIfPresent(".checkout-footer", "marginTop", "");
 
   const checkoutRightMenu = document.querySelector(
     ".checkout-footer-mobile .checkout-right-menu"
@@ -557,17 +543,11 @@ async function backPaymentStep() {
     finishLoading.remove();
   }
 
-  document.querySelector(
-    ".checkout-footer-mobile .checkout-whats"
-  ).style.display = "";
-  document.querySelector(
-    ".checkout-footer-mobile .footer_mobile_bottom"
-  ).style.display = "";
-  document.getElementById("finish-order").style.maxWidth = "";
-
-  document.querySelector(
-    "#finish-order .payment-selected-method"
-  ).style.maxHeight = "";
+  // Espelho do nextCardScreen: mesmos alvos condicionais, mesma guarda.
+  setStyleIfPresent(".checkout-footer-mobile .checkout-whats", "display", "");
+  setStyleIfPresent(".checkout-footer-mobile .footer_mobile_bottom", "display", "");
+  setStyleIfPresent("#finish-order", "maxWidth", "");
+  setStyleIfPresent("#finish-order .payment-selected-method", "maxHeight", "");
 }
 
 function validaCNPJ(cnpj) {
@@ -627,56 +607,58 @@ function formCpfMask(input) {
 }
 
 function updateInputValue(name, str) {
-  const targets = {
-    number: '[data-checkout="cardNumber"]',
-    cvc: '[data-checkout="securityCode"]',
-    name: '[data-checkout="cardholderName"]',
-    cpf: '[data-checkout="docNumber"]',
-  };
-
-  // #form-pagar-mp só existe na estrutura do gateway MercadoPago.
-  // Em outros gateways (ex: PagSeguro/Custom), esses campos não existem
-  // no DOM — presume-se que o próprio SDK do gateway lê o .wc-card-form.
+  // #form-pagar-mp só existe na estrutura do gateway MercadoPago. Em outros
+  // gateways (ex: PagSeguro/Custom), esses campos não existem no DOM —
+  // sem este guard, o querySelector abaixo retorna null e o .dispatchEvent
+  // seguinte lança TypeError, interrompendo o .map() de formComplete() antes
+  // de chegar em "button.disabled = ...".
   const form = document.querySelector('#form-pagar-mp');
-  if (!form) {
-    // console.warn(
-    //   `[updateInputValue] #form-pagar-mp não encontrado no DOM (campo: "${name}"). ` +
-    //   `Gateway atual provavelmente não é MercadoPago — verificar se o valor precisa ` +
-    //   `ser espelhado manualmente para este gateway ou se o SDK dele já captura sozinho.`
-    // );
-    return;
-  }
+  if (!form) return;
 
-  if (name === "expiryDate") {
-    const data = str.split('/');
-    const monthEl = form.querySelector('[data-checkout="cardExpirationMonth"]');
-    const yearEl = form.querySelector('[data-checkout="cardExpirationYear"]');
-    if (monthEl) {
-      $(monthEl).val(data[0] || "").trigger('change');
-      monthEl.dispatchEvent(new Event('input'));
-    } else {
-      // console.warn('[updateInputValue] [data-checkout="cardExpirationMonth"] não encontrado dentro de #form-pagar-mp.');
+  switch (name) {
+    case "number": {
+      const el = form.querySelector('[data-checkout="cardNumber"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
     }
-    if (yearEl) {
-      $(yearEl).val(data[1] ? data[1] : "").trigger('change');
-      yearEl.dispatchEvent(new Event('input'));
-    } else {
-      // console.warn('[updateInputValue] [data-checkout="cardExpirationYear"] não encontrado dentro de #form-pagar-mp.');
+    case "expiryDate": {
+      const data = str.split('/');
+      const monthEl = form.querySelector('[data-checkout="cardExpirationMonth"]');
+      const yearEl = form.querySelector('[data-checkout="cardExpirationYear"]');
+      if (monthEl) {
+        $(monthEl).val(data[0] || "").trigger('change');
+        monthEl.dispatchEvent(new Event('input'));
+      }
+      if (yearEl) {
+        $(yearEl).val(data[1] ? data[1] : "").trigger('change');
+        yearEl.dispatchEvent(new Event('input'));
+      }
+      break;
     }
-    return;
+    case "cvc": {
+      const el = form.querySelector('[data-checkout="securityCode"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
+    }
+    case "name": {
+      const el = form.querySelector('[data-checkout="cardholderName"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
+    }
+    case "cpf": {
+      const el = form.querySelector('[data-checkout="docNumber"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
+      break;
+    }
   }
-
-  const selector = targets[name];
-  if (!selector) return;
-
-  const el = form.querySelector(selector);
-  if (!el) {
-    // console.warn(`[updateInputValue] ${selector} não encontrado dentro de #form-pagar-mp (campo: "${name}").`);
-    return;
-  }
-
-  $(el).val(str).trigger('change');
-  el.dispatchEvent(new Event('input'));
 }
 
 function formComplete(form) {
@@ -739,7 +721,10 @@ function cardType(input) {
   }
 }
 
-function updateExpiryValue() {
+// Nome proprio: wake_payment_functions.js tambem define updateExpiryValue, e a versao
+// dela le por id (#month, #year, #expiry). Nossos hidden so tem name, sem id -- se a
+// dela vencesse a sobrescrita, o onchange lancaria TypeError e os campos ficariam vazios.
+function updateAbcExpiryValue() {
   const expiryInputValue = document.querySelector(
     'input[name="expiryDate"]'
   ).value;

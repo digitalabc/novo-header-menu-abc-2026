@@ -1,12 +1,7 @@
 {{ payment_method = data?.result?.selected_payment_method }}
 {{ if payment_method }}
-  {{~ # "0000 0000 0000 0000" identifica o gateway MercadoPago (placeholder do input de número do cartão)
-  # "data-gateway-cartao" identifica o gateway PagSeguro/Custom
-  # Ambos são checks por assinatura de HTML — não existe hoje um campo estrutural
-  # confiável na API (ex: um "type") que diferencie cartão de outros métodos.
-  # Ao adicionar um novo gateway de cartão, verificar a assinatura do HTML dele
-  # e incluir aqui. ~}}
-  {{ is_card = (payment_method.html | string.contains "data-gateway-cartao") || (payment_method.html | string.contains "0000 0000 0000 0000") }}
+  {{## Wake detecta o cartao pelo placeholder do gateway, nao por texto do campo ##}}
+  {{ is_card = payment_method.html | string.contains "data-gateway-cartao" }}
 
   <div class="wake-payment-data-options" data-gateway-pagamento="{{ payment_method.id }}" data-gateway-parcelas='1'>
     <div
@@ -20,11 +15,12 @@
         </div>
       <div class="cardWrapper">
           <div id="paymentCartao" data-gateway-cartao>
-            <div class='card-wrapper'></div>
-            {{## Classe NÃO pode conter "fake-form": o cartao.js do gateway MercadoPago
-                desabilita/esconde ativamente qualquer elemento com classe contendo
-                "fake-form" (busca por [class*="fake-form"]) e os campos com
-                name em ['number','name','month','year','expiry','cvc'] dentro dele. ##}}
+            {{## NAO adicionar data-card-form aqui: e o SELETOR_CARTAO_VISUAL_WAKE do
+                cartao.js do gateway (linha 24). Com ele presente, neutralizarFormularioWake()
+                passa da guarda e roda $visual.hide() -> o cartao visual some. ##}}
+            <div class="card-wrapper"></div>
+            {{## Classe NAO pode conter "fake-form": o cartao.js do gateway (MercadoPago)
+                desabilita os inputs de cartao dentro de [class*="fake-form"] ##}}
             <form class="wc-card-form" onchange="formComplete(this)">
               <h3 class="title">Cadastrar cartão de crédito</h3>
               <h4 class="requiredWarning">
@@ -38,17 +34,17 @@
                 <input type="tel" id="number" name="number" placeholder="Digite o número do cartão" required onblur="cardType(this)" data-card-number/>
               </div>
               <div class="formCol">
-                <div class="forminline">
+                <div class="forminline field-card-exp">
                   <label>Vencimento *</label>
-                  <input type="text" name="expiryDate" placeholder="Digite o vencimento" oninput="expiryDateMask(this)" onchange="updateExpiryValue()" required/>
+                  <input type="text" name="expiryDate" placeholder="Digite o vencimento" oninput="expiryDateMask(this)" onchange="updateAbcExpiryValue()" required/>
                 </div>
-                <div class="forminline">
+                <div class="forminline field-card-cvv">
                   <label>CVV *</label>
                   <input type="tel" id="cvc" name="cvc" required/>
                 </div>
               </div>
-              <input type="hidden" id="year" name="year" value="01/1954" />
-              <input type="hidden" id="month" name="month" value="01/1954" />
+              <input type="hidden" id="year" name="year" value="" />
+              <input type="hidden" id="month" name="month" value="" />
               <input type="hidden" name="expiry" value="01/1954" />
               <div class="forminline">
                 <label>
@@ -75,6 +71,20 @@
                 </select>
               </div>
             </form>
+            {{## Pipeline identico ao wake_payment_selected_snippet.html:
+                1. remove o placeholder vazio do gateway;
+                2. neutraliza QUALQUER data-gateway-cartao remanescente -> data-removed-attr,
+                   senao ficam dois [data-gateway-cartao] no DOM e o ClearSale/gateway
+                   injetam no elemento errado;
+                3. injeta os query params que o secure-gateway.fbits.net exige. ##}}
+            {{~ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" | string.replace "data-gateway-cartao" "data-removed-attr" ~}}
+            {{~ if payment_html | string.contains "secure-gateway.fbits.net" ~}}
+              {{~ gateway_query_params = "?branch=" + store.theme + "&version=" + store.wake_last_modified + "&isStorefront=true&pagamento=" ~}}
+              {{~ payment_html = payment_html | string.replace "?pagamento=" gateway_query_params ~}}
+            {{~ end ~}}
+            <div class="payment_html hidden">
+              {{ payment_html }}
+            </div>
         </div>
           <div class="payment-buttons">
             <button class="checkout-back-button" onclick="backPaymentStep()">Voltar</button>
@@ -82,18 +92,6 @@
               Salvar e usar
             </button>
           </div>
-        </div>
-
-        <div class="payment_html hidden">
-          {{~ # payment_method.html do gateway fica fora de #paymentCartao para evitar
-          # aninhamento de [data-gateway-cartao] (o próprio HTML do gateway PagSeguro/Custom
-          # já traz esse atributo internamente). Mantido "hidden": com o form renomeado
-          # para wc-card-form, o cartao.js do MercadoPago não desabilita mais nossos
-          # campos, então o form nativo dele (aqui dentro) não precisa ficar visível —
-          # o campo usado pelo usuário volta a ser o wc-card-form acima, com os valores
-          # espelhados via updateInputValue() para estes campos nativos escondidos. ~}}
-          {{ payment_html = payment_method.html | string.replace "<div data-gateway-cartao></div>" "" }}
-          {{ payment_html }}
         </div>
         
       {{ else}}

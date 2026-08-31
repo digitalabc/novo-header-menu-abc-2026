@@ -248,7 +248,7 @@
   {
     "type": "PedidoEnviado",
     "path": "Orders/order_sent.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -272,7 +272,7 @@
   {
     "type": "PedidoPago",
     "path": "Orders/order_paid.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {

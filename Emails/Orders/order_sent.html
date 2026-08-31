@@ -1,10 +1,1134 @@
-<h5>PedidoEnviado - email criado pelo storefront </h5>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<p>{{pedido.usuario.nome}}</p>
-<br>
-<p>valor do pedido: {{pedido.valor_total}}</p>
-<p>Enviado para endereço: {{pedido.frete.endereco.logradouro}}</p>
-<p>Produtos comprados:</p>
-{{for p in pedido.produtos}}
-<p>- {{p.nome}}</p>
-{{end}}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Pedido Enviado</title>
+
+  <style type="text/css">
+    body,
+    table,
+    td,
+    a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    @media only screen and (max-width: 480px) {
+
+      .email-container {
+        width: 100% !important;
+      }
+
+      .mobile-padding {
+        padding-left: 22px !important;
+        padding-right: 22px !important;
+      }
+
+      .main-title {
+        font-size: 36px !important;
+        line-height: 40px !important;
+      }
+
+      .status-cell {
+        display: block !important;
+        width: 100% !important;
+        padding: 8px 0 !important;
+      }
+    }
+  </style>
+
+  <!--[if mso]>
+    <style type="text/css">
+      body, table, td, a {
+        font-family: Arial, Helvetica, sans-serif !important;
+      }
+    </style>
+  <![endif]-->
+</head>
+
+<body
+  style="margin: 0; padding: 0; background-color: #F1F4F6; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, Helvetica, sans-serif; color: #353535;">
+
+  <!-- PREHEADER -->
+  <div
+    style="display: none; max-height: 0; overflow: hidden; opacity: 0; color: transparent; font-size: 1px; line-height: 1px;">
+    Seu pedido {{ pedido?.pedido_id }} foi enviado pela ABC da Construção.
+  </div>
+
+  <table role="presentation"
+    width="100%"
+    cellpadding="0"
+    cellspacing="0"
+    border="0"
+    bgcolor="#F1F4F6"
+    style="width: 100%; border-collapse: collapse; background-color: #F1F4F6;">
+
+    <tr>
+      <td align="center" style="padding: 24px 12px;">
+
+        <!-- CONTAINER -->
+        <table role="presentation"
+          class="email-container"
+          width="600"
+          cellpadding="0"
+          cellspacing="0"
+          border="0"
+          bgcolor="#FAFAFA"
+          style="width: 100%; max-width: 600px; border-collapse: collapse; background-color: #FAFAFA;">
+
+          <tr>
+            <td
+              class="mobile-padding"
+              bgcolor="#FAFAFA"
+              style="padding: 32px 40px 0 40px; background-color: #FAFAFA; color: #353535;">
+
+              <table role="presentation"
+                width="100%"
+                cellpadding="0"
+                cellspacing="0"
+                border="0"
+                style="width: 100%; border-collapse: collapse;">
+
+                <!-- ================================================= -->
+                <!-- LOGO -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td align="left" style="padding: 0;">
+
+                    <a
+                      href="{{ configuracao?.url_ecommerce }}"
+                      target="_blank"
+                      style="text-decoration: none;">
+
+                      <img
+                        src="https://image.mkt.abcdaconstrucao.com.br/lib/fe2a1174736404747d1475/m/1/a931b9b0-493e-4838-9c6d-2cd8b22135a4.png"
+                        alt="ABC da Construção"
+                        width="72"
+                        style="display: block; width: 72px; height: auto; border: 0;">
+
+                    </a>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- TÍTULO -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 24px 0 0 0;">
+
+                    <p
+                      class="main-title"
+                      style="margin: 0; font-size: 46px; line-height: 50px; font-weight: 700; color: #353535; letter-spacing: -0.5px; mso-line-height-rule: exactly;">
+
+                      Seu pedido foi enviado!
+
+                      <span style="color: #12B6AD;">✓</span>
+
+                    </p>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- INTRODUÇÃO -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 16px 0 0 0;">
+
+                    <p
+                      style="margin: 0; font-size: 16px; line-height: 24px; color: #353535;">
+
+                      Olá, <strong>{{ pedido?.usuario?.primeiro_nome }}</strong>!
+
+                      Seu pedido
+                      <strong>#{{ pedido?.pedido_id }}</strong>,
+                      realizado em {{ pedido?.data }} às {{ pedido?.hora }},
+                      já foi enviado.
+
+                    </p>
+
+                    <p
+                      style="margin: 10px 0 0 0; font-size: 16px; line-height: 24px; color: #353535;">
+
+                      Agora é só acompanhar as próximas atualizações até a entrega.
+
+                    </p>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- STEPPER -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td align="center" style="padding: 34px 0 26px 0;">
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      bgcolor="#F6F8FA"
+                      style="width: 100%; border-collapse: separate; background-color: #F6F8FA; border-radius: 16px;">
+
+                      <tr>
+
+                        <!-- RECEBIDO -->
+                        <td
+                          class="status-cell"
+                          width="33%"
+                          align="center"
+                          valign="top"
+                          style="width: 33%; padding: 20px 6px; text-align: center;">
+
+                          <table role="presentation"
+                            align="center"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0">
+
+                            <tr>
+                              <td
+                                align="center"
+                                bgcolor="#12B6AD"
+                                style="width: 30px; height: 30px; background-color: #12B6AD; border-radius: 999px; color: #FFFFFF; font-size: 15px; line-height: 30px; font-weight: 700; text-align: center;">
+                                ✓
+                              </td>
+                            </tr>
+
+                          </table>
+
+                          <p
+                            style="margin: 8px 0 0 0; font-size: 12px; line-height: 16px; font-weight: 700; color: #176E5F;">
+                            Pedido recebido
+                          </p>
+
+                        </td>
+
+                        <!-- PAGO -->
+                        <td
+                          class="status-cell"
+                          width="33%"
+                          align="center"
+                          valign="top"
+                          style="width: 33%; padding: 20px 6px; text-align: center;">
+
+                          <table role="presentation"
+                            align="center"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0">
+
+                            <tr>
+                              <td
+                                align="center"
+                                bgcolor="#12B6AD"
+                                style="width: 30px; height: 30px; background-color: #12B6AD; border-radius: 999px; color: #FFFFFF; font-size: 15px; line-height: 30px; font-weight: 700; text-align: center;">
+                                ✓
+                              </td>
+                            </tr>
+
+                          </table>
+
+                          <p
+                            style="margin: 8px 0 0 0; font-size: 12px; line-height: 16px; font-weight: 700; color: #176E5F;">
+                            Pagamento aprovado
+                          </p>
+
+                        </td>
+
+                        <!-- ENVIADO -->
+                        <td
+                          class="status-cell"
+                          width="33%"
+                          align="center"
+                          valign="top"
+                          style="width: 33%; padding: 20px 6px; text-align: center;">
+
+                          <table role="presentation"
+                            align="center"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0">
+
+                            <tr>
+                              <td
+                                align="center"
+                                bgcolor="#12B6AD"
+                                style="width: 30px; height: 30px; background-color: #12B6AD; border-radius: 999px; color: #FFFFFF; font-size: 15px; line-height: 30px; font-weight: 700; text-align: center;">
+                                ✓
+                              </td>
+                            </tr>
+
+                          </table>
+
+                          <p
+                            style="margin: 8px 0 0 0; font-size: 12px; line-height: 16px; font-weight: 700; color: #176E5F;">
+                            Pedido enviado
+                          </p>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- PEDIDO A CAMINHO -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 0;">
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      bgcolor="#EDF6F3"
+                      style="width: 100%; border-collapse: separate; border-spacing: 0; background-color: #EDF6F3; border-radius: 14px;">
+
+                      <tr>
+
+                        <td
+                          width="64"
+                          valign="middle"
+                          align="center"
+                          style="width: 64px; padding: 18px 8px 18px 18px;">
+
+                          <table role="presentation"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0">
+
+                            <tr>
+                              <td
+                                align="center"
+                                bgcolor="#12B6AD"
+                                style="width: 42px; height: 42px; background-color: #12B6AD; border-radius: 999px; color: #FFFFFF; font-size: 21px; line-height: 42px; font-weight: 700; text-align: center;">
+
+                                ↗
+
+                              </td>
+                            </tr>
+
+                          </table>
+
+                        </td>
+
+                        <td
+                          valign="middle"
+                          style="padding: 18px 18px 18px 6px; text-align: left;">
+
+                          <p
+                            style="margin: 0; font-size: 18px; line-height: 23px; font-weight: 700; color: #176E5F;">
+
+                            Seu pedido está a caminho
+
+                          </p>
+
+                          <p
+                            style="margin: 5px 0 0 0; font-size: 13px; line-height: 19px; color: #176E5F;">
+
+                            O envio foi realizado para:
+
+                            <strong>
+                              {{ pedido?.frete?.endereco?.logradouro }},
+                              {{ pedido?.frete?.endereco?.cidade }}
+                            </strong>.
+
+                          </p>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- RASTREAMENTO -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 28px 0 0 0;">
+
+                    <p
+                      style="margin: 0 0 12px 0; font-size: 17px; line-height: 22px; font-weight: 700; color: #353535;">
+
+                      Rastreamento
+
+                    </p>
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      bgcolor="#FFFFFF"
+                      style="width: 100%; border-collapse: separate; background-color: #FFFFFF; border: 1px solid #E4E9EF; border-radius: 14px;">
+
+                      <tr>
+                        <td style="padding: 16px;">
+
+                          <table role="presentation"
+                            width="100%"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0"
+                            style="width: 100%; border-collapse: collapse;">
+
+                            {{ if pedido.rastreamento?.rastreamento }}
+
+                            <tr>
+
+                              <td
+                                style="padding: 10px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; color: #848484;">
+
+                                Código de rastreamento
+
+                              </td>
+
+                              <td
+                                style="padding: 10px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; font-weight: 700; color: #353535; text-align: right;">
+
+                                {{ pedido.rastreamento?.rastreamento }}
+
+                              </td>
+
+                            </tr>
+
+                            {{ end }}
+
+                            {{ if pedido.rastreamento?.nota_fiscal }}
+
+                            <tr>
+
+                              <td
+                                style="padding: 10px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; color: #848484;">
+
+                                Nota Fiscal
+
+                              </td>
+
+                              <td
+                                style="padding: 10px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; font-weight: 700; color: #353535; text-align: right;">
+
+                                {{ pedido.rastreamento?.nota_fiscal }}
+
+                              </td>
+
+                            </tr>
+
+                            {{ end }}
+
+                            {{ if pedido.rastreamento?.serie_nfe }}
+
+                            <tr>
+
+                              <td
+                                style="padding: 10px 0; font-size: 14px; line-height: 20px; color: #848484;">
+
+                                Série NFe
+
+                              </td>
+
+                              <td
+                                style="padding: 10px 0; font-size: 14px; line-height: 20px; font-weight: 700; color: #353535; text-align: right;">
+
+                                {{ pedido.rastreamento?.serie_nfe }}
+
+                              </td>
+
+                            </tr>
+
+                            {{ end }}
+
+                          </table>
+
+                        </td>
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- CTA RASTREAMENTO -->
+                <!-- ================================================= -->
+
+                {{ if pedido.rastreamento?.url }}
+
+                <tr>
+                  <td align="center" style="padding: 20px 0 0 0;">
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="width: 100%; border-collapse: collapse;">
+
+                      <tr>
+
+                        <td
+                          align="center"
+                          bgcolor="#0E3C53"
+                          style="background-color: #0E3C53; border-radius: 999px;">
+
+                          <a
+                            href="{{ pedido.rastreamento?.url }}"
+                            target="_blank"
+                            style="display: block; width: 100%; padding: 17px 0; font-size: 17px; line-height: 22px; font-weight: 700; color: #FFFFFF; text-decoration: none; text-align: center;">
+
+                            Acompanhar pedido
+
+                          </a>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                {{ end }}
+
+                <!-- ================================================= -->
+                <!-- DETALHES -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 34px 0 0 0;">
+
+                    <p
+                      style="margin: 0; font-size: 28px; line-height: 34px; font-weight: 700; color: #353535;">
+
+                      Detalhes do pedido
+
+                    </p>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- ITENS -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 20px 0 0 0;">
+
+                    <p
+                      style="margin: 0 0 12px 0; font-size: 17px; line-height: 22px; font-weight: 700; color: #353535;">
+
+                      Itens do pedido
+
+                    </p>
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      bgcolor="#F6F8FA"
+                      style="width: 100%; border-collapse: separate; background-color: #F6F8FA; border-radius: 14px;">
+
+                      <tr>
+                        <td style="padding: 14px;">
+
+                          <table role="presentation"
+                            width="100%"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0"
+                            style="width: 100%; border-collapse: collapse;">
+
+                            <tbody>
+
+                              {{ for product in pedido?.produtos }}
+
+                                {{ product_mail product: product }}
+
+                              {{ end }}
+
+                            </tbody>
+
+                          </table>
+
+                        </td>
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- DADOS DA COMPRA -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 28px 0 0 0;">
+
+                    <p
+                      style="margin: 0 0 10px 0; font-size: 17px; line-height: 22px; font-weight: 700; color: #353535;">
+
+                      Dados da compra
+
+                    </p>
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="width: 100%; border-collapse: collapse;">
+
+                      <tr>
+
+                        <td
+                          style="padding: 13px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; color: #848484;">
+
+                          Número do pedido
+
+                        </td>
+
+                        <td
+                          style="padding: 13px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; font-weight: 700; color: #353535; text-align: right;">
+
+                          #{{ pedido?.pedido_id }}
+
+                        </td>
+
+                      </tr>
+
+                      <tr>
+
+                        <td
+                          style="padding: 13px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; color: #848484;">
+
+                          Data do pedido
+
+                        </td>
+
+                        <td
+                          style="padding: 13px 0; border-bottom: 1px solid #E4E9EF; font-size: 14px; line-height: 20px; font-weight: 700; color: #353535; text-align: right;">
+
+                          {{ pedido?.data }}
+
+                        </td>
+
+                      </tr>
+
+                      <tr>
+
+                        <td
+                          style="padding: 13px 0; font-size: 14px; line-height: 20px; color: #848484;">
+
+                          Status
+
+                        </td>
+
+                        <td
+                          style="padding: 13px 0; text-align: right;">
+
+                          <span
+                            style="display: inline-block; padding: 5px 15px; background-color: #CFEEDA; border-radius: 8px; font-size: 13px; line-height: 18px; font-weight: 700; color: #176E5F;">
+
+                            Enviado
+
+                          </span>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- WHATSAPP -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 28px 0 0 0;">
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      bgcolor="#EDF6F3"
+                      style="width: 100%; border-collapse: separate; border-spacing: 0; background-color: #EDF6F3; border-radius: 14px;">
+
+                      <tr>
+                        <td style="padding: 14px 16px;">
+
+                          <a
+                            href="https://wa.me/5531991055920?text=Ol%C3%A1%21%20Vim%20pelo%20e-mail%20de%20pedido%20enviado%20da%20ABC%20da%20Constru%C3%A7%C3%A3o.%20Preciso%20de%20ajuda%20com%20meu%20pedido."
+                            target="_blank"
+                            style="display: block; width: 100%; text-decoration: none;">
+
+                            <table role="presentation"
+                              width="100%"
+                              cellpadding="0"
+                              cellspacing="0"
+                              border="0"
+                              style="width: 100%; border-collapse: collapse;">
+
+                              <tr>
+
+                                <td
+                                  width="90"
+                                  valign="middle"
+                                  align="center"
+                                  style="width: 90px; padding: 4px 12px 4px 0;">
+
+                                  <img
+                                    src="https://abcprime.fbitsstatic.net/media/whatsapp-email.png?v=202412101717"
+                                    alt="Atendimento pelo WhatsApp"
+                                    width="72"
+                                    height="72"
+                                    style="display: block; width: 72px; height: 72px; border: 0; margin: 0 auto;">
+
+                                </td>
+
+                                <td valign="middle" style="text-align: left;">
+
+                                  <p
+                                    style="margin: 0; font-size: 16px; line-height: 21px; font-weight: 700; color: #176E5F;">
+
+                                    Precisa de ajuda com sua entrega?
+
+                                  </p>
+
+                                  <p
+                                    style="margin: 5px 0 0 0; font-size: 13px; line-height: 19px; color: #176E5F;">
+
+                                    Fale com nosso time para tirar dúvidas sobre o envio ou o rastreamento do seu pedido.
+
+                                  </p>
+
+                                  <p
+                                    style="margin: 9px 0 0 0; font-size: 13px; line-height: 18px; font-weight: 700; color: #176E5F;">
+
+                                    Falar pelo WhatsApp →
+
+                                  </p>
+
+                                </td>
+
+                              </tr>
+
+                            </table>
+
+                          </a>
+
+                        </td>
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- FOOTER -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 20px 0 0 0;">
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      bgcolor="#FFFFFF"
+                      style="width: 100%; border-collapse: separate; background-color: #FFFFFF; border: 1px solid #E4E9EF; border-radius: 14px;">
+
+                      <tr>
+
+                        <td style="padding: 16px;">
+
+                          <table role="presentation"
+                            width="100%"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0"
+                            style="width: 100%; border-collapse: collapse;">
+
+                            <tr>
+
+                              <td colspan="2" style="padding: 0 0 10px 0;">
+
+                                <p
+                                  style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #0E3C53;">
+
+                                  Dúvidas? Fale com nosso time
+
+                                </p>
+
+                              </td>
+
+                            </tr>
+
+                            <!-- TELEFONE -->
+
+                            <tr>
+
+                              <td
+                                width="20"
+                                valign="top"
+                                style="width: 20px; padding: 1px 8px 8px 0;">
+
+                                <img
+                                  src="https://img.icons8.com/ios-glyphs/30/0E3C53/phone.png"
+                                  alt="Telefone"
+                                  width="16"
+                                  height="16"
+                                  style="display: block; border: 0;">
+
+                              </td>
+
+                              <td valign="top" style="padding: 0 0 8px 0;">
+
+                                <a
+                                  href="tel:08002000216"
+                                  style="font-size: 13px; line-height: 18px; color: #176E5F; text-decoration: none;">
+
+                                  0800 200 0216
+
+                                </a>
+
+                              </td>
+
+                            </tr>
+
+                            <!-- WHATSAPP -->
+
+                            <tr>
+
+                              <td
+                                width="20"
+                                valign="top"
+                                style="width: 20px; padding: 1px 8px 8px 0;">
+
+                                <img
+                                  src="https://img.icons8.com/ios-glyphs/30/0E3C53/whatsapp.png"
+                                  alt="WhatsApp"
+                                  width="16"
+                                  height="16"
+                                  style="display: block; border: 0;">
+
+                              </td>
+
+                              <td valign="top" style="padding: 0 0 8px 0;">
+
+                                <a
+                                  href="https://wa.me/5531991055920"
+                                  target="_blank"
+                                  style="font-size: 13px; line-height: 18px; color: #176E5F; text-decoration: none;">
+
+                                  (31) 9 9105-5920
+
+                                </a>
+
+                              </td>
+
+                            </tr>
+
+                            <!-- EMAIL -->
+
+                            <tr>
+
+                              <td
+                                width="20"
+                                valign="top"
+                                style="width: 20px; padding: 1px 8px 8px 0;">
+
+                                <img
+                                  src="https://img.icons8.com/ios-glyphs/30/0E3C53/new-post.png"
+                                  alt="E-mail"
+                                  width="16"
+                                  height="16"
+                                  style="display: block; border: 0;">
+
+                              </td>
+
+                              <td valign="top" style="padding: 0 0 8px 0;">
+
+                                <a
+                                  href="mailto:abcsuacasa.atendimento@abcdaconstrucao.com.br"
+                                  style="font-size: 13px; line-height: 18px; color: #176E5F; text-decoration: none; word-break: break-all;">
+
+                                  abcsuacasa.atendimento@abcdaconstrucao.com.br
+
+                                </a>
+
+                              </td>
+
+                            </tr>
+
+                            <!-- HORÁRIO -->
+
+                            <tr>
+
+                              <td
+                                colspan="2"
+                                style="padding: 8px 0 0 0; border-top: 1px solid #E4E9EF;">
+
+                                <p
+                                  style="margin: 0; font-size: 12px; line-height: 17px; color: #5F6B76;">
+
+                                  Voz: Segunda a Sexta das 08:00 às 18:00
+
+                                </p>
+
+                                <p
+                                  style="margin: 4px 0 0 0; font-size: 12px; line-height: 17px; color: #5F6B76;">
+
+                                  WhatsApp: Segunda a Sexta das 08:00 às 18:00
+
+                                </p>
+
+                                <p
+                                  style="margin: 4px 0 0 0; font-size: 12px; line-height: 17px; color: #5F6B76;">
+
+                                  Domingos e feriados: sem expediente.
+
+                                </p>
+
+                              </td>
+
+                            </tr>
+
+                          </table>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- REDES SOCIAIS -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td align="center" style="padding: 24px 0 0 0;">
+
+                    <table role="presentation"
+                      align="center"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="border-collapse: collapse;">
+
+                      <tr>
+
+                        <td style="padding: 0 10px;">
+                          <a
+                            href="https://wa.me/5531991055920"
+                            target="_blank">
+                            <img
+                              src="https://img.icons8.com/ios-glyphs/30/3A3A3A/whatsapp.png"
+                              alt="WhatsApp"
+                              width="18"
+                              height="18"
+                              style="display: block; border: 0;">
+                          </a>
+                        </td>
+
+                        <td style="padding: 0 10px;">
+                          <a
+                            href="https://www.instagram.com/abcdaconstrucao/"
+                            target="_blank">
+                            <img
+                              src="https://img.icons8.com/ios-glyphs/30/3A3A3A/instagram-new.png"
+                              alt="Instagram"
+                              width="18"
+                              height="18"
+                              style="display: block; border: 0;">
+                          </a>
+                        </td>
+
+                        <td style="padding: 0 10px;">
+                          <a
+                            href="https://www.linkedin.com/company/abc-da-construcao/mycompany/"
+                            target="_blank">
+                            <img
+                              src="https://img.icons8.com/ios-glyphs/30/3A3A3A/linkedin.png"
+                              alt="LinkedIn"
+                              width="18"
+                              height="18"
+                              style="display: block; border: 0;">
+                          </a>
+                        </td>
+
+                        <td style="padding: 0 10px;">
+                          <a
+                            href="https://www.facebook.com/novaabcdaconstrucao/"
+                            target="_blank">
+                            <img
+                              src="https://img.icons8.com/ios-glyphs/30/3A3A3A/facebook-new.png"
+                              alt="Facebook"
+                              width="18"
+                              height="18"
+                              style="display: block; border: 0;">
+                          </a>
+                        </td>
+
+                        <td style="padding: 0 10px;">
+                          <a
+                            href="https://twitter.com/abcdaconstrucao"
+                            target="_blank">
+                            <img
+                              src="https://img.icons8.com/ios-glyphs/30/3A3A3A/twitter.png"
+                              alt="X"
+                              width="18"
+                              height="18"
+                              style="display: block; border: 0;">
+                          </a>
+                        </td>
+
+                        <td style="padding: 0 10px;">
+                          <a
+                            href="https://www.youtube.com/user/ABCdaConstrucao"
+                            target="_blank">
+                            <img
+                              src="https://img.icons8.com/ios-glyphs/30/3A3A3A/youtube-play.png"
+                              alt="YouTube"
+                              width="18"
+                              height="18"
+                              style="display: block; border: 0;">
+                          </a>
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- ================================================= -->
+                <!-- AVISO AUTOMÁTICO -->
+                <!-- ================================================= -->
+
+                <tr>
+                  <td style="padding: 22px 0 32px 0;">
+
+                    <table role="presentation"
+                      width="100%"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      bgcolor="#F6F8FA"
+                      style="width: 100%; border-collapse: separate; background-color: #F6F8FA; border-radius: 10px;">
+
+                      <tr>
+
+                        <td
+                          width="28"
+                          valign="top"
+                          style="width: 28px; padding: 14px 10px 14px 16px;">
+
+                          <img
+                            src="https://abcprime.fbitsstatic.net/media/atencao-icon.png?v=202409282047"
+                            alt="Atenção"
+                            width="18"
+                            height="18"
+                            style="display: block; border: 0;">
+
+                        </td>
+
+                        <td valign="top"
+                          style="padding: 14px 16px 14px 0;">
+
+                          <p
+                            style="margin: 0; font-size: 11px; line-height: 16px; color: #6F757D;">
+
+                            Não responda este e-mail automático.
+
+                            Para mais informações e suporte, acesse
+
+                            <a
+                              href="{{ configuracao?.url_ecommerce }}"
+                              target="_blank"
+                              style="color: #6F757D; text-decoration: underline;">
+
+                              ABC DA CONSTRUÇÃO
+
+                            </a>.
+
+                            Agradecemos sua compreensão.
+
+                          </p>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                  </td>
+                </tr>
+
+              </table>
+
+            </td>
+          </tr>
+
+        </table>
+        <!-- END CONTAINER -->
+
+      </td>
+    </tr>
+
+  </table>
+
+</body>
+
+</html>

@@ -110,7 +110,7 @@
   {
     "type": "ConfirmacaoPedido",
     "path": "Orders/order_confirmed.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -188,7 +188,7 @@
   {
     "type": "PedidoCancelado",
     "path": "Orders/order_canceled.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {

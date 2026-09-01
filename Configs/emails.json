@@ -2,7 +2,7 @@
   {
     "type": "AgradecimentoNews",
     "path": "news_thank.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {

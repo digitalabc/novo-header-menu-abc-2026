@@ -688,7 +688,9 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         rootMargin: isDesktop ? "280px 0px" : "160px 0px",
-        threshold: 0.01,
+        // ponytail: threshold 0 — secao com todo o conteudo dentro de <noscript>
+        // tem altura 0 e o Chrome reporta intersectionRatio 0, entao 0.01 nunca hidrata
+        threshold: 0,
       },
     );
 
@@ -945,8 +947,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    const showcaseOne = document.querySelector(".showcase-1 .swiper");
-    if (showcaseOne) {
+    document.querySelectorAll(".showcase-1 .swiper").forEach((showcaseOne) => {
       const section = showcaseOne.closest(".showcase-1");
       initSwiperInstance(showcaseOne, {
         navigation: {
@@ -966,10 +967,9 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         },
       });
-    }
+    });
 
-    const showcaseTwo = document.querySelector(".showcase-2 .swiper");
-    if (showcaseTwo) {
+    document.querySelectorAll(".showcase-2 .swiper").forEach((showcaseTwo) => {
       const section = showcaseTwo.closest(".showcase-2");
       initSwiperInstance(showcaseTwo, {
         navigation: {
@@ -992,7 +992,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         },
       });
-    }
+    });
 
     const homeOffersSection = document.querySelector(
       ".home-offers-banner:not([hidden])",

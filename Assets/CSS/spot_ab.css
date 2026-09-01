@@ -1,5 +1,10 @@
 /* Variante B dos spots — Empíria
    Sem html.empiria-ab-spot-b o site permanece 100% na variante A.
+
+   Valores medidos no Figma "Wicomm - [ABC] NOVO SPOTS", component set
+   "Spots Variables" (variantes DESKTOP/MOBILE x promocionado/tabelado x m2).
+   Card de referencia: 212x428, foto 210x220 com imagem de 160x160,
+   info com padding 12/12/20 e gap 12.
 */
 
 .spot-ab,
@@ -14,12 +19,15 @@ html.empiria-ab-spot-b .spot-ab[hidden] {
   flex-direction: column;
   justify-content: flex-end;
   margin-top: auto;
+  gap: 12px;
 }
 
 html.empiria-ab-spot-b .spot__content-price,
 html.empiria-ab-spot-b .spot__buttons {
   display: none !important;
 }
+
+/* ------------------------------------------------------------------ card */
 
 html.empiria-ab-spot-b .swiper-slide:has(.spot) {
   display: flex;
@@ -37,25 +45,41 @@ html.empiria-ab-spot-b .spot {
   height: 100%;
   overflow: hidden;
   border: 1px solid #eaeaea;
+  border-radius: 16px;
   box-shadow: none;
 }
+
+/* ------------------------------------------------------------------ foto
+   Figma: container 210x220 com a imagem em 160x160 centralizada e 16px de
+   respiro no topo. A imagem nunca preenche o container (era o que fazia o
+   spot de pisos avancar sobre o border-radius). */
 
 html.empiria-ab-spot-b .spot__image {
   display: flex !important;
   flex-direction: column;
   flex-shrink: 0;
-}
-
-html.empiria-ab-spot-b .spot__image:not(:has(.stamps)) .spot__image-wrapper {
-  margin-bottom: 32px;
+  aspect-ratio: 21 / 22;
+  padding-top: 16px;
+  background: #fff;
+  box-sizing: border-box;
 }
 
 html.empiria-ab-spot-b .spot__image-wrapper {
   order: 1;
-  width: 100%;
-  max-width: none;
+  /* margin auto absorve a folga: imagem centralizada, selos colados na base */
+  margin: auto;
+  width: 76.19%; /* 160 / 210 */
+  max-width: 160px;
   border-bottom: 0;
 }
+
+html.empiria-ab-spot-b .spot__image-wrapper img {
+  object-fit: contain;
+}
+
+/* ------------------------------------------------------- selos / promocoes
+   Figma: faixa de 186px (210 - 12 de cada lado) com gap 8, sempre com
+   espaco para dois selos lado a lado. */
 
 html.empiria-ab-spot-b .spot__image .stamps {
   position: static !important;
@@ -64,20 +88,24 @@ html.empiria-ab-spot-b .spot__image .stamps {
   order: 2;
   z-index: 1;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  min-height: 24px;
+  margin: 8px 12px 0;
+  min-height: 18px;
   max-height: none;
-  margin: 8px 10px 0;
-  gap: 6px;
+  gap: 8px;
 }
 
 html.empiria-ab-spot-b .spot__image .stamps .stamp-image {
-  max-width: none;
-  max-height: 24px;
+  flex: 0 1 auto;
+  min-width: 0;
+  /* dois selos cabem na faixa mesmo com arte larga */
+  max-width: calc((100% - 8px) / 2);
   width: auto;
-  height: 24px;
+  height: 18px;
+  max-height: 18px;
   object-fit: contain;
+  object-position: left center;
 }
 
 html.empiria-ab-spot-b .spot__image .stamps-vr {
@@ -86,7 +114,7 @@ html.empiria-ab-spot-b .spot__image .stamps-vr {
   right: auto !important;
   order: 3;
   flex-direction: row;
-  margin: 4px 10px 0;
+  margin: 4px 12px 0;
 }
 
 html.empiria-ab-spot-b .spot__image .stamps-vr:not(:has(.stamp-image)) {
@@ -100,26 +128,29 @@ html.empiria-ab-spot-b .spot__image .stamps-discount {
   width: auto !important;
   height: auto !important;
   min-width: 0;
-  padding: 5px 6px;
-  border: 1px solid #E3062D33;
+  padding: 6px;
+  border: 1px solid #e3062d33;
   border-top: 0;
   border-right: 0;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  background: #E3062D0D !important;
-  color: #E3062D !important;
+  background: #e3062d0d !important;
+  color: #e3062d !important;
   font-size: 11px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 15.6px;
 }
+
+/* ------------------------------------------------------------------ info */
 
 html.empiria-ab-spot-b .spot__content {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  padding: 12px 10px 14px;
+  gap: 12px;
+  padding: 12px 12px 20px;
 }
 
 html.empiria-ab-spot-b .spot__content-title {
@@ -129,20 +160,22 @@ html.empiria-ab-spot-b .spot__content-title {
 html.empiria-ab-spot-b .spot__content-title h3 {
   display: -webkit-box;
   overflow: hidden;
-  margin-bottom: 10px;
-  height: 60px;
-  color: #333;
-  font-weight: 500;
-  line-height: 20px;
+  margin: 0;
+  height: 54px; /* 3 linhas de 18px */
+  color: #392f2d;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+
+/* --------------------------------------------------- economize / add to cart */
 
 html.empiria-ab-spot-b .spot-ab__slot {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
 }
 
 html.empiria-ab-spot-b .spot-ab__economize,
@@ -153,13 +186,13 @@ html.empiria-ab-spot-b .spot-ab__cta-wide {
   justify-content: center;
   min-width: 0;
   min-height: 32px;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border: 0;
-  border-radius: 20px;
-  background: #e7f6ee;
-  color: #1b7a4a;
+  border-radius: 40px;
+  background: #e7f7ed;
+  color: #0fa848;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
   line-height: 1.2;
   text-align: center;
@@ -168,12 +201,18 @@ html.empiria-ab-spot-b .spot-ab__cta-wide {
   box-sizing: border-box;
 }
 
+/* o flex container engole o espaco entre o rotulo e o valor; no mobile
+   a direcao vira column e column-gap deixa de valer, como no Figma */
+html.empiria-ab-spot-b .spot-ab__economize {
+  column-gap: 4px;
+}
+
 html.empiria-ab-spot-b .spot-ab__economize-value {
   font-weight: 700;
 }
 
 html.empiria-ab-spot-b .spot-ab__cta-wide {
-  gap: 8px;
+  gap: 4px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -187,11 +226,11 @@ html.empiria-ab-spot-b .spot-ab__cta-round {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border: 0;
   border-radius: 50%;
-  background: #1b7a4a;
+  background: #0fa848;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
@@ -202,15 +241,24 @@ html.empiria-ab-spot-b .spot-ab__cta-wide:hover {
   opacity: 0.92;
 }
 
+/* ---------------------------------------------------------------- precos */
+
 html.empiria-ab-spot-b .spot-ab__prices {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  gap: 8px;
+}
+
+html.empiria-ab-spot-b .spot-ab__prices > p {
+  margin: 0;
 }
 
 html.empiria-ab-spot-b .spot-ab__de {
-  margin: 0 0 2px;
   color: #b4b4b4;
-  font-size: 12px;
-  line-height: 1.3;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 html.empiria-ab-spot-b .spot-ab__de s {
@@ -222,76 +270,112 @@ html.empiria-ab-spot-b .spot-ab__por {
   flex-wrap: nowrap;
   align-items: baseline;
   gap: 4px;
-  margin: 0;
   color: #e30613;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.2;
   white-space: nowrap;
 }
 
 html.empiria-ab-spot-b .spot-ab__por small {
-  color: #333;
-  font-size: 12px;
+  color: #1c1c1a;
+  font-size: inherit;
   font-weight: 400;
   white-space: nowrap;
 }
 
-html.empiria-ab-spot-b .spot-ab--m2 .spot-ab__por small {
-  color: #e30613;
-  font-weight: 700;
+html.empiria-ab-spot-b .spot-ab--m2 .spot-ab__por {
+  font-size: 14px;
 }
 
-html.empiria-ab-spot-b .spot-ab__box {
-  margin: 4px 0 0;
-  color: #6f6f6f;
-  font-size: 12px;
-  line-height: 1.3;
+html.empiria-ab-spot-b .spot-ab__box,
+html.empiria-ab-spot-b .spot-ab__cada {
+  color: #656565;
+  font-size: 13px;
+  line-height: 1.2;
 }
 
 html.empiria-ab-spot-b .spot-ab__box strong {
-  color: #111;
+  color: #656565;
+  font-weight: 700;
+}
+
+html.empiria-ab-spot-b .spot-ab__cada strong {
+  color: #43433e;
   font-weight: 700;
 }
 
 html.empiria-ab-spot-b .spot-ab__installment {
-  margin: 4px 0 0;
-  color: #6f6f6f;
+  color: #656565;
   font-size: 12px;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
-html.empiria-ab-spot-b .spot-ab__installment--lead {
-  margin: 0 0 2px;
-  color: #111;
-  font-size: 16px;
+html.empiria-ab-spot-b .spot-ab__installment strong {
+  color: #43433e;
   font-weight: 700;
 }
 
-html.empiria-ab-spot-b .spot-ab__cada {
-  margin: 0;
-  color: #6f6f6f;
-  font-size: 12px;
+html.empiria-ab-spot-b .spot-ab__installment--lead {
+  color: #1c1c1a;
+  font-size: 14px;
 }
 
-@media screen and (max-width: 991px) {
-  html.empiria-ab-spot-b .spot-ab__por {
-    font-size: 16px;
-  }
+html.empiria-ab-spot-b .spot-ab__installment--lead strong {
+  color: #e30613;
+}
 
-  html.empiria-ab-spot-b .spot-ab__installment--lead {
-    font-size: 14px;
+html.empiria-ab-spot-b .spot-ab__installment--lead .spot-ab__parc-n {
+  color: #1c1c1a;
+}
+
+/* -------------------------------------------------------------- desktop
+   Figma: variantes DESKTOP promocionadas nao exibem o botao de carrinho —
+   ele aparece apenas no mobile. */
+
+@media screen and (min-width: 992px) {
+  html.empiria-ab-spot-b .spot-ab__cta-round {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------- mobile */
+
+@media screen and (max-width: 991px) {
+  /* Figma MOBILE: pill se ajusta ao conteudo e o valor cai abaixo do rotulo.
+     column + nowrap garante a quebra entre rotulo e valor, e nunca dentro
+     do valor ("R$" / "8,91"). */
+  html.empiria-ab-spot-b .spot-ab__economize {
+    flex: 0 1 auto;
+    flex-direction: column;
   }
 
   html.empiria-ab-spot-b .spot-ab__cta-round {
-    width: 32px;
-    height: 32px;
+    margin-left: auto;
   }
 
-  html.empiria-ab-spot-b .spot-ab__economize,
-  html.empiria-ab-spot-b .spot-ab__cta-wide {
-    min-height: 30px;
-    padding: 5px 8px;
-    font-size: 11px;
+  /* setas de navegacao abaixo dos spots, centralizadas (Figma, gap 64) */
+  html.empiria-ab-spot-b .swiper-container:has(.spot) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 8px;
+    column-gap: 64px;
+  }
+
+  html.empiria-ab-spot-b .swiper-container:has(.spot) > .swiper {
+    flex: 0 0 100%;
+  }
+
+  html.empiria-ab-spot-b .swiper-container:has(.spot) > .swiper-button-prev,
+  html.empiria-ab-spot-b .swiper-container:has(.spot) > .swiper-button-next {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    margin: 0;
+    transform: none;
   }
 }

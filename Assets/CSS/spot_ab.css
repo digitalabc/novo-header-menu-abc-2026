@@ -243,10 +243,17 @@ html.empiria-ab-spot-b .spot-ab__cta-wide:hover {
 
 /* ---------------------------------------------------------------- precos */
 
+/* Figma: o bloco de precos tem altura fixa de 62px em todas as 6 variantes e
+   as linhas se ancoram embaixo. E isso que mantem o pill "Economize" e o botao
+   "Adicionar" na mesma altura entre cards com 3 e com 2 linhas de preco:
+   promocionado ocupa y=0/21/48, tabelado deixa a faixa do "de" vazia e cai em
+   y=21/46. min-height em vez de height para nao cortar se um texto quebrar. */
 html.empiria-ab-spot-b .spot-ab__prices {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   min-width: 0;
+  min-height: 62px;
   gap: 8px;
 }
 

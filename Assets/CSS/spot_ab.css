@@ -204,9 +204,12 @@ html.empiria-ab-spot-b .spot-ab__cta-wide {
   box-sizing: border-box;
 }
 
-/* o flex container engole o espaco entre o rotulo e o valor; no mobile
-   a direcao vira column e column-gap deixa de valer, como no Figma */
+/* o flex container engole o espaco entre o rotulo e o valor, dai o column-gap.
+   Figma: rotulo e valor na mesma linha; o wrap so entra quando o pill nao cabe
+   no slot (mobile), e ai o valor cai inteiro para a linha de baixo — o
+   white-space: nowrap herdado impede quebrar dentro do proprio valor. */
 html.empiria-ab-spot-b .spot-ab__economize {
+  flex-wrap: wrap;
   column-gap: 4px;
 }
 
@@ -352,14 +355,11 @@ html.empiria-ab-spot-b .spot-ab__installment--lead .spot-ab__parc-n {
 /* --------------------------------------------------------------- mobile */
 
 @media screen and (max-width: 991px) {
-  /* Figma MOBILE: pill se ajusta ao conteudo e o valor cai abaixo do rotulo.
-     column + nowrap garante a quebra entre rotulo e valor, e nunca dentro
-     do valor ("R$" / "8,91"). */
+  /* Figma MOBILE: pill se ajusta ao conteudo e divide o slot com o botao. */
   html.empiria-ab-spot-b .spot-ab__economize {
     flex: 0 1 auto;
-    flex-direction: column;
-    /* Figma: pill de 32px com as duas linhas (26px) centradas — o padding
-       vertical de 6px do desktop levava a 38px e desalinhava do botao. */
+    /* pill de 32px tanto em uma linha quanto em duas — o padding vertical de
+       6px do desktop levava a 38px e desalinhava do botao redondo. */
     padding-block: 0;
   }
 

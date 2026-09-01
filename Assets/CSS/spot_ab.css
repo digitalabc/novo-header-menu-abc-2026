@@ -52,7 +52,10 @@ html.empiria-ab-spot-b .spot {
 /* ------------------------------------------------------------------ foto
    Figma: container 210x220 com a imagem em 160x160 centralizada e 16px de
    respiro no topo. A imagem nunca preenche o container (era o que fazia o
-   spot de pisos avancar sobre o border-radius). */
+   spot de pisos avancar sobre o border-radius).
+   O seletor precisa de `.spot` no meio: dentro de carrossel o auaha.css tem
+   `.swiper-container .spot .spot__image-wrapper` com width/max-width 100% e
+   `object-fit: cover`, que ganhava da versao sem `.spot`. */
 
 html.empiria-ab-spot-b .spot__image {
   display: flex !important;
@@ -64,7 +67,7 @@ html.empiria-ab-spot-b .spot__image {
   box-sizing: border-box;
 }
 
-html.empiria-ab-spot-b .spot__image-wrapper {
+html.empiria-ab-spot-b .spot .spot__image-wrapper {
   order: 1;
   /* margin auto absorve a folga: imagem centralizada, selos colados na base */
   margin: auto;
@@ -73,7 +76,7 @@ html.empiria-ab-spot-b .spot__image-wrapper {
   border-bottom: 0;
 }
 
-html.empiria-ab-spot-b .spot__image-wrapper img {
+html.empiria-ab-spot-b .spot .spot__image-wrapper img {
   object-fit: contain;
 }
 
@@ -355,6 +358,13 @@ html.empiria-ab-spot-b .spot-ab__installment--lead .spot-ab__parc-n {
   html.empiria-ab-spot-b .spot-ab__economize {
     flex: 0 1 auto;
     flex-direction: column;
+    /* Figma: pill de 32px com as duas linhas (26px) centradas — o padding
+       vertical de 6px do desktop levava a 38px e desalinhava do botao. */
+    padding-block: 0;
+  }
+
+  html.empiria-ab-spot-b .spot-ab__slot {
+    gap: 10px;
   }
 
   html.empiria-ab-spot-b .spot-ab__cta-round {

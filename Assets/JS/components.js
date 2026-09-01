@@ -947,6 +947,17 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
+    // Variante B do teste A/B dos spots: o Figma pede card de 212px com gap 12.
+    // O .swiper tem padding lateral de 15px (bleed), entao a area util num
+    // aparelho de 390 e 330. Swiper: slide = (size - gap * (spv - 1)) / spv,
+    // logo spv = (330 + 12) / (212 + 12) = 1.527. Sem a classe os carrosseis
+    // ficam exatamente como na variante A.
+    const spotMobile = document.documentElement.classList.contains(
+      "empiria-ab-spot-b",
+    )
+      ? { slidesPerView: 1.527, spaceBetween: 12 }
+      : { slidesPerView: 2.1, spaceBetween: 5 };
+
     document.querySelectorAll(".showcase-1 .swiper").forEach((showcaseOne) => {
       const section = showcaseOne.closest(".showcase-1");
       initSwiperInstance(showcaseOne, {
@@ -954,8 +965,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        slidesPerView: 2.1,
-        spaceBetween: 5,
+        ...spotMobile,
         breakpoints: {
           768: {
             slidesPerView: 3.1,
@@ -976,8 +986,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        spaceBetween: 5,
-        slidesPerView: 2.1,
+        ...spotMobile,
         breakpoints: {
           768: {
             slidesPerView: 3.1,
@@ -1007,8 +1016,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        spaceBetween: 5,
-        slidesPerView: 2.1,
+        ...spotMobile,
         watchOverflow: true,
         breakpoints: {
           768: {
@@ -1104,8 +1112,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        spaceBetween: 5,
-        slidesPerView: 2.1,
+        ...spotMobile,
         breakpoints: {
           768: {
             slidesPerView: 3.1,

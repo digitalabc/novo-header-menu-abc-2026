@@ -1,18 +1,18 @@
-.semana-do-consumidor .showcase[data-showcase="frete-gratis"],
-.semana-do-consumidor .showcase[data-showcase="melhores-ofertas"],
-.semana-do-consumidor .showcase[data-showcase="metais"],
-.semana-do-consumidor .showcase[data-showcase="banho-e-aquecimento"],
-.semana-do-consumidor .showcase[data-showcase="moveis"],
-.semana-do-consumidor .showcase[data-showcase="ferramentas"] {
+.section-super-chance-unica .showcase[data-showcase="frete-gratis"],
+.section-super-chance-unica .showcase[data-showcase="melhores-ofertas"],
+.section-super-chance-unica .showcase[data-showcase="metais"],
+.section-super-chance-unica .showcase[data-showcase="banho-e-aquecimento"],
+.section-super-chance-unica .showcase[data-showcase="moveis"],
+.section-super-chance-unica .showcase[data-showcase="ferramentas"] {
   display: none;
 }
 
-.semana-do-consumidor .countdown-principal-da-campanha {
+.section-super-chance-unica .countdown-principal-da-campanha {
   justify-content: flex-start;
   align-self: flex-start;
 }
 
-.semana-do-consumidor .countdown-principal-da-campanha__ribbon {
+.section-super-chance-unica .countdown-principal-da-campanha__ribbon {
   display: none;
   position: absolute;
   top: 16px;
@@ -37,7 +37,7 @@
 }
 
 
-.semana-do-consumidor {
+.section-super-chance-unica {
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -45,7 +45,7 @@
   padding-bottom: 72px;
 }
 
-.semana-do-consumidor:before {
+.section-super-chance-unica:before {
   content: "";
   position: absolute;
   top: 130px;
@@ -57,40 +57,40 @@
   pointer-events: none;
 }
 
-.semana-do-consumidor .container {
+.section-super-chance-unica .container {
   position: relative;
   z-index: 1;
 }
 
-.semana-do-consumidor .fullbanner .swiper {
+.section-super-chance-unica .fullbanner .swiper {
   overflow: hidden;
   /* border-radius: 0 0 34px 34px; */
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
 }
 
-.semana-do-consumidor .fullbanner img {
+.section-super-chance-unica .fullbanner img {
   display: block;
   margin: 0 auto;
   /* border-radius: 0 0 34px 34px; */
 }
 
-.semana-do-consumidor .showcase-stack {
+.section-super-chance-unica .showcase-stack {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
-.semana-do-consumidor .showcase-sections .showcase-stack {
+.section-super-chance-unica .showcase-sections .showcase-stack {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
-.semana-do-consumidor .showcase-sections .showcase-stack .showcase__link {
+.section-super-chance-unica .showcase-sections .showcase-stack .showcase__link {
   display: none;
 }
 
-.semana-do-consumidor .showcase {
+.section-super-chance-unica .showcase {
   position: relative;
   margin-bottom: 0;
   padding: 30px;
@@ -101,7 +101,7 @@
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
 }
 
-.semana-do-consumidor .showcase:before {
+.section-super-chance-unica .showcase:before {
   content: "";
   position: absolute;
   top: 0;
@@ -112,7 +112,7 @@
   background: linear-gradient(90deg, #4a4a4a 0%, #8a8a8a 100%);
 }
 
-.semana-do-consumidor .showcase__hero {
+.section-super-chance-unica .showcase__hero {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -120,11 +120,11 @@
   margin-bottom: 16px;
 }
 
-.semana-do-consumidor .showcase__copy {
+.section-super-chance-unica .showcase__copy {
   max-width: 580px;
 }
 
-.semana-do-consumidor .showcase__countdown-column {
+.section-super-chance-unica .showcase__countdown-column {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -132,11 +132,11 @@
   flex: 0 0 auto;
 }
 
-.semana-do-consumidor .showcase__heading {
+.section-super-chance-unica .showcase__heading {
   max-width: 560px;
 }
 
-.semana-do-consumidor .showcase__header {
+.section-super-chance-unica .showcase__header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -144,7 +144,7 @@
   margin-bottom: 20px;
 }
 
-.semana-do-consumidor .showcase__eyebrow {
+.section-super-chance-unica .showcase__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -156,7 +156,7 @@
   font-size: 11px;
 }
 
-.semana-do-consumidor .showcase__eyebrow-icon {
+.section-super-chance-unica .showcase__eyebrow-icon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -168,14 +168,14 @@
   animation: relampagoPulse 2.2s ease-in-out infinite, relampagoGlow 3.2s ease-in-out infinite;
 }
 
-.semana-do-consumidor .showcase__brandmark {
+.section-super-chance-unica .showcase__brandmark {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-bottom: 18px;
 }
 
-.semana-do-consumidor .showcase__brandmark span {
+.section-super-chance-unica .showcase__brandmark span {
   color: #5a5a5a;
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -184,7 +184,7 @@
   font-size: 13px;
 }
 
-.semana-do-consumidor .showcase__brandmark strong {
+.section-super-chance-unica .showcase__brandmark strong {
   color: #231b46;
   font-family: var(--font-brand);
   font-weight: 700;
@@ -192,14 +192,14 @@
   line-height: 1.08;
 }
 
-.semana-do-consumidor .showcase__title {
+.section-super-chance-unica .showcase__title {
   color: #111;
   font-weight: 800;
   font-size: 30px;
   line-height: 1.05;
 }
 
-.semana-do-consumidor .showcase__title--hero {
+.section-super-chance-unica .showcase__title--hero {
   max-width: 520px;
   font-size: clamp(46px, 6.6vw, 62px);
   text-transform: uppercase;
@@ -208,13 +208,13 @@
   animation: heroTitleEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
 }
 
-.semana-do-consumidor .showcase__title-word {
+.section-super-chance-unica .showcase__title-word {
   position: relative;
   display: inline-block;
   padding-right: 0.62em;
 }
 
-.semana-do-consumidor .oferta-relampago__lightning--hero {
+.section-super-chance-unica .oferta-relampago__lightning--hero {
   position: absolute;
   right: -0.4em;
   top: 0.5em;
@@ -225,21 +225,21 @@
   paint-order: stroke fill;
 }
 
-.semana-do-consumidor .showcase__subtitle {
+.section-super-chance-unica .showcase__subtitle {
   margin-top: 12px;
   color: #5a5a5a;
   font-size: 15px;
   line-height: 1.6;
 }
 
-.semana-do-consumidor .showcase__subtitle--hero {
+.section-super-chance-unica .showcase__subtitle--hero {
   max-width: 430px;
   font-family: "Montserrat", sans-serif !important;
   font-size: 14px;
   line-height: 1.55;
 }
 
-.semana-do-consumidor .showcase__hero-whatsapp {
+.section-super-chance-unica .showcase__hero-whatsapp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -265,19 +265,19 @@
 }
 
 
-.semana-do-consumidor .showcase__hero-whatsapp:hover {
+.section-super-chance-unica .showcase__hero-whatsapp:hover {
   background: linear-gradient(180deg, #ffe15b 0%, #ffc800 100%);
   border-color: rgba(0, 0, 0, 0.2);
   color: #000;
 }
 
-.semana-do-consumidor .showcase__actions {
+.section-super-chance-unica .showcase__actions {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 14px;
 }
 
-.semana-do-consumidor .showcase__link {
+.section-super-chance-unica .showcase__link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -294,49 +294,49 @@
   transition: all 0.2s ease-in-out;
 }
 
-.semana-do-consumidor .showcase__link svg {
+.section-super-chance-unica .showcase__link svg {
   transition: transform 0.2s ease-in-out;
 }
 
-.semana-do-consumidor .showcase__link:hover {
+.section-super-chance-unica .showcase__link:hover {
   background: rgba(245, 245, 245, 0.96);
   border-color: rgba(0, 0, 0, 0.18);
   color: #0d0d0d;
 }
 
-.semana-do-consumidor .showcase__link:hover svg {
+.section-super-chance-unica .showcase__link:hover svg {
   transform: translateX(3px);
 }
 
-.semana-do-consumidor .showcase__carousel .swiper-container {
+.section-super-chance-unica .showcase__carousel .swiper-container {
   position: relative;
   margin: 0;
   padding-inline: 10px;
   overflow: visible;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper {
+.section-super-chance-unica .showcase__carousel .swiper {
   overflow: hidden;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper-wrapper {
+.section-super-chance-unica .showcase__carousel .swiper-wrapper {
   justify-content: center;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper.is-centered-products .swiper-wrapper {
+.section-super-chance-unica .showcase__carousel .swiper.is-centered-products .swiper-wrapper {
   justify-content: center;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper.has-many-products .swiper-wrapper {
+.section-super-chance-unica .showcase__carousel .swiper.has-many-products .swiper-wrapper {
   justify-content: flex-start;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper.has-many-products .swiper-button-lock {
+.section-super-chance-unica .showcase__carousel .swiper.has-many-products .swiper-button-lock {
   display: flex !important;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper-button-prev,
-.semana-do-consumidor .showcase__carousel .swiper-button-next {
+.section-super-chance-unica .showcase__carousel .swiper-button-prev,
+.section-super-chance-unica .showcase__carousel .swiper-button-next {
   z-index: 20;
   width: 38px;
   height: 38px;
@@ -346,24 +346,24 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
-.semana-do-consumidor .showcase__carousel .swiper-button-prev:hover,
-.semana-do-consumidor .showcase__carousel .swiper-button-next:hover {
+.section-super-chance-unica .showcase__carousel .swiper-button-prev:hover,
+.section-super-chance-unica .showcase__carousel .swiper-button-next:hover {
   background: rgba(0, 0, 0, 0.12);
   color: #0d0d0d;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper-button-prev svg,
-.semana-do-consumidor .showcase__carousel .swiper-button-next svg {
+.section-super-chance-unica .showcase__carousel .swiper-button-prev svg,
+.section-super-chance-unica .showcase__carousel .swiper-button-next svg {
   width: 38px;
   height: 38px;
 }
 
-.semana-do-consumidor .showcase__carousel .swiper-button-prev svg path,
-.semana-do-consumidor .showcase__carousel .swiper-button-next svg path {
+.section-super-chance-unica .showcase__carousel .swiper-button-prev svg path,
+.section-super-chance-unica .showcase__carousel .swiper-button-next svg path {
   fill: currentColor;
 }
 
-.semana-do-consumidor .showcase[data-showcase="cronometer"] {
+.section-super-chance-unica .showcase[data-showcase="cronometer"] {
   overflow: hidden;
   padding: 44px 0 52px;
   border: none;
@@ -372,7 +372,7 @@
   box-shadow: none;
 }
 
-.semana-do-consumidor .showcase[data-showcase="cronometer"]:before {
+.section-super-chance-unica .showcase[data-showcase="cronometer"]:before {
   top: 0;
   left: 0;
   width: 100%;
@@ -381,26 +381,26 @@
   background: radial-gradient(circle at top right, rgba(80, 80, 80, 0.1), rgba(80, 80, 80, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%);
 }
 
-.semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__copy,
-.semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__actions {
+.section-super-chance-unica .showcase[data-showcase="cronometer"] .showcase__copy,
+.section-super-chance-unica .showcase[data-showcase="cronometer"] .showcase__actions {
   position: relative;
   z-index: 1;
 }
 
-.semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__link {
+.section-super-chance-unica .showcase[data-showcase="cronometer"] .showcase__link {
   background: rgba(255, 255, 255, 0.88);
   color: #231b46;
 }
 
-.semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__link:hover {
+.section-super-chance-unica .showcase[data-showcase="cronometer"] .showcase__link:hover {
   color: #fff;
 }
 
-.semana-do-consumidor .showcase[data-showcase="cronometer"] .showcase__subtitle {
+.section-super-chance-unica .showcase[data-showcase="cronometer"] .showcase__subtitle {
   color: rgba(35, 27, 70, 0.78);
 }
 
-.semana-do-consumidor #cronometro {
+.section-super-chance-unica #cronometro {
   position: relative;
   z-index: 1;
   flex-shrink: 0;
@@ -416,7 +416,7 @@
   color: #fff;
 }
 
-.semana-do-consumidor #cronometro:before {
+.section-super-chance-unica #cronometro:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -425,7 +425,7 @@
   pointer-events: none;
 }
 
-.semana-do-consumidor #cronometro .cronometro__label {
+.section-super-chance-unica #cronometro .cronometro__label {
   position: relative;
   z-index: 1;
   display: block;
@@ -438,7 +438,7 @@
   font-size: 11px;
 }
 
-.semana-do-consumidor #cronometro .oferta-relampago__countdown-eyebrow {
+.section-super-chance-unica #cronometro .oferta-relampago__countdown-eyebrow {
   position: relative;
   z-index: 1;
   display: inline-flex;
@@ -455,7 +455,7 @@
   text-align: center;
 }
 
-.semana-do-consumidor #cronometro .cronometro__note {
+.section-super-chance-unica #cronometro .cronometro__note {
   position: relative;
   z-index: 1;
   align-self: stretch;
@@ -468,7 +468,7 @@
   text-align: center;
 }
 
-.semana-do-consumidor #cronometro .cron {
+.section-super-chance-unica #cronometro .cron {
   position: relative;
   z-index: 1;
   display: grid;
@@ -476,7 +476,7 @@
   gap: 12px;
 }
 
-.semana-do-consumidor #cronometro .cron__item {
+.section-super-chance-unica #cronometro .cron__item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -488,10 +488,10 @@
   backdrop-filter: blur(12px);
 }
 
-.semana-do-consumidor #cronometro .days,
-.semana-do-consumidor #cronometro .hours,
-.semana-do-consumidor #cronometro .minutes,
-.semana-do-consumidor #cronometro .seconds {
+.section-super-chance-unica #cronometro .days,
+.section-super-chance-unica #cronometro .hours,
+.section-super-chance-unica #cronometro .minutes,
+.section-super-chance-unica #cronometro .seconds {
   font-variant-numeric: tabular-nums;
   color: #fff;
   font-weight: 800;
@@ -499,18 +499,18 @@
   line-height: 1;
 }
 
-.semana-do-consumidor #cronometro small {
+.section-super-chance-unica #cronometro small {
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 10px;
 }
 
-.semana-do-consumidor #cronometro .sep {
+.section-super-chance-unica #cronometro .sep {
   display: none;
 }
 
-.semana-do-consumidor .cronometro--spot {
+.section-super-chance-unica .cronometro--spot {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -521,11 +521,11 @@
   box-shadow: none;
 }
 
-.semana-do-consumidor .cronometro--spot:before {
+.section-super-chance-unica .cronometro--spot:before {
   content: none;
 }
 
-.semana-do-consumidor .cronometro--spot .cronometro__label {
+.section-super-chance-unica .cronometro--spot .cronometro__label {
   color: #2d2d2d;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -533,13 +533,13 @@
   font-size: 10px;
 }
 
-.semana-do-consumidor .cronometro--spot .cron {
+.section-super-chance-unica .cronometro--spot .cron {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
 }
 
-.semana-do-consumidor .cronometro--spot .cron__item {
+.section-super-chance-unica .cronometro--spot .cron__item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -550,10 +550,10 @@
   background: linear-gradient(180deg, #fff 0%, rgba(0, 0, 0, 0.03) 100%);
 }
 
-.semana-do-consumidor .cronometro--spot .days,
-.semana-do-consumidor .cronometro--spot .hours,
-.semana-do-consumidor .cronometro--spot .minutes,
-.semana-do-consumidor .cronometro--spot .seconds {
+.section-super-chance-unica .cronometro--spot .days,
+.section-super-chance-unica .cronometro--spot .hours,
+.section-super-chance-unica .cronometro--spot .minutes,
+.section-super-chance-unica .cronometro--spot .seconds {
   color: #0d0d0d;
   font-variant-numeric: tabular-nums;
   font-weight: 800;
@@ -561,22 +561,22 @@
   line-height: 1;
 }
 
-.semana-do-consumidor .cronometro--spot small {
+.section-super-chance-unica .cronometro--spot small {
   color: #4a4a4a;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 8px;
 }
 
-.semana-do-consumidor .showcase .spot__content-price {
+.section-super-chance-unica .showcase .spot__content-price {
   position: relative;
 }
 
-.semana-do-consumidor .showcase .spot:hover .overlay {
+.section-super-chance-unica .showcase .spot:hover .overlay {
   display: none;
 }
 
-.semana-do-consumidor .showcase .spot .overlay {
+.section-super-chance-unica .showcase .spot .overlay {
   position: absolute;
   inset: 0;
   display: flex;
@@ -589,7 +589,7 @@
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
-.semana-do-consumidor .showcase .spot .products-sold {
+.section-super-chance-unica .showcase .spot .products-sold {
   isolation: isolate;
   position: relative;
   width: 100%;
@@ -605,7 +605,7 @@
   overflow: hidden;
 }
 
-.semana-do-consumidor .showcase .spot .products-sold__progress {
+.section-super-chance-unica .showcase .spot .products-sold__progress {
   position: absolute;
   left: 0;
   height: 100%;
@@ -614,161 +614,161 @@
   z-index: -1;
 }
 
-.semana-do-consumidor .showcase .spot .products-sold__qtd {
+.section-super-chance-unica .showcase .spot .products-sold__qtd {
   position: relative;
   z-index: 1;
 }
 
 @media screen and (max-width: 991px) {
-  .semana-do-consumidor {
+  .section-super-chance-unica {
     padding-bottom: 52px;
   }
 
-  .semana-do-consumidor:before {
+  .section-super-chance-unica:before {
     top: 220px;
     width: 680px;
     height: 680px;
   }
 
-  .semana-do-consumidor .container {
+  .section-super-chance-unica .container {
     padding-inline: 15px !important;
   }
 
-  .semana-do-consumidor .fullbanner img,
-  .semana-do-consumidor .fullbanner .swiper {
+  .section-super-chance-unica .fullbanner img,
+  .section-super-chance-unica .fullbanner .swiper {
     /* border-radius: 0 0 20px 20px; */
   }
 
-  .semana-do-consumidor .showcase-stack {
+  .section-super-chance-unica .showcase-stack {
     gap: 20px;
   }
 
-  .semana-do-consumidor .seo-content {
+  .section-super-chance-unica .seo-content {
     grid-template-columns: 1fr;
     gap: 18px;
     margin-top: 24px;
   }
 
-  .semana-do-consumidor .seo-content__intro,
-  .semana-do-consumidor .seo-content__faq {
+  .section-super-chance-unica .seo-content__intro,
+  .section-super-chance-unica .seo-content__faq {
     padding: 22px 20px;
     border-radius: 24px;
   }
 
-  .semana-do-consumidor .showcase {
+  .section-super-chance-unica .showcase {
     padding: 22px 18px 24px;
     border-radius: 24px;
   }
 
-  .semana-do-consumidor .showcase:before {
+  .section-super-chance-unica .showcase:before {
     left: 18px;
   }
 
-  .semana-do-consumidor .showcase__hero {
+  .section-super-chance-unica .showcase__hero {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
     margin-bottom: 14px;
   }
 
-  .semana-do-consumidor .showcase__header {
+  .section-super-chance-unica .showcase__header {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
     margin-bottom: 16px;
   }
 
-  .semana-do-consumidor .showcase__actions {
+  .section-super-chance-unica .showcase__actions {
     margin-bottom: 16px;
   }
 
-  .semana-do-consumidor .showcase__title {
+  .section-super-chance-unica .showcase__title {
     font-size: 26px;
   }
 
-  .semana-do-consumidor .seo-content__title {
+  .section-super-chance-unica .seo-content__title {
     font-size: 24px;
   }
 
-  .semana-do-consumidor .seo-content__title--faq {
+  .section-super-chance-unica .seo-content__title--faq {
     font-size: 21px;
   }
 
-  .semana-do-consumidor .showcase__title--hero {
+  .section-super-chance-unica .showcase__title--hero {
     font-size: 32px;
   }
 
-  .semana-do-consumidor .oferta-relampago__lightning--hero {
+  .section-super-chance-unica .oferta-relampago__lightning--hero {
     font-size: 0.75em;
     right: -0.4em;
   }
 
-  .semana-do-consumidor .showcase__subtitle {
+  .section-super-chance-unica .showcase__subtitle {
     font-size: 14px;
   }
 
-  .semana-do-consumidor .showcase__hero-whatsapp {
+  .section-super-chance-unica .showcase__hero-whatsapp {
     width: 100%;
     max-width: 280px;
     padding: 11px 16px;
     font-size: 12px;
   }
 
-  .semana-do-consumidor .showcase__countdown-column {
+  .section-super-chance-unica .showcase__countdown-column {
     width: 100%;
     gap: 12px;
   }
 
-  .semana-do-consumidor .showcase__brandmark strong {
+  .section-super-chance-unica .showcase__brandmark strong {
     font-size: 28px;
   }
 
-  .semana-do-consumidor .showcase__link {
+  .section-super-chance-unica .showcase__link {
     justify-content: space-between;
     width: 100%;
   }
 
-  .semana-do-consumidor .showcase[data-showcase="cronometer"] {
+  .section-super-chance-unica .showcase[data-showcase="cronometer"] {
     padding: 30px 0 36px;
   }
 
-  .semana-do-consumidor #cronometro {
+  .section-super-chance-unica #cronometro {
     min-width: 0;
     width: 100%;
     padding: 16px;
     border-radius: 22px;
   }
 
-  .semana-do-consumidor #cronometro .cron {
+  .section-super-chance-unica #cronometro .cron {
     gap: 8px;
   }
 
-  .semana-do-consumidor #cronometro .cron__item {
+  .section-super-chance-unica #cronometro .cron__item {
     padding: 9px 6px;
     border-radius: 15px;
   }
 
-  .semana-do-consumidor #cronometro .days,
-  .semana-do-consumidor #cronometro .hours,
-  .semana-do-consumidor #cronometro .minutes,
-  .semana-do-consumidor #cronometro .seconds {
+  .section-super-chance-unica #cronometro .days,
+  .section-super-chance-unica #cronometro .hours,
+  .section-super-chance-unica #cronometro .minutes,
+  .section-super-chance-unica #cronometro .seconds {
     font-size: 24px;
   }
 
-  .semana-do-consumidor #cronometro small {
+  .section-super-chance-unica #cronometro small {
     font-size: 9px;
   }
 
-  .semana-do-consumidor .showcase .spot .overlay {
+  .section-super-chance-unica .showcase .spot .overlay {
     display: none;
   }
 }
 
-.semana-do-consumidor .showcase-sections {
+.section-super-chance-unica .showcase-sections {
   margin-top: 42px;
 }
 
-.semana-do-consumidor .seo-content {
+.section-super-chance-unica .seo-content {
   font-family: "Montserrat", sans-serif !important;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
@@ -779,8 +779,8 @@
   contain-intrinsic-size: 620px;
 }
 
-.semana-do-consumidor .seo-content__intro,
-.semana-do-consumidor .seo-content__faq {
+.section-super-chance-unica .seo-content__intro,
+.section-super-chance-unica .seo-content__faq {
   min-width: 0;
   padding: 28px 30px;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -789,7 +789,7 @@
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
 }
 
-.semana-do-consumidor .seo-content__eyebrow {
+.section-super-chance-unica .seo-content__eyebrow {
   display: inline-block;
   margin-bottom: 12px;
   color: #333;
@@ -800,7 +800,7 @@
   font-size: 11px;
 }
 
-.semana-do-consumidor .seo-content__title {
+.section-super-chance-unica .seo-content__title {
   margin: 0 0 14px;
   color: #333;
   font-family: "Montserrat", sans-serif !important;
@@ -810,12 +810,12 @@
   letter-spacing: -0.03em;
 }
 
-.semana-do-consumidor .seo-content__title--faq {
+.section-super-chance-unica .seo-content__title--faq {
   font-size: 24px;
 }
 
-.semana-do-consumidor .seo-content__intro p,
-.semana-do-consumidor .seo-content__faq p {
+.section-super-chance-unica .seo-content__intro p,
+.section-super-chance-unica .seo-content__faq p {
   margin: 0;
   color: #333;
   font-family: "Montserrat", sans-serif !important;
@@ -824,22 +824,22 @@
   line-height: 1.7;
 }
 
-.semana-do-consumidor .seo-content__intro p+p,
-.semana-do-consumidor .seo-content__faq-item+.seo-content__faq-item {
+.section-super-chance-unica .seo-content__intro p+p,
+.section-super-chance-unica .seo-content__faq-item+.seo-content__faq-item {
   margin-top: 16px;
 }
 
-.semana-do-consumidor .seo-content__faq-item {
+.section-super-chance-unica .seo-content__faq-item {
   padding: 16px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.semana-do-consumidor .seo-content__faq-item:first-of-type {
+.section-super-chance-unica .seo-content__faq-item:first-of-type {
   padding-top: 6px;
   border-top: 0;
 }
 
-.semana-do-consumidor .seo-content__faq-item summary {
+.section-super-chance-unica .seo-content__faq-item summary {
   cursor: pointer;
   list-style: none;
   position: relative;
@@ -851,11 +851,11 @@
   line-height: 1.5;
 }
 
-.semana-do-consumidor .seo-content__faq-item summary::-webkit-details-marker {
+.section-super-chance-unica .seo-content__faq-item summary::-webkit-details-marker {
   display: none;
 }
 
-.semana-do-consumidor .seo-content__faq-item summary:after {
+.section-super-chance-unica .seo-content__faq-item summary:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -868,67 +868,67 @@
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.semana-do-consumidor .seo-content__faq-item[open] summary:after {
+.section-super-chance-unica .seo-content__faq-item[open] summary:after {
   transform: translateY(-30%) rotate(225deg);
 }
 
-.semana-do-consumidor .seo-content__faq-item p {
+.section-super-chance-unica .seo-content__faq-item p {
   margin-top: 10px;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago {
+.section-super-chance-unica__featured {
   overflow: hidden;
   margin-top: 0;
   padding: 44px 0 52px;
   border: none;
   border-radius: 0;
-  background: linear-gradient(135deg, #f5f5f5 0%, #ebebeb 48%, #e0e0e0 100%);
+  background-color: #f53d45;
   box-shadow: none;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago:before {
+.section-super-chance-unica__featured:before {
   content: none;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__copy,
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__actions {
+.section-super-chance-unica__copy,
+.section-super-chance-unica__featured .showcase__actions {
   position: relative;
   z-index: 1;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__link {
+.section-super-chance-unica__featured .showcase__link {
   background: rgba(255, 255, 255, 0.88);
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__link:hover {
+.section-super-chance-unica__featured .showcase__link:hover {
   background: rgba(245, 245, 245, 0.96);
   border-color: rgba(0, 0, 0, 0.18);
   color: #0d0d0d;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__link:hover svg {
+.section-super-chance-unica__featured .showcase__link:hover svg {
   color: #0d0d0d;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__subtitle {
+.section-super-chance-unica__subtitle {
   color: rgba(45, 45, 45, 0.85);
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__carousel {
+.section-super-chance-unica__carousel {
   display: flex;
   justify-content: center;
   margin-top: 4px;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__carousel .swiper-container {
+.section-super-chance-unica__carousel .swiper-container {
   width: 100%;
 }
 
-.semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__actions {
+.section-super-chance-unica__featured .showcase__actions {
   display: none;
 }
 
-.semana-do-consumidor #cronometro {
+.section-super-chance-unica #cronometro {
   justify-content: flex-start;
   align-self: flex-start;
   gap: 10px;
@@ -941,28 +941,28 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
 }
 
-.semana-do-consumidor #cronometro:before {
+.section-super-chance-unica #cronometro:before {
   content: none;
 }
 
-.semana-do-consumidor #cronometro .cronometro__label {
+.section-super-chance-unica #cronometro .cronometro__label {
   text-align: center;
   color: rgba(255, 255, 255, 0.76);
   font-size: 14px;
 }
 
-.semana-do-consumidor #cronometro .oferta-relampago__countdown-eyebrow {
+.section-super-chance-unica #cronometro .oferta-relampago__countdown-eyebrow {
   margin-bottom: 0;
   font-size: 10px;
 }
 
-.semana-do-consumidor #cronometro .cronometro__note {
+.section-super-chance-unica #cronometro .cronometro__note {
   margin-top: 2px;
   color: rgba(255, 255, 255, 0.8);
   font-size: 12px;
 }
 
-.semana-do-consumidor #cronometro .cron {
+.section-super-chance-unica #cronometro .cron {
   opacity: 1;
   visibility: visible;
   align-self: center;
@@ -970,7 +970,7 @@
   max-width: 330px;
 }
 
-.semana-do-consumidor #cronometro .cron__item {
+.section-super-chance-unica #cronometro .cron__item {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -978,30 +978,30 @@
   border-radius: 17px;
 }
 
-.semana-do-consumidor .showcase .spot {
+.section-super-chance-unica .showcase .spot {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.semana-do-consumidor .showcase .spot__content {
+.section-super-chance-unica .showcase .spot__content {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.semana-do-consumidor .showcase .spot__content-price {
+.section-super-chance-unica .showcase .spot__content-price {
   margin-top: auto;
 }
 
-.semana-do-consumidor .showcase .spot:hover {
+.section-super-chance-unica .showcase .spot:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.semana-do-consumidor .showcase .spot:hover .spot__title h3 {
+.section-super-chance-unica .showcase .spot:hover .spot__title h3 {
   color: #0d0d0d;
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer {
+.section-super-chance-unica .showcase .spot .oferta-relampago__spot-footer {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1012,11 +1012,11 @@
   background: linear-gradient(180deg, rgba(250, 250, 250, 0.98) 0%, rgba(255, 255, 255, 0.995) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .spot__image-wrapper {
+.section-super-chance-unica .showcase .spot .spot__image-wrapper {
   border-bottom: 0;
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold {
   display: block;
   isolation: isolate;
   position: relative;
@@ -1037,32 +1037,32 @@
   overflow: hidden;
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-critical {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-critical {
   border-color: rgba(223, 71, 71, 0.34);
   background: linear-gradient(180deg, rgba(255, 241, 241, 0.96) 0%, rgba(255, 247, 247, 0.92) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-low {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-low {
   border-color: rgba(245, 151, 49, 0.34);
   background: linear-gradient(180deg, rgba(255, 247, 234, 0.96) 0%, rgba(255, 250, 242, 0.92) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-limited {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-limited {
   border-color: rgba(230, 191, 70, 0.34);
   background: linear-gradient(180deg, rgba(255, 251, 233, 0.96) 0%, rgba(255, 252, 242, 0.92) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-available {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-available {
   border-color: rgba(82, 176, 101, 0.34);
   background: linear-gradient(180deg, rgba(239, 251, 241, 0.96) 0%, rgba(246, 253, 247, 0.92) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-unavailable {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-unavailable {
   border-color: rgba(154, 154, 154, 0.3);
   background: linear-gradient(180deg, rgba(245, 245, 245, 0.96) 0%, rgba(250, 250, 250, 0.92) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-progress {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold-progress {
   position: absolute;
   left: 0;
   height: 100%;
@@ -1071,27 +1071,27 @@
   z-index: -1;
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-critical .oferta-relampago__sold-progress {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-critical .oferta-relampago__sold-progress {
   background: linear-gradient(90deg, rgba(239, 95, 95, 0.96) 0%, rgba(206, 49, 49, 0.9) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-low .oferta-relampago__sold-progress {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-low .oferta-relampago__sold-progress {
   background: linear-gradient(90deg, rgba(255, 180, 78, 0.94) 0%, rgba(242, 133, 16, 0.88) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-limited .oferta-relampago__sold-progress {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-limited .oferta-relampago__sold-progress {
   background: linear-gradient(90deg, rgba(244, 212, 88, 0.94) 0%, rgba(218, 181, 36, 0.88) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-available .oferta-relampago__sold-progress {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-available .oferta-relampago__sold-progress {
   background: linear-gradient(90deg, rgba(110, 205, 126, 0.94) 0%, rgba(63, 163, 80, 0.88) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-unavailable .oferta-relampago__sold-progress {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold.is-unavailable .oferta-relampago__sold-progress {
   background: linear-gradient(90deg, rgba(188, 188, 188, 0.8) 0%, rgba(153, 153, 153, 0.7) 100%);
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-text {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold-text {
   position: relative;
   z-index: 1;
   color: #4c4c4c;
@@ -1105,31 +1105,31 @@
   white-space: nowrap;
 }
 
-.semana-do-consumidor .spot__buttons .add-to-cart-button {
+.section-super-chance-unica__featured .spot__buttons .add-to-cart-button {
   background: #2d2d2d;
   color: #fff;
 }
 
-.semana-do-consumidor .spot__buttons .add-to-cart-button:hover,
-.semana-do-consumidor .spot:hover .spot__buttons .add-to-cart-button:hover {
+.section-super-chance-unica__featured .spot__buttons .add-to-cart-button:hover,
+.section-super-chance-unica__featured .spot:hover .spot__buttons .add-to-cart-button:hover {
   background: #0d0d0d;
   color: #fff;
 }
 
 @media only screen and (max-width: 767px) {
-  .semana-do-consumidor .showcase .spot .spot__image-wrapper {
+  .section-super-chance-unica .showcase .spot .spot__image-wrapper {
     max-width: 100%;
   }
 
-  .semana-do-consumidor .showcase-sections {
+  .section-super-chance-unica .showcase-sections {
     margin-top: 30px;
   }
 
-  .semana-do-consumidor .showcase.showcase-oferta-relampago {
+  .section-super-chance-unica__featured {
     padding: 30px 0 36px;
   }
 
-  .semana-do-consumidor #cronometro {
+  .section-super-chance-unica #cronometro {
     min-width: 0;
     width: 100%;
     min-height: 0;
@@ -1137,16 +1137,16 @@
     border-radius: 28px;
   }
 
-  .semana-do-consumidor .showcase .spot:hover {
+  .section-super-chance-unica .showcase .spot:hover {
     transform: none;
   }
 
-  .semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer {
+  .section-super-chance-unica .showcase .spot .oferta-relampago__spot-footer {
     margin: 0;
     padding: 10px 10px 8px;
   }
 
-  .semana-do-consumidor .showcase .spot .oferta-relampago__sold {
+  .section-super-chance-unica .showcase .spot .oferta-relampago__sold {
     height: 22px;
     line-height: 22px;
   }
@@ -1205,71 +1205,71 @@
   }
 }
 
-.semana-do-consumidor .showcase--panel {
+.section-super-chance-unica .showcase--panel {
   background: radial-gradient(circle at top right, rgba(80, 80, 80, 0.08), rgba(80, 80, 80, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 248, 0.94) 100%);
 }
 
-.semana-do-consumidor .showcase-frete-gratis,
-.semana-do-consumidor .showcase-metais,
-.semana-do-consumidor .showcase-moveis {
+.section-super-chance-unica .showcase-frete-gratis,
+.section-super-chance-unica .showcase-metais,
+.section-super-chance-unica .showcase-moveis {
   background: radial-gradient(circle at top right, rgba(80, 80, 80, 0.08), rgba(80, 80, 80, 0) 45%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 248, 0.94) 100%);
 }
 
-.semana-do-consumidor .showcase-melhores-ofertas,
-.semana-do-consumidor .showcase-banho-e-aquecimento,
-.semana-do-consumidor .showcase-ferramentas {
+.section-super-chance-unica .showcase-melhores-ofertas,
+.section-super-chance-unica .showcase-banho-e-aquecimento,
+.section-super-chance-unica .showcase-ferramentas {
   background: radial-gradient(circle at top right, rgba(242, 242, 242, 0.92), rgba(242, 242, 242, 0) 42%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.985) 0%, rgba(248, 248, 248, 0.95) 100%);
 }
 
-.semana-do-consumidor .showcase__eyebrow,
-.semana-do-consumidor .showcase__subtitle,
-.semana-do-consumidor .showcase__link,
-.semana-do-consumidor .showcase__brandmark span,
-.semana-do-consumidor #cronometro .cronometro__label,
-.semana-do-consumidor #cronometro .cronometro__note,
-.semana-do-consumidor .cronometro--spot .cronometro__label,
-.semana-do-consumidor .showcase .spot .spot-price .discount,
-.semana-do-consumidor .showcase .spot .spot-price .precoPor small,
-.semana-do-consumidor .showcase .spot .best-installment,
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-text {
+.section-super-chance-unica .showcase__eyebrow,
+.section-super-chance-unica .showcase__subtitle,
+.section-super-chance-unica .showcase__link,
+.section-super-chance-unica .showcase__brandmark span,
+.section-super-chance-unica #cronometro .cronometro__label,
+.section-super-chance-unica #cronometro .cronometro__note,
+.section-super-chance-unica .cronometro--spot .cronometro__label,
+.section-super-chance-unica .showcase .spot .spot-price .discount,
+.section-super-chance-unica .showcase .spot .spot-price .precoPor small,
+.section-super-chance-unica .showcase .spot .best-installment,
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold-text {
   font-family: var(--font-brand);
   font-weight: 300;
 }
 
-.semana-do-consumidor .showcase__title,
-.semana-do-consumidor .showcase__brandmark strong,
-.semana-do-consumidor #cronometro .cronometro__days,
-.semana-do-consumidor #cronometro .cronometro__hours,
-.semana-do-consumidor #cronometro .cronometro__minutes,
-.semana-do-consumidor #cronometro .cronometro__seconds,
-.semana-do-consumidor .cronometro--spot .cronometro__days,
-.semana-do-consumidor .cronometro--spot .cronometro__hours,
-.semana-do-consumidor .cronometro--spot .cronometro__minutes,
-.semana-do-consumidor .cronometro--spot .cronometro__seconds,
-.semana-do-consumidor .showcase .spot .spot-price .precoPor span {
+.section-super-chance-unica .showcase__title,
+.section-super-chance-unica .showcase__brandmark strong,
+.section-super-chance-unica #cronometro .cronometro__days,
+.section-super-chance-unica #cronometro .cronometro__hours,
+.section-super-chance-unica #cronometro .cronometro__minutes,
+.section-super-chance-unica #cronometro .cronometro__seconds,
+.section-super-chance-unica .cronometro--spot .cronometro__days,
+.section-super-chance-unica .cronometro--spot .cronometro__hours,
+.section-super-chance-unica .cronometro--spot .cronometro__minutes,
+.section-super-chance-unica .cronometro--spot .cronometro__seconds,
+.section-super-chance-unica .showcase .spot .spot-price .precoPor span {
   font-family: var(--font-brand);
   font-weight: 800;
 }
 
-.semana-do-consumidor .showcase__title {
+.section-super-chance-unica .showcase__title {
   font-weight: 800;
   letter-spacing: -0.03em;
 }
 
-.semana-do-consumidor .showcase__title--hero {
+.section-super-chance-unica .showcase__title--hero {
   font-family: "Montserrat", sans-serif !important;
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.9;
 }
 
-.semana-do-consumidor .showcase__brandmark strong {
+.section-super-chance-unica .showcase__brandmark strong {
   font-family: var(--font-brand);
   font-weight: 700;
   letter-spacing: -0.03em;
 }
 
-.semana-do-consumidor .oferta-relampago__lightning {
+.section-super-chance-unica .oferta-relampago__lightning {
   display: inline-block;
   font-size: 1.2em;
   line-height: 1;
@@ -1278,17 +1278,17 @@
   animation: home-lightning 1.2s ease-in-out infinite;
 }
 
-.semana-do-consumidor .showcase-chance-unica .showcase__title {
+.section-super-chance-unica .showcase-chance-unica .showcase__title {
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 800;
   letter-spacing: 0.03em;
 }
 
-.semana-do-consumidor #cronometro .cronometro__days,
-.semana-do-consumidor #cronometro .cronometro__hours,
-.semana-do-consumidor #cronometro .cronometro__minutes,
-.semana-do-consumidor #cronometro .cronometro__seconds {
+.section-super-chance-unica #cronometro .cronometro__days,
+.section-super-chance-unica #cronometro .cronometro__hours,
+.section-super-chance-unica #cronometro .cronometro__minutes,
+.section-super-chance-unica #cronometro .cronometro__seconds {
   display: block;
   font-variant-numeric: tabular-nums;
   color: #fff;
@@ -1297,11 +1297,11 @@
   line-height: 1;
 }
 
-.semana-do-consumidor #cronometro .cronometro__note {
+.section-super-chance-unica #cronometro .cronometro__note {
   max-width: none;
 }
 
-.semana-do-consumidor .showcase-chance-unica {
+.section-super-chance-unica .showcase-chance-unica {
   display: none;
   overflow: hidden;
   border-color: rgba(145, 18, 26, 0.26);
@@ -1310,30 +1310,30 @@
     linear-gradient(115deg, rgba(230, 45, 63, 0.98) 0%, rgba(213, 40, 56, 0.98) 44%, rgba(191, 22, 39, 0.98) 100%);
 }
 
-.semana-do-consumidor .showcase-chance-unica:before {
+.section-super-chance-unica .showcase-chance-unica:before {
   background: linear-gradient(90deg, #ffe15b 0%, #ffffff 100%);
 }
 
-.semana-do-consumidor .showcase-chance-unica .showcase__eyebrow,
-.semana-do-consumidor .showcase-chance-unica .showcase__title,
-.semana-do-consumidor .showcase-chance-unica .showcase__subtitle,
-.semana-do-consumidor .showcase-chance-unica .showcase__link {
+.section-super-chance-unica .showcase-chance-unica .showcase__eyebrow,
+.section-super-chance-unica .showcase-chance-unica .showcase__title,
+.section-super-chance-unica .showcase-chance-unica .showcase__subtitle,
+.section-super-chance-unica .showcase-chance-unica .showcase__link {
   color: #fff;
 }
 
-.semana-do-consumidor .showcase-chance-unica .showcase__link {
+.section-super-chance-unica .showcase-chance-unica .showcase__link {
   border-color: rgba(255, 225, 91, 0.55);
   background: rgba(255, 255, 255, 0.12);
   box-shadow: none;
 }
 
-.semana-do-consumidor .showcase-chance-unica .showcase__link:hover {
+.section-super-chance-unica .showcase-chance-unica .showcase__link:hover {
   background: #ffe15b;
   border-color: #ffe15b;
   color: #1f1515;
 }
 
-.semana-do-consumidor .showcase-chance-unica__hero {
+.section-super-chance-unica .showcase-chance-unica__hero {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr) auto;
   align-items: center;
@@ -1348,7 +1348,7 @@
     linear-gradient(135deg, rgba(255, 74, 74, 0.2), rgba(0, 0, 0, 0.18));
 }
 
-.semana-do-consumidor .showcase-chance-unica__seal {
+.section-super-chance-unica .showcase-chance-unica__seal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1365,14 +1365,14 @@
   line-height: 1.08;
 }
 
-.semana-do-consumidor .showcase-chance-unica__title-group {
+.section-super-chance-unica .showcase-chance-unica__title-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
 }
 
-.semana-do-consumidor .showcase-chance-unica__kicker {
+.section-super-chance-unica .showcase-chance-unica__kicker {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1388,7 +1388,7 @@
   letter-spacing: 0.08em;
 }
 
-.semana-do-consumidor .showcase-chance-unica__title {
+.section-super-chance-unica .showcase-chance-unica__title {
   display: inline-flex;
   padding: 12px 28px;
   border: 3px solid rgba(255, 255, 255, 0.75);
@@ -1404,7 +1404,7 @@
   letter-spacing: 0.02em;
 }
 
-.semana-do-consumidor .showcase-chance-unica__highlight {
+.section-super-chance-unica .showcase-chance-unica__highlight {
   justify-self: end;
   color: #fff;
   text-align: right;
@@ -1414,11 +1414,11 @@
   line-height: 1.2;
 }
 
-.semana-do-consumidor .showcase-chance-unica__placeholder {
+.section-super-chance-unica .showcase-chance-unica__placeholder {
   padding: 0;
 }
 
-.semana-do-consumidor .showcase-chance-unica__empty {
+.section-super-chance-unica .showcase-chance-unica__empty {
   padding: 22px 24px;
   border: 1px dashed rgba(255, 255, 255, 0.28);
   border-radius: 22px;
@@ -1426,7 +1426,7 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
-.semana-do-consumidor .showcase-chance-unica__empty strong {
+.section-super-chance-unica .showcase-chance-unica__empty strong {
   display: block;
   margin-bottom: 6px;
   font-family: var(--font-brand);
@@ -1434,16 +1434,16 @@
   font-size: 18px;
 }
 
-.semana-do-consumidor .showcase-chance-unica__empty p {
+.section-super-chance-unica .showcase-chance-unica__empty p {
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
 }
 
-.semana-do-consumidor .cronometro--spot .cronometro__days,
-.semana-do-consumidor .cronometro--spot .cronometro__hours,
-.semana-do-consumidor .cronometro--spot .cronometro__minutes,
-.semana-do-consumidor .cronometro--spot .cronometro__seconds {
+.section-super-chance-unica .cronometro--spot .cronometro__days,
+.section-super-chance-unica .cronometro--spot .cronometro__hours,
+.section-super-chance-unica .cronometro--spot .cronometro__minutes,
+.section-super-chance-unica .cronometro--spot .cronometro__seconds {
   display: block;
   color: #0d0d0d;
   font-variant-numeric: tabular-nums;
@@ -1452,40 +1452,40 @@
   line-height: 1;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoDe s {
+.section-super-chance-unica .showcase .spot .spot-price .precoDe s {
   color: rgba(0, 0, 0, 0.4);
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoPor,
-.semana-do-consumidor .showcase .spot .spot-price .precoPor span,
-.semana-do-consumidor .showcase .spot .best-installment {
+.section-super-chance-unica .showcase .spot .spot-price .precoPor,
+.section-super-chance-unica .showcase .spot .spot-price .precoPor span,
+.section-super-chance-unica .showcase .spot .best-installment {
   color: #c4472d;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoPor span {
+.section-super-chance-unica .showcase .spot .spot-price .precoPor span {
   font-weight: 900;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoPor small {
+.section-super-chance-unica .showcase .spot .spot-price .precoPor small {
   color: rgba(35, 27, 70, 0.65);
   font-size: 9px;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado span {
+.section-super-chance-unica .showcase .spot .spot-price .precoCalculado,
+.section-super-chance-unica .showcase .spot .spot-price .precoCalculado span {
   font-weight: 500;
   color: #000;
   font-size: 16px;
   line-height: 1.2;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado small {
+.section-super-chance-unica .showcase .spot .spot-price .precoCalculado small {
   font-size: 13px;
   color: #000;
   font-weight: 400;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado--piso-revestimento small {
+.section-super-chance-unica .showcase .spot .spot-price .precoCalculado--piso-revestimento small {
   display: inline-block;
   margin-left: 6px;
   padding: 3px 8px;
@@ -1495,12 +1495,12 @@
   border-radius: 4px;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoPor--somente-m2-piso span {
+.section-super-chance-unica .showcase .spot .spot-price .precoPor--somente-m2-piso span {
   font-weight: 900;
   color: #c4472d;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoPor--somente-m2-piso small {
+.section-super-chance-unica .showcase .spot .spot-price .precoPor--somente-m2-piso small {
   display: inline;
   margin-left: 0;
   padding: 0;
@@ -1511,11 +1511,11 @@
   font-weight: 300;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado--piso-revestimento::after {
+.section-super-chance-unica .showcase .spot .spot-price .precoCalculado--piso-revestimento::after {
   content: none;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado {
+.section-super-chance-unica .showcase .spot .spot-price .precoCalculado {
   width: fit-content;
   position: relative;
   padding-right: 52px;
@@ -1525,8 +1525,8 @@
   gap: 6px;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado::after {
-  content: "m²";
+.section-super-chance-unica .showcase .spot .spot-price .precoCalculado::after {
+  content: "mÃ‚Â²";
   position: absolute;
   right: 0;
   top: 50%;
@@ -1539,13 +1539,13 @@
   font-weight: 600;
 }
 
-.semana-do-consumidor .showcase .spot .spot__image .stamps-discount {
+.section-super-chance-unica .showcase .spot .spot__image .stamps-discount {
   background: #2f2937;
   color: #fff;
   box-shadow: 0 8px 18px rgba(47, 41, 55, 0.18);
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .discount {
+.section-super-chance-unica .showcase .spot .spot-price .discount {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1561,23 +1561,23 @@
   text-align: center;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .discount,
-.semana-do-consumidor .showcase .spot .spot-price .discount * {
+.section-super-chance-unica .showcase .spot .spot-price .discount,
+.section-super-chance-unica .showcase .spot .spot-price .discount * {
   color: #117e8a !important;
 }
 
-.semana-do-consumidor .showcase .spot .spot-price .discount__value {
+.section-super-chance-unica .showcase .spot .spot-price .discount__value {
   color: #117e8a;
   font-weight: 800;
   font-size: 9px !important;
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-progress {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold-progress {
   transform-origin: left center;
   animation: soldBarGrow 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
 }
 
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-text {
+.section-super-chance-unica .showcase .spot .oferta-relampago__sold-text {
   animation: soldTextIn 0.45s ease-out both;
 }
 
@@ -1600,25 +1600,25 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .semana-do-consumidor .oferta-relampago__lightning,
-  .semana-do-consumidor .showcase .spot .oferta-relampago__sold-progress,
-  .semana-do-consumidor .showcase .spot .oferta-relampago__sold-text,
-  .semana-do-consumidor .showcase .spot .oferta-relampago__badge-rotativo-text {
+  .section-super-chance-unica .oferta-relampago__lightning,
+  .section-super-chance-unica .showcase .spot .oferta-relampago__sold-progress,
+  .section-super-chance-unica .showcase .spot .oferta-relampago__sold-text,
+  .section-super-chance-unica .showcase .spot .oferta-relampago__badge-rotativo-text {
     animation: none;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .semana-do-consumidor .showcase.showcase-oferta-relampago .showcase__copy {
-    display: none !important;
+  .section-super-chance-unica__copy {
+    display: block;
   }
 
-  .semana-do-consumidor {
+  .section-super-chance-unica {
     margin-top: 0;
     padding-top: 0;
   }
 
-  .semana-do-consumidor .countdown-principal-da-campanha__ribbon {
+  .section-super-chance-unica .countdown-principal-da-campanha__ribbon {
     top: 10px;
     right: -20px;
     min-width: 96px;
@@ -1627,14 +1627,14 @@
     font-size: 7px;
   }
 
-  .semana-do-consumidor .seo-content {
+  .section-super-chance-unica .seo-content {
     display: flex;
     flex-direction: column;
     gap: 18px;
     margin-top: 24px;
   }
 
-  .semana-do-consumidor #cronometro {
+  .section-super-chance-unica #cronometro {
     min-width: 0;
     width: 100%;
     gap: 8px;
@@ -1642,82 +1642,82 @@
     border-radius: 20px;
   }
 
-  .semana-do-consumidor #cronometro .oferta-relampago__countdown-eyebrow {
+  .section-super-chance-unica #cronometro .oferta-relampago__countdown-eyebrow {
     font-size: 9px;
     letter-spacing: 0.12em;
   }
 
-  .semana-do-consumidor #cronometro .cronometro__label {
+  .section-super-chance-unica #cronometro .cronometro__label {
     font-size: 12px;
     letter-spacing: 0.12em;
   }
 
-  .semana-do-consumidor #cronometro .cron {
+  .section-super-chance-unica #cronometro .cron {
     gap: 6px;
     max-width: 100%;
   }
 
-  .semana-do-consumidor #cronometro .cron__item {
+  .section-super-chance-unica #cronometro .cron__item {
     gap: 4px;
     padding: 8px 4px;
     border-radius: 13px;
   }
 
-  .semana-do-consumidor #cronometro .cronometro__days,
-  .semana-do-consumidor #cronometro .cronometro__hours,
-  .semana-do-consumidor #cronometro .cronometro__minutes,
-  .semana-do-consumidor #cronometro .cronometro__seconds {
+  .section-super-chance-unica #cronometro .cronometro__days,
+  .section-super-chance-unica #cronometro .cronometro__hours,
+  .section-super-chance-unica #cronometro .cronometro__minutes,
+  .section-super-chance-unica #cronometro .cronometro__seconds {
     font-size: 22px;
   }
 
-  .semana-do-consumidor #cronometro small {
+  .section-super-chance-unica #cronometro small {
     font-size: 8px;
     letter-spacing: 0.08em;
   }
 
-  .semana-do-consumidor #cronometro .cronometro__note {
+  .section-super-chance-unica #cronometro .cronometro__note {
     font-size: 10px;
     line-height: 1.35;
   }
 
-  .semana-do-consumidor .seo-content__intro,
-  .semana-do-consumidor .seo-content__faq {
+  .section-super-chance-unica .seo-content__intro,
+  .section-super-chance-unica .seo-content__faq {
     width: 100%;
     min-width: 0;
     padding: 22px 20px;
     border-radius: 24px;
   }
 
-  .semana-do-consumidor .seo-content__title {
+  .section-super-chance-unica .seo-content__title {
     font-size: 24px;
   }
 
-  .semana-do-consumidor .seo-content__title--faq {
+  .section-super-chance-unica .seo-content__title--faq {
     font-size: 21px;
   }
 
-  .semana-do-consumidor .showcase .spot .spot-price {
+  .section-super-chance-unica .showcase .spot .spot-price {
     display: flex;
     flex-direction: column;
     align-items: stretch;
   }
 
-  .semana-do-consumidor .showcase .spot .spot__content-title {
+  .section-super-chance-unica .showcase .spot .spot__content-title {
     order: 1;
   }
 
-  .semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer {
+  .section-super-chance-unica .showcase .spot .oferta-relampago__spot-footer {
     order: 2;
     margin: 10px 0 0;
     padding: 0;
     background: transparent;
   }
 
-  .semana-do-consumidor .showcase .spot .spot__content-price {
+  .section-super-chance-unica .showcase .spot .spot__content-price {
     order: 3;
   }
 
-  .semana-do-consumidor .showcase .spot .spot-price .discount {
+  .section-super-chance-unica .showcase .spot .spot-price .discount {
     order: 1;
     display: flex;
     flex-direction: column;
@@ -1728,55 +1728,55 @@
     font-size: 9px !important;
   }
 
-  .semana-do-consumidor .showcase .spot .spot-price .discount__value {
+  .section-super-chance-unica .showcase .spot .spot-price .discount__value {
     display: block;
     line-height: 1;
     font-size: 9px !important;
   }
 
-  .semana-do-consumidor .showcase .spot .spot-price .precoDe,
-  .semana-do-consumidor .showcase .spot .spot-price .precoPor,
-  .semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
-  .semana-do-consumidor .showcase .spot .spot-price .best-installment {
+  .section-super-chance-unica .showcase .spot .spot-price .precoDe,
+  .section-super-chance-unica .showcase .spot .spot-price .precoPor,
+  .section-super-chance-unica .showcase .spot .spot-price .precoCalculado,
+  .section-super-chance-unica .showcase .spot .spot-price .best-installment {
     order: 2;
   }
 
-  .semana-do-consumidor .showcase__title--hero {
+  .section-super-chance-unica .showcase__title--hero {
     max-width: 100%;
     font-size: 44px;
     line-height: 0.94;
   }
 
-  .semana-do-consumidor .showcase__brandmark span {
+  .section-super-chance-unica .showcase__brandmark span {
     font-size: 11px;
     letter-spacing: 0.12em;
   }
 
-  .semana-do-consumidor #cronometro .cronometro__days,
-  .semana-do-consumidor #cronometro .cronometro__hours,
-  .semana-do-consumidor #cronometro .cronometro__minutes,
-  .semana-do-consumidor #cronometro .cronometro__seconds {
+  .section-super-chance-unica #cronometro .cronometro__days,
+  .section-super-chance-unica #cronometro .cronometro__hours,
+  .section-super-chance-unica #cronometro .cronometro__minutes,
+  .section-super-chance-unica #cronometro .cronometro__seconds {
     font-size: 28px;
   }
 
-  .semana-do-consumidor .cronometro--spot .cronometro__days,
-  .semana-do-consumidor .cronometro--spot .cronometro__hours,
-  .semana-do-consumidor .cronometro--spot .cronometro__minutes,
-  .semana-do-consumidor .cronometro--spot .cronometro__seconds {
+  .section-super-chance-unica .cronometro--spot .cronometro__days,
+  .section-super-chance-unica .cronometro--spot .cronometro__hours,
+  .section-super-chance-unica .cronometro--spot .cronometro__minutes,
+  .section-super-chance-unica .cronometro--spot .cronometro__seconds {
     font-size: 13px;
   }
 
-  .semana-do-consumidor .showcase-chance-unica__hero {
+  .section-super-chance-unica .showcase-chance-unica__hero {
     grid-template-columns: 1fr;
   }
 
-  .semana-do-consumidor .showcase-chance-unica__seal,
-  .semana-do-consumidor .showcase-chance-unica__highlight {
+  .section-super-chance-unica .showcase-chance-unica__seal,
+  .section-super-chance-unica .showcase-chance-unica__highlight {
     justify-self: start;
     text-align: left;
   }
 
-  .semana-do-consumidor .showcase-chance-unica__title {
+  .section-super-chance-unica .showcase-chance-unica__title {
     font-size: 38px;
   }
 }

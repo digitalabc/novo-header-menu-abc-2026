@@ -29,29 +29,36 @@
   overflow: visible;
 }
 
+.super-chance-unica-abc .showcase-sections {
+  background: #0d0d0d;
+  padding: 40px 32px;
+  border-radius: 20px;
+}
+
 .super-chance-unica-abc .showcase--panel {
-  border-color: rgba(15, 23, 42, 0.1);
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+  border-color: rgba(255, 255, 255, 0.06);
+  background: #141414;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   overflow: visible;
 }
 
 .super-chance-unica-abc .showcase--panel:before {
-  background: linear-gradient(90deg, #94a3b8 0%, #475569 100%);
+  background: linear-gradient(90deg, #3a3a3a 0%, #1f1f1f 100%);
 }
 
 .super-chance-unica-abc .showcase:before {
-  background: linear-gradient(90deg, #94a3b8 0%, #475569 100%);
+  background: linear-gradient(90deg, #3a3a3a 0%, #1f1f1f 100%);
 }
 
 .super-chance-unica-abc .showcase__eyebrow,
 .super-chance-unica-abc .showcase__subtitle,
 .super-chance-unica-abc .showcase__link {
-  color: #64748b;
+  color: #e0e0e0;
 }
 
 .super-chance-unica-abc .showcase__brandmark strong,
 .super-chance-unica-abc .showcase__title {
-  color: #0f172a;
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase-stack>.showcase:nth-of-type(n + 1) {
@@ -124,19 +131,19 @@
 }
 
 .super-chance-unica-abc .showcase__eyebrow-icon {
-  background: linear-gradient(135deg, #64748b 0%, #94a3b8 100%);
+  background: linear-gradient(135deg, #2e2e2e 0%, #4a4a4a 100%);
 }
 
 .super-chance-unica-abc .showcase--panel .showcase__link {
-  color: #0f172a;
+  color: #f0f0f0;
 }
 
 .super-chance-unica-abc .showcase--panel .showcase__link:hover {
-  color: #000;
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase--panel .showcase__link:hover svg {
-  color: #000;
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase .swiper:not(.swiper-initialized) {
@@ -150,9 +157,9 @@
 
 .super-chance-unica-abc .showcase .spot {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  border-color: rgba(15, 23, 42, 0.1);
-  background: #fff;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+  border-color: rgba(255, 255, 255, 0.06);
+  background: #1a1a1a;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
 }
 
 .super-chance-unica-abc .showcase .spot .spot__image-wrapper {
@@ -167,54 +174,54 @@
 }
 
 .super-chance-unica-abc .showcase .spot .overlay {
-  background: #fff;
-  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+  background: #1a1a1a;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .super-chance-unica-abc .showcase .spot .products-sold {
-  color: #0f172a;
-  background: linear-gradient(90deg, rgba(148, 163, 184, 0.2) 0%, rgba(100, 116, 139, 0.14) 100%);
+  color: #d4d4d4;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
 }
 
 .super-chance-unica-abc .showcase .spot .products-sold__progress {
-  background: linear-gradient(90deg, #64748b 0%, #334155 100%);
+  background: linear-gradient(90deg, #404040 0%, #262626 100%);
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__spot-footer {
-  background: #fff;
+  background: #1a1a1a;
   margin-bottom: 12px;
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__sold {
   border-radius: 10px;
   overflow: hidden;
-  border-color: rgba(100, 116, 139, 0.18);
-  background: rgba(100, 116, 139, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__sold.is-critical {
-  background: rgba(220, 38, 38, 0.07);
-  border-color: rgba(220, 38, 38, 0.26);
+  background: rgba(220, 38, 38, 0.12);
+  border-color: rgba(220, 38, 38, 0.3);
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__sold.is-low {
-  background: rgba(234, 88, 12, 0.07);
-  border-color: rgba(234, 88, 12, 0.26);
+  background: rgba(234, 88, 12, 0.12);
+  border-color: rgba(234, 88, 12, 0.3);
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__sold.is-limited {
-  background: rgba(202, 138, 4, 0.07);
-  border-color: rgba(202, 138, 4, 0.26);
+  background: rgba(202, 138, 4, 0.12);
+  border-color: rgba(202, 138, 4, 0.3);
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__sold.is-available {
-  background: rgba(21, 128, 61, 0.07);
-  border-color: rgba(21, 128, 61, 0.24);
+  background: rgba(21, 128, 61, 0.12);
+  border-color: rgba(21, 128, 61, 0.28);
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__sold.is-unavailable {
-  background: rgba(100, 116, 139, 0.05);
-  border-color: rgba(100, 116, 139, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .super-chance-unica-abc .showcase .spot .oferta-relampago__sold-progress {
@@ -269,45 +276,51 @@
 }
 
 .super-chance-unica-abc .showcase .spot .spot-price .discount {
-  background: rgba(15, 23, 42, 0.06);
-  border-color: rgba(15, 23, 42, 0.12);
-  color: #000;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase .spot .spot-price .discount__value {
-  color: #000;
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase .spot .spot-price .precoPor span,
 .super-chance-unica-abc .showcase .spot .spot-price .precoCalculado span,
 .super-chance-unica-abc .showcase .spot .spot-price .best-installment {
-  color: #000;
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase .spot .spot-price .precoDe s,
 .super-chance-unica-abc .showcase .spot .spot-price .precoPor small,
 .super-chance-unica-abc .showcase .spot .spot-price .precoCalculado small {
-  color: #64748b;
+  color: #8c8c8c;
 }
 
-.super-chance-unica-abc .spot__buttons .add-to-cart-button {
+.super-chance-unica-abc .section-super-chance-unica__featured .spot__buttons .add-to-cart-button {
   background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.15);
 }
 
-.super-chance-unica-abc .spot__buttons .add-to-cart-button:hover,
-.super-chance-unica-abc .showcase .spot:hover .spot__buttons .add-to-cart-button:hover {
+.super-chance-unica-abc .section-super-chance-unica__featured .spot__buttons .add-to-cart-button:hover,
+.super-chance-unica-abc .section-super-chance-unica__featured .spot:hover .spot__buttons .add-to-cart-button:hover {
   background: linear-gradient(135deg, #1e293b 0%, #020617 100%);
   box-shadow: 0 14px 26px rgba(15, 23, 42, 0.18);
 }
 
+.super-chance-unica-abc .showcase .spot .spot__title h3 {
+  color: #f5f5f5;
+}
+
 .super-chance-unica-abc .showcase .spot:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #202020;
 }
 
 .super-chance-unica-abc .showcase .spot:hover .spot__title h3 {
-  color: #0f172a;
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase__carousel .swiper-button-prev,
@@ -315,11 +328,11 @@
   z-index: 20;
   width: 38px;
   height: 38px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  background: linear-gradient(180deg, #fff 0%, #f1f5f9 100%);
-  color: #000;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  background: linear-gradient(180deg, #262626 0%, #171717 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
   touch-action: manipulation;
   cursor: pointer;
@@ -331,8 +344,8 @@
 
 .super-chance-unica-abc .showcase__carousel .swiper-button-prev:hover,
 .super-chance-unica-abc .showcase__carousel .swiper-button-next:hover {
-  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-  color: #000;
+  background: linear-gradient(180deg, #333333 0%, #1f1f1f 100%);
+  color: #ffffff;
 }
 
 .super-chance-unica-abc .showcase__carousel .swiper-button-prev svg,
@@ -368,7 +381,7 @@
   display: none;
 }
 
-.super-chance-unica-abc .showcase.showcase-oferta-relampago .showcase__subtitle {
+.super-chance-unica-abc .section-super-chance-unica__featured .section-super-chance-unica__subtitle {
   color: #fff !important;
 }
 
@@ -377,8 +390,13 @@
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
   gap: 24px;
-  margin-top: 32px;
-  color: #000;
+  margin: 32px 0 64px;
+  padding: 28px;
+  border: 1px solid #242424;
+  border-radius: 32px;
+  background: #080808;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+  color: #9b9b9b;
   content-visibility: auto;
   contain-intrinsic-size: 620px;
 }
@@ -387,16 +405,16 @@
 .super-chance-unica-abc .seo-content__faq {
   min-width: 0;
   padding: 28px 30px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid #292929;
   border-radius: 30px;
-  background: radial-gradient(circle at top right, rgba(242, 242, 242, 0.82), rgba(242, 242, 242, 0) 42%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0) 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 248, 248, 0.94) 100%);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+  background: #121212;
+  box-shadow: none;
 }
 
 .super-chance-unica-abc .seo-content__eyebrow {
   display: inline-block;
   margin-bottom: 12px;
-  color: #000;
+  color: #a9a9a9;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-family: "Montserrat", sans-serif !important;
@@ -406,7 +424,7 @@
 
 .super-chance-unica-abc .seo-content__title {
   margin: 0 0 14px;
-  color: #000;
+  color: #c6c6c6;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 800;
   font-size: 30px;
@@ -421,7 +439,7 @@
 .super-chance-unica-abc .seo-content__intro p,
 .super-chance-unica-abc .seo-content__faq p {
   margin: 0;
-  color: #000;
+  color: #9b9b9b;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
   font-size: 15px;
@@ -435,7 +453,7 @@
 
 .super-chance-unica-abc .seo-content__faq-item {
   padding: 16px 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid #2b2b2b;
 }
 
 .super-chance-unica-abc .seo-content__faq-item:first-of-type {
@@ -448,7 +466,7 @@
   list-style: none;
   position: relative;
   padding-right: 28px;
-  color: #000;
+  color: #b7b7b7;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 700;
   font-size: 15px;
@@ -466,8 +484,8 @@
   right: 2px;
   width: 10px;
   height: 10px;
-  border-right: 2px solid #2d2d2d;
-  border-bottom: 2px solid #2d2d2d;
+  border-right: 2px solid #a5a5a5;
+  border-bottom: 2px solid #a5a5a5;
   transform: translateY(-60%) rotate(45deg);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
@@ -478,24 +496,24 @@
 
 .super-chance-unica-abc .seo-content__faq-item p {
   margin-top: 10px;
-  color: #000;
+  color: #969696;
 }
 
 .super-chance-unica-abc .seo-content__faq-item summary:hover {
-  color: #000;
+  color: #d0d0d0;
 }
 
-.super-chance-unica-abc .showcase.showcase-oferta-relampago .showcase__link {
+.super-chance-unica-abc .section-super-chance-unica__featured .showcase__link {
   color: rgba(255, 255, 255, 0.95);
 }
 
-.super-chance-unica-abc .showcase.showcase-oferta-relampago .showcase__link:hover,
-.super-chance-unica-abc .showcase.showcase-oferta-relampago .showcase__link:hover svg {
+.super-chance-unica-abc .section-super-chance-unica__featured .showcase__link:hover,
+.super-chance-unica-abc .section-super-chance-unica__featured .showcase__link:hover svg {
   color: #fff;
 }
 
-.super-chance-unica-abc .showcase.showcase-oferta-relampago .showcase__subtitle {
-  color: #333 !important;
+.super-chance-unica-abc .section-super-chance-unica__featured .section-super-chance-unica__subtitle {
+  color: #fff !important;
 }
 
 @keyframes ofertas-mensais-clock-sway {
@@ -656,4 +674,578 @@
 
 body.lp-campanha.lp-oculta-header > header {
   display: none !important;
+}
+
+/* Primeira seÃ§Ã£o exclusiva da campanha Super Chance Ãšnica. */
+.section-super-chance-unica__featured {
+  overflow: hidden;
+  margin-top: 0;
+  padding: 44px 0 52px;
+  background-color: #f53d45;
+}
+
+.section-super-chance-unica__featured-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.section-super-chance-unica__copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-areas:
+    "logo logo"
+    "title title"
+    "subtitle subtitle"
+    "actions actions";
+  align-items: center;
+  justify-content: start;
+  column-gap: 14px;
+  row-gap: 0;
+  flex: 0 1 580px;
+  max-width: 580px;
+}
+
+.section-super-chance-unica__logo {
+  display: block;
+  grid-area: logo;
+  width: min(100%, 290px);
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.section-super-chance-unica__title {
+  --super-chance-title-depth: #161b2b;
+  grid-area: title;
+  margin: 0;
+  padding-left: 12px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(34px, 3.4vw, 56px);
+  font-weight: 900;
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  text-shadow:
+    -1px 1px 0 var(--super-chance-title-depth),
+    -2px 2px 0 var(--super-chance-title-depth),
+    -3px 3px 0 var(--super-chance-title-depth),
+    -4px 4px 0 var(--super-chance-title-depth),
+    -5px 5px 0 var(--super-chance-title-depth),
+    -6px 6px 0 var(--super-chance-title-depth),
+    -8px 7px 0 #111624,
+    -10px 8px 0 #111624,
+    -14px 10px 0 rgba(15, 23, 42, 0.7),
+    -20px 14px 18px rgba(15, 23, 42, 0.24);
+}
+
+.section-super-chance-unica__title-line {
+  display: inline-block;
+  width: 100%;
+}
+
+.section-super-chance-unica__title-highlight {
+  display: inline-block;
+  margin-left: 7px;
+  color: #ffc400;
+  font-size: 1.12em;
+  font-style: normal;
+  text-shadow: 2px 2px 0 #0f172a;
+  transform-origin: 50% 70%;
+  animation: home-lightning 1.2s ease-in-out infinite;
+}
+
+.section-super-chance-unica__subtitle {
+  grid-area: subtitle;
+  margin: 18px 0 0;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.section-super-chance-unica__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  margin-top: 0;
+  padding: 0 28px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 999px;
+  background: #ffca3a;
+  box-shadow:
+    -1px 1px 0 #161b2b,
+    -2px 2px 0 #161b2b,
+    -3px 3px 0 #161b2b,
+    -5px 4px 0 #111624,
+    -8px 6px 10px rgba(15, 23, 42, 0.24);
+  color: #0f172a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.section-super-chance-unica__whatsapp:hover {
+  color: #0f172a;
+  background: #ffd45a;
+  box-shadow:
+    -1px 1px 0 #161b2b,
+    -2px 2px 0 #161b2b,
+    -3px 3px 0 #161b2b,
+    -5px 4px 0 #111624,
+    -10px 8px 14px rgba(15, 23, 42, 0.28);
+}
+
+.section-super-chance-unica__site-link {
+  position: fixed;
+  top: 14px;
+  left: 16px;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 999px;
+  background: #ffca3a;
+  box-shadow:
+    -1px 1px 0 #161b2b,
+    -2px 2px 0 #161b2b,
+    -3px 3px 0 #161b2b,
+    -5px 4px 0 #111624,
+    -8px 6px 10px rgba(15, 23, 42, 0.24);
+  color: #0f172a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.section-super-chance-unica__site-link:hover {
+  color: #0f172a;
+  background: #ffd45a;
+  box-shadow:
+    -1px 1px 0 #161b2b,
+    -2px 2px 0 #161b2b,
+    -3px 3px 0 #161b2b,
+    -5px 4px 0 #111624,
+    -10px 8px 14px rgba(15, 23, 42, 0.28);
+}
+
+.section-super-chance-unica__hero-actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.section-super-chance-unica__carousel {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 55%;
+  min-width: 0;
+}
+
+.section-super-chance-unica__carousel-content {
+  overflow: visible;
+}
+
+.section-super-chance-unica__carousel-content .swiper {
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.section-super-chance-unica__carousel-content .swiper.swiper-initialized {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.section-super-chance-unica__carousel-content.is-ready .swiper.swiper-initialized {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.18s ease;
+}
+
+.section-super-chance-unica__carousel-content:not(.is-ready) .swiper {
+  height: 500px;
+}
+
+.section-super-chance-unica__carousel-content .swiper-wrapper {
+  justify-content: center;
+}
+
+.section-super-chance-unica__carousel-content .swiper.has-many-products .swiper-wrapper {
+  justify-content: flex-start;
+}
+
+.section-super-chance-unica__carousel-content .swiper-slide .spot {
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+.section-saldao {
+  margin-top: 32px;
+}
+
+.section-saldao__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+  background: transparent !important;
+  border: 0;
+  box-shadow: none;
+}
+
+.section-saldao__title {
+  margin: 0;
+  background: transparent;
+  color: #0f172a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.section-saldao__subtitle {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.section-saldao__countdown,
+.section-super-chance-unica__hero-countdown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  flex: 0 0 auto;
+  margin-top: 26px;
+}
+
+.section-super-chance-unica__hero-countdown {
+  margin-top: 0;
+}
+
+.section-saldao__countdown .home-offers-banner__countdown-item,
+.section-super-chance-unica__hero-countdown .home-offers-banner__countdown-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 36px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: #151515;
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.section-saldao__countdown .home-offers-banner__countdown-value,
+.section-super-chance-unica__hero-countdown .home-offers-banner__countdown-value {
+  display: block;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.section-saldao__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -34px 0 52px;
+}
+
+/* Mesmo grid usado nas vitrines de hotsite, como /abc-outlet. */
+.section-saldao .spots {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 70px;
+  justify-items: center;
+}
+
+.section-saldao .spots .spot {
+  width: 100%;
+}
+
+/* Os badges de estoque pertencem somente ao carrossel principal. */
+.section-super-chance-unica__featured .spot {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section-super-chance-unica__featured .spot__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.section-super-chance-unica__featured .spot__content-price {
+  margin-top: auto;
+}
+
+.section-super-chance-unica__featured .spot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.section-super-chance-unica__featured .oferta-relampago__spot-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 10px 8px;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(180deg, rgba(250, 250, 250, 0.98) 0%, rgba(255, 255, 255, 0.995) 100%);
+}
+
+.section-super-chance-unica__featured .oferta-relampago__sold {
+  isolation: isolate;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 24px;
+  padding: 0 10px;
+  overflow: hidden;
+  border: 1px solid rgba(82, 176, 101, 0.34);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(239, 251, 241, 0.96) 0%, rgba(246, 253, 247, 0.92) 100%);
+  color: #4c4c4c;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.section-super-chance-unica__featured .oferta-relampago__sold.is-critical {
+  border-color: rgba(223, 71, 71, 0.34);
+  background: linear-gradient(180deg, rgba(255, 241, 241, 0.96) 0%, rgba(255, 247, 247, 0.92) 100%);
+}
+
+.section-super-chance-unica__featured .oferta-relampago__sold.is-low {
+  border-color: rgba(245, 151, 49, 0.34);
+  background: linear-gradient(180deg, rgba(255, 247, 234, 0.96) 0%, rgba(255, 250, 242, 0.92) 100%);
+}
+
+.section-super-chance-unica__featured .oferta-relampago__sold.is-limited {
+  border-color: rgba(230, 191, 70, 0.34);
+  background: linear-gradient(180deg, rgba(255, 251, 233, 0.96) 0%, rgba(255, 252, 242, 0.92) 100%);
+}
+
+.section-super-chance-unica__featured .oferta-relampago__sold.is-unavailable {
+  border-color: rgba(154, 154, 154, 0.3);
+  background: linear-gradient(180deg, rgba(245, 245, 245, 0.96) 0%, rgba(250, 250, 250, 0.92) 100%);
+}
+
+.section-super-chance-unica__featured .oferta-relampago__sold-progress {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(110, 205, 126, 0.94) 0%, rgba(63, 163, 80, 0.88) 100%);
+}
+
+.section-super-chance-unica__featured .oferta-relampago__sold-text {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.52);
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .section-super-chance-unica__featured {
+    padding: 32px 0 40px;
+  }
+
+  .section-super-chance-unica__featured-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .section-super-chance-unica__copy {
+    max-width: 600px;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .section-super-chance-unica__carousel {
+    width: 100%;
+  }
+
+  .section-saldao .spots {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .section-saldao__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-super-chance-unica__featured {
+    padding: 34px 0 44px;
+  }
+
+  .section-super-chance-unica__featured-row {
+    gap: 18px;
+  }
+
+  .section-super-chance-unica__copy {
+    display: contents;
+  }
+
+  .section-super-chance-unica__logo,
+  .section-super-chance-unica__hero-countdown,
+  .section-super-chance-unica__title,
+  .section-super-chance-unica__subtitle,
+  .section-super-chance-unica__hero-actions {
+    width: min(100% - 24px, 430px);
+    align-self: center;
+  }
+
+  .section-super-chance-unica__logo {
+    order: 1;
+  }
+
+  .section-super-chance-unica__hero-countdown {
+    order: 2;
+  }
+
+  .section-super-chance-unica__title {
+    order: 3;
+    width: 100%;
+    margin-top: 0;
+    padding-left: 7px;
+    font-size: clamp(34px, 10.5vw, 42px);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    text-shadow:
+      -1px 1px 0 var(--super-chance-title-depth),
+      -2px 2px 0 var(--super-chance-title-depth),
+      -3px 3px 0 var(--super-chance-title-depth),
+      -4px 4px 0 var(--super-chance-title-depth),
+      -6px 5px 0 #111624,
+      -9px 7px 10px rgba(15, 23, 42, 0.25);
+  }
+
+  .section-super-chance-unica__logo {
+    width: min(100%, 240px);
+    margin-inline: auto;
+    margin-bottom: 0;
+  }
+
+  .section-super-chance-unica__subtitle {
+    order: 4;
+    width: 100%;
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    text-align: center;
+  }
+
+  .section-super-chance-unica__whatsapp {
+    order: 6;
+    width: min(100% - 24px, 430px);
+    min-height: 52px;
+    align-self: center;
+    font-size: 16px;
+  }
+
+  .section-saldao__load-more {
+    min-height: 52px;
+    padding-inline: 24px;
+    font-size: 16px;
+  }
+
+  .section-super-chance-unica__hero-actions {
+    display: contents;
+    margin-top: 0;
+  }
+
+  .section-super-chance-unica__carousel-content {
+    margin-inline: -15px;
+    padding-inline: 15px;
+  }
+
+  .section-super-chance-unica__carousel-content:not(.is-ready) .swiper {
+    height: 440px;
+  }
+
+  .section-saldao {
+    margin-top: 24px;
+  }
+
+  .section-saldao .spots {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .section-super-chance-unica__carousel {
+    order: 5;
+  }
+
+  .section-super-chance-unica__hero-countdown {
+    margin-top: 0;
+  }
+
+  .section-super-chance-unica__site-link {
+    top: 10px;
+    left: 10px;
+    min-height: 36px;
+    padding-inline: 13px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-saldao .spots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-saldao__title {
+    font-size: 24px;
+  }
+
+  .section-super-chance-unica__hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .section-super-chance-unica__hero-countdown {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-super-chance-unica__title-highlight {
+    animation: none;
+  }
 }

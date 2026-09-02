@@ -5,7 +5,6 @@
   {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construcao" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-  {{ asset type: "css" paths: ["lancamentos_2026"] }}
   {{ asset type: "css" paths: ["super_chance_unica"] }}
   {{ asset type: "css" paths: ["super_chance_unica_abc"] }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +20,14 @@
   {{ hotsite_structured_data hotsite: data.hotsite base_url: store.urls.base current_url: store.urls.current }}
 </head>
 
-<!-- <body class="lp-campanha lp-oculta-header"> -->
-<body class="lp-campanha">
+<body class="lp-campanha lp-oculta-header">
   {{ gtm_config_body gtm_id: common.gtm_id }}
+  <a class="section-super-chance-unica__site-link" href="/">Entrar no site ABC</a>
   <header>
     {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
   </header>
 
-  <div class="semana-do-consumidor super-chance-unica-abc">
+  <div class="section-super-chance-unica super-chance-unica-abc">
     <div class="fullbanner desktop">
       {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
     </div>
@@ -36,67 +35,68 @@
       {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Mobile Topo" }}
     </div>
 
-    <section class="showcase showcase-oferta-relampago showcase-ofertas-mensais-principal" data-showcase="cronometer">
+    <section class="section-super-chance-unica__featured" data-showcase="cronometer">
       <div class="container">
-        <div class="showcase__hero">
-          <div class="showcase__copy">
-            <h1 class="showcase__title showcase__title--hero">&Uacute;ltimas unidades com <span class="showcase__title-word">desconto<span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">%</span></span> exclusivo</h1>
-            <p class="showcase__subtitle showcase__subtitle--hero">Estoque limitado e pre&ccedil;os que n&atilde;o se repetem. Quando acabar, acabou.</p>
+        <div class="section-super-chance-unica__featured-row">
+          <div class="section-super-chance-unica__copy">
+            <img class="section-super-chance-unica__logo" src="https://abcdaconstrucao.fbitsstatic.net/media/logotema-super-chance-unica.png?v=202609021504" alt="Super Chance Única">
+            <h1 class="section-super-chance-unica__title"><span class="section-super-chance-unica__title-line">N&atilde;o perca!</span><span class="section-super-chance-unica__title-line">Descontos</span><span class="section-super-chance-unica__title-line">imperd&iacute;veis<span class="section-super-chance-unica__title-highlight" aria-hidden="true">%</span></span></h1>
+            <p class="section-super-chance-unica__subtitle">Estoque limitado e pre&ccedil;os que n&atilde;o se repetem.<br>Quando acabar, acabou.</p>
+            <div class="section-super-chance-unica__hero-actions">
+              <a class="section-super-chance-unica__whatsapp" href="#mm-whatsapp" onclick="event.preventDefault(); var mmWhatsapp = document.getElementById('mm-whatsapp'); if (mmWhatsapp) { mmWhatsapp.click(); }">Falar com especialista</a>
+              <div class="section-super-chance-unica__hero-countdown home-offers-banner__countdown" data-home-weekly-countdown role="timer" aria-live="polite" aria-label="Ofertas reiniciam em">
+                <span class="home-offers-banner__countdown-item"><span class="home-offers-banner__countdown-value" data-home-weekly-days>7D</span></span>
+                <span class="home-offers-banner__countdown-item"><span class="home-offers-banner__countdown-value" data-home-weekly-hours>00</span></span>
+                <span class="home-offers-banner__countdown-item"><span class="home-offers-banner__countdown-value" data-home-weekly-minutes>00</span></span>
+                <span class="home-offers-banner__countdown-item"><span class="home-offers-banner__countdown-value" data-home-weekly-seconds>00</span></span>
+              </div>
+            </div>
           </div>
 
-          <div class="showcase__countdown-column">
-            <!--
-            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-06-30T23:59:00-03:00">
-            <span class="countdown-principal-da-campanha__ribbon">Prorroga&ccedil;&atilde;o</span>
-            <span class="oferta-relampago__countdown-eyebrow">
-              <span class="oferta-relampago__lightning" aria-hidden="true">&#9889;</span>
-              Oferta rel&acirc;mpago
-            </span>
-            <span class="cronometro__label">Campanha termina em</span>
-            <div class="cron" aria-live="polite">
-              <div class="cron__item">
-                <span class="cronometro__days">00</span>
-                <small>Dias</small>
-              </div>
-              <div class="cron__item">
-                <span class="cronometro__hours">00</span>
-                <small>Horas</small>
-              </div>
-              <div class="cron__item">
-                <span class="cronometro__minutes">00</span>
-                <small>Min</small>
-              </div>
-              <div class="cron__item">
-                <span class="cronometro__seconds">00</span>
-                <small>Seg</small>
+          <div class="section-super-chance-unica__carousel">
+            {{ cronometro_products = data.vitrine_cronometro?.products?.nodes ?? [] }}
+            {{~ if cronometro_products.size > 0 ~}}
+            {{~ for product in cronometro_products ~}}
+            <input id="promotion-stock-{{for.index}}" type="hidden" value="{{product.stock}}">
+            <input id="promotion-available-{{for.index}}" type="hidden"
+              value="{{if product.available}}true{{else}}false{{end}}">
+            {{~ end ~}}
+            {{ spot_carousel class: "section-super-chance-unica__carousel-content" products: cronometro_products }}
+            {{~ else ~}}
+            <div class="section-super-chance-unica__placeholder">
+              <div class="section-super-chance-unica__empty">
+                <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
               </div>
             </div>
-            <span class="cronometro__note">Pre&ccedil;os e estoque sujeitos &agrave; atualiza&ccedil;&atilde;o durante a campanha.</span>
-            </div>
-            -->
-            <a class="showcase__hero-whatsapp" href="#mm-whatsapp" onclick="event.preventDefault(); var mmWhatsapp = document.getElementById('mm-whatsapp'); if (mmWhatsapp) { mmWhatsapp.click(); }">Falar com um especialista</a>
+            {{~ end ~}}
           </div>
-        </div>
-
-        <div class="showcase__carousel">
-          {{ cronometro_products = data.vitrine_cronometro?.products?.nodes ?? [] }}
-          {{~ if cronometro_products.size > 0 ~}}
-          {{~ for product in cronometro_products ~}}
-          <input id="promotion-stock-{{for.index}}" type="hidden" value="{{product.stock}}">
-          <input id="promotion-available-{{for.index}}" type="hidden"
-            value="{{if product.available}}true{{else}}false{{end}}">
-          {{~ end ~}}
-          {{ spot_carousel class: "showcase-oferta-relampago__carousel showcase-ofertas-mensais-principal__carousel" products: cronometro_products }}
-          {{~ else ~}}
-          <div class="showcase-ofertas-mensais__placeholder">
-            <div class="showcase-ofertas-mensais__empty">
-              <strong>&Aacute;rea dedicada ao ID do hotsite de produtos.</strong>
-            </div>
-          </div>
-          {{~ end ~}}
         </div>
       </div>
     </section>
+
+    {{ vitrine_produtos_paginados = data.vitrine_produtos?.products_by_offset }}
+    {{ vitrine_produtos = vitrine_produtos_paginados?.items ?? [] }}
+    {{ saldao_page_size = 24 }}
+    {{ saldao_current_page = current_page ?? 1 }}
+    {{~ if vitrine_produtos.size > 0 ~}}
+    <section class="section-saldao container" aria-label="Saldão">
+      <div class="section-saldao__header">
+        <div>
+          <h2 class="section-saldao__title">Sald&atilde;o de &Uacute;ltimas Unidades</h2>
+          <p class="section-saldao__subtitle">Aproveite as &uacute;ltimas unidades com descontos exclusivos.</p>
+        </div>
+      </div>
+      <div class="spots d-flex row" data-saldao-products-grid>
+        {{~ for product in vitrine_produtos ~}}
+          {{ spot product: product }}
+        {{~ end ~}}
+      </div>
+      <div class="section-saldao__pagination">
+        <input type="hidden" id="def_page_size" name="def_page_size" value="{{ saldao_page_size }}">
+        {{ pagination products: vitrine_produtos_paginados page_size: saldao_page_size current_page: saldao_current_page }}
+      </div>
+    </section>
+    {{~ end ~}}
 
     <div class="showcase-sections container">
       <div class="showcase-stack">
@@ -236,8 +236,8 @@
       <section class="seo-content" aria-labelledby="seo-content-title">
         <div class="seo-content__intro">
           <span class="seo-content__eyebrow">Super Chance &Uacute;nica</span>
-          <h2 id="seo-content-title" class="seo-content__title">At&eacute; 55% OFF nas top ofertas do m&ecirc;s para sua obra e reforma</h2>
-          <p>A p&aacute;gina Super Chance &Uacute;nica da ABC da Constru&ccedil;&atilde;o re&uacute;ne as melhores oportunidades do m&ecirc;s com descontos de at&eacute; 55% em materiais de constru&ccedil;&atilde;o, acabamento e itens para o dia a dia da obra.</p>
+          <h2 id="seo-content-title" class="seo-content__title">Top ofertas do m&ecirc;s para sua obra e reforma</h2>
+          <p>A p&aacute;gina Super Chance &Uacute;nica da ABC da Constru&ccedil;&atilde;o re&uacute;ne as melhores oportunidades do m&ecirc;s em materiais de constru&ccedil;&atilde;o, acabamento e itens para o dia a dia da obra.</p>
           <p>Aqui voc&ecirc; encontra uma sele&ccedil;&atilde;o exclusiva com o melhor pre&ccedil;o do Brasil em produtos para banheiro, cozinha, ferramentas, m&oacute;veis e muito mais &mdash; com condi&ccedil;&otilde;es v&aacute;lidas por tempo limitado.</p>
           <p>Economize agora: navegue pelas vitrines, compare pre&ccedil;os e aproveite antes que o estoque acabe.</p>
         </div>
@@ -251,8 +251,8 @@
           </details>
 
           <details class="seo-content__faq-item">
-            <summary>Os descontos de at&eacute; 55% valem para todos os produtos?</summary>
-            <p>Os descontos variam por produto. O percentual de at&eacute; 55% OFF se aplica a itens selecionados e est&aacute; sujeito &agrave; disponibilidade de estoque.</p>
+            <summary>Os descontos valem para todos os produtos?</summary>
+            <p>Os descontos variam por produto, aplicam-se a itens selecionados e est&atilde;o sujeitos &agrave; disponibilidade de estoque.</p>
           </details>
 
           <details class="seo-content__faq-item">
@@ -279,10 +279,10 @@
         },
         {
           "@type": "Question",
-          "name": "Os descontos de ate 55% valem para todos os produtos?",
+          "name": "Os descontos valem para todos os produtos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Os descontos variam por produto. O percentual de ate 55% OFF se aplica a itens selecionados e esta sujeito a disponibilidade de estoque."
+            "text": "Os descontos variam por produto, aplicam-se a itens selecionados e estao sujeitos a disponibilidade de estoque."
           }
         },
         {
@@ -303,7 +303,7 @@
 
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login",
   "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "lancamentos_2026",
-  "super_chance_unica_abc", "whats_form"] }}
+  "cart_from_spot", "product", "pagination", "whats_form"] }}
 
 </body>
 

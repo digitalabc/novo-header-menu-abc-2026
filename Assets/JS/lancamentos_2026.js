@@ -183,7 +183,7 @@ function getCompactStockLabel(tone) {
 function syncMobileStockBadgeLabels() {
   const isMobile = window.innerWidth <= 767;
 
-  document.querySelectorAll(".showcase-oferta-relampago .oferta-relampago__sold").forEach(function (badgeNode) {
+  document.querySelectorAll(".showcase-oferta-relampago .oferta-relampago__sold, .section-super-chance-unica__featured .oferta-relampago__sold").forEach(function (badgeNode) {
     const textNode = badgeNode.querySelector(".oferta-relampago__sold-text");
 
     if (!textNode) {
@@ -207,7 +207,7 @@ function syncMobileStockBadgeLabels() {
 }
 
 function normalizeSavingsLabels() {
-  document.querySelectorAll(".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount").forEach(function (discountNode) {
+  document.querySelectorAll(".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount, .section-super-chance-unica__featured .spot-price .discount").forEach(function (discountNode) {
     const valueNode = discountNode.querySelector(".discount__value");
 
     if (!valueNode) {
@@ -306,7 +306,7 @@ function startRotatingBadges() {
 }
 
 function mountPromotionOverlays() {
-  document.querySelectorAll(".showcase-oferta-relampago .spot").forEach(function (spot, index) {
+  document.querySelectorAll(".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot").forEach(function (spot, index) {
     const stockInput = document.querySelector(`#promotion-stock-${index}`);
     const availableInput = document.querySelector(`#promotion-available-${index}`);
     const spotImage = spot.querySelector(".spot__image");
@@ -341,7 +341,7 @@ function mountPromotionOverlays() {
 function syncSpotFooterPosition() {
   const isMobile = window.innerWidth <= 767;
 
-  document.querySelectorAll(".showcase-oferta-relampago .spot").forEach(function (spot) {
+  document.querySelectorAll(".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot").forEach(function (spot) {
     const overlay = spot.querySelector(".oferta-relampago__spot-footer");
     const spotImage = spot.querySelector(".spot__image");
     const spotContent = spot.querySelector(".spot__content");
@@ -561,6 +561,8 @@ function syncCenteredCarouselState(swiper) {
 }
 
 function buildCarouselOptions(selector) {
+  const isSuperChanceFeatured = selector === ".section-super-chance-unica__carousel-content";
+
   return {
     navigation: {
       nextEl: `${selector} .swiper-button-next`,
@@ -582,25 +584,25 @@ function buildCarouselOptions(selector) {
       768: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: 3.1,
+        slidesPerView: isSuperChanceFeatured ? 2 : 3.1,
         spaceBetween: 12,
       },
       992: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: 4,
+        slidesPerView: isSuperChanceFeatured ? 2 : 4,
         spaceBetween: 18,
       },
       1090: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: 5,
+        slidesPerView: isSuperChanceFeatured ? 2 : 5,
         spaceBetween: 16,
       },
       1200: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: 5,
+        slidesPerView: isSuperChanceFeatured ? 2 : 5,
         spaceBetween: 20,
       },
     },
@@ -657,12 +659,64 @@ function initDeferredSwipers(selectors) {
 }
 
 function initLandingSwipers() {
-  initSwiperIfNeeded(".showcase-oferta-relampago__carousel", buildCarouselOptions(".showcase-oferta-relampago__carousel"));
+  initSwiperIfNeeded(".section-super-chance-unica__carousel-content", buildCarouselOptions(".section-super-chance-unica__carousel-content"));
+}
+
+function revealFeaturedCarouselWhenStable() {
+  const carouselRoot = document.querySelector(".section-super-chance-unica__carousel-content");
+  const swiperElement = carouselRoot && carouselRoot.querySelector(".swiper");
+
+  if (!carouselRoot || !swiperElement || carouselRoot.dataset.featuredCarouselReady === "true") {
+    return;
+  }
+
+  let revealed = false;
+  const reveal = function () {
+    if (revealed) {
+      return;
+    }
+
+    revealed = true;
+    const swiper = swiperElement.swiper;
+
+    if (swiper) {
+      swiper.update();
+      syncCenteredCarouselState(swiper);
+    }
+
+    carouselRoot.dataset.featuredCarouselReady = "true";
+    carouselRoot.classList.add("is-ready");
+  };
+
+  const pendingImages = Array.from(swiperElement.querySelectorAll("img")).filter(function (image) {
+    return !image.complete;
+  });
+
+  if (!pendingImages.length) {
+    scheduleAfterPaint(reveal);
+    return;
+  }
+
+  let loadedImages = 0;
+  const handleImage = function () {
+    loadedImages += 1;
+
+    if (loadedImages === pendingImages.length) {
+      scheduleAfterPaint(reveal);
+    }
+  };
+
+  pendingImages.forEach(function (image) {
+    image.addEventListener("load", handleImage, { once: true });
+    image.addEventListener("error", handleImage, { once: true });
+  });
+
+  window.setTimeout(reveal, 1800);
 }
 
 function initAllShowcaseSwipers() {
   [
-    ".showcase-oferta-relampago__carousel",
+    ".section-super-chance-unica__carousel-content",
     ".showcase-frete-gratis__carousel",
     ".showcase-melhores-ofertas__carousel",
     ".showcase-cada-ambiente__carousel",
@@ -725,6 +779,7 @@ document.addEventListener("DOMContentLoaded", function () {
   normalizeSavingsLabels();
   mountPromotionOverlays();
   initAllShowcaseSwipers();
+  revealFeaturedCarouselWhenStable();
   startCountdown();
   startStickyCampaignCountdown();
 

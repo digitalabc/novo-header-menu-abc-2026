@@ -119,6 +119,12 @@ const HOME_INFO_ROTATOR_TRANSITION_MS = 650;
 // Ajuste esta ancora caso o reset semanal precise acontecer em outro dia/hora.
 const HOME_WEEKLY_OFFERS_ANCHOR = new Date(2026, 6, 27, 0, 0, 0, 0);
 
+function getEndOfCurrentMonth(now) {
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  return new Date(year, month + 1, 0, 23, 59, 59, 999);
+}
+
 let dailyHomeOffersCountdownTimerId = null;
 let weeklyHomeOffersCountdownTimerId = null;
 
@@ -227,7 +233,7 @@ function renderWeeklyHomeOffersCountdown(root, now) {
   const seconds = root.querySelector("[data-home-weekly-seconds]");
   if (!days || !hours || !minutes || !seconds) return;
 
-  const target = getNextWeeklyOffersReset(now);
+  const target = getEndOfCurrentMonth(now);
   const diffMs = Math.max(0, target.getTime() - now.getTime());
   const totalSeconds = Math.floor(diffMs / 1000);
   const countdownDays = Math.floor(totalSeconds / 86400);

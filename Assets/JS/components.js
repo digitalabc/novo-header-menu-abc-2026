@@ -233,7 +233,8 @@ function renderWeeklyHomeOffersCountdown(root, now) {
   const seconds = root.querySelector("[data-home-weekly-seconds]");
   if (!days || !hours || !minutes || !seconds) return;
 
-  const target = getEndOfCurrentMonth(now);
+  const isMonthly = root.hasAttribute("data-campaign-monthly-countdown");
+  const target = isMonthly ? getEndOfCurrentMonth(now) : getNextWeeklyOffersReset(now);
   const diffMs = Math.max(0, target.getTime() - now.getTime());
   const totalSeconds = Math.floor(diffMs / 1000);
   const countdownDays = Math.floor(totalSeconds / 86400);

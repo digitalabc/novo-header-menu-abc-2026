@@ -9972,18 +9972,31 @@ header {
   background: #fbdde1;
 }
 
-.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance {
-  background: #fdeae4;
-  border-color: #f4a88e;
-  color: #be3618;
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance,
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao {
+  background: #ffca3a;
+  border-color: #d8a01f;
+  color: #0f172a;
+  box-shadow:
+    -1px 1px 0 #161b2b,
+    -2px 2px 0 #161b2b,
+    -3px 3px 0 #111624,
+    -4px 4px 8px rgba(15, 23, 42, 0.22);
 }
 
-.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance::after {
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance::after,
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao::after {
   animation-delay: 2.7s;
 }
 
-.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance:hover {
-  background: #f8e3dc;
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance:hover,
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao:hover {
+  background: #ffd45a;
+  box-shadow:
+    -1px 1px 0 #161b2b,
+    -2px 2px 0 #161b2b,
+    -3px 3px 0 #111624,
+    -5px 5px 10px rgba(15, 23, 42, 0.26);
 }
 
 @keyframes navBadgeShimmer {

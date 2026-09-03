@@ -1,5 +1,54 @@
 window.addEventListener("load", loadMiniCart, false);
 
+function miniCartBuildShareData(checkoutData) {
+  const products = checkoutData?.products || [];
+  const normalizedProducts = products
+    .map((product) => ({
+      id: Number(product?.productVariantId),
+      quantity: Number(product?.quantity),
+    }))
+    .filter(
+      (product) =>
+        Number.isFinite(product.id) &&
+        product.id > 0 &&
+        Number.isFinite(product.quantity) &&
+        product.quantity > 0
+    );
+
+  const checkoutUrl = new URL(`${window.location.origin}/checkout`);
+  const currentParams = new URLSearchParams(window.location.search);
+
+  currentParams.forEach((value, key) => {
+    if (key === "shared_checkout") return;
+    checkoutUrl.searchParams.set(key, value);
+  });
+
+  checkoutUrl.searchParams.set(
+    "shared_checkout",
+    encodeURIComponent(btoa(JSON.stringify(normalizedProducts)))
+  );
+
+  const coupon = typeof checkoutData?.coupon === "string"
+    ? checkoutData.coupon.trim()
+    : "";
+
+  if (coupon) {
+    checkoutUrl.searchParams.set("coupon", coupon);
+  } else {
+    checkoutUrl.searchParams.delete("coupon");
+  }
+
+  const emojiCart = "\u{1F6D2}";
+  const emojiPointer = "\u{1F449}";
+  const emojiWink = "\uD83D\uDE09";
+  const message = `${emojiCart} Seu carrinho ABC está pronto!\n\nSeparamos os produtos para você e seu desconto já está aplicado.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${checkoutUrl.toString()}`;
+
+  return {
+    cartUrl: checkoutUrl.toString(),
+    whatsappUrl: `https://wa.me/?text=${encodeURIComponent(message)}`,
+  };
+}
+
 function generateCartShareLink(checkout) {
   const whatsAppButton = document.getElementById("whatsAppShare");
   if (!whatsAppButton) return null;
@@ -14,19 +63,9 @@ function generateCartShareLink(checkout) {
     return null;
   }
 
-  const canonicalBase = `${window.location.origin}/checkout`;
-  const cartItems = checkout.products.map((product) => ({
-    id: product.productVariantId,
-    quantity: product.quantity,
-  }));
+  const shareData = miniCartBuildShareData(checkout);
 
-  const param = encodeURIComponent(btoa(JSON.stringify(cartItems)));
-
-  const title = "*ABC: Dá uma olhadinha nisso!*";
-  const body = "Pra não perder tempo: já deixei tudo separadinho na ABC da Construção. É só conferir.";
-  const shareLink = `${canonicalBase}?shared_checkout=${param}`;
-  const composed = encodeURIComponent(`${title}\n\n${body}\n\n_${shareLink}_`);
-  whatsAppButton.setAttribute("href", `https://wa.me/?text=${composed}`);
+  whatsAppButton.setAttribute("href", shareData.whatsappUrl);
 
   if (!whatsAppButton.dataset.shareHandler) {
     whatsAppButton.addEventListener("click", async (e) => {
@@ -34,14 +73,13 @@ function generateCartShareLink(checkout) {
       try {
         const carrinhoId = await client.cookie.get("carrinho-id");
         const checkoutNow = await client.checkout.get(carrinhoId);
-        const productsNow = checkoutNow?.data?.products || [];
-        if (!productsNow.length) return;
-        const itemsNow = productsNow.map((p) => ({ id: p.productVariantId, quantity: p.quantity }));
-        const encodedNow = encodeURIComponent(btoa(JSON.stringify(itemsNow)));
-        const linkNow = `${canonicalBase}?shared_checkout=${encodedNow}`;
-        const textNow = encodeURIComponent(`${title}\n\n${body}\n\n_${linkNow}_`);
-        const urlNow = `https://wa.me/?text=${textNow}`;
-        window.open(urlNow, "_blank", "noopener,noreferrer");
+        const shareDataNow = miniCartBuildShareData(checkoutNow?.data);
+        if (!shareDataNow.whatsappUrl) return;
+        window.open(
+          shareDataNow.whatsappUrl,
+          "_blank",
+          "noopener,noreferrer"
+        );
       } catch (_) {}
     });
     whatsAppButton.dataset.shareHandler = "1";
@@ -49,7 +87,7 @@ function generateCartShareLink(checkout) {
 
   whatsAppButton.style.display = "flex";
 
-  return shareLink;
+  return shareData.cartUrl;
 }
 
 /**

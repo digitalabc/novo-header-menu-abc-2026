@@ -93,32 +93,23 @@ function checkoutShareEncodeSharedItems(products) {
   return encodeURIComponent(btoa(JSON.stringify(sharedItems)));
 }
 
-function checkoutShareBuildCartUrl(checkoutData) {
+function checkoutShareBuildCartUrl(products, appliedCoupon) {
+  const encodedSharedCheckout = checkoutShareEncodeSharedItems(products);
   const checkoutUrl = new URL(`${window.location.origin}/checkout`);
-
   const currentParams = checkoutShareGetParams();
 
   currentParams.forEach((value, key) => {
     if (key === CHECKOUT_SHARE_QUERY_PARAM) return;
-    if (key === CHECKOUT_COUPON_QUERY_PARAM) return;
-
     checkoutUrl.searchParams.set(key, value);
   });
 
-  checkoutUrl.searchParams.set(
-    CHECKOUT_SHARE_QUERY_PARAM,
-    checkoutData.checkoutId
-  );
+  checkoutUrl.searchParams.set(CHECKOUT_SHARE_QUERY_PARAM, encodedSharedCheckout);
 
-  const normalizedCoupon = checkoutShareNormalizeCoupon(
-    checkoutData.coupon
-  );
-
+  const normalizedCoupon = checkoutShareNormalizeCoupon(appliedCoupon);
   if (normalizedCoupon) {
-    checkoutUrl.searchParams.set(
-      CHECKOUT_COUPON_QUERY_PARAM,
-      normalizedCoupon
-    );
+    checkoutUrl.searchParams.set(CHECKOUT_COUPON_QUERY_PARAM, normalizedCoupon);
+  } else {
+    checkoutUrl.searchParams.delete(CHECKOUT_COUPON_QUERY_PARAM);
   }
 
   return checkoutUrl.toString();
@@ -134,7 +125,8 @@ function checkoutShareBuildMessage(cartUrl) {
 
 function checkoutShareBuildWhatsAppUrl(cartUrl) {
   const message = checkoutShareBuildMessage(cartUrl);
-  return `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+  return `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
 }
 
 function checkoutShareSetSessionValue(key, value) {
@@ -320,10 +312,10 @@ function checkoutShareBuildLinkData(checkoutData) {
     checkoutShareReadCouponLock()?.coupon ||
     "";
 
-  const cartUrl = checkoutShareBuildCartUrl({
-    ...checkoutData,
-    coupon,
-  });
+  const cartUrl = checkoutShareBuildCartUrl(
+    checkoutData.products,
+    coupon
+  );
 
   return {
     cartUrl,
@@ -876,25 +868,38 @@ const initializeCheckoutFromSharedCheckout = async () => {
       params.get(CHECKOUT_COUPON_QUERY_PARAM)
     );
 
+    let sharedProcessed = false;
+
     if (sharedCheckoutParam) {
       try {
-        const sharedCheckoutId = sharedCheckoutParam;
+        const sharedItems = checkoutShareDecodeSharedItems(sharedCheckoutParam);
 
-        console.log("CHECKOUT COMPARTILHADO:", sharedCheckoutId);
+        if (sharedItems.length) {
+          const createResponse = await client.checkout.create(sharedItems);
+          const newCheckoutId = createResponse?.data?.checkoutId;
 
-        await checkoutShareSetCheckoutCookie(sharedCheckoutId);
+          if (newCheckoutId) {
+            await checkoutShareSetCheckoutCookie(newCheckoutId);
 
-        await checkoutShareAddUtmMetadata(sharedCheckoutId);
+            await checkoutShareAddUtmMetadata(newCheckoutId);
 
-        if (typeof checkoutPartnerAssociate === "function") {
-          await checkoutPartnerAssociate(sharedCheckoutId);
+            if (typeof checkoutPartnerAssociate === "function") {
+              await checkoutPartnerAssociate(newCheckoutId);
+            }
+
+            // Garante que o checkout recém-criado esteja disponível
+            // antes de renderizar os produtos.
+            const newCheckout = await client.checkout.get(newCheckoutId);
+
+            if (newCheckout?.data?.products?.length) {
+              await updateCheckout();
+            }
+          }
+
+          sharedProcessed = true;
         }
       } catch (error) {
-        console.error("Erro ao carregar checkout compartilhado:", error);
-      } finally {
-        const nextParams = checkoutShareGetParams();
-        nextParams.delete(CHECKOUT_SHARE_QUERY_PARAM);
-        checkoutShareReplaceUrlWithParams(nextParams);
+        console.error("Erro ao montar carrinho compartilhado:", error);
       }
     }
 

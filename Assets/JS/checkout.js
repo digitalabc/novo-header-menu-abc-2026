@@ -127,7 +127,8 @@ function checkoutShareBuildCartUrl(checkoutData) {
 function checkoutShareBuildMessage(cartUrl) {
   const emojiCart = "\u{1F6D2}";
   const emojiPointer = "\u{1F449}";
-  const emojiWink = "\uD83D\uDE09";
+  const emojiWink = "\u{1F609}";
+
   return `${emojiCart} Seu carrinho ABC está pronto!\n\nSeparamos os produtos para você e seu desconto já está aplicado.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${cartUrl}`;
 }
 

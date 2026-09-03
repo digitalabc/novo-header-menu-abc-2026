@@ -10385,6 +10385,11 @@ header {
   position: relative;
 }
 
+/* Campeões de vendas: mantém o arredondamento também no desktop. */
+.banner-oportunidades.banner-oportunidades--metais ul li {
+  border-radius: 12px;
+}
+
 .banner-oportunidades ul li:after {
   content: "";
   display: block;

@@ -6,6 +6,382 @@ const setAllInnerHtmlById = (n, t) => {
   if (els.length) els.map((e) => { e.innerHTML = n; });
 }
 
+const CHECKOUT_SHARE_QUERY_PARAM = "shared_checkout";
+const CHECKOUT_COUPON_QUERY_PARAM = "coupon";
+const CHECKOUT_COUPON_PRIORITY_LOCK_KEY = "checkout:coupon-priority-lock";
+const CHECKOUT_COUPON_INVALID_LOCK_PREFIX = "checkout:coupon-invalid:";
+
+let checkoutShareIsEnsuringCoupon = false;
+let checkoutShareInitializationPromise = null;
+
+function checkoutShareNormalizeCoupon(value) {
+  if (typeof value !== "string") return "";
+  return value.trim();
+}
+
+function checkoutShareGetParams() {
+  return new URLSearchParams(window.location.search);
+}
+
+function checkoutShareReplaceUrlWithParams(params) {
+  const nextParams = new URLSearchParams(params);
+  const nextQuery = nextParams.toString();
+  const nextUrl = nextQuery
+    ? `${window.location.pathname}?${nextQuery}`
+    : window.location.pathname;
+  window.history.replaceState({}, document.title, nextUrl);
+}
+
+function checkoutShareBuildUtmMetadata() {
+  const params = typeof queryStringParams !== "undefined"
+    ? queryStringParams
+    : new URLSearchParams(window.location.search);
+
+  const mapping = [
+    ["utm_source", "utmSource"],
+    ["utm_medium", "utmMedium"],
+    ["utm_campaign", "utmCampaign"],
+    ["utm_term", "utmTerm"],
+    ["utm_content", "utmContent"],
+  ];
+
+  return mapping.reduce((acc, [paramKey, metadataKey]) => {
+    const value = params.get(paramKey);
+    if (value) acc.push({ key: metadataKey, value });
+    return acc;
+  }, []);
+}
+
+async function checkoutShareAddUtmMetadata(checkoutId) {
+  if (!checkoutId || !client?.checkout?.addCheckoutMetadata) return;
+  const metadata = checkoutShareBuildUtmMetadata();
+  if (!metadata.length) return;
+
+  try {
+    await client.checkout.addCheckoutMetadata(metadata, checkoutId);
+  } catch (error) {
+    console.error("Erro ao associar metadados UTM ao checkout:", error);
+  }
+}
+
+function checkoutShareDecodeSharedItems(rawSharedCheckout) {
+  if (!rawSharedCheckout) return [];
+
+  const decoded = JSON.parse(atob(decodeURIComponent(rawSharedCheckout)));
+  if (!Array.isArray(decoded)) return [];
+
+  return decoded
+    .map((item) => ({
+      productVariantId: Number(item?.id),
+      quantity: Number(item?.quantity),
+    }))
+    .filter(
+      (item) =>
+        Number.isFinite(item.productVariantId) &&
+        item.productVariantId > 0 &&
+        Number.isFinite(item.quantity) &&
+        item.quantity > 0
+    );
+}
+
+function checkoutShareEncodeSharedItems(products) {
+  const sharedItems = products.map((product) => ({
+    id: product.productVariantId,
+    quantity: product.quantity,
+  }));
+
+  return encodeURIComponent(btoa(JSON.stringify(sharedItems)));
+}
+
+function checkoutShareBuildCartUrl(products, appliedCoupon) {
+  const encodedSharedCheckout = checkoutShareEncodeSharedItems(products);
+  const checkoutUrl = new URL(`${window.location.origin}/checkout`);
+  const currentParams = checkoutShareGetParams();
+
+  currentParams.forEach((value, key) => {
+    if (key === CHECKOUT_SHARE_QUERY_PARAM) return;
+    checkoutUrl.searchParams.set(key, value);
+  });
+
+  checkoutUrl.searchParams.set(CHECKOUT_SHARE_QUERY_PARAM, encodedSharedCheckout);
+
+  const normalizedCoupon = checkoutShareNormalizeCoupon(appliedCoupon);
+  if (normalizedCoupon) {
+    checkoutUrl.searchParams.set(CHECKOUT_COUPON_QUERY_PARAM, normalizedCoupon);
+  } else {
+    checkoutUrl.searchParams.delete(CHECKOUT_COUPON_QUERY_PARAM);
+  }
+
+  return checkoutUrl.toString();
+}
+
+function checkoutShareBuildMessage(cartUrl, coupon) {
+  const emojiCart = "\u{1F6D2}";
+  const emojiPointer = "\u{1F449}";
+  const emojiWink = "\u{1F609}";
+
+  if(coupon.value && coupon.value.trim() !== "") {
+  return `${emojiCart} Seu carrinho ABC está pronto!\n\nSeparamos os produtos para você e seu desconto já está aplicado.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${cartUrl}`;
+  } else {
+    return `${emojiCart} Seu carrinho ABC está pronto!\n\nJá separamos os produtos para você.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${cartUrl}`;
+  }
+}
+
+function checkoutShareBuildWhatsAppUrl(cartUrl, coupon) {
+  const message = checkoutShareBuildMessage(cartUrl, coupon);
+
+  return `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+}
+
+function checkoutShareSetSessionValue(key, value) {
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch (_) {}
+}
+
+function checkoutShareGetSessionValue(key) {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch (_) {
+    return null;
+  }
+}
+
+function checkoutShareRemoveSessionValue(key) {
+  try {
+    window.sessionStorage.removeItem(key);
+  } catch (_) {}
+}
+
+function checkoutShareReadCouponLock() {
+  const serialized = checkoutShareGetSessionValue(
+    CHECKOUT_COUPON_PRIORITY_LOCK_KEY
+  );
+  if (!serialized) return null;
+
+  try {
+    const parsed = JSON.parse(serialized);
+    const coupon = checkoutShareNormalizeCoupon(parsed?.coupon);
+    if (!coupon) return null;
+    return {
+      coupon,
+      checkoutId: parsed?.checkoutId || null,
+      source: parsed?.source || "url",
+    };
+  } catch (_) {
+    return null;
+  }
+}
+
+function checkoutShareWriteCouponLock(coupon, checkoutId, source = "url") {
+  const normalizedCoupon = checkoutShareNormalizeCoupon(coupon);
+  if (!normalizedCoupon) return;
+
+  checkoutShareSetSessionValue(
+    CHECKOUT_COUPON_PRIORITY_LOCK_KEY,
+    JSON.stringify({
+      coupon: normalizedCoupon,
+      checkoutId: checkoutId || null,
+      source,
+      updatedAt: Date.now(),
+    })
+  );
+}
+
+function checkoutShareClearCouponLock() {
+  checkoutShareRemoveSessionValue(CHECKOUT_COUPON_PRIORITY_LOCK_KEY);
+}
+
+function checkoutShareGetInvalidCouponKey(coupon, checkoutId) {
+  return `${CHECKOUT_COUPON_INVALID_LOCK_PREFIX}${checkoutId || "unknown"}:${coupon}`;
+}
+
+function checkoutShareWasInvalidCouponAttempt(coupon, checkoutId) {
+  const key = checkoutShareGetInvalidCouponKey(coupon, checkoutId);
+  return checkoutShareGetSessionValue(key) === "1";
+}
+
+function checkoutShareMarkInvalidCouponAttempt(coupon, checkoutId) {
+  const key = checkoutShareGetInvalidCouponKey(coupon, checkoutId);
+  checkoutShareSetSessionValue(key, "1");
+}
+
+function checkoutShareClearInvalidCouponAttempt(coupon, checkoutId) {
+  const key = checkoutShareGetInvalidCouponKey(coupon, checkoutId);
+  checkoutShareRemoveSessionValue(key);
+}
+
+async function checkoutShareApplyCouponWithPriority(
+  couponValue,
+  options = {}
+) {
+  const coupon = checkoutShareNormalizeCoupon(couponValue);
+  if (!coupon) return { status: "empty" };
+
+  const checkoutId =
+    options.checkoutId || (await client.cookie.get("carrinho-id"));
+  if (!checkoutId) return { status: "missing-checkout" };
+
+  const currentCheckout = options.checkoutData?.checkoutId
+    ? options.checkoutData
+    : (await client.checkout.get(checkoutId))?.data;
+
+  if (!currentCheckout?.checkoutId) return { status: "missing-checkout-data" };
+
+  if (currentCheckout.coupon === coupon) {
+    checkoutShareWriteCouponLock(coupon, checkoutId, options.source || "url");
+    checkoutShareClearInvalidCouponAttempt(coupon, checkoutId);
+    return { status: "already-applied", checkoutData: currentCheckout };
+  }
+
+  if (checkoutShareWasInvalidCouponAttempt(coupon, checkoutId)) {
+    return { status: "skipped-invalid-cache", checkoutData: currentCheckout };
+  }
+
+  const response = await client.checkout.addCoupon(coupon);
+  if (response?.errors?.length > 0) {
+    checkoutShareMarkInvalidCouponAttempt(coupon, checkoutId);
+    if (options.showError !== false) {
+      showOverlay(
+        "Cupom nao aplicado",
+        "Nao foi possivel aplicar o cupom informado.",
+        true
+      );
+    }
+    return { status: "invalid", errors: response.errors };
+  }
+
+  checkoutShareWriteCouponLock(coupon, checkoutId, options.source || "url");
+  checkoutShareClearInvalidCouponAttempt(coupon, checkoutId);
+  
+  const refreshedCheckout = (await client.checkout.get(checkoutId))?.data;
+
+  return {
+    status: "applied",
+    checkoutData: {
+      ...(refreshedCheckout || currentCheckout),
+      coupon: response?.data?.coupon || coupon,
+    },
+  };
+}
+
+async function checkoutShareEnsurePriorityCoupon(checkoutData) {
+  const lock = checkoutShareReadCouponLock();
+  if (!lock?.coupon || checkoutShareIsEnsuringCoupon) return checkoutData;
+
+  if (
+    lock.checkoutId &&
+    checkoutData?.checkoutId &&
+    lock.checkoutId !== checkoutData.checkoutId
+  ) {
+    return checkoutData;
+  }
+
+  if (checkoutData?.coupon === lock.coupon) {
+    if (!lock.checkoutId && checkoutData?.checkoutId) {
+      checkoutShareWriteCouponLock(lock.coupon, checkoutData.checkoutId, lock.source);
+    }
+    return checkoutData;
+  }
+
+  checkoutShareIsEnsuringCoupon = true;
+  try {
+    const result = await checkoutShareApplyCouponWithPriority(lock.coupon, {
+      checkoutId: checkoutData?.checkoutId,
+      checkoutData,
+      source: lock.source || "url",
+      showError: false,
+    });
+
+    if (result?.checkoutData) {
+      return result.checkoutData;
+    }
+    return checkoutData;
+  } finally {
+    checkoutShareIsEnsuringCoupon = false;
+  }
+}
+
+async function checkoutShareSetCheckoutCookie(checkoutId) {
+  if (!checkoutId) return;
+  const domain = window.location.hostname.replace("www", "");
+  await client.cookie.set("carrinho-id", checkoutId, domain);
+}
+
+function checkoutShareBuildLinkData(checkoutData) {
+  if (!checkoutData?.products?.length) return null;
+
+  const coupon =
+    checkoutData?.coupon ||
+    checkoutShareReadCouponLock()?.coupon ||
+    "";
+
+  const cartUrl = checkoutShareBuildCartUrl(
+    checkoutData.products,
+    coupon
+  );
+
+  return {
+    cartUrl,
+    whatsappUrl: checkoutShareBuildWhatsAppUrl(cartUrl, coupon),
+  };
+}
+
+function checkoutShareApplyButtonState(shareButton, shareData) {
+  if (!shareButton) return;
+
+  if (!shareData?.whatsappUrl) {
+    shareButton.style.display = "none";
+    shareButton.removeAttribute("href");
+    return;
+  }
+
+  shareButton.setAttribute("href", shareData.whatsappUrl);
+  shareButton.style.display = "flex";
+
+  if (shareButton.dataset.shareHandler) return;
+
+  shareButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    try {
+      const checkoutId = await client.cookie.get("carrinho-id");
+      const checkout = await client.checkout.get(checkoutId);
+      const shareDataFromCheckout = checkoutShareBuildLinkData(checkout?.data);
+      if (!shareDataFromCheckout?.whatsappUrl) return;
+      window.open(
+        shareDataFromCheckout.whatsappUrl,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    } catch (error) {
+      console.error("Erro ao compartilhar checkout no WhatsApp:", error);
+    }
+  });
+
+  shareButton.dataset.shareHandler = "1";
+}
+
+function checkoutShareGetButtons() {
+  const buttons = Array.from(
+    document.querySelectorAll("[data-checkout-whatsapp-share]")
+  );
+
+  if (!buttons.length) {
+    const fallbackButton = document.getElementById("whatsAppShare");
+    if (fallbackButton) {
+      buttons.push(fallbackButton);
+    }
+  }
+
+  return buttons;
+}
+
+function checkoutShareApplyButtonsState(shareData) {
+  checkoutShareGetButtons().forEach((button) =>
+    checkoutShareApplyButtonState(button, shareData)
+  );
+}
+
 const updateCheckout = async () => {
   const checkoutId = await client.cookie.get("carrinho-id");
 
@@ -42,13 +418,9 @@ const updateCheckout = async () => {
 
   const elements = [product, total, subtotal, coupon, line];
 
-  elements.forEach((el) => {
-    setAllInnerHtmlById(el.res, el.el);
-  });
-
+  elements.forEach((el) => setAllInnerHtmlById(el.res, el.el));
 
   document.dispatchEvent(new CustomEvent("checkout:updated"));
-
 
   setTimeout(() => {
     if (typeof forceHideDiscountSpan === "function") {
@@ -57,57 +429,19 @@ const updateCheckout = async () => {
   }, 100);
 
   try {
-    const carrinhoId = await client.cookie.get("carrinho-id")
+    const carrinhoId = await client.cookie.get("carrinho-id");
     const checkout = await client.checkout.get(carrinhoId);
+    let checkoutData = checkout?.data || null;
 
-    if (
-      !checkout ||
-      !checkout?.data?.products ||
-      !checkout?.data?.products.length
-    ) {
-      console.warn("Carrinho vazio ou estrutura inválida.");
+    if (!checkoutData?.products?.length) {
+      console.warn("Carrinho vazio ou estrutura invalida.");
+      checkoutShareApplyButtonsState(null);
       return null;
     }
 
-    const products = checkout?.data?.products || [];
-
-    const sharedCheckoutItems = products.map((product) => ({
-      id: product.productVariantId,
-      quantity: product.quantity,
-    }));
-
-    const jsonString = JSON.stringify(sharedCheckoutItems);
-    const encoded = encodeURIComponent(btoa(jsonString));
-    const baseUrl = window.location.origin + window.location.pathname;
-
-    const shareButton = document.getElementById("whatsAppShare");
-    if (shareButton) {
-      const canonicalBase = `${window.location.origin}/checkout`;
-      const shareLink = `${canonicalBase}?shared_checkout=${encoded}`;
-      const title = "*ABC: Dá uma olhadinha nisso!*";
-      const body = "Pra não perder tempo: já deixei tudo separadinho na ABC da Construção. É só conferir.";
-      const composed = encodeURIComponent(`${title}\n\n${body}\n\n_${shareLink}_`);
-      shareButton.setAttribute("href", `https://wa.me/?text=${composed}`);
-      if (!shareButton.dataset.shareHandler) {
-        shareButton.addEventListener("click", async (e) => {
-          e.preventDefault();
-          try {
-            const carrinhoId2 = await client.cookie.get("carrinho-id");
-            const checkout2 = await client.checkout.get(carrinhoId2);
-            const products2 = checkout2?.data?.products || [];
-            if (!products2.length) return;
-            const items2 = products2.map((p) => ({ id: p.productVariantId, quantity: p.quantity }));
-            const encoded2 = encodeURIComponent(btoa(JSON.stringify(items2)));
-            const link2 = `${canonicalBase}?shared_checkout=${encoded2}`;
-            const text2 = encodeURIComponent(`${title}\n\n${body}\n\n_${link2}_`);
-            const url2 = `https://wa.me/?text=${text2}`;
-            window.open(url2, "_blank", "noopener,noreferrer");
-          } catch (_) {}
-        });
-        shareButton.dataset.shareHandler = "1";
-      }
-      shareButton.style.display = "flex";
-    }
+    checkoutData = await checkoutShareEnsurePriorityCoupon(checkoutData);
+    const shareData = checkoutShareBuildLinkData(checkoutData);
+    checkoutShareApplyButtonsState(shareData);
   } catch (error) {
     console.error("Erro ao gerar URL de compartilhamento do carrinho:", error);
   }
@@ -527,38 +861,67 @@ async function shippingQuoteCheckoutSubmit(e, checkoutId) {
 }
 
 const initializeCheckoutFromSharedCheckout = async () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const sharedCheckout = urlParams.get("shared_checkout");
-  const checkout = await client.cookie.get("carrinho-id")
-
-  if (sharedCheckout) {
-    try {
-      const decoded = JSON.parse(atob(decodeURIComponent(sharedCheckout)));
-
-      const items = decoded.map(({ id, quantity }) => ({
-        productVariantId: Number(id),
-        quantity: Number(quantity),
-      }));
-
-      if (items.length > 0) {
-        const response = await client.checkout.add(items, checkout);
-
-        if (response) {
-          window.history.replaceState(
-            {},
-            document.title,
-            window.location.pathname
-          );
-
-          window.location.reload();
-        }
-      }
-    } catch (error) {
-      console.error("Erro ao montar o carrinho compartilhado:", error);
-    }
+  if (checkoutShareInitializationPromise) {
+    return checkoutShareInitializationPromise;
   }
 
-  updateCheckout();
+  checkoutShareInitializationPromise = (async () => {
+    const params = checkoutShareGetParams();
+    const sharedCheckoutParam = params.get(CHECKOUT_SHARE_QUERY_PARAM);
+    const couponFromUrl = checkoutShareNormalizeCoupon(
+      params.get(CHECKOUT_COUPON_QUERY_PARAM)
+    );
+
+    let sharedProcessed = false;
+
+    if (sharedCheckoutParam) {
+      try {
+        const sharedItems = checkoutShareDecodeSharedItems(sharedCheckoutParam);
+
+        if (sharedItems.length) {
+          const createResponse = await client.checkout.create(sharedItems);
+          const newCheckoutId = createResponse?.data?.checkoutId;
+
+          if (newCheckoutId) {
+            await checkoutShareSetCheckoutCookie(newCheckoutId);
+
+            await checkoutShareAddUtmMetadata(newCheckoutId);
+
+            if (typeof checkoutPartnerAssociate === "function") {
+              await checkoutPartnerAssociate(newCheckoutId);
+            }
+
+            // Garante que o checkout recém-criado esteja disponível
+            // antes de renderizar os produtos.
+            const newCheckout = await client.checkout.get(newCheckoutId);
+
+            if (newCheckout?.data?.products?.length) {
+              await updateCheckout();
+            }
+          }
+
+          sharedProcessed = true;
+        }
+      } catch (error) {
+        console.error("Erro ao montar carrinho compartilhado:", error);
+      }
+    }
+
+    if (couponFromUrl) {
+      await checkoutShareApplyCouponWithPriority(couponFromUrl, {
+        source: sharedCheckoutParam ? "shared_checkout" : "url",
+        showError: true,
+      });
+    }
+
+    await updateCheckout();
+  })();
+
+  try {
+    await checkoutShareInitializationPromise;
+  } finally {
+    checkoutShareInitializationPromise = null;
+  }
 };
 
 // Função para forçar ocultação do span de desconto dinâmico

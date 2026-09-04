@@ -128,8 +128,8 @@
       },
       {
         "urlMatch": "saldao-abc",
-        "path": "Custom/old_se/super_chance_unica_abc.html",
-        "query": "super_chance_unica_abc.graphql"
+        "path": "Custom/old_se/saldao_abc.html",
+        "query": "saldao_abc.graphql"
       },
       {
         "urlMatch": "chance-unica",

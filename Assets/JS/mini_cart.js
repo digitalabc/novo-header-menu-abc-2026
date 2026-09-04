@@ -58,7 +58,7 @@ function miniCartBuildShareData(checkoutData) {
 
   return {
     cartUrl: checkoutUrl.toString(),
-    whatsappUrl: `https://wa.me/?text=${encodeURIComponent(message)}`,
+    whatsappUrl: `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`,
   };
 }
 

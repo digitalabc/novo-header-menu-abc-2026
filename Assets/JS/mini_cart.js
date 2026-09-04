@@ -28,9 +28,13 @@ function miniCartBuildShareData(checkoutData) {
     encodeURIComponent(btoa(JSON.stringify(normalizedProducts)))
   );
 
-  const coupon = typeof checkoutData?.coupon === "string"
-    ? checkoutData.coupon.trim()
-    : "";
+  const urlCoupon = currentParams.get("coupon")?.trim() || "";
+
+  const coupon = urlCoupon || (
+    typeof checkoutData?.coupon === "string"
+      ? checkoutData.coupon.trim()
+      : ""
+  );
 
   if (coupon) {
     checkoutUrl.searchParams.set("coupon", coupon);
@@ -42,7 +46,15 @@ function miniCartBuildShareData(checkoutData) {
   const emojiPointer = "\u{1F449}";
   const emojiWink = "\u{1F609}";
   
-  const message = `${emojiCart} Seu carrinho ABC está pronto!\n\nSeparamos os produtos para você e seu desconto já está aplicado.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${checkoutUrl.toString()}`;
+  console.log(checkoutData)
+
+  let message
+
+  if(coupon) {
+    message = `${emojiCart} Seu carrinho ABC está pronto!\n\nSeparamos os produtos para você e seu desconto já está aplicado.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${checkoutUrl.toString()}`;
+  } else {
+    message = `${emojiCart} Seu carrinho ABC está pronto!\n\nJá separamos os produtos para você.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${checkoutUrl.toString()}`;
+  }
 
   return {
     cartUrl: checkoutUrl.toString(),

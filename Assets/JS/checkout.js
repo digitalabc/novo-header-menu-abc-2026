@@ -115,16 +115,20 @@ function checkoutShareBuildCartUrl(products, appliedCoupon) {
   return checkoutUrl.toString();
 }
 
-function checkoutShareBuildMessage(cartUrl) {
+function checkoutShareBuildMessage(cartUrl, coupon) {
   const emojiCart = "\u{1F6D2}";
   const emojiPointer = "\u{1F449}";
   const emojiWink = "\u{1F609}";
 
+  if(coupon.value && coupon.value.trim() !== "") {
   return `${emojiCart} Seu carrinho ABC está pronto!\n\nSeparamos os produtos para você e seu desconto já está aplicado.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${cartUrl}`;
+  } else {
+    return `${emojiCart} Seu carrinho ABC está pronto!\n\nJá separamos os produtos para você.\nAgora é só conferir e finalizar a compra. ${emojiWink}\n\n${emojiPointer} Acessar meu carrinho\n\n${cartUrl}`;
+  }
 }
 
-function checkoutShareBuildWhatsAppUrl(cartUrl) {
-  const message = checkoutShareBuildMessage(cartUrl);
+function checkoutShareBuildWhatsAppUrl(cartUrl, coupon) {
+  const message = checkoutShareBuildMessage(cartUrl, coupon);
 
   return `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
 }
@@ -319,7 +323,7 @@ function checkoutShareBuildLinkData(checkoutData) {
 
   return {
     cartUrl,
-    whatsappUrl: checkoutShareBuildWhatsAppUrl(cartUrl),
+    whatsappUrl: checkoutShareBuildWhatsAppUrl(cartUrl, coupon),
   };
 }
 

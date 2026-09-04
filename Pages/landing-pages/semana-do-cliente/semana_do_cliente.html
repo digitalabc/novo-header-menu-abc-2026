@@ -5,7 +5,7 @@
   {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construcao" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-  {{ asset type: "css" paths: ["semana_do_cliente"] }}
+  {{ asset type: "css" paths: ["landing-pages/semana-do-cliente/semana_do_cliente"] }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -303,7 +303,7 @@
 
   {{ sdk_client }}
 
-  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "semana_do_cliente", "whats_form"] }}
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "landing-pages/semana-do-cliente/semana_do_cliente", "landing-pages/shared/lp_showcase", "whats_form"] }}
 </body>
 
 </html>

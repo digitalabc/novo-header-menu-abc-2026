@@ -5,8 +5,8 @@
   {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construcao" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-  {{ asset type: "css" paths: ["super_chance_unica"] }}
-  {{ asset type: "css" paths: ["super_chance_unica_abc"] }}
+  {{ asset type: "css" paths: ["landing-pages/shared/super_chance_unica"] }}
+  {{ asset type: "css" paths: ["landing-pages/shared/super_chance_unica_abc"] }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
       <div class="container">
         <div class="section-super-chance-unica__featured-row">
           <div class="section-super-chance-unica__copy">
-            <img class="section-super-chance-unica__logo" src="https://abcdaconstrucao.fbitsstatic.net/media/logotema-super-chance-unica.png?v=202609021504" alt="Saldão ABC">
+            <img class="section-super-chance-unica__logo" src="https://abcdaconstrucao.fbitsstatic.net/media/logotema-super-chance-unica.png?v=202609021504" alt="Super Chance Única">
             <h1 class="section-super-chance-unica__title"><span class="section-super-chance-unica__title-line">N&atilde;o perca!</span><span class="section-super-chance-unica__title-line">Descontos</span><span class="section-super-chance-unica__title-line">imperd&iacute;veis<span class="section-super-chance-unica__title-highlight" aria-hidden="true">%</span></span></h1>
             <p class="section-super-chance-unica__subtitle">Estoque limitado e pre&ccedil;os que n&atilde;o se repetem.<br>Quando acabar, acabou.</p>
             <div class="section-super-chance-unica__hero-actions">
@@ -235,18 +235,18 @@
 
       <section class="seo-content" aria-labelledby="seo-content-title">
         <div class="seo-content__intro">
-          <span class="seo-content__eyebrow">Sald&atilde;o ABC</span>
+          <span class="seo-content__eyebrow">Super Chance &Uacute;nica</span>
           <h2 id="seo-content-title" class="seo-content__title">Top ofertas do m&ecirc;s para sua obra e reforma</h2>
-          <p>A p&aacute;gina Sald&atilde;o ABC da ABC da Constru&ccedil;&atilde;o re&uacute;ne as melhores oportunidades do m&ecirc;s em materiais de constru&ccedil;&atilde;o, acabamento e itens para o dia a dia da obra.</p>
-          <p>Aqui voc&ecirc; encontra uma sele&ccedil;&atilde;o exclusiva com o melhor pre&ccedil;o do Brasil em produtos para banheiro, cozinha, ferramentas, m&oacute;veis e muito mais, com condi&ccedil;&otilde;es v&aacute;lidas por tempo limitado.</p>
+          <p>A p&aacute;gina Super Chance &Uacute;nica da ABC da Constru&ccedil;&atilde;o re&uacute;ne as melhores oportunidades do m&ecirc;s em materiais de constru&ccedil;&atilde;o, acabamento e itens para o dia a dia da obra.</p>
+          <p>Aqui voc&ecirc; encontra uma sele&ccedil;&atilde;o exclusiva com o melhor pre&ccedil;o do Brasil em produtos para banheiro, cozinha, ferramentas, m&oacute;veis e muito mais &mdash; com condi&ccedil;&otilde;es v&aacute;lidas por tempo limitado.</p>
           <p>Economize agora: navegue pelas vitrines, compare pre&ccedil;os e aproveite antes que o estoque acabe.</p>
         </div>
 
         <div class="seo-content__faq" aria-labelledby="seo-faq-title">
-          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre o Sald&atilde;o ABC</h2>
+          <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre a Super Chance &Uacute;nica</h2>
 
           <details class="seo-content__faq-item">
-            <summary>O que &eacute; o Sald&atilde;o ABC?</summary>
+            <summary>O que &eacute; a Super Chance &Uacute;nica?</summary>
             <p>&Eacute; uma sele&ccedil;&atilde;o especial com as top ofertas do m&ecirc;s, reunindo os melhores descontos da ABC da Constru&ccedil;&atilde;o em uma &uacute;nica p&aacute;gina.</p>
           </details>
 
@@ -271,7 +271,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "O que e o Saldao ABC?",
+          "name": "O que e a Super Chance Unica?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "E uma selecao especial com as top ofertas do mes, reunindo os melhores descontos da ABC da Construcao em uma unica pagina."
@@ -302,8 +302,8 @@
   {{ sdk_client }}
 
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login",
-  "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "lancamentos_2026",
-  "cart_from_spot", "product", "pagination", "whats_form"] }}
+  "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "landing-pages/super-chance-unica/super_chance_unica_abc",
+  "landing-pages/shared/lp_showcase", "cart_from_spot", "product", "pagination", "whats_form"] }}
 
 </body>
 

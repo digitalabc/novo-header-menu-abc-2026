@@ -1,3 +1,15 @@
+/*
+ * Shared presentation behavior for campaign landing pages.
+ * Each page supplies its own selectors through window.LandingPageConfig before
+ * this file is loaded; this module never imports another LP's script.
+ */
+const landingPageConfig = window.LandingPageConfig || {};
+const stockBadgeSelector = landingPageConfig.stockBadgeSelector || ".showcase-oferta-relampago .oferta-relampago__sold, .section-super-chance-unica__featured .oferta-relampago__sold";
+const discountSelector = landingPageConfig.discountSelector || ".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount, .section-super-chance-unica__featured .spot-price .discount";
+const promotionSpotSelector = landingPageConfig.promotionSpotSelector || ".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot";
+const featuredCarouselSelector = landingPageConfig.featuredCarouselSelector || null;
+const carouselSelectors = landingPageConfig.carouselSelectors || [];
+
 function resolveCountdownTarget(rawDate) {
   const parsedDate = rawDate ? new Date(rawDate) : null;
 
@@ -183,7 +195,7 @@ function getCompactStockLabel(tone) {
 function syncMobileStockBadgeLabels() {
   const isMobile = window.innerWidth <= 767;
 
-  document.querySelectorAll(".showcase-oferta-relampago .oferta-relampago__sold, .section-super-chance-unica__featured .oferta-relampago__sold").forEach(function (badgeNode) {
+  document.querySelectorAll(stockBadgeSelector).forEach(function (badgeNode) {
     const textNode = badgeNode.querySelector(".oferta-relampago__sold-text");
 
     if (!textNode) {
@@ -207,7 +219,7 @@ function syncMobileStockBadgeLabels() {
 }
 
 function normalizeSavingsLabels() {
-  document.querySelectorAll(".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount, .section-super-chance-unica__featured .spot-price .discount").forEach(function (discountNode) {
+  document.querySelectorAll(discountSelector).forEach(function (discountNode) {
     const valueNode = discountNode.querySelector(".discount__value");
 
     if (!valueNode) {
@@ -306,7 +318,7 @@ function startRotatingBadges() {
 }
 
 function mountPromotionOverlays() {
-  document.querySelectorAll(".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot").forEach(function (spot, index) {
+  document.querySelectorAll(promotionSpotSelector).forEach(function (spot, index) {
     const stockInput = document.querySelector(`#promotion-stock-${index}`);
     const availableInput = document.querySelector(`#promotion-available-${index}`);
     const spotImage = spot.querySelector(".spot__image");
@@ -341,7 +353,7 @@ function mountPromotionOverlays() {
 function syncSpotFooterPosition() {
   const isMobile = window.innerWidth <= 767;
 
-  document.querySelectorAll(".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot").forEach(function (spot) {
+  document.querySelectorAll(promotionSpotSelector).forEach(function (spot) {
     const overlay = spot.querySelector(".oferta-relampago__spot-footer");
     const spotImage = spot.querySelector(".spot__image");
     const spotContent = spot.querySelector(".spot__content");
@@ -561,7 +573,7 @@ function syncCenteredCarouselState(swiper) {
 }
 
 function buildCarouselOptions(selector) {
-  const isSuperChanceFeatured = selector === ".section-super-chance-unica__carousel-content";
+  const isFeaturedCarousel = selector === featuredCarouselSelector;
 
   return {
     navigation: {
@@ -584,25 +596,25 @@ function buildCarouselOptions(selector) {
       768: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isSuperChanceFeatured ? 2 : 3.1,
+        slidesPerView: isFeaturedCarousel ? 2 : 3.1,
         spaceBetween: 12,
       },
       992: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isSuperChanceFeatured ? 2 : 4,
+        slidesPerView: isFeaturedCarousel ? 2 : 4,
         spaceBetween: 18,
       },
       1090: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isSuperChanceFeatured ? 2 : 5,
+        slidesPerView: isFeaturedCarousel ? 2 : 5,
         spaceBetween: 16,
       },
       1200: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isSuperChanceFeatured ? 2 : 5,
+        slidesPerView: isFeaturedCarousel ? 2 : 5,
         spaceBetween: 20,
       },
     },
@@ -659,11 +671,17 @@ function initDeferredSwipers(selectors) {
 }
 
 function initLandingSwipers() {
-  initSwiperIfNeeded(".section-super-chance-unica__carousel-content", buildCarouselOptions(".section-super-chance-unica__carousel-content"));
+  if (featuredCarouselSelector) {
+    initSwiperIfNeeded(featuredCarouselSelector, buildCarouselOptions(featuredCarouselSelector));
+  }
 }
 
 function revealFeaturedCarouselWhenStable() {
-  const carouselRoot = document.querySelector(".section-super-chance-unica__carousel-content");
+  if (!featuredCarouselSelector) {
+    return;
+  }
+
+  const carouselRoot = document.querySelector(featuredCarouselSelector);
   const swiperElement = carouselRoot && carouselRoot.querySelector(".swiper");
 
   if (!carouselRoot || !swiperElement || carouselRoot.dataset.featuredCarouselReady === "true") {
@@ -715,25 +733,7 @@ function revealFeaturedCarouselWhenStable() {
 }
 
 function initAllShowcaseSwipers() {
-  [
-    ".section-super-chance-unica__carousel-content",
-    ".showcase-frete-gratis__carousel",
-    ".showcase-melhores-ofertas__carousel",
-    ".showcase-cada-ambiente__carousel",
-    ".showcase-metais__carousel",
-    ".showcase-metais-sanitarios__carousel",
-    ".showcase-produtos-deca__carousel",
-    ".showcase-banho-quente__carousel",
-    ".showcase-banho-aquecimento__carousel",
-    ".showcase-loucas-inox-sintetico__carousel",
-    ".showcase-tintas__carousel",
-    ".showcase-materiais-hidraulicos__carousel",
-    ".showcase-banho-e-aquecimento__carousel",
-    ".showcase-moveis__carousel",
-    ".showcase-iluminacao__carousel",
-    ".showcase-ferramentas__carousel",
-    ".showcase-chance-unica__carousel",
-  ].forEach(function (selector) {
+  carouselSelectors.forEach(function (selector) {
     initSwiperIfNeeded(selector, buildCarouselOptions(selector));
   });
 }

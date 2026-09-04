@@ -2242,20 +2242,117 @@ img {
   margin: clamp(16px, 4vw, 24px) 0;
   display: flex;
   justify-content: center;
-  padding: clamp(8px, 2vw, 16px);
+  padding: 0;
 }
 
-.stepper-img {
+.confirmation-stepper {
   width: 100%;
-  max-width: clamp(400px, 60vw, 500px);
-  height: auto;
-  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0;
+  padding: clamp(18px, 4vw, 24px) clamp(14px, 4vw, 24px);
+  background-color: #F6F8FA;
+  border: 1px solid #E4E9EF;
+  border-radius: 16px;
 }
 
-@media (min-width: 768px) {
-  .stepper-img {
-    width: auto;
-    max-width: 500px;
+.confirmation-stepper__item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  gap: 10px;
+}
+
+.confirmation-stepper__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: calc(50% + 22px);
+  width: calc(100% - 44px);
+  height: 2px;
+  background-color: #D9E1E8;
+}
+
+.confirmation-stepper__item.is-complete:not(:last-child)::after {
+  background-color: #BFE5DA;
+}
+
+.confirmation-stepper__indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 2px solid #C8D2DC;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.confirmation-stepper__item.is-complete .confirmation-stepper__indicator {
+  border-color: #176E5F;
+  background-color: #176E5F;
+}
+
+.confirmation-stepper__check {
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.confirmation-stepper__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: #C8D2DC;
+  display: block;
+}
+
+.confirmation-stepper__label {
+  max-width: 110px;
+  color: #5F6B76;
+  font-family: var(--font-brand);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.confirmation-stepper__item.is-complete .confirmation-stepper__label {
+  color: #176E5F;
+}
+
+@media (max-width: 768px) {
+  .confirmation-stepper {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .confirmation-stepper__item {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .confirmation-stepper__item:not(:last-child)::after {
+    top: calc(100% + 7px);
+    left: 15px;
+    width: 2px;
+    height: 16px;
+  }
+
+  .confirmation-stepper__label {
+    max-width: none;
+    font-size: 14px;
   }
 }
 
@@ -2283,6 +2380,13 @@ img {
 .golpe-message:hover {
   border-color: #f59e0b;
   box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.golpe-image {
+  width: clamp(56px, 9vw, 72px);
+  height: auto;
+  display: block;
+  flex-shrink: 0;
 }
 
 

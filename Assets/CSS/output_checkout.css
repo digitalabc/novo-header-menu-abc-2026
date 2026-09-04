@@ -4833,7 +4833,7 @@ input[type="number"].cart_change_quantity {
   visibility: visible !important;
 }
 
-#paymentCartao .fake-form {
+#paymentCartao .wc-card-form {
   display: flex !important;
   visibility: visible !important;
 }
@@ -5099,14 +5099,14 @@ input[type="number"].cart_change_quantity {
   align-items: center;
 }
 
-.fake-form {
+.wc-card-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 100%;
 }
 
-.fake-form .title {
+.wc-card-form .title {
   color: #333;
   font-family: var(--font-brand);
   font-size: 24px;
@@ -5115,7 +5115,7 @@ input[type="number"].cart_change_quantity {
   margin-bottom: 8px;
 }
 
-.fake-form .requiredWarning {
+.wc-card-form .requiredWarning {
   color: #666;
   font-family: var(--font-brand);
   font-size: 13px;
@@ -5127,19 +5127,19 @@ input[type="number"].cart_change_quantity {
   gap: 8px;
 }
 
-.fake-form .formCol {
+.wc-card-form .formCol {
   display: grid;
   grid-template-columns: 1fr 120px;
   gap: 16px;
 }
 
-.fake-form .forminline {
+.wc-card-form .forminline {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-.fake-form .forminline label {
+.wc-card-form .forminline label {
   color: #333;
   font-family: var(--font-brand);
   font-size: 14px;
@@ -5149,8 +5149,8 @@ input[type="number"].cart_change_quantity {
   display: block;
 }
 
-.fake-form .forminline input,
-.fake-form .forminline select {
+.wc-card-form .forminline input,
+.wc-card-form .forminline select {
   height: 52px;
   background-color: #f4f6f8;
   border: 1.6px solid #ececec;
@@ -5169,19 +5169,19 @@ input[type="number"].cart_change_quantity {
   appearance: none;
 }
 
-.fake-form .forminline input:hover,
-.fake-form .forminline select:hover {
+.wc-card-form .forminline input:hover,
+.wc-card-form .forminline select:hover {
   border-color: #d0deee;
 }
 
-.fake-form .forminline input:focus,
-.fake-form .forminline select:focus {
+.wc-card-form .forminline input:focus,
+.wc-card-form .forminline select:focus {
   border-color: #0092ff;
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 146, 255, 0.1);
 }
 
-.fake-form .forminline input::placeholder {
+.wc-card-form .forminline input::placeholder {
   color: #999;
   opacity: 1;
 }
@@ -5199,19 +5199,19 @@ input[type="number"].cart_change_quantity {
   color: #333;
 }
 
-.fake-form .forminline input:disabled {
+.wc-card-form .forminline input:disabled {
   background-color: #f0f0f0;
   color: #999;
   cursor: not-allowed;
   border-color: #e0e0e0;
 }
 
-.fake-form .forminline input.invalid {
+.wc-card-form .forminline input.invalid {
   border-color: #ff4757;
   background-color: #fff5f5;
 }
 
-.fake-form .forminline input:-webkit-autofill {
+.wc-card-form .forminline input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #f4f6f8 inset;
   -webkit-text-fill-color: #333;
 }
@@ -5412,7 +5412,7 @@ input:not(:focus).jp-card-invalid {
     align-items: start !important;
   }
 
-  #paymentCartao .fake-form {
+  #paymentCartao .wc-card-form {
     order: 1;
   }
 
@@ -5444,7 +5444,7 @@ input:not(:focus).jp-card-invalid {
 }
 
 @media (max-width: 767px) {
-  #paymentCartao .fake-form .title {
+  #paymentCartao .wc-card-form .title {
     font-size: 20px;
   }
 
@@ -5531,11 +5531,11 @@ input:not(:focus).jp-card-invalid {
     gap: 20px !important;
   }
 
-  #paymentCartao .fake-form .title {
+  #paymentCartao .wc-card-form .title {
     font-size: 18px !important;
   }
 
-  #paymentCartao .fake-form .requiredWarning {
+  #paymentCartao .wc-card-form .requiredWarning {
     font-size: 12px !important;
   }
 

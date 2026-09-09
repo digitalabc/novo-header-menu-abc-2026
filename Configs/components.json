@@ -781,6 +781,10 @@
       {
         "name": "seo",
         "required": false
+      },
+      {
+        "name": "use_seo_title",
+        "required": false
       }
     ],
     "inheritVariables": false,

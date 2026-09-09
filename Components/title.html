@@ -13,7 +13,7 @@
     end 
     page_title = default_title
 ~}}
-{{~ if seo ~}}
+{{~ if seo && use_seo_title != false ~}}
     {{ for item in seo | array.filter @is_title }}
         {{ page_title = item.content }}
     {{ end }}

@@ -8,6 +8,12 @@ const stockBadgeSelector = landingPageConfig.stockBadgeSelector || ".showcase-of
 const discountSelector = landingPageConfig.discountSelector || ".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount, .section-super-chance-unica__featured .spot-price .discount";
 const promotionSpotSelector = landingPageConfig.promotionSpotSelector || ".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot";
 const featuredCarouselSelector = landingPageConfig.featuredCarouselSelector || null;
+const featuredSlidesPerView = Object.assign({
+  768: 2,
+  992: 2,
+  1090: 2,
+  1200: 2,
+}, landingPageConfig.featuredSlidesPerView);
 const carouselSelectors = landingPageConfig.carouselSelectors || [];
 
 function resolveCountdownTarget(rawDate) {
@@ -596,25 +602,25 @@ function buildCarouselOptions(selector) {
       768: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isFeaturedCarousel ? 2 : 3.1,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[768] : 3.1,
         spaceBetween: 12,
       },
       992: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isFeaturedCarousel ? 2 : 4,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[992] : 4,
         spaceBetween: 18,
       },
       1090: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isFeaturedCarousel ? 2 : 5,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[1090] : 5,
         spaceBetween: 16,
       },
       1200: {
         centeredSlides: false,
         centeredSlidesBounds: false,
-        slidesPerView: isFeaturedCarousel ? 2 : 5,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[1200] : 5,
         spaceBetween: 20,
       },
     },

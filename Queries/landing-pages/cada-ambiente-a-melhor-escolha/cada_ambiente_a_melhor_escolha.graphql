@@ -23,6 +23,9 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
       urlOnClick
     }
   }
+  # vitrineProdutos: hotsite(hotsiteId: INSIRA_AQUI_O_HOTSITEID_DEDICADO, partnerAccessToken: $partnerAccessToken) {
+  #   ...produtos
+  # }
   vitrine1: hotsite(hotsiteId: 102119, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }

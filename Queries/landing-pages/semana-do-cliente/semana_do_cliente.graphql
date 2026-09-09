@@ -26,6 +26,9 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
   vitrineCronometro: hotsite(hotsiteId: 98562, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
+  # vitrineProdutos: hotsite(hotsiteId: INSIRA_AQUI_O_HOTSITEID_DEDICADO, partnerAccessToken: $partnerAccessToken) {
+  #   ...produtos
+  # }
   vitrine1: hotsite(hotsiteId: 98543, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }

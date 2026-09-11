@@ -382,6 +382,33 @@ function checkoutShareApplyButtonsState(shareData) {
   );
 }
 
+const emptyCart = () => {
+  const loading_state = document.querySelectorAll('.wake-cart-container-load')
+
+  const empty_state = document.querySelectorAll('.wake-cart-container-empty')
+
+  if(loading_state) {
+    loading_state.forEach((cart) => cart.style.display = "none")
+  }
+
+  if(empty_state) {
+    empty_state.forEach((cart) => cart.style.display = "flex")
+  }
+}
+
+const hasProducts = () => {
+  const loading_state = document.querySelectorAll('.wake-cart-container-load')
+  const empty_state = document.querySelectorAll('.wake-cart-container-empty')
+
+  if(loading_state) {
+    loading_state.forEach((cart) => cart.style.display = "none")
+  }
+
+  if(empty_state) {
+    empty_state.forEach((cart) => cart.style.display = "none")
+  }
+}
+
 const updateCheckout = async () => {
   const checkoutId = await client.cookie.get("carrinho-id");
 
@@ -435,8 +462,11 @@ const updateCheckout = async () => {
 
     if (!checkoutData?.products?.length) {
       console.warn("Carrinho vazio ou estrutura invalida.");
+      emptyCart()
       checkoutShareApplyButtonsState(null);
       return null;
+    } else {
+      hasProducts()
     }
 
     checkoutData = await checkoutShareEnsurePriorityCoupon(checkoutData);
@@ -891,13 +921,15 @@ const initializeCheckoutFromSharedCheckout = async () => {
               await checkoutPartnerAssociate(newCheckoutId);
             }
 
-            // Garante que o checkout recém-criado esteja disponível
-            // antes de renderizar os produtos.
-            const newCheckout = await client.checkout.get(newCheckoutId);
+            const reloadKey = "checkout:shared-reloaded";
 
-            if (newCheckout?.data?.products?.length) {
-              await updateCheckout();
+            if (!localStorage.getItem(reloadKey)) {
+              localStorage.setItem(reloadKey, "true");
+              window.location.reload();
+              return;
             }
+
+            localStorage.removeItem(reloadKey);
           }
 
           sharedProcessed = true;

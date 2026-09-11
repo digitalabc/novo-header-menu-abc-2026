@@ -47,10 +47,9 @@ query Hotsite($url: String!, $partnerAccessToken: String) {
   vitrine6: hotsite(hotsiteId: 98558, partnerAccessToken: $partnerAccessToken) {
     ...produtos 
   }
-  # Para ativar a seção Chance Única no mesmo formato das demais vitrines,
-  # adicione aqui um novo alias apontando para o hotsite futuro e use o mesmo
-  # fragmento ...produtos. O HTML e o JS da LP já estão preparados para receber
-  # um carrossel com a classe showcase-chance-unica__carousel.
+  vitrine7: hotsite(hotsiteId: 102139, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
 }
 
 fragment produtos on SingleHotsite {

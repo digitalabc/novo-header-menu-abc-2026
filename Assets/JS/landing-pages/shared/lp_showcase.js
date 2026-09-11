@@ -7,6 +7,8 @@ const landingPageConfig = window.LandingPageConfig || {};
 const stockBadgeSelector = landingPageConfig.stockBadgeSelector || ".showcase-oferta-relampago .oferta-relampago__sold, .section-super-chance-unica__featured .oferta-relampago__sold";
 const discountSelector = landingPageConfig.discountSelector || ".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount, .section-super-chance-unica__featured .spot-price .discount";
 const promotionSpotSelector = landingPageConfig.promotionSpotSelector || ".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot";
+const showSpotCountdown = landingPageConfig.showSpotCountdown !== false;
+const showPromotionOverlay = landingPageConfig.showPromotionOverlay !== false;
 const featuredCarouselSelector = landingPageConfig.featuredCarouselSelector || null;
 const featuredSlidesPerView = Object.assign({
   768: 2,
@@ -324,6 +326,10 @@ function startRotatingBadges() {
 }
 
 function mountPromotionOverlays() {
+  if (!showPromotionOverlay) {
+    return;
+  }
+
   document.querySelectorAll(promotionSpotSelector).forEach(function (spot, index) {
     const stockInput = document.querySelector(`#promotion-stock-${index}`);
     const availableInput = document.querySelector(`#promotion-available-${index}`);
@@ -339,13 +345,13 @@ function mountPromotionOverlays() {
     const badgeState = getStockBadgeState(stock, available);
     const overlay = document.createElement("div");
 
-    overlay.className = "oferta-relampago__spot-footer";
+    overlay.className = `oferta-relampago__spot-footer${showSpotCountdown ? "" : " oferta-relampago__spot-footer--stock-only"}`;
     overlay.innerHTML = `
       <div class="oferta-relampago__sold ${badgeState.tone}" aria-hidden="true">
         <span class="oferta-relampago__sold-progress" style="width:${badgeState.progress}%"></span>
         <span class="oferta-relampago__sold-text" data-stock="${stock}" data-full-label="${badgeState.label}" data-mobile-label="${getCompactStockLabel(badgeState.tone)}">${badgeState.animated ? `${badgeState.prefix}0${badgeState.suffix}` : badgeState.label}</span>
       </div>
-      ${buildSpotCountdownMarkup()}
+      ${showSpotCountdown ? buildSpotCountdownMarkup() : ""}
     `;
 
     spot.insertBefore(overlay, spotImage);

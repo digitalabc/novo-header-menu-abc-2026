@@ -31,49 +31,32 @@
 
     <section class="showcase showcase-oferta-relampago" data-showcase="oferta-relampago">
       <div class="container">
-        <div class="showcase__hero">
-          <div class="showcase__copy">
-            <h1 class="showcase__title showcase__title--hero">Semana do Cliente com <span class="showcase__title-word">oferta<span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">&#9889;</span></span> todo dia</h1>
-            <p class="showcase__subtitle showcase__subtitle--hero">Aproveite condi&ccedil;&otilde;es especiais para renovar seus ambientes com mais economia durante a campanha.</p>
-          </div>
-
-          <div class="showcase__countdown-column">
-            <div id="cronometro" class="cronometro oferta-relampago__cronometro countdown-principal-da-campanha" data-promotion="2026-03-31T23:59:59-03:00">
-            <span class="countdown-principal-da-campanha__ribbon">Prorroga&ccedil;&atilde;o</span>
-            <span class="oferta-relampago__countdown-eyebrow">
-              <span class="oferta-relampago__lightning" aria-hidden="true">&#9889;</span>
-              Oferta rel&acirc;mpago
+        <h2 class="home-title--hot home-title--hot--lp">
+          <span class="home-title__row">
+            <span class="home-title__main">Ofertas Rel&acirc;mpago <span class="oferta-relampago__lightning" aria-hidden="true">&#9889;</span></span>
+            <span class="home-title__meta">
+              <span class="lp-offers-countdown" data-lp-offers-countdown data-end="2026-09-20T23:59:59-03:00" role="timer" aria-live="polite" aria-label="As ofertas terminam em">
+                <span class="lp-offers-countdown__label">As ofertas terminam em:</span>
+                <span class="lp-offers-countdown__timer">
+                  <span class="lp-offers-countdown__item">
+                    <strong class="lp-offers-countdown__value" data-lp-countdown-hours>00</strong>
+                    <small>H</small>
+                  </span>
+                  <span class="lp-offers-countdown__item">
+                    <strong class="lp-offers-countdown__value" data-lp-countdown-minutes>00</strong>
+                    <small>M</small>
+                  </span>
+                  <span class="lp-offers-countdown__item">
+                    <strong class="lp-offers-countdown__value" data-lp-countdown-seconds>00</strong>
+                    <small>S</small>
+                  </span>
+                </span>
+              </span>
             </span>
-            <span class="cronometro__label">Campanha termina em</span>
-            <div class="cron" aria-live="polite">
-              <div class="cron__item">
-                <span class="cronometro__days">00</span>
-                <small>Dias</small>
-              </div>
-              <div class="cron__item">
-                <span class="cronometro__hours">00</span>
-                <small>Horas</small>
-              </div>
-              <div class="cron__item">
-                <span class="cronometro__minutes">00</span>
-                <small>Min</small>
-              </div>
-              <div class="cron__item">
-                <span class="cronometro__seconds">00</span>
-                <small>Seg</small>
-              </div>
-            </div>
-            <span class="cronometro__note">Pre&ccedil;os e estoque sujeitos &agrave; atualiza&ccedil;&atilde;o durante a campanha.</span>
-            </div>
-            <a class="showcase__hero-whatsapp" href="#mm-whatsapp" onclick="event.preventDefault(); var mmWhatsapp = document.getElementById('mm-whatsapp'); if (mmWhatsapp) { mmWhatsapp.click(); }">Falar com um especialista</a>
-          </div>
-        </div>
+          </span>
+        </h2>
 
         <div class="showcase__carousel">
-          {{~ for product in data.vitrine_cronometro.products.nodes ~}}
-          <input id="promotion-stock-{{for.index}}" type="hidden" value="{{product.stock}}">
-          <input id="promotion-available-{{for.index}}" type="hidden" value="{{if product.available}}true{{else}}false{{end}}">
-          {{~ end ~}}
           {{ spot_carousel class: "showcase-oferta-relampago__carousel" products: data.vitrine_cronometro.products.nodes }}
         </div>
       </div>
@@ -83,18 +66,7 @@
       <div class="showcase-stack">
         <section class="showcase showcase--panel showcase-frete-gratis" data-showcase="frete-gratis">
           <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Entrega facilitada</span>
-              <h2 class="showcase__title">Frete Gr&aacute;tis</h2>
-              <p class="showcase__subtitle">Produtos selecionados com frete gr&aacute;tis para renovar banheiro, cozinha e outros ambientes com mais economia.</p>
-            </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-frete-gratis">
-              <span>Ver mais ofertas</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <h2 class="showcase__title">Metais Sanit&aacute;rios</h2>
           </div>
           <div class="showcase__carousel">
             {{ spot_carousel class: "showcase-frete-gratis__carousel" products: data.vitrine1.products.nodes }}
@@ -103,18 +75,7 @@
 
         <section class="showcase showcase--panel showcase-melhores-ofertas" data-showcase="melhores-ofertas">
           <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Curadoria da campanha</span>
-              <h2 class="showcase__title">Melhores Ofertas</h2>
-              <p class="showcase__subtitle">Sele&ccedil;&atilde;o de ofertas da campanha em materiais de constru&ccedil;&atilde;o, acabamento e itens para o dia a dia da obra.</p>
-            </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-melhores-ofertas">
-              <span>Ver mais ofertas</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <h2 class="showcase__title">Lou&ccedil;as</h2>
           </div>
           <div class="showcase__carousel">
             {{ spot_carousel class: "showcase-melhores-ofertas__carousel" products: data.vitrine2.products.nodes }}
@@ -123,18 +84,7 @@
 
         <section class="showcase showcase--panel showcase-metais" data-showcase="metais">
           <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Banheiro e cozinha</span>
-              <h2 class="showcase__title">Metais</h2>
-              <p class="showcase__subtitle">Torneiras, misturadores e acess&oacute;rios para banheiro e cozinha com condi&ccedil;&otilde;es especiais na campanha.</p>
-            </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-metais">
-              <span>Ver mais ofertas</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <h2 class="showcase__title">Banho e Aquecimento</h2>
           </div>
           <div class="showcase__carousel">
             {{ spot_carousel class: "showcase-metais__carousel" products: data.vitrine3.products.nodes }}
@@ -143,18 +93,7 @@
 
         <section class="showcase showcase--panel showcase-banho-e-aquecimento" data-showcase="banho-e-aquecimento">
           <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Conforto para o dia a dia</span>
-              <h2 class="showcase__title">Banho e Aquecimento</h2>
-              <p class="showcase__subtitle">Chuveiros, duchas e solu&ccedil;&otilde;es para banho com conforto, economia e ofertas por tempo limitado.</p>
-            </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-banho-e-aquecimento">
-              <span>Ver mais ofertas</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <h2 class="showcase__title">Tintas</h2>
           </div>
           <div class="showcase__carousel">
             {{ spot_carousel class: "showcase-banho-e-aquecimento__carousel" products: data.vitrine4.products.nodes }}
@@ -163,18 +102,7 @@
 
         <section class="showcase showcase--panel showcase-moveis" data-showcase="moveis">
           <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Organiza&ccedil;&atilde;o do lar</span>
-              <h2 class="showcase__title">M&oacute;veis</h2>
-              <p class=\
-            </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-moveis">
-              <span>Ver mais ofertas</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <h2 class="showcase__title">Materiais Hidr&aacute;ulicos</h2>
           </div>
           <div class="showcase__carousel">
             {{ spot_carousel class: "showcase-moveis__carousel" products: data.vitrine5.products.nodes }}
@@ -183,54 +111,19 @@
 
         <section class="showcase showcase--panel showcase-ferramentas" data-showcase="ferramentas">
           <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Execu&ccedil;&atilde;o e acabamento</span>
-              <h2 class="showcase__title">Ferramentas</h2>
-              <p class="showcase__subtitle">Ferramentas e acess&oacute;rios para instala&ccedil;&atilde;o, acabamento e obra com ofertas especiais durante a campanha.</p>
-            </div>
-            <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
-              <span>Ver mais ofertas</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <h2 class="showcase__title">M&oacute;veis</h2>
           </div>
           <div class="showcase__carousel">
             {{ spot_carousel class: "showcase-ferramentas__carousel" products: data.vitrine6.products.nodes }}
           </div>
         </section>
 
-        <section class="showcase showcase--panel showcase-chance-unica" data-showcase="chance-unica">
+        <section class="showcase showcase--panel showcase-iluminacao" data-showcase="iluminacao">
           <div class="showcase__header">
-            <div class="showcase__heading">
-              <span class="showcase__eyebrow">Top 5 ofertas do m&ecirc;s</span>
-              <h2 class="showcase__title">Chance &Uacute;nica</h2>
-              <p class="showcase__subtitle">Uma vitrine especial para destacar oportunidades de alto impacto e convers&atilde;o imediata.</p>
-            </div>
-            <a class="showcase__link" href="/chance-unica">
-              <span>Economize agora</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.58301 3.5L11.083 7L7.58301 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <h2 class="showcase__title">Ilumina&ccedil;&atilde;o</h2>
           </div>
-
-          <div class="showcase-chance-unica__hero">
-            <span class="showcase-chance-unica__seal">O melhor pre&ccedil;o do Brasil</span>
-            <div class="showcase-chance-unica__title-group">
-              <span class="showcase-chance-unica__kicker">Super</span>
-              <strong class="showcase-chance-unica__title">Chance &Uacute;nica</strong>
-            </div>
-            <span class="showcase-chance-unica__highlight">Top 5 ofertas do m&ecirc;s</span>
-          </div>
-
-          <div class="showcase__carousel showcase-chance-unica__placeholder">
-            <div class="showcase-chance-unica__empty">
-              <strong>Espa&ccedil;o pronto para o novo hotsite.</strong>
-              <p>Quando a vitrine for vinculada, esta se&ccedil;&atilde;o exibir&aacute; os produtos no mesmo formato das demais vitrines da campanha.</p>
-            </div>
+          <div class="showcase__carousel">
+            {{ spot_carousel class: "showcase-iluminacao__carousel" products: data.vitrine7.products.nodes }}
           </div>
         </section>
       </div>

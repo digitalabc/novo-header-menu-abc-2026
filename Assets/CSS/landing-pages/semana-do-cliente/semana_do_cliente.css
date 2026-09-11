@@ -71,9 +71,7 @@
   gap: 28px;
 }
 
-.semana-do-consumidor .showcase-sections .showcase-stack {
-  display: none;
-}
+
 
 .semana-do-consumidor .showcase {
   position: relative;
@@ -319,15 +317,15 @@
   width: 38px;
   height: 38px;
   border-radius: 999px;
-  background: rgba(117, 67, 255, 0.16);
-  color: #7543ff;
-  box-shadow: 0 8px 18px rgba(80, 47, 168, 0.16);
+  background: #9f3101;
+  color: #ffd003;
+  box-shadow: 0 10px 22px rgba(159, 49, 1, 0.28);
 }
 
 .semana-do-consumidor .showcase__carousel .swiper-button-prev:hover,
 .semana-do-consumidor .showcase__carousel .swiper-button-next:hover {
-  background: #cbbaff;
-  color: #7543ff;
+  background: #8a2a01;
+  color: #ffd003;
 }
 
 .semana-do-consumidor .showcase__carousel .swiper-button-prev svg,
@@ -488,115 +486,6 @@
   display: none;
 }
 
-.semana-do-consumidor .cronometro--spot {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px;
-  border: 1px solid rgba(117, 67, 255, 0.1);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: none;
-}
-
-.semana-do-consumidor .cronometro--spot:before {
-  content: none;
-}
-
-.semana-do-consumidor .cronometro--spot .cronometro__label {
-  color: #6e6390;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  font-size: 10px;
-}
-
-.semana-do-consumidor .cronometro--spot .cron {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 6px;
-}
-
-.semana-do-consumidor .cronometro--spot .cron__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 8px 4px;
-  border: 1px solid rgba(117, 67, 255, 0.12);
-  border-radius: 12px;
-  background: linear-gradient(180deg, #fff 0%, rgba(117, 67, 255, 0.06) 100%);
-}
-
-.semana-do-consumidor .cronometro--spot .days,
-.semana-do-consumidor .cronometro--spot .hours,
-.semana-do-consumidor .cronometro--spot .minutes,
-.semana-do-consumidor .cronometro--spot .seconds {
-  color: #4c24c8;
-  font-variant-numeric: tabular-nums;
-  font-weight: 800;
-  font-size: 15px;
-  line-height: 1;
-}
-
-.semana-do-consumidor .cronometro--spot small {
-  color: #6e6390;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 8px;
-}
-
-.semana-do-consumidor .showcase .spot__content-price {
-  position: relative;
-}
-
-.semana-do-consumidor .showcase .spot:hover .overlay {
-  display: none;
-}
-
-.semana-do-consumidor .showcase .spot .overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 12px;
-  padding: 16px 14px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 240, 255, 0.98) 100%);
-  box-shadow: inset 0 0 0 1px rgba(117, 67, 255, 0.08);
-}
-
-.semana-do-consumidor .showcase .spot .products-sold {
-  isolation: isolate;
-  position: relative;
-  width: 100%;
-  height: 24px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(117, 67, 255, 0.2) 0%, rgba(117, 67, 255, 0.08) 100%);
-  color: #fff;
-  text-align: center;
-  font-size: 10px;
-  line-height: 24px;
-  font-weight: 700;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
-  overflow: hidden;
-}
-
-.semana-do-consumidor .showcase .spot .products-sold__progress {
-  position: absolute;
-  left: 0;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #7543ff 0%, #4c24c8 100%);
-  z-index: -1;
-}
-
-.semana-do-consumidor .showcase .spot .products-sold__qtd {
-  position: relative;
-  z-index: 1;
-}
-
 @media screen and (max-width: 991px) {
   .semana-do-consumidor {
     padding-bottom: 52px;
@@ -736,10 +625,6 @@
 
   .semana-do-consumidor #cronometro small {
     font-size: 9px;
-  }
-
-  .semana-do-consumidor .showcase .spot .overlay {
-    display: none;
   }
 }
 
@@ -958,149 +843,6 @@
   border-radius: 17px;
 }
 
-.semana-do-consumidor .showcase .spot {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.semana-do-consumidor .showcase .spot__content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.semana-do-consumidor .showcase .spot__content-price {
-  margin-top: auto;
-}
-
-.semana-do-consumidor .showcase .spot:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(117, 67, 255, 0.12);
-}
-
-.semana-do-consumidor .showcase .spot:hover .spot__title h3 {
-  color: #4c24c8;
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-  margin: 0;
-  padding: 10px 10px 8px;
-  border-radius: 16px 16px 0 0;
-  background: linear-gradient(180deg, rgba(247, 242, 255, 0.98) 0%, rgba(255, 255, 255, 0.995) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .spot__image-wrapper {
-  border-bottom: 0;
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold {
-  display: block;
-  isolation: isolate;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 24px;
-  padding: 0 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 184, 61, 0.5);
-  background: linear-gradient(180deg, rgba(255, 199, 94, 0.24) 0%, rgba(255, 168, 39, 0.12) 100%);
-  color: #9a4d00;
-  text-align: center;
-  font-size: 9px;
-  line-height: 1.2;
-  font-weight: 800;
-  overflow: hidden;
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-critical {
-  border-color: rgba(223, 71, 71, 0.34);
-  background: linear-gradient(180deg, rgba(255, 241, 241, 0.96) 0%, rgba(255, 247, 247, 0.92) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-low {
-  border-color: rgba(245, 151, 49, 0.34);
-  background: linear-gradient(180deg, rgba(255, 247, 234, 0.96) 0%, rgba(255, 250, 242, 0.92) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-limited {
-  border-color: rgba(230, 191, 70, 0.34);
-  background: linear-gradient(180deg, rgba(255, 251, 233, 0.96) 0%, rgba(255, 252, 242, 0.92) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-available {
-  border-color: rgba(82, 176, 101, 0.34);
-  background: linear-gradient(180deg, rgba(239, 251, 241, 0.96) 0%, rgba(246, 253, 247, 0.92) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-unavailable {
-  border-color: rgba(154, 154, 154, 0.3);
-  background: linear-gradient(180deg, rgba(245, 245, 245, 0.96) 0%, rgba(250, 250, 250, 0.92) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-progress {
-  position: absolute;
-  left: 0;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, rgba(255, 184, 61, 0.88) 0%, rgba(255, 145, 0, 0.82) 100%);
-  z-index: -1;
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-critical .oferta-relampago__sold-progress {
-  background: linear-gradient(90deg, rgba(239, 95, 95, 0.96) 0%, rgba(206, 49, 49, 0.9) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-low .oferta-relampago__sold-progress {
-  background: linear-gradient(90deg, rgba(255, 180, 78, 0.94) 0%, rgba(242, 133, 16, 0.88) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-limited .oferta-relampago__sold-progress {
-  background: linear-gradient(90deg, rgba(244, 212, 88, 0.94) 0%, rgba(218, 181, 36, 0.88) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-available .oferta-relampago__sold-progress {
-  background: linear-gradient(90deg, rgba(110, 205, 126, 0.94) 0%, rgba(63, 163, 80, 0.88) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold.is-unavailable .oferta-relampago__sold-progress {
-  background: linear-gradient(90deg, rgba(188, 188, 188, 0.8) 0%, rgba(153, 153, 153, 0.7) 100%);
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-text {
-  position: relative;
-  z-index: 1;
-  color: #4c4c4c;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.52);
-  white-space: nowrap;
-}
-
-.semana-do-consumidor .spot__buttons .add-to-cart-button {
-  background: #7543ff;
-  color: #fff;
-}
-
-.semana-do-consumidor .spot__buttons .add-to-cart-button:hover,
-.semana-do-consumidor .spot:hover .spot__buttons .add-to-cart-button:hover {
-  background: #8f6bff;
-  color: #fff;
-}
-
-@media only screen and (max-width: 767px) {
-  .semana-do-consumidor .showcase .spot .spot__image-wrapper {
-    max-width: 100%;
-  }
-
   .semana-do-consumidor .showcase-sections {
     margin-top: 30px;
   }
@@ -1115,20 +857,6 @@
     min-height: 0;
     padding: 20px 18px 18px;
     border-radius: 28px;
-  }
-
-  .semana-do-consumidor .showcase .spot:hover {
-    transform: none;
-  }
-
-  .semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer {
-    margin: 0;
-    padding: 10px 10px 8px;
-  }
-
-  .semana-do-consumidor .showcase .spot .oferta-relampago__sold {
-    height: 22px;
-    line-height: 22px;
   }
 }
 
@@ -1199,36 +927,6 @@
 .semana-do-consumidor .showcase-banho-e-aquecimento,
 .semana-do-consumidor .showcase-ferramentas {
   background: radial-gradient(circle at top right, rgba(242, 235, 225, 0.92), rgba(242, 235, 225, 0) 42%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.985) 0%, rgba(245, 238, 230, 0.95) 100%);
-}
-
-.semana-do-consumidor .showcase__eyebrow,
-.semana-do-consumidor .showcase__subtitle,
-.semana-do-consumidor .showcase__link,
-.semana-do-consumidor .showcase__brandmark span,
-.semana-do-consumidor #cronometro .cronometro__label,
-.semana-do-consumidor #cronometro .cronometro__note,
-.semana-do-consumidor .cronometro--spot .cronometro__label,
-.semana-do-consumidor .showcase .spot .spot-price .discount,
-.semana-do-consumidor .showcase .spot .spot-price .precoPor small,
-.semana-do-consumidor .showcase .spot .best-installment,
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-text {
-  font-family: var(--font-brand);
-  font-weight: 300;
-}
-
-.semana-do-consumidor .showcase__title,
-.semana-do-consumidor .showcase__brandmark strong,
-.semana-do-consumidor #cronometro .cronometro__days,
-.semana-do-consumidor #cronometro .cronometro__hours,
-.semana-do-consumidor #cronometro .cronometro__minutes,
-.semana-do-consumidor #cronometro .cronometro__seconds,
-.semana-do-consumidor .cronometro--spot .cronometro__days,
-.semana-do-consumidor .cronometro--spot .cronometro__hours,
-.semana-do-consumidor .cronometro--spot .cronometro__minutes,
-.semana-do-consumidor .cronometro--spot .cronometro__seconds,
-.semana-do-consumidor .showcase .spot .spot-price .precoPor span {
-  font-family: var(--font-brand);
-  font-weight: 800;
 }
 
 .semana-do-consumidor .showcase__title {
@@ -1420,123 +1118,6 @@
   line-height: 1.6;
 }
 
-.semana-do-consumidor .cronometro--spot .cronometro__days,
-.semana-do-consumidor .cronometro--spot .cronometro__hours,
-.semana-do-consumidor .cronometro--spot .cronometro__minutes,
-.semana-do-consumidor .cronometro--spot .cronometro__seconds {
-  display: block;
-  color: #4c24c8;
-  font-variant-numeric: tabular-nums;
-  font-weight: 800;
-  font-size: 15px;
-  line-height: 1;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoDe s {
-  color: rgba(76, 36, 200, 0.42);
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoPor,
-.semana-do-consumidor .showcase .spot .spot-price .precoPor span,
-.semana-do-consumidor .showcase .spot .best-installment {
-  color: #c4472d;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoPor span {
-  font-weight: 900;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoPor small {
-  color: rgba(35, 27, 70, 0.65);
-  font-size: 9px;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado span {
-  font-weight: 500;
-  color: #000;
-  font-size: 16px;
-  line-height: 1.2;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado small {
-  font-size: 13px;
-  color: #000;
-  font-weight: 400;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado--piso-revestimento small {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 3px 8px;
-  background: #ffeb3b;
-  color: #b8860b;
-  font-weight: 600;
-  border-radius: 4px;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoPor--somente-m2-piso span {
-  font-weight: 900;
-  color: #c4472d;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoPor--somente-m2-piso small {
-  display: inline;
-  margin-left: 0;
-  padding: 0;
-  background: none;
-  border-radius: 0;
-  color: rgba(35, 27, 70, 0.65);
-  font-size: 9px;
-  font-weight: 300;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .precoCalculado {
-  width: fit-content;
-}
-
-.semana-do-consumidor .showcase .spot .spot__image .stamps-discount {
-  background: #2f2937;
-  color: #fff;
-  box-shadow: 0 8px 18px rgba(47, 41, 55, 0.18);
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .discount {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 8px;
-  padding: 6px 10px;
-  border: 1px solid rgba(17, 126, 138, 0.2);
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(17, 126, 138, 0.14) 0%, rgba(17, 126, 138, 0.08) 100%);
-  color: #117e8a;
-  font-size: 10px !important;
-  font-weight: 700;
-  text-align: center;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .discount,
-.semana-do-consumidor .showcase .spot .spot-price .discount * {
-  color: #117e8a !important;
-}
-
-.semana-do-consumidor .showcase .spot .spot-price .discount__value {
-  color: #117e8a;
-  font-weight: 800;
-  font-size: 9px !important;
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-progress {
-  transform-origin: left center;
-  animation: soldBarGrow 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
-}
-
-.semana-do-consumidor .showcase .spot .oferta-relampago__sold-text {
-  animation: soldTextIn 0.45s ease-out both;
-}
-
 @keyframes heroTitleEntrance {
   0% {
     opacity: 0;
@@ -1553,16 +1134,6 @@
     transform: translateY(0) rotate(0deg);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-
-  .semana-do-consumidor .oferta-relampago__lightning,
-  .semana-do-consumidor .showcase__title--hero,
-  .semana-do-consumidor .showcase .spot .oferta-relampago__sold-progress,
-  .semana-do-consumidor .showcase .spot .oferta-relampago__sold-text,
-  .semana-do-consumidor .showcase .spot .oferta-relampago__badge-rotativo-text {
-    animation: none;
-  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -1649,51 +1220,6 @@
     font-size: 21px;
   }
 
-  .semana-do-consumidor .showcase .spot .spot-price {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .semana-do-consumidor .showcase .spot .spot__content-title {
-    order: 1;
-  }
-
-  .semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer {
-    order: 2;
-    margin: 10px 0 0;
-    padding: 0;
-    background: transparent;
-  }
-
-  .semana-do-consumidor .showcase .spot .spot__content-price {
-    order: 3;
-  }
-
-  .semana-do-consumidor .showcase .spot .spot-price .discount {
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    margin-bottom: 8px;
-    font-size: 9px !important;
-  }
-
-  .semana-do-consumidor .showcase .spot .spot-price .discount__value {
-    display: block;
-    line-height: 1;
-    font-size: 9px !important;
-  }
-
-  .semana-do-consumidor .showcase .spot .spot-price .precoDe,
-  .semana-do-consumidor .showcase .spot .spot-price .precoPor,
-  .semana-do-consumidor .showcase .spot .spot-price .precoCalculado,
-  .semana-do-consumidor .showcase .spot .spot-price .best-installment {
-    order: 2;
-  }
-
   .semana-do-consumidor .showcase__title--hero {
     max-width: 100%;
     font-size: 44px;
@@ -1712,13 +1238,6 @@
     font-size: 28px;
   }
 
-  .semana-do-consumidor .cronometro--spot .cronometro__days,
-  .semana-do-consumidor .cronometro--spot .cronometro__hours,
-  .semana-do-consumidor .cronometro--spot .cronometro__minutes,
-  .semana-do-consumidor .cronometro--spot .cronometro__seconds {
-    font-size: 13px;
-  }
-
   .semana-do-consumidor .showcase-chance-unica__hero {
     grid-template-columns: 1fr;
   }
@@ -1731,5 +1250,240 @@
 
   .semana-do-consumidor .showcase-chance-unica__title {
     font-size: 38px;
+  }
+}
+
+.semana-do-consumidor:before,
+.semana-do-consumidor .showcase:before,
+.semana-do-consumidor .showcase-chance-unica:before {
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+.semana-do-consumidor .showcase__hero {
+  display: none !important;
+}
+
+.semana-do-consumidor .showcase,
+.semana-do-consumidor .showcase--panel,
+.semana-do-consumidor .showcase-frete-gratis,
+.semana-do-consumidor .showcase-melhores-ofertas,
+.semana-do-consumidor .showcase-metais,
+.semana-do-consumidor .showcase-banho-e-aquecimento,
+.semana-do-consumidor .showcase-moveis,
+.semana-do-consumidor .showcase-ferramentas,
+.semana-do-consumidor .showcase.showcase-oferta-relampago,
+.semana-do-consumidor .seo-content__intro,
+.semana-do-consumidor .seo-content__faq,
+.semana-do-consumidor .showcase-chance-unica,
+.semana-do-consumidor .showcase-chance-unica__hero,
+.semana-do-consumidor .showcase-chance-unica__kicker,
+.semana-do-consumidor .showcase-chance-unica__title,
+.semana-do-consumidor .countdown-principal-da-campanha__ribbon,
+.semana-do-consumidor #cronometro,
+.semana-do-consumidor #cronometro:before,
+.semana-do-consumidor #cronometro .cron__item,
+.semana-do-consumidor .showcase__hero-whatsapp {
+  background: #fff !important;
+  background-image: none !important;
+}
+
+.semana-do-consumidor .showcase.showcase-oferta-relampago {
+  margin-top: 24px;
+  padding: 24px 0 36px;
+}
+
+.semana-do-consumidor .home-title--hot--lp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  margin: 0 0 18px;
+}
+
+.semana-do-consumidor .home-title--hot--lp .home-title__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+}
+
+.semana-do-consumidor .home-title--hot--lp .home-title__main {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #111;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.semana-do-consumidor .home-title--hot--lp .oferta-relampago__lightning {
+  color: #ffd003;
+  text-shadow: 1px 1px 0 #9f3101;
+}
+
+.semana-do-consumidor .home-title--hot--lp .home-title__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.semana-do-consumidor .home-title--hot--lp .home-title__sub {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #5d5d5d;
+  font-weight: 400;
+}
+
+.semana-do-consumidor .lp-offers-countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.semana-do-consumidor .lp-offers-countdown__label {
+  color: #9f3101;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.semana-do-consumidor .lp-offers-countdown__timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent !important;
+  color: #9f3101;
+  box-shadow: none;
+}
+
+.semana-do-consumidor .lp-offers-countdown__icon,
+.semana-do-consumidor .lp-offers-countdown__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 28px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: #ffd003;
+  color: #9f3101;
+}
+
+.semana-do-consumidor .lp-offers-countdown__item {
+  gap: 4px;
+  background: #ffd003;
+  color: #9f3101;
+}
+
+.semana-do-consumidor .lp-offers-countdown__value {
+  display: block;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.semana-do-consumidor .lp-offers-countdown__item small {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: #9f3101;
+}
+
+.semana-do-consumidor .showcase-oferta-relampago__carousel .swiper-button-lock,
+.semana-do-consumidor .showcase-oferta-relampago__carousel .swiper-button-prev,
+.semana-do-consumidor .showcase-oferta-relampago__carousel .swiper-button-next {
+  display: flex !important;
+}
+
+.semana-do-consumidor .showcase-oferta-relampago__carousel .swiper-wrapper {
+  justify-content: flex-start !important;
+}
+
+.semana-do-consumidor .showcase-stack .showcase__header {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.semana-do-consumidor .showcase-stack .showcase__title {
+  margin: 0;
+  color: #111;
+}
+
+.semana-do-consumidor .showcase-stack .showcase__heading,
+.semana-do-consumidor .showcase-stack .showcase__eyebrow,
+.semana-do-consumidor .showcase-stack .showcase__subtitle,
+.semana-do-consumidor .showcase-stack .showcase__link {
+  display: none !important;
+}
+
+.semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer--stock-only {
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 10px 10px 8px !important;
+  border-radius: 16px 16px 0 0 !important;
+  background: #f7f2ff !important;
+}
+
+.semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer--stock-only .oferta-relampago__sold {
+  width: 100% !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .semana-do-consumidor .showcase.showcase-oferta-relampago {
+    margin-top: 18px;
+    padding: 18px 0 28px;
+  }
+
+  .semana-do-consumidor .home-title--hot--lp {
+    margin-bottom: 14px;
+  }
+
+  .semana-do-consumidor .home-title--hot--lp .home-title__main {
+    font-size: 22px;
+  }
+
+  .semana-do-consumidor .home-title--hot--lp .home-title__row {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .semana-do-consumidor .lp-offers-countdown {
+    gap: 0;
+  }
+
+  .semana-do-consumidor .lp-offers-countdown__label {
+    display: none;
+  }
+
+  .semana-do-consumidor .lp-offers-countdown__item {
+    min-width: 32px;
+    min-height: 28px;
+    padding: 4px 6px;
+  }
+
+  .semana-do-consumidor .lp-offers-countdown__value {
+    font-size: 15px;
+  }
+
+  .semana-do-consumidor .showcase .spot .oferta-relampago__spot-footer--stock-only {
+    order: 2;
+    margin: 10px 0 0 !important;
+    padding: 10px 10px 8px !important;
+    border-radius: 14px !important;
+    background: #f7f2ff !important;
   }
 }

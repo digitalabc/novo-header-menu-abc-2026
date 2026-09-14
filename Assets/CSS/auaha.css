@@ -550,6 +550,10 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
   animation: home-info-bar-copy-shift 1.85s cubic-bezier(0.37, 0, 0.22, 1) infinite alternate;
 }
 
+.home .home-info-bar__break {
+  display: inline;
+}
+
 .home .home-info-bar__motion {
   position: absolute;
   inset: 0;
@@ -871,6 +875,12 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
     line-height: 1.1;
     letter-spacing: 0.05em;
     animation-duration: 1.55s;
+    display: block;
+  }
+
+  .home .home-info-bar__break {
+    display: block;
+    margin-top: 2px;
   }
 
   .home .home-info-bar__truck-track {

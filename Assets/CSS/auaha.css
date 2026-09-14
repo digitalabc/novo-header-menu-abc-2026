@@ -7376,6 +7376,7 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet,
@@ -7398,6 +7399,7 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a,
@@ -7418,6 +7420,7 @@ div[class^="como-chegar"]>span+i {
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--launches a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--consumer a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--abcprime a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons a strong,
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--outlet a strong,
@@ -7451,6 +7454,87 @@ div[class^="como-chegar"]>span+i {
     animation: navBadgeShimmer 3.6s ease-in-out infinite;
     pointer-events: none;
     z-index: 2;
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    align-self: flex-start;
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 12px;
+    position: relative;
+    overflow: hidden;
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 999px;
+    line-height: 1;
+    font-weight: var(--peso-fonte-bold);
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a {
+    background: #ffca3a;
+    border-color: #d8a01f;
+    color: #0f172a;
+    box-shadow:
+      -1px 1px 0 #161b2b,
+      -2px 2px 0 #161b2b,
+      -3px 3px 0 #111624,
+      -4px 4px 8px rgba(15, 23, 42, 0.22);
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a:hover {
+    background: #ffd45a;
+    color: #0f172a;
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a {
+    background: #e30613;
+    border-color: #b8050f;
+    color: #fff;
+    box-shadow:
+      -1px 1px 0 #7a040c,
+      -2px 2px 0 #7a040c,
+      -3px 3px 0 rgba(122, 4, 12, 0.9),
+      -4px 4px 8px rgba(122, 4, 12, 0.22);
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a:hover {
+    background: #ff1a28;
+    color: #fff;
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a::after,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 42%;
+    height: 120%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.56) 50%, transparent 100%);
+    transform: skewX(-18deg) translateX(-180%);
+    animation: navBadgeShimmer 3.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a strong,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente a span,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a strong,
+  #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance a span {
+    position: relative;
+    z-index: 3;
+    color: inherit;
+    font-weight: inherit;
   }
 
   #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--specialist {
@@ -9973,7 +10057,7 @@ header {
 }
 
 .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance,
-.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao {
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-semana-cliente {
   background: #ffca3a;
   border-color: #d8a01f;
   color: #0f172a;
@@ -9985,18 +10069,47 @@ header {
 }
 
 .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance::after,
-.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao::after {
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-semana-cliente::after {
   animation-delay: 2.7s;
 }
 
 .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-chance:hover,
-.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao:hover {
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-semana-cliente:hover {
   background: #ffd45a;
   box-shadow:
     -1px 1px 0 #161b2b,
     -2px 2px 0 #161b2b,
     -3px 3px 0 #111624,
     -5px 5px 10px rgba(15, 23, 42, 0.26);
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao {
+  background: #e30613;
+  border-color: #b8050f;
+  color: #fff !important;
+  box-shadow:
+    -1px 1px 0 #7a040c,
+    -2px 2px 0 #7a040c,
+    -3px 3px 0 rgba(122, 4, 12, 0.9),
+    -4px 4px 8px rgba(122, 4, 12, 0.22);
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao * {
+  color: #fff !important;
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao:hover {
+  background: #ff1a28;
+  color: #fff !important;
+  box-shadow:
+    -1px 1px 0 #7a040c,
+    -2px 2px 0 #7a040c,
+    -3px 3px 0 rgba(122, 4, 12, 0.9),
+    -5px 5px 10px rgba(122, 4, 12, 0.26);
+}
+
+.navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao:hover * {
+  color: #fff !important;
 }
 
 @keyframes navBadgeShimmer {
@@ -11736,6 +11849,92 @@ header {
   animation: navBadgeShimmer 3.6s ease-in-out infinite;
   pointer-events: none;
   z-index: 2;
+}
+
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--semana-do-cliente,
+#menu-offcanvas .nav-mobile__others .nav-mobile__others-item--chance {
+  height: auto;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  overflow: visible;
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+  padding: 5px 11px;
+  position: relative;
+  overflow: hidden;
+  border-width: 1.5px;
+  border-style: solid;
+  border-radius: 999px;
+  line-height: 1;
+  font-weight: var(--peso-fonte-bold);
+  transition: background-color 0.2s ease;
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge > * {
+  position: relative;
+  z-index: 1;
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 42%;
+  height: 120%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.56) 50%, transparent 100%);
+  transform: skewX(-18deg) translateX(-180%);
+  animation: navBadgeShimmer 3.6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-semana-cliente {
+  background: #ffca3a;
+  border-color: #d8a01f;
+  color: #0f172a;
+  box-shadow:
+    -1px 1px 0 #161b2b,
+    -2px 2px 0 #161b2b,
+    -3px 3px 0 #111624,
+    -4px 4px 8px rgba(15, 23, 42, 0.22);
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-semana-cliente:hover {
+  background: #ffd45a;
+  color: #0f172a;
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-saldao {
+  background: #e30613;
+  border-color: #b8050f;
+  color: #fff !important;
+  box-shadow:
+    -1px 1px 0 #7a040c,
+    -2px 2px 0 #7a040c,
+    -3px 3px 0 rgba(122, 4, 12, 0.9),
+    -4px 4px 8px rgba(122, 4, 12, 0.22);
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-saldao * {
+  color: #fff !important;
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-saldao:hover {
+  background: #ff1a28;
+  color: #fff !important;
+}
+
+#menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-saldao:hover * {
+  color: #fff !important;
 }
 
 #menu-offcanvas .nav-mobile__others .nav-mobile__others-item--cupons {

@@ -111,6 +111,18 @@ function getEndOfCurrentDay(now) {
   );
 }
 
+function getNextDailyOffersReset(now) {
+  return new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1,
+    0,
+    0,
+    0,
+    0,
+  );
+}
+
 const HOME_WEEKLY_OFFERS_CYCLE_DAYS = 7;
 const HOME_WEEKLY_OFFERS_CYCLE_MS =
   HOME_WEEKLY_OFFERS_CYCLE_DAYS * 24 * 60 * 60 * 1000;
@@ -161,7 +173,7 @@ function renderDailyHomeOffersCountdown(root, now) {
   const seconds = root.querySelector("[data-home-daily-offers-seconds]");
   if (!hours || !minutes || !seconds) return;
 
-  const target = getEndOfCurrentDay(now);
+  const target = getNextDailyOffersReset(now);
   const diffMs = Math.max(0, target.getTime() - now.getTime());
   const totalSeconds = Math.floor(diffMs / 1000);
   const countdownHours = Math.floor(totalSeconds / 3600);
@@ -242,7 +254,7 @@ function renderWeeklyHomeOffersCountdown(root, now) {
   const countdownMinutes = Math.floor((totalSeconds % 3600) / 60);
   const countdownSeconds = totalSeconds % 60;
 
-  days.textContent = `${countdownDays}D`;
+  days.textContent = String(countdownDays);
   hours.textContent = formatCountdownNumber(countdownHours);
   minutes.textContent = formatCountdownNumber(countdownMinutes);
   seconds.textContent = formatCountdownNumber(countdownSeconds);
@@ -695,7 +707,9 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         rootMargin: isDesktop ? "280px 0px" : "160px 0px",
-        threshold: 0.01,
+        // ponytail: threshold 0 — secao com todo o conteudo dentro de <noscript>
+        // tem altura 0 e o Chrome reporta intersectionRatio 0, entao 0.01 nunca hidrata
+        threshold: 0,
       },
     );
 
@@ -952,16 +966,25 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    const showcaseOne = document.querySelector(".showcase-1 .swiper");
-    if (showcaseOne) {
+    // Variante B do teste A/B dos spots: o Figma pede card de 212px com gap 12.
+    // O .swiper tem padding lateral de 15px (bleed), entao a area util num
+    // aparelho de 390 e 330. Swiper: slide = (size - gap * (spv - 1)) / spv,
+    // logo spv = (330 + 12) / (212 + 12) = 1.527. Sem a classe os carrosseis
+    // ficam exatamente como na variante A.
+    const spotMobile = document.documentElement.classList.contains(
+      "empiria-ab-spot-b",
+    )
+      ? { slidesPerView: 1.527, spaceBetween: 12 }
+      : { slidesPerView: 2.1, spaceBetween: 5 };
+
+    document.querySelectorAll(".showcase-1 .swiper").forEach((showcaseOne) => {
       const section = showcaseOne.closest(".showcase-1");
       initSwiperInstance(showcaseOne, {
         navigation: {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        slidesPerView: 2.1,
-        spaceBetween: 5,
+        ...spotMobile,
         breakpoints: {
           768: {
             slidesPerView: 3.1,
@@ -973,18 +996,16 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         },
       });
-    }
+    });
 
-    const showcaseTwo = document.querySelector(".showcase-2 .swiper");
-    if (showcaseTwo) {
+    document.querySelectorAll(".showcase-2 .swiper").forEach((showcaseTwo) => {
       const section = showcaseTwo.closest(".showcase-2");
       initSwiperInstance(showcaseTwo, {
         navigation: {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        spaceBetween: 5,
-        slidesPerView: 2.1,
+        ...spotMobile,
         breakpoints: {
           768: {
             slidesPerView: 3.1,
@@ -999,7 +1020,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         },
       });
-    }
+    });
 
     const homeOffersSection = document.querySelector(
       ".home-offers-banner:not([hidden])",
@@ -1014,8 +1035,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        spaceBetween: 5,
-        slidesPerView: 2.1,
+        ...spotMobile,
         watchOverflow: true,
         breakpoints: {
           768: {
@@ -1111,8 +1131,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        spaceBetween: 5,
-        slidesPerView: 2.1,
+        ...spotMobile,
         breakpoints: {
           768: {
             slidesPerView: 3.1,

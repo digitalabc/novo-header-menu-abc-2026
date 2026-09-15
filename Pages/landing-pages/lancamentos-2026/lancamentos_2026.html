@@ -5,7 +5,7 @@
   {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construcao" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-  {{ asset type: "css" paths: ["semana_do_consumidor"] }}
+  {{ asset type: "css" paths: ["landing-pages/shared/lp_showcase"] }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
   </header>
 
   <div class="semana-do-consumidor">
-    <!-- Hotsite principal da LP /semana-do-consumidor: hotsiteId 98563 -->
+    <!-- Hotsite principal da LP /lancamentos-2026: hotsiteId 98563 -->
     <div class="fullbanner desktop">
       {{ banner carousel: true type: "fullbanner" banners: data.hotsite.banners position: "Topo" }}
     </div>
@@ -33,7 +33,7 @@
       <div class="container">
         <div class="showcase__hero">
           <div class="showcase__copy">
-            <h1 class="showcase__title showcase__title--hero">Mês do Consumidor com <span class="showcase__title-word">oferta<span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">&#9889;</span></span> todo dia</h1>
+            <h1 class="showcase__title showcase__title--hero">Semana do Consumidor com <span class="showcase__title-word">oferta<span class="oferta-relampago__lightning oferta-relampago__lightning--hero" aria-hidden="true">&#9889;</span></span> todo dia</h1>
             <p class="showcase__subtitle showcase__subtitle--hero">Aproveite condi&ccedil;&otilde;es especiais para renovar seus ambientes com mais economia durante a campanha.</p>
           </div>
 
@@ -84,9 +84,9 @@
         <section class="showcase showcase--panel showcase-frete-gratis" data-showcase="frete-gratis">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Banheiro e cozinha</span>
-              <h2 class="showcase__title">Metais sanit&aacute;rios</h2>
-              <p class="showcase__subtitle">Torneiras, misturadores e acess&oacute;rios para banheiro e cozinha com condi&ccedil;&otilde;es especiais na campanha.</p>
+              <span class="showcase__eyebrow">Entrega facilitada</span>
+              <h2 class="showcase__title">Frete Gr&aacute;tis</h2>
+              <p class="showcase__subtitle">Produtos selecionados com frete gr&aacute;tis para renovar banheiro, cozinha e outros ambientes com mais economia.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-frete-gratis">
               <span>Ver mais ofertas</span>
@@ -104,9 +104,9 @@
         <section class="showcase showcase--panel showcase-melhores-ofertas" data-showcase="melhores-ofertas">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Lou&ccedil;as e sanit&aacute;rios</span>
-              <h2 class="showcase__title">Lou&ccedil;as</h2>
-              <p class="showcase__subtitle">Vasos, cubas, assentos e lou&ccedil;as para banheiro e cozinha com ofertas especiais na campanha.</p>
+              <span class="showcase__eyebrow">Curadoria da campanha</span>
+              <h2 class="showcase__title">Melhores Ofertas</h2>
+              <p class="showcase__subtitle">Sele&ccedil;&atilde;o de ofertas da campanha em materiais de constru&ccedil;&atilde;o, acabamento e itens para o dia a dia da obra.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-melhores-ofertas">
               <span>Ver mais ofertas</span>
@@ -124,9 +124,9 @@
         <section class="showcase showcase--panel showcase-metais" data-showcase="metais">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Acabamento e pintura</span>
-              <h2 class="showcase__title">Tintas</h2>
-              <p class="showcase__subtitle">Tintas e vernizes para acabamento e pintura de paredes e superf&iacute;cies com ofertas especiais na campanha.</p>
+              <span class="showcase__eyebrow">Banheiro e cozinha</span>
+              <h2 class="showcase__title">Metais</h2>
+              <p class="showcase__subtitle">Torneiras, misturadores e acess&oacute;rios para banheiro e cozinha com condi&ccedil;&otilde;es especiais na campanha.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-metais">
               <span>Ver mais ofertas</span>
@@ -145,7 +145,7 @@
           <div class="showcase__header">
             <div class="showcase__heading">
               <span class="showcase__eyebrow">Conforto para o dia a dia</span>
-              <h2 class="showcase__title">Banho Quente</h2>
+              <h2 class="showcase__title">Banho e Aquecimento</h2>
               <p class="showcase__subtitle">Chuveiros, duchas e solu&ccedil;&otilde;es para banho com conforto, economia e ofertas por tempo limitado.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-banho-e-aquecimento">
@@ -164,9 +164,9 @@
         <section class="showcase showcase--panel showcase-moveis" data-showcase="moveis">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Tubos, conex&otilde;es e acess&oacute;rios</span>
-              <h2 class="showcase__title">Materiais Hidr&aacute;ulicos</h2>
-              <p class="showcase__subtitle">Tubos, conex&otilde;es, registros e acess&oacute;rios hidr&aacute;ulicos para instala&ccedil;&otilde;es com ofertas especiais na campanha.</p>
+              <span class="showcase__eyebrow">Organiza&ccedil;&atilde;o do lar</span>
+              <h2 class="showcase__title">M&oacute;veis</h2>
+              <p class=\
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-moveis">
               <span>Ver mais ofertas</span>
@@ -184,9 +184,9 @@
         <section class="showcase showcase--panel showcase-ferramentas" data-showcase="ferramentas">
           <div class="showcase__header">
             <div class="showcase__heading">
-              <span class="showcase__eyebrow">Organiza&ccedil;&atilde;o do lar</span>
-              <h2 class="showcase__title">M&oacute;veis</h2>
-              <p class="showcase__subtitle">M&oacute;veis para banheiro, cozinha e outros ambientes com ofertas especiais durante a campanha.</p>
+              <span class="showcase__eyebrow">Execu&ccedil;&atilde;o e acabamento</span>
+              <h2 class="showcase__title">Ferramentas</h2>
+              <p class="showcase__subtitle">Ferramentas e acess&oacute;rios para instala&ccedil;&atilde;o, acabamento e obra com ofertas especiais durante a campanha.</p>
             </div>
             <a class="showcase__link" href="https://www.abcdaconstrucao.com.br/semana-do-cliente-ferramentas">
               <span>Ver mais ofertas</span>
@@ -237,10 +237,10 @@
 
       <section class="seo-content" aria-labelledby="seo-content-title">
         <div class="seo-content__intro">
-          <span class="seo-content__eyebrow">M&ecirc;s do Consumidor e Semana do Consumidor</span>
+          <span class="seo-content__eyebrow">Semana do Consumidor</span>
           <h2 id="seo-content-title" class="seo-content__title">Ofertas especiais para renovar seus ambientes com mais economia</h2>
-          <p>O M&ecirc;s do Consumidor e a Semana do Consumidor da ABC da Constru&ccedil;&atilde;o re&uacute;nem oportunidades especiais para quem quer aproveitar boas ofertas e renovar diferentes ambientes com mais praticidade.</p>
-          <p>Ao longo do M&ecirc;s do Consumidor e da Semana do Consumidor, a sele&ccedil;&atilde;o principal destaca produtos com condi&ccedil;&otilde;es por tempo limitado, atualiza&ccedil;&atilde;o din&acirc;mica de pre&ccedil;os e disponibilidade sujeita ao estoque do momento.</p>
+          <p>A Semana do Consumidor da ABC da Constru&ccedil;&atilde;o re&uacute;ne oportunidades especiais para quem quer aproveitar boas ofertas e renovar diferentes ambientes com mais praticidade.</p>
+          <p>Ao longo da campanha, a sele&ccedil;&atilde;o principal destaca produtos com condi&ccedil;&otilde;es por tempo limitado, atualiza&ccedil;&atilde;o din&acirc;mica de pre&ccedil;os e disponibilidade sujeita ao estoque do momento.</p>
           <p>Se voc&ecirc; busca uma oportunidade para comprar com mais economia, esta p&aacute;gina concentra a vitrine principal da campanha em um s&oacute; lugar, com acesso r&aacute;pido &agrave;s ofertas do dia.</p>
         </div>
 
@@ -248,8 +248,8 @@
           <h2 id="seo-faq-title" class="seo-content__title seo-content__title--faq">Perguntas frequentes sobre a campanha</h2>
 
           <details class="seo-content__faq-item">
-            <summary>Como funciona o M&ecirc;s do Consumidor e a Semana do Consumidor?</summary>
-            <p>A p&aacute;gina re&uacute;ne a vitrine principal da campanha M&ecirc;s do Consumidor e Semana do Consumidor, com ofertas em destaque e condi&ccedil;&otilde;es v&aacute;lidas por tempo limitado.</p>
+            <summary>Como funciona a Semana do Consumidor?</summary>
+            <p>A p&aacute;gina re&uacute;ne a vitrine principal da campanha, com ofertas em destaque e condi&ccedil;&otilde;es v&aacute;lidas por tempo limitado.</p>
           </details>
 
           <details class="seo-content__faq-item">
@@ -273,10 +273,10 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Como funciona o Mês do Consumidor e a Semana do Consumidor?",
+          "name": "Como funciona a Semana do Consumidor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A pagina reune a vitrine principal da campanha Mes do Consumidor e Semana do Consumidor, com ofertas em destaque e condicoes validas por tempo limitado."
+            "text": "A pagina reune a vitrine principal da campanha, com ofertas em destaque e condicoes validas por tempo limitado."
           }
         },
         {
@@ -303,7 +303,7 @@
 
   {{ sdk_client }}
 
-  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "semana_do_consumidor", "whats_form"] }}
+  {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login", "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "landing-pages/lancamentos-2026/lancamentos_2026", "landing-pages/shared/lp_showcase", "whats_form"] }}
 </body>
 
 </html>

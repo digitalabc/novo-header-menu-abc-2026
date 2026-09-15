@@ -1,3 +1,23 @@
+/*
+ * Shared presentation behavior for campaign landing pages.
+ * Each page supplies its own selectors through window.LandingPageConfig before
+ * this file is loaded; this module never imports another LP's script.
+ */
+const landingPageConfig = window.LandingPageConfig || {};
+const stockBadgeSelector = landingPageConfig.stockBadgeSelector || ".showcase-oferta-relampago .oferta-relampago__sold, .section-super-chance-unica__featured .oferta-relampago__sold";
+const discountSelector = landingPageConfig.discountSelector || ".lp-ofertas-mensais .spot-price .discount, .semana-do-consumidor .spot-price .discount, .section-super-chance-unica__featured .spot-price .discount";
+const promotionSpotSelector = landingPageConfig.promotionSpotSelector || ".showcase-oferta-relampago .spot, .section-super-chance-unica__featured .spot";
+const showSpotCountdown = landingPageConfig.showSpotCountdown !== false;
+const showPromotionOverlay = landingPageConfig.showPromotionOverlay !== false;
+const featuredCarouselSelector = landingPageConfig.featuredCarouselSelector || null;
+const featuredSlidesPerView = Object.assign({
+  768: 2,
+  992: 2,
+  1090: 2,
+  1200: 2,
+}, landingPageConfig.featuredSlidesPerView);
+const carouselSelectors = landingPageConfig.carouselSelectors || [];
+
 function resolveCountdownTarget(rawDate) {
   const parsedDate = rawDate ? new Date(rawDate) : null;
 
@@ -12,6 +32,16 @@ function resolveDailySpotTarget() {
   const targetDate = new Date();
   targetDate.setHours(23, 59, 59, 999);
   return targetDate;
+}
+
+function resolveSpotCountdownTarget(countdownRoot, campaignTargetDate) {
+  const spotTargetMode = countdownRoot.getAttribute("data-spot-countdown-target");
+
+  if (spotTargetMode === "campaign") {
+    return campaignTargetDate;
+  }
+
+  return resolveDailySpotTarget();
 }
 
 function getCountdownParts(targetDate) {
@@ -45,6 +75,22 @@ function renderCountdownNode(node, countdownParts) {
   if (hours) hours.textContent = formatUnit(countdownParts.hours);
   if (minutes) minutes.textContent = formatUnit(countdownParts.minutes);
   if (seconds) seconds.textContent = formatUnit(countdownParts.seconds);
+}
+
+function renderStickyCampaignCountdown(root, countdownParts) {
+  const hours = root.querySelector("[data-sticky-campaign-hours]");
+  const minutes = root.querySelector("[data-sticky-campaign-minutes]");
+  const seconds = root.querySelector("[data-sticky-campaign-seconds]");
+
+  if (!hours || !minutes || !seconds) {
+    return;
+  }
+
+  const totalHours = Math.floor(countdownParts.distance / 3600000);
+
+  hours.textContent = String(totalHours).padStart(2, "0");
+  minutes.textContent = formatUnit(countdownParts.minutes);
+  seconds.textContent = formatUnit(countdownParts.seconds);
 }
 
 function getStockBadgeState(stock, available) {
@@ -157,7 +203,7 @@ function getCompactStockLabel(tone) {
 function syncMobileStockBadgeLabels() {
   const isMobile = window.innerWidth <= 767;
 
-  document.querySelectorAll(".showcase-oferta-relampago .oferta-relampago__sold").forEach(function (badgeNode) {
+  document.querySelectorAll(stockBadgeSelector).forEach(function (badgeNode) {
     const textNode = badgeNode.querySelector(".oferta-relampago__sold-text");
 
     if (!textNode) {
@@ -181,7 +227,7 @@ function syncMobileStockBadgeLabels() {
 }
 
 function normalizeSavingsLabels() {
-  document.querySelectorAll(".semana-do-consumidor .spot-price .discount").forEach(function (discountNode) {
+  document.querySelectorAll(discountSelector).forEach(function (discountNode) {
     const valueNode = discountNode.querySelector(".discount__value");
 
     if (!valueNode) {
@@ -280,7 +326,11 @@ function startRotatingBadges() {
 }
 
 function mountPromotionOverlays() {
-  document.querySelectorAll(".showcase-oferta-relampago .spot").forEach(function (spot, index) {
+  if (!showPromotionOverlay) {
+    return;
+  }
+
+  document.querySelectorAll(promotionSpotSelector).forEach(function (spot, index) {
     const stockInput = document.querySelector(`#promotion-stock-${index}`);
     const availableInput = document.querySelector(`#promotion-available-${index}`);
     const spotImage = spot.querySelector(".spot__image");
@@ -295,13 +345,13 @@ function mountPromotionOverlays() {
     const badgeState = getStockBadgeState(stock, available);
     const overlay = document.createElement("div");
 
-    overlay.className = "oferta-relampago__spot-footer";
+    overlay.className = `oferta-relampago__spot-footer${showSpotCountdown ? "" : " oferta-relampago__spot-footer--stock-only"}`;
     overlay.innerHTML = `
       <div class="oferta-relampago__sold ${badgeState.tone}" aria-hidden="true">
         <span class="oferta-relampago__sold-progress" style="width:${badgeState.progress}%"></span>
         <span class="oferta-relampago__sold-text" data-stock="${stock}" data-full-label="${badgeState.label}" data-mobile-label="${getCompactStockLabel(badgeState.tone)}">${badgeState.animated ? `${badgeState.prefix}0${badgeState.suffix}` : badgeState.label}</span>
       </div>
-      ${buildSpotCountdownMarkup()}
+      ${showSpotCountdown ? buildSpotCountdownMarkup() : ""}
     `;
 
     spot.insertBefore(overlay, spotImage);
@@ -315,7 +365,7 @@ function mountPromotionOverlays() {
 function syncSpotFooterPosition() {
   const isMobile = window.innerWidth <= 767;
 
-  document.querySelectorAll(".showcase-oferta-relampago .spot").forEach(function (spot) {
+  document.querySelectorAll(promotionSpotSelector).forEach(function (spot) {
     const overlay = spot.querySelector(".oferta-relampago__spot-footer");
     const spotImage = spot.querySelector(".spot__image");
     const spotContent = spot.querySelector(".spot__content");
@@ -342,7 +392,7 @@ function startCountdown() {
   }
 
   const campaignTargetDate = resolveCountdownTarget(countdownRoot.getAttribute("data-promotion"));
-  const spotTargetDate = resolveDailySpotTarget();
+  const spotTargetDate = resolveSpotCountdownTarget(countdownRoot, campaignTargetDate);
   const note = countdownRoot.querySelector(".cronometro__note");
   const heroSubtitle = document.querySelector(".showcase__subtitle--hero");
   let timerId = null;
@@ -375,6 +425,57 @@ function startCountdown() {
     }
 
     if (campaignCountdownParts.distance <= 0 && spotCountdownParts.distance <= 0 && timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    }
+  };
+
+  const startTimer = function () {
+    if (timerId) {
+      return;
+    }
+
+    tick();
+    timerId = window.setInterval(tick, 1000);
+  };
+
+  const stopTimer = function () {
+    if (!timerId) {
+      return;
+    }
+
+    clearInterval(timerId);
+    timerId = null;
+  };
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      stopTimer();
+      return;
+    }
+
+    startTimer();
+  });
+
+  startTimer();
+}
+
+function startStickyCampaignCountdown() {
+  const stickyCountdownRoot = document.querySelector("[data-sticky-campaign-countdown]");
+
+  if (!stickyCountdownRoot) {
+    return;
+  }
+
+  const campaignTargetDate = resolveCountdownTarget(stickyCountdownRoot.getAttribute("data-promotion"));
+  let timerId = null;
+
+  const tick = function () {
+    const countdownParts = getCountdownParts(campaignTargetDate);
+
+    renderStickyCampaignCountdown(stickyCountdownRoot, countdownParts);
+
+    if (countdownParts.distance <= 0 && timerId) {
       clearInterval(timerId);
       timerId = null;
     }
@@ -484,6 +585,8 @@ function syncCenteredCarouselState(swiper) {
 }
 
 function buildCarouselOptions(selector) {
+  const isFeaturedCarousel = selector === featuredCarouselSelector;
+
   return {
     navigation: {
       nextEl: `${selector} .swiper-button-next`,
@@ -491,8 +594,10 @@ function buildCarouselOptions(selector) {
     },
     watchOverflow: true,
     centerInsufficientSlides: true,
-    slidesPerView: 1.5,
-    spaceBetween: 12,
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    slidesPerView: 1.45,
+    spaceBetween: 14,
     on: {
       init: syncCenteredCarouselState,
       resize: syncCenteredCarouselState,
@@ -501,19 +606,27 @@ function buildCarouselOptions(selector) {
     },
     breakpoints: {
       768: {
-        slidesPerView: 3.1,
+        centeredSlides: false,
+        centeredSlidesBounds: false,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[768] : 3.1,
         spaceBetween: 12,
       },
       992: {
-        slidesPerView: 4,
+        centeredSlides: false,
+        centeredSlidesBounds: false,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[992] : 4,
         spaceBetween: 18,
       },
       1090: {
-        slidesPerView: 6,
+        centeredSlides: false,
+        centeredSlidesBounds: false,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[1090] : 5,
         spaceBetween: 16,
       },
       1200: {
-        slidesPerView: 6,
+        centeredSlides: false,
+        centeredSlidesBounds: false,
+        slidesPerView: isFeaturedCarousel ? featuredSlidesPerView[1200] : 5,
         spaceBetween: 20,
       },
     },
@@ -570,20 +683,69 @@ function initDeferredSwipers(selectors) {
 }
 
 function initLandingSwipers() {
-  initSwiperIfNeeded(".showcase-oferta-relampago__carousel", buildCarouselOptions(".showcase-oferta-relampago__carousel"));
+  if (featuredCarouselSelector) {
+    initSwiperIfNeeded(featuredCarouselSelector, buildCarouselOptions(featuredCarouselSelector));
+  }
+}
+
+function revealFeaturedCarouselWhenStable() {
+  if (!featuredCarouselSelector) {
+    return;
+  }
+
+  const carouselRoot = document.querySelector(featuredCarouselSelector);
+  const swiperElement = carouselRoot && carouselRoot.querySelector(".swiper");
+
+  if (!carouselRoot || !swiperElement || carouselRoot.dataset.featuredCarouselReady === "true") {
+    return;
+  }
+
+  let revealed = false;
+  const reveal = function () {
+    if (revealed) {
+      return;
+    }
+
+    revealed = true;
+    const swiper = swiperElement.swiper;
+
+    if (swiper) {
+      swiper.update();
+      syncCenteredCarouselState(swiper);
+    }
+
+    carouselRoot.dataset.featuredCarouselReady = "true";
+    carouselRoot.classList.add("is-ready");
+  };
+
+  const pendingImages = Array.from(swiperElement.querySelectorAll("img")).filter(function (image) {
+    return !image.complete;
+  });
+
+  if (!pendingImages.length) {
+    scheduleAfterPaint(reveal);
+    return;
+  }
+
+  let loadedImages = 0;
+  const handleImage = function () {
+    loadedImages += 1;
+
+    if (loadedImages === pendingImages.length) {
+      scheduleAfterPaint(reveal);
+    }
+  };
+
+  pendingImages.forEach(function (image) {
+    image.addEventListener("load", handleImage, { once: true });
+    image.addEventListener("error", handleImage, { once: true });
+  });
+
+  window.setTimeout(reveal, 1800);
 }
 
 function initAllShowcaseSwipers() {
-  [
-    ".showcase-oferta-relampago__carousel",
-    ".showcase-frete-gratis__carousel",
-    ".showcase-melhores-ofertas__carousel",
-    ".showcase-metais__carousel",
-    ".showcase-banho-e-aquecimento__carousel",
-    ".showcase-moveis__carousel",
-    ".showcase-ferramentas__carousel",
-    ".showcase-chance-unica__carousel",
-  ].forEach(function (selector) {
+  carouselSelectors.forEach(function (selector) {
     initSwiperIfNeeded(selector, buildCarouselOptions(selector));
   });
 }
@@ -629,11 +791,12 @@ document.addEventListener("DOMContentLoaded", function () {
   normalizeSavingsLabels();
   mountPromotionOverlays();
   initAllShowcaseSwipers();
+  revealFeaturedCarouselWhenStable();
   startCountdown();
+  startStickyCampaignCountdown();
 
   window.requestAnimationFrame(function () {
     normalizeSavingsLabels();
-    syncSpotFooterPosition();
     syncMobileStockBadgeLabels();
   });
 

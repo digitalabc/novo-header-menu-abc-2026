@@ -5,8 +5,8 @@
   {{ gtm_config_head gtm_id: common.gtm_id }}
   {{ default_title_hotsite = data.hotsite.name | string.append " | ABC da Construcao" }}
   {{ header default_title: default_title_hotsite seo: data.hotsite.seo }}
-  {{ asset type: "css" paths: ["super_chance_unica"] }}
-  {{ asset type: "css" paths: ["super_chance_unica_abc"] }}
+  {{ asset type: "css" paths: ["landing-pages/shared/super_chance_unica"] }}
+  {{ asset type: "css" paths: ["landing-pages/shared/super_chance_unica_abc"] }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -302,8 +302,8 @@
   {{ sdk_client }}
 
   {{ asset type: "js" paths: ["jquery", "swiper-bundle.min", "components", "navbar", "mini_cart", "user_login",
-  "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "lancamentos_2026",
-  "cart_from_spot", "product", "pagination", "whats_form"] }}
+  "newsletter", "topbar", "lightbox", "offcanvas", "event_manager", "sharpspring", "lp_tracking", "landing-pages/super-chance-unica/super_chance_unica_abc",
+  "landing-pages/shared/lp_showcase", "cart_from_spot", "product", "pagination", "whats_form"] }}
 
 </body>
 

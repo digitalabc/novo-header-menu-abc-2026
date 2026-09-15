@@ -1,0 +1,31 @@
+{{~
+  stock_quantity = stock ?? 0
+  stock_state = "healthy"
+  stock_label = "Disponível hoje"
+  stock_level = 88
+
+  if stock_quantity <= 5
+    stock_state = "critical"
+    stock_label = "Últimas peças"
+    stock_level = 18
+  else if stock_quantity <= 9
+    stock_state = "low"
+    stock_label = "Estoque baixo"
+    stock_level = 38
+  else if stock_quantity <= 20
+    stock_state = "attention"
+    stock_label = "Aproveite"
+    stock_level = 62
+  end
+~}}
+{{~ if stock_quantity > 0 ~}}
+<div class="stock-health stock-health--{{ stock_state }}" role="status" aria-label="{{ stock_label }}: {{ stock_quantity }} unidades disponíveis">
+  <div class="stock-health__meta">
+    <span class="stock-health__label">{{ stock_label }}</span>
+    <strong class="stock-health__quantity">{{ stock_quantity }} {{ if stock_quantity == 1 }}unidade{{ else }}unidades{{ end }}</strong>
+  </div>
+  <div class="stock-health__track" aria-hidden="true">
+    <span class="stock-health__fill" style="--stock-health-level: {{ stock_level }}%;"></span>
+  </div>
+</div>
+{{~ end ~}}

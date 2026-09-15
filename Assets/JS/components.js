@@ -111,6 +111,18 @@ function getEndOfCurrentDay(now) {
   );
 }
 
+function getNextDailyOffersReset(now) {
+  return new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1,
+    0,
+    0,
+    0,
+    0,
+  );
+}
+
 const HOME_WEEKLY_OFFERS_CYCLE_DAYS = 7;
 const HOME_WEEKLY_OFFERS_CYCLE_MS =
   HOME_WEEKLY_OFFERS_CYCLE_DAYS * 24 * 60 * 60 * 1000;
@@ -161,7 +173,7 @@ function renderDailyHomeOffersCountdown(root, now) {
   const seconds = root.querySelector("[data-home-daily-offers-seconds]");
   if (!hours || !minutes || !seconds) return;
 
-  const target = getEndOfCurrentDay(now);
+  const target = getNextDailyOffersReset(now);
   const diffMs = Math.max(0, target.getTime() - now.getTime());
   const totalSeconds = Math.floor(diffMs / 1000);
   const countdownHours = Math.floor(totalSeconds / 3600);
@@ -242,7 +254,7 @@ function renderWeeklyHomeOffersCountdown(root, now) {
   const countdownMinutes = Math.floor((totalSeconds % 3600) / 60);
   const countdownSeconds = totalSeconds % 60;
 
-  days.textContent = `${countdownDays}D`;
+  days.textContent = String(countdownDays);
   hours.textContent = formatCountdownNumber(countdownHours);
   minutes.textContent = formatCountdownNumber(countdownMinutes);
   seconds.textContent = formatCountdownNumber(countdownSeconds);

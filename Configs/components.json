@@ -339,6 +339,18 @@
     "availableInAllComponents": true
   },
   {
+    "name": "product_stock_health",
+    "path": "product/product_stock_health.html",
+    "params": [
+      {
+        "name": "stock",
+        "required": true
+      }
+    ],
+    "availableInAllPages": true,
+    "availableInAllComponents": true
+  },
+  {
     "name": "product_buy_button",
     "path": "product/product_buy_button.html",
     "params": [

@@ -42,7 +42,7 @@ query Home($partnerAccessToken: String){
   vitrine2: hotsite(hotsiteId: 98668, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
-  vitrine3: hotsite(hotsiteId: 102056, partnerAccessToken: $partnerAccessToken) {
+  daily_offers: hotsite(hotsiteId: 102056, partnerAccessToken: $partnerAccessToken) {
     ...produtos
   }
 }
@@ -76,6 +76,7 @@ fragment productsCon on ProductsConnection {
       print
     }
     available
+    stock
     prices {
       listPrice
       price

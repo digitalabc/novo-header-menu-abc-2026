@@ -64,8 +64,9 @@
       <div class="whatsapp-message">
         <a href="https://wa.me/553221028262?text=Olá!" class="whatsapp-link" target="_blank">
           <div class="whatsapp-content">
-            <img src="https://abcprime.fbitsstatic.net/media/whatsapp-email.png?v=202412101717" alt="Imagem de Suporte"
-              class="whatsapp-image">
+            <img
+              src="https://abcdaconstrucao.fbitsstatic.net/media/whatsapp-emails.png?v=202609041201"
+              alt="Imagem de Suporte" class="whatsapp-image">
             <div class="whatsapp-text">
               Precisa de ajuda? <strong>CLIQUE AQUI</strong> para falar com nosso time de atendimento. Estamos
               disponíveis de segunda a sexta-feira, das 8h às 18h.
@@ -102,8 +103,26 @@
       {{ if first_order.order_status == "AWAITING_PAYMENT" }}
       <div class="if-pix">
         <div class="stepper-container">
-          <img src="https://abcprime.fbitsstatic.net/media/stepper-pedido-recebido2.png?v=202410071256"
-            alt="Stepper Pedido recebido" class="stepper-img">
+          <div class="confirmation-stepper" aria-label="Status do pedido">
+            <div class="confirmation-stepper__item is-complete">
+              <div class="confirmation-stepper__indicator">
+                <span class="confirmation-stepper__check" aria-hidden="true">&#10003;</span>
+              </div>
+              <div class="confirmation-stepper__label">Pedido recebido</div>
+            </div>
+            <div class="confirmation-stepper__item is-pending">
+              <div class="confirmation-stepper__indicator">
+                <span class="confirmation-stepper__dot" aria-hidden="true"></span>
+              </div>
+              <div class="confirmation-stepper__label">Pagamento aprovado</div>
+            </div>
+            <div class="confirmation-stepper__item is-pending">
+              <div class="confirmation-stepper__indicator">
+                <span class="confirmation-stepper__dot" aria-hidden="true"></span>
+              </div>
+              <div class="confirmation-stepper__label">Pedido enviado</div>
+            </div>
+          </div>
         </div>
       </div>
       {{~ end ~}}
@@ -139,7 +158,7 @@
       <!-- Mensagem de Golpe-->
       <div class="golpe-message">
         <div class="golpe-content">
-          <img src="https://abcprime.fbitsstatic.net/media/atencao-golpe.png?v=202412101751"
+          <img src="{{- store.urls.static_img}}checkout/warning.png?theme={{store.theme -}}&v={{store.last_modified}}"
             alt="Imagem de Alerta de golpe" class="golpe-image">
           <div class="golpe-text">
             <strong>Alerta de Segurança:</strong> para evitar fraudes e golpes, confira se os dados de pagamento estão

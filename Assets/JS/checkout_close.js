@@ -460,10 +460,74 @@ const selectCheckingAccount = async (checkingAccount) => {
   }
 };
 
+const CHECKOUT_CLOSE_COUPON_PRIORITY_LOCK_KEY = "checkout:coupon-priority-lock";
+
+function checkoutCloseGetSessionStorage() {
+  try {
+    return window.sessionStorage;
+  } catch (_) {
+    return null;
+  }
+}
+
+function checkoutCloseNormalizeCoupon(value) {
+  if (typeof value !== "string") return "";
+  return value.trim();
+}
+
+function checkoutCloseWriteCouponLock(coupon, checkoutId, source = "manual") {
+  const normalizedCoupon = checkoutCloseNormalizeCoupon(coupon);
+  if (!normalizedCoupon) return;
+
+  const storage = checkoutCloseGetSessionStorage();
+  if (!storage) return;
+
+  storage.setItem(
+    CHECKOUT_CLOSE_COUPON_PRIORITY_LOCK_KEY,
+    JSON.stringify({
+      coupon: normalizedCoupon,
+      checkoutId: checkoutId || null,
+      source,
+      updatedAt: Date.now(),
+    })
+  );
+}
+
+function checkoutCloseClearCouponLock() {
+  const storage = checkoutCloseGetSessionStorage();
+  if (!storage) return;
+  storage.removeItem(CHECKOUT_CLOSE_COUPON_PRIORITY_LOCK_KEY);
+}
+
+function checkoutCloseRemoveCouponFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("coupon")) return;
+  params.delete("coupon");
+  const query = params.toString();
+  const nextUrl = query
+    ? `${window.location.pathname}?${query}`
+    : window.location.pathname;
+  window.history.replaceState({}, document.title, nextUrl);
+}
+
 const addCoupon = async (e) => {
-  const coupon = e
-    .closest("#checkout_coupon_snippet")
-    .querySelector("#coupon").value;
+  const couponInput = e
+    .closest("#checkout_coupon_snippet").querySelector("#coupon");
+  const coupon = checkoutCloseNormalizeCoupon(couponInput?.value);
+
+  if (couponInput) {
+    couponInput.value = coupon;
+  }
+
+  if (!coupon) {
+    showOverlay(
+      "Cupom invalido",
+      "Digite um cupom valido antes de aplicar.",
+      true
+    );
+    return;
+  }
+
   const token = client.cookie.get("sf_customer_access_token");
   const checkoutId = client.cookie.get("carrinho-id");
 
@@ -477,6 +541,11 @@ const addCoupon = async (e) => {
     );
   } else {
     showOverlay("Cupom Adicionado", "Cupom adicionado com sucesso!", false);
+    checkoutCloseWriteCouponLock(coupon, checkoutId, "manual");
+    if (typeof checkoutShareWriteCouponLock === "function") {
+      checkoutShareWriteCouponLock(coupon, checkoutId, "manual");
+    }
+
     const variables = {
       checkoutId: checkoutId,
       coupon: coupon,
@@ -509,12 +578,19 @@ const addCoupon = async (e) => {
 };
 
 const removeCoupon = async () => {
-  const coupon = document.getElementById("coupon").value;
+   const coupon = checkoutCloseNormalizeCoupon(
+    document.getElementById("coupon")?.value
+  );
   const token = client.cookie.get("sf_customer_access_token");
   const checkoutId = client.cookie.get("carrinho-id");
 
   await client.checkout.removeCoupon();
   showOverlay("Cupom Removido", "Cupom removido com sucesso!", false);
+  checkoutCloseClearCouponLock();
+  if (typeof checkoutShareClearCouponLock === "function") {
+    checkoutShareClearCouponLock();
+  }
+  checkoutCloseRemoveCouponFromUrl();
 
   const variables = {
     checkoutId: checkoutId,

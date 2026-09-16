@@ -45,6 +45,9 @@
             </div>
         {{~ end ~}}
     </div>
+    {{~ if show_stock_health ~}}
+      {{ product_stock_health stock: product.stock }}
+    {{~ end ~}}
     <div class="spot__content">
         <div class="spot__content-title">
             <a href="/{{product.alias}}" class="spot__title">

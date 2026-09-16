@@ -56,7 +56,7 @@
           <!-- Para cadastrar novas mensagens no rotador, replique um li.home-info-bar__item mantendo a ordem desejada. -->
           <li class="home-info-bar__item home-info-bar__item--delivery" data-home-info-item>
             <span class="home-info-bar__content">
-              <span class="home-info-bar__headline">FRETE GRÁTIS SUL E SUDESTE</span>
+              <span class="home-info-bar__headline">METAIS COM FRETE GRÁTIS <span class="home-info-bar__break">SUL E SUDESTE</span></span>
               <span class="home-info-bar__motion" aria-hidden="true">
                 <span class="home-info-bar__truck-track">
                   <span class="home-info-bar__truck-carriage">
@@ -80,6 +80,39 @@
     <!-- Subcategories da homepage gerenciado via conteúdo do CMS -->
     {{ content position: "Topo" contents: data.hotsite.contents show_title: false }}
 
+    {{~
+      daily_offers_banners = data.hotsite?.banners ?? []
+      daily_offers_products = data.daily_offers?.products?.nodes ?? []
+      daily_offers_has_products = daily_offers_products.size > 0
+    ~}}
+    <!-- Ofertas diárias: banners da homepage e produtos do hotsite 102056. -->
+    <section class="home-offers-banner">
+      <div class="home-offers-banner__header">
+        <h2>Só hoje: produtos com preços imperdíveis</h2>
+        <div class="home-offers-banner__countdown" data-home-daily-offers-countdown role="timer" aria-live="polite" aria-label="Ofertas diárias terminam em">
+          <span class="home-offers-banner__countdown-item">
+            <span class="home-offers-banner__countdown-value" data-home-daily-offers-hours>24</span>
+            <small>H</small>
+          </span>
+          <span class="home-offers-banner__countdown-item">
+            <span class="home-offers-banner__countdown-value" data-home-daily-offers-minutes>00</span>
+            <small>M</small>
+          </span>
+          <span class="home-offers-banner__countdown-item">
+            <span class="home-offers-banner__countdown-value" data-home-daily-offers-seconds>00</span>
+            <small>S</small>
+          </span>
+        </div>
+      </div>
+      <div class="home-offers-banner__content{{ if !daily_offers_has_products }} home-offers-banner__content--banner-only{{ end }}">
+        <div class="home-offers-banner__banner home-offers-banner__banner--desktop desktop">{{- banner carousel: false banners: daily_offers_banners position: "Rodape" defer_image_loading: true -}}</div>
+        <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: daily_offers_banners position: "Mobile Rodape" defer_image_loading: true -}}</div>
+        {{~ if daily_offers_has_products ~}}
+        <div class="home-offers-banner__spot">{{- spot_carousel class: "home-offers-banner__carousel" products: daily_offers_products show_buy_mobile: true show_stock_health: true -}}</div>
+        {{~ end ~}}
+      </div>
+    </section>
+
     <!-- Vitrine 1 -->
     <section class="showcase">
       <h2 class="home-title--hot">
@@ -89,16 +122,20 @@
             <span class="home-title__lightning" aria-hidden="true">⚡</span>
             <span class="home-title__countdown home-offers-banner__countdown" data-home-weekly-countdown role="timer" aria-live="polite" aria-label="Ofertas da Semana reiniciam em">
               <span class="home-offers-banner__countdown-item">
-                <span class="home-offers-banner__countdown-value" data-home-weekly-days>7D</span>
+                <span class="home-offers-banner__countdown-value" data-home-weekly-days>7</span>
+                <small>D</small>
               </span>
               <span class="home-offers-banner__countdown-item">
                 <span class="home-offers-banner__countdown-value" data-home-weekly-hours>00</span>
+                <small>H</small>
               </span>
               <span class="home-offers-banner__countdown-item">
                 <span class="home-offers-banner__countdown-value" data-home-weekly-minutes>00</span>
+                <small>M</small>
               </span>
               <span class="home-offers-banner__countdown-item">
                 <span class="home-offers-banner__countdown-value" data-home-weekly-seconds>00</span>
+                <small>S</small>
               </span>
             </span>
           </span>
@@ -212,33 +249,9 @@
       </ul>
     </section>
 
-    <!-- Estrutura original da seção de ofertas diárias preservada no código para futura reativação. -->
-    <!-- Banner desktop, banner mobile, countdown e vitrine abaixo pertencem à seção home-offers-banner. -->
-    <section class="home-offers-banner home-offers-banner--is-hidden" hidden aria-hidden="true">
-      <div class="home-offers-banner__header">
-        <h2>Ofertas diárias, para você economizar:</h2>
-        <div class="home-offers-banner__countdown" data-home-daily-offers-countdown role="timer" aria-live="polite" aria-label="Ofertas diárias terminam em">
-          <span class="home-offers-banner__countdown-item">
-            <span class="home-offers-banner__countdown-value" data-home-daily-offers-hours>24</span>
-          </span>
-          <span class="home-offers-banner__countdown-item">
-            <span class="home-offers-banner__countdown-value" data-home-daily-offers-minutes>00</span>
-          </span>
-          <span class="home-offers-banner__countdown-item">
-            <span class="home-offers-banner__countdown-value" data-home-daily-offers-seconds>00</span>
-          </span>
-        </div>
-      </div>
-      <div class="home-offers-banner__content">
-        <div class="home-offers-banner__banner home-offers-banner__banner--desktop desktop">{{- banner carousel: false banners: data.hotsite.banners position: "Rodape" defer_image_loading: true -}}</div>
-        <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: data.hotsite.banners position: "Mobile Rodape" defer_image_loading: true -}}</div>
-        <div class="home-offers-banner__spot">{{- spot_carousel class: "home-offers-banner__carousel" products: data.vitrine3.products.nodes show_buy_mobile: true -}}</div>
-      </div>
-    </section>
-
     <!-- Banner Seleção de Metais -->
     <section class="banner-oportunidades banner-oportunidades--metais">
-      <h2>Aproveite agora mesmo</h2>
+      <h2>Campeões de vendas</h2>
       <div class="desktop">
         {{ banner carousel: false banners: data.hotsite.banners position: "Background" defer_image_loading: true }}
       </div>
@@ -876,7 +889,7 @@
 
   {{ footer products:common.lighbox_products.products.nodes }}
 
-  {{ gtm_hotsite_view product_lists: [data.vitrine1.products.nodes, data.vitrine2.products.nodes]}}
+  {{ gtm_hotsite_view product_lists: [data.vitrine1.products.nodes, data.vitrine2.products.nodes, daily_offers_products]}}
 
   {{ gtm_config gtm_id: common.gtm_id }}
 

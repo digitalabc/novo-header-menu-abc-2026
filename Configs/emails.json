@@ -2,7 +2,7 @@
   {
     "type": "AgradecimentoNews",
     "path": "news_thank.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -20,7 +20,7 @@
   {
     "type": "Aniversariante",
     "path": "birthday.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -56,7 +56,7 @@
   {
     "type": "BoasVindas",
     "path": "welcome.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -98,7 +98,7 @@
   {
     "type": "ConfirmacaoCadastro",
     "path": "register_confirmation.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -110,7 +110,7 @@
   {
     "type": "ConfirmacaoPedido",
     "path": "Orders/order_confirmed.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -152,7 +152,7 @@
   {
     "type": "ExpiracaoBoleto",
     "path": "boleto_expired.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -164,7 +164,7 @@
   {
     "type": "LembreteBoleto",
     "path": "boleto_reminder.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -188,7 +188,7 @@
   {
     "type": "PedidoCancelado",
     "path": "Orders/order_canceled.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -206,13 +206,13 @@
   {
     "type": "PedidoConfirmadoRetiradaLoja",
     "path": "Orders/order_confirmed_pick_up.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
     "type": "PedidoDevolvido",
     "path": "Orders/order_returned.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -230,7 +230,7 @@
   {
     "type": "PedidoEntregue",
     "path": "Orders/order_delivered.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -248,7 +248,7 @@
   {
     "type": "PedidoEnviado",
     "path": "Orders/order_sent.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -266,13 +266,13 @@
   {
     "type": "PedidoFaturadoRetiradaLoja",
     "path": "Orders/order_invoice_pick_up.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
     "type": "PedidoPago",
     "path": "Orders/order_paid.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -290,19 +290,19 @@
   {
     "type": "PedidoPagoRetiradaLoja",
     "path": "Orders/order_paid_pick_up.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
     "type": "PedidoPreparadoEnvio",
     "path": "Orders/order_invoice.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
     "type": "PedidoProdutoDevolvido",
     "path": "Products/product_returned.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
@@ -344,25 +344,25 @@
   {
     "type": "RecuperacaoSenhaNovoCheckout",
     "path": "new_password_new_checkout.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
     "type": "RetirarNaLoja",
     "path": "pick_up_in_store.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
     "type": "Separado",
     "path": "Orders/order_prepared.html",
-    "production": false,
+    "production": true,
     "active": true
   },
   {
     "type": "SuspeitaFraude",
     "path": "card_denied.html",
-    "production": false,
+    "production": true,
     "active": true
   }
 ]

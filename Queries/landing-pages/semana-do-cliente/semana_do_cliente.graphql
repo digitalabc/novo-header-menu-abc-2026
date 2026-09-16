@@ -1,0 +1,117 @@
+query Hotsite($url: String!, $partnerAccessToken: String) {
+  # Hotsite principal da LP /semana-do-cliente:
+  # hotsiteId: 98563
+  # A consulta permanece por URL para acompanhar a rota publicada da landing.
+  hotsite(url:$url) {
+    name
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    banners {
+      altText
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+      urlOnClick
+    }
+  }
+  vitrineCronometro: hotsite(hotsiteId: 98562, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  # vitrineProdutos: hotsite(hotsiteId: INSIRA_AQUI_O_HOTSITEID_DEDICADO, partnerAccessToken: $partnerAccessToken) {
+  #   ...produtos
+  # }
+  vitrine1: hotsite(hotsiteId: 98543, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine2: hotsite(hotsiteId: 98542, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine3: hotsite(hotsiteId: 98544, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine4: hotsite(hotsiteId: 98552, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine5: hotsite(hotsiteId: 98557, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrine6: hotsite(hotsiteId: 98558, partnerAccessToken: $partnerAccessToken) {
+    ...produtos 
+  }
+  vitrine7: hotsite(hotsiteId: 102139, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+}
+
+fragment produtos on SingleHotsite {
+  products(first: 20, sortKey: SALES, sortDirection: DESC) {
+    ...productsCon
+  }
+}
+
+fragment productsCon on ProductsConnection {
+  nodes {
+    id
+    productId
+    productName
+    productVariantId
+    productBrand{
+      fullUrlLogo
+      logoUrl
+    }
+    alias
+    similarProducts{
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images(width:245, height:245) {
+      url
+      print
+    }
+    available
+    stock
+    prices {
+      listPrice
+      price
+      discountPercentage
+      multiplicationFactor
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    promotions{
+      fullStampUrl
+      content
+      id
+      stamp
+      title
+    }
+    addToCartFromSpot
+  }
+}

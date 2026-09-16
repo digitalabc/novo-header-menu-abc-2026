@@ -113,38 +113,43 @@
       },
       {
         "urlMatch": "semana-do-cliente",
-        "path": "Custom/old_se/semana_do_cliente.html",
-        "query": "semana_do_cliente.graphql"
+        "path": "landing-pages/semana-do-cliente/semana_do_cliente.html",
+        "query": "landing-pages/semana-do-cliente/semana_do_cliente.graphql"
       },
       {
         "urlMatch": "semana-do-consumidor",
-        "path": "Custom/old_se/semana_do_consumidor.html",
-        "query": "semana_do_consumidor.graphql"
+        "path": "landing-pages/semana-do-consumidor/semana_do_consumidor.html",
+        "query": "landing-pages/semana-do-consumidor/semana_do_consumidor.graphql"
       },
       {
         "urlMatch": "super-chance-unica",
-        "path": "Custom/old_se/super_chance_unica_abc.html",
-        "query": "super_chance_unica_abc.graphql"
+        "path": "landing-pages/super-chance-unica/super_chance_unica_abc.html",
+        "query": "landing-pages/super-chance-unica/super_chance_unica_abc.graphql"
+      },
+      {
+        "urlMatch": "saldao-abc",
+        "path": "landing-pages/saldao-abc/saldao_abc.html",
+        "query": "landing-pages/saldao-abc/saldao_abc.graphql"
       },
       {
         "urlMatch": "chance-unica",
-        "path": "Custom/old_se/super_chance_unica_abc.html",
-        "query": "super_chance_unica_abc.graphql"
+        "path": "landing-pages/super-chance-unica/super_chance_unica_abc.html",
+        "query": "landing-pages/super-chance-unica/super_chance_unica_abc.graphql"
       },
       {
         "urlMatch": "lancamentos-2026",
-        "path": "Custom/old_se/lancamentos_2026.html",
-        "query": "lancamentos_2026.graphql"
+        "path": "landing-pages/lancamentos-2026/lancamentos_2026.html",
+        "query": "landing-pages/lancamentos-2026/lancamentos_2026.graphql"
       },
       {
         "urlMatch": "ofertas-mensais",
-        "path": "Custom/old_se/ofertas_mensais.html",
-        "query": "ofertas_mensais.graphql"
+        "path": "landing-pages/ofertas-mensais/ofertas_mensais.html",
+        "query": "landing-pages/ofertas-mensais/ofertas_mensais.graphql"
       },
       {
         "urlMatch": "cada-ambiente-a-melhor-escolha",
-        "path": "Custom/old_se/cada_ambiente_a_melhor_escolha.html",
-        "query": "cada_ambiente_a_melhor_escolha.graphql"
+        "path": "landing-pages/cada-ambiente-a-melhor-escolha/cada_ambiente_a_melhor_escolha.html",
+        "query": "landing-pages/cada-ambiente-a-melhor-escolha/cada_ambiente_a_melhor_escolha.graphql"
       },
       {
         "urlMatch": "auaha-loja-por-cidade",

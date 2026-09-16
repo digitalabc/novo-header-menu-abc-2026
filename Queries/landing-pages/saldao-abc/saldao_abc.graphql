@@ -1,0 +1,186 @@
+query Hotsite($url: String!, $partnerAccessToken: String, $offset: Int) {
+  hotsite(url:$url) {
+    name
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
+    banners {
+      altText
+      bannerName
+      bannerUrl
+      position
+      openNewTab
+      height
+      title
+      width
+      urlOnClick
+    }
+  }
+  vitrineCronometro: hotsite(hotsiteId: 102012, partnerAccessToken: $partnerAccessToken) {
+    ...produtos
+  }
+  vitrineProdutos: hotsite(hotsiteId: 99688, partnerAccessToken: $partnerAccessToken) {
+    ...produtosPaginados
+  }
+  vitrine1: hotsite(hotsiteId: 98543, partnerAccessToken: $partnerAccessToken) {
+    ...produtosOcultos
+  }
+  vitrine2: hotsite(hotsiteId: 98542, partnerAccessToken: $partnerAccessToken) {
+    ...produtosOcultos
+  }
+  vitrine3: hotsite(hotsiteId: 98544, partnerAccessToken: $partnerAccessToken) {
+    ...produtosOcultos
+  }
+  vitrine4: hotsite(hotsiteId: 98552, partnerAccessToken: $partnerAccessToken) {
+    ...produtosOcultos
+  }
+  vitrine5: hotsite(hotsiteId: 98557, partnerAccessToken: $partnerAccessToken) {
+    ...produtosOcultos
+  }
+  vitrine6: hotsite(hotsiteId: 98558, partnerAccessToken: $partnerAccessToken) {
+    ...produtosOcultos
+  }
+}
+
+fragment produtos on SingleHotsite {
+  products(first: 20) {
+    ...productsCon
+  }
+}
+
+fragment produtosPaginados on SingleHotsite {
+  productsByOffset(limit: 24, offset: $offset) {
+    totalCount
+    page
+    pageSize
+    items {
+      id
+      productId
+      productName
+      productVariantId
+      productBrand{
+        fullUrlLogo
+        logoUrl
+      }
+      alias
+      similarProducts{
+        alias
+        image
+        name
+        imageUrl(w: 50, h: 50)
+      }
+      images(width:245, height:245) {
+        url
+        print
+      }
+      available
+      stock
+      prices {
+        listPrice
+        price
+        discountPercentage
+        multiplicationFactor
+        installmentPlans{
+          displayName
+          name
+          installments{
+            discount
+            fees
+            number
+            value
+          }
+        }
+        bestInstallment {
+          name
+          displayName
+          discount
+          fees
+          number
+          value
+        }
+      }
+      promotions{
+        fullStampUrl
+        content
+        id
+        stamp
+        title
+      }
+      addToCartFromSpot
+      attributes {
+        name
+        value
+      }
+    }
+  }
+}
+
+# Estas vitrines permanecem ocultas na LP; manter somente um item evita que
+# consultas e imagens invisiveis atrasem a troca de pagina do Saldao.
+fragment produtosOcultos on SingleHotsite {
+  products(first: 1) {
+    ...productsCon
+  }
+}
+
+fragment productsCon on ProductsConnection {
+  nodes {
+    id
+    productId
+    productName
+    productVariantId
+    productBrand{
+      fullUrlLogo
+      logoUrl
+    }
+    alias
+    similarProducts{
+      alias
+      image
+      name
+      imageUrl(w: 50, h: 50)
+    }
+    images(width:245, height:245) {
+      url
+      print
+    }
+    available
+    stock
+    prices {
+      listPrice
+      price
+      discountPercentage
+      multiplicationFactor
+      installmentPlans{
+        displayName
+        name
+        installments{
+          discount
+          fees
+          number
+          value
+        }
+      }
+      bestInstallment {
+        name
+        displayName
+        discount
+        fees
+        number
+        value
+      }
+    }
+    promotions{
+      fullStampUrl
+      content
+      id
+      stamp
+      title
+    }
+    addToCartFromSpot
+  }
+}

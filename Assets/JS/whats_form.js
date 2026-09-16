@@ -262,7 +262,16 @@ function showWhatsAppForm() {
     });
   });
 
-  var logoImg = document.querySelector(".navbar-brand img, .navbar__logo img");
+  var visibleLogos = document.querySelectorAll(".navbar-brand img, .navbar__logo img");
+  var logoImg = null;
+  for (var i = 0; i < visibleLogos.length; i++) {
+    var el = visibleLogos[i];
+    if (!el.hasAttribute("hidden") && el.style.display !== "none" && getComputedStyle(el).display !== "none") {
+      logoImg = el;
+      break;
+    }
+  }
+  if (!logoImg) logoImg = visibleLogos[visibleLogos.length - 1] || null;
   var logoUrl = logoImg ? logoImg.src : "https://abcdaconstrucao.fbitsstatic.net/sf/img/header/logo-abc.svg";
 
   var formHeaderLeft = document.createElement("div");

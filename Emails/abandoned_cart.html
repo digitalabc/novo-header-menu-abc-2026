@@ -57,6 +57,13 @@
                     </td>
                   </tr>
                   <tr>
+                    <td style="padding: 16px 0 0 0;">
+                      <p style="margin: 0; font-size: 16px; line-height: 24px; color: #353535;">
+                        Olá, {{carrinho.usuario.nome}}! Separamos esse produto especialmente para você aproveitar o desconto abaixo.
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
                     <td align="center" style="padding: 34px 0 24px 0;">
                       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
                         <tr>
@@ -144,8 +151,28 @@
                                   {{ end }}
                                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 18px;">
                                     <tr>
+                                      <td style="padding: 10px 0 10px 0; border-top: 1px solid #E1E5EB;">
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                                          <tr>
+                                            <td align="left" style="padding: 0; text-align: left;">
+                                              <p style="margin: 0; font-size: 15px; line-height: 20px; font-weight: 700; color: #353535; text-align: left;">
+                                                Total do carrinho
+                                              </p>
+                                            </td>
+                                            <td align="right" style="padding: 0; text-align: right;">
+                                              <p style="margin: 0; font-size: 18px; line-height: 22px; font-weight: 800; color: #0E1720; text-align: right;">
+                                                {{carrinho.valor_total}}
+                                              </p>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 18px;">
+                                    <tr>
                                       <td align="center" bgcolor="#0E3C53" style="background-color: #0E3C53; border-radius: 999px;">
-                                        <a href="{{configuracao.url_carrinho}}" style="display: block; width: 100%; padding: 18px 0; font-size: 18px; line-height: 22px; font-weight: 700; color: #FDFDFD; text-decoration: none; text-align: center; mso-line-height-rule: exactly;">
+                                        <a href="{{configuracao.url_carrinho}}/{{carrinho.carrinho_id}}" style="display: block; width: 100%; padding: 18px 0; font-size: 18px; line-height: 22px; font-weight: 700; color: #FDFDFD; text-decoration: none; text-align: center; mso-line-height-rule: exactly;">
                                           Ir para carrinho
                                         </a>
                                       </td>
@@ -159,6 +186,40 @@
                       </table>
                     </td>
                   </tr>
+                  <!-- ================================================= -->
+                  <!-- SUPORTE VIA WHATSAPP -->
+                  <!-- ================================================= -->
+                  <tr>
+                    <td style="padding: 24px 0 0 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EDF6F3" style="border-collapse: separate; border-spacing: 0; background-color: #EDF6F3; border-radius: 14px;">
+                        <tr>
+                          <td style="padding: 14px 16px;">
+                            <a href="https://wa.me/5531991055920?text=Ol%C3%A1%21%20Vim%20pelo%20e-mail%20de%20carrinho%20abandonado%20da%20ABC%20da%20Constru%C3%A7%C3%A3o.%20Preciso%20de%20ajuda%20para%20finalizar%20minha%20compra." style="display: block; width: 100%; text-decoration: none;">
+                              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                                <tr>
+                                  <td width="90" valign="middle" align="center" style="width: 90px; padding: 4px 12px 4px 0;">
+                                    <img src="https://abcprime.fbitsstatic.net/media/whatsapp-email.png?v=202412101717" alt="Atendimento pelo WhatsApp" width="72" height="72" style="display: block; width: 72px; height: 72px; border: 0; margin: 0 auto;">
+                                  </td>
+                                  <td valign="middle" style="text-align: left;">
+                                    <p style="margin: 0; font-size: 16px; line-height: 21px; font-weight: 700; color: #176E5F;">
+                                      Precisa de ajuda para concluir sua compra?
+                                    </p>
+                                    <p style="margin: 5px 0 0 0; font-size: 13px; line-height: 19px; color: #176E5F;">
+                                      Fale com nosso time para tirar dúvidas sobre o carrinho e receber ajuda para finalizar seu pedido.
+                                    </p>
+                                    <p style="margin: 9px 0 0 0; font-size: 13px; line-height: 18px; font-weight: 700; color: #176E5F;">
+                                      Falar pelo WhatsApp
+                                    </p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <!--footer-->
                   <tr>
                     <td style="padding: 20px 0 0 0;">
                       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="border-collapse: separate; border-spacing: 0; background-color: #FFFFFF; border: 1px solid #E4E9EF; border-radius: 14px;">

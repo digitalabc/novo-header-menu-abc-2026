@@ -16,6 +16,20 @@ async function setName(el, name) {
   document.querySelector(el).name = name;
 }
 
+// Detecta se o método de pagamento selecionado é o Pix do PagBank (gateway
+// "Custom", sem SDK do MercadoPago/PagSeguro cartão) — assinatura observada:
+// html contém "Pix" e os scripts carregados são só do Custom/custom.js.
+// Usado para setar o cookie "isPBPix" no momento de finalizar a compra,
+// permitindo à página de confirmação saber se deve buscar o QR Code do PagBank.
+function isPagBankPixSelection(selectedPaymentMethod) {
+  if (!selectedPaymentMethod) return false;
+  const html = selectedPaymentMethod.html || "";
+  const scripts = selectedPaymentMethod.scripts || [];
+  const isPix = /pix/i.test(html);
+  const isCustomOnly = scripts.length > 0 && scripts.every((s) => s.includes("/Custom/"));
+  return isPix && isCustomOnly;
+}
+
 async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   const token = client.cookie.get("sf_customer_access_token");
 
@@ -124,6 +138,11 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
   const e = response.queryResponse.data?.result?.selectedPaymentMethod
     , u = response.queryResponse.data?.result?.selectedPaymentMethods || (e ? [e] : []);
 
+  // Guarda em variável global (não em cookie ainda): o cookie "isPBPix" só é
+  // gravado de fato em closeCheckout() (checkout_close.js), no momento de
+  // finalizar a compra — aqui só marcamos qual foi a última seleção de pagamento.
+  window.isPBPixSelected = isPagBankPixSelection(e);
+
 
   const l = u.reduce((n, t) => {
     const i = t.type;
@@ -223,7 +242,15 @@ async function nextCardScreen(paymentId) {
     `;
 
   document.getElementById("card-finish").classList.remove("hidden");
-  document.querySelector(".cardWrapper").style.display = "none";
+
+  // .cardWrapper pode não estar presente no momento exato desta chamada em
+  // certos re-renders — guard evita que a função pare no meio, deixando o
+  // resto (menu direito, botão "Finalizar compra") sem executar.
+  const cardWrapperEl = document.querySelector(".cardWrapper");
+  if (cardWrapperEl) {
+    cardWrapperEl.style.display = "none";
+  }
+
   document.getElementById("paymentMethodSelected").innerHTML =
     htmlPaymentSelected;
 
@@ -435,33 +462,48 @@ const selectPaymentPushElement = async (checkoutId, paymentName) => {
 
 }
 
+let selectPaymentInProgress = false;
+
 const selectPayment = async (paymentId, paymentName) => {
-  const loading = document.getElementById('payment-loading');
-  loading.classList.remove('hidden');
-  loading.classList.add('flex');
+  // Guard contra chamadas duplicadas (ex: clique duplo, ou disparo repetido do
+  // evento) — sem isso, newSelectPaymentWhenRendering() pode rodar mais de uma
+  // vez para a mesma seleção, fazendo o script do gateway (ex: custom.js) ser
+  // carregado e registrar seu callback de validação duas vezes.
+  if (selectPaymentInProgress) {
+    return;
+  }
+  selectPaymentInProgress = true;
 
-  const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
-  wrappers.forEach((element) => element.innerHTML = '');
+  try {
+    const loading = document.getElementById('payment-loading');
+    loading.classList.remove('hidden');
+    loading.classList.add('flex');
 
-  const checkoutId = await client.cookie.get("carrinho-id");
+    const wrappers = document.querySelectorAll('div[data-payment-wrapper]');
+    wrappers.forEach((element) => element.innerHTML = '');
 
-  const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
+    const checkoutId = await client.cookie.get("carrinho-id");
 
-  await selectPaymentPushElement(checkoutId, paymentName)
+    const result = await newSelectPaymentWhenRendering(checkoutId, paymentId);
 
-  const finishOrder = document.getElementById('finish-order');
+    await selectPaymentPushElement(checkoutId, paymentName)
 
-  finishOrder.style.display = 'flex';
+    const finishOrder = document.getElementById('finish-order');
 
-  document.getElementById('checkout-payment-options').style.display = 'none';
+    finishOrder.style.display = 'flex';
 
-  await renderSummary();
+    document.getElementById('checkout-payment-options').style.display = 'none';
 
-  if (result.errors) {
-    showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
-  } else {
-    loading.classList.add('hidden');
-    loading.classList.remove('flex');
+    await renderSummary();
+
+    if (result.errors) {
+      showOverlay("Erro ao selecionar o pagamento", result.errors[0].message, true);
+    } else {
+      loading.classList.add('hidden');
+      loading.classList.remove('flex');
+    }
+  } finally {
+    selectPaymentInProgress = false;
   }
 }
 
@@ -565,30 +607,57 @@ function formCpfMask(input) {
 }
 
 function updateInputValue(name, str) {
+  // #form-pagar-mp só existe na estrutura do gateway MercadoPago. Em outros
+  // gateways (ex: PagSeguro/Custom), esses campos não existem no DOM —
+  // sem este guard, o querySelector abaixo retorna null e o .dispatchEvent
+  // seguinte lança TypeError, interrompendo o .map() de formComplete() antes
+  // de chegar em "button.disabled = ...".
+  const form = document.querySelector('#form-pagar-mp');
+  if (!form) return;
+
   switch (name) {
-    case "number":
-      $('#form-pagar-mp [data-checkout="cardNumber"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="cardNumber"]').dispatchEvent(new Event('input'))
+    case "number": {
+      const el = form.querySelector('[data-checkout="cardNumber"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
       break;
-    case "expiryDate":
+    }
+    case "expiryDate": {
       const data = str.split('/');
-      $('#form-pagar-mp [data-checkout="cardExpirationMonth"]').val(data[0]).trigger('change');
-      $('#form-pagar-mp [data-checkout="cardExpirationYear"]').val(data[1] ? data[1] : "").trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="cardExpirationMonth"]').dispatchEvent(new Event('input'))
-      document.querySelector('#form-pagar-mp [data-checkout="cardExpirationYear"]').dispatchEvent(new Event('input'))
+      const monthEl = form.querySelector('[data-checkout="cardExpirationMonth"]');
+      const yearEl = form.querySelector('[data-checkout="cardExpirationYear"]');
+      if (monthEl) {
+        $(monthEl).val(data[0] || "").trigger('change');
+        monthEl.dispatchEvent(new Event('input'));
+      }
+      if (yearEl) {
+        $(yearEl).val(data[1] ? data[1] : "").trigger('change');
+        yearEl.dispatchEvent(new Event('input'));
+      }
       break;
-    case "cvc":
-      $('#form-pagar-mp [data-checkout="securityCode"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="securityCode"]').dispatchEvent(new Event('input'))
+    }
+    case "cvc": {
+      const el = form.querySelector('[data-checkout="securityCode"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
       break;
-    case "name":
-      $('#form-pagar-mp [data-checkout="cardholderName"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="cardholderName"]').dispatchEvent(new Event('input'))
+    }
+    case "name": {
+      const el = form.querySelector('[data-checkout="cardholderName"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
       break;
-    case "cpf":
-      $('#form-pagar-mp [data-checkout="docNumber"]').val(str).trigger('change');
-      document.querySelector('#form-pagar-mp [data-checkout="docNumber"]').dispatchEvent(new Event('input'))
+    }
+    case "cpf": {
+      const el = form.querySelector('[data-checkout="docNumber"]');
+      if (!el) return;
+      $(el).val(str).trigger('change');
+      el.dispatchEvent(new Event('input'));
       break;
+    }
   }
 }
 

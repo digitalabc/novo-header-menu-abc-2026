@@ -162,7 +162,8 @@
     {{ wake_checkout_footer }}
     <pre class="hidden" style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">{{ data | map.to_json }}</pre>
     {{ sdk_client_checkout }}
-    {{ data_layer_checkout_complete_view checkout: data.checkout }}    
+    {{ data_layer_checkout_complete_view checkout: data.checkout }}
+    {{ page_scripts position: "FOOTER_END" scripts: common.scripts }}
     
     {{ gtm_config gtm_id: common.gtm_id }}
   

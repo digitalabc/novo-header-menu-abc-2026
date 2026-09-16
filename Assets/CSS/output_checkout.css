@@ -5439,7 +5439,7 @@ input:not(:focus).jp-card-invalid {
   }
 
   .payment-buttons .checkout-finish-button {
-    max-width: 280px;
+    /* max-width: 280px; */
   }
 }
 

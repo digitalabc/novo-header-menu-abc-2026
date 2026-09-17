@@ -60,7 +60,6 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
     `div[data-payment-wrapper="${paymentId}"]`
   );
 
-  console.log(div, response)
   div.innerHTML = response.html;
 
   if (div && response) {

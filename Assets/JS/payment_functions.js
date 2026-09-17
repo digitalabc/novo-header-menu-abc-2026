@@ -67,30 +67,30 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
     const isCardPayment = response.html.includes("paymentCartao");
 
     if (!isCardPayment) {
-      document.querySelector(
-        "#finish-order .payment-selected-method"
-      ).style.maxHeight = "";
+      setStyleIfPresent("#finish-order .payment-selected-method", "maxHeight", "");
 
-      const paymentLabel = document.getElementById(
-        `paymentOption-${paymentId}`
-      ).nextElementSibling;
-      const paymentImage = paymentLabel.querySelector("img");
-      const paymentDetails = paymentLabel.querySelector(".payment-details");
-      const htmlPaymentSelected = `
-                <div class="paymentSelectedWrapper">
-                    <img src="${paymentImage.src}" width="40" alt="Método de Pagamento">
-                    <div class="payment-details">${paymentDetails.innerHTML}</div>
-                    <button class="changePaymentButton" onclick="backPaymentStep()">
-                        Trocar 
-                        <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.1123 11.5C0.810176 11.5 0.551541 11.3924 0.336394 11.1773C0.121246 10.9621 0.0136719 10.7035 0.0136719 10.4014V2.71099C0.0136719 2.40886 0.121246 2.15023 0.336394 1.93508C0.551541 1.71993 0.810176 1.61236 1.1123 1.61236H6.01492L4.91629 2.71099H1.1123V10.4014H8.80269V6.58365L9.90131 5.48502V10.4014C9.90131 10.7035 9.79374 10.9621 9.57859 11.1773C9.36344 11.3924 9.10481 11.5 8.80269 11.5H1.1123ZM3.30955 8.20412V5.86954L8.3495 0.829588C8.45936 0.719725 8.58296 0.637328 8.72029 0.582397C8.85762 0.527466 8.99495 0.5 9.13227 0.5C9.27876 0.5 9.41838 0.527466 9.55113 0.582397C9.68388 0.637328 9.80518 0.719725 9.91504 0.829588L10.6841 1.61236C10.7848 1.72222 10.8626 1.84353 10.9175 1.97628C10.9725 2.10903 10.9999 2.24407 10.9999 2.3814C10.9999 2.51873 10.9748 2.65377 10.9244 2.78652C10.8741 2.91927 10.7939 3.04057 10.6841 3.15044L5.64413 8.20412H3.30955ZM4.40818 7.10549H5.17722L8.36323 3.91948L7.97872 3.53496L7.58046 3.15044L4.40818 6.32272V7.10549Z" fill="#2865E8"/>
-                        </svg>
-                    </button>
-                </div>
-            `;
+      const paymentOptionEl = document.getElementById(`paymentOption-${paymentId}`);
+      const paymentLabel = paymentOptionEl?.nextElementSibling;
+      const paymentImage = paymentLabel?.querySelector("img");
+      const paymentDetails = paymentLabel?.querySelector(".payment-details");
 
-      document.getElementById("paymentMethodSelected").innerHTML =
-        htmlPaymentSelected;
+      if (paymentImage && paymentDetails) {
+        const htmlPaymentSelected = `
+                  <div class="paymentSelectedWrapper">
+                      <img src="${paymentImage.src}" width="40" alt="Método de Pagamento">
+                      <div class="payment-details">${paymentDetails.innerHTML}</div>
+                      <button class="changePaymentButton" onclick="backPaymentStep()">
+                          Trocar
+                          <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1.1123 11.5C0.810176 11.5 0.551541 11.3924 0.336394 11.1773C0.121246 10.9621 0.0136719 10.7035 0.0136719 10.4014V2.71099C0.0136719 2.40886 0.121246 2.15023 0.336394 1.93508C0.551541 1.71993 0.810176 1.61236 1.1123 1.61236H6.01492L4.91629 2.71099H1.1123V10.4014H8.80269V6.58365L9.90131 5.48502V10.4014C9.90131 10.7035 9.79374 10.9621 9.57859 11.1773C9.36344 11.3924 9.10481 11.5 8.80269 11.5H1.1123ZM3.30955 8.20412V5.86954L8.3495 0.829588C8.45936 0.719725 8.58296 0.637328 8.72029 0.582397C8.85762 0.527466 8.99495 0.5 9.13227 0.5C9.27876 0.5 9.41838 0.527466 9.55113 0.582397C9.68388 0.637328 9.80518 0.719725 9.91504 0.829588L10.6841 1.61236C10.7848 1.72222 10.8626 1.84353 10.9175 1.97628C10.9725 2.10903 10.9999 2.24407 10.9999 2.3814C10.9999 2.51873 10.9748 2.65377 10.9244 2.78652C10.8741 2.91927 10.7939 3.04057 10.6841 3.15044L5.64413 8.20412H3.30955ZM4.40818 7.10549H5.17722L8.36323 3.91948L7.97872 3.53496L7.58046 3.15044L4.40818 6.32272V7.10549Z" fill="#2865E8"/>
+                          </svg>
+                      </button>
+                  </div>
+              `;
+
+        document.getElementById("paymentMethodSelected").innerHTML =
+          htmlPaymentSelected;
+      }
 
       const respRight = await client.snippet.render(
         "payment_right_menu_snippet.html",
@@ -102,17 +102,11 @@ async function newSelectPaymentWhenRendering(checkoutId, paymentId, orderId) {
 
       setInnerHtmlById(respRight, "data-render-right-menu");
 
-      document.querySelector(
-        ".checkout-footer-mobile .checkout-whats"
-      ).style.display = "none";
-      const footer_mobile_bottom = document.querySelector(
-        ".checkout-footer-mobile .footer_mobile_bottom"
-      )
-      if (footer_mobile_bottom) {
-        footer_mobile_bottom.style.display = "none";
-      }
+      setStyleIfPresent(".checkout-footer-mobile .checkout-whats", "display", "none");
+      setStyleIfPresent(".checkout-footer-mobile .footer_mobile_bottom", "display", "none");
 
-      document.querySelector(".checkout-footer-mobile").innerHTML += respRight;
+      const footerMobile = document.querySelector(".checkout-footer-mobile");
+      if (footerMobile) footerMobile.innerHTML += respRight;
     } else {
       const paymentContainer = document.getElementById("payment-container");
       if (paymentContainer) {

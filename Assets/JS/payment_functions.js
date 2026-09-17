@@ -721,9 +721,9 @@ function cardType(input) {
   }
 }
 
-// Nome proprio: wake_payment_functions.js tambem define updateExpiryValue, e a versao
-// dela le por id (#month, #year, #expiry). Nossos hidden so tem name, sem id -- se a
-// dela vencesse a sobrescrita, o onchange lancaria TypeError e os campos ficariam vazios.
+// Nome proprio: wake_payment_functions.js tambem define updateExpiryValue -- usar
+// esse nome evitaria colisao mesmo que a dela vencesse a sobrescrita. Os hidden
+// year/month mantem o id (#month, #year) porque o gateway PagBank/Custom le por id.
 function updateAbcExpiryValue() {
   const expiryInputValue = document.querySelector(
     'input[name="expiryDate"]'

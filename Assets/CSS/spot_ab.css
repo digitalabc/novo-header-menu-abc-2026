@@ -92,7 +92,6 @@ html.empiria-ab-spot-b .spot .spot__image .stamps {
   top: auto !important;
   left: auto !important;
   order: 2;
-  z-index: 1;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
@@ -354,12 +353,18 @@ html.empiria-ab-spot-b .spot-ab__installment--lead .spot-ab__parc-n {
     display: none;
   }
 
-  /* O botao "Comprar" do tema aparece no hover, sobreposto na foto. Como o
-     .spot__image virou flex na variante B, o wrapper entrava no fluxo e
-     empurrava o layout; display:contents devolve o botao ao posicionamento
-     absoluto original, ancorado no container da imagem. */
+  /* O botao "Comprar" do tema aparece no hover, sobreposto na foto.
+     Na variante B os selos sairam do absoluto e viraram uma faixa no rodape
+     do .spot__image, bem onde o botao ancora com bottom:0 — os dois ficavam
+     um em cima do outro. Este wrapper de altura zero entra no flex logo
+     depois da foto (mesma `order`, DOM manda no desempate), entao o
+     bottom:0 do botao passa a ser o fim da foto e a faixa de selos continua
+     visivel abaixo dele. z-index poe o botao na frente da imagem. */
   html.empiria-ab-spot-b .spot .spot__buttons.desktop {
-    display: contents;
+    position: relative;
+    z-index: 2;
+    order: 1;
+    height: 0;
   }
 }
 

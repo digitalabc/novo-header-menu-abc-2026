@@ -139,6 +139,7 @@ function getEndOfCurrentMonth(now) {
 
 let dailyHomeOffersCountdownTimerId = null;
 let weeklyHomeOffersCountdownTimerId = null;
+let dailyStockHealthTimerId = null;
 
 function runWhenBrowserIsIdle(callback, timeout = 1200) {
   if (typeof window.requestIdleCallback === "function") {
@@ -258,6 +259,58 @@ function renderWeeklyHomeOffersCountdown(root, now) {
   hours.textContent = formatCountdownNumber(countdownHours);
   minutes.textContent = formatCountdownNumber(countdownMinutes);
   seconds.textContent = formatCountdownNumber(countdownSeconds);
+}
+
+function renderDailyStockHealthBar(root, now) {
+  if (!root) return;
+  const fill = root.querySelector(":scope > .stock-health__track > .stock-health__fill");
+  if (!fill) return;
+
+  const initialLevel = Number(root.dataset.initialLevel || 0);
+  const endLevel = Number(root.dataset.endLevel || 0);
+  if (!initialLevel) return;
+
+  const startOfDay = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    0,
+    0,
+    0,
+    0,
+  ).getTime();
+  const endOfDay = getEndOfCurrentDay(now).getTime();
+  const totalWindow = Math.max(1, endOfDay - startOfDay);
+  const progress = Math.min(1, Math.max(0, (now.getTime() - startOfDay) / totalWindow));
+
+  const delta = initialLevel - endLevel;
+  const currentLevel = Math.max(endLevel, initialLevel - delta * progress);
+  const clampedLevel = Math.min(100, Math.round(currentLevel * 100) / 100);
+
+  fill.style.setProperty("--stock-health-level", `${clampedLevel}%`);
+}
+
+function updateDailyStockHealthBars() {
+  const roots = document.querySelectorAll("[data-daily-stock-health]");
+  if (!roots.length) return;
+
+  const now = new Date();
+  roots.forEach((root) => renderDailyStockHealthBar(root, now));
+}
+
+function scheduleDailyStockHealthTick() {
+  updateDailyStockHealthBars();
+  const delay = 30000 - (Date.now() % 30000);
+  dailyStockHealthTimerId = window.setTimeout(
+    scheduleDailyStockHealthTick,
+    delay,
+  );
+}
+
+function initDailyStockHealthBars() {
+  if (dailyStockHealthTimerId !== null) return;
+  if (!document.querySelector("[data-daily-stock-health]")) return;
+  scheduleDailyStockHealthTick();
 }
 
 function updateWeeklyHomeOffersCountdowns() {
@@ -450,7 +503,11 @@ document.addEventListener("DOMContentLoaded", function () {
   initEmpiriaSpotAb();
   moveSpotDiscounts();
   initHomeInfoRotator();
-  const observer = new MutationObserver(() => moveSpotDiscounts());
+  initDailyStockHealthBars();
+  const observer = new MutationObserver(() => {
+    moveSpotDiscounts();
+    updateDailyStockHealthBars();
+  });
   observer.observe(document.body, { childList: true, subtree: true });
 });
 

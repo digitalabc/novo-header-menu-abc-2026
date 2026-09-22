@@ -501,8 +501,8 @@ function checkoutCloseClearCouponLock() {
 
 function checkoutCloseRemoveCouponFromUrl() {
   const params = new URLSearchParams(window.location.search);
-  if (!params.has("cupom")) return;
-  params.delete("cupom");
+  if (!params.has("coupon")) return;
+  params.delete("coupon");
   const query = params.toString();
   const nextUrl = query
     ? `${window.location.pathname}?${query}`

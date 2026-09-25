@@ -1047,6 +1047,7 @@ body.home .subTopo .swiper-container {
   grid-template-columns: 1fr;
   gap: 16px;
   align-items: start;
+  position: relative;
 }
 
 .home .home-offers-banner__content.home-offers-banner__content--banner-only {
@@ -1079,6 +1080,10 @@ body.home .subTopo .swiper-container {
 }
 
 @media (min-width: 980px) {
+  .home .home-offers-banner {
+    overflow: visible;
+  }
+
   .home .home-offers-banner__content {
     grid-template-columns: minmax(280px, 1fr) minmax(0,
         calc((var(--home-offers-visible-items) * var(--home-offers-spot-card-width)) + (var(--home-offers-visible-gaps) * var(--home-offers-spot-gap-desktop)) + (2 * var(--home-offers-carousel-gutter))));
@@ -1086,6 +1091,7 @@ body.home .subTopo .swiper-container {
   }
 
   .home .home-offers-banner__spot {
+    position: relative;
     width: calc((var(--home-offers-visible-items) * var(--home-offers-spot-card-width)) + (var(--home-offers-visible-gaps) * var(--home-offers-spot-gap-desktop)) + (2 * var(--home-offers-carousel-gutter)));
     max-width: 100%;
     justify-self: end;
@@ -1120,14 +1126,15 @@ body.home .subTopo .swiper-container {
 
 .home .home-offers-banner__spot .spot-carousel__navigation {
   position: absolute;
-  right: calc(100% + 8px);
-  bottom: var(--home-offers-carousel-gutter);
-  height: 100%;
-  bottom: -28px;
-  z-index: 3;
+  top: 56%;
+  right: -52px;
+  left: -52px;
+  z-index: 4;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  pointer-events: none;
+  transform: translateY(-50%);
 }
 
 .home .home-offers-banner__spot .swiper-button-prev,
@@ -1144,6 +1151,7 @@ body.home .subTopo .swiper-container {
   height: 34px;
   margin: 0;
   transform: none;
+  pointer-events: auto;
 }
 
 .home .home-offers-banner__spot .swiper-button-lock {
@@ -1356,16 +1364,19 @@ body.home .subTopo .swiper-container {
   .home .home-offers-banner__content {
     grid-template-columns: 1fr;
     gap: 16px;
-  }
-
-  .home .home-offers-banner__content:not(.home-offers-banner__content--banner-only) {
     padding-bottom: 44px;
   }
 
+  .home .home-offers-banner__spot {
+    position: relative;
+  }
+
   .home .home-offers-banner__spot .spot-carousel__navigation {
-    right: auto;
+    top: auto;
+    right: 0;
     bottom: -34px;
-    left: var(--home-offers-carousel-gutter);
+    left: 0;
+    transform: none;
   }
 
   .home .home-offers-banner__banner:empty,
@@ -17185,7 +17196,7 @@ a.subcategories__item .subcategories__title,
   }
 
   .spot__buttons .add-to-cart-button:hover {
-    background: #392f2d;
+    background: #0c893b;
   }
 
   .spot:hover {

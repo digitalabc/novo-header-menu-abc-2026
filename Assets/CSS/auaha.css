@@ -978,16 +978,24 @@ body.home .subTopo .swiper-container {
   --home-offers-spot-gap-mobile: 5px;
   --home-offers-spot-gap-desktop: 16px;
   --home-offers-carousel-gutter: 10px;
-  --home-offers-visible-items: 3;
+  --home-offers-visible-items: 2.5;
+  --home-offers-visible-gaps: 2;
   overflow: hidden;
 }
 
 .home .home-offers-banner[data-home-offers-visible="1"] {
   --home-offers-visible-items: 1;
+  --home-offers-visible-gaps: 0;
 }
 
 .home .home-offers-banner[data-home-offers-visible="2"] {
   --home-offers-visible-items: 2;
+  --home-offers-visible-gaps: 1;
+}
+
+.home .home-offers-banner[data-home-offers-visible="1"] .spot-carousel__navigation,
+.home .home-offers-banner[data-home-offers-visible="2"] .spot-carousel__navigation {
+  display: none;
 }
 
 .home .home-offers-banner__header h2 {
@@ -1061,6 +1069,7 @@ body.home .subTopo .swiper-container {
 }
 
 .home .home-offers-banner__spot {
+  position: relative;
   width: 100%;
 }
 
@@ -1072,12 +1081,12 @@ body.home .subTopo .swiper-container {
 @media (min-width: 980px) {
   .home .home-offers-banner__content {
     grid-template-columns: minmax(280px, 1fr) minmax(0,
-        calc((var(--home-offers-visible-items) * var(--home-offers-spot-card-width)) + ((var(--home-offers-visible-items) - 1) * var(--home-offers-spot-gap-desktop)) + (2 * var(--home-offers-carousel-gutter))));
+        calc((var(--home-offers-visible-items) * var(--home-offers-spot-card-width)) + (var(--home-offers-visible-gaps) * var(--home-offers-spot-gap-desktop)) + (2 * var(--home-offers-carousel-gutter))));
     justify-content: space-between;
   }
 
   .home .home-offers-banner__spot {
-    width: calc((var(--home-offers-visible-items) * var(--home-offers-spot-card-width)) + ((var(--home-offers-visible-items) - 1) * var(--home-offers-spot-gap-desktop)) + (2 * var(--home-offers-carousel-gutter)));
+    width: calc((var(--home-offers-visible-items) * var(--home-offers-spot-card-width)) + (var(--home-offers-visible-gaps) * var(--home-offers-spot-gap-desktop)) + (2 * var(--home-offers-carousel-gutter)));
     max-width: 100%;
     justify-self: end;
   }
@@ -1106,13 +1115,74 @@ body.home .subTopo .swiper-container {
 }
 
 .home .home-offers-banner__spot .swiper-container {
-  position: relative;
+  position: static;
+}
+
+.home .home-offers-banner__spot .spot-carousel__navigation {
+  position: absolute;
+  right: calc(100% + 8px);
+  bottom: var(--home-offers-carousel-gutter);
+  height: 100%;
+  bottom: -28px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home .home-offers-banner__spot .swiper-button-prev,
+.home .home-offers-banner__spot .swiper-button-next {
+  position: static;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  transform: none;
+}
+
+.home .home-offers-banner__spot .swiper-button-lock {
+  display: none;
 }
 
 .home .home-offers-banner__spot .swiper {
   box-sizing: border-box;
   margin: 0;
   padding: var(--home-offers-carousel-gutter);
+}
+
+.home .home-offers-banner[data-home-offers-visible="3"] .home-offers-banner__spot:has(.swiper-button-next:not(.swiper-button-disabled)) .swiper::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: clamp(12px, 3vw, 28px);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.45) 55%,
+    #fff
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.home .home-offers-banner[data-home-offers-visible="3"] .home-offers-banner__spot:has(.swiper-button-prev:not(.swiper-button-disabled)) .swiper::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: clamp(12px, 3vw, 28px);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+  content: "";
+  pointer-events: none;
 }
 
 .home .home-offers-banner__spot .swiper-slide,
@@ -1189,7 +1259,12 @@ body.home .subTopo .swiper-container {
 }
 
 .home .home-offers-banner__spot .swiper:not(.swiper-initialized) ul li {
-  flex: 0 0 calc((100% / 2.1) - (2 * var(--home-offers-spot-gap-mobile) / 5));
+  flex: 0 0 calc((100% - (2 * var(--home-offers-spot-gap-mobile))) / 2.5);
+}
+
+.home .home-offers-banner[data-home-offers-visible="1"] .home-offers-banner__spot .swiper:not(.swiper-initialized) ul li,
+.home .home-offers-banner[data-home-offers-visible="2"] .home-offers-banner__spot .swiper:not(.swiper-initialized) ul li {
+  flex-basis: calc((100% - (var(--home-offers-visible-gaps) * var(--home-offers-spot-gap-mobile))) / var(--home-offers-visible-items));
 }
 
 .home .home-offers-banner__spot .swiper-wrapper {
@@ -1202,12 +1277,6 @@ body.home .subTopo .swiper-container {
 
 .home .home-offers-banner[data-home-offers-visible="1"] .home-offers-banner__spot .swiper:not(.swiper-initialized) ul {
   justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .home .home-offers-banner__spot .swiper:not(.swiper-initialized) ul li {
-    flex: 0 0 calc((100% / 3.1) - (3 * var(--home-offers-spot-gap-mobile) / 5));
-  }
 }
 
 @media screen and (min-width: 980px) {
@@ -1289,29 +1358,14 @@ body.home .subTopo .swiper-container {
     gap: 16px;
   }
 
-  .home .home-offers-banner__spot .swiper-container {
+  .home .home-offers-banner__content:not(.home-offers-banner__content--banner-only) {
+    padding-bottom: 44px;
   }
 
-  .home .home-offers-banner__spot .swiper-button-prev,
-  .home .home-offers-banner__spot .swiper-button-next {
-    top: 0;
-    right: var(--home-offers-carousel-gutter);
-    left: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    margin: 0;
-    transform: none;
-  }
-
-  .home .home-offers-banner__spot .swiper-button-prev {
-    right: calc(var(--home-offers-carousel-gutter) + 42px);
-  }
-
-  .home .home-offers-banner__spot .swiper-button-lock {
-    display: none;
+  .home .home-offers-banner__spot .spot-carousel__navigation {
+    right: auto;
+    bottom: -34px;
+    left: var(--home-offers-carousel-gutter);
   }
 
   .home .home-offers-banner__banner:empty,

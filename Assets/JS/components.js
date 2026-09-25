@@ -672,12 +672,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let deferredDynamicSectionsScheduled = false;
 
   const initCriticalDynamicSections = () => {
+    syncDailyHomeOffersLayout();
     initSwipers();
     initHomeInfoRotator();
     initHomeInfoBarSticky();
     initDailyHomeOffersCountdown();
     initWeeklyHomeOffersCountdown();
-    syncDailyHomeOffersLayout();
   };
 
   const runDeferredDynamicSections = () => {
@@ -1087,16 +1087,21 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     if (homeOffersSwiper) {
       const section = homeOffersSwiper.closest(".home-offers-banner__carousel");
+      const productCount = homeOffersSwiper.querySelectorAll(
+        ".swiper-wrapper > .swiper-slide",
+      ).length;
+      const visibleSlides = productCount > 2 ? 2.5 : Math.max(productCount, 1);
       initSwiperInstance(homeOffersSwiper, {
         navigation: {
           nextEl: section?.querySelector(".swiper-button-next"),
           prevEl: section?.querySelector(".swiper-button-prev"),
         },
-        ...spotMobile,
+        slidesPerView: visibleSlides,
+        spaceBetween: 5,
         watchOverflow: true,
         breakpoints: {
           768: {
-            slidesPerView: 3.1,
+            slidesPerView: visibleSlides,
             spaceBetween: 5,
           },
           980: {

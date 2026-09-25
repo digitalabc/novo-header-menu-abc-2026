@@ -108,7 +108,7 @@
         <div class="home-offers-banner__banner home-offers-banner__banner--desktop desktop">{{- banner carousel: false banners: daily_offers_banners position: "Rodape" defer_image_loading: true -}}</div>
         <div class="home-offers-banner__banner home-offers-banner__banner--mobile mobile">{{- banner carousel: false banners: daily_offers_banners position: "Mobile Rodape" defer_image_loading: true -}}</div>
         {{~ if daily_offers_has_products ~}}
-        <div class="home-offers-banner__spot">{{- spot_carousel class: "home-offers-banner__carousel" products: daily_offers_products show_buy_mobile: true show_stock_health: true -}}</div>
+        <div class="home-offers-banner__spot">{{- spot_carousel class: "home-offers-banner__carousel" products: daily_offers_products show_buy_mobile: true show_stock_health: true group_navigation: true -}}</div>
         {{~ end ~}}
       </div>
     </section>

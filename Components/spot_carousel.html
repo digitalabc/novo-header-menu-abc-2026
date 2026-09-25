@@ -2,6 +2,7 @@
     Description: Renders a spot carousel from a list of products
     Params:
       - products: list of products
+      - group_navigation: wrap navigation buttons for custom layouts
     Usage:
       spot_carousel products: data...products
 ## }}
@@ -16,6 +17,7 @@
       {{~ end ~}}
     </ul>
   </div>
+  {{~ if group_navigation ~}}<div class="spot-carousel__navigation">{{~ end ~}}
   <button class="swiper-button-prev">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
       <path id="Path_151" data-name="Path 151"
@@ -28,6 +30,7 @@
         d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z" />
     </svg>
   </button>
+  {{~ if group_navigation ~}}</div>{{~ end ~}}
 </div>
 {{~ else if products && products.total_count > 0  ~}}
 <div class="swiper-container {{class}}">
@@ -40,6 +43,7 @@
       {{ end }}
     </ul>
   </div>
+  {{~ if group_navigation ~}}<div class="spot-carousel__navigation">{{~ end ~}}
   <button class="swiper-button-prev">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
       <path id="Path_151" data-name="Path 151"
@@ -52,5 +56,6 @@
         d="M15,0A15,15,0,1,0,30,15,15.017,15.017,0,0,0,15,0Zm4.634,15.884-6.25,6.25a1.25,1.25,0,0,1-1.768-1.767L16.983,15,11.616,9.634a1.25,1.25,0,1,1,1.767-1.767l6.25,6.25A1.249,1.249,0,0,1,19.634,15.884Z" />
     </svg>
   </button>
+  {{~ if group_navigation ~}}</div>{{~ end ~}}
 </div>
 {{~ end ~}}

@@ -309,3 +309,11 @@ div.shipping-address-buttons {
 .shipping-address--savedAddresses:active {
   transform: scale(0.98);
 }
+
+body.checkout-shipping .pickup-free-shipping {
+  border: 1px solid rgba(15, 168, 72, 0.15);
+  border-radius: 8px;
+  background: #f1f9f3;
+  color: #0fa848;
+  padding: 4px 8px;
+}

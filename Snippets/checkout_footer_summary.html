@@ -1,4 +1,4 @@
-{{~if data.checkout.shipping_fee ~}} 
+{{~if data.checkout.shipping_fee || data.checkout.shipping_fee == 0 ~}}
             {{ if data.checkout.shipping_fee == 0}}
             <div class="price-line free">
               {{ else }}

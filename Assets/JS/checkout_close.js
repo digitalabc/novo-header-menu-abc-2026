@@ -400,6 +400,10 @@ const selectPickUpStore = async (value) => {
     );
     return;
   }
+
+  await refreshPickUpSummary();
+  showPickUpShippingAsFree();
+  await updatePickUpTotal();
 };
 
 const selectDeliveryStore = async (value) => {

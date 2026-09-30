@@ -1,6 +1,6 @@
 {{~
-    pickUpStores = data.shipping_quotes | array.filter @(do; ret string.contains($0.name, "RETIRE"); end);
-    deliveryStores = data.shipping_quotes | array.filter @(do; ret !string.contains($0.name, "RETIRE"); end);
+    pickUpStores = data.shipping_quotes | array.filter @(do; ret $0.type == "Retirada" || $0.type == "Retirada*" || $0.type == "pickup-in-point" || ($0.name | string.downcase | string.contains "retire"); end);
+    deliveryStores = data.shipping_quotes | array.filter @(do; ret !($0.type == "Retirada" || $0.type == "Retirada*" || $0.type == "pickup-in-point" || ($0.name | string.downcase | string.contains "retire")); end);
 ~}}
 
 <div class="checkout-shipping-methods-wrapper">

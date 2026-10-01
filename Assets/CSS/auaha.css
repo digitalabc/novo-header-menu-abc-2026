@@ -439,6 +439,7 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
 
 .home {
   --home-info-bar-sticky-offset: 0px;
+  --abc-home-red: #f53d45;
 }
 
 .home .container>section {
@@ -471,7 +472,7 @@ body.home .environments .swiper[data-carrossel-arrasto="1"] .swiper-slide {
   position: sticky;
   top: var(--home-info-bar-sticky-offset);
   z-index: 998;
-  background: #e30613;
+  background: var(--abc-home-red);
   overflow: hidden;
   transition: box-shadow 180ms ease, transform 180ms ease;
 }
@@ -1215,7 +1216,7 @@ body.home .subTopo .swiper-container {
 }
 
 .home .home-offers-banner .stock-health--critical {
-  --stock-health-color: #e30613;
+  --stock-health-color: var(--abc-home-red);
 }
 
 .home .home-offers-banner .stock-health__meta {
@@ -10045,11 +10046,11 @@ header {
 }
 
 .navbar__lojas svg {
-  fill: #e30613;
+  fill: #f53d45;
 }
 
 .navbar__lojas:hover {
-  color: #e30613;
+  color: #f53d45;
 }
 
 .navbar__prime-link {
@@ -10100,7 +10101,7 @@ header {
 .navbar__lojas:hover .material-icons--navbar,
 .user__header:hover .material-icons--navbar,
 .minicart__button:hover .material-icons--navbar {
-  color: #e30613;
+  color: #f53d45;
 }
 
 .navbar__wrapper {
@@ -10274,8 +10275,8 @@ header {
 }
 
 .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao {
-  background: #e30613;
-  border-color: #b8050f;
+  background: #f53d45;
+  border-color: #f53d45;
   color: #fff !important;
   box-shadow:
     -1px 1px 0 #7a040c,
@@ -10289,7 +10290,7 @@ header {
 }
 
 .navbar__wrapper .nav-item--nv1>.nav-link.nav-link--badge-saldao:hover {
-  background: #ff1a28;
+  background: #f53d45;
   color: #fff !important;
   box-shadow:
     -1px 1px 0 #7a040c,
@@ -11676,8 +11677,8 @@ header {
 .navbar__collapse.desktop .nav-all__item--root:hover svg,
 .navbar__collapse.desktop .nav-all__item--root:hover svg path,
 .navbar__collapse.desktop .nav-all__item--root:hover svg rect {
-  color: #e30613;
-  fill: #e30613;
+  color: #f53d45;
+  fill: #f53d45;
 }
 
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:hover>.nav-link,
@@ -11685,8 +11686,8 @@ header {
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:hover>.nav-link.nav-link--campaign,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--nv1:hover>.nav-link.nav-link--campaign strong,
 .navbar__collapse.desktop .navbar__wrapper .nav-item--sub>a.nav-link:hover {
-  color: #e30613;
-  fill: #e30613;
+  color: #f53d45;
+  fill: #f53d45;
 }
 
 .nav-all__item--nv1 {
@@ -11708,7 +11709,7 @@ header {
 }
 
 .nav-all__item--nv1:hover {
-  background: #e30613;
+  background: #f53d45;
   color: #fff;
 }
 
@@ -12104,8 +12105,8 @@ header {
 }
 
 #menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-saldao {
-  background: #e30613;
-  border-color: #b8050f;
+  background: #f53d45;
+  border-color: #f53d45;
   color: #fff !important;
   box-shadow:
     -1px 1px 0 #7a040c,
@@ -12119,7 +12120,7 @@ header {
 }
 
 #menu-offcanvas .nav-mobile__others a.nav-link.nav-link--badge-saldao:hover {
-  background: #ff1a28;
+  background: #f53d45;
   color: #fff !important;
 }
 
@@ -14682,7 +14683,7 @@ header {
 }
 
 section.newsletter--home {
-  background-color: #e30613;
+  background-color: #f53d45;
   background-position: center left;
   padding: 30px 40px;
   margin-bottom: 65px;

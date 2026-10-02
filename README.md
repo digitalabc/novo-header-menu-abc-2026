@@ -77,4 +77,8 @@ Fontes, URLs dos produtos e prompts dos ícones ilustrativos estão em `assets/c
 
 ## Publicação no GitHub Pages
 
-O projeto não exige build. Publique a raiz da branch escolhida pelo GitHub Pages.
+Preview: [phaisonvs.github.io/novo-header-menu-abc-2026](https://phaisonvs.github.io/novo-header-menu-abc-2026/).
+
+Repositório público: [phaisonvs/novo-header-menu-abc-2026](https://github.com/phaisonvs/novo-header-menu-abc-2026).
+
+O projeto não exige build. O GitHub Pages publica a raiz (`/`) da branch `main`. Novos commits enviados para essa branch atualizam o preview automaticamente.

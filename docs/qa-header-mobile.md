@@ -31,4 +31,4 @@ Login, entrega, pedidos, cupons, atendimento e destinos estratégicos são mocks
 
 ## Publicação
 
-Git inicializado localmente na branch `main`. Login local executado via Git Credential Manager com navegador, e identidade `phaisonvs` confirmada pelo GitHub. Destino informado: `phaisonvs/novo-header-menu-abc-2026`. A integração do Codex continua autenticada como `marciocld`; isso não impede o push pela autenticação local de `phaisonvs`. A criação do repositório aguarda a definição público/privado.
+Repositório público criado em `phaisonvs/novo-header-menu-abc-2026`; projeto enviado para `main`. GitHub Pages ativado com a raiz (`/`) dessa branch como origem. Preview: https://phaisonvs.github.io/novo-header-menu-abc-2026/.

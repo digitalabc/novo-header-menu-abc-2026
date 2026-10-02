@@ -43,11 +43,11 @@
         <div class="topbar__group topbar__group--end"><a class="chip chip--stores" href="#"><span aria-hidden="true">▰</span>Nossas Lojas</a><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
       </div></div>
       <div class="desktop-main"><div class="container desktop-main__content">
+        <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
         <div class="desktop-actions desktop-actions--left">
           <button class="action-item" type="button" aria-label="Entrar na minha conta">${icon('conta', 'header-action-icon')}<span><strong>Entrar</strong><small>Minha conta</small></span>${chevron('down')}</button>
           <button class="action-item action-item--location" type="button" aria-label="Alterar local de entrega">${icon('regionalizacao', 'header-action-icon')}<span><small>Entregar em:</small><strong>32604-540 - Betim</strong></span>${chevron('down')}</button>
         </div>
-        <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
         <div class="desktop-actions desktop-actions--right">
           ${renderSearch('desktop')}
           <button class="action-item action-item--cart" type="button" aria-label="Meu carrinho, zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span><span><strong>Meu carrinho</strong><small>00 itens</small></span></button>

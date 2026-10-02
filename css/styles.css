@@ -47,7 +47,8 @@ img{display:block;max-width:100%}
 .desktop-nav__list{height:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-item{display:flex;align-items:center;gap:8px;height:36px;padding:2px 12px;border:1px solid transparent;border-radius:6px;background:transparent;font-size:13px;cursor:pointer;white-space:nowrap;transition:background-color .24s .04s ease,border-color .24s .04s ease}
 .nav-item img{width:var(--nav-icon-size);height:var(--nav-icon-size);object-fit:contain}.nav-item.is-active{background:#f2f4f6;border-color:#eceff3}.nav-item:hover{background:#f7f8fa}
-.nav-item[data-menu-action="departments"]{display:grid;grid-template-columns:var(--nav-icon-size) minmax(0,1fr) var(--nav-icon-size);flex:0 0 var(--department-column);width:var(--department-column);padding-inline:calc((49px - var(--nav-icon-size))/2 - 1px);gap:8px}
+.nav-item[data-menu-action="departments"]{display:grid;grid-template-columns:var(--nav-icon-size) minmax(0,1fr) var(--nav-icon-size);flex:0 0 var(--department-column);width:var(--department-column);padding-inline:0 8px;gap:8px}
+.nav-item[data-menu-action="departments"]>img{justify-self:start}
 .nav-item[data-menu-action="departments"]>span:not(.nav-chevron){width:100%;min-width:0;text-align:center}
 .nav-item[data-menu-action="departments"]>.nav-chevron{justify-self:center}
 .nav-chevron{display:grid;place-items:center;width:16px;height:16px;flex:0 0 16px}
@@ -180,9 +181,9 @@ img{display:block;max-width:100%}
 @container (max-width:540px){.mega-content--principal .category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.category-card--large{min-height:64px}.category-card--large>img{width:44px;height:44px;flex-basis:44px}}
 @container (max-width:520px){.environment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-height:650px) and (min-width:900px){.environment-feature__image{-webkit-mask-image:linear-gradient(to bottom,#000 24%,rgba(0,0,0,.5) 38%,rgba(0,0,0,.1) 54%,transparent 68%);mask-image:linear-gradient(to bottom,#000 24%,rgba(0,0,0,.5) 38%,rgba(0,0,0,.1) 54%,transparent 68%)}}
-/* Symmetric header: both side groups share the same available width. */
-.desktop-main__content{display:grid;grid-template-columns:minmax(0,1fr) 49px minmax(0,1fr);gap:32px}
-.desktop-main__content>.abc-logo{justify-self:center}
+/* Desktop: logo first, account/delivery next, search/cart at the far right. */
+.desktop-main__content{display:grid;grid-template-columns:49px auto minmax(0,1fr);gap:24px}
+.desktop-main__content>.abc-logo{justify-self:start}
 .desktop-actions{min-width:0;margin:0;gap:24px}
 .desktop-actions--left{justify-content:flex-start}.desktop-actions--right{justify-content:flex-end}
 .header-action-icon{width:32px;height:32px;object-fit:contain;flex:0 0 32px}

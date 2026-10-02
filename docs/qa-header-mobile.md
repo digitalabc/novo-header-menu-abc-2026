@@ -5,8 +5,9 @@ Preview verificado no Chromium, em HTML/CSS/JavaScript puro, sem backend.
 ## Header responsivo
 
 - Larguras: 320, 360, 390, 430, 768, 900, 1024, 1200, 1440 e 1920 px.
-- Centro geométrico do logo: diferença de 0 px em todas as larguras.
-- Busca desktop expandida e recolhida nas cinco larguras desktop: centro preservado, sem sobreposição com o logo ou overflow horizontal.
+- Revisão inicial: centro geométrico do logo com diferença de 0 px em todas as larguras. Revisão seguinte solicitada pelo usuário: logo desktop movido ao início da esquerda; mobile conserva o centro.
+- Nova revisão desktop nas larguras 900, 1024, 1200, 1440 e 1920 px: logo e botão Departamentos alinhados na mesma margem do container; largura de N1 e rail iguais. Novo ícone metálico sem o recuo lateral anterior.
+- Busca desktop expandida: logo à esquerda preservado, sem sobreposição com as ações ou overflow horizontal.
 - Ícones locais de conta, localização e carrinho de mão carregados sem erro.
 - Hover da subcategoria: seta avança 4 px; posição do card não muda.
 
@@ -30,4 +31,4 @@ Login, entrega, pedidos, cupons, atendimento e destinos estratégicos são mocks
 
 ## Publicação
 
-Git inicializado localmente na branch `main`. Não foi enviado à conta `phaisonvs`: o conector estava autenticado como `marciocld`, sem permissão de escrita nos repositórios consultados de `phaisonvs`; o navegador também estava sem sessão GitHub. Autenticação e repositório de destino precisam ser fornecidos antes do push.
+Git inicializado localmente na branch `main`. Login local executado via Git Credential Manager com navegador, e identidade `phaisonvs` confirmada pelo GitHub. Destino informado: `phaisonvs/novo-header-menu-abc-2026`. A integração do Codex continua autenticada como `marciocld`; isso não impede o push pela autenticação local de `phaisonvs`. A criação do repositório aguarda a definição público/privado.

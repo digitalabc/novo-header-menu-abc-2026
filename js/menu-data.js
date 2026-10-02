@@ -10,7 +10,7 @@
       conta: 'assets/header-conta-v1.png',
       regionalizacao: 'assets/header-regionalizacao-v1.png',
       'carrinho-mao': 'assets/header-carrinho-mao-v1.png',
-      departamentos: 'assets/icon-departamentos.png',
+      departamentos: 'assets/header-departamentos-v2.png',
       ambientes: 'assets/icon-ambientes.png',
       metais: 'assets/icon-metais.png',
       loucas: 'assets/icon-loucas.png',

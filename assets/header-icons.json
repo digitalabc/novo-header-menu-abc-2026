@@ -5,6 +5,13 @@
   "export": "128px PNG with preserved alpha. Originals retained in the Codex generated_images directory.",
   "sources": [
     {
+      "iconId": "departamentos",
+      "file": "assets/header-departamentos-v2.png",
+      "original": "generated_images/01a0fd42-9dc0-71b1-af6a-66fb738cf8e9/exec-504889b4-3e8a-4b6d-a327-77b075f43c71.png",
+      "styleReference": "assets/header-conta-v1.png",
+      "prompt": "Use case: product-mockup. Asset type: ONE header navigation hamburger icon for Departments. Input image is STYLE REFERENCE ONLY, not an edit target. Subject: three equal horizontal rounded rectangular bars arranged vertically with even gaps, a very restrained three-dimensional sculpted dark brushed graphite-aluminium menu symbol. Straight-on view, shallow thickness with subtly visible metal bevels, neutral soft studio lighting matching the account icon reference. No diagonal perspective, no tilt. Recognizable at 28px, bars all equal length and thickness. Center complete symbol; object width 92% of square canvas and height about 72%, very little transparent horizontal margin. True transparent alpha background. No scene, no enclosing plate, no button, no writing, no logos, no watermark, no decorative details, no big shadow."
+    },
+    {
       "iconId": "conta",
       "file": "assets/header-conta-v1.png",
       "original": "generated_images/01a0fd42-9dc0-71b1-af6a-66fb738cf8e9/exec-bc1b2fe3-028c-4283-a756-97fec6ebf15f.png",

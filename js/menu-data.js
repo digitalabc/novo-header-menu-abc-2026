@@ -4,13 +4,15 @@
   const assetRegistry = {
     logo: {
       abc: 'assets/logo-abc.svg',
-      casaPrime: 'assets/logo-casa-prime.svg'
+      casaPrime: 'assets/logo-casa-prime.svg',
+      mysa: 'assets/logo-mysa.png'
     },
     icon: {
       conta: 'assets/header-conta-v1.png',
       regionalizacao: 'assets/header-regionalizacao-v1.png',
       'carrinho-mao': 'assets/header-carrinho-mao-v1.png',
       departamentos: 'assets/header-departamentos-v2.png',
+      'principais-categorias': 'assets/icon-principais-categorias.png',
       ambientes: 'assets/icon-ambientes.png',
       metais: 'assets/icon-metais.png',
       loucas: 'assets/icon-loucas.png',
@@ -149,7 +151,7 @@
   function nested(map) { return Object.entries(map).map(([label, children]) => ({ label, children })); }
 
   const principal = {
-    id: 'principais-categorias', label: 'Principais Categorias', iconId: 'departamentos', moreUrl: null,
+    id: 'principais-categorias', label: 'Principais Categorias', iconId: 'principais-categorias', moreUrl: null,
     featured: [
       ['Porcelanato', 'porcelanato'], ['Piso Vinílico', 'piso-vinilico'], ['Torneiras para banheiro', 'torneira-banheiro'], ['Torneiras para cozinha', 'torneira-cozinha'],
       ['Vaso Sanitário', 'vaso-sanitario'], ['Cubas para Banheiro', 'cuba-banheiro'], ['Chuveiro', 'chuveiro'], ['Tinta para parede', 'tinta']
@@ -158,14 +160,14 @@
   };
 
   const environmentCopy = {
-    banheiro: { heading: 'Seu banheiro, mais aconchegante', subtitle: 'Conforto e praticidade para renovar sua rotina.' },
-    cozinha: { heading: 'Sua cozinha, do seu jeito', subtitle: 'Funcionalidade e estilo para os seus melhores momentos.' },
-    'sala-estar': { heading: 'Sua sala de estar, mais moderna', subtitle: 'Texturas, luz e cores para receber e relaxar.' },
-    'sala-jantar': { heading: 'Sua sala de jantar, mais acolhedora', subtitle: 'Detalhes que deixam cada encontro mais especial.' },
-    quarto: { heading: 'Seu quarto, seu refúgio', subtitle: 'Cores suaves e conforto para recarregar as energias.' },
-    escritorio: { heading: 'Seu escritório, mais inspirador', subtitle: 'Organização e conforto para suas ideias renderem.' },
-    'area-externa': { heading: 'Sua área externa, mais convidativa', subtitle: 'Tudo para aproveitar seus momentos ao ar livre.' },
-    piscina: { heading: 'Sua piscina, mais diversão', subtitle: 'Cuidado e lazer para curtir os dias de sol.' }
+    banheiro: { heading: 'Um cuidado a mais com você.', subtitle: 'Do banho à bancada, escolhas que facilitam o dia.', imagePosition: '50% 58%' },
+    cozinha: { heading: 'Onde as boas receitas começam.', subtitle: 'Praticidade para cozinhar e espaço para compartilhar.', imagePosition: '50% 52%' },
+    'sala-estar': { heading: 'Pode entrar. Fique à vontade.', subtitle: 'Luz, cores e texturas para uma sala com a sua cara.', imagePosition: '50% 58%' },
+    'sala-jantar': { heading: 'A conversa continua à mesa.', subtitle: 'Um lugar gostoso para reunir quem você gosta.', imagePosition: '50% 56%' },
+    quarto: { heading: 'Seu descanso merece esse carinho.', subtitle: 'Detalhes que ajudam a desacelerar no fim do dia.', imagePosition: '50% 58%' },
+    escritorio: { heading: 'Abra espaço para suas ideias.', subtitle: 'Conforto e organização para trabalhar no seu ritmo.', imagePosition: '50% 55%' },
+    'area-externa': { heading: 'Aproveite a casa do lado de fora.', subtitle: 'Do jardim ao churrasco, mais motivos para ficar.', imagePosition: '50% 54%' },
+    piscina: { heading: 'O próximo mergulho é aqui.', subtitle: 'Prepare seu cantinho de sol para os dias de lazer.', imagePosition: '50% 60%' }
   };
 
   const environments = [

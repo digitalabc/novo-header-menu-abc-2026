@@ -4,8 +4,9 @@
   const data = window.Menu2026Data;
   const header = document.getElementById('site-header');
   const menuRoot = document.getElementById('menu-root');
+  const regionalizationRoot = document.getElementById('regionalization-root');
   const desktopQuery = window.matchMedia('(min-width: 900px)');
-  const state = { desktopMenu: null, desktopSelection: 'principais-categorias', desktopAnimation: 'open', environment: 'banheiro', desktopSearchOpen: false, desktopSearchValue: '', searchOpen: false, searchDropdown: false, drawerOpen: false, drawerLevel: 'root', drawerId: null, drawerCategory: null, drawerHistory: [], drawerPreviousHtml: '', drawerPreviousScroll: 0, drawerDirection: 'forward', drawerExpanded: new Set(['principais-categorias']), drawerBusy: false, loggedIn: true, regionalized: true, opener: null };
+  const state = { desktopMenu: null, desktopSelection: 'principais-categorias', desktopAnimation: 'open', environment: 'banheiro', desktopSearchOpen: false, desktopSearchValue: '', searchOpen: false, searchDropdown: false, drawerOpen: false, drawerLevel: 'root', drawerId: null, drawerCategory: null, drawerHistory: [], drawerPreviousHtml: '', drawerPreviousScroll: 0, drawerDirection: 'forward', drawerExpanded: new Map([['root', 'principais-categorias']]), drawerBusy: false, loggedIn: true, regionalized: false, regionalizationOpen: true, regionalizationValue: '', regionalizationError: '', regionalizationOpener: null, delivery: { cep: '32604-540', city: 'Betim' }, opener: null };
   let desktopOpenTimer;
   let desktopCloseTimer;
   let desktopExitTimer;
@@ -19,8 +20,10 @@
   const chevron = (direction = 'right') => `<span class="chevron chevron--${direction}" aria-hidden="true"></span>`;
   const navChevron = () => '<span class="nav-chevron" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M6 4l4 4-4 4"/></svg></span>';
   const safeId = value => String(value).replace(/[^a-z0-9-]/gi, '-').toLowerCase();
+  const cepCities = { '32604540': 'Betim', '30130010': 'Belo Horizonte', '01001000': 'São Paulo', '20040002': 'Rio de Janeiro' };
 
   function render() {
+    regionalizationRoot.innerHTML = renderRegionalization();
     // Preserve the drawer shell so lateral navigation does not replay its entrance.
     const drawer = document.getElementById('mobile-drawer');
     if (!desktopQuery.matches && state.drawerOpen && drawer) {
@@ -46,10 +49,10 @@
         <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
         <div class="desktop-actions desktop-actions--left">
           <button class="action-item" type="button" aria-label="Entrar na minha conta">${icon('conta', 'header-action-icon')}<span><strong>Entrar</strong><small>Minha conta</small></span>${chevron('down')}</button>
-          <button class="action-item action-item--location" type="button" aria-label="Alterar local de entrega">${icon('regionalizacao', 'header-action-icon')}<span><small>Entregar em:</small><strong>32604-540 - Betim</strong></span>${chevron('down')}</button>
         </div>
         <div class="desktop-actions desktop-actions--right">
           ${renderSearch('desktop')}
+          <button class="action-item action-item--location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${desktopLocationMarkup()}${chevron('down')}</button>
           <button class="action-item action-item--cart" type="button" aria-label="Meu carrinho, zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span><span><strong>Meu carrinho</strong><small>00 itens</small></span></button>
         </div>
       </div></div>
@@ -157,12 +160,12 @@
 
   function renderEnvironmentMenu() {
     const active = data.environments.find(item => item.id === state.environment) || data.environments[0];
-    return `<aside class="environment-rail"><div class="environment-rail__list">${data.environments.map(item => `<button type="button" class="environment-link ${item.id === active.id ? 'is-active' : ''}" data-environment-id="${item.id}" aria-current="${item.id === active.id ? 'true' : 'false'}">${environmentImage(item)}<span>${item.label}</span>${chevron('right')}</button>`).join('')}</div></aside>
-      <div class="mega-panel mega-panel--environment"><div class="environment-content">${environmentFeature(active)}<div class="environment-categories"><div class="environment-scroll"><div class="environment-grid">${active.categories.map(label => categoryCard(label, categoryIcon(label))).join('')}</div></div>${moreLink(active)}</div></div></div>`;
+    return `<aside class="environment-rail" aria-label="Escolha um ambiente"><div class="environment-rail__list"><div class="environment-rail__grid">${data.environments.map(item => `<button type="button" class="environment-link ${item.id === active.id ? 'is-active' : ''}" style="--environment-position:${item.imagePosition || '50% 50%'}" data-environment-id="${item.id}" aria-current="${item.id === active.id ? 'true' : 'false'}" aria-expanded="${item.id === active.id ? 'true' : 'false'}" aria-controls="environment-detail"><img class="environment-link__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async"><span class="environment-link__caption"><span class="environment-feature__label">Ambiente</span><span class="environment-link__name">${item.label}</span></span><span class="environment-link__arrow">${chevron('right')}</span></button>`).join('')}</div></div></aside>
+      <div id="environment-detail" class="mega-panel mega-panel--environment"><div class="environment-content"><div class="environment-categories"><div class="environment-category-heading"><h2>${active.label}</h2><p>${active.heading}</p></div><div class="environment-scroll"><div class="environment-grid">${active.categories.map(label => categoryCard(label, categoryIcon(label))).join('')}</div></div>${moreLink(active)}</div></div></div>`;
   }
 
   function environmentImage(item) {
-    return `<img class="environment-thumbnail" src="${data.assetRegistry.environment[item.imageId]}" alt="" width="120" height="80" decoding="async">`;
+    return `<figure class="drawer-environment-card" style="--environment-position:${item.imagePosition || '50% 50%'}"><img src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async"><figcaption><span>Ambiente</span><strong>${item.label}</strong></figcaption></figure>`;
   }
 
   function environmentFeature(item, headingTag = 'h2') {
@@ -176,13 +179,13 @@
 
   function renderMobileHeader() {
     const userTitle = state.loggedIn ? 'Olá, Phaison' : 'Entrar';
-    const location = state.regionalized ? '<span>Entregar em:</span> <strong>32604-540 - Betim</strong>' : '<span>Informe seu</span> <strong>CEP</strong>';
+    const location = mobileLocationMarkup();
     return `<div class="mobile-header">
       <div class="mobile-topbar"><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
       <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button hamburger" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button><button class="icon-button mobile-account" type="button" aria-label="${userTitle} — Minha conta">${icon('conta', 'header-action-icon')}</button></div>
       <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
       <div class="mobile-main__right"><button class="icon-button search-toggle" type="button" data-toggle-search aria-label="${state.searchOpen ? 'Fechar busca' : 'Abrir busca'}" aria-expanded="${state.searchOpen}" aria-controls="mobile-search-row"><span class="search__icon"></span></button><button class="icon-button cart-button" type="button" aria-label="Carrinho com zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span></button></div></div>
-      <button class="mobile-location" type="button" aria-label="Alterar local de entrega">${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button>
+      <button class="mobile-location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button>
       ${state.searchOpen ? `<div id="mobile-search-row" class="mobile-search-row">${renderSearch('mobile')}</div>` : ''}
       ${state.searchDropdown ? renderSearchDropdown() : ''}
     </div>`;
@@ -199,8 +202,128 @@
 
   function renderDrawer() {
     const userTitle = state.loggedIn ? 'Olá, Phaison' : 'Entrar';
-    const location = state.regionalized ? '<span>Entregar em:</span> <strong>32604-540 - Betim</strong>' : '<span>Informe seu</span> <strong>CEP</strong>';
-    return `<div class="drawer-header"><div class="drawer-user">${icon('conta', 'header-action-icon')}<span><strong>${userTitle}</strong><small>Minha conta ${chevron('down')}</small></span><a class="sac-chip" href="#" data-pending-link>${assetImg('icon','whatsapp')} SAC</a></div><button class="drawer-location" type="button">${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button></div><div class="drawer-view-header">${renderDrawerViewHeader()}</div><div class="drawer-body">${renderDrawerTrack()}</div>`;
+    const location = mobileLocationMarkup();
+    return `<div class="drawer-header"><div class="drawer-user">${icon('conta', 'header-action-icon')}<span><strong>${userTitle}</strong><small>Minha conta ${chevron('down')}</small></span><a class="sac-chip" href="#" data-pending-link>${assetImg('icon','whatsapp')} SAC</a></div><button class="drawer-location" type="button" data-open-regionalization>${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button></div><div class="drawer-view-header">${renderDrawerViewHeader()}</div><div class="drawer-body">${renderDrawerTrack()}</div>`;
+  }
+
+  function desktopLocationMarkup() {
+    return state.regionalized
+      ? `<span><small>Entregar em:</small><strong>${state.delivery.cep} - ${state.delivery.city}</strong></span>`
+      : '<span class="location-prompt">Informe seu CEP</span>';
+  }
+
+  function mobileLocationMarkup() {
+    return state.regionalized
+      ? `<span>Entregar em:</span> <strong>${state.delivery.cep} - ${state.delivery.city}</strong>`
+      : '<strong>Informe seu CEP</strong>';
+  }
+
+  function renderRegionalization() {
+    if (!state.regionalizationOpen) return '';
+    const valid = isValidCep(state.regionalizationValue);
+    return `<div class="regionalization-layer" data-regionalization-layer>
+      <div class="regionalization-backdrop" data-close-regionalization></div>
+      <section class="regionalization-dialog" role="dialog" aria-modal="true" aria-labelledby="regionalization-title" aria-describedby="regionalization-help" tabindex="-1">
+        <div class="regionalization-pin" aria-hidden="true"><svg viewBox="0 0 32 40"><path d="M16 38S3 25.1 3 14.8C3 7.7 8.8 2 16 2s13 5.7 13 12.8C29 25.1 16 38 16 38Z"/><circle cx="16" cy="14.5" r="4"/></svg></div>
+        <h2 id="regionalization-title">Seu CEP determina as ofertas e os<br>prazos disponíveis para a sua região.</h2>
+        <p id="regionalization-help" class="sr-only">Digite um CEP com oito números para definir sua região.</p>
+        <form class="regionalization-form" novalidate>
+          <div class="cep-field ${state.regionalizationError ? 'has-error' : ''}">
+            <input id="regionalization-cep" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="Informe seu CEP" value="${state.regionalizationValue}" aria-describedby="cep-error" aria-invalid="${Boolean(state.regionalizationError)}">
+            <button class="cep-clear" type="button" data-delete-cep aria-label="Apagar último dígito do CEP" ${state.regionalizationValue ? '' : 'hidden'}><svg viewBox="0 0 24 18" aria-hidden="true"><path d="M8 2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8L2 9l6-7Z"/><path d="m12 6 5 6m0-6-5 6"/></svg></button>
+          </div>
+          <p id="cep-error" class="cep-error" aria-live="polite">${state.regionalizationError}</p>
+          <div class="regionalization-actions">
+            <button class="regionalization-submit" type="submit" ${valid ? '' : 'disabled'}>Ver produtos</button>
+            <button class="regionalization-close" type="button" data-close-regionalization>Fechar</button>
+          </div>
+        </form>
+      </section>
+    </div>`;
+  }
+
+  function formatCep(value) {
+    const digits = String(value).replace(/\D/g, '').slice(0, 8);
+    return digits.length > 5 ? `${digits.slice(0, 5)}-${digits.slice(5)}` : digits;
+  }
+
+  function isValidCep(value) {
+    const digits = String(value).replace(/\D/g, '');
+    return digits.length === 8 && !/^(\d)\1{7}$/.test(digits);
+  }
+
+  function openRegionalization(opener) {
+    state.regionalizationOpener = opener || document.activeElement;
+    state.regionalizationOpen = true;
+    state.regionalizationError = '';
+    state.regionalizationValue = state.regionalized ? state.delivery.cep : '';
+    if (state.drawerOpen) { state.drawerOpen = false; state.drawerPreviousHtml = ''; }
+    render();
+    requestAnimationFrame(() => document.getElementById('regionalization-cep')?.focus({ preventScroll: true }));
+  }
+
+  function closeRegionalization() {
+    const layer = document.querySelector('[data-regionalization-layer]');
+    const finish = () => {
+      state.regionalizationOpen = false;
+      const opener = state.regionalizationOpener;
+      state.regionalizationOpener = null;
+      render();
+      requestAnimationFrame(() => opener?.isConnected && opener.focus({ preventScroll: true }));
+    };
+    if (!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
+    layer.classList.add('is-closing');
+    window.setTimeout(finish, 220);
+  }
+
+  function bindRegionalizationEvents() {
+    document.querySelectorAll('[data-open-regionalization]').forEach(button => button.addEventListener('click', () => openRegionalization(button)));
+    const layer = document.querySelector('[data-regionalization-layer]');
+    if (!layer) return;
+    const input = layer.querySelector('#regionalization-cep');
+    const submit = layer.querySelector('.regionalization-submit');
+    const deleteDigit = layer.querySelector('[data-delete-cep]');
+    const error = layer.querySelector('.cep-error');
+    layer.querySelectorAll('[data-close-regionalization]').forEach(button => button.addEventListener('click', closeRegionalization));
+    input.addEventListener('input', () => {
+      const next = formatCep(input.value);
+      input.value = next;
+      state.regionalizationValue = next;
+      state.regionalizationError = '';
+      input.setAttribute('aria-invalid', 'false');
+      input.closest('.cep-field').classList.remove('has-error');
+      error.textContent = '';
+      submit.disabled = !isValidCep(next);
+      deleteDigit.hidden = !next;
+    });
+    deleteDigit.addEventListener('click', () => {
+      const digits = input.value.replace(/\D/g, '').slice(0, -1);
+      const next = formatCep(digits);
+      state.regionalizationValue = next;
+      state.regionalizationError = '';
+      input.value = next;
+      input.setAttribute('aria-invalid', 'false');
+      input.closest('.cep-field').classList.remove('has-error');
+      error.textContent = '';
+      submit.disabled = !isValidCep(next);
+      deleteDigit.hidden = !next;
+      input.focus();
+    });
+    layer.querySelector('form').addEventListener('submit', event => {
+      event.preventDefault();
+      if (!isValidCep(input.value)) {
+        state.regionalizationError = 'Digite um CEP válido com 8 números.';
+        input.setAttribute('aria-invalid', 'true');
+        input.closest('.cep-field').classList.add('has-error');
+        error.textContent = state.regionalizationError;
+        input.focus();
+        return;
+      }
+      const digits = input.value.replace(/\D/g, '');
+      state.delivery = { cep: formatCep(digits), city: cepCities[digits] || 'Sua região' };
+      state.regionalized = true;
+      closeRegionalization();
+    });
   }
 
   function renderDrawerTrack() {
@@ -217,11 +340,11 @@
     if (state.drawerLevel === 'department') title = (state.drawerId === data.principal.id ? data.principal : data.departments.find(item => item.id === state.drawerId))?.label || 'Categorias';
     if (state.drawerLevel === 'environment') title = data.environments.find(item => item.id === state.drawerId)?.label || 'Ambiente';
     if (state.drawerLevel === 'category') title = state.drawerCategory?.label || 'Subcategoria';
-    return `<div class="drawer-title">${state.drawerLevel === 'root' ? '' : `<button type="button" data-drawer-back aria-label="Voltar">${chevron('left')}</button>`}<h2 id="drawer-view-title" tabindex="-1">${title}</h2></div>`;
+    return `<div class="drawer-title ${state.drawerLevel === 'root' ? 'drawer-title--root' : ''}">${state.drawerLevel === 'root' ? '' : `<button type="button" data-drawer-back aria-label="Voltar">${chevron('left')}</button>`}<h2 id="drawer-view-title" tabindex="-1">${title}</h2></div>`;
   }
 
   function renderDrawerFooter() {
-    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">Conte com a ABC</span><p>Do primeiro passo ao último acabamento.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span><span class="category-card__arrow">${chevron('right')}</span></a>`).join('')}</nav><div class="drawer-footer__signature">${assetImg('logo','abc')}<span>Mais perto da sua obra.<small>Preview Header / Menu 2026</small></span></div></footer>`;
+    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">Conte com a ABC</span><p>Continue com a ABC, a maior especialista em acabamentos do Brasil.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span><span class="category-card__arrow">${chevron('right')}</span></a>`).join('')}</nav></footer><footer class="drawer-footer__legal">${assetImg('logo','mysa')}<div><small>MYSA S/A · CNPJ: 38.542.718/0052-22</small><small>Todos os direitos reservados 2026.</small><small>Preços e condições exclusivos para abcdaconstrucao.com.br</small></div></footer>`;
   }
 
   function renderDrawerLevel() {
@@ -235,22 +358,26 @@
   }
 
   function renderDrawerRoot() {
-    return renderMobileAccordion(data.principal, renderMobileCategoryOptions(data.principal, 'department')) +
+    return renderMobileAccordion(data.principal, renderMobileCategoryOptions(data.principal, 'department'), data.principal.id, 'root') +
       data.navigation.map(item => {
-        if (item.menu === 'departments') return renderMobileAccordion(item, renderDepartmentOptions(), 'nav-' + item.id);
-        if (item.menu === 'environments') return renderMobileAccordion(item, renderEnvironmentOptions(), 'nav-' + item.id);
+        if (item.menu === 'departments') return renderMobileAccordion(item, renderDepartmentOptions(), 'nav-' + item.id, 'root');
+        if (item.menu === 'environments') return renderMobileAccordion(item, renderEnvironmentOptions(), 'nav-' + item.id, 'root');
         if (item.menu === 'department') {
           const department = data.departments.find(entry => entry.id === item.departmentId);
-          return renderMobileAccordion(item, renderMobileCategoryOptions(department, 'department'), 'nav-' + item.id);
+          return renderMobileAccordion(item, renderMobileCategoryOptions(department, 'department'), 'nav-' + item.id, 'root');
         }
-        return renderMobileAccordion(item, '<p class="drawer-accordion__hint">Ofertas para a próxima etapa da sua obra.</p><a class="drawer-option" href="#" data-pending-link>Ver cupons disponíveis<span class="category-card__arrow">' + chevron('right') + '</span></a>');
+        return renderMobileAccordion(item, '<p class="drawer-accordion__hint">Ofertas para a próxima etapa da sua obra.</p><a class="drawer-option" href="#" data-pending-link>Ver cupons disponíveis<span class="category-card__arrow">' + chevron('right') + '</span></a>', item.id, 'root');
       }).join('') +
       '<a class="drawer-sale" href="#" data-pending-link><span class="sale-pill">Saldão de Ofertas <span aria-hidden="true">🔥</span></span></a>';
   }
 
-  function renderMobileAccordion(item, content, key = item.id) {
-    const expanded = state.drawerExpanded.has(key);
-    return '<section class="drawer-accordion ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger" type="button" data-drawer-accordion="' + key + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos')) + '<span>' + item.label + '</span>' + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
+  function renderMobileAccordion(item, content, key = item.id, group = 'root') {
+    const expanded = state.drawerExpanded.get(group) === key;
+    const principalClass = item.id === data.principal.id ? ' drawer-accordion__trigger--principal' : '';
+    const environmentClass = item.imageId ? ' drawer-accordion__trigger--environment' : '';
+    const sectionClass = item.imageId ? ' drawer-accordion--environment' : '';
+    const label = item.imageId ? '' : '<span>' + item.label + '</span>';
+    return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button" data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos')) + label + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
   }
 
   function drawerOption(label, artwork, attributes) {
@@ -271,11 +398,11 @@
   }
 
   function renderDrawerDepartments() {
-    return data.departments.map(item => renderMobileAccordion({ ...item, iconId: item.iconId || featuredCategories(item)[0]?.[1] }, renderMobileCategoryOptions(item, 'department'), 'department-' + item.id)).join('');
+    return data.departments.map(item => renderMobileAccordion({ ...item, iconId: item.iconId || featuredCategories(item)[0]?.[1] }, renderMobileCategoryOptions(item, 'department'), 'department-' + item.id, 'departments')).join('');
   }
 
   function renderDrawerEnvironments() {
-    return data.environments.map(item => renderMobileAccordion({ ...item, iconId: item.iconId }, renderMobileCategoryOptions(item, 'environment'), 'environment-' + item.id)).join('');
+    return data.environments.map(item => renderMobileAccordion({ ...item, iconId: item.iconId }, renderMobileCategoryOptions(item, 'environment'), 'environment-' + item.id, 'environments')).join('');
   }
 
   function renderDrawerEnvironmentDetail() {
@@ -315,6 +442,7 @@
     bindDesktopMenuEvents();
     bindScrollFades();
     bindDesktopSearchEvents();
+    bindRegionalizationEvents();
     document.querySelectorAll('[data-search-input]').forEach(input => { input.addEventListener('input', () => { if (!desktopQuery.matches) { state.searchDropdown = input.value.trim().length > 0; render(); requestAnimationFrame(() => { const next = document.querySelector('[data-search-input]'); if (next) { next.focus(); next.value = input.value; next.setSelectionRange(next.value.length, next.value.length); } }); } }); input.addEventListener('focus', () => { if (!desktopQuery.matches && input.value.trim()) { state.searchDropdown = true; render(); } }); });
     const searchToggle = document.querySelector('[data-toggle-search]');
     if (searchToggle) searchToggle.addEventListener('click', () => { state.searchOpen = !state.searchOpen; state.searchDropdown = false; render(); if (state.searchOpen) requestAnimationFrame(() => document.querySelector('[data-search-input]')?.focus()); });
@@ -379,11 +507,26 @@
     currentPanel?.querySelectorAll('[data-drawer-accordion]').forEach(button => button.addEventListener('click', () => {
       if (state.drawerBusy) return;
       const id = button.dataset.drawerAccordion;
-      const expanded = !state.drawerExpanded.has(id);
-      expanded ? state.drawerExpanded.add(id) : state.drawerExpanded.delete(id);
-      button.closest('.drawer-accordion').classList.toggle('is-expanded', expanded);
+      const group = button.dataset.drawerGroup;
+      const expanded = state.drawerExpanded.get(group) !== id;
+      const accordion = button.closest('.drawer-accordion');
+      // Find peers by their semantic group, so exclusivity does not depend on wrapper markup.
+      if (expanded) {
+        currentPanel.querySelectorAll(`[data-drawer-group="${CSS.escape(group)}"]`).forEach(peer => {
+          if (peer === button) return;
+          const sibling = peer.closest('.drawer-accordion');
+          sibling.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
+            state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
+            descendantTrigger.setAttribute('aria-expanded', 'false');
+          });
+          sibling.querySelectorAll('.drawer-accordion').forEach(descendant => descendant.classList.remove('is-expanded'));
+          sibling.querySelectorAll('.drawer-accordion__content').forEach(content => content.setAttribute('inert', ''));
+        });
+      }
+      expanded ? state.drawerExpanded.set(group, id) : state.drawerExpanded.delete(group);
+      accordion.classList.toggle('is-expanded', expanded);
       button.setAttribute('aria-expanded', String(expanded));
-      button.closest('.drawer-accordion').querySelector('.drawer-accordion__content').toggleAttribute('inert', !expanded);
+      accordion.querySelector(':scope > .drawer-accordion__content').toggleAttribute('inert', !expanded);
     }));
     clearDrawerAnimationArtifacts();
   }
@@ -578,10 +721,11 @@
   }
 
   function syncDocumentLock() {
-    document.body.classList.toggle('is-locked', state.drawerOpen);
+    document.body.classList.toggle('is-locked', state.drawerOpen || state.regionalizationOpen);
     const main = document.getElementById('conteudo');
     const siteHeader = document.getElementById('site-header');
-    if ('inert' in main) { main.inert = state.drawerOpen; siteHeader.inert = state.drawerOpen; }
+    const pageBlocked = state.drawerOpen || state.regionalizationOpen;
+    if ('inert' in main) { main.inert = pageBlocked; siteHeader.inert = pageBlocked; menuRoot.inert = state.regionalizationOpen; }
   }
 
   function assetImg(group, id) { return `<img src="${data.assetRegistry[group][id]}" alt="">`; }
@@ -592,6 +736,18 @@
   });
 
   document.addEventListener('keydown', event => {
+    if (state.regionalizationOpen) {
+      const dialog = document.querySelector('.regionalization-dialog');
+      if (event.key === 'Escape') { event.preventDefault(); closeRegionalization(); return; }
+      if (event.key === 'Tab' && dialog) {
+        const focusable = [...dialog.querySelectorAll('button:not([disabled]):not([hidden]), input, [href], [tabindex="0"]')].filter(element => element.getClientRects().length);
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+      return;
+    }
     if (event.key === 'Tab' && state.drawerOpen) {
       const layer = document.querySelector('.drawer-layer');
       const focusable = [...layer.querySelectorAll('button, a[href], input, [tabindex="0"]')].filter(element => !element.closest('[inert]') && element.getClientRects().length);
@@ -622,7 +778,8 @@
 
   const params = new URLSearchParams(location.search);
   state.loggedIn = params.get('logged') !== '0';
-  state.regionalized = params.get('regionalized') !== '0';
+  state.regionalized = params.get('regionalized') === '1';
+  state.regionalizationOpen = params.get('regionalization') !== 'closed';
   if (params.get('search') === 'open') { state.searchOpen = true; state.desktopSearchOpen = true; }
   if (params.get('search') === 'dropdown') { state.searchOpen = true; state.searchDropdown = true; state.desktopSearchOpen = true; }
   if (params.get('menu')) state.desktopMenu = params.get('menu');
@@ -636,4 +793,5 @@
     else { state.drawerLevel = data.environments.some(item => item.id === drawer) ? 'environment' : 'department'; state.drawerId = drawer; }
   }
   render();
+  if (state.regionalizationOpen) requestAnimationFrame(() => document.getElementById('regionalization-cep')?.focus({ preventScroll: true }));
 })();

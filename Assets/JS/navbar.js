@@ -2,6 +2,215 @@ const menuOffcanvasCloseTimers = new WeakMap();
 let menuOffcanvasFallbackReady = false;
 let lastMenuOffcanvasActivationAt = 0;
 
+function search(e, term) {
+  if (e) e.preventDefault();
+
+  let query = term;
+  if (!term) {
+    const searchBarDesktop = document.getElementById("search-bar");
+    const searchBarMobile = document.getElementById("search-bar-mobile");
+
+    if (e && e.target.closest(".barra-busca-mobile")) {
+      query = searchBarMobile.value;
+    } else {
+      query = searchBarDesktop.value;
+    }
+  }
+
+  if (!query) return false;
+
+  let searchPage =
+    document.location.protocol +
+    "//" +
+    document.location.host +
+    "/busca?busca=" +
+    query;
+
+  document.location.href = searchPage;
+  return false;
+}
+
+function toggleSearchAccordion() {
+  const accordion = document.querySelector(".accordion-busca");
+  if (accordion) {
+    if (!accordion.classList.contains("collapsed")) {
+      const searchInput = document.getElementById("search-bar");
+      if (searchInput && document.activeElement === searchInput) {
+        return;
+      }
+    }
+
+    accordion.classList.toggle("collapsed");
+
+    if (!accordion.classList.contains("collapsed")) {
+      setTimeout(() => {
+        const searchInput = document.getElementById("search-bar");
+        if (searchInput) searchInput.focus();
+
+        const autocompleteList = document.getElementById("autocomplete-list");
+        if (autocompleteList && autocompleteList.innerHTML.trim() !== "") {
+          const autocompleteContainer = document.querySelector(".autocomplete");
+          if (autocompleteContainer) {
+            autocompleteContainer.style.display = "block";
+          }
+        }
+      }, 300);
+    }
+  }
+}
+
+function toggleSearchAccordionMobile() {
+  const containerMobile = document.querySelector(".mobile-search-container");
+  const accordion = document.querySelector(".accordion-busca-mobile");
+  if (accordion) {
+    if (!accordion.classList.contains("collapsed")) {
+      const searchInput = document.getElementById("search-bar-mobile");
+      if (searchInput && document.activeElement === searchInput) {
+        return;
+      }
+    }
+
+    if (accordion.classList.contains("collapsed")) {
+      if (containerMobile) containerMobile.classList.remove("collapsed");
+      accordion.classList.remove("collapsed");
+
+      setTimeout(() => {
+        const searchInput = document.getElementById("search-bar-mobile");
+        if (searchInput) searchInput.focus();
+
+        const autocompleteList = document.getElementById(
+          "autocomplete-list-mobile"
+        );
+        if (autocompleteList && autocompleteList.innerHTML.trim() !== "") {
+          const autocompleteContainer =
+            accordion.querySelector(".autocomplete");
+          if (autocompleteContainer) {
+            autocompleteContainer.style.display = "block";
+          }
+        }
+      }, 300);
+    } else {
+      if (containerMobile) containerMobile.classList.add("collapsed");
+      accordion.classList.add("collapsed");
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchBarDesktop = document.getElementById("search-bar");
+  if (searchBarDesktop) {
+    autocomplete(searchBarDesktop);
+  }
+
+  const searchBarMobile = document.getElementById("search-bar-mobile");
+  if (searchBarMobile) {
+    autocomplete(searchBarMobile);
+  }
+
+  const searchInput = document.getElementById("search-bar");
+  if (searchInput) {
+    searchInput.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  }
+
+  const searchInputMobile = document.getElementById("search-bar-mobile");
+  if (searchInputMobile) {
+    searchInputMobile.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  }
+
+  document.addEventListener("click", function (event) {
+    const accordion = document.querySelector(".accordion-busca");
+    const barraBusca = document.querySelector(".barra-busca");
+    const autocompleteList = document.getElementById("autocomplete-list");
+
+    if (autocompleteList && autocompleteList.contains(event.target)) {
+      return;
+    }
+
+    if (event.target === barraBusca) {
+      return;
+    }
+
+    const searchInput = document.getElementById("search-bar");
+    if (searchInput && searchInput === event.target) {
+      return;
+    }
+
+    if (accordion && !accordion.classList.contains("collapsed")) {
+      if (!barraBusca.contains(event.target)) {
+        accordion.classList.add("collapsed");
+      }
+    }
+
+    const containerMobile = document.querySelector(".mobile-search-container");
+    const accordionMobile = document.querySelector(".accordion-busca-mobile");
+    const barraBuscaMobile = document.querySelector(".barra-busca-mobile");
+    const autocompleteListMobile = document.getElementById(
+      "autocomplete-list-mobile"
+    );
+
+    if (
+      autocompleteListMobile &&
+      autocompleteListMobile.contains(event.target)
+    ) {
+      return;
+    }
+
+    if (event.target === barraBuscaMobile) {
+      return;
+    }
+
+    const searchInputMobile = document.getElementById("search-bar-mobile");
+    if (searchInputMobile && searchInputMobile === event.target) {
+      return;
+    }
+
+    if (containerMobile && !containerMobile.classList.contains("collapsed")) {
+      if (
+        !containerMobile.contains(event.target) &&
+        !barraBuscaMobile.contains(event.target)
+      ) {
+        containerMobile.classList.add("collapsed");
+        accordionMobile.classList.add("collapsed");
+      }
+    }
+  });
+});
+
+async function renderAutocompleteSnippet(val, isMobile = false) {
+  const listId = isMobile ? "autocomplete-list-mobile" : "autocomplete-list";
+  const autocompleteContainer = isMobile
+    ? document.querySelector(".accordion-busca-mobile .autocomplete")
+    : document.querySelector(".accordion-busca .autocomplete");
+
+  if (!val || val.trim() === "") {
+    replaceInnerHtml("", listId);
+    // Não ocultar o container quando o valor estiver vazio
+    return false;
+  }
+
+  const response = await client.snippet.render(
+    "autocomplete_snippet.html",
+    "SnippetQueries/autocomplete.graphql",
+    {
+      query: val,
+    }
+  );
+
+  replaceInnerHtml(response, listId);
+
+  const autocompleteList = document.getElementById(listId);
+  if (autocompleteList && autocompleteList.innerHTML.trim() !== "") {
+    if (autocompleteContainer) {
+      autocompleteContainer.style.display = "block";
+    }
+  }
+}
+
+
 function runNavbarWhenDomReady(callback) {
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", callback, { once: true });
@@ -151,26 +360,6 @@ function search(e, term) {
 
     document.location.href = searchPage;
     return false;
-}
-
-/**
- * Load and render the autocomplete snippet
- * @param {string} val - The input text to search for autocompletion
- */
-async function renderAutocompleteSnippet(val) {
-    if (!val) {
-        replaceInnerHtml("", "autocomplete-list");
-        return false;
-    }
-
-    const response = await client.snippet.render(
-        "autocomplete_snippet.html",
-        "SnippetQueries/autocomplete.graphql",
-        {
-            query: val,
-        }
-    );
-    replaceInnerHtml(response, "autocomplete-list");
 }
 
 /**

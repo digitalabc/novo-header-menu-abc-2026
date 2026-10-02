@@ -1,39 +1,116 @@
 {{~ ##
-    Description: Renders nav item with links for all categories
-    Params:
-        - categories: category being rendered
-        - level: the current level being rendered
-    Usage:
-        nav_all_item categories: categories level: level
+Description: Renders nav item with links for all categories
+Params:
+- categories: category being rendered
+- level: the current level being rendered
+Usage:
+nav_all_item categories: categories level: level
 ## ~}}
 
 {{~ nextLevel = level + 1 ~}}
-{{~ category_name = category.name | string.downcase | string.capitalize ~}}
-{{~ if category.name && (category.name | string.downcase) == "pisos e revestimentos" ~}}
-  {{~ category_name = "Pisos | Revestimentos" ~}}
-{{~ end ~}}
 
-<li class="nav-all__item nav-all__item--nv{{level}}" {{if category.position > 0}}style="order: {{category.position}}"{{else}}style="order: 99"{{end}}>
-  <a href="/{{ category.hotsite_url }}" class="nav-all__link nav-all__link--nv{{ level }}" >{{ category_name }}</a>
+<li class="nav-all__item nav-all__item--nv{{level}}__v2" {{if category.position> 0}}style="order:
+  {{category.position}}"{{else}}style="order: 99"{{end}}>
+  <a href="/{{ category.hotsite_url }}" class="nav-all__link nav-all__link--nv{{ level }}__v2">{{ category.name |
+    string.downcase | string.capitalize }}</a>
   {{~ if category.children ~}}
-    {{~ if level < max_level ~}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="4.943" height="8" viewBox="0 0 4.943 8">
-      <path id="Path_175" data-name="Path 175" d="M7.057,48.907,4,51.964.943,48.907,0,49.85l4,4,4-4Z" transform="translate(-48.907 8) rotate(-90)"/>
+  {{~ if level < max_level ~}} <svg xmlns="http://www.w3.org/2000/svg" width="4.943" height="8" viewBox="0 0 4.943 8">
+    <path id="Path_175" data-name="Path 175" d="M7.057,48.907,4,51.964.943,48.907,0,49.85l4,4,4-4Z"
+      transform="translate(-48.907 8) rotate(-90)" />
     </svg>
     {{ end }}
-      <div class="nav-all__dropdown nav-all__dropdown--nv{{level}}">
-      {{~ if level == 1 ~}}
-        <div class="nav-all__title">
-          {{ category_name }}
-        </div>
-      {{~ end ~}}
-      {{~ if level < max_level ~}}
-        <ul class="nav-all__list nav-all__list--nv{{level}}">
-          {{~ for child in category.children | array.sort "name" ~}}
-            {{ nav_item_all category: child level: nextLevel max_level: 2}}
+    <div class="nav-all__dropdown nav-all__dropdown--nv{{level}}__v2">
+      <div class="dropdown__menu_container_v2">
+        <div class="dropdown__menu_item_v2">
+          <p>Destaques</p>
+          {{~ if level == 1 ~}}
+          <!-- <div class="nav-all__title"> -->
+          {{## category.name | string.downcase | string.capitalize ##}}
+          <!-- </div> -->
           {{~ end ~}}
-        </ul>
-      {{~ end ~}}
+          {{~ if level < max_level ~}} <ul class="nav-all__list nav-all__list--nv{{level}}__v2">
+            {{~ children__ = category.children | array.sort "name" | array.limit 5 ~}}
+            {{~ for child in children__ ~}}
+<li>
+  <a href="/{{ child.hotsite_url }}" class="">{{ child.name | string.downcase | string.capitalize }}</a>
+</li>
+{{## nav_item_all category: child level: nextLevel max_level: 2 ##}}
+{{~ end ~}}
+<li>
+  <a href="/{{ category.hotsite_url }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+      <path d="M5 6L8 3L5 0L4.3 0.725L6.075 2.5H0V3.5H6.075L4.3 5.275L5 6Z" fill="#333333" />
+    </svg>
+    Ver mais
+  </a>
+</li>
+</ul>
+{{~ end ~}}
+</div>
+<div class="dropdown__menu_item_v2">
+  <p>Promoções em Destaque</p>
+  <div class="feature_promotions">
+    <div class="feature_promotions__column">
+      <a href="https://www.abcdaconstrucao.com.br/selecao-metais" class="feature_promotions__link">
+        <img
+          class="feature_promotions__image"
+          src="{{- store.urls.static_img}}menu-v2/banners-news/linha-de-metais.png?theme={{store.theme -}}&v={{store.last_modified}}"
+          alt="Destaque Linha de Mtais">
+      </a>
+      <a href="https://www.abcdaconstrucao.com.br/utilidades-domesticas" class="feature_promotions__link">
+        <img
+          class="feature_promotions__image"
+          src="{{- store.urls.static_img}}menu-v2/banners-news/tudo-para-sua-casa.png?theme={{store.theme -}}&v={{store.last_modified}}"
+          alt="Destaque Tudo para sua casa">
+      </a>
     </div>
-  {{~ end ~}}
+    <a href="https://www.abcdaconstrucao.com.br/iluminacao" class="feature_promotions__link feature_promotions__link--large">
+      <img
+        class="feature_promotions__image"
+        src="{{- store.urls.static_img}}menu-v2/banners-news/iluminacao.png?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Destaque Iluminação">
+    </a>
+  </div>
+</div>
+<div class="dropdown__menu_item_v2">
+  <p>Principais Marcas</p>
+  <div class="main_brands_v2">
+    <a href="{{- store.urls.base}}/fabricante/Docol"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/1-Docol.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Docol"></a>
+    <a href="{{- store.urls.base}}/fabricante/Deca"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/2-Deca.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Deca"></a>
+    <a href="{{- store.urls.base}}/fabricante/Roca"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/3-Roca.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Roca"></a>
+    <a href="{{- store.urls.base}}/fabricante/Celite"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/4-Celite.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Celite"></a>
+    <a href="{{- store.urls.base}}/fabricante/Tramontina"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/5-Tramontina.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Tramontina"></a>
+    <a href="{{- store.urls.base}}/fabricante/Lorenzetti"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/6-Lorenzetti.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Lorenzetti"></a>
+    <a href="{{- store.urls.base}}/fabricante/Coral"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/7-Coral.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Coral"></a>
+    <a href="{{- store.urls.base}}/fabricante/Fani Metais"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/8-Fani.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Fani Metais"></a>
+    <a href="{{- store.urls.base}}/fabricante/Quartzolit"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/9-Quartzolit.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Quartzolit"></a>
+    <a href="{{- store.urls.base}}/fabricante/Acqualimp"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/10-Acqualimp.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Acqualimp"></a>
+    <a href="{{- store.urls.base}}/fabricante/Komeco"><img
+        src="{{- store.urls.static_img}}menu-v2/marcas/11-Komeco.svg?theme={{store.theme -}}&v={{store.last_modified}}"
+        alt="Komeco"></a>
+  </div>
+</div>
+</div>
+</div>
+{{~ end ~}}
 </li>

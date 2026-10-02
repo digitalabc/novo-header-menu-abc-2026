@@ -20,8 +20,7 @@
   body header .nav-link,
   body header .navbar__lojas,
   body header .user,
-  body header .user__links,
-  body header .minicart__title {
+  body header .user__links {
     color: #a8a8a8 !important;
   }
 
@@ -47,28 +46,10 @@ body header svg rect {
   body header .navbar__lojas svg path,
   body header .navbar__lojas svg rect,
   body header .navbar__lojas svg circle,
-  body header .user__header svg path,
-  body header .user__header svg rect,
-  body header .user__header svg circle,
-  body header .minicart__button svg path,
-  body header .minicart__button svg rect,
-  body header .minicart__button svg circle,
-  body header .nav-all__item--root svg path,
-  body header .nav-all__item--root svg rect,
-  body header .nav-all__item--root svg circle,
   body header .nav-all__trigger svg path,
   body header .nav-all__trigger svg rect,
   body header .nav-all__trigger svg circle {
     fill: #d4af87 !important;
-  }
-
-  /* Menu "Todas as categorias" */
-  body header .nav-all__item--root {
-    color: #d4af87 !important;
-  }
-
-  body header .nav-all__item--root:hover {
-    color: #fff !important;
   }
 
   /* Dropdowns do header*/
@@ -102,120 +83,6 @@ body header svg rect {
   /* Títulos dos dropdowns de categorias */
   body header .nav-all__title {
     color: #d4af87 !important;
-  }
-
-  /* Hover dos itens da coluna esquerda do dropdown "Todas as categorias" */
-  body header .nav-all__item--nv1:hover {
-    background: #a68b5f !important;
-    color: #fff !important;
-  }
-
-  body header .nav-all__item--nv1:hover svg path,
-  body header .nav-all__item--nv1:hover svg rect,
-  body header .nav-all__item--nv1:hover svg circle {
-    fill: #fff !important;
-  }
-
-  body header .nav-all__item--nv1:hover .nav-all__link--nv1,
-  body header .nav-all__item--nv1:hover .nav-all__link--nv1:hover {
-    color: #fff !important;
-  }
-
-  /* Campo de busca */
-  body header .navbar__search {
-    background-color: transparent !important;
-  }
-
-  body header .navbar__search .search__form {
-    background-color: #000 !important;
-    border: 2px solid #cbced27d !important;
-  }
-
-  body header .navbar__search .search__form input {
-    color: #a8a8a8 !important;
-    caret-color: #f0f0f0 !important;
-    background-color: transparent !important;
-    border: 0 !important;
-    border-bottom: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-    background-image: none !important;
-  }
-
-  body header .navbar__search .search__form input::placeholder {
-    color: #d0d0d0 !important;
-  }
-
-  body header .navbar__search .search__form input:focus {
-    border-bottom-color: transparent !important;
-  }
-
-  /* Ícone de lupa (::before e ::after) */
-  body header .navbar .navbar__search .search__form::before,
-  .navbar .navbar__search .search__form::before {
-    box-shadow: inset 0 0 0 2px #a68b5f !important;
-  }
-
-  body header .navbar__search .search__form::after {
-    background: #a68b5f !important;
-  }
-
-  body header .navbar__search .search__submit {
-    color: #a68b5f !important;
-    background: transparent !important;
-    border: 0 !important;
-  }
-
-  body header .navbar__search .search__submit svg path,
-  body header .navbar__search .search__submit svg rect,
-  body header .navbar__search .search__submit svg circle {
-    fill: #a68b5f !important;
-  }
-
-  /* Autocomplete da busca */
-  .autocomplete #autocomplete-list {
-    background: #000 !important;
-    border: 2px solid #664547 !important;
-    box-shadow: none !important;
-    color: #a8a8a8 !important;
-  }
-
-  .autocomplete #autocomplete-list:empty {
-    display: none !important;
-  }
-
-  body header .navbar__search .autocomplete #autocomplete-list a,
-  body header .navbar__search .autocomplete #autocomplete-list li,
-  body header .navbar__search .autocomplete #autocomplete-list div {
-    color: #a8a8a8 !important;
-    background: transparent !important;
-    border: 0 !important;
-  }
-
-  body header .navbar__search .autocomplete #autocomplete-list a:hover,
-  body header .navbar__search .autocomplete #autocomplete-list li:hover,
-  body header .navbar__search .autocomplete #autocomplete-list div:hover {
-    color: #fff !important;
-    background: #a68b5f !important;
-  }
-
-  body header .navbar__search .autocomplete #autocomplete-list a:hover p,
-  body header .navbar__search .autocomplete #autocomplete-list a:hover .autocomplete-price,
-  body header .navbar__search .autocomplete #autocomplete-list .autocomplete-item:hover p,
-  body header .navbar__search .autocomplete #autocomplete-list .autocomplete-item:hover .autocomplete-price,
-  body header .navbar__search .autocomplete #autocomplete-list .autocomplete-item>div:hover p,
-  body header .navbar__search .autocomplete #autocomplete-list .autocomplete-item>div:hover .autocomplete-price,
-  body header .navbar__search .autocomplete #autocomplete-list .product-suggestion:hover .title,
-  body header .navbar__search .autocomplete #autocomplete-list .product-suggestion:hover .price,
-  body header .navbar__search .autocomplete #autocomplete-list a:hover .title,
-  body header .navbar__search .autocomplete #autocomplete-list a:hover .price {
-    color: #fff !important;
-  }
-
-  body header .navbar__search .autocomplete #autocomplete-list .autocomplete-active,
-  body header .navbar__search .autocomplete #autocomplete-list .autocomplete-active div {
-    color: #fff !important;
-    background: #a68b5f !important;
   }
 
   /* Dropdown do usuário */
@@ -264,13 +131,6 @@ body header svg rect {
     color: #ff515f !important;
   }
 
-  /* Contador do carrinho */
-  .label-cart-count,
-  .minicart__button .label-cart-count,
-  .minicart__count.label-cart-count-formatted {
-    color: #fff !important;
-  }
-
   /* Menu mobile */
   .navbar__wrapper .nav-item--nv1:last-child>.nav-link {
     color: #5d5d5d;
@@ -284,10 +144,6 @@ body header svg rect {
   @media (max-width: 991px) {
     header .navbar__container {
       padding-block: 8px !important;
-    }
-
-    header .search__form {
-      margin-bottom: 8px !important;
     }
 
     header .navbar__search {

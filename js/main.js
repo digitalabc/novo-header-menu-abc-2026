@@ -518,6 +518,7 @@
             state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
             descendantTrigger.setAttribute('aria-expanded', 'false');
           });
+          openAccordion.classList.remove('is-expanded');
           openAccordion.querySelectorAll('.drawer-accordion').forEach(descendant => descendant.classList.remove('is-expanded'));
           openAccordion.querySelectorAll('.drawer-accordion__content').forEach(content => content.setAttribute('inert', ''));
         });

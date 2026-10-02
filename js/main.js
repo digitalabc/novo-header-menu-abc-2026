@@ -6,12 +6,13 @@
   const menuRoot = document.getElementById('menu-root');
   const regionalizationRoot = document.getElementById('regionalization-root');
   const desktopQuery = window.matchMedia('(min-width: 900px)');
-  const state = { desktopMenu: null, desktopSelection: 'principais-categorias', desktopAnimation: 'open', environment: 'banheiro', desktopSearchOpen: false, desktopSearchValue: '', searchOpen: false, searchDropdown: false, drawerOpen: false, drawerLevel: 'root', drawerId: null, drawerCategory: null, drawerHistory: [], drawerPreviousHtml: '', drawerPreviousScroll: 0, drawerDirection: 'forward', drawerExpanded: new Map([['root', 'principais-categorias']]), drawerBusy: false, loggedIn: true, regionalized: false, regionalizationOpen: true, regionalizationValue: '', regionalizationError: '', regionalizationOpener: null, delivery: { cep: '32604-540', city: 'Betim' }, opener: null };
+  const state = { desktopMenu: null, desktopSelection: 'principais-categorias', desktopAnimation: 'open', environment: 'banheiro', desktopSearchOpen: false, desktopSearchValue: '', searchOpen: false, searchDropdown: false, drawerOpen: false, drawerLevel: 'root', drawerId: null, drawerCategory: null, drawerHistory: [], drawerPreviousHtml: '', drawerPreviousScroll: 0, drawerDirection: 'forward', principalExpanded: true, drawerExpanded: new Map(), drawerBusy: false, loggedIn: true, regionalized: false, regionalizationOpen: true, regionalizationValue: '', regionalizationError: '', regionalizationOpener: null, delivery: { cep: '32604-540', city: 'Betim' }, opener: null };
   let desktopOpenTimer;
   let desktopCloseTimer;
   let desktopExitTimer;
   let desktopInteraction = 'pointer';
   let drawerAnimationTimer;
+  let drawerScrollSequence = 0;
   let scrollFadeObserver;
 
   const catalogIconIds = new Set(data.catalogIconIds);
@@ -373,7 +374,7 @@
 
   function renderMobileAccordion(item, content, key = item.id, group = 'root') {
     const isPrincipal = group === 'root' && key === data.principal.id;
-    const expanded = isPrincipal || state.drawerExpanded.get(group) === key;
+    const expanded = isPrincipal ? state.principalExpanded : state.drawerExpanded.get(group) === key;
     const principalClass = item.id === data.principal.id ? ' drawer-accordion__trigger--principal' : '';
     const environmentClass = item.imageId ? ' drawer-accordion__trigger--environment' : '';
     const sectionClass = item.imageId ? ' drawer-accordion--environment' : '';
@@ -496,6 +497,32 @@
     });
   }
 
+  function scrollToOpenedDrawerAccordion(button, closingContent, sequence) {
+    const body = button.closest('.drawer-body');
+    if (!body) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scroll = () => {
+      if (sequence !== drawerScrollSequence || !button.isConnected) return;
+      const top = body.scrollTop + button.getBoundingClientRect().top - body.getBoundingClientRect().top - 8;
+      body.scrollTo({ top: Math.max(0, top), behavior: reducedMotion ? 'instant' : 'smooth' });
+    };
+    if (!closingContent || reducedMotion) {
+      requestAnimationFrame(scroll);
+      return;
+    }
+    let timeout;
+    const finish = () => {
+      closingContent.removeEventListener('transitionend', onTransitionEnd);
+      clearTimeout(timeout);
+      scroll();
+    };
+    const onTransitionEnd = event => {
+      if (event.target === closingContent && event.propertyName === 'grid-template-rows') finish();
+    };
+    closingContent.addEventListener('transitionend', onTransitionEnd);
+    timeout = window.setTimeout(finish, 560);
+  }
+
   function bindDrawerPanelEvents() {
     const currentPanel = document.querySelector('.drawer-panel--current');
     currentPanel?.querySelectorAll('[data-drawer-level]').forEach(button => button.addEventListener('click', () => {
@@ -510,14 +537,25 @@
       const id = button.dataset.drawerAccordion;
       const group = button.dataset.drawerGroup;
       const isPrincipal = group === 'root' && id === data.principal.id;
-      if (isPrincipal) return;
-      const expanded = state.drawerExpanded.get(group) !== id;
       const accordion = button.closest('.drawer-accordion');
-      // Keep Principal Categories expanded. Every other trigger is exclusive within its menu level.
+      const content = accordion.querySelector(':scope > .drawer-accordion__content');
+      const sequence = ++drawerScrollSequence;
+      if (isPrincipal) {
+        state.principalExpanded = !state.principalExpanded;
+        accordion.classList.toggle('is-expanded', state.principalExpanded);
+        button.setAttribute('aria-expanded', String(state.principalExpanded));
+        content.toggleAttribute('inert', !state.principalExpanded);
+        if (state.principalExpanded) scrollToOpenedDrawerAccordion(button, null, sequence);
+        return;
+      }
+      const expanded = state.drawerExpanded.get(group) !== id;
+      let closingContent = null;
+      // Principal Categories opens and closes independently of the other menu groups.
       if (expanded) {
         [...currentPanel.querySelectorAll('[data-drawer-accordion]')].filter(peer => peer !== button && peer.dataset.drawerGroup === group && peer.dataset.drawerAccordion !== data.principal.id).forEach(peer => {
           const openAccordion = peer.closest('.drawer-accordion');
           if (!openAccordion.classList.contains('is-expanded')) return;
+          closingContent ||= openAccordion.querySelector(':scope > .drawer-accordion__content');
           openAccordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
             state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
             descendantTrigger.setAttribute('aria-expanded', 'false');
@@ -530,7 +568,8 @@
       expanded ? state.drawerExpanded.set(group, id) : state.drawerExpanded.delete(group);
       accordion.classList.toggle('is-expanded', expanded);
       button.setAttribute('aria-expanded', String(expanded));
-      accordion.querySelector(':scope > .drawer-accordion__content').toggleAttribute('inert', !expanded);
+      content.toggleAttribute('inert', !expanded);
+      if (expanded) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
     }));
     clearDrawerAnimationArtifacts();
   }

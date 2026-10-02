@@ -126,7 +126,7 @@
       <div class="mega-panel">
       ${item.bannerIds ? `<div class="mega-promos"><h2>Promoções em Destaque</h2><div>${item.bannerIds.slice(0, 2).map(promoBanner).join('')}</div></div>` : ''}
       <div class="mega-content ${item === data.principal ? 'mega-content--principal' : ''}"><h2>Categorias em destaque</h2><div class="category-scroll"><div class="category-grid">${featured.map(([label, iconId]) => categoryCard(label, iconId, item === data.principal)).join('')}</div></div>${moreLink(item)}</div>
-      <aside class="brand-panel"><h2>Marcas relacionadas:</h2><div class="brand-grid ${item === data.principal && !item.bannerIds?.length ? 'brand-grid--wide' : ''}">${brands.map(brandCard).join('')}</div></aside></div>`;
+      <aside class="brand-panel"><h2>Marcas</h2><div class="brand-grid ${item === data.principal && !item.bannerIds?.length ? 'brand-grid--wide' : ''}">${brands.map(brandCard).join('')}</div></aside></div>`;
   }
 
   function featuredCategories(item) {
@@ -416,7 +416,7 @@
     return '<div class="drawer-detail">' +
       (item.bannerIds ? '<section><h3>Promoções em destaque</h3><div class="drawer-banners">' + item.bannerIds.map(promoBanner).join('') + '</div></section>' : '') +
       '<section><h3>Categorias em destaque</h3><div class="drawer-category-list">' + renderMobileCategoryOptions(item, 'department') + '</div></section>' +
-      (brands.length ? '<section><h3>Marcas relacionadas</h3><div class="brand-grid">' + brands.map(brandCard).join('') + '</div></section>' : '') +
+      (brands.length ? '<section><h3>Marcas</h3><div class="brand-grid">' + brands.map(brandCard).join('') + '</div></section>' : '') +
       moreLink(item) + '</div>';
   }
 
@@ -510,17 +510,16 @@
       const group = button.dataset.drawerGroup;
       const expanded = state.drawerExpanded.get(group) !== id;
       const accordion = button.closest('.drawer-accordion');
-      // Find peers by their semantic group, so exclusivity does not depend on wrapper markup.
+      // An open path may include a parent and its selected child. Any other open branch collapses.
       if (expanded) {
-        currentPanel.querySelectorAll(`[data-drawer-group="${CSS.escape(group)}"]`).forEach(peer => {
-          if (peer === button) return;
-          const sibling = peer.closest('.drawer-accordion');
-          sibling.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
+        currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(openAccordion => {
+          if (openAccordion === accordion || openAccordion.contains(accordion) || !openAccordion.classList.contains('is-expanded')) return;
+          openAccordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
             state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
             descendantTrigger.setAttribute('aria-expanded', 'false');
           });
-          sibling.querySelectorAll('.drawer-accordion').forEach(descendant => descendant.classList.remove('is-expanded'));
-          sibling.querySelectorAll('.drawer-accordion__content').forEach(content => content.setAttribute('inert', ''));
+          openAccordion.querySelectorAll('.drawer-accordion').forEach(descendant => descendant.classList.remove('is-expanded'));
+          openAccordion.querySelectorAll('.drawer-accordion__content').forEach(content => content.setAttribute('inert', ''));
         });
       }
       expanded ? state.drawerExpanded.set(group, id) : state.drawerExpanded.delete(group);

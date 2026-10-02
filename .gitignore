@@ -1,0 +1,10 @@
+# Local tooling, credentials and test output are not part of the static preview.
+.codex/
+.env
+.env.*
+node_modules/
+tmp/
+test-results/
+*.log
+Thumbs.db
+.DS_Store

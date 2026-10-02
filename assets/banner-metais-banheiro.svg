@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382 282" role="img" aria-labelledby="title desc">
+  <title id="title">Metais para banheiro</title><desc id="desc">Seleção de metais para renovar o banheiro</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef2f5"/><stop offset="1" stop-color="#cfd7dc"/></linearGradient><linearGradient id="metal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#68757d"/><stop offset=".45" stop-color="#f8fafb"/><stop offset="1" stop-color="#87939a"/></linearGradient></defs>
+  <rect width="382" height="282" rx="16" fill="url(#bg)"/><circle cx="319" cy="53" r="86" fill="#fff" opacity=".58"/>
+  <path d="M246 68h65c18 0 32 14 32 32v28h-22v-25c0-8-6-14-14-14h-61z" fill="url(#metal)"/><rect x="228" y="57" width="30" height="88" rx="8" fill="url(#metal)"/><path d="M215 145h57l-10 36h-37z" fill="#9ba5ab"/>
+  <text x="28" y="46" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#e30613" letter-spacing="1.2">SELEÇÃO ESPECIAL</text><text x="28" y="83" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#30363a">Metais para</text><text x="28" y="113" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#30363a">banheiro</text><text x="28" y="147" font-family="Arial,sans-serif" font-size="15" fill="#596168">Design e funcionalidade</text><rect x="28" y="198" width="112" height="38" rx="19" fill="#e30613"/><text x="84" y="222" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#fff">CONFIRA</text>
+</svg>

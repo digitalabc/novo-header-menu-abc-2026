@@ -84,9 +84,6 @@ Allow: /
 User-agent: StoreBot-Google
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
 # Disallow all crawlers access to certain pages.
 
 User-agent: *

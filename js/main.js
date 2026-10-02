@@ -372,7 +372,8 @@
   }
 
   function renderMobileAccordion(item, content, key = item.id, group = 'root') {
-    const expanded = state.drawerExpanded.get(group) === key;
+    const isPrincipal = group === 'root' && key === data.principal.id;
+    const expanded = isPrincipal || state.drawerExpanded.get(group) === key;
     const principalClass = item.id === data.principal.id ? ' drawer-accordion__trigger--principal' : '';
     const environmentClass = item.imageId ? ' drawer-accordion__trigger--environment' : '';
     const sectionClass = item.imageId ? ' drawer-accordion--environment' : '';
@@ -508,12 +509,15 @@
       if (state.drawerBusy) return;
       const id = button.dataset.drawerAccordion;
       const group = button.dataset.drawerGroup;
+      const isPrincipal = group === 'root' && id === data.principal.id;
+      if (isPrincipal) return;
       const expanded = state.drawerExpanded.get(group) !== id;
       const accordion = button.closest('.drawer-accordion');
-      // An open path may include a parent and its selected child. Any other open branch collapses.
+      // Keep Principal Categories expanded. Every other trigger is exclusive within its menu level.
       if (expanded) {
-        currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(openAccordion => {
-          if (openAccordion === accordion || openAccordion.contains(accordion) || !openAccordion.classList.contains('is-expanded')) return;
+        [...currentPanel.querySelectorAll('[data-drawer-accordion]')].filter(peer => peer !== button && peer.dataset.drawerGroup === group && peer.dataset.drawerAccordion !== data.principal.id).forEach(peer => {
+          const openAccordion = peer.closest('.drawer-accordion');
+          if (!openAccordion.classList.contains('is-expanded')) return;
           openAccordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
             state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
             descendantTrigger.setAttribute('aria-expanded', 'false');

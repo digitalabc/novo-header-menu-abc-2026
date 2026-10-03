@@ -160,14 +160,14 @@
   };
 
   const environmentCopy = {
-    banheiro: { heading: 'Um cuidado a mais com você.', subtitle: 'Do banho à bancada, escolhas que facilitam o dia.', imagePosition: '50% 58%' },
-    cozinha: { heading: 'Onde as boas receitas começam.', subtitle: 'Praticidade para cozinhar e espaço para compartilhar.', imagePosition: '50% 52%' },
-    'sala-estar': { heading: 'Pode entrar. Fique à vontade.', subtitle: 'Luz, cores e texturas para uma sala com a sua cara.', imagePosition: '50% 58%' },
-    'sala-jantar': { heading: 'A conversa continua à mesa.', subtitle: 'Um lugar gostoso para reunir quem você gosta.', imagePosition: '50% 56%' },
-    quarto: { heading: 'Seu descanso merece esse carinho.', subtitle: 'Detalhes que ajudam a desacelerar no fim do dia.', imagePosition: '50% 58%' },
-    escritorio: { heading: 'Abra espaço para suas ideias.', subtitle: 'Conforto e organização para trabalhar no seu ritmo.', imagePosition: '50% 55%' },
-    'area-externa': { heading: 'Aproveite a casa do lado de fora.', subtitle: 'Do jardim ao churrasco, mais motivos para ficar.', imagePosition: '50% 54%' },
-    piscina: { heading: 'O próximo mergulho é aqui.', subtitle: 'Prepare seu cantinho de sol para os dias de lazer.', imagePosition: '50% 60%' }
+    banheiro: { heading: 'Um cuidado a mais com você.', subtitle: 'Do banho à bancada, escolhas que facilitam o dia.', imagePosition: '50% 68%' },
+    cozinha: { heading: 'Onde as boas receitas começam.', subtitle: 'Praticidade para cozinhar e espaço para compartilhar.', imagePosition: '50% 64%' },
+    'sala-estar': { heading: 'Pode entrar. Fique à vontade.', subtitle: 'Luz, cores e texturas para uma sala com a sua cara.', imagePosition: '50% 68%' },
+    'sala-jantar': { heading: 'A conversa continua à mesa.', subtitle: 'Um lugar gostoso para reunir quem você gosta.', imagePosition: '50% 66%' },
+    quarto: { heading: 'Seu descanso merece esse carinho.', subtitle: 'Detalhes que ajudam a desacelerar no fim do dia.', imagePosition: '50% 68%' },
+    escritorio: { heading: 'Abra espaço para suas ideias.', subtitle: 'Conforto e organização para trabalhar no seu ritmo.', imagePosition: '50% 65%' },
+    'area-externa': { heading: 'Aproveite a casa do lado de fora.', subtitle: 'Do jardim ao churrasco, mais motivos para ficar.', imagePosition: '50% 64%' },
+    piscina: { heading: 'O próximo mergulho é aqui.', subtitle: 'Prepare seu cantinho de sol para os dias de lazer.', imagePosition: '50% 70%' }
   };
 
   const environments = [

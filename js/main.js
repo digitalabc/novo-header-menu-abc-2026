@@ -168,7 +168,7 @@
   }
 
   function environmentImage(item) {
-    return `<figure class="drawer-environment-card" style="--environment-position:${item.imagePosition || '50% 50%'}"><img src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async"><figcaption><span>Ambiente</span><strong>${item.label}</strong></figcaption></figure>`;
+    return `<figure class="drawer-environment-card" style="--environment-position:${item.imagePosition || '50% 50%'}"><img src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async"><figcaption><strong>${item.label}</strong></figcaption></figure>`;
   }
 
   function environmentFeature(item, headingTag = 'h2') {
@@ -368,7 +368,13 @@
   }
 
   function renderDrawerViewHeader() {
-    if (state.drawerLevel === 'root') return `<div class="drawer-sticky-category" hidden><button type="button" data-collapse-visible-category aria-label="Recolher categoria"><span data-sticky-category-label></span>${navChevron()}</button></div>`;
+    if (state.drawerLevel === 'root') return `<div class="drawer-sticky-category" hidden>
+      <button type="button" data-collapse-visible-category aria-label="Recolher categoria">
+        <span class="drawer-sticky-category__identity"><img data-sticky-category-icon alt="" aria-hidden="true"><span data-sticky-category-label></span></span>
+        <span class="drawer-sticky-category__action">Recolher</span>${navChevron()}
+      </button>
+      <figure class="drawer-sticky-environment" hidden><img data-sticky-environment-image alt="" aria-hidden="true"><figcaption><strong data-sticky-environment-label></strong></figcaption></figure>
+    </div>`;
     let title = 'Categorias';
     if (state.drawerLevel === 'departments') title = 'Departamentos';
     if (state.drawerLevel === 'environments') title = 'Ambientes';
@@ -565,7 +571,12 @@
       return;
     }
     const stickyButton = sticky.querySelector('[data-collapse-visible-category]');
+    const stickyIcon = sticky.querySelector('[data-sticky-category-icon]');
+    const stickyEnvironment = sticky.querySelector('.drawer-sticky-environment');
+    const stickyEnvironmentImage = sticky.querySelector('[data-sticky-environment-image]');
+    const stickyEnvironmentLabel = sticky.querySelector('[data-sticky-environment-label]');
     let activeTrigger = null;
+    let collapseTrigger = null;
     let frame = 0;
     const update = () => {
       const edge = body.getBoundingClientRect().top;
@@ -575,10 +586,30 @@
         if (trigger?.getBoundingClientRect().bottom < edge + 2 && accordion.getBoundingClientRect().bottom > edge + 58) activeTrigger = trigger;
       });
       sticky.hidden = !activeTrigger;
-      if (!activeTrigger) return;
-      const label = activeTrigger.querySelector(':scope > span:not(.nav-chevron)')?.textContent?.trim() || activeTrigger.querySelector('figcaption strong')?.textContent?.trim() || 'Categoria';
+      if (!activeTrigger) {
+        stickyEnvironment.hidden = true;
+        collapseTrigger = null;
+        return;
+      }
+      const isEnvironment = activeTrigger.classList.contains('drawer-accordion__trigger--environment');
+      const environmentAccordion = isEnvironment ? activeTrigger.closest('.drawer-accordion--environment') : null;
+      const rootAccordion = environmentAccordion?.parentElement?.closest('.drawer-accordion__content')?.closest('.drawer-accordion');
+      const categoryTrigger = rootAccordion?.querySelector(':scope > .drawer-accordion__trigger') || activeTrigger;
+      collapseTrigger = categoryTrigger;
+      const label = categoryTrigger.querySelector(':scope > span:not(.nav-chevron)')?.textContent?.trim() || categoryTrigger.querySelector('figcaption strong')?.textContent?.trim() || 'Categoria';
       sticky.querySelector('[data-sticky-category-label]').textContent = label;
+      const categoryIcon = categoryTrigger.querySelector(':scope > img');
+      stickyIcon.src = categoryIcon?.currentSrc || categoryIcon?.src || '';
+      stickyIcon.hidden = !stickyIcon.src;
       stickyButton.setAttribute('aria-label', `Recolher ${label}`);
+      stickyEnvironment.hidden = !isEnvironment;
+      if (isEnvironment) {
+        const environmentImage = activeTrigger.querySelector('.drawer-environment-card > img');
+        const environmentLabel = activeTrigger.querySelector('.drawer-environment-card figcaption strong')?.textContent?.trim() || '';
+        stickyEnvironmentImage.src = environmentImage?.currentSrc || environmentImage?.src || '';
+        stickyEnvironmentImage.style.objectPosition = environmentImage ? getComputedStyle(environmentImage).objectPosition : '';
+        stickyEnvironmentLabel.textContent = environmentLabel;
+      }
     };
     const schedule = () => {
       if (frame) return;
@@ -586,9 +617,10 @@
     };
     body.onscroll = schedule;
     stickyButton.addEventListener('click', () => {
-      if (!activeTrigger?.isConnected) return;
+      if (!collapseTrigger?.isConnected) return;
       sticky.hidden = true;
-      activeTrigger.click();
+      stickyEnvironment.hidden = true;
+      collapseTrigger.click();
     });
     schedule();
   }

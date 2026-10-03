@@ -13,6 +13,7 @@
       mysa: 'header-menu-abc/logos/mysa.webp'
     },
     icon: {
+      caminhao: 'header-menu-abc/icones/caminhao.svg',
       conta: 'header-menu-abc/icones/conta.webp',
       regionalizacao: 'header-menu-abc/icones/regionalizacao.webp',
       'carrinho-mao': 'header-menu-abc/icones/carrinho-mao.webp',
@@ -234,8 +235,8 @@
     { label: 'Acompanhe seus pedidos', iconId: 'carrinho-mao' }
   ];
   const communications = [
-    { id: 'frete-metais', text: 'Metais com frete grátis · Sul e Sudeste', iconId: 'carrinho-mao' },
-    { id: 'parcelamento', text: 'Parcele em até 10x sem juros', iconId: null }
+    { id: 'frete-metais', text: 'Metais com frete grátis · Sul e Sudeste', iconId: 'caminhao' },
+    { id: 'parcelamento', text: 'Até 10x sem juros no cartão', iconId: null }
   ];
   const account = {
     name: 'Phaison',

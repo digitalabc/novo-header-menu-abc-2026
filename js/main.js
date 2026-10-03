@@ -29,7 +29,6 @@
   let manuallyClosedEnvironment = null;
   let communicationTimer;
   let communicationIndex = 0;
-  let communicationPaused = false;
 
   const catalogIconIds = new Set([...data.catalogIconIds, 'cuba-embutir', 'lavatorio-suspenso', 'cuba-inox-dupla']);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
@@ -139,7 +138,7 @@
 
   function renderCommunications() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    return `<div class="topbar-communications" role="region" aria-label="Condições de compra" aria-roledescription="carrossel"><div class="topbar-communications__messages" aria-live="off">${data.communications.map((item, index) => `<div class="topbar-communications__message ${index === communicationIndex ? 'is-visible' : ''}" aria-hidden="${!reducedMotion && index !== communicationIndex}" data-communication>${item.iconId ? icon(item.iconId) : '<span class="topbar-communications__symbol" aria-hidden="true">10x</span>'}<span>${item.text}</span></div>`).join('')}</div><button class="topbar-communications__pause" type="button" aria-label="${communicationPaused ? 'Continuar' : 'Pausar'} comunicações" aria-pressed="${communicationPaused}" data-pause-communications><span aria-hidden="true">${communicationPaused ? '▶' : 'Ⅱ'}</span></button></div>`;
+    return `<div class="topbar-communications" role="region" aria-label="Condições de compra" aria-roledescription="carrossel"><div class="topbar-communications__messages" aria-live="off">${data.communications.map((item, index) => `<div class="topbar-communications__message ${index === communicationIndex ? 'is-visible' : ''}" aria-hidden="${!reducedMotion && index !== communicationIndex}" data-communication><span class="topbar-communications__symbol ${item.iconId === 'caminhao' ? 'topbar-communications__symbol--truck' : ''}" aria-hidden="true">${item.iconId ? icon(item.iconId) : '10x'}</span><span>${item.text}</span></div>`).join('')}</div></div>`;
   }
 
   function bindCommunications() {
@@ -148,23 +147,18 @@
     if (!region) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const advance = () => {
-      if (document.hidden || communicationPaused || region.matches(':hover, :focus-within') || state.regionalizationOpen || accountOpen || !region.isConnected) return;
+      if (document.hidden || state.regionalizationOpen || accountOpen || !region.isConnected) return;
+      const previousIndex = communicationIndex;
       communicationIndex = (communicationIndex + 1) % data.communications.length;
       region.querySelectorAll('[data-communication]').forEach((message, index) => {
         message.classList.toggle('is-visible', index === communicationIndex);
+        message.classList.toggle('is-leaving', index === previousIndex);
         message.setAttribute('aria-hidden', String(index !== communicationIndex));
       });
     };
     // Respeite movimento reduzido sem impedir a leitura das duas mensagens.
     if (reducedMotion.matches) region.classList.add('is-static');
-    else communicationTimer = setInterval(advance, 5500);
-    region.querySelector('[data-pause-communications]').addEventListener('click', event => {
-      communicationPaused = !communicationPaused;
-      const button = event.currentTarget;
-      button.setAttribute('aria-pressed', String(communicationPaused));
-      button.setAttribute('aria-label', `${communicationPaused ? 'Continuar' : 'Pausar'} comunicações`);
-      button.firstElementChild.textContent = communicationPaused ? '▶' : 'Ⅱ';
-    });
+    else communicationTimer = setInterval(advance, 2000);
   }
 
   function engageSearch() { searchEngaged = true; clearTimeout(searchTimer); }

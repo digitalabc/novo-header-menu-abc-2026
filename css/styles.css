@@ -18,18 +18,23 @@ img{display:block;max-width:100%}
 .topbar__content,.topbar__group{height:100%;display:flex;align-items:center}
 .topbar__content{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);gap:12px}
 .topbar__group{gap:8px}.topbar__group--end{justify-content:flex-end}
-.topbar-communications{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;height:100%;color:#44515c}
-.topbar-communications__messages{position:relative;flex:1;min-width:0;height:100%}
-.topbar-communications__message{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:7px;padding-inline:2px;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s;font-size:12px;font-weight:500;line-height:1.25;text-align:center}
-.topbar-communications__message.is-visible{opacity:1;visibility:visible;transition-delay:.08s,0s}
-.topbar-communications__message img{width:21px;height:21px;object-fit:contain;flex:0 0 21px}
-.topbar-communications__symbol{display:grid;place-items:center;min-width:26px;height:21px;padding:1px 4px;border-radius:5px;background:#e8edf1;color:#526371;font-size:10px;white-space:nowrap}
-.topbar-communications__pause{display:grid;place-items:center;flex:0 0 26px;width:26px;height:28px;padding:0;border:0;border-radius:100px;background:transparent;color:#7a8791;font-size:12px;cursor:pointer;transition:background-color .2s ease}
-.topbar-communications__pause:hover,.topbar-communications__pause:active{background:#e8edf1}
+.topbar-communications{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;height:36px;padding-inline:12px;border-radius:100px;background:var(--red);color:#fff;overflow:hidden}
+.topbar-communications__messages{position:relative;flex:1;min-width:0;height:100%;perspective:550px}
+.topbar-communications__message{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;visibility:hidden;font-size:14px;font-weight:750;line-height:1.15;text-align:center;backface-visibility:hidden;transform-origin:50% 50%}
+.topbar-communications__message.is-visible{opacity:1;visibility:visible;animation:communication-enter .55s cubic-bezier(.22,1,.36,1) both}
+.topbar-communications__message.is-leaving{visibility:visible;animation:communication-leave .5s cubic-bezier(.4,0,.6,1) both}
+.topbar-communications__message img{width:38px;height:27px;max-width:none;object-fit:contain}
+.topbar-communications__symbol{display:grid;place-items:center;flex:0 0 34px;height:24px;border-radius:6px;background:rgba(255,255,255,.16);color:#fff;font-size:12px;white-space:nowrap}
+.topbar-communications__symbol--truck{flex-basis:44px;height:28px;background:transparent;overflow:hidden}
+.topbar-communications__message.is-visible .topbar-communications__symbol--truck img{animation:communication-truck 1.7s .1s cubic-bezier(.25,.7,.35,1) both}
+@keyframes communication-enter{from{opacity:0;transform:translateY(105%) rotateX(-65deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
+@keyframes communication-leave{from{opacity:1;transform:translateY(0) rotateX(0)}to{opacity:0;transform:translateY(-105%) rotateX(65deg);visibility:hidden}}
+@keyframes communication-truck{0%{opacity:0;transform:translateX(-40px)}22%,70%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(44px)}}
 .topbar-communications.is-static .topbar-communications__messages{display:flex;flex-direction:column;justify-content:center;gap:2px}
-.topbar-communications.is-static .topbar-communications__message{position:static;height:auto;opacity:1;visibility:visible;font-size:11px;transition:none}
-.topbar-communications.is-static .topbar-communications__message img,.topbar-communications.is-static .topbar-communications__symbol,.topbar-communications.is-static .topbar-communications__pause{display:none}
-@media(min-width:900px) and (max-width:1150px){.topbar .prime{display:none}.topbar__content{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr);gap:8px}.topbar .chip{padding-inline:8px;font-size:11px}.topbar-communications__message{font-size:11px}}
+.topbar-communications.is-static .topbar-communications__message{position:static;height:auto;opacity:1;visibility:visible;font-size:11px;animation:none}
+.topbar-communications.is-static .topbar-communications__symbol{display:none}
+@media(prefers-reduced-motion:reduce){.topbar-communications__message,.topbar-communications__message.is-visible .topbar-communications__symbol--truck img{animation:none}}
+@media(min-width:900px) and (max-width:1150px){.topbar .prime{display:none}.topbar__content{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr);gap:8px}.topbar .chip{padding-inline:8px;font-size:11px}.topbar-communications{padding-inline:8px}.topbar-communications__message{font-size:12.5px;gap:5px}}
 .chip{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border:1.5px solid transparent;border-radius:999px;font-size:12px;line-height:1.2;white-space:nowrap}
 .chip img{width:14px;height:14px;object-fit:contain}
 .chip--whatsapp{color:#118e27;background:rgba(99,237,89,.25);border-color:rgba(11,162,38,.05)}

@@ -5,33 +5,33 @@
     logo: {
       abc: 'assets/logo-abc.svg',
       casaPrime: 'assets/logo-casa-prime.svg',
-      mysa: 'assets/logo-mysa.png'
+      mysa: 'assets/optimized/logo-mysa.webp'
     },
     icon: {
-      conta: 'assets/header-conta-v1.png',
-      regionalizacao: 'assets/header-regionalizacao-v1.png',
-      'carrinho-mao': 'assets/header-carrinho-mao-v1.png',
-      departamentos: 'assets/header-departamentos-v2.png',
-      'principais-categorias': 'assets/icon-principais-categorias.png',
-      ambientes: 'assets/icon-ambientes.png',
-      metais: 'assets/icon-metais.png',
-      loucas: 'assets/icon-loucas.png',
-      'pisos-revestimentos': 'assets/icon-pisos.png',
-      cupons: 'assets/icon-cupons.png',
+      conta: 'assets/optimized/header-conta-v1.webp',
+      regionalizacao: 'assets/optimized/header-regionalizacao-v1.webp',
+      'carrinho-mao': 'assets/optimized/header-carrinho-mao-v1.webp',
+      departamentos: 'assets/optimized/header-departamentos-v2.webp',
+      'principais-categorias': 'assets/optimized/icon-principais-categorias.webp',
+      ambientes: 'assets/optimized/icon-ambientes.webp',
+      metais: 'assets/optimized/icon-metais.webp',
+      loucas: 'assets/optimized/icon-loucas.webp',
+      'pisos-revestimentos': 'assets/optimized/icon-pisos.webp',
+      cupons: 'assets/optimized/icon-cupons.webp',
       whatsapp: 'assets/icon-whatsapp.svg',
-      porcelanato: 'assets/category-porcelanato.png',
-      'piso-vinilico': 'assets/category-piso-vinilico.png',
-      'piso-ceramico': 'assets/category-piso-ceramico.png',
-      'piso-laminado': 'assets/category-piso-laminado.png',
+      porcelanato: 'assets/optimized/category-porcelanato.webp',
+      'piso-vinilico': 'assets/optimized/category-piso-vinilico.webp',
+      'piso-ceramico': 'assets/optimized/category-piso-ceramico.webp',
+      'piso-laminado': 'assets/optimized/category-piso-laminado.webp',
       'revestimento-parede': window.Menu2026CategoryIcons.assets.azulejo,
-      pastilha: 'assets/category-pastilha.png',
-      'rodapes-guarnicoes': 'assets/category-rodapes.png',
-      'area-externa': 'assets/category-area-externa.png',
-      'torneira-banheiro': 'assets/category-torneira-banheiro.png',
-      'torneira-cozinha': 'assets/category-torneira-cozinha.png',
-      'vaso-sanitario': 'assets/category-vaso-sanitario.png',
-      chuveiro: 'assets/category-chuveiro.png',
-      tinta: 'assets/category-tinta.png',
+      pastilha: 'assets/optimized/category-pastilha.webp',
+      'rodapes-guarnicoes': 'assets/optimized/category-rodapes.webp',
+      'area-externa': 'assets/optimized/category-area-externa.webp',
+      'torneira-banheiro': 'assets/optimized/category-torneira-banheiro.webp',
+      'torneira-cozinha': 'assets/optimized/category-torneira-cozinha.webp',
+      'vaso-sanitario': 'assets/optimized/category-vaso-sanitario.webp',
+      chuveiro: 'assets/optimized/category-chuveiro.webp',
+      tinta: 'assets/optimized/category-tinta.webp',
       generic: 'assets/category-generic.svg',
       ...window.Menu2026CategoryIcons.assets
     },
@@ -56,8 +56,8 @@
       piscina: 'assets/environment-piscina-portrait-v2.webp'
     },
     banner: {
-      'porcelanato-oferta': 'assets/banner-porcelanato.png',
-      'pisos-vinilicos': 'assets/banner-pisos-vinilicos.png',
+      'porcelanato-oferta': 'assets/optimized/banner-porcelanato.webp',
+      'pisos-vinilicos': 'assets/optimized/banner-pisos-vinilicos.webp',
       'metais-banheiro': 'assets/banner-metais-banheiro.svg',
       'torneiras-cozinha': 'assets/banner-torneiras-cozinha.svg',
       'loucas-banheiro': 'assets/banner-loucas-banheiro.svg',
@@ -66,15 +66,15 @@
     brand: {
       docol: 'assets/brand-docol.svg', deca: 'assets/brand-deca.svg', roca: 'assets/brand-roca.svg',
       celite: 'assets/brand-celite.svg', tramontina: 'assets/brand-tramontina.svg',
-      lorenzetti: 'assets/brand-lorenzetti.svg', coral: 'assets/brand-coral.png',
+      lorenzetti: 'assets/brand-lorenzetti.svg', coral: 'assets/optimized/brand-coral.webp',
       fani: 'assets/brand-fani.svg', quartzolit: 'assets/brand-quartzolit.svg',
-      acqualimp: 'assets/brand-acqualimp.png', komeco: 'assets/brand-komeco.svg',
+      acqualimp: 'assets/optimized/brand-acqualimp.webp', komeco: 'assets/brand-komeco.svg',
       biancogres: 'assets/brand-biancogres.svg', brinox: 'assets/brand-brinox.svg',
-      portobello: 'assets/brand-portobello.png', ceusa: 'assets/brand-ceusa.png',
-      eliane: 'assets/brand-eliane.png', elizabeth: 'assets/brand-elizabeth.png',
-      incepa: 'assets/brand-incepa.png', portinari: 'assets/brand-portinari.png'
+      portobello: 'assets/optimized/brand-portobello.webp', ceusa: 'assets/optimized/brand-ceusa.webp',
+      eliane: 'assets/optimized/brand-eliane.webp', elizabeth: 'assets/optimized/brand-elizabeth.webp',
+      incepa: 'assets/optimized/brand-incepa.webp', portinari: 'assets/optimized/brand-portinari.webp'
     },
-    product: { 'piso-rochedo': 'assets/product-piso.png' }
+    product: { 'piso-rochedo': 'assets/optimized/product-piso.webp' }
   };
 
   // Shared preview promotions until each department has its final campaign assets.
@@ -107,8 +107,8 @@
       { label: 'Vaso Sanitário', children: ['Vaso sanitário completo', 'Vaso sanitário suspenso', 'Vaso sanitário para caixa acoplada', 'Vaso sanitário Monobloco', 'Vaso sanitário infantil', 'Assentos Sanitários', 'Mictórios', 'Bidê', 'Caixa de Descarga', 'Acessórios para Vasos Sanitários'] },
       { label: 'Tanque', children: ['Tanques inox', 'Tanque de porcelana', 'Colunas para tanques', 'Gabinetes para Lavanderia', 'Válvulas para Tanques', 'Sifões para Tanques', 'Acessórios para Tanques'] }
     ], featured: [
-      ['Cubas para Banheiro', 'cuba-banheiro'], ['Cuba de apoio', 'cuba-banheiro'], ['Lavatórios', 'cuba-banheiro'], ['Cuba para cozinha', 'cuba-cozinha'],
-      ['Cuba inox para cozinha', 'cuba-cozinha'], ['Vaso Sanitário', 'vaso-sanitario'], ['Assentos Sanitários', 'assento-sanitario'], ['Tanques inox', 'tanque-inox']
+      ['Cubas para Banheiro', 'cuba-embutir'], ['Cuba de apoio', 'cuba-banheiro'], ['Lavatórios', 'lavatorio-suspenso'], ['Cuba para cozinha', 'cuba-cozinha'],
+      ['Cuba inox para cozinha', 'cuba-inox-dupla'], ['Vaso Sanitário', 'vaso-sanitario'], ['Assentos Sanitários', 'assento-sanitario'], ['Tanques inox', 'tanque-inox']
     ], bannerIds: featuredBannerIds, brandIds: ['deca', 'roca', 'celite', 'incepa', 'docol', 'tramontina'] },
     { id: 'banho-aquecimento', sourceLabel: 'Banho e aquecimento de água', label: 'Banho e Aquecimento', children: [
       { label: 'Chuveiro', children: ['Chuveiro Elétrico', 'Chuveiro Eletrônico', 'Chuveiro Híbrido', 'Resistência Elétrica', 'Acessórios para Chuveiro', 'Acabamento para Chuveiro'] },
@@ -146,6 +146,17 @@
     item.bannerIds = item.bannerIds || [...featuredBannerIds];
     item.moreUrl = item.moreUrl ?? null;
   });
+
+  const departmentBrands = {
+    'banho-aquecimento': ['lorenzetti', 'komeco', 'docol', 'deca'],
+    'argamassa-rejunte': ['quartzolit'],
+    'energia-solar': ['komeco'],
+    'ferramentas': ['tramontina'],
+    'materiais-hidraulicos': ['acqualimp', 'lorenzetti'],
+    'tinta': ['coral', 'quartzolit'],
+    'utilidades-domesticas': ['tramontina', 'brinox']
+  };
+  departments.forEach(item => { if (departmentBrands[item.id]) item.brandIds = departmentBrands[item.id]; });
 
   function simple(labels) { return labels.map(label => ({ label, children: [] })); }
   function nested(map) { return Object.entries(map).map(([label, children]) => ({ label, children })); }

@@ -16,10 +16,16 @@
   let scrollFadeObserver;
   let regionalizationViewportBound = false;
   let regionalizationBaselineHeight = 0;
+  let searchTimer;
+  let searchOpenedAt = 0;
+  let searchEngaged = false;
+  let searchBaselineHeight = 0;
+  let mobileSearchValue = '';
+  let loginTimer;
 
-  const catalogIconIds = new Set(data.catalogIconIds);
+  const catalogIconIds = new Set([...data.catalogIconIds, 'cuba-embutir', 'lavatorio-suspenso', 'cuba-inox-dupla']);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
-  const icon = (id, className = '') => `<img class="${className}${catalogIconIds.has(id) ? ' category-image--catalog' : ''}" src="${data.assetRegistry.icon[id] || data.assetRegistry.icon.generic}" alt="" decoding="async">`;
+  const icon = (id, className = '') => `<img class="${className}${catalogIconIds.has(id) ? ' category-image--catalog' : ''}" src="${data.assetRegistry.icon[id] || data.assetRegistry.icon.generic}" alt="" decoding="async" loading="${className.includes('header-action') ? 'eager' : 'lazy'}" width="80" height="80">`;
   const chevron = (direction = 'right') => `<span class="chevron chevron--${direction}" aria-hidden="true"></span>`;
   const navChevron = () => '<span class="nav-chevron" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M6 4l4 4-4 4"/></svg></span>';
   const safeId = value => String(value).replace(/[^a-z0-9-]/gi, '-').toLowerCase();
@@ -51,7 +57,7 @@
       <div class="desktop-main"><div class="container desktop-main__content">
         <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
         <div class="desktop-actions desktop-actions--left">
-          <button class="action-item" type="button" aria-label="Entrar na minha conta">${icon('conta', 'header-action-icon')}<span><strong>Entrar</strong><small>Minha conta</small></span>${chevron('down')}</button>
+          <div class="login-menu" data-login-menu><button class="action-item" type="button" aria-label="Entrar na minha conta" data-login-trigger aria-expanded="false" aria-controls="login-dropdown">${icon('conta', 'header-action-icon')}<span><strong>Entrar</strong><small>Minha conta</small></span>${chevron('down')}</button><div class="login-dropdown" id="login-dropdown" hidden>${assetImg('logo','abc')}<h2>Que bom ter você por aqui!</h2><p>Entre para acompanhar seus pedidos e encontrar tudo para a sua obra.</p><a class="login-dropdown__enter" href="#" data-pending-link>Entrar</a><a class="login-dropdown__register" href="#" data-pending-link>Registrar</a></div></div>
         </div>
         <div class="desktop-actions desktop-actions--right">
           ${renderSearch('desktop')}
@@ -60,7 +66,7 @@
         </div>
       </div></div>
       <nav class="desktop-nav" aria-label="Navegação principal"><div class="container desktop-nav__list">
-        ${data.navigation.map(item => `<button class="nav-item ${state.desktopMenu && activeNav(item) ? 'is-active' : ''}" type="button" data-menu-action="${item.menu}" data-menu-id="${item.departmentId || item.id}" aria-expanded="${state.desktopMenu && activeNav(item) ? 'true' : 'false'}" aria-controls="desktop-mega-menu">${icon(item.iconId)}<span>${item.label}</span>${navChevron()}</button>`).join('')}
+        ${data.navigation.map(item => item.menu === 'link' ? `<a class="nav-item" href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span></a>` : `<button class="nav-item ${state.desktopMenu && activeNav(item) ? 'is-active' : ''}" type="button" data-menu-action="${item.menu}" data-menu-id="${item.departmentId || item.id}" aria-expanded="${state.desktopMenu && activeNav(item) ? 'true' : 'false'}" aria-controls="desktop-mega-menu">${icon(item.iconId)}<span>${item.label}</span>${navChevron()}</button>`).join('')}
         <a class="sale-pill" href="#">Saldão de Ofertas <span aria-hidden="true">🔥</span></a>
       </div></nav>
     </div>`;
@@ -95,7 +101,12 @@
     field.setAttribute('aria-hidden', String(!open));
     field.toggleAttribute('inert', !open);
     input.tabIndex = open ? 0 : -1;
-    if (open) requestAnimationFrame(() => { if (state.desktopSearchOpen) input.focus({ preventScroll: true }); });
+    clearTimeout(searchTimer);
+    if (open) {
+      searchOpenedAt = Date.now();
+      searchEngaged = false;
+      searchTimer = setTimeout(() => { if (!searchEngaged) setDesktopSearchOpen(false); }, 3000);
+    }
   }
 
   function bindDesktopSearchEvents() {
@@ -104,10 +115,67 @@
     const input = search.querySelector('input');
     input.value = state.desktopSearchValue;
     search.querySelector('[data-expand-desktop-search]').addEventListener('click', () => setDesktopSearchOpen(!state.desktopSearchOpen, state.desktopSearchOpen));
-    input.addEventListener('input', () => { state.desktopSearchValue = input.value; });
+    input.addEventListener('pointerdown', engageSearch);
+    input.addEventListener('focus', engageSearch);
+    input.addEventListener('input', () => { engageSearch(); state.desktopSearchValue = input.value; });
     search.addEventListener('focusout', event => {
-      if (state.desktopSearchOpen && !state.desktopSearchValue.trim() && !search.contains(event.relatedTarget)) setDesktopSearchOpen(false);
+      if (state.desktopSearchOpen && !search.contains(event.relatedTarget)) scheduleSearchClose();
     });
+  }
+
+  function engageSearch() { searchEngaged = true; clearTimeout(searchTimer); }
+
+  function scheduleSearchClose() {
+    clearTimeout(searchTimer);
+    const delay = Math.max(0, 3000 - (Date.now() - searchOpenedAt));
+    searchTimer = setTimeout(() => {
+      if (desktopQuery.matches) setDesktopSearchOpen(false);
+      else closeMobileSearch();
+    }, delay);
+  }
+
+  function closeMobileSearch() {
+    clearTimeout(searchTimer);
+    state.searchOpen = false;
+    state.searchDropdown = false;
+    header.querySelector('.mobile-header')?.classList.remove('is-search-keyboard');
+    header.querySelector('.mobile-search-row')?.remove();
+    header.querySelector('.search-dropdown')?.remove();
+    const toggle = header.querySelector('[data-toggle-search]');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Abrir busca');
+  }
+
+  function syncSearchViewport() {
+    const mobileHeader = header.querySelector('.mobile-header');
+    const viewport = window.visualViewport;
+    mobileHeader?.classList.toggle('is-search-keyboard', state.searchOpen && Boolean(searchBaselineHeight) && (viewport?.height || window.innerHeight) < searchBaselineHeight - 120);
+    const dropdown = header.querySelector('.search-dropdown');
+    if (!dropdown || desktopQuery.matches) return;
+    const bottom = (viewport?.offsetTop || 0) + (viewport?.height || window.innerHeight);
+    dropdown.style.setProperty('--search-results-height', `${Math.max(80, bottom - dropdown.getBoundingClientRect().top - 12)}px`);
+  }
+
+  function updateMobileAutocomplete(input) {
+    mobileSearchValue = input.value;
+    state.searchDropdown = Boolean(input.value.trim());
+    header.querySelector('.search-dropdown')?.remove();
+    if (state.searchDropdown) header.querySelector('.mobile-header').insertAdjacentHTML('beforeend', renderSearchDropdown());
+    syncSearchViewport();
+  }
+
+  function bindLoginEvents() {
+    const menu = header.querySelector('[data-login-menu]');
+    if (!menu) return;
+    const trigger = menu.querySelector('[data-login-trigger]');
+    const popup = menu.querySelector('.login-dropdown');
+    const setOpen = open => { popup.hidden = !open; trigger.setAttribute('aria-expanded', String(open)); };
+    menu.addEventListener('mouseenter', () => { clearTimeout(loginTimer); loginTimer = setTimeout(() => setOpen(true), 140); });
+    menu.addEventListener('mouseleave', () => { clearTimeout(loginTimer); loginTimer = setTimeout(() => setOpen(false), 180); });
+    trigger.addEventListener('click', () => { clearTimeout(loginTimer); setOpen(true); });
+    menu.addEventListener('focusin', () => { clearTimeout(loginTimer); setOpen(true); });
+    menu.addEventListener('focusout', event => { if (!menu.contains(event.relatedTarget)) setOpen(false); });
+    menu.addEventListener('keydown', event => { if (event.key === 'Escape') { event.stopPropagation(); setOpen(false); trigger.focus(); setOpen(false); } });
   }
 
   function renderDesktopMenu() {
@@ -129,7 +197,7 @@
       <div class="mega-panel">
       ${item.bannerIds ? `<div class="mega-promos"><h2>Promoções em Destaque</h2><div>${item.bannerIds.slice(0, 2).map(promoBanner).join('')}</div></div>` : ''}
       <div class="mega-content ${item === data.principal ? 'mega-content--principal' : ''}"><h2>Categorias em destaque</h2><div class="category-scroll"><div class="category-grid">${featured.map(([label, iconId]) => categoryCard(label, iconId, item === data.principal)).join('')}</div></div>${moreLink(item)}</div>
-      <aside class="brand-panel"><h2>Marcas</h2><div class="brand-grid ${item === data.principal && !item.bannerIds?.length ? 'brand-grid--wide' : ''}">${brands.map(brandCard).join('')}</div></aside></div>`;
+      <aside class="brand-panel"><h2>${item === data.principal ? 'Principais marcas' : 'Marcas'}</h2><div class="brand-grid ${item === data.principal && !item.bannerIds?.length ? 'brand-grid--wide' : ''}">${brands.map(brandCard).join('')}</div></aside></div>`;
   }
 
   function featuredCategories(item) {
@@ -154,25 +222,25 @@
 
   function brandCard(id) {
     const src = data.assetRegistry.brand[id];
-    return `<a class="brand-card" href="#" aria-label="${capitalize(id)}"><img src="${src}" alt="${capitalize(id)}"></a>`;
+    return `<a class="brand-card" href="#" data-pending-link aria-label="${capitalize(id)}"><img src="${src}" alt="${capitalize(id)}" loading="lazy" decoding="async" width="100" height="60"></a>`;
   }
 
   function promoBanner(id) {
-    return `<a class="promo-banner" href="#"><img src="${data.assetRegistry.banner[id]}" alt="Promoção: ${id.split('-').join(' ')}"></a>`;
+    return `<a class="promo-banner" href="#"><img src="${data.assetRegistry.banner[id]}" alt="Promoção: ${id.split('-').join(' ')}" loading="lazy" decoding="async"></a>`;
   }
 
   function renderEnvironmentMenu() {
     const active = data.environments.find(item => item.id === state.environment) || data.environments[0];
-    return `<aside class="environment-rail" aria-label="Escolha um ambiente"><div class="environment-rail__list"><div class="environment-rail__grid">${data.environments.map(item => `<button type="button" class="environment-link ${item.id === active.id ? 'is-active' : ''}" style="--environment-position:${item.imagePosition || '50% 50%'}" data-environment-id="${item.id}" aria-current="${item.id === active.id ? 'true' : 'false'}" aria-expanded="${item.id === active.id ? 'true' : 'false'}" aria-controls="environment-detail"><img class="environment-link__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async"><span class="environment-link__caption"><span class="environment-feature__label">Ambiente</span><span class="environment-link__name">${item.label}</span></span><span class="environment-link__arrow">${chevron('right')}</span></button>`).join('')}</div></div></aside>
+    return `<aside class="environment-rail" aria-label="Escolha um ambiente"><div class="environment-rail__list"><div class="environment-rail__grid">${data.environments.map(item => `<button type="button" class="environment-link ${item.id === active.id ? 'is-active' : ''}" style="--environment-position:${item.imagePosition || '50% 50%'}" data-environment-id="${item.id}" aria-current="${item.id === active.id ? 'true' : 'false'}" aria-expanded="${item.id === active.id ? 'true' : 'false'}" aria-controls="environment-detail"><img class="environment-link__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><span class="environment-link__caption"><span class="environment-feature__label">Ambiente</span><span class="environment-link__name">${item.label}</span></span><span class="environment-link__arrow">${chevron('right')}</span></button>`).join('')}</div></div></aside>
       <div id="environment-detail" class="mega-panel mega-panel--environment"><div class="environment-content"><div class="environment-categories"><div class="environment-category-heading"><h2>${active.label}</h2><p>${active.heading}</p></div><div class="environment-scroll"><div class="environment-grid">${active.categories.map(label => categoryCard(label, categoryIcon(label))).join('')}</div></div>${moreLink(active)}</div></div></div>`;
   }
 
   function environmentImage(item) {
-    return `<figure class="drawer-environment-card" style="--environment-position:${item.imagePosition || '50% 50%'}"><img src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async"><figcaption><strong>${item.label}</strong></figcaption></figure>`;
+    return `<figure class="drawer-environment-card" style="--environment-position:${item.imagePosition || '50% 50%'}"><img src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><figcaption><strong>${item.label}</strong></figcaption></figure>`;
   }
 
   function environmentFeature(item, headingTag = 'h2') {
-    return `<figure class="environment-feature"><img class="environment-feature__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async"><figcaption class="environment-feature__caption"><span class="environment-feature__label">Ambiente</span><${headingTag}>${item.label}</${headingTag}><p class="environment-feature__description">${item.heading}</p></figcaption></figure>`;
+    return `<figure class="environment-feature"><img class="environment-feature__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><figcaption class="environment-feature__caption"><span class="environment-feature__label">Ambiente</span><${headingTag}>${item.label}</${headingTag}><p class="environment-feature__description">${item.heading}</p></figcaption></figure>`;
   }
 
   function categoryIcon(label) {
@@ -261,8 +329,9 @@
     state.regionalizationError = '';
     state.regionalizationValue = state.regionalized ? state.delivery.cep : '';
     regionalizationBaselineHeight = window.visualViewport?.height || window.innerHeight;
-    if (state.drawerOpen) { state.drawerOpen = false; state.drawerPreviousHtml = ''; }
-    render();
+    regionalizationRoot.innerHTML = renderRegionalization();
+    bindRegionalizationEvents();
+    syncDocumentLock();
     requestAnimationFrame(focusRegionalization);
   }
 
@@ -294,7 +363,13 @@
       state.regionalizationOpen = false;
       const opener = state.regionalizationOpener;
       state.regionalizationOpener = null;
-      render();
+      regionalizationRoot.innerHTML = '';
+      document.querySelectorAll('.drawer-location, .mobile-location, .action-item--location').forEach(button => {
+        const desktop = button.classList.contains('action-item--location');
+        button.innerHTML = icon('regionalizacao', 'header-action-icon') + (desktop ? desktopLocationMarkup() : mobileLocationMarkup()) + chevron('down');
+        button.setAttribute('aria-label', state.regionalized ? 'Alterar local de entrega' : 'Informar CEP');
+      });
+      syncDocumentLock();
       requestAnimationFrame(() => opener?.isConnected && opener.focus({ preventScroll: true }));
     };
     if (!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
@@ -303,7 +378,6 @@
   }
 
   function bindRegionalizationEvents() {
-    document.querySelectorAll('[data-open-regionalization]').forEach(button => button.addEventListener('click', () => openRegionalization(button)));
     const layer = document.querySelector('[data-regionalization-layer]');
     if (!layer) return;
     if (!regionalizationViewportBound) {
@@ -371,7 +445,7 @@
     if (state.drawerLevel === 'root') return `<div class="drawer-sticky-category" hidden>
       <button type="button" data-collapse-visible-category aria-label="Recolher categoria">
         <span class="drawer-sticky-category__identity"><img data-sticky-category-icon alt="" aria-hidden="true"><span data-sticky-category-label></span></span>
-        <span class="drawer-sticky-category__action">Recolher</span>${navChevron()}
+        <span class="drawer-sticky-category__control">${navChevron()}<span class="drawer-sticky-category__action">Recolher</span></span>
       </button>
       <figure class="drawer-sticky-environment" hidden><img data-sticky-environment-image alt="" aria-hidden="true"><figcaption><strong data-sticky-environment-label></strong></figcaption></figure>
     </div>`;
@@ -407,7 +481,7 @@
           const department = data.departments.find(entry => entry.id === item.departmentId);
           return renderMobileAccordion(item, renderMobileCategoryOptions(department, 'department'), 'nav-' + item.id, 'root');
         }
-        return `<a class="drawer-direct-link" href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span>${navChevron()}</a>`;
+        return `<a class="drawer-direct-link" href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span></a>`;
       }).join('') +
       '<a class="drawer-sale" href="#" data-pending-link><span class="sale-pill">Saldão de Ofertas <span aria-hidden="true">🔥</span></span></a>';
   }
@@ -419,6 +493,7 @@
     const environmentClass = item.imageId ? ' drawer-accordion__trigger--environment' : '';
     const sectionClass = item.imageId ? ' drawer-accordion--environment' : '';
     const label = item.imageId ? '' : '<span>' + item.label + '</span>';
+    if (!expanded) content = content.replace(/<img([^>]*?)\ssrc=/g, '<img$1 data-src=');
     return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button" data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos')) + label + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
   }
 
@@ -436,7 +511,12 @@
 
   function renderMobileCategoryOptions(item, scope) {
     const entries = scope === 'environment' ? item.categories.map(label => [label, categoryIcon(label)]) : featuredCategories(item);
-    return entries.map(([label, id]) => drawerOption(label, icon(id), 'data-drawer-level="category" data-drawer-id="' + item.id + '" data-category-scope="' + scope + '" data-category-label="' + encodeURIComponent(label) + '" data-category-icon="' + id + '"')).join('');
+    return entries.map(([label, id]) => drawerOption(label, icon(id), 'data-drawer-level="category" data-drawer-id="' + item.id + '" data-category-scope="' + scope + '" data-category-label="' + encodeURIComponent(label) + '" data-category-icon="' + id + '"')).join('') + renderMobileBrands(item);
+  }
+
+  function renderMobileBrands(item) {
+    const brands = item.brandIds || [];
+    return brands.length ? `<section class="drawer-brands" aria-label="Principais marcas de ${item.label}"><h3>Principais marcas</h3><div class="brand-grid">${brands.map(brandCard).join('')}</div></section>` : '';
   }
 
   function renderDrawerDepartments() {
@@ -454,11 +534,9 @@
 
   function renderDrawerDepartmentDetail() {
     const item = state.drawerId === data.principal.id ? data.principal : data.departments.find(entry => entry.id === state.drawerId) || data.departments[0];
-    const brands = item.brandIds || [];
     return '<div class="drawer-detail">' +
       (item.bannerIds ? '<section><h3>Promoções em destaque</h3><div class="drawer-banners">' + item.bannerIds.map(promoBanner).join('') + '</div></section>' : '') +
       '<section><h3>Categorias em destaque</h3><div class="drawer-category-list">' + renderMobileCategoryOptions(item, 'department') + '</div></section>' +
-      (brands.length ? '<section><h3>Marcas</h3><div class="brand-grid">' + brands.map(brandCard).join('') + '</div></section>' : '') +
       moreLink(item) + '</div>';
   }
 
@@ -466,10 +544,27 @@
     const category = state.drawerCategory;
     if (!category) return '';
     const parent = category.scope === 'environment' ? data.environments.find(item => item.id === state.drawerId) : state.drawerId === data.principal.id ? data.principal : data.departments.find(item => item.id === state.drawerId);
-    const children = parent?.children?.find(item => item.label === category.label)?.children || [];
+    const node = findCategoryNode(parent?.children || [], category.label) || data.departments.map(item => findCategoryNode(item.children || [], category.label)).find(Boolean);
+    const children = node?.children || [];
     return '<div class="drawer-detail drawer-category-detail"><div class="drawer-category-intro">' + icon(category.iconId) + '<span>Encontre o acabamento para a sua obra.</span></div>' +
-      (children.length ? '<nav class="drawer-category-list" aria-label="Opções de ' + category.label + '">' + children.map(label => categoryCard(label, categoryIcon(label) === 'generic' ? category.iconId : categoryIcon(label))).join('') + '</nav>' : '<p class="drawer-category-note">A seleção de produtos desta categoria será conectada ao catálogo na integração final.</p>') +
+      (children.length ? '<nav class="drawer-category-list" aria-label="Opções de ' + category.label + '">' + children.map(child => {
+        const label = typeof child === 'string' ? child : child.label;
+        const artwork = categoryIcon(label) === 'generic' ? category.iconId : categoryIcon(label);
+        return drawerOption(label, icon(artwork), `data-drawer-level="category" data-drawer-id="${state.drawerId}" data-category-scope="${category.scope}" data-category-label="${encodeURIComponent(label)}" data-category-icon="${artwork}"`);
+      }).join('') + '</nav>' : '<p class="drawer-category-note">A seleção de produtos desta categoria será conectada ao catálogo na integração final.</p>') +
       moreLink(parent || {}) + '</div>';
+  }
+
+  function findCategoryNode(nodes, label) {
+    const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    const target = normalize(label);
+    for (const entry of nodes) {
+      const node = typeof entry === 'string' ? { label: entry, children: [] } : entry;
+      if (normalize(node.label) === target) return node;
+      const found = findCategoryNode(node.children || [], label);
+      if (found) return found;
+    }
+    return null;
   }
 
   function bindEvents() {
@@ -484,14 +579,41 @@
     bindDesktopMenuEvents();
     bindScrollFades();
     bindDesktopSearchEvents();
+    bindLoginEvents();
+    document.querySelectorAll('[data-open-regionalization]').forEach(button => button.addEventListener('click', () => openRegionalization(button)));
     bindRegionalizationEvents();
-    document.querySelectorAll('[data-search-input]').forEach(input => { input.addEventListener('input', () => { if (!desktopQuery.matches) { state.searchDropdown = input.value.trim().length > 0; render(); requestAnimationFrame(() => { const next = document.querySelector('[data-search-input]'); if (next) { next.focus(); next.value = input.value; next.setSelectionRange(next.value.length, next.value.length); } }); } }); input.addEventListener('focus', () => { if (!desktopQuery.matches && input.value.trim()) { state.searchDropdown = true; render(); } }); });
+    if (!desktopQuery.matches) bindMobileSearchInput();
     const searchToggle = document.querySelector('[data-toggle-search]');
-    if (searchToggle) searchToggle.addEventListener('click', () => { state.searchOpen = !state.searchOpen; state.searchDropdown = false; render(); if (state.searchOpen) requestAnimationFrame(() => document.querySelector('[data-search-input]')?.focus()); });
+    if (searchToggle) searchToggle.addEventListener('click', () => {
+      if (state.searchOpen) { closeMobileSearch(); return; }
+      state.searchOpen = true;
+      searchOpenedAt = Date.now();
+      searchBaselineHeight = window.visualViewport?.height || window.innerHeight;
+      searchEngaged = false;
+      const mobileHeader = header.querySelector('.mobile-header');
+      mobileHeader.insertAdjacentHTML('beforeend', `<div id="mobile-search-row" class="mobile-search-row">${renderSearch('mobile')}</div>`);
+      searchToggle.setAttribute('aria-expanded', 'true');
+      searchToggle.setAttribute('aria-label', 'Fechar busca');
+      bindMobileSearchInput();
+      // Synchronous focus inside the tap gesture keeps iOS/Android keyboard activation.
+      header.querySelector('[data-search-input]')?.focus({ preventScroll: true });
+      searchTimer = setTimeout(() => { if (!searchEngaged) closeMobileSearch(); }, 3000);
+    });
     const openDrawer = document.querySelector('[data-open-drawer]');
     if (openDrawer) openDrawer.addEventListener('click', () => { state.opener = openDrawer; state.drawerOpen = true; state.drawerBusy = false; state.drawerLevel = 'root'; state.drawerId = null; state.drawerCategory = null; state.drawerHistory = []; state.drawerPreviousHtml = ''; render(); requestAnimationFrame(() => document.querySelector('#mobile-drawer')?.focus()); });
     document.querySelectorAll('[data-close-drawer]').forEach(button => button.addEventListener('click', closeDrawer));
     bindDrawerPanelEvents();
+  }
+
+  function bindMobileSearchInput() {
+    const input = header.querySelector('[data-search-input]');
+    if (!input || input.dataset.searchBound) return;
+    input.dataset.searchBound = 'true';
+    input.value = mobileSearchValue;
+    input.addEventListener('input', () => { engageSearch(); updateMobileAutocomplete(input); });
+    input.addEventListener('pointerdown', engageSearch);
+    input.addEventListener('focus', () => { clearTimeout(searchTimer); if (input.value.trim()) updateMobileAutocomplete(input); });
+    syncSearchViewport();
   }
 
   function bindDesktopMenuEvents() {
@@ -683,6 +805,7 @@
 
   function bindDrawerPanelEvents() {
     const currentPanel = document.querySelector('.drawer-panel--current');
+    hydrateDrawerImages(currentPanel);
     bindStickyDrawerCategory(currentPanel);
     currentPanel?.querySelectorAll('[data-drawer-level]').forEach(button => button.addEventListener('click', () => {
       if (button.dataset.drawerLevel === 'link') return;
@@ -704,6 +827,7 @@
         accordion.classList.toggle('is-expanded', state.principalExpanded);
         button.setAttribute('aria-expanded', String(state.principalExpanded));
         content.toggleAttribute('inert', !state.principalExpanded);
+        hydrateDrawerImages(currentPanel);
         if (state.principalExpanded) scrollToOpenedDrawerAccordion(button, null, sequence);
         window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
         return;
@@ -731,6 +855,7 @@
       accordion.classList.toggle('is-expanded', expanded);
       button.setAttribute('aria-expanded', String(expanded));
       content.toggleAttribute('inert', !expanded);
+      if (expanded) hydrateDrawerImages(currentPanel);
       if (!expanded) {
         // A closed parent must never retain an expanded child. Besides avoiding an
         // unexpected reopen, this keeps the sticky category bar tied to visible content.
@@ -750,6 +875,14 @@
       window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
     }));
     clearDrawerAnimationArtifacts();
+  }
+
+  function hydrateDrawerImages(panel) {
+    panel?.querySelectorAll('img[data-src]').forEach(image => {
+      if (image.closest('[inert]')) return;
+      image.src = image.dataset.src;
+      image.removeAttribute('data-src');
+    });
   }
 
   function scheduleDesktopOpen(button, delay = 140, interaction = 'pointer') {
@@ -992,10 +1125,15 @@
     if (desktopQuery.matches && state.desktopMenu && !event.target.closest('.desktop-nav, [data-desktop-menu-surface]')) scheduleDesktopClose();
   });
   document.addEventListener('pointerdown', event => {
-    if (desktopQuery.matches && state.desktopSearchOpen && !state.desktopSearchValue.trim() && !event.target.closest('[data-desktop-search]')) setDesktopSearchOpen(false);
+    if ((state.desktopSearchOpen || state.searchOpen) && !event.target.closest('[data-desktop-search], .mobile-search-row, .search-dropdown, [data-toggle-search]')) scheduleSearchClose();
+    const login = header.querySelector('[data-login-menu]');
+    if (login && !login.contains(event.target)) { clearTimeout(loginTimer); login.querySelector('.login-dropdown').hidden = true; login.querySelector('[data-login-trigger]').setAttribute('aria-expanded', 'false'); }
     if (desktopQuery.matches && state.desktopMenu && !event.target.closest('.desktop-nav, [data-desktop-menu-surface]')) closeDesktopMenu();
   });
   desktopQuery.addEventListener('change', () => { clearTimeout(desktopOpenTimer); cancelDesktopClose(); state.desktopMenu = null; state.drawerOpen = false; state.desktopSearchOpen = false; state.searchOpen = false; state.searchDropdown = false; render(); });
+  window.visualViewport?.addEventListener('resize', syncSearchViewport);
+  window.visualViewport?.addEventListener('scroll', syncSearchViewport);
+  window.addEventListener('resize', syncSearchViewport);
 
   const params = new URLSearchParams(location.search);
   state.loggedIn = params.get('logged') !== '0';

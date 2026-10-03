@@ -5,6 +5,9 @@
 
   window.Menu2026CategoryIcons = {
     assets: {
+      "cuba-embutir": "assets/categories/cuba-embutir-abc.jpg",
+      "lavatorio-suspenso": "assets/categories/lavatorio-suspenso-abc.jpg",
+      "cuba-inox-dupla": "assets/categories/cuba-inox-dupla-abc.jpg",
       "cuba-banheiro": "assets/categories/cuba-banheiro-abc.jpg",
       "borda-piscina": "assets/categories/borda-piscina-abc.jpg",
       "pedra-piscina": "assets/categories/pedra-piscina-generated-v1.png",
@@ -204,9 +207,11 @@
         "iconId": "tanque-inox"
       },
       {
-        "pattern": "cubas?|pias? para banheiro|lavatorios?",
+        "pattern": "cuba.*apoio",
         "iconId": "cuba-banheiro"
       },
+      { "pattern": "lavatorios?|colunas? para pia", "iconId": "lavatorio-suspenso" },
+      { "pattern": "cubas?.*(embutir|banheiro)|pias? para banheiro", "iconId": "cuba-embutir" },
       {
         "pattern": "vaso sanit",
         "iconId": "vaso-sanitario"
@@ -794,4 +799,3 @@
     ]
   };
 })();
-

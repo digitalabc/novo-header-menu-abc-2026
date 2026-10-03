@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-03",
+  "export": "Official ABC CDN 160x160 thumbnails, stored locally; sources unchanged.",
+  "sources": [
+    {"iconId":"lavatorio-suspenso","file":"lavatorio-suspenso-abc.jpg","productUrl":"https://www.abcdaconstrucao.com.br/produto/lavatorio-suspenso-izy-39-5x29-5cm-l-15-17-branco-deca-83247","imageUrl":"https://abcdaconstrucao.fbitsstatic.net/img/p/lavatorio-suspenso-izy-39-5x29-5cm-l-15-17-branco-deca-83247/269752-1.jpg?w=160&h=160&v=202610020019"},
+    {"iconId":"cuba-embutir","file":"cuba-embutir-abc.jpg","productUrl":"https://www.abcdaconstrucao.com.br/produto/cuba-de-embutir-oval-49x36cm-l37-branca-deca-83347","imageUrl":"https://abcdaconstrucao.fbitsstatic.net/img/p/cuba-de-embutir-oval-49x36cm-l37-branca-deca-83347/269852-1.jpg?w=160&h=160&v=202610022222"},
+    {"iconId":"cuba-inox-dupla","file":"cuba-inox-dupla-abc.jpg","productUrl":"https://www.abcdaconstrucao.com.br/produto/cuba-dupla-quadrum-66x46-com-valvula-inox-tramontina-84100","imageUrl":"https://abcdaconstrucao.fbitsstatic.net/img/p/cuba-dupla-quadrum-66x46-com-valvula-inox-tramontina-84100/270605-1.jpg?w=160&h=160&v=202609292333"}
+  ]
+}

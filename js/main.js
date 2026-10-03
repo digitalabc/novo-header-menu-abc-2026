@@ -5,6 +5,7 @@
   const header = document.getElementById('site-header');
   const menuRoot = document.getElementById('menu-root');
   const regionalizationRoot = document.getElementById('regionalization-root');
+  const accountRoot = document.getElementById('account-root');
   const desktopQuery = window.matchMedia('(min-width: 900px)');
   const state = { desktopMenu: null, desktopSelection: 'principais-categorias', desktopAnimation: 'open', environment: 'banheiro', desktopSearchOpen: false, desktopSearchValue: '', searchOpen: false, searchDropdown: false, drawerOpen: false, drawerLevel: 'root', drawerId: null, drawerCategory: null, drawerHistory: [], drawerPreviousHtml: '', drawerPreviousScroll: 0, drawerDirection: 'forward', principalExpanded: true, drawerExpanded: new Map(), drawerBusy: false, loggedIn: true, regionalized: false, regionalizationOpen: true, regionalizationValue: '', regionalizationError: '', regionalizationOpener: null, delivery: { cep: '32604-540', city: 'Betim' }, opener: null };
   let desktopOpenTimer;
@@ -21,7 +22,11 @@
   let searchEngaged = false;
   let searchBaselineHeight = 0;
   let mobileSearchValue = '';
-  let loginTimer;
+  let accountOpener = null;
+  let accountOpen = false;
+  let accountCloseTimer;
+  let drawerAutoPauseUntil = 0;
+  let manuallyClosedEnvironment = null;
 
   const catalogIconIds = new Set([...data.catalogIconIds, 'cuba-embutir', 'lavatorio-suspenso', 'cuba-inox-dupla']);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
@@ -57,7 +62,7 @@
       <div class="desktop-main"><div class="container desktop-main__content">
         <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
         <div class="desktop-actions desktop-actions--left">
-          <div class="login-menu" data-login-menu><button class="action-item" type="button" aria-label="Entrar na minha conta" data-login-trigger aria-expanded="false" aria-controls="login-dropdown">${icon('conta', 'header-action-icon')}<span><strong>Entrar</strong><small>Minha conta</small></span>${chevron('down')}</button><div class="login-dropdown" id="login-dropdown" hidden>${assetImg('logo','abc')}<h2>Que bom ter você por aqui!</h2><p>Entre para acompanhar seus pedidos e encontrar tudo para a sua obra.</p><a class="login-dropdown__enter" href="#" data-pending-link>Entrar</a><a class="login-dropdown__register" href="#" data-pending-link>Registrar</a></div></div>
+          <div class="account-identity">${renderAccountIdentity()}</div>
         </div>
         <div class="desktop-actions desktop-actions--right">
           ${renderSearch('desktop')}
@@ -127,7 +132,7 @@
 
   function scheduleSearchClose() {
     clearTimeout(searchTimer);
-    const delay = Math.max(0, 3000 - (Date.now() - searchOpenedAt));
+    const delay = desktopQuery.matches ? Math.max(0, 3000 - (Date.now() - searchOpenedAt)) : 0;
     searchTimer = setTimeout(() => {
       if (desktopQuery.matches) setDesktopSearchOpen(false);
       else closeMobileSearch();
@@ -164,18 +169,73 @@
     syncSearchViewport();
   }
 
-  function bindLoginEvents() {
-    const menu = header.querySelector('[data-login-menu]');
-    if (!menu) return;
-    const trigger = menu.querySelector('[data-login-trigger]');
-    const popup = menu.querySelector('.login-dropdown');
-    const setOpen = open => { popup.hidden = !open; trigger.setAttribute('aria-expanded', String(open)); };
-    menu.addEventListener('mouseenter', () => { clearTimeout(loginTimer); loginTimer = setTimeout(() => setOpen(true), 140); });
-    menu.addEventListener('mouseleave', () => { clearTimeout(loginTimer); loginTimer = setTimeout(() => setOpen(false), 180); });
-    trigger.addEventListener('click', () => { clearTimeout(loginTimer); setOpen(true); });
-    menu.addEventListener('focusin', () => { clearTimeout(loginTimer); setOpen(true); });
-    menu.addEventListener('focusout', event => { if (!menu.contains(event.relatedTarget)) setOpen(false); });
-    menu.addEventListener('keydown', event => { if (event.key === 'Escape') { event.stopPropagation(); setOpen(false); trigger.focus(); setOpen(false); } });
+  function accountTitle() { return state.loggedIn ? `Olá, ${data.account.name}` : 'Entrar'; }
+
+  function renderAccountIdentity() {
+    return `<button class="account-state-toggle" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button><button class="account-menu-trigger" type="button" data-open-account aria-haspopup="dialog" aria-expanded="${accountOpen}"><span><strong data-account-title>${accountTitle()}</strong><small>Minha conta</small></span>${chevron('down')}</button>`;
+  }
+
+  function renderAccountDialog() {
+    const options = state.loggedIn
+      ? `<nav class="account-options" aria-label="Opções da minha conta">${data.account.options.map(item => `<a href="${item.url || '#'}" ${item.url ? '' : 'data-pending-link'}>${icon(item.iconId)}<span>${item.label}</span></a>`).join('')}</nav><button class="account-signout" type="button" data-account-session>Sair da conta</button>`
+      : '<p class="account-description">Entre para acompanhar seus pedidos e cuidar dos detalhes da sua obra.</p><button class="account-signin" type="button" data-account-session>Entrar</button><a class="account-register" href="#" data-pending-link>Criar conta</a>';
+    return `<div class="account-layer" data-account-layer><div class="account-backdrop" data-close-account></div><section class="account-dialog" role="dialog" aria-modal="true" aria-labelledby="account-title" tabindex="-1"><button class="account-close" type="button" data-close-account aria-label="Fechar Minha conta">×</button><div class="account-avatar">${icon('conta')}</div><p class="account-greeting">${state.loggedIn ? accountTitle() : 'Que bom ter você por aqui!'}</p><h2 id="account-title">${state.loggedIn ? 'Minha conta' : 'Entre na sua conta'}</h2>${options}<small class="account-preview-note">Preview: login e destinos de conta são demonstrativos.</small><p class="account-feedback" role="status"></p></section></div>`;
+  }
+
+  function updateAccountIdentity() {
+    document.querySelectorAll('[data-account-title]').forEach(title => { title.textContent = accountTitle(); });
+    document.querySelectorAll('[data-toggle-login-state]').forEach(button => button.setAttribute('aria-label', `Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}`));
+  }
+
+  function bindAccountDialog() {
+    accountRoot.querySelectorAll('[data-close-account]').forEach(button => button.addEventListener('click', closeAccount));
+    accountRoot.querySelector('[data-account-session]')?.addEventListener('click', () => {
+      state.loggedIn = !state.loggedIn;
+      updateAccountIdentity();
+      accountRoot.innerHTML = renderAccountDialog();
+      bindAccountDialog();
+      accountRoot.querySelector('.account-dialog')?.focus({ preventScroll: true });
+    });
+    accountRoot.querySelectorAll('[data-pending-link]').forEach(link => link.addEventListener('click', () => {
+      accountRoot.querySelector('.account-feedback').textContent = 'Este destino será conectado na integração da sua conta.';
+    }));
+  }
+
+  function openAccount(opener) {
+    clearTimeout(accountCloseTimer);
+    accountOpener = opener;
+    accountOpen = true;
+    accountRoot.innerHTML = renderAccountDialog();
+    bindAccountDialog();
+    document.querySelectorAll('[data-open-account]').forEach(button => button.setAttribute('aria-expanded', 'true'));
+    syncDocumentLock();
+    accountRoot.querySelector('.account-dialog')?.focus({ preventScroll: true });
+  }
+
+  function closeAccount() {
+    const layer = accountRoot.querySelector('[data-account-layer]');
+    if (!layer || layer.classList.contains('is-closing')) return;
+    const finish = () => {
+      accountOpen = false;
+      accountRoot.innerHTML = '';
+      document.querySelectorAll('[data-open-account]').forEach(button => button.setAttribute('aria-expanded', 'false'));
+      syncDocumentLock();
+      const focusTarget = accountOpener?.isConnected ? accountOpener : header.querySelector('[data-open-account], [data-toggle-login-state]');
+      focusTarget?.focus({ preventScroll: true });
+    };
+    layer.classList.add('is-closing');
+    accountCloseTimer = setTimeout(finish, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 200);
+  }
+
+  function bindLoginEvents(scope = document) {
+    scope.querySelectorAll('[data-open-account], [data-toggle-login-state]').forEach(button => {
+      if (button.dataset.accountBound) return;
+      button.dataset.accountBound = 'true';
+      button.addEventListener('click', () => {
+        if (button.hasAttribute('data-toggle-login-state')) { state.loggedIn = !state.loggedIn; updateAccountIdentity(); }
+        openAccount(button);
+      });
+    });
   }
 
   function renderDesktopMenu() {
@@ -197,7 +257,7 @@
       <div class="mega-panel">
       ${item.bannerIds ? `<div class="mega-promos"><h2>Promoções em Destaque</h2><div>${item.bannerIds.slice(0, 2).map(promoBanner).join('')}</div></div>` : ''}
       <div class="mega-content ${item === data.principal ? 'mega-content--principal' : ''}"><h2>Categorias em destaque</h2><div class="category-scroll"><div class="category-grid">${featured.map(([label, iconId]) => categoryCard(label, iconId, item === data.principal)).join('')}</div></div>${moreLink(item)}</div>
-      <aside class="brand-panel"><h2>${item === data.principal ? 'Principais marcas' : 'Marcas'}</h2><div class="brand-grid ${item === data.principal && !item.bannerIds?.length ? 'brand-grid--wide' : ''}">${brands.map(brandCard).join('')}</div></aside></div>`;
+      <aside class="brand-panel"><h2>Buscar por marcas</h2><div class="brand-grid ${item === data.principal && !item.bannerIds?.length ? 'brand-grid--wide' : ''}">${brands.map(brandCard).join('')}</div></aside></div>`;
   }
 
   function featuredCategories(item) {
@@ -249,11 +309,10 @@
   }
 
   function renderMobileHeader() {
-    const userTitle = state.loggedIn ? 'Olá, Phaison' : 'Entrar';
     const location = mobileLocationMarkup();
     return `<div class="mobile-header">
       <div class="mobile-topbar"><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
-      <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button hamburger" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button><button class="icon-button mobile-account" type="button" aria-label="${userTitle} — Minha conta">${icon('conta', 'header-action-icon')}</button></div>
+      <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button hamburger" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button><button class="icon-button mobile-account" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button></div>
       <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
       <div class="mobile-main__right"><button class="icon-button search-toggle" type="button" data-toggle-search aria-label="${state.searchOpen ? 'Fechar busca' : 'Abrir busca'}" aria-expanded="${state.searchOpen}" aria-controls="mobile-search-row"><span class="search__icon"></span></button><button class="icon-button cart-button" type="button" aria-label="Carrinho com zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span></button></div></div>
       <button class="mobile-location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button>
@@ -272,9 +331,12 @@
   }
 
   function renderDrawer() {
-    const userTitle = state.loggedIn ? 'Olá, Phaison' : 'Entrar';
+    return `<div class="drawer-view-header">${renderDrawerViewHeader()}</div><div class="drawer-body">${renderDrawerTrack()}</div>`;
+  }
+
+  function renderDrawerIdentityHeader() {
     const location = mobileLocationMarkup();
-    return `<div class="drawer-header"><div class="drawer-user">${icon('conta', 'header-action-icon')}<span><strong>${userTitle}</strong><small>Minha conta ${chevron('down')}</small></span><a class="sac-chip" href="#" data-pending-link>${assetImg('icon','whatsapp')} SAC</a></div><button class="drawer-location" type="button" data-open-regionalization>${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button></div><div class="drawer-view-header">${renderDrawerViewHeader()}</div><div class="drawer-body">${renderDrawerTrack()}</div>`;
+    return `<div class="drawer-header"><div class="drawer-user"><div class="account-identity">${renderAccountIdentity()}</div><a class="sac-chip" href="#" data-pending-link>${assetImg('icon','whatsapp')} SAC</a></div><button class="drawer-location" type="button" data-open-regionalization>${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button></div>`;
   }
 
   function desktopLocationMarkup() {
@@ -438,7 +500,7 @@
     const snapshot = state.drawerPreviousHtml.replace(/\s(?:id|aria-controls|aria-labelledby)="[^"]*"/g, '');
     const previous = snapshot ? `<div class="drawer-panel drawer-panel--previous" inert aria-hidden="true" style="--previous-scroll:${state.drawerPreviousScroll}px">${snapshot}</div>` : '';
     const direction = state.drawerPreviousHtml ? ` drawer-track--${state.drawerDirection}` : '';
-    return `<div class="drawer-track${direction}">${previous}<div class="drawer-panel drawer-panel--current">${renderDrawerLevel()}${renderDrawerFooter()}</div></div>`;
+    return `<div class="drawer-track${direction}">${previous}<div class="drawer-panel drawer-panel--current">${state.drawerLevel === 'root' ? renderDrawerIdentityHeader() : ''}${renderDrawerLevel()}${renderDrawerFooter()}</div></div>`;
   }
 
   function renderDrawerViewHeader() {
@@ -459,7 +521,7 @@
   }
 
   function renderDrawerFooter() {
-    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">Conte com</span><p>ABC da Construção, a maior especialista em acabamentos do Brasil.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span><span class="category-card__arrow">${chevron('right')}</span></a>`).join('')}</nav></footer><footer class="drawer-footer__legal">${assetImg('logo','mysa')}<div><small>MYSA S/A · CNPJ: 38.542.718/0052-22</small><small>Todos os direitos reservados 2026.</small><small>Preços e condições exclusivos para abcdaconstrucao.com.br</small></div></footer>`;
+    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">Conte com</span><p>ABC da Construção, a maior especialista em acabamentos do Brasil.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span></a>`).join('')}</nav></footer><footer class="drawer-footer__legal">${assetImg('logo','mysa')}<div><small>MYSA S/A · CNPJ: 38.542.718/0052-22</small><small>Todos os direitos reservados 2026.</small><small>Preços e condições exclusivos para abcdaconstrucao.com.br</small></div></footer>`;
   }
 
   function renderDrawerLevel() {
@@ -520,7 +582,7 @@
 
   function renderMobileBrands(item) {
     const brands = item.brandIds || [];
-    return brands.length ? `<section class="drawer-brands" aria-label="Principais marcas de ${item.label}"><h3>Principais marcas</h3><div class="brand-grid">${brands.map(brandCard).join('')}</div></section>` : '';
+    return brands.length ? `<section class="drawer-brands" aria-label="Buscar por marcas de ${item.label}"><h3>Buscar por marcas</h3><div class="brand-grid">${brands.map(brandCard).join('')}</div></section>` : '';
   }
 
   function renderDrawerDepartments() {
@@ -572,14 +634,13 @@
     bindScrollFades();
     bindDesktopSearchEvents();
     bindLoginEvents();
-    document.querySelectorAll('[data-open-regionalization]').forEach(button => button.addEventListener('click', () => openRegionalization(button)));
+    bindRegionalizationTriggers();
     bindRegionalizationEvents();
     if (!desktopQuery.matches) bindMobileSearchInput();
     const searchToggle = document.querySelector('[data-toggle-search]');
     if (searchToggle) searchToggle.addEventListener('click', () => {
       if (state.searchOpen) { closeMobileSearch(); return; }
       state.searchOpen = true;
-      searchOpenedAt = Date.now();
       searchBaselineHeight = window.visualViewport?.height || window.innerHeight;
       searchEngaged = false;
       const mobileHeader = header.querySelector('.mobile-header');
@@ -589,7 +650,6 @@
       bindMobileSearchInput();
       // Synchronous focus inside the tap gesture keeps iOS/Android keyboard activation.
       header.querySelector('[data-search-input]')?.focus({ preventScroll: true });
-      searchTimer = setTimeout(() => { if (!searchEngaged) closeMobileSearch(); }, 3000);
     });
     const openDrawer = document.querySelector('[data-open-drawer]');
     if (openDrawer) openDrawer.addEventListener('click', () => { state.opener = openDrawer; state.drawerOpen = true; state.drawerBusy = false; state.drawerLevel = 'root'; state.drawerId = null; state.drawerCategory = null; state.drawerHistory = []; state.drawerPreviousHtml = ''; render(); requestAnimationFrame(() => document.querySelector('#mobile-drawer')?.focus()); });
@@ -606,6 +666,14 @@
     input.addEventListener('pointerdown', engageSearch);
     input.addEventListener('focus', () => { clearTimeout(searchTimer); if (input.value.trim()) updateMobileAutocomplete(input); });
     syncSearchViewport();
+  }
+
+  function bindRegionalizationTriggers(scope = document) {
+    scope.querySelectorAll('[data-open-regionalization]').forEach(button => {
+      if (button.dataset.regionalizationBound) return;
+      button.dataset.regionalizationBound = 'true';
+      button.addEventListener('click', () => openRegionalization(button));
+    });
   }
 
   function bindDesktopMenuEvents() {
@@ -726,8 +794,66 @@
     let activeTrigger = null;
     let collapseTrigger = null;
     let frame = 0;
+    let lastScrollTop = body.scrollTop;
+    let returningToNavigation = false;
+    let pendingEnvironment = null;
+    let environmentTimer;
+    const rootHeader = currentPanel.querySelector('.drawer-header');
+    const pauseForInteraction = () => {
+      clearTimeout(environmentTimer);
+      pendingEnvironment = null;
+      drawerAutoPauseUntil = performance.now() + 650;
+    };
+    // Scrolling must not change the hit target during a tap or keyboard action.
+    currentPanel.addEventListener('pointerdown', pauseForInteraction, { passive: true });
+    currentPanel.addEventListener('focusin', pauseForInteraction);
+    const environmentCandidate = () => {
+      if (!currentPanel.isConnected) return null;
+      const rootTrigger = currentPanel.querySelector('[data-drawer-accordion="nav-ambientes"]');
+      const rootSection = rootTrigger?.closest('.drawer-accordion');
+      if (!rootSection?.classList.contains('is-expanded') || accountOpen || state.regionalizationOpen || state.drawerBusy) return null;
+      const line = body.getBoundingClientRect().top + 112;
+      return [...rootSection.querySelectorAll('.drawer-accordion__trigger--environment')].find(trigger => {
+        const rect = trigger.getBoundingClientRect();
+        return !trigger.closest('[inert]') && rect.top <= line && rect.bottom > line;
+      }) || null;
+    };
+    const scheduleEnvironment = () => {
+      const candidate = environmentCandidate();
+      if (!candidate || candidate.getAttribute('aria-expanded') === 'true' || candidate.dataset.drawerAccordion === manuallyClosedEnvironment || performance.now() < drawerAutoPauseUntil) {
+        clearTimeout(environmentTimer);
+        pendingEnvironment = null;
+        return;
+      }
+      if (candidate === pendingEnvironment) return;
+      clearTimeout(environmentTimer);
+      pendingEnvironment = candidate;
+      // Dwell avoids opening every card crossed by a quick fling.
+      environmentTimer = setTimeout(() => {
+        pendingEnvironment = null;
+        if (!candidate.isConnected || candidate !== environmentCandidate() || performance.now() < drawerAutoPauseUntil) return;
+        manuallyClosedEnvironment = null;
+        changeDrawerAccordion(candidate, 'scroll');
+        schedule();
+      }, 140);
+    };
     const update = () => {
+      if (!currentPanel.isConnected) return;
       const edge = body.getBoundingClientRect().top;
+      const scrollTop = body.scrollTop;
+      if (!body.classList.contains('is-auto-switching')) {
+        if (scrollTop < lastScrollTop - 2) returningToNavigation = true;
+        else if (scrollTop > lastScrollTop + 2) returningToNavigation = false;
+      }
+      lastScrollTop = scrollTop;
+      if (rootHeader) {
+        const departments = currentPanel.querySelector('[data-drawer-accordion="nav-departamentos"]');
+        const navigationStart = departments ? scrollTop + departments.getBoundingClientRect().top - edge : 120;
+        const showHeader = scrollTop < 12 || returningToNavigation && scrollTop <= navigationStart + 72;
+        rootHeader.classList.toggle('is-away', !showHeader);
+        rootHeader.toggleAttribute('inert', !showHeader);
+      }
+      scheduleEnvironment();
       activeTrigger = null;
       currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
         const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
@@ -736,6 +862,7 @@
         if (!trigger || trigger.classList.contains('drawer-accordion__trigger--environment') || trigger.closest('[inert]')) return;
         if (trigger.getBoundingClientRect().bottom <= edge + 1 && accordion.getBoundingClientRect().bottom > edge + 72) activeTrigger = trigger;
       });
+      if (rootHeader && !rootHeader.classList.contains('is-away')) activeTrigger = null;
       sticky.hidden = !activeTrigger;
       if (!activeTrigger) {
         stickyEnvironment.hidden = true;
@@ -798,6 +925,8 @@
   function bindDrawerPanelEvents() {
     const currentPanel = document.querySelector('.drawer-panel--current');
     hydrateDrawerImages(currentPanel);
+    bindLoginEvents(currentPanel || document);
+    bindRegionalizationTriggers(currentPanel || document);
     bindStickyDrawerCategory(currentPanel);
     currentPanel?.querySelectorAll('[data-drawer-level]').forEach(button => button.addEventListener('click', () => {
       if (button.dataset.drawerLevel === 'link') return;
@@ -805,68 +934,84 @@
       animateChevronAndNavigate(button, () => navigateDrawer(button.dataset.drawerLevel, button.dataset.drawerId, category));
     }));
     const back = document.querySelector('.drawer-view-header [data-drawer-back]');
-    if (back) back.addEventListener('click', () => animateChevronAndNavigate(back, navigateDrawerBack));
-    currentPanel?.querySelectorAll('[data-drawer-accordion]').forEach(button => button.addEventListener('click', () => {
-      if (state.drawerBusy) return;
-      const id = button.dataset.drawerAccordion;
-      const group = button.dataset.drawerGroup;
-      const isPrincipal = group === 'root' && id === data.principal.id;
-      const accordion = button.closest('.drawer-accordion');
-      const content = accordion.querySelector(':scope > .drawer-accordion__content');
-      const sequence = ++drawerScrollSequence;
-      if (isPrincipal) {
-        state.principalExpanded = !state.principalExpanded;
-        accordion.classList.toggle('is-expanded', state.principalExpanded);
-        button.setAttribute('aria-expanded', String(state.principalExpanded));
-        content.toggleAttribute('inert', !state.principalExpanded);
-        hydrateDrawerImages(currentPanel);
-        if (state.principalExpanded) scrollToOpenedDrawerAccordion(button, null, sequence);
-        window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
-        return;
-      }
-      const expanded = state.drawerExpanded.get(group) !== id;
-      const switchingEnvironment = expanded && button.classList.contains('drawer-accordion__trigger--environment') && Boolean(state.drawerExpanded.get(group));
-      if (switchingEnvironment) preserveDrawerCategoryPosition(button, sequence);
-      let closingContent = null;
-      // Principal Categories opens and closes independently of the other menu groups.
-      if (expanded) {
-        [...currentPanel.querySelectorAll('[data-drawer-accordion]')].filter(peer => peer !== button && peer.dataset.drawerGroup === group && peer.dataset.drawerAccordion !== data.principal.id).forEach(peer => {
-          const openAccordion = peer.closest('.drawer-accordion');
-          if (!openAccordion.classList.contains('is-expanded')) return;
-          closingContent ||= openAccordion.querySelector(':scope > .drawer-accordion__content');
-          openAccordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
-            state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
-            descendantTrigger.setAttribute('aria-expanded', 'false');
-          });
-          openAccordion.classList.remove('is-expanded');
-          openAccordion.querySelectorAll('.drawer-accordion').forEach(descendant => descendant.classList.remove('is-expanded'));
-          openAccordion.querySelectorAll('.drawer-accordion__content').forEach(content => content.setAttribute('inert', ''));
-        });
-      }
-      expanded ? state.drawerExpanded.set(group, id) : state.drawerExpanded.delete(group);
-      accordion.classList.toggle('is-expanded', expanded);
-      button.setAttribute('aria-expanded', String(expanded));
-      content.toggleAttribute('inert', !expanded);
-      if (expanded) hydrateDrawerImages(currentPanel);
-      if (!expanded) {
-        // A closed parent must never retain an expanded child. Besides avoiding an
-        // unexpected reopen, this keeps the sticky category bar tied to visible content.
-        accordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
-          if (descendantTrigger === button) return;
+    if (back) back.addEventListener('click', () => animateBackAndNavigate(back));
+    currentPanel?.querySelectorAll('[data-drawer-accordion]').forEach(button => button.addEventListener('click', () => changeDrawerAccordion(button)));
+    clearDrawerAnimationArtifacts();
+  }
+
+  function changeDrawerAccordion(button, source = 'pointer') {
+    if (state.drawerBusy) return;
+    const currentPanel = button.closest('.drawer-panel--current');
+    const body = currentPanel?.closest('.drawer-body');
+    if (!currentPanel || !body) return;
+    const automatic = source === 'scroll';
+    drawerAutoPauseUntil = performance.now() + (automatic ? 450 : 650);
+    const anchorTop = automatic ? button.getBoundingClientRect().top : null;
+    if (automatic) body.classList.add('is-auto-switching');
+    const id = button.dataset.drawerAccordion;
+    const group = button.dataset.drawerGroup;
+    const isPrincipal = group === 'root' && id === data.principal.id;
+    const accordion = button.closest('.drawer-accordion');
+    const content = accordion.querySelector(':scope > .drawer-accordion__content');
+    const sequence = ++drawerScrollSequence;
+    if (isPrincipal) {
+      state.principalExpanded = !state.principalExpanded;
+      accordion.classList.toggle('is-expanded', state.principalExpanded);
+      button.setAttribute('aria-expanded', String(state.principalExpanded));
+      content.toggleAttribute('inert', !state.principalExpanded);
+      hydrateDrawerImages(currentPanel);
+      if (state.principalExpanded) scrollToOpenedDrawerAccordion(button, null, sequence);
+      window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
+      return;
+    }
+    const expanded = automatic || state.drawerExpanded.get(group) !== id;
+    if (!automatic && button.classList.contains('drawer-accordion__trigger--environment')) manuallyClosedEnvironment = expanded ? null : id;
+    const switchingEnvironment = expanded && button.classList.contains('drawer-accordion__trigger--environment') && Boolean(state.drawerExpanded.get(group));
+    if (switchingEnvironment && !automatic) preserveDrawerCategoryPosition(button, sequence);
+    let closingContent = null;
+    // Principal Categories opens and closes independently of the other menu groups.
+    if (expanded) {
+      [...currentPanel.querySelectorAll('[data-drawer-accordion]')].filter(peer => peer !== button && peer.dataset.drawerGroup === group && peer.dataset.drawerAccordion !== data.principal.id).forEach(peer => {
+        const openAccordion = peer.closest('.drawer-accordion');
+        if (!openAccordion.classList.contains('is-expanded')) return;
+        closingContent ||= openAccordion.querySelector(':scope > .drawer-accordion__content');
+        openAccordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
           state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
           descendantTrigger.setAttribute('aria-expanded', 'false');
         });
-        accordion.querySelectorAll('.drawer-accordion').forEach(descendant => {
-          if (descendant !== accordion) descendant.classList.remove('is-expanded');
-        });
-        accordion.querySelectorAll('.drawer-accordion__content').forEach(descendantContent => {
-          if (descendantContent !== content) descendantContent.setAttribute('inert', '');
-        });
-      }
-      if (expanded && !switchingEnvironment) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
-      window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
-    }));
-    clearDrawerAnimationArtifacts();
+        openAccordion.classList.remove('is-expanded');
+        openAccordion.querySelectorAll('.drawer-accordion').forEach(descendant => descendant.classList.remove('is-expanded'));
+        openAccordion.querySelectorAll('.drawer-accordion__content').forEach(content => content.setAttribute('inert', ''));
+      });
+    }
+    expanded ? state.drawerExpanded.set(group, id) : state.drawerExpanded.delete(group);
+    accordion.classList.toggle('is-expanded', expanded);
+    button.setAttribute('aria-expanded', String(expanded));
+    content.toggleAttribute('inert', !expanded);
+    if (expanded) hydrateDrawerImages(currentPanel);
+    if (!expanded) {
+      // A closed parent must never retain an expanded child. Besides avoiding an
+      // unexpected reopen, this keeps the sticky category bar tied to visible content.
+      accordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
+        if (descendantTrigger === button) return;
+        state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
+        descendantTrigger.setAttribute('aria-expanded', 'false');
+      });
+      accordion.querySelectorAll('.drawer-accordion').forEach(descendant => {
+        if (descendant !== accordion) descendant.classList.remove('is-expanded');
+      });
+      accordion.querySelectorAll('.drawer-accordion__content').forEach(descendantContent => {
+        if (descendantContent !== content) descendantContent.setAttribute('inert', '');
+      });
+    }
+    if (automatic) {
+      // Change heights atomically, compensate layout before paint, then fade
+      // the new options. Do not chase or reset the customer's ongoing scroll.
+      body.scrollTop += button.getBoundingClientRect().top - anchorTop;
+      setTimeout(() => { body.classList.remove('is-auto-switching'); body.onscroll?.(); }, 360);
+    } else if (expanded && !switchingEnvironment) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
+    window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
+    if (expanded && group === 'root') window.setTimeout(() => body.onscroll?.(), 700);
   }
 
   function hydrateDrawerImages(panel) {
@@ -989,6 +1134,7 @@
   }
 
   function navigateDrawer(level, id, category = null) {
+    drawerAutoPauseUntil = performance.now() + 650;
     const body = document.querySelector('.drawer-body');
     state.drawerPreviousHtml = snapshotDrawerPanel();
     state.drawerPreviousScroll = body.scrollTop;
@@ -1003,6 +1149,7 @@
   }
 
   function navigateDrawerBack() {
+    drawerAutoPauseUntil = performance.now() + 650;
     const previous = state.drawerHistory.pop() || { level: 'root', id: null };
     state.drawerPreviousHtml = snapshotDrawerPanel();
     state.drawerPreviousScroll = (document.querySelector('.drawer-body')?.scrollTop || 0) - (previous.scrollTop || 0);
@@ -1021,6 +1168,15 @@
     button.classList.add('is-navigating');
     const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 150;
     window.setTimeout(() => { if (state.drawerOpen) callback(); }, delay);
+  }
+
+  function animateBackAndNavigate(button) {
+    if (state.drawerBusy) return;
+    state.drawerBusy = true;
+    button.classList.add('is-tap-feedback');
+    // A neutral touch highlight belongs to the whole target, never to a
+    // rotating back arrow. Keep its leftward direction completely stable.
+    setTimeout(() => { if (state.drawerOpen) navigateDrawerBack(); }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 130);
   }
 
   function snapshotDrawerPanel() {
@@ -1085,11 +1241,17 @@
   }
 
   function syncDocumentLock() {
-    document.body.classList.toggle('is-locked', state.drawerOpen || state.regionalizationOpen);
+    document.body.classList.toggle('is-locked', state.drawerOpen || state.regionalizationOpen || accountOpen);
     const main = document.getElementById('conteudo');
     const siteHeader = document.getElementById('site-header');
-    const pageBlocked = state.drawerOpen || state.regionalizationOpen;
-    if ('inert' in main) { main.inert = pageBlocked; siteHeader.inert = pageBlocked; menuRoot.inert = state.regionalizationOpen; }
+    const pageBlocked = state.drawerOpen || state.regionalizationOpen || accountOpen;
+    if ('inert' in main) {
+      main.inert = pageBlocked;
+      siteHeader.inert = pageBlocked;
+      menuRoot.inert = state.regionalizationOpen || accountOpen;
+      regionalizationRoot.inert = accountOpen;
+      accountRoot.inert = state.regionalizationOpen;
+    }
   }
 
   function assetImg(group, id) { return `<img src="${data.assetRegistry[group][id]}" alt="">`; }
@@ -1100,6 +1262,17 @@
   });
 
   document.addEventListener('keydown', event => {
+    if (accountOpen) {
+      const dialog = accountRoot.querySelector('.account-dialog');
+      if (event.key === 'Escape') { event.preventDefault(); closeAccount(); return; }
+      if (event.key === 'Tab' && dialog) {
+        const focusable = [...dialog.querySelectorAll('button, a[href]')];
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) { event.preventDefault(); first?.focus(); }
+      }
+      return;
+    }
     if (state.regionalizationOpen) {
       const dialog = document.querySelector('.regionalization-dialog');
       if (event.key === 'Escape') { event.preventDefault(); closeRegionalization(); return; }
@@ -1136,8 +1309,6 @@
   });
   document.addEventListener('pointerdown', event => {
     if ((state.desktopSearchOpen || state.searchOpen) && !event.target.closest('[data-desktop-search], .mobile-search-row, .search-dropdown, [data-toggle-search]')) scheduleSearchClose();
-    const login = header.querySelector('[data-login-menu]');
-    if (login && !login.contains(event.target)) { clearTimeout(loginTimer); login.querySelector('.login-dropdown').hidden = true; login.querySelector('[data-login-trigger]').setAttribute('aria-expanded', 'false'); }
     if (desktopQuery.matches && state.desktopMenu && !event.target.closest('.desktop-nav, [data-desktop-menu-surface]')) closeDesktopMenu();
   });
   desktopQuery.addEventListener('change', () => { clearTimeout(desktopOpenTimer); cancelDesktopClose(); state.desktopMenu = null; state.drawerOpen = false; state.desktopSearchOpen = false; state.searchOpen = false; state.searchDropdown = false; render(); });

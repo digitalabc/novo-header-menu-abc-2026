@@ -11,6 +11,13 @@ for (const script of ['category-icons.js', 'menu-data.js', 'category-tree.js']) 
 }
 const data = context.window.Menu2026Data;
 const tree = context.window.Menu2026Tree;
+assert.ok(data.account.name.trim(), 'Mock account needs a display name');
+assert.equal(data.account.options.length, 3, 'Account menu must expose three options');
+for (const option of data.account.options) {
+  assert.ok(option.label.trim());
+  assert.ok(data.assetRegistry.icon[option.iconId], `Missing account icon: ${option.iconId}`);
+  assert.equal(option.url, null, 'Account destinations remain local mocks');
+}
 let assets = 0, branches = 0, leaves = 0;
 for (const group of Object.values(data.assetRegistry)) {
   for (const file of Object.values(group)) {

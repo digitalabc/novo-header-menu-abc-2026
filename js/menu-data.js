@@ -233,5 +233,13 @@
     { label: 'Encontre sua loja', iconId: 'regionalizacao' },
     { label: 'Acompanhe seus pedidos', iconId: 'carrinho-mao' }
   ];
-  window.Menu2026Data = { assetRegistry, departments, principal, environments, navigation, search, drawerFooter, categoryAliases, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
+  const account = {
+    name: 'Phaison',
+    options: [
+      { label: 'Meus pedidos', iconId: 'carrinho-mao', url: null },
+      { label: 'Meus dados', iconId: 'conta', url: null },
+      { label: 'Meus endereços', iconId: 'regionalizacao', url: null }
+    ]
+  };
+  window.Menu2026Data = { assetRegistry, departments, principal, environments, navigation, search, drawerFooter, account, categoryAliases, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
 })();

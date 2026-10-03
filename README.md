@@ -48,6 +48,12 @@ Abra `http://localhost:8080`.
 - O toque em uma opção interna abre o painel lateral: entrada/saída em 360 ms com delay de 25 ms, bloqueio contra toques repetidos apenas durante a animação e retorno preservando dropdowns e scroll. A cópia de saída exclui descendentes ocultos, e a promoção de camada ocorre apenas durante o slide. A faixa de título e o cabeçalho ficam fora da região animada.
 - `js/category-tree.js` indexa os nós por IDs de caminho. Principais Categorias, Departamentos e Ambientes resolvem os mesmos ramos; os níveis seguintes conservam o ID, evitando confundir folhas com categorias de mesmo nome. Porcelanato inclui formatos N4 existentes no catálogo; folhas sem filhos continuam indicando integração pendente.
 - Os cards de ambientes dentro da lista mobile têm altura mínima de 200 px.
+- No sidebar, o ambiente que cruza a faixa de leitura abre automaticamente após 140 ms de permanência. Só um ambiente fica aberto: a troca ajusta o scroll antes da pintura para conservar a posição visual do card e faz fade das novas opções. Toques e foco de teclado pausam essa seleção; um ambiente recolhido manualmente não reabre sozinho enquanto permanece nessa faixa.
+- Conta e CEP usam um cabeçalho compacto no painel inicial, sem reduzir fontes. Ele sai de cena ao avançar na lista e reaparece ao rolar para cima próximo de Departamentos. Nos sliders, apenas o título da categoria e o botão de voltar permanecem no topo.
+- O botão de voltar tem alvo de 44 px e destaque neutro de toque na área inteira. A seta mantém sua direção, sem rotação ou deslocamento.
+- A busca mobile desce suavemente, sem bounce e sem espera mínima de três segundos para recolher. Essa espera permanece exclusiva do desktop.
+- As regiões com scrollbar reservam espaço simétrico dos dois lados; os dropdowns mantêm o mesmo padding lateral. Links de serviços do rodapé não exibem setas de expansão.
+- As seções de marcas usam o título “Buscar por marcas”.
 - Cada painel inclui um rodapé de ajuda, lojas e acompanhamento de pedidos. Destinos de serviços e catálogo ainda são mocks locais. A navegação de subcategoria mostra os filhos existentes nos dados; categorias sem filhos indicam que a integração do catálogo está pendente.
 - O modal mantém o foco dentro do menu, isola o header/página com `inert`, fecha com Escape e devolve o foco ao botão de abertura.
 - As setas de dropdowns e accordions comunicam abertura por rotação. As setas N1 usam um SVG dentro de uma área de 16 × 16 px, com eixo central estável ao girar 90°; a lista desktop de Departamentos usa o avanço lateral descrito acima. `prefers-reduced-motion` é respeitado.
@@ -80,6 +86,7 @@ Os scripts de atualização de fotos e otimização são ferramentas opcionais d
 - Desktop: navegue pelos botões Departamentos, Ambientes, Metais, Louças e Pisos e Revestimentos.
 - Mobile: use o hamburger, a lupa e a navegação em níveis da sidebar.
 - `?logged=0` simula usuário não logado.
+- O ícone de conta alterna entre logado e deslogado e abre o modal para conferir cada versão. O texto “Minha conta” e sua seta abrem o modal sem alterar o estado. Logado, há Meus pedidos, Meus dados, Meus endereços e Sair; deslogado, Entrar e Criar conta. Os dados e destinos são demonstrativos, sem autenticação real. O modal usa a linguagem visual da regionalização, fecha por Escape e mantém o foco dentro dele.
 - `?regionalized=0` simula CEP não informado.
 - `?search=open` abre a busca mobile ou deixa a busca desktop expandida.
 - `?search=dropdown` abre a busca mobile com sugestões e produtos.

@@ -587,7 +587,10 @@
       activeTrigger = null;
       currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
         const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
-        if (trigger && getComputedStyle(trigger).visibility === 'visible' && trigger.getBoundingClientRect().bottom < edge + 2 && accordion.getBoundingClientRect().bottom > edge + 58) activeTrigger = trigger;
+        const triggerStyle = trigger ? getComputedStyle(trigger) : null;
+        // A cloned environment card is deliberately display:none in the source
+        // list. It must not keep the sticky shell alive while scrolling back up.
+        if (trigger && triggerStyle?.display !== 'none' && triggerStyle.visibility === 'visible' && trigger.getBoundingClientRect().bottom < edge + 2 && accordion.getBoundingClientRect().bottom > edge + 58) activeTrigger = trigger;
       });
       sticky.hidden = !activeTrigger;
       if (!activeTrigger) {

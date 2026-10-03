@@ -592,6 +592,7 @@
       sticky.hidden = !activeTrigger;
       if (!activeTrigger) {
         stickyEnvironment.hidden = true;
+        currentPanel.querySelectorAll('.drawer-accordion--environment.is-sticky-cloned').forEach(accordion => accordion.classList.remove('is-sticky-cloned'));
         collapseTrigger = null;
         return;
       }
@@ -613,6 +614,11 @@
         ? activeTrigger
         : categoryAccordion?.querySelector('.drawer-accordion--environment.is-expanded > .drawer-accordion__trigger--environment');
       stickyEnvironment.hidden = !environmentTrigger;
+      const environmentAccordionToClone = environmentTrigger?.closest('.drawer-accordion--environment');
+      currentPanel.querySelectorAll('.drawer-accordion--environment.is-sticky-cloned').forEach(accordion => {
+        accordion.classList.toggle('is-sticky-cloned', accordion === environmentAccordionToClone);
+      });
+      if (environmentAccordionToClone && !environmentAccordionToClone.classList.contains('is-sticky-cloned')) environmentAccordionToClone.classList.add('is-sticky-cloned');
       if (environmentTrigger) {
         const environmentImage = environmentTrigger.querySelector('.drawer-environment-card > img');
         const environmentLabel = environmentTrigger.querySelector('.drawer-environment-card figcaption strong')?.textContent?.trim() || '';

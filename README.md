@@ -45,13 +45,15 @@ Abra `http://localhost:8080`.
 - Os departamentos reutilizam os banners no desktop e no mobile. Apenas a imagem interna do banner amplia 4,5% no hover de mouse ou foco de teclado, com transição de 500 ms e delay de 70 ms; a moldura não muda de tamanho. Movimento reduzido desativa o zoom.
 - No mobile, Principais Categorias é um accordion aberto por padrão no painel inicial.
 - Todas as entradas iniciais do sidebar abrem dropdowns para baixo, com transição de 420 ms e delay de 60 ms. Título e seta ficam pretos e o título ganha peso 700 quando aberto. As opções internas usam cards brancos sobre azul-claro, com divisórias sutis entre as categorias principais.
-- O toque em uma opção interna abre o painel lateral: entrada/saída em 460 ms com delay de 60 ms, bloqueio contra toques repetidos e retorno preservando dropdowns e scroll. A faixa de título e o cabeçalho ficam fora da região animada; não há conteúdo passando por trás deles.
+- O toque em uma opção interna abre o painel lateral: entrada/saída em 360 ms com delay de 25 ms, bloqueio contra toques repetidos apenas durante a animação e retorno preservando dropdowns e scroll. A cópia de saída exclui descendentes ocultos, e a promoção de camada ocorre apenas durante o slide. A faixa de título e o cabeçalho ficam fora da região animada.
+- `js/category-tree.js` indexa os nós por IDs de caminho. Principais Categorias, Departamentos e Ambientes resolvem os mesmos ramos; os níveis seguintes conservam o ID, evitando confundir folhas com categorias de mesmo nome. Porcelanato inclui formatos N4 existentes no catálogo; folhas sem filhos continuam indicando integração pendente.
+- Os cards de ambientes dentro da lista mobile têm altura mínima de 200 px.
 - Cada painel inclui um rodapé de ajuda, lojas e acompanhamento de pedidos. Destinos de serviços e catálogo ainda são mocks locais. A navegação de subcategoria mostra os filhos existentes nos dados; categorias sem filhos indicam que a integração do catálogo está pendente.
 - O modal mantém o foco dentro do menu, isola o header/página com `inert`, fecha com Escape e devolve o foco ao botão de abertura.
 - As setas de dropdowns e accordions comunicam abertura por rotação. As setas N1 usam um SVG dentro de uma área de 16 × 16 px, com eixo central estável ao girar 90°; a lista desktop de Departamentos usa o avanço lateral descrito acima. `prefers-reduced-motion` é respeitado.
 - Cards de categoria não usam sombra, escala, deslocamento do card ou negrito no hover: borda suave, texto e seta em vermelho. Apenas a seta avança 4 px por padding, no mesmo padrão da lista de Departamentos.
 
-Os ícones de conta, localização e carrinho de mão são PNGs transparentes, no estilo dos produtos das subcategorias; substituem glifos e desenhos CSS inconsistentes. Caminhos, origens e prompts estão em `assets/header-icons.json`.
+Os ícones de conta, localização e carrinho de mão usam versões WebP transparentes, no estilo dos produtos das subcategorias. Os PNGs originais permanecem preservados. Caminhos, origens e prompts estão em `assets/header-icons.json`.
 
 ## Ícones das categorias
 
@@ -62,6 +64,16 @@ Os ícones existentes foram preservados. As novas miniaturas de produtos reais f
 Cubas de cozinha, assentos sanitários, tanques inox, registros e torneiras de jardim possuem IDs próprios, sem reutilizar ícones de produtos diferentes. Itens atuais têm associações auditáveis; o genérico continua disponível apenas como fallback para dados futuros desconhecidos.
 
 Fontes, URLs dos produtos e prompts dos ícones ilustrativos estão em `assets/categories/sources.json`. Confirmar a autorização de uso das imagens do catálogo antes de publicar uma versão comercial. O preview permanece estático e não faz requisições ao catálogo em tempo de execução.
+
+A revisão dos níveis internos adiciona 23 fotos reais de porcelanatos, acessórios de banheiro, chuveiros e tintas. Os dez tipos de porcelanato têm imagens distintas. As respectivas páginas e URLs de imagem estão em `assets/categories/catalog-level-icons.json`. Nichos usa uma ilustração de produto isolado, documentada com o prompt em `assets/categories/nicho-generated-v1.json`. Os formatos de uma mesma família podem reutilizar sua imagem representativa, mas não herdam automaticamente a imagem de uma família diferente.
+
+Todas as imagens raster do registro de ícones são WebP e pesam menos de **15.000 bytes por arquivo** (15 KB, tamanho; não kbps). `scripts/optimize-menu-assets.py` exporta miniaturas de até 160 px sem modificar os originais. Fotos de ambientes e banners são assets maiores e não entram no limite de ícones. A verificação não exige dependências:
+
+```powershell
+node scripts/validate-menu-data.cjs
+```
+
+Os scripts de atualização de fotos e otimização são ferramentas opcionais de desenvolvimento: requerem Python, Pillow e, para atualizar fotos do catálogo, Brotli. Não fazem parte do runtime do site.
 
 ## Estados de preview
 

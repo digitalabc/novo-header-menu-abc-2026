@@ -493,8 +493,9 @@
     const environmentClass = item.imageId ? ' drawer-accordion__trigger--environment' : '';
     const sectionClass = item.imageId ? ' drawer-accordion--environment' : '';
     const label = item.imageId ? '' : '<span>' + item.label + '</span>';
+    const accessibleLabel = item.imageId ? ' aria-label="' + item.label + '"' : '';
     if (!expanded) content = content.replace(/<img([^>]*?)\ssrc=/g, '<img$1 data-src=');
-    return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button" data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos')) + label + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
+    return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button"' + accessibleLabel + ' data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos')) + label + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
   }
 
   function drawerOption(label, artwork, attributes) {
@@ -511,7 +512,10 @@
 
   function renderMobileCategoryOptions(item, scope) {
     const entries = scope === 'environment' ? item.categories.map(label => [label, categoryIcon(label)]) : featuredCategories(item);
-    return entries.map(([label, id]) => drawerOption(label, icon(id), 'data-drawer-level="category" data-drawer-id="' + item.id + '" data-category-scope="' + scope + '" data-category-label="' + encodeURIComponent(label) + '" data-category-icon="' + id + '"')).join('') + renderMobileBrands(item);
+    return entries.map(([label, id]) => {
+      const node = window.Menu2026Tree.resolve(label, item.id);
+      return drawerOption(label, icon(id), `data-drawer-level="category" data-drawer-id="${node?.departmentId || item.id}" data-category-node="${node?.id || ''}" data-category-scope="${node ? 'department' : scope}" data-category-label="${encodeURIComponent(label)}" data-category-icon="${id}"`);
+    }).join('') + renderMobileBrands(item);
   }
 
   function renderMobileBrands(item) {
@@ -544,27 +548,15 @@
     const category = state.drawerCategory;
     if (!category) return '';
     const parent = category.scope === 'environment' ? data.environments.find(item => item.id === state.drawerId) : state.drawerId === data.principal.id ? data.principal : data.departments.find(item => item.id === state.drawerId);
-    const node = findCategoryNode(parent?.children || [], category.label) || data.departments.map(item => findCategoryNode(item.children || [], category.label)).find(Boolean);
+    const node = window.Menu2026Tree.resolve(category.label, state.drawerId, category.nodeId);
     const children = node?.children || [];
     return '<div class="drawer-detail drawer-category-detail"><div class="drawer-category-intro">' + icon(category.iconId) + '<span>Encontre o acabamento para a sua obra.</span></div>' +
       (children.length ? '<nav class="drawer-category-list" aria-label="Opções de ' + category.label + '">' + children.map(child => {
         const label = typeof child === 'string' ? child : child.label;
-        const artwork = categoryIcon(label) === 'generic' ? category.iconId : categoryIcon(label);
-        return drawerOption(label, icon(artwork), `data-drawer-level="category" data-drawer-id="${state.drawerId}" data-category-scope="${category.scope}" data-category-label="${encodeURIComponent(label)}" data-category-icon="${artwork}"`);
+        const artwork = child.iconId || categoryIcon(label);
+        return drawerOption(label, icon(artwork), `data-drawer-level="category" data-drawer-id="${node.departmentId}" data-category-node="${child.id}" data-category-scope="department" data-category-label="${encodeURIComponent(label)}" data-category-icon="${artwork}"`);
       }).join('') + '</nav>' : '<p class="drawer-category-note">A seleção de produtos desta categoria será conectada ao catálogo na integração final.</p>') +
       moreLink(parent || {}) + '</div>';
-  }
-
-  function findCategoryNode(nodes, label) {
-    const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
-    const target = normalize(label);
-    for (const entry of nodes) {
-      const node = typeof entry === 'string' ? { label: entry, children: [] } : entry;
-      if (normalize(node.label) === target) return node;
-      const found = findCategoryNode(node.children || [], label);
-      if (found) return found;
-    }
-    return null;
   }
 
   function bindEvents() {
@@ -809,7 +801,7 @@
     bindStickyDrawerCategory(currentPanel);
     currentPanel?.querySelectorAll('[data-drawer-level]').forEach(button => button.addEventListener('click', () => {
       if (button.dataset.drawerLevel === 'link') return;
-      const category = button.dataset.categoryLabel ? { label: decodeURIComponent(button.dataset.categoryLabel), scope: button.dataset.categoryScope, iconId: button.dataset.categoryIcon } : null;
+      const category = button.dataset.categoryLabel ? { label: decodeURIComponent(button.dataset.categoryLabel), scope: button.dataset.categoryScope, iconId: button.dataset.categoryIcon, nodeId: button.dataset.categoryNode } : null;
       animateChevronAndNavigate(button, () => navigateDrawer(button.dataset.drawerLevel, button.dataset.drawerId, category));
     }));
     const back = document.querySelector('.drawer-view-header [data-drawer-back]');
@@ -998,7 +990,7 @@
 
   function navigateDrawer(level, id, category = null) {
     const body = document.querySelector('.drawer-body');
-    state.drawerPreviousHtml = document.querySelector('.drawer-panel--current').innerHTML;
+    state.drawerPreviousHtml = snapshotDrawerPanel();
     state.drawerPreviousScroll = body.scrollTop;
     state.drawerDirection = 'forward';
     state.drawerHistory.push({ level: state.drawerLevel, id: state.drawerId, category: state.drawerCategory, scrollTop: body.scrollTop });
@@ -1012,7 +1004,7 @@
 
   function navigateDrawerBack() {
     const previous = state.drawerHistory.pop() || { level: 'root', id: null };
-    state.drawerPreviousHtml = document.querySelector('.drawer-panel--current').innerHTML;
+    state.drawerPreviousHtml = snapshotDrawerPanel();
     state.drawerPreviousScroll = (document.querySelector('.drawer-body')?.scrollTop || 0) - (previous.scrollTop || 0);
     state.drawerDirection = 'back';
     state.drawerLevel = previous.level;
@@ -1031,15 +1023,33 @@
     window.setTimeout(() => { if (state.drawerOpen) callback(); }, delay);
   }
 
+  function snapshotDrawerPanel() {
+    const snapshot = document.querySelector('.drawer-panel--current').cloneNode(true);
+    // Hidden descendants are irrelevant to an exit animation. Do not duplicate
+    // hundreds of offscreen options/images into another composited layer.
+    snapshot.querySelectorAll('[inert], .drawer-sticky-category').forEach(element => element.remove());
+    return snapshot.innerHTML;
+  }
+
   function clearDrawerAnimationArtifacts() {
     clearTimeout(drawerAnimationTimer);
     if (!state.drawerPreviousHtml) return;
-    drawerAnimationTimer = setTimeout(() => {
+    const panel = document.querySelector('.drawer-panel--current');
+    const finish = () => {
+      clearTimeout(drawerAnimationTimer);
+      panel?.removeEventListener('animationend', onAnimationEnd);
       state.drawerPreviousHtml = '';
       document.querySelector('.drawer-panel--previous')?.remove();
       document.querySelector('.drawer-track')?.classList.remove('drawer-track--forward', 'drawer-track--back');
       state.drawerBusy = false;
-    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 600);
+    };
+    const onAnimationEnd = event => {
+      if (event.target === panel) finish();
+    };
+    panel?.addEventListener('animationend', onAnimationEnd);
+    // Release navigation as soon as the slide ends, with a fallback for a
+    // cancelled animation or browsers using reduced motion.
+    drawerAnimationTimer = setTimeout(finish, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 450);
   }
 
   function onDesktopNav(button) {

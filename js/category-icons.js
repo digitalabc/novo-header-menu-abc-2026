@@ -5,6 +5,30 @@
 
   window.Menu2026CategoryIcons = {
     assets: {
+      'porcelanato-acetinado': 'assets/categories/porcelanato-acetinado-abc.jpg',
+      'porcelanato-esmaltado': 'assets/categories/porcelanato-esmaltado-abc.jpg',
+      'porcelanato-decorado': 'assets/categories/porcelanato-decorado-abc.jpg',
+      'porcelanato-externo': 'assets/categories/porcelanato-externo-abc.jpg',
+      'porcelanato-marmorizado': 'assets/categories/porcelanato-marmorizado-abc.jpg',
+      'porcelanato-madeira': 'assets/categories/porcelanato-madeira-abc.jpg',
+      'porcelanato-natural': 'assets/categories/porcelanato-natural-abc.jpg',
+      'porcelanato-polido': 'assets/categories/porcelanato-polido-abc.jpg',
+      'porcelanato-tecnico': 'assets/categories/porcelanato-tecnico-abc.jpg',
+      'porcelanato-retificado': 'assets/categories/porcelanato-retificado-abc.jpg',
+      'porta-toalha': 'assets/categories/porta-toalha-abc.jpg',
+      saboneteira: 'assets/categories/saboneteira-abc.jpg',
+      'prateleira-banheiro': 'assets/categories/prateleira-banheiro-abc.jpg',
+      'cabide-banheiro': 'assets/categories/cabide-banheiro-abc.jpg',
+      papeleira: 'assets/categories/papeleira-abc.jpg',
+      'barra-apoio': 'assets/categories/barra-apoio-abc.jpg',
+      'chuveiro-eletrico': 'assets/categories/chuveiro-eletrico-abc.jpg',
+      'chuveiro-eletronico': 'assets/categories/chuveiro-eletronico-abc.jpg',
+      'chuveiro-hibrido': 'assets/categories/chuveiro-hibrido-abc.jpg',
+      'braco-chuveiro': 'assets/categories/braco-chuveiro-abc.jpg',
+      'tinta-interna': 'assets/categories/tinta-interna-abc.jpg',
+      'tinta-externa': 'assets/categories/tinta-externa-abc.jpg',
+      'tinta-emborrachada': 'assets/categories/tinta-emborrachada-abc.jpg',
+      nicho: 'assets/categories/nicho-generated-v1.png',
       "cuba-embutir": "assets/categories/cuba-embutir-abc.jpg",
       "lavatorio-suspenso": "assets/categories/lavatorio-suspenso-abc.jpg",
       "cuba-inox-dupla": "assets/categories/cuba-inox-dupla-abc.jpg",
@@ -154,6 +178,33 @@
     },
     catalogIconIds: ["cuba-banheiro","borda-piscina","cuba-cozinha","acessorios-banheiro","assento-sanitario","tanque-inox","ducha-higienica","acabamento-registro","ducha-eletrica","registro-base","banheira","grelha","ralo","sifao","caixa-gordura","veda-rosca","anel-vedacao","pasta-lubrificante","limpador-pvc","cola-pvc","cano-conexao","esgoto","caixa-agua","reservatorio-chuva","aquecedor-gas","filtro-piscina","bomba-agua","filtro-agua","boiler-solar","aquecedor-piscina","coletor-solar","controlador-solar","argamassa","rejunte","impermeabilizante","silicone","verniz","esmalte","tinta-spray","pre-pintura","cola-adesivo","solvente","rolo-pintura","parafuso-bucha","dobradica","fechadura","fechadura-digital","janela","forro","calha","ferramenta-eletrica","ferramenta-manual","caixa-eletrica","eletroduto","porta","lampada","pendente","fita-isolante","arandela","balizador","plafon","led-fita","spot-trilho","jardim-luz","camera-seguranca","interfone","lixeira","refletor","limpeza","panela","jogos-panelas","talheres","jogos-mesa","varal","coifa","cooktop","forno","microondas","adega","airfryer","sanduicheira","triturador","churrasqueira-carvao","panela-eletrica","moveis-banheiro","moveis-quarto","moveis-infantis","cadeira-jantar","moveis-cozinha","mesa","mesa-externa","espelho","cadeira-externa","gravador-cftv","suporte-fixacao","jardim-mangueira","torneira-jardim"],
     rules: [
+      { pattern: 'porcelanato.*acetinado', iconId: 'porcelanato-acetinado' },
+      { pattern: 'porcelanato.*esmaltado', iconId: 'porcelanato-esmaltado' },
+      { pattern: 'porcelanato.*decorado', iconId: 'porcelanato-decorado' },
+      { pattern: 'porcelanato.*externo', iconId: 'porcelanato-externo' },
+      { pattern: 'porcelanato.*marmorizado', iconId: 'porcelanato-marmorizado' },
+      { pattern: 'porcelanato.*madeira', iconId: 'porcelanato-madeira' },
+      { pattern: 'porcelanato.*natural', iconId: 'porcelanato-natural' },
+      { pattern: 'porcelanato.*polido', iconId: 'porcelanato-polido' },
+      { pattern: 'porcelanato.*tecnico', iconId: 'porcelanato-tecnico' },
+      { pattern: 'porcelanato.*retificado', iconId: 'porcelanato-retificado' },
+      { pattern: 'porta toalha|toalheiro', iconId: 'porta-toalha' },
+      { pattern: 'saboneteira', iconId: 'saboneteira' },
+      { pattern: 'prateleir.*banheiro', iconId: 'prateleira-banheiro' },
+      { pattern: 'cabide.*banheiro', iconId: 'cabide-banheiro' },
+      { pattern: 'papeleira', iconId: 'papeleira' },
+      { pattern: '^nichos?$', iconId: 'nicho' },
+      { pattern: 'acessibilidade|barra.*apoio', iconId: 'barra-apoio' },
+      { pattern: '^acessorios para banheiro$', iconId: 'acessorios-banheiro' },
+      { pattern: 'chuveiro.*hibrido', iconId: 'chuveiro-hibrido' },
+      { pattern: 'chuveiro.*eletronico', iconId: 'chuveiro-eletronico' },
+      { pattern: 'chuveiro.*eletrico', iconId: 'chuveiro-eletrico' },
+      { pattern: 'resistencia eletrica|resistencia.*chuveiro', iconId: 'chuveiro-resistencia' },
+      { pattern: 'acessorios.*chuveiro|braco.*chuveiro', iconId: 'braco-chuveiro' },
+      { pattern: 'acabamento.*chuveiro', iconId: 'acabamento-registro' },
+      { pattern: 'tinta.*parede.*interna', iconId: 'tinta-interna' },
+      { pattern: 'tinta.*parede.*externa', iconId: 'tinta-externa' },
+      { pattern: 'tinta.*emborrachada', iconId: 'tinta-emborrachada' },
       {
         "pattern": "acessorios para vasos",
         "iconId": "anel-vedacao"
@@ -798,4 +849,10 @@
       }
     ]
   };
+  const registry = window.Menu2026CategoryIcons;
+  registry.catalogIconIds.push('tinta-emborrachada');
+  Object.keys(registry.assets).forEach(id => {
+    registry.assets[id] = registry.assets[id].replace('assets/categories/', 'assets/optimized/categories/').replace(/\.(jpg|png)$/, '.webp');
+  });
+  registry.catalogIconIds.push('cuba-embutir', 'lavatorio-suspenso', 'cuba-inox-dupla', 'porcelanato-acetinado', 'porcelanato-esmaltado', 'porcelanato-decorado', 'porcelanato-externo', 'porcelanato-marmorizado', 'porcelanato-madeira', 'porcelanato-natural', 'porcelanato-polido', 'porcelanato-tecnico', 'porcelanato-retificado', 'porta-toalha', 'saboneteira', 'prateleira-banheiro', 'cabide-banheiro', 'papeleira', 'barra-apoio', 'chuveiro-eletrico', 'chuveiro-eletronico', 'chuveiro-hibrido', 'braco-chuveiro', 'tinta-interna', 'tinta-externa');
 })();

@@ -1,6 +1,11 @@
 (function () {
   'use strict';
 
+  // Explicit editorial aliases for shortcuts; never rewrite a resolved node ID.
+  const categoryAliases = {
+    chuveiros: 'chuveiro',
+    'acabamento para banheiro': 'acabamentos para banheiro'
+  };
   const assetRegistry = {
     logo: {
       abc: 'assets/logo-abc.svg',
@@ -141,6 +146,23 @@
     { id: 'utilidades-domesticas', label: 'Utilidades Domésticas', children: nested({ 'Área de Serviço': [], Varal: [], 'Limpeza e Organização': [], Lixeiras: ['Lixeira para banheiro', 'Lixeira para cozinha', 'Lixeira para quarto'], 'Utilidades para Cozinha': [], 'Talheres e Acessórios': [], Panelas: ['Panela de pressão', 'Panela elétrica'], 'Jogos de mesa': [] }) }
   ];
 
+  // Additional levels exposed by the ABC catalog. Keep a single shared tree
+  // behind departmental lists and featured shortcuts.
+  const porcelainFormats = {
+    'Porcelanato Acetinado': ['Convencionais retificados', 'Grandes formatos retificados', 'Super formatos retificados'],
+    'Porcelanato Decorado': ['Formatos convencionais'],
+    'Porcelanato Externo': ['Convencionais bold', 'Convencionais retificados', 'Grandes formatos retificados'],
+    'Porcelanato madeira': ['Réguas acetinadas', 'Réguas externas'],
+    'Porcelanato Natural': ['Super formatos retificados'],
+    'Porcelanato Polido': ['Convencionais retificados', 'Grandes formatos retificados', 'Super formatos retificados'],
+    'Porcelanato técnico': ['Técnicos naturais', 'Técnicos polidos']
+  };
+  const porcelainIcons = { 'Porcelanato Acetinado': 'porcelanato-acetinado', 'Porcelanato Decorado': 'porcelanato-decorado', 'Porcelanato Externo': 'porcelanato-externo', 'Porcelanato madeira': 'porcelanato-madeira', 'Porcelanato Natural': 'porcelanato-natural', 'Porcelanato Polido': 'porcelanato-polido', 'Porcelanato técnico': 'porcelanato-tecnico' };
+  const porcelain = departments[0].children.find(node => node.label === 'Porcelanato');
+  porcelain.children = porcelain.children.map(label => ({ label, children: (porcelainFormats[label] || []).map(format => ({ label: format, iconId: porcelainIcons[label], children: [] })) }));
+  const bathroomMetals = departments.find(item => item.id === 'metais').children.find(node => node.label === 'Metais para Banheiro');
+  bathroomMetals.children = bathroomMetals.children.map(label => label === 'Acessórios para Banheiro' ? { label, children: ['Porta Toalha e Toalheiros', 'Saboneteiras', 'Prateleiras para Banheiro', 'Cabides para Banheiro', 'Papeleiras para Banheiro', 'Lixeiras para Banheiro'] } : label);
+
   // Shared preview campaigns until each department has its own promotion data.
   departments.forEach(item => {
     item.bannerIds = item.bannerIds || [...featuredBannerIds];
@@ -211,5 +233,5 @@
     { label: 'Encontre sua loja', iconId: 'regionalizacao' },
     { label: 'Acompanhe seus pedidos', iconId: 'carrinho-mao' }
   ];
-  window.Menu2026Data = { assetRegistry, departments, principal, environments, navigation, search, drawerFooter, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
+  window.Menu2026Data = { assetRegistry, departments, principal, environments, navigation, search, drawerFooter, categoryAliases, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
 })();

@@ -583,7 +583,7 @@
       activeTrigger = null;
       currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
         const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
-        if (trigger?.getBoundingClientRect().bottom < edge + 2 && accordion.getBoundingClientRect().bottom > edge + 58) activeTrigger = trigger;
+        if (trigger && getComputedStyle(trigger).visibility === 'visible' && trigger.getBoundingClientRect().bottom < edge + 2 && accordion.getBoundingClientRect().bottom > edge + 58) activeTrigger = trigger;
       });
       sticky.hidden = !activeTrigger;
       if (!activeTrigger) {
@@ -677,6 +677,21 @@
       accordion.classList.toggle('is-expanded', expanded);
       button.setAttribute('aria-expanded', String(expanded));
       content.toggleAttribute('inert', !expanded);
+      if (!expanded) {
+        // A closed parent must never retain an expanded child. Besides avoiding an
+        // unexpected reopen, this keeps the sticky category bar tied to visible content.
+        accordion.querySelectorAll('[data-drawer-accordion]').forEach(descendantTrigger => {
+          if (descendantTrigger === button) return;
+          state.drawerExpanded.delete(descendantTrigger.dataset.drawerGroup);
+          descendantTrigger.setAttribute('aria-expanded', 'false');
+        });
+        accordion.querySelectorAll('.drawer-accordion').forEach(descendant => {
+          if (descendant !== accordion) descendant.classList.remove('is-expanded');
+        });
+        accordion.querySelectorAll('.drawer-accordion__content').forEach(descendantContent => {
+          if (descendantContent !== content) descendantContent.setAttribute('inert', '');
+        });
+      }
       if (expanded) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
       window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
     }));

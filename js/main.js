@@ -602,10 +602,16 @@
       stickyIcon.src = categoryIcon?.currentSrc || categoryIcon?.src || '';
       stickyIcon.hidden = !stickyIcon.src;
       stickyButton.setAttribute('aria-label', `Recolher ${label}`);
-      stickyEnvironment.hidden = !isEnvironment;
-      if (isEnvironment) {
-        const environmentImage = activeTrigger.querySelector('.drawer-environment-card > img');
-        const environmentLabel = activeTrigger.querySelector('.drawer-environment-card figcaption strong')?.textContent?.trim() || '';
+      // As soon as the Ambientes header is sticky, keep the chosen photo card with it.
+      // This prevents the original card from passing underneath the fixed header midway.
+      const categoryAccordion = categoryTrigger.closest('.drawer-accordion');
+      const environmentTrigger = isEnvironment
+        ? activeTrigger
+        : categoryAccordion?.querySelector('.drawer-accordion--environment.is-expanded > .drawer-accordion__trigger--environment');
+      stickyEnvironment.hidden = !environmentTrigger;
+      if (environmentTrigger) {
+        const environmentImage = environmentTrigger.querySelector('.drawer-environment-card > img');
+        const environmentLabel = environmentTrigger.querySelector('.drawer-environment-card figcaption strong')?.textContent?.trim() || '';
         stickyEnvironmentImage.src = environmentImage?.currentSrc || environmentImage?.src || '';
         stickyEnvironmentImage.style.objectPosition = environmentImage ? getComputedStyle(environmentImage).objectPosition : '';
         stickyEnvironmentLabel.textContent = environmentLabel;

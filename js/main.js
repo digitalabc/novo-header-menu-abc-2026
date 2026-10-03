@@ -14,6 +14,7 @@
   let drawerAnimationTimer;
   let drawerScrollSequence = 0;
   let scrollFadeObserver;
+  let regionalizationViewportBound = false;
 
   const catalogIconIds = new Set(data.catalogIconIds);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
@@ -226,7 +227,7 @@
       <div class="regionalization-backdrop" data-close-regionalization></div>
       <section class="regionalization-dialog" role="dialog" aria-modal="true" aria-labelledby="regionalization-title" aria-describedby="regionalization-help" tabindex="-1">
         <div class="regionalization-pin" aria-hidden="true"><svg viewBox="0 0 32 40"><path d="M16 38S3 25.1 3 14.8C3 7.7 8.8 2 16 2s13 5.7 13 12.8C29 25.1 16 38 16 38Z"/><circle cx="16" cy="14.5" r="4"/></svg></div>
-        <h2 id="regionalization-title">Seu CEP determina as ofertas e os<br>prazos disponíveis para a sua região.</h2>
+        <h2 id="regionalization-title">Seu CEP determina as ofertas e os prazos disponíveis para a sua região.</h2>
         <p id="regionalization-help" class="sr-only">Digite um CEP com oito números para definir sua região.</p>
         <form class="regionalization-form" novalidate>
           <div class="cep-field ${state.regionalizationError ? 'has-error' : ''}">
@@ -235,8 +236,8 @@
           </div>
           <p id="cep-error" class="cep-error" aria-live="polite">${state.regionalizationError}</p>
           <div class="regionalization-actions">
-            <button class="regionalization-submit" type="submit" ${valid ? '' : 'disabled'}>Ver produtos</button>
             <button class="regionalization-close" type="button" data-close-regionalization>Fechar</button>
+            <button class="regionalization-submit" type="submit" ${valid ? '' : 'disabled'}>Ver produtos</button>
           </div>
         </form>
       </section>
@@ -260,7 +261,27 @@
     state.regionalizationValue = state.regionalized ? state.delivery.cep : '';
     if (state.drawerOpen) { state.drawerOpen = false; state.drawerPreviousHtml = ''; }
     render();
-    requestAnimationFrame(() => document.getElementById('regionalization-cep')?.focus({ preventScroll: true }));
+    requestAnimationFrame(focusRegionalization);
+  }
+
+  function focusRegionalization() {
+    const target = desktopQuery.matches ? document.getElementById('regionalization-cep') : document.querySelector('.regionalization-dialog');
+    target?.focus({ preventScroll: true });
+  }
+
+  function syncRegionalizationViewport() {
+    const layer = document.querySelector('[data-regionalization-layer]');
+    if (!layer) return;
+    const viewport = window.visualViewport;
+    if (viewport && !desktopQuery.matches) {
+      layer.style.setProperty('--visible-height', `${viewport.height}px`);
+      layer.style.setProperty('--visible-top', `${viewport.offsetTop}px`);
+      layer.classList.toggle('is-keyboard-open', viewport.height < window.innerHeight - 140);
+    } else {
+      layer.style.removeProperty('--visible-height');
+      layer.style.removeProperty('--visible-top');
+      layer.classList.remove('is-keyboard-open');
+    }
   }
 
   function closeRegionalization() {
@@ -281,10 +302,18 @@
     document.querySelectorAll('[data-open-regionalization]').forEach(button => button.addEventListener('click', () => openRegionalization(button)));
     const layer = document.querySelector('[data-regionalization-layer]');
     if (!layer) return;
+    if (!regionalizationViewportBound) {
+      window.visualViewport?.addEventListener('resize', syncRegionalizationViewport);
+      window.visualViewport?.addEventListener('scroll', syncRegionalizationViewport);
+      window.addEventListener('resize', syncRegionalizationViewport);
+      regionalizationViewportBound = true;
+    }
+    syncRegionalizationViewport();
     const input = layer.querySelector('#regionalization-cep');
     const submit = layer.querySelector('.regionalization-submit');
     const deleteDigit = layer.querySelector('[data-delete-cep]');
     const error = layer.querySelector('.cep-error');
+    input.addEventListener('focus', () => requestAnimationFrame(syncRegionalizationViewport));
     layer.querySelectorAll('[data-close-regionalization]').forEach(button => button.addEventListener('click', closeRegionalization));
     input.addEventListener('input', () => {
       const next = formatCep(input.value);
@@ -335,17 +364,18 @@
   }
 
   function renderDrawerViewHeader() {
-    let title = 'Sua obra começa aqui';
+    if (state.drawerLevel === 'root') return `<div class="drawer-sticky-category" hidden><button type="button" data-collapse-visible-category aria-label="Recolher categoria"><span data-sticky-category-label></span>${navChevron()}</button></div>`;
+    let title = 'Categorias';
     if (state.drawerLevel === 'departments') title = 'Departamentos';
     if (state.drawerLevel === 'environments') title = 'Ambientes';
     if (state.drawerLevel === 'department') title = (state.drawerId === data.principal.id ? data.principal : data.departments.find(item => item.id === state.drawerId))?.label || 'Categorias';
     if (state.drawerLevel === 'environment') title = data.environments.find(item => item.id === state.drawerId)?.label || 'Ambiente';
     if (state.drawerLevel === 'category') title = state.drawerCategory?.label || 'Subcategoria';
-    return `<div class="drawer-title ${state.drawerLevel === 'root' ? 'drawer-title--root' : ''}">${state.drawerLevel === 'root' ? '' : `<button type="button" data-drawer-back aria-label="Voltar">${chevron('left')}</button>`}<h2 id="drawer-view-title" tabindex="-1">${title}</h2></div>`;
+    return `<div class="drawer-title"><button type="button" data-drawer-back aria-label="Voltar">${chevron('left')}</button><h2 id="drawer-view-title" tabindex="-1">${title}</h2></div>`;
   }
 
   function renderDrawerFooter() {
-    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">Conte com a ABC</span><p>Continue com a ABC, a maior especialista em acabamentos do Brasil.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span><span class="category-card__arrow">${chevron('right')}</span></a>`).join('')}</nav></footer><footer class="drawer-footer__legal">${assetImg('logo','mysa')}<div><small>MYSA S/A · CNPJ: 38.542.718/0052-22</small><small>Todos os direitos reservados 2026.</small><small>Preços e condições exclusivos para abcdaconstrucao.com.br</small></div></footer>`;
+    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">Conte com</span><p>ABC da Construção, a maior especialista em acabamentos do Brasil.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span><span class="category-card__arrow">${chevron('right')}</span></a>`).join('')}</nav></footer><footer class="drawer-footer__legal">${assetImg('logo','mysa')}<div><small>MYSA S/A · CNPJ: 38.542.718/0052-22</small><small>Todos os direitos reservados 2026.</small><small>Preços e condições exclusivos para abcdaconstrucao.com.br</small></div></footer>`;
   }
 
   function renderDrawerLevel() {
@@ -367,7 +397,7 @@
           const department = data.departments.find(entry => entry.id === item.departmentId);
           return renderMobileAccordion(item, renderMobileCategoryOptions(department, 'department'), 'nav-' + item.id, 'root');
         }
-        return renderMobileAccordion(item, '<p class="drawer-accordion__hint">Ofertas para a próxima etapa da sua obra.</p><a class="drawer-option" href="#" data-pending-link>Ver cupons disponíveis<span class="category-card__arrow">' + chevron('right') + '</span></a>', item.id, 'root');
+        return `<a class="drawer-direct-link" href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span>${navChevron()}</a>`;
       }).join('') +
       '<a class="drawer-sale" href="#" data-pending-link><span class="sale-pill">Saldão de Ofertas <span aria-hidden="true">🔥</span></span></a>';
   }
@@ -523,8 +553,45 @@
     timeout = window.setTimeout(finish, 560);
   }
 
+  function bindStickyDrawerCategory(currentPanel) {
+    const body = currentPanel?.closest('.drawer-body');
+    const sticky = document.querySelector('.drawer-sticky-category');
+    if (!body || !sticky) {
+      if (body) body.onscroll = null;
+      return;
+    }
+    const stickyButton = sticky.querySelector('[data-collapse-visible-category]');
+    let activeTrigger = null;
+    let frame = 0;
+    const update = () => {
+      const edge = body.getBoundingClientRect().top;
+      activeTrigger = null;
+      currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
+        const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
+        if (trigger?.getBoundingClientRect().bottom < edge + 2 && accordion.getBoundingClientRect().bottom > edge + 58) activeTrigger = trigger;
+      });
+      sticky.hidden = !activeTrigger;
+      if (!activeTrigger) return;
+      const label = activeTrigger.querySelector(':scope > span:not(.nav-chevron)')?.textContent?.trim() || activeTrigger.querySelector('figcaption strong')?.textContent?.trim() || 'Categoria';
+      sticky.querySelector('[data-sticky-category-label]').textContent = label;
+      stickyButton.setAttribute('aria-label', `Recolher ${label}`);
+    };
+    const schedule = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => { frame = 0; update(); });
+    };
+    body.onscroll = schedule;
+    stickyButton.addEventListener('click', () => {
+      if (!activeTrigger?.isConnected) return;
+      sticky.hidden = true;
+      activeTrigger.click();
+    });
+    schedule();
+  }
+
   function bindDrawerPanelEvents() {
     const currentPanel = document.querySelector('.drawer-panel--current');
+    bindStickyDrawerCategory(currentPanel);
     currentPanel?.querySelectorAll('[data-drawer-level]').forEach(button => button.addEventListener('click', () => {
       if (button.dataset.drawerLevel === 'link') return;
       const category = button.dataset.categoryLabel ? { label: decodeURIComponent(button.dataset.categoryLabel), scope: button.dataset.categoryScope, iconId: button.dataset.categoryIcon } : null;
@@ -546,6 +613,7 @@
         button.setAttribute('aria-expanded', String(state.principalExpanded));
         content.toggleAttribute('inert', !state.principalExpanded);
         if (state.principalExpanded) scrollToOpenedDrawerAccordion(button, null, sequence);
+        window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
         return;
       }
       const expanded = state.drawerExpanded.get(group) !== id;
@@ -570,6 +638,7 @@
       button.setAttribute('aria-expanded', String(expanded));
       content.toggleAttribute('inert', !expanded);
       if (expanded) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
+      window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
     }));
     clearDrawerAnimationArtifacts();
   }
@@ -709,7 +778,7 @@
     state.drawerCategory = previous.category || null;
     render();
     document.querySelector('.drawer-body').scrollTop = previous.scrollTop || 0;
-    document.getElementById('drawer-view-title')?.focus({ preventScroll: true });
+    (document.getElementById('drawer-view-title') || document.getElementById('mobile-drawer'))?.focus({ preventScroll: true });
   }
 
   function animateChevronAndNavigate(button, callback) {
@@ -836,5 +905,5 @@
     else { state.drawerLevel = data.environments.some(item => item.id === drawer) ? 'environment' : 'department'; state.drawerId = drawer; }
   }
   render();
-  if (state.regionalizationOpen) requestAnimationFrame(() => document.getElementById('regionalization-cep')?.focus({ preventScroll: true }));
+  if (state.regionalizationOpen) requestAnimationFrame(focusRegionalization);
 })();

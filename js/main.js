@@ -543,7 +543,11 @@
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scroll = () => {
       if (sequence !== drawerScrollSequence || !button.isConnected) return;
-      const top = body.scrollTop + button.getBoundingClientRect().top - body.getBoundingClientRect().top - 8;
+      // Environment cards live under the sticky “Ambientes” header. Reserve its
+      // exact height so the original card lands in the same visual position as
+      // the fixed card, instead of passing underneath it during the opening motion.
+      const headerOffset = button.classList.contains('drawer-accordion__trigger--environment') ? 72 : 8;
+      const top = body.scrollTop + button.getBoundingClientRect().top - body.getBoundingClientRect().top - headerOffset;
       body.scrollTo({ top: Math.max(0, top), behavior: reducedMotion ? 'instant' : 'smooth' });
     };
     if (!closingContent || reducedMotion) {

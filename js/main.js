@@ -537,6 +537,36 @@
     });
   }
 
+  function preserveDrawerCategoryPosition(button, sequence) {
+    const body = button.closest('.drawer-body');
+    if (!body) return;
+    const anchorTop = button.getBoundingClientRect().top - body.getBoundingClientRect().top;
+    const previousOverflowAnchor = body.style.overflowAnchor;
+    body.style.overflowAnchor = 'none';
+    let cancelled = false;
+    const cancel = () => { cancelled = true; };
+    body.addEventListener('touchstart', cancel, { passive: true });
+    body.addEventListener('wheel', cancel, { passive: true });
+    const started = performance.now();
+    const follow = () => {
+      if (cancelled || sequence !== drawerScrollSequence || !button.isConnected) {
+        finish();
+        return;
+      }
+      const delta = button.getBoundingClientRect().top - body.getBoundingClientRect().top - anchorTop;
+      if (Math.abs(delta) > .5) body.scrollTop += delta;
+      if (performance.now() - started < 600) requestAnimationFrame(follow);
+      else finish();
+    };
+    const finish = () => {
+      body.style.overflowAnchor = previousOverflowAnchor;
+      body.removeEventListener('touchstart', cancel);
+      body.removeEventListener('wheel', cancel);
+      body.onscroll?.();
+    };
+    requestAnimationFrame(follow);
+  }
+
   function scrollToOpenedDrawerAccordion(button, closingContent, sequence) {
     const body = button.closest('.drawer-body');
     if (!body) return;
@@ -616,7 +646,8 @@
       const environmentTrigger = [...categoryAccordion.querySelectorAll('.drawer-accordion--environment.is-expanded > .drawer-accordion__trigger--environment')].find(trigger => {
         const section = trigger.closest('.drawer-accordion--environment');
         const rect = trigger.getBoundingClientRect();
-        return !trigger.closest('[inert]') && rect.top <= edge + 73 && section.getBoundingClientRect().bottom > edge + 176;
+        const photoHeight = parseFloat(getComputedStyle(stickyEnvironment).height) || 160;
+        return !trigger.closest('[inert]') && rect.top <= edge + 73 && section.getBoundingClientRect().bottom > edge + 72 + photoHeight;
       });
       stickyEnvironment.hidden = !environmentTrigger;
       const environmentAccordionToClone = environmentTrigger?.closest('.drawer-accordion--environment');
@@ -678,6 +709,8 @@
         return;
       }
       const expanded = state.drawerExpanded.get(group) !== id;
+      const switchingEnvironment = expanded && button.classList.contains('drawer-accordion__trigger--environment') && Boolean(state.drawerExpanded.get(group));
+      if (switchingEnvironment) preserveDrawerCategoryPosition(button, sequence);
       let closingContent = null;
       // Principal Categories opens and closes independently of the other menu groups.
       if (expanded) {
@@ -713,7 +746,7 @@
           if (descendantContent !== content) descendantContent.setAttribute('inert', '');
         });
       }
-      if (expanded) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
+      if (expanded && !switchingEnvironment) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
       window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
     }));
     clearDrawerAnimationArtifacts();

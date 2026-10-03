@@ -618,9 +618,13 @@
     body.onscroll = schedule;
     stickyButton.addEventListener('click', () => {
       if (!collapseTrigger?.isConnected) return;
+      const collapseTop = Math.max(0, body.scrollTop + collapseTrigger.getBoundingClientRect().top - body.getBoundingClientRect().top - 2);
       sticky.hidden = true;
       stickyEnvironment.hidden = true;
       collapseTrigger.click();
+      // The section is often much taller than the viewport. Once it closes, bring
+      // its original trigger back into view instead of leaving the customer at the footer.
+      window.setTimeout(() => body.scrollTo({ top: collapseTop, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }), 460);
     });
     schedule();
   }

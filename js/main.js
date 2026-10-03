@@ -587,10 +587,10 @@
       activeTrigger = null;
       currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
         const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
-        const triggerStyle = trigger ? getComputedStyle(trigger) : null;
-        // A cloned environment card is deliberately display:none in the source
-        // list. It must not keep the sticky shell alive while scrolling back up.
-        if (trigger && triggerStyle?.display !== 'none' && triggerStyle.visibility === 'visible' && trigger.getBoundingClientRect().bottom < edge + 2 && accordion.getBoundingClientRect().bottom > edge + 58) activeTrigger = trigger;
+        // Photo cards are handled inside their parent menu's bounds below.
+        // Never infer the sticky position from a hidden or collapsed descendant.
+        if (!trigger || trigger.classList.contains('drawer-accordion__trigger--environment') || trigger.closest('[inert]')) return;
+        if (trigger.getBoundingClientRect().bottom <= edge + 1 && accordion.getBoundingClientRect().bottom > edge + 72) activeTrigger = trigger;
       });
       sticky.hidden = !activeTrigger;
       if (!activeTrigger) {
@@ -613,9 +613,11 @@
       // As soon as the Ambientes header is sticky, keep the chosen photo card with it.
       // This prevents the original card from passing underneath the fixed header midway.
       const categoryAccordion = categoryTrigger.closest('.drawer-accordion');
-      const environmentTrigger = isEnvironment
-        ? activeTrigger
-        : categoryAccordion?.querySelector('.drawer-accordion--environment.is-expanded > .drawer-accordion__trigger--environment');
+      const environmentTrigger = [...categoryAccordion.querySelectorAll('.drawer-accordion--environment.is-expanded > .drawer-accordion__trigger--environment')].find(trigger => {
+        const section = trigger.closest('.drawer-accordion--environment');
+        const rect = trigger.getBoundingClientRect();
+        return !trigger.closest('[inert]') && rect.top <= edge + 73 && section.getBoundingClientRect().bottom > edge + 176;
+      });
       stickyEnvironment.hidden = !environmentTrigger;
       const environmentAccordionToClone = environmentTrigger?.closest('.drawer-accordion--environment');
       currentPanel.querySelectorAll('.drawer-accordion--environment.is-sticky-cloned').forEach(accordion => {

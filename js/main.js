@@ -15,6 +15,7 @@
   let drawerScrollSequence = 0;
   let scrollFadeObserver;
   let regionalizationViewportBound = false;
+  let regionalizationBaselineHeight = 0;
 
   const catalogIconIds = new Set(data.catalogIconIds);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
@@ -259,6 +260,7 @@
     state.regionalizationOpen = true;
     state.regionalizationError = '';
     state.regionalizationValue = state.regionalized ? state.delivery.cep : '';
+    regionalizationBaselineHeight = window.visualViewport?.height || window.innerHeight;
     if (state.drawerOpen) { state.drawerOpen = false; state.drawerPreviousHtml = ''; }
     render();
     requestAnimationFrame(focusRegionalization);
@@ -274,9 +276,11 @@
     if (!layer) return;
     const viewport = window.visualViewport;
     if (viewport && !desktopQuery.matches) {
+      if (!regionalizationBaselineHeight) regionalizationBaselineHeight = viewport.height;
+      if (document.activeElement?.id !== 'regionalization-cep') regionalizationBaselineHeight = viewport.height;
       layer.style.setProperty('--visible-height', `${viewport.height}px`);
       layer.style.setProperty('--visible-top', `${viewport.offsetTop}px`);
-      layer.classList.toggle('is-keyboard-open', viewport.height < window.innerHeight - 140);
+      layer.classList.toggle('is-keyboard-open', document.activeElement?.id === 'regionalization-cep' && viewport.height < regionalizationBaselineHeight - 120);
     } else {
       layer.style.removeProperty('--visible-height');
       layer.style.removeProperty('--visible-top');
@@ -855,7 +859,7 @@
         const focusable = [...dialog.querySelectorAll('button:not([disabled]):not([hidden]), input, [href], [tabindex="0"]')].filter(element => element.getClientRects().length);
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) { event.preventDefault(); last?.focus(); }
         else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
       }
       return;

@@ -6,11 +6,32 @@ const crypto = require('node:crypto');
 const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const context = vm.createContext({ window: {} });
-for (const script of ['category-icons.js', 'menu-data.js', 'category-tree.js']) {
+for (const script of ['catalogo-assets.js', 'category-icons.js', 'menu-data.js', 'category-tree.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, 'js', script), 'utf8'), context);
 }
 const data = context.window.Menu2026Data;
 const tree = context.window.Menu2026Tree;
+const hierarchy = JSON.parse(fs.readFileSync(path.join(root, 'header-menu-abc/indice-categorias.json'), 'utf8'));
+assert.equal(hierarchy.categorias.length, data.departments.length);
+for (const department of hierarchy.categorias) {
+  for (const level of ['N1', 'N2', 'N3']) assert.ok(fs.existsSync(path.join(root, department.pasta, level)));
+  for (const [level, entries] of Object.entries(department.niveis)) {
+    for (const entry of entries) {
+      assert.ok(entry.arquivo.startsWith(`${department.pasta}/${level}/`));
+      assert.ok(fs.existsSync(path.join(root, entry.arquivo)), `Missing category artwork: ${entry.arquivo}`);
+      if (entry.arquivo.endsWith('.webp')) assert.ok(fs.statSync(path.join(root, entry.arquivo)).size < 15000);
+      if (entry.categoriaId) {
+        assert.ok(tree.byId.has(entry.categoriaId));
+        assert.equal(data.assetHierarchy.arquivos[entry.categoriaId], entry.arquivo);
+      }
+    }
+  }
+}
+for (const source of hierarchy.fontes) {
+  assert.ok(fs.existsSync(path.join(root, source.original)), `Missing preserved original: ${source.original}`);
+  assert.ok(fs.existsSync(path.join(root, source.exportacao)));
+}
+assert.equal(data.communications.length, 2);
 assert.ok(data.account.name.trim(), 'Mock account needs a display name');
 assert.equal(data.account.options.length, 3, 'Account menu must expose three options');
 for (const option of data.account.options) {
@@ -22,6 +43,8 @@ let assets = 0, branches = 0, leaves = 0;
 for (const group of Object.values(data.assetRegistry)) {
   for (const file of Object.values(group)) {
     assert.ok(fs.existsSync(path.join(root, file)), `Missing asset: ${file}`);
+    assert.ok(file.startsWith('header-menu-abc/'), `Asset outside organized root: ${file}`);
+    assert.ok(!/generated|environment|portrait|optimized|(?:^|\/)(?:category|brand|header|product|banner)-/.test(file.replace('header-menu-abc/', '')), `Unstandardized asset name: ${file}`);
     assets++;
   }
 }
@@ -52,6 +75,7 @@ for (const [label] of data.principal.featured) {
 }
 for (const node of tree.byId.values()) {
   assert.equal(tree.resolve(node.label, node.departmentId, node.id), node);
+  assert.ok(data.assetHierarchy.arquivos[node.id], `Node missing from asset hierarchy: ${node.id}`);
   for (const child of node.children) assert.ok(tree.byId.has(child.id));
 }
 const normalize = label => label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -71,4 +95,4 @@ for (const [id, asset] of Object.entries(data.assetRegistry.icon)) {
   assert.ok(asset.endsWith('.webp'), `Raster icon must use WebP: ${id}`);
   assert.ok(fs.statSync(path.join(root, asset)).size < 15000, `Icon over 15 KB: ${id}`);
 }
-console.log(`OK: ${assets} local assets, ${branches} branches and ${leaves} leaves; canonical navigation, distinct porcelain/basin artwork, WebP icons < 15 KB, brands and Cupons link validated.`);
+console.log(`OK: ${assets} assets locais; ${hierarchy.categorias.length} departamentos organizados; ${tree.byId.size} nós com imagem por nível; ícones WebP < 15 KB, ${branches} ramos, ${leaves} folhas e originais preservados.`);

@@ -8,78 +8,78 @@
   };
   const assetRegistry = {
     logo: {
-      abc: 'assets/logo-abc.svg',
-      casaPrime: 'assets/logo-casa-prime.svg',
-      mysa: 'assets/optimized/logo-mysa.webp'
+      abc: 'header-menu-abc/logos/abc.svg',
+      casaPrime: 'header-menu-abc/logos/casa-prime.svg',
+      mysa: 'header-menu-abc/logos/mysa.webp'
     },
     icon: {
-      conta: 'assets/optimized/header-conta-v1.webp',
-      regionalizacao: 'assets/optimized/header-regionalizacao-v1.webp',
-      'carrinho-mao': 'assets/optimized/header-carrinho-mao-v1.webp',
-      departamentos: 'assets/optimized/header-departamentos-v2.webp',
-      'principais-categorias': 'assets/optimized/icon-principais-categorias.webp',
-      ambientes: 'assets/optimized/icon-ambientes.webp',
-      metais: 'assets/optimized/icon-metais.webp',
-      loucas: 'assets/optimized/icon-loucas.webp',
-      'pisos-revestimentos': 'assets/optimized/icon-pisos.webp',
-      cupons: 'assets/optimized/icon-cupons.webp',
-      whatsapp: 'assets/icon-whatsapp.svg',
-      porcelanato: 'assets/optimized/category-porcelanato.webp',
-      'piso-vinilico': 'assets/optimized/category-piso-vinilico.webp',
-      'piso-ceramico': 'assets/optimized/category-piso-ceramico.webp',
-      'piso-laminado': 'assets/optimized/category-piso-laminado.webp',
+      conta: 'header-menu-abc/icones/conta.webp',
+      regionalizacao: 'header-menu-abc/icones/regionalizacao.webp',
+      'carrinho-mao': 'header-menu-abc/icones/carrinho-mao.webp',
+      departamentos: 'header-menu-abc/icones/departamentos.webp',
+      'principais-categorias': 'header-menu-abc/icones/principais-categorias.webp',
+      ambientes: 'header-menu-abc/icones/ambientes.webp',
+      metais: 'header-menu-abc/categorias/metais/N1/metais.webp',
+      loucas: 'header-menu-abc/categorias/loucas-e-inox/N1/loucas-e-inox.webp',
+      'pisos-revestimentos': 'header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-e-revestimentos.webp',
+      cupons: 'header-menu-abc/icones/cupons.webp',
+      whatsapp: 'header-menu-abc/icones/whatsapp.svg',
+      porcelanato: 'header-menu-abc/categorias/pisos-e-revestimentos/N2/porcelanato.webp',
+      'piso-vinilico': 'header-menu-abc/categorias/pisos-e-revestimentos/N3/piso-vinilico.webp',
+      'piso-ceramico': 'header-menu-abc/categorias/pisos-e-revestimentos/N2/piso-ceramico.webp',
+      'piso-laminado': 'header-menu-abc/categorias/pisos-e-revestimentos/N3/piso-laminado.webp',
       'revestimento-parede': window.Menu2026CategoryIcons.assets.azulejo,
-      pastilha: 'assets/optimized/category-pastilha.webp',
-      'rodapes-guarnicoes': 'assets/optimized/category-rodapes.webp',
-      'area-externa': 'assets/optimized/category-area-externa.webp',
-      'torneira-banheiro': 'assets/optimized/category-torneira-banheiro.webp',
-      'torneira-cozinha': 'assets/optimized/category-torneira-cozinha.webp',
-      'vaso-sanitario': 'assets/optimized/category-vaso-sanitario.webp',
-      chuveiro: 'assets/optimized/category-chuveiro.webp',
-      tinta: 'assets/optimized/category-tinta.webp',
-      generic: 'assets/category-generic.svg',
+      pastilha: 'header-menu-abc/categorias/pisos-e-revestimentos/N2/pastilha.webp',
+      'rodapes-guarnicoes': 'header-menu-abc/categorias/pisos-e-revestimentos/N2/rodapes-guarnicoes.webp',
+      'area-externa': 'header-menu-abc/icones/area-externa.webp',
+      'torneira-banheiro': 'header-menu-abc/categorias/metais/N2/torneira-banheiro.webp',
+      'torneira-cozinha': 'header-menu-abc/categorias/metais/N2/torneira-cozinha.webp',
+      'vaso-sanitario': 'header-menu-abc/categorias/loucas-e-inox/N2/vaso-sanitario.webp',
+      chuveiro: 'header-menu-abc/categorias/metais/N2/chuveiro.webp',
+      tinta: 'header-menu-abc/categorias/tinta/N1/tinta.webp',
+      generic: 'header-menu-abc/categorias/pisos-e-revestimentos/N3/categoria-geral.svg',
       ...window.Menu2026CategoryIcons.assets
     },
     environment: {
-      banheiro: 'assets/environment-banheiro-v2.webp',
-      cozinha: 'assets/environment-cozinha-v2.webp',
-      'sala-estar': 'assets/environment-sala-estar-v2.webp',
-      'sala-jantar': 'assets/environment-sala-jantar-v2.webp',
-      quarto: 'assets/environment-quarto-v2.webp',
-      escritorio: 'assets/environment-escritorio-v2.webp',
-      'area-externa': 'assets/environment-area-externa-v2.webp',
-      piscina: 'assets/environment-piscina-v2.webp'
+      banheiro: 'header-menu-abc/ambientes/banheiro/paisagem.webp',
+      cozinha: 'header-menu-abc/ambientes/cozinha/paisagem.webp',
+      'sala-estar': 'header-menu-abc/ambientes/sala-de-estar/paisagem.webp',
+      'sala-jantar': 'header-menu-abc/ambientes/sala-de-jantar/paisagem.webp',
+      quarto: 'header-menu-abc/ambientes/quarto/paisagem.webp',
+      escritorio: 'header-menu-abc/ambientes/escritorio/paisagem.webp',
+      'area-externa': 'header-menu-abc/ambientes/area-externa/paisagem.webp',
+      piscina: 'header-menu-abc/ambientes/piscina/paisagem.webp'
     },
     environmentFeature: {
-      banheiro: 'assets/environment-banheiro-portrait-v2.webp',
-      cozinha: 'assets/environment-cozinha-portrait-v2.webp',
-      'sala-estar': 'assets/environment-sala-estar-portrait-v2.webp',
-      'sala-jantar': 'assets/environment-sala-jantar-portrait-v2.webp',
-      quarto: 'assets/environment-quarto-portrait-v2.webp',
-      escritorio: 'assets/environment-escritorio-portrait-v2.webp',
-      'area-externa': 'assets/environment-area-externa-portrait-v2.webp',
-      piscina: 'assets/environment-piscina-portrait-v2.webp'
+      banheiro: 'header-menu-abc/ambientes/banheiro/vertical.webp',
+      cozinha: 'header-menu-abc/ambientes/cozinha/vertical.webp',
+      'sala-estar': 'header-menu-abc/ambientes/sala-de-estar/vertical.webp',
+      'sala-jantar': 'header-menu-abc/ambientes/sala-de-jantar/vertical.webp',
+      quarto: 'header-menu-abc/ambientes/quarto/vertical.webp',
+      escritorio: 'header-menu-abc/ambientes/escritorio/vertical.webp',
+      'area-externa': 'header-menu-abc/ambientes/area-externa/vertical.webp',
+      piscina: 'header-menu-abc/ambientes/piscina/vertical.webp'
     },
     banner: {
-      'porcelanato-oferta': 'assets/optimized/banner-porcelanato.webp',
-      'pisos-vinilicos': 'assets/optimized/banner-pisos-vinilicos.webp',
-      'metais-banheiro': 'assets/banner-metais-banheiro.svg',
-      'torneiras-cozinha': 'assets/banner-torneiras-cozinha.svg',
-      'loucas-banheiro': 'assets/banner-loucas-banheiro.svg',
-      'cubas-cozinha': 'assets/banner-cubas-cozinha.svg'
+      'porcelanato-oferta': 'header-menu-abc/promocoes/porcelanato-oferta.webp',
+      'pisos-vinilicos': 'header-menu-abc/promocoes/pisos-vinilicos.webp',
+      'metais-banheiro': 'header-menu-abc/promocoes/metais-banheiro.svg',
+      'torneiras-cozinha': 'header-menu-abc/promocoes/torneiras-cozinha.svg',
+      'loucas-banheiro': 'header-menu-abc/promocoes/loucas-banheiro.svg',
+      'cubas-cozinha': 'header-menu-abc/promocoes/cubas-cozinha.svg'
     },
     brand: {
-      docol: 'assets/brand-docol.svg', deca: 'assets/brand-deca.svg', roca: 'assets/brand-roca.svg',
-      celite: 'assets/brand-celite.svg', tramontina: 'assets/brand-tramontina.svg',
-      lorenzetti: 'assets/brand-lorenzetti.svg', coral: 'assets/optimized/brand-coral.webp',
-      fani: 'assets/brand-fani.svg', quartzolit: 'assets/brand-quartzolit.svg',
-      acqualimp: 'assets/optimized/brand-acqualimp.webp', komeco: 'assets/brand-komeco.svg',
-      biancogres: 'assets/brand-biancogres.svg', brinox: 'assets/brand-brinox.svg',
-      portobello: 'assets/optimized/brand-portobello.webp', ceusa: 'assets/optimized/brand-ceusa.webp',
-      eliane: 'assets/optimized/brand-eliane.webp', elizabeth: 'assets/optimized/brand-elizabeth.webp',
-      incepa: 'assets/optimized/brand-incepa.webp', portinari: 'assets/optimized/brand-portinari.webp'
+      docol: 'header-menu-abc/marcas/docol.svg', deca: 'header-menu-abc/marcas/deca.svg', roca: 'header-menu-abc/marcas/roca.svg',
+      celite: 'header-menu-abc/marcas/celite.svg', tramontina: 'header-menu-abc/marcas/tramontina.svg',
+      lorenzetti: 'header-menu-abc/marcas/lorenzetti.svg', coral: 'header-menu-abc/marcas/coral.webp',
+      fani: 'header-menu-abc/marcas/fani.svg', quartzolit: 'header-menu-abc/marcas/quartzolit.svg',
+      acqualimp: 'header-menu-abc/marcas/acqualimp.webp', komeco: 'header-menu-abc/marcas/komeco.svg',
+      biancogres: 'header-menu-abc/marcas/biancogres.svg', brinox: 'header-menu-abc/marcas/brinox.svg',
+      portobello: 'header-menu-abc/marcas/portobello.webp', ceusa: 'header-menu-abc/marcas/ceusa.webp',
+      eliane: 'header-menu-abc/marcas/eliane.webp', elizabeth: 'header-menu-abc/marcas/elizabeth.webp',
+      incepa: 'header-menu-abc/marcas/incepa.webp', portinari: 'header-menu-abc/marcas/portinari.webp'
     },
-    product: { 'piso-rochedo': 'assets/optimized/product-piso.webp' }
+    product: { 'piso-rochedo': 'header-menu-abc/produtos/piso-rochedo.webp' }
   };
 
   // Shared preview promotions until each department has its final campaign assets.
@@ -233,6 +233,10 @@
     { label: 'Encontre sua loja', iconId: 'regionalizacao' },
     { label: 'Acompanhe seus pedidos', iconId: 'carrinho-mao' }
   ];
+  const communications = [
+    { id: 'frete-metais', text: 'Metais com frete grátis · Sul e Sudeste', iconId: 'carrinho-mao' },
+    { id: 'parcelamento', text: 'Parcele em até 10x sem juros', iconId: null }
+  ];
   const account = {
     name: 'Phaison',
     options: [
@@ -241,5 +245,5 @@
       { label: 'Meus endereços', iconId: 'regionalizacao', url: null }
     ]
   };
-  window.Menu2026Data = { assetRegistry, departments, principal, environments, navigation, search, drawerFooter, account, categoryAliases, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
+  window.Menu2026Data = { assetRegistry, assetHierarchy: window.Menu2026Assets, departments, principal, environments, navigation, search, drawerFooter, account, communications, categoryAliases, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
 })();

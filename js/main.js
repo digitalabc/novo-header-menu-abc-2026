@@ -27,10 +27,18 @@
   let accountCloseTimer;
   let drawerAutoPauseUntil = 0;
   let manuallyClosedEnvironment = null;
+  let communicationTimer;
+  let communicationIndex = 0;
+  let communicationPaused = false;
 
   const catalogIconIds = new Set([...data.catalogIconIds, 'cuba-embutir', 'lavatorio-suspenso', 'cuba-inox-dupla']);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
-  const icon = (id, className = '') => `<img class="${className}${catalogIconIds.has(id) ? ' category-image--catalog' : ''}" src="${data.assetRegistry.icon[id] || data.assetRegistry.icon.generic}" alt="" decoding="async" loading="${className.includes('header-action') ? 'eager' : 'lazy'}" width="80" height="80">`;
+  const icon = (id, className = '', categoryId = '') => {
+    // Destaques editoriais podem escolher outro produto que o ícone do ramo.
+    const categoryFile = data.assetHierarchy.iconeIds[categoryId] === id ? data.assetHierarchy.arquivos[categoryId] : null;
+    const src = categoryFile || data.assetHierarchy.departamentos[categoryId] || data.assetRegistry.icon[id] || data.assetRegistry.icon.generic;
+    return `<img class="${className}${catalogIconIds.has(id) ? ' category-image--catalog' : ''}" src="${src}" alt="" decoding="async" loading="${className.includes('header-action') ? 'eager' : 'lazy'}" width="80" height="80">`;
+  };
   const chevron = (direction = 'right') => `<span class="chevron chevron--${direction}" aria-hidden="true"></span>`;
   const navChevron = () => '<span class="nav-chevron" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M6 4l4 4-4 4"/></svg></span>';
   const safeId = value => String(value).replace(/[^a-z0-9-]/gi, '-').toLowerCase();
@@ -57,6 +65,7 @@
     return `<div class="desktop-header">
       <div class="topbar"><div class="container topbar__content">
         <div class="topbar__group"><a class="chip chip--whatsapp" href="#">${assetImg('icon','whatsapp')}Compre pelo WhatsApp</a><a class="prime" href="#">${assetImg('logo','casaPrime')}</a></div>
+        ${renderCommunications()}
         <div class="topbar__group topbar__group--end"><a class="chip chip--stores" href="#"><span aria-hidden="true">▰</span>Nossas Lojas</a><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
       </div></div>
       <div class="desktop-main"><div class="container desktop-main__content">
@@ -125,6 +134,36 @@
     input.addEventListener('input', () => { engageSearch(); state.desktopSearchValue = input.value; });
     search.addEventListener('focusout', event => {
       if (state.desktopSearchOpen && !search.contains(event.relatedTarget)) scheduleSearchClose();
+    });
+  }
+
+  function renderCommunications() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return `<div class="topbar-communications" role="region" aria-label="Condições de compra" aria-roledescription="carrossel"><div class="topbar-communications__messages" aria-live="off">${data.communications.map((item, index) => `<div class="topbar-communications__message ${index === communicationIndex ? 'is-visible' : ''}" aria-hidden="${!reducedMotion && index !== communicationIndex}" data-communication>${item.iconId ? icon(item.iconId) : '<span class="topbar-communications__symbol" aria-hidden="true">10x</span>'}<span>${item.text}</span></div>`).join('')}</div><button class="topbar-communications__pause" type="button" aria-label="${communicationPaused ? 'Continuar' : 'Pausar'} comunicações" aria-pressed="${communicationPaused}" data-pause-communications><span aria-hidden="true">${communicationPaused ? '▶' : 'Ⅱ'}</span></button></div>`;
+  }
+
+  function bindCommunications() {
+    clearInterval(communicationTimer);
+    const region = header.querySelector('.topbar-communications');
+    if (!region) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const advance = () => {
+      if (document.hidden || communicationPaused || region.matches(':hover, :focus-within') || state.regionalizationOpen || accountOpen || !region.isConnected) return;
+      communicationIndex = (communicationIndex + 1) % data.communications.length;
+      region.querySelectorAll('[data-communication]').forEach((message, index) => {
+        message.classList.toggle('is-visible', index === communicationIndex);
+        message.setAttribute('aria-hidden', String(index !== communicationIndex));
+      });
+    };
+    // Respeite movimento reduzido sem impedir a leitura das duas mensagens.
+    if (reducedMotion.matches) region.classList.add('is-static');
+    else communicationTimer = setInterval(advance, 5500);
+    region.querySelector('[data-pause-communications]').addEventListener('click', event => {
+      communicationPaused = !communicationPaused;
+      const button = event.currentTarget;
+      button.setAttribute('aria-pressed', String(communicationPaused));
+      button.setAttribute('aria-label', `${communicationPaused ? 'Continuar' : 'Pausar'} comunicações`);
+      button.firstElementChild.textContent = communicationPaused ? '▶' : 'Ⅱ';
     });
   }
 
@@ -256,7 +295,7 @@
     return `${withRail ? renderDepartmentRail(item.id) : ''}
       <div class="mega-panel">
       ${item.bannerIds ? `<div class="mega-promos"><h2>Promoções em Destaque</h2><div>${item.bannerIds.slice(0, 2).map(promoBanner).join('')}</div></div>` : ''}
-      <div class="mega-content ${item === data.principal ? 'mega-content--principal' : ''}"><h2>Categorias em destaque</h2><div class="category-scroll"><div class="category-grid">${featured.map(([label, iconId]) => categoryCard(label, iconId, item === data.principal)).join('')}</div></div>${moreLink(item)}</div>
+      <div class="mega-content ${item === data.principal ? 'mega-content--principal' : ''}"><h2>Categorias em destaque</h2><div class="category-scroll"><div class="category-grid">${featured.map(([label, iconId]) => categoryCard(label, iconId, item === data.principal, window.Menu2026Tree.resolve(label, item.id)?.id)).join('')}</div></div>${moreLink(item)}</div>
       <aside class="brand-panel"><h2>Buscar por marcas</h2><div class="brand-grid ${item === data.principal && !item.bannerIds?.length ? 'brand-grid--wide' : ''}">${brands.map(brandCard).join('')}</div></aside></div>`;
   }
 
@@ -276,8 +315,8 @@
     return `<aside class="department-rail"><div class="department-rail__list">${all.map(item => `<button type="button" class="department-link ${item.id === activeId ? 'is-active' : ''}" data-department-id="${item.id}" aria-current="${item.id === activeId ? 'true' : 'false'}"><span>${item.label}</span><span class="department-link__arrow">${chevron('right')}</span></button>`).join('')}</div></aside>`;
   }
 
-  function categoryCard(label, iconId, large) {
-    return `<a class="category-card ${large ? 'category-card--large' : ''}" href="#">${icon(iconId || 'generic')}<span>${label}</span><span class="category-card__arrow">${chevron('right')}</span></a>`;
+  function categoryCard(label, iconId, large, categoryId) {
+    return `<a class="category-card ${large ? 'category-card--large' : ''}" href="#">${icon(iconId || 'generic', '', categoryId)}<span>${label}</span><span class="category-card__arrow">${chevron('right')}</span></a>`;
   }
 
   function brandCard(id) {
@@ -557,7 +596,7 @@
     const label = item.imageId ? '' : '<span>' + item.label + '</span>';
     const accessibleLabel = item.imageId ? ' aria-label="' + item.label + '"' : '';
     if (!expanded) content = content.replace(/<img([^>]*?)\ssrc=/g, '<img$1 data-src=');
-    return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button"' + accessibleLabel + ' data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos')) + label + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
+    return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button"' + accessibleLabel + ' data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos', '', item.id)) + label + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
   }
 
   function drawerOption(label, artwork, attributes) {
@@ -576,7 +615,7 @@
     const entries = scope === 'environment' ? item.categories.map(label => [label, categoryIcon(label)]) : featuredCategories(item);
     return entries.map(([label, id]) => {
       const node = window.Menu2026Tree.resolve(label, item.id);
-      return drawerOption(label, icon(id), `data-drawer-level="category" data-drawer-id="${node?.departmentId || item.id}" data-category-node="${node?.id || ''}" data-category-scope="${node ? 'department' : scope}" data-category-label="${encodeURIComponent(label)}" data-category-icon="${id}"`);
+      return drawerOption(label, icon(id, '', node?.id), `data-drawer-level="category" data-drawer-id="${node?.departmentId || item.id}" data-category-node="${node?.id || ''}" data-category-scope="${node ? 'department' : scope}" data-category-label="${encodeURIComponent(label)}" data-category-icon="${id}"`);
     }).join('') + renderMobileBrands(item);
   }
 
@@ -616,12 +655,13 @@
       (children.length ? '<nav class="drawer-category-list" aria-label="Opções de ' + category.label + '">' + children.map(child => {
         const label = typeof child === 'string' ? child : child.label;
         const artwork = child.iconId || categoryIcon(label);
-        return drawerOption(label, icon(artwork), `data-drawer-level="category" data-drawer-id="${node.departmentId}" data-category-node="${child.id}" data-category-scope="department" data-category-label="${encodeURIComponent(label)}" data-category-icon="${artwork}"`);
+        return drawerOption(label, icon(artwork, '', child.id), `data-drawer-level="category" data-drawer-id="${node.departmentId}" data-category-node="${child.id}" data-category-scope="department" data-category-label="${encodeURIComponent(label)}" data-category-icon="${artwork}"`);
       }).join('') + '</nav>' : '<p class="drawer-category-note">A seleção de produtos desta categoria será conectada ao catálogo na integração final.</p>') +
       moreLink(parent || {}) + '</div>';
   }
 
   function bindEvents() {
+    bindCommunications();
     document.querySelectorAll('[data-menu-action]').forEach(button => {
       button.addEventListener('click', () => onDesktopNav(button));
       button.addEventListener('mouseenter', () => scheduleDesktopOpen(button));

@@ -25,6 +25,7 @@ Abra `http://localhost:8080`.
 ## Interações do preview
 
 - No desktop, os menus N1 abrem por hover ou foco de teclado e permanecem acessíveis durante a travessia do cursor até o mega menu.
+- No centro da tarja desktop, as comunicações de frete em metais para Sul/Sudeste e parcelamento em até 10x alternam a cada 5,5 segundos com fade. A rotação pausa no hover, no foco, durante os modais e pelo botão de pausa. Com movimento reduzido, as duas mensagens ficam estáticas. Os textos são dados locais de preview, baseados na tarja pública da ABC consultada em 03/10/2026; não há validação de elegibilidade ou checkout.
 - O botão N1 Departamentos e sua lista lateral compartilham uma largura fluida (`clamp`), sem duplicar medidas por breakpoint. Seu texto preenche a coluna central e fica centralizado no botão. Sua seta aponta à direita fechado e gira somente para baixo ao abrir.
 - Hover N1 tem espera de 140 ms; seleção nas colunas tem espera de 150 ms. A saída tem tolerância de 240 ms e fade de 220 ms.
 - Promoções, categorias e marcas ficam reunidas em um painel branco com padding de 24 px (20 px no desktop compacto), dentro do dropdown azul-claro. Faixas de 20 px acima e abaixo impedem que o branco encoste no header. Ambientes usa o mesmo painel.
@@ -34,7 +35,7 @@ Abra `http://localhost:8080`.
 - As linhas de Departamentos têm altura mínima de 40 px e 6 px de espaço branco entre os estados de hover/seleção.
 - A lista lateral de Ambientes fica dentro de um painel branco mais largo (272 a 320 px), com padding e scrollbar à esquerda. Há 8 px entre suas opções. As imagens se aproximam da aresta esquerda das linhas (padding interno de 4 px), com 120 × 92 px no desktop amplo, 104 × 84 px no compacto e 96 × 64 px no mobile; sua lateral se dissolve no fundo. Hover e seleção usam o mesmo rosa claro, borda suave e vermelho de Departamentos, sem aumentar o peso do texto.
 - O destaque de Ambientes é um card vertical com a imagem passando para branco puro, com transparência mais forte na base. “Ambiente”, nome do espaço e frase amigável são HTML: a frase fica abaixo do nome em 12 px, peso 400 e cor discreta. Não há mais um título duplicado acima do grid. O grid usa 3 colunas quando há espaço e 2 quando sua própria coluna fica estreita; a transparência também se adapta às telas mais baixas.
-- As fotos mostram casas brasileiras de classe média e variam os acabamentos claros, escuros, marrons e terracota. Miniaturas e versões verticais usam o mesmo `imageId`; os arquivos WebP da coleção atual somam aproximadamente 453 KiB. Arquivos e prompts de geração estão em [assets/environment-images.md](assets/environment-images.md).
+- As fotos mostram casas brasileiras de classe média e variam os acabamentos claros, escuros, marrons e terracota. Miniaturas e versões verticais usam o mesmo `imageId`; os arquivos WebP da coleção atual somam aproximadamente 453 KiB. Arquivos e prompts de geração estão em [header-menu-abc/documentacao/fotos-ambientes.md](header-menu-abc/documentacao/fotos-ambientes.md).
 - Transparências suavizam a lateral das miniaturas e as bordas de scroll. Os fades do scroll só aparecem nas extremidades que têm conteúdo oculto; ao chegar ao final, o último item fica totalmente legível. A troca de ambiente preserva a lista, foco e posição de scroll.
 - A busca desktop começa como uma lupa circular de 44 px. Ao clicar ou ativar pelo teclado, expande em 480 ms com 60 ms de delay; o campo aparece gradualmente e recebe foco. Escape recolhe e devolve o foco à lupa, sem apagar a consulta. Se estiver vazia, também recolhe ao clicar fora ou sair pelo teclado. Não realiza buscas reais: o preview continua sem backend.
 - No desktop, o logo começa na margem esquerda do container, seguido de conta e regionalização. Lupa e carrinho de mão continuam à direita, inclusive com busca expandida. O botão Departamentos usa a mesma margem, sem o recuo lateral anterior; seu ícone metálico tem o acabamento dos demais ícones de ação. No mobile, o logo permanece centralizado, conta e menu ficam à esquerda, busca e carrinho à direita; a entrega conserva sua faixa própria para manter a leitura em telas pequenas.
@@ -59,9 +60,11 @@ Abra `http://localhost:8080`.
 - As setas de dropdowns e accordions comunicam abertura por rotação. As setas N1 usam um SVG dentro de uma área de 16 × 16 px, com eixo central estável ao girar 90°; a lista desktop de Departamentos usa o avanço lateral descrito acima. `prefers-reduced-motion` é respeitado.
 - Cards de categoria não usam sombra, escala, deslocamento do card ou negrito no hover: borda suave, texto e seta em vermelho. Apenas a seta avança 4 px por padding, no mesmo padrão da lista de Departamentos.
 
-Os ícones de conta, localização e carrinho de mão usam versões WebP transparentes, no estilo dos produtos das subcategorias. Os PNGs originais permanecem preservados. Caminhos, origens e prompts estão em `assets/header-icons.json`.
+Os ícones de conta, localização e carrinho de mão usam versões WebP transparentes, no estilo dos produtos das subcategorias. Os PNGs originais permanecem preservados. Caminhos, origens e prompts estão em `header-menu-abc/documentacao/icones-cabecalho.json`.
 
 ## Ícones das categorias
+
+Todos os assets estão em [header-menu-abc](header-menu-abc/README.md), com nomes em português e pastas `categorias/<departamento>/N1`, `N2` e `N3`. N4 permanece nos ramos existentes. PNG/JPG originais e variações ficam em `originais/`, separados das miniaturas finais. O [índice da árvore](header-menu-abc/indice-categorias.json) relaciona categoria, nível, ID e imagem; `js/catalogo-assets.js` resolve esses caminhos sem alterar os IDs de navegação. Ambientes, marcas, logos, promoções e ícones de ações têm suas próprias pastas.
 
 `js/category-icons.js` concentra o registro de imagens e as regras semânticas de associação por família de produto. O mesmo resolvedor é usado pelos cards de Departamentos e Ambientes no desktop e no mobile; não há caminhos físicos espalhados nas configurações de menu.
 
@@ -69,11 +72,11 @@ Os ícones existentes foram preservados. As novas miniaturas de produtos reais f
 
 Cubas de cozinha, assentos sanitários, tanques inox, registros e torneiras de jardim possuem IDs próprios, sem reutilizar ícones de produtos diferentes. Itens atuais têm associações auditáveis; o genérico continua disponível apenas como fallback para dados futuros desconhecidos.
 
-Fontes, URLs dos produtos e prompts dos ícones ilustrativos estão em `assets/categories/sources.json`. Confirmar a autorização de uso das imagens do catálogo antes de publicar uma versão comercial. O preview permanece estático e não faz requisições ao catálogo em tempo de execução.
+Fontes, URLs dos produtos e prompts dos ícones ilustrativos estão em `header-menu-abc/documentacao/fontes-produtos.json`. Confirmar a autorização de uso das imagens do catálogo antes de publicar uma versão comercial. O preview permanece estático e não faz requisições ao catálogo em tempo de execução.
 
-A revisão dos níveis internos adiciona 23 fotos reais de porcelanatos, acessórios de banheiro, chuveiros e tintas. Os dez tipos de porcelanato têm imagens distintas. As respectivas páginas e URLs de imagem estão em `assets/categories/catalog-level-icons.json`. Nichos usa uma ilustração de produto isolado, documentada com o prompt em `assets/categories/nicho-generated-v1.json`. Os formatos de uma mesma família podem reutilizar sua imagem representativa, mas não herdam automaticamente a imagem de uma família diferente.
+A revisão dos níveis internos adiciona 23 fotos reais de porcelanatos, acessórios de banheiro, chuveiros e tintas. Os dez tipos de porcelanato têm imagens distintas. As respectivas páginas e URLs de imagem estão em `header-menu-abc/documentacao/fontes-subcategorias.json`. Nichos usa uma ilustração de produto isolado, documentada com o prompt em `header-menu-abc/documentacao/referencia-nicho.json`. Os formatos de uma mesma família podem reutilizar sua imagem representativa, mas não herdam automaticamente a imagem de uma família diferente.
 
-Todas as imagens raster do registro de ícones são WebP e pesam menos de **15.000 bytes por arquivo** (15 KB, tamanho; não kbps). `scripts/optimize-menu-assets.py` exporta miniaturas de até 160 px sem modificar os originais. Fotos de ambientes e banners são assets maiores e não entram no limite de ícones. A verificação não exige dependências:
+Todas as imagens raster do registro de ícones são WebP e pesam menos de **15.000 bytes por arquivo** (15 KB, tamanho; não kbps). `scripts/otimizar-imagens.py` exporta miniaturas de até 160 px sem modificar os originais e sincroniza as cópias por nível. Fotos de ambientes e banners são assets maiores e não entram no limite de ícones. A verificação não exige dependências:
 
 ```powershell
 node scripts/validate-menu-data.cjs

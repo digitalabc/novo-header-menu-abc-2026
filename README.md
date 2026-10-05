@@ -26,7 +26,7 @@ Abra `http://localhost:8080`.
 
 - No desktop, os menus N1 abrem por hover ou foco de teclado e permanecem acessíveis durante a travessia do cursor até o mega menu.
 - No centro da tarja desktop, as comunicações em maiúsculas de frete em metais para Sul/Sudeste e parcelamento em até 10x no cartão alternam a cada 2,5 segundos, subindo com rotação suave de roleta. O fundo cinza-azulado claro acompanha o menu e o caminhão faz uma passagem na mensagem de frete. Não há controles de play/pause. A rotação pausa durante os modais, sidebar e em abas ocultas; com movimento reduzido, as duas mensagens ficam estáticas. Os textos são dados locais de preview, baseados na tarja pública da ABC consultada em 03/10/2026; não há validação de elegibilidade ou checkout.
-- A topbar mobile exibe uma opção por vez: WhatsApp, Casa Prime, Nossas Lojas e comunicações. Setas laterais, teclas direcionais e deslize horizontal navegam pelos quatro slides; as extremidades são sinalizadas pelas setas inativas. A troca de opções é manual, e somente as mensagens do último slide alternam automaticamente a cada 2,5 segundos. Os itens são configurados em `mobileTopbarItems` em `js/menu-data.js`. A faixa vermelha revelada pela rolagem tem 40 px de altura e compartilha as mesmas mensagens.
+- A topbar mobile exibe uma opção por vez: WhatsApp, Casa Prime, Nossas Lojas e comunicações. O autoplay circular troca os slides a cada 2,5 segundos; setas, teclas direcionais e deslize horizontal também permitem navegar. O autoplay pausa com foco nos controles, com menus/modais abertos ou aba oculta, e respeita movimento reduzido. Frete e parcelamento alternam a cada visita ao slide de comunicações. Os itens são configurados em `mobileTopbarItems` em `js/menu-data.js`. A faixa vermelha revelada pela rolagem tem 40 px de altura e compartilha as mesmas mensagens.
 - No mobile, o primeiro gesto vertical para rolar para baixo recolhe a topbar clara e revela uma faixa vermelha de condições de compra abaixo da regionalização. O header permanece no topo; voltar ao início restaura a topbar. O gesto funciona também no preview sem conteúdo de página. A transição não é acionada pelo scroll do sidebar, busca ou modais; a busca suspende a faixa. Mensagens quebram em linhas inteiras nas telas estreitas, e elementos recolhidos ficam fora da navegação por teclado/leitor de tela.
 - O botão N1 Departamentos e sua lista lateral compartilham uma largura fluida (`clamp`), sem duplicar medidas por breakpoint. Seu texto preenche a coluna central e fica centralizado no botão. Sua seta aponta à direita fechado e gira somente para baixo ao abrir.
 - Hover N1 tem espera de 140 ms; seleção nas colunas tem espera de 150 ms. A saída tem tolerância de 240 ms e fade de 220 ms.
@@ -90,9 +90,10 @@ Os scripts de atualização de fotos e otimização são ferramentas opcionais d
 
 - Desktop: navegue pelos botões Departamentos, Ambientes, Metais, Louças e Pisos e Revestimentos.
 - Mobile: use o hamburger, a lupa e a navegação em níveis da sidebar.
-- `?logged=0` simula usuário não logado.
+- O site inicia deslogado, com “Entrar”. `?logged=1` permite visualizar o estado logado no preview.
 - O ícone de conta alterna entre logado e deslogado e abre o modal para conferir cada versão. O texto “Minha conta” e sua seta abrem o modal sem alterar o estado. Logado, há Meus pedidos, Meus dados, Meus endereços e Sair; deslogado, Entrar e Criar conta. Os dados e destinos são demonstrativos, sem autenticação real. O modal usa a linguagem visual da regionalização, fecha por Escape e mantém o foco dentro dele.
-- `?regionalized=0` simula CEP não informado.
+- O popup de regionalização abre somente ao clicar para informar ou alterar o CEP, nunca automaticamente na entrada. `?regionalized=1` simula uma região já definida.
+- A busca mobile se revela de trás do header em 680 ms, sem bounce, com foco imediato no campo e sugestões posicionadas abaixo dele. Movimento reduzido desativa a animação.
 - `?search=open` abre a busca mobile ou deixa a busca desktop expandida.
 - `?search=dropdown` abre a busca mobile com sugestões e produtos.
 - `?menu=departments&department=pisos-revestimentos` abre um estado do mega menu desktop.

@@ -31,12 +31,15 @@
   let communicationIndex = 0;
   let mobileHeaderCompact = false;
   let mobileTopbarIndex = 0;
+  let mobileTopbarTimer;
+  let mobileCommunicationVisits = 0;
   let headerTouchY = null;
   let headerTouchX = null;
 
   const catalogIconIds = new Set([...data.catalogIconIds, 'cuba-embutir', 'lavatorio-suspenso', 'cuba-inox-dupla']);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
   const icon = (id, className = '', categoryId = '') => {
+    if (id === 'departamentos') return '<span class="menu-hamburger" aria-hidden="true"><i></i><i></i><i></i></span>';
     // Destaques editoriais podem escolher outro produto que o ícone do ramo.
     const categoryFile = data.assetHierarchy.iconeIds[categoryId] === id ? data.assetHierarchy.arquivos[categoryId] : null;
     const src = categoryFile || data.assetHierarchy.departamentos[categoryId] || data.assetRegistry.icon[id] || data.assetRegistry.icon.generic;
@@ -167,36 +170,55 @@
 
   function renderMobileTopbar() {
     return `<div class="mobile-topbar" role="region" aria-label="Destaques da ABC" aria-roledescription="carrossel">
-      <button class="mobile-topbar__arrow" type="button" data-topbar-step="-1" aria-label="Opção anterior da topbar" aria-controls="mobile-topbar-slides" aria-disabled="${mobileTopbarIndex === 0}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 7-5 5 5 5"/></svg></button>
+      <button class="mobile-topbar__arrow" type="button" data-topbar-step="-1" aria-label="Opção anterior da topbar" aria-controls="mobile-topbar-slides"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 7-5 5 5 5"/></svg></button>
       <div class="mobile-topbar__viewport"><div id="mobile-topbar-slides" class="mobile-topbar__track" style="--topbar-index:${mobileTopbarIndex}">${data.mobileTopbarItems.map((item, index) => {
         const content = item.type === 'communications' ? renderCommunications() : item.type === 'logo' ? `<a class="mobile-topbar__prime" href="${item.url}" aria-label="${item.label}">${assetImg('logo', item.logoId)}</a>` : `<a class="${item.className}" href="${item.url}">${assetImg('icon', item.iconId)}${item.label}</a>`;
         return `<div class="mobile-topbar__slide" role="group" aria-roledescription="slide" aria-label="${item.label}, ${index + 1} de ${data.mobileTopbarItems.length}" aria-hidden="${index !== mobileTopbarIndex}" ${index !== mobileTopbarIndex ? 'inert' : ''}>${content}</div>`;
       }).join('')}</div></div>
-      <button class="mobile-topbar__arrow" type="button" data-topbar-step="1" aria-label="Próxima opção da topbar" aria-controls="mobile-topbar-slides" aria-disabled="${mobileTopbarIndex === data.mobileTopbarItems.length - 1}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 7 5 5-5 5"/></svg></button>
+      <button class="mobile-topbar__arrow" type="button" data-topbar-step="1" aria-label="Próxima opção da topbar" aria-controls="mobile-topbar-slides"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 7 5 5-5 5"/></svg></button>
       <span class="sr-only" data-topbar-status aria-live="polite" aria-atomic="true"></span>
     </div>`;
   }
 
   function bindMobileTopbar() {
+    clearInterval(mobileTopbarTimer);
     const topbar = header.querySelector('.mobile-topbar');
     if (!topbar) return;
-    const move = step => {
+    const move = (step, automatic = false) => {
       const slides = [...topbar.querySelectorAll('.mobile-topbar__slide')];
-      const next = Math.max(0, Math.min(slides.length - 1, mobileTopbarIndex + step));
-      if (next === mobileTopbarIndex) return;
+      const previous = mobileTopbarIndex;
+      const next = (mobileTopbarIndex + step + slides.length) % slides.length;
       mobileTopbarIndex = next;
       if (document.activeElement?.closest('.mobile-topbar__slide')) topbar.querySelector(`[data-topbar-step="${step < 0 ? -1 : 1}"]`).focus({ preventScroll: true });
-      topbar.querySelector('.mobile-topbar__track').style.setProperty('--topbar-index', mobileTopbarIndex);
+      topbar.querySelector('.mobile-topbar__track').style.setProperty('--slide-direction', step < 0 ? -1 : 1);
       slides.forEach((slide, index) => {
+        slide.classList.toggle('is-entering', index === next);
+        slide.classList.toggle('is-leaving', index === previous);
         slide.inert = index !== mobileTopbarIndex;
         slide.setAttribute('aria-hidden', String(index !== mobileTopbarIndex));
       });
-      topbar.querySelector('[data-topbar-step="-1"]').setAttribute('aria-disabled', String(mobileTopbarIndex === 0));
-      topbar.querySelector('[data-topbar-step="1"]').setAttribute('aria-disabled', String(mobileTopbarIndex === slides.length - 1));
-      topbar.querySelector('[data-topbar-status]').textContent = `${data.mobileTopbarItems[mobileTopbarIndex].label}, ${mobileTopbarIndex + 1} de ${slides.length}`;
+      if (!automatic) topbar.querySelector('[data-topbar-status]').textContent = `${data.mobileTopbarItems[mobileTopbarIndex].label}, ${mobileTopbarIndex + 1} de ${slides.length}`;
+      if (data.mobileTopbarItems[next].type === 'communications') {
+        communicationIndex = mobileCommunicationVisits++ % data.communications.length;
+        header.querySelectorAll('.topbar-communications').forEach(region => region.querySelectorAll('[data-communication]').forEach((message, index) => {
+          message.classList.toggle('is-visible', index === communicationIndex);
+          message.classList.remove('is-leaving');
+          message.setAttribute('aria-hidden', String(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && index !== communicationIndex));
+        }));
+      }
       // Give the newly selected communication its full reading interval.
       bindCommunications();
+      if (!automatic) startAutoplay();
     };
+    const startAutoplay = () => {
+      clearInterval(mobileTopbarTimer);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      mobileTopbarTimer = setInterval(() => {
+        if (!topbar.isConnected || document.hidden || topbar.inert || state.searchOpen || state.drawerOpen || state.regionalizationOpen || accountOpen || topbar.contains(document.activeElement)) return;
+        move(1, true);
+      }, 2500);
+    };
+    startAutoplay();
     topbar.querySelectorAll('[data-topbar-step]').forEach(button => button.addEventListener('click', () => move(Number(button.dataset.topbarStep))));
     topbar.addEventListener('keydown', event => {
       if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -304,6 +326,8 @@
     mobileHeader?.classList.toggle('is-search-keyboard', state.searchOpen && Boolean(searchBaselineHeight) && (viewport?.height || window.innerHeight) < searchBaselineHeight - 120);
     const dropdown = header.querySelector('.search-dropdown');
     if (!dropdown || desktopQuery.matches) return;
+    const searchRow = header.querySelector('.mobile-search-row');
+    if (searchRow) dropdown.style.top = `${searchRow.offsetTop + searchRow.querySelector('.mobile-search-row__inner').offsetHeight}px`;
     const bottom = (viewport?.offsetTop || 0) + (viewport?.height || window.innerHeight);
     dropdown.style.setProperty('--search-results-height', `${Math.max(80, bottom - dropdown.getBoundingClientRect().top - 12)}px`);
   }
@@ -455,15 +479,19 @@
     return categoryIconRules.find(rule => rule.pattern.test(value))?.iconId || 'generic';
   }
 
+  function renderMobileSearchRow() {
+    return `<div id="mobile-search-row" class="mobile-search-row"><div class="mobile-search-row__clip"><div class="mobile-search-row__inner">${renderSearch('mobile')}</div></div></div>`;
+  }
+
   function renderMobileHeader() {
     const location = mobileLocationMarkup();
     return `<div class="mobile-header">
       ${renderMobileTopbar()}
-      <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button hamburger" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button><button class="icon-button mobile-account" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button></div>
+      <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">${icon('departamentos')}</button><button class="icon-button mobile-account" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button></div>
       <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
       <div class="mobile-main__right"><button class="icon-button search-toggle" type="button" data-toggle-search aria-label="${state.searchOpen ? 'Fechar busca' : 'Abrir busca'}" aria-expanded="${state.searchOpen}" aria-controls="mobile-search-row"><span class="search__icon"></span></button><button class="icon-button cart-button" type="button" aria-label="Carrinho com zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span></button></div></div>
       <button class="mobile-location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button>
-      ${state.searchOpen ? `<div id="mobile-search-row" class="mobile-search-row">${renderSearch('mobile')}</div>` : ''}
+      ${state.searchOpen ? renderMobileSearchRow() : ''}
       ${state.searchDropdown ? renderSearchDropdown() : ''}
       <div class="mobile-communications" aria-hidden="true" inert><div class="mobile-communications__clip">${renderCommunications()}</div></div>
     </div>`;
@@ -796,7 +824,7 @@
       searchBaselineHeight = window.visualViewport?.height || window.innerHeight;
       searchEngaged = false;
       const mobileHeader = header.querySelector('.mobile-header');
-      mobileHeader.insertAdjacentHTML('beforeend', `<div id="mobile-search-row" class="mobile-search-row">${renderSearch('mobile')}</div>`);
+      mobileHeader.insertAdjacentHTML('beforeend', renderMobileSearchRow());
       searchToggle.setAttribute('aria-expanded', 'true');
       searchToggle.setAttribute('aria-label', 'Fechar busca');
       bindMobileSearchInput();
@@ -1469,9 +1497,9 @@
   window.addEventListener('resize', syncSearchViewport);
 
   const params = new URLSearchParams(location.search);
-  state.loggedIn = params.get('logged') !== '0';
+  state.loggedIn = params.get('logged') === '1';
   state.regionalized = params.get('regionalized') === '1';
-  state.regionalizationOpen = params.get('regionalization') !== 'closed';
+  state.regionalizationOpen = false;
   if (params.get('search') === 'open') { state.searchOpen = true; state.desktopSearchOpen = true; }
   if (params.get('search') === 'dropdown') { state.searchOpen = true; state.searchDropdown = true; state.desktopSearchOpen = true; }
   if (params.get('menu')) state.desktopMenu = params.get('menu');

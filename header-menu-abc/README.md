@@ -34,3 +34,5 @@ O [índice](indice-categorias.json) relaciona cada categoria a seu nível, ID, �
 Validação: `node scripts/validate-menu-data.cjs`. Otimização opcional: `python scripts/otimizar-imagens.py` (Pillow). As origens do catálogo permanecem em [fontes-produtos.json](documentacao/fontes-produtos.json) e [fontes-subcategorias.json](documentacao/fontes-subcategorias.json).
 
 O ícone `nossas-lojas` está em `icones/nossas-lojas.webp` (5,8 KB), registrado em `js/menu-data.js`. O arquivo enviado pelo usuário em 05/10/2026 foi preservado em `icones/originais/nossas-lojas.png`; a exportação WebP usa até 160 px, qualidade 84 e preserva a transparência.
+
+O logo `casa-prime` usa `logos/casa-prime.webp`, exportado do arquivo enviado em 05/10/2026 e preservado em `logos/originais/casa-prime.png`. Ele fica à direita do badge “Compre pelo WhatsApp” na topbar desktop.

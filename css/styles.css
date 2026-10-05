@@ -36,7 +36,7 @@ img{display:block;max-width:100%}
 .topbar-communications.is-static .topbar-communications__message{position:static;height:auto;opacity:1;visibility:visible;font-size:11px;animation:none}
 .topbar-communications.is-static .topbar-communications__symbol{display:none}
 @media(prefers-reduced-motion:reduce){.topbar-communications__message,.topbar-communications__message.is-visible .topbar-communications__symbol--truck img{animation:none}}
-@media(min-width:900px) and (max-width:1150px){.topbar .prime{display:none}.topbar__content{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr);gap:8px}.topbar .chip{padding-inline:8px;font-size:11px}.topbar-communications{padding-inline:8px}.topbar-communications__message{font-size:12.5px;gap:5px}}
+@media(min-width:900px) and (max-width:1150px){.topbar .prime{display:inline-flex;padding-inline:2px}.topbar .prime img{width:72px;height:auto}.topbar__content{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr);gap:8px}.topbar__group{gap:4px}.topbar .chip{padding-inline:7px;font-size:10px}.topbar-communications{padding-inline:8px}.topbar-communications__message{font-size:12.5px;gap:5px}}
 .chip{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border:1.5px solid transparent;border-radius:999px;font-size:12px;line-height:1.2;white-space:nowrap}
 .chip img{width:14px;height:14px;object-fit:contain}
 .chip--stores{gap:6px;padding-block:1px;padding-left:5px}

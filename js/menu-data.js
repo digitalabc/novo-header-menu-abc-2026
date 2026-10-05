@@ -9,7 +9,7 @@
   const assetRegistry = {
     logo: {
       abc: 'header-menu-abc/logos/abc.svg',
-      casaPrime: 'header-menu-abc/logos/casa-prime.svg',
+      casaPrime: 'header-menu-abc/logos/casa-prime.webp',
       mysa: 'header-menu-abc/logos/mysa.webp'
     },
     icon: {

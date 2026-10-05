@@ -240,10 +240,10 @@
     { id: 'parcelamento', text: 'Até 10x sem juros no cartão', iconId: null }
   ];
   const mobileTopbarItems = [
+    ...communications.map(item => ({ id: item.id, label: item.text, type: 'communications', communicationId: item.id })),
     { id: 'whatsapp', label: 'Compre pelo WhatsApp', type: 'link', iconId: 'whatsapp', className: 'chip chip--whatsapp', url: '#' },
-    { id: 'casa-prime', label: 'Casa Prime', type: 'logo', logoId: 'casaPrime', url: '#' },
     { id: 'nossas-lojas', label: 'Nossas Lojas', type: 'link', iconId: 'nossas-lojas', className: 'chip chip--stores', url: '#' },
-    ...communications.map(item => ({ id: item.id, label: item.text, type: 'communications', communicationId: item.id }))
+    { id: 'casa-prime', label: 'Casa Prime', type: 'logo', logoId: 'casaPrime', url: '#' }
   ];
   const account = {
     name: 'Phaison',

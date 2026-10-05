@@ -237,7 +237,7 @@
   ];
   const communications = [
     { id: 'frete-metais', text: 'Metais com frete grátis · Sul e Sudeste', iconId: 'caminhao' },
-    { id: 'parcelamento', text: 'Até 10x sem juros no cartão', iconId: null }
+    { id: 'parcelamento', text: 'Parcele em até 10x sem juros no cartão', iconId: null }
   ];
   const mobileTopbarItems = [
     ...communications.map(item => ({ id: item.id, label: item.text, type: 'communications', communicationId: item.id })),

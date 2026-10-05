@@ -37,7 +37,7 @@ img{display:block;max-width:100%}
 .topbar-communications.is-static .topbar-communications__symbol{display:none}
 .topbar-communications.is-static .topbar-communications__symbol--truck{display:grid;flex-basis:22px;height:12px}
 .topbar-communications.is-static .topbar-communications__symbol--truck img{width:18px;height:12px}
-.topbar .topbar-communications__message,.mobile-topbar__slide .topbar-communications__message{width:fit-content;max-width:100%;height:fit-content;min-height:28px;margin:auto;padding:2px 10px;border:1px solid #dfd0f2;border-radius:999px;background:#f0e8fa;color:#61417f}
+.topbar .topbar-communications__message,.mobile-topbar__slide .topbar-communications__message{width:fit-content;max-width:100%;height:fit-content;min-height:28px;margin:auto;padding:2px 10px;border:1px solid rgba(227,6,45,.11);border-radius:999px;background:#fcdfe4;color:var(--red)}
 .topbar .topbar-communications__symbol,.mobile-topbar__slide .topbar-communications__symbol{background:none}
 .topbar .topbar-communications.is-static .topbar-communications__message{min-height:0;padding:0 8px}
 @media(prefers-reduced-motion:reduce){.topbar-communications__message,.topbar-communications__message.is-visible .topbar-communications__symbol--truck img{animation:none}}

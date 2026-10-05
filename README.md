@@ -88,6 +88,9 @@ Os scripts de atualização de fotos e otimização são ferramentas opcionais d
 
 ## Estados de preview
 
+- Badges da topbar têm altura uniforme: 30 px no desktop e 32 px no mobile. O caminhão anima apenas no eixo horizontal, sem salto vertical. No sidebar, o hambúrguer de Departamentos usa a mesma coluna de ícone das demais categorias e o rodapé começa com “CONTE COM:”.
+- Minha conta e regionalização abrem modais pelo ícone/texto, sem setas de dropdown ou de link externo. Os acionadores informam `aria-haspopup="dialog"`; Minha conta mantém espaço separado do SAC no sidebar.
+
 - Desktop: navegue pelos botões Departamentos, Ambientes, Metais, Louças e Pisos e Revestimentos.
 - Mobile: use o hamburger, a lupa e a navegação em níveis da sidebar.
 - O site inicia deslogado, com “Entrar”. `?logged=1` permite visualizar o estado logado no preview.

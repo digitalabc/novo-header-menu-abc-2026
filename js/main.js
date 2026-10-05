@@ -80,7 +80,7 @@
         </div>
         <div class="desktop-actions desktop-actions--right">
           ${renderSearch('desktop')}
-          <button class="action-item action-item--location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${desktopLocationMarkup()}${chevron('down')}</button>
+          <button class="action-item action-item--location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${desktopLocationMarkup()}</button>
           <button class="action-item action-item--cart" type="button" aria-label="Meu carrinho, zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span><span><strong>Meu carrinho</strong><small>00 itens</small></span></button>
         </div>
       </div></div>
@@ -339,7 +339,7 @@
   function accountTitle() { return state.loggedIn ? `Olá, ${data.account.name}` : 'Entrar'; }
 
   function renderAccountIdentity() {
-    return `<button class="account-state-toggle" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button><button class="account-menu-trigger" type="button" data-open-account aria-haspopup="dialog" aria-expanded="${accountOpen}"><span><strong data-account-title>${accountTitle()}</strong><small>Minha conta</small></span>${chevron('down')}</button>`;
+    return `<button class="account-state-toggle" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button><button class="account-menu-trigger" type="button" data-open-account aria-haspopup="dialog" aria-expanded="${accountOpen}"><span><strong data-account-title>${accountTitle()}</strong><small>Minha conta</small></span></button>`;
   }
 
   function renderAccountDialog() {
@@ -486,7 +486,7 @@
       <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">${icon('departamentos')}</button><button class="icon-button mobile-account" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button></div>
       <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
       <div class="mobile-main__right"><button class="icon-button search-toggle" type="button" data-toggle-search aria-label="${state.searchOpen ? 'Fechar busca' : 'Abrir busca'}" aria-expanded="${state.searchOpen}" aria-controls="mobile-search-row"><span class="search__icon"></span></button><button class="icon-button cart-button" type="button" aria-label="Carrinho com zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span></button></div></div>
-      <button class="mobile-location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button>
+      <button class="mobile-location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${location}</button>
       ${state.searchOpen ? renderMobileSearchRow() : ''}
       ${state.searchDropdown ? renderSearchDropdown() : ''}
       <div class="mobile-communications" aria-hidden="true" inert><div class="mobile-communications__clip">${renderCommunications()}</div></div>
@@ -508,7 +508,7 @@
 
   function renderDrawerIdentityHeader() {
     const location = mobileLocationMarkup();
-    return `<div class="drawer-header"><div class="drawer-user"><div class="account-identity">${renderAccountIdentity()}</div><a class="sac-chip" href="#" data-pending-link>${assetImg('icon','whatsapp')} SAC</a></div><button class="drawer-location" type="button" data-open-regionalization>${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button></div>`;
+    return `<div class="drawer-header"><div class="drawer-user"><div class="account-identity">${renderAccountIdentity()}</div><a class="sac-chip" href="#" data-pending-link>${assetImg('icon','whatsapp')} SAC</a></div><button class="drawer-location" type="button" data-open-regionalization>${icon('regionalizacao', 'header-action-icon')}${location}</button></div>`;
   }
 
   function desktopLocationMarkup() {
@@ -600,7 +600,7 @@
       regionalizationRoot.innerHTML = '';
       document.querySelectorAll('.drawer-location, .mobile-location, .action-item--location').forEach(button => {
         const desktop = button.classList.contains('action-item--location');
-        button.innerHTML = icon('regionalizacao', 'header-action-icon') + (desktop ? desktopLocationMarkup() : mobileLocationMarkup()) + chevron('down');
+        button.innerHTML = icon('regionalizacao', 'header-action-icon') + (desktop ? desktopLocationMarkup() : mobileLocationMarkup());
         button.setAttribute('aria-label', state.regionalized ? 'Alterar local de entrega' : 'Informar CEP');
       });
       syncDocumentLock();
@@ -693,7 +693,7 @@
   }
 
   function renderDrawerFooter() {
-    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">Conte com</span><p>ABC da Construção, a maior especialista em acabamentos do Brasil.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span></a>`).join('')}</nav></footer><footer class="drawer-footer__legal">${assetImg('logo','mysa')}<div><small>MYSA S/A · CNPJ: 38.542.718/0052-22</small><small>Todos os direitos reservados 2026.</small><small>Preços e condições exclusivos para abcdaconstrucao.com.br</small></div></footer>`;
+    return `<footer class="drawer-footer"><span class="drawer-footer__eyebrow">CONTE COM:</span><p>ABC da Construção, a maior especialista em acabamentos do Brasil.</p><nav aria-label="Ajuda e serviços">${data.drawerFooter.map(item => `<a href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span></a>`).join('')}</nav></footer><footer class="drawer-footer__legal">${assetImg('logo','mysa')}<div><small>MYSA S/A · CNPJ: 38.542.718/0052-22</small><small>Todos os direitos reservados 2026.</small><small>Preços e condições exclusivos para abcdaconstrucao.com.br</small></div></footer>`;
   }
 
   function renderDrawerLevel() {
@@ -848,6 +848,7 @@
     scope.querySelectorAll('[data-open-regionalization]').forEach(button => {
       if (button.dataset.regionalizationBound) return;
       button.dataset.regionalizationBound = 'true';
+      button.setAttribute('aria-haspopup', 'dialog');
       button.addEventListener('click', () => openRegionalization(button));
     });
   }

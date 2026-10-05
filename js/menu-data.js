@@ -13,6 +13,7 @@
       mysa: 'header-menu-abc/logos/mysa.webp'
     },
     icon: {
+      'nossas-lojas': 'header-menu-abc/icones/nossas-lojas.webp',
       caminhao: 'header-menu-abc/icones/caminhao.svg',
       conta: 'header-menu-abc/icones/conta.webp',
       regionalizacao: 'header-menu-abc/icones/regionalizacao.webp',

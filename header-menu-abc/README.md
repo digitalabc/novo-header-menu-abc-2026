@@ -32,3 +32,5 @@ O [índice](indice-categorias.json) relaciona cada categoria a seu nível, ID, �
 `js/catalogo-assets.js` relaciona os IDs estáveis da árvore às imagens organizadas. `js/category-icons.js` mantém os ícones por ID semântico, e `js/menu-data.js` registra logos, marcas, ambientes e promoções. A configuração das categorias não espalha caminhos físicos.
 
 Validação: `node scripts/validate-menu-data.cjs`. Otimização opcional: `python scripts/otimizar-imagens.py` (Pillow). As origens do catálogo permanecem em [fontes-produtos.json](documentacao/fontes-produtos.json) e [fontes-subcategorias.json](documentacao/fontes-subcategorias.json).
+
+O ícone `nossas-lojas` está em `icones/nossas-lojas.webp` (5,8 KB), registrado em `js/menu-data.js`. O arquivo enviado pelo usuário em 05/10/2026 foi preservado em `icones/originais/nossas-lojas.png`; a exportação WebP usa até 160 px, qualidade 84 e preserva a transparência.

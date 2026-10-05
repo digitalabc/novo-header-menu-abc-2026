@@ -29,6 +29,9 @@
   let manuallyClosedEnvironment = null;
   let communicationTimer;
   let communicationIndex = 0;
+  let mobileHeaderCompact = false;
+  let headerTouchY = null;
+  let headerTouchX = null;
 
   const catalogIconIds = new Set([...data.catalogIconIds, 'cuba-embutir', 'lavatorio-suspenso', 'cuba-inox-dupla']);
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
@@ -65,7 +68,7 @@
       <div class="topbar"><div class="container topbar__content">
         <div class="topbar__group"><a class="chip chip--whatsapp" href="#">${assetImg('icon','whatsapp')}Compre pelo WhatsApp</a><a class="prime" href="#">${assetImg('logo','casaPrime')}</a></div>
         ${renderCommunications()}
-        <div class="topbar__group topbar__group--end"><a class="chip chip--stores" href="#"><span aria-hidden="true">▰</span>Nossas Lojas</a><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
+        <div class="topbar__group topbar__group--end"><a class="chip chip--stores" href="#">${assetImg('icon','nossas-lojas')}Nossas Lojas</a><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
       </div></div>
       <div class="desktop-main"><div class="container desktop-main__content">
         <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
@@ -147,7 +150,7 @@
     if (!region) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const advance = () => {
-      if (document.hidden || state.regionalizationOpen || accountOpen || !region.isConnected) return;
+      if (document.hidden || state.regionalizationOpen || accountOpen || state.drawerOpen || !region.isConnected || (!desktopQuery.matches && (!mobileHeaderCompact || state.searchOpen))) return;
       const previousIndex = communicationIndex;
       communicationIndex = (communicationIndex + 1) % data.communications.length;
       region.querySelectorAll('[data-communication]').forEach((message, index) => {
@@ -160,6 +163,65 @@
     if (reducedMotion.matches) region.classList.add('is-static');
     else communicationTimer = setInterval(advance, 2000);
   }
+
+  function syncMobileHeader() {
+    const shell = header.querySelector('.mobile-header');
+    if (!shell) return;
+    const compact = mobileHeaderCompact && !state.searchOpen;
+    shell.classList.toggle('is-compact', compact);
+    const topbar = shell.querySelector('.mobile-topbar');
+    const strip = shell.querySelector('.mobile-communications');
+    topbar.inert = compact;
+    topbar.setAttribute('aria-hidden', String(compact));
+    strip.inert = !compact;
+    strip.setAttribute('aria-hidden', String(!compact));
+  }
+
+  function canMoveMobileHeader() {
+    return !desktopQuery.matches && !state.drawerOpen && !state.regionalizationOpen && !accountOpen && !state.searchOpen;
+  }
+
+  function setMobileHeaderCompact(compact) {
+    if (!canMoveMobileHeader() || compact === mobileHeaderCompact) return;
+    // Keep focus on a visible header control when the topbar leaves the screen.
+    if (compact && document.activeElement?.closest('.mobile-topbar')) {
+      header.querySelector('[data-open-drawer]')?.focus({ preventScroll: true });
+    }
+    mobileHeaderCompact = compact;
+    syncMobileHeader();
+  }
+
+  function moveMobileHeader(delta) {
+    if (delta > 12) setMobileHeaderCompact(true);
+    else if (delta < -12 && window.scrollY < 24) setMobileHeaderCompact(false);
+  }
+
+  // Passive gestures also work in this header-only preview, without adding fake page content.
+  window.addEventListener('wheel', event => {
+    if (!event.ctrlKey && Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+      moveMobileHeader(event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? innerHeight : 1));
+    }
+  }, { passive: true });
+  window.addEventListener('touchstart', event => {
+    headerTouchY = event.touches.length === 1 ? event.touches[0].clientY : null;
+    headerTouchX = event.touches.length === 1 ? event.touches[0].clientX : null;
+  }, { passive: true });
+  window.addEventListener('touchmove', event => {
+    if (headerTouchY === null || event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    const delta = headerTouchY - touch.clientY;
+    if (Math.abs(delta) > 12 && Math.abs(delta) > Math.abs(headerTouchX - touch.clientX)) {
+      moveMobileHeader(delta);
+      headerTouchY = touch.clientY;
+      headerTouchX = touch.clientX;
+    }
+  }, { passive: true });
+  window.addEventListener('touchend', () => { headerTouchY = headerTouchX = null; }, { passive: true });
+  window.addEventListener('touchcancel', () => { headerTouchY = headerTouchX = null; }, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 24) setMobileHeaderCompact(true);
+    else if (window.scrollY <= 0) setMobileHeaderCompact(false);
+  }, { passive: true });
 
   function engageSearch() { searchEngaged = true; clearTimeout(searchTimer); }
 
@@ -176,6 +238,7 @@
     clearTimeout(searchTimer);
     state.searchOpen = false;
     state.searchDropdown = false;
+    syncMobileHeader();
     header.querySelector('.mobile-header')?.classList.remove('is-search-keyboard');
     header.querySelector('.mobile-search-row')?.remove();
     header.querySelector('.search-dropdown')?.remove();
@@ -344,13 +407,14 @@
   function renderMobileHeader() {
     const location = mobileLocationMarkup();
     return `<div class="mobile-header">
-      <div class="mobile-topbar"><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
+      <div class="mobile-topbar"><a class="chip chip--stores" href="#">${assetImg('icon','nossas-lojas')}Nossas Lojas</a><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
       <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button hamburger" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button><button class="icon-button mobile-account" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button></div>
       <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
       <div class="mobile-main__right"><button class="icon-button search-toggle" type="button" data-toggle-search aria-label="${state.searchOpen ? 'Fechar busca' : 'Abrir busca'}" aria-expanded="${state.searchOpen}" aria-controls="mobile-search-row"><span class="search__icon"></span></button><button class="icon-button cart-button" type="button" aria-label="Carrinho com zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span></button></div></div>
       <button class="mobile-location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${location}${chevron('down')}</button>
       ${state.searchOpen ? `<div id="mobile-search-row" class="mobile-search-row">${renderSearch('mobile')}</div>` : ''}
       ${state.searchDropdown ? renderSearchDropdown() : ''}
+      <div class="mobile-communications" aria-hidden="true" inert><div class="mobile-communications__clip">${renderCommunications()}</div></div>
     </div>`;
   }
 
@@ -656,6 +720,7 @@
 
   function bindEvents() {
     bindCommunications();
+    syncMobileHeader();
     document.querySelectorAll('[data-menu-action]').forEach(button => {
       button.addEventListener('click', () => onDesktopNav(button));
       button.addEventListener('mouseenter', () => scheduleDesktopOpen(button));
@@ -675,6 +740,7 @@
     if (searchToggle) searchToggle.addEventListener('click', () => {
       if (state.searchOpen) { closeMobileSearch(); return; }
       state.searchOpen = true;
+      syncMobileHeader();
       searchBaselineHeight = window.visualViewport?.height || window.innerHeight;
       searchEngaged = false;
       const mobileHeader = header.querySelector('.mobile-header');

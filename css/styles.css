@@ -28,13 +28,15 @@ img{display:block;max-width:100%}
 .topbar-communications__symbol{display:grid;place-items:center;flex:0 0 34px;height:24px;border-radius:6px;background:#dbe5ec;color:inherit;font-size:12px;white-space:nowrap}
 .topbar-communications__symbol--truck img{filter:brightness(.4) grayscale(1)}
 .topbar-communications__symbol--truck{flex-basis:44px;height:28px;background:transparent;overflow:hidden}
-.topbar-communications__message.is-visible .topbar-communications__symbol--truck img{animation:communication-truck 1.7s .1s cubic-bezier(.25,.7,.35,1) both}
+.topbar-communications__message.is-visible .topbar-communications__symbol--truck img{animation:communication-truck 1.8s ease-in-out infinite}
 @keyframes communication-enter{from{opacity:0;transform:translateY(105%) rotateX(-65deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
 @keyframes communication-leave{from{opacity:1;transform:translateY(0) rotateX(0)}to{opacity:0;transform:translateY(-105%) rotateX(65deg);visibility:hidden}}
-@keyframes communication-truck{0%{opacity:0;transform:translateX(-40px)}22%,70%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(44px)}}
+@keyframes communication-truck{0%,100%{transform:translate(0,0)}25%{transform:translate(2px,-1px)}50%{transform:translate(0,0)}75%{transform:translate(-2px,-1px)}}
 .topbar-communications.is-static .topbar-communications__messages{display:flex;flex-direction:column;justify-content:center;gap:2px}
 .topbar-communications.is-static .topbar-communications__message{position:static;height:auto;opacity:1;visibility:visible;font-size:11px;animation:none}
 .topbar-communications.is-static .topbar-communications__symbol{display:none}
+.topbar-communications.is-static .topbar-communications__symbol--truck{display:grid;flex-basis:22px;height:12px}
+.topbar-communications.is-static .topbar-communications__symbol--truck img{width:18px;height:12px}
 @media(prefers-reduced-motion:reduce){.topbar-communications__message,.topbar-communications__message.is-visible .topbar-communications__symbol--truck img{animation:none}}
 @media(min-width:900px) and (max-width:1150px){.topbar .prime{display:inline-flex;padding-inline:2px}.topbar .prime img{width:72px;height:auto}.topbar__content{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr);gap:8px}.topbar__group{gap:4px}.topbar .chip{padding-inline:7px;font-size:10px}.topbar-communications{padding-inline:8px}.topbar-communications__message{font-size:12.5px;gap:5px}}
 .chip{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border:1.5px solid transparent;border-radius:999px;font-size:12px;line-height:1.2;white-space:nowrap}

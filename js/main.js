@@ -32,7 +32,6 @@
   let mobileHeaderCompact = false;
   let mobileTopbarIndex = 0;
   let mobileTopbarTimer;
-  let mobileCommunicationVisits = 0;
   let headerTouchY = null;
   let headerTouchX = null;
 
@@ -143,14 +142,15 @@
     });
   }
 
-  function renderCommunications() {
+  function renderCommunications(communicationId = null) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    return `<div class="topbar-communications" role="region" aria-label="Condições de compra" aria-roledescription="carrossel"><div class="topbar-communications__messages" aria-live="off">${data.communications.map((item, index) => `<div class="topbar-communications__message ${index === communicationIndex ? 'is-visible' : ''}" aria-hidden="${!reducedMotion && index !== communicationIndex}" data-communication><span class="topbar-communications__symbol ${item.iconId === 'caminhao' ? 'topbar-communications__symbol--truck' : ''}" aria-hidden="true">${item.iconId ? icon(item.iconId) : '10x'}</span><span>${item.text}</span></div>`).join('')}</div></div>`;
+    const items = communicationId ? data.communications.filter(item => item.id === communicationId) : data.communications;
+    return `<div class="topbar-communications" ${communicationId ? 'data-fixed-communication' : ''} role="region" aria-label="Condições de compra" ${communicationId ? '' : 'aria-roledescription="carrossel"'}><div class="topbar-communications__messages" aria-live="off">${items.map((item, index) => `<div class="topbar-communications__message ${communicationId || index === communicationIndex ? 'is-visible' : ''}" aria-hidden="${!communicationId && !reducedMotion && index !== communicationIndex}" data-communication><span class="topbar-communications__symbol ${item.iconId === 'caminhao' ? 'topbar-communications__symbol--truck' : ''}" aria-hidden="true">${item.iconId ? icon(item.iconId) : '10x'}</span><span>${item.text}</span></div>`).join('')}</div></div>`;
   }
 
   function bindCommunications() {
     clearInterval(communicationTimer);
-    const regions = [...header.querySelectorAll('.topbar-communications')];
+    const regions = [...header.querySelectorAll('.topbar-communications:not([data-fixed-communication])')];
     if (!regions.length) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const advance = () => {
@@ -172,7 +172,7 @@
     return `<div class="mobile-topbar" role="region" aria-label="Destaques da ABC" aria-roledescription="carrossel">
       <button class="mobile-topbar__arrow" type="button" data-topbar-step="-1" aria-label="Opção anterior da topbar" aria-controls="mobile-topbar-slides"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 7-5 5 5 5"/></svg></button>
       <div class="mobile-topbar__viewport"><div id="mobile-topbar-slides" class="mobile-topbar__track" style="--topbar-index:${mobileTopbarIndex}">${data.mobileTopbarItems.map((item, index) => {
-        const content = item.type === 'communications' ? renderCommunications() : item.type === 'logo' ? `<a class="mobile-topbar__prime" href="${item.url}" aria-label="${item.label}">${assetImg('logo', item.logoId)}</a>` : `<a class="${item.className}" href="${item.url}">${assetImg('icon', item.iconId)}${item.label}</a>`;
+        const content = item.type === 'communications' ? renderCommunications(item.communicationId) : item.type === 'logo' ? `<a class="mobile-topbar__prime" href="${item.url}" aria-label="${item.label}">${assetImg('logo', item.logoId)}</a>` : `<a class="${item.className}" href="${item.url}">${assetImg('icon', item.iconId)}${item.label}</a>`;
         return `<div class="mobile-topbar__slide" role="group" aria-roledescription="slide" aria-label="${item.label}, ${index + 1} de ${data.mobileTopbarItems.length}" aria-hidden="${index !== mobileTopbarIndex}" ${index !== mobileTopbarIndex ? 'inert' : ''}>${content}</div>`;
       }).join('')}</div></div>
       <button class="mobile-topbar__arrow" type="button" data-topbar-step="1" aria-label="Próxima opção da topbar" aria-controls="mobile-topbar-slides"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 7 5 5-5 5"/></svg></button>
@@ -203,16 +203,7 @@
         slide.setAttribute('aria-hidden', String(index !== mobileTopbarIndex));
       });
       if (!automatic) topbar.querySelector('[data-topbar-status]').textContent = `${data.mobileTopbarItems[mobileTopbarIndex].label}, ${mobileTopbarIndex + 1} de ${slides.length}`;
-      if (data.mobileTopbarItems[next].type === 'communications') {
-        communicationIndex = mobileCommunicationVisits++ % data.communications.length;
-        header.querySelectorAll('.topbar-communications').forEach(region => region.querySelectorAll('[data-communication]').forEach((message, index) => {
-          message.classList.toggle('is-visible', index === communicationIndex);
-          message.classList.remove('is-leaving');
-          message.setAttribute('aria-hidden', String(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && index !== communicationIndex));
-        }));
-      }
-      // Give the newly selected communication its full reading interval.
-      bindCommunications();
+      // Each mobile communication is its own slide, with one full autoplay interval.
       if (!automatic) startAutoplay();
     };
     const startAutoplay = () => {

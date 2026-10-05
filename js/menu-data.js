@@ -243,7 +243,7 @@
     { id: 'whatsapp', label: 'Compre pelo WhatsApp', type: 'link', iconId: 'whatsapp', className: 'chip chip--whatsapp', url: '#' },
     { id: 'casa-prime', label: 'Casa Prime', type: 'logo', logoId: 'casaPrime', url: '#' },
     { id: 'nossas-lojas', label: 'Nossas Lojas', type: 'link', iconId: 'nossas-lojas', className: 'chip chip--stores', url: '#' },
-    { id: 'comunicacoes', label: 'Frete e parcelamento', type: 'communications' }
+    ...communications.map(item => ({ id: item.id, label: item.text, type: 'communications', communicationId: item.id }))
   ];
   const account = {
     name: 'Phaison',

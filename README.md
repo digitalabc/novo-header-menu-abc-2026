@@ -106,8 +106,8 @@ Os scripts de atualização de fotos e otimização são ferramentas opcionais d
 
 ## Publicação no GitHub Pages
 
-Preview: [phaisonvs.github.io/novo-header-menu-abc-2026](https://phaisonvs.github.io/novo-header-menu-abc-2026/).
+Preview: [digitalabc.github.io/novo-header-menu-abc-2026](https://digitalabc.github.io/novo-header-menu-abc-2026/).
 
-Repositório público: [phaisonvs/novo-header-menu-abc-2026](https://github.com/phaisonvs/novo-header-menu-abc-2026).
+Repositório público: [digitalabc/novo-header-menu-abc-2026](https://github.com/digitalabc/novo-header-menu-abc-2026).
 
 O projeto não exige build. O GitHub Pages publica a raiz (`/`) da branch `main`. Novos commits enviados para essa branch atualizam o preview automaticamente.

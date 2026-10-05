@@ -39,6 +39,7 @@
   const categoryIconRules = data.categoryIconRules.map(rule => ({ iconId: rule.iconId, pattern: new RegExp(rule.pattern) }));
   const icon = (id, className = '', categoryId = '') => {
     if (id === 'departamentos') return '<span class="menu-hamburger" aria-hidden="true"><i></i><i></i><i></i></span>';
+    if (id === 'cartao-credito') return `<svg class="${className}" viewBox="0 0 32 24" aria-hidden="true"><rect x="2" y="3" width="28" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 9h26" stroke="currentColor" stroke-width="2.2"/><path d="M7 16h7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`;
     // Destaques editoriais podem escolher outro produto que o ícone do ramo.
     const categoryFile = data.assetHierarchy.iconeIds[categoryId] === id ? data.assetHierarchy.arquivos[categoryId] : null;
     const src = categoryFile || data.assetHierarchy.departamentos[categoryId] || data.assetRegistry.icon[id] || data.assetRegistry.icon.generic;

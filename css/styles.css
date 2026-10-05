@@ -287,6 +287,12 @@ img{display:block;max-width:100%}
   .mobile-main__left,.mobile-main__right{gap:6px;min-width:0}.mobile-main__right{justify-content:flex-end}
   .mobile-main .icon-button{width:40px;height:44px;flex:0 0 40px}.mobile-main .mobile-account{display:grid;place-items:center;padding:0}
   .mobile-main .header-action-icon{width:32px;height:32px}.mobile-main .cart-icon>img{width:38px;height:38px}
+  .mobile-main .mobile-account{width:40px;height:52px;flex-basis:40px;display:flex;flex-direction:column;justify-content:center;gap:2px;overflow:hidden;text-align:center;border-radius:10px}
+  .mobile-main .mobile-account.is-connected{width:72px;flex-basis:72px}
+  .mobile-account__avatar{position:relative;display:block;flex:0 0 32px;width:32px;height:32px}
+  .mobile-account.is-connected .mobile-account__avatar:after{content:"";position:absolute;right:-1px;bottom:1px;width:8px;height:8px;border:2px solid #fff;border-radius:50%;background:#118e27}
+  .mobile-main .mobile-account>.mobile-account__label{display:block;max-width:100%;font-size:12px;font-weight:600;line-height:16px;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mobile-account:focus-visible{outline:2px solid #333;outline-offset:2px}.mobile-account:active{background:#f4f6f8}
   .hamburger span{width:24px;height:2px}.mobile-location{height:46px;justify-content:center;padding-inline:18px;background:#f5f7f9;gap:6px;font-size:13px}
   .mobile-location strong{font-size:13px}.mobile-location>.header-action-icon{width:27px;height:27px;flex-basis:27px}.search-dropdown{top:calc(100% - 1px)}
   .mobile-drawer{width:min(calc(100vw - 56px),430px);height:100dvh;display:flex;flex-direction:column;overflow:hidden;background:#fff;box-shadow:6px 0 18px rgba(0,0,0,.12);animation:drawer-in .44s .04s cubic-bezier(.22,1,.36,1) both}
@@ -437,5 +443,6 @@ img{display:block;max-width:100%}
   .mobile-search-row__inner{padding:8px 16px;animation:search-mobile-descend .68s cubic-bezier(.25,.8,.25,1) both}
 }
 @keyframes search-mobile-reveal{from{grid-template-rows:0fr}to{grid-template-rows:1fr}}
+@media(max-width:359px){.mobile-main__left:has(.mobile-account.is-connected){gap:2px}}
 @keyframes search-mobile-descend{from{opacity:.35;transform:translateY(-100%)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.account-backdrop,.account-dialog,.account-layer.is-closing .account-backdrop,.account-layer.is-closing .account-dialog{animation:none}.drawer-header{transition:none}.mobile-topbar__slide[aria-hidden="true"]{display:none!important}}

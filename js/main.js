@@ -63,6 +63,7 @@
       return;
     }
     header.innerHTML = desktopQuery.matches ? renderDesktopHeader() : renderMobileHeader();
+    updateAccountIdentity();
     menuRoot.innerHTML = desktopQuery.matches ? renderDesktopMenu() : renderMobileLayers();
     bindEvents();
     syncDocumentLock();
@@ -354,6 +355,12 @@
   function updateAccountIdentity() {
     document.querySelectorAll('[data-account-title]').forEach(title => { title.textContent = accountTitle(); });
     document.querySelectorAll('[data-toggle-login-state]').forEach(button => button.setAttribute('aria-label', `Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}`));
+    const firstName = String(data.account.name || '').trim().split(/\s+/)[0];
+    document.querySelectorAll('[data-mobile-account]').forEach(button => {
+      button.classList.toggle('is-connected', state.loggedIn);
+      button.querySelector('[data-mobile-account-label]').textContent = state.loggedIn ? (firstName ? `Olá, ${firstName}` : 'Minha conta') : 'Entrar';
+      button.setAttribute('aria-label', state.loggedIn ? `${accountTitle()}. Conta conectada. Minha conta` : 'Entrar na minha conta');
+    });
   }
 
   function bindAccountDialog() {
@@ -376,7 +383,7 @@
     accountOpen = true;
     accountRoot.innerHTML = renderAccountDialog();
     bindAccountDialog();
-    document.querySelectorAll('[data-open-account]').forEach(button => button.setAttribute('aria-expanded', 'true'));
+    document.querySelectorAll('[data-open-account], [data-mobile-account]').forEach(button => button.setAttribute('aria-expanded', 'true'));
     syncDocumentLock();
     accountRoot.querySelector('.account-dialog')?.focus({ preventScroll: true });
   }
@@ -387,7 +394,7 @@
     const finish = () => {
       accountOpen = false;
       accountRoot.innerHTML = '';
-      document.querySelectorAll('[data-open-account]').forEach(button => button.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('[data-open-account], [data-mobile-account]').forEach(button => button.setAttribute('aria-expanded', 'false'));
       syncDocumentLock();
       const focusTarget = accountOpener?.isConnected ? accountOpener : header.querySelector('[data-open-account], [data-toggle-login-state]');
       focusTarget?.focus({ preventScroll: true });
@@ -485,7 +492,7 @@
     const location = mobileLocationMarkup();
     return `<div class="mobile-header">
       ${renderMobileTopbar()}
-      <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">${icon('departamentos')}</button><button class="icon-button mobile-account" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button></div>
+      <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">${icon('departamentos')}</button><button class="icon-button mobile-account" type="button" data-mobile-account data-toggle-login-state aria-label="Minha conta" aria-haspopup="dialog" aria-expanded="${accountOpen}" title="Alternar estado de login no preview"><span class="mobile-account__avatar">${icon('conta', 'header-action-icon')}</span><span class="mobile-account__label" data-mobile-account-label></span></button></div>
       <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
       <div class="mobile-main__right"><button class="icon-button search-toggle" type="button" data-toggle-search aria-label="${state.searchOpen ? 'Fechar busca' : 'Abrir busca'}" aria-expanded="${state.searchOpen}" aria-controls="mobile-search-row"><span class="search__icon"></span></button><button class="icon-button cart-button" type="button" aria-label="Carrinho com zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span></button></div></div>
       <button class="mobile-location" type="button" data-open-regionalization aria-label="${state.regionalized ? 'Alterar local de entrega' : 'Informar CEP'}">${icon('regionalizacao', 'header-action-icon')}${location}</button>

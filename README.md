@@ -94,6 +94,7 @@ Os scripts de atualização de fotos e otimização são ferramentas opcionais d
 - Desktop: navegue pelos botões Departamentos, Ambientes, Metais, Louças e Pisos e Revestimentos.
 - Mobile: use o hamburger, a lupa e a navegação em níveis da sidebar.
 - O site inicia deslogado, com “Entrar”. `?logged=1` permite visualizar o estado logado no preview.
+- Na home mobile, o avatar mostra “Entrar” quando deslogado e “Olá, primeiro nome” com um indicador verde quando conectado. Nomes longos são truncados visualmente; a identificação completa permanece no nome acessível do botão. O logo continua centralizado, inclusive em telas de 320 px.
 - O ícone de conta alterna entre logado e deslogado e abre o modal para conferir cada versão. O texto “Minha conta” e sua seta abrem o modal sem alterar o estado. Logado, há Meus pedidos, Meus dados, Meus endereços e Sair; deslogado, Entrar e Criar conta. Os dados e destinos são demonstrativos, sem autenticação real. O modal usa a linguagem visual da regionalização, fecha por Escape e mantém o foco dentro dele.
 - O popup de regionalização abre somente ao clicar para informar ou alterar o CEP, nunca automaticamente na entrada. `?regionalized=1` simula uma região já definida.
 - A busca mobile se revela de trás do header em 680 ms, sem bounce, com foco imediato no campo e sugestões posicionadas abaixo dele. Movimento reduzido desativa a animação.

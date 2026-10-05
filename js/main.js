@@ -165,7 +165,7 @@
     };
     // Respeite movimento reduzido sem impedir a leitura das duas mensagens.
     if (reducedMotion.matches) regions.forEach(region => region.classList.add('is-static'));
-    else communicationTimer = setInterval(advance, 2500);
+    else communicationTimer = setInterval(advance, 4000);
   }
 
   function renderMobileTopbar() {
@@ -184,6 +184,11 @@
     clearInterval(mobileTopbarTimer);
     const topbar = header.querySelector('.mobile-topbar');
     if (!topbar) return;
+    topbar.addEventListener('animationend', event => {
+      if (event.animationName === 'topbar-slide-leave' && event.target.matches('.mobile-topbar__slide')) {
+        event.target.classList.remove('is-leaving');
+      }
+    });
     const move = (step, automatic = false) => {
       const slides = [...topbar.querySelectorAll('.mobile-topbar__slide')];
       const previous = mobileTopbarIndex;
@@ -216,7 +221,7 @@
       mobileTopbarTimer = setInterval(() => {
         if (!topbar.isConnected || document.hidden || topbar.inert || state.searchOpen || state.drawerOpen || state.regionalizationOpen || accountOpen || topbar.contains(document.activeElement)) return;
         move(1, true);
-      }, 2500);
+      }, 4000);
     };
     startAutoplay();
     topbar.querySelectorAll('[data-topbar-step]').forEach(button => button.addEventListener('click', () => move(Number(button.dataset.topbarStep))));

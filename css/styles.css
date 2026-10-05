@@ -325,8 +325,9 @@ img{display:block;max-width:100%}
   .mobile-topbar__arrow:focus-visible{outline-offset:-4px}
   .mobile-topbar__viewport{flex:1;min-width:0;height:48px;overflow:hidden;touch-action:pan-y}
   .mobile-topbar__track{position:relative;height:100%;--slide-direction:1}
-  .mobile-topbar__slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;min-width:0;height:100%;visibility:hidden}
-  .mobile-topbar__slide[aria-hidden="false"]{visibility:visible}
+  .mobile-topbar__slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;min-width:0;height:100%;visibility:hidden;opacity:0;pointer-events:none}
+  .mobile-topbar__slide[aria-hidden="true"]:not(.is-leaving){display:none}
+  .mobile-topbar__slide[aria-hidden="false"]{visibility:visible;opacity:1;pointer-events:auto}
   .mobile-topbar__slide.is-entering{animation:topbar-slide-enter .42s cubic-bezier(.22,1,.36,1) both}
   .mobile-topbar__slide.is-leaving{visibility:visible;animation:topbar-slide-leave .42s cubic-bezier(.22,1,.36,1) both;pointer-events:none}
   @keyframes topbar-slide-enter{from{opacity:0;transform:translateX(calc(var(--slide-direction) * 100%))}to{opacity:1;transform:translateX(0)}}
@@ -425,4 +426,4 @@ img{display:block;max-width:100%}
 }
 @keyframes search-mobile-reveal{from{grid-template-rows:0fr}to{grid-template-rows:1fr}}
 @keyframes search-mobile-descend{from{opacity:.35;transform:translateY(-100%)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){.account-backdrop,.account-dialog,.account-layer.is-closing .account-backdrop,.account-layer.is-closing .account-dialog{animation:none}.drawer-header{transition:none}.mobile-topbar__slide[aria-hidden="true"]{visibility:hidden!important}}
+@media(prefers-reduced-motion:reduce){.account-backdrop,.account-dialog,.account-layer.is-closing .account-backdrop,.account-layer.is-closing .account-dialog{animation:none}.drawer-header{transition:none}.mobile-topbar__slide[aria-hidden="true"]{display:none!important}}

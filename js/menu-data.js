@@ -236,7 +236,7 @@
     { label: 'Acompanhe seus pedidos', iconId: 'carrinho-mao' }
   ];
   const communications = [
-    { id: 'frete-metais', text: 'Metais com frete grátis · Sul e Sudeste', iconId: 'caminhao' },
+    { id: 'frete-metais', text: 'Metais com frete grátis · Sul e Sudeste', iconId: 'caminhao-simples' },
     { id: 'parcelamento', text: 'Parcele em até 10x sem juros no cartão', iconId: 'cartao-credito' }
   ];
   const mobileTopbarItems = [

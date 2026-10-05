@@ -40,6 +40,7 @@
   const icon = (id, className = '', categoryId = '') => {
     if (id === 'departamentos') return '<span class="menu-hamburger" aria-hidden="true"><i></i><i></i><i></i></span>';
     if (id === 'cartao-credito') return `<svg class="${className}" viewBox="0 0 32 24" aria-hidden="true"><rect x="2" y="3" width="28" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 9h26" stroke="currentColor" stroke-width="2.2"/><path d="M7 16h7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+    if (id === 'caminhao-simples') return `<svg class="${className}" viewBox="0 0 32 24" aria-hidden="true"><path d="M3 5h17v13H3zM20 10h5l4 4v4h-9z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="9" cy="20" r="2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="24" cy="20" r="2" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>`;
     // Destaques editoriais podem escolher outro produto que o ícone do ramo.
     const categoryFile = data.assetHierarchy.iconeIds[categoryId] === id ? data.assetHierarchy.arquivos[categoryId] : null;
     const src = categoryFile || data.assetHierarchy.departamentos[categoryId] || data.assetRegistry.icon[id] || data.assetRegistry.icon.generic;
@@ -146,7 +147,7 @@
   function renderCommunications(communicationId = null) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const items = communicationId ? data.communications.filter(item => item.id === communicationId) : data.communications;
-    return `<div class="topbar-communications" ${communicationId ? 'data-fixed-communication' : ''} role="region" aria-label="Condições de compra" ${communicationId ? '' : 'aria-roledescription="carrossel"'}><div class="topbar-communications__messages" aria-live="off">${items.map((item, index) => `<div class="topbar-communications__message ${communicationId || index === communicationIndex ? 'is-visible' : ''}" aria-hidden="${!communicationId && !reducedMotion && index !== communicationIndex}" data-communication>${item.iconId ? `<span class="topbar-communications__symbol ${item.iconId === 'caminhao' ? 'topbar-communications__symbol--truck' : ''}" aria-hidden="true">${icon(item.iconId)}</span>` : ''}<span>${item.text}</span></div>`).join('')}</div></div>`;
+    return `<div class="topbar-communications" ${communicationId ? 'data-fixed-communication' : ''} role="region" aria-label="Condições de compra" ${communicationId ? '' : 'aria-roledescription="carrossel"'}><div class="topbar-communications__messages" aria-live="off">${items.map((item, index) => `<div class="topbar-communications__message ${communicationId || index === communicationIndex ? 'is-visible' : ''}" aria-hidden="${!communicationId && !reducedMotion && index !== communicationIndex}" data-communication>${item.iconId ? `<span class="topbar-communications__symbol ${item.iconId === 'caminhao-simples' ? 'topbar-communications__symbol--truck' : ''}" aria-hidden="true">${icon(item.iconId)}</span>` : ''}<span>${item.text}</span></div>`).join('')}</div></div>`;
   }
 
   function bindCommunications() {

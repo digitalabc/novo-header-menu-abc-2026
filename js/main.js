@@ -30,6 +30,7 @@
   let communicationTimer;
   let communicationIndex = 0;
   let mobileHeaderCompact = false;
+  let mobileTopbarIndex = 0;
   let headerTouchY = null;
   let headerTouchX = null;
 
@@ -146,22 +147,72 @@
 
   function bindCommunications() {
     clearInterval(communicationTimer);
-    const region = header.querySelector('.topbar-communications');
-    if (!region) return;
+    const regions = [...header.querySelectorAll('.topbar-communications')];
+    if (!regions.length) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const advance = () => {
-      if (document.hidden || state.regionalizationOpen || accountOpen || state.drawerOpen || !region.isConnected || (!desktopQuery.matches && (!mobileHeaderCompact || state.searchOpen))) return;
+      if (document.hidden || state.regionalizationOpen || accountOpen || state.drawerOpen || state.searchOpen || !regions.some(region => region.isConnected && !region.closest('[inert]'))) return;
       const previousIndex = communicationIndex;
       communicationIndex = (communicationIndex + 1) % data.communications.length;
-      region.querySelectorAll('[data-communication]').forEach((message, index) => {
+      regions.forEach(region => region.querySelectorAll('[data-communication]').forEach((message, index) => {
         message.classList.toggle('is-visible', index === communicationIndex);
         message.classList.toggle('is-leaving', index === previousIndex);
         message.setAttribute('aria-hidden', String(index !== communicationIndex));
-      });
+      }));
     };
     // Respeite movimento reduzido sem impedir a leitura das duas mensagens.
-    if (reducedMotion.matches) region.classList.add('is-static');
-    else communicationTimer = setInterval(advance, 2000);
+    if (reducedMotion.matches) regions.forEach(region => region.classList.add('is-static'));
+    else communicationTimer = setInterval(advance, 2500);
+  }
+
+  function renderMobileTopbar() {
+    return `<div class="mobile-topbar" role="region" aria-label="Destaques da ABC" aria-roledescription="carrossel">
+      <button class="mobile-topbar__arrow" type="button" data-topbar-step="-1" aria-label="Opção anterior da topbar" aria-controls="mobile-topbar-slides" aria-disabled="${mobileTopbarIndex === 0}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 7-5 5 5 5"/></svg></button>
+      <div class="mobile-topbar__viewport"><div id="mobile-topbar-slides" class="mobile-topbar__track" style="--topbar-index:${mobileTopbarIndex}">${data.mobileTopbarItems.map((item, index) => {
+        const content = item.type === 'communications' ? renderCommunications() : item.type === 'logo' ? `<a class="mobile-topbar__prime" href="${item.url}" aria-label="${item.label}">${assetImg('logo', item.logoId)}</a>` : `<a class="${item.className}" href="${item.url}">${assetImg('icon', item.iconId)}${item.label}</a>`;
+        return `<div class="mobile-topbar__slide" role="group" aria-roledescription="slide" aria-label="${item.label}, ${index + 1} de ${data.mobileTopbarItems.length}" aria-hidden="${index !== mobileTopbarIndex}" ${index !== mobileTopbarIndex ? 'inert' : ''}>${content}</div>`;
+      }).join('')}</div></div>
+      <button class="mobile-topbar__arrow" type="button" data-topbar-step="1" aria-label="Próxima opção da topbar" aria-controls="mobile-topbar-slides" aria-disabled="${mobileTopbarIndex === data.mobileTopbarItems.length - 1}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 7 5 5-5 5"/></svg></button>
+      <span class="sr-only" data-topbar-status aria-live="polite" aria-atomic="true"></span>
+    </div>`;
+  }
+
+  function bindMobileTopbar() {
+    const topbar = header.querySelector('.mobile-topbar');
+    if (!topbar) return;
+    const move = step => {
+      const slides = [...topbar.querySelectorAll('.mobile-topbar__slide')];
+      const next = Math.max(0, Math.min(slides.length - 1, mobileTopbarIndex + step));
+      if (next === mobileTopbarIndex) return;
+      mobileTopbarIndex = next;
+      if (document.activeElement?.closest('.mobile-topbar__slide')) topbar.querySelector(`[data-topbar-step="${step < 0 ? -1 : 1}"]`).focus({ preventScroll: true });
+      topbar.querySelector('.mobile-topbar__track').style.setProperty('--topbar-index', mobileTopbarIndex);
+      slides.forEach((slide, index) => {
+        slide.inert = index !== mobileTopbarIndex;
+        slide.setAttribute('aria-hidden', String(index !== mobileTopbarIndex));
+      });
+      topbar.querySelector('[data-topbar-step="-1"]').setAttribute('aria-disabled', String(mobileTopbarIndex === 0));
+      topbar.querySelector('[data-topbar-step="1"]').setAttribute('aria-disabled', String(mobileTopbarIndex === slides.length - 1));
+      topbar.querySelector('[data-topbar-status]').textContent = `${data.mobileTopbarItems[mobileTopbarIndex].label}, ${mobileTopbarIndex + 1} de ${slides.length}`;
+      // Give the newly selected communication its full reading interval.
+      bindCommunications();
+    };
+    topbar.querySelectorAll('[data-topbar-step]').forEach(button => button.addEventListener('click', () => move(Number(button.dataset.topbarStep))));
+    topbar.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      move(event.key === 'ArrowLeft' ? -1 : 1);
+    });
+    let start = null;
+    topbar.addEventListener('touchstart', event => { start = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null; }, { passive: true });
+    topbar.addEventListener('touchend', event => {
+      if (!start || !event.changedTouches.length) return;
+      const dx = start.x - event.changedTouches[0].clientX;
+      const dy = start.y - event.changedTouches[0].clientY;
+      if (Math.abs(dx) > 36 && Math.abs(dx) > Math.abs(dy) * 1.5) move(dx > 0 ? 1 : -1);
+      start = null;
+    }, { passive: true });
+    topbar.addEventListener('touchcancel', () => { start = null; }, { passive: true });
   }
 
   function syncMobileHeader() {
@@ -407,7 +458,7 @@
   function renderMobileHeader() {
     const location = mobileLocationMarkup();
     return `<div class="mobile-header">
-      <div class="mobile-topbar"><a class="chip chip--stores" href="#">${assetImg('icon','nossas-lojas')}Nossas Lojas</a><a class="chip chip--franchise" href="#">Seja um Franqueado</a></div>
+      ${renderMobileTopbar()}
       <div class="mobile-main"><div class="mobile-main__left"><button class="icon-button hamburger" type="button" data-open-drawer aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button><button class="icon-button mobile-account" type="button" data-toggle-login-state aria-label="Simular usuário ${state.loggedIn ? 'deslogado' : 'logado'}" title="Alternar estado de login no preview">${icon('conta', 'header-action-icon')}</button></div>
       <a class="abc-logo" href="#" aria-label="ABC da Construção — início">${assetImg('logo','abc')}</a>
       <div class="mobile-main__right"><button class="icon-button search-toggle" type="button" data-toggle-search aria-label="${state.searchOpen ? 'Fechar busca' : 'Abrir busca'}" aria-expanded="${state.searchOpen}" aria-controls="mobile-search-row"><span class="search__icon"></span></button><button class="icon-button cart-button" type="button" aria-label="Carrinho com zero itens"><span class="cart-icon">${icon('carrinho-mao', 'header-action-icon')}<b>0</b></span></button></div></div>
@@ -720,6 +771,7 @@
 
   function bindEvents() {
     bindCommunications();
+    bindMobileTopbar();
     syncMobileHeader();
     document.querySelectorAll('[data-menu-action]').forEach(button => {
       button.addEventListener('click', () => onDesktopNav(button));

@@ -314,14 +314,29 @@ img{display:block;max-width:100%}
 @media (max-width:899px){
   body{min-height:100dvh}
   #site-header{position:sticky;top:0;z-index:10;overflow-anchor:none}
-  .mobile-topbar{height:44px;gap:10px;overflow:hidden;opacity:1;transition:height .42s cubic-bezier(.22,1,.36,1),opacity .24s ease,transform .42s cubic-bezier(.22,1,.36,1)}
+  .mobile-topbar{height:48px;gap:0;padding-inline:6px;overflow:hidden;opacity:1;transition:height .42s cubic-bezier(.22,1,.36,1),opacity .24s ease,transform .42s cubic-bezier(.22,1,.36,1)}
+  .mobile-topbar__arrow{display:grid;place-items:center;flex:0 0 40px;width:40px;height:44px;padding:0;border:0;border-radius:50%;color:#435565;background:none;cursor:pointer;transition:background-color .18s ease,color .18s ease}
+  .mobile-topbar__arrow svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .mobile-topbar__arrow:is(:hover,:active){background:#e4ebf0;color:#172d3d}
+  .mobile-topbar__arrow[aria-disabled="true"]{color:#bdc7ce;cursor:default;background:none}
+  .mobile-topbar__arrow:focus-visible{outline-offset:-4px}
+  .mobile-topbar__viewport{flex:1;min-width:0;height:48px;overflow:hidden;touch-action:pan-y}
+  .mobile-topbar__track{height:100%;display:flex;transform:translate3d(calc(var(--topbar-index,0) * -100%),0,0);transition:transform .38s cubic-bezier(.22,1,.36,1)}
+  .mobile-topbar__slide{display:flex;align-items:center;justify-content:center;flex:0 0 100%;min-width:0;height:100%}
+  .mobile-topbar__prime{display:flex;align-items:center;justify-content:center;height:44px;padding-inline:8px}
+  .mobile-topbar__prime img{width:108px;height:auto;max-height:34px;object-fit:contain}
+  .mobile-topbar__slide .topbar-communications{width:100%;height:46px;padding-inline:2px;background:none;border-radius:0}
+  .mobile-topbar__slide .topbar-communications__message{font-size:12px;line-height:1.3;letter-spacing:0;gap:4px}
+  .mobile-topbar__slide .topbar-communications__symbol{flex-basis:28px;font-size:11px}
+  .mobile-topbar__slide .topbar-communications__message img{width:28px;height:23px}
+  .mobile-topbar__slide .topbar-communications.is-static .topbar-communications__message{font-size:10.5px}
   .mobile-topbar .chip{flex-shrink:0;font-size:12px}
   .mobile-topbar .chip--stores{padding-left:5px}
-  .mobile-header.is-compact .mobile-topbar{height:0;opacity:0;transform:translateY(-44px)}
+  .mobile-header.is-compact .mobile-topbar{height:0;opacity:0;transform:translateY(-48px)}
   .mobile-communications{display:grid;grid-template-rows:0fr;visibility:hidden;opacity:0;background:var(--red);transition:grid-template-rows .42s cubic-bezier(.22,1,.36,1),opacity .28s ease,visibility 0s .42s}
   .mobile-communications__clip{min-height:0;overflow:hidden}
   .mobile-header.is-compact .mobile-communications{grid-template-rows:1fr;visibility:visible;opacity:1;transition:grid-template-rows .42s cubic-bezier(.22,1,.36,1),opacity .3s .08s ease,visibility 0s}
-  .mobile-communications .topbar-communications{width:100%;height:48px;border-radius:0;background:var(--red);color:#fff;padding-inline:16px}
+  .mobile-communications .topbar-communications{width:100%;height:40px;border-radius:0;background:var(--red);color:#fff;padding-inline:16px}
   .mobile-communications .topbar-communications__message{font-size:12.5px;line-height:1.3;letter-spacing:.02em;gap:8px}
   .mobile-communications .topbar-communications__symbol{background:#c30510}
   .mobile-communications .topbar-communications__symbol--truck{flex-basis:38px;background:none}

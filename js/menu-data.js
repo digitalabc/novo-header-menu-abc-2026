@@ -239,6 +239,12 @@
     { id: 'frete-metais', text: 'Metais com frete grátis · Sul e Sudeste', iconId: 'caminhao' },
     { id: 'parcelamento', text: 'Até 10x sem juros no cartão', iconId: null }
   ];
+  const mobileTopbarItems = [
+    { id: 'whatsapp', label: 'Compre pelo WhatsApp', type: 'link', iconId: 'whatsapp', className: 'chip chip--whatsapp', url: '#' },
+    { id: 'casa-prime', label: 'Casa Prime', type: 'logo', logoId: 'casaPrime', url: '#' },
+    { id: 'nossas-lojas', label: 'Nossas Lojas', type: 'link', iconId: 'nossas-lojas', className: 'chip chip--stores', url: '#' },
+    { id: 'comunicacoes', label: 'Frete e parcelamento', type: 'communications' }
+  ];
   const account = {
     name: 'Phaison',
     options: [
@@ -247,5 +253,5 @@
       { label: 'Meus endereços', iconId: 'regionalizacao', url: null }
     ]
   };
-  window.Menu2026Data = { assetRegistry, assetHierarchy: window.Menu2026Assets, departments, principal, environments, navigation, search, drawerFooter, account, communications, categoryAliases, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
+  window.Menu2026Data = { assetRegistry, assetHierarchy: window.Menu2026Assets, departments, principal, environments, navigation, search, drawerFooter, account, communications, mobileTopbarItems, categoryAliases, categoryIconRules: window.Menu2026CategoryIcons.rules, catalogIconIds: window.Menu2026CategoryIcons.catalogIconIds };
 })();

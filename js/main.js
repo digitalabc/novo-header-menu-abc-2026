@@ -688,7 +688,7 @@
     if (state.drawerLevel === 'root') return `<div class="drawer-sticky-category" hidden>
       <button type="button" data-collapse-visible-category aria-label="Recolher categoria">
         <span class="drawer-sticky-category__identity"><img data-sticky-category-icon alt="" aria-hidden="true"><span data-sticky-category-label></span></span>
-        <span class="drawer-sticky-category__control">${navChevron()}<span class="drawer-sticky-category__action">Recolher</span></span>
+        <span class="drawer-sticky-category__control"><span class="drawer-sticky-category__action">Recolher</span>${navChevron()}</span>
       </button>
       <figure class="drawer-sticky-environment" hidden><img data-sticky-environment-image alt="" aria-hidden="true"><figcaption><strong data-sticky-environment-label></strong></figcaption></figure>
     </div>`;
@@ -742,7 +742,7 @@
     const label = item.imageId ? '' : '<span>' + item.label + '</span>';
     const accessibleLabel = item.imageId ? ' aria-label="' + item.label + '"' : '';
     if (!expanded) content = content.replace(/<img([^>]*?)\ssrc=/g, '<img$1 data-src=');
-    return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button"' + accessibleLabel + ' data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos', '', item.id)) + label + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
+    return '<section class="drawer-accordion' + sectionClass + ' ' + (expanded ? 'is-expanded' : '') + '"><button class="drawer-accordion__trigger' + principalClass + environmentClass + '" type="button"' + accessibleLabel + ' data-drawer-accordion="' + key + '" data-drawer-group="' + group + '" aria-expanded="' + expanded + '" aria-controls="drawer-options-' + safeId(key) + '">' + (item.imageId ? environmentImage(item) : icon(item.iconId || 'departamentos', '', item.id)) + label + '<span class="drawer-accordion__collapse" aria-hidden="true">Recolher</span>' + navChevron() + '</button><div id="drawer-options-' + safeId(key) + '" class="drawer-accordion__content" ' + (expanded ? '' : 'inert') + '><div><nav class="drawer-option-list" aria-label="' + item.label + '">' + content + '</nav></div></div></section>';
   }
 
   function drawerOption(label, artwork, attributes) {

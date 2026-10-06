@@ -25,8 +25,6 @@
   let accountOpener = null;
   let accountOpen = false;
   let accountCloseTimer;
-  let drawerAutoPauseUntil = 0;
-  let manuallyClosedEnvironment = null;
   let communicationTimer;
   let communicationIndex = 0;
   let mobileHeaderCompact = false;
@@ -472,7 +470,7 @@
   }
 
   function environmentImage(item) {
-    return `<figure class="drawer-environment-card" style="--environment-position:${item.imagePosition || '50% 50%'}"><img src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><figcaption><strong>${item.label}</strong></figcaption></figure>`;
+    return `<figure class="drawer-environment-card" style="--environment-position:${item.imagePosition || '50% 50%'}" data-sticky-image-position="${item.stickyImagePosition || item.imagePosition || '50% 50%'}"><img src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><figcaption><strong>${item.label}</strong></figcaption></figure>`;
   }
 
   function environmentFeature(item, headingTag = 'h2') {
@@ -987,55 +985,13 @@
     let frame = 0;
     let lastScrollTop = body.scrollTop;
     let returningToNavigation = false;
-    let pendingEnvironment = null;
-    let environmentTimer;
     const rootHeader = currentPanel.querySelector('.drawer-header');
-    const pauseForInteraction = () => {
-      clearTimeout(environmentTimer);
-      pendingEnvironment = null;
-      drawerAutoPauseUntil = performance.now() + 650;
-    };
-    // Scrolling must not change the hit target during a tap or keyboard action.
-    currentPanel.addEventListener('pointerdown', pauseForInteraction, { passive: true });
-    currentPanel.addEventListener('focusin', pauseForInteraction);
-    const environmentCandidate = () => {
-      if (!currentPanel.isConnected) return null;
-      const rootTrigger = currentPanel.querySelector('[data-drawer-accordion="nav-ambientes"]');
-      const rootSection = rootTrigger?.closest('.drawer-accordion');
-      if (!rootSection?.classList.contains('is-expanded') || accountOpen || state.regionalizationOpen || state.drawerBusy) return null;
-      const line = body.getBoundingClientRect().top + 112;
-      return [...rootSection.querySelectorAll('.drawer-accordion__trigger--environment')].find(trigger => {
-        const rect = trigger.getBoundingClientRect();
-        return !trigger.closest('[inert]') && rect.top <= line && rect.bottom > line;
-      }) || null;
-    };
-    const scheduleEnvironment = () => {
-      const candidate = environmentCandidate();
-      if (!candidate || candidate.getAttribute('aria-expanded') === 'true' || candidate.dataset.drawerAccordion === manuallyClosedEnvironment || performance.now() < drawerAutoPauseUntil) {
-        clearTimeout(environmentTimer);
-        pendingEnvironment = null;
-        return;
-      }
-      if (candidate === pendingEnvironment) return;
-      clearTimeout(environmentTimer);
-      pendingEnvironment = candidate;
-      // Dwell avoids opening every card crossed by a quick fling.
-      environmentTimer = setTimeout(() => {
-        pendingEnvironment = null;
-        if (!candidate.isConnected || candidate !== environmentCandidate() || performance.now() < drawerAutoPauseUntil) return;
-        manuallyClosedEnvironment = null;
-        changeDrawerAccordion(candidate, 'scroll');
-        schedule();
-      }, 140);
-    };
     const update = () => {
       if (!currentPanel.isConnected) return;
       const edge = body.getBoundingClientRect().top;
       const scrollTop = body.scrollTop;
-      if (!body.classList.contains('is-auto-switching')) {
-        if (scrollTop < lastScrollTop - 2) returningToNavigation = true;
-        else if (scrollTop > lastScrollTop + 2) returningToNavigation = false;
-      }
+      if (scrollTop < lastScrollTop - 2) returningToNavigation = true;
+      else if (scrollTop > lastScrollTop + 2) returningToNavigation = false;
       lastScrollTop = scrollTop;
       if (rootHeader) {
         const departments = currentPanel.querySelector('[data-drawer-accordion="nav-departamentos"]');
@@ -1044,7 +1000,6 @@
         rootHeader.classList.toggle('is-away', !showHeader);
         rootHeader.toggleAttribute('inert', !showHeader);
       }
-      scheduleEnvironment();
       activeTrigger = null;
       currentPanel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
         const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
@@ -1097,10 +1052,11 @@
       });
       if (environmentAccordionToClone && !environmentAccordionToClone.classList.contains('is-sticky-cloned')) environmentAccordionToClone.classList.add('is-sticky-cloned');
       if (environmentTrigger) {
-        const environmentImage = environmentTrigger.querySelector('.drawer-environment-card > img');
+        const environmentCard = environmentTrigger.querySelector('.drawer-environment-card');
+        const environmentImage = environmentCard?.querySelector('img');
         const environmentLabel = environmentTrigger.querySelector('.drawer-environment-card figcaption strong')?.textContent?.trim() || '';
         stickyEnvironmentImage.src = environmentImage?.currentSrc || environmentImage?.src || '';
-        stickyEnvironmentImage.style.objectPosition = environmentImage ? getComputedStyle(environmentImage).objectPosition : '';
+        stickyEnvironmentImage.style.objectPosition = environmentCard?.dataset.stickyImagePosition || (environmentImage ? getComputedStyle(environmentImage).objectPosition : '');
         stickyEnvironmentLabel.textContent = environmentLabel;
       }
     };
@@ -1139,15 +1095,11 @@
     clearDrawerAnimationArtifacts();
   }
 
-  function changeDrawerAccordion(button, source = 'pointer') {
+  function changeDrawerAccordion(button) {
     if (state.drawerBusy) return;
     const currentPanel = button.closest('.drawer-panel--current');
     const body = currentPanel?.closest('.drawer-body');
     if (!currentPanel || !body) return;
-    const automatic = source === 'scroll';
-    drawerAutoPauseUntil = performance.now() + (automatic ? 450 : 650);
-    const anchorTop = automatic ? button.getBoundingClientRect().top : null;
-    if (automatic) body.classList.add('is-auto-switching');
     const id = button.dataset.drawerAccordion;
     const group = button.dataset.drawerGroup;
     const isPrincipal = group === 'root' && id === data.principal.id;
@@ -1164,10 +1116,9 @@
       window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
       return;
     }
-    const expanded = automatic || state.drawerExpanded.get(group) !== id;
-    if (!automatic && button.classList.contains('drawer-accordion__trigger--environment')) manuallyClosedEnvironment = expanded ? null : id;
+    const expanded = state.drawerExpanded.get(group) !== id;
     const switchingEnvironment = expanded && button.classList.contains('drawer-accordion__trigger--environment') && Boolean(state.drawerExpanded.get(group));
-    if (switchingEnvironment && !automatic) preserveDrawerCategoryPosition(button, sequence);
+    if (switchingEnvironment) preserveDrawerCategoryPosition(button, sequence);
     let closingContent = null;
     // Principal Categories opens and closes independently of the other menu groups.
     if (expanded) {
@@ -1204,12 +1155,7 @@
         if (descendantContent !== content) descendantContent.setAttribute('inert', '');
       });
     }
-    if (automatic) {
-      // Change heights atomically, compensate layout before paint, then fade
-      // the new options. Do not chase or reset the customer's ongoing scroll.
-      body.scrollTop += button.getBoundingClientRect().top - anchorTop;
-      setTimeout(() => { body.classList.remove('is-auto-switching'); body.onscroll?.(); }, 360);
-    } else if (expanded && !switchingEnvironment) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
+    if (expanded && !switchingEnvironment) scrollToOpenedDrawerAccordion(button, closingContent, sequence);
     window.setTimeout(() => currentPanel?.closest('.drawer-body')?.onscroll?.(), 500);
     if (expanded && group === 'root') window.setTimeout(() => body.onscroll?.(), 700);
   }
@@ -1334,7 +1280,6 @@
   }
 
   function navigateDrawer(level, id, category = null) {
-    drawerAutoPauseUntil = performance.now() + 650;
     const body = document.querySelector('.drawer-body');
     state.drawerPreviousHtml = snapshotDrawerPanel();
     state.drawerPreviousScroll = body.scrollTop;
@@ -1349,7 +1294,6 @@
   }
 
   function navigateDrawerBack() {
-    drawerAutoPauseUntil = performance.now() + 650;
     const previous = state.drawerHistory.pop() || { level: 'root', id: null };
     state.drawerPreviousHtml = snapshotDrawerPanel();
     state.drawerPreviousScroll = (document.querySelector('.drawer-body')?.scrollTop || 0) - (previous.scrollTop || 0);

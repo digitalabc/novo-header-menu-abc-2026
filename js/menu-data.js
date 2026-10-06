@@ -195,11 +195,11 @@
   };
 
   const environmentCopy = {
-    banheiro: { heading: 'Tudo em: louças, metais e acabamentos para finalizar seu banheiro dos sonhos.', subtitle: 'Do banho à bancada, escolhas que facilitam o dia.', imagePosition: '50% 68%' },
-    cozinha: { heading: 'Tudo em: cubas, metais e revestimentos para o coração da sua casa.', subtitle: 'Praticidade para cozinhar e espaço para compartilhar.', imagePosition: '50% 64%' },
-    'sala-estar': { heading: 'Tudo em: pisos, revestimentos e acabamentos para deixar sua sala ainda mais acolhedora.', subtitle: 'Luz, cores e texturas para uma sala com a sua cara.', imagePosition: '50% 68%' },
-    'sala-jantar': { heading: 'Tudo em: pisos e revestimentos para criar um ambiente feito para bons encontros.', subtitle: 'Um lugar gostoso para reunir quem você gosta.', imagePosition: '50% 66%' },
-    quarto: { heading: 'Tudo em: pisos e revestimentos para criar um ambiente de conforto e descanso.', subtitle: 'Detalhes que ajudam a desacelerar no fim do dia.', imagePosition: '50% 68%' },
+    banheiro: { heading: 'Tudo em: louças, metais e acabamentos para finalizar seu banheiro dos sonhos.', subtitle: 'Do banho à bancada, escolhas que facilitam o dia.', imagePosition: '50% 68%', stickyImagePosition: '50% 60%' },
+    cozinha: { heading: 'Tudo em: cubas, metais e revestimentos para o coração da sua casa.', subtitle: 'Praticidade para cozinhar e espaço para compartilhar.', imagePosition: '50% 64%', stickyImagePosition: '50% 58%' },
+    'sala-estar': { heading: 'Tudo em: pisos, revestimentos e acabamentos para deixar sua sala ainda mais acolhedora.', subtitle: 'Luz, cores e texturas para uma sala com a sua cara.', imagePosition: '50% 68%', stickyImagePosition: '50% 74%' },
+    'sala-jantar': { heading: 'Tudo em: pisos e revestimentos para criar um ambiente feito para bons encontros.', subtitle: 'Um lugar gostoso para reunir quem você gosta.', imagePosition: '50% 66%', stickyImagePosition: '50% 58%' },
+    quarto: { heading: 'Tudo em: pisos e revestimentos para criar um ambiente de conforto e descanso.', subtitle: 'Detalhes que ajudam a desacelerar no fim do dia.', imagePosition: '50% 68%', stickyImagePosition: '50% 62%' },
     escritorio: { heading: 'Tudo em: pisos e acabamentos para criar um espaço funcional e inspirador.', subtitle: 'Conforto e organização para trabalhar no seu ritmo.', imagePosition: '50% 65%' },
     'area-externa': { heading: 'Tudo em: pisos e revestimentos para aproveitar sua casa também do lado de fora.', subtitle: 'Do jardim ao churrasco, mais motivos para ficar.', imagePosition: '50% 64%' },
     piscina: { heading: 'Tudo em: revestimentos e acabamentos para completar sua área de lazer.', subtitle: 'Prepare seu cantinho de sol para os dias de lazer.', imagePosition: '50% 70%' }

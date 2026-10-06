@@ -7,7 +7,7 @@
   const regionalizationRoot = document.getElementById('regionalization-root');
   const accountRoot = document.getElementById('account-root');
   const desktopQuery = window.matchMedia('(min-width: 900px)');
-  const state = { desktopMenu: null, desktopSelection: 'principais-categorias', desktopAnimation: 'open', environment: 'banheiro', desktopSearchOpen: false, desktopSearchValue: '', searchOpen: false, searchDropdown: false, drawerOpen: false, drawerLevel: 'root', drawerId: null, drawerCategory: null, drawerHistory: [], drawerPreviousHtml: '', drawerPreviousScroll: 0, drawerDirection: 'forward', principalExpanded: true, drawerExpanded: new Map(), drawerBusy: false, loggedIn: true, regionalized: false, regionalizationOpen: true, regionalizationValue: '', regionalizationError: '', regionalizationOpener: null, delivery: { cep: '32604-540', city: 'Betim' }, opener: null };
+  const state = { desktopMenu: null, desktopSelection: 'principais-categorias', desktopAnimation: 'open', environment: 'banheiro', desktopSearchOpen: false, desktopSearchValue: '', searchOpen: false, searchDropdown: false, drawerOpen: false, drawerLevel: 'root', drawerId: null, drawerCategory: null, drawerHistory: [], drawerPreviousHtml: '', drawerPreviousScroll: 0, drawerDirection: 'forward', principalExpanded: false, drawerExpanded: new Map(), drawerBusy: false, loggedIn: true, regionalized: false, regionalizationOpen: true, regionalizationValue: '', regionalizationError: '', regionalizationOpener: null, delivery: { cep: '32604-540', city: 'Betim' }, opener: null };
   let desktopOpenTimer;
   let desktopCloseTimer;
   let desktopExitTimer;
@@ -716,17 +716,21 @@
   }
 
   function renderDrawerRoot() {
-    return renderMobileAccordion(data.principal, renderMobileCategoryOptions(data.principal, 'department'), data.principal.id, 'root') +
-      data.navigation.map(item => {
-        if (item.menu === 'departments') return renderMobileAccordion(item, renderDepartmentOptions(), 'nav-' + item.id, 'root');
-        if (item.menu === 'environments') return renderMobileAccordion(item, renderEnvironmentOptions(), 'nav-' + item.id, 'root');
-        if (item.menu === 'department') {
-          const department = data.departments.find(entry => entry.id === item.departmentId);
-          return renderMobileAccordion(item, renderMobileCategoryOptions(department, 'department'), 'nav-' + item.id, 'root');
-        }
-        return `<a class="drawer-direct-link" href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span></a>`;
-      }).join('') +
-      '<a class="drawer-sale" href="#" data-pending-link><span class="sale-pill">Saldão de Ofertas <span aria-hidden="true">🔥</span></span></a>';
+    const renderNavigationItem = item => {
+      if (item.menu === 'departments') return renderMobileAccordion(item, renderDepartmentOptions(), 'nav-' + item.id, 'root');
+      if (item.menu === 'environments') return renderMobileAccordion(item, renderEnvironmentOptions(), 'nav-' + item.id, 'root');
+      if (item.menu === 'department') {
+        const department = data.departments.find(entry => entry.id === item.departmentId);
+        return renderMobileAccordion(item, renderMobileCategoryOptions(department, 'department'), 'nav-' + item.id, 'root');
+      }
+      return `<a class="drawer-direct-link" href="#" data-pending-link>${icon(item.iconId)}<span>${item.label}</span></a>`;
+    };
+    const itemsById = new Map(data.navigation.map(item => [item.id, item]));
+    const section = (label, content) => `<section class="drawer-menu-section"><h3 class="drawer-menu-section__title">${label}</h3><div class="drawer-menu-section__items">${content}</div></section>`;
+    return section('Mais acessados', renderMobileAccordion(data.principal, renderMobileCategoryOptions(data.principal, 'department'), data.principal.id, 'root')) +
+      section('Explore a loja', ['departamentos', 'ambientes'].map(id => renderNavigationItem(itemsById.get(id))).join('')) +
+      section('Categorias', ['metais', 'loucas', 'pisos'].map(id => renderNavigationItem(itemsById.get(id))).join('')) +
+      section('Ofertas', renderNavigationItem(itemsById.get('cupons')) + '<a class="drawer-sale" href="#" data-pending-link><span class="sale-pill">Saldão de Ofertas <span aria-hidden="true">🔥</span></span></a>');
   }
 
   function renderMobileAccordion(item, content, key = item.id, group = 'root') {

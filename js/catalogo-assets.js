@@ -965,9 +965,9 @@
       "utilidades-domesticas/jogos-de-mesa-7": "header-menu-abc/categorias/utilidades-domesticas/N2/jogos-mesa.webp"
     },
     "departamentos": {
-      "pisos-revestimentos": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-e-revestimentos.webp",
+      "pisos-revestimentos": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-revestimentos-realista.webp",
       "metais": "header-menu-abc/categorias/metais/N1/metais.webp",
-      "loucas-inox": "header-menu-abc/categorias/loucas-e-inox/N1/loucas-e-inox.webp",
+      "loucas-inox": "header-menu-abc/categorias/loucas-e-inox/N1/vaso-sanitario.webp",
       "banho-aquecimento": "header-menu-abc/categorias/banho-e-aquecimento/N1/aquecedor-gas.webp",
       "argamassa-rejunte": "header-menu-abc/categorias/argamassa-e-rejunte/N1/argamassa-e-rejunte.webp",
       "coberturas-telhas": "header-menu-abc/categorias/coberturas-e-telhas/N1/calha.webp",

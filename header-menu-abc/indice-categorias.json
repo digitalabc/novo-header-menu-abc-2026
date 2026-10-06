@@ -9,7 +9,7 @@
           {
             "nome": "Pisos e Revestimentos",
             "iconeId": "pisos-revestimentos",
-            "arquivo": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-e-revestimentos.webp"
+            "arquivo": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-revestimentos-realista.webp"
           }
         ],
         "N2": [
@@ -625,7 +625,7 @@
           {
             "nome": "Louças e Inox",
             "iconeId": "loucas",
-            "arquivo": "header-menu-abc/categorias/loucas-e-inox/N1/loucas-e-inox.webp"
+            "arquivo": "header-menu-abc/categorias/loucas-e-inox/N1/vaso-sanitario.webp"
           }
         ],
         "N2": [
@@ -3718,9 +3718,9 @@
     "utilidades-domesticas/jogos-de-mesa-7": "header-menu-abc/categorias/utilidades-domesticas/N2/jogos-mesa.webp"
   },
   "departamentos": {
-    "pisos-revestimentos": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-e-revestimentos.webp",
+    "pisos-revestimentos": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-revestimentos-realista.webp",
     "metais": "header-menu-abc/categorias/metais/N1/metais.webp",
-    "loucas-inox": "header-menu-abc/categorias/loucas-e-inox/N1/loucas-e-inox.webp",
+    "loucas-inox": "header-menu-abc/categorias/loucas-e-inox/N1/vaso-sanitario.webp",
     "banho-aquecimento": "header-menu-abc/categorias/banho-e-aquecimento/N1/aquecedor-gas.webp",
     "argamassa-rejunte": "header-menu-abc/categorias/argamassa-e-rejunte/N1/argamassa-e-rejunte.webp",
     "coberturas-telhas": "header-menu-abc/categorias/coberturas-e-telhas/N1/calha.webp",
@@ -4509,6 +4509,10 @@
       "exportacao": "header-menu-abc/categorias/loucas-e-inox/N2/vaso-sanitario.webp"
     },
     {
+      "original": "header-menu-abc/categorias/loucas-e-inox/N2/originais/vaso-sanitario.png",
+      "exportacao": "header-menu-abc/categorias/loucas-e-inox/N1/vaso-sanitario.webp"
+    },
+    {
       "original": "header-menu-abc/icones/originais/carrinho-mao.png",
       "exportacao": "header-menu-abc/icones/carrinho-mao.webp"
     },
@@ -4545,6 +4549,10 @@
       "exportacao": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-e-revestimentos.webp"
     },
     {
+      "original": "header-menu-abc/categorias/pisos-e-revestimentos/N1/originais/pisos-revestimentos-realista.png",
+      "exportacao": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-revestimentos-realista.webp"
+    },
+    {
       "original": "header-menu-abc/icones/originais/principais-categorias.png",
       "exportacao": "header-menu-abc/icones/principais-categorias.webp"
     },
@@ -4565,8 +4573,8 @@
     "principais-categorias": "header-menu-abc/icones/principais-categorias.webp",
     "ambientes": "header-menu-abc/icones/ambientes.webp",
     "metais": "header-menu-abc/categorias/metais/N1/metais.webp",
-    "loucas": "header-menu-abc/categorias/loucas-e-inox/N1/loucas-e-inox.webp",
-    "pisos-revestimentos": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-e-revestimentos.webp",
+    "loucas": "header-menu-abc/categorias/loucas-e-inox/N1/vaso-sanitario.webp",
+    "pisos-revestimentos": "header-menu-abc/categorias/pisos-e-revestimentos/N1/pisos-revestimentos-realista.webp",
     "cupons": "header-menu-abc/icones/cupons.webp",
     "whatsapp": "header-menu-abc/icones/whatsapp.svg",
     "porcelanato": "header-menu-abc/categorias/pisos-e-revestimentos/N2/porcelanato.webp",

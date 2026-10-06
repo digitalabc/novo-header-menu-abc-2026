@@ -728,9 +728,9 @@
     const itemsById = new Map(data.navigation.map(item => [item.id, item]));
     const section = (label, content) => `<section class="drawer-menu-section"><h3 class="drawer-menu-section__title">${label}</h3><div class="drawer-menu-section__items">${content}</div></section>`;
     return section('Mais acessados', renderMobileAccordion(data.principal, renderMobileCategoryOptions(data.principal, 'department'), data.principal.id, 'root')) +
-      section('Explore a loja', ['departamentos', 'ambientes'].map(id => renderNavigationItem(itemsById.get(id))).join('')) +
+      section('Explore a ABC da Construção por', ['departamentos', 'ambientes'].map(id => renderNavigationItem(itemsById.get(id))).join('')) +
       section('Categorias', ['metais', 'loucas', 'pisos'].map(id => renderNavigationItem(itemsById.get(id))).join('')) +
-      section('Ofertas', renderNavigationItem(itemsById.get('cupons')) + '<a class="drawer-sale" href="#" data-pending-link><span class="sale-pill">Saldão de Ofertas <span aria-hidden="true">🔥</span></span></a>');
+      section('Ofertas ABC da Construção', renderNavigationItem(itemsById.get('cupons')) + '<a class="drawer-sale" href="#" data-pending-link><span class="sale-pill">Saldão de Ofertas <span aria-hidden="true">🔥</span></span></a>');
   }
 
   function renderMobileAccordion(item, content, key = item.id, group = 'root') {

@@ -687,7 +687,7 @@
   function renderDrawerViewHeader() {
     if (state.drawerLevel === 'root') return `<div class="drawer-sticky-category" hidden>
       <button type="button" data-collapse-visible-category aria-label="Recolher categoria">
-        <span class="drawer-sticky-category__identity"><img data-sticky-category-icon alt="" aria-hidden="true"><span data-sticky-category-label></span></span>
+        <span class="drawer-sticky-category__identity"><img data-sticky-category-icon alt="" aria-hidden="true"><span class="menu-hamburger" data-sticky-category-fallback-icon aria-hidden="true" hidden><i></i><i></i><i></i></span><span data-sticky-category-label></span></span>
         <span class="drawer-sticky-category__control"><span class="drawer-sticky-category__action">Recolher</span>${navChevron()}</span>
       </button>
       <figure class="drawer-sticky-environment" hidden><img data-sticky-environment-image alt="" aria-hidden="true"><figcaption><strong data-sticky-environment-label></strong></figcaption></figure>
@@ -978,6 +978,7 @@
     }
     const stickyButton = sticky.querySelector('[data-collapse-visible-category]');
     const stickyIcon = sticky.querySelector('[data-sticky-category-icon]');
+    const stickyFallbackIcon = sticky.querySelector('[data-sticky-category-fallback-icon]');
     const stickyEnvironment = sticky.querySelector('.drawer-sticky-environment');
     const stickyEnvironmentImage = sticky.querySelector('[data-sticky-environment-image]');
     const stickyEnvironmentLabel = sticky.querySelector('[data-sticky-environment-label]');
@@ -1065,11 +1066,20 @@
       const rootAccordion = environmentAccordion?.parentElement?.closest('.drawer-accordion__content')?.closest('.drawer-accordion');
       const categoryTrigger = rootAccordion?.querySelector(':scope > .drawer-accordion__trigger') || activeTrigger;
       collapseTrigger = categoryTrigger;
-      const label = categoryTrigger.querySelector(':scope > span:not(.nav-chevron)')?.textContent?.trim() || categoryTrigger.querySelector('figcaption strong')?.textContent?.trim() || 'Categoria';
+      const label = categoryTrigger.querySelector(':scope > span:not([aria-hidden])')?.textContent?.trim() || categoryTrigger.querySelector('figcaption strong')?.textContent?.trim() || 'Categoria';
       sticky.querySelector('[data-sticky-category-label]').textContent = label;
       const categoryIcon = categoryTrigger.querySelector(':scope > img');
-      stickyIcon.src = categoryIcon?.currentSrc || categoryIcon?.src || '';
-      stickyIcon.hidden = !stickyIcon.src;
+      const categoryIconSource = categoryIcon?.currentSrc || categoryIcon?.getAttribute('src') || '';
+      if (categoryIconSource) {
+        stickyIcon.src = categoryIconSource;
+        stickyIcon.hidden = false;
+        stickyIcon.style.removeProperty('display');
+      } else {
+        stickyIcon.removeAttribute('src');
+        stickyIcon.hidden = true;
+        stickyIcon.style.display = 'none';
+      }
+      stickyFallbackIcon.hidden = Boolean(categoryIconSource) || !categoryTrigger.querySelector(':scope > .menu-hamburger');
       stickyButton.setAttribute('aria-label', `Recolher ${label}`);
       // As soon as the Ambientes header is sticky, keep the chosen photo card with it.
       // This prevents the original card from passing underneath the fixed header midway.

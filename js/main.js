@@ -467,7 +467,7 @@
 
   function renderEnvironmentMenu() {
     const active = data.environments.find(item => item.id === state.environment) || data.environments[0];
-    return `<aside class="environment-rail" aria-label="Escolha um ambiente"><div class="environment-rail__list"><div class="environment-rail__grid">${data.environments.map(item => `<button type="button" class="environment-link ${item.id === active.id ? 'is-active' : ''}" style="--environment-position:${item.imagePosition || '50% 50%'}" data-environment-id="${item.id}" aria-current="${item.id === active.id ? 'true' : 'false'}" aria-expanded="${item.id === active.id ? 'true' : 'false'}" aria-controls="environment-detail"><img class="environment-link__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><span class="environment-link__caption"><span class="environment-feature__label">Ambiente</span><span class="environment-link__name">${item.label}</span></span><span class="environment-link__arrow">${chevron('right')}</span></button>`).join('')}</div></div></aside>
+    return `<aside class="environment-rail" aria-label="Escolha um ambiente"><div class="environment-rail__list"><div class="environment-rail__grid">${data.environments.map(item => `<button type="button" class="environment-link ${item.id === active.id ? 'is-active' : ''}" style="--environment-position:${item.imagePosition || '50% 50%'}" data-environment-id="${item.id}" aria-current="${item.id === active.id ? 'true' : 'false'}" aria-expanded="${item.id === active.id ? 'true' : 'false'}" aria-controls="environment-detail"><img class="environment-link__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><span class="environment-link__caption"><span class="environment-link__name">${item.label}</span></span><span class="environment-link__arrow">${chevron('right')}</span></button>`).join('')}</div></div></aside>
       <div id="environment-detail" class="mega-panel mega-panel--environment"><div class="environment-content"><div class="environment-categories"><div class="environment-category-heading"><h2>${active.label}</h2><p>${active.heading}</p></div><div class="environment-scroll"><div class="environment-grid">${active.categories.map(label => categoryCard(label, categoryIcon(label))).join('')}</div></div>${moreLink(active)}</div></div></div>`;
   }
 
@@ -476,7 +476,7 @@
   }
 
   function environmentFeature(item, headingTag = 'h2') {
-    return `<figure class="environment-feature"><img class="environment-feature__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><figcaption class="environment-feature__caption"><span class="environment-feature__label">Ambiente</span><${headingTag}>${item.label}</${headingTag}><p class="environment-feature__description">${item.heading}</p></figcaption></figure>`;
+    return `<figure class="environment-feature"><img class="environment-feature__image" src="${data.assetRegistry.environmentFeature[item.imageId]}" alt="" width="480" height="640" decoding="async" loading="lazy"><figcaption class="environment-feature__caption"><${headingTag}>${item.label}</${headingTag}><p class="environment-feature__description">${item.heading}</p></figcaption></figure>`;
   }
 
   function categoryIcon(label) {

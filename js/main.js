@@ -1034,7 +1034,9 @@
         stickyIcon.hidden = true;
         stickyIcon.style.display = 'none';
       }
-      stickyFallbackIcon.hidden = Boolean(categoryIconSource) || !categoryTrigger.querySelector(':scope > .menu-hamburger');
+      const useFallbackIcon = !categoryIconSource && Boolean(categoryTrigger.querySelector(':scope > .menu-hamburger'));
+      stickyFallbackIcon.hidden = !useFallbackIcon;
+      stickyFallbackIcon.style.display = useFallbackIcon ? '' : 'none';
       stickyButton.setAttribute('aria-label', `Recolher ${label}`);
       // As soon as the Ambientes header is sticky, keep the chosen photo card with it.
       // This prevents the original card from passing underneath the fixed header midway.

@@ -1,0 +1,645 @@
+/* Menu 2026: estados abertos/fechados em CSS puro (padrão "peer") e ajustes ao tema da loja.
+   menu26.css é a aparência base portada do preview; os ajustes ao tema ficam aqui.
+   O HTML do menu (Components/navbar.html) já vem pronto do servidor; aqui só estão as regras que dependem
+   de <input class="m26-peer"> marcado (radio/checkbox) e do tema. Tudo é escopado em .m26 por causa do
+   reset agressivo do tema (* / input[type] / input:focus).
+
+   Padrão: <input class="m26-peer"> vem ANTES do que ele controla (irmão seguinte, "+" ou "~"), como o `peer`
+   do Tailwind. Elementos longe do input (drawer, conta, busca) usam :has(). */
+
+/* ---------- base ---------- */
+.m26 .m26-peer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.m26 ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.m26 label {
+  cursor: pointer;
+}
+
+/* foco de teclado: o rádio é o elemento focável; o anel aparece no rótulo dele */
+.m26 .m26-peer:focus-visible + label {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* travar a rolagem da página com o drawer ou a conta abertos */
+body:has(#m26-drawer:checked),
+body:has(#m26-account:checked) {
+  overflow: hidden;
+}
+
+/* seta dos cartões sem HTML extra: o chevron é o ::after */
+.m26 .category-card::after,
+.m26 .drawer-option::after {
+  content: "";
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  margin: 0 6px 0 3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: margin-right 0.28s 0.06s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.m26 .category-card:is(:hover, :focus-visible)::after,
+.m26 .drawer-option:is(:hover, :focus-visible)::after {
+  margin-right: 2px;
+}
+
+/* sem ícone cadastrado o cartão fica só com o texto */
+.m26 .category-card > span:first-child:not(.category-card__arrow),
+.m26 .drawer-option > span:first-child:not(.category-card__arrow) {
+  padding-left: 4px;
+}
+
+/* ---------- barra principal (desktop) ---------- */
+.m26 .nav-li {
+  display: flex;
+  align-items: center;
+  position: static;
+}
+
+.m26 .nav-li > .m26-peer:checked + .nav-item {
+  background: #f2f4f6;
+  border-color: #eceff3;
+}
+
+.m26 .nav-li > .m26-peer:checked + .nav-item[data-menu-action="departments"]::before {
+  background: #f2f4f6;
+  border-color: #eceff3;
+}
+
+.m26 .nav-li > .m26-peer:checked + .nav-item .nav-chevron svg {
+  transform: rotate(90deg);
+}
+
+/* o mega menu abre logo abaixo da barra, qualquer que seja a altura do header (com ou sem topbar) */
+.m26 .mega-menu {
+  display: none;
+  top: 100%;
+}
+
+.m26 .nav-li > .m26-peer:checked ~ .mega-menu {
+  display: block;
+}
+
+.m26 .mega-menu__inner {
+  position: relative;
+  --mega-gap: 20px;
+}
+
+@media (max-width: 1199px) {
+  .m26 .mega-menu__inner {
+    --mega-gap: 16px;
+  }
+}
+
+/* ---------- Departamentos: trilho + painéis (um painel por departamento, só o marcado aparece) ---------- */
+.m26 .dept-li,
+.m26 .environment-li {
+  display: block;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.m26 .dept-li > .mega-panel,
+.m26 .environment-li > .mega-panel {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.m26 .dept-li > .mega-panel {
+  left: calc(var(--department-column) + var(--mega-gap));
+}
+
+.m26 .environment-li > .mega-panel {
+  left: calc(clamp(300px, 29vw, 376px) + var(--mega-gap));
+}
+
+.m26 .dept-li > .m26-peer:checked ~ .mega-panel,
+.m26 .environment-li > .m26-peer:checked ~ .mega-panel,
+.m26 .department-rail__list:not(:has(.m26-peer:checked)) > .dept-li:first-child > .mega-panel,
+.m26 .environment-rail__grid:not(:has(.m26-peer:checked)) > .environment-li:first-child > .mega-panel {
+  display: flex;
+}
+
+.m26 .dept-li > .m26-peer:checked + .department-link,
+.m26 .department-rail__list:not(:has(.m26-peer:checked)) > .dept-li:first-child > .department-link {
+  color: var(--red);
+  background: var(--red-soft);
+  border-color: #f9d9dc;
+}
+
+.m26 .dept-li > .m26-peer:checked + .department-link .department-link__arrow,
+.m26 .department-rail__list:not(:has(.m26-peer:checked)) > .dept-li:first-child > .department-link .department-link__arrow {
+  padding-right: 2px;
+}
+
+/* o degradê (máscara) de rolagem do preview recortaria o painel de detalhe, que fica dentro do <li> */
+.m26 .environment-rail__list {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.m26 .environment-link {
+  display: block;
+}
+
+.m26 .environment-li > .m26-peer:checked + .environment-link,
+.m26 .environment-rail__grid:not(:has(.m26-peer:checked)) > .environment-li:first-child > .environment-link {
+  background: #fff;
+}
+
+.m26 .environment-li > .m26-peer:checked + .environment-link::after,
+.m26 .environment-rail__grid:not(:has(.m26-peer:checked)) > .environment-li:first-child > .environment-link::after {
+  border-color: #f4b4b8;
+}
+
+.m26 .environment-li > .m26-peer:checked + .environment-link .environment-link__arrow {
+  color: #26343e;
+}
+
+/* ---------- topbar: mensagens que se alternam sem JS ---------- */
+.m26 .topbar-communications__message {
+  animation: m26-comm-cycle 8s infinite both;
+  animation-delay: calc(var(--i, 0) * 4s);
+}
+
+@keyframes m26-comm-cycle {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(105%);
+  }
+  6% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+  44% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+  50%,
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-105%);
+  }
+}
+
+/* topbar mobile: uma faixa que avança a cada 4s (--n = quantidade de slides) */
+.m26 .mobile-topbar__track {
+  display: flex;
+  width: 100%;
+  animation: m26-topbar-track calc(var(--n, 6) * 4s) steps(var(--n, 6)) infinite;
+}
+
+.m26 .mobile-topbar__slide {
+  position: static;
+  flex: 0 0 100%;
+  min-width: 0;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.m26 .mobile-topbar:is(:hover, :focus-within) .mobile-topbar__track {
+  animation-play-state: paused;
+}
+
+@keyframes m26-topbar-track {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(var(--n, 6) * -100%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m26 .mobile-topbar__track {
+    animation: none;
+  }
+
+  .m26 .topbar-communications__message {
+    animation: none;
+  }
+
+  .m26 .topbar-communications__message:first-child {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ---------- busca ---------- */
+.m26 .m26-search-wrap {
+  position: relative;
+  display: flex;
+  flex: 0 1 52px;
+  min-width: 52px;
+  max-width: 100%;
+  transition: flex-basis 0.48s 0.06s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.m26:has(#m26-dsearch:checked) .m26-search-wrap,
+.m26:has(#m26-dsearch:checked) .search--desktop {
+  flex-basis: 100%;
+}
+
+.m26:has(#m26-dsearch:checked) .search--desktop .search__field {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.26s 0.16s ease, visibility 0s;
+}
+
+.m26 .m26-search-wrap > .search--desktop {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+}
+
+.m26 .m26-ac {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.m26 .m26-search .m26-ac input {
+  width: 100%;
+}
+
+.m26 .m26-search input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.m26 .m26-search input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.m26 .search__toggle {
+  cursor: pointer;
+}
+
+/* busca mobile: a linha só existe com o botão da lupa marcado */
+.m26 .mobile-search-row,
+.m26 .mobile-search-row + .search-dropdown {
+  display: none;
+}
+
+.m26:has(#m26-msearch:checked) .mobile-search-row {
+  display: grid;
+}
+
+/* foco visível também nos campos (o tema remove outline/box-shadow de input:focus com !important) */
+.m26 input:focus-visible {
+  outline: 3px solid var(--focus) !important;
+  outline-offset: 2px;
+}
+
+.m26 .m26-search input:focus-visible {
+  outline: 0 !important;
+}
+
+.m26 .m26-search:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* sugestões da busca (snippet autocomplete_snippet.html), no visual do preview */
+.m26 .m26-ac__list {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  max-height: min(70vh, 520px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 16px 12px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(13, 53, 71, 0.18);
+}
+
+.m26 .m26-ac__list[hidden],
+.m26 .search-dropdown[hidden] {
+  display: none;
+}
+
+.m26:has(#m26-msearch:checked) .mobile-search-row + .search-dropdown:not([hidden]) {
+  display: block;
+}
+
+.m26 .m26-ac__title {
+  margin: 12px 0 6px;
+  padding: 0 8px;
+  color: #66717c;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.m26 .m26-ac__title:first-child {
+  margin-top: 0;
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) > div {
+  padding: 10px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) > div:hover,
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-active {
+  background: var(--surface);
+  color: var(--red);
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) > a {
+  display: block;
+  border-radius: 6px;
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-item {
+  padding: 0;
+  background: transparent;
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-item > div {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  background: transparent;
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-item > div:hover {
+  background: var(--surface);
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-item p {
+  margin: 0;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-price {
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.m26 :is(.m26-ac__list, .search-dropdown) .autocomplete-active .autocomplete-price {
+  color: var(--red);
+}
+
+/* ---------- Minha conta ---------- */
+.m26 .account-layer {
+  display: none;
+}
+
+.m26:has(#m26-account:checked) .account-layer {
+  display: grid;
+}
+
+.m26 .account-state--user {
+  display: none;
+}
+
+.m26[data-user="in"] .account-state--guest {
+  display: none;
+}
+
+.m26[data-user="in"] .account-state--user {
+  display: block;
+}
+
+.m26 .account-backdrop {
+  display: block;
+}
+
+/* ---------- mobile: header, drawer e acordeões ---------- */
+@media (max-width: 899px) {
+  .m26 {
+    position: sticky;
+    top: 0;
+  }
+
+  .m26 .mobile-search-row__clip {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .m26 .drawer-layer {
+    display: none;
+  }
+
+  .m26:has(#m26-drawer:checked) .drawer-layer {
+    display: block;
+  }
+
+  .m26 .drawer-overlay {
+    display: block;
+  }
+
+  .m26 .drawer-close {
+    display: grid;
+    place-items: center;
+  }
+
+  /* cartões do drawer: sem ícone o texto ocupa a linha toda (o preview assumia sempre haver ícone) */
+  .m26 .drawer-option {
+    display: flex;
+  }
+
+  .m26 .drawer-option > img {
+    flex: 0 0 38px;
+  }
+
+  .m26 .drawer-promos {
+    margin-bottom: 4px;
+  }
+
+  .m26 .drawer-promos h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .m26 .drawer-banners img {
+    width: 100%;
+    aspect-ratio: 190 / 141;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .m26 .drawer-banners {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .m26 .drawer-brands {
+    margin-top: 4px;
+  }
+
+  /* acordeão = radio + rótulo + conteúdo */
+  .m26 .drawer-accordion > .m26-peer:checked + .drawer-accordion__trigger {
+    color: #111;
+    background: #fff;
+  }
+
+  .m26 .drawer-accordion > .m26-peer:checked + .drawer-accordion__trigger > span:not(.nav-chevron):not(.drawer-accordion__collapse) {
+    font-weight: 700;
+  }
+
+  .m26 .drawer-accordion > .m26-peer:checked + .drawer-accordion__trigger .nav-chevron svg {
+    transform: rotate(90deg);
+    color: #111;
+  }
+
+  .m26 .drawer-accordion > .m26-peer:checked + .drawer-accordion__trigger > .drawer-accordion__collapse {
+    display: block;
+  }
+
+  .m26 .drawer-accordion > .m26-peer:checked + .drawer-accordion__trigger--environment::after {
+    border-color: #f4b4b8;
+  }
+
+  .m26 .drawer-accordion > .m26-peer:checked ~ .drawer-accordion__content {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+    transition: grid-template-rows 0.42s 0.06s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s 0.1s ease, visibility 0s;
+  }
+
+  /* foto do ambiente dentro do rótulo (span em vez de figure, para o HTML ficar válido) */
+  .m26 .drawer-environment-card {
+    position: relative;
+    display: block;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .m26 .drawer-environment-card > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--environment-position, 50% 50%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 14%, rgba(0, 0, 0, 0.92) 32%, rgba(0, 0, 0, 0.48) 56%, rgba(0, 0, 0, 0.1) 78%, transparent 94%);
+    mask-image: linear-gradient(to bottom, #000 14%, rgba(0, 0, 0, 0.92) 32%, rgba(0, 0, 0, 0.48) 56%, rgba(0, 0, 0, 0.1) 78%, transparent 94%);
+  }
+
+  .m26 .drawer-environment-card__cap {
+    position: absolute;
+    z-index: 1;
+    left: 16px;
+    right: 48px;
+    bottom: 16px;
+    color: #26343e;
+  }
+
+  .m26 .drawer-environment-card__cap strong {
+    display: block;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 900px) {
+  .m26 .drawer-layer {
+    display: none;
+  }
+}
+
+/* a barra principal tem quantidade variável de itens (vêm do admin): se não couber, rola em vez de cortar */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .m26 .desktop-nav__list {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .m26 .desktop-nav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .m26 .desktop-nav__list > * {
+    flex: 0 0 auto;
+  }
+}
+
+/* "Informe seu CEP" numa linha só: o hint/valor (reescritos pelo script do pop-up de CEP) são spans em linha */
+.m26 .action-item.action-item--location > span.location-prompt.location-prompt {
+  display: block;
+  text-align: left;
+}
+
+.m26 .mobile-location strong {
+  display: inline;
+}
+
+/* o carrinho agora é um link (/checkout) estilizado como o botão do preview */
+.m26 a.action-item,
+.m26 a.cart-button {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* marca sem imagem cadastrada no item do menu: mostra o nome */
+.m26 .brand-card__name{padding:0 6px;font-size:12px;font-weight:600;line-height:1.2;text-align:center;color:#333}
+
+/* ambiente cadastrado no admin sem foto: fundo neutro com o logo (se houver banner de reserva, ele vira a foto) */
+.m26 .environment-link--nophoto{background:linear-gradient(160deg,#f7f9fa 0%,#e4e9ee 100%)}
+.m26 .environment-link__placeholder{position:absolute;top:14px;right:14px;width:44px;height:44px;opacity:.16;pointer-events:none}
+.m26 .environment-link__placeholder img{width:44px;height:44px;border-radius:10px}
+.m26 .drawer-environment-card--nophoto{background:linear-gradient(160deg,#f7f9fa 0%,#e4e9ee 100%)}
+

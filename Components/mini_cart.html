@@ -1,7 +1,10 @@
 {{ ##
 Description: Renders mini cart
+Params (opcionais):
+- offcanvas_only: renderiza só o painel lateral do carrinho (use uma única vez por página)
 Usage:
 mini_cart
+mini_cart offcanvas_only: true
 ## }}
 
 {{~
@@ -11,8 +14,8 @@ productsCount = data.checkout.products.size
 end
 ~}}
 
-<div id="mini-cart-div" class="minicart">
-  <button class="minicart__button" type="button" ah-toggle="#minicart-offcanvas">
+{{~ if offcanvas_only ~}}<div class="minicart minicart--offcanvas-only">{{~ else ~}}<div id="mini-cart-div" class="minicart">{{~ end ~}}
+  {{~ if !offcanvas_only ~}}<button class="minicart__button" type="button" ah-toggle="#minicart-offcanvas">
     <div class="minicart__icon">
       <span class='label-cart-count'>0</span>
       <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +27,7 @@ end
     </div>
   </button>
 
-  <div class="minicart__offcanvas ah-offcanvas ah-right" id="minicart-offcanvas">
+  {{~ end ~}}<div class="minicart__offcanvas ah-offcanvas ah-right" id="minicart-offcanvas">
     <div class="ah-offcanvas-bar">
       <div class="minicart__offcanvas-header">
         <div class="minicart__offcanvas-header-title">

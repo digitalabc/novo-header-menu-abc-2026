@@ -1227,6 +1227,12 @@
   {
     "name": "mini_cart",
     "path": "mini_cart.html",
+    "params": [
+      {
+        "name": "offcanvas_only",
+        "required": false
+      }
+    ],
     "inheritVariables": false,
     "availableInAllComponents": true,
     "availableInAllPages": true

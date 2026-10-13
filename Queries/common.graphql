@@ -37,6 +37,42 @@ query Common(
     ...produtos
   }
 
+  # Banners do menu 2026 (mega menu desktop e drawer mobile). Cadastre-os no hotsite com URL "menu-banners"
+  # (nomes menu-destaques-N para todos os painéis e menu-<slot>-N para um departamento, onde <slot> é o
+  # primeiro trecho do link do departamento). Se o hotsite não existir ou não tiver banners, o menu simplesmente
+  # não mostra a coluna de promoções.
+  menuBanners: hotsite(url: "menu-banners", partnerAccessToken: $partnerAccessToken) {
+    banners {
+      bannerName
+      bannerUrl
+      altText
+      title
+      urlOnClick
+      openNewTab
+      width
+      height
+      order
+    }
+  }
+
+  # Imagens de RESERVA do menu 2026 (hotsite "menu-fallback"): o menu acha cada uma pelo NOME do banner.
+  #   icone-<id>          ícone de categoria escolhido pelo nome do item (ex.: icone-porcelanato)
+  #   icone-generico      ícone quando nenhuma regra bate
+  #   ambiente-<pasta>    foto do card do ambiente (ex.: ambiente-banheiro)
+  #   promocao-1 / -2     promoções de reserva quando "menu-banners" não tem nenhuma
+  # Se o hotsite não existir ou o banner não estiver nele, o menu usa o ícone genérico embutido / não mostra a imagem.
+  menuFallback: hotsite(url: "menu-fallback", partnerAccessToken: $partnerAccessToken) {
+    banners {
+      bannerName
+      bannerUrl
+      altText
+      title
+      urlOnClick
+      openNewTab
+      order
+    }
+  }
+
   categories(first: 50, onlyRoot: true) {
     nodes {
       hotsiteAlias

@@ -24,7 +24,7 @@
   {{ gtm_config_body gtm_id: common.gtm_id }}
   <a class="section-super-chance-unica__site-link" href="/">Entrar no site ABC</a>
   <header>
-    {{ navbar menu_groups: common.menu_groups position: "Topo Header" categories: common.categories.nodes home: true }}
+    {{ navbar menu_groups: common.menu_groups position: "Lateral Esquerda" categories: common.categories.nodes home: true }}
   </header>
 
   <div class="section-super-chance-unica super-chance-unica-abc">
@@ -100,6 +100,8 @@
 
     <div class="showcase-sections container">
       <div class="showcase-stack">
+        {{~ vitrine1_produtos = data.vitrine1?.products?.nodes ?? [] ~}}
+        {{~ if vitrine1_produtos.size > 0 ~}}
         <section class="showcase showcase--panel showcase-metais-sanitarios" data-showcase="metais-sanitarios">
           <div class="showcase__header">
             <div class="showcase__heading">
@@ -118,10 +120,13 @@
             </a>
           </div>
           <div class="showcase__carousel showcase-metais-sanitarios__carousel">
-            {{ spot_carousel class: "showcase-metais-sanitarios__carousel" products: data.vitrine1.products.nodes hide_countdown: true }}
+            {{ spot_carousel class: "showcase-metais-sanitarios__carousel" products: vitrine1_produtos hide_countdown: true }}
           </div>
         </section>
+        {{~ end ~}}
 
+        {{~ vitrine2_produtos = data.vitrine2?.products?.nodes ?? [] ~}}
+        {{~ if vitrine2_produtos.size > 0 ~}}
         <section class="showcase showcase--panel showcase-banho-aquecimento" data-showcase="banho-aquecimento">
           <div class="showcase__header">
             <div class="showcase__heading">
@@ -140,10 +145,13 @@
             </a>
           </div>
           <div class="showcase__carousel showcase-banho-aquecimento__carousel">
-            {{ spot_carousel class: "showcase-banho-aquecimento__carousel" products: data.vitrine2.products.nodes hide_countdown: true }}
+            {{ spot_carousel class: "showcase-banho-aquecimento__carousel" products: vitrine2_produtos hide_countdown: true }}
           </div>
         </section>
+        {{~ end ~}}
 
+        {{~ vitrine3_produtos = data.vitrine3?.products?.nodes ?? [] ~}}
+        {{~ if vitrine3_produtos.size > 0 ~}}
         <section class="showcase showcase--panel showcase-loucas-inox-sintetico" data-showcase="loucas-inox-sintetico">
           <div class="showcase__header">
             <div class="showcase__heading">
@@ -162,10 +170,13 @@
             </a>
           </div>
           <div class="showcase__carousel showcase-loucas-inox-sintetico__carousel">
-            {{ spot_carousel class: "showcase-loucas-inox-sintetico__carousel" products: data.vitrine3.products.nodes hide_countdown: true }}
+            {{ spot_carousel class: "showcase-loucas-inox-sintetico__carousel" products: vitrine3_produtos hide_countdown: true }}
           </div>
         </section>
+        {{~ end ~}}
 
+        {{~ vitrine4_produtos = data.vitrine4?.products?.nodes ?? [] ~}}
+        {{~ if vitrine4_produtos.size > 0 ~}}
         <section class="showcase showcase--panel showcase-materiais-hidraulicos" data-showcase="materiais-hidraulicos">
           <div class="showcase__header">
             <div class="showcase__heading">
@@ -184,10 +195,13 @@
             </a>
           </div>
           <div class="showcase__carousel showcase-materiais-hidraulicos__carousel">
-            {{ spot_carousel class: "showcase-materiais-hidraulicos__carousel" products: data.vitrine4.products.nodes hide_countdown: true }}
+            {{ spot_carousel class: "showcase-materiais-hidraulicos__carousel" products: vitrine4_produtos hide_countdown: true }}
           </div>
         </section>
+        {{~ end ~}}
 
+        {{~ vitrine5_produtos = data.vitrine5?.products?.nodes ?? [] ~}}
+        {{~ if vitrine5_produtos.size > 0 ~}}
         <section class="showcase showcase--panel showcase-tintas" data-showcase="tintas">
           <div class="showcase__header">
             <div class="showcase__heading">
@@ -206,10 +220,13 @@
             </a>
           </div>
           <div class="showcase__carousel showcase-tintas__carousel">
-            {{ spot_carousel class: "showcase-tintas__carousel" products: data.vitrine5.products.nodes hide_countdown: true }}
+            {{ spot_carousel class: "showcase-tintas__carousel" products: vitrine5_produtos hide_countdown: true }}
           </div>
         </section>
+        {{~ end ~}}
 
+        {{~ vitrine6_produtos = data.vitrine6?.products?.nodes ?? [] ~}}
+        {{~ if vitrine6_produtos.size > 0 ~}}
         <section class="showcase showcase--panel showcase-iluminacao" data-showcase="iluminacao">
           <div class="showcase__header">
             <div class="showcase__heading">
@@ -228,9 +245,10 @@
             </a>
           </div>
           <div class="showcase__carousel showcase-iluminacao__carousel">
-            {{ spot_carousel class: "showcase-iluminacao__carousel" products: data.vitrine6.products.nodes hide_countdown: true }}
+            {{ spot_carousel class: "showcase-iluminacao__carousel" products: vitrine6_produtos hide_countdown: true }}
           </div>
         </section>
+        {{~ end ~}}
       </div>
 
       <section class="seo-content" aria-labelledby="seo-content-title">

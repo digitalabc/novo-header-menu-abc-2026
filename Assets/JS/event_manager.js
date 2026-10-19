@@ -227,7 +227,10 @@ function searchPageEvent(eventInput) {
 }
 
 function hotsitePageEvent(eventInput) {
-    window.dataLayer.push({ event: "view_item_list", ecommerce: { ...gtm_hotsite_details } })
+    const hotsiteDetails = typeof gtm_hotsite_details !== "undefined" && gtm_hotsite_details
+        ? gtm_hotsite_details
+        : {};
+    window.dataLayer.push({ event: "view_item_list", ecommerce: { ...hotsiteDetails } })
 }
 
 // function addToCartEvent(eventInput) {

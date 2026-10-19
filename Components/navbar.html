@@ -387,10 +387,16 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
     if large
       $cls = $cls + " category-card--large"
     end
+    if href(link) == ""
+      ret '<span class="' + $cls + ' is-disabled" aria-disabled="true">' + icon_img(icon) + '<span>' + esc(label) + '</span></span>'
+    end
     ret '<a class="' + $cls + '" href="' + esc(href(link)) + '">' + icon_img(icon) + '<span>' + esc(label) + '</span></a>'
   end
 
   func opt(label, link, icon)
+    if href(link) == ""
+      ret '<span class="drawer-option is-disabled" aria-disabled="true">' + icon_img(icon) + '<span>' + esc(label) + '</span></span>'
+    end
     ret '<a class="drawer-option" href="' + esc(href(link)) + '">' + icon_img(icon) + '<span>' + esc(label) + '</span></a>'
   end
 
@@ -601,7 +607,9 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
 
   # ---------------- drawer mobile ----------------
   func accordion(id, group, inner, content, section_cls, trigger_cls, label)
-    ret '<section class="drawer-accordion' + section_cls + '"><input class="m26-peer" type="radio" name="' + group + '" id="m26-a-' + id + '" autocomplete="off"><label class="drawer-accordion__trigger' + trigger_cls + '" for="m26-a-' + id + '" data-m26-acc>' + inner + '<span class="drawer-accordion__collapse" aria-hidden="true">Recolher</span>' + nav_chev + '</label><div class="drawer-accordion__content"><div><nav class="drawer-option-list" aria-label="' + esc(label) + '">' + content + '</nav></div></div></section>'
+    $control_id = "m26-a-" + id
+    $panel_id = "m26-a-panel-" + id
+    ret '<section class="drawer-accordion' + section_cls + '"><input class="m26-peer" type="radio" name="' + group + '" id="' + $control_id + '" autocomplete="off" tabindex="-1" aria-hidden="true"><label class="drawer-accordion__trigger' + trigger_cls + '" for="' + $control_id + '" data-m26-acc role="button" tabindex="0" aria-expanded="false" aria-controls="' + $panel_id + '">' + inner + '<span class="drawer-accordion__collapse" aria-hidden="true">Recolher</span>' + nav_chev + '</label><div class="drawer-accordion__content" id="' + $panel_id + '"><div><nav class="drawer-option-list" aria-label="' + esc(label) + '">' + content + '</nav></div></div></section>'
   end
 
   func acc_inner(icon, label)
@@ -956,6 +964,13 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
   <div class="drawer-layer">
     <label class="drawer-overlay" for="m26-drawer"></label>
     <aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu principal">
+      <div class="drawer-view-header"><div class="drawer-sticky-category" hidden>
+        <button type="button" data-collapse-visible-category aria-label="Recolher categoria">
+          <span class="drawer-sticky-category__identity"><img data-sticky-category-icon alt="" aria-hidden="true" hidden><span class="menu-hamburger" data-sticky-category-fallback-icon aria-hidden="true" hidden><i></i><i></i><i></i></span><span data-sticky-category-label></span></span>
+          <span class="drawer-sticky-category__control"><span class="drawer-sticky-category__action">Recolher</span>{{ nav_chev }}</span>
+        </button>
+        <figure class="drawer-sticky-environment" hidden><img data-sticky-environment-image alt="" aria-hidden="true"><figcaption><strong data-sticky-environment-label></strong></figcaption></figure>
+      </div></div>
       <div class="drawer-body"><div class="drawer-track"><div class="drawer-panel drawer-panel--current">
         <div class="drawer-header">
           <div class="drawer-user">

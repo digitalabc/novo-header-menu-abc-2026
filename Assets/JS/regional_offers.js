@@ -1,10 +1,18 @@
-window.addEventListener("load", validateRegionalOffers, false);
+// Regionalização temporariamente desativada. Mantemos a implementação abaixo
+// preservada para que possa ser reativada sem reconstruir o fluxo de CEP.
+const REGIONAL_OFFERS_ENABLED = false;
+
+if (REGIONAL_OFFERS_ENABLED) {
+  window.addEventListener("load", validateRegionalOffers, false);
+}
 const dialogInputCep = document.getElementById('dialog_input_cep');
 
 /**
  * Opens the input cep modal.
  */
 function openInputCepModal(showModal) {
+  if (!REGIONAL_OFFERS_ENABLED) return;
+
   if (showModal) {
     document.getElementById('dialog_input_cep').classList.remove('hidden')
     document.getElementById('regional_offers_overlay').classList.remove('hidden')

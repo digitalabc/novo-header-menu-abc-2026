@@ -834,15 +834,23 @@ body.product div[id^="product-view-div-"] section .stamps-vr {
 
 @media (max-width: 420px) {
   .form-pre-whatsapp {
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    right: 12px;
+    left: 12px;
+    width: auto;
     max-width: none;
-    border-radius: 16px 16px 0 0;
+    border-radius: 16px;
   }
 
   .form-pre-whatsapp__body {
     padding: 16px;
+  }
+}
+
+@media (min-width: 421px) and (max-width: 767px) {
+  .form-pre-whatsapp {
+    left: max(16px, calc(50% - 190px));
+    right: auto;
+    width: min(380px, calc(100vw - 32px));
   }
 }

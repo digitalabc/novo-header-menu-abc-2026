@@ -61,6 +61,11 @@ body:has(#m26-account:checked) {
   margin-right: 2px;
 }
 
+.m26 .category-card.is-disabled::after,
+.m26 .drawer-option.is-disabled::after {
+  display: none;
+}
+
 /* sem ícone cadastrado o cartão fica só com o texto */
 .m26 .category-card > span:first-child:not(.category-card__arrow),
 .m26 .drawer-option > span:first-child:not(.category-card__arrow) {
@@ -266,6 +271,10 @@ body:has(#m26-account:checked) {
   flex-basis: 100%;
 }
 
+.m26:has(#m26-dsearch:checked) .search--desktop {
+  height: 48px;
+}
+
 .m26:has(#m26-dsearch:checked) .search--desktop .search__field {
   opacity: 1;
   visibility: visible;
@@ -318,7 +327,7 @@ body:has(#m26-account:checked) {
   display: grid;
 }
 
-/* foco visível também nos campos (o tema remove outline/box-shadow de input:focus com !important) */
+/* O campo de busca já ganha contexto pela expansão; evitamos o anel azul pesado do tema/browser. */
 .m26 input:focus-visible {
   outline: 3px solid var(--focus) !important;
   outline-offset: 2px;
@@ -329,8 +338,13 @@ body:has(#m26-account:checked) {
 }
 
 .m26 .m26-search:focus-within {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Regionalização temporariamente fora da experiência do novo header. */
+.m26 :is(.action-item--location, .mobile-location, .drawer-location) {
+  display: none !important;
 }
 
 /* sugestões da busca (snippet autocomplete_snippet.html), no visual do preview */

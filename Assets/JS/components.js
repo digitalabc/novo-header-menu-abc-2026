@@ -516,23 +516,31 @@ document.addEventListener("DOMContentLoaded", function () {
  */
 const body = document.body;
 const footer = document.querySelector("footer");
+const HEADER_SCROLL_DIRECTION_THRESHOLD = 8;
+let headerScrollDirectionAnchor = window.pageYOffset || 0;
 
-function setScroll(scrollTop, lastScrollTop) {
+function setScroll(scrollTop) {
   if (scrollTop <= 0) {
     body.classList.add("scroll-up");
     body.classList.remove("scroll-down");
     body.classList.add("on-top");
+    headerScrollDirectionAnchor = 0;
   } else {
     if (body.classList.contains("on-top")) {
       body.classList.remove("on-top");
     }
-    if (scrollTop > lastScrollTop) {
+    const directionDelta = scrollTop - headerScrollDirectionAnchor;
+    if (Math.abs(directionDelta) < HEADER_SCROLL_DIRECTION_THRESHOLD) {
+      return;
+    }
+    if (directionDelta > 0) {
       body.classList.add("scroll-down");
       body.classList.remove("scroll-up");
     } else {
       body.classList.add("scroll-up");
       body.classList.remove("scroll-down");
     }
+    headerScrollDirectionAnchor = scrollTop;
   }
 }
 
@@ -549,21 +557,18 @@ function setFloatingNavMobile(
 }
 
 window.addEventListener("load", () => {
-  var lastScrollTop = -1;
-
   const offsetToShowMobileNav = 200;
   const offsetBottom = 200;
 
   window.addEventListener("scroll", function () {
     const newSt = window.pageYOffset;
 
-    setScroll(newSt, lastScrollTop);
+    setScroll(newSt);
 
     if (MOBILE.matches) {
       setFloatingNavMobile(newSt, offsetToShowMobileNav, offsetBottom);
     }
 
-    lastScrollTop = newSt;
   });
 });
 

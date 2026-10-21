@@ -218,6 +218,7 @@ window.Menu2026Boot = window.Menu2026Boot || {};
     let collapseTrigger = null;
     let collapseEnvironmentTrigger = null;
     let stickyHasFallback = false;
+    let pendingRootContext = null;
     let frame = 0;
 
     const nextContentAnchor = element => {
@@ -243,6 +244,7 @@ window.Menu2026Boot = window.Menu2026Boot || {};
       let activeTrigger = null;
       const activeRootInput = panel.querySelector('.drawer-accordion > .m26-peer[name="m26-acc-root"]:checked');
       const activeRootTrigger = activeRootInput?.nextElementSibling;
+      const activeRootAccordion = activeRootInput?.closest('.drawer-accordion');
 
       // Ao sair completamente de um ambiente aberto, recolhe sem deslocar o conteúdo
       // que o cliente já está visualizando abaixo dele.
@@ -261,9 +263,19 @@ window.Menu2026Boot = window.Menu2026Boot || {};
         requestAnimationFrame(() => accordion.classList.remove('is-auto-collapsing'));
       });
 
-      // A categoria escolhida assume imediatamente o lugar do cabeçalho de conta.
-      // Assim o cliente continua no mesmo contexto sem precisar rolar para ativar o sticky.
-      if (activeRootTrigger?.matches('.drawer-accordion__trigger')) {
+      const rootTriggerRect = activeRootTrigger?.getBoundingClientRect();
+      const rootAccordionRect = activeRootAccordion?.getBoundingClientRect();
+      const rootOwnsViewport = Boolean(
+        activeRootTrigger?.matches('.drawer-accordion__trigger') &&
+        rootTriggerRect.top <= edge + 1 &&
+        rootAccordionRect.bottom > edge + 72
+      );
+      // A primeira renderização após abrir assume o contexto de imediato. Depois disso,
+      // o sticky só existe dentro do intervalo real da própria categoria.
+      const rootContextActive = rootOwnsViewport || pendingRootContext === activeRootInput;
+      pendingRootContext = null;
+
+      if (rootContextActive) {
         activeTrigger = activeRootTrigger;
       } else {
         panel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
@@ -275,8 +287,8 @@ window.Menu2026Boot = window.Menu2026Boot || {};
         });
       }
 
-      body.classList.toggle('has-sticky-context', Boolean(activeRootTrigger));
-      drawerHeader?.classList.toggle('is-contextual', Boolean(activeRootTrigger));
+      body.classList.toggle('has-sticky-context', rootContextActive);
+      drawerHeader?.classList.toggle('is-contextual', rootContextActive);
 
       sticky.hidden = !activeTrigger;
       if (!activeTrigger) {
@@ -335,6 +347,9 @@ window.Menu2026Boot = window.Menu2026Boot || {};
     body.addEventListener('scroll', schedule, { passive: true });
     root.addEventListener('change', event => {
       if (!event.target.matches('.drawer-accordion > .m26-peer')) return;
+      if (event.target.name === 'm26-acc-root') {
+        pendingRootContext = event.target.checked ? event.target : null;
+      }
       schedule();
       window.setTimeout(schedule, 480);
     });

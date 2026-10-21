@@ -5,11 +5,6 @@
     Usage:
         await client.snippet.render("autocomplete_snippet.html", ...);
 ## }}
-{{~ for suggestion in data.autocomplete.suggestions ~}}
-<div onclick="search(event, '{{ suggestion }}')">
-    {{ suggestion }}
-</div>
-{{~ end ~}}
 {{~ for product in data.autocomplete.products ~}}
 <a href="/{{ product.alias }}">
     <div class="autocomplete-item" id="{{ product.alias }}">

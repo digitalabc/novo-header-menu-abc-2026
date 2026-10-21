@@ -1,6 +1,5 @@
 query ($query: String!){
-  autocomplete(query: $query, limit: 5){
-    suggestions
+  autocomplete(query: $query, limit: 3){
     products{
       productName
       alias

@@ -30,6 +30,14 @@ window.Menu2026Boot = window.Menu2026Boot || {};
     all('.desktop-nav .m26-peer:checked').forEach(input => { input.checked = false; });
   }
 
+  function resetDrawerScroll() {
+    const body = root.querySelector('.drawer-body');
+    if (!body) return;
+    body.scrollTo({ top: 0, behavior: 'auto' });
+    // A animação de fechamento pode ainda manter a posição anterior por um frame.
+    requestAnimationFrame(() => body.scrollTo({ top: 0, behavior: 'auto' }));
+  }
+
   function closeDrawer(animated) {
     const drawer = document.getElementById('m26-drawer');
     const layer = root.querySelector('.drawer-layer');
@@ -38,12 +46,14 @@ window.Menu2026Boot = window.Menu2026Boot || {};
     if (!animated || !layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       drawer.checked = false;
       if (layer) layer.classList.remove('is-closing');
+      resetDrawerScroll();
       return;
     }
     layer.classList.add('is-closing');
     drawerCloseTimer = window.setTimeout(() => {
       drawer.checked = false;
       layer.classList.remove('is-closing');
+      resetDrawerScroll();
     }, 280);
   }
 
@@ -63,6 +73,16 @@ window.Menu2026Boot = window.Menu2026Boot || {};
       trigger.setAttribute('aria-expanded', String(expanded));
       const accordion = trigger.closest('.drawer-accordion');
       if (accordion) accordion.classList.toggle('is-expanded', expanded);
+    });
+  }
+
+  // Fechar uma categoria de primeiro nível também encerra seus níveis internos.
+  // Ao reabrir, o cliente sempre volta à lista do começo — sem um Ambiente antigo aberto.
+  function collapseNestedDrawerAccordions(accordion) {
+    if (!accordion) return;
+    all('.drawer-accordion > .m26-peer:checked', accordion).forEach(input => {
+      input.checked = false;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
     });
   }
 
@@ -109,6 +129,7 @@ window.Menu2026Boot = window.Menu2026Boot || {};
     root.addEventListener('mouseout', cancelHoverOpen);
     root.addEventListener('change', event => {
       if (event.target.matches('.drawer-accordion > .m26-peer')) syncAccordionStates();
+      if (event.target.id === 'm26-drawer' && event.target.checked) resetDrawerScroll();
     });
     const nav = root.querySelector('.desktop-nav');
     if (nav) {
@@ -134,7 +155,10 @@ window.Menu2026Boot = window.Menu2026Boot || {};
       const trigger = event.target.closest('[data-m26-acc]');
       if (trigger && trigger.control && trigger.control.checked) {
         event.preventDefault();
+        const accordion = trigger.closest('.drawer-accordion');
+        if (trigger.control.name === 'm26-acc-root') collapseNestedDrawerAccordions(accordion);
         trigger.control.checked = false;
+        trigger.control.dispatchEvent(new Event('change', { bubbles: true }));
         syncAccordionStates();
       }
     });
@@ -183,13 +207,17 @@ window.Menu2026Boot = window.Menu2026Boot || {};
     const sticky = root.querySelector('.drawer-sticky-category');
     if (!body || !panel || !sticky) return;
 
+    const drawerHeader = panel.querySelector('.drawer-header');
     const stickyButton = sticky.querySelector('[data-collapse-visible-category]');
     const stickyIcon = sticky.querySelector('[data-sticky-category-icon]');
     const stickyFallback = sticky.querySelector('[data-sticky-category-fallback-icon]');
     const stickyEnvironment = sticky.querySelector('.drawer-sticky-environment');
+    const stickyEnvironmentButton = sticky.querySelector('[data-collapse-visible-environment]');
     const stickyEnvironmentImage = sticky.querySelector('[data-sticky-environment-image]');
     const stickyEnvironmentLabel = sticky.querySelector('[data-sticky-environment-label]');
     let collapseTrigger = null;
+    let collapseEnvironmentTrigger = null;
+    let stickyHasFallback = false;
     let frame = 0;
 
     const nextContentAnchor = element => {
@@ -203,6 +231,7 @@ window.Menu2026Boot = window.Menu2026Boot || {};
 
     const resetEnvironment = () => {
       stickyEnvironment.hidden = true;
+      collapseEnvironmentTrigger = null;
       panel.querySelectorAll('.drawer-accordion--environment.is-sticky-cloned').forEach(accordion => {
         accordion.classList.remove('is-sticky-cloned');
       });
@@ -212,6 +241,8 @@ window.Menu2026Boot = window.Menu2026Boot || {};
       frame = 0;
       const edge = body.getBoundingClientRect().top;
       let activeTrigger = null;
+      const activeRootInput = panel.querySelector('.drawer-accordion > .m26-peer[name="m26-acc-root"]:checked');
+      const activeRootTrigger = activeRootInput?.nextElementSibling;
 
       // Ao sair completamente de um ambiente aberto, recolhe sem deslocar o conteúdo
       // que o cliente já está visualizando abaixo dele.
@@ -230,13 +261,22 @@ window.Menu2026Boot = window.Menu2026Boot || {};
         requestAnimationFrame(() => accordion.classList.remove('is-auto-collapsing'));
       });
 
-      panel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
-        const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
-        if (!trigger || trigger.classList.contains('drawer-accordion__trigger--environment')) return;
-        const triggerRect = trigger.getBoundingClientRect();
-        const accordionRect = accordion.getBoundingClientRect();
-        if (triggerRect.bottom <= edge + 1 && accordionRect.bottom > edge + 72) activeTrigger = trigger;
-      });
+      // A categoria escolhida assume imediatamente o lugar do cabeçalho de conta.
+      // Assim o cliente continua no mesmo contexto sem precisar rolar para ativar o sticky.
+      if (activeRootTrigger?.matches('.drawer-accordion__trigger')) {
+        activeTrigger = activeRootTrigger;
+      } else {
+        panel.querySelectorAll('.drawer-accordion.is-expanded').forEach(accordion => {
+          const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
+          if (!trigger || trigger.classList.contains('drawer-accordion__trigger--environment')) return;
+          const triggerRect = trigger.getBoundingClientRect();
+          const accordionRect = accordion.getBoundingClientRect();
+          if (triggerRect.bottom <= edge + 1 && accordionRect.bottom > edge + 72) activeTrigger = trigger;
+        });
+      }
+
+      body.classList.toggle('has-sticky-context', Boolean(activeRootTrigger));
+      drawerHeader?.classList.toggle('is-contextual', Boolean(activeRootTrigger));
 
       sticky.hidden = !activeTrigger;
       if (!activeTrigger) {
@@ -247,14 +287,23 @@ window.Menu2026Boot = window.Menu2026Boot || {};
 
       collapseTrigger = activeTrigger;
       const label = activeTrigger.querySelector(':scope > span:not(.nav-chevron):not(.drawer-accordion__collapse):not(.menu-hamburger)')?.textContent?.trim() || 'Categoria';
-      const icon = activeTrigger.querySelector(':scope > img');
-      const iconSource = icon?.currentSrc || icon?.getAttribute('src') || '';
+      const hamburger = activeTrigger.querySelector(':scope > .menu-hamburger');
+      const icon = hamburger ? null : activeTrigger.querySelector(':scope > img');
+      const iconSource = icon && (!icon.complete || icon.naturalWidth > 0)
+        ? (icon.currentSrc || icon.getAttribute('src') || '')
+        : '';
+      stickyHasFallback = Boolean(hamburger);
       sticky.querySelector('[data-sticky-category-label]').textContent = label;
       stickyButton.setAttribute('aria-label', 'Recolher ' + label);
       stickyIcon.hidden = !iconSource;
-      if (iconSource) stickyIcon.src = iconSource;
-      else stickyIcon.removeAttribute('src');
-      stickyFallback.hidden = Boolean(iconSource) || !activeTrigger.querySelector(':scope > .menu-hamburger');
+      if (iconSource) {
+        stickyIcon.dataset.source = iconSource;
+        stickyIcon.src = iconSource;
+      } else {
+        delete stickyIcon.dataset.source;
+        stickyIcon.removeAttribute('src');
+      }
+      stickyFallback.hidden = Boolean(iconSource) || !stickyHasFallback;
 
       const categoryAccordion = activeTrigger.closest('.drawer-accordion');
       const environmentTrigger = Array.from(categoryAccordion.querySelectorAll('.drawer-accordion--environment.is-expanded > .drawer-accordion__trigger--environment')).find(trigger => {
@@ -271,6 +320,7 @@ window.Menu2026Boot = window.Menu2026Boot || {};
       const environmentLabel = environmentCard && environmentCard.querySelector('strong');
       const environmentSource = environmentImage?.currentSrc || environmentImage?.getAttribute('src') || '';
       environmentAccordion.classList.add('is-sticky-cloned');
+      collapseEnvironmentTrigger = environmentTrigger;
       stickyEnvironmentImage.src = environmentSource;
       stickyEnvironmentImage.style.objectPosition = environmentImage ? getComputedStyle(environmentImage).objectPosition : '50% 50%';
       stickyEnvironmentLabel.textContent = environmentLabel?.textContent?.trim() || '';
@@ -301,7 +351,64 @@ window.Menu2026Boot = window.Menu2026Boot || {};
         });
       }, 460);
     });
+    stickyEnvironmentButton?.addEventListener('click', () => {
+      if (!collapseEnvironmentTrigger?.isConnected) return;
+      const environmentAccordion = collapseEnvironmentTrigger.closest('.drawer-accordion--environment');
+      const input = environmentAccordion?.querySelector(':scope > .m26-peer');
+      if (!input?.checked) return;
+      const collapseTop = Math.max(0, body.scrollTop + environmentAccordion.getBoundingClientRect().top - body.getBoundingClientRect().top - 2);
+      input.checked = false;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+      resetEnvironment();
+      body.scrollTo({
+        top: collapseTop,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
+      window.setTimeout(schedule, 480);
+    });
+    stickyIcon?.addEventListener('error', () => {
+      if (!stickyIcon.dataset.source) return;
+      stickyIcon.hidden = true;
+      stickyFallback.hidden = !stickyHasFallback;
+    });
     schedule();
+  }
+
+  // Ao abrir qualquer nível do drawer, reposiciona o início da categoria logo abaixo
+  // do cabeçalho fixo. Sem isso, a altura do acordeão que acabou de recolher/abrir
+  // mantinha o scroll anterior e deixava o cliente no meio ou no fim da lista.
+  function bindDrawerAccordionPositioning() {
+    const body = root.querySelector('.drawer-body');
+    const header = root.querySelector('.drawer-header');
+    if (!body) return;
+
+    let settleTimer = 0;
+    const headerOffset = () => {
+      if (!header) return 0;
+      const bodyRect = body.getBoundingClientRect();
+      const headerRect = header.getBoundingClientRect();
+      return Math.max(0, Math.min(headerRect.height, headerRect.bottom - bodyRect.top));
+    };
+
+    const align = accordion => {
+      if (!accordion || !accordion.isConnected) return;
+      const trigger = accordion.querySelector(':scope > .drawer-accordion__trigger');
+      if (!trigger) return;
+      const bodyRect = body.getBoundingClientRect();
+      const nextTop = body.scrollTop + trigger.getBoundingClientRect().top - bodyRect.top - headerOffset() - 4;
+      body.scrollTo({ top: Math.max(0, nextTop), behavior: 'auto' });
+    };
+
+    root.addEventListener('change', event => {
+      const input = event.target;
+      if (!input.matches('.drawer-accordion > .m26-peer') || !input.checked) return;
+      const accordion = input.closest('.drawer-accordion');
+      clearTimeout(settleTimer);
+      requestAnimationFrame(() => align(accordion));
+      // A expansão/retração dos painéis dura 0,48 s: corrige novamente depois
+      // que a altura definitiva estiver aplicada, sem animação extra de scroll.
+      settleTimer = window.setTimeout(() => align(accordion), 520);
+    });
   }
 
   // ---------------------------------------------------------------------------------------- busca
@@ -318,6 +425,48 @@ window.Menu2026Boot = window.Menu2026Boot || {};
     if (blurField && root.contains(document.activeElement) && document.activeElement.matches('[data-search-input]')) {
       document.activeElement.blur();
     }
+  }
+
+  // O teclado nativo não altera a mesma viewport em todos os navegadores móveis.
+  // Usamos o Visual Viewport para manter o dropdown dentro da área realmente visível.
+  function bindMobileSearchViewport() {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const visualTop = viewport.offsetTop || 0;
+      const visualHeight = viewport.height || window.innerHeight;
+      const layoutHeight = Math.max(window.innerHeight, document.documentElement.clientHeight);
+      const rawKeyboardOffset = Math.max(0, layoutHeight - visualHeight - visualTop);
+      // Pequenas diferenças entre a viewport de layout e a visual (ex.: barra de rolagem)
+      // não são teclado e não devem movimentar o campo.
+      const keyboardOffset = rawKeyboardOffset > 80 ? rawKeyboardOffset : 0;
+      root.style.setProperty('--m26-keyboard-offset', Math.round(keyboardOffset) + 'px');
+
+      const list = root.querySelector('.search-dropdown[data-ac-list]');
+      const mobileRow = root.querySelector('.mobile-search-row');
+      const listTop = list && !list.hidden ? list.getBoundingClientRect().top : mobileRow?.getBoundingClientRect().bottom;
+      const visibleBottom = visualTop + visualHeight - 12;
+      const available = Math.max(144, Math.min(360, visibleBottom - (listTop || 112)));
+      root.style.setProperty('--m26-search-results-height', Math.round(available) + 'px');
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    viewport.addEventListener('resize', schedule);
+    viewport.addEventListener('scroll', schedule);
+    window.addEventListener('resize', schedule);
+    root.addEventListener('change', event => {
+      if (event.target.id === 'm26-msearch') schedule();
+    });
+    root.addEventListener('focusin', event => {
+      if (event.target.matches('[data-search-input]')) schedule();
+    });
+    root.addEventListener('m26:search-results', schedule);
+    update();
+    return schedule;
   }
 
   function goSearch(term) {
@@ -343,8 +492,8 @@ window.Menu2026Boot = window.Menu2026Boot || {};
       rows[next].scrollIntoView({ block: 'nearest' });
     };
     const decorate = () => {
-      const suggestion = list.querySelector(':scope > div');
-      if (suggestion) suggestion.insertAdjacentHTML('beforebegin', '<h2 class="m26-ac__title">Sugestões</h2>');
+      const product = list.querySelector(':scope > a');
+      if (product) product.insertAdjacentHTML('beforebegin', '<h2 class="m26-ac__title">Sugestões</h2>');
     };
     const fetchSuggestions = async value => {
       const mine = ++sequence;
@@ -355,6 +504,9 @@ window.Menu2026Boot = window.Menu2026Boot || {};
         list.innerHTML = String(html || '').trim();
         decorate();
         list.hidden = !list.innerHTML.trim();
+        window.setTimeout(() => {
+          root.dispatchEvent(new CustomEvent('m26:search-results'));
+        });
       } catch (error) { clear(); }
     };
     form.addEventListener('submit', event => {
@@ -469,17 +621,86 @@ window.Menu2026Boot = window.Menu2026Boot || {};
   // ---------------------------------------------------------------------------------------- loja
   function currentReturnUrl() { return encodeURIComponent(window.location.pathname + window.location.search); }
 
+  function refreshAccountNameOverflow() {
+    all('[data-account-name-scroll]').forEach(element => {
+      element.classList.remove('is-panning');
+      if (!element.offsetParent || !element.clientWidth) {
+        element.classList.remove('is-overflowing');
+        return;
+      }
+      element.classList.toggle('is-overflowing', element.scrollWidth > element.clientWidth + 1);
+    });
+  }
+
+  function bindAccountNamePan() {
+    all('[data-account-name-scroll]').forEach(element => {
+      let pointerId = null;
+      let startX = 0;
+      let startLeft = 0;
+      let moved = false;
+
+      element.addEventListener('pointerdown', event => {
+        if (!element.classList.contains('is-overflowing') || (event.pointerType === 'mouse' && event.button !== 0)) return;
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startLeft = element.scrollLeft;
+        moved = false;
+        element.classList.add('is-panning');
+        element.setPointerCapture?.(pointerId);
+      });
+
+      element.addEventListener('pointermove', event => {
+        if (event.pointerId !== pointerId) return;
+        const delta = event.clientX - startX;
+        if (Math.abs(delta) > 3) moved = true;
+        element.scrollLeft = startLeft - delta;
+      });
+
+      const finish = event => {
+        if (event.pointerId !== pointerId) return;
+        if (moved) element.dataset.nameDrag = 'true';
+        pointerId = null;
+      };
+      element.addEventListener('pointerup', finish);
+      element.addEventListener('pointercancel', finish);
+      element.addEventListener('click', event => {
+        if (!element.dataset.nameDrag) return;
+        delete element.dataset.nameDrag;
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
+    });
+    window.addEventListener('resize', () => requestAnimationFrame(refreshAccountNameOverflow));
+    root.addEventListener('change', event => {
+      if (event.target.id === 'm26-drawer') window.setTimeout(refreshAccountNameOverflow, 40);
+    });
+  }
+
   function syncUser() {
     const user = typeof pageUser !== 'undefined' ? pageUser : null;
-    const first = user && user.customerName ? String(user.customerName).trim().split(/\s+/)[0] : '';
+    const rawCustomerName = user && user.customerName ? String(user.customerName).trim() : '';
+    const customerName = rawCustomerName
+      ? rawCustomerName.toLocaleLowerCase('pt-BR').replace(/(^|[\s'-])([\p{L}])/gu, (match, separator, letter) => separator + letter.toLocaleUpperCase('pt-BR'))
+      : '';
+    const first = customerName ? customerName.split(/\s+/)[0] : '';
     root.setAttribute('data-user', user ? 'in' : 'out');
-    const title = user ? (first ? 'Olá, ' + first : 'Olá') : 'Entrar';
+    const title = user ? (customerName || 'Minha conta') : 'Entrar';
     all('[data-account-title]').forEach(element => { element.textContent = title; });
-    all('[data-mobile-account-label]').forEach(element => { element.textContent = user ? (first ? 'Olá, ' + first : 'Minha conta') : 'Entrar'; });
+    all('[data-mobile-account-label]').forEach(element => { element.textContent = user ? (customerName || 'Minha conta') : 'Entrar'; });
+    all('[data-account-name-scroll]').forEach(element => {
+      if (user && customerName) {
+        element.title = customerName;
+        element.setAttribute('aria-label', customerName);
+      } else {
+        element.removeAttribute('title');
+        element.removeAttribute('aria-label');
+      }
+    });
     all('.mobile-account').forEach(element => { element.classList.toggle('is-connected', Boolean(user)); });
     document.querySelectorAll('[data-m26-floating-account-label]').forEach(element => {
       element.textContent = user ? (first ? first : 'Conta') : 'Entrar';
     });
+    requestAnimationFrame(refreshAccountNameOverflow);
   }
 
   function openRegionalization(opener) {
@@ -519,9 +740,12 @@ window.Menu2026Boot = window.Menu2026Boot || {};
   if (root) {
     bindOpening();
     bindDrawerSticky();
+    bindDrawerAccordionPositioning();
+    bindMobileSearchViewport();
     all('[data-search-form]').forEach(bindSearchForm);
     bindSearchToggles();
     bindFloatingNavbar();
+    bindAccountNamePan();
     bindStore();
   }
 })();

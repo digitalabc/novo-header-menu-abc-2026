@@ -488,6 +488,11 @@ body:has(#m26-account:checked) {
     overflow: hidden;
   }
 
+  /* A altura é atualizada pelo Visual Viewport para não ficar sob o teclado nativo. */
+  .m26 .search-dropdown {
+    max-height: min(360px, var(--m26-search-results-height, calc(100dvh - 220px)));
+  }
+
   .m26 .drawer-layer {
     display: none;
   }
@@ -656,4 +661,67 @@ body:has(#m26-account:checked) {
 .m26 .environment-link__placeholder{position:absolute;top:14px;right:14px;width:44px;height:44px;opacity:.16;pointer-events:none}
 .m26 .environment-link__placeholder img{width:44px;height:44px;border-radius:10px}
 .m26 .drawer-environment-card--nophoto{background:linear-gradient(160deg,#f7f9fa 0%,#e4e9ee 100%)}
+
+/* Mega menus com marcas: cada coluna começa depois do mesmo respiro visual. */
+@media (min-width: 900px) {
+  .m26 .mega-panel:has(.brand-panel) {
+    gap: 32px;
+  }
+
+  .m26 .mega-panel:has(.brand-panel) .mega-content > h2,
+  .m26 .mega-panel:has(.brand-panel) .mega-content > .more-button {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .m26 .mega-panel:has(.brand-panel) .category-scroll {
+    padding-left: 0;
+    padding-right: 2px;
+    direction: ltr;
+  }
+
+  .m26 .mega-panel:has(.brand-panel) .brand-panel {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .m26 .mega-panel:has(.brand-panel) {
+    gap: 24px;
+  }
+}
+
+/* No mobile, o nome completo começa truncado, mas pode ser arrastado para a leitura. */
+@media (max-width: 899px) {
+  .m26 .mobile-main .mobile-account > .account-name-scroll,
+  .m26 .drawer-user .account-name-scroll {
+    display: block;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    touch-action: pan-x;
+  }
+
+  .m26 .mobile-main .mobile-account > .account-name-scroll {
+    font-size: 11px;
+  }
+
+  .m26 .drawer-user .account-menu-trigger .account-name-scroll {
+    font-size: 17px;
+  }
+
+  .m26 .account-name-scroll.is-panning {
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-overflow: clip;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .m26 .account-name-scroll.is-panning::-webkit-scrollbar {
+    display: none;
+  }
+}
 

@@ -54,6 +54,17 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
   # A imagem do admin sempre vence. Nenhuma imagem de reserva fica no repositório.
   icon_generic_inline = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSI5IiBmaWxsPSIjRTlFREYxIi8+PHBhdGggZD0iTTEwIDI3IDIwIDEybDEwIDE1SDEwWiIgZmlsbD0iI0NCQjdBMSIvPjxwYXRoIGQ9Im0xNSAyNyA1LTggNSA4SDE1WiIgZmlsbD0iIzhCNzY1RiIvPjwvc3ZnPg=="
   icon_rules = [
+    # categorias-pai: usam o mesmo acervo de ícones de reserva das suas subcategorias.
+    # Isso evita que o drawer mobile caia no ícone genérico quando a imagem não foi cadastrada no CMS.
+    { p: "^banho e aquecimento$", i: "chuveiro" },
+    { p: "^materiais hidraulicos$", i: "cano-conexao" },
+    { p: "^coberturas? e telhas$", i: "telha" },
+    { p: "^eletrodomesticos$", i: "geladeira" },
+    { p: "^eletroportateis$", i: "airfryer" },
+    { p: "^energia solar$", i: "placa-solar" },
+    { p: "^ferragens$", i: "parafuso-bucha" },
+    { p: "^ferramentas$", i: "ferramenta-manual" },
+    { p: "^iluminacao$", i: "plafon" },
     { p: "porcelanato.*acetinado", i: "porcelanato-acetinado" },
     { p: "porcelanato.*esmaltado", i: "porcelanato-esmaltado" },
     { p: "porcelanato.*decorado", i: "porcelanato-decorado" },
@@ -892,7 +903,7 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
           <div class="topbar-communications__message" style="--i:1"><span class="topbar-communications__symbol" aria-hidden="true">{{ svg_card }}</span><span>Parcele em até 10x sem juros no cartão</span></div>
         </div></div>
         <div class="topbar__group topbar__group--end">
-          <a class="chip chip--stores" href="/diretorio-de-lojas">{{ asset_img("header-menu-abc/icones/nossas-lojas.webp", "", 34, "eager") }}Nossas Lojas</a>
+          <a class="chip chip--stores" href="/diretorio-de-lojas">{{ asset_img("header-menu-abc/icones/nossas-lojas-transparent.png", "", 34, "eager") }}Nossas Lojas</a>
           <a class="chip chip--franchise" href="{{ franchise_url | html.escape }}" target="_blank" rel="noopener noreferrer">Seja um Franqueado</a>
         </div>
       </div></div>
@@ -936,7 +947,7 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
           <div class="mobile-topbar__slide" style="--i:0"><div class="topbar-communications" data-fixed-communication><div class="topbar-communications__messages"><div class="topbar-communications__message is-visible"><span class="topbar-communications__symbol topbar-communications__symbol--truck" aria-hidden="true">{{ svg_truck }}</span><span>Metais com frete grátis · Sul e Sudeste</span></div></div></div></div>
           <div class="mobile-topbar__slide" style="--i:1"><div class="topbar-communications" data-fixed-communication><div class="topbar-communications__messages"><div class="topbar-communications__message is-visible"><span class="topbar-communications__symbol" aria-hidden="true">{{ svg_card }}</span><span>Parcele em até 10x sem juros no cartão</span></div></div></div></div>
           {{~ if wa_link != "" ~}}<div class="mobile-topbar__slide" style="--i:2"><a class="chip chip--whatsapp" href="{{ wa_link | html.escape }}" target="_blank" rel="noopener noreferrer">{{ asset_img("header-menu-abc/icones/whatsapp.svg", "", 14, "lazy") }}Compre pelo WhatsApp</a></div>{{~ end ~}}
-          <div class="mobile-topbar__slide" style="--i:3"><a class="chip chip--stores" href="/diretorio-de-lojas">{{ asset_img("header-menu-abc/icones/nossas-lojas.webp", "", 34, "lazy") }}Nossas Lojas</a></div>
+          <div class="mobile-topbar__slide" style="--i:3"><a class="chip chip--stores" href="/diretorio-de-lojas">{{ asset_img("header-menu-abc/icones/nossas-lojas-transparent.png", "", 34, "lazy") }}Nossas Lojas</a></div>
           <div class="mobile-topbar__slide" style="--i:4"><a class="mobile-topbar__prime" href="https://casa-prime.shop/" target="_blank" rel="noopener noreferrer" aria-label="Casa Prime">{{ asset_img("header-menu-abc/logos/casa-prime.webp", "", 80, "lazy") }}</a></div>
           <div class="mobile-topbar__slide" style="--i:5"><a class="chip chip--franchise" href="{{ franchise_url | html.escape }}" target="_blank" rel="noopener noreferrer">Seja um Franqueado</a></div>
         </div></div>
@@ -945,7 +956,7 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
       <div class="mobile-main">
         <div class="mobile-main__left">
           <label class="icon-button" for="m26-drawer" role="button" tabindex="0" aria-label="Abrir menu">{{ hamburger }}</label>
-          <label class="icon-button mobile-account" for="m26-account" role="button" tabindex="0" aria-label="Entrar na minha conta"><span class="mobile-account__avatar">{{ asset_img("header-menu-abc/icones/conta.webp", "header-action-icon", 80, "eager") }}</span><span class="mobile-account__label" data-mobile-account-label>Entrar</span></label>
+          <label class="icon-button mobile-account" for="m26-account" role="button" tabindex="0" aria-label="Entrar na minha conta"><span class="mobile-account__avatar">{{ asset_img("header-menu-abc/icones/conta.webp", "header-action-icon", 80, "eager") }}</span><span class="mobile-account__label account-name-scroll" data-mobile-account-label data-account-name-scroll>Entrar</span></label>
         </div>
         <a class="abc-logo" href="/" aria-label="ABC da Construção — início">{{ asset_img("header-menu-abc/logos/abc.svg", "", 49, "eager") }}</a>
         <div class="mobile-main__right">
@@ -969,14 +980,14 @@ navbar menu_groups: data...menu_group position: "Lateral Esquerda"
           <span class="drawer-sticky-category__identity"><img data-sticky-category-icon alt="" aria-hidden="true" hidden><span class="menu-hamburger" data-sticky-category-fallback-icon aria-hidden="true" hidden><i></i><i></i><i></i></span><span data-sticky-category-label></span></span>
           <span class="drawer-sticky-category__control"><span class="drawer-sticky-category__action">Recolher</span>{{ nav_chev }}</span>
         </button>
-        <figure class="drawer-sticky-environment" hidden><img data-sticky-environment-image alt="" aria-hidden="true"><figcaption><strong data-sticky-environment-label></strong></figcaption></figure>
+        <button class="drawer-sticky-environment" type="button" data-collapse-visible-environment hidden aria-label="Recolher ambiente"><img data-sticky-environment-image alt="" aria-hidden="true"><span class="drawer-sticky-environment__caption"><strong data-sticky-environment-label></strong></span></button>
       </div></div>
       <div class="drawer-body"><div class="drawer-track"><div class="drawer-panel drawer-panel--current">
         <div class="drawer-header">
           <div class="drawer-user">
             <div class="account-identity">
               <label class="account-state-toggle" for="m26-account" role="button" tabindex="0" aria-label="Minha conta">{{ asset_img("header-menu-abc/icones/conta.webp", "header-action-icon", 80, "lazy") }}</label>
-              <label class="account-menu-trigger" for="m26-account" role="button" tabindex="0"><span><strong data-account-title>Entrar</strong><small>Minha conta</small></span></label>
+              <label class="account-menu-trigger" for="m26-account" role="button" tabindex="0"><span><strong class="account-name-scroll" data-account-title data-account-name-scroll>Entrar</strong><small>Minha conta</small></span></label>
             </div>
             {{~ if wa_link != "" ~}}<a class="sac-chip" href="{{ wa_link | html.escape }}" target="_blank" rel="noopener noreferrer">{{ asset_img("header-menu-abc/icones/whatsapp.svg", "", 24, "lazy") }} SAC</a>{{~ end ~}}
           </div>
